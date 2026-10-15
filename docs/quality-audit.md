@@ -49,7 +49,7 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 
 **DOĞRULANDI.** `audit/quality-2026-10-15` dalı temiz `main` revizyonu `a78a578` üzerinden açıldı. `node --test`: 16/16 geçti. Statik site denetimi: 42 HTML, 41 kanonik sayfa, 3.720 yerel bağlantı hedefi, sıfır bozuk bağlantı. Print preflight: 276 PDF geçti. `git diff --check` ve `ruby -c scripts/pages.rb` geçti.
 
-**ÖNİZLEME KONTROLLERİ GEÇTİ; ÜRETİM DUMAN TESTİ YAYINDAN SONRA.** Proje içi Ruby 3.4.11/Bundler 2.6.9 ile tam Jekyll derlemesi geçti. `node --test`: 16/16; statik denetim: 42 HTML, 3.720 yerel hedef, sıfır bozuk bağlantı; 276 baskı dosyası preflight ve bağımsız asset/font/date/hash denetimlerini geçti. Üretim kipli yerel derleme de 41 indekslenebilir kanonik URL ve sitemap ile geçti. Değişiklikler GitHub PR #1'e gönderildi; Cloudflare önizlemesi başarıyla dağıtıldı. Önizlemede 390 px mobil sayfalar, CSP yapılandırması, konsol, hava durumu ve iki örnek indirme/hash doğrulandı. Üretim dalına birleştirme ve canlı duman testi sonraki adımdır. Fiziksel baskı ve ana dili Litvanca editör incelemesi yapılmadı.
+**ÖNİZLEME VE YEREL ÜRETİM KONTROLLERİ GEÇTİ; CANLI DUMAN TESTİ BEKLİYOR.** Proje içi Ruby 3.4.11/Bundler 2.6.9 ile tam Jekyll derlemesi geçti. `node --test`: 16/16; üretim statik denetimi: 42 HTML, 3.720 yerel hedef, sıfır bozuk bağlantı, 41 indekslenebilir kanonik URL ve sitemap; 276 baskı dosyası preflight ve bağımsız asset/font/date/hash denetimlerini geçti. PR #1 (`468417f`) `main` dalına birleştirildi. `K365_RELEASE=1` derlemesi üretim çıktısını oluşturdu; CSP kaldı ve önizleme `noindex` kaldırıldı. Cloudflare üretim dağıtımı ve canlı duman testi bu kaydın yazıldığı anda bekliyor. Fiziksel baskı ve ana dili Litvanca editör incelemesi yapılmadı.
 
 ## Düzeltme özeti
 
@@ -62,5 +62,5 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 
 ## Sonraki adımlar
 
-1. PR #1'i mevcut `main` dalına birleştirin, üretim kipli çıktıyı yayınlayın ve canlı URL/başlık/ana sayfa/API/indirme kontrollerini kaydedin.
+1. Üretim kipli `public/` çıktısını `main` dalına gönderin; Cloudflare dağıtımını, canlı URL/başlık/ana sayfa/API/indirme kontrollerini kaydedin.
 2. Fiziksel yazıcıda prova ve Litvanca ana dili konuşan editör incelemesi yapılmadı; bunları yapılmış gibi göstermeyin.
