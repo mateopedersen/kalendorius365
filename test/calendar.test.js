@@ -10,7 +10,7 @@ const data = JSON.parse(
   years = JSON.parse(
     readFileSync(new URL("../site/assets/data/years.json", import.meta.url)),
   );
-test("every one of 731 target dates agrees with Ruby Gregorian/ISO data", () => {
+test("every one of 1096 target dates agrees with Ruby Gregorian/ISO data", () => {
   let count = 0;
   for (const y of years)
     for (const m of y.months) {
@@ -28,7 +28,7 @@ test("every one of 731 target dates agrees with Ruby Gregorian/ISO data", () => 
       }
       assert.deepEqual(c.holidays(y.year, data), y.holidays);
     }
-  assert.equal(count, 731);
+  assert.equal(count, 1096);
 });
 test("leap years, 6-row months, navigation and ISO boundaries", () => {
   assert.equal(c.monthLength(2027, 2), 28);
@@ -45,7 +45,8 @@ test("leap years, 6-row months, navigation and ISO boundaries", () => {
 test("movable and statutory holidays; no substitute Mondays", () => {
   assert.equal(c.easter(2027), "2027-03-28");
   assert.equal(c.easter(2028), "2028-04-16");
-  for (const y of [2027, 2028]) {
+  assert.equal(c.easter(2029), "2029-04-01");
+  for (const y of [2027, 2028, 2029]) {
     const hs = c.holidays(y, data);
     assert.equal(hs.length, 16);
     assert(hs.every((h) => h.classification === "statutory"));

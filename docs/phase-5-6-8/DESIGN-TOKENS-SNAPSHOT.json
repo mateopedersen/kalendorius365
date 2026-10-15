@@ -1,0 +1,60 @@
+{
+  "name": "Kalendorius365 Baltic paper",
+  "version": 2,
+  "colors": {
+    "ink": "#111b2e",
+    "muted": "#5c6980",
+    "green": "#006a44",
+    "green-dark": "#005235",
+    "red": "#c1272d",
+    "yellow": "#fdb913",
+    "bg": "#f4f7fa",
+    "panel": "#fff",
+    "border": "#e1e7ee",
+    "soft": "#f7f9fc",
+    "tint": "#edf7f2",
+    "blue": "#1478db",
+    "purple": "#8250c4"
+  },
+  "typography": {
+    "ui": "Lato",
+    "weights": [
+      400,
+      700,
+      900
+    ],
+    "basePx": 15,
+    "largeBasePx": 17,
+    "bodyLineHeight": 1.5,
+    "paragraphLineHeight": 1.65,
+    "print": "Inter (verified production renderer unchanged)"
+  },
+  "spacingPx": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    32,
+    40
+  ],
+  "radiusPx": 12,
+  "icons": {
+    "viewBox": "0 0 24 24",
+    "stroke": 1.7,
+    "defaultPx": 20
+  },
+  "breakpointsPx": [
+    480,
+    760,
+    950,
+    1200,
+    1600
+  ],
+  "nationalPalette": {
+    "yellow": "#FDB913",
+    "green": "#006A44",
+    "red": "#C1272D"
+  }
+}

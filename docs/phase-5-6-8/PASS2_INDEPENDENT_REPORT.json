@@ -1,0 +1,86 @@
+{
+  "schema": "kalendorius365-independent-qa-pass2-v1",
+  "timestamp": "2026-10-15T21:56:25.535011+00:00",
+  "status": "predeploy_independent_checks_passed_live_recheck_pending",
+  "method": "A separate Python calendar/date implementation, direct browser navigation/rendering, independent static HTML inventory, and PDF/WebP preflight artifact comparison were used after code fixes. This report is not copied from PASS1; post-deployment HTTP/browser/download checks remain open until Cloudflare publishes the commit.",
+  "checks": [
+    {
+      "name": "calendar algorithm cross-check",
+      "result": "passed",
+      "independentMethod": "Python datetime.date, calendar.monthrange, weekday and explicit layout rules versus Ruby-generated manifest",
+      "templates": 360,
+      "datePlacementInstances": 10960,
+      "leapAndYearBoundaryCoverage": [
+        2027,
+        2028,
+        2029
+      ]
+    },
+    {
+      "name": "route-by-route browser rendering",
+      "result": "passed_local",
+      "routes": 29,
+      "inspection": "direct local route navigation; title, H1, canonical, meaningful main text and not-found state inspected"
+    },
+    {
+      "name": "indexability source inventory",
+      "result": "passed_local",
+      "routes": 71,
+      "sitemapMembership": 71,
+      "selfCanonical": 71,
+      "indexFollow": 71,
+      "incomingLinks": 71,
+      "rawResponseHttp": "static source and sitemap audit; not a live HTTP claim"
+    },
+    {
+      "name": "PDF-to-WebP representative visual comparison",
+      "result": "passed_for_12_samples",
+      "samples": 12,
+      "visualContactSheet": "SCREENSHOTS/print-sample-review-all-12.jpg",
+      "remaining": "No individual visual inspection of all 416 compositions."
+    },
+    {
+      "name": "solar/lunar independent references",
+      "result": "passed_for_test_cases",
+      "solar": "Node test compares NOAA calculation to independent USNO tabulated examples within two UTC minutes for matched assumptions.",
+      "lunar": "USNO official phase API rows are recorded with source/UTC minutes and converted via Europe/Vilnius; no lunar rise/set times are published."
+    },
+    {
+      "name": "live predeployment response sample",
+      "result": "passed_for_existing_pages",
+      "requests": [
+        {
+          "url": "https://kalendorius365.lt/",
+          "status": 200,
+          "xRobotsTag": null,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "url": "https://kalendorius365.lt/atostogu-planavimas/",
+          "status": 200,
+          "xRobotsTag": null,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        }
+      ],
+      "note": "New 2029 route returned the expected pre-release 404 and must be retested after deployment."
+    },
+    {
+      "name": "security, local privacy and accessibility spot-checks",
+      "result": "passed_for_observed_cases",
+      "details": [
+        "release _headers includes CSP and no global noindex header",
+        "school/local planner data was exercised with malicious literal text and persisted locally",
+        "keyboard and named-control interactions exercised on representative tools",
+        "static audit checks all public image alt/dimensions, IDs, landmarks/schema and links"
+      ],
+      "limitation": "No dedicated axe-core or formal WCAG conformance certificate."
+    }
+  ],
+  "remainingReleaseGate": [
+    "After push, confirm Cloudflare production deployment success for the exact commit.",
+    "Request every new canonical URL directly and confirm actual 200, indexable HTML, single canonical, no noindex response header, sitemap membership and working CSS/JS.",
+    "Verify real PDF and WebP download responses and checksums, new 404 behavior, redirects and cache/CSP headers.",
+    "Update all 29 liveHttpStatus values in PUBLIC-PAGE-MANIFEST.json and finish this report only from observed results."
+  ],
+  "result": "Independent local checks pass. The complete Pass 2 release gate is intentionally not marked finished until production deployment and live checks are observed."
+}

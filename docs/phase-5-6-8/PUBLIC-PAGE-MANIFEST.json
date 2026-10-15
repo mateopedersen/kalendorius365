@@ -1,0 +1,3927 @@
+{
+  "schema": "kalendorius365-public-page-manifest-v1",
+  "generatedAt": "2026-10-15T21:55:33.316468+00:00",
+  "site": "https://kalendorius365.lt",
+  "buildMode": "K365_RELEASE=1",
+  "scope": "All sitemap canonicals in the current local production build; local output does not prove a live HTTP response.",
+  "canonicalPageCount": 71,
+  "indexability": {
+    "allHaveFile": true,
+    "allLangLt": true,
+    "allUniqueTitle": true,
+    "allUniqueH1": true,
+    "allSelfCanonical": true,
+    "allInSitemap": true,
+    "allHaveIncomingLink": true,
+    "allRobotsIndexFollow": true,
+    "liveHttpStatus": "not yet checked; update after Cloudflare Pages publication"
+  },
+  "pages": [
+    {
+      "path": "/",
+      "url": "https://kalendorius365.lt/",
+      "file": "public/index.html",
+      "title": "Kalendorius, šventės ir planai | Kalendorius365",
+      "description": "Lietuviškas kalendorius su Vilniaus laiku, asmeniniais įvykiais ir Lietuvos šventėmis. 2027 ir 2028 metų PDF bei WebP kalendoriai spausdinimui.",
+      "h1": "Jūsų diena. Jūsų planai.",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 356,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/app.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/",
+      "url": "https://kalendorius365.lt/2027/",
+      "file": "public/2027/index.html",
+      "title": "2027 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "description": "2027 metų kalendorius su visais 12 mėnesių, Lietuvos šventėmis ir ISO savaitėmis. Mėnesių kolekcijos ir metiniai A4 PDF bei WebP failai.",
+      "h1": "2027 metų kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 177,
+      "images": [
+        {
+          "src": "/assets/previews/2027-metinis-06.webp",
+          "alt": "Lietuviška tapatybė – tikro spausdinamo kalendoriaus peržiūra"
+        },
+        {
+          "src": "/assets/visuals/brand-mark.svg",
+          "alt": ""
+        },
+        {
+          "src": "/assets/previews/2027-metinis-01.webp",
+          "alt": "2027 Redakcinis klasikinis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-02.webp",
+          "alt": "2027 Ryški tipografija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-03.webp",
+          "alt": "2027 Architektūrinis biuro tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-04.webp",
+          "alt": "2027 Dideli skaičiai – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-05.webp",
+          "alt": "2027 Šeimos ir mokslų planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-06.webp",
+          "alt": "2027 Lietuviška tapatybė – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-07.webp",
+          "alt": "2027 Botaninė kompozicija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-08.webp",
+          "alt": "2027 Mokyklos planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-09.webp",
+          "alt": "2027 Geometrinė redakcija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2027-metinis-10.webp",
+          "alt": "2027 Premium kontrastas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/balandis/",
+      "url": "https://kalendorius365.lt/2027/balandis/",
+      "file": "public/2027/balandis/index.html",
+      "title": "2027 m. balandžio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. balandžio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. balandžio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/balandis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 22,
+      "images": [
+        {
+          "src": "/assets/previews/2027-balandis-01.webp",
+          "alt": "2027 m. balandžio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-01.webp",
+          "alt": "2027 m. balandžio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-02.webp",
+          "alt": "2027 m. balandžio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-03.webp",
+          "alt": "2027 m. balandžio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-04.webp",
+          "alt": "2027 m. balandžio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-05.webp",
+          "alt": "2027 m. balandžio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-06.webp",
+          "alt": "2027 m. balandžio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-07.webp",
+          "alt": "2027 m. balandžio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-08.webp",
+          "alt": "2027 m. balandžio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-09.webp",
+          "alt": "2027 m. balandžio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-balandis-10.webp",
+          "alt": "2027 m. balandžio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/birzelis/",
+      "url": "https://kalendorius365.lt/2027/birzelis/",
+      "file": "public/2027/birzelis/index.html",
+      "title": "2027 m. birželio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. birželio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. birželio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/birzelis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 29,
+      "images": [
+        {
+          "src": "/assets/previews/2027-birzelis-01.webp",
+          "alt": "2027 m. birželio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-01.webp",
+          "alt": "2027 m. birželio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-02.webp",
+          "alt": "2027 m. birželio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-03.webp",
+          "alt": "2027 m. birželio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-04.webp",
+          "alt": "2027 m. birželio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-05.webp",
+          "alt": "2027 m. birželio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-06.webp",
+          "alt": "2027 m. birželio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-07.webp",
+          "alt": "2027 m. birželio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-08.webp",
+          "alt": "2027 m. birželio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-09.webp",
+          "alt": "2027 m. birželio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-birzelis-10.webp",
+          "alt": "2027 m. birželio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/geguze/",
+      "url": "https://kalendorius365.lt/2027/geguze/",
+      "file": "public/2027/geguze/index.html",
+      "title": "2027 m. gegužės kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. gegužės kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. gegužės kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/geguze/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 28,
+      "images": [
+        {
+          "src": "/assets/previews/2027-geguze-01.webp",
+          "alt": "2027 m. gegužės kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-01.webp",
+          "alt": "2027 m. gegužės kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-02.webp",
+          "alt": "2027 m. gegužės kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-03.webp",
+          "alt": "2027 m. gegužės kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-04.webp",
+          "alt": "2027 m. gegužės kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-05.webp",
+          "alt": "2027 m. gegužės kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-06.webp",
+          "alt": "2027 m. gegužės kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-07.webp",
+          "alt": "2027 m. gegužės kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-08.webp",
+          "alt": "2027 m. gegužės kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-09.webp",
+          "alt": "2027 m. gegužės kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-geguze-10.webp",
+          "alt": "2027 m. gegužės kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/gruodis/",
+      "url": "https://kalendorius365.lt/2027/gruodis/",
+      "file": "public/2027/gruodis/index.html",
+      "title": "2027 m. gruodžio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. gruodžio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. gruodžio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/gruodis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 32,
+      "images": [
+        {
+          "src": "/assets/previews/2027-gruodis-01.webp",
+          "alt": "2027 m. gruodžio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-01.webp",
+          "alt": "2027 m. gruodžio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-02.webp",
+          "alt": "2027 m. gruodžio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-03.webp",
+          "alt": "2027 m. gruodžio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-04.webp",
+          "alt": "2027 m. gruodžio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-05.webp",
+          "alt": "2027 m. gruodžio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-06.webp",
+          "alt": "2027 m. gruodžio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-07.webp",
+          "alt": "2027 m. gruodžio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-08.webp",
+          "alt": "2027 m. gruodžio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-09.webp",
+          "alt": "2027 m. gruodžio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-gruodis-10.webp",
+          "alt": "2027 m. gruodžio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/kovas/",
+      "url": "https://kalendorius365.lt/2027/kovas/",
+      "file": "public/2027/kovas/index.html",
+      "title": "2027 m. kovo kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. kovo kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. kovo kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/kovas/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 33,
+      "images": [
+        {
+          "src": "/assets/previews/2027-kovas-01.webp",
+          "alt": "2027 m. kovo kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-01.webp",
+          "alt": "2027 m. kovo kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-02.webp",
+          "alt": "2027 m. kovo kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-03.webp",
+          "alt": "2027 m. kovo kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-04.webp",
+          "alt": "2027 m. kovo kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-05.webp",
+          "alt": "2027 m. kovo kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-06.webp",
+          "alt": "2027 m. kovo kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-07.webp",
+          "alt": "2027 m. kovo kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-08.webp",
+          "alt": "2027 m. kovo kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-09.webp",
+          "alt": "2027 m. kovo kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-kovas-10.webp",
+          "alt": "2027 m. kovo kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/lapkritis/",
+      "url": "https://kalendorius365.lt/2027/lapkritis/",
+      "file": "public/2027/lapkritis/index.html",
+      "title": "2027 m. lapkričio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. lapkričio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. lapkričio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/lapkritis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 28,
+      "images": [
+        {
+          "src": "/assets/previews/2027-lapkritis-01.webp",
+          "alt": "2027 m. lapkričio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-01.webp",
+          "alt": "2027 m. lapkričio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-02.webp",
+          "alt": "2027 m. lapkričio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-03.webp",
+          "alt": "2027 m. lapkričio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-04.webp",
+          "alt": "2027 m. lapkričio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-05.webp",
+          "alt": "2027 m. lapkričio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-06.webp",
+          "alt": "2027 m. lapkričio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-07.webp",
+          "alt": "2027 m. lapkričio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-08.webp",
+          "alt": "2027 m. lapkričio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-09.webp",
+          "alt": "2027 m. lapkričio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-lapkritis-10.webp",
+          "alt": "2027 m. lapkričio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/liepa/",
+      "url": "https://kalendorius365.lt/2027/liepa/",
+      "file": "public/2027/liepa/index.html",
+      "title": "2027 m. liepos kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. liepos kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. liepos kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/liepa/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 25,
+      "images": [
+        {
+          "src": "/assets/previews/2027-liepa-01.webp",
+          "alt": "2027 m. liepos kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-01.webp",
+          "alt": "2027 m. liepos kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-02.webp",
+          "alt": "2027 m. liepos kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-03.webp",
+          "alt": "2027 m. liepos kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-04.webp",
+          "alt": "2027 m. liepos kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-05.webp",
+          "alt": "2027 m. liepos kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-06.webp",
+          "alt": "2027 m. liepos kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-07.webp",
+          "alt": "2027 m. liepos kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-08.webp",
+          "alt": "2027 m. liepos kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-09.webp",
+          "alt": "2027 m. liepos kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-liepa-10.webp",
+          "alt": "2027 m. liepos kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/rugpjutis/",
+      "url": "https://kalendorius365.lt/2027/rugpjutis/",
+      "file": "public/2027/rugpjutis/index.html",
+      "title": "2027 m. rugpjūčio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. rugpjūčio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. rugpjūčio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/rugpjutis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 25,
+      "images": [
+        {
+          "src": "/assets/previews/2027-rugpjutis-01.webp",
+          "alt": "2027 m. rugpjūčio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-01.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-02.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-03.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-04.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-05.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-06.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-07.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-08.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-09.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugpjutis-10.webp",
+          "alt": "2027 m. rugpjūčio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/rugsejis/",
+      "url": "https://kalendorius365.lt/2027/rugsejis/",
+      "file": "public/2027/rugsejis/index.html",
+      "title": "2027 m. rugsėjo kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. rugsėjo kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. rugsėjo kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/rugsejis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 22,
+      "images": [
+        {
+          "src": "/assets/previews/2027-rugsejis-01.webp",
+          "alt": "2027 m. rugsėjo kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-01.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-02.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-03.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-04.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-05.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-06.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-07.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-08.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-09.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-rugsejis-10.webp",
+          "alt": "2027 m. rugsėjo kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/sausis/",
+      "url": "https://kalendorius365.lt/2027/sausis/",
+      "file": "public/2027/sausis/index.html",
+      "title": "2027 m. sausio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. sausio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. sausio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/sausis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 23,
+      "images": [
+        {
+          "src": "/assets/previews/2027-sausis-06.webp",
+          "alt": "2027 m. sausio kalendorius – Lietuviška tapatybė"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-01.webp",
+          "alt": "2027 m. sausio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-02.webp",
+          "alt": "2027 m. sausio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-03.webp",
+          "alt": "2027 m. sausio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-04.webp",
+          "alt": "2027 m. sausio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-05.webp",
+          "alt": "2027 m. sausio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-06.webp",
+          "alt": "2027 m. sausio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-07.webp",
+          "alt": "2027 m. sausio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-08.webp",
+          "alt": "2027 m. sausio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-09.webp",
+          "alt": "2027 m. sausio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-sausis-10.webp",
+          "alt": "2027 m. sausio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/spalis/",
+      "url": "https://kalendorius365.lt/2027/spalis/",
+      "file": "public/2027/spalis/index.html",
+      "title": "2027 m. spalio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. spalio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. spalio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/spalis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 22,
+      "images": [
+        {
+          "src": "/assets/previews/2027-spalis-01.webp",
+          "alt": "2027 m. spalio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-01.webp",
+          "alt": "2027 m. spalio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-02.webp",
+          "alt": "2027 m. spalio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-03.webp",
+          "alt": "2027 m. spalio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-04.webp",
+          "alt": "2027 m. spalio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-05.webp",
+          "alt": "2027 m. spalio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-06.webp",
+          "alt": "2027 m. spalio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-07.webp",
+          "alt": "2027 m. spalio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-08.webp",
+          "alt": "2027 m. spalio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-09.webp",
+          "alt": "2027 m. spalio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-spalis-10.webp",
+          "alt": "2027 m. spalio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2027/vasaris/",
+      "url": "https://kalendorius365.lt/2027/vasaris/",
+      "file": "public/2027/vasaris/index.html",
+      "title": "2027 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2027 m. vasario kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2027 m. vasario kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2027/vasaris/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 25,
+      "images": [
+        {
+          "src": "/assets/previews/2027-vasaris-01.webp",
+          "alt": "2027 m. vasario kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-01.webp",
+          "alt": "2027 m. vasario kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-02.webp",
+          "alt": "2027 m. vasario kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-03.webp",
+          "alt": "2027 m. vasario kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-04.webp",
+          "alt": "2027 m. vasario kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-05.webp",
+          "alt": "2027 m. vasario kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-06.webp",
+          "alt": "2027 m. vasario kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-07.webp",
+          "alt": "2027 m. vasario kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-08.webp",
+          "alt": "2027 m. vasario kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-09.webp",
+          "alt": "2027 m. vasario kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2027-vasaris-10.webp",
+          "alt": "2027 m. vasario kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/",
+      "url": "https://kalendorius365.lt/2028/",
+      "file": "public/2028/index.html",
+      "title": "2028 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "description": "2028 metų kalendorius su visais 12 mėnesių, Lietuvos šventėmis ir ISO savaitėmis. Mėnesių kolekcijos ir metiniai A4 PDF bei WebP failai.",
+      "h1": "2028 metų kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 175,
+      "images": [
+        {
+          "src": "/assets/previews/2028-metinis-01.webp",
+          "alt": "Redakcinis klasikinis – tikro spausdinamo kalendoriaus peržiūra"
+        },
+        {
+          "src": "/assets/visuals/brand-mark.svg",
+          "alt": ""
+        },
+        {
+          "src": "/assets/previews/2028-metinis-01.webp",
+          "alt": "2028 Redakcinis klasikinis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-02.webp",
+          "alt": "2028 Ryški tipografija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-03.webp",
+          "alt": "2028 Architektūrinis biuro tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-04.webp",
+          "alt": "2028 Dideli skaičiai – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-05.webp",
+          "alt": "2028 Šeimos ir mokslų planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-06.webp",
+          "alt": "2028 Lietuviška tapatybė – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-07.webp",
+          "alt": "2028 Botaninė kompozicija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-08.webp",
+          "alt": "2028 Mokyklos planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-09.webp",
+          "alt": "2028 Geometrinė redakcija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2028-metinis-10.webp",
+          "alt": "2028 Premium kontrastas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/balandis/",
+      "url": "https://kalendorius365.lt/2028/balandis/",
+      "file": "public/2028/balandis/index.html",
+      "title": "2028 m. balandžio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. balandžio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. balandžio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/balandis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 28,
+      "images": [
+        {
+          "src": "/assets/previews/2028-balandis-01.webp",
+          "alt": "2028 m. balandžio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-01.webp",
+          "alt": "2028 m. balandžio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-02.webp",
+          "alt": "2028 m. balandžio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-03.webp",
+          "alt": "2028 m. balandžio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-04.webp",
+          "alt": "2028 m. balandžio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-05.webp",
+          "alt": "2028 m. balandžio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-06.webp",
+          "alt": "2028 m. balandžio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-07.webp",
+          "alt": "2028 m. balandžio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-08.webp",
+          "alt": "2028 m. balandžio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-09.webp",
+          "alt": "2028 m. balandžio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-balandis-10.webp",
+          "alt": "2028 m. balandžio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/birzelis/",
+      "url": "https://kalendorius365.lt/2028/birzelis/",
+      "file": "public/2028/birzelis/index.html",
+      "title": "2028 m. birželio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. birželio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. birželio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/birzelis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 28,
+      "images": [
+        {
+          "src": "/assets/previews/2028-birzelis-01.webp",
+          "alt": "2028 m. birželio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-01.webp",
+          "alt": "2028 m. birželio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-02.webp",
+          "alt": "2028 m. birželio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-03.webp",
+          "alt": "2028 m. birželio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-04.webp",
+          "alt": "2028 m. birželio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-05.webp",
+          "alt": "2028 m. birželio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-06.webp",
+          "alt": "2028 m. birželio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-07.webp",
+          "alt": "2028 m. birželio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-08.webp",
+          "alt": "2028 m. birželio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-09.webp",
+          "alt": "2028 m. birželio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-birzelis-10.webp",
+          "alt": "2028 m. birželio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/geguze/",
+      "url": "https://kalendorius365.lt/2028/geguze/",
+      "file": "public/2028/geguze/index.html",
+      "title": "2028 m. gegužės kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. gegužės kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. gegužės kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/geguze/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 27,
+      "images": [
+        {
+          "src": "/assets/previews/2028-geguze-01.webp",
+          "alt": "2028 m. gegužės kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-01.webp",
+          "alt": "2028 m. gegužės kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-02.webp",
+          "alt": "2028 m. gegužės kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-03.webp",
+          "alt": "2028 m. gegužės kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-04.webp",
+          "alt": "2028 m. gegužės kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-05.webp",
+          "alt": "2028 m. gegužės kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-06.webp",
+          "alt": "2028 m. gegužės kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-07.webp",
+          "alt": "2028 m. gegužės kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-08.webp",
+          "alt": "2028 m. gegužės kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-09.webp",
+          "alt": "2028 m. gegužės kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-geguze-10.webp",
+          "alt": "2028 m. gegužės kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/gruodis/",
+      "url": "https://kalendorius365.lt/2028/gruodis/",
+      "file": "public/2028/gruodis/index.html",
+      "title": "2028 m. gruodžio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. gruodžio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. gruodžio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/gruodis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 31,
+      "images": [
+        {
+          "src": "/assets/previews/2028-gruodis-01.webp",
+          "alt": "2028 m. gruodžio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-01.webp",
+          "alt": "2028 m. gruodžio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-02.webp",
+          "alt": "2028 m. gruodžio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-03.webp",
+          "alt": "2028 m. gruodžio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-04.webp",
+          "alt": "2028 m. gruodžio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-05.webp",
+          "alt": "2028 m. gruodžio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-06.webp",
+          "alt": "2028 m. gruodžio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-07.webp",
+          "alt": "2028 m. gruodžio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-08.webp",
+          "alt": "2028 m. gruodžio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-09.webp",
+          "alt": "2028 m. gruodžio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-gruodis-10.webp",
+          "alt": "2028 m. gruodžio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/kovas/",
+      "url": "https://kalendorius365.lt/2028/kovas/",
+      "file": "public/2028/kovas/index.html",
+      "title": "2028 m. kovo kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. kovo kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. kovo kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/kovas/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 25,
+      "images": [
+        {
+          "src": "/assets/previews/2028-kovas-01.webp",
+          "alt": "2028 m. kovo kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-01.webp",
+          "alt": "2028 m. kovo kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-02.webp",
+          "alt": "2028 m. kovo kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-03.webp",
+          "alt": "2028 m. kovo kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-04.webp",
+          "alt": "2028 m. kovo kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-05.webp",
+          "alt": "2028 m. kovo kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-06.webp",
+          "alt": "2028 m. kovo kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-07.webp",
+          "alt": "2028 m. kovo kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-08.webp",
+          "alt": "2028 m. kovo kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-09.webp",
+          "alt": "2028 m. kovo kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-kovas-10.webp",
+          "alt": "2028 m. kovo kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/lapkritis/",
+      "url": "https://kalendorius365.lt/2028/lapkritis/",
+      "file": "public/2028/lapkritis/index.html",
+      "title": "2028 m. lapkričio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. lapkričio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. lapkričio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/lapkritis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 27,
+      "images": [
+        {
+          "src": "/assets/previews/2028-lapkritis-01.webp",
+          "alt": "2028 m. lapkričio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-01.webp",
+          "alt": "2028 m. lapkričio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-02.webp",
+          "alt": "2028 m. lapkričio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-03.webp",
+          "alt": "2028 m. lapkričio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-04.webp",
+          "alt": "2028 m. lapkričio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-05.webp",
+          "alt": "2028 m. lapkričio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-06.webp",
+          "alt": "2028 m. lapkričio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-07.webp",
+          "alt": "2028 m. lapkričio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-08.webp",
+          "alt": "2028 m. lapkričio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-09.webp",
+          "alt": "2028 m. lapkričio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-lapkritis-10.webp",
+          "alt": "2028 m. lapkričio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/liepa/",
+      "url": "https://kalendorius365.lt/2028/liepa/",
+      "file": "public/2028/liepa/index.html",
+      "title": "2028 m. liepos kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. liepos kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. liepos kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/liepa/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 24,
+      "images": [
+        {
+          "src": "/assets/previews/2028-liepa-01.webp",
+          "alt": "2028 m. liepos kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-01.webp",
+          "alt": "2028 m. liepos kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-02.webp",
+          "alt": "2028 m. liepos kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-03.webp",
+          "alt": "2028 m. liepos kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-04.webp",
+          "alt": "2028 m. liepos kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-05.webp",
+          "alt": "2028 m. liepos kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-06.webp",
+          "alt": "2028 m. liepos kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-07.webp",
+          "alt": "2028 m. liepos kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-08.webp",
+          "alt": "2028 m. liepos kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-09.webp",
+          "alt": "2028 m. liepos kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-liepa-10.webp",
+          "alt": "2028 m. liepos kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/rugpjutis/",
+      "url": "https://kalendorius365.lt/2028/rugpjutis/",
+      "file": "public/2028/rugpjutis/index.html",
+      "title": "2028 m. rugpjūčio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. rugpjūčio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. rugpjūčio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/rugpjutis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 24,
+      "images": [
+        {
+          "src": "/assets/previews/2028-rugpjutis-01.webp",
+          "alt": "2028 m. rugpjūčio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-01.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-02.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-03.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-04.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-05.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-06.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-07.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-08.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-09.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugpjutis-10.webp",
+          "alt": "2028 m. rugpjūčio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/rugsejis/",
+      "url": "https://kalendorius365.lt/2028/rugsejis/",
+      "file": "public/2028/rugsejis/index.html",
+      "title": "2028 m. rugsėjo kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. rugsėjo kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. rugsėjo kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/rugsejis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 21,
+      "images": [
+        {
+          "src": "/assets/previews/2028-rugsejis-01.webp",
+          "alt": "2028 m. rugsėjo kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-01.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-02.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-03.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-04.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-05.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-06.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-07.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-08.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-09.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-rugsejis-10.webp",
+          "alt": "2028 m. rugsėjo kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/sausis/",
+      "url": "https://kalendorius365.lt/2028/sausis/",
+      "file": "public/2028/sausis/index.html",
+      "title": "2028 m. sausio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. sausio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. sausio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/sausis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 24,
+      "images": [
+        {
+          "src": "/assets/previews/2028-sausis-01.webp",
+          "alt": "2028 m. sausio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-01.webp",
+          "alt": "2028 m. sausio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-02.webp",
+          "alt": "2028 m. sausio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-03.webp",
+          "alt": "2028 m. sausio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-04.webp",
+          "alt": "2028 m. sausio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-05.webp",
+          "alt": "2028 m. sausio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-06.webp",
+          "alt": "2028 m. sausio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-07.webp",
+          "alt": "2028 m. sausio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-08.webp",
+          "alt": "2028 m. sausio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-09.webp",
+          "alt": "2028 m. sausio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-sausis-10.webp",
+          "alt": "2028 m. sausio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/spalis/",
+      "url": "https://kalendorius365.lt/2028/spalis/",
+      "file": "public/2028/spalis/index.html",
+      "title": "2028 m. spalio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. spalio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. spalio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/spalis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 21,
+      "images": [
+        {
+          "src": "/assets/previews/2028-spalis-01.webp",
+          "alt": "2028 m. spalio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-01.webp",
+          "alt": "2028 m. spalio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-02.webp",
+          "alt": "2028 m. spalio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-03.webp",
+          "alt": "2028 m. spalio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-04.webp",
+          "alt": "2028 m. spalio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-05.webp",
+          "alt": "2028 m. spalio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-06.webp",
+          "alt": "2028 m. spalio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-07.webp",
+          "alt": "2028 m. spalio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-08.webp",
+          "alt": "2028 m. spalio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-09.webp",
+          "alt": "2028 m. spalio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-spalis-10.webp",
+          "alt": "2028 m. spalio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2028/vasaris/",
+      "url": "https://kalendorius365.lt/2028/vasaris/",
+      "file": "public/2028/vasaris/index.html",
+      "title": "2028 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2028 m. vasario kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2028 m. vasario kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2028/vasaris/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 24,
+      "images": [
+        {
+          "src": "/assets/previews/2028-vasaris-02.webp",
+          "alt": "2028 m. vasario kalendorius – Ryški tipografija"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-01.webp",
+          "alt": "2028 m. vasario kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-02.webp",
+          "alt": "2028 m. vasario kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-03.webp",
+          "alt": "2028 m. vasario kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-04.webp",
+          "alt": "2028 m. vasario kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-05.webp",
+          "alt": "2028 m. vasario kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-06.webp",
+          "alt": "2028 m. vasario kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-07.webp",
+          "alt": "2028 m. vasario kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-08.webp",
+          "alt": "2028 m. vasario kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-09.webp",
+          "alt": "2028 m. vasario kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2028-vasaris-10.webp",
+          "alt": "2028 m. vasario kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/",
+      "url": "https://kalendorius365.lt/2029/",
+      "file": "public/2029/index.html",
+      "title": "2029 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "description": "2029 metų kalendorius su visais 12 mėnesių, Lietuvos šventėmis ir ISO savaitėmis. Mėnesių kolekcijos ir metiniai A4 PDF bei WebP failai.",
+      "h1": "2029 metų kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 173,
+      "images": [
+        {
+          "src": "/assets/previews/2029-metinis-01.webp",
+          "alt": "Redakcinis klasikinis – tikro spausdinamo kalendoriaus peržiūra"
+        },
+        {
+          "src": "/assets/visuals/brand-mark.svg",
+          "alt": ""
+        },
+        {
+          "src": "/assets/previews/2029-metinis-01.webp",
+          "alt": "2029 Redakcinis klasikinis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-02.webp",
+          "alt": "2029 Ryški tipografija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-03.webp",
+          "alt": "2029 Architektūrinis biuro tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-04.webp",
+          "alt": "2029 Dideli skaičiai – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-05.webp",
+          "alt": "2029 Šeimos ir mokslų planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-06.webp",
+          "alt": "2029 Lietuviška tapatybė – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-07.webp",
+          "alt": "2029 Botaninė kompozicija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-08.webp",
+          "alt": "2029 Mokyklos planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-09.webp",
+          "alt": "2029 Geometrinė redakcija – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/2029-metinis-10.webp",
+          "alt": "2029 Premium kontrastas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/balandis/",
+      "url": "https://kalendorius365.lt/2029/balandis/",
+      "file": "public/2029/balandis/index.html",
+      "title": "2029 m. balandžio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. balandžio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. balandžio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/balandis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 27,
+      "images": [
+        {
+          "src": "/assets/previews/2029-balandis-01.webp",
+          "alt": "2029 m. balandžio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-01.webp",
+          "alt": "2029 m. balandžio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-02.webp",
+          "alt": "2029 m. balandžio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-03.webp",
+          "alt": "2029 m. balandžio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-04.webp",
+          "alt": "2029 m. balandžio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-05.webp",
+          "alt": "2029 m. balandžio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-06.webp",
+          "alt": "2029 m. balandžio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-07.webp",
+          "alt": "2029 m. balandžio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-08.webp",
+          "alt": "2029 m. balandžio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-09.webp",
+          "alt": "2029 m. balandžio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-balandis-10.webp",
+          "alt": "2029 m. balandžio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/birzelis/",
+      "url": "https://kalendorius365.lt/2029/birzelis/",
+      "file": "public/2029/birzelis/index.html",
+      "title": "2029 m. birželio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. birželio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. birželio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/birzelis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 27,
+      "images": [
+        {
+          "src": "/assets/previews/2029-birzelis-01.webp",
+          "alt": "2029 m. birželio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-01.webp",
+          "alt": "2029 m. birželio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-02.webp",
+          "alt": "2029 m. birželio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-03.webp",
+          "alt": "2029 m. birželio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-04.webp",
+          "alt": "2029 m. birželio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-05.webp",
+          "alt": "2029 m. birželio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-06.webp",
+          "alt": "2029 m. birželio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-07.webp",
+          "alt": "2029 m. birželio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-08.webp",
+          "alt": "2029 m. birželio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-09.webp",
+          "alt": "2029 m. birželio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-birzelis-10.webp",
+          "alt": "2029 m. birželio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/geguze/",
+      "url": "https://kalendorius365.lt/2029/geguze/",
+      "file": "public/2029/geguze/index.html",
+      "title": "2029 m. gegužės kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. gegužės kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. gegužės kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/geguze/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 26,
+      "images": [
+        {
+          "src": "/assets/previews/2029-geguze-01.webp",
+          "alt": "2029 m. gegužės kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-01.webp",
+          "alt": "2029 m. gegužės kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-02.webp",
+          "alt": "2029 m. gegužės kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-03.webp",
+          "alt": "2029 m. gegužės kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-04.webp",
+          "alt": "2029 m. gegužės kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-05.webp",
+          "alt": "2029 m. gegužės kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-06.webp",
+          "alt": "2029 m. gegužės kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-07.webp",
+          "alt": "2029 m. gegužės kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-08.webp",
+          "alt": "2029 m. gegužės kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-09.webp",
+          "alt": "2029 m. gegužės kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-geguze-10.webp",
+          "alt": "2029 m. gegužės kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/gruodis/",
+      "url": "https://kalendorius365.lt/2029/gruodis/",
+      "file": "public/2029/gruodis/index.html",
+      "title": "2029 m. gruodžio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. gruodžio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. gruodžio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/gruodis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 28,
+      "images": [
+        {
+          "src": "/assets/previews/2029-gruodis-01.webp",
+          "alt": "2029 m. gruodžio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-01.webp",
+          "alt": "2029 m. gruodžio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-02.webp",
+          "alt": "2029 m. gruodžio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-03.webp",
+          "alt": "2029 m. gruodžio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-04.webp",
+          "alt": "2029 m. gruodžio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-05.webp",
+          "alt": "2029 m. gruodžio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-06.webp",
+          "alt": "2029 m. gruodžio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-07.webp",
+          "alt": "2029 m. gruodžio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-08.webp",
+          "alt": "2029 m. gruodžio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-09.webp",
+          "alt": "2029 m. gruodžio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-gruodis-10.webp",
+          "alt": "2029 m. gruodžio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/kovas/",
+      "url": "https://kalendorius365.lt/2029/kovas/",
+      "file": "public/2029/kovas/index.html",
+      "title": "2029 m. kovo kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. kovo kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. kovo kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/kovas/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 24,
+      "images": [
+        {
+          "src": "/assets/previews/2029-kovas-01.webp",
+          "alt": "2029 m. kovo kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-01.webp",
+          "alt": "2029 m. kovo kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-02.webp",
+          "alt": "2029 m. kovo kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-03.webp",
+          "alt": "2029 m. kovo kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-04.webp",
+          "alt": "2029 m. kovo kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-05.webp",
+          "alt": "2029 m. kovo kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-06.webp",
+          "alt": "2029 m. kovo kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-07.webp",
+          "alt": "2029 m. kovo kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-08.webp",
+          "alt": "2029 m. kovo kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-09.webp",
+          "alt": "2029 m. kovo kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-kovas-10.webp",
+          "alt": "2029 m. kovo kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/lapkritis/",
+      "url": "https://kalendorius365.lt/2029/lapkritis/",
+      "file": "public/2029/lapkritis/index.html",
+      "title": "2029 m. lapkričio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. lapkričio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. lapkričio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/lapkritis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 26,
+      "images": [
+        {
+          "src": "/assets/previews/2029-lapkritis-01.webp",
+          "alt": "2029 m. lapkričio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-01.webp",
+          "alt": "2029 m. lapkričio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-02.webp",
+          "alt": "2029 m. lapkričio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-03.webp",
+          "alt": "2029 m. lapkričio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-04.webp",
+          "alt": "2029 m. lapkričio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-05.webp",
+          "alt": "2029 m. lapkričio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-06.webp",
+          "alt": "2029 m. lapkričio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-07.webp",
+          "alt": "2029 m. lapkričio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-08.webp",
+          "alt": "2029 m. lapkričio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-09.webp",
+          "alt": "2029 m. lapkričio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-lapkritis-10.webp",
+          "alt": "2029 m. lapkričio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/liepa/",
+      "url": "https://kalendorius365.lt/2029/liepa/",
+      "file": "public/2029/liepa/index.html",
+      "title": "2029 m. liepos kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. liepos kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. liepos kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/liepa/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 23,
+      "images": [
+        {
+          "src": "/assets/previews/2029-liepa-01.webp",
+          "alt": "2029 m. liepos kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-01.webp",
+          "alt": "2029 m. liepos kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-02.webp",
+          "alt": "2029 m. liepos kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-03.webp",
+          "alt": "2029 m. liepos kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-04.webp",
+          "alt": "2029 m. liepos kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-05.webp",
+          "alt": "2029 m. liepos kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-06.webp",
+          "alt": "2029 m. liepos kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-07.webp",
+          "alt": "2029 m. liepos kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-08.webp",
+          "alt": "2029 m. liepos kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-09.webp",
+          "alt": "2029 m. liepos kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-liepa-10.webp",
+          "alt": "2029 m. liepos kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/rugpjutis/",
+      "url": "https://kalendorius365.lt/2029/rugpjutis/",
+      "file": "public/2029/rugpjutis/index.html",
+      "title": "2029 m. rugpjūčio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. rugpjūčio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. rugpjūčio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/rugpjutis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 23,
+      "images": [
+        {
+          "src": "/assets/previews/2029-rugpjutis-01.webp",
+          "alt": "2029 m. rugpjūčio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-01.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-02.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-03.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-04.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-05.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-06.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-07.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-08.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-09.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugpjutis-10.webp",
+          "alt": "2029 m. rugpjūčio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/rugsejis/",
+      "url": "https://kalendorius365.lt/2029/rugsejis/",
+      "file": "public/2029/rugsejis/index.html",
+      "title": "2029 m. rugsėjo kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. rugsėjo kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. rugsėjo kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/rugsejis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 20,
+      "images": [
+        {
+          "src": "/assets/previews/2029-rugsejis-01.webp",
+          "alt": "2029 m. rugsėjo kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-01.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-02.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-03.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-04.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-05.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-06.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-07.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-08.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-09.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-rugsejis-10.webp",
+          "alt": "2029 m. rugsėjo kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/sausis/",
+      "url": "https://kalendorius365.lt/2029/sausis/",
+      "file": "public/2029/sausis/index.html",
+      "title": "2029 m. sausio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. sausio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. sausio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/sausis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 23,
+      "images": [
+        {
+          "src": "/assets/previews/2029-sausis-01.webp",
+          "alt": "2029 m. sausio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-01.webp",
+          "alt": "2029 m. sausio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-02.webp",
+          "alt": "2029 m. sausio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-03.webp",
+          "alt": "2029 m. sausio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-04.webp",
+          "alt": "2029 m. sausio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-05.webp",
+          "alt": "2029 m. sausio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-06.webp",
+          "alt": "2029 m. sausio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-07.webp",
+          "alt": "2029 m. sausio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-08.webp",
+          "alt": "2029 m. sausio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-09.webp",
+          "alt": "2029 m. sausio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-sausis-10.webp",
+          "alt": "2029 m. sausio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/spalis/",
+      "url": "https://kalendorius365.lt/2029/spalis/",
+      "file": "public/2029/spalis/index.html",
+      "title": "2029 m. spalio kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. spalio kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. spalio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/spalis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 20,
+      "images": [
+        {
+          "src": "/assets/previews/2029-spalis-01.webp",
+          "alt": "2029 m. spalio kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-01.webp",
+          "alt": "2029 m. spalio kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-02.webp",
+          "alt": "2029 m. spalio kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-03.webp",
+          "alt": "2029 m. spalio kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-04.webp",
+          "alt": "2029 m. spalio kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-05.webp",
+          "alt": "2029 m. spalio kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-06.webp",
+          "alt": "2029 m. spalio kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-07.webp",
+          "alt": "2029 m. spalio kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-08.webp",
+          "alt": "2029 m. spalio kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-09.webp",
+          "alt": "2029 m. spalio kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-spalis-10.webp",
+          "alt": "2029 m. spalio kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/2029/vasaris/",
+      "url": "https://kalendorius365.lt/2029/vasaris/",
+      "file": "public/2029/vasaris/index.html",
+      "title": "2029 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "description": "2029 m. vasario kalendorius: penki juodai balti ir penki spalvoti A4 dizainai, Lietuvos šventės ir tikros datos. Vektoriniai PDF bei 600 PPI WebP spausdinimui.",
+      "h1": "2029 m. vasario kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/2029/vasaris/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 23,
+      "images": [
+        {
+          "src": "/assets/previews/2029-vasaris-01.webp",
+          "alt": "2029 m. vasario kalendorius – Redakcinis klasikinis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-01.webp",
+          "alt": "2029 m. vasario kalendorius: Redakcinis klasikinis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-02.webp",
+          "alt": "2029 m. vasario kalendorius: Ryški tipografija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-03.webp",
+          "alt": "2029 m. vasario kalendorius: Architektūrinis biuro tinklelis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-04.webp",
+          "alt": "2029 m. vasario kalendorius: Dideli skaičiai su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-05.webp",
+          "alt": "2029 m. vasario kalendorius: Šeimos ir mokslų planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-06.webp",
+          "alt": "2029 m. vasario kalendorius: Lietuviška tapatybė su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-07.webp",
+          "alt": "2029 m. vasario kalendorius: Botaninė kompozicija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-08.webp",
+          "alt": "2029 m. vasario kalendorius: Mokyklos planuoklis su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-09.webp",
+          "alt": "2029 m. vasario kalendorius: Geometrinė redakcija su Lietuvos šventinėmis dienomis"
+        },
+        {
+          "src": "/assets/previews/2029-vasaris-10.webp",
+          "alt": "2029 m. vasario kalendorius: Premium kontrastas su Lietuvos šventinėmis dienomis"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/astronominis-kalendorius/",
+      "url": "https://kalendorius365.lt/astronominis-kalendorius/",
+      "file": "public/astronominis-kalendorius/index.html",
+      "title": "Astronominis kalendorius Lietuvoje – saulė ir mėnulis | Kalendorius365",
+      "description": "Lygiadienių ir saulėgrįžų momentai Lietuvos laiku, penkių miestų saulėtekio skaičiuoklė ir 2027–2029 m. Mėnulio fazių lentelės.",
+      "h1": "Astronominis kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/astronominis-kalendorius/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 5,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/atostogu-planavimas/",
+      "url": "https://kalendorius365.lt/atostogu-planavimas/",
+      "file": "public/atostogu-planavimas/index.html",
+      "title": "Atostogų planavimas 2027–2028 – dienų skaičiuoklė | Kalendorius365",
+      "description": "Planuokite atostogas Lietuvoje pagal darbo savaitę, valstybines šventes ir dienų likutį. Palyginkite ilgą pertrauką, poilsio ir atostogų dienas bei kelis laikotarpius.",
+      "h1": "Atostogų planuoklis",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/atostogu-planavimas/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 72,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/leave-planner.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "url": "https://kalendorius365.lt/darbo-dienos/2027/",
+      "file": "public/darbo-dienos/2027/index.html",
+      "title": "2027 metų darbo dienų kalendorius | Kalendorius365",
+      "description": "2027 metų darbo dienos ir darbo valandos pagal mėnesius. Penkių arba šešių dienų savaitė, šventės, prieššventiniai trumpinimai ir metodika.",
+      "h1": "2027 metų darbo dienų kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/darbo-dienos/2027/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 103,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/darbo-dienos/2028/",
+      "url": "https://kalendorius365.lt/darbo-dienos/2028/",
+      "file": "public/darbo-dienos/2028/index.html",
+      "title": "2028 metų darbo dienų kalendorius | Kalendorius365",
+      "description": "2028 metų darbo dienos ir darbo valandos pagal mėnesius. Penkių arba šešių dienų savaitė, šventės, prieššventiniai trumpinimai ir metodika.",
+      "h1": "2028 metų darbo dienų kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/darbo-dienos/2028/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 29,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/darbo-dienos/2029/",
+      "url": "https://kalendorius365.lt/darbo-dienos/2029/",
+      "file": "public/darbo-dienos/2029/index.html",
+      "title": "2029 metų darbo dienų kalendorius | Kalendorius365",
+      "description": "2029 metų darbo dienos ir darbo valandos pagal mėnesius. Penkių arba šešių dienų savaitė, šventės, prieššventiniai trumpinimai ir metodika.",
+      "h1": "2029 metų darbo dienų kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/darbo-dienos/2029/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 29,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/darbo-grafiko-sablonai/",
+      "url": "https://kalendorius365.lt/darbo-grafiko-sablonai/",
+      "file": "public/darbo-grafiko-sablonai/index.html",
+      "title": "Darbo grafiko šablonai – PDF ir WebP | Kalendorius365",
+      "description": "Nedatuoti darbo ir pamainų lapai. Atspausdinkite ir žymėkite vietoje.",
+      "h1": "Darbo grafiko šablonai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/darbo-grafiko-sablonai/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 2,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-19.webp",
+          "alt": " Pamainų ciklo žiniaraštis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-20.webp",
+          "alt": " Pamainų mėnesio planas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "url": "https://kalendorius365.lt/datos-skaiciuokle/",
+      "file": "public/datos-skaiciuokle/index.html",
+      "title": "Datos skaičiuoklė – dienos ir darbo laikas | Kalendorius365",
+      "description": "Skaičiuokite dienas ir savaites tarp datų, darbo dienas su Lietuvos šventėmis, pridėkite ar atimkite dienas ir sužinokite savaitės dieną.",
+      "h1": "Datos skaičiuoklė",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/datos-skaiciuokle/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 8,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/dienos-planuoklis/",
+      "url": "https://kalendorius365.lt/dienos-planuoklis/",
+      "file": "public/dienos-planuoklis/index.html",
+      "title": "Dienos planuoklis spausdinimui – PDF ir WebP | Kalendorius365",
+      "description": "Nedatuotas dienos lapas laikui, svarbiausiems darbams ir užrašams.",
+      "h1": "Dienos planuoklis spausdinimui",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/dienos-planuoklis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-13.webp",
+          "alt": " Dienos laiko juostos planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-14.webp",
+          "alt": " Dienos prioritetų planuoklis – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/irankiai/",
+      "url": "https://kalendorius365.lt/irankiai/",
+      "file": "public/irankiai/index.html",
+      "title": "Kalendoriaus, darbo ir astronomijos įrankiai | Kalendorius365",
+      "description": "Lietuviški kalendoriai, datų ir darbo laiko skaičiuoklės, pamainų bei pamokų planuokliai, saulės ir Mėnulio duomenys.",
+      "h1": "Įrankiai aiškiems planams",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/irankiai/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 214,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "url": "https://kalendorius365.lt/kurti-kalendoriu/",
+      "file": "public/kurti-kalendoriu/index.html",
+      "title": "Kalendoriaus kūrėjas – susikurkite ir spausdinkite | Kalendorius365",
+      "description": "Susikurkite mėnesio ar metų kalendorių: šventės, savaitės pradžia, ISO numeriai, šriftas, užrašai ir popierius. Spausdinimas ir WebP eksportas.",
+      "h1": "Kalendoriaus kūrėjas",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/kurti-kalendoriu/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 74,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/menesiai/",
+      "url": "https://kalendorius365.lt/menesiai/",
+      "file": "public/menesiai/index.html",
+      "title": "Mėnesių kalendoriai – 2027–2029 | Kalendorius365",
+      "description": "Pasirinkite 2027, 2028 ar 2029 metų mėnesį. Kiekvienam mėnesiui – dešimt skirtingų A4 kalendorių su Lietuvos šventėmis, PDF ir WebP.",
+      "h1": "Mėnesių kalendoriai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/menesiai/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 75,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/menulio-fazes/",
+      "url": "https://kalendorius365.lt/menulio-fazes/",
+      "file": "public/menulio-fazes/index.html",
+      "title": "Mėnulio fazės 2027–2029 – jaunatis ir pilnatis | Kalendorius365",
+      "description": "Lietuvos vietos laiku pateikiami 2027–2029 m. jaunaties, pirmojo ketvirčio, pilnaties ir paskutinio ketvirčio momentai. Apšviestumas aiškiai pažymėtas kaip apytikslis.",
+      "h1": "Mėnulio fazės",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/menulio-fazes/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 6,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/menulio-kalendorius/2027/",
+      "url": "https://kalendorius365.lt/menulio-kalendorius/2027/",
+      "file": "public/menulio-kalendorius/2027/index.html",
+      "title": "2027 metų mėnulio kalendorius Lietuvoje | Kalendorius365",
+      "description": "2027 metų mėnulio fazių kalendorius: tikslios jaunaties, ketvirčių ir pilnaties akimirkos Lietuvos laiku; vasaros laikas ir metų sandūra.",
+      "h1": "2027 metų Mėnulio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/menulio-kalendorius/2027/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 2,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/menulio-kalendorius/2028/",
+      "url": "https://kalendorius365.lt/menulio-kalendorius/2028/",
+      "file": "public/menulio-kalendorius/2028/index.html",
+      "title": "2028 metų mėnulio kalendorius Lietuvoje | Kalendorius365",
+      "description": "2028 metų mėnulio fazių kalendorius: tikslios jaunaties, ketvirčių ir pilnaties akimirkos Lietuvos laiku; vasaros laikas ir metų sandūra.",
+      "h1": "2028 metų Mėnulio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/menulio-kalendorius/2028/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/menulio-kalendorius/2029/",
+      "url": "https://kalendorius365.lt/menulio-kalendorius/2029/",
+      "file": "public/menulio-kalendorius/2029/index.html",
+      "title": "2029 metų mėnulio kalendorius Lietuvoje | Kalendorius365",
+      "description": "2029 metų mėnulio fazių kalendorius: tikslios jaunaties, ketvirčių ir pilnaties akimirkos Lietuvos laiku; vasaros laikas ir metų sandūra.",
+      "h1": "2029 metų Mėnulio kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/menulio-kalendorius/2029/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/metai/",
+      "url": "https://kalendorius365.lt/metai/",
+      "file": "public/metai/index.html",
+      "title": "Metų kalendoriai | Kalendorius365",
+      "description": "2027, 2028 ir 2029 metų lietuviški kalendoriai: visų mėnesių apžvalga, Lietuvos šventės ir metiniai PDF bei WebP failai.",
+      "h1": "Metų kalendoriai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/metai/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "url": "https://kalendorius365.lt/mokiniu-atostogos/",
+      "file": "public/mokiniu-atostogos/index.html",
+      "title": "Mokinių atostogos 2026–2027 | Kalendorius365",
+      "description": "Oficialios 2026–2027 mokslo metų mokinių atostogos Lietuvoje: rudens, Kalėdų, žiemos ir Velykų laikotarpiai pagal ugdymo pakopą.",
+      "h1": "Mokinių atostogos",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/mokiniu-atostogos/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 73,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-03.webp",
+          "alt": " Savaitės planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-06.webp",
+          "alt": " Šeimos savaitės planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-08.webp",
+          "alt": " Mokyklos savaitės planas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/pamainu-grafikas/",
+      "url": "https://kalendorius365.lt/pamainu-grafikas/",
+      "file": "public/pamainu-grafikas/index.html",
+      "title": "Pamainų grafiko planuoklis – ciklai ir darbo laikas | Kalendorius365",
+      "description": "Sukurkite pamainų ciklą Lietuvoje: dieninės ir naktinės pamainos, poilsio dienos, pertrauka, vasaros laiko patikra, darbo valandų suvestinė ir ICS eksportas.",
+      "h1": "Pamainų grafiko planuoklis",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/pamainu-grafikas/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/pamoku-tvarkarascio-sablonai/",
+      "url": "https://kalendorius365.lt/pamoku-tvarkarascio-sablonai/",
+      "file": "public/pamoku-tvarkarascio-sablonai/index.html",
+      "title": "Pamokų tvarkaraščio šablonai – PDF ir WebP | Kalendorius365",
+      "description": "Tušti savaitės tvarkaraščiai rašymui ranka ir mokyklos užduotims.",
+      "h1": "Pamokų tvarkaraščio šablonai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/pamoku-tvarkarascio-sablonai/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 2,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-17.webp",
+          "alt": " Pamokų savaitės tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-18.webp",
+          "alt": " Pamokų ir užduočių planas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/pamoku-tvarkarastis/",
+      "url": "https://kalendorius365.lt/pamoku-tvarkarastis/",
+      "file": "public/pamoku-tvarkarastis/index.html",
+      "title": "Pamokų tvarkaraštis ir namų darbų planuoklis | Kalendorius365",
+      "description": "Sukurkite savaitinį pamokų tvarkaraštį ir namų darbų sąrašą: keičiamos pamokų trukmės, 5 arba 6 dienos, vietinis saugojimas, JSON kopija ir spausdinimas.",
+      "h1": "Pamokų tvarkaraštis ir namų darbų planuoklis",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/pamoku-tvarkarastis/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 6,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/privatumas/",
+      "url": "https://kalendorius365.lt/privatumas/",
+      "file": "public/privatumas/index.html",
+      "title": "Privatumas ir duomenų saugojimas | Kalendorius365",
+      "description": "Kaip Kalendorius365 saugo asmeninius įvykius, užduotis ir užrašus naršyklėje; JSON atsarginės kopijos, ICS ir orų duomenų šaltinis.",
+      "h1": "Privatumas ir jūsų duomenys",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/privatumas/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 72,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/saule/",
+      "url": "https://kalendorius365.lt/saule/",
+      "file": "public/saule/index.html",
+      "title": "Saulėtekis, saulėlydis ir dienos ilgumas Lietuvoje | Kalendorius365",
+      "description": "Apskaičiuokite saulėtekį, saulėlydį, civilinę prieblandą ir dienos ilgumą Vilniuje, Kaune, Klaipėdoje, Šiauliuose ar Panevėžyje 2027–2029 m.",
+      "h1": "Saulėtekis, saulėlydis ir dienos ilgumas Lietuvoje",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/saule/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 73,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73",
+        "/assets/phase-5-6-8.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/savaites/2027/",
+      "url": "https://kalendorius365.lt/savaites/2027/",
+      "file": "public/savaites/2027/index.html",
+      "title": "2027 metų savaičių numeriai | Kalendorius365",
+      "description": "Visos 2027 metų ISO savaitės: tikslūs pirmadienio–sekmadienio intervalai ir dabartinės savaitės numerio įrankis. Metų sandūros paaiškinimas.",
+      "h1": "2027 metų savaičių numeriai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/savaites/2027/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 6,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/savaites/2028/",
+      "url": "https://kalendorius365.lt/savaites/2028/",
+      "file": "public/savaites/2028/index.html",
+      "title": "2028 metų savaičių numeriai | Kalendorius365",
+      "description": "Visos 2028 metų ISO savaitės: tikslūs pirmadienio–sekmadienio intervalai ir dabartinės savaitės numerio įrankis. Metų sandūros paaiškinimas.",
+      "h1": "2028 metų savaičių numeriai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/savaites/2028/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 5,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/savaites/2029/",
+      "url": "https://kalendorius365.lt/savaites/2029/",
+      "file": "public/savaites/2029/index.html",
+      "title": "2029 metų savaičių numeriai | Kalendorius365",
+      "description": "Visos 2029 metų ISO savaitės: tikslūs pirmadienio–sekmadienio intervalai ir dabartinės savaitės numerio įrankis. Metų sandūros paaiškinimas.",
+      "h1": "2029 metų savaičių numeriai",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/savaites/2029/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 4,
+      "images": [],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/savaitiniai-planuokliai/",
+      "url": "https://kalendorius365.lt/savaitiniai-planuokliai/",
+      "file": "public/savaitiniai-planuokliai/index.html",
+      "title": "Savaitinis planuoklis spausdinimui – PDF ir WebP | Kalendorius365",
+      "description": "Savaitės lapai su vieta prioritetams, dienų užduotims ir pastaboms.",
+      "h1": "Savaitinis planuoklis spausdinimui",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/savaitiniai-planuokliai/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-11.webp",
+          "alt": " Savaitės laiko blokų planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-12.webp",
+          "alt": " Savaitės prioritetų planas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/seimos-kalendorius/",
+      "url": "https://kalendorius365.lt/seimos-kalendorius/",
+      "file": "public/seimos-kalendorius/index.html",
+      "title": "Šeimos savaitės planuoklis – PDF ir WebP | Kalendorius365",
+      "description": "Kelios atskiros skiltys šeimos narių planams ir bendram savaitės ritmui.",
+      "h1": "Šeimos savaitės planuoklis",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/seimos-kalendorius/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 1,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-15.webp",
+          "alt": " Šeimos savaitės stulpeliai – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-16.webp",
+          "alt": " Šeimos bendrų veiklų savaitė – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/sventes/2027/",
+      "url": "https://kalendorius365.lt/sventes/2027/",
+      "file": "public/sventes/2027/index.html",
+      "title": "2027 metų šventinės dienos Lietuvoje | Kalendorius365",
+      "description": "Lietuvos šventinės dienos 2027 metais: tikslios datos, savaitės dienos, Velykos, Motinos ir Tėvo diena bei oficialūs teisės šaltiniai.",
+      "h1": "2027 metų šventinės dienos Lietuvoje",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/sventes/2027/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 159,
+      "images": [
+        {
+          "src": "/assets/visuals/lithuania-freedom-640.webp",
+          "alt": "Lietuvos trispalvė ir Gedimino bokšto motyvas saulėlydyje"
+        },
+        {
+          "src": "/assets/visuals/velykos-spring-640.webp",
+          "alt": "Margučiai su augaliniais raštais ir gluosnio šakelės"
+        },
+        {
+          "src": "/assets/visuals/jonines-rasos-640.webp",
+          "alt": "Ąžuolo lapų vainikas prie ežero ir Joninių laužas"
+        },
+        {
+          "src": "/assets/visuals/kucios-winter-640.webp",
+          "alt": "Kūčiukų dubuo, žvakė ir lino staltiesė žiemos vakare"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/sventes/2028/",
+      "url": "https://kalendorius365.lt/sventes/2028/",
+      "file": "public/sventes/2028/index.html",
+      "title": "2028 metų šventinės dienos Lietuvoje | Kalendorius365",
+      "description": "Lietuvos šventinės dienos 2028 metais: tikslios datos, savaitės dienos, Velykos, Motinos ir Tėvo diena bei oficialūs teisės šaltiniai.",
+      "h1": "2028 metų šventinės dienos Lietuvoje",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/sventes/2028/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 15,
+      "images": [
+        {
+          "src": "/assets/visuals/lithuania-freedom-640.webp",
+          "alt": "Lietuvos trispalvė ir Gedimino bokšto motyvas saulėlydyje"
+        },
+        {
+          "src": "/assets/visuals/velykos-spring-640.webp",
+          "alt": "Margučiai su augaliniais raštais ir gluosnio šakelės"
+        },
+        {
+          "src": "/assets/visuals/jonines-rasos-640.webp",
+          "alt": "Ąžuolo lapų vainikas prie ežero ir Joninių laužas"
+        },
+        {
+          "src": "/assets/visuals/kucios-winter-640.webp",
+          "alt": "Kūčiukų dubuo, žvakė ir lino staltiesė žiemos vakare"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/sventes/2029/",
+      "url": "https://kalendorius365.lt/sventes/2029/",
+      "file": "public/sventes/2029/index.html",
+      "title": "2029 metų šventinės dienos Lietuvoje | Kalendorius365",
+      "description": "Lietuvos šventinės dienos 2029 metais: tikslios datos, savaitės dienos, Velykos, Motinos ir Tėvo diena bei oficialūs teisės šaltiniai.",
+      "h1": "2029 metų šventinės dienos Lietuvoje",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/sventes/2029/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 15,
+      "images": [
+        {
+          "src": "/assets/visuals/lithuania-freedom-640.webp",
+          "alt": "Lietuvos trispalvė ir Gedimino bokšto motyvas saulėlydyje"
+        },
+        {
+          "src": "/assets/visuals/velykos-spring-640.webp",
+          "alt": "Margučiai su augaliniais raštais ir gluosnio šakelės"
+        },
+        {
+          "src": "/assets/visuals/jonines-rasos-640.webp",
+          "alt": "Ąžuolo lapų vainikas prie ežero ir Joninių laužas"
+        },
+        {
+          "src": "/assets/visuals/kucios-winter-640.webp",
+          "alt": "Kūčiukų dubuo, žvakė ir lino staltiesė žiemos vakare"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "url": "https://kalendorius365.lt/tuscias-kalendorius/",
+      "file": "public/tuscias-kalendorius/index.html",
+      "title": "Tuščias kalendorius – nemokami PDF šablonai | Kalendorius365",
+      "description": "Nedatuoti mėnesio ir savaitės planai: juodai balti ir spalvoti, 5 ar 6 eilutės, pirmadienio ar sekmadienio pradžia. Tikri PDF ir 600 PPI WebP.",
+      "h1": "Tuščias kalendorius",
+      "lang": "lt",
+      "canonical": "https://kalendorius365.lt/tuscias-kalendorius/",
+      "canonicalCount": 1,
+      "metaRobots": "index, follow",
+      "sitemap": true,
+      "sitemapLastmod": null,
+      "incomingHtmlLinks": 115,
+      "images": [
+        {
+          "src": "/assets/previews/tuscias-01-5-eilutes.webp",
+          "alt": "Tuščias mėnesio kalendorius – tikro spausdinamo kalendoriaus peržiūra"
+        },
+        {
+          "src": "/assets/previews/tuscias-01-5-eilutes.webp",
+          "alt": " Tuščias mėnesio kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-01-6-eilutes.webp",
+          "alt": " Tuščias mėnesio kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-02-5-eilutes.webp",
+          "alt": " Sekmadienio pradžios kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-02-6-eilutes.webp",
+          "alt": " Sekmadienio pradžios kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-03.webp",
+          "alt": " Savaitės planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-04-5-eilutes.webp",
+          "alt": " Nedatuotas planavimo tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-04-6-eilutes.webp",
+          "alt": " Nedatuotas planavimo tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-05-5-eilutes.webp",
+          "alt": " Didelės rašymo erdvės kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-05-6-eilutes.webp",
+          "alt": " Didelės rašymo erdvės kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-06.webp",
+          "alt": " Šeimos savaitės planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-07.webp",
+          "alt": " Biuro savaitės planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-08.webp",
+          "alt": " Mokyklos savaitės planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-09-5-eilutes.webp",
+          "alt": " Minimalus didelio šrifto kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-09-6-eilutes.webp",
+          "alt": " Minimalus didelio šrifto kalendorius – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-10-5-eilutes.webp",
+          "alt": " Kontrastingas mėnesio planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-10-6-eilutes.webp",
+          "alt": " Kontrastingas mėnesio planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-11.webp",
+          "alt": " Savaitės laiko blokų planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-12.webp",
+          "alt": " Savaitės prioritetų planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-13.webp",
+          "alt": " Dienos laiko juostos planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-14.webp",
+          "alt": " Dienos prioritetų planuoklis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-15.webp",
+          "alt": " Šeimos savaitės stulpeliai – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-16.webp",
+          "alt": " Šeimos bendrų veiklų savaitė – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-17.webp",
+          "alt": " Pamokų savaitės tinklelis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-18.webp",
+          "alt": " Pamokų ir užduočių planas – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-19.webp",
+          "alt": " Pamainų ciklo žiniaraštis – spausdinamas kalendorius"
+        },
+        {
+          "src": "/assets/previews/tuscias-20.webp",
+          "alt": " Pamainų mėnesio planas – spausdinamas kalendorius"
+        }
+      ],
+      "stylesheets": [
+        "/assets/style.css?v=c5ec379913dc",
+        "/assets/design-system.css?v=c5ec379913dc"
+      ],
+      "scripts": [
+        "/assets/common.js?v=cbaa39941e73",
+        "/assets/tools.js?v=cbaa39941e73"
+      ],
+      "structuredDataBlocks": 1,
+      "localReleaseArtifact": "present",
+      "liveHttpStatus": "pending-deployment-verification"
+    }
+  ]
+}

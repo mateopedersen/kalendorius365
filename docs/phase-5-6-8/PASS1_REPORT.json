@@ -1,0 +1,155 @@
+{
+  "schema": "kalendorius365-qa-pass1-v1",
+  "timestamp": "2026-10-15T21:56:25.535011+00:00",
+  "branch": "feature/phase-5-6-8",
+  "baseCommit": "235190c9b1e56743c2a7869566e4bd76efddb830",
+  "status": "predeploy_passed_with_documented_limitations",
+  "environment": {
+    "build": "Ruby 3.4.11 / Jekyll 4.4.1; K365_RELEASE=1",
+    "javascript": "Node 22 bundled runtime",
+    "assets": "Python ReportLab/Pillow/Poppler toolchain"
+  },
+  "build": {
+    "result": "passed",
+    "canonicalPages": 71,
+    "staticFiles": 1646,
+    "command": "PATH=../tooling/ruby-current/bin:$PATH K365_RELEASE=1 ruby scripts/build.rb"
+  },
+  "automated": [
+    {
+      "name": "JavaScript suite",
+      "result": "passed",
+      "passed": 32,
+      "failed": 0,
+      "command": "node --test test/*.test.js"
+    },
+    {
+      "name": "Ruby syntax",
+      "result": "passed",
+      "files": [
+        "scripts/pages.rb",
+        "lib/calendar.rb"
+      ]
+    },
+    {
+      "name": "HTML/link/indexability audit",
+      "result": "passed",
+      "htmlFilesIncluding404": 72,
+      "canonicalPages": 71,
+      "localTargets": 6286,
+      "brokenLinks": 0,
+      "uniqueTitles": true,
+      "uniqueH1": true,
+      "langLt": true,
+      "singleSelfCanonical": true,
+      "sitemapCanonicals": 71,
+      "newRoutesOrphanedAfterFix": 0,
+      "command": "python3 scripts/audit_site.py"
+    },
+    {
+      "name": "full print asset validation",
+      "result": "passed",
+      "datePlacementsIndependentlyChecked": 1096,
+      "pdfs": 416,
+      "onePageAndEmbeddedFonts": 416,
+      "webpsAt600Ppi": 416,
+      "previews": 416,
+      "hashesAndHolidayNames": "passed",
+      "command": "scripts/validate_assets.py"
+    },
+    {
+      "name": "full PDF/WebP preflight",
+      "result": "passed",
+      "pairs": 416,
+      "vectorPDFsWithEmbeddedFonts": 416,
+      "pdfRasterPlacements": 0,
+      "trimBoxes": 416,
+      "minimumWebPEffectivePpi": 600.0215230069304,
+      "sampleVisualGate": {
+        "result": "passed",
+        "files": 12,
+        "visualReviewed": true
+      }
+    },
+    {
+      "name": "baseline preservation",
+      "result": "passed",
+      "baselineDownloads": 552,
+      "unchangedByteAndSHA256": 552,
+      "missing": 0,
+      "changed": 0,
+      "newDownloads": 280
+    },
+    {
+      "name": "calendar-independent check",
+      "result": "passed",
+      "method": "Independent Python datetime/calendar implementation checked all Gregorian days, weekdays and designed row/column positions for each template family.",
+      "monthlyDesigns": 360,
+      "datePlacements": 10960
+    }
+  ],
+  "browser": {
+    "result": "passed_for_observed_cases",
+    "localNewRoutesRendered": 29,
+    "newRouteChecks": [
+      "title",
+      "one H1",
+      "self-canonical",
+      "nonempty main content",
+      "not-found state"
+    ],
+    "previousResponsiveMatrix": {
+      "checks": 80,
+      "widthsPx": [
+        320,
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1536
+      ],
+      "horizontalOverflow": 0
+    },
+    "interactiveDemonstrations": [
+      "shift month calendar and DST overnight hours",
+      "custom weekday filters",
+      "school schedule edit/copy/local JSON import/export/clear/undo",
+      "sun city/year chart",
+      "2028 leap-year moon dates",
+      "leave planner results and mobile metric spacing"
+    ],
+    "staticWebpOpenedInBrowser": {
+      "path": "/downloads/2029-sausis-01.webp",
+      "dimensions": [
+        7016,
+        4961
+      ]
+    },
+    "pdfViewer": "The browser PDF viewer showed an empty dark surface in this environment; the PDF itself passed local extraction, font, page geometry and raster proof checks.",
+    "viewportAttempt": {
+      "routes": 10,
+      "configuredWidthPx": 1440,
+      "actualWidthVerified": false,
+      "note": "The browser viewport setting did not apply to the selected preview tab; these attempts are not counted as a 1440px verification."
+    }
+  },
+  "knownFailuresAndFixes": [
+    {
+      "issue": "One indexable /metai/ page had no inbound HTML link.",
+      "fix": "Added a descriptive link from the tools hub, rebuilt, and confirmed every sitemap route now has an inbound HTML link."
+    },
+    {
+      "issue": "An independent date-position assertion initially treated the family-ledger list as a week grid.",
+      "fix": "Corrected the independent verifier to check the ledger row model separately; all 10,960 positions then passed. No product-date defect was found."
+    }
+  ],
+  "notCompletedBeforeDeployment": [
+    "Live checks for all 29 new routes and their real response headers/sitemap membership are post-deployment gates.",
+    "No dedicated axe-core/WCAG certification was run.",
+    "No external native-speaker copy approval and no physical printer proof.",
+    "A 200%-zoom screenshot was not archived; the current session did not independently reproduce a retained 200% browser zoom artifact."
+  ],
+  "result": "All local engineering and print preflight gates passed. Publish remains conditional on successful deployment and live HTTP/indexability/security/download smoke tests; native-speaker approval and physical paper proof are explicitly not claimed."
+}

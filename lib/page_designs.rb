@@ -18,18 +18,18 @@ module Pages
  def shell(main,aside)
   '<div class="resource-shell"><div class="resource-content">'+main+'</div>'+aside+'</div>'
  end
- def page(path,title,desc,html,tool=false,robots=nil,planner=false)
+ def page(path,title,desc,html,tool=false,robots=nil,planner=false,phase_module=nil)
   case path
-  when /\A202[78]\z/
+  when /\A202[789]\z/
    y=path.to_i;items=MANIFEST.select { |e|e['kind']=='annual' && e['year']==y };first=items.find { |e|e['design']==(y==2027 ? '06' : '01') }||items.first
    html=html.sub('<div class="year-grid">','<div class="year-grid annual-sheet">').sub('<h2>Metiniai kalendoriai spausdinimui</h2>',selected_art(first,true)+'<h2>Metinė šablonų kolekcija</h2>').gsub('class="gallery"','class="gallery compact-gallery"')
    html=shell(html,collection_box(items,first));tool=true
-  when %r{\Asventes/202[78]\z}
+  when %r{\Asventes/202[789]\z}
    y=path.split('/').last.to_i;hs=Kalendorius.holidays(y);work=hs.count { |h|Date.iso8601(h['date']).cwday<=5 }
    html=html.sub('<p id="next-holiday"',metric_cards([[Date.gregorian_leap?(y) ? 366 : 365,'Kalendorinės dienos'],[hs.length,'Šventinės datos'],[work,'Šventės darbo dienomis']])+'<p id="next-holiday"')
    aside="<aside class=\"resource-aside\"><section class=\"panel\"><h2>Artimiausia šventė</h2><p id=\"next-holiday-aside\" class=\"result\"></p><a class=\"button primary full-width\" href=\"/#{y}/\">Metų kalendorius su šventėmis</a></section><section class=\"panel\"><h2>Duomenų patikimumas</h2><p>Teisinė klasifikacija atskirta nuo atmintinų ir kultūrinių datų. Šventė savaitgalį automatiškai neperkeliama.</p><a href=\"/darbo-dienos/#{y}/\">Darbo dienos ir valandos →</a></section></aside>"
    html=shell(html,aside)
-  when %r{\Adarbo-dienos/202[78]\z}
+  when %r{\Adarbo-dienos/202[789]\z}
    y=path.split('/').last.to_i;stats=(1..12).map { |m|Kalendorius.work_month(y,m) }
    controls=html[/<div class="toolbar-group"><label>Darbo savaitė.*?<\/div>/m]||'';html=html.sub(controls,'')
    html=html.sub('<section data-work-table=',metric_cards([[stats.sum { |s|s['days'] },'Darbo dienos · 5 d. savaitė'],[stats.sum { |s|s['hours'] },'Darbo valandos'],[stats.sum { |s|s['shortened'].length },'Prieššventiniai trumpinimai']])+'<section data-work-table=')
@@ -53,7 +53,7 @@ module Pages
    html+='<section class="panel"><h2>ISO savaitės numeris</h2><label>Pasirinkite datą<input type="date" id="iso-date"></label><p id="iso-result" class="result" aria-live="polite"></p><div id="iso-nearby"></div><a href="/savaites/2027/">Visos 2027 savaitės</a> · <a href="/savaites/2028/">Visos 2028 savaitės</a></section>'
    html=shell(html,'<aside class="resource-aside">'+countdown+'<section class="panel"><h2>Greiti skaičiavimai</h2><div class="quick-countdowns"><button data-countdown="new-year">Iki Naujųjų metų</button><button data-countdown="easter">Iki Velykų</button><button data-countdown="jonines">Iki Joninių</button><button data-countdown="christmas">Iki Kalėdų</button></div></section></aside>')
   end
-  write_page(path,title,desc,html,tool,robots,planner)
+  write_page(path,title,desc,html,tool,robots,planner,phase_module)
  end
  def generate_blank
   items=MANIFEST.select { |e|e['kind']=='blank' };first=items.first

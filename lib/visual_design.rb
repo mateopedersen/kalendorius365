@@ -34,9 +34,9 @@ module Pages
   selected=html[/<option value="([^"]+)" selected>/,1]
   html=html.sub('class="design-card" id="dizainas-'+selected+'"','class="design-card selected-design" id="dizainas-'+selected+'"') if selected
   html=html.gsub('>PDF</a>','>'+ui_icon('pdf')+'PDF</a>').gsub('>WebP</a>','>'+ui_icon('image')+'WebP</a>')
-  if path.match?(%r{\Asventes/202[78]\z})
+  if path.match?(%r{\Asventes/202[789]\z})
    html=html.sub('<h2>Kitos datos</h2>',holiday_stories(path.split('/').last.to_i)+'<h2>Kitos datos</h2>')
-  elsif path.match?(/\A202[78]\z/)
+  elsif path.match?(/\A202[789]\z/)
    html=html.sub('<h2>Metinė šablonų kolekcija</h2>','<div class="annual-accent"><span><img src="/assets/visuals/brand-mark.svg" width="30" height="34" alt="" aria-hidden="true">Dvylika mėnesių. Vieta visiems jūsų planams.</span></div><h2>Metinė šablonų kolekcija</h2>')
    html=html.sub('<div class="year-grid annual-sheet">',metric_cards([[Date.gregorian_leap?(path.to_i) ? 366 : 365,'Dienos šiais metais'],[12,'Mėnesių kolekcijų'],[10,'Metinių dizainų']])+'<div class="year-grid annual-sheet">')
   elsif path=='tuscias-kalendorius'

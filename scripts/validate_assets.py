@@ -4,17 +4,17 @@ from PIL import Image
 from pypdf import PdfReader
 from fontTools.ttLib import TTFont
 ROOT=Path(__file__).resolve().parents[1];manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text());assets=manifest['assets'];years=json.loads((ROOT/'site/assets/data/years.json').read_text());data=json.loads((ROOT/'data/calendar.json').read_text())
-assert len(assets)==276
-for y in [2027,2028]:
+assert len(assets)==416
+for y in [2027,2028,2029]:
  for m in range(1,13):
   items=[a for a in assets if a['kind']=='monthly' and a['year']==y and a['month']==m]
   assert sum(a['style']=='bw' for a in items)==5 and sum(a['style']=='color' for a in items)==5
   assert len({a['layout'] for a in items})==10
   for group in ['bw','color']:assert {a['typography'] for a in items if a['style']==group}=={'regular','bold'}
-assert sum(a['kind']=='monthly' for a in assets)==240
-assert sum(a['kind']=='annual' for a in assets)==20
-assert sum(a['kind']=='blank' for a in assets)==16
-assert len({a['stem'] for a in assets})==276
+assert sum(a['kind']=='monthly' for a in assets)==360
+assert sum(a['kind']=='annual' for a in assets)==30
+assert sum(a['kind']=='blank' for a in assets)==26
+assert len({a['stem'] for a in assets})==416
 for fontpath in (ROOT/'site/assets/fonts').glob('Inter-*.ttf'):
  cmap=TTFont(fontpath).getBestCmap();assert all(ord(c) in cmap for c in 'ĄČĘĖĮŠŲŪŽąčęėįšųūž')
 count=0
@@ -23,7 +23,7 @@ for year in years:
   y,m=year['year'],mo['month'];assert calendar.monthrange(y,m)[1]==mo['length'];assert calendar.monthrange(y,m)[0]==mo['offset']
   for d in mo['days']:
    date=dt.date.fromisoformat(d['date']);assert date.isoweekday()==d['weekday'];assert date.isocalendar().week==d['isoWeek'];assert date.isocalendar().year==d['isoYear'];count+=1
-assert count==731
+assert count==1096
 for a in assets:
  for key in ['pdf','webp','preview']:
   p=ROOT/'site'/a[key].lstrip('/');assert p.is_file();assert p.stat().st_size==a['files'][key]['bytes'];assert hashlib.sha256(p.read_bytes()).hexdigest()==a['files'][key]['sha256'];assert p.stat().st_size<25*1024*1024

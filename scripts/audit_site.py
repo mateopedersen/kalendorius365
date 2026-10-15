@@ -44,12 +44,12 @@ for path,p in pages.items():
   if parsed.fragment and target in pages and parsed.fragment not in pages[target].ids:fail.append((str(path.relative_to(PUBLIC)),url+' (anchor missing)'))
 assert not fail,json.dumps(fail[:30])
 manifest=json.loads((PUBLIC/'assets/data/manifest.json').read_text())['assets']
-for y in [2027,2028]:
+for y in [2027,2028,2029]:
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
   for e in manifest:
    if e['kind']=='monthly' and e['year']==y and e['month']==m:assert e['pdf'] in html and e['webp'] in html and e['preview'] in html
-print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, JSON-LD and 240 monthly mappings.')
+print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, JSON-LD and 360 monthly mappings.')
 if '--release' in __import__('sys').argv:
  import xml.etree.ElementTree as ET
  for path,p in pages.items():
@@ -58,5 +58,5 @@ if '--release' in __import__('sys').argv:
  xml=ET.parse(PUBLIC/'sitemap.xml');ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
  sitemap={e.text for e in xml.findall('.//s:loc',ns)};canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
  assert sitemap==canonical and len(sitemap)==len(pages)-1
- assert len(xml.findall('.//i:loc',ns))==240
- print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 240 image entries, and no global noindex header.')
+ assert len(xml.findall('.//i:loc',ns))==360
+ print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 360 monthly image entries, and no global noindex header.')

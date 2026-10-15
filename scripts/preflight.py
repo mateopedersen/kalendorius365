@@ -86,8 +86,12 @@ if __name__=='__main__':
  report={'schema':1,'generator':manifest['generator'],'status':'passed','samples':args.samples,'visualReviewed':args.accept_visual,'results':reports}
  dest=base/'preflight.json' if args.samples else ROOT/'docs/print-preflight.json';dest.write_text(json.dumps(report,ensure_ascii=False,indent=2))
  if args.samples and args.accept_visual:
-  assert len(assets)==2 and {a['style'] for a in assets}=={'bw','color'}
-  (ROOT/'.build-cache/sample-gate.json').write_text(json.dumps({'generator':manifest['generator'],'status':'passed','visualReviewed':True,'evidence':str(dest)}))
+  assert len(assets)==12, f'Expected 12 sample designs; got {len(assets)}'
+  assert {(a['kind'],a.get('year'),a.get('month'),a['design']) for a in assets if a['kind']=='monthly'}=={('monthly',2027,1,'06'),('monthly',2028,2,'02')}
+  planner=[a for a in assets if a['kind']=='blank']
+  assert len(planner)==10 and {a['category'] for a in planner}=={'week','day','family','school','shift'}
+  assert all({a['style'] for a in planner if a['category']==category}=={'bw','color'} for category in {'week','day','family','school','shift'})
+  (ROOT/'.build-cache/sample-gate.json').write_text(json.dumps({'generator':manifest['generator'],'status':'passed','visualReviewed':True,'sampleCount':len(assets),'plannerCategories':['week','day','family','school','shift'],'evidence':str(dest)}))
  for a in assets:a['verification']={'status':'passed','preflight':'PDF operators, embedded fonts, real date glyph positions, page/trim size, 600-PPI WebP and branding checked'}
  manifestpath.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
  print(f"PASS: {len(reports)} PDFs preflighted; all placed raster images >=600 PPI (none in these vector compositions); actual 600-PPI WebP and proof dimensions checked. Visual gate: {args.accept_visual}.")

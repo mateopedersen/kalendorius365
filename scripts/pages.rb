@@ -8,13 +8,14 @@ module Pages
  DATA=Kalendorius::DATA
  MANIFEST=JSON.parse(File.read("#{ROOT}/site/assets/data/manifest.json"))['assets']
  def esc(s);CGI.escapeHTML(s.to_s);end
- def page(path,title,desc,html,tool=false,robots=nil,planner=false)
+ def page(path,title,desc,html,tool=false,robots=nil,planner=false,phase_module=nil)
   target="#{ROOT}/site/#{path.empty? ? 'index' : path}/index.html"
   FileUtils.mkdir_p(File.dirname(target))
   html=visual_html(path,html)
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
   metadata['robots']=robots if robots
   metadata['planner']=true if planner
+  metadata['phase_module']=phase_module if phase_module
   File.write(target,"---\n#{metadata.map { |k,v| "#{k}: #{v.to_json}" }.join("\n")}\n---\n#{html}")
  end
  def title(y,m);"#{y} m. #{DATA['months'][m-1][2]} kalendorius";end
@@ -43,7 +44,7 @@ module Pages
   "<div class=\"page-heading\"><div><h1>#{title}</h1><p class=\"page-intro\">#{desc}</p></div><div class=\"toolbar-group\">#{links}</div></div>"
  end
  def yearlinks(path='')
-  [2027,2028].map { |y|"<a class=\"button\" href=\"/#{path}#{y}/\">#{y}</a>" }.join
+  [2027,2028,2029].map { |y|"<a class=\"button\" href=\"/#{path}#{y}/\">#{y}</a>" }.join
  end
  DESCRIPTIONS={
  '01'=>'Subalansuotas tinklelis, daug ramios baltos erdvės ir aiškūs skaičiai.',
@@ -65,16 +66,16 @@ module Pages
  end
  def run
   generate_months
-  [2027,2028].each { |y|generate_year(y);generate_holidays(y);generate_work(y);generate_weeks(y) }
+  [2027,2028,2029].each { |y|generate_year(y);generate_holidays(y);generate_work(y);generate_weeks(y) }
   blank=MANIFEST.select { |e|e['kind']=='blank' }
   page('tuscias-kalendorius','Tuščias kalendorius – PDF šablonai','Nedatuoti mėnesio, savaitės, šeimos ir mokyklos kalendoriai. PDF ir WebP, pirmadienio arba sekmadienio pradžia, penkios ar šešios eilutės.',intro('Tuščias kalendorius','Nedatuoti lapai jūsų ritmui: rašykite datas ir planus patys. Mėnesio tinkleliams rinkitės 5 arba 6 eilutes; savaitės planuokliams eilučių keisti nereikia.')+'<p class="source-note">PDF atidarykite spausdinimui ir pasirinkite tikrąjį dydį (100 %). Lape jau paliktos saugios paraštės. WebP skirtas aukštos raiškos vaizdui.</p>'+gallery(blank))
-  links=[['2027/','2027 metų kalendorius','Visi mėnesiai, šventės ir metiniai failai.'],['2028/','2028 metų kalendorius','Keliamieji metai ir 29 dienų vasaris.']]
+  links=[['2027/','2027 metų kalendorius','Visi mėnesiai, šventės ir metiniai failai.'],['2028/','2028 metų kalendorius','Keliamieji metai ir 29 dienų vasaris.'],['2029/','2029 metų kalendorius','Ne keliamieji metai, 365 dienos ir 10 metinių dizainų.']]
   cards=->(arr){'<div class="resource-grid">'+arr.map { |url,name,desc|"<a class=\"resource-card\" href=\"/#{url}\"><h2>#{name}</h2><small>#{desc}</small></a>" }.join+'</div>'}
-  page('metai','Metų kalendoriai','2027 ir 2028 metų lietuviški kalendoriai: visų mėnesių apžvalga, Lietuvos šventės ir metiniai PDF bei WebP failai.',intro('Metų kalendoriai','Matykite visus metus ir rinkitės lapą spausdinimui.')+cards.call(links))
-  monthcards=[2027,2028].map { |y|"<h2>#{y} metai</h2>"+cards.call(DATA['months'].each_with_index.map { |m,i|["#{y}/#{m[0]}/",m[1],"#{Kalendorius.month(y,i+1)['length']} dienos · 10 dizainų"] }) }.join
-  page('menesiai','Mėnesių kalendoriai – 2027 ir 2028','Pasirinkite 2027 ar 2028 metų mėnesį. Kiekvienam mėnesiui – dešimt skirtingų A4 kalendorių su Lietuvos šventėmis, PDF ir WebP.',intro('Mėnesių kalendoriai','24 mėnesiai. Kiekvienam – dešimt savitų planavimo būdų.')+monthcards)
-  tools=[['atostogu-planavimas/','Atostogų planuoklis','Palyginkite ilgą pertrauką, dienų santykį ir kelių laikotarpių planus.'],['datos-skaiciuokle/','Datos skaičiuoklė','Dienų skirtumas, darbo dienos, datos pridėjimas ir atgalinis skaičiavimas.'],['kurti-kalendoriu/','Kalendoriaus kūrėjas','Pasirinkite datą, popierių, šventes ir savo įvykius.'],['savaites/2027/','ISO savaitės','Savaičių numeriai ir tikslūs intervalai.'],['mokiniu-atostogos/','Mokinių atostogos','Patikrintos 2026–2027 mokslo metų atostogų datos.'],['darbo-dienos/2027/','Darbo dienų kalendorius','Mėnesių darbo dienos, valandos ir trumpinimai.'],['tuscias-kalendorius/','Tušti planuokliai','Nedatuoti failai rašymui ranka.']]
-  page('irankiai','Kalendoriaus ir atostogų įrankiai','Datos ir darbo dienų skaičiuoklės, atostogų planuoklis, ISO savaitės ir asmeninio spausdinamo kalendoriaus kūrėjas.',intro('Įrankiai aiškiems planams','Praktiški skaičiavimai ir patikimi kalendoriaus duomenys.')+cards.call(tools))
+  page('metai','Metų kalendoriai','2027, 2028 ir 2029 metų lietuviški kalendoriai: visų mėnesių apžvalga, Lietuvos šventės ir metiniai PDF bei WebP failai.',intro('Metų kalendoriai','Matykite visus metus ir rinkitės lapą spausdinimui.')+cards.call(links))
+  monthcards=[2027,2028,2029].map { |y|"<h2>#{y} metai</h2>"+cards.call(DATA['months'].each_with_index.map { |m,i|["#{y}/#{m[0]}/",m[1],"#{Kalendorius.month(y,i+1)['length']} dienos · 10 dizainų"] }) }.join
+  page('menesiai','Mėnesių kalendoriai – 2027–2029','Pasirinkite 2027, 2028 ar 2029 metų mėnesį. Kiekvienam mėnesiui – dešimt skirtingų A4 kalendorių su Lietuvos šventėmis, PDF ir WebP.',intro('Mėnesių kalendoriai','36 mėnesiai. Kiekvienam – dešimt savitų planavimo būdų.')+monthcards)
+  tools=[['metai/','Metų kalendoriai','2027–2029 metų kalendorių, mėnesių ir spausdinamų metinių lapų apžvalga.'],['atostogu-planavimas/','Atostogų planuoklis','Palyginkite ilgą pertrauką, dienų santykį ir kelių laikotarpių planus.'],['pamainu-grafikas/','Pamainų grafiko planuoklis','Kartojami ciklai, dieninės ir naktinės pamainos, valandos ir ICS.'],['pamoku-tvarkarastis/','Pamokų tvarkaraštis','Redaguojamas savaitės tvarkaraštis ir vietinis namų darbų sąrašas.'],['datos-skaiciuokle/','Datos skaičiuoklė','Dienų skirtumas, darbo dienos, datos pridėjimas ir atgalinis skaičiavimas.'],['kurti-kalendoriu/','Kalendoriaus kūrėjas','Pasirinkite datą, popierių, šventes ir savo įvykius.'],['saule/','Saulėtekis ir saulėlydis','Penki Lietuvos miestai, civilinė prieblanda ir dienos ilgumas.'],['menulio-fazes/','Mėnulio fazės','Jaunatis, ketvirčiai ir pilnatis Lietuvos vietos laiku.'],['astronominis-kalendorius/','Astronominis kalendorius','Lygiadieniai, saulėgrįžos, saulė ir Mėnulis vienoje vietoje.'],['savaitiniai-planuokliai/','Savaitės planuoklis','Atsisiunčiami nedatuoti PDF ir WebP.'],['dienos-planuoklis/','Dienos planuoklis','Dienos laiko juosta ir prioritetai.'],['seimos-kalendorius/','Šeimos savaitės planas','Kelios planavimo skiltys viename lape.'],['pamoku-tvarkarascio-sablonai/','Pamokų tvarkaraščio šablonai','Spausdinami mokyklos savaitės tinkleliai.'],['darbo-grafiko-sablonai/','Darbo grafiko šablonai','Nedatuoti pamainų grafikai.'],['savaites/2027/','ISO savaitės','Savaičių numeriai ir tikslūs intervalai.'],['mokiniu-atostogos/','Mokinių atostogos','Patikrintos 2026–2027 mokslo metų atostogų datos.'],['darbo-dienos/2027/','Darbo dienų kalendorius','Mėnesių darbo dienos, valandos ir trumpinimai.'],['tuscias-kalendorius/','Tušti planuokliai','Nedatuoti failai rašymui ranka.']]
+  page('irankiai','Kalendoriaus, darbo ir astronomijos įrankiai','Lietuviški kalendoriai, datų ir darbo laiko skaičiuoklės, pamainų bei pamokų planuokliai, saulės ir Mėnulio duomenys.',intro('Įrankiai aiškiems planams','Praktiški skaičiavimai, vietinis duomenų saugojimas ir aiškiai aprašytos prielaidos.')+cards.call(tools))
   school=DATA['school'];rows=school['periods'].map { |p|"<tr><td>#{p['name']}</td><td>#{p['start']} – #{p['end']}</td><td>#{p['stage']}</td></tr>" }.join
   page('mokiniu-atostogos','Mokinių atostogos 2026–2027','Oficialios 2026–2027 mokslo metų mokinių atostogos Lietuvoje: rudens, Kalėdų, žiemos ir Velykų laikotarpiai pagal ugdymo pakopą.',intro('Mokinių atostogos','2026–2027 mokslo metai. Datos nurodytos imtinai.')+'<div class="table-scroll"><table class="data-table"><thead><tr><th>Atostogos</th><th>Laikotarpis</th><th>Ugdymo pakopa</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+"<div class=\"source-note\">Šaltinis: <a href=\"#{school['source']}\">Švietimo, mokslo ir sporto ministerija</a>. Peržiūrėta #{school['reviewed']}. Velykų atostogos skiriasi pagal ugdymo pakopą. Vasaros pradžia priklauso nuo klasės ir ugdymo plano; vienos datos visiems neteikiame.</div><h2>2027–2028 mokslo metai</h2><p>Šių mokslo metų tvarkaraštis mūsų šaltiniuose dar nepatvirtintas. Spėjamų datų neskelbiame.</p><a href=\"/2027/\">2027 metų kalendorius</a>")
   generate_tools
@@ -83,12 +84,12 @@ module Pages
   File.write("#{ROOT}/site/404.html", "---\nlayout: default\ntitle: Puslapis nerastas\ndescription: Ieškomo puslapio nėra. Raskite Kalendorius365 metų ir mėnesių kalendorius.\n---\n<h1>Puslapis nerastas</h1><p>Patikrinkite adresą arba grįžkite į <a href=\"/\">kalendorių</a>.</p>")
  end
  def generate_months
-  [2027,2028].each do |y|
+  [2027,2028,2029].each do |y|
    (1..12).each do |m|
     items=MANIFEST.select { |e|e['kind']=='monthly' && e['year']==y && e['month']==m };next if items.empty?
     mo=Kalendorius.month(y,m);work=Kalendorius.work_month(y,m);first=items.find { |e|e['design']==(y==2027 && m==1 ? '06' : y==2028 && m==2 ? '02' : '01') }||items.first
     prev=Date.new(y,m,1)<<1;nxt=Date.new(y,m,1)>>1
-    link=->(d,label){[2027,2028].include?(d.year) ? "<a class=\"button\" href=\"#{month_url(d.year,d.month)}\">#{label}</a>" : '' }
+    link=->(d,label){[2027,2028,2029].include?(d.year) ? "<a class=\"button\" href=\"#{month_url(d.year,d.month)}\">#{label}</a>" : '' }
     monthnav='<aside class="month-sidebar panel"><h2>'+DATA['months'][m-1][1]+" #{y}</h2>"+static_month(y,m)+'<nav aria-label="Metų mėnesiai">'+DATA['months'].each_with_index.map { |mm,i|"<a #{i+1==m ? 'aria-current="page"' : ''} href=\"#{month_url(y,i+1)}\">▦ #{mm[1]}</a>" }.join+"</nav><hr><a href=\"/#{y}/\">#{y} metų kalendorius</a><a href=\"/sventes/#{y}/\">Šventės #{y}</a><a href=\"/darbo-dienos/#{y}/\">Darbo laikas</a><a href=\"/kurti-kalendoriu/\">Kurti savo</a></aside>"
     stats='<div class="month-stats">'+[[mo['length'],'Kalendorinės dienos'],[work['days'],'Darbo dienos'],[work['weekends'],'Savaitgalio dienos'],[mo['days'].count { |d|d['holidays'].any? },'Šventinės dienos'],[mo['weeks'],'ISO savaičių eilutės']].map { |n,l|"<span class=\"badge\">#{l}: <strong>#{n}</strong></span>" }.join+'</div>'
     preview="<section class=\"large-preview panel\" id=\"perziura\"><div class=\"panel-title\"><h2 id=\"preview-title\">#{first['name']}</h2><span id=\"preview-format\">A4 · #{first['landscape'] ? 'Gulsčias' : 'Portretas'}</span></div><a id=\"preview-full\" href=\"#{first['webp']}\" target=\"_blank\" rel=\"noopener\"><img id=\"selected-preview\" src=\"#{first['preview']}\" width=\"481\" height=\"680\" alt=\"#{title(y,m)} – #{first['name']}\" fetchpriority=\"high\"></a></section>"
@@ -191,6 +192,8 @@ require_relative '../lib/page_designs'
 require_relative '../lib/visual_design'
 Pages.run
 Pages.generate_blank
+require_relative '../lib/phase_5_6_8_pages'
+Phase568Pages.run
 search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
  raw=File.read(path); fm=raw.split("---",3)[1]; next unless fm
  require 'yaml'; front=YAML.safe_load(fm); next unless front['title']

@@ -27,13 +27,12 @@ class PrintCanvas(canvas.Canvas):
   self.mono=mono;self.datefont=FONT if regular else BOLD;self.headingfont=FONT if regular else BOLD;self.date_positions=[]
   super().__init__(*args,initialFontName=FONT,initialFontSize=10,**kwargs)
  def gray(self,color):
-  # Purpose-built ink hierarchy: opaque black text, neutral gray rules and paper fills.
+  # Keep brand accents solid in monochrome, while preserving real luminance for
+  # intermediate colors such as #333 (otherwise labels become nearly white).
   rgb=(round(color.red,4),round(color.green,4),round(color.blue,4))
   if rgb==(1,1,1):return 1
   if color in [INK,GREEN,RED,YELLOW]:return 0
-  if color==MUTED:return .30
-  if color==LINE:return .75
-  return .95
+  return round(.2126*color.red+.7152*color.green+.0722*color.blue,4)
  def setFillColor(self,color,alpha=None):
   if self.mono:self.setFillGray(self.gray(color),alpha=alpha)
   else:super().setFillColor(color,alpha)
@@ -227,9 +226,79 @@ def annual(c,year,design,w,h):
   small_month(c,year['months'][index],xx,yy,mw,mh,k)
  footer(c,w,design['id']+' · A4 gulsčias · Pirmadienis–sekmadienis')
 
-BLANKS=[('01','Tuščias mėnesio kalendorius','month',False),('02','Sekmadienio pradžios kalendorius','month',True),('03','Savaitės planuoklis','week',False),('04','Nedatuotas planavimo tinklelis','month',False),('05','Didelės rašymo erdvės kalendorius','month',False),('06','Šeimos savaitės planuoklis','family',False),('07','Biuro savaitės planas','office',False),('08','Mokyklos savaitės planas','school',False),('09','Minimalus didelio šrifto kalendorius','month',False),('10','Kontrastingas mėnesio planas','month',False)]
+BLANKS=[
+ ('01','Tuščias mėnesio kalendorius','month',False,'bw','bold',None),('02','Sekmadienio pradžios kalendorius','month',True,'bw','bold',None),('03','Savaitės planuoklis','week',False,'bw','regular',None),('04','Nedatuotas planavimo tinklelis','month',False,'bw','regular',None),('05','Didelės rašymo erdvės kalendorius','month',False,'bw','bold',None),('06','Šeimos savaitės planuoklis','family',False,'color','bold',None),('07','Biuro savaitės planas','office',False,'color','regular',None),('08','Mokyklos savaitės planas','school',False,'color','bold',None),('09','Minimalus didelio šrifto kalendorius','month',False,'color','regular',None),('10','Kontrastingas mėnesio planas','month',False,'color','bold',None),
+ ('11','Savaitės laiko blokų planas','weekly-time',False,'bw','regular','week'),('12','Savaitės prioritetų planas','weekly-priority',False,'color','bold','week'),
+ ('13','Dienos laiko juostos planuoklis','daily-time',False,'bw','bold','day'),('14','Dienos prioritetų planuoklis','daily-priority',False,'color','regular','day'),
+ ('15','Šeimos savaitės stulpeliai','family-columns',False,'bw','regular','family'),('16','Šeimos bendrų veiklų savaitė','family-shared',False,'color','bold','family'),
+ ('17','Pamokų savaitės tinklelis','school-grid',False,'bw','bold','school'),('18','Pamokų ir užduočių planas','school-tasks',False,'color','regular','school'),
+ ('19','Pamainų ciklo žiniaraštis','shift-rota',False,'bw','regular','shift'),('20','Pamainų mėnesio planas','shift-month',False,'color','bold','shift')
+]
+def planner_blank(c,e,w,h):
+ mono=e['style']=='bw';bold=e.get('typography')=='bold';ink=INK;accent=GREEN if not mono else HexColor('#333333');soft=PALE if not mono else HexColor('#f0f0f0')
+ title=e['name'];top=header(c,w,h,title,'Nedatuotas planas · pildykite ranka arba naudokite kaip kopiją',3 if not mono else 6)
+ kind=e['layout'];days=['Pr','An','Tr','Kt','Pn','Št','Sk']
+ if kind in ['weekly-time','weekly-priority']:
+  x=32;usable=w-64;gap=5;cols=7;cw=(usable-gap*6)/7;head=top-24;bottom=75;rowh=(head-bottom)/5
+  for col,d in enumerate(days):
+   xx=x+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-24,cw,24,soft,None);text(c,xx+5,head-16,d,8,accent,BOLD if bold else FONT)
+   if kind=='weekly-time':
+    for rr in range(1,5):
+     yy=head-24-rr*rowh;text(c,xx+4,yy+3,f'{rr*3:02}:00',5.6,MUTED);line(c,xx+31,yy,xx+cw,yy,LINE,.35)
+   else:
+    text(c,xx+5,head-39,'Svarbu',6.2,accent,BOLD)
+    for rr in range(1,6):line(c,xx+5,head-48-rr*((head-bottom-55)/6),xx+cw-5,head-48-rr*((head-bottom-55)/6),LINE,.45)
+  text(c,32,48,'Savaitės prioritetai: __________________________________________________________    Pastabos: __________________________________',7,MUTED)
+ elif kind in ['daily-time','daily-priority']:
+  left=32;gap=14;mainw=(w-64)*.63;rightx=left+mainw+gap;rightw=w-rightx-32;bottom=65;topcontent=top-15
+  rect(c,left,bottom,mainw,topcontent-bottom,white,LINE);text(c,left+12,topcontent-20,'DATA __________________    SVARBIAUSIA ŠIANDIEN',10,accent,BOLD if bold else FONT)
+  if kind=='daily-time':
+   for hr in range(7,22):
+    yy=topcontent-55-(hr-7)*((topcontent-bottom-72)/15);text(c,left+9,yy+2,f'{hr:02}:00',6.2,MUTED);line(c,left+52,yy,left+mainw-10,yy,LINE,.55)
+  else:
+   for rr in range(1,13):line(c,left+12,topcontent-47-rr*((topcontent-bottom-58)/13),left+mainw-12,topcontent-47-rr*((topcontent-bottom-58)/13),LINE,.55)
+  for title2,yy,n in [('Trys svarbiausi darbai',topcontent-22,3),('Kitos užduotys',topcontent-255,5),('Pastabos / užrašai',topcontent-440,4)]:
+   if yy<bottom+20:continue
+   text(c,rightx,yy,title2,9,accent,BOLD)
+   for rr in range(n):line(c,rightx,yy-22-(rr+1)*20,rightx+rightw,yy-22-(rr+1)*20,LINE,.5)
+ elif kind in ['family-columns','family-shared']:
+  left=32;gap=8;usable=w-64;cols=kind=='family-columns' and 5 or 4;cw=(usable-gap*(cols-1))/cols;bottom=70;head=top-20
+  labels=['Bendri planai','Narys 1','Narys 2','Narys 3','Narys 4'] if cols==5 else ['Šeima','Narys 1','Narys 2','Narys 3']
+  for col in range(cols):
+   xx=left+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-25,cw,25,soft,None);text(c,xx+5,head-17,labels[col],7,accent,BOLD if bold else FONT)
+   for rr in range(1,7):line(c,xx+6,bottom+rr*(head-bottom-32)/7,xx+cw-6,bottom+rr*(head-bottom-32)/7,LINE,.45)
+   if kind=='family-shared':
+    for rr in range(1,4):rect(c,xx+5,bottom+rr*(head-bottom-32)/4,cw-10,13,PALE,None)
+  text(c,32,45,'Bendras savaitės tikslas: ______________________________________________________',7,MUTED)
+ elif kind in ['school-grid','school-tasks']:
+  left=32;bottom=80;head=top-25;gridw=(w-64)*(.68 if kind=='school-tasks' else 1);rowh=(head-bottom-25)/10;labelw=31;cw=(gridw-labelw)/6
+  for j,d in enumerate(days[:6]):rect(c,left+labelw+j*cw,head-23,cw,23,soft,None);center(c,left+labelw+(j+.5)*cw,head-15,d,7,accent,BOLD if bold else FONT)
+  for r in range(10):
+   yy=head-23-(r+1)*rowh;text(c,left+3,yy+rowh/2-2,str(r+1),6,MUTED)
+   for j in range(6):rect(c,left+labelw+j*cw,yy,cw,rowh,white,LINE)
+   if kind=='school-grid' and r%2==0:
+    line(c,left,yy+rowh/2,left+labelw-3,yy+rowh/2,LINE,.45)
+  if kind=='school-tasks':
+   rx=left+gridw+14;rw=w-rx-32;text(c,rx,head-14,'Užduotys / atsiskaitymai',8,accent,BOLD)
+   for r in range(10):
+    yy=head-37-r*rowh;rect(c,rx,yy-8,8,8,None,accent);line(c,rx+14,yy-6,rx+rw,yy-6,LINE,.5)
+  text(c,32,55,'Savaitė nuo __________________    Klasė (nebūtina) __________________',7,MUTED)
+ elif kind in ['shift-rota','shift-month']:
+  left=32;bottom=78;head=top-24;labelw=73;cols=7;cw=(w-64-labelw)/cols;rows=6;rowh=(head-bottom-26)/rows
+  for j,d in enumerate(days):rect(c,left+labelw+j*cw,head-24,cw,24,soft,None);center(c,left+labelw+(j+.5)*cw,head-16,d,7,accent,BOLD if bold else FONT)
+  for r in range(rows):
+   yy=head-24-(r+1)*rowh;text(c,left+3,yy+rowh/2-2,f'{r+1} sav.',6,MUTED)
+   for j in range(cols):
+    xx=left+labelw+j*cw;rect(c,xx,yy,cw,rowh,white,LINE)
+    if kind=='shift-rota':line(c,xx+4,yy+rowh*.34,xx+cw-4,yy+rowh*.34,LINE,.35);line(c,xx+4,yy+rowh*.67,xx+cw-4,yy+rowh*.67,LINE,.35)
+  text(c,32,52,'Pamainų žymos: D __________________  N __________________  P __________________',7,MUTED)
+ footer(c,w,f"A4 · {e['design']} · {'Nespalvotas' if mono else 'Spalvotas'} · {'Įprastas' if not bold else 'Paryškintas'} šriftas")
+
 def blank(c,entry,w,h):
- k=int(entry['design']);title=entry['name'];top=header(c,w,h,title,'Nedatuotas · Užpildykite patys',10 if k==10 else 1)
+ k=int(entry['design']);title=entry['name']
+ if entry.get('category'):
+  planner_blank(c,entry,w,h);return
+ top=header(c,w,h,title,'Nedatuotas · Užpildykite patys',10 if k==10 else 1)
  if entry['layout']=='month':
   text(c,32,top-4,'MĖNUO __________________    METAI __________',10,MUTED)
   grid(c,{},32,top-28,w-64,h-220,k,True,entry['rows'],entry['sunday'])
@@ -254,8 +323,10 @@ def entries():
    for design in DATA['designs']:
     items.append({'kind':'monthly','year':year['year'],'month':month['month'],'design':design['id'],'name':design['name'],'style':design['style'],'typography':design['typography'],'layout':design['layout'],'stem':f"{year['year']}-{DATA['months'][month['month']-1][0]}-{design['id']}",'landscape':design['render'] in [1,2,4,5,7,10]})
   for design in DATA['designs']:items.append({'kind':'annual','year':year['year'],'month':None,'design':design['id'],'name':design['name'],'style':design['style'],'typography':design['typography'],'layout':'annual-'+design['layout'],'stem':f"{year['year']}-metinis-{design['id']}",'landscape':True})
- for id,name,layout,sunday in BLANKS:
-  for rows in ([5,6] if layout=='month' else [None]):items.append({'kind':'blank','year':None,'month':None,'design':id,'name':name,'style':'bw' if int(id)<=5 else 'color','layout':layout,'rows':rows,'sunday':sunday,'stem':f"tuscias-{id}"+(f'-{rows}-eilutes' if rows else ''),'landscape':layout!='month' or id=='05'})
+ for id,name,layout,sunday,style,typography,category in BLANKS:
+  for rows in ([5,6] if layout=='month' else [None]):
+   landscape_page=layout not in ['month','daily-time','daily-priority'] or id=='05'
+   items.append({'kind':'blank','year':None,'month':None,'design':id,'name':name,'style':style,'typography':typography,'category':category,'layout':layout,'rows':rows,'sunday':sunday,'stem':f"tuscias-{id}"+(f'-{rows}-eilutes' if rows else ''),'landscape':landscape_page})
  return items
 
 FINGERPRINT=hashlib.sha256(Path(__file__).read_bytes()+(ROOT/'data/calendar.json').read_bytes()+(ROOT/'site/assets/data/years.json').read_bytes()+(ROOT/'site/assets/fonts/Inter-Regular.ttf').read_bytes()+(ROOT/'site/assets/fonts/Inter-Bold.ttf').read_bytes()).hexdigest()
@@ -288,10 +359,25 @@ def generate(e):
  e['colorMode']='DeviceGray monochrome' if e['style']=='bw' else 'RGB vector artwork';e['renderPPI']=600;e['verification']={'status':'pending'}
  return e
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int);parser.add_argument('--samples',action='store_true');parser.add_argument('--workers',type=int,default=2);args=parser.parse_args();SAMPLE_MODE=args.samples;items=entries();
+ parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int);parser.add_argument('--samples',action='store_true');parser.add_argument('--phase-8-assets',action='store_true',help='Generate only the additive 2029 collection and new planner sheets; preserve existing assets.');parser.add_argument('--workers',type=int,default=2);args=parser.parse_args();SAMPLE_MODE=args.samples;items=entries();
  if SAMPLE_MODE:
   OUT=ROOT.parents[1]/'outputs/print-samples';PREVIEW=OUT/'previews';OUT.mkdir(parents=True,exist_ok=True);PREVIEW.mkdir(exist_ok=True);CACHE=CACHE/'samples';CACHE.mkdir(exist_ok=True)
-  items=[e for e in items if (e['kind'],e['year'],e['month'],e['design']) in [('monthly',2027,1,'06'),('monthly',2028,2,'02')]]
+  required={('monthly',2027,1,'06'),('monthly',2028,2,'02')}
+  required.update(('blank',None,None,f'{design:02}') for design in range(11,21))
+  items=[e for e in items if (e['kind'],e['year'],e['month'],e['design']) in required]
+ elif args.phase_8_assets:
+  if args.limit:raise SystemExit('--limit is not supported with --phase-8-assets')
+  gate=json.loads((CACHE/'sample-gate.json').read_text()) if (CACHE/'sample-gate.json').exists() else {}
+  if gate.get('generator')!=FINGERPRINT or gate.get('status')!='passed' or gate.get('visualReviewed') is not True:
+   raise SystemExit('Phase 8 assets require the current 12-file sample set to pass automated preflight and visual review first.')
+  existing=json.loads((ROOT/'site/assets/data/manifest.json').read_text())
+  before=json.loads((ROOT/'docs/phase-5-6-8/ASSET-CHECKSUMS-BEFORE.json').read_text())
+  for old in before['assets']:
+   path=ROOT/'site'/old['path'].lstrip('/')
+   if not path.is_file() or path.stat().st_size!=old['bytes'] or hashlib.sha256(path.read_bytes()).hexdigest()!=old['sha256']:
+    raise SystemExit('Baseline print file changed before additive generation: '+old['path'])
+  items=[e for e in items if (e['kind'] in ['monthly','annual'] and e['year']==2029) or e.get('category') in ['week','day','family','school','shift'] and int(e['design'])>=11]
+  if len(items)!=140:raise SystemExit(f'Expected 140 additive assets, found {len(items)}')
  else:
   gate=json.loads((CACHE/'sample-gate.json').read_text()) if (CACHE/'sample-gate.json').exists() else {}
   if gate.get('generator')!=FINGERPRINT or gate.get('status')!='passed':raise SystemExit('Sample preflight and visual approval gate has not passed for this renderer. Run --samples and preflight first.')
@@ -301,6 +387,13 @@ if __name__=='__main__':
   for i,e in enumerate(pool.map(generate,items),1):
    result.append(e)
    if i%10==0:print(f'Rendered {i}/{len(items)}',flush=True)
- manifest={'schema':1,'generator':FINGERPRINT,'sourceReviewed':DATA['reviewed'],'assets':result}
+ if args.phase_8_assets:
+  by_stem={e['stem']:e for e in existing['assets']}
+  for e in result:
+   if e['stem'] in by_stem:raise SystemExit('Additive print asset would overwrite an existing manifest entry: '+e['stem'])
+   e['generator']=FINGERPRINT;by_stem[e['stem']]=e
+  manifest={'schema':1,'generator':FINGERPRINT,'sourceReviewed':DATA['reviewed'],'assets':list(by_stem.values())}
+ elif SAMPLE_MODE:manifest={'schema':1,'generator':FINGERPRINT,'sourceReviewed':DATA['reviewed'],'assets':result}
+ else:manifest={'schema':1,'generator':FINGERPRINT,'sourceReviewed':DATA['reviewed'],'assets':result}
  (OUT/'manifest.json' if SAMPLE_MODE else ROOT/'site/assets/data/manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
  print(f"Completed {len(result)} PDF + {len(result)} WebP + {len(result)} thumbnails",flush=True)
