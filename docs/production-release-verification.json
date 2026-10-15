@@ -1,0 +1,70 @@
+{
+  "reviewed": "2026-10-15",
+  "repository": "mateopedersen/kalendorius365",
+  "applicationCommit": "9f6aafb1e0876fd2cf5a8b8c1c1a409858c2a9a5",
+  "pullRequest": "https://github.com/mateopedersen/kalendorius365/pull/1",
+  "cloudflare": {
+    "deploymentId": "251acd99-9676-44dd-9a1d-85897056df98",
+    "status": "success",
+    "durationSeconds": 27,
+    "deploymentUrl": "https://251acd99.kalendorius365.pages.dev",
+    "productionAliases": [
+      "https://kalendorius365.lt/",
+      "https://www.kalendorius365.lt/"
+    ],
+    "headersConfiguration": {
+      "contentSecurityPolicy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-era5CRI2Gl741PC3UgWmvl4JCk9RE8FwMWa2LST/+M4='; connect-src 'self'; upgrade-insecure-requests",
+      "previewNoindexRule": false,
+      "evidence": "Cloudflare deployment details > Headers shows the production CSP and no X-Robots-Tag noindex rule. The root HTML robots meta is index, follow. Raw HTTP response headers were not independently captured."
+    }
+  },
+  "productionBrowser": {
+    "root": {
+      "status": "rendered",
+      "canonical": "https://kalendorius365.lt/",
+      "robots": "index, follow",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "horizontalOverflow": false,
+      "clock": "Europe/Vilnius clock rendered",
+      "weather": "Meteo LT weather rendered (6°C during this check)."
+    },
+    "representativeRoutes": [
+      "/2027/sausis/",
+      "/2028/vasaris/"
+    ],
+    "consoleErrorsAndWarnings": 0,
+    "mobilePreviewEvidence": "The same application source was checked in the successful Cloudflare preview at an exact 390×844 viewport across 10 representative routes; no horizontal overflow. Production publication changes only release indexing metadata and headers relative to that preview."
+  },
+  "releaseAudit": {
+    "rubyJekyllBuild": "passed with Ruby 3.4.11 and Bundler 2.6.9",
+    "nodeTests": "16/16 passed",
+    "staticPages": 41,
+    "sitemapUrls": 41,
+    "staticTargets": 3720,
+    "brokenTargets": 0,
+    "indexablePages": 41,
+    "previewNoindex": "removed from production output"
+  },
+  "liveDownload": {
+    "page": "https://kalendorius365.lt/2027/sausis/",
+    "pdf": {
+      "path": "/downloads/2027-sausis-06.pdf",
+      "sha256": "ec65f95a2d648d978f453264ee6baeb7d2740da49b7923f8a630cc45f221356c",
+      "preflight": "single unencrypted A4 page"
+    },
+    "webp": {
+      "path": "/downloads/2027-sausis-06.webp",
+      "sha256": "35c07055ecc892a98f0bd0656f227d85d0f665c7c930c1d06d3f91085d902062"
+    },
+    "result": "Both files downloaded from production and exactly match the preflighted local assets."
+  },
+  "notPerformed": [
+    "Physical-paper print proof",
+    "Manual assistive-technology review",
+    "Native Lithuanian editorial review",
+    "Independent raw HTTP response-header capture"
+  ]
+}

@@ -49,7 +49,7 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 
 **DOĞRULANDI.** `audit/quality-2026-10-15` dalı temiz `main` revizyonu `a78a578` üzerinden açıldı. `node --test`: 16/16 geçti. Statik site denetimi: 42 HTML, 41 kanonik sayfa, 3.720 yerel bağlantı hedefi, sıfır bozuk bağlantı. Print preflight: 276 PDF geçti. `git diff --check` ve `ruby -c scripts/pages.rb` geçti.
 
-**ÖNİZLEME VE YEREL ÜRETİM KONTROLLERİ GEÇTİ; CANLI DUMAN TESTİ BEKLİYOR.** Proje içi Ruby 3.4.11/Bundler 2.6.9 ile tam Jekyll derlemesi geçti. `node --test`: 16/16; üretim statik denetimi: 42 HTML, 3.720 yerel hedef, sıfır bozuk bağlantı, 41 indekslenebilir kanonik URL ve sitemap; 276 baskı dosyası preflight ve bağımsız asset/font/date/hash denetimlerini geçti. PR #1 (`468417f`) `main` dalına birleştirildi. `K365_RELEASE=1` derlemesi üretim çıktısını oluşturdu; CSP kaldı ve önizleme `noindex` kaldırıldı. Cloudflare üretim dağıtımı ve canlı duman testi bu kaydın yazıldığı anda bekliyor. Fiziksel baskı ve ana dili Litvanca editör incelemesi yapılmadı.
+**ÜRETİM YAYINI VE CANLI DUMAN KONTROLÜ GEÇTİ.** Proje içi Ruby 3.4.11/Bundler 2.6.9 ile tam Jekyll derlemesi geçti. `node --test`: 16/16; üretim statik denetimi: 42 HTML, 3.720 yerel hedef, sıfır bozuk bağlantı, 41 indekslenebilir kanonik URL ve sitemap; 276 baskı dosyası preflight ve bağımsız asset/font/date/hash denetimlerini geçti. PR #1 (`468417f`) `main` dalına birleştirildi; `K365_RELEASE=1` üretim çıktısı `9f6aafb` olarak dağıtıldı. Cloudflare dağıtımı başarılı, CSP başlık kuralı var, önizleme `noindex` kuralı kaldırıldı. Canlı kök sayfa, canonical ve index robots metaverisi, Vilnius saati, hava durumu, tarayıcı konsolu ve Ocak 2027 üretim PDF/WebP indirmeleri kontrol edildi; dosya SHA-256 özetleri ön kontrolü geçmiş yerel örneklerle eşleşti. Tam ayrıntı `docs/production-release-verification.json` içindedir. Fiziksel baskı ve ana dili Litvanca editör incelemesi yapılmadı; ham HTTP başlıkları ayrıca yakalanmadı.
 
 ## Düzeltme özeti
 
@@ -60,7 +60,6 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 | Hava durumu | Cache okuma hatasında kontrollü, önbelleğe alınmayan yanıt | Cache arızası gerileme testi |
 | Çalışma saati | 2026-11-01 mevzuat değişikliğini ve hesaplama sınırını açıklama | Resmî e-TAR metni ve güncellenen kaynak/görünür sayfa metni |
 
-## Sonraki adımlar
+## Kalan ürün incelemeleri
 
-1. Üretim kipli `public/` çıktısını `main` dalına gönderin; Cloudflare dağıtımını, canlı URL/başlık/ana sayfa/API/indirme kontrollerini kaydedin.
-2. Fiziksel yazıcıda prova ve Litvanca ana dili konuşan editör incelemesi yapılmadı; bunları yapılmış gibi göstermeyin.
+Fiziksel yazıcı provası, yardımcı teknolojiyle manuel erişilebilirlik incelemesi, ana dili Litvanca editör incelemesi ve ham HTTP yanıt başlıklarının bağımsız kaydı yapılmadı; bunları tamamlanmış gibi göstermeyin.
