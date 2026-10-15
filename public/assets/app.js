@@ -2,8 +2,8 @@ import { icon } from "./icons.js";
 import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
 import { exportICS, importICS } from "./ics.js";
-import { notice } from "./common.js";
-import { renderWeather } from "./weather.js";
+import { notice } from "./common.js?v=3b631dd";
+import { renderWeather } from "./weather.js?v=3b631dd";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
