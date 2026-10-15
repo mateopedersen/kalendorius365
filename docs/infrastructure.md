@@ -1,51 +1,56 @@
 # Infrastructure and recovery notes
 
-## Service ownership and roles
+## Service ownership
 
-- Domain registration: Hostinger retains kalendorius365.lt.
-- Source: private GitHub repository https://github.com/mateopedersen/kalendorius365, main branch.
-- Static hosting and CDN: Cloudflare Pages project kalendorius365.
-- Authoritative DNS: currently Hostinger nameservers; Cloudflare zone is not yet active at the registrar.
+- Domain registrar: Hostinger (registration remains there).
+- Source: private GitHub repository [mateopedersen/kalendorius365](https://github.com/mateopedersen/kalendorius365), production branch `main`.
+- Static hosting/CDN: Cloudflare Pages project `kalendorius365` on the Free plan.
+- DNS: Cloudflare zone `kalendorius365.lt`; authoritative nameservers were changed at Hostinger to `devin.ns.cloudflare.com` and `rosa.ns.cloudflare.com` on 2026-10-15. Cloudflare still reported the zone as pending propagation when last checked.
 
 ## Verified state (2026-10-15)
 
-- GitHub repository is private; production branch is main.
-- Cloudflare Workers and Pages GitHub App is installed for mateopedersen and restricted to this repository. Its installation has metadata read access and administration, checks, code, deployments, and pull requests read/write permissions within the selected repository.
-- Cloudflare Free zone for kalendorius365.lt exists in manual DNS mode. No zone records were added and the zone is not active at the registrar.
-- Hostinger currently shows nameservers cosmos.dns-parking.com and nova.dns-parking.com. Its DNS table showed www CNAME to kalendorius365.lt (TTL 300) and apex A 2.57.91.91 (TTL 50). The A record appears to be parking but its purpose is unverified. No MX or TXT records appeared; this does not rule out separate email services.
-- Hostinger DNSSEC controls showed no configured Key Tag, Algorithm, Digest Type, or Digest. The registry DS state is not independently verified.
-- Hostinger Emails page did not render account details; email usage is not confirmed. Recheck services and preserve all necessary records before nameserver migration.
-- The website project is available at https://kalendorius365.pages.dev/ and its first production deployment succeeded on 2026-10-15 from main commit e8ade68fb53cbf7282c5ad04633cc5c4c8baf993. Cloudflare reported 17 seconds. The temporary homepage displayed Kalendorius365 and Svetainė ruošiama.
-- The deployment-specific preview URL cbbfc5cc.kalendorius365.pages.dev returned a browser TLS version/cipher mismatch at the time checked. The project-level pages.dev URL loaded successfully over HTTPS.
-- Root and www custom domains are not yet connected. Nameservers have not been changed.
+- GitHub repository is private; branch `main` exists.
+- The Cloudflare Workers and Pages GitHub App is installed for `mateopedersen` and restricted to this repository. Its listed permissions apply only to this selected repository.
+- Cloudflare DNS zone is Free/manual DNS. Staged records are proxied CNAMEs: apex `kalendorius365.lt` → `kalendorius365.pages.dev`; `www` → `kalendorius365.lt`. Cloudflare showed both records and warned that the zone was pending until nameserver ownership could be verified.
+- Hostinger previously showed `cosmos.dns-parking.com` and `nova.dns-parking.com`; these were replaced with Cloudflare's assigned nameservers. Hostinger confirmed the save and warned propagation could take up to 24 hours. Domain registration remains at Hostinger.
+- Before the switch, Hostinger's DNS table showed only `www CNAME kalendorius365.lt` (TTL 300) and apex `A 2.57.91.91` (TTL 50). No MX, TXT, AAAA, or CAA records appeared in that table. The A record was not copied because its purpose was unverified and it appeared to be parking.
+- Hostinger DNSSEC controls were blank (no Key Tag, Algorithm, Digest Type, or Digest). The registrar's DS state has not been independently verified. Recheck it if Cloudflare remains pending or DNS validation fails.
+- Cloudflare warns that, without an MX record, mail to `@kalendorius365.lt` cannot be received. No mail records were present in the Hostinger DNS table. If domain email is needed, identify the mail provider and add its exact MX/SPF/DKIM/DMARC records in Cloudflare before relying on mail.
+- Pages project URL: [https://kalendorius365.pages.dev/](https://kalendorius365.pages.dev/). The temporary page opened over HTTPS and displayed “Kalendorius365” and “Svetainė ruošiama.”
+- First production deployment: commit `e8ade68fb53cbf7282c5ad04633cc5c4c8baf993`, success, 17 seconds.
+- A harmless documentation commit `bcb25cceb2c86febbf5a29fe5f0ca3336c066dd7` triggered a second production deployment; Cloudflare reported success in 20 seconds. This verifies the native Git integration's automatic redeploy path.
+- The project-specific preview URL for the first deployment returned a TLS version/cipher mismatch when checked. Use the project-level `kalendorius365.pages.dev` URL for the stable preview.
+- Cloudflare's Redirect Rules table shows the active 301 rule “WWW to non-WWW canonical redirect”: wildcard source `http*://www.kalendorius365.lt/*`, target `https://kalendorius365.lt/${2}`, query preservation enabled. Live redirect behavior remains unverified while the zone is pending.
+- Cloudflare Pages Custom Domains did not allow adding `kalendorius365.lt` while the zone was pending; root and www are not yet connected to Pages. SSL for the custom domain and live HTTP/HTTPS behavior remain unverified.
+- `public/_headers` configures `X-Robots-Tag: noindex`; a valid header rule was parsed during a Pages build. The actual live response header has not yet been checked. Do not index or submit the unfinished placeholder.
 
-## Deployment
+## Deployment and rollback
 
-Cloudflare Pages is natively connected to mateopedersen/kalendorius365. Production branch is main, framework preset is None, build command is empty, and output directory is public. Cloudflare shows automatic deployments enabled. The first production deployment succeeded. A subsequent harmless commit is still required to verify automatic redeployment end to end.
+Cloudflare Pages is natively connected to `mateopedersen/kalendorius365`; production branch is `main`, framework preset is None, build command is empty, and output directory is `public`. Future pushes to `main` deploy automatically. Confirm the commit and status in the project's Deployments tab and inspect the build log for errors.
 
-Inspect build logs from the Pages project Deployments tab. The temporary X-Robots-Tag: noindex response header is configured in public/_headers for Pages deployments. A live HTTP response-header check is still required. Keep the noindex rule until the finished public website is ready; remove it before launch and verify the production response. Do not submit the unfinished site to search engines.
+For recovery, identify the last successful production deployment, fix source/settings, then push a commit or use Cloudflare Pages to retry/roll back to that known-good deployment. Confirm the project URL and expected content after recovery. Never publish credentials in source or build logs.
 
-## Failed deployment recovery
+## DNS and domain activation
 
-1. Open the Cloudflare Pages project and inspect the most recent deployment build log and commit.
-2. Confirm the production branch is main, repository integration is healthy, and output directory is public for the current placeholder.
-3. Correct the source or build settings and push a commit, or retry/roll back to a known-good deployment in Pages.
-4. Confirm the active deployment serves the expected page and response headers.
+1. In Hostinger, confirm the domain still uses exactly `devin.ns.cloudflare.com` and `rosa.ns.cloudflare.com`.
+2. In Cloudflare Overview, wait for zone status to become Active. Use “Check nameservers now” after propagation; Hostinger says this may take up to 24 hours.
+3. If it remains pending, check registrar delegation and DS/DNSSEC state. Cloudflare must be authoritative and any stale DS record must be resolved safely.
+4. In Cloudflare DNS, keep apex CNAME to `kalendorius365.pages.dev` and www CNAME to the apex, both proxied. Do not restore the old parking A record.
+5. Once active, add both `kalendorius365.lt` and `www.kalendorius365.lt` under Pages → Custom domains. Wait for verification and managed SSL certificate issuance.
+6. Enable Cloudflare “Always Use HTTPS” after activation. Keep the existing 301 WWW-to-root rule and test paths and query strings. Do not enable HSTS preload.
+7. Verify root returns 200, HTTP redirects to HTTPS, and www redirects to the root over both HTTP and HTTPS. Check a live `X-Robots-Tag: noindex` response header on Pages and the production domain before launch.
 
-## DNS migration and recovery
-
-Before changing nameservers, recheck and preserve every active Hostinger DNS record, especially A, AAAA, CNAME, MX, SPF, DKIM, DMARC, CAA, TXT verification, NS, and DNSSEC/DS state. Confirm whether email or another service uses the domain. Compare the Cloudflare zone against that inventory. Add only records whose purpose is understood and required; do not copy the obsolete parking A record. Obtain the exact nameservers Cloudflare assigns to this zone. Coordinate DNSSEC and any registrar DS record to avoid stale validation.
-
-After migration, verify Hostinger delegation, Cloudflare zone activation, the required DNS records, and resolution. If resolution fails, compare registrar delegation with Cloudflare-assigned nameservers and check for missing records or stale DS configuration. Do not remove records of unknown purpose. The domain registration must remain at Hostinger.
+No email records were found in the pre-migration Hostinger table. Confirm whether email is needed before configuring it; use only records supplied by its provider. Do not guess MX or authentication records. The site is still in development and the noindex policy must be removed and verified before public launch.
 
 ## Ruby/Jekyll migration
 
-Reuse this repository, Pages project, and custom domains. Add the Jekyll source and dependencies, set the Pages build command to the supported Jekyll build command, and change output directory to _site. Test a preview deployment, Lithuanian UTF-8 text, response headers, assets, and downloads before switching production. A static Jekyll site does not require a database or paid hosting.
+Reuse this repository and Pages project. Add Jekyll source/dependencies, set the supported Jekyll build command, and change the Pages output directory to `_site`. First verify a preview deployment, Lithuanian UTF-8 text, assets, downloads, and response headers; only then use the production branch. A static Jekyll site does not require a database or paid hosting.
 
 ## Launch checklist
 
-- Confirm email/service dependencies, DNSSEC/DS state, and copy all required DNS records before nameserver migration.
-- Verify nameserver delegation, active Cloudflare zone, Pages custom domains, valid HTTPS, redirects, and needed email records.
-- Verify production and www/HTTP redirects, live noindex response headers during development, and remove noindex before public launch.
-- Confirm the active deployment and test representative pages and downloads.
-- Keep deployment logs and recovery notes current.
+- [ ] Cloudflare zone Active; Hostinger delegation verified; DS/DNSSEC state confirmed.
+- [ ] Any needed email records copied from the mail provider and mail delivery checked.
+- [ ] Pages custom domains verified and managed SSL certificates active.
+- [ ] Root 200, HTTP-to-HTTPS, and www-to-root 301 tested with paths and query strings.
+- [ ] Live noindex header checked on the preview and custom domain; remove it before public launch.
+- [ ] Latest deployment is successful; keep deployment and rollback notes current.
