@@ -50,3 +50,13 @@ for y in [2027,2028]:
   for e in manifest:
    if e['kind']=='monthly' and e['year']==y and e['month']==m:assert e['pdf'] in html and e['webp'] in html and e['preview'] in html
 print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, JSON-LD and 240 monthly mappings.')
+if '--release' in __import__('sys').argv:
+ import xml.etree.ElementTree as ET
+ for path,p in pages.items():
+  assert p.meta.get('robots')==('noindex, follow' if path.name=='404.html' else 'index, follow'),path
+ headers=(PUBLIC/'_headers').read_text();assert 'X-Robots-Tag: noindex' not in headers
+ xml=ET.parse(PUBLIC/'sitemap.xml');ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
+ sitemap={e.text for e in xml.findall('.//s:loc',ns)};canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
+ assert sitemap==canonical and len(sitemap)==41
+ assert len(xml.findall('.//i:loc',ns))==240
+ print('PASS: release indexing, 404 noindex, 41 sitemap canonicals, 240 image entries, and no global noindex header.')

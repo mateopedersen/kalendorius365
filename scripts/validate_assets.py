@@ -5,6 +5,12 @@ from pypdf import PdfReader
 from fontTools.ttLib import TTFont
 ROOT=Path(__file__).resolve().parents[1];manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text());assets=manifest['assets'];years=json.loads((ROOT/'site/assets/data/years.json').read_text());data=json.loads((ROOT/'data/calendar.json').read_text())
 assert len(assets)==276
+for y in [2027,2028]:
+ for m in range(1,13):
+  items=[a for a in assets if a['kind']=='monthly' and a['year']==y and a['month']==m]
+  assert sum(a['style']=='bw' for a in items)==5 and sum(a['style']=='color' for a in items)==5
+  assert len({a['layout'] for a in items})==10
+  for group in ['bw','color']:assert {a['typography'] for a in items if a['style']==group}=={'regular','bold'}
 assert sum(a['kind']=='monthly' for a in assets)==240
 assert sum(a['kind']=='annual' for a in assets)==20
 assert sum(a['kind']=='blank' for a in assets)==16
@@ -24,10 +30,10 @@ for a in assets:
  pdf=PdfReader(ROOT/'site'/a['pdf'].lstrip('/'));assert len(pdf.pages)==1;page=pdf.pages[0];w,h=float(page.mediabox.width),float(page.mediabox.height)
  assert abs(max(w,h)-841.89)<1 and abs(min(w,h)-595.276)<1
  assert (w>h)==a['landscape']
- text=page.extract_text();assert 'Kalendorius365' in text;assert a['design'] in text
+ text=page.extract_text();assert 'Kalendorius365.lt' in text;assert a['design'] in text
  if a['year']:assert str(a['year']) in text
  if a['kind']=='monthly':
-  assert data['months'][a['month']-1][2] in text
+  assert data['months'][a['month']-1][1] in text
   month=next(y for y in years if y['year']==a['year'])['months'][a['month']-1]
   # Full holiday names are typeset as wrapped lines; normalize spaces.
   compact=''.join(text.split())
@@ -47,4 +53,4 @@ for a in assets:
   if txt.strip():boxes.append((tm[4],tm[5],size,txt))
  page.extract_text(visitor_text=visitor)
  for x,y,size,txt in boxes:assert x>=0 and y>=0 and x<=w+1 and y<=h+1,(a['stem'],x,y,txt)
-print(f'PASS: {count} independently checked dates; {len(assets)} one-page embedded-font PDFs; {len(assets)} 300-PPI WebP; {len(assets)} thumbnails; all hashes and holiday names verified.')
+print(f'PASS: {count} independently checked dates; {len(assets)} one-page embedded-font PDFs; {len(assets)} 600-PPI WebP; {len(assets)} thumbnails; all hashes and holiday names verified.')

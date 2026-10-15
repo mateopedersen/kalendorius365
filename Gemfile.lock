@@ -136,6 +136,7 @@ GEM
     webrick (1.9.1)
 
 PLATFORMS
+  aarch64-linux
   aarch64-linux-android
   aarch64-linux-gnu
   aarch64-linux-musl
@@ -152,6 +153,7 @@ PLATFORMS
   x86-linux-gnu
   x86-linux-musl
   x86_64-darwin
+  x86_64-linux
   x86_64-linux-android
   x86_64-linux-gnu
   x86_64-linux-musl

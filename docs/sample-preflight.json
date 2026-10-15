@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "generator": "517705f593618a0918eba9dfa4f5c69f344bd8447b501d300cabe49d81f6c85b",
+  "status": "passed",
+  "samples": true,
+  "visualReviewed": true,
+  "results": [
+    {
+      "stem": "2027-sausis-06",
+      "status": "passed",
+      "pageCount": 1,
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Inter-Regular",
+        "/AAAAAA+Inter-Bold"
+      ],
+      "brandBaselinePt": 17.0,
+      "datePlacementsChecked": 31,
+      "vectorTextOperators": 50,
+      "vectorPathOperators": 85,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "colorMode": "RGB vector artwork",
+      "rgbPaintOperators": 102,
+      "grayPaintOperators": 0,
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "proof": {
+        "path": "2027-sausis-06-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.09647103162937733,
+          0.03798927529829592,
+          0.07707668273192245
+        ],
+        "sha256": "f0e4dc99e8be7b5b0e458987b584b7632c45ad41bb75162a91e3cdacc692c13c"
+      }
+    },
+    {
+      "stem": "2028-vasaris-02",
+      "status": "passed",
+      "pageCount": 1,
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Inter-Bold",
+        "/AAAAAA+Inter-Regular"
+      ],
+      "brandBaselinePt": 17.0,
+      "datePlacementsChecked": 29,
+      "vectorTextOperators": 51,
+      "vectorPathOperators": 77,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "colorMode": "DeviceGray monochrome",
+      "rgbPaintOperators": 0,
+      "grayPaintOperators": 91,
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "proof": {
+        "path": "2028-vasaris-02-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "eb53236c388b7d9dd9681116e7d730ecd9cb44ec1997a367459bc1b3f577e950"
+      }
+    }
+  ]
+}

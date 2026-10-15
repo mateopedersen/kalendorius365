@@ -4,7 +4,10 @@ lang: lt-LT
 title: Kalendorius365
 encoding: utf-8
 timezone: Europe/Vilnius
-exclude: []
+exclude:
+  - assets/fonts/Inter-variable.ttf
+  - assets/fonts/Inter-Regular.ttf
+  - assets/fonts/Inter-Bold.ttf
 keep_files: []
 defaults:
   - scope:

@@ -13,14 +13,17 @@ bundle install
 ruby scripts/prepare.rb
 python3 -m venv .venv
 .venv/bin/pip install -r requirements-print.txt
-.venv/bin/python scripts/render_prints.py
+K365_PYTHON=.venv/bin/python bundle exec ruby scripts/prints.rb samples
+# Visually inspect the two PDFs and actual 600-PPI proof PNGs, then:
+K365_PYTHON=.venv/bin/python bundle exec ruby scripts/prints.rb accept-samples
+K365_PYTHON=.venv/bin/python bundle exec ruby scripts/prints.rb all
 bundle exec ruby scripts/build.rb
 node --test test/*.test.js
 .venv/bin/python scripts/validate_assets.py
 .venv/bin/python scripts/audit_site.py
 ```
 
-Print generation is independent of the static build. `.build-cache/` fingerprints skip unchanged compositions. The WebP is rasterized from the exact corresponding PDF at A4/300 PPI; thumbnails are separate. All 276 PDF/WebP pairs and thumbnails are listed with sizes and SHA-256 in `site/assets/data/manifest.json`.
+Print generation is independent of the static build. `.build-cache/` fingerprints skip unchanged compositions. The WebP is rasterized from the exact corresponding PDF at A4/600 PPI; thumbnails are separate. All 276 PDF/WebP pairs and 276 primary thumbnails are listed with sizes and SHA-256 in `site/assets/data/manifest.json`.
 
 `site/` contains Jekyll sources and precomputed print assets; `data/calendar.json` is the single holiday/localization source. `lib/calendar.rb` generates date data consumed by static pages and print scripts. Browser modules independently calculate dates from those definitions and are checked against Ruby and Python.
 
@@ -37,3 +40,11 @@ Do not add personal test data, credentials, API tokens or local browser state to
 Events, notes, tasks and preferences use a versioned localStorage schema with JSON backup/restore. ICS supports dates, Vilnius/UTC times and simple recurrence; unsupported rules are reported. No accounts, synchronization, analytics or geolocation. Print customization stays in the browser. Statutory holidays are distinct from school and commemorative dates. Work hours include immediate preholiday one-hour reductions under documented schedule assumptions.
 
 Inter is self-hosted under SIL OFL; source and license are in `site/assets/fonts/`. Calendar compositions are original vector artwork. LHMT data is attributed under CC BY-SA 4.0. See the public privacy page for operational details and import limitations.
+
+## Print preflight gate
+
+Five monthly families are authored with DeviceGray vector paint only; full-resolution monochrome WebP is lossless and every pixel has equal RGB channels. Five families use restrained RGB vector artwork. Both groups contain distinct regular and bold embedded Inter faces. There are no raster images placed inside the PDFs, so effective embedded-raster PPI is not applicable. The actual proof raster and downloadable WebP are >=600 PPI in both axes at the measured A4 MediaBox; vector text has no fixed DPI. No PDF/X, PDF/A or press CMYK certification is claimed.
+
+`docs/sample-preflight.json` records the color January 2027 and monochrome February 2028 gate. `docs/print-preflight.json` records every PDF's operators, fonts, date glyph positions, physical page/trim box, branding and WebP resolution. Release builds reject changed renderer/data/font fingerprints or missing/stale preflight results. Layout maps in the full manifest are kept out of the lean browser catalog. `scripts/responsive_previews.py` creates separate 340px responsive previews from the 680px thumbnails. CSS edits never regenerate high-resolution print files.
+
+Print source and the licensed original font are versioned. `scripts/fonts.py` uses deterministic timestamps and distinct PostScript face identities when fonts are regenerated; changed font bytes require a fresh sample gate and complete preflight. Historical working-day tools apply the reviewed current holiday rules, not historical editions of Lithuanian law.
