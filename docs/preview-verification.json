@@ -1,0 +1,71 @@
+{
+  "reviewed": "2026-10-15",
+  "repository": "mateopedersen/kalendorius365",
+  "pullRequest": "https://github.com/mateopedersen/kalendorius365/pull/1",
+  "branch": "audit/quality-2026-10-15",
+  "commit": "7df951d701fb33efc20d1a0037bdef035ff6a4ce",
+  "cloudflare": {
+    "deploymentId": "e6abe4b3-1ea7-41f6-85e8-3365d1727f4e",
+    "status": "success",
+    "url": "https://e6abe4b3.kalendorius365.pages.dev",
+    "headersConfiguration": {
+      "contentSecurityPolicy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-era5CRI2Gl741PC3UgWmvl4JCk9RE8FwMWa2LST/+M4='; connect-src 'self'; upgrade-insecure-requests",
+      "previewRobots": "noindex",
+      "evidence": "Cloudflare Pages deployment details > Headers shows the deployed _headers rules; the preview rendered in browser without CSP console errors. This is deployment configuration evidence, not a separate raw HTTP-header capture."
+    }
+  },
+  "browser": {
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "horizontalOverflow": false,
+    "mobileRoutes": [
+      "/",
+      "/2027/",
+      "/2028/",
+      "/menesiai/",
+      "/tuscias-kalendorius/",
+      "/sventes/2027/",
+      "/darbo-dienos/2027/",
+      "/irankiai/",
+      "/kurti-kalendoriu/",
+      "/datos-skaiciuokle/"
+    ],
+    "consoleErrorsAndWarnings": 0,
+    "weather": "Meteo LT data rendered in the preview (6°C observed during this check)."
+  },
+  "printDownloads": {
+    "sourcePage2027January": "https://e6abe4b3.kalendorius365.pages.dev/2027/sausis/",
+    "2027JanuaryColor": {
+      "pdf": {
+        "path": "/downloads/2027-sausis-06.pdf",
+        "sha256": "ec65f95a2d648d978f453264ee6baeb7d2740da49b7923f8a630cc45f221356c"
+      },
+      "webp": {
+        "path": "/downloads/2027-sausis-06.webp",
+        "sha256": "35c07055ecc892a98f0bd0656f227d85d0f665c7c930c1d06d3f91085d902062"
+      }
+    },
+    "2028FebruaryMonochrome": {
+      "pdf": {
+        "path": "/downloads/2028-vasaris-02.pdf",
+        "sha256": "83e4dad5b03db5abbd68617fbc5107a428e04b5c62fbf760f61ce5508c5fe205"
+      },
+      "webp": {
+        "path": "/downloads/2028-vasaris-02.webp",
+        "sha256": "08d4aae12610e4f09fba0216b4f928024ce414605530b4b4d883cc559c163dac"
+      }
+    },
+    "result": "All four files were downloaded from the Cloudflare preview and their SHA-256 hashes matched the already preflighted local production assets. Both PDFs report a single A4 page."
+  },
+  "notPerformed": [
+    "Physical-paper print proof",
+    "Manual assistive-technology and native Lithuanian editorial review",
+    "Independent raw HTTP response-header capture from the preview"
+  ]
+}

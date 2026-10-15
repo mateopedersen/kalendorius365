@@ -31,7 +31,7 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 
 **DOĞRULANDI / SINIRLI KAPSAM.** Kayıt doğrulama, boyut ve dosya sınırları, ICS/JSON şema kontrolleri, takvimde kullanıcı metninin `textContent` ile gösterilmesi ve üretilen SVG metin kaçışları incelendi. Kişisel etkinlik/not/görev içeriği hava durumu isteğine eklenmiyor. Hava servisi yalnız izin verilen şehir kimliklerini kabul ediyor. Bu kod incelemesi sızma testi veya güvenlik sertifikası değildir.
 
-**YEREL YAPIDA HAZIR; ÖNİZLEME ONAYI BEKLİYOR.** CSP, Jekyll derleyicisinin ürettiği Cloudflare Pages `_headers` dosyasına eklendi. Betik, tema başlatıcısının gerçek içeriğinden SHA-256 iznini kendisi hesaplıyor; dış kaynaklı komut dosyalarına izin verilmiyor. `default-src 'self'`, `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'none'`, `form-action 'self'` ve same-origin bağlantı izinleri var. Stil yönergesindeki `unsafe-inline`, indirilebilir WebP üreten SVG içindeki gerekli biçimlendirme içindir. Gerçek tarayıcı/Cloudflare önizlemesinde uygulama, yazdırma ve CSP konsolu kontrol edilmeden başlık canlıya alınmış sayılmayacak.
+**DAL ÖNİZLEMESİNDE DOĞRULANDI.** CSP, Jekyll derleyicisinin ürettiği Cloudflare Pages `_headers` dosyasına eklendi. Betik, tema başlatıcısının gerçek içeriğinden SHA-256 iznini kendisi hesaplıyor; dış kaynaklı komut dosyalarına izin verilmiyor. `default-src 'self'`, `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'none'`, `form-action 'self'` ve same-origin bağlantı izinleri var. Stil yönergesindeki `unsafe-inline`, indirilebilir WebP üreten SVG içindeki gerekli biçimlendirme içindir. Cloudflare önizleme ayrıntılarındaki yayımlanmış başlık kuralı incelendi; aynı önizleme gerçek tarayıcıda açıldı ve konsolda hata/uyarı görülmedi. Üretim yanıtındaki başlıklar yayın sonrasında ayrıca kontrol edilecek.
 
 ## E — Hava durumu
 
@@ -39,17 +39,17 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 
 ## F — PDF ve WebP
 
-**OTOMATİK PREFLIGHT İLE DOĞRULANDI.** Bu denetimde 276 PDF ve 276 WebP geçti. Denetim A4 MediaBox/TrimBox, gömülü font ve Litvanca glifler, tarih yerleşimleri, vektör metin/çizgi, marka işareti ve WebP'nin 600 PPI A4-eşdeğer piksel ölçülerini kontrol etti. PDF'lerde gömülü raster bulunmadığından raster PPI uygulanmaz; vektör içerik ölçeklenebilir. Bu çalıştırmada yeni görsel onay kapısı çalıştırılmadı; `visualReviewed=false`. Önceki örnek görsel kontrolleri `docs/sample-preflight.json` içindedir. Fiziksel yazıcıda baskı yapılmadı. Bağımsız `fontTools` varlık denetimi, mevcut Python ortamında `fontTools` modülü bulunmadığı için çalışmadı.
+**OTOMATİK PREFLIGHT, BAĞIMSIZ FONT DENETİMİ, ÖRNEK GÖZDEN GEÇİRME VE ÖNİZLEME İNDİRMESİ DOĞRULANDI.** Bu denetimde 276 PDF ve 276 WebP geçti. Denetim A4 MediaBox/TrimBox, gömülü font ve Litvanca glifler, tarih yerleşimleri, vektör metin/çizgi, marka işareti ve WebP'nin 600 PPI A4-eşdeğer piksel ölçülerini kontrol etti. PDF'lerde gömülü raster bulunmadığından raster PPI uygulanmaz; vektör içerik ölçeklenebilir. Tam koleksiyonun rapordaki `visualReviewed=false` alanı, 276 tasarımın tamamına insan tarafından ayrı ayrı bakılmadığını belirtir; zorunlu iki örnek (`2027 sausis-06` renkli, `2028 vasaris-02` siyah-beyaz) görsel olarak incelendi. Cloudflare önizlemesinden bu iki örneğin PDF ve WebP dosyaları indirildi; dört dosyanın SHA-256 özetleri yerel üretim dosyalarıyla eşleşti. Fiziksel yazıcıda baskı yapılmadı.
 
 ## G — Erişilebilirlik, mobil ve performans
 
-**ÖNCEKİ SÜRÜM KANITLARINA GÖRE KISMEN DOĞRULANDI.** `docs/product-checkpoint.md` daha önceki sürüm için altı ekran genişliği, mobil taşma, axe-core, klavye dolaşımı ve yerel laboratuvar performans ölçümlerini kaydediyor. axe-core otomatik taramasında sıfır bulgu vardı ancak 1–2 kontrol tamamlanmamıştı; bu, sertifikasyon değildir. Bu denetimdeki yeni silme iletişim kutusu değişikliği gerçek tarayıcıda görsel olarak denenemedi; yerel önizleme sunucusunu başlatmak ortam izinleri tarafından engellendi. Fiziksel telefon, Safari/Firefox/Edge çapraz taraması, yardımcı teknoloji, 200% yakınlaştırma tekrarı, kısıtlı mobil ağ testi veya saha performansı ölçümü yapılmadı.
+**ÖNİZLEMEDE DAR MOBİL KONTROLÜ GEÇTİ; ERİŞİLEBİLİRLİK İNCELEMESİ KISMEN AÇIK.** Önceki sürüm için altı ekran genişliği, axe-core ve bazı klavye/tema kontrolleri `docs/browser-qa.json` içinde kayıtlı. Bu dalın Cloudflare önizlemesinde ana sayfa ile 2027, 2028, ay koleksiyonu, boş takvim, tatiller, çalışma günleri, araçlar, takvim oluşturucu ve tarih hesaplayıcı 390 px genişlikte açıldı; belge genişliği ekran genişliğini aşmadı. Ana sayfa 1280 px masaüstünde de açıldı. Saat ve gerçek Meteo LT hava durumu yüklendi; tarayıcı konsolunda hata/uyarı görünmedi. Bu, bu dal için masaüstü ve dar mobil görsel kontrolüdür; yeni axe-core taraması, yardımcı teknoloji, 200% yakınlaştırma, fiziksel cihaz veya çapraz tarayıcı denetimi değildir. Önceki rapordaki tamamlanmamış otomatik kontroller sertifikasyon sayılmaz.
 
 ## H — Kod kalitesi, testler ve yayın güvenliği
 
 **DOĞRULANDI.** `audit/quality-2026-10-15` dalı temiz `main` revizyonu `a78a578` üzerinden açıldı. `node --test`: 16/16 geçti. Statik site denetimi: 42 HTML, 41 kanonik sayfa, 3.720 yerel bağlantı hedefi, sıfır bozuk bağlantı. Print preflight: 276 PDF geçti. `git diff --check` ve `ruby -c scripts/pages.rb` geçti.
 
-**YAYIN KAPISI KAPALI / DOĞRULANMADI.** Tam Ruby/Jekyll derlemesi çalışmadı: makinede Ruby 2.6 var, kilitli Bundler 2.6.9 yok. Python `fontTools` denetimi de eksik modül nedeniyle çalışmadı. Bu nedenle değişiklikler GitHub'a gönderilmedi, Cloudflare önizlemesine alınmadı ve üretime yayınlanmadı. Yeni değişiklikler yalnız yerel denetim dalında. Önizleme ve üretim duman testleri geçmeden yayınlanmamalı.
+**ÖNİZLEME KONTROLLERİ GEÇTİ; ÜRETİM DUMAN TESTİ YAYINDAN SONRA.** Proje içi Ruby 3.4.11/Bundler 2.6.9 ile tam Jekyll derlemesi geçti. `node --test`: 16/16; statik denetim: 42 HTML, 3.720 yerel hedef, sıfır bozuk bağlantı; 276 baskı dosyası preflight ve bağımsız asset/font/date/hash denetimlerini geçti. Üretim kipli yerel derleme de 41 indekslenebilir kanonik URL ve sitemap ile geçti. Değişiklikler GitHub PR #1'e gönderildi; Cloudflare önizlemesi başarıyla dağıtıldı. Önizlemede 390 px mobil sayfalar, CSP yapılandırması, konsol, hava durumu ve iki örnek indirme/hash doğrulandı. Üretim dalına birleştirme ve canlı duman testi sonraki adımdır. Fiziksel baskı ve ana dili Litvanca editör incelemesi yapılmadı.
 
 ## Düzeltme özeti
 
@@ -62,7 +62,5 @@ Litvanca ana dili konuşan bir editör incelemesi yapılmadı. Sözlük merkezî
 
 ## Sonraki adımlar
 
-1. Proje içindeki Ruby 3.4.11/Bundler 2.6.9 ve Python `fontTools` araç zinciriyle tüm baskı dosyalarını yeni kaynak parmak izinde yeniden üretip doğrulamayı tamamlayın.
-2. Değişiklikleri Cloudflare Pages dal önizlemesine gönderin; tarayıcıda CSP ihlallerini, ana/ay/araç sayfalarını, dar mobil görünümü, kişisel kayıt silmeyi, hava durumu işlevini ve PDF/WebP indirmelerini doğrulayın.
-3. Önizleme ve otomatik kontroller geçerse yayın derlemesini üretin, mevcut `main` dalına bir PR üzerinden birleştirin ve canlı URL/başlık/işlev/indirme kontrollerini yapın.
-4. Fiziksel yazıcıda prova ve Litvanca ana dili konuşan editör incelemesi yapılmadı; bu denetimde bunları yapılmış gibi göstermeyin.
+1. PR #1'i mevcut `main` dalına birleştirin, üretim kipli çıktıyı yayınlayın ve canlı URL/başlık/ana sayfa/API/indirme kontrollerini kaydedin.
+2. Fiziksel yazıcıda prova ve Litvanca ana dili konuşan editör incelemesi yapılmadı; bunları yapılmış gibi göstermeyin.
