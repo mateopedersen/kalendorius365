@@ -1,0 +1,51 @@
+---
+title: "Atostogų planavimas 2027–2028 – dienų skaičiuoklė"
+description: "Planuokite atostogas Lietuvoje pagal darbo savaitę, valstybines šventes ir dienų likutį. Palyginkite ilgą pertrauką, poilsio ir atostogų dienas bei kelis laikotarpius."
+tool: true
+planner: true
+---
+<div class="page-heading"><div><h1>Atostogų planuoklis</h1><p class="page-intro">Palyginkite ilgiausią vientisą poilsį, atostogų dienų efektyvumą ir kelis atskirus laikotarpius 2027 arba 2028 metais.</p></div><div class="toolbar-group"></div></div><section class="panel leave-legal-note" aria-labelledby="leave-legal-title">
+ <h2 id="leave-legal-title">Ką šis skaičiavimas parodo</h2>
+ <p>Pasirinkite darbo savaitę, atostogų dienų likutį ir tinkamą laiką. Skaičiuoklė remiasi Lietuvos įstatyme nustatytomis švenčių dienomis; šventės į atostogų dienų skaičių neįtraukiamos. Rezultatus derinkite su savo darbo grafiku ir darbdaviu.</p>
+ <details class="leave-legal-details"><summary>Teisinės taisyklės, skaičiavimo ribos ir oficialūs šaltiniai</summary>
+  <p>Daugumai įprastų darbuotojų DK 126 straipsnis nustato bent 20 darbo dienų atostogas dirbant penkias dienas per savaitę arba 24 darbo dienas dirbant šešias; kai kurioms grupėms įstatymas suteikia ilgesnes atostogas. DK 128 straipsnyje numatyta, kad bent viena kasmetinių atostogų dalis paprastai turi būti bent 10 darbo dienų (penkiadienis grafikas) arba 12 darbo dienų (šešiadienis grafikas); kitokiam darbo dienų skaičiui taikoma dviejų savaičių taisyklė. Rezultatų kortelės parodo matematinius variantus ir savaime šių sąlygų ar darbdavio patvirtinimo negarantuoja.</p>
+  <p>Įrankis neapskaičiuoja asmeninio sukaupto likučio, pailgintos ar papildomos atostogų trukmės, atostoginių, suminės apskaitos ar pamainų. Darbo grafikas, darbo santykių aplinkybės ir kitos normos gali pakeisti individualų rezultatą. Oficialūs šaltiniai: <a href="https://e-tar.lt/portal/lt/legalActPrint?actualEditionId=BXFztiXOjw&amp;documentId=f6d686707e7011e6b969d7ae07280e89" rel="noopener">Darbo kodekso 126 straipsnis</a>, <a href="https://e-tar.lt/portal/lt/legalActPrint?actualEditionId=BXFztiXOjw&amp;documentId=f6d686707e7011e6b969d7ae07280e89" rel="noopener">128 straipsnis</a> ir <a href="https://vdi.lrv.lt/lt/darbo-teise/darbdaviams/kasmetines-minimaliosios-mokamos-atostogos/" rel="noopener">VDI paaiškinimas</a>.</p>
+  <p>Darbdavys turi patvirtinti atostogų laiką. Skaičiuoklė pateikia bendro pobūdžio planavimo informaciją, o ne individualią teisinę konsultaciją.</p>
+ </details>
+</section>
+<form id="leave-planner" class="panel leave-form" novalidate>
+ <fieldset class="leave-fieldset"><legend>1. Pasirinkite planą</legend>
+  <div class="leave-input-grid">
+   <label>Planavimo metai<select name="year"><option value="2027">2027</option><option value="2028">2028</option></select></label>
+   <label>Turimas atostogų dienų biudžetas<input name="budget" type="number" min="0" max="60" step="1" value="20" inputmode="numeric"><small>Įrašykite savo likutį; 20 ar 24 dienos yra tik dažnos minimalios normos, ne jūsų asmeninis likutis.</small></label>
+   <label>Darbo savaitė<select name="schedule"><option value="5">5 dienos · pirmadienis–penktadienis</option><option value="6">6 dienos · pirmadienis–šeštadienis</option><option value="custom">Pasirinkti savaitės dienas</option></select></label>
+   <label>Pageidaujamas metų laikas<select name="season"><option value="all">Visi mėnesiai</option><option value="spring">Pavasaris · kovas–gegužė</option><option value="summer">Vasara · birželis–rugpjūtis</option><option value="autumn">Ruduo · rugsėjis–lapkritis</option><option value="winter">Žiema · gruodis–vasaris</option></select></label>
+   <label>Mažiausias poilsio laikotarpis (kalendorinėmis dienomis)<input name="minDays" type="number" min="1" max="60" step="1" value="3"></label>
+   <label>Didžiausias poilsio laikotarpis (kalendorinėmis dienomis)<input name="maxDays" type="number" min="1" max="60" step="1" value="21"></label>
+   <label>Kelių atskirų laikotarpių planas<select name="maxPeriods"><option value="2">Iki 2 laikotarpių</option><option value="3">Iki 3 laikotarpių</option><option value="4" selected>Iki 4 laikotarpių</option><option value="6">Iki 6 laikotarpių</option><option value="8">Iki 8 laikotarpių</option><option value="10">Iki 10 laikotarpių</option></select></label>
+  </div>
+  <fieldset id="custom-weekdays" class="weekday-picker" hidden><legend>Jūsų įprastos darbo dienos</legend>
+   <label><input type="checkbox" name="custom-weekday" value="0" checked>Pr</label><label><input type="checkbox" name="custom-weekday" value="1" checked>An</label><label><input type="checkbox" name="custom-weekday" value="2" checked>Tr</label><label><input type="checkbox" name="custom-weekday" value="3" checked>Kt</label><label><input type="checkbox" name="custom-weekday" value="4" checked>Pn</label><label><input type="checkbox" name="custom-weekday" value="5" >Št</label><label><input type="checkbox" name="custom-weekday" value="6" >Sk</label>
+  </fieldset>
+ </fieldset>
+ <details class="leave-advanced"><summary>Iš anksto suplanuotos dienos ir individualūs apribojimai</summary>
+  <div class="leave-input-grid">
+   <label>Jau suplanuotos atostogų darbo datos<small>Biudžetą sunaudoja ir pasiūlymai prie jų nebus prijungti. ISO datos; atskirkite kableliu, kabliataškiu arba nauja eilute.</small><textarea name="booked" rows="2" placeholder="2027-06-14, 2027-12-20"></textarea></label>
+   <label>Grafiko papildomos poilsio datos<small>Pasirinktiniai poilsio laikai, kurie nesunaudoja čia įvesto atostogų biudžeto.</small><textarea name="customRest" rows="2" placeholder="2027-02-15"></textarea></label>
+   <label>Atostogų prašymui netinkamos darbo datos<small>Šios darbo dienos nutraukia vientisą siūlomą laikotarpį.</small><textarea name="blackouts" rows="2" placeholder="2027-09-10"></textarea></label>
+  </div>
+ </details>
+ <div class="leave-actions"><button class="primary" type="submit">Apskaičiuoti ir palyginti planus</button><button type="button" id="reset-leave">Atkurti pradinius nustatymus</button><button type="button" id="leave-print">Spausdinti rezultatą</button></div>
+</form>
+<p id="leave-error" class="leave-error" role="alert"></p>
+<section id="leave-summary" class="leave-summary" aria-live="polite" aria-atomic="true"></section>
+<section id="leave-results" class="leave-results" aria-label="Atostogų planų variantai"></section>
+<section id="leave-detail" aria-live="polite"></section>
+<section class="panel leave-evaluation"><h2>Įvertinti savo pasirinktą laikotarpį</h2><p>Galima rinktis datas ir per 2026–2029 metų sandūrą. Skaičiuojamos abiejų metų šventės; intervalas negali viršyti 90 dienų.</p><div class="leave-input-grid"><label>Pradžia<input type="date" name="evalStart" form="leave-planner"></label><label>Pabaiga<input type="date" name="evalEnd" form="leave-planner"></label></div><div id="custom-evaluation" aria-live="polite"></div><button type="button" id="evaluate-period">Įvertinti šį laikotarpį</button></section>
+<section class="panel leave-faq" aria-labelledby="leave-faq-title"><h2 id="leave-faq-title">Atostogų planavimas Lietuvoje: dažni klausimai</h2>
+ <h3>Kiek kasmetinių atostogų dienų skaičiuoti?</h3><p>Daugumai darbuotojų, įprastai dirbančių penkias dienas per savaitę, nustatytas minimumas yra 20 darbo dienų; dirbant šešias dienas – 24. Tam tikroms darbuotojų grupėms priklauso ilgesnės atostogos. Trumpesnei ar kitokiai darbo savaitei taikoma savaitėmis išreikšta taisyklė. Įrašykite savo tikrąjį likutį, nes individualios teisės priklauso nuo aplinkybių. Plačiau: <a href="/darbo-dienos/2027/">2027 m. darbo dienų kalendorius</a>.</p>
+ <h3>Ar šventinė diena sumažina atostogų likutį?</h3><p>Pagal Darbo kodekso 126 straipsnį į kasmetinių atostogų trukmę neįskaitomos įstatyme nurodytos švenčių dienos. Skaičiuoklė jas rodo atskirai ir neįtraukia į reikalingų atostogų darbo dienų skaičių; savaitgalio šventės į pirmadienį neperkeliamos. Peržiūrėkite <a href="/sventes/2027/">2027 m. Lietuvos švenčių sąrašą</a>.</p>
+ <h3>Kada geriausia atostogauti 2027 ar 2028 metais?</h3><p>Pasirinkite darbo savaitę, atostogų likutį ir jums tinkamus mėnesius. Palyginimas parodo ilgiausią vientisą pertrauką, poilsio dienų ir atostogų dienų santykį bei kelis tarpusavyje atskirtus laikotarpius. Rezultate atverkite „Dienų eiga“, kad patikrintumėte kiekvieną datą.</p>
+ <h3>Ar mano įvesti duomenys siunčiami į serverį?</h3><p>Ne. Įvestos datos ir planavimo parinktys išsaugomos tik šiame įrenginyje esančioje naršyklėje. Statinis Lietuvos švenčių kalendorius įkeliamas skaičiavimui; įvestas asmeninis planas svetainėje neįrašomas ir bendrinimo nuoroda nekuriama. <a href="/privatumas/">Privatumo paaiškinimas</a>.</p>
+</section>
+<section class="panel leave-source-note"><h2>Metodika ir ribos</h2><p>Optimizatorius generuoja galimus nepertraukiamus intervalus iki pasirinktos maksimalios trukmės. Vieno laikotarpio reitinge pirmiausia vertinamas bendras laisvų kalendorinių dienų skaičius; efektyvumo reitinge lyginamas laisvų dienų ir papildomų atostogų darbo dienų santykis. Kelių laikotarpių parinkimas dinaminiu programavimu didina bendrą intervalų dienų skaičių pagal jūsų biudžetą; lygiųjų atveju renkamasi mažiau atostogų dienų, tada mažiau atskirų intervalų, paskui ankstesnės datos. Tarp dviejų atskirų pasiūlymų paliekama bent viena pagal grafiką dirbama diena.</p><p>Šventinė diena į atostogų dienų skaičių neįtraukiama, o savaitgalio šventė automatiškai neperkeliama. Jau suplanuotos datos atimamos iš biudžeto ir sąmoningai laikomos atskirai; darbo dienų apribojimai išjungia per juos einantį kandidatą. Įvesti nustatymai saugomi tik šioje naršyklėje; į serverį, nuorodas ar analitiką nesiunčiami. Dalijimosi nuorodos nekuriamos.</p><p>Algoritmo aprėptis: skaičiuojant daugiausia 60 dienų trukmės intervalus, intervalų sudarymas yra O(N·L), o kelių pertraukų paieška – O(N·B·K·L), kur N – metų dienų skaičius, L – maksimali atkarpa, B – likęs atostogų biudžetas, K – pasirinktų laikotarpių riba. Rezultatas apskaičiuojamas deterministiškai.</p></section>

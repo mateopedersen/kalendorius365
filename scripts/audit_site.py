@@ -57,6 +57,6 @@ if '--release' in __import__('sys').argv:
  headers=(PUBLIC/'_headers').read_text();assert 'X-Robots-Tag: noindex' not in headers
  xml=ET.parse(PUBLIC/'sitemap.xml');ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
  sitemap={e.text for e in xml.findall('.//s:loc',ns)};canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
- assert sitemap==canonical and len(sitemap)==41
+ assert sitemap==canonical and len(sitemap)==len(pages)-1
  assert len(xml.findall('.//i:loc',ns))==240
- print('PASS: release indexing, 404 noindex, 41 sitemap canonicals, 240 image entries, and no global noindex header.')
+ print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 240 image entries, and no global noindex header.')
