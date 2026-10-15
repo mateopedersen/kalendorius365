@@ -13,7 +13,6 @@ _site/
 .sass-cache/
 .bundle/
 vendor/bundle/
-Gemfile.lock
 
 # Local environment files and secrets
 .env
@@ -21,3 +20,9 @@ Gemfile.lock
 !.env.example
 *.pem
 *.key
+
+# Generated site (release builds are committed to preserve Pages output)
+.build-cache/
+__pycache__/
+node_modules/
+test-results/
