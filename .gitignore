@@ -1,0 +1,23 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Ruby / Jekyll build output and dependencies (future site development)
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/bundle/
+Gemfile.lock
+
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
