@@ -1,56 +1,58 @@
-# Infrastructure and recovery notes
+# Altyapı ve kurtarma notları
 
-## Service ownership
+## Servis sahipliği
 
-- Domain registrar: Hostinger (registration remains there).
-- Source: private GitHub repository [mateopedersen/kalendorius365](https://github.com/mateopedersen/kalendorius365), production branch `main`.
-- Static hosting/CDN: Cloudflare Pages project `kalendorius365` on the Free plan.
-- DNS: Cloudflare zone `kalendorius365.lt`; authoritative nameservers were changed at Hostinger to `devin.ns.cloudflare.com` and `rosa.ns.cloudflare.com` on 2026-10-15. Cloudflare still reported the zone as pending propagation when last checked.
+- Domain kaydı ve yenilemesi Hostinger'da kalır; alan adı Cloudflare'a aktarılmadı.
+- Kaynak kodu özel GitHub deposunda: https://github.com/mateopedersen/kalendorius365, üretim dalı main.
+- Barındırma ve CDN: Cloudflare Pages projesi kalendorius365, Free plan.
+- Yetkili DNS: Cloudflare zone kalendorius365.lt; Hostinger'da Cloudflare'ın atadığı nameserver'lar kullanılıyor.
 
-## Verified state (2026-10-15)
+## Doğrulanmış durum — 2026-10-15
 
-- GitHub repository is private; branch `main` exists.
-- The Cloudflare Workers and Pages GitHub App is installed for `mateopedersen` and restricted to this repository. Its listed permissions apply only to this selected repository.
-- Cloudflare DNS zone is Free/manual DNS. Staged records are proxied CNAMEs: apex `kalendorius365.lt` → `kalendorius365.pages.dev`; `www` → `kalendorius365.lt`. Cloudflare showed both records and warned that the zone was pending until nameserver ownership could be verified.
-- Hostinger previously showed `cosmos.dns-parking.com` and `nova.dns-parking.com`; these were replaced with Cloudflare's assigned nameservers. Hostinger confirmed the save and warned propagation could take up to 24 hours. Domain registration remains at Hostinger.
-- Before the switch, Hostinger's DNS table showed only `www CNAME kalendorius365.lt` (TTL 300) and apex `A 2.57.91.91` (TTL 50). No MX, TXT, AAAA, or CAA records appeared in that table. The A record was not copied because its purpose was unverified and it appeared to be parking.
-- Hostinger DNSSEC controls were blank (no Key Tag, Algorithm, Digest Type, or Digest). The registrar's DS state has not been independently verified. Recheck it if Cloudflare remains pending or DNS validation fails.
-- Cloudflare warns that, without an MX record, mail to `@kalendorius365.lt` cannot be received. No mail records were present in the Hostinger DNS table. If domain email is needed, identify the mail provider and add its exact MX/SPF/DKIM/DMARC records in Cloudflare before relying on mail.
-- Pages project URL: [https://kalendorius365.pages.dev/](https://kalendorius365.pages.dev/). The temporary page opened over HTTPS and displayed “Kalendorius365” and “Svetainė ruošiama.”
-- First production deployment: commit `e8ade68fb53cbf7282c5ad04633cc5c4c8baf993`, success, 17 seconds.
-- Documentation commit `bcb25cceb2c86febbf5a29fe5f0ca3336c066dd7` triggered a successful second production deployment in 20 seconds, verifying automatic redeployment. The latest documentation commit `c9e28874ded4f004922d8d4eedc956673925db97` also triggered a successful deployment in 12 seconds.
-- The project-specific preview URL for the first deployment returned a TLS version/cipher mismatch when checked. Use the project-level `kalendorius365.pages.dev` URL for the stable preview.
-- Cloudflare's Redirect Rules table shows the active 301 rule “WWW to non-WWW canonical redirect”: wildcard source `http*://www.kalendorius365.lt/*`, target `https://kalendorius365.lt/${2}`, query preservation enabled. Live redirect behavior remains unverified while the zone is pending.
-- Cloudflare Pages Custom Domains did not allow adding `kalendorius365.lt` while the zone was pending; root and www are not yet connected to Pages. SSL for the custom domain and live HTTP/HTTPS behavior remain unverified. Cloudflare Always Use HTTPS is enabled; it will apply after the zone becomes active. No edge certificate is issued yet.
-- `public/_headers` configures `X-Robots-Tag: noindex`; a valid header rule was parsed during a Pages build. The actual live response header has not yet been checked. Do not index or submit the unfinished placeholder.
+- GitHub deposu private ve main dalı mevcut. Cloudflare Workers and Pages GitHub App erişimi yalnızca bu depoyla sınırlı.
+- Pages, mateopedersen/kalendorius365 deposuna yerleşik Git entegrasyonuyla bağlı. Üretim dalı main, framework ayarı None, build komutu boş, çıktı klasörü public; otomatik dağıtımlar etkin.
+- Pages projesi: https://kalendorius365.pages.dev/ . Geçici sayfa HTTPS üzerinden 200 dönüyor ve “Kalendorius365 / Svetainė ruošiama.” metnini gösteriyor.
+- 15 Ekim tarihli en son daha önce kontrol edilen başarılı dağıtım, 5006ba035430525307d34e8815588aa95def7abe commit'idir (12 saniye). Önceki bcb25cc ve c9e2887 commit'leri de başarılı üretim dağıtımları oluşturdu; main dalına yapılan değişikliklerin otomatik dağıtıldığı doğrulandı. Bu doküman commit'i de yeni bir dağıtım başlatır; güncel sonucu Cloudflare Pages → Deployments bölümünden kontrol edin.
+- Hostinger nameserver'ları önceden cosmos.dns-parking.com ve nova.dns-parking.com idi; 2026-10-15'te devin.ns.cloudflare.com ve rosa.ns.cloudflare.com olarak değiştirildi. Hostinger kaydı başarıyla kaydetti; alan adı Hostinger'da kalıyor.
+- Cloudflare zone artık etkin ve trafiği Cloudflare üzerinden geçiriyor. Plan Free.
+- Hostinger DNSSEC ekranındaki Key Tag, Algorithm, Digest Type ve Digest alanları boş. VeriSign DNSSEC Debugger kontrolü kalendorius365.lt için .lt üst bölgesinde DS kaydı ve alan adı için DNSKEY göstermedi; devin.ns.cloudflare.com ile rosa.ns.cloudflare.com yetkili nameserver olarak görünüyor. Domain DNSSEC etkin değil; stale DS kaydı saptanmadı.
+- Nameserver değişiminden önce Hostinger DNS tablosunda yalnızca kök A kaydı 2.57.91.91 (TTL 50) ve www CNAME kalendorius365.lt (TTL 300) görüldü. MX, TXT, AAAA veya CAA görünmedi. Kök A kaydı amacı doğrulanmadığı ve park kaydı gibi göründüğü için taşınmadı.
+- Cloudflare DNS'de şu anda iki proxied CNAME ve Auto TTL bulunuyor:
 
-## Deployment and rollback
+  | İsim | Hedef | Proxy | TTL |
+  | --- | --- | --- | --- |
+  | kalendorius365.lt | kalendorius365.pages.dev | Proxied | Auto |
+  | www.kalendorius365.lt | kalendorius365.pages.dev | Proxied | Auto |
 
-Cloudflare Pages is natively connected to `mateopedersen/kalendorius365`; production branch is `main`, framework preset is None, build command is empty, and output directory is `public`. Future pushes to `main` deploy automatically. Confirm the commit and status in the project's Deployments tab and inspect the build log for errors.
+- Alan adının DNS'inde MX kaydı yok ve bağımsız sorguda mail sunucusu bulunmadı. Bu domain adreslerine e-posta alınması şu anda yapılandırılmış değil. E-posta gerekiyorsa önce posta sağlayıcısını belirleyin ve yalnızca onun verdiği MX/SPF/DKIM/DMARC kayıtlarını ekleyin; kayıt tahmin etmeyin.
+- Pages Custom Domains ekranında kalendorius365.lt Active ve SSL enabled. www.kalendorius365.lt en son kontrolde Verifying görünüyordu; DNS doğrulaması yeniden başlatıldı. Canlı testte HTTP ve HTTPS www adresleri kök HTTPS adresine 301 ile yönlendi; www TLS yanıtı da başarılıydı.
+- Cloudflare Always Use HTTPS açık. HSTS ve HSTS preload açılmadı. Aktif WWW-to-root 301 kuralı yolu ve sorgu parametrelerini koruyor.
+- Canlı kontroller: https://kalendorius365.lt/ 200; http://kalendorius365.lt/ 301 → HTTPS; http://www.kalendorius365.lt/redirect-check?verify=1 ve https://www.kalendorius365.lt/redirect-check?verify=1 301 → https://kalendorius365.lt/redirect-check?verify=1 ve son yanıt 200.
+- Canlı HTTP yanıtlarında hem kök alan adı hem de pages.dev için X-Robots-Tag: noindex doğrulandı. Geçici siteyi arama motorlarına göndermeyin. Gerçek site yayımlanmaya hazır olduğunda bu kuralı kaldırıp canlı başlığı yeniden kontrol edin.
+- Geçici HTML sayfasında mobil viewport meta etiketi, esnek genişlik ve clamp() tabanlı boyutlar bulunuyor. Ayrı bir cihaz emülasyonu testi yapılmadı; gerçek site geliştirilirken mobil görünümü ayrıca doğrulayın.
 
-For recovery, identify the last successful production deployment, fix source/settings, then push a commit or use Cloudflare Pages to retry/roll back to that known-good deployment. Confirm the project URL and expected content after recovery. Never publish credentials in source or build logs.
+## Dağıtım ve geri alma
 
-## DNS and domain activation
+main dalına her push Cloudflare Pages üretim dağıtımı başlatır. Cloudflare Pages → Deployments bölümünde commit ve durumu kontrol edin; Build log içindeki hata mesajlarını inceleyin. Sorun giderirken son başarılı dağıtımı belirleyin, kaynağı düzeltip yeni commit gönderin veya Pages içinden bilinen başarılı dağıtıma geri alın. İşlemden sonra canlı sayfayı ve yanıt başlıklarını yeniden kontrol edin. Kimlik bilgilerini kaynak koduna veya build loglarına koymayın.
 
-1. In Hostinger, confirm the domain still uses exactly `devin.ns.cloudflare.com` and `rosa.ns.cloudflare.com`.
-2. In Cloudflare Overview, wait for zone status to become Active. Use “Check nameservers now” after propagation; Hostinger says this may take up to 24 hours.
-3. If it remains pending, check registrar delegation and DS/DNSSEC state. Cloudflare must be authoritative and any stale DS record must be resolved safely.
-4. In Cloudflare DNS, keep apex CNAME to `kalendorius365.pages.dev` and www CNAME to the apex, both proxied. Do not restore the old parking A record.
-5. Once active, add both `kalendorius365.lt` and `www.kalendorius365.lt` under Pages → Custom domains. Wait for verification and managed SSL certificate issuance.
-6. Cloudflare Always Use HTTPS is already enabled. Confirm it works after activation. Keep the existing 301 WWW-to-root rule and test paths and query strings. HSTS and preload remain disabled.
-7. Verify root returns 200, HTTP redirects to HTTPS, and www redirects to the root over both HTTP and HTTPS. Check a live `X-Robots-Tag: noindex` response header on Pages and the production domain before launch.
+## DNS kurtarma
 
-No email records were found in the pre-migration Hostinger table. Confirm whether email is needed before configuring it; use only records supplied by its provider. Do not guess MX or authentication records. The site is still in development and the noindex policy must be removed and verified before public launch.
+1. Hostinger'da kayıtlı nameserver'ların devin.ns.cloudflare.com ve rosa.ns.cloudflare.com olduğunu doğrulayın.
+2. Cloudflare Overview'da zone'un etkin olduğunu kontrol edin. DNS değişikliklerinden sonra herkese yayılım zaman alabilir.
+3. DNSSEC sorunu görülürse Hostinger DNSSEC alanları ve .lt registry DS bilgisi yeniden kontrol edilmeli; mevcut veride DS yok.
+4. Cloudflare DNS'de kök CNAME kalendorius365.pages.dev, www CNAME kalendorius365.pages.dev olmalı ve ikisi proxied kalmalı. Eski park A kaydını geri eklemeyin.
+5. E-posta için MX veya kimlik doğrulama kayıtlarını yalnızca seçilen posta sağlayıcısının yönergelerinden alın.
+6. Pages Custom Domains ekranında her iki alan adının durumunu ve SSL durumunu kontrol edin. www doğrulaması tamamlanmazsa sayfadaki DNS yönergeleriyle CNAME www → kalendorius365.pages.dev kaydını karşılaştırın.
 
-## Ruby/Jekyll migration
+## Ruby/Jekyll geçişi
 
-Reuse this repository and Pages project. Add Jekyll source/dependencies, set the supported Jekyll build command, and change the Pages output directory to `_site`. First verify a preview deployment, Lithuanian UTF-8 text, assets, downloads, and response headers; only then use the production branch. A static Jekyll site does not require a database or paid hosting.
+Aynı GitHub deposunu ve Pages projesini kullanın. Jekyll kaynaklarını ve bağımlılıklarını ekledikten sonra desteklenen Jekyll build komutunu ve çıktı klasörü olarak _site ayarlayın. Üretime geçmeden önce preview dağıtımını, Litvanca UTF-8 metni, varlıkları, indirme bağlantılarını ve yanıt başlıklarını kontrol edin. Statik Jekyll sitesi için veritabanı veya ücretli hosting gerekmez.
 
-## Launch checklist
+## Genel yayına çıkış listesi
 
-- [ ] Cloudflare zone Active; Hostinger delegation verified; DS/DNSSEC state confirmed.
-- [ ] Any needed email records copied from the mail provider and mail delivery checked.
-- [ ] Pages custom domains verified and managed SSL certificates active.
-- [ ] Root 200, HTTP-to-HTTPS, and www-to-root 301 tested with paths and query strings.
-- [ ] Live noindex header checked on the preview and custom domain; remove it before public launch.
-- [ ] Latest deployment is successful; keep deployment and rollback notes current.
+- [ ] Gerçek site hazır olduğunda noindex kuralını kaldırın; kök alan adı ve pages.dev için canlı başlığı kontrol edin.
+- [ ] www alan adının Pages doğrulamasının tamamlandığını ve SSL durumunun etkin olduğunu doğrulayın.
+- [ ] Üretim sayfalarında 200, HTTP → HTTPS ve www → kök 301 davranışını; yol ve sorgu korumasıyla tekrar kontrol edin.
+- [ ] Gerçek site hazır olduğunda mobil görünümü ayrıca test edin.
+- [ ] E-posta kullanılacaksa posta sağlayıcısının DNS kayıtlarını kurun ve e-posta alım/gönderimini sınayın.
+- [ ] Üretim dağıtımı, commit ve geri alma notlarını güncel tutun.
