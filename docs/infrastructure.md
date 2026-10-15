@@ -18,10 +18,10 @@
 - Cloudflare warns that, without an MX record, mail to `@kalendorius365.lt` cannot be received. No mail records were present in the Hostinger DNS table. If domain email is needed, identify the mail provider and add its exact MX/SPF/DKIM/DMARC records in Cloudflare before relying on mail.
 - Pages project URL: [https://kalendorius365.pages.dev/](https://kalendorius365.pages.dev/). The temporary page opened over HTTPS and displayed “Kalendorius365” and “Svetainė ruošiama.”
 - First production deployment: commit `e8ade68fb53cbf7282c5ad04633cc5c4c8baf993`, success, 17 seconds.
-- A harmless documentation commit `bcb25cceb2c86febbf5a29fe5f0ca3336c066dd7` triggered a second production deployment; Cloudflare reported success in 20 seconds. This verifies the native Git integration's automatic redeploy path.
+- Documentation commit `bcb25cceb2c86febbf5a29fe5f0ca3336c066dd7` triggered a successful second production deployment in 20 seconds, verifying automatic redeployment. The latest documentation commit `c9e28874ded4f004922d8d4eedc956673925db97` also triggered a successful deployment in 12 seconds.
 - The project-specific preview URL for the first deployment returned a TLS version/cipher mismatch when checked. Use the project-level `kalendorius365.pages.dev` URL for the stable preview.
 - Cloudflare's Redirect Rules table shows the active 301 rule “WWW to non-WWW canonical redirect”: wildcard source `http*://www.kalendorius365.lt/*`, target `https://kalendorius365.lt/${2}`, query preservation enabled. Live redirect behavior remains unverified while the zone is pending.
-- Cloudflare Pages Custom Domains did not allow adding `kalendorius365.lt` while the zone was pending; root and www are not yet connected to Pages. SSL for the custom domain and live HTTP/HTTPS behavior remain unverified.
+- Cloudflare Pages Custom Domains did not allow adding `kalendorius365.lt` while the zone was pending; root and www are not yet connected to Pages. SSL for the custom domain and live HTTP/HTTPS behavior remain unverified. Cloudflare Always Use HTTPS is enabled; it will apply after the zone becomes active. No edge certificate is issued yet.
 - `public/_headers` configures `X-Robots-Tag: noindex`; a valid header rule was parsed during a Pages build. The actual live response header has not yet been checked. Do not index or submit the unfinished placeholder.
 
 ## Deployment and rollback
@@ -37,7 +37,7 @@ For recovery, identify the last successful production deployment, fix source/set
 3. If it remains pending, check registrar delegation and DS/DNSSEC state. Cloudflare must be authoritative and any stale DS record must be resolved safely.
 4. In Cloudflare DNS, keep apex CNAME to `kalendorius365.pages.dev` and www CNAME to the apex, both proxied. Do not restore the old parking A record.
 5. Once active, add both `kalendorius365.lt` and `www.kalendorius365.lt` under Pages → Custom domains. Wait for verification and managed SSL certificate issuance.
-6. Enable Cloudflare “Always Use HTTPS” after activation. Keep the existing 301 WWW-to-root rule and test paths and query strings. Do not enable HSTS preload.
+6. Cloudflare Always Use HTTPS is already enabled. Confirm it works after activation. Keep the existing 301 WWW-to-root rule and test paths and query strings. HSTS and preload remain disabled.
 7. Verify root returns 200, HTTP redirects to HTTPS, and www redirects to the root over both HTTP and HTTPS. Check a live `X-Robots-Tag: noindex` response header on Pages and the production domain before launch.
 
 No email records were found in the pre-migration Hostinger table. Confirm whether email is needed before configuring it; use only records supplied by its provider. Do not guess MX or authentication records. The site is still in development and the noindex policy must be removed and verified before public launch.
