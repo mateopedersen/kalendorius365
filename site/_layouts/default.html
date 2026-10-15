@@ -14,11 +14,11 @@ try{document.documentElement.dataset.theme=localStorage.getItem("k365:theme")||(
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/design-system.css">
-<script type="module" src="/assets/common.js?v=3b631dd"></script>
-{% if page.app %}<script type="module" src="/assets/app.js?v=59741d3"></script>{% endif %}
-{% if page.tool %}<script type="module" src="/assets/tools.js?v=3b631dd"></script>{% endif %}
-{% if page.planner %}<script type="module" src="/assets/leave-planner.js?v=phase4-1"></script>{% endif %}
+<link rel="stylesheet" href="/assets/style.css?v={{ site.css_version }}"><link rel="stylesheet" href="/assets/design-system.css?v={{ site.css_version }}">
+<script type="module" src="/assets/common.js?v={{ site.script_version }}"></script>
+{% if page.app %}<script type="module" src="/assets/app.js?v={{ site.script_version }}"></script>{% endif %}
+{% if page.tool %}<script type="module" src="/assets/tools.js?v={{ site.script_version }}"></script>{% endif %}
+{% if page.planner %}<script type="module" src="/assets/leave-planner.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.url == "/" %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Kalendorius365","url":"https://kalendorius365.lt/","inLanguage":"lt-LT"}</script>{% else %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pradžia","item":"https://kalendorius365.lt/"},{"@type":"ListItem","position":2,"name":{{ page.title | jsonify }},"item":"{{ site.url }}{{ page.url }}"}]}</script>{% endif %}
 </head>
 <body>

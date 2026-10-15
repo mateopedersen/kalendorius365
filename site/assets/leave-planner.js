@@ -353,7 +353,9 @@ function makeMetric(value, label) {
   strong.textContent = String(value);
   const span = document.createElement("span");
   span.textContent = label;
-  item.append(strong, span);
+  // Preserve a readable separator even if a stale stylesheet temporarily
+  // falls back to inline browser defaults before the cache-busted CSS loads.
+  item.append(strong, document.createTextNode(" "), span);
   return item;
 }
 
