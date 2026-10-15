@@ -203,3 +203,36 @@ test("real elapsed duration follows DST and all-day multi-day ranges remain inta
   assert.deepEqual(c.occurrence(all, "2027-03-11"), all);
 });
 test('JSON backup restores valid data and rejects incompatible preferences',()=>{let raw;const storage={getItem:()=>raw,setItem:(k,v)=>raw=v};const s=new Store(storage);s.update(d=>d.notes['2028-02-29']='Atsarginis užrašas');const backup=JSON.stringify(s.data);s.update(d=>d.notes['2028-02-29']='Pakeista');s.restore(backup);assert.equal(new Store(storage).data.notes['2028-02-29'],'Atsarginis užrašas');const invalid=empty();invalid.preferences.visible=[true];assert.throws(()=>validate(invalid));const corrupt=new Store({getItem:()=>'{corrupt original',setItem:()=>{throw Error('blocked')}});assert.equal(corrupt.raw,'{corrupt original');assert(corrupt.locked);});
+test("personal-data deletion clears private records but preserves preferences", () => {
+  let raw;
+  const storage = { getItem: () => raw, setItem: (_key, value) => (raw = value) };
+  const store = new Store(storage);
+  store.update((data) => {
+    data.events.push(event());
+    data.tasks.push({ id: "task", date: "2027-03-10", title: "Užduotis", done: false });
+    data.notes["2027-03-10"] = "Privatu";
+    data.preferences.city = "vilnius";
+    data.preferences["large-text"] = true;
+  });
+  assert.equal(store.clearPersonalData(), true);
+  const restored = new Store(storage).data;
+  assert.deepEqual(restored.events, []);
+  assert.deepEqual(restored.tasks, []);
+  assert.deepEqual(restored.notes, {});
+  assert.equal(restored.preferences.city, "vilnius");
+  assert.equal(restored.preferences["large-text"], true);
+});
+test("personal-data deletion removes unreadable data when overwrite fails", () => {
+  let raw = "{corrupt private data";
+  const storage = {
+    getItem: () => raw,
+    setItem: () => { throw Error("blocked"); },
+    removeItem: () => { raw = null; },
+  };
+  const store = new Store(storage);
+  assert(store.locked);
+  assert.equal(store.clearPersonalData(), false);
+  assert.equal(raw, null);
+  assert.equal(store.locked, false);
+  assert.deepEqual(store.data.events, []);
+});

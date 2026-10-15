@@ -50,3 +50,18 @@ test("weather total failure returns unavailable, never invented data", async () 
     globalThis.fetch = original;
   }
 });
+test("unexpected cache failures also return non-cacheable errors", async () => {
+  const originalCaches = globalThis.caches;
+  globalThis.caches = {
+    default: { match: async () => { throw Error("cache unavailable"); } },
+  };
+  try {
+    const r = await onRequestGet(request("vilnius"));
+    assert.equal(r.status, 503);
+    assert.equal(r.headers.get("cache-control"), "no-store");
+    assert.equal(r.headers.get("x-content-type-options"), "nosniff");
+  } finally {
+    if (originalCaches === undefined) delete globalThis.caches;
+    else globalThis.caches = originalCaches;
+  }
+});

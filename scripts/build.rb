@@ -2,6 +2,7 @@
 require 'fileutils'
 require 'json'
 require 'digest'
+require 'base64'
 require_relative '../lib/calendar'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
@@ -42,6 +43,10 @@ Dir.chdir(ROOT) do
  File.write('public/sitemap.xml',xml+'</urlset>')
  File.write('public/robots.txt',"User-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
  headers="/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n"
+ theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
+ abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
+ theme_hash=Base64.strict_encode64(Digest::SHA256.digest(theme_script))
+ headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
  headers+="  X-Robots-Tag: noindex\n" unless release
  headers+="/assets/*\n  Cache-Control: public, max-age=86400\n/downloads/*\n  Cache-Control: public, max-age=86400\n"
  headers+="/assets/*.js\n  Cache-Control: public, max-age=0, must-revalidate\n/assets/*.css\n  Cache-Control: public, max-age=0, must-revalidate\n"

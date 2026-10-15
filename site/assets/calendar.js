@@ -72,12 +72,18 @@ export function shiftMonth(s, n) {
   return iso(d);
 }
 export function today(now = new Date()) {
-  return new Intl.DateTimeFormat("en-CA", {
+  const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: TZ,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  }).format(now);
+  }).formatToParts(now);
+  const value = Object.fromEntries(
+    parts
+      .filter((part) => part.type !== "literal")
+      .map(({ type, value }) => [type, value]),
+  );
+  return `${value.year}-${value.month}-${value.day}`;
 }
 export function formatDate(s, options = {}) {
   return new Intl.DateTimeFormat("lt-LT", {
