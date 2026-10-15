@@ -226,6 +226,7 @@ function renderFilterChips() {
     showHolidays = true;
     visible = visible.map(() => true);
     syncFilters();
+    host.querySelector("button")?.focus();
   };
   host.append(all);
   const definitions = [
@@ -245,6 +246,7 @@ function renderFilterChips() {
       if (i < 0) showHolidays = !showHolidays;
       else visible[i] = !visible[i];
       syncFilters();
+      host.querySelectorAll("button")[i + 2]?.focus();
     };
     host.append(b);
   }

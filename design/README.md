@@ -15,7 +15,7 @@ October 2026 redesign of the existing Ruby/Jekyll product. The repository, Cloud
 - `source/generate_board.py`: native vector design-board generator, run from repository root with fontTools installed.
 - `masters/brand-ui-system-4k.svg`: native 3840 × 2160 scalable design board. All labels are outlined Lato paths.
 - `masters/brand-ui-system-4k.png`: actual 3840 × 2160 raster render of that vector board.
-- `masters/*-original.png`: five original AI-assisted illustrative scene masters, **1672 × 941 native pixels**. They are not native 4K photographs or documentary images. No artificial resolution claim is made.
+- `masters/weather.png`, `lithuania-freedom.png`, `velykos-spring.png`, `jonines-rasos.png`, `kucios-winter.png`: five original AI-assisted illustrative scene masters, **1672 × 941 native pixels**. They are not native 4K photographs or documentary images. No artificial resolution claim is made.
 - `previews/`: design board, before/after and browser evidence.
 
 ## Production assets
