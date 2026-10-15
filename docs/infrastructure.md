@@ -28,7 +28,7 @@
 
 
 
-## Doğrulanmış durum — 2026-10-15
+## Doğrulanmış durum — 2026-10-16
 
 
 
@@ -39,7 +39,7 @@
 
 - GitHub deposu private ve main dalı mevcut. Cloudflare Workers and Pages GitHub App erişimi yalnızca bu depoyla sınırlı.
 - Pages, mateopedersen/kalendorius365 deposuna yerleşik Git entegrasyonuyla bağlı. Üretim dalı main, framework ayarı None, build komutu boş, çıktı klasörü public; otomatik dağıtımlar etkin.
-- Pages projesi: https://kalendorius365.pages.dev/ . Geçici sayfa HTTPS üzerinden 200 dönüyor ve “Kalendorius365 / Svetainė ruošiama.” metnini gösteriyor.
+- Pages projesi `kalendorius365` üretim sitesini sunuyor. 2026-10-16 tarihinde `d78d343` commit’i `main` dalından başarıyla dağıtıldı; Cloudflare dağıtım kimliği `5ae04511-1992-4372-884c-ad1fa0948d9b`, dağıtım adresi https://5ae04511.kalendorius365.pages.dev/ ve Pages panelinde yeşil başarı işareti görüldü.
 - 15 Ekim'de daha önce kontrol edilen başarılı dağıtımlar 5006ba035430525307d34e8815588aa95def7abe (12 saniye), bcb25cc ve c9e2887 commit'leridir. Önceki altyapı belgesi commit'i cca7a1355bed3aa788b5fc0cd656b3dfd15503f2 de Cloudflare Pages deployment b15b8e27-9cf1-4618-b040-85f6707412d9 olarak 17 saniyede başarıyla tamamlandı. main dalına yapılan push'lar otomatik üretim dağıtımını başlatır; en son commit'in sonucunu Cloudflare Pages → Deployments bölümünden doğrulayın.
 - Hostinger nameserver'ları önceden cosmos.dns-parking.com ve nova.dns-parking.com idi; 2026-10-15'te devin.ns.cloudflare.com ve rosa.ns.cloudflare.com olarak değiştirildi. Hostinger kaydı başarıyla kaydetti; alan adı Hostinger'da kalıyor.
 - Cloudflare zone artık etkin ve trafiği Cloudflare üzerinden geçiriyor. Plan Free.
@@ -69,8 +69,8 @@
 - Alan adının DNS'inde MX kaydı yok ve bağımsız sorguda mail sunucusu bulunmadı. Bu domain adreslerine e-posta alınması şu anda yapılandırılmış değil. E-posta gerekiyorsa önce posta sağlayıcısını belirleyin ve yalnızca onun verdiği MX/SPF/DKIM/DMARC kayıtlarını ekleyin; kayıt tahmin etmeyin.
 - Pages Custom Domains ekranında kalendorius365.lt ve www.kalendorius365.lt artık Active ve SSL enabled. Cloudflare'ın [Pages sorun giderme yönergesi](https://developers.cloudflare.com/pages/configuration/debugging-pages/) HTTP doğrulamasını yönlendirme kurallarının engelleyebileceğini belirtiyor. www yönlendirmesi `/.well-known/acme-challenge/*` yolunu dışarıda bırakacak şekilde düzeltildikten ve DNS doğrulaması yeniden başlatıldıktan sonra www durumu Active oldu. DNS CNAME hedefi www → kalendorius365.pages.dev olarak doğru.
 - Cloudflare Always Use HTTPS açık. HSTS ve HSTS preload açılmadı. Normal www → kök 301 yönlendirmesi yolu ve sorgu parametrelerini koruyor; `/.well-known/acme-challenge/*` yolunu Pages doğrulaması için yönlendirme dışında bırakıyor.
-- Canlı kontroller: https://kalendorius365.lt/ 200; http://kalendorius365.lt/ 301 → HTTPS; http://www.kalendorius365.lt/redirect-check?verify=1 ve https://www.kalendorius365.lt/redirect-check?verify=1 301 → https://kalendorius365.lt/redirect-check?verify=1 ve son yanıt 200.
-- Canlı HTTP yanıtlarında hem kök alan adı hem de pages.dev için X-Robots-Tag: noindex doğrulandı. Geçici siteyi arama motorlarına göndermeyin. Gerçek site yayımlanmaya hazır olduğunda bu kuralı kaldırıp canlı başlığı yeniden kontrol edin.
+- 2026-10-16 üretim kontrolleri: tüm 71 canonical HTML sayfası doğrudan GET ile 200; her sayfada `lang=lt`, tek self-canonical, `index, follow`, tek başlık ve H1 doğrulandı. Sitemap 200 ve 71 sayfa URL’siyle eşleşiyor; sitemap ayrıca 360 görsel konumu içeriyor. `robots.txt` 200, kök dizine izin veriyor ve sitemap’i bildiriyor. Üretimdeki 832 PDF/WebP dosyasının tamamı GET ile indirildi ve her birinin boyutu ile SHA-256 değeri yerel çıktı ile aynı bulundu (416 PDF + 416 WebP; 91.500.372 bayt). Temsilî HTML/CSS/JS yanıtlarında CSP bulundu; bilinmeyen URL 404 döndü. HTTP→HTTPS ve www→kök alan adı örnekleri 301 ile doğru HTTPS canonical URL’ye yöneldi ve 200 ile tamamlandı. Ayrıntı: `docs/phase-5-6-8/LIVE-VERIFICATION.json`.
+- Güncel üretim HTTP yanıtlarında `X-Robots-Tag: noindex` yok; 71 canonical sayfanın tümünde HTML `robots` meta etiketi `index, follow`. Bu, sitenin teknik olarak taranabilir olduğunu doğrular; arama motorlarının sayfaları kabul ettiğini veya dizine eklediğini kanıtlamaz.
 - Mobil görünüm, canlı HTTPS adresinde tarayıcı cihaz emülasyonuyla 280×700, 320×568, 375×667 ve 390×844 portre boyutlarında; ayrıca 844×390 yatay boyutunda doğrulandı. Her boyutta documentElement ve body genişliği viewport ile eşleşti, yatay taşma olmadı. 280 px sınırındaki kart taşması c322050 commitinde düzeltildi; Cloudflare Pages üretim dağıtımı 37404b32-a414-4b36-a358-e8f415c42fd9 başarılı oldu ve alan adı üzerinde bu boyutlarda tekrar test edildi.
 
 

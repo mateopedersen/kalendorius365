@@ -39,4 +39,4 @@ Personal schedule, class and homework entries remain in local browser storage. T
 
 ## Release evidence
 
-See `PASS1_REPORT.json`, `PASS2_INDEPENDENT_REPORT.json`, `DEPLOYMENT-AND-ROLLBACK.md` and `FINAL_STATUS.md`. A local build or preview is not proof of a live release; live statuses in the route manifest must only be filled from post-deployment requests.
+See `PASS1_REPORT.json`, `PASS2_INDEPENDENT_REPORT.json`, `LIVE-VERIFICATION.json`, `DEPLOYMENT-AND-ROLLBACK.md` and `FINAL_STATUS.md`. The live route manifest and asset manifest record direct production responses after the Cloudflare deployment.

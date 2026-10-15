@@ -1,25 +1,20 @@
 # Final status
 
-**Status: implementation and pre-deployment validation complete; production release and live gate verification pending.** This file must be updated after Cloudflare Pages publishes the exact release commit. Do not interpret local build success as live completion.
+**Phase 5, 6 and 8 implementation is published and live verification passed.** Production is serving commit `d78d343` through the existing GitHub `main` → Cloudflare Pages integration.
 
-## Confirmed locally
+## Published and verified
 
-- 71 canonical, server-rendered public pages and 29 new substantive routes.
-- 32 JavaScript tests passed; release Ruby/Jekyll build passed; 6,286 local link targets audited with zero broken links.
-- 416 PDF/WebP pairs passed full automated preflight; 416 WebPs measured at 600 PPI or higher; 416 vector PDFs have embedded regular/bold fonts and no placed raster objects.
-- All 552 baseline download files remain byte-identical by SHA-256; 280 additional downloadable files are present locally.
-- The required 12-sample visual gate passed. The complete collection was machine checked, not visually inspected item by item.
-- Existing leave planning, local-only school data and the selected astronomy tools were exercised in representative browser workflows.
+- 71 server-rendered, self-canonical Lithuanian pages are in the sitemap and technically indexable; all returned HTTP 200 with `index, follow`. This covers all 29 new routes.
+- Sitemap: 71 page entries and 360 image entries; `robots.txt` allows the site and points to the sitemap.
+- 832 downloadable files returned from production and matched local SHA-256 and byte length exactly: 416 vector PDFs and 416 600-PPI WebPs. Total streamed: 91,500,372 bytes. The 552 baseline files are preserved.
+- The exact production commit and Cloudflare deployment ID/green status were confirmed in the Pages dashboard.
+- CSP, CSS/JavaScript delivery, canonical redirects and representative 404 behavior were checked.
+- Final details: `LIVE-VERIFICATION.json`; route-level results: `PUBLIC-PAGE-MANIFEST.json`; every download’s live checksum: `ASSET-MANIFEST.json`.
 
-## Awaiting final release proof
+## Disclosed limits
 
-- Publish the feature commit to the existing GitHub `main` → Cloudflare Pages path.
-- Confirm the deployment ID, live 200/indexable responses for all 29 new routes, live sitemap membership and actual download responses.
-- Complete real-production CSP/cache/robots/404/redirect checks and update `PUBLIC-PAGE-MANIFEST.json`, both QA reports and this status.
-
-## Explicit limitations
-
-- No external Lithuanian native-speaker editorial sign-off or physical printer proof is claimed.
-- No formal axe-core/WCAG conformance certificate is claimed.
-- The browser's PDF preview surface was blank during the local test; PDF structure/fonts/text/date placement and matching WebP proofs passed the file-level checks.
-- Search Console submission, index requests, SEO campaigns, Phase 9/13, astrology, accounts, PWA, cloud sync and advertising were not added.
+- No independent Lithuanian native-speaker editorial sign-off or physical printer proof.
+- No formal axe-core/WCAG certification.
+- Individual visual inspection was performed on 12 representative designs; the full 416-design collection was machine-preflighted, not inspected one by one.
+- The in-app browser showed no horizontal overflow on the leave planner at its measured 480 CSS-pixel minimum width. The earlier responsive matrix includes 390 CSS pixels, but this turn did not independently re-establish or retain a 390-pixel live screenshot of the updated results panel or a 200%-zoom screenshot; those specific post-deployment visual checks are not claimed.
+- Search-engine index acceptance cannot be asserted. No Search Console submission, ranking campaign, Phase 9/13, astrology, accounts, PWA, cloud sync or ads were added.

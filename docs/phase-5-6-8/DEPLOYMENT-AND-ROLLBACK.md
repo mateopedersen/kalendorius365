@@ -1,22 +1,27 @@
 # Deployment and rollback procedure
 
-## Verified delivery path
-
-The repository is `mateopedersen/kalendorius365`; local production output is `public/`. `docs/infrastructure.md` and the open repository's main-branch history describe Cloudflare Pages project `kalendorius365`, GitHub native integration, production branch `main`, empty remote build command, output directory `public`, and automatic deployments. The owner-authorized repository is the only target.
-
 ## Release record
 
-- Feature branch: `feature/phase-5-6-8`.
-- Protected source checkpoint: `checkpoint/phase-5-6-8-before` at `235190c9b1e56743c2a7869566e4bd76efddb830`.
-- The local feature branch is based on a commit that is an ancestor of the fetched `origin/main`; the current remote main observed before release was `684f49b`.
-- Release commit, push time, Cloudflare deployment ID and final URL checks are to be filled after the production push completes. A local build is not a release.
+- Repository: `mateopedersen/kalendorius365`.
+- Production branch: `main`; Cloudflare Pages project: `kalendorius365`; automatic GitHub deployments remain enabled.
+- Release commit: [`d78d343`](https://github.com/mateopedersen/kalendorius365/commit/d78d343f88bda887c8101ef5129fe8e373765015).
+- Push and live verification: `2026-10-15T22:10:52Z`.
+- Cloudflare production deployment: `5ae04511-1992-4372-884c-ad1fa0948d9b`.
+- Deployment URL: [5ae04511.kalendorius365.pages.dev](https://5ae04511.kalendorius365.pages.dev/).
+- Cloudflare Deployments showed the matching `main` commit under Production with a green success check.
 
-## Publish gates
+## Live release checks
 
-Before pushing, require the release build, 32-test JavaScript suite, site/link/indexability audit, all 416 PDF/WebP validations, the two January/February sample criteria, all 552 baseline checksums, and independent Pass 2 pre-deploy review to pass. Then push the release commit to `main` to use the existing auto-deploy path. Do not change DNS, nameservers, Cloudflare Pages settings, caching rules, security headers or GitHub app permissions for this release.
+- All 71 sitemap canonical pages returned HTTP 200. Every page had Lithuanian `lang`, `index, follow`, one matching self-canonical, one title and H1, and no `X-Robots-Tag: noindex` response header. This includes all 29 new routes.
+- The sitemap returned 200 and contained exactly 71 page URL entries matching the manifest, plus 360 image locations. `robots.txt` returned 200, allowed `/`, and linked the sitemap.
+- All 832 downloadable files were streamed from production: 416 PDFs and 416 WebPs. Every response returned 200, correct media type, exact byte length, and SHA-256 identical to the local release file (91,500,372 bytes total).
+- CSP was present on the sampled pages, CSS, JavaScript and 404 response. Unknown paths returned 404 with `Cache-Control: no-store`. HTTP and `www` sample routes redirected 301 to the HTTPS root-domain URL and ended at 200.
+- Exact per-route and per-download evidence is in `LIVE-VERIFICATION.json`, `PUBLIC-PAGE-MANIFEST.json`, and `ASSET-MANIFEST.json`.
 
-After deploy, wait for Cloudflare Pages to report success for the exact commit. Then check the homepage, all new canonical routes, 2029 PDF/WebP files, sitemap, robots, representative 404, redirects, CSP and cache headers. Record actual response statuses and hashes in the manifests and final report. Do not claim search-engine index acceptance.
+## Release gate result and limitations
+
+The production release gates passed. This establishes technical crawlability and the published sitemap, not acceptance or indexing by a search engine. No Search Console submission or ranking campaign was run. No external Lithuanian native-speaker sign-off, physical printer proof or formal axe-core/WCAG certification is claimed. The leave planner had no horizontal overflow at the live browser’s measured 480 CSS-pixel minimum width; the updated results panel was not re-established at 390 CSS pixels, and no 200%-zoom screenshot is claimed.
 
 ## Rollback
 
-The pre-change `checkpoint/phase-5-6-8-before` branch preserves the local baseline. The currently deployed pre-release remote-main commit is `684f49b` as observed immediately before publication. If the deployment fails or a critical live gate regresses, use Cloudflare Pages' previous known successful deployment or revert the release commit on `main`; verify the rollback site's routes and headers. Preserve the production 552 original downloadable files, and do not change DNS as a recovery shortcut.
+The previously deployed production commit was `684f49bc97249f29bf7e6c1cb15d7a08d2d678b4`. If a critical live regression appears, use Cloudflare Pages' previous successful production deployment or revert the release commit on `main`, then repeat the route, header and download smoke checks. Do not change DNS or cache settings as a recovery shortcut.

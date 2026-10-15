@@ -1,7 +1,7 @@
 {
   "schema": "kalendorius365-independent-qa-pass2-v1",
   "timestamp": "2026-10-15T21:56:25.535011+00:00",
-  "status": "predeploy_independent_checks_passed_live_recheck_pending",
+  "status": "live_production_verified_with_disclosed_limitations",
   "method": "A separate Python calendar/date implementation, direct browser navigation/rendering, independent static HTML inventory, and PDF/WebP preflight artifact comparison were used after code fixes. This report is not copied from PASS1; post-deployment HTTP/browser/download checks remain open until Cloudflare publishes the commit.",
   "checks": [
     {
@@ -74,13 +74,77 @@
         "static audit checks all public image alt/dimensions, IDs, landmarks/schema and links"
       ],
       "limitation": "No dedicated axe-core or formal WCAG conformance certificate."
+    },
+    {
+      "name": "live production canonical routes",
+      "result": "passed",
+      "routes": 71,
+      "newRoutes": 29,
+      "allHttp200": true,
+      "allIndexFollow": true,
+      "allSelfCanonical": true,
+      "allLangLt": true,
+      "allXRobotsNoindexAbsent": true,
+      "evidence": "LIVE-VERIFICATION.json and PUBLIC-PAGE-MANIFEST.json"
+    },
+    {
+      "name": "live sitemap and robots",
+      "result": "passed",
+      "sitemapHttpStatus": 200,
+      "canonicalPageLocations": 71,
+      "imageLocations": 360,
+      "canonicalPagesMatchManifest": true,
+      "robotsHttpStatus": 200,
+      "rootAllowed": true,
+      "evidence": "LIVE-VERIFICATION.json"
+    },
+    {
+      "name": "live PDF/WebP stream and checksums",
+      "result": "passed",
+      "files": 832,
+      "pdfs": 416,
+      "webps": 416,
+      "allHttp200": true,
+      "allContentTypesCorrect": true,
+      "allLiveSHA256MatchLocal": true,
+      "bytesStreamed": 91500372,
+      "evidence": "LIVE-VERIFICATION.json and ASSET-MANIFEST.json"
+    },
+    {
+      "name": "production delivery headers, redirects and not-found",
+      "result": "passed_for_observed_cases",
+      "csp": "present on HTML/CSS/JS and 404 samples",
+      "notFoundStatus": 404,
+      "httpAndWwwCanonicalRedirects": "301 to canonical HTTPS root-domain route; final 200",
+      "evidence": "LIVE-VERIFICATION.json"
+    },
+    {
+      "name": "Cloudflare production deployment",
+      "result": "passed",
+      "commit": "d78d343f88bda887c8101ef5129fe8e373765015",
+      "deploymentId": "5ae04511-1992-4372-884c-ad1fa0948d9b",
+      "deploymentUrl": "https://5ae04511.kalendorius365.pages.dev/",
+      "status": "green success in Cloudflare Pages Deployments"
     }
   ],
-  "remainingReleaseGate": [
-    "After push, confirm Cloudflare production deployment success for the exact commit.",
-    "Request every new canonical URL directly and confirm actual 200, indexable HTML, single canonical, no noindex response header, sitemap membership and working CSS/JS.",
-    "Verify real PDF and WebP download responses and checksums, new 404 behavior, redirects and cache/CSP headers.",
-    "Update all 29 liveHttpStatus values in PUBLIC-PAGE-MANIFEST.json and finish this report only from observed results."
-  ],
-  "result": "Independent local checks pass. The complete Pass 2 release gate is intentionally not marked finished until production deployment and live checks are observed."
+  "remainingReleaseGate": [],
+  "result": "The authorized commit is deployed to Cloudflare Pages Production and the exact commit is shown with a successful deployment. All live release gates were checked: 71 canonical pages and 832 downloadable PDF/WebP files passed HTTP and metadata/checksum validation. Disclosed editorial, print-proof, formal accessibility, and 200%-zoom/mobile-viewport limitations remain; no search-engine index acceptance is claimed.",
+  "deployment": {
+    "cloudflareProject": "kalendorius365",
+    "environment": "Production",
+    "sourceBranch": "main",
+    "commit": "d78d343f88bda887c8101ef5129fe8e373765015",
+    "commitShort": "d78d343",
+    "deploymentId": "5ae04511-1992-4372-884c-ad1fa0948d9b",
+    "deploymentUrl": "https://5ae04511.kalendorius365.pages.dev/",
+    "status": "success",
+    "statusEvidence": "Cloudflare Pages Deployments showed the matching d78d343 main commit, Production environment, green success check and deployment URL."
+  },
+  "knownLimitations": [
+    "No external Lithuanian native-speaker sign-off.",
+    "No physical printer proof.",
+    "No formal axe-core/WCAG conformance certification.",
+    "The in-app browser could not independently establish or archive a true 200% browser zoom screenshot or 390 CSS-pixel viewport for the live results panel; no such check is claimed.",
+    "Search-engine indexing acceptance is not claimed; only technical crawlability, index directives and sitemap publication were checked."
+  ]
 }
