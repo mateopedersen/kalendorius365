@@ -4007,3 +4007,310 @@ details > summary {
     min-height: 44px;
   }
 }
+
+/* Atostogų planuoklis */
+.leave-legal-note,
+.leave-form,
+.leave-evaluation,
+.leave-source-note,
+.leave-faq {
+  margin-block: 16px;
+  padding: clamp(16px, 2.5vw, 26px);
+}
+.leave-legal-note {
+  border-inline-start: 4px solid var(--green);
+}
+.leave-legal-details {
+  max-width: 92ch;
+  margin-top: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+.leave-legal-details summary {
+  min-height: 42px;
+  align-content: center;
+  cursor: pointer;
+  color: var(--green);
+  font-weight: 800;
+}
+.leave-legal-note p,
+.leave-source-note p,
+.leave-faq p,
+.leave-evaluation > p {
+  max-width: 88ch;
+  line-height: 1.65;
+}
+.leave-form fieldset {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+.leave-form > fieldset > legend,
+.weekday-picker legend {
+  padding-inline: 8px;
+  color: var(--ink);
+  font-weight: 800;
+}
+.leave-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-block: 12px;
+}
+.leave-input-grid > label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--ink);
+  font-weight: 700;
+}
+.leave-input-grid input,
+.leave-input-grid select,
+.leave-input-grid textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--ink);
+  padding: 10px 12px;
+  font: inherit;
+}
+.leave-input-grid textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+.leave-input-grid small {
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.weekday-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 14px;
+}
+.weekday-picker label {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--panel);
+}
+.weekday-picker input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+.leave-advanced {
+  margin-block: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.leave-advanced summary {
+  min-height: 40px;
+  align-content: center;
+  cursor: pointer;
+  color: var(--green);
+  font-weight: 800;
+}
+.leave-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 14px;
+}
+.leave-actions button,
+.leave-evaluation > button {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--ink);
+  padding: 9px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.leave-actions button:hover,
+.leave-evaluation > button:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+.leave-actions button.primary {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+.leave-summary {
+  overflow-x: auto;
+  margin-block: 16px;
+}
+.leave-summary > p,
+.leave-error {
+  line-height: 1.6;
+}
+.leave-error:empty {
+  display: none;
+}
+.leave-error:not(:empty) {
+  border-inline-start: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--panel);
+  color: var(--red);
+}
+.leave-compare-table {
+  min-width: 680px;
+}
+.leave-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 14px;
+}
+.leave-result-card {
+  min-width: 0;
+  padding: 20px;
+}
+.leave-result-card h3,
+.leave-faq h3 {
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.leave-date-range {
+  color: var(--green);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.leave-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-block: 14px;
+}
+.leave-metric {
+  display: flex;
+  min-width: 0;
+  min-height: 72px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+}
+.leave-metric strong {
+  color: var(--green);
+  font-size: 1.35rem;
+}
+.leave-metric span {
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.35;
+}
+.leave-ratio {
+  font-weight: 700;
+}
+.leave-result-card ol {
+  padding-inline-start: 24px;
+}
+.leave-result-card ol li {
+  margin-block: 10px;
+  line-height: 1.5;
+}
+.leave-result-card ol li button {
+  min-height: 38px;
+  margin-inline-start: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--green);
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+.leave-day-breakdown {
+  margin-block: 16px;
+  padding: 18px;
+}
+.leave-days-table {
+  width: 100%;
+  min-width: 620px;
+}
+.leave-table-scroll {
+  max-width: 100%;
+  margin: 12px 0 0;
+  overscroll-behavior-inline: contain;
+}
+.leave-days-table td,
+.leave-days-table th {
+  padding: 9px 10px;
+  vertical-align: top;
+}
+.leave-faq h3 {
+  margin-top: 20px;
+}
+.leave-faq p:last-child {
+  margin-bottom: 0;
+}
+[data-theme="dark"] .leave-input-grid input,
+[data-theme="dark"] .leave-input-grid select,
+[data-theme="dark"] .leave-input-grid textarea {
+  color-scheme: dark;
+}
+@media (max-width: 600px) {
+  .leave-input-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .leave-form fieldset {
+    padding: 13px;
+  }
+  .leave-result-card {
+    padding: 16px;
+  }
+  .leave-actions > button {
+    flex: 1 1 145px;
+  }
+  .leave-result-card ol li button {
+    display: block;
+    margin: 8px 0 0;
+  }
+}
+@media print {
+  .leave-legal-note,
+  .leave-form,
+  .leave-evaluation,
+  .leave-source-note,
+  .leave-faq,
+  #leave-error,
+  #reset-leave,
+  #leave-print,
+  .leave-actions button {
+    display: none !important;
+  }
+  .leave-results {
+    display: block;
+  }
+  .leave-result-card,
+  .leave-day-breakdown {
+    break-inside: avoid;
+    border: 1px solid #999;
+    box-shadow: none;
+  }
+  .leave-summary {
+    overflow: visible;
+  }
+  .leave-compare-table {
+    min-width: 0;
+  }
+}

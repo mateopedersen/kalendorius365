@@ -18,7 +18,7 @@ module Pages
  def shell(main,aside)
   '<div class="resource-shell"><div class="resource-content">'+main+'</div>'+aside+'</div>'
  end
- def page(path,title,desc,html,tool=false)
+ def page(path,title,desc,html,tool=false,robots=nil,planner=false)
   case path
   when /\A202[78]\z/
    y=path.to_i;items=MANIFEST.select { |e|e['kind']=='annual' && e['year']==y };first=items.find { |e|e['design']==(y==2027 ? '06' : '01') }||items.first
@@ -53,7 +53,7 @@ module Pages
    html+='<section class="panel"><h2>ISO savaitės numeris</h2><label>Pasirinkite datą<input type="date" id="iso-date"></label><p id="iso-result" class="result" aria-live="polite"></p><div id="iso-nearby"></div><a href="/savaites/2027/">Visos 2027 savaitės</a> · <a href="/savaites/2028/">Visos 2028 savaitės</a></section>'
    html=shell(html,'<aside class="resource-aside">'+countdown+'<section class="panel"><h2>Greiti skaičiavimai</h2><div class="quick-countdowns"><button data-countdown="new-year">Iki Naujųjų metų</button><button data-countdown="easter">Iki Velykų</button><button data-countdown="jonines">Iki Joninių</button><button data-countdown="christmas">Iki Kalėdų</button></div></section></aside>')
   end
-  write_page(path,title,desc,html,tool)
+  write_page(path,title,desc,html,tool,robots,planner)
  end
  def generate_blank
   items=MANIFEST.select { |e|e['kind']=='blank' };first=items.first
