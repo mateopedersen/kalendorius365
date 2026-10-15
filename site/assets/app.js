@@ -784,6 +784,24 @@ $("#restore-confirm").onclick = () => {
   $("#restore-dialog").close();
   $("#json-file").click();
 };
+$("#delete-personal-data").onclick = () => $("#delete-data-dialog").showModal();
+$("#delete-data-cancel").onclick = () => $("#delete-data-dialog").close();
+$("#delete-data-confirm").onclick = () => {
+  try {
+    const preferencesPreserved = store.clearPersonalData();
+    noteDirty = false;
+    $("#daily-note").value = "";
+    $("#delete-data-dialog").close();
+    render();
+    notice(
+      preferencesPreserved
+        ? "Asmeniniai įrašai ištrinti iš šios naršyklės. Nuostatos išsaugotos."
+        : "Asmeniniai įrašai ir nuostatos ištrinti iš šios naršyklės.",
+    );
+  } catch (error) {
+    notice(error.message);
+  }
+};
 $("#json-file").onchange = async (e) => {
   const f = e.target.files[0];
   if (!f) return;

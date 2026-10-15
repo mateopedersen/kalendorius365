@@ -154,6 +154,34 @@ export class Store {
     this.locked = false;
     this.error = "";
   }
+  clearPersonalData() {
+    const clean = validate({
+      schema: 1,
+      events: [],
+      tasks: [],
+      notes: {},
+      preferences: this.data.preferences,
+    });
+    try {
+      this.storage.setItem(KEY, JSON.stringify(clean));
+      this.data = clean;
+      this.locked = false;
+      this.error = "";
+      return true;
+    } catch {
+      try {
+        this.storage.removeItem(KEY);
+      } catch {
+        throw Error(
+          "Nepavyko ištrinti duomenų. Patikrinkite naršyklės svetainės saugojimo nustatymus.",
+        );
+      }
+      this.data = empty();
+      this.locked = false;
+      this.error = "";
+      return false;
+    }
+  }
 }
 export function download(name, content, type) {
   const blob =

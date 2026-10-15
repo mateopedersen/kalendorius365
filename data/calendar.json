@@ -82,6 +82,20 @@
     "Gimtadieniai",
     "Kiti"
   ],
+  "terminology": {
+    "today": "Šiandien",
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "settings": "Nustatymai",
+    "download": "Atsisiųsti",
+    "print": "Spausdinti",
+    "workday": "Darbo diena",
+    "publicHoliday": "Šventinė diena",
+    "personalEvent": "Asmeninis įvykis",
+    "notes": "Užrašai",
+    "tasks": "Užduotys",
+    "backup": "Atsarginė kopija"
+  },
   "sources": [
     {
       "title": "Lietuvos Respublikos darbo kodeksas, 112 ir 123 straipsniai",
@@ -90,6 +104,10 @@
     {
       "title": "VDI: prieššventinės darbo dienos trukmė",
       "url": "https://vdi.lrv.lt/lt/dazniausiai-uzduodami-klausimai/?lang=lt&pv=12&q=prie%C5%A1%C5%A1ventin"
+    },
+    {
+      "title": "Darbo kodekso pakeitimo įstatymas XV-1058 (įsigalioja 2026-11-01)",
+      "url": "https://www.e-tar.lt/portal/lt/legalAct/f74d61f0738e11f1b53dfa020e517810"
     }
   ],
   "holidays": [

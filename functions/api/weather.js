@@ -11,11 +11,11 @@ export async function onRequestGet({ request }) {
     return new Response("Neteisingas miestas", { status: 400 });
   const cache = globalThis.caches?.default,
     key = new Request(new URL("/api/weather?city=" + city, request.url));
-  const cached = await cache?.match(key);
-  if (cached) return cached;
   const controller = new AbortController(),
     timer = setTimeout(() => controller.abort(), 8000);
   try {
+    const cached = await cache?.match(key);
+    if (cached) return cached;
     const results = await Promise.allSettled(
       [
         fetch(
@@ -57,7 +57,16 @@ export async function onRequestGet({ request }) {
     await cache?.put(key, response.clone());
     return response;
   } catch {
-    return Response.json({ error: "Duomenys nepasiekiami" }, { status: 503 });
+    return Response.json(
+      { error: "Duomenys nepasiekiami" },
+      {
+        status: 503,
+        headers: {
+          "Cache-Control": "no-store",
+          "X-Content-Type-Options": "nosniff",
+        },
+      },
+    );
   } finally {
     clearTimeout(timer);
   }
