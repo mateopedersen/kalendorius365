@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-15",
+  "timezone": "Europe/Vilnius",
+  "months": [
+    ["sausis", "Sausis", "sausio"], ["vasaris", "Vasaris", "vasario"],
+    ["kovas", "Kovas", "kovo"], ["balandis", "Balandis", "balandžio"],
+    ["geguze", "Gegužė", "gegužės"], ["birzelis", "Birželis", "birželio"],
+    ["liepa", "Liepa", "liepos"], ["rugpjutis", "Rugpjūtis", "rugpjūčio"],
+    ["rugsejis", "Rugsėjis", "rugsėjo"], ["spalis", "Spalis", "spalio"],
+    ["lapkritis", "Lapkritis", "lapkričio"], ["gruodis", "Gruodis", "gruodžio"]
+  ],
+  "weekdays": ["Pr", "An", "Tr", "Kt", "Pn", "Št", "Sk"],
+  "categories": ["Asmeniniai", "Darbas", "Mokslai", "Sveikata", "Šeima", "Gimtadieniai", "Kiti"],
+  "sources": [
+    {"title":"Lietuvos Respublikos darbo kodeksas, 112 ir 123 straipsniai", "url":"https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr"},
+    {"title":"VDI: prieššventinės darbo dienos trukmė", "url":"https://vdi.lrv.lt/lt/dazniausiai-uzduodami-klausimai/?lang=lt&pv=12&q=prie%C5%A1%C5%A1ventin"}
+  ],
+  "holidays": [
+    {"id":"new-year", "rule":"fixed", "month":1, "day":1, "name":"Naujųjų metų diena"},
+    {"id":"restoration", "rule":"fixed", "month":2, "day":16, "name":"Lietuvos valstybės atkūrimo diena"},
+    {"id":"independence", "rule":"fixed", "month":3, "day":11, "name":"Lietuvos nepriklausomybės atkūrimo diena"},
+    {"id":"easter", "rule":"easter", "offset":0, "name":"Velykos", "legalName":"Krikščionių Velykų (pagal vakarietiškąją tradiciją) dienos"},
+    {"id":"easter-monday", "rule":"easter", "offset":1, "name":"Antroji Velykų diena", "legalName":"Krikščionių Velykų (pagal vakarietiškąją tradiciją) dienos"},
+    {"id":"labour", "rule":"fixed", "month":5, "day":1, "name":"Tarptautinė darbo diena"},
+    {"id":"mothers", "rule":"first-sunday", "month":5, "name":"Motinos diena"},
+    {"id":"fathers", "rule":"first-sunday", "month":6, "name":"Tėvo diena"},
+    {"id":"jonines", "rule":"fixed", "month":6, "day":24, "name":"Rasos ir Joninių diena"},
+    {"id":"statehood", "rule":"fixed", "month":7, "day":6, "name":"Valstybės ir Tautiškos giesmės diena", "legalName":"Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena"},
+    {"id":"assumption", "rule":"fixed", "month":8, "day":15, "name":"Žolinė", "legalName":"Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"},
+    {"id":"all-saints", "rule":"fixed", "month":11, "day":1, "name":"Visų Šventųjų diena"},
+    {"id":"all-souls", "rule":"fixed", "month":11, "day":2, "name":"Mirusiųjų atminimo (Vėlinių) diena"},
+    {"id":"christmas-eve", "rule":"fixed", "month":12, "day":24, "name":"Kūčių diena"},
+    {"id":"christmas", "rule":"fixed", "month":12, "day":25, "name":"Kalėdos", "legalName":"Kalėdų dienos"},
+    {"id":"christmas-second", "rule":"fixed", "month":12, "day":26, "name":"Antroji Kalėdų diena", "legalName":"Kalėdų dienos"}
+  ],
+  "school": {
+    "year":"2026–2027", "reviewed":"2026-10-15",
+    "source":"https://smsm.lrv.lt/lt/veiklos-sritys-1/smm-svietimas/20252026-m-m-ir-20262027-m-m-mokiniu-atostogos/",
+    "periods":[
+      {"name":"Rudens", "start":"2026-11-02", "end":"2026-11-08", "stage":"Visi mokiniai"},
+      {"name":"Žiemos (Kalėdų)", "start":"2026-12-21", "end":"2027-01-03", "stage":"Visi mokiniai"},
+      {"name":"Žiemos", "start":"2027-02-15", "end":"2027-02-21", "stage":"Visi mokiniai"},
+      {"name":"Pavasario (Velykų)", "start":"2027-03-22", "end":"2027-03-29", "stage":"Pradinis ir pagrindinis ugdymas"},
+      {"name":"Pavasario (Velykų)", "start":"2027-03-29", "end":"2027-04-04", "stage":"Vidurinis ugdymas"}
+    ]
+  },
+  "designs":[
+    {"id":"01","name":"Klasikinis","style":"minimal","layout":"portrait-grid"},
+    {"id":"02","name":"Biuro tinklelis","style":"minimal","layout":"landscape-office"},
+    {"id":"03","name":"Lietuviškas akcentas","style":"bold","layout":"portrait-national"},
+    {"id":"04","name":"Dideli skaičiai","style":"minimal","layout":"landscape-large"},
+    {"id":"05","name":"Šeimos planuoklis","style":"minimal","layout":"landscape-family"},
+    {"id":"06","name":"Drąsi tipografija","style":"bold","layout":"portrait-editorial"},
+    {"id":"07","name":"Geometrinis","style":"bold","layout":"landscape-geometric"},
+    {"id":"08","name":"Mokyklos planuoklis","style":"minimal","layout":"portrait-school"},
+    {"id":"09","name":"Gamtos motyvai","style":"bold","layout":"portrait-botanical"},
+    {"id":"10","name":"Premium kontrastas","style":"bold","layout":"landscape-premium"}
+  ]
+}

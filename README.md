@@ -1,27 +1,39 @@
 # Kalendorius365
 
-Official infrastructure and website source repository for Kalendorius365.lt, a Lithuanian calendar platform.
+Lithuanian calendar and local-first planner. Existing Cloudflare Pages native Git integration is preserved: production branch `main`, output directory `public`, no Cloudflare build command. Generated `public/` is versioned so Cloudflare does not need Python/Poppler or expensive print rendering during ordinary deployments. Source changes must be rebuilt before committing; tests check the generated output.
 
-The repository currently contains a temporary static placeholder. The production website is planned as a Ruby/Jekyll static site and will replace the placeholder in this repository.
+## Reproducible development
 
-## Current status
+- Ruby **3.4.11**; Jekyll **4.4.1**, Bundler lockfile included.
+- Node **22+**, native ES modules, no frontend framework or npm dependencies.
+- Print tooling: Python 3.12, `requirements-print.txt`, Poppler `pdftoppm` on PATH.
 
-- Website source: `public/`
-- Planned deployment: Cloudflare Pages, connected to this repository's `main` branch
-- Domain registrar: Hostinger
-- Planned authoritative DNS: Cloudflare
-- Temporary pages include `X-Robots-Tag: noindex`; remove this before the public launch only after launch readiness is confirmed.
+```sh
+bundle install
+ruby scripts/prepare.rb
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-print.txt
+.venv/bin/python scripts/render_prints.py
+bundle exec ruby scripts/build.rb
+node --test test/*.test.js
+.venv/bin/python scripts/validate_assets.py
+.venv/bin/python scripts/audit_site.py
+```
 
-See [infrastructure and recovery notes](docs/infrastructure.md) for the deployment plan and recovery guidance. These notes describe the intended setup and must be updated with verified account-specific values as setup is completed.
+Print generation is independent of the static build. `.build-cache/` fingerprints skip unchanged compositions. The WebP is rasterized from the exact corresponding PDF at A4/300 PPI; thumbnails are separate. All 276 PDF/WebP pairs and thumbnails are listed with sizes and SHA-256 in `site/assets/data/manifest.json`.
 
-## Local preview
+`site/` contains Jekyll sources and precomputed print assets; `data/calendar.json` is the single holiday/localization source. `lib/calendar.rb` generates date data consumed by static pages and print scripts. Browser modules independently calculate dates from those definitions and are checked against Ruby and Python.
 
-Open `public/index.html` in a browser. No build tools or external assets are required for the temporary page.
+## Deployment and indexing
 
-## Future Jekyll migration
+Development branch: `feat/calendar-platform`. Every push gets the existing Cloudflare preview deployment. Native Pages Functions bundles `functions/api/weather.js` for a same-origin cached LHMT weather proxy (no database, bindings, credentials or paid services). A plain local file server cannot execute this function; weather displays its tested unavailable state locally.
 
-Keep this repository and Cloudflare Pages project. Add the Jekyll source, configure Cloudflare Pages to build the site with Ruby/Jekyll, and change the output directory to `_site`. Preserve the production branch and custom domains during the transition. Verify deployment previews and indexing headers before launch.
+Preview output retains HTML and response-header `noindex`. Only after release QA, build using `K365_RELEASE=1 bundle exec ruby scripts/build.rb`, re-run audits, commit generated output, and merge to `main`. Preview deployments must continue to return `X-Robots-Tag: noindex` (Cloudflare default preview behavior; verify on the real preview URL). Production intended public pages get a sitemap; drafts do not.
 
-## Ownership and security
+Do not add personal test data, credentials, API tokens or local browser state to Git. See `docs/product-checkpoint.md` for exact progress and `docs/infrastructure.md` for domain ownership and rollback.
 
-The domain remains registered with Hostinger. GitHub is the source of truth for website files. Never commit passwords, access tokens, private keys, or account recovery codes. Limit repository and Cloudflare Git integration access to the project owner and this repository.
+## Data boundaries
+
+Events, notes, tasks and preferences use a versioned localStorage schema with JSON backup/restore. ICS supports dates, Vilnius/UTC times and simple recurrence; unsupported rules are reported. No accounts, synchronization, analytics or geolocation. Print customization stays in the browser. Statutory holidays are distinct from school and commemorative dates. Work hours include immediate preholiday one-hour reductions under documented schedule assumptions.
+
+Inter is self-hosted under SIL OFL; source and license are in `site/assets/fonts/`. Calendar compositions are original vector artwork. LHMT data is attributed under CC BY-SA 4.0. See the public privacy page for operational details and import limitations.

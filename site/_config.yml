@@ -1,0 +1,13 @@
+url: https://kalendorius365.lt
+baseurl: ''
+lang: lt-LT
+title: Kalendorius365
+encoding: utf-8
+timezone: Europe/Vilnius
+exclude: []
+keep_files: []
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: default
