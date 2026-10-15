@@ -71,7 +71,7 @@
 - Cloudflare Always Use HTTPS açık. HSTS ve HSTS preload açılmadı. Normal www → kök 301 yönlendirmesi yolu ve sorgu parametrelerini koruyor; `/.well-known/acme-challenge/*` yolunu Pages doğrulaması için yönlendirme dışında bırakıyor.
 - Canlı kontroller: https://kalendorius365.lt/ 200; http://kalendorius365.lt/ 301 → HTTPS; http://www.kalendorius365.lt/redirect-check?verify=1 ve https://www.kalendorius365.lt/redirect-check?verify=1 301 → https://kalendorius365.lt/redirect-check?verify=1 ve son yanıt 200.
 - Canlı HTTP yanıtlarında hem kök alan adı hem de pages.dev için X-Robots-Tag: noindex doğrulandı. Geçici siteyi arama motorlarına göndermeyin. Gerçek site yayımlanmaya hazır olduğunda bu kuralı kaldırıp canlı başlığı yeniden kontrol edin.
-- Geçici HTML sayfasında mobil viewport meta etiketi, esnek genişlik ve clamp() tabanlı boyutlar bulunuyor. Ayrı bir cihaz emülasyonu testi yapılmadı; gerçek site geliştirilirken mobil görünümü ayrıca doğrulayın.
+- Mobil görünüm, canlı HTTPS adresinde tarayıcı cihaz emülasyonuyla 280×700, 320×568, 375×667 ve 390×844 portre boyutlarında; ayrıca 844×390 yatay boyutunda doğrulandı. Her boyutta documentElement ve body genişliği viewport ile eşleşti, yatay taşma olmadı. 280 px sınırındaki kart taşması c322050 commitinde düzeltildi; Cloudflare Pages üretim dağıtımı 37404b32-a414-4b36-a358-e8f415c42fd9 başarılı oldu ve alan adı üzerinde bu boyutlarda tekrar test edildi.
 
 
 
