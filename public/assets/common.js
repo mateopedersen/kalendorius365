@@ -31,8 +31,13 @@ document.querySelector("#theme")?.addEventListener("click", () => {
 for (const button of document.querySelectorAll("[data-print]"))
   button.addEventListener("click", () => window.print());
 let searchIndex;
+const searchText = (value) =>
+  value
+    .toLocaleLowerCase("lt-LT")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 document.querySelector("#site-search")?.addEventListener("input", async (e) => {
-  const q = e.target.value.trim().toLocaleLowerCase("lt-LT"),
+  const q = searchText(e.target.value.trim()),
     host = document.querySelector("#site-search-results");
   host.replaceChildren();
   host.hidden = !q;
@@ -41,8 +46,14 @@ document.querySelector("#site-search")?.addEventListener("input", async (e) => {
     searchIndex ||= await fetch("/assets/data/search.json").then((r) =>
       r.json(),
     );
+    if (searchText(e.target.value.trim()) !== q) return;
+    host.replaceChildren();
     const items = searchIndex
-      .filter((x) => x.title.toLocaleLowerCase("lt-LT").includes(q))
+      .filter((x) =>
+        q
+          .split(/\s+/)
+          .every((word) => searchText(x.title + " " + x.url).includes(word)),
+      )
       .slice(0, 10);
     for (const x of items) {
       const a = document.createElement("a");
@@ -84,3 +95,17 @@ try {
     preferences["high-contrast"] === true,
   );
 } catch {}
+
+// Keep active navigation truthful on both desktop and the mobile dock.
+const pathname = location.pathname;
+for (const link of document.querySelectorAll(".mobile-dock a")) {
+  if (link.getAttribute("href") === pathname)
+    link.setAttribute("aria-current", "page");
+}
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  const search = document.querySelector("#site-search-results");
+  if (search) search.hidden = true;
+  const toggle = document.querySelector("#nav-toggle");
+  if (toggle?.getAttribute("aria-expanded") === "true") toggle.click();
+});

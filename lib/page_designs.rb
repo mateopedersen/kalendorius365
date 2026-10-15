@@ -13,7 +13,7 @@ module Pages
   collapsed ? '<details id="print-art"><summary>Pasirinkto spausdinamo dizaino peržiūra</summary>'+body+'</details>' : body
  end
  def metric_cards(values)
-  '<div class="resource-stats">'+values.map { |n,label|"<div><strong>#{n}</strong><span>#{label}</span></div>" }.join+'</div>'
+  '<div class="resource-stats">'+values.each_with_index.map { |(n,label),i|"<div>#{ui_icon(%w[calendar clock briefcase][i%3])}<strong>#{n}</strong><span>#{label}</span></div>" }.join+'</div>'
  end
  def shell(main,aside)
   '<div class="resource-shell"><div class="resource-content">'+main+'</div>'+aside+'</div>'

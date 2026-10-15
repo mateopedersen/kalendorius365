@@ -128,7 +128,7 @@ if ($("#iso-date")) {
         );
       }
       $("#iso-nearby").innerHTML =
-        '<div class="table-scroll"><table class="data-table"><thead><tr><th>ISO savaitė</th><th>Pirmadienis</th><th>Sekmadienis</th></tr></thead><tbody>' +
+        '<div class="table-scroll" tabindex="0" role="region" aria-label="Slenkama ISO savaičių lentelė"><table class="data-table"><thead><tr><th>ISO savaitė</th><th>Pirmadienis</th><th>Sekmadienis</th></tr></thead><tbody>' +
         rows.join("") +
         "</tbody></table></div>";
     }

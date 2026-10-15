@@ -1,0 +1,1576 @@
+{
+  "a11y": [
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 2
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/2027/sausis/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/2028/vasaris/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/2027/",
+      "violations": [],
+      "passes": 31,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/tuscias-kalendorius/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/sventes/2027/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/darbo-dienos/2027/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/mokiniu-atostogos/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/kurti-kalendoriu/",
+      "violations": [],
+      "passes": 22,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/datos-skaiciuokle/",
+      "violations": [],
+      "passes": 26,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "path": "/irankiai/",
+      "violations": [],
+      "passes": 20,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/",
+      "violations": [],
+      "passes": 31,
+      "incomplete": 2
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/2027/sausis/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/2028/vasaris/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/2027/",
+      "violations": [],
+      "passes": 29,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/tuscias-kalendorius/",
+      "violations": [],
+      "passes": 25,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/sventes/2027/",
+      "violations": [],
+      "passes": 26,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/darbo-dienos/2027/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/mokiniu-atostogos/",
+      "violations": [],
+      "passes": 26,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/kurti-kalendoriu/",
+      "violations": [],
+      "passes": 22,
+      "incomplete": 1
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/datos-skaiciuokle/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "path": "/irankiai/",
+      "violations": [],
+      "passes": 18,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/",
+      "violations": [],
+      "passes": 29,
+      "incomplete": 2
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/2027/sausis/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/2028/vasaris/",
+      "violations": [],
+      "passes": 28,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/2027/",
+      "violations": [],
+      "passes": 31,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/tuscias-kalendorius/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/sventes/2027/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 1
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/darbo-dienos/2027/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/mokiniu-atostogos/",
+      "violations": [],
+      "passes": 27,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/kurti-kalendoriu/",
+      "violations": [],
+      "passes": 22,
+      "incomplete": 1
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/datos-skaiciuokle/",
+      "violations": [],
+      "passes": 26,
+      "incomplete": 0
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "path": "/irankiai/",
+      "violations": [],
+      "passes": 20,
+      "incomplete": 1
+    }
+  ],
+  "responsive": [
+    {
+      "path": "/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 360,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/2027/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 390,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "path": "/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/2027/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 768,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "path": "/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/2027/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 1024,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "path": "/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 1440,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/2027/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 1920,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1920,
+      "width": 1920
+    }
+  ],
+  "performance": [
+    {
+      "path": "/2028/vasaris/",
+      "lcp": 196,
+      "cls": 0.001569275665283203,
+      "maxEventDuration": 0,
+      "fcp": 196,
+      "load": 98.5
+    },
+    {
+      "path": "/",
+      "lcp": 92,
+      "cls": 0.03823070454538604,
+      "maxEventDuration": 0,
+      "fcp": 84,
+      "load": 70.19999992847443
+    }
+  ],
+  "functional": [
+    {
+      "test": "desktop and mobile search: month nominative, accent-insensitive, multiple words; Escape closes menu/results",
+      "passed": true
+    },
+    {
+      "test": "Leap-day range 2028-02-28 to 2028-03-01",
+      "result": "2\nKalendorin&#279;s dienos\n0\nPilnos savait&#279;s\n3\nDarbo dienos\n\n2 kalendorin&#279;s dienos � 0 savait&#279;s ir 2 dienos.\n\n3 darbo dienos, 24 darbo valandos; prie��ventini&#371; trumpinim&#371;: 0.\n\n0 savaitgalio dienos; �vent&#279;s darbo dienomis: 0.\n\nPrad�ios data + 0 d. = 2028 m. vasario 28 d., pirmadienis.",
+      "passed": true
+    },
+    {
+      "test": "Event create/edit/delete, filters sync, note persistence, task completion/deletion; 2027 six-day workweek totals 302 days / 2004 hours; BW filter has five files; browser PDF/WebP exact hashes; generator 4961x7016 WebP",
+      "passed": true,
+      "evidence": "Earlier interactive checks plus download-interaction-verification.json"
+    }
+  ],
+  "allPages": [
+    {
+      "path": "/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/balandis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/birzelis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/geguze/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/gruodis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/kovas/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/lapkritis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/liepa/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/rugpjutis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/rugsejis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/spalis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2027/vasaris/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/balandis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/birzelis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/geguze/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/gruodis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/kovas/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/lapkritis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/liepa/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/rugpjutis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/rugsejis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/sausis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/spalis/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 360,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/darbo-dienos/2028/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/menesiai/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/metai/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 360,
+      "cards": 3,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/privatumas/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/savaites/2027/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/savaites/2028/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/sventes/2028/",
+      "expected": 360,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 360,
+      "cards": 16,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 360,
+      "width": 360
+    },
+    {
+      "path": "/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/balandis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/birzelis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/geguze/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/gruodis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/kovas/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/lapkritis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/liepa/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/rugpjutis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/rugsejis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/sausis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/spalis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2027/vasaris/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/balandis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/birzelis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/geguze/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/gruodis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/kovas/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/lapkritis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/liepa/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/rugpjutis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/rugsejis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/sausis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/spalis/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/2028/vasaris/",
+      "expected": 1440,
+      "cards": 10,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/darbo-dienos/2027/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/darbo-dienos/2028/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/datos-skaiciuokle/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/irankiai/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/kurti-kalendoriu/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/menesiai/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/metai/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/mokiniu-atostogos/",
+      "expected": 1440,
+      "cards": 3,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/privatumas/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/savaites/2027/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/savaites/2028/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/sventes/2027/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/sventes/2028/",
+      "expected": 1440,
+      "cards": 0,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "path": "/tuscias-kalendorius/",
+      "expected": 1440,
+      "cards": 16,
+      "font": "Lato, Arial, sans-serif",
+      "h1": 1,
+      "scroll": 1440,
+      "width": 1440
+    }
+  ],
+  "notes": [
+    "Local browser tests, actual CSS viewport sizes. Accessibility scanner waits for font loading and homepage calendar initialization. Automated checks do not establish universal conformance.",
+    "Performance samples are local unthrottled laboratory observations, not field Core Web Vitals."
+  ]
+}

@@ -15,7 +15,7 @@ class Page(HTMLParser):
   if tag in ['a','img','script','link']:
    url=a.get('href') if tag in ['a','link'] else a.get('src')
    if url:self.links.append(url)
-  if tag=='img':assert a.get('alt') and a.get('width') and a.get('height'),a
+  if tag=='img':assert (a.get('alt') or (a.get('alt') == '' and a.get('aria-hidden') == 'true')) and a.get('width') and a.get('height'),a
   if tag=='script' and a.get('type')=='application/ld+json':self.inscript=True
  def handle_endtag(self,tag):
   if tag=='title':self.in_title=False
@@ -46,7 +46,7 @@ assert not fail,json.dumps(fail[:30])
 manifest=json.loads((PUBLIC/'assets/data/manifest.json').read_text())['assets']
 for y in [2027,2028]:
  for m in range(1,13):
-  slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('class="design-card"')==10
+  slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
   for e in manifest:
    if e['kind']=='monthly' and e['year']==y and e['month']==m:assert e['pdf'] in html and e['webp'] in html and e['preview'] in html
 print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, JSON-LD and 240 monthly mappings.')

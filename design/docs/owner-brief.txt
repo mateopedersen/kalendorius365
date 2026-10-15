@@ -1,0 +1,362 @@
+KALENDORIUS365.LT — ADVANCED VISUAL REDESIGN + UI SYSTEM + ASSET PRODUCTION MASTER PROMPT
+
+ROLE
+You are the lead product designer, UI/UX architect, art director, brand designer, front-end design engineer, Ruby/Jekyll systems engineer, and design-system owner for Kalendorius365.lt.
+
+WEBSITE
+https://kalendorius365.lt/
+
+EXISTING STATE
+The website is already live. Do NOT rebuild from scratch unless technically required for a specific section. Preserve the existing GitHub repository, deployment pipeline, Cloudflare Pages setup, domain, and production architecture.
+
+CURRENT PRIORITY
+Ignore Google growth work for now. Do NOT spend time on Search Console, indexing campaigns, or off-site SEO outreach in this phase.
+The immediate mission is to significantly improve the visual quality, product polish, design system, brand identity, and premium feel of the website.
+
+KEY BUSINESS CONTEXT
+The current implementation works, but the owner is NOT satisfied with the design quality.
+The website currently feels visually weaker than the original ambition.
+The owner specifically dislikes:
+- the current font system,
+- the weak visual atmosphere,
+- the weather block feeling too plain,
+- insufficiently premium UI details,
+- not enough custom-designed assets,
+- insufficiently distinctive national / Lithuanian character.
+
+MANDATORY DESIGN CHANGES
+1. Use Lato as the primary sitewide UI font everywhere it is appropriate.
+   - Replace the current global UI type system with Lato.
+   - Apply Lato consistently across navigation, widgets, buttons, labels, body text, cards, forms, filters, tables, toolbars, tabs, and utility text.
+   - Preserve good typographic hierarchy, spacing, and readability.
+   - If a secondary display or print font is needed for specific printable templates, it may be used intentionally, but the main web application language must clearly center on Lato.
+
+2. Upgrade the visual design across the entire site.
+   The site should feel like a custom premium Lithuanian calendar platform, not a generic dashboard.
+   Increase sophistication in:
+   - spacing,
+   - information hierarchy,
+   - iconography,
+   - header/navigation polish,
+   - border treatment,
+   - panel compositions,
+   - shadows and depth,
+   - hover/focus/active states,
+   - empty states,
+   - visual density,
+   - responsive refinement.
+
+3. Improve the weather widget significantly.
+   - Use a more premium weather presentation.
+   - Include real cloud/sky visuals or atmospheric weather imagery/illustration treatment where appropriate.
+   - The weather panel should feel alive and polished, not plain text-only.
+   - Keep it elegant and professional.
+   - Do not make it look like a generic stock card.
+   - The weather UI should still load fast and degrade gracefully.
+
+4. Strengthen the Lithuanian national identity.
+   Use the Lithuanian national palette elegantly:
+   - Yellow: #FDB913
+   - Green: #006A44
+   - Red: #C1272D
+   However, do NOT overpaint the interface in saturated flag colors.
+   Use them in refined, premium ways.
+
+5. Raise overall visual quality sharply.
+   The owner wants a substantially more advanced, polished, premium result than the current live implementation.
+   This applies to:
+   - homepage,
+   - monthly printable pages,
+   - yearly pages,
+   - blank calendar library,
+   - holiday pages,
+   - workday tools,
+   - calendar builder,
+   - mobile layouts,
+   - logo,
+   - icons,
+   - buttons,
+   - card visuals,
+   - empty states,
+   - section illustrations.
+
+REFERENCE MATERIALS
+Read and inspect every file attached in the bundle.
+These files define the preferred direction and the redesign priorities.
+In particular:
+- 00_homepage_selected_reference.png = original selected homepage direction.
+- 01_homepage_refined_dashboard.png = refined homepage idea.
+- 02–08 = page-type direction references.
+- 09_logo_concept.png = logo direction.
+- 10_ui_kit_buttons_icons.png = UI kit direction.
+- 11_current_weather_card_issue_reference.png = current design problem reference for the weather area.
+
+IMPORTANT
+These references show the desired visual direction.
+They are not pixel-perfect legal or factual data references.
+Do not blindly copy the dates or sample numbers as content.
+Use them to understand the style, hierarchy, and product intent.
+
+VISUAL GOAL
+Create a website that feels:
+- premium,
+- editorial,
+- highly functional,
+- nationally localized,
+- modern but not trendy for the sake of trend,
+- trustworthy,
+- custom-designed,
+- printable-professional,
+- suitable for children, families, students, office workers, schools, and older adults.
+
+DESIGN RULES
+- No generic AI landing-page look.
+- No huge irrelevant hero blocks.
+- No random gradients everywhere.
+- No weak default icons.
+- No template-like charts or filler cards.
+- No cheap visual shortcuts.
+- No generic placeholder illustrations.
+- No typography inconsistency.
+- No low-quality weather icon treatment.
+- No weak logo treatment.
+
+SITEWIDE REDESIGN SCOPE
+Redesign and refine ALL of the following:
+
+A. HOMEPAGE DASHBOARD
+- Keep the three-column app layout.
+- Keep the homepage centered on the live calendar.
+- Preserve functionality, but redesign the UI in a more advanced way.
+- Improve the main header, navigation, filters, tabs, calendar grid, selected-day pane, notes, tasks, quick stats, widgets, holiday lists, and weather module.
+- Strengthen the visual coherence between left sidebar, center calendar, and right sidebar.
+- Improve state styling for selected day, holiday highlights, event cards, filters, and buttons.
+- Make the homepage feel worthy of a premium productivity platform.
+
+B. MONTHLY PRINTABLE PAGES
+- Improve the page structure around the 10 template gallery.
+- Clearly present both colored and black-and-white designs.
+- Make previews feel premium and collectible.
+- Improve download affordances for PDF and WebP.
+- Improve sections explaining print size, styles, and usage.
+- The page should feel like a premium printable marketplace, but remain editorially clean.
+
+C. YEARLY CALENDAR PAGES
+- Improve hierarchy, previews, filters, annual overview, and template selector.
+- Show the 12-month annual preview more elegantly.
+- Make the yearly pages feel high-value and practical.
+
+D. BLANK CALENDAR LIBRARY
+- Improve browsing of undated templates.
+- Create a cleaner system for template categories.
+- Add more professional visual explanation of what each blank template is for.
+
+E. HOLIDAY PAGES
+- Improve holiday data presentation.
+- Add stronger visual storytelling and Lithuanian cultural tone.
+- Include a few ORIGINAL, tasteful holiday-related visuals/illustrations/images.
+- These should be created for Kalendorius365, not copied from the web.
+- They can be used in featured modules, cards, or section headers.
+- Use real-looking and meaningful imagery connected to Lithuanian national holidays.
+
+F. WORKDAY / BUSINESS TOOLS
+- Make tables, calculations, and summaries look more premium and clearer.
+- Make these utilities feel trustworthy and professional.
+
+G. CALENDAR BUILDER
+- Redesign the customization controls so the tool feels sophisticated and easy to use.
+- Improve layout, form controls, preview, and export actions.
+
+H. MOBILE & TABLET
+- Upgrade the responsive layouts, not just the desktop views.
+- Mobile must feel intentionally designed.
+- Improve component density, spacing, bottom actions, and touch ergonomics.
+
+NEW VISUAL ASSET PRODUCTION — REQUIRED
+Create or refine a full original asset family for the project.
+This is a major requirement.
+
+1. LOGO
+Design a more advanced Kalendorius365 brand logo.
+Requirements:
+- professional,
+- recognizably Lithuanian in mood,
+- appropriate for a serious productivity/calendar brand,
+- scalable,
+- suitable for header, favicon derivatives, social previews, and print contexts.
+Do not create a childish logo.
+Do not create a generic app-store style icon.
+Provide a clean master version.
+
+2. BUTTON SYSTEM
+Design a professional button family.
+Create a real button system including:
+- primary,
+- secondary,
+- ghost,
+- destructive,
+- success,
+- filter chips,
+- icon buttons,
+- segmented control states,
+- download buttons,
+- print/export buttons.
+Produce polished SVG-ready directions and implementable specs.
+
+3. ICONOGRAPHY
+Create a coherent custom icon direction for:
+- calendar,
+- print,
+- PDF,
+- image/WebP,
+- notes,
+- tasks,
+- holidays,
+- workdays,
+- weather,
+- time,
+- search,
+- navigation,
+- filters,
+- upload/import/export,
+- settings,
+- city selection.
+Icons must match the product personality.
+
+4. ILLUSTRATIVE / VISUAL SUPPORT ASSETS
+Produce original, advanced visual assets for the site.
+At minimum include design directions for:
+- weather cloud/sky visuals,
+- holiday hero/support images,
+- subtle Lithuanian cultural motifs,
+- empty-state visuals,
+- printable section visual support.
+
+5. HOLIDAY VISUALS
+Create several ORIGINAL holiday-related images/visuals connected to Lithuania.
+Examples may include tasteful scenes or thematic illustrations for:
+- February 16,
+- March 11,
+- July 6,
+- Christmas/Kūčios,
+- Easter,
+- Joninės / Rasos.
+These are not required to mimic documentary photography.
+But they must look premium, original, and contextually meaningful.
+Do not use copyrighted logos or copied poster art.
+
+QUALITY OF SOURCE ASSETS
+Create master design assets in high quality.
+The owner specifically requested a stronger visual package and 4K-quality source files.
+Therefore:
+- Produce source design visuals at approximately 4K-quality dimensions where relevant for reference/mockup assets.
+- For reusable interface assets, create clean source versions suitable for implementation.
+- For website delivery, export optimized production versions as needed.
+- Do not bloat production unnecessarily.
+
+OUTPUT PACKAGE REQUIREMENTS
+Create a broad design-improvement package inside the repository or a documented design folder.
+At minimum provide:
+- improved design system tokens,
+- updated typography rules,
+- page screenshots or preview renders,
+- refined logo assets,
+- button system assets/specs,
+- icon direction assets/specs,
+- weather visuals,
+- holiday visuals,
+- UI component directions,
+- documentation describing how these assets map to actual implementation.
+
+PAGES TO REVIEW AND POLISH IN DETAIL
+Review every public page and improve weak visual areas.
+Do not stop after only adjusting the homepage.
+At minimum review and enhance:
+- homepage,
+- 24 monthly pages,
+- yearly pages,
+- blank calendar page,
+- holidays page,
+- working days page,
+- student holidays page,
+- calendar builder,
+- date calculator,
+- navigation menus,
+- footer,
+- search.
+
+TECHNICAL IMPLEMENTATION REQUIREMENTS
+- Preserve the existing Ruby/Jekyll architecture.
+- Preserve the existing Cloudflare/GitHub deployment model.
+- Do not break working downloads.
+- Do not destroy verified PDF/WebP output pipelines.
+- Do not remove correct Lithuanian date logic.
+- Do not regress accessibility.
+- Do not regress responsive behavior.
+- Do not reduce print quality.
+- Do not replace the working data system with mock content.
+
+SITE FONT SYSTEM — EXPLICIT INSTRUCTION
+The whole website should move to a Lato-based UI system.
+This is a direct owner requirement.
+Implement it consistently and professionally.
+Review spacing, line-height, letter spacing, font weights, and card density after the change.
+Do not just swap the font file and leave broken spacing.
+
+ADVANCED POLISH CHECKLIST
+When redesigning, improve all of the following:
+- header density,
+- card hierarchy,
+- widget headers,
+- spacing rhythm,
+- filter chip styling,
+- button states,
+- form controls,
+- select menus,
+- tab controls,
+- weather layout,
+- holiday cards,
+- event cards,
+- download CTA visibility,
+- preview image framing,
+- mobile touch targets,
+- empty-state quality,
+- footer refinement,
+- overall brand consistency.
+
+DO NOT PRIORITIZE RIGHT NOW
+Do not prioritize Search Console, ranking strategy, image-indexing strategy, backlink work, or off-site promotion in this redesign phase.
+Those can come later.
+Now the goal is product and design excellence.
+
+QA AND VERIFICATION
+After the redesign:
+1. Capture new screenshots of all major page types.
+2. Compare the before/after quality.
+3. Verify Lato is consistently applied.
+4. Verify the weather section is meaningfully improved.
+5. Verify the logo and UI kit are upgraded.
+6. Verify the downloadable assets and functions still work.
+7. Verify mobile screens remain clean.
+8. Verify that all typography renders Lithuanian characters correctly.
+9. Verify that the site still feels fast.
+10. Document what changed.
+
+DELIVERABLES REPORT
+When finished, provide a clear report including:
+- what design changes were made,
+- which pages were visually redesigned,
+- what font changes were made,
+- what new logo was produced,
+- what button/icon system was produced,
+- what holiday visuals were created,
+- what weather improvements were made,
+- what screenshots were captured,
+- what remains optional for a later phase.
+
+FINAL OBJECTIVE
+Turn Kalendorius365.lt into a far more advanced and visually impressive Lithuanian calendar product.
+The site should feel custom, premium, polished, and far beyond the current version.
+The redesign must respect the existing functional foundation while significantly improving aesthetics, brand identity, and interface quality.
+
+Proceed autonomously within the existing project and accounts.

@@ -1,0 +1,21 @@
+✔ every one of 731 target dates agrees with Ruby Gregorian/ISO data (10.928375ms)
+✔ leap years, 6-row months, navigation and ISO boundaries (0.145083ms)
+✔ movable and statutory holidays; no substitute Mondays (0.142917ms)
+✔ all monthly workdays and preholiday hours match Ruby; target includes Jan 1 next year (4.511875ms)
+✔ Vilnius date rollover, DST gaps and repeated hour (1.111791ms)
+✔ storage CRUD, corruption/quota protection and validation (0.51925ms)
+✔ ICS UTF-8 folding, escaping and round trip with timezone recurrence (2.760791ms)
+✔ recurrence handles nonexistent month days and leap days (0.086542ms)
+✔ real elapsed duration follows DST and all-day multi-day ranges remain intact (0.092125ms)
+✔ JSON backup restores valid data and rejects incompatible preferences (0.172875ms)
+✔ weather rejects unapproved upstream destinations (22.997667ms)
+✔ weather source attribution, partial failure and cache contract (3.552292ms)
+✔ weather total failure returns unavailable, never invented data (0.337708ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.752917

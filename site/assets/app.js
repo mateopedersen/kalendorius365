@@ -1,3 +1,4 @@
+import { icon } from "./icons.js";
 import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
 import { exportICS, importICS } from "./ics.js";
@@ -151,7 +152,11 @@ function monthTable(date, isMini = false) {
           b.append(el("span", "◆ " + h.name, "holiday-label"));
         for (const e of items.slice(0, 2))
           b.append(
-            el("span", (e.important ? "! " : "") + e.title, "event-chip"),
+            el(
+              "span",
+              (e.important ? "! " : "") + e.title,
+              "event-chip cat" + e.category,
+            ),
           );
         if (items.length > 2) b.append(el("small", "+" + (items.length - 2)));
       }
@@ -161,7 +166,7 @@ function monthTable(date, isMini = false) {
   return table;
 }
 function item(e, date) {
-  const entry = el("div", undefined, "agenda-entry"),
+  const entry = el("div", undefined, "agenda-entry cat" + e.category),
     text = el("div");
   text.append(el("strong", (e.important ? "! " : "") + e.title));
   text.append(
@@ -181,7 +186,8 @@ function item(e, date) {
   text.append(el("small", "Trukmė: " + span));
   if (e.start.slice(0, 10) !== e.end.slice(0, 10))
     text.append(el("small", e.start.slice(0, 10) + " – " + e.end.slice(0, 10)));
-  const edit = el("button", "Keisti");
+  const edit = el("button");
+  edit.append(icon("edit"));
   edit.dataset.edit = e.id;
   edit.setAttribute("aria-label", "Redaguoti " + e.title);
   entry.append(text, edit);
@@ -207,7 +213,53 @@ function listDates(start, count) {
   }
   return wrap;
 }
+function renderFilterChips() {
+  const host = $("#category-chips");
+  if (!host) return;
+  host.replaceChildren();
+  const all = el("button", "Visi įvykiai", "filter-chip");
+  all.setAttribute(
+    "aria-pressed",
+    String(showHolidays && visible.every(Boolean)),
+  );
+  all.onclick = () => {
+    showHolidays = true;
+    visible = visible.map(() => true);
+    syncFilters();
+  };
+  host.append(all);
+  const definitions = [
+    ["Šventės", -1],
+    ...data.categories.map((name, i) => [name, i]),
+  ];
+  for (const [name, i] of definitions) {
+    const b = el("button", undefined, "filter-chip");
+    const dot = el(
+      "span",
+      undefined,
+      i < 0 ? "filter-dot holiday-dot" : "filter-dot cat" + i,
+    );
+    b.append(dot, document.createTextNode(name));
+    b.setAttribute("aria-pressed", String(i < 0 ? showHolidays : visible[i]));
+    b.onclick = () => {
+      if (i < 0) showHolidays = !showHolidays;
+      else visible[i] = !visible[i];
+      syncFilters();
+    };
+    host.append(b);
+  }
+}
+function syncFilters() {
+  pref("holidays", showHolidays);
+  pref("visible", visible);
+  const inputs = document.querySelectorAll("#layers input");
+  inputs.forEach((input, index) => {
+    input.checked = index === 0 ? showHolidays : visible[index - 1];
+  });
+  render();
+}
 function renderCalendar() {
+  renderFilterChips();
   const y = +display.slice(0, 4),
     m = +display.slice(5, 7);
   $("#period-title").textContent =
@@ -264,9 +316,11 @@ function renderCalendar() {
         cal.difference(cal.today(), `${+cal.today().slice(0, 4) + 1}-01-01`),
         "Iki Naujųjų metų",
       ],
-    ].map(([n, label]) => {
+    ].map(([n, label], index) => {
       const e = el("div", undefined, "stat");
-      e.append(el("b", n), el("span", label));
+      const art = el("span", undefined, "stat-art stat-art-" + index);
+      art.append(icon(["calendar", "briefcase", "gift", "clock"][index]));
+      e.append(art, el("b", n), el("span", label));
       return e;
     }),
   );
@@ -437,7 +491,10 @@ function updateEventTimeFields() {
     input.required = !fields.allDay.checked;
   }
 }
-$("#event-form").elements.allDay.addEventListener("change", updateEventTimeFields);
+$("#event-form").elements.allDay.addEventListener(
+  "change",
+  updateEventTimeFields,
+);
 $("#close-event").onclick = () => $("#event-dialog").close();
 $("#delete-event").onclick = () => {
   const id = $("#event-form").elements.id.value;

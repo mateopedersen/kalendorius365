@@ -1,0 +1,142 @@
+[
+  {
+    "name": "weather",
+    "prompt": "Use case: photorealistic-natural. Asset type: original atmospheric weather-panel background for Kalendorius365.lt, a premium Lithuanian calendar website. Create a high-quality 3840x2160 landscape master. Scene: elegant Vilnius old-town skyline, cathedral bell tower and warm terracotta rooftops, subtle Gediminas tower on the hill in the distance. Wide airy blue-grey Lithuanian sky with beautifully lit layered white clouds and soft morning sunlight. Architecture occupies the bottom quarter and right half, upper two thirds open pale sky for dark interface text. Natural editorial photographic realism, refined restrained colors, crisp architecture, soft atmospheric depth, no oversaturation. No people, no typography, no numbers, no UI, no borders, no logos, no watermarks. This is an illustrative city atmosphere, not a live webcam or a claim about today's actual weather.",
+    "mode": "built-in imagegen",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "master": "design/masters/weather.png",
+    "exports": [
+      {
+        "path": "site/assets/visuals/weather-640.webp",
+        "dimensions": [
+          640,
+          360
+        ],
+        "bytes": 45046
+      },
+      {
+        "path": "site/assets/visuals/weather-1280.webp",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "bytes": 138554
+      }
+    ]
+  },
+  {
+    "name": "lithuania-freedom",
+    "prompt": "Use case: photorealistic-natural. Asset type: original Lithuanian national-holiday editorial website artwork for Kalendorius365.lt. Create a refined 3840x2160 landscape master. A Lithuanian flag with exactly three horizontal stripes, yellow top #FDB913, green middle #006A44, red bottom #C1272D, softly moving in a breeze. Vilnius Gediminas red-brick tower and old-town rooftops in the distance, early golden sunlight, fresh spring atmosphere, premium natural editorial photography. Flag on left-middle, tower on right, carefully balanced quiet composition, lower quarter dark foliage suitable for a white caption overlay added separately. Detailed cloth texture, believable light, subtle colors. No people, no text, no UI, no watermark, no coat of arms. Original interpretive visual for February 16, March 11 and July 6, not a documentary image of a specific event.",
+    "mode": "built-in imagegen",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "master": "design/masters/lithuania-freedom.png",
+    "exports": [
+      {
+        "path": "site/assets/visuals/lithuania-freedom-640.webp",
+        "dimensions": [
+          640,
+          360
+        ],
+        "bytes": 46576
+      },
+      {
+        "path": "site/assets/visuals/lithuania-freedom-1280.webp",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "bytes": 148548
+      }
+    ]
+  },
+  {
+    "name": "jonines-rasos",
+    "prompt": "Use case: photorealistic-natural. Asset type: original Lithuanian midsummer Joninės / Rasos editorial artwork for Kalendorius365.lt. High-quality 3840x2160 landscape master. A carefully crafted oak-leaf and wildflower wreath rests on a weathered wooden lakeside dock. A modest glowing midsummer bonfire on the shore at right, tranquil Lithuanian lake, birch and pine forest, warm dusk sky and golden reflections. Sophisticated natural editorial still life, exceptional material detail, intimate cultural atmosphere, restrained forest green and amber. Composition calm, no people, no invented symbols, no text, no UI, no watermark. Lower edge sufficiently dark for a separate white caption. Original interpretive illustration, not a photo of an actual ceremony.",
+    "mode": "built-in imagegen",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "master": "design/masters/jonines-rasos.png",
+    "exports": [
+      {
+        "path": "site/assets/visuals/jonines-rasos-640.webp",
+        "dimensions": [
+          640,
+          360
+        ],
+        "bytes": 77370
+      },
+      {
+        "path": "site/assets/visuals/jonines-rasos-1280.webp",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "bytes": 223138
+      }
+    ]
+  },
+  {
+    "name": "kucios-winter",
+    "prompt": "Use case: photorealistic-natural. Asset type: original Lithuanian Kūčios / Christmas editorial still-life artwork for Kalendorius365.lt. Create a premium 3840x2160 landscape master. A quiet Lithuanian winter table by a window: natural ivory linen, an elegant lit beeswax candle, small ceramic bowl of kūčiukai bite-sized poppy-seed biscuits, a few wheat stems, spruce sprigs, softly snow-covered forest beyond the glass. Refined warm candlelight against cool winter blue, tactile natural materials, clean editorial composition, no excessive decorations, no Santa Claus. Place still-life elements predominantly middle-right with subtle dark foreground allowing a separate caption. No people, no text, no logos, no UI, no watermark. Original interpretive cultural artwork.",
+    "mode": "built-in imagegen",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "master": "design/masters/kucios-winter.png",
+    "exports": [
+      {
+        "path": "site/assets/visuals/kucios-winter-640.webp",
+        "dimensions": [
+          640,
+          360
+        ],
+        "bytes": 46658
+      },
+      {
+        "path": "site/assets/visuals/kucios-winter-1280.webp",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "bytes": 126278
+      }
+    ]
+  },
+  {
+    "name": "velykos-spring",
+    "prompt": "Use case: photorealistic-natural. Asset type: original Lithuanian Easter / Velykos editorial artwork for Kalendorius365.lt. High-quality 3840x2160 landscape master. Three beautifully hand-decorated traditional Lithuanian margučiai eggs in natural brown, deep muted green and warm ivory, delicate wax-resist botanical and geometric patterns, resting in a shallow handmade ceramic dish on linen. Fresh willow catkins, tiny spring branches, soft natural morning window light, quiet pale green garden background. Premium magazine still-life photography, authentic handcrafted textures, sophisticated restrained national palette, no garish colors, no childish bunny, no stock-photo look. Center-right arrangement with uncluttered breathing room. No people, lettering, UI, watermark or logos.",
+    "mode": "built-in imagegen",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "master": "design/masters/velykos-spring.png",
+    "exports": [
+      {
+        "path": "site/assets/visuals/velykos-spring-640.webp",
+        "dimensions": [
+          640,
+          360
+        ],
+        "bytes": 61998
+      },
+      {
+        "path": "site/assets/visuals/velykos-spring-1280.webp",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "bytes": 159602
+      }
+    ]
+  }
+]
