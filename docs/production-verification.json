@@ -1,0 +1,134 @@
+{
+  "base": "https://kalendorius365.lt",
+  "generator": "517705f593618a0918eba9dfa4f5c69f344bd8447b501d300cabe49d81f6c85b",
+  "status": "passed",
+  "checks": {
+    "/robots.txt": {
+      "status": 200,
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 16:26:13 GMT",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Content-Length": "70",
+        "Connection": "close",
+        "x-content-type-options": "nosniff",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=2VU9oD7wWOTepS%2FE4%2FpMJTnpU4EOvIJ7Tx%2BG%2B6dd07Qn5N9f8yHUWE1yeLeNDNBg4CP1IBTQ%2FJP2VNj93KJAhjGP%2F9aXl0B%2FEnj01X4cKiUgYkU%2B3oIOUst1r1kC8u%2Bcr6ud%2Fg%3D%3D\"}]}",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=14400, must-revalidate",
+        "ETag": "\"e4d1d116c74181ad417e368a2b09d00e\"",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "Server-Timing": "cfEdge;dur=18,cfOrigin;dur=215",
+        "Server": "cloudflare",
+        "Accept-Ranges": "bytes",
+        "cf-cache-status": "EXPIRED",
+        "CF-RAY": "a4b02f29c82bbb35-FRA",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "body": "User-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n"
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 16:26:13 GMT",
+        "Content-Type": "application/xml",
+        "Content-Length": "28097",
+        "Connection": "close",
+        "x-content-type-options": "nosniff",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=UTFufTz0GNqimJHr7b%2Fc8FhCU5O2xpdyz%2BTRK%2Fje2%2BpAQAAr%2BOqB2gviq%2Fxl9z3%2FPM8P%2Fjr1mHNlvQfTzGFH%2BHMvxh7TrPSp7lkWrZCM%2BIlwHghzyWagZEVaYcdH8E3ckwJlYw%3D%3D\"}]}",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "ETag": "\"afde30f258857e337f60af51eeb22d7f\"",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "Server-Timing": "cfEdge;dur=14,cfOrigin;dur=183",
+        "Server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a4b02f2c3d80d398-FRA",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "canonicals": 41,
+      "images": 240
+    },
+    "/api/weather?city=vilnius": {
+      "status": 200,
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 16:26:14 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "27484",
+        "Connection": "close",
+        "X-Content-Type-Options": "nosniff",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=N0aqgNeivkMR6%2BFmsw9YvXifKYLsFwNM%2FIwPgeTjeRPhMq8BevTOVyOU3lnCNqWT5opEIVEUXmqRwZsAgLRWQOpx3Feex4ijDKCVQL0dfZvzsKQDssiCZX2eqFwTZ638qXqYBQ%3D%3D\"}]}",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "cf-cache-status": "DYNAMIC",
+        "Accept-Ranges": "bytes",
+        "Age": "36",
+        "Cache-Control": "public, max-age=1200",
+        "Last-Modified": "Thu, 15 Oct 2026 16:25:37 GMT",
+        "Server": "cloudflare",
+        "Server-Timing": "cfEdge;dur=11,cfOrigin;dur=53",
+        "CF-RAY": "a4b02f2e7c76db0e-FRA",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "summary": {
+        "observationCount": 24,
+        "forecastCount": 83,
+        "fetchedAt": "2026-10-15T16:25:37.979Z",
+        "source": "LHMT / Meteo LT",
+        "license": "CC BY-SA 4.0"
+      }
+    },
+    "/api/weather?city=not-approved": {
+      "status": 400,
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 16:26:14 GMT",
+        "Content-Type": "text/plain;charset=UTF-8",
+        "Content-Length": "19",
+        "Connection": "close",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=GhWgRF4kYrTeV9%2BmsUc4Ufv7FvLrEC5KqEfw%2B5%2BGsHBEVP7dcqYH7VteiWM8xstvpyX9jUllKwSoTtF8UPsbjHZPr3OLkxoRrOdZHj7LPj%2FWTjWOXchfJKbvuwq8IXC0RCAUWw%3D%3D\"}]}",
+        "Server-Timing": "cfEdge;dur=24,cfOrigin;dur=44",
+        "Server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a4b02f2fde98afea-FRA",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "invalidJson": true
+    },
+    "/this-page-does-not-exist-qa/": {
+      "status": 404,
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 16:26:14 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "x-content-type-options": "nosniff",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=pdCZy0S5mHgKPSVn9BuFCbGd1a6oBTP4OUcmUe%2BqCLOw%2FpVRF2rkc%2Fyib%2FUlu8Hb%2B49DxtfjFKxnHwQdGfhEMwIb%2BaxUFb1lGXII1XRh72Y3T7Roi4OKHfOqYlwd5eG0VvPloQ%3D%3D\"}]}",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-store",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "Server-Timing": "cfEdge;dur=15,cfOrigin;dur=208",
+        "Server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "CF-RAY": "a4b02f314ce3d8e7-FRA",
+        "alt-svc": "h3=\":443\"; ma=86400"
+      },
+      "noindex": true
+    }
+  },
+  "redirects": {
+    "HTTP": "301 HTTPS; path and query preserved",
+    "WWW": "301 non-WWW; path and query preserved"
+  },
+  "notes": "An initial empty assertion failure for one page during deployment propagation passed on a complete second 41-page scan. All 552 files matched on the first full download scan.",
+  "counts": {
+    "canonicalPages": 41,
+    "downloadFiles": 552,
+    "downloadSHA256Matches": 552
+  },
+  "releaseCommit": "0109a2ec3daf8c43fb0237ccd2268861576a35b3",
+  "cloudflareDeployment": "0ca90b73-24dd-47a3-8cc5-034403dd1cfb"
+}

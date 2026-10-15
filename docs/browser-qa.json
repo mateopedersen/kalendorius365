@@ -1,11 +1,117 @@
 {
- "reviewed":"2026-10-15",
- "environment":"Codex in-app browser; real viewport overrides; local unthrottled preview",
- "viewports":[[1536,960],[1440,900],[1280,800],[768,1024],[390,844],[360,800]],
- "documentHorizontalOverflow":false,
- "mobileCriticalPages":["homepage","monthly","blank","builder","calculator"],
- "accessibility":{"tool":"axe-core 4.10.3","tags":["wcag2a","wcag2aa","wcag21aa","wcag22aa"],"pages":11,"automatedViolations":0,"incompletePerPage":"1; homepage 2 (manual review still required; not a certification)","manualChecks":["keyboard arrow navigation and focus","mobile navigation expand/collapse","dark theme","large text and high contrast","calendar visibility controls"]},
- "functionalPassed":["event create/edit/delete","all-day event after clearing required time","month/week/day/agenda/year views","next/today/date search","keyboard Easter Sunday to Easter Monday selection","category filtering","note save/reload and unsaved-note preservation across filter changes","task create/edit/complete/delete and persistence","real ICS file import/search/leap-day event","real JSON file restore of event/note/completed task after reload","five B/W cards per monthly filter","matching selected PDF/WebP preview","real PDF and WebP downloads with source SHA-256 match","blank weekly filter and 5-row Sunday-first selection","six-day work table","Feb 28 to Mar 1 2028 date calculation","custom generator Feb 29 and Sunday-first/portrait settings","real 4961x7016 WebP generator export","12-month generator and explicitly disabled unsupported annual options","weather unavailable fallback"],
- "performance":{"mobileViewport":[390,844],"localInitialFCPms":80,"localInitialLCPms":80,"localInitialCLS":0.00033639861828385224,"representativeDesktopMonthlyFCPms":140,"representativeDesktopMonthlyLCPms":140,"representativeDesktopMonthlyCLS":0,"observedMaxEventDurationMs":48,"notes":"Unthrottled local measurements, not field Core Web Vitals or a certified INP result. Initial CLS 0.5867 was fixed by reserving application geometry."},
- "publication":"pending production verification"
+  "reviewed": "2026-10-15",
+  "environment": "Codex in-app browser; real viewport overrides; local unthrottled preview",
+  "viewports": [
+    [
+      1536,
+      960
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      800
+    ]
+  ],
+  "documentHorizontalOverflow": false,
+  "mobileCriticalPages": [
+    "homepage",
+    "monthly",
+    "blank",
+    "builder",
+    "calculator"
+  ],
+  "accessibility": {
+    "tool": "axe-core 4.10.3",
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "pages": 11,
+    "automatedViolations": 0,
+    "incompletePerPage": "1; homepage 2 (manual review still required; not a certification)",
+    "manualChecks": [
+      "keyboard arrow navigation and focus",
+      "mobile navigation expand/collapse",
+      "dark theme",
+      "large text and high contrast",
+      "calendar visibility controls"
+    ]
+  },
+  "functionalPassed": [
+    "event create/edit/delete",
+    "all-day event after clearing required time",
+    "month/week/day/agenda/year views",
+    "next/today/date search",
+    "keyboard Easter Sunday to Easter Monday selection",
+    "category filtering",
+    "note save/reload and unsaved-note preservation across filter changes",
+    "task create/edit/complete/delete and persistence",
+    "real ICS file import/search/leap-day event",
+    "real JSON file restore of event/note/completed task after reload",
+    "five B/W cards per monthly filter",
+    "matching selected PDF/WebP preview",
+    "real PDF and WebP downloads with source SHA-256 match",
+    "blank weekly filter and 5-row Sunday-first selection",
+    "six-day work table",
+    "Feb 28 to Mar 1 2028 date calculation",
+    "custom generator Feb 29 and Sunday-first/portrait settings",
+    "real 4961x7016 WebP generator export",
+    "12-month generator and explicitly disabled unsupported annual options",
+    "weather unavailable fallback"
+  ],
+  "performance": {
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "localInitialFCPms": 80,
+    "localInitialLCPms": 80,
+    "localInitialCLS": 0.00033639861828385224,
+    "representativeDesktopMonthlyFCPms": 140,
+    "representativeDesktopMonthlyLCPms": 140,
+    "representativeDesktopMonthlyCLS": 0,
+    "observedMaxEventDurationMs": 48,
+    "notes": "Unthrottled local measurements, not field Core Web Vitals or a certified INP result. Initial CLS 0.5867 was fixed by reserving application geometry."
+  },
+  "publication": {
+    "status": "verified",
+    "releaseCommit": "0109a2ec3daf8c43fb0237ccd2268861576a35b3",
+    "cloudflareDeployment": "0ca90b73-24dd-47a3-8cc5-034403dd1cfb",
+    "durationSeconds": 37,
+    "canonicalPagesHTTP200": 41,
+    "downloadsHashMatched": 552,
+    "weather": "200 with real observations and forecast",
+    "redirects": "HTTP and WWW 301; path/query preserved",
+    "notFound": "404 and noindex",
+    "sitemap": "41 canonical URLs; 240 image entries",
+    "liveViewportChecks": {
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ],
+      "horizontalOverflow": false
+    },
+    "externalRichResults": "Google Rich Results UI returned Something went wrong; no external validation pass claimed"
+  }
 }
