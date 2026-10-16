@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=94c4d602e836") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=f25331c2fcfe") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=94c4d602e836") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=f25331c2fcfe") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=94c4d602e836") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=f25331c2fcfe") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -5952,14 +5952,14 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   letter-spacing: -.035em;
 }
 .brand-wordmark > span {
-  margin-inline-start: .11em;
+  margin-inline-start: .24em;
   letter-spacing: -.025em;
 }
 .footer-brand-wordmark {
   letter-spacing: -.03em;
 }
 .footer-brand-wordmark > span {
-  margin-inline-start: .1em;
+  margin-inline-start: .26em;
   letter-spacing: -.02em;
 }
 .header-search-results {

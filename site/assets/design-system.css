@@ -5952,14 +5952,14 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   letter-spacing: -.035em;
 }
 .brand-wordmark > span {
-  margin-inline-start: .11em;
+  margin-inline-start: .24em;
   letter-spacing: -.025em;
 }
 .footer-brand-wordmark {
   letter-spacing: -.03em;
 }
 .footer-brand-wordmark > span {
-  margin-inline-start: .1em;
+  margin-inline-start: .26em;
   letter-spacing: -.02em;
 }
 .header-search-results {
