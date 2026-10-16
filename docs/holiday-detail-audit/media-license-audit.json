@@ -1,0 +1,747 @@
+{
+  "checked_at": "2026-10-16",
+  "route_count": 16,
+  "documentary_media_present": 16,
+  "decorative_or_missing_documentary_media": 0,
+  "documentary_media_coverage_complete": true,
+  "programmatic_media_metadata_checks_passed": 16,
+  "editorial_rights_review": "AI reviewed Commons source metadata, license field, displayed caption and supplied image; no independent rights-holder confirmation was obtained",
+  "items": [
+    {
+      "article_id": "new-year",
+      "route": "/sventes/naujuju-metu-diena/",
+      "media_key": "new-year-vilnius",
+      "kind": "licensed_documentary_media",
+      "work_title": "New Year in Vilnius '09.jpg",
+      "author": "Dmitrijus Jarašius",
+      "license_name": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-new-year-vilnius-1200.webp",
+          "exists": true,
+          "bytes": 59242
+        },
+        {
+          "url": "/assets/visuals/holiday-new-year-vilnius-640.webp",
+          "exists": true,
+          "bytes": 24904
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/new-year-vilnius-jarasius.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-new-year-vilnius-1200.webp",
+          "width": 1200,
+          "height": 792,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-new-year-vilnius-640.webp",
+          "width": 640,
+          "height": 422,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "feb16",
+      "route": "/sventes/vasario-16-oji/",
+      "media_key": "feb16-resolution",
+      "kind": "licensed_documentary_media",
+      "work_title": "Lietuvos Tarybos nutarimo dėl Lietuvos nepriklausomybės atkūrimo rankraštis (1918 m. vasario 16 d.)",
+      "author": "Tomas Stasiulevičius",
+      "license_name": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-feb16-resolution-1200.webp",
+          "exists": true,
+          "bytes": 174404
+        },
+        {
+          "url": "/assets/visuals/holiday-feb16-resolution-640.webp",
+          "exists": true,
+          "bytes": 74128
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/feb16-independence-resolution-stasiulevicius.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-feb16-resolution-1200.webp",
+          "width": 1200,
+          "height": 1697,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-feb16-resolution-640.webp",
+          "width": 640,
+          "height": 905,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "mar11",
+      "route": "/sventes/kovo-11-oji/",
+      "media_key": "march11-act",
+      "kind": "licensed_documentary_media",
+      "work_title": "Lietuvos nepriklausomybės atkūrimo aktas (1990 m. kovo 11 d.)",
+      "author": "Lietuvos Respublikos Aukščiausioji Taryba",
+      "license_name": "Lietuvos autorių teisių įstatymo išimtis oficialiems teisės aktams (PD-LT-exempt)",
+      "license_url": "https://commons.wikimedia.org/wiki/Commons:Copyright_rules_by_territory/Lithuania",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-march11-restoration-act-800.webp",
+          "exists": true,
+          "bytes": 181082
+        },
+        {
+          "url": "/assets/visuals/holiday-march11-restoration-act-640.webp",
+          "exists": true,
+          "bytes": 123800
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/march11-restoration-act-1990.png",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-march11-restoration-act-800.webp",
+          "width": 800,
+          "height": 1136,
+          "expected_width": 800
+        },
+        {
+          "url": "/assets/visuals/holiday-march11-restoration-act-640.webp",
+          "width": 640,
+          "height": 909,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "easter",
+      "route": "/sventes/velykos/",
+      "media_key": "easter-marguciai",
+      "kind": "licensed_documentary_media",
+      "work_title": "Marguciai2. 2007-04-21.jpg",
+      "author": "Algirdas",
+      "license_name": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-easter-marguciai-1200.webp",
+          "exists": true,
+          "bytes": 218098
+        },
+        {
+          "url": "/assets/visuals/holiday-easter-marguciai-640.webp",
+          "exists": true,
+          "bytes": 82836
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/marguciai-algirdas-original.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-easter-marguciai-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-easter-marguciai-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "labour",
+      "route": "/sventes/tarptautine-darbo-diena/",
+      "media_key": "mayday-siauliai",
+      "kind": "licensed_documentary_media",
+      "work_title": "May Day demonstration in Šiauliai, 1946.jpeg",
+      "author": "Stasys Ivanauskas",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-mayday-siauliai-1200.webp",
+          "exists": true,
+          "bytes": 90832
+        },
+        {
+          "url": "/assets/visuals/holiday-mayday-siauliai-640.webp",
+          "exists": true,
+          "bytes": 38072
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/mayday-siauliai-ivanauskas-1946.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-mayday-siauliai-1200.webp",
+          "width": 1200,
+          "height": 761,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-mayday-siauliai-640.webp",
+          "width": 640,
+          "height": 406,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "mothers",
+      "route": "/sventes/motinos-diena/",
+      "media_key": "mothers-day-flowers",
+      "kind": "licensed_documentary_media",
+      "work_title": "Mother's Day Flowers, by Melody (8728386163).jpg",
+      "author": "Scott Darbey",
+      "license_name": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-mothers-day-flowers-1200.webp",
+          "exists": true,
+          "bytes": 77346
+        },
+        {
+          "url": "/assets/visuals/holiday-mothers-day-flowers-640.webp",
+          "exists": true,
+          "bytes": 33342
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/mothers-day-flowers-scott-darbey.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-mothers-day-flowers-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-mothers-day-flowers-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "fathers",
+      "route": "/sventes/tevo-diena/",
+      "media_key": "fathers-day-lake",
+      "kind": "licensed_documentary_media",
+      "work_title": "Fathers day father with kid on lake.jpg",
+      "author": "Karen Laubenstein, U.S. Fish and Wildlife Service",
+      "license_name": "Viešasis domenas (PD-author)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Fathers_day_father_with_kid_on_lake.jpg",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-fathers-day-lake-1200.webp",
+          "exists": true,
+          "bytes": 201862
+        },
+        {
+          "url": "/assets/visuals/holiday-fathers-day-lake-640.webp",
+          "exists": true,
+          "bytes": 74158
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/fathers-day-lake-karen-laubenstein.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-fathers-day-lake-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-fathers-day-lake-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "jonines",
+      "route": "/sventes/jonines/",
+      "media_key": "jonines-nida",
+      "kind": "licensed_documentary_media",
+      "work_title": "Midsummer in Nida 08.jpg",
+      "author": "Derbrauni",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-jonines-nida-1200.webp",
+          "exists": true,
+          "bytes": 189182
+        },
+        {
+          "url": "/assets/visuals/holiday-jonines-nida-640.webp",
+          "exists": true,
+          "bytes": 69476
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/jonines-nida-derbrauni-original.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-jonines-nida-1200.webp",
+          "width": 1200,
+          "height": 660,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-jonines-nida-640.webp",
+          "width": 640,
+          "height": 352,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "statehood",
+      "route": "/sventes/valstybes-diena/",
+      "media_key": "statehood-gediminas",
+      "kind": "licensed_documentary_media",
+      "work_title": "Gediminas Avenue in Vilnius, decorated for the upcoming commemoration of the Statehood Day (6 July 2023), related with the crowning of Mindaugas as the King of Lithuania in 1253.jpg",
+      "author": "Pofka",
+      "license_name": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-statehood-gediminas-1200.webp",
+          "exists": true,
+          "bytes": 222694
+        },
+        {
+          "url": "/assets/visuals/holiday-statehood-gediminas-640.webp",
+          "exists": true,
+          "bytes": 70238
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/statehood-gediminas-pofka-2023.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-statehood-gediminas-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-statehood-gediminas-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "assumption",
+      "route": "/sventes/zoline/",
+      "media_key": "assumption-pivasiunai",
+      "kind": "licensed_documentary_media",
+      "work_title": "Pivašiūnai, bažnyčia.JPG",
+      "author": "Vilensija",
+      "license_name": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-assumption-pivasiunai-1200.webp",
+          "exists": true,
+          "bytes": 194796
+        },
+        {
+          "url": "/assets/visuals/holiday-assumption-pivasiunai-640.webp",
+          "exists": true,
+          "bytes": 60628
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/assumption-pivasiunai-vilensija-2014.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-assumption-pivasiunai-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-assumption-pivasiunai-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "all-saints",
+      "route": "/sventes/visu-sventuju-diena/",
+      "media_key": "all-saints-lithuania",
+      "kind": "licensed_documentary_media",
+      "work_title": "Velines, 2006-11-01.jpg",
+      "author": "Algirdas (lt.wikipedia)",
+      "license_name": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-all-saints-lithuania-1200.webp",
+          "exists": true,
+          "bytes": 252226
+        },
+        {
+          "url": "/assets/visuals/holiday-all-saints-lithuania-640.webp",
+          "exists": true,
+          "bytes": 94010
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/velines-november-2006-algirdas.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-all-saints-lithuania-1200.webp",
+          "width": 1200,
+          "height": 894,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-all-saints-lithuania-640.webp",
+          "width": 640,
+          "height": 477,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "all-souls",
+      "route": "/sventes/velines/",
+      "media_key": "velines-lithuania",
+      "kind": "licensed_documentary_media",
+      "work_title": "Velines.jpg",
+      "author": "Jaunius (lt.wikipedia)",
+      "license_name": "Viešasis domenas (autoriaus perdavimas)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Velines.jpg",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-velines-lithuania-1024.webp",
+          "exists": true,
+          "bytes": 58190
+        },
+        {
+          "url": "/assets/visuals/holiday-velines-lithuania-640.webp",
+          "exists": true,
+          "bytes": 30166
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/velines-lithuania-jaunius.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-velines-lithuania-1024.webp",
+          "width": 1024,
+          "height": 768,
+          "expected_width": 1024
+        },
+        {
+          "url": "/assets/visuals/holiday-velines-lithuania-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "kucios",
+      "route": "/sventes/kucios/",
+      "media_key": "kucios-lithuania",
+      "kind": "licensed_documentary_media",
+      "work_title": "Kūčios.JPG",
+      "author": "Hugo.arg ir Viktorija O.",
+      "license_name": "Viešasis domenas (autorių perduota PD-self)",
+      "license_url": "https://commons.wikimedia.org/wiki/Template:PD-self",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-kucios-lithuania-1200.webp",
+          "exists": true,
+          "bytes": 65864
+        },
+        {
+          "url": "/assets/visuals/holiday-kucios-lithuania-640.webp",
+          "exists": true,
+          "bytes": 28088
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/kucios-lithuania-hugo-viktorija.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-kucios-lithuania-1200.webp",
+          "width": 1200,
+          "height": 795,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-kucios-lithuania-640.webp",
+          "width": 640,
+          "height": 424,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "christmas",
+      "route": "/sventes/kaledos/",
+      "media_key": "christmas-tree-vilnius",
+      "kind": "licensed_documentary_media",
+      "work_title": "Christmas tree in the Vilnius Cathedral Square in 2022 (2).jpg",
+      "author": "Pofka",
+      "license_name": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-christmas-tree-vilnius-1200.webp",
+          "exists": true,
+          "bytes": 288218
+        },
+        {
+          "url": "/assets/visuals/holiday-christmas-tree-vilnius-640.webp",
+          "exists": true,
+          "bytes": 96040
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/christmas-tree-vilnius-pofka-2022.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-christmas-tree-vilnius-1200.webp",
+          "width": 1200,
+          "height": 1520,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-christmas-tree-vilnius-640.webp",
+          "width": 640,
+          "height": 811,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "lithuanian-flag-day",
+      "route": "/sventes/lietuvos-veliavos-diena/",
+      "media_key": "lithuanian-flag-cc0",
+      "kind": "licensed_documentary_media",
+      "work_title": "Lithuanian flag flying over the Gediminas tower.jpg",
+      "author": "Ypsilon from Finland",
+      "license_name": "CC0 1.0 (viešasis domenas)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+          "exists": true,
+          "bytes": 54646
+        },
+        {
+          "url": "/assets/visuals/holiday-lithuanian-flag-640.webp",
+          "exists": true,
+          "bytes": 24608
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/lithuanian-flag-gediminas-cc0.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-lithuanian-flag-640.webp",
+          "width": 640,
+          "height": 480,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    },
+    {
+      "article_id": "freedom-defenders",
+      "route": "/sventes/sausio-13-oji/",
+      "media_key": "jan13-archive",
+      "kind": "licensed_documentary_media",
+      "work_title": "Unarmed Lithuanian citizen standing against Soviet tank, Vilnius, January 13, 1991.jpg",
+      "author": "Andrius Petrulevičius; Lietuvos centrinis valstybės archyvas",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "metadata_complete": true,
+      "credit_visible": true,
+      "declared_dimensions_match_img": true,
+      "responsive_sources": [
+        {
+          "url": "/assets/visuals/holiday-jan13-archive-1200.webp",
+          "exists": true,
+          "bytes": 133880
+        },
+        {
+          "url": "/assets/visuals/holiday-jan13-archive-640.webp",
+          "exists": true,
+          "bytes": 40606
+        }
+      ],
+      "all_sources_exist": true,
+      "original_file": "docs/holiday-detail-audit/source-media/jan13-petrulevicius-archive-original.jpg",
+      "original_sha256_matches": true,
+      "original_dimensions_match": true,
+      "derivative_dimensions_and_no_upscale_verified": true,
+      "derivative_dimensions": [
+        {
+          "url": "/assets/visuals/holiday-jan13-archive-1200.webp",
+          "width": 1200,
+          "height": 826,
+          "expected_width": 1200
+        },
+        {
+          "url": "/assets/visuals/holiday-jan13-archive-640.webp",
+          "width": 640,
+          "height": 441,
+          "expected_width": 640
+        }
+      ],
+      "passed_programmatic_metadata_check": true,
+      "human_license_and_context_review": "AI source, license metadata, caption, context and image visually reviewed; legal authorship assertions remain subject to Commons source metadata and no independent rights-holder confirmation was obtained"
+    }
+  ]
+}

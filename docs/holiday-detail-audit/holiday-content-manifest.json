@@ -1,0 +1,421 @@
+{
+  "created_at": "2026-10-16",
+  "release_status": "candidate_pending_verification",
+  "indexability": "server-rendered candidate pages; live production verification pending",
+  "articles": [
+    {
+      "id": "new-year",
+      "slug": "naujuju-metu-diena",
+      "url": "/sventes/naujuju-metu-diena/",
+      "title_lt": "Naujųjų metų diena",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.e-tar.lt/portal/lt/legalActEditions/f6d686707e7011e6b969d7ae07280e89?faces-redirect=true",
+        "https://www.e-tar.lt/rs/actualedition/TAR.D570962773F8/PSOYUzcVVr/",
+        "https://www.e-tar.lt/portal/lt/legalActPrint?actualEditionId=KqjqEhMSyc&documentId=TAR.07CAE5E6C2B3"
+      ],
+      "dates": {
+        "2027": [
+          "2027-01-01"
+        ],
+        "2028": [
+          "2028-01-01"
+        ],
+        "2029": [
+          "2029-01-01"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "feb16",
+      "slug": "vasario-16-oji",
+      "url": "/sventes/vasario-16-oji/",
+      "title_lt": "Lietuvos valstybės atkūrimo diena",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://lrkm.lrv.lt/lt/veiklos-sritys/lietuvos-valstybei-reiksmingu-kulturiniu-istoriniu-ivykiu-iprasminimas/vasario-16-oji-lietuvos-valstybes-atkurimo-diena/"
+      ],
+      "dates": {
+        "2027": [
+          "2027-02-16"
+        ],
+        "2028": [
+          "2028-02-16"
+        ],
+        "2029": [
+          "2029-02-16"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "mar11",
+      "slug": "kovo-11-oji",
+      "url": "/sventes/kovo-11-oji/",
+      "title_lt": "Lietuvos nepriklausomybės atkūrimo diena",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://lrkm.lrv.lt/lt/naujienos/kvieciame-dalyvauti-sventiniuose-kovo-11-osios-minejimo-renginiuose-lUEV/"
+      ],
+      "dates": {
+        "2027": [
+          "2027-03-11"
+        ],
+        "2028": [
+          "2028-03-11"
+        ],
+        "2029": [
+          "2029-03-11"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "easter",
+      "slug": "velykos",
+      "url": "/sventes/velykos/",
+      "title_lt": "Velykos Lietuvoje",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velykos.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-03-28",
+          "2027-03-29"
+        ],
+        "2028": [
+          "2028-04-16",
+          "2028-04-17"
+        ],
+        "2029": [
+          "2029-04-01",
+          "2029-04-02"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "labour",
+      "slug": "tarptautine-darbo-diena",
+      "url": "/sventes/tarptautine-darbo-diena/",
+      "title_lt": "Tarptautinė darbo diena",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.e-tar.lt/rs/actualedition/TAR.D570962773F8/PSOYUzcVVr/",
+        "https://www.ilo.org/resource/statement/may-day-international-day-labour-day-labour-and-solidarity"
+      ],
+      "dates": {
+        "2027": [
+          "2027-05-01"
+        ],
+        "2028": [
+          "2028-05-01"
+        ],
+        "2029": [
+          "2029-05-01"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "mothers",
+      "slug": "motinos-diena",
+      "url": "/sventes/motinos-diena/",
+      "title_lt": "Motinos diena Lietuvoje",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.e-tar.lt/portal/lt/legalActEditions/f6d686707e7011e6b969d7ae07280e89?faces-redirect=true",
+        "https://www.lituanistika.lt/content/89256"
+      ],
+      "dates": {
+        "2027": [
+          "2027-05-02"
+        ],
+        "2028": [
+          "2028-05-07"
+        ],
+        "2029": [
+          "2029-05-06"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "fathers",
+      "slug": "tevo-diena",
+      "url": "/sventes/tevo-diena/",
+      "title_lt": "Tėvo diena Lietuvoje",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.e-tar.lt/portal/lt/legalActEditions/f6d686707e7011e6b969d7ae07280e89?faces-redirect=true",
+        "https://www.lituanistika.lt/content/89260"
+      ],
+      "dates": {
+        "2027": [
+          "2027-06-06"
+        ],
+        "2028": [
+          "2028-06-04"
+        ],
+        "2029": [
+          "2029-06-03"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "jonines",
+      "slug": "jonines",
+      "url": "/sventes/jonines/",
+      "title_lt": "Rasos ir Joninių diena",
+      "category": "Šventinė diena · paprastai nedirbama · tradicinė šventė",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://ekgt.lt/veiklos-sritys/gidai/vasara/rasos--jonines.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-06-24"
+        ],
+        "2028": [
+          "2028-06-24"
+        ],
+        "2029": [
+          "2029-06-24"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "statehood",
+      "slug": "valstybes-diena",
+      "url": "/sventes/valstybes-diena/",
+      "title_lt": "Valstybės ir Tautiškos giesmės diena",
+      "category": "Šventinė diena · paprastai nedirbama",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://lnm.lt/aktualijos/liepos-6-aja-lietuvos-nacionalinis-muziejus-kviecia-svesti-karaliskai/"
+      ],
+      "dates": {
+        "2027": [
+          "2027-07-06"
+        ],
+        "2028": [
+          "2028-07-06"
+        ],
+        "2029": [
+          "2029-07-06"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "assumption",
+      "slug": "zoline",
+      "url": "/sventes/zoline/",
+      "title_lt": "Žolinė – Švč. Mergelės Marijos ėmimo į dangų diena",
+      "category": "Šventinė diena · paprastai nedirbama · religinė ir tradicinė šventė",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/zoline--rugpjucio-15-oji.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-08-15"
+        ],
+        "2028": [
+          "2028-08-15"
+        ],
+        "2029": [
+          "2029-08-15"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "all-saints",
+      "slug": "visu-sventuju-diena",
+      "url": "/sventes/visu-sventuju-diena/",
+      "title_lt": "Visų Šventųjų diena",
+      "category": "Šventinė diena · paprastai nedirbama · religinė diena",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-11-01"
+        ],
+        "2028": [
+          "2028-11-01"
+        ],
+        "2029": [
+          "2029-11-01"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "all-souls",
+      "slug": "velines",
+      "url": "/sventes/velines/",
+      "title_lt": "Mirusiųjų atminimo (Vėlinių) diena",
+      "category": "Šventinė diena · paprastai nedirbama · atminties diena",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-11-02"
+        ],
+        "2028": [
+          "2028-11-02"
+        ],
+        "2029": [
+          "2029-11-02"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "kucios",
+      "slug": "kucios",
+      "url": "/sventes/kucios/",
+      "title_lt": "Kūčios Lietuvoje",
+      "category": "Šventinė diena · paprastai nedirbama · tradicinė ir religinė šventė",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-12-24"
+        ],
+        "2028": [
+          "2028-12-24"
+        ],
+        "2029": [
+          "2029-12-24"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "christmas",
+      "slug": "kaledos",
+      "url": "/sventes/kaledos/",
+      "title_lt": "Šv. Kalėdos Lietuvoje",
+      "category": "Šventinė diena · paprastai nedirbama · religinė ir kultūrinė šventė",
+      "source_urls": [
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kaledos.html",
+        "https://ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html"
+      ],
+      "dates": {
+        "2027": [
+          "2027-12-25",
+          "2027-12-26"
+        ],
+        "2028": [
+          "2028-12-25",
+          "2028-12-26"
+        ],
+        "2029": [
+          "2029-12-25",
+          "2029-12-26"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "lithuanian-flag-day",
+      "slug": "lietuvos-veliavos-diena",
+      "url": "/sventes/lietuvos-veliavos-diena/",
+      "title_lt": "Lietuvos vėliavos diena",
+      "category": "Atmintina diena",
+      "source_urls": [
+        "https://www.e-tar.lt/rs/actualedition/TAR.D570962773F8/PSOYUzcVVr/",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.e-tar.lt/portal/lt/legalActPrint?actualEditionId=KqjqEhMSyc&documentId=TAR.07CAE5E6C2B3"
+      ],
+      "dates": {
+        "2027": [
+          "2027-01-01"
+        ],
+        "2028": [
+          "2028-01-01"
+        ],
+        "2029": [
+          "2029-01-01"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    },
+    {
+      "id": "freedom-defenders",
+      "slug": "sausio-13-oji",
+      "url": "/sventes/sausio-13-oji/",
+      "title_lt": "Laisvės gynėjų diena",
+      "category": "Atmintina diena",
+      "source_urls": [
+        "https://www.e-tar.lt/rs/actualedition/TAR.D570962773F8/PSOYUzcVVr/",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+        "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+        "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+        "https://www.genocid.lt/centras/lt/3280/a/print_version/"
+      ],
+      "dates": {
+        "2027": [
+          "2027-01-13"
+        ],
+        "2028": [
+          "2028-01-13"
+        ],
+        "2029": [
+          "2029-01-13"
+        ]
+      },
+      "editorial_status": "AI reviewed; no independent native-language human proofread is claimed"
+    }
+  ]
+}

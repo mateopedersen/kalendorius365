@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365.lt//Lietuviu kalendorius//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:valstybes-diena-2029-07-06@kalendorius365.lt
+DTSTAMP:20261016T000000Z
+DTSTART;VALUE=DATE:20290706
+DTEND;VALUE=DATE:20290707
+SUMMARY:Valstybės ir Tautiškos giesmės diena
+URL:https://kalendorius365.lt/sventes/valstybes-diena/
+END:VEVENT
+END:VCALENDAR

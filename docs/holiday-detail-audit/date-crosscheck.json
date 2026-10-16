@@ -1,0 +1,447 @@
+{
+  "date": "2026-10-16",
+  "timezone_semantics": "Gregorian calendar dates; all-day calendar events; Europe/Vilnius local day",
+  "independent_algorithm": "Python standard-library datetime/calendar plus a separately authored Gregorian Easter computus",
+  "legal_status_verification_separate_from_algorithm": true,
+  "years": [
+    2027,
+    2028,
+    2029
+  ],
+  "record_count": 54,
+  "mismatch_count": 0,
+  "dates": [
+    {
+      "id": "new-year",
+      "year": 2027,
+      "date": "2027-01-01",
+      "weekday_lt": "penktadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "restoration",
+      "year": 2027,
+      "date": "2027-02-16",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "independence",
+      "year": 2027,
+      "date": "2027-03-11",
+      "weekday_lt": "ketvirtadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "easter",
+      "year": 2027,
+      "date": "2027-03-28",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "easter-monday",
+      "year": 2027,
+      "date": "2027-03-29",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "labour",
+      "year": 2027,
+      "date": "2027-05-01",
+      "weekday_lt": "šeštadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "mothers",
+      "year": 2027,
+      "date": "2027-05-02",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "fathers",
+      "year": 2027,
+      "date": "2027-06-06",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "jonines",
+      "year": 2027,
+      "date": "2027-06-24",
+      "weekday_lt": "ketvirtadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "statehood",
+      "year": 2027,
+      "date": "2027-07-06",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "assumption",
+      "year": 2027,
+      "date": "2027-08-15",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "all-saints",
+      "year": 2027,
+      "date": "2027-11-01",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "all-souls",
+      "year": 2027,
+      "date": "2027-11-02",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas-eve",
+      "year": 2027,
+      "date": "2027-12-24",
+      "weekday_lt": "penktadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas",
+      "year": 2027,
+      "date": "2027-12-25",
+      "weekday_lt": "šeštadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas-second",
+      "year": 2027,
+      "date": "2027-12-26",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "lithuanian-flag-day",
+      "year": 2027,
+      "date": "2027-01-01",
+      "weekday_lt": "penktadienis",
+      "classification": "commemoration",
+      "matches_year_html": true
+    },
+    {
+      "id": "freedom-defenders",
+      "year": 2027,
+      "date": "2027-01-13",
+      "weekday_lt": "trečiadienis",
+      "classification": "commemoration",
+      "matches_year_html": true
+    },
+    {
+      "id": "new-year",
+      "year": 2028,
+      "date": "2028-01-01",
+      "weekday_lt": "šeštadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "restoration",
+      "year": 2028,
+      "date": "2028-02-16",
+      "weekday_lt": "trečiadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "independence",
+      "year": 2028,
+      "date": "2028-03-11",
+      "weekday_lt": "šeštadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "easter",
+      "year": 2028,
+      "date": "2028-04-16",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "easter-monday",
+      "year": 2028,
+      "date": "2028-04-17",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "labour",
+      "year": 2028,
+      "date": "2028-05-01",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "mothers",
+      "year": 2028,
+      "date": "2028-05-07",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "fathers",
+      "year": 2028,
+      "date": "2028-06-04",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "jonines",
+      "year": 2028,
+      "date": "2028-06-24",
+      "weekday_lt": "šeštadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "statehood",
+      "year": 2028,
+      "date": "2028-07-06",
+      "weekday_lt": "ketvirtadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "assumption",
+      "year": 2028,
+      "date": "2028-08-15",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "all-saints",
+      "year": 2028,
+      "date": "2028-11-01",
+      "weekday_lt": "trečiadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "all-souls",
+      "year": 2028,
+      "date": "2028-11-02",
+      "weekday_lt": "ketvirtadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas-eve",
+      "year": 2028,
+      "date": "2028-12-24",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas",
+      "year": 2028,
+      "date": "2028-12-25",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas-second",
+      "year": 2028,
+      "date": "2028-12-26",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "lithuanian-flag-day",
+      "year": 2028,
+      "date": "2028-01-01",
+      "weekday_lt": "šeštadienis",
+      "classification": "commemoration",
+      "matches_year_html": true
+    },
+    {
+      "id": "freedom-defenders",
+      "year": 2028,
+      "date": "2028-01-13",
+      "weekday_lt": "ketvirtadienis",
+      "classification": "commemoration",
+      "matches_year_html": true
+    },
+    {
+      "id": "new-year",
+      "year": 2029,
+      "date": "2029-01-01",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "restoration",
+      "year": 2029,
+      "date": "2029-02-16",
+      "weekday_lt": "penktadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "independence",
+      "year": 2029,
+      "date": "2029-03-11",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "easter",
+      "year": 2029,
+      "date": "2029-04-01",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "easter-monday",
+      "year": 2029,
+      "date": "2029-04-02",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "labour",
+      "year": 2029,
+      "date": "2029-05-01",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "mothers",
+      "year": 2029,
+      "date": "2029-05-06",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "fathers",
+      "year": 2029,
+      "date": "2029-06-03",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "jonines",
+      "year": 2029,
+      "date": "2029-06-24",
+      "weekday_lt": "sekmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "statehood",
+      "year": 2029,
+      "date": "2029-07-06",
+      "weekday_lt": "penktadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "assumption",
+      "year": 2029,
+      "date": "2029-08-15",
+      "weekday_lt": "trečiadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "all-saints",
+      "year": 2029,
+      "date": "2029-11-01",
+      "weekday_lt": "ketvirtadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "all-souls",
+      "year": 2029,
+      "date": "2029-11-02",
+      "weekday_lt": "penktadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas-eve",
+      "year": 2029,
+      "date": "2029-12-24",
+      "weekday_lt": "pirmadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas",
+      "year": 2029,
+      "date": "2029-12-25",
+      "weekday_lt": "antradienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "christmas-second",
+      "year": 2029,
+      "date": "2029-12-26",
+      "weekday_lt": "trečiadienis",
+      "classification": "statutory",
+      "matches_year_html": true
+    },
+    {
+      "id": "lithuanian-flag-day",
+      "year": 2029,
+      "date": "2029-01-01",
+      "weekday_lt": "pirmadienis",
+      "classification": "commemoration",
+      "matches_year_html": true
+    },
+    {
+      "id": "freedom-defenders",
+      "year": 2029,
+      "date": "2029-01-13",
+      "weekday_lt": "šeštadienis",
+      "classification": "commemoration",
+      "matches_year_html": true
+    }
+  ]
+}

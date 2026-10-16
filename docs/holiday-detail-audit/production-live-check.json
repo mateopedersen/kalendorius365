@@ -1,0 +1,6 @@
+{
+  "status": "not_run",
+  "reason": "release gates not passed; no production deploy or Cloudflare mutation performed",
+  "production_url": "https://kalendorius365.lt/",
+  "checked_at": "2026-10-16"
+}

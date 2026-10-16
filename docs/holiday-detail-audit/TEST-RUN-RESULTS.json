@@ -1,0 +1,12 @@
+{
+  "runner": "Node.js built-in test runner",
+  "command": "node --test test/*.test.js",
+  "tests": 32,
+  "passed": 32,
+  "failed": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "duration_ms": 704.169292,
+  "result": "passed",
+  "scope_note": "Existing project regression suite; it does not substitute for native-language, legal, media-license, visual, accessibility, or production verification."
+}

@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365.lt//Lietuviu kalendorius//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vasario-16-oji-2028-02-16@kalendorius365.lt
+DTSTAMP:20261016T000000Z
+DTSTART;VALUE=DATE:20280216
+DTEND;VALUE=DATE:20280217
+SUMMARY:Lietuvos valstybės atkūrimo diena
+URL:https://kalendorius365.lt/sventes/vasario-16-oji/
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365.lt//Lietuviu kalendorius//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:naujuju-metu-diena-2027-01-01@kalendorius365.lt
+DTSTAMP:20261016T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Naujųjų metų diena
+URL:https://kalendorius365.lt/sventes/naujuju-metu-diena/
+END:VEVENT
+END:VCALENDAR

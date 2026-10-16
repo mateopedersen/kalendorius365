@@ -28,6 +28,9 @@ const data = await fetch("/assets/data/calendar.json")
     notice(e.message);
     throw e;
   });
+const editorial = await fetch("/assets/data/holiday-editorial.json")
+  .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
+  .catch(() => ({ articles: [], commemorations: [] }));
 const store = new Store();
 if (store.error) notice(store.error);
 let selected = cal.today(),
@@ -48,8 +51,27 @@ let lastToday = selected,
   noteDate = selected,
   noteDirty = false;
 const hs = (y) => cal.holidays(y, data),
+  editorialArticles = () => [
+    ...(editorial.articles || []),
+    ...(editorial.commemorations || []),
+  ],
+  editorialForHoliday = (id) =>
+    editorialArticles().find(
+      (article) => article.id === id || article.holiday_ids?.includes(id),
+    ),
+  calendarEntries = (y) => [
+    ...hs(y),
+    ...(editorial.commemorations || []).map((item) => ({
+      id: item.id,
+      name: item.title,
+      date: `${y}-${String(item.month).padStart(2, "0")}-${String(item.day).padStart(2, "0")}`,
+      classification: "commemoration",
+    })),
+  ],
   dayHolidays = (s) =>
-    showHolidays ? hs(+s.slice(0, 4)).filter((h) => h.date === s) : [];
+    showHolidays
+      ? calendarEntries(+s.slice(0, 4)).filter((h) => h.date === s)
+      : [];
 const events = (s) =>
   store.data.events
     .filter((e) => visible[e.category] && cal.occursOn(e, s))
@@ -162,11 +184,23 @@ function monthTable(date, isMini = false) {
       if (s.slice(0, 7) !== date.slice(0, 7)) b.classList.add("other-month");
       if (s === cal.today()) b.classList.add("today");
       if (d > 4) b.classList.add("weekend");
-      if (holiday.length) b.classList.add("holiday");
+      if (holiday.some((h) => h.classification === "statutory"))
+        b.classList.add("holiday");
+      if (holiday.some((h) => h.classification === "commemoration"))
+        b.classList.add("commemoration-day");
       b.append(el("span", +s.slice(8), "day-number"));
       if (!isMini) {
         for (const h of holiday)
-          b.append(el("span", "◆ " + h.name, "holiday-label"));
+          b.append(
+            el(
+              "span",
+              (h.classification === "commemoration" ? "◦ " : "◆ ") + h.name,
+              "holiday-label" +
+                (h.classification === "commemoration"
+                  ? " commemoration-label"
+                  : ""),
+            ),
+          );
         for (const e of items.slice(0, 2))
           b.append(
             el(
@@ -221,8 +255,18 @@ function listDates(start, count) {
       );
     button.dataset.date = s;
     wrap.append(button);
-    for (const h of dayHolidays(s))
-      wrap.append(el("p", "◆ " + h.name, "danger"));
+    for (const h of dayHolidays(s)) {
+      const p = el(
+          "p",
+          undefined,
+          h.classification === "commemoration" ? "commemoration-label" : "danger",
+        ),
+        a = el("a", "◆ " + h.name),
+        article = editorialForHoliday(h.id);
+      a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
+      p.append(a);
+      wrap.append(p);
+    }
     const es = events(s);
     if (!es.length && count < 8)
       wrap.append(el("p", "Įvykių nėra.", "empty-state"));
@@ -329,7 +373,9 @@ function renderCalendar() {
     last,
     data,
   );
-  const monthH = hs(y).filter((h) => h.date.slice(0, 7) === first.slice(0, 7));
+  const monthH = calendarEntries(y).filter(
+    (h) => h.date.slice(0, 7) === first.slice(0, 7),
+  );
   $("#stats").replaceChildren(
     ...[
       [cal.isoWeek(cal.today()).week, "Dabartinė ISO savaitė"],
@@ -339,7 +385,7 @@ function renderCalendar() {
           ? "Liko darbo dienų"
           : "Darbo dienos mėnesį",
       ],
-      [monthH.length, "Šventinės dienos"],
+      [monthH.length, "Šventės ir atmintinos dienos"],
       [
         cal.difference(cal.today(), `${+cal.today().slice(0, 4) + 1}-01-01`),
         "Iki Naujųjų metų",
@@ -358,12 +404,26 @@ function renderCalendar() {
     }),
   );
   const list = el("ul");
-  for (const h of monthH)
-    list.append(el("li", `${cal.formatDate(h.date)} — ${h.name}`));
+  for (const h of monthH) {
+    const li = el("li"),
+      a = el("a", `${cal.formatDate(h.date)} — ${h.name}`),
+      article = editorialForHoliday(h.id);
+    if (article) a.href = `/sventes/${article.slug}/`;
+    li.append(
+      a,
+      el(
+        "small",
+        h.classification === "commemoration"
+          ? "Atmintina diena"
+          : "Šventinė diena · paprastai nedirbama",
+      ),
+    );
+    list.append(li);
+  }
   $("#month-holidays").replaceChildren(
     monthH.length
       ? list
-      : el("p", "Šį mėnesį įstatyme nustatytų šventinių dienų nėra.", "muted"),
+      : el("p", "Šį mėnesį šventinių ar atmintinų dienų nėra.", "muted"),
   );
   const current = cal.today(),
     currentYear = +current.slice(0, 4),
@@ -393,9 +453,20 @@ function renderDetails() {
     cal.isoWeek(selected).week +
     " savaitė";
   $("#day-holidays").replaceChildren(
-    ...dayHolidays(selected).map((h) =>
-      el("p", "◆ " + h.name, "source-note danger"),
-    ),
+    ...dayHolidays(selected).map((h) => {
+      const p = el("p", undefined, "source-note holiday-detail-link"),
+        a = el("a", "◆ " + h.name),
+        status = el(
+          "small",
+          h.classification === "commemoration"
+          ? "Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos"
+            : "Šventinė diena; paprastai nedirbama",
+        ),
+        article = editorialForHoliday(h.id);
+      a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
+      p.append(a, status);
+      return p;
+    }),
   );
   const es = events(selected);
   $("#day-agenda").replaceChildren(
@@ -504,6 +575,50 @@ function showEvent(id) {
   $("#event-error").hidden = true;
   updateEventTimeFields();
   $("#event-dialog").showModal();
+}
+function composeHolidayFromLink() {
+  const params = new URLSearchParams(location.search),
+    slug = params.get("prideti"),
+    date = params.get("data");
+  if (!slug || !date) return;
+  const article = editorialArticles().find((item) => item.slug === slug),
+    dateShape = /^20\d{2}-\d{2}-\d{2}$/.test(date),
+    dateYear = dateShape ? Number(date.slice(0, 4)) : 0,
+    mapped = article && dateShape && [2027, 2028, 2029].includes(dateYear)
+      ? calendarEntries(dateYear).some(
+          (item) =>
+            item.date === date &&
+            (item.id === article.id || article.holiday_ids?.includes(item.id)),
+        )
+      : false;
+  history.replaceState(null, "", location.pathname);
+  if (!mapped) {
+    notice("Šios šventės datos nepavyko patikrinti. Kalendoriaus įvykis nesukurtas.");
+    return;
+  }
+  selectDate(date);
+  const existing = store.data.events.find(
+      (item) =>
+        item.allDay &&
+        item.start === date &&
+        item.end === date &&
+        item.title === article.title,
+    );
+  if (existing) {
+    showEvent(existing.id);
+    notice("Toks įvykis šiai datai jau yra. Atvėriau jį redaguoti.");
+    return;
+  }
+  showEvent();
+  const form = $("#event-form");
+  form.elements.title.value = article.title;
+  form.elements.description.value =
+    article.category + ". Daugiau: https://kalendorius365.lt/sventes/" + slug + "/";
+  form.elements.startDate.value = date;
+  form.elements.endDate.value = date;
+  form.elements.allDay.checked = true;
+  form.elements.repeat.value = "none";
+  updateEventTimeFields();
 }
 $("#event-form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -797,8 +912,9 @@ for (const id of ["seconds", "hour12", "large-text", "high-contrast"]) {
 function renderHolidayList() {
   const now = cal.today(),
     year = +now.slice(0, 4),
-    items = [...hs(year), ...hs(year + 1)]
+    items = [...calendarEntries(year), ...calendarEntries(year + 1)]
       .filter((h) => h.date >= now)
+      .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 4);
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
@@ -814,15 +930,19 @@ function renderHolidayList() {
                 : ["christmas-eve", "christmas", "christmas-second"].includes(h.id)
                   ? "evergreen"
                   : "spark",
-        date = el("span", h.date.slice(5).replace("-", "."), "holiday-date"),
+        date = el("button", h.date.slice(5).replace("-", "."), "holiday-date holiday-date--button"),
         mark = el("span", undefined, `holiday-mark holiday-mark--${iconType}`),
         text = el("div"),
         title = el("div", undefined, "holiday-title"),
-        a = el("button", h.name);
+        a = el("a", h.name),
+        article = editorialForHoliday(h.id);
       mark.append(homeIcon(`holiday-${iconType}`, "holiday-mark__icon"));
       mark.setAttribute("aria-hidden", "true");
-      a.dataset.date = h.date;
-      a.className = "holiday-select";
+      date.type = "button";
+      date.dataset.date = h.date;
+      date.setAttribute("aria-label", `Rodyti ${cal.formatDate(h.date)} kalendoriuje`);
+      a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
+      a.className = "holiday-select holiday-article-link";
       title.append(mark, a);
       text.append(
         title,
@@ -830,7 +950,11 @@ function renderHolidayList() {
           "small",
           (cal.difference(now, h.date) === 0
             ? "Šiandien"
-            : `Liko ${cal.difference(now, h.date)} d.`) + " · Šventinė diena",
+            : `Liko ${cal.difference(now, h.date)} d.`) +
+            " · " +
+            (h.classification === "commemoration"
+              ? "Atmintina diena"
+              : "Šventinė diena"),
         ),
       );
       li.classList.add(`holiday-row--${iconType}`);
@@ -942,5 +1066,6 @@ setInterval(() => {
 }, 1200000);
 render();
 renderHolidayList();
+composeHolidayFromLink();
 tick();
 setInterval(tick, 1000);

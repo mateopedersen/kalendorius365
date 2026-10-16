@@ -1,0 +1,28 @@
+{
+  "gate": "1-programmatic",
+  "status": "passed",
+  "generated_routes": 20,
+  "indexable_metadata_routes": 20,
+  "sitemap_routes": 20,
+  "statutory_holiday_ids": 16,
+  "mapped_statutory_holiday_ids": 16,
+  "date_occurrences_checked": 54,
+  "date_mismatches": 0,
+  "year_and_article_holiday_links": 211,
+  "missing_holiday_link_targets": 0,
+  "month_article_links_checked": 54,
+  "month_article_links_missing": 0,
+  "article_assets_checked": 16,
+  "articles_missing_hero_asset_or_alt": 0,
+  "event_actions_and_ics_checked": 54,
+  "invalid_or_missing_ics": 0,
+  "missing_event_actions": 0,
+  "homepage_editorial_records_complete": true,
+  "print_asset_baseline_unchanged": true,
+  "print_asset_baseline_checked": 832,
+  "errors": [],
+  "limitations": [
+    "This gate does not prove legal content quality, Lithuanian editorial quality, source claims or licenses, documentary/media suitability, pixel-perfect layout, accessibility conformance, or live production deployment.",
+    "Homepage event-add interaction is manually confirmed for Velykas 2027 only; other generated event actions are link/file checked."
+  ]
+}

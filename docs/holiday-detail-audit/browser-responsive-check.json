@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-16",
+  "origin": "local release build served in browser inside an iframe whose CSS viewport width was explicitly measured with window.innerWidth",
+  "method": "Each editorial route was loaded at each declared CSS width; browser DOM measurements checked innerWidth, document/body scroll width, H1 clipping, hero column count, image completion and meaningful image alt text.",
+  "routes": [
+    "/sventes/naujuju-metu-diena/",
+    "/sventes/vasario-16-oji/",
+    "/sventes/kovo-11-oji/",
+    "/sventes/velykos/",
+    "/sventes/tarptautine-darbo-diena/",
+    "/sventes/motinos-diena/",
+    "/sventes/tevo-diena/",
+    "/sventes/jonines/",
+    "/sventes/valstybes-diena/",
+    "/sventes/zoline/",
+    "/sventes/visu-sventuju-diena/",
+    "/sventes/velines/",
+    "/sventes/kucios/",
+    "/sventes/kaledos/",
+    "/sventes/lietuvos-veliavos-diena/",
+    "/sventes/sausio-13-oji/"
+  ],
+  "viewport_widths_css_px": [
+    320,
+    360,
+    390,
+    414,
+    768,
+    1280,
+    1440,
+    1920
+  ],
+  "combinations": 128,
+  "exact_viewport_width_matches": 128,
+  "horizontal_overflow": 0,
+  "clipped_h1": 0,
+  "hero_images_loaded_with_alt": 128,
+  "one_column_widths": [
+    320,
+    360,
+    390,
+    414
+  ],
+  "two_column_widths": [
+    768,
+    1280,
+    1440,
+    1920
+  ],
+  "nested_table_overflow": "Contained within the designated .table-scroll region; no document-level overflow.",
+  "visual_inspection": {
+    "article_route": "/sventes/velykos/",
+    "viewport_width_css_px": 390,
+    "full_page_screenshot_reviewed": true,
+    "all_16_source_images_contact_sheet_reviewed": true,
+    "all_16_article_screenshots_pixel_by_pixel_reviewed": false,
+    "viewport_screenshots_reviewed_css_px": [
+      320,
+      390,
+      1440
+    ],
+    "full_page_screenshot_width_css_px": 390
+  },
+  "limitations": [
+    "The iframe used a real measured CSS viewport; it is not a browser zoom test.",
+    "No 125%, 150%, or 200% browser zoom run was made.",
+    "The contact sheet and one full-page article screenshot were visually reviewed; this does not claim pixel-by-pixel human inspection of every page."
+  ]
+}

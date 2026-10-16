@@ -1,0 +1,103 @@
+source,label,destination,expected_date,element,keyboard,selection_preserved
+/sventes/2027/,Naujųjų metų diena,/sventes/naujuju-metu-diena/,2027-01-01,a,Enter,static archive; no event-selection action
+/sventes/2028/,Naujųjų metų diena,/sventes/naujuju-metu-diena/,2028-01-01,a,Enter,static archive; no event-selection action
+/sventes/2029/,Naujųjų metų diena,/sventes/naujuju-metu-diena/,2029-01-01,a,Enter,static archive; no event-selection action
+/sventes/2027/,Lietuvos valstybės atkūrimo diena,/sventes/vasario-16-oji/,2027-02-16,a,Enter,static archive; no event-selection action
+/sventes/2028/,Lietuvos valstybės atkūrimo diena,/sventes/vasario-16-oji/,2028-02-16,a,Enter,static archive; no event-selection action
+/sventes/2029/,Lietuvos valstybės atkūrimo diena,/sventes/vasario-16-oji/,2029-02-16,a,Enter,static archive; no event-selection action
+/sventes/2027/,Lietuvos nepriklausomybės atkūrimo diena,/sventes/kovo-11-oji/,2027-03-11,a,Enter,static archive; no event-selection action
+/sventes/2028/,Lietuvos nepriklausomybės atkūrimo diena,/sventes/kovo-11-oji/,2028-03-11,a,Enter,static archive; no event-selection action
+/sventes/2029/,Lietuvos nepriklausomybės atkūrimo diena,/sventes/kovo-11-oji/,2029-03-11,a,Enter,static archive; no event-selection action
+/sventes/2027/,Velykos,/sventes/velykos/,2027-03-28,a,Enter,static archive; no event-selection action
+/sventes/2028/,Velykos,/sventes/velykos/,2028-04-16,a,Enter,static archive; no event-selection action
+/sventes/2029/,Velykos,/sventes/velykos/,2029-04-01,a,Enter,static archive; no event-selection action
+/sventes/2027/,Antroji Velykų diena,/sventes/velykos/,2027-03-29,a,Enter,static archive; no event-selection action
+/sventes/2028/,Antroji Velykų diena,/sventes/velykos/,2028-04-17,a,Enter,static archive; no event-selection action
+/sventes/2029/,Antroji Velykų diena,/sventes/velykos/,2029-04-02,a,Enter,static archive; no event-selection action
+/sventes/2027/,Tarptautinė darbo diena,/sventes/tarptautine-darbo-diena/,2027-05-01,a,Enter,static archive; no event-selection action
+/sventes/2028/,Tarptautinė darbo diena,/sventes/tarptautine-darbo-diena/,2028-05-01,a,Enter,static archive; no event-selection action
+/sventes/2029/,Tarptautinė darbo diena,/sventes/tarptautine-darbo-diena/,2029-05-01,a,Enter,static archive; no event-selection action
+/sventes/2027/,Motinos diena,/sventes/motinos-diena/,2027-05-02,a,Enter,static archive; no event-selection action
+/sventes/2028/,Motinos diena,/sventes/motinos-diena/,2028-05-07,a,Enter,static archive; no event-selection action
+/sventes/2029/,Motinos diena,/sventes/motinos-diena/,2029-05-06,a,Enter,static archive; no event-selection action
+/sventes/2027/,Tėvo diena,/sventes/tevo-diena/,2027-06-06,a,Enter,static archive; no event-selection action
+/sventes/2028/,Tėvo diena,/sventes/tevo-diena/,2028-06-04,a,Enter,static archive; no event-selection action
+/sventes/2029/,Tėvo diena,/sventes/tevo-diena/,2029-06-03,a,Enter,static archive; no event-selection action
+/sventes/2027/,Rasos ir Joninių diena,/sventes/jonines/,2027-06-24,a,Enter,static archive; no event-selection action
+/sventes/2028/,Rasos ir Joninių diena,/sventes/jonines/,2028-06-24,a,Enter,static archive; no event-selection action
+/sventes/2029/,Rasos ir Joninių diena,/sventes/jonines/,2029-06-24,a,Enter,static archive; no event-selection action
+/sventes/2027/,Valstybės ir Tautiškos giesmės diena,/sventes/valstybes-diena/,2027-07-06,a,Enter,static archive; no event-selection action
+/sventes/2028/,Valstybės ir Tautiškos giesmės diena,/sventes/valstybes-diena/,2028-07-06,a,Enter,static archive; no event-selection action
+/sventes/2029/,Valstybės ir Tautiškos giesmės diena,/sventes/valstybes-diena/,2029-07-06,a,Enter,static archive; no event-selection action
+/sventes/2027/,Žolinė,/sventes/zoline/,2027-08-15,a,Enter,static archive; no event-selection action
+/sventes/2028/,Žolinė,/sventes/zoline/,2028-08-15,a,Enter,static archive; no event-selection action
+/sventes/2029/,Žolinė,/sventes/zoline/,2029-08-15,a,Enter,static archive; no event-selection action
+/sventes/2027/,Visų Šventųjų diena,/sventes/visu-sventuju-diena/,2027-11-01,a,Enter,static archive; no event-selection action
+/sventes/2028/,Visų Šventųjų diena,/sventes/visu-sventuju-diena/,2028-11-01,a,Enter,static archive; no event-selection action
+/sventes/2029/,Visų Šventųjų diena,/sventes/visu-sventuju-diena/,2029-11-01,a,Enter,static archive; no event-selection action
+/sventes/2027/,Mirusiųjų atminimo (Vėlinių) diena,/sventes/velines/,2027-11-02,a,Enter,static archive; no event-selection action
+/sventes/2028/,Mirusiųjų atminimo (Vėlinių) diena,/sventes/velines/,2028-11-02,a,Enter,static archive; no event-selection action
+/sventes/2029/,Mirusiųjų atminimo (Vėlinių) diena,/sventes/velines/,2029-11-02,a,Enter,static archive; no event-selection action
+/sventes/2027/,Kūčių diena,/sventes/kucios/,2027-12-24,a,Enter,static archive; no event-selection action
+/sventes/2028/,Kūčių diena,/sventes/kucios/,2028-12-24,a,Enter,static archive; no event-selection action
+/sventes/2029/,Kūčių diena,/sventes/kucios/,2029-12-24,a,Enter,static archive; no event-selection action
+/sventes/2027/,Kalėdos,/sventes/kaledos/,2027-12-25,a,Enter,static archive; no event-selection action
+/sventes/2028/,Kalėdos,/sventes/kaledos/,2028-12-25,a,Enter,static archive; no event-selection action
+/sventes/2029/,Kalėdos,/sventes/kaledos/,2029-12-25,a,Enter,static archive; no event-selection action
+/sventes/2027/,Antroji Kalėdų diena,/sventes/kaledos/,2027-12-26,a,Enter,static archive; no event-selection action
+/sventes/2028/,Antroji Kalėdų diena,/sventes/kaledos/,2028-12-26,a,Enter,static archive; no event-selection action
+/sventes/2029/,Antroji Kalėdų diena,/sventes/kaledos/,2029-12-26,a,Enter,static archive; no event-selection action
+/sventes/2027/,Lietuvos vėliavos diena,/sventes/lietuvos-veliavos-diena/,2027-01-01,a,Enter,static archive; no event-selection action
+/sventes/2028/,Lietuvos vėliavos diena,/sventes/lietuvos-veliavos-diena/,2028-01-01,a,Enter,static archive; no event-selection action
+/sventes/2029/,Lietuvos vėliavos diena,/sventes/lietuvos-veliavos-diena/,2029-01-01,a,Enter,static archive; no event-selection action
+/sventes/2027/,Laisvės gynėjų diena,/sventes/sausio-13-oji/,2027-01-13,a,Enter,static archive; no event-selection action
+/sventes/2028/,Laisvės gynėjų diena,/sventes/sausio-13-oji/,2028-01-13,a,Enter,static archive; no event-selection action
+/sventes/2029/,Laisvės gynėjų diena,/sventes/sausio-13-oji/,2029-01-13,a,Enter,static archive; no event-selection action
+/sventes/naujuju-metu-diena/,Naujųjų metų diena,/sventes/naujuju-metu-diena/,2027-01-01,a,Enter,article table navigation
+/sventes/naujuju-metu-diena/,Naujųjų metų diena,/sventes/naujuju-metu-diena/,2028-01-01,a,Enter,article table navigation
+/sventes/naujuju-metu-diena/,Naujųjų metų diena,/sventes/naujuju-metu-diena/,2029-01-01,a,Enter,article table navigation
+/sventes/vasario-16-oji/,Lietuvos valstybės atkūrimo diena,/sventes/vasario-16-oji/,2027-02-16,a,Enter,article table navigation
+/sventes/vasario-16-oji/,Lietuvos valstybės atkūrimo diena,/sventes/vasario-16-oji/,2028-02-16,a,Enter,article table navigation
+/sventes/vasario-16-oji/,Lietuvos valstybės atkūrimo diena,/sventes/vasario-16-oji/,2029-02-16,a,Enter,article table navigation
+/sventes/kovo-11-oji/,Lietuvos nepriklausomybės atkūrimo diena,/sventes/kovo-11-oji/,2027-03-11,a,Enter,article table navigation
+/sventes/kovo-11-oji/,Lietuvos nepriklausomybės atkūrimo diena,/sventes/kovo-11-oji/,2028-03-11,a,Enter,article table navigation
+/sventes/kovo-11-oji/,Lietuvos nepriklausomybės atkūrimo diena,/sventes/kovo-11-oji/,2029-03-11,a,Enter,article table navigation
+/sventes/velykos/,Velykos,/sventes/velykos/,2027-03-28,a,Enter,article table navigation
+/sventes/velykos/,Velykos,/sventes/velykos/,2028-04-16,a,Enter,article table navigation
+/sventes/velykos/,Velykos,/sventes/velykos/,2029-04-01,a,Enter,article table navigation
+/sventes/velykos/,Antroji Velykų diena,/sventes/velykos/,2027-03-29,a,Enter,article table navigation
+/sventes/velykos/,Antroji Velykų diena,/sventes/velykos/,2028-04-17,a,Enter,article table navigation
+/sventes/velykos/,Antroji Velykų diena,/sventes/velykos/,2029-04-02,a,Enter,article table navigation
+/sventes/tarptautine-darbo-diena/,Tarptautinė darbo diena,/sventes/tarptautine-darbo-diena/,2027-05-01,a,Enter,article table navigation
+/sventes/tarptautine-darbo-diena/,Tarptautinė darbo diena,/sventes/tarptautine-darbo-diena/,2028-05-01,a,Enter,article table navigation
+/sventes/tarptautine-darbo-diena/,Tarptautinė darbo diena,/sventes/tarptautine-darbo-diena/,2029-05-01,a,Enter,article table navigation
+/sventes/motinos-diena/,Motinos diena,/sventes/motinos-diena/,2027-05-02,a,Enter,article table navigation
+/sventes/motinos-diena/,Motinos diena,/sventes/motinos-diena/,2028-05-07,a,Enter,article table navigation
+/sventes/motinos-diena/,Motinos diena,/sventes/motinos-diena/,2029-05-06,a,Enter,article table navigation
+/sventes/tevo-diena/,Tėvo diena,/sventes/tevo-diena/,2027-06-06,a,Enter,article table navigation
+/sventes/tevo-diena/,Tėvo diena,/sventes/tevo-diena/,2028-06-04,a,Enter,article table navigation
+/sventes/tevo-diena/,Tėvo diena,/sventes/tevo-diena/,2029-06-03,a,Enter,article table navigation
+/sventes/jonines/,Rasos ir Joninių diena,/sventes/jonines/,2027-06-24,a,Enter,article table navigation
+/sventes/jonines/,Rasos ir Joninių diena,/sventes/jonines/,2028-06-24,a,Enter,article table navigation
+/sventes/jonines/,Rasos ir Joninių diena,/sventes/jonines/,2029-06-24,a,Enter,article table navigation
+/sventes/valstybes-diena/,Valstybės ir Tautiškos giesmės diena,/sventes/valstybes-diena/,2027-07-06,a,Enter,article table navigation
+/sventes/valstybes-diena/,Valstybės ir Tautiškos giesmės diena,/sventes/valstybes-diena/,2028-07-06,a,Enter,article table navigation
+/sventes/valstybes-diena/,Valstybės ir Tautiškos giesmės diena,/sventes/valstybes-diena/,2029-07-06,a,Enter,article table navigation
+/sventes/zoline/,Žolinė,/sventes/zoline/,2027-08-15,a,Enter,article table navigation
+/sventes/zoline/,Žolinė,/sventes/zoline/,2028-08-15,a,Enter,article table navigation
+/sventes/zoline/,Žolinė,/sventes/zoline/,2029-08-15,a,Enter,article table navigation
+/sventes/visu-sventuju-diena/,Visų Šventųjų diena,/sventes/visu-sventuju-diena/,2027-11-01,a,Enter,article table navigation
+/sventes/visu-sventuju-diena/,Visų Šventųjų diena,/sventes/visu-sventuju-diena/,2028-11-01,a,Enter,article table navigation
+/sventes/visu-sventuju-diena/,Visų Šventųjų diena,/sventes/visu-sventuju-diena/,2029-11-01,a,Enter,article table navigation
+/sventes/velines/,Mirusiųjų atminimo (Vėlinių) diena,/sventes/velines/,2027-11-02,a,Enter,article table navigation
+/sventes/velines/,Mirusiųjų atminimo (Vėlinių) diena,/sventes/velines/,2028-11-02,a,Enter,article table navigation
+/sventes/velines/,Mirusiųjų atminimo (Vėlinių) diena,/sventes/velines/,2029-11-02,a,Enter,article table navigation
+/sventes/kucios/,Kūčių diena,/sventes/kucios/,2027-12-24,a,Enter,article table navigation
+/sventes/kucios/,Kūčių diena,/sventes/kucios/,2028-12-24,a,Enter,article table navigation
+/sventes/kucios/,Kūčių diena,/sventes/kucios/,2029-12-24,a,Enter,article table navigation
+/sventes/kaledos/,Kalėdos,/sventes/kaledos/,2027-12-25,a,Enter,article table navigation
+/sventes/kaledos/,Kalėdos,/sventes/kaledos/,2028-12-25,a,Enter,article table navigation
+/sventes/kaledos/,Kalėdos,/sventes/kaledos/,2029-12-25,a,Enter,article table navigation
+/sventes/kaledos/,Antroji Kalėdų diena,/sventes/kaledos/,2027-12-26,a,Enter,article table navigation
+/sventes/kaledos/,Antroji Kalėdų diena,/sventes/kaledos/,2028-12-26,a,Enter,article table navigation
+/sventes/kaledos/,Antroji Kalėdų diena,/sventes/kaledos/,2029-12-26,a,Enter,article table navigation

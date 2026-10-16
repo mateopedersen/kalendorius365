@@ -1,10 +1,10 @@
 # Phase 4: annual-leave legal assumptions
 
-Checked: 2026-10-15
+Checked: 2026-10-16
 
 ## Sources
 
-- [Lithuanian Labour Code, current e-TAR consolidated edition](https://e-tar.lt/portal/lt/legalActPrint?actualEditionId=BXFztiXOjw&documentId=f6d686707e7011e6b969d7ae07280e89) — Articles 126 and 128. The indexed current official edition includes amendments published in 2026; the e-TAR page itself returned HTTP 403 to the browser text fetch, so the indexed official text was cross-checked against the current VDI summaries.
+- [Lithuanian Labour Code, edition in force on 2026-10-16](https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/jlrUauipfr/) — Articles 126 and 128. E-TAR identifies this consolidated edition as effective 2026-06-07 through 2026-10-31. The official page returned HTTP 403 to direct text retrieval in this review, so the indexed legal record and VDI summaries were used; the full source text still needs independent editorial review.
 - [State Labour Inspectorate: minimum annual paid leave](https://vdi.lrv.lt/lt/darbo-teise/darbdaviams/kasmetines-minimaliosios-mokamos-atostogos/) — plain-language public guidance; the page itself records an update date of 2024-01-17, so use the current Labour Code as the primary source where editions differ.
 
 ## Rules represented in the planner

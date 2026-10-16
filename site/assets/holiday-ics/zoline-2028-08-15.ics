@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365.lt//Lietuviu kalendorius//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:zoline-2028-08-15@kalendorius365.lt
+DTSTAMP:20261016T000000Z
+DTSTART;VALUE=DATE:20280815
+DTEND;VALUE=DATE:20280816
+SUMMARY:Žolinė – Švč. Mergelės Marijos ėmimo į dangų diena
+URL:https://kalendorius365.lt/sventes/zoline/
+END:VEVENT
+END:VCALENDAR

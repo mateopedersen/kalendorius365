@@ -1,0 +1,99 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-16",
+  "scope": "The listed checks passed for 16 generated editorial pages and a representative local-browser smoke check; this does not certify the full site as WCAG conformant.",
+  "static_semantics": {
+    "routes_checked": 16,
+    "passed_routes": 16,
+    "checks": [
+      "lt language attribute",
+      "main landmark",
+      "exactly one H1",
+      "article headings without skipped levels",
+      "meaningful image alt text",
+      "named links and controls",
+      "table caption and scoped headers",
+      "details disclosure summary"
+    ]
+  },
+  "browser_keyboard_smoke": {
+    "route": "/sventes/velykos/",
+    "viewport_css_px": 390,
+    "skip_link": "Shift+Tab reached the skip link; Enter navigated to #main; following Tab reached the main content breadcrumb without a focus trap.",
+    "result": "passed"
+  },
+  "sampled_wcag_aa_contrast": {
+    "method": "Computed foreground/background colors in the local browser; WCAG relative luminance calculation.",
+    "minimum_ratio_required": "4.5:1 for sampled normal text",
+    "measurements": [
+      {
+        "element": "body text on page background",
+        "ratio": 16.01,
+        "passed": true
+      },
+      {
+        "element": "muted hero intro on white",
+        "ratio": 5.54,
+        "passed": true
+      },
+      {
+        "element": "source text on white",
+        "ratio": 5.54,
+        "passed": true
+      },
+      {
+        "element": "green link on white",
+        "ratio": 6.68,
+        "passed": true
+      },
+      {
+        "element": "status badge text on its pale background",
+        "ratio": 6.01,
+        "passed": true
+      }
+    ]
+  },
+  "limitations": [
+    "Automated axe-core results and the sampled contrast checks do not certify WCAG conformance.",
+    "Contrast was sampled on representative text and badge colors, not exhaustively measured for every site component or dark theme.",
+    "No independent accessibility audit, screen-reader user test, or browser zoom test is claimed.",
+    "Interactive disclosure activation was not separately confirmed through browser automation; native HTML details/summary semantics are present on all 16 pages."
+  ],
+  "axe_core_automated": {
+    "tool": "axe-core 4.10.3",
+    "standard_tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "routes_checked": 16,
+    "automated_violations": 0,
+    "incomplete_manual_review_items": 0,
+    "passed_rule_count_range": [
+      29,
+      30
+    ],
+    "routes": [
+      "/sventes/naujuju-metu-diena/",
+      "/sventes/vasario-16-oji/",
+      "/sventes/kovo-11-oji/",
+      "/sventes/tarptautine-darbo-diena/",
+      "/sventes/motinos-diena/",
+      "/sventes/tevo-diena/",
+      "/sventes/visu-sventuju-diena/",
+      "/sventes/velines/",
+      "/sventes/kucios/",
+      "/sventes/kaledos/",
+      "/sventes/lietuvos-veliavos-diena/",
+      "/sventes/jonines/",
+      "/sventes/valstybes-diena/",
+      "/sventes/zoline/",
+      "/sventes/velykos/",
+      "/sventes/sausio-13-oji/"
+    ],
+    "result": "All tested WCAG A/AA/2.1 AA/2.2 AA rules passed; no axe incomplete checks remained after replacing the gradient hero background with a solid theme tint.",
+    "scope": "Automated checks only; does not establish WCAG conformance or replace manual assistive-technology review."
+  }
+}

@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365.lt//Lietuviu kalendorius//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:lietuvos-veliavos-diena-2028-01-01@kalendorius365.lt
+DTSTAMP:20261016T000000Z
+DTSTART;VALUE=DATE:20280101
+DTEND;VALUE=DATE:20280102
+SUMMARY:Lietuvos vėliavos diena
+URL:https://kalendorius365.lt/sventes/lietuvos-veliavos-diena/
+END:VEVENT
+END:VCALENDAR
