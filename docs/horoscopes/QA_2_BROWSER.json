@@ -1,0 +1,54 @@
+{
+  "qa_round": 2,
+  "date": "2026-10-16",
+  "environment": "local production-mode output served at http://127.0.0.1:8768",
+  "status": "PASS_WITH_DEVICE_AND_EDITORIAL_LIMITATIONS",
+  "responsive_route_matrix": {
+    "routes": [
+      "/horoskopai/",
+      "/horoskopai/avinas/",
+      "/horoskopai/jautis/",
+      "/horoskopai/dvyniai/",
+      "/horoskopai/vezys/",
+      "/horoskopai/liutas/",
+      "/horoskopai/mergele/",
+      "/horoskopai/svarstykles/",
+      "/horoskopai/skorpionas/",
+      "/horoskopai/saulys/",
+      "/horoskopai/oziaragis/",
+      "/horoskopai/vandenis/",
+      "/horoskopai/zuvys/"
+    ],
+    "top_level_viewports_css_px": [1440, 1280, 768, 480],
+    "isolated_same_origin_frame_viewports_css_px": [390, 360],
+    "routes_checked": 13,
+    "page_view_combinations_checked": 78,
+    "canonical_title_lang_h1_content_stylesheet_lato": "PASS for all routes",
+    "horizontal_overflow": "NONE at all tested widths",
+    "390_360_device_note": "390px and 360px were verified as actual CSS viewport widths in isolated same-origin frames; the Codex browser's top-level viewport enforces a 480px minimum. This is not a physical handset/browser-device test."
+  },
+  "homepage_entry_point": {
+    "viewports_css_px": [1440, 390, 360],
+    "horoscope_teaser_and_link": "PASS",
+    "canonical_lang_horizontal_overflow": "PASS"
+  },
+  "navigation_and_keyboard": {
+    "desktop_navigation_single_row_at_1440_and_1280": "PASS",
+    "tablet_mobile_navigation_at_1100_951_768_and_480": "PASS",
+    "opening_menu_moves_focus_to_first_link": "PASS",
+    "tab_moves_to_next_menu_link": "PASS",
+    "escape_closes_and_returns_focus_to_toggle": "PASS"
+  },
+  "visual_and_contrast_review": {
+    "hub_and_sign_pages_screenshots": "Viewed in local browser at 1440px and 360px CSS widths; screenshots were not archived as files.",
+    "light_theme_small_text_contrast_minimum_measured": 5.18,
+    "dark_theme_small_text_contrast_minimum_measured": 7.96,
+    "light_theme_sign_heading_contrast_minimum_measured": 5.38,
+    "dark_theme_sign_heading_contrast_minimum_measured": 8.21,
+    "console_errors": 0,
+    "automated_full_wcag_audit": "NOT_PERFORMED",
+    "independent_lithuanian_editor_review": "NOT_PERFORMED"
+  },
+  "cloudflare_preview": "PENDING",
+  "production_smoke": "PENDING"
+}

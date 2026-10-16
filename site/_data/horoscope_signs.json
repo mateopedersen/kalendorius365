@@ -1,0 +1,14 @@
+[
+  {"key":"avinas","name":"Avinas","genitive":"Avino","range":"Kovo 21 d. – balandžio 19 d.","element":"Ugnies ženklas","symbol":"♈","theme":"#b34235"},
+  {"key":"jautis","name":"Jautis","genitive":"Jaučio","range":"Balandžio 20 d. – gegužės 20 d.","element":"Žemės ženklas","symbol":"♉","theme":"#527a59"},
+  {"key":"dvyniai","name":"Dvyniai","genitive":"Dvynių","range":"Gegužės 21 d. – birželio 20 d.","element":"Oro ženklas","symbol":"♊","theme":"#58799d"},
+  {"key":"vezys","name":"Vėžys","genitive":"Vėžio","range":"Birželio 21 d. – liepos 22 d.","element":"Vandens ženklas","symbol":"♋","theme":"#3e7187"},
+  {"key":"liutas","name":"Liūtas","genitive":"Liūto","range":"Liepos 23 d. – rugpjūčio 22 d.","element":"Ugnies ženklas","symbol":"♌","theme":"#b34235"},
+  {"key":"mergele","name":"Mergelė","genitive":"Mergelės","range":"Rugpjūčio 23 d. – rugsėjo 22 d.","element":"Žemės ženklas","symbol":"♍","theme":"#527a59"},
+  {"key":"svarstykles","name":"Svarstyklės","genitive":"Svarstyklių","range":"Rugsėjo 23 d. – spalio 22 d.","element":"Oro ženklas","symbol":"♎","theme":"#58799d"},
+  {"key":"skorpionas","name":"Skorpionas","genitive":"Skorpiono","range":"Spalio 23 d. – lapkričio 21 d.","element":"Vandens ženklas","symbol":"♏","theme":"#3e7187"},
+  {"key":"saulys","name":"Šaulys","genitive":"Šaulio","range":"Lapkričio 22 d. – gruodžio 21 d.","element":"Ugnies ženklas","symbol":"♐","theme":"#b34235"},
+  {"key":"oziaragis","name":"Ožiaragis","genitive":"Ožiaragio","range":"Gruodžio 22 d. – sausio 19 d.","element":"Žemės ženklas","symbol":"♑","theme":"#527a59"},
+  {"key":"vandenis","name":"Vandenis","genitive":"Vandenio","range":"Sausio 20 d. – vasario 18 d.","element":"Oro ženklas","symbol":"♒","theme":"#58799d"},
+  {"key":"zuvys","name":"Žuvys","genitive":"Žuvų","range":"Vasario 19 d. – kovo 20 d.","element":"Vandens ženklas","symbol":"♓","theme":"#3e7187"}
+]
