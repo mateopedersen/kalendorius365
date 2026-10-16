@@ -49,6 +49,28 @@
     "automated_full_wcag_audit": "NOT_PERFORMED",
     "independent_lithuanian_editor_review": "NOT_PERFORMED"
   },
-  "cloudflare_preview": "PENDING",
-  "production_smoke": "PENDING"
+  "cloudflare_preview": {
+    "status": "PASS",
+    "url": "https://b9c12d40.kalendorius365.pages.dev",
+    "deployment_id": "b9c12d40-6981-4ef2-8888-dac5d1fcf8f5",
+    "branch": "feature/lt-daily-horoscope",
+    "commit": "784645f9c30fb5dfa7f0df98532d3fc0e98543bf",
+    "deployment_steps": "PASS"
+  },
+  "production_smoke": {
+    "status": "PASS_BROWSER_RENDERED_WITH_RESPONSE_HEADER_LIMITATIONS",
+    "url": "https://kalendorius365.lt/horoskopai/",
+    "cloudflare_deployment_url": "https://fb1840c3.kalendorius365.pages.dev",
+    "deployment_id": "fb1840c3-7a50-4b59-99e4-d148766f9b8a",
+    "production_branch": "main",
+    "production_commit": "0d0c913123fcd3d3e82eb61d4304231b636550d8",
+    "verified_at_utc": "2026-10-16T14:19:00Z",
+    "routes_checked": 13,
+    "all_routes_render_expected_title_date_and_one_h1": true,
+    "no_route_rendered_404": true,
+    "http_status_code_directly_captured": false,
+    "production_response_meta_directly_extracted": false,
+    "canonical_robots_and_sitemap_release_artifact_audit": "PASS",
+    "limits": "HTTP status and response metadata were not independently extracted from the live response; technical metadata passed the release artifact audit for the deployed commit."
+  }
 }
