@@ -69,9 +69,12 @@ document.addEventListener("click", (e) => {
 document.querySelector("#nav-toggle")?.addEventListener("click", (e) => {
   const b = e.currentTarget,
     open = b.getAttribute("aria-expanded") !== "true";
+  const nav = document.querySelector("#primary-nav");
   b.setAttribute("aria-expanded", String(open));
   b.setAttribute("aria-label", open ? "Užverti meniu" : "Atverti meniu");
-  document.querySelector("#primary-nav").classList.toggle("nav-open", open);
+  nav.classList.toggle("nav-open", open);
+  if (open) nav.querySelector("a[href]")?.focus({ preventScroll: true });
+  else b.focus({ preventScroll: true });
 });
 
 try {

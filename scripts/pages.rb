@@ -349,6 +349,8 @@ Pages.run
 Pages.generate_blank
 require_relative '../lib/phase_5_6_8_pages'
 Phase568Pages.run
+require_relative '../lib/horoscopes_pages'
+HoroscopesPages.run
 search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
  raw=File.read(path); fm=raw.split("---",3)[1]; next unless fm
  require 'yaml'; front=YAML.safe_load(fm); next unless front['title']

@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=51fd00d3f460") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=3618e66391b4") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=51fd00d3f460") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=3618e66391b4") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=51fd00d3f460") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=3618e66391b4") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -5702,4 +5702,26 @@ select:not([multiple]):not([size]) {
     padding-inline-end: 0;
     background-image: none;
   }
+}
+
+/* Keep the expanded desktop navigation on one line after adding the horoscope link. */
+@media (min-width: 1101px) and (max-width: 1500px) {
+  .site-header { gap: 10px; padding-inline: 16px; }
+  .site-header .brand { width: 180px; }
+  #primary-nav { min-width: 0; flex-wrap: nowrap; gap: 1px; }
+  #primary-nav > a { flex: 0 1 auto; padding-inline: 5px; font-size: .76rem; }
+  #primary-nav > a .icon { display: none; }
+  .site-header .header-search { width: 150px; min-width: 110px; flex: 0 1 150px; }
+}
+@media (min-width: 951px) and (max-width: 1100px) {
+  .site-header { height: 68px; min-height: 68px; flex-wrap: nowrap; gap: 12px; }
+  .site-header .brand { width: 195px; margin-right: auto; }
+  .site-header #nav-toggle { display: inline-flex; order: 5; }
+  .site-header #theme { order: 4; }
+  .site-header .header-search { width: 220px; max-width: 32vw; margin-left: 0; }
+  #primary-nav { display: none; position: absolute; top: 67px; left: 0; right: 0; align-self: auto; gap: 0; padding: 12px 18px; border-bottom: 1px solid var(--border); background: var(--panel); box-shadow: 0 10px 18px #182b4810; z-index: 25; }
+  #primary-nav.nav-open { display: grid; grid-template-columns: repeat(4, 1fr); }
+  #primary-nav > a { min-height: 48px; padding: 10px; border-radius: 6px; font-size: .9rem; }
+  #primary-nav > a .icon { display: inline-block; }
+  #primary-nav > a[aria-current="page"]:after { bottom: 3px; }
 }

@@ -1,0 +1,49 @@
+{
+  "qa_round": 1,
+  "date": "2026-10-16",
+  "environment": "local Ruby/Jekyll release build",
+  "status": "PASS_WITH_EDITORIAL_LIMITATIONS",
+  "build": {
+    "command": "K365_RELEASE=1 bundle exec ruby scripts/build.rb",
+    "result": "PASS",
+    "canonical_html_pages": 101,
+    "static_files": 1786,
+    "release_indexing": true
+  },
+  "horoscope_validation": {
+    "command": "python3 scripts/validate_horoscopes.py --require-current --check-rendered --release",
+    "result": "PASS",
+    "date": "2026-10-16",
+    "signs": 12,
+    "checksum_sha256": "5a07458fab688daba28cb658d408ce1c5a3348d44e7c185a9bd29b5fbb926d34",
+    "server_rendered_routes": 13,
+    "canonical_robots_sitemap": "PASS"
+  },
+  "site_audit": {
+    "command": "python3 scripts/audit_site.py --release",
+    "result": "PASS",
+    "html_documents_including_404": 102,
+    "canonical_pages": 101,
+    "local_targets_checked": 8937,
+    "broken_links": 0,
+    "metadata_language_h1_images_jsonld": "PASS",
+    "monthly_image_mappings": 360,
+    "release_indexing_and_sitemap": "PASS"
+  },
+  "unit_tests": {
+    "horoscope_validator": {"result": "PASS", "passed": 6, "failed": 0},
+    "existing_javascript_suite": {"result": "PASS", "passed": 32, "failed": 0}
+  },
+  "legacy_content_integrity": {
+    "existing_indexable_urls": {"baseline": 88, "preserved": 88, "missing": 0},
+    "calendar_downloads": {"baseline_pdf_webp": 832, "current_pdf_webp": 832, "changed_or_missing": 0, "sha256_comparison": "PASS"}
+  },
+  "editorial_and_provider_gates": {
+    "originality": "PASS: no external horoscope text was copied or translated",
+    "syndication_license": "NOT_AVAILABLE: no licensed Lithuanian full-text feed was used",
+    "lithuanian_human_proofread": "NOT_PERFORMED: visible notice discloses AI-assisted first draft",
+    "automated_daily_refresh": "NOT_IMPLEMENTED: updates remain an editor-controlled release",
+    "production_cloudflare_build": "PENDING"
+  },
+  "diff_whitespace_check": "PASS"
+}

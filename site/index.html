@@ -1,6 +1,6 @@
 ---
-title: Kalendorius, šventės ir svarbios datos Lietuvoje
-description: Lietuvos kalendorius su šventėmis ir atmintinomis dienomis, saulės laikais, Mėnulio fazėmis, atostogų planavimu ir spausdinamais 2027–2028 m. kalendoriais.
+title: Kalendorius, šventės, horoskopai ir svarbios datos Lietuvoje
+description: Lietuvos kalendorius su šventėmis, horoskopais, saulės laikais, Mėnulio fazėmis, atostogų planavimu ir spausdinamais 2027–2028 m. kalendoriais.
 app: true
 ---
 <div class="page-line"><div><h1>Jūsų diena. Jūsų planai.</h1><p class="muted">Gyvas kalendorius ir Lietuvos šventės vienoje vietoje.</p></div><a class="button" href="/menesiai/">Kalendoriai spausdinimui ↗</a></div>
@@ -13,6 +13,12 @@ app: true
 <a class="home-discovery__card home-discovery__card--planning" href="/atostogu-planavimas/"><span class="home-discovery__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg#briefcase"></use></svg></span><span class="home-discovery__copy"><span class="home-discovery__label">Planuokite poilsį</span><strong>Ilgieji savaitgaliai</strong><small>Palyginkite atostogų dienas ir poilsio trukmę</small></span><span class="home-discovery__arrow" aria-hidden="true">↗</span></a>
 </nav>
 <p class="home-discovery__more">Taip pat: <a href="/mokiniu-atostogos/">mokinių atostogos</a>, <a href="/darbo-dienos/2027/">darbo dienų kalendorius</a> ir <a href="/astronominis-kalendorius/">metų laikų astronominės datos</a>.</p>
+</section>
+{% assign horoscope = site.data.horoscope_current %}
+<section class="horoscope-teaser" aria-labelledby="home-horoscope-title">
+<div class="horoscope-teaser__art"><img src="/assets/visuals/zodiac-wheel.svg" width="80" height="80" alt="" aria-hidden="true" decoding="async"></div>
+<div class="horoscope-teaser__copy"><p class="horoscope-kicker">12 Vakarų zodiako ženklų</p><h2 id="home-horoscope-title">Dienos horoskopas</h2><p>Trumpa įžvalga apie bendrą dienos nuotaiką, santykius ir veiklą. <span>Naujausi tekstai: <time datetime="{{ horoscope.local_date }}">{{ horoscope.display_date_lt }}</time>.</span></p></div>
+<a class="horoscope-teaser__link" href="/horoskopai/">Skaityti horoskopus <span aria-hidden="true">↗</span></a>
 </section>
 <noscript><div class="panel">Asmeniniam kalendoriui reikia JavaScript. <a href="/2027/">2027</a> ir <a href="/2028/">2028 metų kalendorius</a> bei visi spausdinami failai veikia ir be jo.</div></noscript>
 <div class="dashboard">
