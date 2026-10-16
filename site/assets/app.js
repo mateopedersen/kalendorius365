@@ -11,6 +11,14 @@ const $ = (s) => document.querySelector(s),
     if (cls) n.className = cls;
     return n;
   };
+const homeIcon = (name, className = "") => {
+  const svg = icon(name, className);
+  svg.querySelector("use").setAttribute(
+    "href",
+    "/assets/visuals/home-icons.svg#" + name,
+  );
+  return svg;
+};
 const data = await fetch("/assets/data/calendar.json")
   .then((r) => {
     if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
@@ -321,7 +329,12 @@ function renderCalendar() {
     ].map(([n, label], index) => {
       const e = el("div", undefined, "stat");
       const art = el("span", undefined, "stat-art stat-art-" + index);
-      art.append(icon(["calendar", "briefcase", "gift", "clock"][index]));
+      art.append(
+        homeIcon(
+          ["stat-calendar", "stat-briefcase", "stat-gift", "stat-clock"][index],
+          "home-icon",
+        ),
+      );
       e.append(art, el("b", n), el("span", label));
       return e;
     }),
@@ -636,18 +649,28 @@ $("#calendar").addEventListener("keydown", (e) => {
 });
 const layers = $("#layers");
 [
-  { name: "◆ Lietuvos šventės", index: -1 },
+  { name: "Lietuvos šventės", index: -1 },
   ...data.categories.map((name, index) => ({ name, index })),
 ].forEach(({ name, index }) => {
   const label = el("label", undefined, "check"),
     c = el("input");
   c.type = "checkbox";
   c.checked = index < 0 ? showHolidays : visible[index];
-  label.append(
-    c,
-    el("span", undefined, "dot cat" + Math.max(0, index)),
-    document.createTextNode(name),
+  const glyph = homeIcon(
+    index < 0
+      ? "layer-holidays"
+      : [
+          "layer-personal",
+          "layer-work",
+          "layer-study",
+          "layer-health",
+          "layer-family",
+          "layer-birthday",
+          "layer-other",
+        ][index],
+    `home-icon layer-icon layer-icon-${index < 0 ? "holidays" : index}`,
   );
+  label.append(c, glyph, el("span", name, "layer-name"));
   c.onchange = () => {
     if (index < 0) {
       showHolidays = c.checked;
