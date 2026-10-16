@@ -1,13 +1,16 @@
-# Horoskopų techninė struktūra
+# Daily horoscope architecture
 
-- Jekyll statinio leidimo metu iš `site/_data/horoscope_signs.json` ir `site/_data/horoscope_current.json` generuojami `/horoskopai/` bei 12 ASCII slug maršrutų.
-- Puslapių turinys HTML viduje pateikiamas iš karto. Naršyklės JavaScript horoskopų tekstui, datai, canonical ar indeksavimui nereikalingas.
-- Bendras Jekyll maketas sukuria `lang="lt"`, unikalų pavadinimą ir aprašą, HTTPS self-canonical, breadcrumbs duomenis ir bendrą dizaino sistemą. Tik `K365_RELEASE=1` leidimas pašalina noindex žymas ir įrašo maršrutus sitemap'e; šakų peržiūroje `X-Robots-Tag: noindex` lieka.
-- Data ir laiko zonoje DST-arithmetic `Europe/Vilnius` patikrinami su Python `zoneinfo`. Siūlomas vienas failas visiems 12 ženklams; kiekvienas įrašas tikrinamas prieš išleidimą, todėl dalinis rinkinys negali praeiti.
-- Turinio SHA-256 skaičiuojamas iš sutvarkytų 12 įrašų ir fiksuoto lauko eiliškumo. Ruby generatorius ir Python validavimo programa naudoja tą patį algoritmą.
-- `scripts/validate_horoscopes.py --promote <kandidato-failas>` tik tada pakeičia aktyvų rinkinį, kai 12 tekstai pilni, checksum teisingas, vietos data šiandien, o metaduomenyse įrašytas lietuvių kalbos redaktoriaus patvirtinimas. Aktyvus rinkinys prieš pakeitimą išsaugomas `docs/horoscopes/snapshots/` aplanke.
-- Nėra trečios šalies API, slaptų raktų, mokamos paslaugos ar automatinio DI teksto publikavimo. Išlaikomas esamas Cloudflare Pages Git integravimas ir esamas release build.
+- `site/_data/horoscope_current.json` contains only the active, complete set of twelve signs. Daily archives are not retained.
+- `scripts/horoscopes/fetch_daily.py` calls AstroWay's daily endpoint for the exact `Europe/Vilnius` date and requests only `sign,date,transits,aspects,events`. Horoscope prose fields are not requested and are rejected if returned.
+- `scripts/horoscopes/editorial_lt.py` turns the date-bound Sun/Moon house and closest-aspect calculations into original, deterministic Lithuanian entertainment copy. It does not use or translate provider prose. No translation model runs.
+- `scripts/horoscopes/publish.py` validates all twelve records and replaces the active JSON file atomically only after both content gates pass. It allows at most 24 requests per run: twelve normal requests plus one targeted retry for a failed sign, under the provider's documented 30 requests/hour/IP limit.
+- `lib/horoscopes_pages.rb` creates the existing thirteen stable URLs as static HTML. It uses the site's Lithuanian layout, Lato font and existing set of twelve distinct zodiac SVGs. The generated pages are self-canonical, indexable and included in the sitemap.
+- `K365_RELEASE=1 bundle exec ruby scripts/build.rb` runs the existing Jekyll release build and refreshes the tracked `public/` output. The automation commits only the horoscope content/pages and necessary generated files.
+- `.github/workflows/horoscope-automation.yml` runs daily at 06:20 and retries the same Vilnius date at 08:20. Concurrency prevents overlapping publications. The second run is an API-free verification when today's set is already current.
+- If publication fails, the previous set retains its real publication date. No older set is relabelled as today's content.
 
-## Maršrutų sąrašas
+## Provenance shown to visitors
 
-`/horoskopai/`, `/horoskopai/avinas/`, `/horoskopai/jautis/`, `/horoskopai/dvyniai/`, `/horoskopai/vezys/`, `/horoskopai/liutas/`, `/horoskopai/mergele/`, `/horoskopai/svarstykles/`, `/horoskopai/skorpionas/`, `/horoskopai/saulys/`, `/horoskopai/oziaragis/`, `/horoskopai/vandenis/`, `/horoskopai/zuvys/`.
+Each page displays its actual content date, that automated checks ran, that a native Lithuanian editor did not proofread the text, a link to AstroWay, and the provider's returned `_footer` attribution escaped as text. The pages describe astrology as entertainment and reflection, not as a scientific prediction.
+
+The current site states that it does not display ads. Before adding AdSense or other paid advertising, recheck that the provider's then-current plan permits this commercial use.

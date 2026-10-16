@@ -76,8 +76,41 @@ module HoroscopesPages
     raise 'Missing Europe/Vilnius preparation timestamp' unless daily['prepared_at_vilnius'].to_s.match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}\z/)
     raise 'Invalid UTC preparation timestamp' unless Time.iso8601(daily.fetch('generated_at_utc')).utc_offset.zero?
     raise 'Publication and source dates differ' unless daily['source_publication_date'] == daily['local_date']
-    raise 'This first version requires original editorial content and a self-canonical' unless daily['source_provider_id'] == 'kalendorius365-original-editorial' && daily['canonical_requirement'] == 'self-canonical'
-    raise 'Only original text may enter this initial content pipeline' unless daily['original_text_or_licensed_translation'] == 'original-text' && daily['source_url'].nil?
+    if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'
+      raise 'Wrong AstroWay calculation endpoint' unless daily['source_url'] == 'https://api.astroway.info/v1/public/horoscope/daily'
+      raise 'AstroWay terms URL must be recorded' unless daily['source_terms_url'] == 'https://api.astroway.info/en/terms/'
+      raise 'Provider horoscope text must not be requested' unless daily['source_text_requested'] == false
+      raise 'Original provider footer attribution must be retained' unless daily['provider_footer'].to_s.start_with?('Powered by astroway.api')
+      raise 'The licensed calculations-only field set must be recorded' unless daily['source_data_fields'] == %w[sign date transits aspects events]
+      raise 'Only original Lithuanian copy derived from calculations may be published' unless daily['original_text_or_licensed_translation'] == 'original-lithuanian-copy-from-calculation-data'
+      provenance = daily['source_provenance']
+      raise 'Calculation provenance must contain all twelve signs' unless provenance.is_a?(Array) && provenance.length == 12 && provenance.map { |item| item['sign_key'] }.sort == EXPECTED.sort
+      provenance.each do |item|
+        raise 'Calculation response hash is invalid' unless item['response_sha256'].to_s.match?(/\A[0-9a-f]{64}\z/)
+        raise 'Calculation house is outside 1–12' unless (1..12).cover?(item['solar_house']) && (1..12).cover?(item['lunar_house'])
+      end
+    elsif daily['source_provider_id'] == 'kalendorius365-original-editorial'
+      raise 'Legacy original content provenance is inconsistent' unless daily['source_url'].nil? && daily['original_text_or_licensed_translation'] == 'original-text'
+    else
+      raise 'Unknown horoscope source provider'
+    end
+    raise 'Horoscope publication requires self-canonical content' unless daily['canonical_requirement'] == 'self-canonical'
+    if daily['automation']
+      automation = daily.fetch('automation')
+      raise 'Automated horoscope publication must pass both QA gates' unless automation['qa_status'] == 'passed' && automation['deterministic_gate'] == 'passed' && automation['independent_content_gate'] == 'passed'
+      raise 'Automated source, engine and terms provenance must be recorded' unless automation['provider'] && automation['engine'] && automation['terms_url']
+      raise 'External horoscope prose must not be requested or used' unless automation['provider_text_requested'] == false && automation['provider_text_used'] == false
+      raise 'Provider source footer must be preserved' unless automation['provider_footer_preserved'] == daily['provider_footer']
+      raise 'Calculation-only fallback must not claim machine translation' unless automation['translation_model'].nil?
+      raise 'Output locale and human proofread status must be explicit' unless automation['locale_output'] == 'lt-LT' && automation['native_human_proofread'] == false
+      raise 'Both QA passes must be recorded' unless automation['qa_passes'].is_a?(Array) && automation['qa_passes'].length == 2
+      raise 'Automated publication requires original calculation-derived Lithuanian copy' unless daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'
+      records.each do |record|
+        body_words = %w[lead overview relationships work reflection tip].sum { |field| record.fetch(field).scan(/[\p{L}\p{N}]+/u).length }
+        raise "Automated horoscope body for #{record['sign_key']} must contain 150–300 words" unless (150..300).cover?(body_words)
+      end
+      raise 'Automated editorial status must disclose that no native Lithuanian editor proofread it' unless daily['editorial_review_status'] == 'automated-rule-based-two-pass-review; native-human-proofread-not-performed'
+    end
     raise 'Unknown horoscope content status' unless %w[draft approved published stale unavailable].include?(daily['content_status'])
     raise 'Daily content checksum does not match its text' unless daily['content_checksum'] == checksum(records)
     true
@@ -96,7 +129,19 @@ module HoroscopesPages
   end
 
   def notice(daily, date_label)
-    %(<aside class="horoscope-editorial-note" aria-label="Turinio ir datos pastaba"><span class="horoscope-editorial-note__icon" aria-hidden="true">i</span><p><strong>Turinio pastaba.</strong> Tekstai sukurti Kalendorius365.lt, DI naudotas rengiant pirmąjį variantą; nepriklausomas lietuvių kalbos redaktorius jų neperžiūrėjo. Horoskopai yra bendro pobūdžio, skirti pramogai ir apmąstymui. <span>Turinio data: <time datetime="#{escape(daily['local_date'])}">#{escape(date_label)}</time>; parengta <time datetime="#{escape(daily['prepared_at_vilnius'])}">#{escape(daily['prepared_at_display_lt'])}</time>.</span></p></aside>)
+    origin = if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'
+      'Lietuviški tekstai originaliai sugeneruoti pagal datą atitinkančius astrologinius skaičiavimus. AstroWay horoskopo tekstas nebuvo paimtas ar verstas. Automatinė patikra apėmė šaltinio duomenis, turinio struktūrą, teksto saugą ir pasikartojimus; gimtakalbis redaktorius jų neperžiūrėjo.'
+    elsif daily['automation'] && daily.dig('automation', 'qa_status') == 'passed'
+      'Tekstai sukurti automatiniu procesu ir įvertinti kalbos, nuoseklumo bei saugaus turinio taisyklėmis; žmogaus lietuvių kalbos redaktorius jų neperžiūrėjo.'
+    else
+      'Tekstai sukurti Kalendorius365.lt, DI naudotas rengiant pirmąjį variantą; nepriklausomas lietuvių kalbos redaktorius jų neperžiūrėjo.'
+    end
+    credit = if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'
+      %(<span class="horoscope-editorial-note__source">Skaičiavimų šaltinis: <a href="https://api.astroway.info/" rel="noopener noreferrer">AstroWay /api</a>. #{escape(daily['provider_footer'])}</span>)
+    else
+      ''
+    end
+    %(<aside class="horoscope-editorial-note" aria-label="Turinio, šaltinio ir datos pastaba"><span class="horoscope-editorial-note__icon" aria-hidden="true">i</span><p><strong>Turinio pastaba.</strong> #{escape(origin)} #{credit} Horoskopai yra bendro pobūdžio, skirti pramogai ir apmąstymui. <span>Turinio data: <time datetime="#{escape(daily['local_date'])}">#{escape(date_label)}</time>; parengta <time datetime="#{escape(daily['prepared_at_vilnius'])}">#{escape(daily['prepared_at_display_lt'])}</time>.</span></p></aside>)
   end
 
   def forecast_card(sign, forecast, date_label)
@@ -145,7 +190,7 @@ module HoroscopesPages
       <div class="horoscope-hub-intro"><p><strong>Kaip skaityti:</strong> pasirinkite Vakarų tropinio zodiako ženklą ir peržiūrėkite tos dienos bendro pobūdžio tekstą. Ženklo datų ribos yra orientacinės; jei gimimo data patenka į ribinę dieną, vien pagal kalendorinę datą tikslaus astrologinio ženklo nustatyti negalima.</p></div>
       #{notice(daily, date_label)}
       <section class="horoscope-directory" aria-labelledby="horoscope-directory-title"><div class="horoscope-section-heading"><div><p class="horoscope-kicker">Pasirinkite ženklą</p><h2 id="horoscope-directory-title">Šios dienos horoskopai</h2></div><span class="horoscope-directory__count">12 ženklų</span></div><div class="horoscope-card-grid">#{cards}</div></section>
-      <section class="horoscope-about" aria-labelledby="horoscope-about-title"><p class="horoscope-kicker">Apie šį puslapį</p><h2 id="horoscope-about-title">Dienos tekstai pramogai ir apmąstymui</h2><p>Vakarų tropinio zodiako ženklai šiame puslapyje pateikti kaip kultūrinė astrologijos sistema. Horoskopai nėra astronominiai matavimai ar mokslu pagrįstos asmeninės prognozės. Tekstuose nepateikiami išgalvoti planetų aspektai, sveikatos diagnozės, finansiniai nurodymai ar garantuotos baigtys.</p><p>Šiuo metu svetainėje nėra patvirtinto lietuviško horoskopų sindikavimo srauto. Todėl šis pirmasis rinkinys yra originalus ir pažymėtas DI pagalbos bei žmogaus kalbos redaktoriaus peržiūros būsena. Naujausi tekstai rodomi su tikrąja rinkinio data; kasdienis žmogaus redakcinis atnaujinimas nėra automatizuotas.</p></section>
+      <section class="horoscope-about" aria-labelledby="horoscope-about-title"><p class="horoscope-kicker">Apie šį puslapį</p><h2 id="horoscope-about-title">Dienos tekstai pramogai ir apmąstymui</h2><p>Vakarų tropinio zodiako ženklai šiame puslapyje pateikti kaip kultūrinė astrologijos sistema. Horoskopai nėra mokslu pagrįstos asmeninės prognozės. Tekstuose nepateikiami sveikatos diagnozės, finansiniai nurodymai ar garantuotos baigtys.</p><p>#{if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'; 'Lietuviškas tekstas kuriamas pagal šaltinyje pateiktus datos skaičiavimus ir redakcines taisykles; tiekėjo horoskopo proza nepaimama, neverčiama ir nekaupiama. Tekstas automatiškai patikrinamas, tačiau gimtakalbis lietuvių kalbos redaktorius kiekvienos dienos rinkinio netikrina.'; elsif daily['automation']; 'Originalūs tekstai kuriami automatiniu procesu ir prieš publikavimą tikrinami atskirais automatiniais etapais. Gimtakalbis redaktorius jų neperžiūrėjo.'; else; 'Šis originalus rinkinys parengtas DI pagalba. Naujausi tekstai rodomi su tikrąja rinkinio data; kasdienis atnaujinimas nėra automatizuotas.'; end} Rinkinys rodomas su tikrąja paskelbimo data; pasenęs tekstas nėra žymimas nauju.</p></section>
       <nav class="horoscope-related" aria-label="Kiti kalendoriaus įrankiai"><a href="/sventes/">Lietuvos šventės</a><a href="/menulio-fazes/">Mėnulio fazės</a><a href="/saule/">Saulės laikai</a><a href="/atostogu-planavimas/">Atostogų planavimas</a></nav>
       <p class="horoscope-disclaimer">Horoskopas yra bendro pobūdžio pramoginis tekstas ir savirefleksijos pasiūlymas. Jis nėra mokslinė prognozė, asmeninė konsultacija ar patarimas priimant sveikatos, teisės, finansų ar kitus svarbius sprendimus.</p></div>)
     write_page('horoskopai', "Dienos horoskopai – #{month_title}", hub_description, hub)

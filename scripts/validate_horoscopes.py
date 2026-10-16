@@ -8,7 +8,6 @@ import hashlib
 import json
 import os
 import re
-import shutil
 import sys
 import tempfile
 import unicodedata
@@ -71,7 +70,8 @@ def required_text(value, label: str) -> str:
     return value
 
 
-def validate(data: dict, signs: list[dict], require_current: bool = False, require_review: bool = False) -> None:
+def validate(data: dict, signs: list[dict], require_current: bool = False, require_review: bool = False,
+             expected_current_date: date | None = None) -> None:
     if not isinstance(signs, list) or len(signs) != 12:
         fail("The zodiac dictionary must contain exactly twelve records")
     if {item.get("key") for item in signs} != set(EXPECTED):
@@ -95,7 +95,7 @@ def validate(data: dict, signs: list[dict], require_current: bool = False, requi
         for field, minimum in minimums.items():
             if len(row[field]) < minimum:
                 fail(f"{key}.{field}: needs at least {minimum} characters")
-        if len(row["overview"]) > 520 or any(len(row[field]) > 360 for field in ("relationships", "work", "reflection")):
+        if len(row["overview"]) > 900 or any(len(row[field]) > 360 for field in ("relationships", "work", "reflection")):
             fail(f"{key}: text is over the editorial length limit")
 
     for field in ("editorial_heading", "lead"):
@@ -133,16 +133,65 @@ def validate(data: dict, signs: list[dict], require_current: bool = False, requi
         required_text(data.get(field), field)
     if data["source_publication_date"] != local_date.isoformat() or data["source_timezone"] != "Europe/Vilnius":
         fail("Source publication date/timezone do not match the Lithuanian publication date")
-    if data["source_provider_id"] != "kalendorius365-original-editorial" or data["source_url"] is not None:
-        fail("This publication set accepts only original content without an external source URL")
-    if data["canonical_requirement"] != "self-canonical" or data["original_text_or_licensed_translation"] != "original-text":
-        fail("Content provenance/canonical requirements are inconsistent with original material")
+    source_id = data["source_provider_id"]
+    if source_id == "kalendorius365-original-editorial":
+        if data["source_url"] is not None or data["original_text_or_licensed_translation"] != "original-text":
+            fail("Legacy editorial content provenance is inconsistent")
+    elif source_id == "astroway-public-calculations-original-lithuanian":
+        if data.get("source_url") != "https://api.astroway.info/v1/public/horoscope/daily":
+            fail("Calculation source URL does not match the documented AstroWay public endpoint")
+        if data.get("source_terms_url") != "https://api.astroway.info/en/terms/":
+            fail("Source terms evidence URL is missing or unexpected")
+        if data.get("source_text_requested") is not False or data.get("source_data_fields") != ["sign", "date", "transits", "aspects", "events"]:
+            fail("Only the documented calculations-only field set is allowed")
+        if not str(data.get("provider_footer", "")).startswith("Powered by astroway.api"):
+            fail("The provider footer attribution must be preserved verbatim")
+        if data.get("original_text_or_licensed_translation") != "original-lithuanian-copy-from-calculation-data":
+            fail("This pipeline must store original Lithuanian copy, not a provider text translation")
+        provenance = data.get("source_provenance")
+        if not isinstance(provenance, list) or len(provenance) != 12 or {item.get("sign_key") for item in provenance if isinstance(item, dict)} != set(EXPECTED):
+            fail("Per-sign calculation provenance must contain all twelve signs")
+        for item in provenance:
+            if not re.fullmatch(r"[0-9a-f]{64}", str(item.get("response_sha256", ""))):
+                fail("Calculation provenance must contain a valid response hash, not source prose")
+            if not 1 <= item.get("solar_house", 0) <= 12 or not 1 <= item.get("lunar_house", 0) <= 12:
+                fail("Calculation provenance contains a house outside 1–12")
+    else:
+        fail("Unapproved horoscope provider identifier")
+    if data["canonical_requirement"] != "self-canonical":
+        fail("Only content that permits a self-canonical may be generated on these routes")
     if data["content_status"] not in {"draft", "approved", "published", "stale", "unavailable"}:
         fail("Unknown content_status")
     if data.get("content_checksum") != canonical_checksum(records):
         fail("content_checksum does not match all twelve forecast records")
-    if require_current and local_date != datetime.now(TZ).date():
-        fail(f"Content is dated {local_date}; today's Europe/Vilnius date is {datetime.now(TZ).date()}")
+    automation = data.get("automation")
+    if automation is not None:
+        if not isinstance(automation, dict):
+            fail("automation metadata must be a JSON object")
+        if source_id != "astroway-public-calculations-original-lithuanian":
+            fail("Only the calculations-only pipeline may use automated publication metadata")
+        if automation.get("qa_status") != "passed" or automation.get("deterministic_gate") != "passed" or automation.get("independent_content_gate") != "passed":
+            fail("Automated content must pass both separate recorded validation passes")
+        if not automation.get("provider") or not automation.get("engine") or not automation.get("terms_url"):
+            fail("Automated provenance must name the calculation provider, local engine and terms")
+        if automation.get("provider_text_requested") is not False or automation.get("provider_text_used") is not False:
+            fail("Provider horoscope prose must never enter this publisher")
+        if automation.get("provider_footer_preserved") != data.get("provider_footer"):
+            fail("The provider footer attribution must be preserved in public page metadata")
+        if automation.get("translation_model") is not None:
+            fail("The calculation-only original-copy fallback must not claim machine translation")
+        if automation.get("locale_output") != "lt-LT" or automation.get("native_human_proofread") is not False:
+            fail("Locale and human-review status must be explicit")
+        if not isinstance(automation.get("qa_passes"), list) or len(automation["qa_passes"]) != 2:
+            fail("Both independent QA passes must be listed")
+        body_words = {row["sign_key"]: len(re.findall(r"[^\W_]+", " ".join(row[field] for field in ("lead", "overview", "relationships", "work", "reflection", "tip")), re.UNICODE)) for row in records}
+        if any(not 150 <= count <= 300 for count in body_words.values()):
+            fail("Automated forecast body text must contain 150–300 words per sign")
+        if data["editorial_review_status"] != "automated-rule-based-two-pass-review; native-human-proofread-not-performed":
+            fail("Automated editorial status must disclose that no person proofread it")
+    current_date = expected_current_date or datetime.now(TZ).date()
+    if require_current and local_date != current_date:
+        fail(f"Content is dated {local_date}; expected Europe/Vilnius date is {current_date}")
     if require_review and data["editorial_review_status"] != "native-human-proofread-approved":
         fail("A Lithuanian native-language editor must approve the complete set before promotion")
 
@@ -157,20 +206,12 @@ def promote(candidate: Path, require_current: bool) -> None:
     draft["content_status"] = "published"
     draft["content_checksum"] = canonical_checksum(draft["forecasts"])
     destination = DATA_PATH
-    snapshot_dir = ROOT / "docs/horoscopes/snapshots"
-    snapshot_dir.mkdir(parents=True, exist_ok=True)
-    if destination.exists():
-        old = load_json(destination)
-        suffix = old.get("content_checksum", "unknown")[:12]
-        snapshot = snapshot_dir / f"horoscope-{old.get('local_date', 'unknown')}-{suffix}.json"
-        if not snapshot.exists():
-            shutil.copy2(destination, snapshot)
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=destination.parent, delete=False) as tmp:
         json.dump(draft, tmp, ensure_ascii=False, indent=2)
         tmp.write("\n")
         temporary = Path(tmp.name)
     os.replace(temporary, destination)
-    print(f"Published approved twelve-sign content for {draft['local_date']}; previous set saved under docs/horoscopes/snapshots/.")
+    print(f"Published approved twelve-sign content for {draft['local_date']}.")
 
 
 def check_rendered(release: bool) -> None:
