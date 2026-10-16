@@ -3753,6 +3753,382 @@ details > summary {
     scroll-behavior: auto !important;
   }
 }
+
+/* Refined homepage detail panels: category filters, holidays, notes and tasks. */
+.homepage-app .panel-heading-icon {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  margin: -5px 7px -5px -3px;
+  padding: 5px;
+  border: 1px solid color-mix(in srgb, var(--green) 12%, var(--border));
+  border-radius: 9px;
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 8%, var(--panel));
+}
+.homepage-app .holidays-panel .panel-heading-icon {
+  color: #b45a28;
+  border-color: #f0ddc5;
+  background: #fff7e9;
+}
+.homepage-app .category-chips {
+  gap: 7px;
+  margin: 1px 0 16px;
+}
+.homepage-app .category-chips .filter-chip {
+  min-height: 34px;
+  padding: 5px 10px 5px 7px;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--panel);
+  font-size: .72rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px #14293c08;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+.homepage-app .category-chips .filter-chip:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--filter-accent, var(--green)) 42%, var(--border));
+  background: color-mix(in srgb, var(--filter-accent, var(--green)) 5%, var(--panel));
+  box-shadow: 0 3px 8px #14293c0c;
+}
+.homepage-app .filter-chip__icon {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  flex: none;
+  border-radius: 7px;
+  color: var(--filter-accent, var(--green));
+  background: color-mix(in srgb, var(--filter-accent, var(--green)) 10%, var(--panel));
+  transition: opacity 150ms ease, filter 150ms ease;
+}
+.homepage-app .filter-chip--holiday { --filter-accent: #c43b43; }
+.homepage-app .filter-chip--category-0 { --filter-accent: #087b58; }
+.homepage-app .filter-chip--category-1 { --filter-accent: #2874c7; }
+.homepage-app .filter-chip--category-2 { --filter-accent: #8050b7; }
+.homepage-app .filter-chip--category-3 { --filter-accent: #c43b43; }
+.homepage-app .filter-chip--category-4 { --filter-accent: #ad741b; }
+.homepage-app .filter-chip--category-5 { --filter-accent: #a34e85; }
+.homepage-app .filter-chip--category-6 { --filter-accent: #68778b; }
+.homepage-app .category-chips .filter-chip[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--filter-accent, var(--green)) 42%, var(--border));
+  background: color-mix(in srgb, var(--filter-accent, var(--green)) 7%, var(--panel));
+  color: var(--filter-accent, var(--green));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--filter-accent, var(--green)) 8%, transparent);
+}
+.homepage-app .category-chips .filter-chip[aria-pressed="false"] {
+  border-style: solid;
+  color: var(--muted);
+  background: var(--soft);
+}
+.homepage-app .category-chips .filter-chip[aria-pressed="false"] .filter-chip__icon {
+  opacity: .55;
+  filter: grayscale(.62);
+}
+.homepage-app .holidays-panel #upcoming-holidays {
+  display: grid;
+  gap: 7px;
+  min-height: 0;
+}
+.homepage-app .holidays-panel .holiday-list li {
+  grid-template-columns: 34px 49px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  min-height: 61px;
+  margin: 0;
+  padding: 8px 9px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--holiday-accent) 5%, var(--panel)), var(--panel) 45%);
+  box-shadow: 0 1px 2px #14293c05;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+.homepage-app .holidays-panel .holiday-list li:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--holiday-accent) 32%, var(--border));
+  box-shadow: 0 4px 12px #14293c0c;
+}
+.homepage-app .holiday-row--flag { --holiday-accent: #087b58; }
+.homepage-app .holiday-row--easter { --holiday-accent: #c43b43; }
+.homepage-app .holiday-row--candle { --holiday-accent: #8050b7; }
+.homepage-app .holiday-row--bloom { --holiday-accent: #b36a1a; }
+.homepage-app .holiday-row--evergreen { --holiday-accent: #087b58; }
+.homepage-app .holiday-row--spark { --holiday-accent: #bd8b1b; }
+.homepage-app .holiday-mark {
+  display: grid;
+  width: 34px;
+  height: 36px;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--holiday-accent);
+  background: color-mix(in srgb, var(--holiday-accent) 10%, var(--panel));
+}
+.homepage-app .holiday-mark__icon {
+  width: 24px;
+  height: 24px;
+}
+.homepage-app .holidays-panel .holiday-date {
+  display: grid;
+  min-height: 29px;
+  place-items: center;
+  padding: 3px 4px;
+  border: 1px solid color-mix(in srgb, var(--holiday-accent) 15%, var(--border));
+  border-radius: 8px;
+  color: var(--holiday-accent);
+  background: color-mix(in srgb, var(--holiday-accent) 5%, var(--panel));
+  font-size: .68rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.homepage-app .holidays-panel .holiday-select {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  color: var(--ink);
+  background: transparent;
+  box-shadow: none;
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+}
+.homepage-app .holidays-panel .holiday-select:hover {
+  color: var(--holiday-accent);
+  background: transparent;
+  box-shadow: none;
+}
+.homepage-app .holidays-panel .holiday-list li small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: .65rem;
+  line-height: 1.35;
+}
+.homepage-app .notes-panel {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, #d3a74c 22%, var(--border));
+  background: linear-gradient(150deg, color-mix(in srgb, #fff8e5 32%, var(--panel)), var(--panel) 58%);
+}
+.homepage-app .notes-panel::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, #d8a43c, #e8cb84 55%, #d8a43c);
+  content: "";
+}
+.homepage-app .notes-panel .panel-title {
+  margin-bottom: 10px;
+}
+.homepage-app .notes-panel .panel-title button {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid #cde5d8;
+  border-radius: 9px;
+  color: #006a44;
+  background: #f0f9f4;
+  font-size: .71rem;
+  font-weight: 700;
+  box-shadow: 0 1px 2px #14293c08;
+}
+.homepage-app .notes-panel .panel-title button:hover {
+  border-color: #8dc6a9;
+  background: #e7f5ed;
+}
+.homepage-app #save-note .icon {
+  width: 16px;
+  height: 16px;
+}
+.homepage-app .notes-panel textarea {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 11px 13px;
+  border: 1px solid #ead9aa;
+  border-radius: 10px;
+  color: #28354a;
+  background: repeating-linear-gradient(to bottom, #fffdf6 0, #fffdf6 29px, #f0e6cc 30px, #fffdf6 31px);
+  font: 400 .83rem/30px Lato, "Arial", sans-serif;
+  box-shadow: inset 0 1px 3px #5640190a;
+  resize: vertical;
+}
+.homepage-app .notes-panel textarea:focus {
+  border-color: #d0a344;
+  outline: 3px solid #d0a34424;
+  outline-offset: 1px;
+}
+.homepage-app #note-status {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: .67rem;
+}
+.homepage-app #note-status::before {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: #a1aaba;
+  content: "";
+}
+.homepage-app #note-status[data-state="saved"] { color: #087b58; }
+.homepage-app #note-status[data-state="saved"]::before { background: #15865c; }
+.homepage-app #note-status[data-state="dirty"] { color: #9d6415; }
+.homepage-app #note-status[data-state="dirty"]::before { background: #cf9028; }
+.homepage-app .tasks-panel > h2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 11px;
+}
+.homepage-app .task-filter-wrap {
+  position: relative;
+  display: block;
+  margin-bottom: 9px;
+}
+.homepage-app .task-filter-wrap select {
+  width: 100%;
+  min-height: 40px;
+  margin: 0;
+  padding: 7px 35px 7px 11px;
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--panel);
+  font-size: .75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.homepage-app .task-filter-wrap > .icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.homepage-app #tasks {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+.homepage-app .task-empty {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border: 1px dashed color-mix(in srgb, var(--green) 24%, var(--border));
+  border-radius: 10px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--green) 3%, var(--panel));
+  font-size: .72rem;
+}
+.homepage-app .task-empty__icon {
+  width: 25px;
+  height: 25px;
+  flex: none;
+  color: #087b58;
+}
+.homepage-app .task-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px 30px;
+  align-items: center;
+  gap: 5px;
+  min-height: 42px;
+  padding: 4px 5px 4px 9px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.homepage-app .task-entry label {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 3px 0;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+.homepage-app .task-entry label input { flex: none; margin-top: 1px; }
+.homepage-app .task-entry.done { background: color-mix(in srgb, var(--green) 4%, var(--panel)); }
+.homepage-app .task-entry.done label { color: var(--muted); text-decoration: line-through; text-decoration-color: #92a398; }
+.homepage-app .task-entry .task-action {
+  display: grid;
+  width: 29px;
+  min-height: 29px;
+  place-items: center;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: none;
+}
+.homepage-app .task-entry .task-action:hover {
+  border-color: var(--border);
+  color: var(--green);
+  background: var(--soft);
+}
+.homepage-app .task-entry .task-action--delete:hover { color: #bb333c; background: #fff2f2; }
+.homepage-app .task-action__icon { width: 17px; height: 17px; }
+.homepage-app #task-form { gap: 7px; margin-top: 2px; }
+.homepage-app #task-form input#task-title {
+  min-height: 42px;
+  padding: 8px 11px;
+  border-radius: 10px;
+  font-size: .77rem;
+}
+.homepage-app #task-form > button {
+  display: grid;
+  width: 42px;
+  min-height: 42px;
+  flex: none;
+  place-items: center;
+  padding: 9px;
+  border: 1px solid #006a44;
+  border-radius: 11px;
+  color: #fff;
+  background: linear-gradient(145deg, #078054, #006a44);
+  box-shadow: 0 3px 8px #006a4426;
+}
+.homepage-app #task-form > button:hover { background: #005c3b; box-shadow: 0 5px 12px #006a4430; }
+.homepage-app #task-form > button .icon { width: 21px; height: 21px; }
+[data-theme="dark"] .homepage-app .holidays-panel .panel-heading-icon { color: #f0ba76; border-color: #604937; background: #332a22; }
+[data-theme="dark"] .homepage-app .holiday-mark { background: color-mix(in srgb, var(--holiday-accent) 17%, var(--panel)); }
+[data-theme="dark"] .homepage-app .holidays-panel .holiday-date { background: color-mix(in srgb, var(--holiday-accent) 12%, var(--panel)); }
+[data-theme="dark"] .homepage-app .notes-panel { border-color: #594b31; background: linear-gradient(150deg, #2f2b22, var(--panel) 62%); }
+[data-theme="dark"] .homepage-app .notes-panel textarea { color: #f0e8d3; border-color: #665638; background: repeating-linear-gradient(to bottom, #302d25 0, #302d25 29px, #49412e 30px, #302d25 31px); }
+[data-theme="dark"] .homepage-app .notes-panel .panel-title button { color: #a5e0c4; border-color: #315744; background: #20382d; }
+[data-theme="dark"] .homepage-app .task-entry.done { background: color-mix(in srgb, #16815b 13%, var(--panel)); }
+[data-theme="dark"] .homepage-app .task-entry .task-action--delete:hover { background: #43282f; }
+@media (max-width: 760px) {
+  .homepage-app .category-chips { gap: 6px; margin-bottom: 12px; }
+  .homepage-app .category-chips .filter-chip { min-height: 35px; font-size: .7rem; }
+  .homepage-app .holidays-panel .holiday-list li { grid-template-columns: 32px 47px minmax(0, 1fr); gap: 7px; padding-inline: 7px; }
+  .homepage-app .holiday-mark { width: 32px; height: 34px; }
+  .homepage-app .holidays-panel .holiday-select { font-size: .73rem; }
+  .homepage-app .notes-panel textarea { min-height: 106px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .homepage-app .category-chips .filter-chip,
+  .homepage-app .filter-chip__icon,
+  .homepage-app .holidays-panel .holiday-list li { transition: none; }
+}
 @media print {
   .mobile-dock,
   .site-header,
@@ -4742,5 +5118,38 @@ details > summary {
   .homepage-app .utility-actions .utility-action,
   .homepage-app #primary-nav > a > .icon {
     transition: none;
+  }
+}
+
+/* Final spacing pass for compact homepage side columns. */
+.homepage-app .category-chips .filter-chip {
+  min-height: 32px;
+  padding: 4px 8px 4px 6px;
+  gap: 5px;
+  font-size: .68rem;
+}
+.homepage-app .filter-chip__icon { width: 18px; height: 18px; padding: 2.5px; }
+.homepage-app .holidays-panel .holiday-list li {
+  grid-template-columns: 47px minmax(0, 1fr);
+  gap: 8px;
+  min-height: 58px;
+}
+.homepage-app .holiday-mark {
+  width: 23px;
+  height: 23px;
+  flex: none;
+}
+.homepage-app .holiday-mark__icon { width: 21px; height: 21px; }
+.homepage-app .holiday-title {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 6px;
+}
+@media (max-width: 760px) {
+  .homepage-app .holidays-panel .holiday-list li {
+    grid-template-columns: 45px minmax(0, 1fr);
+    gap: 7px;
+    padding-inline: 7px;
   }
 }
