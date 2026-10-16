@@ -20,6 +20,72 @@ document.querySelector("#theme")?.addEventListener("click", () => {
     document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   applyTheme(mode);
 });
+
+// Fetch an internal page only after a clear navigation intent. This keeps
+// idle/mobile connections free while making the next click reuse the response.
+const prefetchedPages = new Set();
+const prefetchPage = (anchor) => {
+  const connection = navigator.connection;
+  if (
+    prefetchedPages.size >= 2 ||
+    connection?.saveData ||
+    /^(slow-2g|2g)$/.test(connection?.effectiveType || "") ||
+    !anchor ||
+    anchor.hasAttribute("download") ||
+    anchor.target === "_blank"
+  )
+    return;
+  const url = new URL(anchor.href, location.href);
+  if (
+    url.origin !== location.origin ||
+    url.pathname === location.pathname ||
+    url.search ||
+    url.hash ||
+    /\.(?:pdf|webp|png|jpe?g|svg|ics|json|xml)$/i.test(url.pathname) ||
+    prefetchedPages.has(url.pathname)
+  )
+    return;
+
+  const hint = document.createElement("link");
+  hint.rel = "prefetch";
+  hint.as = "document";
+  hint.href = url.pathname;
+  hint.fetchPriority = "low";
+  document.head.append(hint);
+  prefetchedPages.add(url.pathname);
+};
+let pendingPrefetch;
+const schedulePrefetch = (anchor, delay) => {
+  clearTimeout(pendingPrefetch);
+  pendingPrefetch = setTimeout(() => prefetchPage(anchor), delay);
+};
+document.addEventListener(
+  "pointerover",
+  (event) => {
+    if (event.pointerType === "touch") return;
+    const anchor = event.target.closest?.("a[href]");
+    if (anchor) schedulePrefetch(anchor, 120);
+  },
+  true,
+);
+document.addEventListener(
+  "pointerout",
+  (event) => {
+    const anchor = event.target.closest?.("a[href]");
+    if (anchor && !anchor.contains(event.relatedTarget)) clearTimeout(pendingPrefetch);
+  },
+  true,
+);
+document.addEventListener("pointerdown", () => clearTimeout(pendingPrefetch), true);
+document.addEventListener(
+  "focusin",
+  (event) => {
+    const anchor = event.target.closest?.("a[href]");
+    if (anchor) schedulePrefetch(anchor, 0);
+  },
+  true,
+);
+
 for (const button of document.querySelectorAll("[data-print]"))
   button.addEventListener("click", () => window.print());
 let searchIndex;

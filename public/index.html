@@ -12,15 +12,16 @@
 <script>/* Apply the system appearance before CSS paints to avoid a light flash. */
 try{document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=3618e66391b4" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=3618e66391b4" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/style.css?v=3618e66391b4" as="style">
-<link rel="preload" href="/assets/design-system.css?v=3618e66391b4" as="style">
-<link rel="stylesheet" href="/assets/style.css?v=3618e66391b4"><link rel="stylesheet" href="/assets/design-system.css?v=3618e66391b4">
-<link rel="stylesheet" href="/assets/horoscope.css?v=3618e66391b4">
-<script type="module" src="/assets/common.js?v=cf915f3abb17"></script>
-<script type="module" src="/assets/cookie-notice.js?v=cf915f3abb17"></script>
-<script type="module" src="/assets/app.js?v=cf915f3abb17"></script>
+<link rel="preload" href="/assets/visuals/weather-640.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=b44d20070fc8" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=b44d20070fc8" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/style.css?v=b44d20070fc8" as="style">
+<link rel="preload" href="/assets/design-system.css?v=b44d20070fc8" as="style">
+<link rel="stylesheet" href="/assets/style.css?v=b44d20070fc8"><link rel="stylesheet" href="/assets/design-system.css?v=b44d20070fc8">
+<link rel="stylesheet" href="/assets/horoscope.css?v=b44d20070fc8">
+<script type="module" src="/assets/common.js?v=9d13897a71f1"></script>
+<script type="module" src="/assets/cookie-notice.js?v=9d13897a71f1"></script>
+<script type="module" src="/assets/app.js?v=9d13897a71f1"></script>
 
 
 
@@ -55,7 +56,7 @@ try{document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: da
 <noscript><div class="panel">Asmeniniam kalendoriui reikia JavaScript. <a href="/2027/">2027</a> ir <a href="/2028/">2028 metų kalendorius</a> bei visi spausdinami failai veikia ir be jo.</div></noscript>
 <div class="dashboard">
 <aside class="left-column" aria-label="Laikas, orai ir kalendoriai">
-<div class="climate-card"><section class="clock-card"><div class="eyebrow" id="clock-weekday">Lietuvos laikas</div><div id="clock-date" class="clock-date"></div><div id="clock" aria-label="Dabartinis Lietuvos laikas">--:--:--</div><small class="clock-location"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg#pin"></use></svg> <span id="clock-zone">Vilnius · Europe/Vilnius</span></small><div class="settings-small"><label class="check"><input type="checkbox" id="seconds" checked>Sekundės</label><label class="check"><input type="checkbox" id="hour12">12 val.</label></div></section>
+<div class="climate-card"><img class="climate-card__image" src="/assets/visuals/weather-640.webp" width="640" height="360" alt="" aria-hidden="true" fetchpriority="high" loading="eager" decoding="async"><section class="clock-card"><div class="eyebrow" id="clock-weekday">Lietuvos laikas</div><div id="clock-date" class="clock-date"></div><div id="clock" aria-label="Dabartinis Lietuvos laikas">--:--:--</div><small class="clock-location"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg#pin"></use></svg> <span id="clock-zone">Vilnius · Europe/Vilnius</span></small><div class="settings-small"><label class="check"><input type="checkbox" id="seconds" checked>Sekundės</label><label class="check"><input type="checkbox" id="hour12">12 val.</label></div></section>
 <section class="weather-panel"><div class="weather-top"><h2><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg#pin"></use></svg> Orai</h2><label><span class="visually-hidden">Orų miestas</span><select id="weather-city" aria-label="Orų miestas"><option value="auto">Automatiškai</option><option value="vilnius">Vilnius</option><option value="kaunas">Kaunas</option><option value="klaipeda">Klaipėda</option><option value="siauliai">Šiauliai</option><option value="panevezys">Panevėžys</option><option value="alytus">Alytus</option><option value="marijampole">Marijampolė</option><option value="mazeikiai">Mažeikiai</option><option value="jonava">Jonava</option><option value="utena">Utena</option><option value="kedainiai">Kėdainiai</option><option value="telsiai">Telšiai</option><option value="ukmerge">Ukmergė</option><option value="taurage">Tauragė</option><option value="visaginas">Visaginas</option></select></label></div><div id="weather-content">Įkeliami orai…</div><p class="weather-credit"><a href="https://api.meteo.lt/" target="_blank" rel="noopener">LHMT · Meteo LT</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a></p><span class="sky-caption">Lietuvos dangus · iliustracija</span></section></div>
 <section class="panel holidays-panel"><div class="panel-title"><h2><svg class="icon home-icon panel-heading-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg#holiday-gift"></use></svg>Artimiausios datos</h2><a href="/sventes/">Visos ↗</a></div><p class="holidays-panel__intro">Lietuvos šventinės ir atmintinos dienos.</p><ul id="upcoming-holidays" class="holiday-list"></ul></section>
 <section class="panel mini-calendar"><div class="panel-title"><strong id="mini-title"></strong><div class="toolbar-group"><button id="mini-prev" aria-label="Ankstesnis mini kalendoriaus mėnuo"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg#chevron-left"></use></svg></button><button id="mini-next" aria-label="Kitas mini kalendoriaus mėnuo"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg#chevron-right"></use></svg></button></div></div><div id="mini"></div></section>
