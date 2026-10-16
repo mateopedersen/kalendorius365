@@ -14,19 +14,11 @@ function applyTheme(mode) {
       mode === "dark" ? "Įjungti šviesią temą" : "Įjungti tamsią temą",
     );
 }
-try {
-  applyTheme(
-    localStorage.getItem("k365:theme") ||
-      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
-  );
-} catch {}
+applyTheme(matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 document.querySelector("#theme")?.addEventListener("click", () => {
   const mode =
     document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   applyTheme(mode);
-  try {
-    localStorage.setItem("k365:theme", mode);
-  } catch {}
 });
 for (const button of document.querySelectorAll("[data-print]"))
   button.addEventListener("click", () => window.print());
