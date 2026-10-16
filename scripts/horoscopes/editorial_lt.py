@@ -25,7 +25,7 @@ ENGLISH_SIGNS = {
 SOLAR_HOUSES = {
     1: {
         "heading": "Dėmesį verta grąžinti prie savo pasirinkimo",
-        "focus": "asmeninei krypčiai ir saviraiškai",
+        "focus": "asmeninė kryptis ir saviraiška",
         "overview": "Šios dienos simboliniame skaityme pirmiausia išryškėja tavo laikysena ir tai, kaip pradedi darbus. Tai nėra raginimas viską daryti vienam: veikiau proga aiškiau įvardyti, ko nori ir kokiu tempu gali judėti. Nedidelis, sąmoningas sprendimas dažnai pasako daugiau nei skubus pažadas.",
         "relationships": "Bendraudamas pasakyk savo poreikį paprastai ir palik kitam žmogui vietos atsakyti. Aiški saviraiška ir pagarbus klausymasis gali puikiai derėti. Jei nuomonės išsiskiria, pirmiausia susitarkite, ką kiekvienas iš tikrųjų nori apsaugoti, o ne skubėkite ieškoti laimėtojo.",
         "work": "Veikloje išsirink vieną darbą, kuriam reikia tavo iniciatyvos, ir apibrėžk, ką šiandien reiškia jį užbaigti. Pradėk nuo pirmo patikrinamo žingsnio. Taip energija turės aiškią kryptį, o naujos užduotys neužgoš to, ką jau nusprendei padaryti.",
@@ -34,7 +34,7 @@ SOLAR_HOUSES = {
     },
     2: {
         "heading": "Vertę kuria apgalvotas, ne skubotas pasirinkimas",
-        "focus": "vertybėms, laikui ir turimiems ištekliams",
+        "focus": "vertybės, laikas ir turimi ištekliai",
         "overview": "Simbolinė dienos tema kviečia pastebėti, kam skiri savo laiką, dėmesį ir pastangas. Tai nėra finansinė prognozė ar nurodymas, ką pirkti. Naudingiau pasitikrinti, ar kasdieniai įsipareigojimai dera su tuo, ką laikai svarbiausia, ir ar tavo tempas palieka vietos atsigauti.",
         "relationships": "Santykiuose patikimumą dažnai parodo maži, įvykdomi susitarimai. Jei kažko negali pažadėti, pasakyk tai laiku ir pasiūlyk realią alternatyvą. Toks atvirumas sumažina spėliojimą ir leidžia abiem pusėms aiškiau suprasti, kokios pagalbos galima tikėtis.",
         "work": "Prieš imdamasis naujo darbo, įvertink, kiek jis pareikalaus laiko ir kokį jau pradėtą dalyką gali tekti atidėti. Susirašyk būtiniausias priemones ar informaciją, kurios trūksta. Tvarka čia skirta padėti rinktis, o ne sukurti dar vieną ilgą kontrolinį sąrašą.",
@@ -43,7 +43,7 @@ SOLAR_HOUSES = {
     },
     3: {
         "heading": "Tikslus klausimas sutaupys ilgą aiškinimąsi",
-        "focus": "pokalbiams, informacijai ir artimai aplinkai",
+        "focus": "pokalbiai, informacija ir artima aplinka",
         "overview": "Dienos simbolika iškelia žinių apykaitą ir mažus susitarimus. Prieš reaguodamas į naują informaciją, patikrink, ką tikrai žinai, o ką tik numanai. Trumpas pokalbis gali padėti susidėlioti mintis, jei jame paliksi vietos patikslinimui ir nesistengsi atsakyti greičiau, nei spėji suprasti klausimą.",
         "relationships": "Artimam žmogui skirk dėmesį ne vien atsakydamas, bet ir pasitikrindamas, ar teisingai jį supratai. Jei pokalbis jautrus, rinkis aiškius, paprastus žodžius. Vienas konkretus klausimas dažnai atveria daugiau nei ilgas spėjimų sąrašas.",
         "work": "Darbe ar moksluose suskaidyk didesnę užduotį į kelis aiškius veiksmus. Užrašyk, kokios informacijos dar trūksta ir kas gali ją patvirtinti. Taip pokalbiai virsta naudingu darbu, o skirtingos užduotys mažiau konkuruoja dėl tavo dėmesio.",
@@ -52,7 +52,7 @@ SOLAR_HOUSES = {
     },
     4: {
         "heading": "Ramybė prasideda nuo saugios kasdienės erdvės",
-        "focus": "namų aplinkai, artumui ir vidinei atramai",
+        "focus": "namų aplinka, artumas ir vidinė atrama",
         "overview": "Šios dienos simbolinis akcentas siejamas su tuo, kas leidžia jaustis turinčiam pagrindą po kojomis. Tai gali būti namų tvarka, pažįstamas ritualas ar laikas be papildomų reikalavimų. Nebūtina spręsti visko iš karto: pasirink vieną mažą dalyką, kuris aplinką ar dienotvarkę padarytų šiek tiek ramesnę.",
         "relationships": "Artumo nereikia įrodinėti dideliais gestais. Pasidomėk, kokios pagalbos iš tavęs tikimasi, ir pasakyk, kokią dalį realiai gali prisiimti. Jei tau pačiam reikia tylos ar laiko, įvardyk tai švelniai ir konkrečiai, nelaukdamas, kol kitas žmogus perskaitys tavo nuotaiką.",
         "work": "Praktiniuose reikaluose pradėk nuo aplinkos, kuri trukdo susikaupti: sutvarkyk vieną paviršių, dokumentą ar atidėtą smulkmeną. Aiški darbo vieta nėra tikslas savaime; ji turi padėti atlikti tai, kas svarbu, ir neužimti visos dienos.",
@@ -61,7 +61,7 @@ SOLAR_HOUSES = {
     },
     5: {
         "heading": "Kūrybiškumui padeda žaidimas be tobulo rezultato",
-        "focus": "kūrybai, džiaugsmui ir laisvai iniciatyvai",
+        "focus": "kūryba, džiaugsmas ir laisva iniciatyva",
         "overview": "Dienos simbolika primena apie kūrybinę raišką ir tai, kas teikia gyvo susidomėjimo. Tai nereiškia, kad privalai sukurti įspūdingą rezultatą. Leisk sau išbandyti mažą idėją, net jei dar nežinai, kuo ji baigsis. Smalsumas gali būti vertingas ir tada, kai jis lieka paprastu malonumu.",
         "relationships": "Bendra veikla gali suartinti, kai jos tikslas nėra pasirodyti ar įrodyti savo teisumą. Pasiūlyk tai, kas abiem atrodo malonu, ir pasiteirauk, ar kitas žmogus turi kitą sumanymą. Lengvumas geriausiai veikia tada, kai niekas nejaučia spaudimo linksmintis pagal grafiką.",
         "work": "Darbo užduotyje pabandyk vieną naują būdą pateikti idėją, išdėstyti informaciją ar pradėti projektą. Laikyk eksperimentą nedidelį: aiškiai nuspręsk, ką tikrinsi, ir kada įvertinsi rezultatą. Taip kūryba papildo atsakomybę, o ne ją pakeičia.",
@@ -70,7 +70,7 @@ SOLAR_HOUSES = {
     },
     6: {
         "heading": "Kasdienybė palengvėja, kai planas turi ribas",
-        "focus": "dienos tvarkai, įpročiams ir užduočių ritmui",
+        "focus": "dienos tvarka, įpročiai ir užduočių ritmas",
         "overview": "Simbolinė dienos kryptis susijusi su tuo, kaip išdėstai įprastas užduotis. Geras planas turi ne tik darbų, bet ir pabaigos tašką. Pasirink, kas iš tiesų būtina, ir palik tarpą nenumatytiems reikalams. Tvarka turi sumažinti sprendimų skaičių, o ne reikalauti nuolat ją tobulinti.",
         "relationships": "Bendruose reikaluose aiškiai pasidalykite kasdienėmis pareigomis. Jei susitarimas nebeveikia, aptarkite, kuri jo dalis per sunki ar neaiški, užuot tyliai prisiėmę dar daugiau. Konkretus prašymas kitam žmogui suteikia daugiau galimybių padėti.",
         "work": "Užduotis grupuok pagal panašumą ir vienu kartu skirk dėmesį vienai jų rūšiai. Prieš pradėdamas pasitikrink, ko reikia rezultatui, o atlikęs pažymėk darbą užbaigtu. Taip išvengsi ilgo taisymo vien dėl to, kad nebuvo aiškaus pakankamo rezultato kriterijaus.",
@@ -79,7 +79,7 @@ SOLAR_HOUSES = {
     },
     7: {
         "heading": "Geresnis susitarimas prasideda išklausymu",
-        "focus": "partnerystėms, susitarimams ir abipusėms riboms",
+        "focus": "partnerystė, susitarimai ir abipusės ribos",
         "overview": "Šiandienos simbolinis skaitymas išryškina bendradarbiavimą ir tai, kaip derini savo planus su kitais. Kompromisas nėra automatiškai teisingas vien todėl, kad visi nutilo. Iš pradžių išsiaiškinkite, kas kiekvienai pusei svarbiausia, tada ieškokite konkretaus susitarimo, kurį galima ramiai paaiškinti.",
         "relationships": "Pokalbyje pabandyk apibendrinti, ką išgirdai, prieš pateikdamas savo atsakymą. Tai nereiškia, kad privalai sutikti. Aiški riba ir nuoširdus noras suprasti kitą gali egzistuoti kartu. Jei tema jautri, susitarkite, kada prie jos grįšite, o ne veržkitės viską užbaigti akimirksniu.",
         "work": "Bendrame darbe įvardykite atsakomybę, terminą ir tai, kokio rezultato tikitės vieni iš kitų. Pasitikrink, ar visi supranta susitarimą vienodai. Toks aiškumas padeda išvengti situacijos, kai žmonės sąžiningai stengiasi, bet siekia skirtingų tikslų.",
@@ -88,7 +88,7 @@ SOLAR_HOUSES = {
     },
     8: {
         "heading": "Pasitikėjimą augina aiškios ribos ir atvirumas",
-        "focus": "pasitikėjimui, bendriems įsipareigojimams ir pokyčiams",
+        "focus": "pasitikėjimas, bendri įsipareigojimai ir pokyčiai",
         "overview": "Simbolinis dienos akcentas liečia temas, kurioms reikia daugiau pasitikėjimo ir atidaus pokalbio. Neskubėk atskleisti to, kam dar neradai tinkamų žodžių. Kartu verta atskirti faktus nuo nuogąstavimų ir pasitikrinti, kokie susitarimai jau galioja. Aiškumas gali būti ir švelnus, ir tvirtas.",
         "relationships": "Jei su artimu žmogumi dalijatės atsakomybe ar jautria tema, iš anksto susitarkite, ką galima aptarti ir kokios ribos svarbios abiem. Nespėliok apie nutylėjimų priežastis. Tiesus klausimas, užduotas be kaltinimo, leidžia pokalbiui tapti saugesniam.",
         "work": "Bendrame projekte peržiūrėk, kas už ką atsako, kokia informacija prieinama ir kada reikia atnaujinti susitarimą. Jei kyla neaiškumas, užrašyk jį ir kreipkis į tinkamą atsakingą žmogų. Nedaryk išvadų apie kitų ketinimus be patikrinamų faktų.",
@@ -97,7 +97,7 @@ SOLAR_HOUSES = {
     },
     9: {
         "heading": "Platesnis požiūris prasideda nuo patikrinto klausimo",
-        "focus": "mokymuisi, idėjoms ir platesniam požiūriui",
+        "focus": "mokymasis, idėjos ir platesnis požiūris",
         "overview": "Dienos simbolika kviečia praplėsti akiratį, bet neatsisakyti kruopštumo. Nauja idėja gali būti įdomi, net jei dar neaišku, kaip ją pritaikysi. Pasirink patikimą šaltinį, pasižymėk, ko dar nežinai, ir leisk savo nuomonei keistis, kai atsiranda geresnių argumentų.",
         "relationships": "Pokalbyje skirtingas požiūris gali padėti geriau suprasti kitą, jei nekonkuruojate, kuris teisus. Paklausk, kokia patirtis formuoja kito žmogaus nuomonę. Tada papasakok savo požiūrį kaip vieną perspektyvą, o ne vienintelę galimą tiesą.",
         "work": "Mokymuisi ar projektui pasirink vieną temą, kuri dabar būtų praktiškai naudinga. Užsibrėžk nedidelį tikslą: perskaityti, palyginti ar išbandyti vieną dalyką. Įsitikink, kad informacijos šaltinis patikimas, prieš paversdamas jos teiginius savo sprendimų pagrindu.",
@@ -106,7 +106,7 @@ SOLAR_HOUSES = {
     },
     10: {
         "heading": "Atsakomybė aiškėja įvardijus tikrąjį tikslą",
-        "focus": "atsakomybei, ilgalaikiams tikslams ir matomam darbui",
+        "focus": "atsakomybė, ilgalaikiai tikslai ir matomas darbas",
         "overview": "Simbolinė dienos tema susijusi su vaidmeniu, kurį prisiimi, ir rezultatu, kurį nori pasiekti. Didelis tikslas tampa lengviau valdomas, kai jį suskaidai į patikrinamus etapus. Nebūtina šiandien padaryti visko: svarbiau suprasti, kuris žingsnis iš tiesų artina prie pasirinktos krypties.",
         "relationships": "Jei tavo įsipareigojimai veikia ir kitus, iš anksto pasakyk apie laiką, kurio tau reikia, ir ką jie gali planuoti. Patikimumą kuria ne vien sėkmė, bet ir laiku pateikta aiški informacija. Prašymas pasidalyti atsakomybe nėra silpnumas.",
         "work": "Profesiniame ar asmeniniame projekte atskirk svarbų rezultatą nuo užduočių, kurios tik atrodo užimtos. Vieną etapą apibrėžk taip, kad galėtum patikrinti, ar jis baigtas. Jei trūksta informacijos ar pagalbos, įvardyk tai prieš terminui tampant problema.",
@@ -115,7 +115,7 @@ SOLAR_HOUSES = {
     },
     11: {
         "heading": "Bendruomenės idėją verta paversti konkrečiu veiksmu",
-        "focus": "draugystėms, bendruomenėms ir ateities planams",
+        "focus": "draugystė, bendruomenė ir ateities planai",
         "overview": "Dienos simbolika atkreipia dėmesį į grupes, bendrus sumanymus ir tai, kokią ateitį kuri kartu su kitais. Idėjų gali būti daug, todėl pasirink tą, kuriai atsirado realių bendraminčių ir aiškus pirmas žingsnis. Bendras tikslas tampa tvirtesnis, kai kiekvienas žino, kaip prisidėti.",
         "relationships": "Draugystėje verta parodyti dėmesį ne tik reaguojant į didelį įvykį. Parašyk žmogui, su kuriuo seniai norėjai pasikalbėti, arba pasidomėk, ko jam šiuo metu reikia. Grupėje suteik erdvės ir tylesniam balsui, o ne vien greičiausiai išsakytai nuomonei.",
         "work": "Komandos veikloje aiškiai apibrėžkite bendrą rezultatą ir dalykus, kuriuos kiekvienas gali nuspręsti savarankiškai. Jei planas platus, pradėkite nuo mažo bandymo. Taip patikrinsite, ar idėja naudinga, ir nesukursite perteklinių įsipareigojimų.",
@@ -124,7 +124,7 @@ SOLAR_HOUSES = {
     },
     12: {
         "heading": "Tylos tarpas padės atskirti svarbą nuo triukšmo",
-        "focus": "poilsiui, užbaigimui ir ramesniam apmąstymui",
+        "focus": "poilsis, užbaigimas ir ramesnis apmąstymas",
         "overview": "Simbolinė dienos kryptis kviečia sulėtinti tempą ir pastebėti tai, kas lieka tarp įprastų reikalų. Tai nėra raginimas vengti atsakomybės ar pasikliauti nuojauta vietoj faktų. Trumpa pauzė gali padėti atskirti tikrai svarbų dalyką nuo informacijos, kuri tik prašo skubaus atsako.",
         "relationships": "Jei pokalbiui reikia daugiau laiko, pasakyk, kada galėsi prie jo grįžti. Tyla neturėtų būti naudojama kaip spėjimo žaidimas. Aiškus paaiškinimas, kad nori ramiai pagalvoti, dažnai yra pagarbesnis už skubų atsakymą, kurio pats dar nelaikai tiksliu.",
         "work": "Užbaik vieną atidėtą smulkmeną, kuri nuolat blaško dėmesį, ir iš anksto nustatyk, kada darbą baigsi. Jei užduotis neaiški, užrašyk konkretų klausimą kitam darbo laikui. Taip poilsio tarpas netaps bandymu viską išspręsti vien mintyse.",
@@ -199,7 +199,7 @@ def render_forecast(sign_key: str, solar_house: int, moon_house: int, aspect: di
     return {
         "sign_key": sign_key,
         "editorial_heading": house["heading"],
-        "lead": f"{genitive} dienos simbolinė kryptis – {house['focus']}; rinkis tempą pagal savo tikrąsias aplinkybes.",
+        "lead": f"{genitive} dienos tema – {house['focus']}. Rinkis tempą pagal savo aplinkybes.",
         "overview": overview,
         "relationships": house["relationships"],
         "work": house["work"],

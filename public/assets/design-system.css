@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=f25331c2fcfe") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=3f74bf86f35a") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=f25331c2fcfe") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=3f74bf86f35a") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=f25331c2fcfe") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=3f74bf86f35a") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -391,7 +391,12 @@ main.dashboard-main {
 .right-column #day-details {
   display: flex;
   flex-direction: column;
+}
+.right-column #day-details > .day-details__content {
+  display: flex;
+  flex-direction: column;
   gap: 14px;
+  min-width: 0;
 }
 .right-column #day-details > summary {
   display: none;
@@ -1295,7 +1300,8 @@ main.content-main {
   background: var(--panel);
   border-radius: 10px;
 }
-.month-sidebar > h2 {
+.month-sidebar > h2,
+.month-sidebar > .month-sidebar__title {
   font-size: 1rem;
   padding: 0 6px;
 }
@@ -2660,6 +2666,8 @@ details > summary {
   }
   .right-column #day-details {
     grid-column: 1/-1;
+  }
+  .right-column #day-details > .day-details__content {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
@@ -3077,9 +3085,9 @@ details > summary {
   .right-column #day-details {
     display: flex;
     flex-direction: column;
-    gap: 12px;
     width: 100%;
   }
+  .right-column #day-details > .day-details__content { display: flex; flex-direction: column; gap: 12px; }
   .right-column #day-details > summary {
     display: block;
     background: var(--panel);
@@ -3091,7 +3099,7 @@ details > summary {
   .right-column > section {
     width: 100%;
   }
-  .right-column #day-details:not([open]) > section {
+  .right-column #day-details:not([open]) > .day-details__content {
     display: none;
   }
   .holidays-panel {
@@ -5579,14 +5587,14 @@ details > summary {
   background: color-mix(in srgb, var(--guide-accent, var(--green)) 10%, var(--panel));
 }
 .homepage-app .home-discovery__icon .icon { width: 21px; height: 21px; }
-.homepage-app .home-discovery__card--holidays { --guide-accent: #b56a17; }
-.homepage-app .home-discovery__card--sun { --guide-accent: #bd7915; }
-.homepage-app .home-discovery__card--moon { --guide-accent: #6f5aa8; }
-.homepage-app .home-discovery__card--planning { --guide-accent: #087b58; }
+.homepage-app .home-discovery__card--holidays { --guide-accent: #8e4b12; }
+.homepage-app .home-discovery__card--sun { --guide-accent: #8c5805; }
+.homepage-app .home-discovery__card--moon { --guide-accent: #5e4a96; }
+.homepage-app .home-discovery__card--planning { --guide-accent: #006a44; }
 .homepage-app .home-discovery__copy { display: grid; min-width: 0; gap: 2px; }
 .homepage-app .home-discovery__label {
   color: var(--guide-accent, var(--green));
-  font-size: .59rem;
+  font-size: .68rem;
   font-weight: 800;
   letter-spacing: .035em;
   line-height: 1.2;
@@ -6038,7 +6046,7 @@ button.primary:hover, a.button.primary:hover, .success:hover {
 .homepage-app .right-column #day-details {
   gap: 16px;
 }
-.homepage-app .right-column #day-details > .panel,
+.homepage-app .right-column #day-details > .day-details__content > .panel,
 .homepage-app .right-column > .panel {
   width: 100%;
   min-width: 0;
@@ -6144,7 +6152,7 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   .homepage-app .right-column #day-details {
     gap: 16px;
   }
-  .homepage-app .right-column #day-details > .panel,
+  .homepage-app .right-column #day-details > .day-details__content > .panel,
   .homepage-app .right-column > .panel {
     margin-block: 0;
   }
@@ -6170,6 +6178,28 @@ button.primary:hover, a.button.primary:hover, .success:hover {
     padding: 6px;
   }
 }
+
+/* Keep small color-coded labels readable on the dark surface. */
+[data-theme="dark"] .homepage-app .home-discovery__card--holidays { --guide-accent: #ffc27d; }
+[data-theme="dark"] .homepage-app .home-discovery__card--sun { --guide-accent: #ffda84; }
+[data-theme="dark"] .homepage-app .home-discovery__card--moon { --guide-accent: #cbb9ff; }
+[data-theme="dark"] .homepage-app .home-discovery__card--planning { --guide-accent: #8fe1bd; }
+[data-theme="dark"] .homepage-app .filter-chip--holiday { --filter-accent: #ff9fa8; }
+[data-theme="dark"] .homepage-app .filter-chip--category-0 { --filter-accent: #8fe1bd; }
+[data-theme="dark"] .homepage-app .filter-chip--category-1 { --filter-accent: #91c1ff; }
+[data-theme="dark"] .homepage-app .filter-chip--category-2 { --filter-accent: #d0b2ff; }
+[data-theme="dark"] .homepage-app .filter-chip--category-3 { --filter-accent: #ff9fa8; }
+[data-theme="dark"] .homepage-app .filter-chip--category-4 { --filter-accent: #ffd27e; }
+[data-theme="dark"] .homepage-app .filter-chip--category-5 { --filter-accent: #f1a9d5; }
+[data-theme="dark"] .homepage-app .filter-chip--category-6 { --filter-accent: #bdc9da; }
+[data-theme="dark"] .homepage-app .holiday-row--flag,
+[data-theme="dark"] .homepage-app .holiday-row--evergreen { --holiday-accent: #8fe1bd; }
+[data-theme="dark"] .homepage-app .holiday-row--easter { --holiday-accent: #ff9fa8; }
+[data-theme="dark"] .homepage-app .holiday-row--candle { --holiday-accent: #d0b2ff; }
+[data-theme="dark"] .homepage-app .holiday-row--bloom { --holiday-accent: #ffc27d; }
+[data-theme="dark"] .homepage-app .holiday-row--spark { --holiday-accent: #ffd27e; }
+[data-theme="dark"] .homepage-app #note-status[data-state="saved"] { color: #8fe1bd; }
+[data-theme="dark"] .homepage-app #note-status[data-state="dirty"] { color: #ffd27e; }
 
 /* Purpose-built illustrations and category colors for linked tools. */
 .resource-card {
@@ -6268,7 +6298,7 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   .site-header .brand-logo { width: 34px; height: 34px; }
   .homepage-app .right-column,
   .homepage-app .right-column #day-details { row-gap: 16px; }
-  .homepage-app .right-column #day-details > .panel,
+  .homepage-app .right-column #day-details > .day-details__content > .panel,
   .homepage-app .right-column > .panel { margin-block: 0; }
 }
 @media (max-width: 380px) {

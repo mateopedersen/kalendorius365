@@ -203,7 +203,8 @@
         ]
       ],
       "updated_at": "2026-10-16",
-      "documentary_image": "lithuanian-flag-cc0"
+      "documentary_image": "lithuanian-flag-cc0",
+      "meta_description": "Lietuvos vėliavos diena minima sausio 1 d. Sužinokite apie jos atmintinos dienos statusą ir sąsają su Naujųjų metų švente."
     },
     {
       "id": "freedom-defenders",
@@ -258,7 +259,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "jan13-archive"
+      "documentary_image": "jan13-archive",
+      "meta_description": "Laisvės gynėjų diena minima sausio 13 d. 1991 m. istorinis kontekstas, atmintinos dienos statusas ir savaitės dienos 2027–2029 m."
     }
   ],
   "articles": [
@@ -271,7 +273,7 @@
         "new-year"
       ],
       "summary": "Sausio 1-oji žymi naujų kalendorinių metų pradžią pagal šiandien Lietuvoje naudojamą Grigaliaus kalendorių.",
-      "what": "Naujųjų metų diena yra kalendorinių metų pirmoji diena ir DK 123 straipsnyje įrašyta šventinė diena, kurią paprastai nedirbama.",
+      "what": "Naujųjų metų diena yra pirmoji kalendorinių metų diena. DK 123 straipsnyje ji nustatyta kaip šventinė diena, kurią paprastai nedirbama.",
       "history": "Sausio 1-oji yra pirmoji civilinių metų diena pagal Grigaliaus kalendorių. Ji skiria kalendorinius metus ir suteikia pastovią atskaitos datą planams, apskaitai bei valstybės kalendoriui. Kalendoriaus data pati savaime nepasako, kaip šeima ar bendruomenė švenčia metų sandūrą: šiuolaikinės praktikos įvairuoja, todėl jų negalima laikyti vienu visiems privalomu ar nepakitusiu lietuvišku ritualu. Sausio 1-oji kartu įrašyta į Atmintinų dienų įstatymą kaip Lietuvos vėliavos diena; šis atskiras paminėjimas nekeičia Naujųjų metų dienos statuso pagal Darbo kodeksą.",
       "traditions": "Šiuolaikinis Naujųjų sutikimas dažnai siejamas su metų sandūros susibūrimais, palinkėjimais ir asmeniniais tikslais. Tai dabarties praktikos apibendrinimas, o ne teiginys apie vieną privalomą ar istoriškai nekintantį lietuvišką ritualą.",
       "practical": "DK 123 straipsnyje įtvirtintas principas „paprastai nedirbama“. Įstatyme numatyta darbo švenčių dieną išimtis, tad asmeninis grafikas ir darbo santykių taisyklės gali būti svarbūs. Savaitgalį pasitaikanti diena automatiškai neperkeliama į pirmadienį. Kadangi sausio 1 d. kartu minima Lietuvos vėliavos diena, kalendoriaus mėnesio vaizde abi reikšmės pateikiamos atskiromis nuorodomis.",
@@ -323,7 +325,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "new-year-vilnius"
+      "documentary_image": "new-year-vilnius",
+      "meta_description": "Naujųjų metų diena minima sausio 1-ąją. Sužinokite apie jos kalendorinę reikšmę, šventės statusą ir savaitės dienas 2027–2029 m."
     },
     {
       "id": "feb16",
@@ -383,7 +386,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "feb16-resolution"
+      "documentary_image": "feb16-resolution",
+      "meta_description": "Vasario 16-ąją minima Lietuvos valstybės atkūrimo diena. Sužinokite apie 1918 m. aktą, šventės statusą ir savaitės dienas 2027–2029 m."
     },
     {
       "id": "mar11",
@@ -443,7 +447,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "march11-act"
+      "documentary_image": "march11-act",
+      "meta_description": "Kovo 11-ąją minima Lietuvos nepriklausomybės atkūrimo diena. Istorinė reikšmė, šventės statusas ir 2027–2029 m. savaitės dienos."
     },
     {
       "id": "easter",
@@ -502,7 +507,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "easter-marguciai"
+      "documentary_image": "easter-marguciai",
+      "meta_description": "Velykų sekmadienio ir pirmadienio datos 2027–2029 m., jų skaičiavimo principas, tradicijos ir šventinių dienų statusas Lietuvoje."
     },
     {
       "id": "labour",
@@ -564,7 +570,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "mayday-siauliai"
+      "documentary_image": "mayday-siauliai",
+      "meta_description": "Tarptautinė darbo diena minima gegužės 1 d. Sužinokite apie jos reikšmę, šventės statusą Lietuvoje ir savaitės dienas 2027–2029 m."
     },
     {
       "id": "mothers",
@@ -575,7 +582,7 @@
         "mothers"
       ],
       "summary": "Motinos diena Lietuvoje minima pirmąjį gegužės sekmadienį; konkreti data priklauso nuo metų.",
-      "what": "Motinos dienos savaitinė taisyklė yra pirmasis gegužės sekmadienis. DK 123 straipsnyje ji įtraukta į švenčių dienų sąrašą.",
+      "what": "Motinos diena Lietuvoje minima pirmąjį gegužės sekmadienį. DK 123 straipsnyje ji įtraukta į švenčių dienų sąrašą.",
       "history": "Tarpukariu Motinos diena Lietuvoje įsitvirtino kaip nauja šventė, minima pirmąjį gegužės sekmadienį. Irma Šidiškienė, remdamasi 2016 m. Lietuvos istorijos instituto leidinyje paskelbtu tyrimu, aprašo, kaip sovietmečiu sveikinimai dažnai persikėlė į Kovo 8-ąją, nors dalis žmonių gegužės sekmadienį Motinos dieną minėjo bažnyčioje. 1990 m. data grąžinta į pirmąjį gegužės sekmadienį.",
       "traditions": "Vilniaus šeimų etnografinis tyrimas aprašo sveikinimus, nedideles dovanas, apsilankymus ir vaišes, tarp jų namuose keptus pyragus. Tai konkrečios tyrimo imties patirtys, o ne visos Lietuvos ar kiekvienos šeimos papročių aprašas. Minėjimas gali būti asmeniškas, paprastas arba visai netaikomas.",
       "practical": "Kasmet pasirinkite pirmą gegužės sekmadienį. Nors DK ją įtraukia į švenčių dienas, tai nereiškia, kad papildoma poilsio diena perkeliama į pirmadienį, jei sekmadienis jau yra poilsio diena pagal įprastą grafiką.",
@@ -626,7 +633,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "mothers-day-flowers"
+      "documentary_image": "mothers-day-flowers",
+      "meta_description": "Motinos diena Lietuvoje minima pirmąjį gegužės sekmadienį. Peržiūrėkite 2027–2029 m. datas, papročius ir šventės statusą."
     },
     {
       "id": "fathers",
@@ -640,7 +648,7 @@
       "what": "Tėvo dienos data nustatoma pagal savaitės dieną: tai pirmasis birželio sekmadienis. DK 123 straipsnyje ji įvardyta kaip šventinė diena.",
       "history": "Dar tarpukariu Lietuvoje raginta minėti Tėvo dieną, tačiau Irmos Šidiškienės tyrime aprašytos ankstyvos iniciatyvos nebuvo plačiai įsitvirtinusios. XX a. pabaigoje etnologas Juozas Kudirka vėl skatino šią šventę. Tyrime nurodoma, kad 2008 m. Tėvo diena įtraukta į šventinių dienų kalendorių. Ši istorija skiriasi nuo tėvystės atostogų teisės, kuri reguliuojama atskirai.",
       "traditions": "Vilniaus šeimų tyrime aprašomi sveikinimai žodžiu, apsilankymai, saldumynai, nedidelės dovanos ir laikas kartu. Tai apklaustų Vilniaus gyventojų patirtys, o ne visai Lietuvai taikoma taisyklė. Šeimos ir asmeniniai santykiai skiriasi, todėl vienas šventimo būdas nėra privalomas.",
-      "practical": "Tikslią datą kiekvienais metais rasite lentelėje. Šventės diena nebūtinai reiškia papildomą pirmadienio poilsį: DK 123 straipsnyje nėra bendro savaitgalio perkėlimo į pirmadienį.",
+      "practical": "Tikslią datą kiekvienais metais rasite lentelėje. Šventinė diena nebūtinai suteikia papildomą poilsio dieną pirmadienį: DK 123 straipsnyje nėra bendros taisyklės, pagal kurią savaitgalį sutampanti šventė būtų perkeliama į pirmadienį.",
       "faq": [
         [
           "Kada minima Tėvo diena?",
@@ -690,7 +698,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "fathers-day-lake"
+      "documentary_image": "fathers-day-lake",
+      "meta_description": "Tėvo diena Lietuvoje minima pirmąjį birželio sekmadienį. Peržiūrėkite 2027–2029 m. datas, papročius ir teisinį šventės statusą."
     },
     {
       "id": "jonines",
@@ -752,7 +761,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "jonines-nida"
+      "documentary_image": "jonines-nida",
+      "meta_description": "Rasos ir Joninių diena minima birželio 24 d. Sužinokite apie tradicijas, saulėgrįžos laiką, šventės statusą ir 2027–2029 m. savaitės dienas."
     },
     {
       "id": "statehood",
@@ -766,7 +776,7 @@
       "what": "Liepos 6-oji – DK 123 straipsnyje nustatyta šventinė diena. Įstatymo pavadinime minima Lietuvos karaliaus Mindaugo karūnavimo diena ir Tautiška giesmė.",
       "history": "Lietuvos nacionalinis muziejus pristato liepos 6-ąją kaip valstybingumo istorijos pažinimo dieną, siejančią Mindaugo karūnavimo atminimą su Tautiška giesme. Tiksli karūnavimo istorinė data nėra mūsų puslapyje naujai įrodinėjama; kalendorius vartoja galiojančiame kodekse įtvirtintą šventės pavadinimą.",
       "traditions": "Tautiškos giesmės giedojimas yra šios dienos atpažįstamas šiuolaikinis pilietinis akcentas. Muziejus taip pat kviečia pažinti istorinius valstybės simbolius ir vietas. Renginių laikas, vėliavų kėlimo vietos bei taikomos pareigos priklauso nuo atitinkamų metų programos ir teisės aktų.",
-      "practical": "Data kasmet liepos 6 d. Tai šventinė diena, kuria paprastai nedirbama. Straipsnyje nekuriame vėliavos kėlimo pareigų sąrašo, nes jos priklauso nuo atskiro įstatymo ir asmens ar objekto statuso.",
+      "practical": "Ji minima kasmet liepos 6 d. Tai šventinė diena, kurią paprastai nedirbama. Straipsnyje nepateikiame vėliavos kėlimo pareigų sąrašo, nes jos priklauso nuo atskiro įstatymo ir asmens ar objekto statuso.",
       "faq": [
         [
           "Koks oficialus šventės pavadinimas?",
@@ -814,7 +824,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "statehood-gediminas"
+      "documentary_image": "statehood-gediminas",
+      "meta_description": "Valstybės ir Tautiškos giesmės diena minima liepos 6-ąją. Istorinė reikšmė, papročiai, šventės statusas ir 2027–2029 m. datos."
     },
     {
       "id": "assumption",
@@ -874,7 +885,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "assumption-pivasiunai"
+      "documentary_image": "assumption-pivasiunai",
+      "meta_description": "Žolinė minima rugpjūčio 15 d. Sužinokite apie religines ir etnines tradicijas, šventės statusą ir savaitės dienas 2027–2029 m."
     },
     {
       "id": "all-saints",
@@ -936,7 +948,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "all-saints-lithuania"
+      "documentary_image": "all-saints-lithuania",
+      "meta_description": "Visų Šventųjų diena minima lapkričio 1 d. Skaitykite apie jos reikšmę, skirtumą nuo Vėlinių ir 2027–2029 m. šventės statusą."
     },
     {
       "id": "all-souls",
@@ -950,7 +963,7 @@
       "what": "DK 123 straipsnyje lapkričio 2-oji vadinama Mirusiųjų atminimo (Vėlinių) diena ir yra šventinė diena, kuria paprastai nedirbama.",
       "history": "EKGT aprašo Vėlines kaip mirusiųjų pagerbimo laikotarpio dieną ir pažymi, kad Visų Šventųjų dienos paskirtis yra kita – pagerbti liturginiame kalendoriuje atskirai nepaminėtus šventuosius. Istoriniai papročiai įvairavo; šiuolaikinis kapų lankymas ir atminimo ženklai nėra vienas nekintantis ritualas.",
       "traditions": "Šiandien daugelis šeimų lanko artimųjų kapus, uždega žvakes ir susitinka su giminėmis. EKGT šiuos papročius sieja su atminimu ir gyvąja tradicija. Straipsnyje vengiame romantizuoti istorinius tikėjimus kaip visur ir visada galiojusius faktus.",
-      "practical": "Vėlinės yra fiksuota lapkričio 2 d. data ir DK 123 šventinė diena. Puslapyje ji atskirta nuo lapkričio 1 d.; šių dienų kalendorių galite atverti iš metų lentelės.",
+      "practical": "Vėlinės minimos lapkričio 2 d. ir yra DK 123 straipsnyje nustatyta šventinė diena. Ši data atskirta nuo lapkričio 1-osios; abiejų dienų kalendorius galite atverti metų lentelėje.",
       "faq": [
         [
           "Kada minimos Vėlinės?",
@@ -997,7 +1010,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "velines-lithuania"
+      "documentary_image": "velines-lithuania",
+      "meta_description": "Vėlinės minimos lapkričio 2 d., atskirai nuo Visų Šventųjų dienos. Papročiai, šventės statusas ir savaitės dienos 2027–2029 m."
     },
     {
       "id": "kucios",
@@ -1008,7 +1022,7 @@
         "christmas-eve"
       ],
       "summary": "Kūčios – gruodžio 24-osios vakaro šeimos susibūrimas, kurio kalendorinė diena Lietuvoje įtraukta į DK švenčių sąrašą.",
-      "what": "Kūčių diena yra gruodžio 24 d. DK 123 straipsnyje ji atskirai įvardyta kaip šventinė diena. Kūčios kaip kultūrinė ir šeimos tradicija dažnai telkiasi apie vakaro vakarienę.",
+      "what": "Kūčios minimos gruodžio 24 d. DK 123 straipsnyje ši diena atskirai įvardyta kaip šventinė diena. Kūčių tradicijų centre dažnai yra vakaro vakarienė.",
       "history": "EKGT Kūčias pristato kaip seną kalendorinę šventę ir sieja pavadinimą su kūčia – grūdų, ankštinių, medaus ir kitų ingredientų patiekalu, kuriam priskirta mirusiųjų pagerbimo reikšmė. Tai šaltinyje aptariama tradicijos kilmės interpretacija, o ne vienintelis galimas paaiškinimas visoms šeimoms.",
       "traditions": "EKGT aprašo susikaupimo vakarienę, pasirengimą, šiaudinius sodus ir kitus namų papročius. Tradicijos skiriasi regionais ir šeimomis; kai kurios yra religinės, kitos – etnografinės. Svetainė jų nepaverčia vienodu receptu ar reikalavimu.",
       "practical": "Kūčios yra gruodžio 24 d., o Kalėdų pirmoji diena – gruodžio 25 d. Tai dvi atskiros kalendorinės ir DK išvardytos šventinės dienos. Planuojant verta patikrinti savaitės dieną ir vietos transporto ar paslaugų grafiką.",
@@ -1058,7 +1072,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "kucios-lithuania"
+      "documentary_image": "kucios-lithuania",
+      "meta_description": "Kūčios minimos gruodžio 24 d. Skaitykite apie vakaro tradicijas, jų ryšį su Kalėdomis, šventės statusą ir 2027–2029 m. savaitės dienas."
     },
     {
       "id": "christmas",
@@ -1122,7 +1137,8 @@
       "editorial_status": "ai-reviewed-2026-10-16; native-human-proofread-not-performed",
       "updated_at": "2026-10-16",
       "flag_requirement_verified": null,
-      "documentary_image": "christmas-tree-vilnius"
+      "documentary_image": "christmas-tree-vilnius",
+      "meta_description": "Lietuvoje Kalėdų dienos minimos gruodžio 25 ir 26 d. Tradicijos, šventės statusas ir savaitės dienos 2027–2029 m."
     }
   ],
   "media": {

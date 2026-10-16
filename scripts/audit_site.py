@@ -18,6 +18,11 @@ class Page(HTMLParser):
   if tag in ['a','img','script','link']:
    url=a.get('href') if tag in ['a','link'] else a.get('src')
    if url:self.links.append(url)
+  # Responsive image candidates are real requests too; checking only img[src]
+  # misses missing files selected by the browser at smaller widths or higher DPR.
+  for candidate in a.get('srcset','').split(','):
+   parts=candidate.strip().split()
+   if parts:self.links.append(parts[0])
   if tag=='img':assert (a.get('alt') or (a.get('alt') == '' and a.get('aria-hidden') == 'true')) and a.get('width') and a.get('height'),a
   if tag=='script' and a.get('type')=='application/ld+json':self.inscript=True
  def handle_endtag(self,tag):

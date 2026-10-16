@@ -1,9 +1,82 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="presentation" aria-hidden="true">
-  <defs><linearGradient id="wheel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b7657"/><stop offset="1" stop-color="#102c3c"/></linearGradient><radialGradient id="glow"><stop stop-color="#f4c35f" stop-opacity=".23"/><stop offset="1" stop-color="#f4c35f" stop-opacity="0"/></radialGradient></defs>
-  <circle cx="90" cy="90" r="88" fill="url(#wheel)"/><circle cx="90" cy="90" r="85" fill="url(#glow)"/>
-  <circle cx="90" cy="90" r="64" fill="none" stroke="#e9dfc5" stroke-opacity=".42" stroke-width=".8"/><circle cx="90" cy="90" r="52" fill="none" stroke="#e9dfc5" stroke-opacity=".23" stroke-width=".8" stroke-dasharray="1 6"/>
-  <g stroke="#e9dfc5" stroke-opacity=".35" stroke-width=".8"><path d="M90 17v12m0 122v12M17 90h12m122 0h12M38.4 38.4l8.5 8.5m86.2 86.2 8.5 8.5m0-103.2-8.5 8.5m-86.2 86.2-8.5 8.5"/><path d="M90 30v18m0 84v18M30 90h18m84 0h18M47.6 47.6l12.7 12.7m59.4 59.4 12.7 12.7m0-84.8-12.7 12.7m-59.4 59.4-12.7 12.7" stroke-dasharray="2 5"/></g>
-  <circle cx="90" cy="90" r="27" fill="#f4f0e7" fill-opacity=".96"/><circle cx="90" cy="90" r="19" fill="none" stroke="#b98c3d" stroke-opacity=".66"/>
-  <g fill="#f1d28d"><circle cx="90" cy="12" r="2"/><circle cx="168" cy="90" r="2"/><circle cx="90" cy="168" r="2"/><circle cx="12" cy="90" r="2"/><path d="m47 22 1.5 4.5L53 28l-4.5 1.5L47 34l-1.5-4.5L41 28l4.5-1.5zm86 26 1.5 4.5L139 54l-4.5 1.5L133 60l-1.5-4.5L127 54l4.5-1.5zm-86 78 1.5 4.5L53 152l-4.5 1.5L47 158l-1.5-4.5L41 152l4.5-1.5zm86-2 1.5 4.5L139 130l-4.5 1.5L133 136l-1.5-4.5L127 130l4.5-1.5z"/></g>
-  <path d="m90 75 3.6 10.1L104 89l-10.4 3.8L90 103l-3.6-10.2L76 89l10.4-3.9z" fill="#b34235"/><circle cx="90" cy="89" r="4" fill="#006a44"/>
+  <defs>
+    <linearGradient id="astrolabe-rim" x1=".12" y1=".08" x2=".9" y2=".94">
+      <stop stop-color="#f3d98e"/>
+      <stop offset=".2" stop-color="#b98735"/>
+      <stop offset=".47" stop-color="#f7e7b7"/>
+      <stop offset=".72" stop-color="#89601f"/>
+      <stop offset="1" stop-color="#e2c375"/>
+    </linearGradient>
+    <linearGradient id="astrolabe-shell" x1=".14" y1=".06" x2=".86" y2=".98">
+      <stop stop-color="#17795b"/>
+      <stop offset=".48" stop-color="#0b5747"/>
+      <stop offset="1" stop-color="#07343a"/>
+    </linearGradient>
+    <radialGradient id="astrolabe-glass" cx="34%" cy="25%" r="82%">
+      <stop stop-color="#28745d"/>
+      <stop offset=".55" stop-color="#0d4d45"/>
+      <stop offset="1" stop-color="#092e38"/>
+    </radialGradient>
+    <linearGradient id="astrolabe-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff0c2"/>
+      <stop offset=".42" stop-color="#d8af5d"/>
+      <stop offset="1" stop-color="#9d6828"/>
+    </linearGradient>
+    <radialGradient id="astrolabe-core" cx="34%" cy="26%" r="78%">
+      <stop stop-color="#fff8e3"/>
+      <stop offset=".7" stop-color="#e7d7aa"/>
+      <stop offset="1" stop-color="#b98b43"/>
+    </radialGradient>
+  </defs>
+  <circle cx="90" cy="91" r="88" fill="#071f26" opacity=".22"/>
+  <circle cx="90" cy="88" r="86" fill="url(#astrolabe-rim)"/>
+  <circle cx="90" cy="88" r="81" fill="url(#astrolabe-shell)" stroke="#fff2cb" stroke-opacity=".58" stroke-width="1.2"/>
+  <circle cx="90" cy="88" r="76" fill="url(#astrolabe-glass)" stroke="#062c31" stroke-width="1.2"/>
+  <path d="M25 68A67 67 0 0 1 136 32" fill="none" stroke="#ffffff" stroke-opacity=".1" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="90" cy="88" r="72" fill="none" stroke="#efd89c" stroke-opacity=".65" stroke-width=".8" stroke-dasharray="1 4.8"/>
+  <circle cx="90" cy="88" r="67" fill="none" stroke="#d9bd79" stroke-opacity=".4" stroke-width=".7"/>
+  <g fill="none" stroke="url(#astrolabe-gold)" stroke-linecap="round">
+    <path d="M90 10v9" stroke-width="1.7"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(30 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(60 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(90 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(120 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(150 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(180 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(210 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(240 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(270 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(300 90 88)"/>
+    <path d="M90 10v9" stroke-width="1.7" transform="rotate(330 90 88)"/>
+  </g>
+  <circle cx="90" cy="88" r="57" fill="#0b343a" fill-opacity=".34" stroke="#e5cc8b" stroke-opacity=".5" stroke-width=".8"/>
+  <circle cx="90" cy="88" r="49" fill="none" stroke="#e7d59d" stroke-opacity=".22" stroke-width=".65" stroke-dasharray=".7 3.6"/>
+  <g fill="none" stroke="#f2dfb3" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="rotate(0 90 88)"><path d="M84 37c-3-1-4-4-3-7 1-3 4-3 6 0 2 3 3 6 3 9m0-5c0-3 1-6 3-8 2-2 5-1 6 2 1 3-1 6-4 8"/></g>
+    <g transform="rotate(30 90 88)"><circle cx="90" cy="33" r="3.2"/><path d="M84 29c.7-3 2.7-4.6 6-4.6m0 0c3.3 0 5.3 1.6 6 4.6"/></g>
+    <g transform="rotate(60 90 88)"><path d="M85 27v13m10-13v13M84 30h12m-12 7h12"/></g>
+    <g transform="rotate(90 90 88)"><path d="M84 29c0-4 5-5 7-2 2 3-1 5-4 6-3 1-4 4-2 6 2 2 7 1 8-3m-5-9c0-4 5-5 7-2"/></g>
+    <g transform="rotate(120 90 88)"><circle cx="87" cy="31" r="3.5"/><path d="M90.5 33c4 0 5 2 4 5-1 3-5 5-8 6"/></g>
+    <g transform="rotate(150 90 88)"><path d="M84 29c4-3 8-3 12 0v10m-12-5h12m-12 5h12"/></g>
+    <g transform="rotate(180 90 88)"><path d="M83 32a7 7 0 0 1 14 0m-7 0v8m-8 0h16"/></g>
+    <g transform="rotate(210 90 88)"><path d="M83 29c4-3 8-3 12 0v10m-12-5h12m-11 5 7 5 4-4m-4 4v-3"/></g>
+    <g transform="rotate(240 90 88)"><path d="m84 37 12-12m0 0h-7m7 0v7"/><circle cx="84" cy="37" r="1.2" fill="#f2dfb3"/></g>
+    <g transform="rotate(270 90 88)"><path d="M84 27c3-4 8-3 9 1 1 3-2 5-5 5-4 0-5 4-2 6 2 2 6 1 9-1m-1-11 3-3"/></g>
+    <g transform="rotate(300 90 88)"><path d="m83 31 7-4 7 4m-14 5 7-4 7 4"/></g>
+    <g transform="rotate(330 90 88)"><path d="M84 27c4 0 5 4 5 7v6m2-13c4 0 5 4 5 7v6m-14-7h12"/></g>
+  </g>
+  <g fill="#f5dda1" stroke="#102f31" stroke-width=".7">
+    <circle cx="90" cy="24" r="2.1"/><circle cx="122" cy="33" r="1.5"/><circle cx="145" cy="56" r="2.1"/>
+    <circle cx="154" cy="88" r="1.5"/><circle cx="145" cy="120" r="2.1"/><circle cx="122" cy="143" r="1.5"/>
+    <circle cx="90" cy="152" r="2.1"/><circle cx="58" cy="143" r="1.5"/><circle cx="35" cy="120" r="2.1"/>
+    <circle cx="26" cy="88" r="1.5"/><circle cx="35" cy="56" r="2.1"/><circle cx="58" cy="33" r="1.5"/>
+  </g>
+  <ellipse cx="90" cy="88" rx="23" ry="29" transform="rotate(38 90 88)" fill="none" stroke="#e3c881" stroke-opacity=".6" stroke-width=".75"/>
+  <ellipse cx="90" cy="88" rx="23" ry="29" transform="rotate(-38 90 88)" fill="none" stroke="#b6d0be" stroke-opacity=".42" stroke-width=".75"/>
+  <circle cx="90" cy="88" r="22" fill="url(#astrolabe-core)" stroke="#fff1c9" stroke-width="1.2"/>
+  <circle cx="90" cy="88" r="17" fill="none" stroke="#956c30" stroke-opacity=".8" stroke-width=".7"/>
+  <path d="m90 69 4.2 14.7L109 88l-14.8 4.4L90 107l-4.2-14.6L71 88l14.8-4.3z" fill="url(#astrolabe-gold)" stroke="#805524" stroke-width=".7" stroke-linejoin="round"/>
+  <path d="m90 75 2.4 10.6L101 88l-8.6 2.5L90 101l-2.4-10.5L79 88l8.6-2.4z" fill="#0d6650" stroke="#fff0c5" stroke-width=".7" stroke-linejoin="round"/>
+  <circle cx="90" cy="88" r="2.3" fill="#c74b3d" stroke="#fff3ce" stroke-width=".8"/>
+  <path d="M42 43a64 64 0 0 1 28-18" fill="none" stroke="#ffffff" stroke-opacity=".34" stroke-width="1.1" stroke-linecap="round"/>
 </svg>
