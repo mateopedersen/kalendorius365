@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=dbc9e757b9c6") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=51fd00d3f460") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=dbc9e757b9c6") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=51fd00d3f460") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=dbc9e757b9c6") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=51fd00d3f460") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -5655,4 +5655,51 @@ details > summary {
 @media (prefers-reduced-motion: reduce) {
   .homepage-app .home-discovery__card { transition: none; }
   .homepage-app .home-discovery__card:hover { transform: none; }
+}
+
+/* Keep native select controls, but give their indicator a consistent, centered hit area. */
+:root {
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='m5 7.5 5 5 5-5' stroke='%235c6980' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+[data-theme="dark"] {
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='m5 7.5 5 5 5-5' stroke='%23adb9ca' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+select:not([multiple]):not([size]) {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-inline-end: 2.5rem;
+  background-image: var(--select-chevron);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+[dir="rtl"] select:not([multiple]):not([size]) {
+  background-position: left 12px center;
+}
+.homepage-app .task-filter-wrap select {
+  background-image: none;
+}
+@media (forced-colors: active) {
+  select:not([multiple]):not([size]) {
+    -webkit-appearance: menulist;
+    appearance: auto;
+    padding-inline-end: 0.75rem;
+    background-image: none;
+  }
+  .homepage-app .task-filter-wrap select {
+    -webkit-appearance: menulist;
+    appearance: auto;
+    padding-inline-end: 2.5rem;
+  }
+  .homepage-app .task-filter-wrap > .icon {
+    display: none;
+  }
+}
+@media print {
+  select:not([multiple]):not([size]) {
+    -webkit-appearance: menulist;
+    appearance: auto;
+    padding-inline-end: 0;
+    background-image: none;
+  }
 }
