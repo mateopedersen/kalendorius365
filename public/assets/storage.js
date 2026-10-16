@@ -1,4 +1,5 @@
 import { parse, zonedInstant } from "./calendar.js";
+import { WEATHER_CITY_IDS } from "./data/weather-cities.js";
 export const KEY = "kalendorius365:v1";
 export const empty = () => ({
   schema: 1,
@@ -100,9 +101,8 @@ export function validate(x) {
       throw Error("Neteisingos nuostatos");
   if (
     x.preferences.city !== undefined &&
-    !["vilnius", "kaunas", "klaipeda", "siauliai", "panevezys"].includes(
-      x.preferences.city,
-    )
+    x.preferences.city !== "auto" &&
+    !WEATHER_CITY_IDS.has(x.preferences.city)
   )
     throw Error("Neteisingas miestas");
   if (JSON.stringify(x).length > 4e6) throw Error("Kopija per didelė");

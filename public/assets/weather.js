@@ -1,5 +1,6 @@
 import { icon as uiIcon } from "./icons.js";
 import { TZ, today } from "./calendar.js";
+import { WEATHER_CITY_BY_ID } from "./data/weather-cities.js";
 const names = {
   clear: "Giedra",
   "partly-cloudy": "Mažai debesuota",
@@ -25,6 +26,7 @@ const names = {
   "rain-at-times": "Protarpiais lietus",
 };
 const pending = new Map();
+let latestRender = 0;
 export async function loadWeather(city) {
   if (pending.has(city)) return pending.get(city);
   const job = (async () => {
@@ -44,10 +46,11 @@ export async function loadWeather(city) {
   return job;
 }
 export async function renderWeather(city) {
+  const renderId = ++latestRender;
   const target = document.querySelector("#weather-content");
   target.textContent = "Įkeliami orai…";
   const data = await loadWeather(city);
-  if (document.querySelector("#weather-city").value !== city) return;
+  if (renderId !== latestRender) return;
   target.replaceChildren();
   if (!data) {
     target.textContent =
@@ -153,4 +156,6 @@ export async function renderWeather(city) {
     p.textContent = `Šiandienos prognozė: ${Math.round(Math.min(...day))}…${Math.round(Math.max(...day))} °C`;
     target.append(p);
   }
+  document.querySelector(".sky-caption").textContent =
+    (WEATHER_CITY_BY_ID.get(city)?.name || city) + " · iliustracija";
 }

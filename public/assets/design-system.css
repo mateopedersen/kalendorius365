@@ -5503,3 +5503,156 @@ details > summary {
     padding-inline: 7px;
   }
 }
+/* Homepage discovery: clear, crawlable routes to dates and planning tools. */
+.homepage-app .home-discovery {
+  display: grid;
+  grid-template-columns: minmax(210px, .82fr) minmax(0, 3.18fr);
+  align-items: center;
+  gap: 12px 22px;
+  margin: 0 0 14px;
+  padding: 15px 18px 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(112deg, color-mix(in srgb, #e8f3ed 58%, var(--panel)), var(--panel) 46%);
+  box-shadow: 0 5px 18px #152f2210;
+}
+.homepage-app .home-discovery__intro { min-width: 0; }
+.homepage-app .home-discovery__eyebrow {
+  margin: 0 0 4px;
+  color: var(--green);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.homepage-app .home-discovery__intro h2 {
+  margin: 0 0 5px;
+  font-size: 1.05rem;
+  letter-spacing: -.035em;
+  line-height: 1.2;
+}
+.homepage-app .home-discovery__intro > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: .74rem;
+  line-height: 1.45;
+}
+.homepage-app .home-discovery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+.homepage-app .home-discovery__card {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 78px;
+  grid-template-columns: 36px minmax(0, 1fr) 14px;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 9px;
+  border: 1px solid color-mix(in srgb, var(--border) 84%, var(--green));
+  border-radius: 12px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--panel) 96%, #f2f8f4);
+  text-decoration: none;
+  box-shadow: 0 1px 2px #172d2208;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.homepage-app .home-discovery__card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--guide-accent, var(--green)) 48%, var(--border));
+  box-shadow: 0 6px 16px #173b2214;
+}
+.homepage-app .home-discovery__card:focus-visible { outline-offset: 3px; }
+.homepage-app .home-discovery__icon {
+  display: grid;
+  width: 36px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--guide-accent, var(--green));
+  background: color-mix(in srgb, var(--guide-accent, var(--green)) 10%, var(--panel));
+}
+.homepage-app .home-discovery__icon .icon { width: 21px; height: 21px; }
+.homepage-app .home-discovery__card--holidays { --guide-accent: #b56a17; }
+.homepage-app .home-discovery__card--sun { --guide-accent: #bd7915; }
+.homepage-app .home-discovery__card--moon { --guide-accent: #6f5aa8; }
+.homepage-app .home-discovery__card--planning { --guide-accent: #087b58; }
+.homepage-app .home-discovery__copy { display: grid; min-width: 0; gap: 2px; }
+.homepage-app .home-discovery__label {
+  color: var(--guide-accent, var(--green));
+  font-size: .59rem;
+  font-weight: 800;
+  letter-spacing: .035em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.homepage-app .home-discovery__copy strong {
+  overflow-wrap: anywhere;
+  font-size: .73rem;
+  font-weight: 750;
+  line-height: 1.25;
+}
+.homepage-app .home-discovery__copy small {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: .62rem;
+  line-height: 1.32;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.homepage-app .home-discovery__arrow { align-self: start; color: var(--guide-accent, var(--green)); font-size: .83rem; font-weight: 800; }
+.homepage-app .home-discovery__more {
+  grid-column: 2;
+  margin: -2px 0 0;
+  color: var(--muted);
+  font-size: .68rem;
+  line-height: 1.4;
+}
+.homepage-app .home-discovery__more a { color: var(--green); font-weight: 650; text-underline-offset: 2px; }
+.homepage-app .holidays-panel__intro { margin: -5px 0 8px; color: var(--muted); font-size: .68rem; line-height: 1.4; }
+[data-theme="dark"] .homepage-app .home-discovery {
+  background: linear-gradient(112deg, color-mix(in srgb, #214c39 40%, var(--panel)), var(--panel) 48%);
+  box-shadow: 0 5px 18px #0002;
+}
+[data-theme="dark"] .homepage-app .home-discovery__card { background: color-mix(in srgb, var(--panel) 94%, var(--guide-accent, var(--green))); }
+@media (max-width: 1180px) {
+  .homepage-app .home-discovery { grid-template-columns: minmax(180px, .72fr) minmax(0, 3.28fr); gap: 10px 14px; padding-inline: 13px; }
+  .homepage-app .home-discovery__grid { gap: 6px; }
+  .homepage-app .home-discovery__card { grid-template-columns: 31px minmax(0, 1fr) 10px; gap: 6px; padding: 8px 7px; }
+  .homepage-app .home-discovery__icon { width: 31px; height: 33px; }
+  .homepage-app .home-discovery__icon .icon { width: 19px; height: 19px; }
+}
+@media (max-width: 850px) {
+  .homepage-app .home-discovery { grid-template-columns: 1fr; gap: 10px; }
+  .homepage-app .home-discovery__intro { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 0 9px; }
+  .homepage-app .home-discovery__eyebrow { grid-column: 1 / -1; }
+  .homepage-app .home-discovery__intro h2 { margin-bottom: 0; }
+  .homepage-app .home-discovery__intro > p:last-child { font-size: .7rem; }
+  .homepage-app .home-discovery__more { grid-column: 1; margin-top: 0; }
+}
+@media (max-width: 540px) {
+  .homepage-app .home-discovery { gap: 9px; margin-bottom: 10px; padding: 11px; border-radius: 14px; }
+  .homepage-app .home-discovery__intro { display: block; }
+  .homepage-app .home-discovery__intro h2 { font-size: .98rem; margin-bottom: 3px; }
+  .homepage-app .home-discovery__intro > p:last-child { max-width: 38rem; }
+  .homepage-app .home-discovery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .homepage-app .home-discovery__card { min-height: 75px; grid-template-columns: 30px minmax(0, 1fr) 10px; gap: 6px; padding: 8px 6px; border-radius: 10px; }
+  .homepage-app .home-discovery__icon { width: 30px; height: 32px; }
+  .homepage-app .home-discovery__copy strong { font-size: .69rem; }
+  .homepage-app .home-discovery__copy small { font-size: .59rem; }
+  .homepage-app .home-discovery__more { font-size: .65rem; }
+  .homepage-app .holidays-panel__intro { margin-top: -3px; }
+}
+@media (max-width: 355px) {
+  .homepage-app .home-discovery__grid { grid-template-columns: 1fr; }
+  .homepage-app .home-discovery__card { min-height: 66px; grid-template-columns: 34px minmax(0, 1fr) 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .homepage-app .home-discovery__card { transition: none; }
+  .homepage-app .home-discovery__card:hover { transform: none; }
+}

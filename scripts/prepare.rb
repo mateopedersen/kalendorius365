@@ -62,6 +62,7 @@ File.write("#{ROOT}/site/assets/data/holiday-editorial.json",JSON.generate(edito
 File.write("#{ROOT}/site/_data/holiday-editorial.json",JSON.generate(editorial))
 File.write("#{ROOT}/site/assets/data/years.json",JSON.generate([2027,2028,2029].map { |y| Kalendorius.year(y) }))
 FileUtils.mkdir_p("#{ROOT}/site/assets/data/astronomy")
+FileUtils.cp("#{ROOT}/shared/weather-cities.js", "#{ROOT}/site/assets/data/weather-cities.js")
 %w[moon-phases-utc.json seasons-utc.json cities.json].each do |name|
  FileUtils.cp("#{ROOT}/data/astronomy/#{name}","#{ROOT}/site/assets/data/astronomy/#{name}")
 end

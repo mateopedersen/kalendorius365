@@ -3,7 +3,8 @@ import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
 import { exportICS, importICS } from "./ics.js";
 import { notice } from "./common.js?v=3b631dd";
-import { renderWeather } from "./weather.js?v=3b631dd";
+import { renderWeather } from "./weather.js?v=city-auto-20261016";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -879,8 +880,11 @@ function tick() {
     timeZone: cal.TZ,
     weekday: "long",
   }).format(now);
+  const cityId = window.k365WeatherCity || DEFAULT_WEATHER_CITY;
+  const cityName = WEATHER_CITY_BY_ID.get(cityId)?.name || "Vilnius";
+  $("#clock").setAttribute("aria-label", `Dabartinis ${cityName} laikas`);
   $("#clock-zone").textContent =
-    "Vilnius · " +
+    cityName + " · " +
     new Intl.DateTimeFormat("en-GB", {
       timeZone: cal.TZ,
       timeZoneName: "short",
@@ -1055,14 +1059,51 @@ $("#share").onclick = async () => {
   }
 };
 const weatherCity = $("#weather-city");
-weatherCity.value = store.data.preferences.city || "vilnius";
+let cityRequest = 0;
+const savedCity = store.data.preferences.city || "auto";
+weatherCity.value = savedCity;
+function applyWeatherCity(city) {
+  window.k365WeatherCity = WEATHER_CITY_BY_ID.has(city)
+    ? city
+    : DEFAULT_WEATHER_CITY;
+  renderWeather(window.k365WeatherCity);
+  tick();
+}
+async function detectWeatherCity() {
+  const requestId = ++cityRequest;
+  try {
+    const response = await fetch("/api/location", {
+      cache: "no-store",
+      signal: AbortSignal.timeout(5000),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) throw Error("Nepavyko nustatyti miesto");
+    const result = await response.json();
+    if (requestId !== cityRequest || weatherCity.value !== "auto") return;
+    applyWeatherCity(
+      WEATHER_CITY_BY_ID.has(result.city) ? result.city : DEFAULT_WEATHER_CITY,
+    );
+  } catch {
+    if (requestId === cityRequest && weatherCity.value === "auto")
+      applyWeatherCity(DEFAULT_WEATHER_CITY);
+  }
+}
 weatherCity.onchange = () => {
   pref("city", weatherCity.value);
-  renderWeather(weatherCity.value);
+  if (weatherCity.value === "auto") {
+    detectWeatherCity();
+    return;
+  }
+  applyWeatherCity(weatherCity.value);
 };
-renderWeather(weatherCity.value);
+if (savedCity === "auto") {
+  applyWeatherCity(DEFAULT_WEATHER_CITY);
+  detectWeatherCity();
+}
+else applyWeatherCity(savedCity);
 setInterval(() => {
-  if (document.visibilityState === "visible") renderWeather(weatherCity.value);
+  if (document.visibilityState === "visible")
+    renderWeather(window.k365WeatherCity || DEFAULT_WEATHER_CITY);
 }, 1200000);
 render();
 renderHolidayList();

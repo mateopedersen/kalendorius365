@@ -29,7 +29,7 @@ Print generation is independent of the static build. `.build-cache/` fingerprint
 
 ## Deployment and indexing
 
-Development branch: `feat/calendar-platform`. Every push gets the existing Cloudflare preview deployment. Native Pages Functions bundles `functions/api/weather.js` for a same-origin cached LHMT weather proxy (no database, bindings, credentials or paid services). A plain local file server cannot execute this function; weather displays its tested unavailable state locally.
+Development branch: `feature/holiday-editorial-module`. Every push gets the existing Cloudflare preview deployment. Native Pages Functions use Cloudflare request geolocation only to return a non-cacheable default city code from `functions/api/location.js`; `functions/api/weather.js` then uses a same-origin cached LHMT weather proxy (no database, bindings, credentials or paid services). A plain local file server cannot execute these functions; automatic selection falls back to Vilnius and weather displays its unavailable state locally.
 
 Preview output retains HTML and response-header `noindex`. Only after release QA, build using `K365_RELEASE=1 bundle exec ruby scripts/build.rb`, re-run audits, commit generated output, and merge to `main`. Preview deployments must continue to return `X-Robots-Tag: noindex` (Cloudflare default preview behavior; verify on the real preview URL). Production intended public pages get a sitemap; drafts do not.
 
@@ -37,7 +37,7 @@ Do not add personal test data, credentials, API tokens or local browser state to
 
 ## Data boundaries
 
-Events, notes, tasks and preferences use a versioned localStorage schema with JSON backup/restore. ICS supports dates, Vilnius/UTC times and simple recurrence; unsupported rules are reported. No accounts, synchronization, analytics or geolocation. Print customization stays in the browser. Statutory holidays are distinct from school and commemorative dates. Work hours include immediate preholiday one-hour reductions under documented schedule assumptions.
+Events, notes, tasks and preferences use a versioned localStorage schema with JSON backup/restore. ICS supports dates, Vilnius/UTC times and simple recurrence; unsupported rules are reported. No accounts, synchronization, analytics or browser GPS geolocation. Cloudflare's approximate request country/city metadata selects the homepage's default weather city; the app does not persist the IP address or coordinates, and visitors can choose among 15 Lithuanian cities. Print customization stays in the browser. Statutory holidays are distinct from school and commemorative dates. Work hours include immediate preholiday one-hour reductions under documented schedule assumptions.
 
 Inter is self-hosted under SIL OFL; source and license are in `site/assets/fonts/`. Calendar compositions are original vector artwork. LHMT data is attributed under CC BY-SA 4.0. See the public privacy page for operational details and import limitations.
 

@@ -1,13 +1,9 @@
-const cities = {
-  vilnius: "vilniaus-ams",
-  kaunas: "kauno-ams",
-  klaipeda: "klaipedos-ams",
-  siauliai: "siauliu-ams",
-  panevezys: "panevezio-ams",
-};
+import { WEATHER_CITY_BY_ID } from "../../shared/weather-cities.js";
+
 export async function onRequestGet({ request }) {
   const city = new URL(request.url).searchParams.get("city") || "vilnius";
-  if (!Object.hasOwn(cities, city))
+  const place = WEATHER_CITY_BY_ID.get(city);
+  if (!place)
     return new Response("Neteisingas miestas", { status: 400 });
   const cache = globalThis.caches?.default,
     key = new Request(new URL("/api/weather?city=" + city, request.url));
@@ -16,21 +12,19 @@ export async function onRequestGet({ request }) {
   try {
     const cached = await cache?.match(key);
     if (cached) return cached;
-    const results = await Promise.allSettled(
-      [
-        fetch(
-          `https://api.meteo.lt/v1/stations/${cities[city]}/observations/latest`,
-          { signal: controller.signal },
-        ),
-        fetch(`https://api.meteo.lt/v1/places/${city}/forecasts/long-term`, {
-          signal: controller.signal,
-        }),
-      ].map(async (p) => {
-        const r = await p;
-        if (!r.ok) throw Error("Upstream unavailable");
-        return r.json();
-      }),
-    );
+    const readJson = async (url) => {
+      const r = await fetch(url, { signal: controller.signal });
+      if (!r.ok) throw Error("Upstream unavailable");
+      return r.json();
+    };
+    const results = await Promise.allSettled([
+      place.station
+        ? readJson(
+            `https://api.meteo.lt/v1/stations/${place.station}/observations/latest`,
+          )
+        : Promise.resolve(null),
+      readJson(`https://api.meteo.lt/v1/places/${city}/forecasts/long-term`),
+    ]);
     const [observation, forecast] = results.map((r) =>
       r.status === "fulfilled" ? r.value : null,
     );
