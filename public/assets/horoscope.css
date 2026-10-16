@@ -1,9 +1,9 @@
 /* Kalendorius365 daily horoscope module. Lato and brand tokens come from the shared design system. */
 .homepage-app .horoscope-teaser {
   display: grid;
-  grid-template-columns: 74px minmax(0, 1fr) auto;
+  grid-template-columns: 92px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 15px;
+  gap: 17px;
   margin: 0 0 14px;
   padding: 13px 17px;
   overflow: hidden;
@@ -13,15 +13,21 @@
   background: linear-gradient(112deg, color-mix(in srgb, #e9f1e9 76%, var(--panel)), var(--panel) 66%);
   box-shadow: 0 5px 18px #152f220d;
 }
-.horoscope-teaser__art { display: grid; width: 70px; height: 70px; place-items: center; border-radius: 50%; background: #0c624c; box-shadow: inset 0 0 0 1px #ffffff38; }
-.horoscope-teaser__art img { display: block; width: 64px; height: 64px; }
+.horoscope-teaser__art { position: relative; display: grid; width: 88px; height: 88px; place-items: center; border: 1px solid #d2ad5b; border-radius: 50%; background: radial-gradient(circle at 34% 27%, #378568 0, #116348 48%, #073e36 100%); box-shadow: inset 0 1px 0 #ffffff85, inset 0 -5px 11px #071f1b55, 0 4px 12px #113c3026; }
+.horoscope-teaser__art::before { position: absolute; inset: 3px; border: 1px solid #f0d99388; border-radius: inherit; content: ""; pointer-events: none; }
+.horoscope-teaser__art img { position: relative; z-index: 1; display: block; width: 78px; height: 78px; filter: drop-shadow(0 2px 2px #071e1c55); }
 .horoscope-teaser__copy { min-width: 0; }
 .horoscope-teaser__copy .horoscope-kicker { margin: 0 0 2px; }
 .horoscope-teaser__copy h2 { margin: 0; font-size: 1.02rem; letter-spacing: -.025em; line-height: 1.2; }
 .horoscope-teaser__copy > p:last-child { margin: 4px 0 0; color: var(--muted); font-size: .75rem; line-height: 1.4; }
 .horoscope-teaser__copy time { color: var(--ink); font-weight: 700; }
-.horoscope-teaser__link { display: inline-flex; min-height: 43px; align-items: center; justify-content: center; gap: 10px; padding: 0 15px; border: 1px solid #006a44; border-radius: 11px; color: #fff; background: #006a44; font-size: .78rem; font-weight: 750; text-decoration: none; transition: background-color 150ms ease, transform 150ms ease; }
-.horoscope-teaser__link:hover { transform: translateY(-1px); background: #07583f; }
+.horoscope-teaser__link { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 12px; padding: 5px 10px 5px 18px; border: 1px solid #0b7655; border-radius: 15px; color: #fff; background: linear-gradient(145deg, #138260, #006a44 64%, #00533d); box-shadow: inset 0 1px 0 #ffffff48, 0 3px 8px #064b3626, 0 1px 2px #002d201e; font-size: .8rem; font-weight: 750; letter-spacing: .005em; text-decoration: none; transition: filter 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
+.horoscope-teaser__link-label { line-height: 1.2; }
+.horoscope-teaser__link-icon { display: grid; width: 32px; height: 32px; flex: 0 0 32px; place-items: center; border: 1px solid #ffffff70; border-radius: 50%; color: #fff7df; background: linear-gradient(145deg, #ffffff2b, #ffffff0b); box-shadow: inset 0 1px 0 #ffffff62, 0 1px 2px #003c2d45; }
+.horoscope-teaser__link-icon svg { display: block; width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.horoscope-teaser__link-icon .horoscope-teaser__link-glint { stroke-width: 1; stroke-opacity: .7; }
+.horoscope-teaser__link:hover { transform: translateY(-1px); filter: brightness(1.08); box-shadow: inset 0 1px 0 #ffffff55, 0 6px 14px #064b3635; }
+.horoscope-teaser__link:hover .horoscope-teaser__link-icon svg { transform: translate(1px, -1px); }
 .horoscope-teaser__link:focus-visible,.horoscope-card__link:focus-visible,.horoscope-sign-link:focus-visible { outline: 3px solid #bf8c2c; outline-offset: 3px; }
 [data-theme="dark"] .homepage-app .horoscope-teaser { background: linear-gradient(112deg, color-mix(in srgb, #214c39 35%, var(--panel)), var(--panel) 68%); }
 
@@ -122,9 +128,9 @@
   .horoscope-hub-hero__art img { width: 150px; height: 150px; }
 }
 @media (max-width: 760px) {
-  .homepage-app .horoscope-teaser { grid-template-columns: 60px minmax(0, 1fr); gap: 10px; padding: 11px; }
-  .horoscope-teaser__art { width: 58px; height: 58px; }
-  .horoscope-teaser__art img { width: 54px; height: 54px; }
+  .homepage-app .horoscope-teaser { grid-template-columns: 72px minmax(0, 1fr); gap: 11px; padding: 11px; }
+  .horoscope-teaser__art { width: 68px; height: 68px; }
+  .horoscope-teaser__art img { width: 60px; height: 60px; }
   .horoscope-teaser__link { grid-column: 2; justify-self: start; min-height: 38px; }
   .horoscope-hub-hero { grid-template-columns: minmax(0, 1fr) 155px; gap: 10px; }
   .horoscope-hub-hero__art img { width: 124px; height: 124px; }
@@ -183,9 +189,9 @@
   .horoscope-disclaimer { font-size: .68rem; }
 }
 @media (max-width: 355px) {
-  .homepage-app .horoscope-teaser { grid-template-columns: 48px minmax(0, 1fr); gap: 8px; padding: 9px; }
-  .horoscope-teaser__art { width: 47px; height: 47px; }
-  .horoscope-teaser__art img { width: 44px; height: 44px; }
+  .homepage-app .horoscope-teaser { grid-template-columns: 55px minmax(0, 1fr); gap: 8px; padding: 9px; }
+  .horoscope-teaser__art { width: 52px; height: 52px; }
+  .horoscope-teaser__art img { width: 46px; height: 46px; }
   .horoscope-teaser__link { max-width: 100%; font-size: .67rem; }
   .horoscope-sign-hero { grid-template-columns: 58px minmax(0, 1fr); gap: 9px; padding: 12px; }
   .horoscope-sign-hero__art { width: 56px; height: 56px; }
@@ -193,7 +199,7 @@
   .horoscope-sign-hero h1 { font-size: 1.2rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .horoscope-teaser__link,.horoscope-card { transition: none; }
+  .horoscope-teaser__link,.horoscope-teaser__link-icon svg,.horoscope-card { transition: none; }
   .horoscope-teaser__link:hover,.horoscope-card:hover { transform: none; }
 }
 @media print {
@@ -202,4 +208,62 @@
   .horoscope-hub-hero h1,.horoscope-sign-hero h1 { color: #111; }
   .horoscope-hub-hero__art { display: none; }
   .horoscope-card,.horoscope-reading,.horoscope-profile,.horoscope-lead { break-inside: avoid; box-shadow: none; }
+}
+
+/* Homepage recommendations: compact illustrated marks and a crafted direction control. */
+.homepage-app .home-discovery__card {
+  grid-template-columns: 42px minmax(0, 1fr) 28px;
+  gap: 10px;
+  padding: 10px 11px;
+}
+.homepage-app .home-discovery__icon {
+  width: 42px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--guide-accent, var(--green)) 18%, transparent);
+  border-radius: 13px;
+  background: radial-gradient(ellipse at 30% 18%, color-mix(in srgb, #fff 92%, var(--guide-accent, var(--green))) 0, color-mix(in srgb, var(--guide-accent, var(--green)) 12%, var(--panel)) 76%);
+  box-shadow: inset 0 1px 0 #fff9, 0 2px 5px color-mix(in srgb, var(--guide-accent, var(--green)) 10%, transparent);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.homepage-app .home-discovery__illustration { display: block; width: 34px; height: 34px; overflow: visible; filter: drop-shadow(0 1px 1px #1c293320); }
+.homepage-app .home-discovery__card:hover .home-discovery__icon { transform: translateY(-1px) rotate(-2deg); box-shadow: inset 0 1px 0 #fff9, 0 4px 9px color-mix(in srgb, var(--guide-accent, var(--green)) 20%, transparent); }
+.homepage-app .home-discovery__arrow {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  align-self: start;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--guide-accent, var(--green)) 22%, var(--border));
+  border-radius: 50%;
+  color: var(--guide-accent, var(--green));
+  background: color-mix(in srgb, var(--guide-accent, var(--green)) 7%, var(--panel));
+  box-shadow: inset 0 1px 0 #fff9, 0 1px 3px #162c3510;
+  transition: transform 180ms ease, color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+.homepage-app .home-discovery__arrow svg { display: block; width: 20px; height: 20px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.homepage-app .home-discovery__arrow svg circle { fill: none; stroke-opacity: .28; stroke-width: 1; }
+.homepage-app .home-discovery__arrow svg .home-discovery__arrow-glint { stroke-width: 1; stroke-opacity: .46; }
+.homepage-app .home-discovery__card:hover .home-discovery__arrow { transform: translate(1px, -1px); color: #fff; background: var(--guide-accent, var(--green)); box-shadow: 0 3px 8px color-mix(in srgb, var(--guide-accent, var(--green)) 30%, transparent); }
+.homepage-app .home-discovery__card:hover .home-discovery__arrow svg circle { stroke-opacity: .4; }
+.homepage-app .home-discovery__card:active { transform: translateY(0); }
+@media (max-width: 1180px) {
+  .homepage-app .home-discovery__card { grid-template-columns: 36px minmax(0, 1fr) 25px; gap: 7px; padding: 8px 7px; }
+  .homepage-app .home-discovery__icon { width: 36px; height: 38px; border-radius: 11px; }
+  .homepage-app .home-discovery__illustration { width: 30px; height: 30px; }
+  .homepage-app .home-discovery__arrow { width: 25px; height: 25px; }
+  .homepage-app .home-discovery__arrow svg { width: 19px; height: 19px; }
+}
+@media (max-width: 540px) {
+  .homepage-app .home-discovery__card { min-height: 78px; grid-template-columns: 32px minmax(0, 1fr) 22px; gap: 6px; padding: 8px 7px; border-radius: 11px; }
+  .homepage-app .home-discovery__icon { width: 32px; height: 34px; border-radius: 10px; }
+  .homepage-app .home-discovery__illustration { width: 27px; height: 27px; }
+  .homepage-app .home-discovery__arrow { width: 22px; height: 22px; }
+  .homepage-app .home-discovery__arrow svg { width: 17px; height: 17px; }
+}
+@media (max-width: 355px) {
+  .homepage-app .home-discovery__card { min-height: 72px; grid-template-columns: 34px minmax(0, 1fr) 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .homepage-app .home-discovery__card,.homepage-app .home-discovery__icon,.homepage-app .home-discovery__arrow { transition: none; }
+  .homepage-app .home-discovery__card:hover,.homepage-app .home-discovery__card:hover .home-discovery__icon { transform: none; }
 }

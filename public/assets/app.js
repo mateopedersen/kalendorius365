@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=9d13897a71f1";
-import * as cal from "./calendar.js?v=9d13897a71f1";
-import { Store, download } from "./storage.js?v=9d13897a71f1";
-import { exportICS, importICS } from "./ics.js?v=9d13897a71f1";
-import { notice } from "./common.js?v=9d13897a71f1";
-import { renderWeather } from "./weather.js?v=9d13897a71f1";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=9d13897a71f1";
+import { icon } from "./icons.js?v=21187a78622b";
+import * as cal from "./calendar.js?v=21187a78622b";
+import { Store, download } from "./storage.js?v=21187a78622b";
+import { exportICS, importICS } from "./ics.js?v=21187a78622b";
+import { notice } from "./common.js?v=21187a78622b";
+import { renderWeather } from "./weather.js?v=21187a78622b";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=21187a78622b";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -16,7 +16,7 @@ const homeIcon = (name, className = "") => {
   const svg = icon(name, className);
   svg.querySelector("use").setAttribute(
     "href",
-    "/assets/visuals/home-icons.svg#" + name,
+    "/assets/visuals/home-icons.svg?v=icons-20261016a#" + name,
   );
   return svg;
 };
@@ -676,6 +676,7 @@ $("#delete-event").onclick = () => {
   }
 };
 $("#add-event").onclick = () => showEvent();
+if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
   if (!b) return;
@@ -922,6 +923,8 @@ function renderHolidayList() {
       .filter((h) => h.date >= now)
       .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 4);
+  const yearLink = $("#upcoming-holiday-year");
+  if (yearLink) yearLink.textContent = (items[0]?.date || now).slice(0, 4);
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
       const li = el("li"),

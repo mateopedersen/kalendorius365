@@ -676,6 +676,7 @@ $("#delete-event").onclick = () => {
   }
 };
 $("#add-event").onclick = () => showEvent();
+if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
   if (!b) return;
