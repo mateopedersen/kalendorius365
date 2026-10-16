@@ -13,12 +13,27 @@ function applyTheme(mode) {
       "aria-label",
       mode === "dark" ? "Įjungti šviesią temą" : "Įjungti tamsią temą",
     );
+  document.querySelector("#theme")?.setAttribute("aria-pressed", String(mode === "dark"));
 }
-applyTheme(matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+applyTheme(
+  document.documentElement.dataset.theme ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+);
 document.querySelector("#theme")?.addEventListener("click", () => {
   const mode =
     document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   applyTheme(mode);
+  try {
+    const key = "kalendorius365:v1";
+    const data = JSON.parse(localStorage.getItem(key) || "{}");
+    data.schema = 1;
+    data.events ||= [];
+    data.tasks ||= [];
+    data.notes ||= {};
+    data.preferences ||= {};
+    data.preferences.theme = mode;
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch {}
 });
 
 // Fetch an internal page only after a clear navigation intent. This keeps
@@ -94,43 +109,131 @@ const searchText = (value) =>
     .toLocaleLowerCase("lt-LT")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
-document.querySelector("#site-search")?.addEventListener("input", async (e) => {
-  const q = searchText(e.target.value.trim()),
-    host = document.querySelector("#site-search-results");
-  host.replaceChildren();
-  host.hidden = !q;
+const siteSearch = document.querySelector("#site-search");
+const siteSearchResults = document.querySelector("#site-search-results");
+const headerSearch = document.querySelector(".header-search");
+const siteSearchStatus = document.querySelector("#site-search-status") || document.createElement("div");
+siteSearch.setAttribute("role", "combobox");
+siteSearch.setAttribute("aria-autocomplete", "list");
+siteSearch.setAttribute("aria-haspopup", "listbox");
+siteSearch.setAttribute("aria-expanded", "false");
+siteSearch.setAttribute("aria-controls", "site-search-results");
+siteSearch.setAttribute("autocomplete", "off");
+siteSearchResults.setAttribute("role", "listbox");
+siteSearchResults.setAttribute("aria-label", "Paieškos rezultatai");
+siteSearchStatus.id = "site-search-status";
+siteSearchStatus.className = "visually-hidden";
+siteSearchStatus.setAttribute("role", "status");
+siteSearchStatus.setAttribute("aria-live", "polite");
+siteSearchStatus.setAttribute("aria-atomic", "true");
+headerSearch.append(siteSearchStatus);
+let activeSearchOption = -1;
+const setSearchOpen = (open, focus = false) => {
+  headerSearch?.classList.toggle("search-open", open);
+  if (open && focus) siteSearch?.focus({ preventScroll: true });
+  if (!open) {
+    siteSearchResults?.setAttribute("hidden", "");
+    siteSearch?.setAttribute("aria-expanded", "false");
+    siteSearch?.removeAttribute("aria-activedescendant");
+    if (document.activeElement === siteSearch) siteSearch.blur();
+  }
+};
+siteSearch.addEventListener("focus", () => {
+  if (matchMedia("(max-width: 760px)").matches)
+    headerSearch.classList.add("search-open");
+});
+siteSearch?.addEventListener("input", async (e) => {
+  const q = searchText(e.target.value.trim());
+  siteSearchResults.replaceChildren();
+  siteSearchStatus.textContent = "";
+  activeSearchOption = -1;
+  siteSearch.removeAttribute("aria-activedescendant");
+  siteSearch.setAttribute("aria-expanded", String(Boolean(q)));
+  siteSearchResults.hidden = !q;
   if (!q) return;
+  siteSearchStatus.textContent = "Ieškoma svetainėje…";
   try {
-    searchIndex ||= await fetch("/assets/data/search.json").then((r) =>
-      r.json(),
-    );
-    if (searchText(e.target.value.trim()) !== q) return;
-    host.replaceChildren();
+    searchIndex ||= await fetch("/assets/data/search.json").then((response) => {
+      if (!response.ok) throw Error("Nepavyko įkelti paieškos rodyklės");
+      return response.json();
+    });
+    if (searchText(siteSearch.value.trim()) !== q) return;
+    const words = q.split(/\s+/);
     const items = searchIndex
-      .filter((x) =>
-        q
-          .split(/\s+/)
-          .every((word) => searchText(x.title + " " + x.url).includes(word)),
-      )
+      .map((item) => {
+        const title = searchText(item.title);
+        const haystack = searchText(
+          `${item.title} ${item.url} ${item.description || ""} ${item.keywords || ""}`,
+        );
+        if (!words.every((word) => haystack.includes(word))) return null;
+        const score =
+          (title === q ? 1000 : 0) +
+          (title.startsWith(q) ? 160 : 0) +
+          (title.includes(q) ? 80 : 0) +
+          (item.action ? 40 : 0);
+        return { ...item, score };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, "lt"))
       .slice(0, 10);
-    for (const x of items) {
-      const a = document.createElement("a");
-      a.href = x.url;
-      a.textContent = x.title;
-      host.append(a);
+    siteSearchResults.replaceChildren();
+    for (const [index, item] of items.entries()) {
+      const link = document.createElement("a");
+      link.href = item.url;
+      link.id = `site-search-option-${index}`;
+      link.setAttribute("role", "option");
+      link.setAttribute("aria-selected", "false");
+      link.append(document.createElement("strong"));
+      link.firstElementChild.textContent = item.title;
+      if (item.description) {
+        const detail = document.createElement("small");
+        detail.textContent = item.description;
+        link.append(detail);
+      }
+      siteSearchResults.append(link);
     }
-    if (!items.length) {
-      const s = document.createElement("small");
-      s.textContent = "Rezultatų nerasta.";
-      host.append(s);
+    if (items.length) siteSearchStatus.textContent = `Rasta rezultatų: ${items.length}. Rodyklėmis pasirinkite, Enter atverkite.`;
+    else {
+      const message = document.createElement("p");
+      message.className = "header-search-empty";
+      message.textContent = "Rezultatų nerasta. Bandykite kitą žodį arba datą.";
+      siteSearchResults.append(message);
+      siteSearchStatus.textContent = "Rezultatų nerasta.";
     }
   } catch {
-    host.textContent = "Paieška nepasiekiama. Naudokite meniu nuorodas.";
+    siteSearchResults.replaceChildren();
+    const message = document.createElement("p");
+    message.className = "header-search-empty";
+    message.textContent = "Paieška nepasiekiama. Naudokite meniu nuorodas.";
+    siteSearchResults.append(message);
+    siteSearchStatus.textContent = message.textContent;
   }
 });
-document.addEventListener("click", (e) => {
-  if (!e.target.closest(".header-search"))
-    document.querySelector("#site-search-results")?.setAttribute("hidden", "");
+siteSearch?.addEventListener("keydown", (event) => {
+  const options = [...(siteSearchResults?.querySelectorAll('[role="option"]') || [])];
+  if (!options.length) return;
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    event.preventDefault();
+    const step = event.key === "ArrowDown" ? 1 : -1;
+    activeSearchOption = (activeSearchOption + step + options.length) % options.length;
+    for (const [index, option] of options.entries()) {
+      const active = index === activeSearchOption;
+      option.setAttribute("aria-selected", String(active));
+      if (active) {
+        siteSearch.setAttribute("aria-activedescendant", option.id);
+        option.scrollIntoView({ block: "nearest" });
+      }
+    }
+  } else if (event.key === "Enter" && activeSearchOption >= 0) {
+    event.preventDefault();
+    options[activeSearchOption]?.click();
+  } else if (event.key === "Escape") {
+    setSearchOpen(false);
+  }
+});
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".header-search"))
+    setSearchOpen(false);
 });
 document.querySelector("#nav-toggle")?.addEventListener("click", (e) => {
   const b = e.currentTarget,
@@ -165,8 +268,7 @@ for (const link of document.querySelectorAll(".mobile-dock a")) {
 }
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
-  const search = document.querySelector("#site-search-results");
-  if (search) search.hidden = true;
+  setSearchOpen(false);
   const toggle = document.querySelector("#nav-toggle");
   if (toggle?.getAttribute("aria-expanded") === "true") toggle.click();
 });

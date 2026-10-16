@@ -4927,26 +4927,6 @@ details > summary {
     min-height: 78px;
   }
 }
-/* Search remains available inside the mobile navigation panel. */
-@media (max-width: 760px) {
-  #primary-nav.nav-open {
-    padding-top: 70px;
-  }
-  #primary-nav.nav-open ~ .header-search {
-    display: block;
-    position: absolute;
-    top: 76px;
-    left: 18px;
-    right: 18px;
-    width: auto;
-    max-width: none;
-    z-index: 26;
-  }
-  #primary-nav.nav-open ~ .header-search input {
-    min-height: 44px;
-  }
-}
-
 /* Atostogų planuoklis */
 .leave-legal-note,
 .leave-form,
@@ -5967,6 +5947,230 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   .homepage-app .holidays-panel .holiday-mark { width: 34px; height: 36px; }
 }
 
+/* Site-wide search, durable theme preference, and clear dashboard card gutters. */
+.brand-wordmark {
+  letter-spacing: -.035em;
+}
+.brand-wordmark > span {
+  margin-inline-start: .24em;
+  letter-spacing: -.025em;
+}
+.footer-brand-wordmark {
+  letter-spacing: -.03em;
+}
+.footer-brand-wordmark > span {
+  margin-inline-start: .26em;
+  letter-spacing: -.02em;
+}
+.header-search-results {
+  position: absolute;
+  top: calc(100% + 7px);
+  display: grid;
+  gap: 2px;
+  width: max(100%, 320px);
+  max-height: min(62vh, 520px);
+  overflow: auto;
+  padding: 6px;
+  background: var(--panel);
+  z-index: 50;
+}
+.header-search-results[hidden] {
+  display: none;
+}
+.header-search-results a {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 10px 11px !important;
+  border-radius: 7px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.header-search-results a strong {
+  font-size: .88rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+.header-search-results a small {
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.4;
+}
+.header-search-results a:hover,
+.header-search-results a[aria-selected="true"] {
+  background: var(--soft);
+  outline: 2px solid color-mix(in srgb, var(--green) 30%, transparent);
+  outline-offset: -2px;
+}
+.header-search-empty {
+  margin: 0;
+  padding: 12px;
+  color: var(--muted);
+  font-size: .86rem;
+}
+[data-theme="dark"] .homepage-app .month-table .day-cell[aria-pressed="true"] {
+  background: #174a35;
+  color: #f5f8fc;
+  box-shadow: inset 0 0 0 2px #64d7aa;
+}
+[data-theme="dark"] .homepage-app .month-table .day-cell[aria-pressed="true"] .day-number {
+  background: #08754e;
+  color: #fff;
+}
+[data-theme="dark"] .homepage-app .month-table .day-cell[aria-pressed="true"].holiday .day-number {
+  color: #fff;
+}
+[data-theme="dark"] .homepage-app .calendar-panel,
+[data-theme="dark"] .homepage-app .calendar-panel .month-table,
+[data-theme="dark"] .homepage-app .calendar-panel .month-table tbody td {
+  background-color: var(--panel);
+}
+[data-theme="dark"] .homepage-app .calendar-panel .month-table .day-cell.weekend:not([aria-pressed="true"]),
+[data-theme="dark"] .homepage-app .calendar-panel .month-table .day-cell.other-month:not([aria-pressed="true"]) {
+  background: #1c2839;
+  color: #bac5d3;
+}
+[data-theme="dark"] .homepage-app .calendar-panel .month-table .day-cell.holiday:not([aria-pressed="true"]) {
+  background: #3c2630;
+  color: #ffb4b7;
+}
+.homepage-app .right-column,
+.homepage-app .right-column #day-details {
+  gap: 16px;
+}
+.homepage-app .right-column #day-details > .panel,
+.homepage-app .right-column > .panel {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.homepage-app .dashboard,
+.homepage-app .center-column,
+.homepage-app .left-column {
+  min-width: 0;
+}
+@media (max-width: 760px) {
+  .site-header {
+    position: relative;
+    z-index: 30;
+    gap: 7px;
+  }
+  .site-header .brand {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+    gap: 6px;
+  }
+  .site-header .brand-logo {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-wordmark {
+    font-size: clamp(16px, 4.8vw, 19px);
+  }
+  .site-header #nav-toggle {
+    order: 5;
+    margin-left: 0;
+  }
+  .site-header #theme {
+    order: 4;
+  }
+  .site-header .header-search {
+    display: block;
+    order: 3;
+    width: 36px;
+    min-width: 36px;
+    margin: 0;
+    flex: none;
+  }
+  .site-header .header-search input {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0 !important;
+    border-color: transparent;
+    color: transparent;
+    caret-color: transparent;
+    background: transparent !important;
+  }
+  .site-header .header-search input::placeholder {
+    color: transparent;
+  }
+  .site-header .header-search > .icon {
+    left: 9px;
+    top: 9px;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+  }
+  .site-header .header-search.search-open {
+    display: block;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 12px;
+    right: 12px;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    z-index: 50;
+  }
+  .site-header .header-search.search-open input {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    height: 46px;
+    padding-left: 39px !important;
+    border-color: color-mix(in srgb, var(--green) 28%, var(--border));
+    color: var(--ink);
+    caret-color: var(--ink);
+    background: var(--panel) !important;
+    box-shadow: 0 6px 20px #10241c20;
+  }
+  .site-header .header-search-results {
+    top: calc(100% + 5px);
+    width: 100%;
+    max-height: min(62vh, 440px);
+  }
+  .homepage-app .dashboard {
+    gap: 16px;
+  }
+  .homepage-app .center-column,
+  .homepage-app .right-column {
+    gap: 16px;
+  }
+  .homepage-app .right-column #day-details {
+    gap: 16px;
+  }
+  .homepage-app .right-column #day-details > .panel,
+  .homepage-app .right-column > .panel {
+    margin-block: 0;
+  }
+}
+@media (max-width: 380px) {
+  .site-header {
+    padding-inline: 9px;
+    gap: 5px;
+  }
+  .site-header .brand-logo {
+    width: 31px;
+    height: 31px;
+  }
+  .brand-wordmark {
+    font-size: clamp(15px, 4.7vw, 17px);
+  }
+  .site-header #nav-toggle,
+  .site-header #theme {
+    width: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+}
+
 /* Purpose-built illustrations and category colors for linked tools. */
 .resource-card {
   display: grid;
@@ -6047,4 +6251,47 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   .resource-card { grid-template-columns: 50px minmax(0, 1fr); column-gap: 10px; padding-inline: .85rem; }
   .resource-card__icon { width: 50px; height: 50px; }
   .resource-card__icon .icon { width: 39px; height: 39px; }
+}
+
+/* Final responsive and dark-state safeguards after the shared component rules. */
+[data-theme="dark"] .homepage-app .calendar-panel .month-table .day-cell:hover:not([aria-pressed="true"]) {
+  background: #263a33;
+  color: #f3f7fb;
+}
+[data-theme="dark"] .homepage-app .calendar-panel .month-table .day-cell.weekend:hover:not([aria-pressed="true"]),
+[data-theme="dark"] .homepage-app .calendar-panel .month-table .day-cell.holiday:hover:not([aria-pressed="true"]) {
+  background: #34443e;
+  color: #fff;
+}
+@media (max-width: 760px) {
+  .site-header .brand { width: auto; }
+  .site-header .brand-logo { width: 34px; height: 34px; }
+  .homepage-app .right-column,
+  .homepage-app .right-column #day-details { row-gap: 16px; }
+  .homepage-app .right-column #day-details > .panel,
+  .homepage-app .right-column > .panel { margin-block: 0; }
+}
+@media (max-width: 380px) {
+  .site-header { padding-inline: 9px; gap: 5px; }
+  .site-header .brand-logo { width: 31px; height: 31px; }
+  .brand-wordmark { font-size: clamp(15px, 4.7vw, 17px); }
+  .site-header #nav-toggle,
+  .site-header #theme {
+    width: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+  .site-header .header-search,
+  .site-header .header-search input {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+  }
+  .site-header .header-search > .icon {
+    left: 7px;
+    top: 7px;
+  }
 }

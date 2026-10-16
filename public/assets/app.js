@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=9d13897a71f1";
-import * as cal from "./calendar.js?v=9d13897a71f1";
-import { Store, download } from "./storage.js?v=9d13897a71f1";
-import { exportICS, importICS } from "./ics.js?v=9d13897a71f1";
-import { notice } from "./common.js?v=9d13897a71f1";
-import { renderWeather } from "./weather.js?v=9d13897a71f1";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=9d13897a71f1";
+import { icon } from "./icons.js?v=8baba4d618b1";
+import * as cal from "./calendar.js?v=8baba4d618b1";
+import { Store, download } from "./storage.js?v=8baba4d618b1";
+import { exportICS, importICS } from "./ics.js?v=8baba4d618b1";
+import { notice } from "./common.js?v=8baba4d618b1";
+import { renderWeather } from "./weather.js?v=8baba4d618b1";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=8baba4d618b1";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -16,7 +16,7 @@ const homeIcon = (name, className = "") => {
   const svg = icon(name, className);
   svg.querySelector("use").setAttribute(
     "href",
-    "/assets/visuals/home-icons.svg#" + name,
+    "/assets/visuals/home-icons.svg?v=icons-20261016a#" + name,
   );
   return svg;
 };
@@ -676,6 +676,7 @@ $("#delete-event").onclick = () => {
   }
 };
 $("#add-event").onclick = () => showEvent();
+if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
   if (!b) return;
@@ -922,6 +923,8 @@ function renderHolidayList() {
       .filter((h) => h.date >= now)
       .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 4);
+  const yearLink = $("#upcoming-holiday-year");
+  if (yearLink) yearLink.textContent = (items[0]?.date || now).slice(0, 4);
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
       const li = el("li"),
@@ -1062,12 +1065,14 @@ $("#share").onclick = async () => {
 };
 const weatherCity = $("#weather-city");
 let cityRequest = 0;
-const savedCity = store.data.preferences.city || "auto";
-weatherCity.value = savedCity;
+const savedCity = store.data.preferences.city || "";
+const hasSavedCity = WEATHER_CITY_BY_ID.has(savedCity);
+weatherCity.value = hasSavedCity ? savedCity : DEFAULT_WEATHER_CITY;
 function applyWeatherCity(city) {
   window.k365WeatherCity = WEATHER_CITY_BY_ID.has(city)
     ? city
     : DEFAULT_WEATHER_CITY;
+  weatherCity.value = window.k365WeatherCity;
   renderWeather(window.k365WeatherCity);
   tick();
 }
@@ -1081,28 +1086,29 @@ async function detectWeatherCity() {
     });
     if (!response.ok) throw Error("Nepavyko nustatyti miesto");
     const result = await response.json();
-    if (requestId !== cityRequest || weatherCity.value !== "auto") return;
+    if (requestId !== cityRequest) return;
     applyWeatherCity(
       WEATHER_CITY_BY_ID.has(result.city) ? result.city : DEFAULT_WEATHER_CITY,
     );
   } catch {
-    if (requestId === cityRequest && weatherCity.value === "auto")
-      applyWeatherCity(DEFAULT_WEATHER_CITY);
+    if (requestId === cityRequest) applyWeatherCity(DEFAULT_WEATHER_CITY);
   }
 }
 weatherCity.onchange = () => {
-  pref("city", weatherCity.value);
-  if (weatherCity.value === "auto") {
-    detectWeatherCity();
+  const city = weatherCity.value;
+  if (!WEATHER_CITY_BY_ID.has(city)) {
+    applyWeatherCity(DEFAULT_WEATHER_CITY);
     return;
   }
-  applyWeatherCity(weatherCity.value);
+  cityRequest += 1;
+  pref("city", city);
+  applyWeatherCity(city);
 };
-if (savedCity === "auto") {
+if (hasSavedCity) applyWeatherCity(savedCity);
+else {
   applyWeatherCity(DEFAULT_WEATHER_CITY);
   detectWeatherCity();
 }
-else applyWeatherCity(savedCity);
 setInterval(() => {
   if (document.visibilityState === "visible")
     renderWeather(window.k365WeatherCity || DEFAULT_WEATHER_CITY);
