@@ -80,9 +80,18 @@ function transact(fn) {
 function pref(key, value) {
   transact((d) => (d.preferences[key] = value));
 }
+function setNoteStatus(text, state) {
+  const status = $("#note-status");
+  status.textContent = text;
+  status.dataset.state = state;
+}
 function saveNote(silent = false) {
   const text = $("#daily-note").value;
-  if (text === (store.data.notes[noteDate] || "")) return true;
+  if (text === (store.data.notes[noteDate] || "")) {
+    noteDirty = false;
+    setNoteStatus("Išsaugota šioje naršyklėje", "saved");
+    return true;
+  }
   if (
     !transact((d) => {
       if (text) d.notes[noteDate] = text;
@@ -91,7 +100,7 @@ function saveNote(silent = false) {
   )
     return false;
   noteDirty = false;
-  $("#note-status").textContent = "Išsaugota šioje naršyklėje";
+  setNoteStatus("Išsaugota šioje naršyklėje", "saved");
   if (!silent) notice("Užrašas išsaugotas.");
   return true;
 }
@@ -226,6 +235,7 @@ function renderFilterChips() {
   if (!host) return;
   host.replaceChildren();
   const all = el("button", "Visi įvykiai", "filter-chip");
+  all.prepend(homeIcon("layer-stack", "filter-chip__icon"));
   all.setAttribute(
     "aria-pressed",
     String(showHolidays && visible.every(Boolean)),
@@ -238,17 +248,25 @@ function renderFilterChips() {
   };
   host.append(all);
   const definitions = [
-    ["Šventės", -1],
-    ...data.categories.map((name, i) => [name, i]),
+    ["Šventės", -1, "layer-holidays"],
+    ...data.categories.map((name, i) => [
+      name,
+      i,
+      [
+        "layer-personal",
+        "layer-work",
+        "layer-study",
+        "layer-health",
+        "layer-family",
+        "layer-birthday",
+        "layer-other",
+      ][i],
+    ]),
   ];
-  for (const [name, i] of definitions) {
+  for (const [name, i, symbol] of definitions) {
     const b = el("button", undefined, "filter-chip");
-    const dot = el(
-      "span",
-      undefined,
-      i < 0 ? "filter-dot holiday-dot" : "filter-dot cat" + i,
-    );
-    b.append(dot, document.createTextNode(name));
+    b.classList.add(i < 0 ? "filter-chip--holiday" : `filter-chip--category-${i}`);
+    b.append(homeIcon(symbol, "filter-chip__icon"), document.createTextNode(name));
     b.setAttribute("aria-pressed", String(i < 0 ? showHolidays : visible[i]));
     b.onclick = () => {
       if (i < 0) showHolidays = !showHolidays;
@@ -394,7 +412,7 @@ function renderDetails() {
   if (noteDate !== selected || !noteDirty)
     $("#daily-note").value = store.data.notes[selected] || "";
   noteDate = selected;
-  $("#note-status").textContent = "Saugoma tik šioje naršyklėje.";
+  setNoteStatus("Saugoma tik šioje naršyklėje.", "local");
   renderTasks();
   const upcoming = [];
   for (let n = 1; n <= 90 && upcoming.length < 5; n++) {
@@ -419,6 +437,22 @@ function renderTasks() {
         t.date === selected &&
         (filter === "all" || (filter === "done") === t.done),
     );
+  if (!ts.length) {
+    const empty = el("div", undefined, "task-empty");
+    empty.append(
+      homeIcon("task-empty", "task-empty__icon"),
+      el(
+        "span",
+        filter === "done"
+          ? "Atliktų užduočių nėra."
+          : filter === "open"
+            ? "Visos užduotys atliktos."
+            : "Šiai dienai užduočių nėra.",
+      ),
+    );
+    $("#tasks").replaceChildren(empty);
+    return;
+  }
   $("#tasks").replaceChildren(
     ...ts.map((t) => {
       const row = el("div", undefined, "task-entry" + (t.done ? " done" : "")),
@@ -428,10 +462,14 @@ function renderTasks() {
       c.checked = t.done;
       c.dataset.taskToggle = t.id;
       label.append(c, document.createTextNode(t.title));
-      const edit = el("button", "Keisti");
+      const edit = el("button", undefined, "task-action task-action--edit");
+      edit.append(homeIcon("task-edit", "task-action__icon"));
+      edit.title = "Redaguoti užduotį";
       edit.dataset.taskEdit = t.id;
       edit.setAttribute("aria-label", "Redaguoti užduotį " + t.title);
-      const del = el("button", "×");
+      const del = el("button", undefined, "task-action task-action--delete");
+      del.append(homeIcon("task-delete", "task-action__icon"));
+      del.title = "Ištrinti užduotį";
       del.dataset.taskDelete = t.id;
       del.setAttribute("aria-label", "Ištrinti užduotį " + t.title);
       row.append(label, edit, del);
@@ -583,7 +621,7 @@ $("#task-cancel").onclick = () => $("#task-dialog").close();
 $("#save-note").onclick = () => saveNote();
 $("#daily-note").oninput = () => {
   noteDirty = true;
-  $("#note-status").textContent = "Neišsaugoti pakeitimai";
+  setNoteStatus("Neišsaugoti pakeitimai", "dirty");
 };
 window.addEventListener("beforeunload", () => saveNote(true));
 function navigate(n) {
@@ -765,13 +803,29 @@ function renderHolidayList() {
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
       const li = el("li"),
+        iconType = ["restoration", "independence", "statehood"].includes(h.id)
+          ? "flag"
+          : ["easter", "easter-monday"].includes(h.id)
+            ? "easter"
+            : ["all-saints", "all-souls"].includes(h.id)
+              ? "candle"
+              : ["jonines", "mothers", "fathers", "assumption", "labour"].includes(h.id)
+                ? "bloom"
+                : ["christmas-eve", "christmas", "christmas-second"].includes(h.id)
+                  ? "evergreen"
+                  : "spark",
         date = el("span", h.date.slice(5).replace("-", "."), "holiday-date"),
+        mark = el("span", undefined, `holiday-mark holiday-mark--${iconType}`),
         text = el("div"),
+        title = el("div", undefined, "holiday-title"),
         a = el("button", h.name);
+      mark.append(homeIcon(`holiday-${iconType}`, "holiday-mark__icon"));
+      mark.setAttribute("aria-hidden", "true");
       a.dataset.date = h.date;
       a.className = "holiday-select";
+      title.append(mark, a);
       text.append(
-        a,
+        title,
         el(
           "small",
           (cal.difference(now, h.date) === 0
@@ -779,6 +833,7 @@ function renderHolidayList() {
             : `Liko ${cal.difference(now, h.date)} d.`) + " · Šventinė diena",
         ),
       );
+      li.classList.add(`holiday-row--${iconType}`);
       li.append(date, text);
       return li;
     }),
