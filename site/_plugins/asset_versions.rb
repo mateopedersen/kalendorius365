@@ -9,7 +9,7 @@ module Jekyll
     def generate(site)
       groups = {
         'css_version' => %w[assets/style.css assets/design-system.css],
-        'script_version' => %w[assets/common.js assets/app.js assets/tools.js assets/leave-planner.js]
+        'script_version' => %w[assets/common.js assets/app.js assets/tools.js assets/leave-planner.js assets/phase-5-6-8.js assets/weather.js]
       }
 
       groups.each do |key, paths|

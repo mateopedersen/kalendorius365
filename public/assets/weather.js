@@ -26,12 +26,6 @@ const names = {
 };
 const pending = new Map();
 export async function loadWeather(city) {
-  let saved;
-  try {
-    saved = JSON.parse(localStorage.getItem("k365:weather:" + city));
-  } catch {}
-  if (saved && Date.now() - saved.savedAt < 1200000)
-    return { ...saved.data, cached: true };
   if (pending.has(city)) return pending.get(city);
   const job = (async () => {
     try {
@@ -39,16 +33,8 @@ export async function loadWeather(city) {
         signal: AbortSignal.timeout(10000),
       });
       if (!r.ok) throw Error("unavailable");
-      const data = await r.json();
-      try {
-        localStorage.setItem(
-          "k365:weather:" + city,
-          JSON.stringify({ savedAt: Date.now(), data }),
-        );
-      } catch {}
-      return data;
+      return await r.json();
     } catch {
-      if (saved) return { ...saved.data, stale: true };
       return null;
     } finally {
       pending.delete(city);
