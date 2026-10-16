@@ -69,11 +69,12 @@ module Pages
     if d['inMonth']
      holiday_links=hs.filter_map { |h|url=holiday_page_url(h['id']);url && [h['name'],url] }
      commemoration_links=cs.map { |a|[a['title'],"/sventes/#{a['slug']}/"] }
-     links=(holiday_links+commemoration_links).map { |name,url|"<a class=\"calendar-holiday-link\" href=\"#{url}\">#{esc(name)}</a>" }.join
+     labels=(holiday_links+commemoration_links).map(&:first)
      date_target=holiday_links.first||commemoration_links.first
-     date=date_target ? "<a class=\"calendar-holiday-date\" href=\"#{date_target[1]}\" aria-label=\"#{esc(date_target[0])}: #{d['date']}\"><time datetime=\"#{d['date']}\">#{d['day']}</time></a>" : "<time datetime=\"#{d['date']}\">#{d['day']}</time>"
+     spoken_label=([d['date']]+labels).join(': ')
+     date=date_target ? "<a class=\"calendar-holiday-date\" href=\"#{date_target[1]}\" aria-label=\"#{esc(spoken_label)}\" title=\"#{esc(labels.join(' · '))}\"><time datetime=\"#{d['date']}\">#{d['day']}</time></a>" : "<time datetime=\"#{d['date']}\">#{d['day']}</time>"
      classes=[];classes<<'holiday' if hs.any?;classes<<'commemoration-day' if cs.any?
-     html+="<td class=\"#{classes.join(' ')}\">#{date}#{links}</td>"
+     html+="<td class=\"#{classes.join(' ')}\">#{date}</td>"
     else
      html+='<td></td>'
     end
