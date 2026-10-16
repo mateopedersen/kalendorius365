@@ -213,8 +213,12 @@ def main() -> int:
         route = article_route(article)
         page_path = public_path(route)
         raw = page_path.read_text() if page_path.is_file() else ""
-        image_match = re.search(r'<img\b[^>]*src="([^"]+)"[^>]*>', raw)
-        image_src = html.unescape(image_match.group(1)) if image_match else ""
+        # The site-wide header logo appears before the article content and is
+        # intentionally decorative. Inspect the article hero image instead.
+        figure_match = re.search(r'<figure\b[^>]*class="[^"]*\bholiday-art\b[^"]*"[^>]*>.*?</figure>', raw, re.S)
+        image_match = re.search(r'<img\b[^>]*>', figure_match.group(0), re.S) if figure_match else None
+        image_src_match = re.search(r'\bsrc="([^"]+)"', image_match.group(0)) if image_match else None
+        image_src = html.unescape(image_src_match.group(1)) if image_src_match else ""
         image_tag = image_match.group(0) if image_match else ""
         alt_match = re.search(r'\balt="([^"]*)"', image_tag)
         image_alt = html.unescape(alt_match.group(1)) if alt_match else ""

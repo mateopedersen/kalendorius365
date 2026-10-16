@@ -55,7 +55,7 @@ module Phase568Pages
    #{links([['menulio-kalendorius/2027/','2027 mėnulio kalendorius','Visos mėnesio fazės pagal vietos laiką.'],['menulio-kalendorius/2028/','2028 mėnulio kalendorius','Keliamųjų metų datos ir vasario 29-osios patikra.'],['menulio-kalendorius/2029/','2029 mėnulio kalendorius','Visų 2029 metų jaunatis, ketvirčiai ir pilnatis.']])}
   HTML
   page('menulio-fazes','Mėnulio fazės 2027–2029 – jaunatis ir pilnatis',
-    'Lietuvos vietos laiku pateikiami 2027–2029 m. jaunaties, pirmojo ketvirčio, pilnaties ir paskutinio ketvirčio momentai. Apšviestumas aiškiai pažymėtas kaip apytikslis.',moon,'moon')
+    'Jaunaties, ketvirčio ir pilnaties momentai 2027–2029 m. Lietuvos laiku. Mėnulio disko apšviestumas nurodomas kaip apytikslis.',moon,'moon')
   (2027..2029).each do |year|
    body=Pages.intro("#{year} metų Mėnulio kalendorius","#{year} metų jaunaties, ketvirčių ir pilnaties momentai. UTC minutės tikslumas perskaičiuojamas į Lietuvos laiko juostą; apšviestumas tarp įvykių apytikslis.")+"<section id=\"moon-year-tool\" data-year=\"#{year}\" class=\"panel\"><h2>Fazės pagal mėnesius</h2><p>Mėnesio fazės pateiktos tikrais pirminių įvykių momentais, o ne kartojamu 29,5 dienos šablonu. Laikai nurodomi Europe/Vilnius laiku.</p><div id=\"moon-year-grid\" class=\"moon-year-grid\"></div><p><a href=\"/menulio-fazes/\">Pasirinkti kitus metus ar mėnesį</a> · <a href=\"/astronominis-kalendorius/\">Astronominis kalendorius</a></p></section><p class=\"source-note\">Šaltinis: <a href=\"https://aa.usno.navy.mil/data/MoonPhases\" rel=\"noopener\">USNO fazių lentelės</a>; laiko ir teisių apribojimai paaiškinti pagrindiniame fazių puslapyje.</p>"
    page("menulio-kalendorius/#{year}","#{year} metų mėnulio kalendorius Lietuvoje","#{year} metų mėnulio fazių kalendorius: tikslios jaunaties, ketvirčių ir pilnaties akimirkos Lietuvos laiku; vasaros laikas ir metų sandūra.",body,'moon')
@@ -69,16 +69,16 @@ module Phase568Pages
     'Lygiadienių ir saulėgrįžų momentai Lietuvos laiku, penkių miestų saulėtekio skaičiuoklė ir 2027–2029 m. Mėnulio fazių lentelės.',seasons,'sun')
 
   printable_routes=[
-   ['savaitiniai-planuokliai','Savaitinis planuoklis spausdinimui','Savaitės lapai su vieta prioritetams, dienų užduotims ir pastaboms.','week'],
-   ['dienos-planuoklis','Dienos planuoklis spausdinimui','Nedatuotas dienos lapas laikui, svarbiausiems darbams ir užrašams.','day'],
-   ['seimos-kalendorius','Šeimos savaitės planuoklis','Kelios atskiros skiltys šeimos narių planams ir bendram savaitės ritmui.','family'],
-   ['pamoku-tvarkarascio-sablonai','Pamokų tvarkaraščio šablonai','Tušti savaitės tvarkaraščiai rašymui ranka ir mokyklos užduotims.','school'],
-   ['darbo-grafiko-sablonai','Darbo grafiko šablonai','Nedatuoti darbo ir pamainų lapai. Atspausdinkite ir žymėkite vietoje.','shift']
+   ['savaitiniai-planuokliai','Savaitinis planuoklis spausdinimui','Savaitės lapai su vieta prioritetams, dienų užduotims ir pastaboms.','Atsisiųskite savaitinį planuoklį PDF arba WebP formatu. A4 šablone rasite vietos savaitės prioritetams, dienų užduotims ir pastaboms.','week'],
+   ['dienos-planuoklis','Dienos planuoklis spausdinimui','Nedatuotas dienos lapas laikui, svarbiausiems darbams ir užrašams.','Atsisiųskite nedatuotą dienos planuoklį PDF arba WebP formatu. A4 lape galėsite susidėlioti dienos laiką, svarbiausius darbus ir pastabas.','day'],
+   ['seimos-kalendorius','Šeimos savaitės planuoklis','Kelios atskiros skiltys šeimos narių planams ir bendram savaitės ritmui.','Atsisiųskite šeimos savaitės planuoklį PDF arba WebP formatu. A4 šablone rasite atskiras skiltis šeimos narių planams ir bendroms veikloms.','family'],
+   ['pamoku-tvarkarascio-sablonai','Pamokų tvarkaraščio šablonai','Tušti savaitės tvarkaraščiai rašymui ranka ir mokyklos užduotims.','Atsisiųskite spausdinamą pamokų tvarkaraštį PDF arba WebP formatu. Nedatuoti A4 savaitės šablonai skirti pamokoms ir mokyklos užduotims.','school'],
+   ['darbo-grafiko-sablonai','Darbo grafiko šablonai','Nedatuoti darbo ir pamainų lapai. Atspausdinkite ir žymėkite vietoje.','Atsisiųskite nedatuotą darbo ir pamainų grafiko šabloną PDF arba WebP formatu. Pasirinkite juodai baltą arba spalvotą A4 planuoklį.','shift']
   ]
-  printable_routes.each do |slug,title,copy,category|
+  printable_routes.each do |slug,title,copy,description,category|
    items=Pages::MANIFEST.select { |e|e['kind']=='blank' && e['category']==category }
    body=Pages.intro(title,copy+' Nespalvotas ir spalvotas variantas paruoštas spausdinti A4 lape.')+"<section class=\"panel\"><h2>Pasirinkite spausdinamą variantą</h2><p>PDF yra vektorinis, o WebP sukurtas iš to paties PDF 600 PPI raiška. Peržiūros paveikslėlis yra tik miniatiūra. Pasirinkite PDF spausdinimui; tikrinamas failas turi žymą su tikru lapo dydžiu.</p></section>"+(items.empty? ? '<p>Šio rinkinio failai dar neparengti.</p>' : Pages.gallery(items,true))+"<p><a href=\"/tuscias-kalendorius/\">Peržiūrėti visus tuščius kalendorius</a> · <a href=\"/pamoku-tvarkarastis/\">Atidaryti skaitmeninį tvarkaraštį</a></p>"
-   page(slug,title+' – PDF ir WebP',copy,body)
+   page(slug,title+' – PDF ir WebP',description,body)
   end
  end
 end
