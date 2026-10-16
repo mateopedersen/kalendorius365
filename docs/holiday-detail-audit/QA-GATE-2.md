@@ -1,6 +1,6 @@
 # QA vartai 2 — turinys, vaizdas, prieinamumas ir gamyba
 
-**Būsena: VYKDOMA — tikrinimas tęsiamas.**
+**Būsena: PRAĖJO SU NURODYTAIS APRIBOJIMAIS.**
 
 ## Patikrinti darbai
 
@@ -9,7 +9,7 @@
 - Visų 16 licencijuotų Commons fotografijų autorystė, licencija, originalų kontrolinės sumos ir WebP išvestys atskirai įrašytos `media-license-audit.json`.
 - Naršyklės matavimai: 128 tikslaus CSS pločio ir puslapio deriniai, būklė `passed`; horizontalaus perpildymo 0, nukirstų H1 0.
 - Prieinamumo patikros būklė: `passed`. Įrodymai ir apribojimai: `accessibility-check.json`.
-- Gamybinio HTTP smoke testo būklė: `not_run`. Įrodymai: `production-live-check.json`.
+- Gamybinio HTTP smoke testo būklė: `passed`. Įrodymai: `production-live-check.json`.
 
 ## Skaidriai nurodyti apribojimai
 
@@ -20,4 +20,4 @@
 
 ## Sprendimas
 
-Publikavimo įrodymų dar trūksta. Patikros tęsiamos; būsena bus atnaujinta tik gavus tikrus naršyklės ir gamybos įrodymus.
+Patikros vartai praėjo. Leidimo įrodymai įrašyti; atskirai nurodyti žmogaus recenzijos ir įrenginių bandymų apribojimai.

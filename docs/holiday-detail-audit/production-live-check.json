@@ -1,6 +1,104 @@
 {
-  "status": "not_run",
-  "reason": "release gates not passed; no production deploy or Cloudflare mutation performed",
+  "status": "passed",
+  "checked_at": "2026-10-16",
   "production_url": "https://kalendorius365.lt/",
-  "checked_at": "2026-10-16"
+  "repository": "mateopedersen/kalendorius365",
+  "release_branch": "main",
+  "release_commit": "37ba2e50084da09ffa97634344497773567c8bcd",
+  "cloudflare_pages": {
+    "project": "kalendorius365",
+    "deployment_id": "eaf0371c-355d-4123-95f0-03d4f0cda654",
+    "status": "success",
+    "deployment_url": "https://eaf0371c.kalendorius365.pages.dev/",
+    "custom_domains": [
+      "https://kalendorius365.lt/",
+      "https://www.kalendorius365.lt/"
+    ],
+    "build_log": "Assets published; site deployment succeeded. 1773 assets uploaded/already present."
+  },
+  "http_smoke_checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/",
+      "title": "Kalendorius, šventės ir planai | Kalendorius365"
+    },
+    {
+      "path": "/sventes/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/sventes/",
+      "title": "Lietuvos šventės ir atmintinos dienos – datos ir tradicijos | Kalendorius365"
+    },
+    {
+      "path": "/sventes/2027/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/sventes/2027/",
+      "title": "2027 metų šventinės dienos Lietuvoje | Kalendorius365"
+    },
+    {
+      "path": "/sventes/2028/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/sventes/2028/",
+      "title": "2028 metų šventinės dienos Lietuvoje | Kalendorius365"
+    },
+    {
+      "path": "/sventes/velykos/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/sventes/velykos/",
+      "title": "Velykos Lietuvoje – data, reikšmė ir papročiai | Kalendorius365",
+      "browser_dom_verified": true,
+      "hero_image_loaded": true,
+      "image_alt_present": true,
+      "date_rows": 6,
+      "ics_links": 6
+    },
+    {
+      "path": "/sventes/sausio-13-oji/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/sventes/sausio-13-oji/",
+      "title": "Laisvės gynėjų diena – data, reikšmė ir papročiai | Kalendorius365"
+    },
+    {
+      "path": "/2027/sausis/",
+      "status": 200,
+      "canonical": "https://kalendorius365.lt/2027/sausis/",
+      "title": "2027 m. sausio kalendorius – PDF ir WebP | Kalendorius365"
+    },
+    {
+      "path": "/assets/design-system.css",
+      "status": 200,
+      "content_type": "text/css"
+    },
+    {
+      "path": "/assets/holiday-ics/velykos-2027-03-28.ics",
+      "status": 200,
+      "content_type": "text/calendar; charset=utf-8",
+      "valid_calendar": true,
+      "summary": "Velykos Lietuvoje"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "sitemap_declared": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "content_type": "application/xml",
+      "canonical_url_count": 88,
+      "includes_holiday_article": true
+    }
+  ],
+  "production_browser_review": {
+    "holiday_hub": "loaded and visibly checked",
+    "easter_article": "loaded; title, Lithuanian lang, canonical, semantic H1, article content, 2027–2029 date table, cited sources and loaded documentary image checked",
+    "screenshot": "outputs/screenshots/kalendorius365-live-easter-2026-10-16.jpg",
+    "visual_scope": "Desktop viewport screenshot reviewed; separate live mobile viewport review not performed."
+  },
+  "limitations": [
+    "Successful delivery and sitemap checks do not prove Google has indexed the pages or that rankings/traffic have changed.",
+    "No independent native Lithuanian editor, lawyer or accessibility specialist reviewed this release; the pages disclose that limitation.",
+    "No screen-reader user test, 200% zoom run, physical printer proof, or formal WCAG conformance certification is claimed."
+  ]
 }

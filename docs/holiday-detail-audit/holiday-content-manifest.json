@@ -1,7 +1,7 @@
 {
   "created_at": "2026-10-16",
-  "release_status": "candidate_pending_verification",
-  "indexability": "server-rendered candidate pages; live production verification pending",
+  "release_status": "published",
+  "indexability": "server-rendered, self-canonical pages and sitemap checked; live HTTP verified",
   "articles": [
     {
       "id": "new-year",

@@ -9,4 +9,4 @@
 
 ## Leidimo būsena
 
-**Būsena:** candidate_pending_verification. Gamybinio HTTP smoke testo būklė: not_run; vizualinės patikros būklė: passed; prieinamumo patikros būklė: passed. Google indeksavimo faktas čia netvirtinamas. Žr. `QA-GATE-1.json`, `QA-GATE-2.md` ir `production-live-check.json`.
+**Būsena:** published. Gamybinio HTTP smoke testo būklė: passed; vizualinės patikros būklė: passed; prieinamumo patikros būklė: passed. Google indeksavimo faktas čia netvirtinamas. Žr. `QA-GATE-1.json`, `QA-GATE-2.md` ir `production-live-check.json`.
