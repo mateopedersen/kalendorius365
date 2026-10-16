@@ -7,7 +7,7 @@ module Phase568Pages
   Pages.page(path,title,description,body,true,nil,false,module_name)
  end
  def links(items)
-  '<nav class="resource-grid" aria-label="Susiję puslapiai">'+items.map { |url,label,copy|"<a class=\"resource-card\" href=\"/#{url}\"><h2>#{label}</h2><p>#{copy}</p></a>" }.join+'</nav>'
+  '<nav class="resource-grid" aria-label="Susiję puslapiai">'+items.map { |url,label,copy|Pages.resource_card(url,label,copy) }.join+'</nav>'
  end
  def run
   shift=Pages.intro('Pamainų grafiko planuoklis','Sukurkite pasikartojantį pamainų ciklą, peržiūrėkite darbo ir poilsio laikotarpius bei išsaugokite grafiką šiame įrenginyje.')+<<~HTML

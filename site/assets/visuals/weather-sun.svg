@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 100"><defs><linearGradient id="cloud" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#c4d6e2"/></linearGradient></defs><circle cx="47" cy="39" r="22" fill="#FDB913"/><path d="M47 6v-5m0 76v-6M14 39H8m78 0h-6M24 16l-4-4m50 50 4 4m-50-4-4 4m50-50 4-4" stroke="#f7ae00" stroke-width="3" stroke-linecap="round"/><path d="M34 72a19 19 0 0 1-3-38 27 27 0 0 1 51 4 17 17 0 0 1-2 34Z" fill="url(#cloud)" stroke="#a8bfd0" stroke-width="1"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 100" role="img" aria-label="Saulė su debesimis">
+  <defs>
+    <linearGradient id="sunDisc" x1=".2" y1="0" x2=".8" y2="1"><stop stop-color="#ffe58a"/><stop offset="1" stop-color="#f6a51b"/></linearGradient>
+    <linearGradient id="weatherCloud" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#c7d9e5"/></linearGradient>
+    <filter id="weatherShadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#47667b" flood-opacity=".16"/></filter>
+  </defs>
+  <circle cx="52" cy="40" r="32" fill="#ffd96f" opacity=".2"/>
+  <path d="M52 2v8m0 59v8M15 40h8m59 0h8M26 14l6 6m41 41 6 6m0-53-6 6M32 61l-6 6" stroke="#efa526" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+  <circle cx="52" cy="40" r="20" fill="url(#sunDisc)" stroke="#e69b1e" stroke-width="1.5"/>
+  <path d="M42 35q10-9 20 0" fill="none" stroke="#fff8d8" stroke-width="2.3" stroke-linecap="round" opacity=".9"/>
+  <path d="M33 72a18 18 0 0 1-2-35 25 25 0 0 1 48 4 16 16 0 0 1-2 31Z" fill="url(#weatherCloud)" stroke="#aac1d0" stroke-width="1.4" filter="url(#weatherShadow)"/>
+  <path d="M42 46c6-7 16-8 24-2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+  <path d="M38 70h37" stroke="#a7bfce" stroke-width="1" opacity=".45"/>
+</svg>

@@ -16,7 +16,7 @@ const homeIcon = (name, className = "") => {
   const svg = icon(name, className);
   svg.querySelector("use").setAttribute(
     "href",
-    "/assets/visuals/home-icons.svg#" + name,
+    "/assets/visuals/home-icons.svg?v=icons-20261016a#" + name,
   );
   return svg;
 };
@@ -922,6 +922,8 @@ function renderHolidayList() {
       .filter((h) => h.date >= now)
       .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 4);
+  const yearLink = $("#upcoming-holiday-year");
+  if (yearLink) yearLink.textContent = (items[0]?.date || now).slice(0, 4);
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
       const li = el("li"),

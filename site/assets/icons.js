@@ -4,7 +4,7 @@ export function icon(name, className = "") {
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
   const use = document.createElementNS(svg.namespaceURI, "use");
-  use.setAttribute("href", "/assets/visuals/icons.svg#" + name);
+  use.setAttribute("href", "/assets/visuals/home-icons.svg?v=icons-20261016a#" + name);
   svg.append(use);
   return svg;
 }

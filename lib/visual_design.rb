@@ -1,8 +1,37 @@
 # frozen_string_literal: true
 # Presentation only. Dates, print files and download links remain manifest driven.
+require 'cgi'
 module Pages
  def ui_icon(name)
-  %(<svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/icons.svg##{name}"></use></svg>)
+  %(<svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a##{name}"></use></svg>)
+ end
+ def resource_icon_name(url)
+  path=url.to_s.sub(%r{\A/+},'')
+  return 'tool-year' if path.start_with?('metai/') || path.match?(%r{\A202[789]/})
+  return 'tool-vacation' if path.start_with?('atostogu-planavimas/')
+  return 'tool-shift-template' if path.start_with?('darbo-grafiko-sablonai/')
+  return 'tool-shift' if path.start_with?('pamainu-grafikas/')
+  return 'tool-school-template' if path.start_with?('pamoku-tvarkarascio-sablonai/')
+  return 'tool-school' if path.start_with?('pamoku-tvarkarastis/')
+  return 'tool-date' if path.start_with?('datos-skaiciuokle/')
+  return 'tool-builder' if path.start_with?('kurti-kalendoriu/')
+  return 'tool-sun' if path.start_with?('saule/')
+  return 'tool-moon' if path.start_with?('menulio-fazes/') || path.start_with?('menulio-kalendorius/')
+  return 'tool-orbit' if path.start_with?('astronominis-kalendorius/')
+  return 'tool-week' if path.start_with?('savaitiniai-planuokliai/')
+  return 'tool-day' if path.start_with?('dienos-planuoklis/')
+  return 'tool-family' if path.start_with?('seimos-kalendorius/')
+  return 'tool-iso' if path.start_with?('savaites/')
+  return 'tool-school-break' if path.start_with?('mokiniu-atostogos/')
+  return 'tool-workdays' if path.start_with?('darbo-dienos/')
+  return 'tool-blank' if path.start_with?('tuscias-kalendorius/')
+  'tool-year'
+ end
+ def resource_card(url,title,copy)
+  icon=resource_icon_name(url)
+  category=icon.delete_prefix('tool-')
+  path=url.to_s.sub(%r{\A/+},'')
+  %(<a class="resource-card resource-card--#{category}" href="/#{CGI.escapeHTML(path)}"><span class="resource-card__icon" aria-hidden="true">#{ui_icon(icon)}</span><h2>#{CGI.escapeHTML(title.to_s)}</h2><small>#{CGI.escapeHTML(copy.to_s)}</small></a>)
  end
  def holiday_stories(y)
   easter=Kalendorius.holidays(y).find { |h|h['name']=='Velykos' }
@@ -17,6 +46,16 @@ module Pages
   }.join+'</div><p class="illustration-note">Originalios Kalendorius365 iliustracijos, sukurtos pasitelkiant generatyvinę vaizdų kūrybą. Tai interpretaciniai Lietuvos tradicijų motyvai.</p>'
  end
  def visual_html(path,html)
+  html=html.gsub(/<a class="resource-card([^"]*)" href="([^"]+)">(.*?)<\/a>/m) do
+   classes,url,body=Regexp.last_match.captures
+   unless body.include?('resource-card__icon')
+    icon=resource_icon_name(url)
+    category=icon.delete_prefix('tool-')
+    classes+=" resource-card--#{category}" unless classes.include?("resource-card--#{category}")
+    body=%(<span class="resource-card__icon" aria-hidden="true">#{ui_icon(icon)}</span>)+body
+   end
+   %(<a class="resource-card#{classes}" href="#{url}">#{body}</a>)
+  end
   # Consistent semantic icons on real actions; no extra inactive controls.
   {'Atsisiųsti PDF'=>'download','Atsisiųsti WebP'=>'image','Atidaryti PDF spausdinimui ↗'=>'print','Spausdinti metų apžvalgą'=>'print','Spausdinti lentelę'=>'print','Atsisiųsti CSV suvestinę'=>'download','Spausdinti / Išsaugoti PDF'=>'print','Skaičiuoti'=>'calendar'}.each do |label,icon|
    html=html.gsub('>'+label+'</','>'+ui_icon(icon)+label+'</')
