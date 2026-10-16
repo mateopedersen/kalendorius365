@@ -12,6 +12,7 @@
 <script>/* Apply the system appearance before CSS paints to avoid a light flash. */
 try{document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
+{% if page.app %}<link rel="preload" href="/assets/visuals/weather-640.webp" as="image" type="image/webp" fetchpriority="high">{% endif %}
 <link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Lato-Black.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/style.css?v={{ site.css_version }}" as="style">

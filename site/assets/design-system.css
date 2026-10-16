@@ -398,11 +398,11 @@ main.dashboard-main {
 }
 .climate-card {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   border: 1px solid #dce6ee;
   border-radius: var(--radius);
-  background: #e7f2fa url("/assets/visuals/weather-640.webp") center bottom/auto
-    100% no-repeat;
+  background: #e7f2fa;
   box-shadow: var(--shadow);
   color: #111b2e;
 }
@@ -410,6 +410,7 @@ main.dashboard-main {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     110deg,
     #ffffffed 5%,
@@ -421,7 +422,17 @@ main.dashboard-main {
 }
 .climate-card > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+.climate-card > .climate-card__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  pointer-events: none;
 }
 .climate-card[data-weather="rain"]:before,
 .climate-card[data-weather="fog"]:before {
@@ -5724,4 +5735,26 @@ select:not([multiple]):not([size]) {
   #primary-nav > a { min-height: 48px; padding: 10px; border-radius: 6px; font-size: .9rem; }
   #primary-nav > a .icon { display: inline-block; }
   #primary-nav > a[aria-current="page"]:after { bottom: 3px; }
+}
+
+/* Reserve the hydrated home calendar controls and selected-day header. */
+.homepage-app #category-chips {
+  flex-wrap: nowrap;
+  min-height: 32px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.homepage-app #category-chips .filter-chip {
+  flex: none;
+}
+.homepage-app .detail-head {
+  min-height: 66px;
+}
+.homepage-app #selected-number {
+  min-height: 48px;
+}
+@media (max-width: 760px) {
+  .homepage-app #category-chips {
+    min-height: 38px;
+  }
 }
