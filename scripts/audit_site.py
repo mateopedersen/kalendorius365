@@ -1,17 +1,19 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
+import struct
 import re
 import json
 ROOT=Path(__file__).resolve().parents[1];PUBLIC=ROOT/'public'
 class Page(HTMLParser):
- def __init__(self):super().__init__();self.links=[];self.h1=0;self.meta={};self.canonical=None;self.title='';self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
+ def __init__(self):super().__init__();self.links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if 'id' in a:self.ids.add(a['id'])
   if tag=='h1':self.h1+=1
   if tag=='title':self.in_title=True
-  if tag=='meta' and 'name' in a:self.meta[a['name']]=a.get('content','')
+  if tag=='meta' and 'name' in a:self.meta[a['name']]=a.get('content','');self.named_meta.setdefault(a['name'],[]).append(a.get('content',''))
+  if tag=='meta' and 'property' in a:self.properties.setdefault(a['property'],[]).append(a.get('content',''))
   if tag=='link' and a.get('rel')=='canonical':self.canonical=a.get('href')
   if tag in ['a','img','script','link']:
    url=a.get('href') if tag in ['a','link'] else a.get('src')
@@ -32,6 +34,24 @@ for path in files:
  assert p.meta.get('description') and p.meta['description'] not in descs,path;descs.add(p.meta['description'])
  assert p.canonical.startswith('https://kalendorius365.lt/'),path
  assert '<html lang="lt">' in path.read_text(),path
+ for key in ('og:type','og:locale','og:site_name','og:title','og:description','og:url','og:image','og:image:type','og:image:width','og:image:height','og:image:alt'):
+  assert len(p.properties.get(key,[]))==1 and p.properties[key][0],(path,key,p.properties.get(key))
+ assert p.properties['og:type']==['website'] and p.properties['og:locale']==['lt_LT'],path
+ assert p.properties['og:url']==[p.canonical],(path,p.properties['og:url'],p.canonical)
+ assert p.properties['og:image:type']==['image/png'] and p.properties['og:image:width']==['1200'] and p.properties['og:image:height']==['630'],path
+ for key in ('twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'):
+  assert len(p.named_meta.get(key,[]))==1 and p.named_meta[key][0],(path,key,p.named_meta.get(key))
+ assert p.meta.get('twitter:card')=='summary_large_image',path
+ assert p.meta.get('twitter:image')==p.properties['og:image'][0],path
+ assert p.meta.get('twitter:image:alt')==p.properties['og:image:alt'][0],path
+ image_url=urlsplit(p.properties['og:image'][0])
+ assert image_url.scheme=='https' and image_url.netloc=='kalendorius365.lt' and image_url.path.startswith('/assets/'),(path,p.properties['og:image'][0])
+ image_path=PUBLIC/unquote(image_url.path).lstrip('/')
+ assert image_path.is_file(),(path,p.properties['og:image'][0])
+ image_data=image_path.read_bytes()
+ assert image_data[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',image_data[16:24])==(1200,630),(path,image_path)
+ assert image_path.stat().st_size<=300_000,(path,image_path,image_path.stat().st_size)
+ assert p.meta.get('twitter:title')==p.properties['og:title'][0] and p.meta.get('twitter:description')==p.properties['og:description'][0],path
  for text in p.jsonld:json.loads(text)
 for path,p in pages.items():
  for url in p.links:
@@ -76,7 +96,7 @@ for y in [2027,2028,2029]:
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
   for e in manifest:
    if e['kind']=='monthly' and e['year']==y and e['month']==m:assert e['pdf'] in html and e['webp'] in html and e['preview'] in html
-print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, JSON-LD and 360 monthly mappings.')
+print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 PNG, JSON-LD and 360 monthly mappings.')
 if '--release' in __import__('sys').argv:
  import xml.etree.ElementTree as ET
  for path,p in pages.items():
