@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=b44d20070fc8") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=fe81b3700947") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=b44d20070fc8") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=fe81b3700947") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=b44d20070fc8") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=fe81b3700947") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -4571,26 +4571,35 @@ details > summary {
   padding: 1rem 0;
   border-block: 1px solid var(--border);
 }
-.calendar-holiday-date,
-.calendar-holiday-link {
+.calendar-holiday-date {
   display: block;
   width: fit-content;
   max-width: 100%;
-}
-.calendar-holiday-date {
   font-weight: 800;
   text-decoration: none;
 }
-.calendar-holiday-date:hover,
-.calendar-holiday-link:hover {
+.calendar-holiday-date:hover {
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
-.calendar-holiday-link {
-  margin-top: .15rem;
-  font-size: .58rem;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
+.static-month .calendar-holiday-date {
+  display: inline-flex;
+  align-items: center;
+  gap: .22rem;
+  white-space: nowrap;
+}
+.static-month .calendar-holiday-date::after {
+  content: "";
+  width: .34rem;
+  height: .34rem;
+  flex: 0 0 .34rem;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--red) 13%, transparent);
+}
+.static-month td.commemoration-day:not(.holiday) .calendar-holiday-date::after {
+  background: var(--blue);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--blue) 13%, transparent);
 }
 .holiday-detail-link {
   display: grid;
