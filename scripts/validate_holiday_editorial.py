@@ -458,9 +458,18 @@ Iš viso: 128 puslapio ir CSS viewport deriniai; 0 horizontalaus dokumento perpi
     responsive_pass = browser_check.get("status") == "passed" and browser_check.get("combinations") == 128 and browser_check.get("horizontal_overflow", 1) == 0 and browser_check.get("clipped_h1", 1) == 0
     a11y_pass = a11y_check.get("status") == "passed"
     live_pass = live_check.get("status") == "passed"
-    gate2_pass = responsive_pass and a11y_pass and live_pass
-    release_status = "published" if gate2_pass else "candidate_pending_verification"
-    gate2_status = "PRAĖJO SU NURODYTAIS APRIBOJIMAIS" if gate2_pass else "VYKDOMA — tikrinimas tęsiamas"
+    technical_gate_pass = responsive_pass and a11y_pass and live_pass
+    independent_human_review_complete = EDITORIAL.get("independent_human_review", {}).get("status") == "approved"
+    gate2_pass = technical_gate_pass and independent_human_review_complete
+    if gate2_pass:
+        release_status = "published"
+        gate2_status = "PRAĖJO SU NURODYTAIS APRIBOJIMAIS"
+    elif technical_gate_pass:
+        release_status = "published_with_human_review_pending"
+        gate2_status = "TECHNINIAI PATIKRINIMAI PRAĖJO; PRIVALOMA NEPRIKLAUSOMA ŽMOGAUS PERŽIŪRA NEATLIKTA"
+    else:
+        release_status = "candidate_pending_verification"
+        gate2_status = "VYKDOMA — techniniai patikrinimai tęsiami"
     gate2 = f"""# QA vartai 2 — turinys, vaizdas, prieinamumas ir gamyba
 
 **Būsena: {gate2_status}.**
@@ -483,7 +492,7 @@ Iš viso: 128 puslapio ir CSS viewport deriniai; 0 horizontalaus dokumento perpi
 
 ## Sprendimas
 
-{'Patikros vartai praėjo. Leidimo įrodymai įrašyti; atskirai nurodyti žmogaus recenzijos ir įrenginių bandymų apribojimai.' if gate2_pass else 'Publikavimo įrodymų dar trūksta. Patikros tęsiamos; būsena bus atnaujinta tik gavus tikrus naršyklės ir gamybos įrodymus.'}
+{'Visi QA vartai praėjo; nepriklausoma žmogaus peržiūra įrašyta.' if gate2_pass else 'Techninė versija jau paskelbta ir tiesiogiai patikrinta. Visas antrasis vartas dar neuždarytas: prieš turinį vadinant nepriklausomai redaguotu, reikia gimtakalbio lietuvių kalbos redaktoriaus ir teisininko tikros peržiūros.' if technical_gate_pass else 'Gamybinio patikrinimo įrodymų dar trūksta; techninės patikros tęsiamos.'}
 """
     (DOCS / "QA-GATE-2.md").write_text(gate2, encoding="utf-8")
 
@@ -500,7 +509,7 @@ Iš viso: 128 puslapio ir CSS viewport deriniai; 0 horizontalaus dokumento perpi
 
 ## Leidimo būsena
 
-**Būsena:** {release_status}. Gamybinio HTTP smoke testo būklė: {live_check.get('status', 'not_run')}; vizualinės patikros būklė: {browser_check.get('status', 'not_run')}; prieinamumo patikros būklė: {a11y_check.get('status', 'not_run')}. Google indeksavimo faktas čia netvirtinamas. Žr. `QA-GATE-1.json`, `QA-GATE-2.md` ir `production-live-check.json`.
+**Būsena:** {release_status}. Gamybinio HTTP smoke testo būklė: {live_check.get('status', 'not_run')}; vizualinės patikros būklė: {browser_check.get('status', 'not_run')}; prieinamumo patikros būklė: {a11y_check.get('status', 'not_run')}. Google indeksavimo faktas čia netvirtinamas. Jei `published_with_human_review_pending`, tai techninė versija tiesiogiai paskelbta, tačiau nepriklausoma lietuvių kalbos ir teisinė peržiūra neatlikta. Žr. `QA-GATE-1.json`, `QA-GATE-2.md` ir `production-live-check.json`.
 """
     (DOCS / "release-notes.md").write_text(release_notes, encoding="utf-8")
 

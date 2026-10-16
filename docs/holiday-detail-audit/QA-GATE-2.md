@@ -1,6 +1,6 @@
 # QA vartai 2 — turinys, vaizdas, prieinamumas ir gamyba
 
-**Būsena: PRAĖJO SU NURODYTAIS APRIBOJIMAIS.**
+**Būsena: TECHNINIAI PATIKRINIMAI PRAĖJO; PRIVALOMA NEPRIKLAUSOMA ŽMOGAUS PERŽIŪRA NEATLIKTA.**
 
 ## Patikrinti darbai
 
@@ -20,4 +20,4 @@
 
 ## Sprendimas
 
-Patikros vartai praėjo. Leidimo įrodymai įrašyti; atskirai nurodyti žmogaus recenzijos ir įrenginių bandymų apribojimai.
+Techninė versija jau paskelbta ir tiesiogiai patikrinta. Visas antrasis vartas dar neuždarytas: prieš turinį vadinant nepriklausomai redaguotu, reikia gimtakalbio lietuvių kalbos redaktoriaus ir teisininko tikros peržiūros.

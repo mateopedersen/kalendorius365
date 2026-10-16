@@ -8,6 +8,12 @@
     "labour_code_upcoming": "2026-11-01/2026-12-31",
     "labour_code_planning": "2027-01-01/"
   },
+  "independent_human_review": {
+    "status": "not_performed",
+    "native_lithuanian_editor": "not_performed",
+    "lithuanian_legal_reviewer": "not_performed",
+    "note": "AI source-alignment and language review were completed; no independent human review is claimed."
+  },
   "sources": {
     "labour-code": {
       "title": "Lietuvos Respublikos darbo kodekso 123 straipsnis „Švenčių dienos“ (suvestinė redakcija 2026-06-07–2026-10-31)",

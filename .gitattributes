@@ -1,2 +1,2 @@
-*.ics text eol=crlf whitespace=cr-at-eol
+*.ics whitespace=cr-at-eol
 *.csv text eol=lf
