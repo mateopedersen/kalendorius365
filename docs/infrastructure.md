@@ -73,6 +73,14 @@
 - Güncel üretim HTTP yanıtlarında `X-Robots-Tag: noindex` yok; 71 canonical sayfanın tümünde HTML `robots` meta etiketi `index, follow`. Bu, sitenin teknik olarak taranabilir olduğunu doğrular; arama motorlarının sayfaları kabul ettiğini veya dizine eklediğini kanıtlamaz.
 - Mobil görünüm, canlı HTTPS adresinde tarayıcı cihaz emülasyonuyla 280×700, 320×568, 375×667 ve 390×844 portre boyutlarında; ayrıca 844×390 yatay boyutunda doğrulandı. Her boyutta documentElement ve body genişliği viewport ile eşleşti, yatay taşma olmadı. 280 px sınırındaki kart taşması c322050 commitinde düzeltildi; Cloudflare Pages üretim dağıtımı 37404b32-a414-4b36-a358-e8f415c42fd9 başarılı oldu ve alan adı üzerinde bu boyutlarda tekrar test edildi.
 
+## Performans ayarları — 2026-10-16
+
+- Cloudflare Speed Brain, Early Hints ve 0-RTT Connection Resumption etkin. Speed Brain tarayıcı destekliyorsa olası sonraki sayfayı önceden getirebilir; ilk açılışı değiştirmez. Early Hints sayfanın CSS kaynaklarını HTML yanıtı tamamlanmadan tarayıcıya bildirebilir. 0-RTT yalnızca güvenli GET/HEAD/OPTIONS isteklerinde etkilidir; bu sitenin Pages Functions uçları salt okunur GET istekleridir.
+- HTTP/2, HTTP/3, HTTP/2 to Origin, Always Use HTTPS ve TLS 1.3 etkin kalıyor. Rocket Loader kapalı; site yerel ES modüllerine ve sıralı başlangıç koduna dayanıyor. Polish ücretsiz planda kullanılamıyor; ücretli özellik gerekmeden mevcut yerel görseller kullanılmaya devam ediyor.
+- Pages build cache kapalı. Sürüm URL'si üretilen CSS, JavaScript modülleri ve Lato yazı tipleri için `_headers` bir yıllık `immutable` önbellek kullanıyor; bu adresler değişiklikte yeni sürüm alıyor. JSON verileri bir saat ve `stale-while-revalidate` ile; görseller ve indirmeler bir gün önbellekleniyor. Üst üste eşleşen Cache-Control kuralları yerine sürümlü dosyalarda kesin yollar kullanılıyor.
+- Yayımlanan `public/` çıktısından 5.54 MB'lık kullanılmayan baskı manifesti, yıl haritası ve eski tasarım kataloğu çıkarıldı. Ana sayfanın tarayıcıya indirdiği tatil indeksi 109,626 bayttan 1,257 bayta düşürüldü; tasarım seçici artık ayrı katalog dosyası indirmiyor. Yerel `.build-cache/` ve `.jekyll-cache/` klasörleri de temizlendi. Pages build cache kapalı olduğu için Cloudflare tarafında temizlenecek eski bir derleme önbelleği yok; eski sürüm URL'leri yeni HTML'den çıkarıldığından tüm site önbelleğini boşaltmak gerekmedi.
+- Cloudflare Observatory değişiklik öncesi sentetik temel ölçümü 2026-10-16'da Hamina, Finlandiya'dan aldı: masaüstü LCP 552 ms, TTFB 37 ms, FCP 372 ms, CLS 0.12; mobil LCP 2,438 ms, TTFB 51 ms, FCP 1,538 ms, CLS 0.02. Dağıtım sonrası aynı bölge ve senaryoyla tekrar ölçüp farkı bu kayda ekleyin.
+
 
 
 

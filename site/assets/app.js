@@ -20,18 +20,20 @@ const homeIcon = (name, className = "") => {
   );
   return svg;
 };
-const data = await fetch("/assets/data/calendar.json")
-  .then((r) => {
-    if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
-    return r.json();
-  })
-  .catch((e) => {
-    notice(e.message);
-    throw e;
-  });
-const editorial = await fetch("/assets/data/holiday-editorial.json")
-  .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
-  .catch(() => ({ articles: [], commemorations: [] }));
+const [data, editorial] = await Promise.all([
+  fetch("/assets/data/calendar.json")
+    .then((r) => {
+      if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
+      return r.json();
+    })
+    .catch((e) => {
+      notice(e.message);
+      throw e;
+    }),
+  fetch("/assets/data/home-holiday-data.json")
+    .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
+    .catch(() => ({ articles: [], commemorations: [] })),
+]);
 const store = new Store();
 if (store.error) notice(store.error);
 let selected = cal.today(),

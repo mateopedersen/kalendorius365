@@ -15,27 +15,33 @@ const escape = (s) =>
         "'": "&apos;",
       })[c],
   );
-let manifest;
 if ($("#design-picker")) {
-  manifest = (await fetch("/assets/data/catalog.json").then((r) => r.json()))
-    .assets;
   function choose(stem) {
-    const a = manifest.find((a) => a.stem === stem);
-    if (!a) return;
-    $("#selected-preview").src = a.preview;
-    $("#selected-preview").alt =
-      a.kind === "monthly"
-        ? `${a.year} m. ${data.months[a.month - 1][2]} kalendorius – ${a.name}`
-        : `${a.year || "Nedatuotas"} ${a.name}`;
-    $("#selected-preview").width = a.landscape ? 680 : 481;
-    $("#selected-preview").height = a.landscape ? 481 : 680;
-    $("#preview-title").textContent = a.name;
-    $("#preview-format").textContent =
-      "A4 · " + (a.landscape ? "Gulsčias" : "Portretas");
-    $("#preview-full").href = a.webp;
-    $("#selected-pdf").href = a.pdf;
-    $("#selected-webp").href = a.webp;
-    $("#selected-print").href = a.pdf;
+    const card = document.getElementById("dizainas-" + stem),
+      thumbnail = card?.querySelector(".preview-link img"),
+      previewLink = card?.querySelector(".preview-link"),
+      downloads = [...(card?.querySelectorAll("a[download]") || [])],
+      pdf = downloads.find((link) => /\.pdf(?:$|\?)/.test(link.href)),
+      webp = downloads.find((link) => /\.webp(?:$|\?)/.test(link.href));
+    if (!card || !thumbnail || !previewLink || !pdf || !webp) return;
+    const landscape = Number(thumbnail.getAttribute("width")) > Number(thumbnail.getAttribute("height")),
+      name = card.querySelector(".design-info h2")?.textContent.replace(/^\s*\d+\s*/, "").trim() || "Kalendoriaus dizainas";
+    const selectedPreview = $("#selected-preview");
+    if (selectedPreview) {
+      selectedPreview.src = thumbnail.getAttribute("src");
+      selectedPreview.alt = thumbnail.alt;
+      selectedPreview.width = Number(thumbnail.getAttribute("width"));
+      selectedPreview.height = Number(thumbnail.getAttribute("height"));
+    }
+    const previewTitle = $("#preview-title"),
+      previewFormat = $("#preview-format"),
+      fullPreviewLink = $("#preview-full");
+    if (previewTitle) previewTitle.textContent = name;
+    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Portretas");
+    if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
+    $("#selected-pdf").href = pdf.href;
+    $("#selected-webp").href = webp.href;
+    $("#selected-print").href = pdf.href;
     $("#design-picker").value = stem;
     if ($("#print-art")) $("#print-art").open = true;
     for (const card of document.querySelectorAll(".design-card"))

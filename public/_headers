@@ -3,11 +3,73 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-LY0vSV163rgPBx4xhdlry3tr7V7g4OZGOAttMhDgqgE='; connect-src 'self'; upgrade-insecure-requests
-/assets/*
+/assets/app.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/calendar.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/common.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/cookie-notice.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/data/weather-cities.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/design-system.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/holiday-editorial.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/icons.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/ics.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/leave-planner.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/phase-5-6-8-core.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/phase-5-6-8.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/storage.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/style.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/tools.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/weather.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Black.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Bold.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Regular.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/data/astronomy/cities.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/astronomy/moon-phases-utc.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/astronomy/seasons-utc.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/calendar.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/holiday-editorial.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/home-holiday-data.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/lt/work-rest-rules.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/search.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/fonts/Inter-Regular.woff2
+  Cache-Control: public, max-age=86400
+/assets/favicon-2026.svg
+  Cache-Control: public, max-age=86400
+/assets/favicon.svg
+  Cache-Control: public, max-age=86400
+/assets/visuals/*
+  Cache-Control: public, max-age=86400
+/assets/previews/*
+  Cache-Control: public, max-age=86400
+/assets/previews-small/*
+  Cache-Control: public, max-age=86400
+/assets/holiday-ics/*
   Cache-Control: public, max-age=86400
 /downloads/*
   Cache-Control: public, max-age=86400
-/assets/*.js
-  Cache-Control: public, max-age=0, must-revalidate
-/assets/*.css
-  Cache-Control: public, max-age=0, must-revalidate

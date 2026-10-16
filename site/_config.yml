@@ -8,6 +8,8 @@ exclude:
   - assets/fonts/Inter-variable.ttf
   - assets/fonts/Inter-Regular.ttf
   - assets/fonts/Inter-Bold.ttf
+  - assets/data/manifest.json
+  - assets/data/years.json
 keep_files: []
 defaults:
   - scope:

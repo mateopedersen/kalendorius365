@@ -12,15 +12,17 @@
 <script>/* Apply the system appearance before CSS paints to avoid a light flash. */
 try{document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=c5671bd31a03"><link rel="stylesheet" href="/assets/design-system.css?v=c5671bd31a03">
-<script type="module" src="/assets/common.js?v=b225869dcc19"></script>
-<script type="module" src="/assets/cookie-notice.js"></script>
+<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=dbc9e757b9c6" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=dbc9e757b9c6" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/style.css?v=dbc9e757b9c6" as="style">
+<link rel="preload" href="/assets/design-system.css?v=dbc9e757b9c6" as="style">
+<link rel="stylesheet" href="/assets/style.css?v=dbc9e757b9c6"><link rel="stylesheet" href="/assets/design-system.css?v=dbc9e757b9c6">
+<script type="module" src="/assets/common.js?v=f24abf8238d4"></script>
+<script type="module" src="/assets/cookie-notice.js?v=f24abf8238d4"></script>
 
-<script type="module" src="/assets/tools.js?v=b225869dcc19"></script>
+<script type="module" src="/assets/tools.js?v=f24abf8238d4"></script>
 
-<script type="module" src="/assets/phase-5-6-8.js?v=b225869dcc19"></script>
+<script type="module" src="/assets/phase-5-6-8.js?v=f24abf8238d4"></script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pradžia","item":"https://kalendorius365.lt/"},{"@type":"ListItem","position":2,"name":"Pamokų tvarkaraštis ir namų darbų planuoklis","item":"https://kalendorius365.lt/pamoku-tvarkarastis/"}]}</script>
 </head>

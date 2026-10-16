@@ -1,10 +1,10 @@
-import { icon } from "./icons.js";
-import * as cal from "./calendar.js";
-import { Store, download } from "./storage.js";
-import { exportICS, importICS } from "./ics.js";
-import { notice } from "./common.js?v=3b631dd";
-import { renderWeather } from "./weather.js?v=city-auto-20261016";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js";
+import { icon } from "./icons.js?v=f24abf8238d4";
+import * as cal from "./calendar.js?v=f24abf8238d4";
+import { Store, download } from "./storage.js?v=f24abf8238d4";
+import { exportICS, importICS } from "./ics.js?v=f24abf8238d4";
+import { notice } from "./common.js?v=f24abf8238d4";
+import { renderWeather } from "./weather.js?v=f24abf8238d4";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=f24abf8238d4";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -20,18 +20,20 @@ const homeIcon = (name, className = "") => {
   );
   return svg;
 };
-const data = await fetch("/assets/data/calendar.json")
-  .then((r) => {
-    if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
-    return r.json();
-  })
-  .catch((e) => {
-    notice(e.message);
-    throw e;
-  });
-const editorial = await fetch("/assets/data/holiday-editorial.json")
-  .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
-  .catch(() => ({ articles: [], commemorations: [] }));
+const [data, editorial] = await Promise.all([
+  fetch("/assets/data/calendar.json")
+    .then((r) => {
+      if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
+      return r.json();
+    })
+    .catch((e) => {
+      notice(e.message);
+      throw e;
+    }),
+  fetch("/assets/data/home-holiday-data.json")
+    .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
+    .catch(() => ({ articles: [], commemorations: [] })),
+]);
 const store = new Store();
 if (store.error) notice(store.error);
 let selected = cal.today(),

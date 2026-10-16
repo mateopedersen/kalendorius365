@@ -7,9 +7,15 @@ module Jekyll
     priority :highest
 
     def generate(site)
+      lato_fonts = Dir.glob(File.join(site.source, 'assets/fonts/Lato-*.woff2')).sort.map do |path|
+        path.delete_prefix(site.source + File::SEPARATOR)
+      end
+      javascript = Dir.glob(File.join(site.source, 'assets/**/*.js')).sort.map do |path|
+        path.delete_prefix(site.source + File::SEPARATOR)
+      end
       groups = {
-        'css_version' => %w[assets/style.css assets/design-system.css],
-        'script_version' => %w[assets/common.js assets/app.js assets/tools.js assets/leave-planner.js assets/phase-5-6-8.js assets/weather.js]
+        'css_version' => %w[assets/style.css assets/design-system.css] + lato_fonts,
+        'script_version' => javascript
       }
 
       groups.each do |key, paths|

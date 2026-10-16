@@ -31,7 +31,7 @@ async function refresh() {
 
   try {
     const [editorialResponse, calendarResponse] = await Promise.all([
-      fetch("/assets/data/holiday-editorial.json", { cache: "no-cache" }),
+      fetch("/assets/data/holiday-editorial.json"),
       fetch("/assets/data/calendar.json", { cache: "force-cache" }),
     ]);
     if (!editorialResponse.ok || !calendarResponse.ok) return;

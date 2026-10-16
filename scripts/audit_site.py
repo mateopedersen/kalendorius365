@@ -1,6 +1,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
+import re
 import json
 ROOT=Path(__file__).resolve().parents[1];PUBLIC=ROOT/'public'
 class Page(HTMLParser):
@@ -43,7 +44,33 @@ for path,p in pages.items():
   if not target.exists():fail.append((str(path.relative_to(PUBLIC)),url))
   if parsed.fragment and target in pages and parsed.fragment not in pages[target].ids:fail.append((str(path.relative_to(PUBLIC)),url+' (anchor missing)'))
 assert not fail,json.dumps(fail[:30])
-manifest=json.loads((PUBLIC/'assets/data/manifest.json').read_text())['assets']
+manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets']
+for unused in ('manifest.json','years.json','catalog.json'):
+ assert not (PUBLIC/'assets/data'/unused).exists(),f'Build-only or obsolete browser payload was published: {unused}'
+compact=(PUBLIC/'assets/data/home-holiday-data.json').read_bytes()
+full=(PUBLIC/'assets/data/holiday-editorial.json').read_bytes()
+assert len(compact)<len(full)*0.5,(len(compact),len(full))
+headers=(PUBLIC/'_headers').read_text()
+header_paths=[line for line in headers.splitlines() if line.startswith('/')]
+assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
+assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
+for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
+ assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+ content=path.read_text()
+ for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
+  specifier=match.group(2)
+  if specifier.startswith(('./','/')):assert '?v=' in specifier,(path,specifier)
+for path,page in pages.items():
+ for url in page.links:
+  parsed=urlsplit(url)
+  if parsed.scheme or parsed.netloc:continue
+  if parsed.path.startswith('/assets/') and parsed.path.endswith(('.js','.css')):
+   assert parsed.query.startswith('v='),(path,url)
+ for url in re.findall(r'href="(/assets/fonts/Lato-[^"]+\.woff2)"',path.read_text()):
+  assert '?' in url,(path,url)
+for path in (PUBLIC/'assets').rglob('*.css'):
+ for match in re.finditer(r'/assets/fonts/Lato-[^"\')\s]+\.woff2(?:\?[^"\')\s]*)?',path.read_text()):
+  assert '?v=' in match.group(0),(path,match.group(0))
 for y in [2027,2028,2029]:
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
