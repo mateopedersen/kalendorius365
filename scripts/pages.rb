@@ -236,7 +236,7 @@ module Pages
   generate_phase4
   privacy_policy=File.read("#{ROOT}/site/_includes/privacy-policy-lt.html")
   page('privatumas','Privatumo politika ir duomenų saugojimas','Sužinokite, kokius duomenis Kalendorius365 tvarko, kas saugoma tik jūsų naršyklėje, kaip veikia orų užklausa, Cloudflare saugumas ir jūsų teisės.',privacy_policy)
-  File.write("#{ROOT}/site/404.html", "---\nlayout: default\ntitle: Puslapis nerastas\ndescription: Ieškomo puslapio nėra. Raskite Kalendorius365 metų ir mėnesių kalendorius.\n---\n<h1>Puslapis nerastas</h1><p>Patikrinkite adresą arba grįžkite į <a href=\"/\">kalendorių</a>.</p>")
+  File.write("#{ROOT}/site/404.html", "---\nlayout: default\ntitle: Puslapis nerastas\ndescription: Ieškomo puslapio nėra. Raskite Kalendorius365 metų ir mėnesių kalendorius.\n---\n{% include 404-lt.html %}\n")
  end
  def generate_months
   [2027,2028,2029].each do |y|
