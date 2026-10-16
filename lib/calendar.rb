@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 require 'date'
 require 'json'
+# Cloudflare build containers may run with a US-ASCII locale. Calendar data
+# includes Lithuanian characters, so make file reads UTF-8 regardless of host.
+Encoding.default_external = Encoding::UTF_8
 module Kalendorius
   DATA = JSON.parse(File.read(File.expand_path('../data/calendar.json', __dir__))).freeze
   module_function
