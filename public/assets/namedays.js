@@ -1,7 +1,7 @@
-import { addDays, today, formatDate, weekday, monthLength } from './calendar.js?v=865f81e8689e';
-import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from './namedays-engine.js?v=865f81e8689e';
-import { Store } from './storage.js?v=865f81e8689e';
-import { exportICS } from './ics.js?v=865f81e8689e';
+import { addDays, today, formatDate, weekday, monthLength } from './calendar.js?v=4d35e0869c52';
+import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from './namedays-engine.js?v=4d35e0869c52';
+import { Store } from './storage.js?v=4d35e0869c52';
+import { exportICS } from './ics.js?v=4d35e0869c52';
 
 const root=document.querySelector('[data-namedays-source]');
 const $=(s)=>root.querySelector(s);
@@ -33,12 +33,12 @@ async function init(){
   function source(container,record){
     container.replaceChildren();
     const a=node('a',`„${record.source_title}“ · redakcija ${record.source_revision_id}`);a.href=record.source_revision;
-    const h=node('a','autorių istorija');h.href=record.source_history;
+    const h=node('a','straipsnio keitimų istorija');h.href=record.source_history;
     container.append(a,document.createTextNode(' · '),h);
   }
   function selectDate(date,name=''){
     const r=records.get(date.slice(5));
-    if(!r || !validOccurrence(r.date,Number(date.slice(0,4)))){clearPrepared();$('#nd-ics').disabled=true;$('#nd-add').disabled=true;feedback('Pasirinkite galiojančią datą. Įrašas nebus sukurtas, kol data neužpildyta.',true);return;}
+    if(!r || !validOccurrence(r.date,Number(date.slice(0,4)))){clearPrepared();$('#nd-ics').disabled=true;$('#nd-add').disabled=true;feedback('Pasirinkite galiojančią datą. Prieš kurdami įrašą pasirinkite datą.',true);return;}
     $('#nd-ics').disabled=false;$('#nd-add').disabled=false;
     selected=date;$('#nd-date').value=date;ensureYear(Number(date.slice(0,4)));
     $('#nd-open-calendar').href=`/?data=${date}#day-details`;
@@ -56,7 +56,7 @@ async function init(){
     const y=Number(selected.slice(0,4));
     const date=validOccurrence(key,y)||nextOccurrence(key,`${y}-01-01`);
     selectDate(date,name);
-    if(date.slice(0,4)!==String(y))feedback(`Vasario 29-oji ${y} m. neegzistuoja. Parodyta artimiausia data: ${dateLabel(date)}.`);
+    if(date.slice(0,4)!==String(y))feedback(`${y} m. vasaris turi 28 dienas. Parodyta artimiausia data: ${dateLabel(date)}.`);
   }
   function renderGrid(){
     const grid=$('#nd-calendar');if(!grid)return;

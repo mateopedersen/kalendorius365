@@ -1,0 +1,194 @@
+{
+  "version": "2026-10-17-lt-editorial-v1",
+  "path": "site/assets/data/holiday-editorial.json",
+  "baseline_source": "git HEAD:site/assets/data/holiday-editorial.json",
+  "baseline_commit": "a35fef0c2def78d88dd328a4765e50de7e2b781f",
+  "before_sha256": "2390de90d277539c22ec2ec15114d5e3eb1941ff019498b119e28352741a4a34",
+  "after_sha256": "e8708d8fc7f5a102df01168dc9816a6a57a6cf0a72382d13cdabe5171925c744",
+  "original_serialization": "UTF-8, ensure_ascii=false, separators=(comma,colon), no trailing newline",
+  "scope": "Only the 17 explicitly listed human-readable Lithuanian strings. All other values, object keys, array lengths/order, ids, dates, holiday_ids, classifications, recurrence, sources, image/creator/license fields and numeric values must reproduce the original baseline hash.",
+  "review_evidence": "Source review and per-route QA: agent-holidays.json; 47 holiday routes reviewed; no native-human or legal certification claimed.",
+  "verification": "Reverse only these reviewed strings in the current document, reproduce the exact original SHA-256, and independently compare JSON leaf paths. Both original and reviewed SHA-256 are pinned in the gate.",
+  "changes": [
+    {
+      "path": [
+        "commemorations",
+        0,
+        "context_sections",
+        1,
+        1
+      ],
+      "before": "Lietuvos valstybės vėliava yra valstybės simbolis, tačiau konkrečios jos iškėlimo vietos, atvejai ir subjektai nustatomi atskiru Vėliavos įstatymu bei su juo susijusiomis taisyklėmis. Vien atmintinos dienos pavadinimo nepakanka universaliai išvadai apie kiekvieno gyventojo pareigą. Jei reikia spręsti, ar pareiga taikoma konkrečiam pastatui ar organizacijai, tikrinkite įstatymo nuostatas ir aktualų oficialų išaiškinimą. Šiame kalendoriuje nėra kuriamas nepatikrintas įpareigojimas.",
+      "after": "Lietuvos valstybės vėliavos iškėlimo atvejus, vietas ir pareigas nustato Vėliavos įstatymas bei susijusios taisyklės. Norėdami sužinoti, ar pareiga taikoma konkrečiam pastatui ar organizacijai, remkitės galiojančiomis įstatymo nuostatomis ir oficialiais išaiškinimais.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        0,
+        "history"
+      ],
+      "before": "Sausio 1-oji yra pirmoji civilinių metų diena pagal Grigaliaus kalendorių. Ji skiria kalendorinius metus ir suteikia pastovią atskaitos datą planams, apskaitai bei valstybės kalendoriui. Kalendoriaus data pati savaime nepasako, kaip šeima ar bendruomenė švenčia metų sandūrą: šiuolaikinės praktikos įvairuoja, todėl jų negalima laikyti vienu visiems privalomu ar nepakitusiu lietuvišku ritualu. Sausio 1-oji kartu įrašyta į Atmintinų dienų įstatymą kaip Lietuvos vėliavos diena; šis atskiras paminėjimas nekeičia Naujųjų metų dienos statuso pagal Darbo kodeksą.",
+      "after": "Sausio 1-oji yra pirmoji civilinių metų diena pagal Grigaliaus kalendorių. Lietuvoje tą pačią dieną minima ir Lietuvos vėliavos diena. Tai du skirtingi kalendoriaus įrašai: Naujųjų metų dienos šventinį statusą nustato Darbo kodeksas, o Lietuvos vėliavos diena įrašyta į Atmintinų dienų įstatymą.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        0,
+        "traditions"
+      ],
+      "before": "Šiuolaikinis Naujųjų sutikimas dažnai siejamas su metų sandūros susibūrimais, palinkėjimais ir asmeniniais tikslais. Tai dabarties praktikos apibendrinimas, o ne teiginys apie vieną privalomą ar istoriškai nekintantį lietuvišką ritualą.",
+      "after": "Naujųjų metų sutikimas dažnai siejamas su susibūrimais, palinkėjimais ir asmeniniais planais. Šventimo papročiai priklauso nuo šeimos ar bendruomenės.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        0,
+        "practical"
+      ],
+      "before": "DK 123 straipsnyje įtvirtintas principas „paprastai nedirbama“. Įstatyme numatyta darbo švenčių dieną išimtis, tad asmeninis grafikas ir darbo santykių taisyklės gali būti svarbūs. Savaitgalį pasitaikanti diena automatiškai neperkeliama į pirmadienį. Kadangi sausio 1 d. kartu minima Lietuvos vėliavos diena, kalendoriaus mėnesio vaizde abi reikšmės pateikiamos atskiromis nuorodomis.",
+      "after": "Pagal DK 123 straipsnį sausio 1-ąją paprastai nedirbama, tačiau taikomos įstatyme numatytos išimtys. Šventei sutapus su savaitgaliu, ji automatiškai neperkeliama į pirmadienį. Mėnesio kalendoriuje atskirai pažymėtos Naujųjų metų ir Lietuvos vėliavos dienos.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        5,
+        "traditions"
+      ],
+      "before": "Vilniaus šeimų etnografinis tyrimas aprašo sveikinimus, nedideles dovanas, apsilankymus ir vaišes, tarp jų namuose keptus pyragus. Tai konkrečios tyrimo imties patirtys, o ne visos Lietuvos ar kiekvienos šeimos papročių aprašas. Minėjimas gali būti asmeniškas, paprastas arba visai netaikomas.",
+      "after": "Vilniaus šeimų etnografiniame tyrime aprašomi sveikinimai, nedidelės dovanos, apsilankymai ir vaišės, tarp jų – namuose kepti pyragai. Tai tyrimo dalyvių patirtys; kitų šeimų papročiai gali skirtis.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        5,
+        "context_sections",
+        0,
+        1
+      ],
+      "before": "Motinos diena nėra pririšta prie konkretaus mėnesio skaičiaus: ieškoma pirmojo gegužės sekmadienio. Todėl data gali būti gegužės 1–7 dienomis. Ši taisyklė leidžia tiksliai apskaičiuoti datą iš anksto, tačiau neleidžia vienų metų datos perkelti į kitus. 2027–2029 m. savaitės dienos lentelėje patikrintos nepriklausomu kalendoriniu skaičiavimu.",
+      "after": "Motinos diena minima pirmąjį gegužės sekmadienį, todėl jos data gali būti gegužės 1–7 d. Lentelėje pateikiamos pagal šią taisyklę apskaičiuotos 2027–2029 m. datos.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        6,
+        "practical"
+      ],
+      "before": "Tikslią datą kiekvienais metais rasite lentelėje. Šventinė diena nebūtinai suteikia papildomą poilsio dieną pirmadienį: DK 123 straipsnyje nėra bendros taisyklės, pagal kurią savaitgalį sutampanti šventė būtų perkeliama į pirmadienį.",
+      "after": "Konkrečių metų Tėvo dienos datą rasite lentelėje. Papildomas laisvas pirmadienis po šios sekmadienį minimos šventės automatiškai nesuteikiamas. Darbo laiką planuokite pagal savo grafiką ir taikomas Darbo kodekso nuostatas.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        6,
+        "context_sections",
+        0,
+        1
+      ],
+      "before": "Tėvo diena minima pirmąjį birželio sekmadienį, tad jos tiksli data yra birželio 1–7 d. intervale. Metinis puslapis skaičiuoja pirmąjį sekmadienį, o ne pasikartojantį fiksuotą mėnesio skaičių. 2027–2029 m. lentelėje pateikiamos datos ir savaitės dienos; atitinkamo birželio mėnesio nuoroda padeda patikrinti vietą kalendoriaus tinklelyje.",
+      "after": "Tėvo diena minima pirmąjį birželio sekmadienį, todėl jos data gali būti birželio 1–7 d. Pasirinkę metus lentelėje rasite konkrečią datą ir nuorodą į birželio kalendorių.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        7,
+        "summary"
+      ],
+      "before": "Birželio 24-oji yra Rasos ir Joninių diena: teisėje vartojamas bendras pavadinimas, o gyvos tradicijos gali vadinti Rasomis, Kupolinėmis ar Joninėmis.",
+      "after": "Birželio 24-ąją minima Rasos ir Joninių diena. Su šia vasaros švente siejami Rasų, Kupolinių ir Joninių pavadinimai bei skirtingi papročiai.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        7,
+        "meta_description"
+      ],
+      "before": "Rasos ir Joninių diena minima birželio 24 d. Sužinokite apie tradicijas, saulėgrįžos laiką, šventės statusą ir 2027–2029 m. savaitės dienas.",
+      "after": "Rasos ir Joninių diena – birželio 24-oji. Papročiai, skirtumas nuo astronominės saulėgrįžos, šventės statusas ir 2027–2029 m. datos.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        8,
+        "history"
+      ],
+      "before": "Lietuvos nacionalinis muziejus pristato liepos 6-ąją kaip valstybingumo istorijos pažinimo dieną, siejančią Mindaugo karūnavimo atminimą su Tautiška giesme. Tiksli karūnavimo istorinė data nėra mūsų puslapyje naujai įrodinėjama; kalendorius vartoja galiojančiame kodekse įtvirtintą šventės pavadinimą.",
+      "after": "Lietuvos nacionalinis muziejus liepos 6-ąją sieja su Mindaugo karūnavimo atminimu ir Tautiška giesme. Kalendoriuje pateikiama įstatyme nustatyta šventės data; ji savaime neįrodo tikslios istorinės karūnavimo dienos.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        8,
+        "context_sections",
+        1,
+        1
+      ],
+      "before": "Tautiškos giesmės atlikimas yra šiuolaikinio liepos 6-osios minėjimo ryškus elementas. Dalyvavimo būdas priklauso nuo bendruomenės ir organizatorių; šiame puslapyje nėra žadamas vienas visoje šalyje privalomas renginys. Oficialus šventinės dienos statusas atskirai nurodytas Darbo kodekso kontekste. Jei norite dalyvauti viešoje programoje, prieš šventę tikrinkite muziejaus, savivaldybės ar renginio organizatoriaus informaciją.",
+      "after": "Liepos 6-osios minėjimuose giedama Tautiška giesmė. Viešų renginių vietą ir laiką skelbia muziejai, savivaldybės bei kiti organizatoriai; programą tikrinkite prieš šventę.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        11,
+        "traditions"
+      ],
+      "before": "Šiandien daugelis šeimų lanko artimųjų kapus, uždega žvakes ir susitinka su giminėmis. EKGT šiuos papročius sieja su atminimu ir gyvąja tradicija. Straipsnyje vengiame romantizuoti istorinius tikėjimus kaip visur ir visada galiojusius faktus.",
+      "after": "Šiandien daugelis šeimų lanko artimųjų kapus, uždega žvakes ir susitinka su giminėmis. Etninės kultūros globos taryba šiuos papročius sieja su mirusiųjų atminimu; jų laikymasis šeimose gali skirtis.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        12,
+        "what"
+      ],
+      "before": "Kūčios minimos gruodžio 24 d. DK 123 straipsnyje ši diena atskirai įvardyta kaip šventinė diena. Kūčių tradicijų centre dažnai yra vakaro vakarienė.",
+      "after": "Kūčios minimos gruodžio 24 d. Darbo kodekso 123 straipsnyje ši diena įvardyta kaip šventinė diena. Vienas svarbiausių papročių – šeimos vakarienė Kūčių vakarą.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        12,
+        "context_sections",
+        1,
+        1
+      ],
+      "before": "Kūčios eina prieš Kalėdų dienas, tačiau tai nėra tas pats kalendorinis įrašas. Šiame projekte gruodžio 24-ajai skiriamas atskiras puslapis, o gruodžio 25–26 d. aprašomos Kalėdų puslapyje. Taip išsaugomas tikslus teisės akto datų sąrašas ir kartu atskiriamas vakaro papročių kontekstas nuo Kalėdų šventės dienų.",
+      "after": "Kūčios minimos gruodžio 24-ąją, o Kalėdos – gruodžio 25 ir 26 d. Darbo kodekse šios dienos nurodytos atskirai. Apie Kalėdų tradicijas ir jų kalendorių skaitykite Kalėdų puslapyje.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        13,
+        "title"
+      ],
+      "before": "Šv. Kalėdos Lietuvoje",
+      "after": "Kalėdos Lietuvoje",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    },
+    {
+      "path": [
+        "articles",
+        13,
+        "history"
+      ],
+      "before": "EKGT pažymi, kad Kalėdose susipina krikščioniškas turinys ir senesni žiemos ciklo papročiai. Pirmoji ir antroji dienos turi atskirą vietą teisės kalendoriuje, bet abu pavadinimai priklauso tai pačiai Kalėdų šventei. Šventės istorija vystėsi per laiką; puslapyje nepateikiame supaprastintos vienintelės kilmės istorijos.",
+      "after": "Etninės kultūros globos taryba Kalėdų papročiuose aprašo krikščionišką turinį ir senesnes žiemos švenčių tradicijas. Pirmoji ir antroji Kalėdų dienos Darbo kodekse nurodytos atskirai, nors priklauso tai pačiai šventei.",
+      "reason": "Natural Lithuanian editorial wording; no factual date, recurrence, status, source or rights fields changed."
+    }
+  ]
+}

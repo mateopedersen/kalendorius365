@@ -10,6 +10,29 @@ from reportlab.pdfbase.ttfonts import TTFont
 ROOT=Path(__file__).resolve().parents[1]
 for name in ['Regular','Bold']:pdfmetrics.registerFont(TTFont('Inter'+name,str(ROOT/f'site/assets/fonts/Inter-{name}.ttf')))
 
+def current_renderer_fingerprint():
+ return hashlib.sha256((ROOT/'scripts/render_prints.py').read_bytes()+(ROOT/'data/calendar.json').read_bytes()+(ROOT/'site/assets/data/years.json').read_bytes()+(ROOT/'site/assets/fonts/Inter-Regular.ttf').read_bytes()+(ROOT/'site/assets/fonts/Inter-Bold.ttf').read_bytes()).hexdigest()
+
+def verify_manifest_provenance(manifest):
+ assert manifest['generator']==current_renderer_fingerprint(),'Print manifest is stale for the actual current renderer/data/fonts'
+ if not manifest.get('reviewedTransition'):return
+ transition=json.loads((ROOT/manifest['reviewedTransition']).read_text())
+ assert transition['version']=='2026-10-17-annual-monochrome-legend-v2'
+ assert transition['after_generator']==manifest['generator']
+ selected={a['stem']:a for a in transition['selected_assets']}
+ assert len(selected)==15
+ assets={a['stem']:a for a in manifest['assets']}
+ assert set(selected)=={a['stem']for a in assets.values()if a['kind']=='annual'and a['style']=='bw'}
+ proofs={a['stem']:a for a in transition['unchanged_current_renderer_pdf_proofs']}
+ assert len(proofs)==401 and set(proofs)==set(assets)-set(selected)
+ for stem,proof in proofs.items():
+  asset=assets[stem]
+  assert proof['pdf_sha256']==asset['files']['pdf']['sha256']
+  assert proof['date_layout_sha256']==hashlib.sha256(json.dumps(asset['dateLayout'],sort_keys=True).encode()).hexdigest()
+ for stem,proof in selected.items():
+  assert assets[stem]['generator']==manifest['generator']
+  assert proof['date_layout_sha256']==hashlib.sha256(json.dumps(assets[stem]['dateLayout'],sort_keys=True).encode()).hexdigest()
+
 def multiply(a,b):
  return (a[0]*b[0]+a[2]*b[1],a[1]*b[0]+a[3]*b[1],a[0]*b[2]+a[2]*b[3],a[1]*b[2]+a[3]*b[3],a[0]*b[4]+a[2]*b[5]+a[4],a[1]*b[4]+a[3]*b[5]+a[5])
 def inspect_stream(stream,reader,resources,ctm=(1,0,0,1,0,0)):
@@ -40,6 +63,9 @@ def inspect_stream(stream,reader,resources,ctm=(1,0,0,1,0,0)):
 
 def preflight(asset,base,sample=False):
  pdf=base/Path(asset['pdf']).name;webp=base/Path(asset['webp']).name;reader=PdfReader(pdf);assert len(reader.pages)==1
+ for key in ['pdf','webp','preview']:
+  path=base/Path(asset[key]).name if sample and key!='preview' else base/'previews'/Path(asset[key]).name if sample else ROOT/'site'/asset[key].lstrip('/')
+  assert path.stat().st_size==asset['files'][key]['bytes'] and hashlib.sha256(path.read_bytes()).hexdigest()==asset['files'][key]['sha256'],asset['stem']+' actual file/manifest hash mismatch'
  page=reader.pages[0];w,h=float(page.mediabox.width),float(page.mediabox.height);assert abs(min(w,h)-595.27559)<.01 and abs(max(w,h)-841.88976)<.01
  assert '/TrimBox' in page and list(page.trimbox)==list(page.mediabox)
  assert (w>h)==asset['landscape']
@@ -55,6 +81,8 @@ def preflight(asset,base,sample=False):
  def visit(txt,cm,tm,font,size):
   if txt.strip():texts.append({'text':txt.strip(),'x':float(tm[4]),'y':float(tm[5]),'size':size,'font':str(font.get('/BaseFont','')) if font else ''})
  extracted=page.extract_text(visitor_text=visit);assert '\ufffd' not in extracted and '\x00' not in extracted
+ if asset['kind']=='annual':
+  assert ('12 mėnesių apžvalga' in extracted and 'Šventės pažymėtos raudonai' not in extracted) if asset['style']=='bw' else 'Šventės pažymėtos raudonai' in extracted,asset['stem']+' holiday legend contradicts its color mode'
  brand=[t for t in texts if t['text']=='Kalendorius365.lt'];assert len(brand)==1 and 12<=brand[0]['y']<=25
  for t in texts:
   assert 12<=t['x']<=w-12 and 12<=t['y']<=h-12,(asset['stem'],t)
@@ -82,6 +110,7 @@ def preflight(asset,base,sample=False):
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--samples',action='store_true');p.add_argument('--accept-visual',action='store_true');args=p.parse_args()
  base=ROOT.parents[1]/'outputs/print-samples' if args.samples else ROOT/'site/downloads';manifestpath=base/'manifest.json' if args.samples else ROOT/'site/assets/data/manifest.json';manifest=json.loads(manifestpath.read_text());assets=manifest['assets']
+ verify_manifest_provenance(manifest)
  reports=[preflight(a,base,args.samples) for a in assets]
  report={'schema':1,'generator':manifest['generator'],'status':'passed','samples':args.samples,'visualReviewed':args.accept_visual,'results':reports}
  dest=base/'preflight.json' if args.samples else ROOT/'docs/print-preflight.json';dest.write_text(json.dumps(report,ensure_ascii=False,indent=2))

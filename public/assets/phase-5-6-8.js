@@ -1,6 +1,6 @@
-import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=865f81e8689e";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=865f81e8689e";
-import { download } from "./storage.js?v=865f81e8689e";
+import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=4d35e0869c52";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=4d35e0869c52";
+import { download } from "./storage.js?v=4d35e0869c52";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
@@ -340,7 +340,7 @@ function setupSun() {
       const year=Number(date.slice(0,4)); if (year<2027||year>2029) throw Error("Ši lentelė skirta 2027–2029 metams.");
       const {sunrise,sunset,noon,dayMinutes,civilStart,civilEnd}=solarFor(date,city);
       const delta=solarFor(dateAt(date,-1),city).dayMinutes, tomorrowDelta=solarFor(dateAt(date,1),city).dayMinutes-dayMinutes, change=dayMinutes-delta;
-      $("#sun-summary").textContent=`${displayDate(date)} · ${city.name} · Europe/Vilnius. Saulėtekis ${clock(sunrise)}, saulės vidurdienis ${clock(noon)}, saulėlydis ${clock(sunset)}. Dienos šviesa ${Math.floor(dayMinutes/60)} val. ${pad(dayMinutes%60)} min.; nuo vakar ${change>=0?"+":"−"}${Math.abs(change)} min., rytoj ${tomorrowDelta>=0?"+":"−"}${Math.abs(tomorrowDelta)} min.`;
+      $("#sun-summary").textContent=`${displayDate(date)} · ${city.name} · Europe/Vilnius. Saulėtekis ${clock(sunrise)}, Saulės vidurdienis ${clock(noon)}, saulėlydis ${clock(sunset)}. Dienos šviesa ${Math.floor(dayMinutes/60)} val. ${pad(dayMinutes%60)} min.; palyginti su ankstesne diena ${change>=0?"+":"−"}${Math.abs(change)} min., kitą dieną ${tomorrowDelta>=0?"+":"−"}${Math.abs(tomorrowDelta)} min.`;
       const {m}=isoParts(date), length=new Date(Date.UTC(year,m,0)).getUTCDate(), rows=[];
       const monthData=[];
       for(let d=1;d<=length;d++){

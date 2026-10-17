@@ -4,7 +4,7 @@ Run prepare.rb first. --limit 10 for the first design review; omit to generate a
 Content-addressed cache skips unchanged outputs. No network during rendering.
 """
 from pathlib import Path
-import argparse, calendar, datetime as dt, hashlib, json, math, os, shutil, subprocess, tempfile
+import argparse, calendar, datetime as dt, hashlib, json, math, os, shutil, subprocess, tempfile, copy
 from concurrent.futures import ThreadPoolExecutor
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor, Color, white
@@ -12,6 +12,8 @@ from reportlab.lib.pagesizes import A4, landscape
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from PIL import Image
+from pypdf import PdfReader
+from pypdf.generic import ContentStream
 ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads((ROOT/'data/calendar.json').read_text())
 YEARS=json.loads((ROOT/'site/assets/data/years.json').read_text())
@@ -30,9 +32,8 @@ class PrintCanvas(canvas.Canvas):
   # Keep brand accents solid in monochrome, while preserving real luminance for
   # intermediate colors such as #333 (otherwise labels become nearly white).
   rgb=(round(color.red,4),round(color.green,4),round(color.blue,4))
-  if rgb==(1,1,1):return 1
-  if color in [INK,GREEN,RED,YELLOW]:return 0
-  return round(.2126*color.red+.7152*color.green+.0722*color.blue,4)
+  value=1 if rgb==(1,1,1) else 0 if color in [INK,GREEN,RED,YELLOW] else round(.2126*color.red+.7152*color.green+.0722*color.blue,4)
+  return getattr(self,'preserved_gray_mapping',{}).get(f'{value:.4f}',value)
  def setFillColor(self,color,alpha=None):
   if self.mono:self.setFillGray(self.gray(color),alpha=alpha)
   else:super().setFillColor(color,alpha)
@@ -205,7 +206,9 @@ def small_month(c,month,x,top,w,h,style=1):
   center(c,xx,yy,day['day'],date_size,RED if day['holidays'] else INK,font)
 
 def annual(c,year,design,w,h):
- k=design.get('render',int(design['id']));top=header(c,w,h,f"{year['year']} metų kalendorius",design['name']+' · ISO savaitės · Šventės pažymėtos raudonai',k)
+ k=design.get('render',int(design['id']))
+ legend='12 mėnesių apžvalga' if design['style']=='bw' else 'Šventės pažymėtos raudonai'
+ top=header(c,w,h,f"{year['year']} metų kalendorius",design['name']+' · ISO savaitės · '+legend,k)
  # Distinct readable structures: quarters, split semester sheets, side rail, full-width rows.
  cols=6 if k==9 else 4 if k in [2,4,5,7,8,10] else 3;rows=12//cols;x=32;available_w=w-64;bottom=45
  if k==5:available_w-=105;text(c,w-125,top-14,'ŠEIMOS PLANAI',8,GREEN,BOLD);[line(c,w-125,top-38-i*24,w-32,top-38-i*24) for i in range(15)]
@@ -333,6 +336,7 @@ FINGERPRINT=hashlib.sha256(Path(__file__).read_bytes()+(ROOT/'data/calendar.json
 def build_pdf(e):
  pdf=OUT/(e['stem']+'.pdf');w,h=landscape(A4) if e['landscape'] else A4
  c=PrintCanvas(str(pdf),pagesize=(w,h),pageCompression=1,invariant=1,mono=e['style']=='bw',regular=e.get('typography')=='regular');c.setCropBox((0,0,w,h),name='trim');c.setTitle(e['name']+(f" · {e['year']}" if e['year'] else ''));c.setAuthor('Kalendorius365');c.setSubject('Lietuviškas kalendorius · '+e['stem'])
+ c.preserved_gray_mapping=e.get('renderCompatibility',{}).get('preserved_gray_mapping',{})
  if e['kind']=='monthly':monthly(c,next(y for y in YEARS if y['year']==e['year'])['months'][e['month']-1],DATA['designs'][int(e['design'])-1],w,h)
  elif e['kind']=='annual':annual(c,next(y for y in YEARS if y['year']==e['year']),DATA['designs'][int(e['design'])-1],w,h)
  else:blank(c,e,w,h)
@@ -358,8 +362,109 @@ def generate(e):
  e['files']={k:{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for k,p in [('pdf',pdf),('webp',webp),('preview',preview)]}
  e['colorMode']='DeviceGray monochrome' if e['style']=='bw' else 'RGB vector artwork';e['renderPPI']=600;e['verification']={'status':'pending'}
  return e
+
+LEGEND_TRANSITION_PATH='docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json'
+LEGEND_PREVIOUS_GENERATOR='adec2197bfc4ef8334a6cd8080bb7133387f3c976b3b85a9d1e6559b90a29ac1'
+
+def print_geometry(path):
+ reader=PdfReader(path);page=reader.pages[0];spans=[]
+ def visit(value,cm,tm,font,size):
+  if value.strip():spans.append((value.strip(),float(tm[4]),float(tm[5]),float(size),str(font.get('/BaseFont',''))))
+ text_value=page.extract_text(visitor_text=visit)
+ operations=ContentStream(page.get_contents(),reader).operations
+ geometry=[(str(op),str(values))for values,op in operations if op in {b'cm',b'm',b'l',b'c',b're',b'h',b'w'}]
+ gray=[(str(op),float(values[0]))for values,op in operations if op in {b'g',b'G'}]
+ return {'text':text_value,'spans':spans,'geometry':geometry,'gray':gray}
+
+def correct_annual_monochrome_legends(workers=2):
+ """One reviewed15-file migration; prove all other PDFs remain reproducible.
+
+ Changing the renderer fingerprint normally invalidates every cache entry. This
+  explicit migration renders the401 unaffected PDFs in a temporary directory and
+ proves text/date/geometry identity before changing only15 published print sets.
+ No existing sample gate is fabricated or promoted to this renderer version.
+ """
+ global OUT
+ manifest_path=ROOT/'site/assets/data/manifest.json'
+ original_bytes=manifest_path.read_bytes();manifest=json.loads(original_bytes)
+ if manifest['generator']!=LEGEND_PREVIOUS_GENERATOR:
+  raise SystemExit('This migration requires the exact original recorded manifest fingerprint.')
+ assets=manifest['assets'];selected=[a for a in assets if a['kind']=='annual' and a['style']=='bw']
+ if len(assets)!=416 or len(selected)!=15:
+  raise SystemExit('Expected416 legacy assets and exactly15 monochrome annuals.')
+ before_files={}
+ for asset in assets:
+  for kind in ['pdf','webp','preview']:
+   p=ROOT/'site'/asset[kind].lstrip('/');expected=asset['files'][kind]
+   if p.stat().st_size!=expected['bytes'] or hashlib.sha256(p.read_bytes()).hexdigest()!=expected['sha256']:
+    raise SystemExit('Original manifest/file mismatch: '+str(p))
+ for asset in selected:
+  for rel in [asset['pdf'],asset['webp'],asset['preview'],'/assets/previews-small/'+asset['stem']+'.webp']:
+   p=ROOT/'site'/rel.lstrip('/');before_files['site'+rel]={'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+ preserved=[];gray_mappings={};selected_geometry={};real_out=OUT
+ try:
+  with tempfile.TemporaryDirectory(prefix='k365-print-compatibility-') as tmp:
+   OUT=Path(tmp)
+   for original in assets:
+    candidate=copy.deepcopy(original);build_pdf(candidate);p=OUT/(candidate['stem']+'.pdf')
+    digest=hashlib.sha256(p.read_bytes()).hexdigest()
+    before=print_geometry(ROOT/'site'/original['pdf'].lstrip('/'));after=print_geometry(p)
+    if candidate['dateLayout']!=original['dateLayout'] or before['geometry']!=after['geometry']:
+     raise SystemExit('PDF/date geometry is not reproducible: '+candidate['stem'])
+    if original in selected:
+     wanted=[(text.replace('Šventės pažymėtos raudonai','12 mėnesių apžvalga'),*rest)for text,*rest in before['spans']]
+     if wanted!=after['spans']:raise SystemExit('More than the approved legend text changed: '+candidate['stem'])
+     if len(before['gray'])!=len(after['gray']):raise SystemExit('Unexpected paint count change: '+candidate['stem'])
+     mapping={}
+     for (old_op,old_value),(new_op,new_value)in zip(before['gray'],after['gray']):
+      key=f'{new_value:.4f}'
+      if old_op!=new_op or(key in mapping and mapping[key]!=old_value):raise SystemExit('Ambiguous original grayscale mapping: '+candidate['stem'])
+      mapping[key]=old_value
+     gray_mappings[candidate['stem']]=mapping
+     selected_geometry[candidate['stem']]=before
+    else:
+     if before['spans']!=after['spans']:raise SystemExit('Unaffected text/positions changed: '+candidate['stem'])
+     preserved.append({'stem':candidate['stem'],'pdf_sha256':original['files']['pdf']['sha256'],'current_renderer_pdf_sha256':digest,'current_renderer_byte_identical':digest==original['files']['pdf']['sha256'],'current_renderer_text_positions_equal':True,'current_renderer_vector_geometry_equal':True,'original_paint_preserved_without_regeneration':True,'date_layout_sha256':hashlib.sha256(json.dumps(candidate['dateLayout'],sort_keys=True).encode()).hexdigest()})
+ finally:OUT=real_out
+ print('Proved401 unaffected text/date/vector layouts; original published bytes remain untouched.',flush=True)
+ selected_before={a['stem']:copy.deepcopy(a) for a in selected}
+ rendering=copy.deepcopy(selected)
+ for asset in rendering:asset['renderCompatibility']={'reviewedTransition':LEGEND_TRANSITION_PATH,'preserved_gray_mapping':gray_mappings[asset['stem']]}
+ with ThreadPoolExecutor(max_workers=workers) as pool:corrected=list(pool.map(generate,rendering))
+ for asset in corrected:
+  original=selected_before[asset['stem']]
+  if asset['dateLayout']!=original['dateLayout']:raise SystemExit('Date geometry changed: '+asset['stem'])
+  before=selected_geometry[asset['stem']];after=print_geometry(OUT/(asset['stem']+'.pdf'))
+  wanted=[(text.replace('Šventės pažymėtos raudonai','12 mėnesių apžvalga'),*rest)for text,*rest in before['spans']]
+  if wanted!=after['spans'] or before['geometry']!=after['geometry'] or before['gray']!=after['gray']:
+   raise SystemExit('The corrected PDF changed more than its approved legend: '+asset['stem'])
+  asset['generator']=FINGERPRINT
+  image=Image.open(PREVIEW/(asset['stem']+'.webp'));image.thumbnail((340,340),Image.Resampling.LANCZOS)
+  image.save(ROOT/'site/assets/previews-small'/(asset['stem']+'.webp'),'WEBP',quality=87,method=4)
+ by_stem={a['stem']:a for a in corrected};manifest['assets']=[by_stem.get(a['stem'],a)for a in assets]
+ manifest['generator']=FINGERPRINT;manifest['reviewedTransition']=LEGEND_TRANSITION_PATH
+ manifest['generatorScope']='Current renderer validation and15 corrected sets; preserved legacy generation provenance is documented in the reviewed transition.'
+ manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+ transitions=[]
+ for rel,before in before_files.items():
+  p=ROOT/rel;transitions.append({'path':rel,'before':before,'after':{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}})
+ selected_metadata=[]
+ for asset in corrected:
+  original=selected_before[asset['stem']]
+  selected_metadata.append({'stem':asset['stem'],'before_files':original['files'],'before_verification':original['verification'],'had_generator':'generator'in original,'before_generator':original.get('generator'),'preserved_gray_mapping':gray_mappings[asset['stem']],'date_layout_sha256':hashlib.sha256(json.dumps(original['dateLayout'],sort_keys=True).encode()).hexdigest(),'all_other_text_positions_equal':True,'vector_geometry_equal':True,'grayscale_paint_sequence_equal':True,'before_geometry_sha256':hashlib.sha256(json.dumps(selected_geometry[asset['stem']]['geometry']).encode()).hexdigest(),'after_geometry_sha256':hashlib.sha256(json.dumps(print_geometry(OUT/(asset['stem']+'.pdf'))['geometry']).encode()).hexdigest()})
+ transition={'version':'2026-10-17-annual-monochrome-legend-v2','before_generator':LEGEND_PREVIOUS_GENERATOR,'before_generator_semantics':'Original recorded manifest fingerprint; this is not a claim that every historical PDF was produced by that exact recipe. Current-renderer comparison records actual byte differences explicitly.','after_generator':FINGERPRINT,'before_manifest_sha256':hashlib.sha256(original_bytes).hexdigest(),'before_text':'Šventės pažymėtos raudonai','after_text':'12 mėnesių apžvalga','scope':'Only15 monochrome annual legends; all date positions, layout, original grayscale painting, routes and color outputs preserved.','changed_files':transitions,'selected_assets':selected_metadata,'unchanged_current_renderer_pdf_proofs':preserved,'preflight_status':'pending','visual_status':'pending'}
+ target=ROOT/LEGEND_TRANSITION_PATH;target.parent.mkdir(parents=True,exist_ok=True);target.write_text(json.dumps(transition,ensure_ascii=False,indent=2)+'\n')
+ print('Corrected15 PDF/WebP/680px/340px sets. Real preflight and visual review remain required.',flush=True)
+
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int);parser.add_argument('--samples',action='store_true');parser.add_argument('--phase-8-assets',action='store_true',help='Generate only the additive 2029 collection and new planner sheets; preserve existing assets.');parser.add_argument('--workers',type=int,default=2);args=parser.parse_args();SAMPLE_MODE=args.samples;items=entries();
+ parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int);parser.add_argument('--samples',action='store_true');parser.add_argument('--phase-8-assets',action='store_true',help='Generate only the additive 2029 collection and new planner sheets; preserve existing assets.');parser.add_argument('--correct-annual-monochrome-legends',action='store_true',help='Reviewed selective15-asset legend correction with401-PDF compatibility proof.');parser.add_argument('--workers',type=int,default=2);args=parser.parse_args();SAMPLE_MODE=args.samples;items=entries();
+ if args.correct_annual_monochrome_legends:
+  if args.samples or args.limit or args.phase_8_assets:raise SystemExit('The reviewed legend migration cannot be combined with other generation modes.')
+  correct_annual_monochrome_legends(args.workers);raise SystemExit(0)
+ if (ROOT/'site/assets/data/manifest.json').is_file():
+  prior={a['stem']:a for a in json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets']}
+  for asset in items:
+   if prior.get(asset['stem'],{}).get('renderCompatibility'):asset['renderCompatibility']=prior[asset['stem']]['renderCompatibility']
  if SAMPLE_MODE:
   OUT=ROOT.parents[1]/'outputs/print-samples';PREVIEW=OUT/'previews';OUT.mkdir(parents=True,exist_ok=True);PREVIEW.mkdir(exist_ok=True);CACHE=CACHE/'samples';CACHE.mkdir(exist_ok=True)
   required={('monthly',2027,1,'06'),('monthly',2028,2,'02')}

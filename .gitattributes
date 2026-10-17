@@ -13,6 +13,10 @@ data/lunar/sources/usno-*.json -whitespace
 # RFC 5545 calendars must keep CRLF and exact UTF-8 folding across checkouts.
 site/assets/holiday-phase2-ics/*.ics binary
 public/assets/holiday-phase2-ics/*.ics binary
+site/assets/holiday-ics/*.ics binary
+public/assets/holiday-ics/*.ics binary
+site/assets/holiday-guides-ics/*.ics binary
+public/assets/holiday-guides-ics/*.ics binary
 
 # Seasonal calendar exports require literal RFC 5545 CRLF bytes.
 site/assets/seasons-ics/*.ics binary

@@ -9,6 +9,7 @@ import sys
 import unittest
 import urllib.error
 import urllib.parse
+from dataclasses import replace
 from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -226,6 +227,49 @@ class EditorialAndPublishTests(unittest.TestCase):
     def test_all_twelve_are_required(self):
         with self.assertRaisesRegex(ValueError, "12 ženklų"):
             validate_batch(self.results[:-1], DAY)
+
+    def test_lithuanian_planet_genitives_and_decimal_comma(self):
+        pairs = [
+            ("Sun", "Saulės"), ("Moon", "Mėnulio"),
+            ("Mercury", "Merkurijaus"), ("Venus", "Veneros"),
+            ("Mars", "Marso"), ("Jupiter", "Jupiterio"),
+            ("Saturn", "Saturno"), ("Uranus", "Urano"),
+            ("Neptune", "Neptūno"), ("Pluto", "Plutono"),
+        ]
+        for planet, genitive in pairs:
+            forecast = render_forecast("zuvys", 8, 9, {
+                "aspect": "Sextile", "planet1": planet,
+                "planet2": "Pluto", "orb": 0.6,
+            }, DAY)
+            self.assertIn(f"{genitive} ir Plutono aspektas", forecast["overview"])
+            self.assertIn("0,6°", forecast["overview"])
+            self.assertNotIn("akcentas: dėmesį", forecast["overview"])
+
+    def test_every_house_has_complete_moon_sentence_without_repeated_lead_filler(self):
+        forecasts = []
+        for idx, key in enumerate(SIGN_NAMES, 1):
+            forecast = render_forecast(key, idx, idx, {
+                "aspect": "Trine", "planet1": "Sun",
+                "planet2": "Jupiter", "orb": 0.1,
+            }, DAY)
+            self.assertIn("Papildoma astrologinė Mėnulio tema – ", forecast["overview"])
+            self.assertNotIn("Rinkis tempą pagal savo aplinkybes", forecast["lead"])
+            self.assertNotIn("Vieną neaiškų susitarimą paversk", forecast["tip"])
+            forecasts.append(forecast)
+        validate_original_copy(forecasts)
+
+    def test_corrected_copy_survives_next_day_and_spring_dst_fixture_publications(self):
+        signs = json.loads((HERE.parents[1] / "site/_data/horoscope_signs.json").read_text(encoding="utf-8"))
+        for target in (date(2026, 10, 18), date(2027, 3, 28)):
+            results = [replace(row, local_date=target.isoformat()) for row in self.results]
+            now = datetime(target.year, target.month, target.day, 6, 20, tzinfo=ZoneInfo("Europe/Vilnius"))
+            data = build_data(results, target, now)
+            validate_release_data(data, signs, expected_current_date=target)
+            self.assertEqual(data["local_date"], target.isoformat())
+            self.assertEqual(len(data["forecasts"]), 12)
+            for row in data["forecasts"]:
+                self.assertIn("Saulės ir Jupiterio aspektas", row["overview"])
+                self.assertNotIn("akcentas: dėmesį", row["overview"])
 
 
 if __name__ == "__main__":

@@ -4,8 +4,131 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 from datetime import date,timedelta
 from collections import Counter
-import calendar,json,re,hashlib,xml.etree.ElementTree as ET
+import calendar,json,re,hashlib,copy,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[2]
+
+# This exception is deliberately tied to one reviewed editorial release.  It
+# does not permit future content changes or changes to factual/rights fields.
+EDITORIAL_REVIEW_VERSION = '2026-10-17-lt-editorial-v1'
+EDITORIAL_REVIEW_PATH = 'site/assets/data/holiday-editorial.json'
+EDITORIAL_REVIEW_BEFORE_SHA256 = '2390de90d277539c22ec2ec15114d5e3eb1941ff019498b119e28352741a4a34'
+EDITORIAL_REVIEW_AFTER_SHA256 = 'e8708d8fc7f5a102df01168dc9816a6a57a6cf0a72382d13cdabe5171925c744'
+EDITORIAL_REVIEW_MANIFEST = 'docs/language-audit/2026-10-17/holiday-editorial-v1.json'
+EDITORIAL_REVIEW_TEXT_PATHS = frozenset({
+ ('commemorations',0,'context_sections',1,1),
+ ('articles',0,'history'),('articles',0,'traditions'),('articles',0,'practical'),
+ ('articles',5,'traditions'),('articles',5,'context_sections',0,1),
+ ('articles',6,'practical'),('articles',6,'context_sections',0,1),
+ ('articles',7,'summary'),('articles',7,'meta_description'),
+ ('articles',8,'history'),('articles',8,'context_sections',1,1),
+ ('articles',11,'traditions'),('articles',12,'what'),
+ ('articles',12,'context_sections',1,1),
+ ('articles',13,'title'),('articles',13,'history'),
+})
+PRINT_LEGEND_TRANSITION = 'docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json'
+PRINT_LEGEND_TRANSITION_SHA256 = 'c9fb55864d9afc0ae1d77b6c70ca893b1c6d3689404599ce6d7d19ceb0bec4d0'
+PRINT_LEGEND_STEMS = {f'{year}-metinis-{design:02}' for year in [2027,2028,2029] for design in range(1,6)}
+PRINT_LEGEND_PATHS = {f'site/downloads/{stem}.{ext}' for stem in PRINT_LEGEND_STEMS for ext in ['pdf','webp']} | {f'site/assets/{folder}/{stem}.webp' for stem in PRINT_LEGEND_STEMS for folder in ['previews','previews-small']}
+
+def reviewed_print_updates(root, baseline):
+ """Allow precisely60 print-file transitions and their metadata; freeze all else."""
+ raw=(root/PRINT_LEGEND_TRANSITION).read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=PRINT_LEGEND_TRANSITION_SHA256:
+  raise ValueError('print transition evidence hash mismatch')
+ review=json.loads(raw)
+ if review['version']!='2026-10-17-annual-monochrome-legend-v2' or review['preflight_status']!='passed-twice' or review['visual_status']!='all15-reviewed':
+  raise ValueError('print transition lacks completed physical/visual checks')
+ files=review['changed_files'];paths=[x['path']for x in files]
+ if len(paths)!=60 or set(paths)!=PRINT_LEGEND_PATHS:raise ValueError('print exception must contain exactly60 approved files')
+ allowed={}
+ for item in files:
+  path=item['path'];current=(root/path).read_bytes()
+  if baseline[path]!=item['before']['sha256'] or hashlib.sha256(current).hexdigest()!=item['after']['sha256'] or len(current)!=item['after']['bytes']:
+   raise ValueError('reviewed print file differs: '+path)
+  allowed[path]=item['after']['sha256']
+ manifest_path='site/assets/data/manifest.json';current=(root/manifest_path).read_bytes()
+ if hashlib.sha256(current).hexdigest()!=review['after_manifest_sha256']:
+  raise ValueError('reviewed print manifest bytes differ')
+ manifest=json.loads(current);before=copy.deepcopy(manifest);selected={a['stem']:a for a in review['selected_assets']}
+ if set(selected)!=PRINT_LEGEND_STEMS:raise ValueError('print metadata selected stems differ')
+ for asset in before['assets']:
+  if asset['stem']not in selected:continue
+  original=selected[asset['stem']]
+  if not all(original[k]for k in ['all_other_text_positions_equal','vector_geometry_equal','grayscale_paint_sequence_equal']):raise ValueError('unapproved geometry or painting change')
+  if original['before_geometry_sha256']!=original['after_geometry_sha256']:raise ValueError('drawing geometry changed')
+  if hashlib.sha256(json.dumps(asset['dateLayout'],sort_keys=True).encode()).hexdigest()!=original['date_layout_sha256']:raise ValueError('date positions changed')
+  asset['files']=original['before_files'];asset['verification']=original['before_verification'];asset.pop('renderCompatibility')
+  if original['had_generator']:asset['generator']=original['before_generator']
+  else:asset.pop('generator',None)
+ before['generator']=review['before_generator'];before.pop('reviewedTransition');before.pop('generatorScope')
+ original_bytes=json.dumps(before,ensure_ascii=False,indent=2).encode()
+ if hashlib.sha256(original_bytes).hexdigest()!=baseline[manifest_path] or baseline[manifest_path]!=review['before_manifest_sha256']:
+  raise ValueError('unlisted print metadata changed; reconstructed original hash differs')
+ for source in review['calendar_sources']:
+  if source['before_sha256']!=source['after_sha256'] or hashlib.sha256((root/source['path']).read_bytes()).hexdigest()!=source['before_sha256']:raise ValueError('calendar source data changed')
+ for run in review['preflight_runs']:
+  report_bytes=(root/run['path']).read_bytes();report=json.loads(report_bytes)
+  if hashlib.sha256(report_bytes).hexdigest()!=run['sha256'] or report['status']!='passed' or len(report['results'])!=416 or report['generator']!=review['after_generator']:raise ValueError('actual full print preflight evidence differs')
+ allowed[manifest_path]=review['after_manifest_sha256']
+ return allowed
+
+def structural_changes(before, after, path=()):
+ """Return changed leaves; reject additions, deletions and type changes."""
+ if type(before) is not type(after):
+  raise ValueError('JSON type changed at '+repr(path))
+ if isinstance(before,dict):
+  if before.keys()!=after.keys():
+   raise ValueError('JSON keys changed at '+repr(path))
+  return [item for key in before for item in structural_changes(before[key],after[key],path+(key,))]
+ if isinstance(before,list):
+  if len(before)!=len(after):
+   raise ValueError('JSON array length changed at '+repr(path))
+  return [item for index,(old,new) in enumerate(zip(before,after)) for item in structural_changes(old,new,path+(index,))]
+ return [] if before==after else [(path,before,after)]
+
+def reviewed_editorial_update(current, baseline_sha256, manifest):
+ """Verify exact bytes and reconstruct/hash the original from explicit text edits.
+
+ The original asset was compact UTF-8 JSON without a trailing newline.  Replacing
+ the 17 listed text values must reproduce its exact baseline bytes.  This proves
+ every unlisted field is unchanged without shipping another copy of the dataset.
+ """
+ try:
+  if baseline_sha256!=EDITORIAL_REVIEW_BEFORE_SHA256:
+   raise ValueError('unexpected frozen editorial baseline hash')
+  if hashlib.sha256(current).hexdigest()!=EDITORIAL_REVIEW_AFTER_SHA256:
+   raise ValueError('editorial bytes differ from the reviewed release')
+  required={'version':EDITORIAL_REVIEW_VERSION,'path':EDITORIAL_REVIEW_PATH,
+            'before_sha256':EDITORIAL_REVIEW_BEFORE_SHA256,
+            'after_sha256':EDITORIAL_REVIEW_AFTER_SHA256}
+  if any(manifest.get(key)!=value for key,value in required.items()):
+   raise ValueError('editorial review manifest identity/hash mismatch')
+  edits=manifest['changes'];paths=[tuple(edit['path']) for edit in edits]
+  if len(paths)!=len(EDITORIAL_REVIEW_TEXT_PATHS) or set(paths)!=EDITORIAL_REVIEW_TEXT_PATHS:
+   raise ValueError('editorial review must contain exactly the 17 approved text paths')
+  after=json.loads(current);before=copy.deepcopy(after)
+  for edit,path in zip(edits,paths):
+   if not isinstance(edit['before'],str) or not isinstance(edit['after'],str) or edit['before']==edit['after']:
+    raise ValueError('editorial review values must be changed human-readable strings')
+   target=before
+   for key in path[:-1]:target=target[key]
+   if target[path[-1]]!=edit['after']:
+    raise ValueError('reviewed value mismatch at '+repr(path))
+   target[path[-1]]=edit['before']
+  original=json.dumps(before,ensure_ascii=False,separators=(',',':')).encode('utf-8')
+  if hashlib.sha256(original).hexdigest()!=baseline_sha256:
+   raise ValueError('reconstructed original differs from frozen baseline; unlisted fields changed')
+  changes=structural_changes(before,after)
+  expected={(tuple(edit['path']),edit['before'],edit['after']) for edit in edits}
+  if set(changes)!=expected:
+   raise ValueError('structural editorial diff differs from the reviewed changes')
+  return True,{'version':EDITORIAL_REVIEW_VERSION,'path':EDITORIAL_REVIEW_PATH,
+              'before_sha256':baseline_sha256,'sha256':EDITORIAL_REVIEW_AFTER_SHA256,
+              'review_manifest':EDITORIAL_REVIEW_MANIFEST,'reviewed_text_paths':len(changes),
+              'reason':'Reviewed Lithuanian prose only; reconstructed baseline hash and full JSON structural diff verified'}
+ except (ValueError,KeyError,TypeError,IndexError) as error:
+  return False,str(error)
+
 class Page(HTMLParser):
  def __init__(self,s):
   super().__init__(convert_charrefs=True);self.tags=[];self.text=[];self.h1=[];self.scripts=[];self.current=None;self.buf=[];self.title='';self.ids=[];self.days=[];self.col=0;self.feed(s)
@@ -86,6 +209,7 @@ def run():
   # ICS independently parsed without using the generator/folder.
   ics=(ROOT/f'public/assets/holiday-guides-ics/2027-{slug}.ics').read_bytes();check(all(len(l)<=75 for l in ics.split(b'\r\n')),route+' ICS 75-byte folding')
   unfolded=re.sub(r'\r\n[ \t]','',ics.decode());check(unfolded.count('BEGIN:VEVENT')==len(es),route+' ICS event count')
+  check('str..' not in unfolded,route+' ICS doubled abbreviation punctuation')
   dates=re.findall(r'DTSTART;VALUE=DATE:(\d{8})',unfolded);check(Counter(dates)==Counter(e['date'].replace('-','') for e in es),route+' ICS dates')
   results.append({'route':route,'status':'passed'if len(failures)==before else'failed','h1':p.h1[0],'event_records':len(es),'statutory_dates':sum(e['statutory_nonworking'] for e in es),'source_count':len({s for e in es for s in e['sources']}),'calendar_days':len(p.days),'visible_html':True,'canonical':canonical})
  for relative in ['sventes/index.html','sventes/2027/index.html']:
@@ -99,10 +223,16 @@ def run():
    check(el.tag.split('}')[-1] not in ['script','foreignObject','image','animate','filter'],a['slug']+' unsafe/heavy SVG element')
    check(all(not k.lower().startswith('on') for k in el.attrib),a['slug']+' event handler in SVG')
  # Preserve the baseline; the later planner repair restores two documented metadata fields only.
- preserved=0;changed=[];intentional_updates=[]
+ preserved=0;changed=[];intentional_updates=[];print_updates={}
+ if any((ROOT/path).is_file()and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=base['assets'].get(path)for path in PRINT_LEGEND_PATHS):
+  try:print_updates=reviewed_print_updates(ROOT,base['assets'])
+  except (OSError,ValueError,KeyError,TypeError)as error:check(False,'reviewed print preservation: '+str(error))
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
   p=ROOT/path
+  if path in print_updates:
+   intentional_updates.append({'path':path,'reason':'Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved','sha256':print_updates[path],'review_manifest':PRINT_LEGEND_TRANSITION})
+   continue
   if path=='site/assets/app.js':
    current=p.read_bytes();updated=b'fetch("/assets/data/home-holiday-data.json?v=2")';previous=b'fetch("/assets/data/home-holiday-data.json")'
    check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'home app changes only the compact metadata schema version to avoid a cached incomplete payload')
@@ -116,6 +246,16 @@ def run():
    check(hashlib.sha256(json.dumps(before,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()==sha,'planner pre-repair metadata matches the saved baseline')
    check(json.loads(p.read_text())==wanted,'planner metadata changes only restore original titles/categories')
    intentional_updates.append({'path':path,'reason':'Complete the existing holiday event prefill; original ids, slugs and date rules preserved','sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+   continue
+  if path==EDITORIAL_REVIEW_PATH and p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest()!=sha:
+   try:
+    manifest=json.loads((ROOT/EDITORIAL_REVIEW_MANIFEST).read_text())
+    valid,evidence=reviewed_editorial_update(p.read_bytes(),sha,manifest)
+   except (OSError,ValueError) as error:
+    valid,evidence=False,str(error)
+   check(valid,'reviewed holiday editorial preservation: '+str(evidence))
+   if valid:intentional_updates.append(evidence)
+   else:changed.append(path)
    continue
   allowed={sha}
   if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])

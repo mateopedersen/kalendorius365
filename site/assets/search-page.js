@@ -22,7 +22,7 @@ const categoryLabels = {
   planning: "Planavimas ir darbo laikas",
   school: "Mokykla",
   tools: "Įrankiai",
-  privacy: "Privatumas",
+  privacy: "Svetainės informacija",
   home: "Pagrindinis puslapis",
 };
 

@@ -169,7 +169,7 @@ function betterPlan(a, b) {
 }
 
 export function optimizeMultiple(days, candidates, { budget = 20, maxPeriods = 4 } = {}) {
-  if (!Number.isInteger(budget) || budget < 0 || budget > 60) throw Error("Atostogų biudžetas turi būti nuo 0 iki 60 darbo dienų.");
+  if (!Number.isInteger(budget) || budget < 0 || budget > 60) throw Error("Atostogų dienų likutis turi būti nuo 0 iki 60 darbo dienų.");
   if (!Number.isInteger(maxPeriods) || maxPeriods < 1 || maxPeriods > 10) throw Error("Galima pasirinkti nuo 1 iki 10 atostogų laikotarpių.");
   const byStart = new Map();
   for (const candidate of candidates) {
@@ -233,7 +233,7 @@ function settingsFromForm(form) {
   const year = Number(form.elements.year.value);
   if (![2027, 2028].includes(year)) throw Error("Pasirinkite 2027 arba 2028 metus.");
   const budget = Number(form.elements.budget.value);
-  if (!Number.isInteger(budget) || budget < 0 || budget > 60) throw Error("Atostogų biudžetas turi būti sveikas skaičius nuo 0 iki 60.");
+  if (!Number.isInteger(budget) || budget < 0 || budget > 60) throw Error("Atostogų dienų likutis turi būti sveikas skaičius nuo 0 iki 60.");
   let workdays;
   if (form.elements.schedule.value === "5") workdays = [0, 1, 2, 3, 4];
   else if (form.elements.schedule.value === "6") workdays = [0, 1, 2, 3, 4, 5];
@@ -425,7 +425,7 @@ function plannerPage() {
     const reasons = [];
     if (candidate.holidayDays) reasons.push(`${candidate.holidayDays} ${holidayLabel(candidate.holidayDays)} patenka į laikotarpį`);
     if (candidate.restDays) reasons.push(`${candidate.restDays} ${restDayLabel(candidate.restDays)}`);
-    if (!candidate.holidayDays && !candidate.restDays) reasons.push("laikotarpis telpa į pasirinktą atostogų biudžetą");
+    if (!candidate.holidayDays && !candidate.restDays) reasons.push("šiam laikotarpiui pakanka nurodyto atostogų dienų likučio");
     return reasons.join("; ");
   }
 
@@ -506,7 +506,7 @@ function plannerPage() {
       const settings = settingsFromForm(form);
       const parsed = validateDateInputs(settings.year, data, settings);
       const fixedDays = parsed.booked.length;
-      if (fixedDays > settings.budget) throw Error(`Jau suplanuota ${fixedDays} atostogų d., bet biudžetas yra ${settings.budget} d.`);
+      if (fixedDays > settings.budget) throw Error(`Jau suplanuota ${fixedDays} atostogų d., bet nurodytas likutis yra ${settings.budget} d.`);
       const available = settings.budget - fixedDays;
       const candidates = generateCandidates(parsed.days, settings);
       const pool = candidates.filter((candidate) => candidate.leaveDays <= available);
@@ -572,7 +572,7 @@ function plannerPage() {
       if (fixedDays) {
         const fixed = document.createElement("p");
         fixed.className = "source-note";
-        fixed.textContent = `Jau suplanuotos ${fixedDays} darbo dienos atimtos iš biudžeto. Jos rodomos kaip atskiri fiksuoti laikotarpiai; skaičiuoklė jų prie naujų pasiūlymų neprijungia.`;
+        fixed.textContent = `Jau suplanuotos ${fixedDays} darbo dienos atimtos iš nurodyto likučio. Jos rodomos kaip atskiri fiksuoti laikotarpiai; skaičiuoklė jų prie naujų pasiūlymų neprijungia.`;
         summary.append(fixed);
       }
       latest = { settings, parsed, single, efficient, multiple, data };
@@ -597,7 +597,7 @@ function plannerPage() {
         const evaluation = evaluateRange(start, end, state.data, options);
         if (evaluation.blockedDates.length) throw Error(`Pasirinktame laikotarpyje yra užblokuota darbo diena: ${evaluation.blockedDates.join(", ")}.`);
         const required = state.parsed.booked.length + evaluation.additionalLeaveDays;
-        if (required > state.settings.budget) throw Error(`Šiam laikotarpiui ir iš anksto suplanuotoms dienoms reikėtų ${required} atostogų d.; biudžetas ${state.settings.budget} d.`);
+        if (required > state.settings.budget) throw Error(`Šiam laikotarpiui ir iš anksto suplanuotoms dienoms reikėtų ${required} atostogų d.; nurodytas likutis ${state.settings.budget} d.`);
         const candidate = { start, end, daysOff: evaluation.daysOff, leaveDays: evaluation.additionalLeaveDays, restDays: evaluation.restDays, holidayDays: evaluation.holidayDays };
         const details = document.createElement("p");
         details.textContent = `${formatPeriod(candidate)}: ${evaluation.daysOff} kalendorinių dienų, ${evaluation.additionalLeaveDays} papildomų atostogų darbo d., ${evaluation.bookedLeaveDays} jau suplanuotų atostogų d., ${evaluation.restDays} grafiko poilsio d. ir ${evaluation.holidayDays} švenčių.`;

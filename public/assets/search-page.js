@@ -1,4 +1,4 @@
-import { loadSearchIndex, searchPages } from "./search-engine.js?v=865f81e8689e";
+import { loadSearchIndex, searchPages } from "./search-engine.js?v=4d35e0869c52";
 
 const form = document.querySelector("#site-search-page-form");
 const input = document.querySelector("#site-search-page-query");
@@ -22,7 +22,7 @@ const categoryLabels = {
   planning: "Planavimas ir darbo laikas",
   school: "Mokykla",
   tools: "Įrankiai",
-  privacy: "Privatumas",
+  privacy: "Svetainės informacija",
   home: "Pagrindinis puslapis",
 };
 

@@ -1,0 +1,264 @@
+{
+  "status": "passed",
+  "method": "Independent PyPDF parse of each original PDF from the frozen base commit and current generated PDF; all non-text operator sequences and operands match exactly. Each of 15 current PDFs was rebuilt in a fresh temporary directory through the current renderer using the preserved grayscale mapping; output bytes matched the published source PDF exactly. The final neutral Lithuanian subtitle was confirmed in every PDF.",
+  "assets": [
+    {
+      "stem": "2027-metinis-01",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "200b4b15a5607998a61b4326eeca097bc17f45278e24081c7fb2ffdb3fff8d8f",
+      "corrected_operators_sha256": "200b4b15a5607998a61b4326eeca097bc17f45278e24081c7fb2ffdb3fff8d8f",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "29ed6a2c329a60dbf0970746aeca0fec263aae85834a40f0f43087396905e230",
+      "cache_miss_pdf_sha256": "29ed6a2c329a60dbf0970746aeca0fec263aae85834a40f0f43087396905e230",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2027-metinis-02",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "ff348e3fc432426a6e7b152424ff4163deee01c12dee02534527d2f156551f59",
+      "corrected_operators_sha256": "ff348e3fc432426a6e7b152424ff4163deee01c12dee02534527d2f156551f59",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "a2742d42f7e71890f76a2c43d9252d32517642f6c805d46ee750f821007112ae",
+      "cache_miss_pdf_sha256": "a2742d42f7e71890f76a2c43d9252d32517642f6c805d46ee750f821007112ae",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2027-metinis-03",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "b2ce5a2ec3af2515d8a177d20526a8d57e4b11f03e40a70d2477e31561fb3cc5",
+      "corrected_operators_sha256": "b2ce5a2ec3af2515d8a177d20526a8d57e4b11f03e40a70d2477e31561fb3cc5",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "b907eb9b871a6c76aea15bc55a0c8a5da9daa7fb6e82355fc5215a8e6cf85355",
+      "cache_miss_pdf_sha256": "b907eb9b871a6c76aea15bc55a0c8a5da9daa7fb6e82355fc5215a8e6cf85355",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75,
+          "1.0000": 1.0
+        }
+      }
+    },
+    {
+      "stem": "2027-metinis-04",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "9a4672c4c05d3c64adc60a9e124051492d3be486d9408c2d714b34685cff4c31",
+      "corrected_operators_sha256": "9a4672c4c05d3c64adc60a9e124051492d3be486d9408c2d714b34685cff4c31",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "612f33c866ca2e3a3acd73a25d9d14f184405e13ddd057c927def4d687f9ad39",
+      "cache_miss_pdf_sha256": "612f33c866ca2e3a3acd73a25d9d14f184405e13ddd057c927def4d687f9ad39",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2027-metinis-05",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "07dfbe5529cb880557ba4ab8393c691a0f6cfe1c7e4268680ca65d8929cd2958",
+      "corrected_operators_sha256": "07dfbe5529cb880557ba4ab8393c691a0f6cfe1c7e4268680ca65d8929cd2958",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "d931393e41b683972b03eb5c15e53a9af05bbaf839bfd119849c7a36d6ea2c53",
+      "cache_miss_pdf_sha256": "d931393e41b683972b03eb5c15e53a9af05bbaf839bfd119849c7a36d6ea2c53",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2028-metinis-01",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "5e02a839a4aaf995bd5ad12b4feaa222430d1cb77cabe327b9fbc14c63e92d93",
+      "corrected_operators_sha256": "5e02a839a4aaf995bd5ad12b4feaa222430d1cb77cabe327b9fbc14c63e92d93",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "ae630b192bf221725344479b487ffa4049d55015842114887e301f84dfd4e75f",
+      "cache_miss_pdf_sha256": "ae630b192bf221725344479b487ffa4049d55015842114887e301f84dfd4e75f",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2028-metinis-02",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "bde45bb9ae24b037335b040db02fee9e03afa5804442b3aecc68d4f7975cf44f",
+      "corrected_operators_sha256": "bde45bb9ae24b037335b040db02fee9e03afa5804442b3aecc68d4f7975cf44f",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "64a3ea9e1a4251aaee57e5eef4e68b9e10d990d59de4248ef066864d713ea66e",
+      "cache_miss_pdf_sha256": "64a3ea9e1a4251aaee57e5eef4e68b9e10d990d59de4248ef066864d713ea66e",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2028-metinis-03",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "a0b105bd6a06dec6c9b0a58c9bbcf2730e77010c6a38d82edf7f3a0120408b89",
+      "corrected_operators_sha256": "a0b105bd6a06dec6c9b0a58c9bbcf2730e77010c6a38d82edf7f3a0120408b89",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "a16d9a5fcfe700d11f6fa668080b79688cfc81c62c22bc571e9187431bc144b9",
+      "cache_miss_pdf_sha256": "a16d9a5fcfe700d11f6fa668080b79688cfc81c62c22bc571e9187431bc144b9",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75,
+          "1.0000": 1.0
+        }
+      }
+    },
+    {
+      "stem": "2028-metinis-04",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "314d7c19e9e48f82f64970e5cda1611c966d4593ecc0029a37890ad3fa6c1d3d",
+      "corrected_operators_sha256": "314d7c19e9e48f82f64970e5cda1611c966d4593ecc0029a37890ad3fa6c1d3d",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "092358239e5033d826dbfe3a8f3188b02d20469015e3748d0010a8378a90c47f",
+      "cache_miss_pdf_sha256": "092358239e5033d826dbfe3a8f3188b02d20469015e3748d0010a8378a90c47f",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2028-metinis-05",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "62a131254bacfb24e4d4a8c22ab438c0baf7749add05e4db3fb64d90997fb298",
+      "corrected_operators_sha256": "62a131254bacfb24e4d4a8c22ab438c0baf7749add05e4db3fb64d90997fb298",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "4fe332e0a948a8d9e8f5e45af4d4a2f5b55bab02c38c7cbb2dba3ca533929e8e",
+      "cache_miss_pdf_sha256": "4fe332e0a948a8d9e8f5e45af4d4a2f5b55bab02c38c7cbb2dba3ca533929e8e",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3,
+          "0.8289": 0.75
+        }
+      }
+    },
+    {
+      "stem": "2029-metinis-01",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "f5560c240edc884617718de7231c311f422eac54324f5a5c009f763d562e56c3",
+      "corrected_operators_sha256": "f5560c240edc884617718de7231c311f422eac54324f5a5c009f763d562e56c3",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "ad9a49a1d41da0c517a2aaeb317b7ee434bef774d34e991c1295f89f19ff520e",
+      "cache_miss_pdf_sha256": "ad9a49a1d41da0c517a2aaeb317b7ee434bef774d34e991c1295f89f19ff520e",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3698,
+          "0.8289": 0.8289
+        }
+      }
+    },
+    {
+      "stem": "2029-metinis-02",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "c44282362875450ae3c16cd1298136c1517dda710867b0d0cf0edd03ada89dd1",
+      "corrected_operators_sha256": "c44282362875450ae3c16cd1298136c1517dda710867b0d0cf0edd03ada89dd1",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "6df1719c99a6101970a6805923591d66831572ef0eba7f9e84f07870c341f99f",
+      "cache_miss_pdf_sha256": "6df1719c99a6101970a6805923591d66831572ef0eba7f9e84f07870c341f99f",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3698,
+          "0.8289": 0.8289
+        }
+      }
+    },
+    {
+      "stem": "2029-metinis-03",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "8ad2d0e51ce4343a5ef61bee50ee03bbf990f98df19321db76916f228e8e8107",
+      "corrected_operators_sha256": "8ad2d0e51ce4343a5ef61bee50ee03bbf990f98df19321db76916f228e8e8107",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "854bd5a87c37604678add629d65036a0d3e5664ae85ff4cb4676f842100f3164",
+      "cache_miss_pdf_sha256": "854bd5a87c37604678add629d65036a0d3e5664ae85ff4cb4676f842100f3164",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3698,
+          "0.8289": 0.8289,
+          "1.0000": 1.0
+        }
+      }
+    },
+    {
+      "stem": "2029-metinis-04",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "dc18b4c7bcd9e3d84fd0b4203cebb70af2fa4bd5e2051ac3c3c02362b72d7c97",
+      "corrected_operators_sha256": "dc18b4c7bcd9e3d84fd0b4203cebb70af2fa4bd5e2051ac3c3c02362b72d7c97",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "7e05fa086b2fca4f6f60323ac6680969e3ac1314aa79b78ef168c36918ad6508",
+      "cache_miss_pdf_sha256": "7e05fa086b2fca4f6f60323ac6680969e3ac1314aa79b78ef168c36918ad6508",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3698,
+          "0.8289": 0.8289
+        }
+      }
+    },
+    {
+      "stem": "2029-metinis-05",
+      "all_non_text_operators_exactly_equal": true,
+      "original_operators_sha256": "1de3424bf83042f5e32aec5c786023f03ccec60dd15e04577ce67f1b81286a32",
+      "corrected_operators_sha256": "1de3424bf83042f5e32aec5c786023f03ccec60dd15e04577ce67f1b81286a32",
+      "cache_miss_pdf_byte_reproduction": true,
+      "new_pdf_sha256": "fc96ecef4b7dbd4d7c105be7b63c3c3be00c4b4dc856b4604fe2920f7ef8096d",
+      "cache_miss_pdf_sha256": "fc96ecef4b7dbd4d7c105be7b63c3c3be00c4b4dc856b4604fe2920f7ef8096d",
+      "render_compatibility": {
+        "reviewedTransition": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json",
+        "preserved_gray_mapping": {
+          "0.0000": 0.0,
+          "0.3698": 0.3698,
+          "0.8289": 0.8289
+        }
+      }
+    }
+  ]
+}

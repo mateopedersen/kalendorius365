@@ -1,9 +1,91 @@
 {
   "schema": 1,
-  "generator": "adec2197bfc4ef8334a6cd8080bb7133387f3c976b3b85a9d1e6559b90a29ac1",
+  "generator": "1323b4a0dacc55b6f1d85229a59c00dac4bdec4a0ffafb6210411423871b005a",
   "status": "passed",
   "samples": true,
   "visualReviewed": true,
+  "sampleCount": 12,
+  "sampleDirectory": "/var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/k365-current-print-samples-hrn4mbbh",
+  "currentRecipeActualRebuild": [
+    {
+      "stem": "2027-sausis-06",
+      "before_pdf_sha256": "ec65f95a2d648d978f453264ee6baeb7d2740da49b7923f8a630cc45f221356c",
+      "current_recipe_pdf_sha256": "ec65f95a2d648d978f453264ee6baeb7d2740da49b7923f8a630cc45f221356c",
+      "byte_identical": true
+    },
+    {
+      "stem": "2028-vasaris-02",
+      "before_pdf_sha256": "3602019254c53d0ae656f106eb598d9b0e87b83a73cf0a0737343d5d98be5416",
+      "current_recipe_pdf_sha256": "3602019254c53d0ae656f106eb598d9b0e87b83a73cf0a0737343d5d98be5416",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-11",
+      "before_pdf_sha256": "a1d9cf0ea098b62ad756ee2454bf02e73e1005b5e9a41c20bbe31fd1b59c0526",
+      "current_recipe_pdf_sha256": "a1d9cf0ea098b62ad756ee2454bf02e73e1005b5e9a41c20bbe31fd1b59c0526",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-12",
+      "before_pdf_sha256": "25ab1fcebce923b4ba711f71d4504800220b9bb6de72d5274408b9131f793625",
+      "current_recipe_pdf_sha256": "25ab1fcebce923b4ba711f71d4504800220b9bb6de72d5274408b9131f793625",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-13",
+      "before_pdf_sha256": "b538aa6e5df5270656633c7594df7b2403a6632940bfde495e4ac15536b3acee",
+      "current_recipe_pdf_sha256": "b538aa6e5df5270656633c7594df7b2403a6632940bfde495e4ac15536b3acee",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-14",
+      "before_pdf_sha256": "3db00afd91368e68043614db12fd25d5665ec1b129bc2c8d4bae67570dfaaabd",
+      "current_recipe_pdf_sha256": "3db00afd91368e68043614db12fd25d5665ec1b129bc2c8d4bae67570dfaaabd",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-15",
+      "before_pdf_sha256": "ae2c6a1c84982824fb6662d4db5a01bc24d12aa3942e120210736c86e7432104",
+      "current_recipe_pdf_sha256": "ae2c6a1c84982824fb6662d4db5a01bc24d12aa3942e120210736c86e7432104",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-16",
+      "before_pdf_sha256": "2168fbc4d0128923ab7645bb7f48f3e87f42cbcf9a4465c5ba343660fc794c49",
+      "current_recipe_pdf_sha256": "2168fbc4d0128923ab7645bb7f48f3e87f42cbcf9a4465c5ba343660fc794c49",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-17",
+      "before_pdf_sha256": "dc16a1bba1a113497e18aa329ec705294c3c6f610df0f5e7b1096dd85557981a",
+      "current_recipe_pdf_sha256": "dc16a1bba1a113497e18aa329ec705294c3c6f610df0f5e7b1096dd85557981a",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-18",
+      "before_pdf_sha256": "cd771c4cf837775209e4f7d8b19dccd5ba565ad01ba7028884f75b80c4d14cd4",
+      "current_recipe_pdf_sha256": "cd771c4cf837775209e4f7d8b19dccd5ba565ad01ba7028884f75b80c4d14cd4",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-19",
+      "before_pdf_sha256": "8c3711dd34ec1df7d7fadd0fda79dec653100466c660d296d67991bf065bfddc",
+      "current_recipe_pdf_sha256": "8c3711dd34ec1df7d7fadd0fda79dec653100466c660d296d67991bf065bfddc",
+      "byte_identical": true
+    },
+    {
+      "stem": "tuscias-20",
+      "before_pdf_sha256": "37933e662b2ad5b45fbf7bdb8fe4a58a691fdbc3feec3119632d8e2ff70a69dc",
+      "current_recipe_pdf_sha256": "37933e662b2ad5b45fbf7bdb8fe4a58a691fdbc3feec3119632d8e2ff70a69dc",
+      "byte_identical": true
+    }
+  ],
+  "visualEvidence": [
+    "screenshots/current-print-samples-1.png",
+    "screenshots/current-print-samples-2.png",
+    "screenshots/current-print-samples-3.png"
+  ],
+  "visualScope": "All12 actualcurrentrecipe PDFs are byte-identical to the freshlycreated600PPI-proof images that were visually inspected; changing the annual legend does not alter these two monthly and ten planner samples.",
   "results": [
     {
       "stem": "2027-sausis-06",
