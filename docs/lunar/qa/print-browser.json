@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "method": "Local harness intercepts the native print call only to inspect the loaded 600-PPI image and @page paper selection. Native OS dialog and physical output are not claimed.",
+  "results": [
+    {
+      "image": "/downloads/lunar/2028/lunar-2028-02-night.webp",
+      "width": 4961,
+      "height": 7016,
+      "style": "@page{size:A4 portrait;margin:0}@media print{html,body{margin:0!important;padding:0!important}body>:not(.lunar-print-output){display:none!important}.lunar-print-output{display:block!important;margin:0!important;padding:0!important}.lunar-print-output img{display:block;width:100%;height:auto;max-height:100vh;object-fit:contain}}"
+    },
+    {
+      "image": "/downloads/lunar/2028/lunar-2028-02-editorial.webp",
+      "width": 7016,
+      "height": 4961,
+      "style": "@page{size:A4 landscape;margin:0}@media print{html,body{margin:0!important;padding:0!important}body>:not(.lunar-print-output){display:none!important}.lunar-print-output{display:block!important;margin:0!important;padding:0!important}.lunar-print-output img{display:block;width:100%;height:auto;max-height:100vh;object-fit:contain}}"
+    },
+    {
+      "image": "/downloads/lunar/2027/lunar-2027-year-overview.webp",
+      "width": 9922,
+      "height": 7016,
+      "style": "@page{size:A3 landscape;margin:0}@media print{html,body{margin:0!important;padding:0!important}body>:not(.lunar-print-output){display:none!important}.lunar-print-output{display:block!important;margin:0!important;padding:0!important}.lunar-print-output img{display:block;width:100%;height:auto;max-height:100vh;object-fit:contain}}"
+    }
+  ]
+}

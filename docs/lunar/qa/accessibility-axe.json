@@ -1,0 +1,4158 @@
+[
+  {
+    "path": "/menulio-kalendorius/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-live-art > p"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              "Element's background color could not be determined due to a background gradient"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/menulio-fazes/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-live-art > p"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              "Element's background color could not be determined due to a background gradient"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 26
+  },
+  {
+    "path": "/menulio-kalendorius/2027/balandis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/birzelis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/geguze/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/gruodis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 28
+  },
+  {
+    "path": "/menulio-kalendorius/2027/kovas/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/lapkritis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/liepa/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/rugpjutis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/rugsejis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/sausis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/spalis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/vasaris/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/balandis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/birzelis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/geguze/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/gruodis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/menulio-kalendorius/2028/kovas/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/lapkritis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/liepa/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/rugpjutis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/rugsejis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/sausis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/spalis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/vasaris/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/balandis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/birzelis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/geguze/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/gruodis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/menulio-kalendorius/2029/kovas/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/lapkritis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/liepa/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/rugpjutis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/rugsejis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/sausis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/spalis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/vasaris/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-live-art > p"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              "Element's background color could not be determined due to a background gradient"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/menulio-fazes/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-live-art > p"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              "Element's background color could not be determined due to a background gradient"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 26
+  },
+  {
+    "path": "/menulio-kalendorius/2027/balandis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/birzelis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/geguze/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/gruodis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              ".lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 28
+  },
+  {
+    "path": "/menulio-kalendorius/2027/kovas/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/lapkritis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/liepa/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/rugpjutis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/rugsejis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/sausis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/spalis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2027/vasaris/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/balandis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/birzelis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/geguze/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/gruodis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/menulio-kalendorius/2028/kovas/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/lapkritis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/liepa/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/rugpjutis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/rugsejis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/sausis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/spalis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2028/vasaris/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/balandis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/birzelis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/geguze/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/gruodis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/menulio-kalendorius/2029/kovas/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/lapkritis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/liepa/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/rugpjutis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/rugsejis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/sausis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/spalis/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  },
+  {
+    "path": "/menulio-kalendorius/2029/vasaris/",
+    "width": 360,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"site-search-results\"",
+            "checks": []
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "target": [
+              "#site-search"
+            ],
+            "summary": "Fix any of the following:\n  Element has no value; test color contrast with a value entered",
+            "checks": [
+              "Element has no value; test color contrast with a value entered"
+            ]
+          },
+          {
+            "target": [
+              "button[aria-label=\"Padidinti: Naktinis dangus\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > figure > .lunar-preview-button > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              "Element's background color could not be determined because element contains an image node"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  }
+]

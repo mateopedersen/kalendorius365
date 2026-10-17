@@ -139,6 +139,8 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
   const year = queryWords.find((word) => /^20\d{2}$/.test(word));
   const calendarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("kalendorius") || ["calendar", "calendars", "kalendorius", "kalendoriai"].includes(word));
   const lunarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("moon"));
+  const lunarOverviewIntent = lunarIntent && queryWords.every((word) =>
+    word === year || synonymGroups.get(word)?.includes("moon") || synonymGroups.get(word)?.includes("kalendorius"));
   const scored = [];
   for (const doc of docs) {
     if (category !== "all" && doc.item.category !== category) continue;
@@ -168,6 +170,8 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
       if (doc.item.url === `/${year}/`) score += 45;
       else if (doc.item.url.startsWith(`/${year}/`) && doc.item.category === "calendar") score += 7;
     }
+    if (lunarOverviewIntent && year && doc.item.url === `/menulio-kalendorius/${year}/`) score += 45;
+    if (lunarOverviewIntent && calendarIntent && !year && doc.item.url === '/menulio-kalendorius/') score += 40;
     if (coverage === 1 && queryWords.length > 1) score += 12;
     score *= coverage ** 1.4;
     if (score < 4) continue;

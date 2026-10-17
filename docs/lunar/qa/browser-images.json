@@ -1,0 +1,210 @@
+{
+  "method": "Local harness awaits child load, fonts.ready, image decode and two animation frames; actual complete/naturalWidth are checked in the real page.",
+  "results": [
+    {
+      "path": "/menulio-kalendorius/",
+      "broken": [],
+      "count": 0
+    },
+    {
+      "path": "/menulio-fazes/",
+      "broken": [],
+      "count": 0
+    },
+    {
+      "path": "/menulio-kalendorius/2027/balandis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2027/birzelis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2027/geguze/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/gruodis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/",
+      "broken": [],
+      "count": 0
+    },
+    {
+      "path": "/menulio-kalendorius/2027/kovas/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/lapkritis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2027/liepa/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/rugpjutis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/rugsejis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2027/sausis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/spalis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2027/vasaris/",
+      "broken": [],
+      "count": 28
+    },
+    {
+      "path": "/menulio-kalendorius/2028/balandis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2028/birzelis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2028/geguze/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/gruodis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/",
+      "broken": [],
+      "count": 0
+    },
+    {
+      "path": "/menulio-kalendorius/2028/kovas/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/lapkritis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2028/liepa/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/rugpjutis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/rugsejis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2028/sausis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/spalis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2028/vasaris/",
+      "broken": [],
+      "count": 29
+    },
+    {
+      "path": "/menulio-kalendorius/2029/balandis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2029/birzelis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2029/geguze/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/gruodis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/",
+      "broken": [],
+      "count": 0
+    },
+    {
+      "path": "/menulio-kalendorius/2029/kovas/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/lapkritis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2029/liepa/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/rugpjutis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/rugsejis/",
+      "broken": [],
+      "count": 30
+    },
+    {
+      "path": "/menulio-kalendorius/2029/sausis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/spalis/",
+      "broken": [],
+      "count": 31
+    },
+    {
+      "path": "/menulio-kalendorius/2029/vasaris/",
+      "broken": [],
+      "count": 28
+    }
+  ]
+}

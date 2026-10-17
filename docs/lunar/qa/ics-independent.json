@@ -1,0 +1,188 @@
+{
+  "status": "passed",
+  "parser": "icalendar 7.3.0",
+  "month_files_checked": 36,
+  "events_checked": 148,
+  "results": [
+    {
+      "month": "2027-01",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-02",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-03",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-04",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-05",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-06",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-07",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-08",
+      "events": 5,
+      "status": "passed"
+    },
+    {
+      "month": "2027-09",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-10",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-11",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2027-12",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-01",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-02",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-03",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-04",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-05",
+      "events": 5,
+      "status": "passed"
+    },
+    {
+      "month": "2028-06",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-07",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-08",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-09",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-10",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-11",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2028-12",
+      "events": 5,
+      "status": "passed"
+    },
+    {
+      "month": "2029-01",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-02",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-03",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-04",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-05",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-06",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-07",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-08",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-09",
+      "events": 5,
+      "status": "passed"
+    },
+    {
+      "month": "2029-10",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-11",
+      "events": 4,
+      "status": "passed"
+    },
+    {
+      "month": "2029-12",
+      "events": 4,
+      "status": "passed"
+    }
+  ]
+}

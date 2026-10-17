@@ -14,7 +14,7 @@ module Jekyll
         path.delete_prefix(site.source + File::SEPARATOR)
       end
       groups = {
-        'css_version' => %w[assets/style.css assets/design-system.css assets/horoscope.css] + lato_fonts,
+        'css_version' => %w[assets/style.css assets/design-system.css assets/horoscope.css assets/lunar.css] + lato_fonts,
         'script_version' => javascript
       }
 

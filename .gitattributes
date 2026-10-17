@@ -1,2 +1,11 @@
-*.ics whitespace=cr-at-eol
+# Print files must retain byte-exact hashes, even when their PDF streams use ASCII85.
+*.pdf binary
+*.webp binary
+*.png binary
+*.jpg binary
+*.ttf binary
+*.woff2 binary
 *.csv text eol=lf
+
+# Preserve the original whitespace in the official USNO API responses.
+data/lunar/sources/usno-*.json -whitespace

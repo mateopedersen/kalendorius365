@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "reviewer": "AI editorial and visual review, second pass independent of the first extraction/fit checks",
+  "scope": "All Lithuanian page templates, all 36 computed month paragraphs, all 72 monthly layouts and 2027 annual poster",
+  "corrections": [
+    "Decimal comma in percentages",
+    "Phase period wording distinguished from exact quarter instants",
+    "Actual present moment distinguished from future calendar year",
+    "No above-horizon claim in the current Moon heading",
+    "Natural Lithuanian download, calendar, legend and source wording",
+    "Year navigation current state no longer falsely claims a month is the year overview page"
+  ],
+  "terminology": [
+    "Jaunatis",
+    "Priešpilnis",
+    "Pilnatis",
+    "Delčia"
+  ],
+  "evidence": [
+    "pages-language-semantics.json",
+    "print-pass-a.json",
+    "print-pass-b.json",
+    "visual-review.json"
+  ],
+  "limitations": "No human-editor or physical print approval claimed."
+}

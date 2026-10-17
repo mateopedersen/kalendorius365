@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "reviewed_monthly_layouts": 72,
+  "reviewed_annual_layouts": 1,
+  "evidence": "12 six-layout contact sheets, full annual preview, and four large annual row crops covering all twelve rows",
+  "reviewer": "AI visual review; no human or physical print proof claimed",
+  "all_73_full_page_webp_hashes_unchanged_after_pdf_language_and_font_resource_cleanup": true,
+  "review_focus": [
+    "Lithuanian labels and diacritics",
+    "weekday and date positions",
+    "phase direction and continuous progression",
+    "legends and event rails",
+    "month/year headings",
+    "margins, clipping and collisions",
+    "2028 leap day and six-row months",
+    "all 365 annual dates"
+  ],
+  "browser_review": {
+    "pages": 41,
+    "layout_passes": 2,
+    "full_route_widths": [
+      360,
+      390,
+      1440
+    ],
+    "additional_representative_widths": [
+      430,
+      768,
+      1280,
+      1920
+    ],
+    "screenshots": "Raw browser captures retained outside the release repository; rapid automated captures can contain transient browser compositor artifacts. Direct stable page captures and DOM geometry were used to resolve these, without changing correct page layout.",
+    "not_claimed": [
+      "Physical device testing",
+      "Physical print proof",
+      "Human language editor",
+      "Browser UI zoom at 200%; root text resize at 200% was tested"
+    ]
+  }
+}

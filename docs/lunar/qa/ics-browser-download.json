@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "method": "Actual browser download parsed independently by icalendar 7.3.0",
+  "events": [
+    {
+      "summary": "Priešpilnis",
+      "start": "2028-02-03T19:10:00+00:00",
+      "uid": "menulis-first-20280203T191000Z@kalendorius365.lt"
+    },
+    {
+      "summary": "Pilnatis",
+      "start": "2028-02-10T15:04:00+00:00",
+      "uid": "menulis-full-20280210T150400Z@kalendorius365.lt"
+    },
+    {
+      "summary": "Delčia",
+      "start": "2028-02-17T08:08:00+00:00",
+      "uid": "menulis-last-20280217T080800Z@kalendorius365.lt"
+    },
+    {
+      "summary": "Jaunatis",
+      "start": "2028-02-25T10:37:00+00:00",
+      "uid": "menulis-new-20280225T103700Z@kalendorius365.lt"
+    }
+  ]
+}
