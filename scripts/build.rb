@@ -12,6 +12,7 @@ ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
  release_manifest=nil
+ release=false
  Dir.mktmpdir('kalendorius-previous-releases') do |release_backup|
   AssetRelease.stash_previous_releases(File.join(ROOT,'public'),release_backup,previous_revisions)
  # A release request is insufficient on a Cloudflare feature branch. Keep
