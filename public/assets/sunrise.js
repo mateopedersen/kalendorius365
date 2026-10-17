@@ -1,5 +1,5 @@
-import { solarFor, solarPositionAt } from "./phase-5-6-8-core.js?v=237ff9217798";
-import { today, TZ } from "./calendar.js?v=237ff9217798";
+import { solarFor, solarPositionAt } from "./phase-5-6-8-core.js?v=e96a0ebcd787";
+import { today, TZ } from "./calendar.js?v=e96a0ebcd787";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;

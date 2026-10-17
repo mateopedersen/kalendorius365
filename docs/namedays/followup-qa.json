@@ -1,0 +1,28 @@
+{
+  "review_date": "2026-10-17",
+  "baseline": "89ac3f6baff872c704c45bf28538c7fb2185d5ef",
+  "confirmed_live_defects": [
+    "Search/date inputs 41.69/43.69px versus selects 50px",
+    "Calendar day selection jumped about 8,000px down the static list",
+    "Monthly grid stayed on the page month when the selected date moved to another month",
+    "Personal calendar link opened today instead of the selected day"
+  ],
+  "fixes": [
+    "Scoped consistent 52px controls; minimum 16px input text",
+    "Keep selection near the form; stable date links and focus",
+    "Grid title and month follow the actual selected date",
+    "Validated date-only personal-calendar link, compatible with existing holiday composition",
+    "Clear filters action; aligned month navigation; keep arrows with text",
+    "Block export/add when the date is blank; keep February 29 on leap years"
+  ],
+  "prepublication_local_390": {
+    "pages": 13,
+    "full_search_date_add_duplicate_home_cleanup_flows": 13
+  },
+  "prepublication_local_360": {
+    "pages": 13,
+    "automated_axe_violations": 0,
+    "horizontal_overflows": 0
+  },
+  "publication": "Production follow-up verification is recorded after merge in the PR and external QA report; this file does not preclaim it."
+}

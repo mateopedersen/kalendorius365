@@ -6,10 +6,15 @@ import {fileURLToPath} from 'node:url';
 import {ALPHABET,buildIndex,searchNames,validOccurrence,nextOccurrence,nameDayEvent,vilniusToday,weekDates} from '../site/assets/namedays-engine.js';
 import {exportICS,importICS} from '../site/assets/ics.js';
 import {Store,empty,validate} from '../site/assets/storage.js';
-import {occursOn,weekday,monthLength} from '../site/assets/calendar.js';
+import {occursOn,weekday,monthLength,dateFromSearch} from '../site/assets/calendar.js';
 import {searchPages} from '../site/assets/search-engine.js';
 const data=JSON.parse(fs.readFileSync(new URL('../data/namedays/cc-by-sa-4.0/snapshot.json',import.meta.url)));
 const records=data.records,index=buildIndex(records);
+test('personal-calendar date links preserve the chosen day and leave holiday composition untouched',()=>{
+ for(const row of records)assert.equal(dateFromSearch(`?data=2028-${row.date}`),`2028-${row.date}`);
+ for(const date of ['1900-01-01','2027-12-31','2028-02-29','2100-12-31'])assert.equal(dateFromSearch(`?data=${date}&utm_source=vardadieniai`),date);
+ for(const query of ['', '?data=', '?data=2027-02-29', '?data=1899-12-31', '?data=2101-01-01', '?data=2028-13-01','?data=2028-01-99','?data=%3Cscript%3E','?data=2028-1-1','?prideti=velykos&data=2028-04-16'])assert.equal(dateFromSearch(query),null);
+});
 test('the preserved global search discovers the hub and all twelve specific month directories',()=>{
  const pages=JSON.parse(fs.readFileSync(new URL('../site/assets/data/search.json',import.meta.url)));
  assert.equal(pages.filter(r=>r.url.startsWith('/vardadieniai/')).length,13);
