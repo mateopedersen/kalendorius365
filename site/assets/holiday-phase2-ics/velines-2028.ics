@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:velines-2028-11-02@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20281102
+DTEND;VALUE=DATE:20281103
+SUMMARY:Mirusiųjų atminimo (Vėlinių) diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama · atminties diena. Vė
+ linės – lapkričio 2 d. minima Mirusiųjų atminimo diena\; ji atskira 
+ nuo lapkričio 1-osios Visų Šventųjų dienos.
+URL:https://kalendorius365.lt/sventes/velines/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:naujuju-metu-diena-2029-01-01@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20290101
+DTEND;VALUE=DATE:20290102
+SUMMARY:Naujųjų metų diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama. Sausio 1-oji žymi nau
+ jų kalendorinių metų pradžią pagal šiandien Lietuvoje naudojamą Gri
+ galiaus kalendorių.
+URL:https://kalendorius365.lt/sventes/naujuju-metu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

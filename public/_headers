@@ -21,6 +21,10 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/holiday-editorial.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/holiday-phase2.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/holiday-phase2.js
+  Cache-Control: public, max-age=31536000, immutable
 /assets/horoscope.css
   Cache-Control: public, max-age=31536000, immutable
 /assets/icons.js

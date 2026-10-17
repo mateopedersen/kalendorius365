@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:valstybes-diena-2027-07-06@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20270706
+DTEND;VALUE=DATE:20270707
+SUMMARY:Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos 
+ giesmės diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama. Liepos 6-oji – Valst
+ ybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės die
+ na.
+URL:https://kalendorius365.lt/sventes/valstybes-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

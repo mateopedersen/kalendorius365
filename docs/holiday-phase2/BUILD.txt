@@ -1,0 +1,14 @@
+Generated 36 month pages, 3 existing year hubs, lunar root and phase reference (41 pages).
+Rendered 12 holiday guides, enhanced 2 existing hubs, wrote 12 ICS calendars.
+Phase 2: 31 detail guides, 93 ICS calendars; links added to 4 hubs and monthly guides
+Configuration file: /private/tmp/kalendorius365-live-audit/site/_config.yml
+            Source: /private/tmp/kalendorius365-live-audit/site
+       Destination: /private/tmp/kalendorius365-live-audit/public
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 1.91 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+Lunar release gate: all 146 downloads match both preflight passes; all 832 original assets unchanged.
+Lunar HTML language and semantic checks passed for all 41 pages.
+{"status": "passed", "pages": 12, "preserved_assets": 3152, "failures": []}
+Built 166 canonical HTML pages; 3703 static files; release=true

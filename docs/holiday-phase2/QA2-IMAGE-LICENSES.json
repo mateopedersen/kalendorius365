@@ -1,0 +1,597 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-17",
+  "method": "Fresh independent Commons API request; original binary SHA1 and source/license metadata compared; per-file wikitext dispute flags checked",
+  "images": [
+    {
+      "id": "new-year",
+      "title": "File:New Year in Vilnius '09.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:New_Year_in_Vilnius_%2709.jpg",
+      "license": "CC BY 2.0",
+      "commons_current_revision": 894630383,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "feb16",
+      "title": "File:Manuscript of the Resolution of the Council of Lithuania on Reinstating Independence of Lithuania in the Lithuanian language, which was adopted on 16 February 1918 in Vilnius.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Manuscript_of_the_Resolution_of_the_Council_of_Lithuania_on_Reinstating_Independence_of_Lithuania_in_the_Lithuanian_language,_which_was_adopted_on_16_February_1918_in_Vilnius.jpg",
+      "license": "CC BY-SA 4.0",
+      "commons_current_revision": 1149992715,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "mar11",
+      "title": "File:Act of Restoration of Independence of Lithuania 1990-03-11.png",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Act_of_Restoration_of_Independence_of_Lithuania_1990-03-11.png",
+      "license": "Public domain",
+      "commons_current_revision": 880428760,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "easter",
+      "title": "File:Marguciai2. 2007-04-21.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Marguciai2._2007-04-21.jpg",
+      "license": "CC BY-SA 3.0",
+      "commons_current_revision": 1256070081,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "labour",
+      "title": "File:May Day demonstration in Šiauliai, 1946.jpeg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:May_Day_demonstration_in_%C5%A0iauliai,_1946.jpeg",
+      "license": "CC BY 4.0",
+      "commons_current_revision": 1278200797,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "mothers",
+      "title": "File:Mother's Day Flowers, by Melody (8728386163).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mother%27s_Day_Flowers,_by_Melody_(8728386163).jpg",
+      "license": "CC BY 2.0",
+      "commons_current_revision": 1191009481,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "fathers",
+      "title": "File:Fathers day father with kid on lake.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fathers_day_father_with_kid_on_lake.jpg",
+      "license": "Public domain",
+      "commons_current_revision": 942940942,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "jonines",
+      "title": "File:Midsummer in Nida 08.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Midsummer_in_Nida_08.jpg",
+      "license": "CC BY 4.0",
+      "commons_current_revision": 1261058998,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "statehood",
+      "title": "File:Gediminas Avenue in Vilnius, decorated for the upcoming commemoration of the Statehood Day (6 July 2023), related with the crowning of Mindaugas as the King of Lithuania in 1253.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gediminas_Avenue_in_Vilnius,_decorated_for_the_upcoming_commemoration_of_the_Statehood_Day_(6_July_2023),_related_with_the_crowning_of_Mindaugas_as_the_King_of_Lithuania_in_1253.jpg",
+      "license": "CC BY-SA 4.0",
+      "commons_current_revision": 1100741223,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "assumption",
+      "title": "File:Pivašiūnai, bažnyčia.JPG",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Piva%C5%A1i%C5%ABnai,_ba%C5%BEny%C4%8Dia.JPG",
+      "license": "CC BY-SA 3.0",
+      "commons_current_revision": 1232200142,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "all-saints",
+      "title": "File:Velines, 2006-11-01.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Velines,_2006-11-01.jpg",
+      "license": "CC BY-SA 3.0",
+      "commons_current_revision": 1256079449,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "all-souls",
+      "title": "File:Velines.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Velines.jpg",
+      "license": "Public domain",
+      "commons_current_revision": 1173192049,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "kucios",
+      "title": "File:Kūčios.JPG",
+      "source_url": "https://commons.wikimedia.org/wiki/File:K%C5%AB%C4%8Dios.JPG",
+      "license": "Public domain",
+      "commons_current_revision": 1281775998,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "christmas",
+      "title": "File:Lithuanian style Christmas tree and sodas.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lithuanian_style_Christmas_tree_and_sodas.jpg",
+      "license": "CC BY-SA 4.0",
+      "commons_current_revision": 1200628584,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "lithuanian-flag-day",
+      "title": "File:Lithuanian flag flying over the Gediminas tower.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+      "license": "CC0",
+      "commons_current_revision": 1205968218,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "freedom-defenders",
+      "title": "File:Unarmed Lithuanian citizen standing against Soviet tank, Vilnius, January 13, 1991.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Unarmed_Lithuanian_citizen_standing_against_Soviet_tank,_Vilnius,_January_13,_1991.jpg",
+      "license": "CC BY 4.0",
+      "commons_current_revision": 1271893101,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "boso-diena",
+      "title": "File:TSAE ETSD Lithuania (8711938).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:TSAE_ETSD_Lithuania_(8711938).jpg",
+      "license": "Public domain",
+      "commons_current_revision": 1115813357,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "kliento-diena",
+      "title": "File:Purchasing bread in a Lithuanian bakery.8d19617v.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg",
+      "license": "Public domain",
+      "commons_current_revision": 1010449905,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "tarptautine-moters-diena",
+      "title": "File:Sofija Smetonienė, Elena Gimbutienė.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sofija_Smetonien%C4%97,_Elena_Gimbutien%C4%97.jpg",
+      "license": "CC0",
+      "commons_current_revision": 1258030660,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "sv-kazimiero-diena",
+      "title": "File:Verbos Kaziuko mugeje.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Verbos_Kaziuko_mugeje.jpg",
+      "license": "CC BY 2.0",
+      "commons_current_revision": 1213619308,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "lietuvos-vardo-diena",
+      "title": "File:Quedlinburger Annalen, 31v (detail).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Quedlinburger_Annalen,_31v_(detail).jpg",
+      "license": "Public domain",
+      "commons_current_revision": 1040560131,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "knygnesio-diena",
+      "title": "File:Bielinis 1901 testamentas Lietuvos tautai.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bielinis_1901_testamentas_Lietuvos_tautai.jpg",
+      "license": "Public domain",
+      "commons_current_revision": 1086439930,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "gedulo-ir-vilties-diena",
+      "title": "File:Tremtinių dienos minėjimas Panevėžio geležinkelio stotyje.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tremtini%C5%B3_dienos_min%C4%97jimas_Panev%C4%97%C5%BEio_gele%C5%BEinkelio_stotyje.jpg",
+      "license": "CC BY-SA 3.0",
+      "commons_current_revision": 1235099013,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "vaiko-diena",
+      "title": "File:Happy children from the second edition of the Rock March (Vilnius, Lithuania, 1988).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Happy_children_from_the_second_edition_of_the_Rock_March_(Vilnius,_Lithuania,_1988).jpg",
+      "license": "CC BY 4.0",
+      "commons_current_revision": 1259483462,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "baltijos-kelio-diena",
+      "title": "File:Baltic Way (Molėtai Region, Lithuania).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Baltic_Way_(Mol%C4%97tai_Region,_Lithuania).jpg",
+      "license": "CC BY 4.0",
+      "commons_current_revision": 1099933091,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "mokslo-ir-ziniu-diena",
+      "title": "File:School performance in Kukutėliai.jpeg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:School_performance_in_Kukut%C4%97liai.jpeg",
+      "license": "CC0",
+      "commons_current_revision": 1108414290,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "tarptautine-mokytoju-diena",
+      "title": "File:Staff of five-year Lithuanian school in Vilnius.jpeg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Staff_of_five-year_Lithuanian_school_in_Vilnius.jpeg",
+      "license": "CC0",
+      "commons_current_revision": 843774182,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "konstitucijos-diena",
+      "title": "File:Constitution of Lithuania (cover).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Constitution_of_Lithuania_(cover).jpg",
+      "license": "CC BY-SA 4.0",
+      "commons_current_revision": 867660339,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "lietuvos-kariuomenes-diena",
+      "title": "File:Antanas Smetona visiting the War School of Kaunas.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Antanas_Smetona_visiting_the_War_School_of_Kaunas.jpg",
+      "license": "CC0",
+      "commons_current_revision": 884820323,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "vilniaus-gimtadienis",
+      "title": "File:Transcript of Gediminas' letter, which is the oldest known mentioning of Vilnius in written sources (25 January 1323).jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Transcript_of_Gediminas%27_letter,_which_is_the_oldest_known_mentioning_of_Vilnius_in_written_sources_(25_January_1323).jpg",
+      "license": "Public domain",
+      "commons_current_revision": 1275555556,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    },
+    {
+      "id": "uzgavenes",
+      "title": "File:Folklorefestival Rumsiskis Lithuania 005.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Folklorefestival_Rumsiskis_Lithuania_005.jpg",
+      "license": "CC BY-SA 4.0",
+      "commons_current_revision": 1255829228,
+      "checks": {
+        "Artist": true,
+        "LicenseShortName": true,
+        "LicenseUrl": true,
+        "Restrictions": true,
+        "media_sha1_unchanged": true,
+        "dimensions_unchanged": true,
+        "downloaded_original_sha1_matches": true,
+        "no_copyright_dispute_template": true
+      },
+      "restrictions": "",
+      "status": "passed"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lietuvos-vardo-diena-2029-03-09@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20290309
+DTEND;VALUE=DATE:20290310
+SUMMARY:Lietuvos vardo diena
+DESCRIPTION:Atmintina diena · įstatymas. Kovo 9-ąją minima Lietuvos var
+ do diena\, susijusi su 1009 metų Kvedlinburgo analų įrašu.
+URL:https://kalendorius365.lt/sventes/lietuvos-vardo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

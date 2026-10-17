@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:vasario-16-oji-2028-02-16@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20280216
+DTEND;VALUE=DATE:20280217
+SUMMARY:Lietuvos valstybės atkūrimo diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama. Vasario 16-ąją minim
+ a Lietuvos valstybės atkūrimo diena ir 1918 m. Lietuvos Tarybos paskelbt
+ as nepriklausomos valstybės atkūrimo aktas.
+URL:https://kalendorius365.lt/sventes/vasario-16-oji/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

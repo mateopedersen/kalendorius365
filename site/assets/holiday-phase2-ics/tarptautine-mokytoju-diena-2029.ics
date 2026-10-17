@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:tarptautine-mokytoju-diena-2029-10-05@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20291005
+DTEND;VALUE=DATE:20291006
+SUMMARY:Tarptautinė mokytojų diena
+DESCRIPTION:Atmintina diena · įstatymas. Spalio 5-oji skirta mokytojų da
+ rbui ir švietimo reikšmei. Lietuvoje tai atmintina\, o ne šventinė ned
+ arbo diena.
+URL:https://kalendorius365.lt/sventes/tarptautine-mokytoju-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

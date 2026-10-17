@@ -1,0 +1,67 @@
+{
+  "findings": [
+    {
+      "activeYear": "2027",
+      "articleBounds": {
+        "left": 20,
+        "right": 748
+      },
+      "clipped": [
+        {
+          "class": "hd-fact-label",
+          "scroll": 163,
+          "tag": "SPAN",
+          "text": "Patikrinta",
+          "w": 104
+        }
+      ],
+      "font": "Lato, sans-serif",
+      "h1": "Naujųjų metų diena",
+      "imageLoaded": true,
+      "imageSource": "http://127.0.0.1:8821/assets/visuals/holiday-new-year-vilnius-640.webp",
+      "photoAlt": "Naujųjų metų naktis Vilniuje, 2009 m. sausio 1 d. Fotografuota Katedros aikštėje.",
+      "rootFont": "32px",
+      "scrollWidth": 808,
+      "visiblePanels": [
+        "2027"
+      ],
+      "width": 768,
+      "route": "/sventes/naujuju-metu-diena/",
+      "requestedWidth": 768,
+      "textScale": 2,
+      "round": 1
+    },
+    {
+      "activeYear": "2027",
+      "articleBounds": {
+        "left": 20,
+        "right": 748
+      },
+      "clipped": [
+        {
+          "class": "hd-fact-label",
+          "scroll": 163,
+          "tag": "SPAN",
+          "text": "Patikrinta",
+          "w": 104
+        }
+      ],
+      "font": "Lato, sans-serif",
+      "h1": "Lietuvos valstybės atkūrimo diena",
+      "imageLoaded": true,
+      "imageSource": "http://127.0.0.1:8821/assets/visuals/holiday-feb16-resolution-640.webp",
+      "photoAlt": "Lietuvos Tarybos 1918 m. vasario 16 d. nutarimo rankraščio puslapis su signatarų parašais.",
+      "rootFont": "32px",
+      "scrollWidth": 808,
+      "visiblePanels": [
+        "2027"
+      ],
+      "width": 768,
+      "route": "/sventes/vasario-16-oji/",
+      "requestedWidth": 768,
+      "textScale": 2,
+      "round": 1
+    }
+  ],
+  "fix": "Responsive fact grid and scoped tablet navigation reflow for enlarged text."
+}

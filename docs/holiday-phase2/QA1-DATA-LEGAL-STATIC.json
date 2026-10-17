@@ -1,0 +1,773 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-17",
+  "method": "independent Python dates, parser, rendered HTML, source/download hashes; no renderer imported",
+  "canonical_count": 166,
+  "pages": [
+    {
+      "route": "/sventes/naujuju-metu-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-01-01"
+        ],
+        "2028": [
+          "2028-01-01"
+        ],
+        "2029": [
+          "2029-01-01"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-new-year-vilnius-1200.webp",
+      "photo_bytes": 59242,
+      "license": "CC BY 2.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "e-tar-versions",
+        "memoriam-law",
+        "flag-law"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/vasario-16-oji/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-02-16"
+        ],
+        "2028": [
+          "2028-02-16"
+        ],
+        "2029": [
+          "2029-02-16"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-feb16-resolution-1200.webp",
+      "photo_bytes": 174404,
+      "license": "CC BY-SA 4.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "feb16"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/kovo-11-oji/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-03-11"
+        ],
+        "2028": [
+          "2028-03-11"
+        ],
+        "2029": [
+          "2029-03-11"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-march11-restoration-act-800.webp",
+      "photo_bytes": 181082,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "mar11"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/velykos/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-03-28",
+          "2027-03-29"
+        ],
+        "2028": [
+          "2028-04-16",
+          "2028-04-17"
+        ],
+        "2029": [
+          "2029-04-01",
+          "2029-04-02"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-easter-marguciai-1200.webp",
+      "photo_bytes": 218098,
+      "license": "CC BY-SA 3.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "easter-culture"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/tarptautine-darbo-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-05-01"
+        ],
+        "2028": [
+          "2028-05-01"
+        ],
+        "2029": [
+          "2029-05-01"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-mayday-siauliai-1200.webp",
+      "photo_bytes": 90832,
+      "license": "CC BY 4.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "memoriam-law",
+        "labour-history"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/motinos-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-05-02"
+        ],
+        "2028": [
+          "2028-05-07"
+        ],
+        "2029": [
+          "2029-05-06"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-mothers-day-flowers-1200.webp",
+      "photo_bytes": 77346,
+      "license": "CC BY 2.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "e-tar-versions",
+        "mothers-day-research"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/tevo-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-06-06"
+        ],
+        "2028": [
+          "2028-06-04"
+        ],
+        "2029": [
+          "2029-06-03"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-fathers-day-lake-1200.webp",
+      "photo_bytes": 201862,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "e-tar-versions",
+        "fathers-day-research"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/jonines/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-06-24"
+        ],
+        "2028": [
+          "2028-06-24"
+        ],
+        "2029": [
+          "2029-06-24"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-jonines-nida-1200.webp",
+      "photo_bytes": 189182,
+      "license": "CC BY 4.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "jonines-culture"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/valstybes-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-07-06"
+        ],
+        "2028": [
+          "2028-07-06"
+        ],
+        "2029": [
+          "2029-07-06"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-statehood-gediminas-1200.webp",
+      "photo_bytes": 222694,
+      "license": "CC BY-SA 4.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "statehood-culture"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/zoline/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-08-15"
+        ],
+        "2028": [
+          "2028-08-15"
+        ],
+        "2029": [
+          "2029-08-15"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-assumption-pivasiunai-1200.webp",
+      "photo_bytes": 194796,
+      "license": "CC BY-SA 3.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "zoline-culture"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/visu-sventuju-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-11-01"
+        ],
+        "2028": [
+          "2028-11-01"
+        ],
+        "2029": [
+          "2029-11-01"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-all-saints-lithuania-1200.webp",
+      "photo_bytes": 252226,
+      "license": "CC BY-SA 3.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "all-saints-vėlinės"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/velines/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-11-02"
+        ],
+        "2028": [
+          "2028-11-02"
+        ],
+        "2029": [
+          "2029-11-02"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-velines-lithuania-1024.webp",
+      "photo_bytes": 58190,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "all-saints-vėlinės"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/kucios/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-12-24"
+        ],
+        "2028": [
+          "2028-12-24"
+        ],
+        "2029": [
+          "2029-12-24"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-kucios-lithuania-1200.webp",
+      "photo_bytes": 65864,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "kucios-culture"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/kaledos/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-12-25",
+          "2027-12-26"
+        ],
+        "2028": [
+          "2028-12-25",
+          "2028-12-26"
+        ],
+        "2029": [
+          "2029-12-25",
+          "2029-12-26"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/kaledos-1200.webp",
+      "photo_bytes": 281940,
+      "license": "CC BY-SA 4.0",
+      "source_ids": [
+        "labour-code",
+        "labour-code-2027",
+        "labour-code-future",
+        "christmas-culture",
+        "kucios-culture"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/lietuvos-veliavos-diena/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-01-01"
+        ],
+        "2028": [
+          "2028-01-01"
+        ],
+        "2029": [
+          "2029-01-01"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+      "photo_bytes": 54646,
+      "license": "CC0",
+      "source_ids": [
+        "memoriam-law",
+        "labour-code-2027",
+        "labour-code",
+        "labour-code-future",
+        "flag-law"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/sausio-13-oji/",
+      "kind": "upgraded",
+      "dates": {
+        "2027": [
+          "2027-01-13"
+        ],
+        "2028": [
+          "2028-01-13"
+        ],
+        "2029": [
+          "2029-01-13"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-jan13-archive-1200.webp",
+      "photo_bytes": 133880,
+      "license": "CC BY 4.0",
+      "source_ids": [
+        "memoriam-law",
+        "labour-code-2027",
+        "labour-code",
+        "labour-code-future",
+        "jan13-history"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/boso-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-10-16"
+        ],
+        "2028": [
+          "2028-10-16"
+        ],
+        "2029": [
+          "2029-10-16"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/boso-diena-1200.webp",
+      "photo_bytes": 126374,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "boss",
+        "law",
+        "labour-code-2027"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/kliento-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-03-19"
+        ],
+        "2028": [
+          "2028-03-19"
+        ],
+        "2029": [
+          "2029-03-19"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/kliento-diena-1024.webp",
+      "photo_bytes": 68146,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "client",
+        "labour-code-2027"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/tarptautine-moters-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-03-08"
+        ],
+        "2028": [
+          "2028-03-08"
+        ],
+        "2029": [
+          "2029-03-08"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/tarptautine-moters-diena-1200.webp",
+      "photo_bytes": 64664,
+      "license": "CC0",
+      "source_ids": [
+        "law"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/sv-kazimiero-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-03-04"
+        ],
+        "2028": [
+          "2028-03-04"
+        ],
+        "2029": [
+          "2029-03-04"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/sv-kazimiero-verba-1200.webp",
+      "photo_bytes": 279886,
+      "license": "CC BY 2.0",
+      "source_ids": [
+        "casimir",
+        "labour-code-2027"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/lietuvos-vardo-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-03-09"
+        ],
+        "2028": [
+          "2028-03-09"
+        ],
+        "2029": [
+          "2029-03-09"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/lietuvos-vardo-diena-1200.webp",
+      "photo_bytes": 163952,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "law",
+        "name"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/knygnesio-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-03-16"
+        ],
+        "2028": [
+          "2028-03-16"
+        ],
+        "2029": [
+          "2029-03-16"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/knygnesio-diena-900.webp",
+      "photo_bytes": 167038,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "book",
+        "law",
+        "labour-code-2027"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/gedulo-ir-vilties-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-06-14"
+        ],
+        "2028": [
+          "2028-06-14"
+        ],
+        "2029": [
+          "2029-06-14"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/gedulo-ir-vilties-diena-921.webp",
+      "photo_bytes": 71480,
+      "license": "CC BY-SA 3.0",
+      "source_ids": [
+        "law",
+        "deportation"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/vaiko-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-05-21"
+        ],
+        "2028": [
+          "2028-05-19"
+        ],
+        "2029": [
+          "2029-05-18"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/vaiko-diena-1200.webp",
+      "photo_bytes": 223796,
+      "license": "CC BY 4.0",
+      "source_ids": [
+        "law",
+        "child"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/baltijos-kelio-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-08-23"
+        ],
+        "2028": [
+          "2028-08-23"
+        ],
+        "2029": [
+          "2029-08-23"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/baltijos-kelio-diena-1200.webp",
+      "photo_bytes": 228186,
+      "license": "CC BY 4.0",
+      "source_ids": [
+        "law",
+        "baltic"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/mokslo-ir-ziniu-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-09-01"
+        ],
+        "2028": [
+          "2028-09-01"
+        ],
+        "2029": [
+          "2029-09-01"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/mokslo-ir-ziniu-diena-800.webp",
+      "photo_bytes": 80914,
+      "license": "CC0",
+      "source_ids": [
+        "law"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/tarptautine-mokytoju-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-10-05"
+        ],
+        "2028": [
+          "2028-10-05"
+        ],
+        "2029": [
+          "2029-10-05"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/tarptautine-mokytoju-diena-800.webp",
+      "photo_bytes": 73066,
+      "license": "CC0",
+      "source_ids": [
+        "law",
+        "teachers"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/konstitucijos-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-10-25"
+        ],
+        "2028": [
+          "2028-10-25"
+        ],
+        "2029": [
+          "2029-10-25"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/konstitucijos-diena-400.webp",
+      "photo_bytes": 12038,
+      "license": "CC BY-SA 4.0",
+      "source_ids": [
+        "law",
+        "constitution"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/lietuvos-kariuomenes-diena/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-11-23"
+        ],
+        "2028": [
+          "2028-11-23"
+        ],
+        "2029": [
+          "2029-11-23"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/lietuvos-kariuomenes-diena-800.webp",
+      "photo_bytes": 30890,
+      "license": "CC0",
+      "source_ids": [
+        "law",
+        "army"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/vilniaus-gimtadienis/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-01-25"
+        ],
+        "2028": [
+          "2028-01-25"
+        ],
+        "2029": [
+          "2029-01-25"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/vilniaus-gimtadienis-1200.webp",
+      "photo_bytes": 288872,
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "source_ids": [
+        "law",
+        "vilnius"
+      ],
+      "status": "passed"
+    },
+    {
+      "route": "/sventes/uzgavenes/",
+      "kind": "new",
+      "dates": {
+        "2027": [
+          "2027-02-09"
+        ],
+        "2028": [
+          "2028-02-29"
+        ],
+        "2029": [
+          "2029-02-13"
+        ]
+      },
+      "photograph": "/assets/visuals/holiday-phase2/uzgavenes-1200.webp",
+      "photo_bytes": 287182,
+      "license": "CC BY-SA 4.0",
+      "source_ids": [
+        "shrove",
+        "labour-code-2027"
+      ],
+      "status": "passed"
+    }
+  ],
+  "local_targets_checked": 20230,
+  "source_assets_preserved": 2420,
+  "changed_assets": [],
+  "download_files_preserved": 980,
+  "pdf_webp_files_preserved": 978,
+  "failures": []
+}

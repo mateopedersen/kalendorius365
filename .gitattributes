@@ -9,3 +9,7 @@
 
 # Preserve the original whitespace in the official USNO API responses.
 data/lunar/sources/usno-*.json -whitespace
+
+# RFC 5545 calendars must keep CRLF and exact UTF-8 folding across checkouts.
+site/assets/holiday-phase2-ics/*.ics binary
+public/assets/holiday-phase2-ics/*.ics binary

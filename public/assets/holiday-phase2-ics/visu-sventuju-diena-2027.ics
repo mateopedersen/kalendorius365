@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:visu-sventuju-diena-2027-11-01@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Visų Šventųjų diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama · religinė diena. Lap
+ kričio 1-oji – Visų Šventųjų diena. Ji skirta šventiesiems\; lapkr
+ ičio 2-oji yra atskira Mirusiųjų atminimo (Vėlinių) diena.
+URL:https://kalendorius365.lt/sventes/visu-sventuju-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

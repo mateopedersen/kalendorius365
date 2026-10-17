@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:sv-kazimiero-diena-2028-03-04@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20280304
+DTEND;VALUE=DATE:20280305
+SUMMARY:Šv. Kazimiero diena
+DESCRIPTION:Religinė tradicija. Kovo 4-oji – šv. Kazimiero diena. Relig
+ inė data ir Kaziuko mugės renginių datos nėra tas pats.
+URL:https://kalendorius365.lt/sventes/sv-kazimiero-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

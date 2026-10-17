@@ -1,0 +1,22 @@
+[
+  {
+    "id": "teachers",
+    "url": "https://www.europeana.eu/en/item/2024906/photography_ProvidedCHO_Kauno_miesto_muziejus_LIMIS_64018027",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "school",
+    "url": "https://www.europeana.eu/en/item/2024906/photography_ProvidedCHO_Nal_ios_muziejus_LIMIS_6734340",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "women",
+    "url": "https://polona.pl/item/zofia-chodakowska-smetonowa-w-towarzystwie-dzialeczek-spolecznych,MTE2OTg2NTM5/0/",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+  },
+  {
+    "id": "army",
+    "url": "https://www.europeana.eu/portal/en/record/2024906/photography_ProvidedCHO_Zaras__kra_to_muziejus_LIMIS_33494456.html",
+    "error": "HTTP Error 403: Forbidden"
+  }
+]
