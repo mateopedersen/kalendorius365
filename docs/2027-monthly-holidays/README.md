@@ -35,7 +35,7 @@ Artwork: `scripts/monthly_holidays/artwork.py` writes original SVG geometry. For
 
 ## Preservation and rollback
 
-Gate 1 checks 3,152 prior asset/data/workflow/function files byte for byte. The global search JSON intentionally grows to include the twelve new guides. Original calendar rules, lunar data, daily horoscope automation, weather, solar tools and downloads are not changed. Public HTML and JS import query hashes change through the existing fingerprint process. Two holiday hubs gain selectors; other source pages stay unchanged.
+Gate 1 checks 3,152 prior asset/data/workflow/function files against recorded exact hashes. One existing CSV has separate exact hashes for its original macOS CRLF working copy and the canonical Git LF checkout; all 978 PDF/WebP binaries require exact byte equality. The global search JSON intentionally grows to include the twelve new guides. Original calendar rules, lunar data, daily horoscope automation, weather, solar tools and downloads are not changed. Public HTML and JS import query hashes change through the existing fingerprint process. Two holiday hubs gain selectors; other source pages stay unchanged.
 
 `qa/download-preservation.json` contains exact original asset hashes: 978 PDF/WebP downloads and two download manifests. The prior lunar gates also continue to run. Revert the feature merge normally and redeploy baseline if rollback is needed; do not force-push or rewrite unrelated history.
 

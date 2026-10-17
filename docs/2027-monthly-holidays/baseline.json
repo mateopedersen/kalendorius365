@@ -3302,5 +3302,11 @@
     "site/sventes/zoline/index.html": "b45acbfd89d8b3d1998adae5415ec2c873ec996faf9546ef198d59d07a297a9c",
     "site/tuscias-kalendorius/index.html": "35e23c1d835e6b53f1783a2a0ed9e80d66cb3c3d692dfbdb881968f8b381ada8"
   },
-  "rollback": "Revert the forthcoming monthly-guide merge on main and redeploy the previous successful production commit 8891cae18c413ea122da0074601b28e1bd712ca4; do not rewrite Git history."
+  "rollback": "Revert the forthcoming monthly-guide merge on main and redeploy the previous successful production commit 8891cae18c413ea122da0074601b28e1bd712ca4; do not rewrite Git history.",
+  "git_checkout_variants": {
+    "site/downloads/lunar/asset-manifest.csv": {
+      "sha256": "1d484b3dbb30b9a40693d4ae5abb4a68ccb1250588ed3fdc8f6a746b79858eea",
+      "reason": "Existing .gitattributes stores this CSV as text with LF in Git; the saved macOS working copy had CRLF. Both exact hashes are recorded; no PDF/WebP byte variants are accepted."
+    }
+  }
 }

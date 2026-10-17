@@ -102,9 +102,11 @@ def run():
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
   p=ROOT/path
-  if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest()!=sha:changed.append(path)
+  allowed={sha}
+  if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
+  if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
   else:preserved+=1
  check(not changed,'baseline assets changed: '+str(changed[:20]))
- report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'changed_baseline_assets':changed,'failures':failures,'checked_at':'2026-10-17','limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
+ report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':'2026-10-17','limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
  out=ROOT/'docs/2027-monthly-holidays/QA-GATE-1.json';out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'status':report['status'],'pages':len(results),'preserved_assets':preserved,'failures':failures},ensure_ascii=False));assert not failures
 if __name__=='__main__':run()

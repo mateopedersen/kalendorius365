@@ -137,6 +137,12 @@
   ],
   "baseline_assets_preserved": 3152,
   "changed_baseline_assets": [],
+  "git_text_checkout_variants": {
+    "site/downloads/lunar/asset-manifest.csv": {
+      "sha256": "1d484b3dbb30b9a40693d4ae5abb4a68ccb1250588ed3fdc8f6a746b79858eea",
+      "reason": "Existing .gitattributes stores this CSV as text with LF in Git; the saved macOS working copy had CRLF. Both exact hashes are recorded; no PDF/WebP byte variants are accepted."
+    }
+  },
   "failures": [],
   "checked_at": "2026-10-17",
   "limits": [
