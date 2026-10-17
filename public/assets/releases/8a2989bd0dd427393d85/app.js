@@ -21,7 +21,7 @@ const homeIcon = (name, className = "") => {
   return svg;
 };
 const [data, editorial] = await Promise.all([
-  fetch("/assets/releases/cd3a23474f45052856ac/data/calendar.json")
+  fetch("/assets/releases/8a2989bd0dd427393d85/data/calendar.json")
     .then((r) => {
       if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
       return r.json();
@@ -30,7 +30,7 @@ const [data, editorial] = await Promise.all([
       notice(e.message);
       throw e;
     }),
-  fetch("/assets/releases/cd3a23474f45052856ac/data/home-holiday-data.json")
+  fetch("/assets/releases/8a2989bd0dd427393d85/data/home-holiday-data.json")
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);

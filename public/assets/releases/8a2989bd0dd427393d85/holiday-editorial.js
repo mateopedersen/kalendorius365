@@ -31,8 +31,8 @@ async function refresh() {
 
   try {
     const [editorialResponse, calendarResponse] = await Promise.all([
-      fetch("/assets/releases/cd3a23474f45052856ac/data/holiday-editorial.json"),
-      fetch("/assets/releases/cd3a23474f45052856ac/data/calendar.json", { cache: "force-cache" }),
+      fetch("/assets/releases/8a2989bd0dd427393d85/data/holiday-editorial.json"),
+      fetch("/assets/releases/8a2989bd0dd427393d85/data/calendar.json", { cache: "force-cache" }),
     ]);
     if (!editorialResponse.ok || !calendarResponse.ok) return;
     const [editorial, calendarData] = await Promise.all([

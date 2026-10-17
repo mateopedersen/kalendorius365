@@ -8,7 +8,7 @@ export function notice(message) {
 
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-  import("/assets/releases/a37f5af136edcd839497/calendar.js").then(({ today, formatDate }) => {
+  import("/assets/releases/673b7c135b10a817906e/calendar.js").then(({ today, formatDate }) => {
     const refreshUpdateLabels = () => {
       const currentDate = today();
       for (const label of horoscopeUpdates) {
@@ -143,7 +143,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
 
     siteSearchStatus.textContent = "Ieškoma visuose puslapiuose…";
     try {
-      searchEnginePromise ||= import("/assets/releases/a37f5af136edcd839497/search-engine.js");
+      searchEnginePromise ||= import("/assets/releases/673b7c135b10a817906e/search-engine.js");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
       if (request !== searchRequest || normalizeSearchText(siteSearch.value.trim().slice(0, 500)) !== normalizeSearchText(query)) return;
@@ -223,7 +223,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
       toggle?.setAttribute("aria-label", "Atverti meniu");
       document.querySelector("#primary-nav")?.classList.remove("nav-open");
     }
-    if (siteSearch.value.trim()) scheduleSearch();
+    if (siteSearch.value.trim() && siteSearchResults.hidden) scheduleSearch();
   });
 
   siteSearch.addEventListener("keydown", (event) => {
@@ -232,7 +232,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
       setSearchOpen(false);
       return;
     }
-    const options = [...siteSearchResults.querySelectorAll('[role="option"]')];
+    const options = siteSearchResults.hidden ? [] : [...siteSearchResults.querySelectorAll('[role="option"]')];
     if (!options.length) return;
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
       event.preventDefault();

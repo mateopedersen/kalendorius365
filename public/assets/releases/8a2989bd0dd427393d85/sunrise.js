@@ -26,7 +26,7 @@ const html = (tag, content, attrs = {}) => {
   for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
   return node;
 };
-const solarCities = fetch("/assets/releases/5838c74c429cb383b9d2/data/astronomy/cities.json").then((response) => {
+const solarCities = fetch("/assets/releases/8a2989bd0dd427393d85/data/astronomy/cities.json").then((response) => {
   if (!response.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return response.json();
 }).catch(() => ({ cities: [] }));

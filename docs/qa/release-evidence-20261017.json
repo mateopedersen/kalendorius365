@@ -1,11 +1,11 @@
 {
   "baseline_commit": "a35fef0c2def78d88dd328a4765e50de7e2b781f",
   "baseline_deployment": "b80422eb-e3fa-485d-8258-cca3912daf74",
-  "asset_revision": "a37f5af136edcd839497",
+  "asset_revision": "673b7c135b10a817906e",
   "release_mode": true,
   "executed_before_push": {
     "node_tests": {
-      "passed": 273,
+      "passed": 275,
       "failed": 0,
       "skipped": 0
     },
@@ -28,5 +28,9 @@
     "post-deployment actual live verification"
   ],
   "physical_devices_tested": false,
-  "personal_storage_clear_operations": 0
+  "personal_storage_clear_operations": 0,
+  "ci_discovered_and_fixed": [
+    "Retry-button focus scheduled a dropdown rerender before Enter; visible results now survive refocus",
+    "Hidden old dropdown options could be selected during debounce; keyboard handler now ignores hidden results"
+  ]
 }

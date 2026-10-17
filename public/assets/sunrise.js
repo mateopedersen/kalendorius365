@@ -1,5 +1,5 @@
-import { solarFor, solarPositionAt } from "/assets/releases/a37f5af136edcd839497/phase-5-6-8-core.js";
-import { today, TZ } from "/assets/releases/a37f5af136edcd839497/calendar.js";
+import { solarFor, solarPositionAt } from "/assets/releases/673b7c135b10a817906e/phase-5-6-8-core.js";
+import { today, TZ } from "/assets/releases/673b7c135b10a817906e/calendar.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
@@ -26,7 +26,7 @@ const html = (tag, content, attrs = {}) => {
   for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
   return node;
 };
-const solarCities = fetch("/assets/releases/a37f5af136edcd839497/data/astronomy/cities.json").then((response) => {
+const solarCities = fetch("/assets/releases/673b7c135b10a817906e/data/astronomy/cities.json").then((response) => {
   if (!response.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return response.json();
 }).catch(() => ({ cities: [] }));

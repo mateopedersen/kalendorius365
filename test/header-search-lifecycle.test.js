@@ -63,3 +63,16 @@ test('search and the small-screen menu exclude each other and keep ARIA truthful
  h.input.handlers.get('focus')();assert.equal(nav.getAttribute('aria-expanded'),'false');
  await h.run('Kaunas');nav.click();assert.equal(h.results.hidden,true);assert.equal(h.input.getAttribute('aria-expanded'),'false');
 });
+
+test('returning focus from retry controls preserves visible keyboard options',async()=>{
+ let calls=0;const h=setup(async()=>{calls++;return [];});await h.run('Kaunas');
+ h.input.handlers.get('focus')();await h.flush();
+ assert.equal(calls,1,'visible results must not be rerendered between ArrowDown and Enter');
+ assert.equal(h.results.hidden,false);
+});
+
+test('closed dropdown options cannot be selected before refocus finishes loading',async()=>{
+ const h=setup(async()=>[]);await h.run('Kaunas');h.handlers.get('keydown')({key:'Escape'});
+ h.input.handlers.get('focus')();h.input.handlers.get('keydown')({key:'ArrowDown',preventDefault(){}});
+ assert.equal(h.input.getAttribute('aria-activedescendant'),undefined);
+});

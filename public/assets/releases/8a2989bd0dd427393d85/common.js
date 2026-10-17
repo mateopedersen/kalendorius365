@@ -223,7 +223,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
       toggle?.setAttribute("aria-label", "Atverti meniu");
       document.querySelector("#primary-nav")?.classList.remove("nav-open");
     }
-    if (siteSearch.value.trim()) scheduleSearch();
+    if (siteSearch.value.trim() && siteSearchResults.hidden) scheduleSearch();
   });
 
   siteSearch.addEventListener("keydown", (event) => {

@@ -256,7 +256,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
         const [name, dates] = names[0];
         const monthLabels = ["sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio", "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio"];
         const labels = dates.map(date => `${monthLabels[Number(date.slice(0, 2)) - 1]} ${Number(date.slice(3))} d.`);
-        result = { ...doc.item, title: `${name} – vardadienis`, url: `/vardadieniai/?q=${encodeURIComponent(name)}#nd-search-title`, description: `Vardadieniai: ${labels.join(", ")}. Atverkite visas datas ir jų šaltinius.` };
+        result = { ...doc.item, title: `${name} – vardadienis`, url: `/vardadieniai/?q=${encodeURIComponent(name)}#nd-search-title`, description: `Vardadieniai: ${labels.join(", ")} Atverkite visas datas ir jų šaltinius.` };
         score += 100;
       }
     }
