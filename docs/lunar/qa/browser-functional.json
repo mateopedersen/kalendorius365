@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "actual_browser_checks": [
+    "2028-02-29 date input and canvas accessible label",
+    "2028-02-28 ArrowRight selects February 29",
+    "2028-02-25 exact new-moon moment displayed",
+    "December 2027 next-month link reaches January 2028",
+    "both monthly zoom dialogs open and close; Escape restores invoker focus",
+    "search combobox opens real lunar results, ArrowDown sets active descendant, Escape collapses",
+    "actual ICS browser download independently parsed; four correct UTC moments"
+  ],
+  "native_print_note": "Popup dependency removed after the in-app browser rejected window.open. Same-document print preparation tested for both A4 orientations and A3 landscape using a local print-call inspection hook; no physical print or native OS dialog verification claimed.",
+  "accessibility_manual_review": {
+    "search_aria_controls": "Existing site-search-results element is hidden when collapsed and exposed with real results when expanded.",
+    "search_input": "RGB 17,27,46 on white; typed text visible.",
+    "preview_caption": "RGB 37,62,61 on RGBA 255,254,248,0.93; contrast tested against darkest possible image.",
+    "preview_caption_minimum_contrast_ratio": 9.6885583306208
+  }
+}
