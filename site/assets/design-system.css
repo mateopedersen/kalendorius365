@@ -6281,7 +6281,7 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   .site-header .header-search input { font-size: .94rem; }
 }
 
-@media (min-width: 761px) and (max-width: 1760px) {
+@media (min-width: 761px) {
   .site-header {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(160px, clamp(180px, 19vw, 280px)) 44px;
@@ -6367,10 +6367,10 @@ button.primary:hover, a.button.primary:hover, .success:hover {
   }
 }
 
-@media (min-width: 1250px) and (max-width: 1760px) {
-  .site-header #primary-nav { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+@media (min-width: 1101px) and (max-width: 1399px) {
+  .site-header #primary-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
-@media (min-width: 1500px) and (max-width: 1760px) {
+@media (min-width: 1400px) {
   .site-header #primary-nav { grid-template-columns: repeat(7, minmax(0, 1fr)); }
 }
 
@@ -6472,6 +6472,10 @@ button.primary:hover, a.button.primary:hover, .success:hover {
 #primary-nav > a:nth-child(8) { --nav-accent: #bd7620; }
 #primary-nav > a:nth-child(9) { --nav-accent: #3479b0; }
 #primary-nav > a:nth-child(10) { --nav-accent: #07805a; }
+#primary-nav > a:nth-child(11) { --nav-accent: #52637d; }
+#primary-nav > a:nth-child(12) { --nav-accent: #6662ae; }
+#primary-nav > a:nth-child(13) { --nav-accent: #a77828; }
+#primary-nav > a:nth-child(14) { --nav-accent: #287e98; }
 body.homepage-app #primary-nav > a > .icon,
 body.homepage-app #primary-nav > a:hover > .icon,
 body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
@@ -6726,7 +6730,7 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
   background: var(--panel) !important;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 14%, transparent);
 }
-@media (min-width: 761px) and (max-width: 1760px) {
+@media (min-width: 761px) {
   .site-header {
     grid-template-columns: minmax(0, 1fr) minmax(240px, clamp(260px, 23vw, 360px));
   }
@@ -6741,17 +6745,7 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
     flex: 0 1 auto;
   }
 }
-@media (min-width: 1761px) {
-  .site-header { display: flex; flex-wrap: nowrap; }
-  .site-header .brand { flex: 0 0 225px; width: 225px; }
-  .site-header #primary-nav { flex: 1 1 auto; min-width: 0; }
-  .site-header .header-search {
-    flex: 0 1 clamp(260px, 18vw, 340px);
-    width: clamp(260px, 18vw, 340px);
-    min-width: 240px;
-    margin-inline-start: auto;
-  }
-}
+
 @media (max-width: 760px) {
   .site-header .header-search:not(.search-open) {
     flex: 0 0 44px;
@@ -6816,5 +6810,15 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
 .sun-moments button { min-width: 0; padding-inline: .12rem; }
 #sun-scrubber { min-width: 0; max-width: 100%; }
 
-/* Eleven primary destinations retain readable labels at tablet widths. */
-@media(min-width:761px) and (max-width:1050px){.site-header #primary-nav{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* Fourteen destinations: readable tablet cards and two full rows on wide screens. */
+@media(min-width:761px) and (max-width:1100px){.site-header #primary-nav{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Flexible card labels prevent clipping with Lithuanian text and enlarged type. */
+.site-header #primary-nav > a > span { min-width: 0; white-space: normal; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; }
+@media (min-width: 761px) {
+  .site-header #primary-nav { grid-auto-rows: minmax(55px, auto); }
+  .site-header #primary-nav > a { height: auto; min-height: 55px; }
+}
+@media (max-width: 760px) {
+  .site-header #primary-nav { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+}
