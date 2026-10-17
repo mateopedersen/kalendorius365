@@ -1,0 +1,865 @@
+{
+  "profile": "Local shared 1 Mbit/s, 150 ms request latency; no-store; 360 CSS px child viewport; browser instrumentation. Initial whole-body paint shift also occurs on the unchanged baseline; raw observations retained, not certified Core Web Vitals.",
+  "runs": [
+    {
+      "path": "/baseline/sventes/2027/",
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "lcp_ms": 1396,
+      "cls": 1,
+      "width_start": 360,
+      "width_end": 360,
+      "resizes": [],
+      "shifts": [
+        {
+          "t": 1362.5,
+          "value": 1,
+          "sources": [
+            {
+              "tag": "BODY",
+              "class": "",
+              "previous": {
+                "x": 4,
+                "y": 4,
+                "width": 172,
+                "height": 496,
+                "top": 4,
+                "right": 176,
+                "bottom": 500,
+                "left": 4
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 180,
+                "height": 500,
+                "top": 0,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "MAIN",
+              "class": "content-main",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 32,
+                "width": 180,
+                "height": 468,
+                "top": 32,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "INPUT",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 129,
+                "y": 4.75,
+                "width": 22,
+                "height": 22,
+                "top": 4.75,
+                "right": 151,
+                "bottom": 26.75,
+                "left": 129
+              }
+            }
+          ]
+        },
+        {
+          "t": 3184.1999999284744,
+          "value": 0.0010256932291666666,
+          "sources": [
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 311.5703125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 311.5703125,
+                "right": 172.5,
+                "bottom": 341.5078125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 311.5703125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 311.5703125,
+                "right": 172.5,
+                "bottom": 341.5078125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 401.3828125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 401.3828125,
+                "right": 172.5,
+                "bottom": 431.3203125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 401.3828125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 401.3828125,
+                "right": 172.5,
+                "bottom": 431.3203125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 341.5078125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 341.5078125,
+                "right": 172.5,
+                "bottom": 371.4453125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 341.5078125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 341.5078125,
+                "right": 172.5,
+                "bottom": 371.4453125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 281.6328125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 281.6328125,
+                "right": 172.5,
+                "bottom": 311.5703125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 281.6328125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 281.6328125,
+                "right": 172.5,
+                "bottom": 311.5703125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 371.4453125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 371.4453125,
+                "right": 172.5,
+                "bottom": 401.3828125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 371.4453125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 371.4453125,
+                "right": 172.5,
+                "bottom": 401.3828125,
+                "left": 97.0625
+              }
+            }
+          ]
+        },
+        {
+          "t": 3278.899999976158,
+          "value": 0.000014546875,
+          "sources": [
+            {
+              "previous": {
+                "x": 70.6953125,
+                "y": 10.515625,
+                "width": 13.484375,
+                "height": 10.5,
+                "top": 10.515625,
+                "right": 84.1796875,
+                "bottom": 21.015625,
+                "left": 70.6953125
+              },
+              "current": {
+                "x": 67.1328125,
+                "y": 10.015625,
+                "width": 14.0859375,
+                "height": 10.5,
+                "top": 10.015625,
+                "right": 81.21875,
+                "bottom": 20.515625,
+                "left": 67.1328125
+              }
+            }
+          ]
+        },
+        {
+          "t": 3380.600000023842,
+          "value": 0.02451203125,
+          "sources": [
+            {
+              "tag": "DIV",
+              "class": "table-scroll",
+              "previous": {
+                "x": 0,
+                "y": 244.296875,
+                "width": 180,
+                "height": 255.703125,
+                "top": 244.296875,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 268.28125,
+                "width": 180,
+                "height": 231.71875,
+                "top": 268.28125,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ],
+      "load_ms": 3276.5,
+      "transfer_bytes": 387529,
+      "full_resolution_downloads_loaded": [],
+      "resource_count": 19
+    },
+    {
+      "path": "/sventes/2027/",
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "lcp_ms": 1276,
+      "cls": 1.0255522713541665,
+      "width_start": 360,
+      "width_end": 360,
+      "resizes": [],
+      "shifts": [
+        {
+          "t": 1252.8999999761581,
+          "value": 1,
+          "sources": [
+            {
+              "tag": "BODY",
+              "class": "",
+              "previous": {
+                "x": 4,
+                "y": 4,
+                "width": 172,
+                "height": 496,
+                "top": 4,
+                "right": 176,
+                "bottom": 500,
+                "left": 4
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 180,
+                "height": 500,
+                "top": 0,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "MAIN",
+              "class": "content-main",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 32,
+                "width": 180,
+                "height": 468,
+                "top": 32,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "INPUT",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 129,
+                "y": 4.75,
+                "width": 22,
+                "height": 22,
+                "top": 4.75,
+                "right": 151,
+                "bottom": 26.75,
+                "left": 129
+              }
+            }
+          ]
+        },
+        {
+          "t": 1759.2000000476837,
+          "value": 0.000014546875,
+          "sources": [
+            {
+              "previous": {
+                "x": 70.6953125,
+                "y": 10.515625,
+                "width": 13.484375,
+                "height": 10.5,
+                "top": 10.515625,
+                "right": 84.1796875,
+                "bottom": 21.015625,
+                "left": 70.6953125
+              },
+              "current": {
+                "x": 67.1328125,
+                "y": 10.015625,
+                "width": 14.0859375,
+                "height": 10.5,
+                "top": 10.015625,
+                "right": 81.21875,
+                "bottom": 20.515625,
+                "left": 67.1328125
+              }
+            }
+          ]
+        },
+        {
+          "t": 2291.600000023842,
+          "value": 0.0010256932291666666,
+          "sources": [
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 311.5703125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 311.5703125,
+                "right": 172.5,
+                "bottom": 341.5078125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 311.5703125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 311.5703125,
+                "right": 172.5,
+                "bottom": 341.5078125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 401.3828125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 401.3828125,
+                "right": 172.5,
+                "bottom": 431.3203125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 401.3828125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 401.3828125,
+                "right": 172.5,
+                "bottom": 431.3203125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 341.5078125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 341.5078125,
+                "right": 172.5,
+                "bottom": 371.4453125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 341.5078125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 341.5078125,
+                "right": 172.5,
+                "bottom": 371.4453125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 281.6328125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 281.6328125,
+                "right": 172.5,
+                "bottom": 311.5703125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 281.6328125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 281.6328125,
+                "right": 172.5,
+                "bottom": 311.5703125,
+                "left": 97.0625
+              }
+            },
+            {
+              "tag": "TD",
+              "class": "",
+              "previous": {
+                "x": 95.4921875,
+                "y": 371.4453125,
+                "width": 77.0078125,
+                "height": 29.9375,
+                "top": 371.4453125,
+                "right": 172.5,
+                "bottom": 401.3828125,
+                "left": 95.4921875
+              },
+              "current": {
+                "x": 97.0625,
+                "y": 371.4453125,
+                "width": 75.4375,
+                "height": 29.9375,
+                "top": 371.4453125,
+                "right": 172.5,
+                "bottom": 401.3828125,
+                "left": 97.0625
+              }
+            }
+          ]
+        },
+        {
+          "t": 2546.7000000476837,
+          "value": 0.02451203125,
+          "sources": [
+            {
+              "tag": "DIV",
+              "class": "table-scroll",
+              "previous": {
+                "x": 0,
+                "y": 244.296875,
+                "width": 180,
+                "height": 255.703125,
+                "top": 244.296875,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 268.28125,
+                "width": 180,
+                "height": 231.71875,
+                "top": 268.28125,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ],
+      "load_ms": 2383.899999976158,
+      "transfer_bytes": 266029,
+      "full_resolution_downloads_loaded": [],
+      "resource_count": 18
+    },
+    {
+      "path": "/sventes/2027/kovas/",
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "lcp_ms": 1404,
+      "cls": 1.000014546875,
+      "width_start": 360,
+      "width_end": 360,
+      "resizes": [],
+      "shifts": [
+        {
+          "t": 1375.5999999046326,
+          "value": 1,
+          "sources": [
+            {
+              "tag": "BODY",
+              "class": "monthly-holidays-app",
+              "previous": {
+                "x": 4,
+                "y": 4,
+                "width": 176,
+                "height": 496,
+                "top": 4,
+                "right": 180,
+                "bottom": 500,
+                "left": 4
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 180,
+                "height": 500,
+                "top": 0,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "MAIN",
+              "class": "content-main",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 32,
+                "width": 180,
+                "height": 468,
+                "top": 32,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "INPUT",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 129,
+                "y": 4.75,
+                "width": 22,
+                "height": 22,
+                "top": 4.75,
+                "right": 151,
+                "bottom": 26.75,
+                "left": 129
+              }
+            }
+          ]
+        },
+        {
+          "t": 1414.1999999284744,
+          "value": 0.000014546875,
+          "sources": [
+            {
+              "previous": {
+                "x": 70.6953125,
+                "y": 10.515625,
+                "width": 13.484375,
+                "height": 10.5,
+                "top": 10.515625,
+                "right": 84.1796875,
+                "bottom": 21.015625,
+                "left": 70.6953125
+              },
+              "current": {
+                "x": 67.1328125,
+                "y": 10.015625,
+                "width": 14.0859375,
+                "height": 10.5,
+                "top": 10.015625,
+                "right": 81.21875,
+                "bottom": 20.515625,
+                "left": 67.1328125
+              }
+            }
+          ]
+        }
+      ],
+      "load_ms": 2232.7999999523163,
+      "transfer_bytes": 253941,
+      "full_resolution_downloads_loaded": [],
+      "resource_count": 14
+    },
+    {
+      "path": "/sventes/2027/gruodis/",
+      "supported": [
+        "element",
+        "event",
+        "first-input",
+        "interaction-contentful-paint",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "soft-navigation",
+        "visibility-state"
+      ],
+      "lcp_ms": 1412,
+      "cls": 1.000014546875,
+      "width_start": 360,
+      "width_end": 360,
+      "resizes": [],
+      "shifts": [
+        {
+          "t": 1387.2000000476837,
+          "value": 1,
+          "sources": [
+            {
+              "tag": "BODY",
+              "class": "monthly-holidays-app",
+              "previous": {
+                "x": 4,
+                "y": 4,
+                "width": 176,
+                "height": 496,
+                "top": 4,
+                "right": 180,
+                "bottom": 500,
+                "left": 4
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 180,
+                "height": 500,
+                "top": 0,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "MAIN",
+              "class": "content-main",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 32,
+                "width": 180,
+                "height": 468,
+                "top": 32,
+                "right": 180,
+                "bottom": 500,
+                "left": 0
+              }
+            },
+            {
+              "tag": "INPUT",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 129,
+                "y": 4.75,
+                "width": 22,
+                "height": 22,
+                "top": 4.75,
+                "right": 151,
+                "bottom": 26.75,
+                "left": 129
+              }
+            }
+          ]
+        },
+        {
+          "t": 1735.8000000715256,
+          "value": 0.000014546875,
+          "sources": [
+            {
+              "previous": {
+                "x": 70.6953125,
+                "y": 10.515625,
+                "width": 13.484375,
+                "height": 10.5,
+                "top": 10.515625,
+                "right": 84.1796875,
+                "bottom": 21.015625,
+                "left": 70.6953125
+              },
+              "current": {
+                "x": 67.1328125,
+                "y": 10.015625,
+                "width": 14.0859375,
+                "height": 10.5,
+                "top": 10.015625,
+                "right": 81.21875,
+                "bottom": 20.515625,
+                "left": 67.1328125
+              }
+            }
+          ]
+        }
+      ],
+      "load_ms": 2234.2000000476837,
+      "transfer_bytes": 254863,
+      "full_resolution_downloads_loaded": [],
+      "resource_count": 14
+    }
+  ]
+}

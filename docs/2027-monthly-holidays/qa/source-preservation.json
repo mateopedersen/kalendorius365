@@ -1,0 +1,14 @@
+{
+  "baseline": "8891cae18c413ea122da0074601b28e1bd712ca4",
+  "source_html_checked": 143,
+  "changed_source_html": [
+    "site/_layouts/default.html",
+    "site/sventes/2027/index.html",
+    "site/sventes/index.html"
+  ],
+  "expected_changes": [
+    "site/_layouts/default.html",
+    "site/sventes/index.html",
+    "site/sventes/2027/index.html"
+  ]
+}

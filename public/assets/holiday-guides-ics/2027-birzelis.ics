@@ -1,0 +1,98 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2027 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2027 m. birželio datos
+BEGIN:VEVENT
+UID:2027-comm-048@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270603
+DTEND;VALUE=DATE:20270604
+SUMMARY:Sąjūdžio diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos Sąjūdžiui skirtas is
+ torinio atminimo įrašas.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-comm-048
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-environment@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270605
+DTEND;VALUE=DATE:20270606
+SUMMARY:Pasaulinė aplinkos apsaugos diena
+DESCRIPTION:Tarptautinė diena. Jungtinių Tautų kalendoriaus aplinkosaugo
+ s data\; Lietuvoje papildomos nedarbo dienos nesuteikia.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-environment
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-stat-fathers@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270606
+DTEND;VALUE=DATE:20270607
+SUMMARY:Tėvo diena
+DESCRIPTION:Šventinė diena · DK 123 str.. Tėvo diena Lietuvoje minima p
+ irmąjį birželio sekmadienį\, todėl tiksli data kasmet keičiasi.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-stat-fathers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-049@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270611
+DTEND;VALUE=DATE:20270612
+SUMMARY:Lietuvos oreivių diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos oreiviams skirta atmint
+ ina diena.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-comm-049
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-050@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270614
+DTEND;VALUE=DATE:20270615
+SUMMARY:Gedulo ir vilties diena\, Palaimintojo arkivyskupo Teofiliaus Matul
+ ionio diena\, Pasaulinė kraujo donorų diena
+DESCRIPTION:Atmintina diena · įstatymas. Vieną datą dalijasi istorinio 
+ atminimo\, religinio minėjimo ir kraujo donorystės temos.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-comm-050
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-051@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270615
+DTEND;VALUE=DATE:20270616
+SUMMARY:Okupacijos ir genocido diena
+DESCRIPTION:Atmintina diena · įstatymas. Okupacijos ir genocido aukų atm
+ inimui skirta diena.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-comm-051
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-052@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270623
+DTEND;VALUE=DATE:20270624
+SUMMARY:Birželio sukilimo diena\, Tarptautinė valstybės tarnautojų dien
+ a
+DESCRIPTION:Atmintina diena · įstatymas. Tą pačią datą minimas Birže
+ lio sukilimas ir valstybės tarnautojų veikla.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-comm-052
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-stat-jonines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270625
+SUMMARY:Rasos ir Joninių diena
+DESCRIPTION:Šventinė diena · DK 123 str.. Birželio 24-oji yra Rasos ir 
+ Joninių diena: teisėje vartojamas bendras pavadinimas\, o gyvos tradicij
+ os gali vadinti Rasomis\, Kupolinėmis ar Joninėmis.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-stat-jonines
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

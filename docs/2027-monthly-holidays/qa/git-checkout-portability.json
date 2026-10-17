@@ -1,0 +1,5 @@
+{
+  "method": "Run the complete release gate with the exact LF CSV blob from baseline Git, then restore original macOS working bytes. All binary hashes remain mandatory.",
+  "exit_code": 0,
+  "result": "{\"status\": \"passed\", \"pages\": 12, \"preserved_assets\": 3152, \"failures\": []}"
+}

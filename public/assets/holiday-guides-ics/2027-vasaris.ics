@@ -1,0 +1,86 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2027 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2027 m. vasario datos
+BEGIN:VEVENT
+UID:2027-comm-007@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270210
+SUMMARY:Baltijos šalių energetinės nepriklausomybės diena
+DESCRIPTION:Atmintina diena · įstatymas. Baltijos šalių energetinei nep
+ riklausomybei skirtas įstatymo įrašas.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-comm-007
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-uzgavenes@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270210
+SUMMARY:Užgavėnės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Žiemos palydų tradicija\;
+  data skaičiuojama likus 47 dienoms iki vakarietiškųjų Velykų.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-uzgavenes
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-008@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270211
+DTEND;VALUE=DATE:20270212
+SUMMARY:Pasaulinė ligonių diena\, Bausmių vykdymo sistemos pareigūnų d
+ iena
+DESCRIPTION:Atmintina diena · įstatymas. Įstatyme ši diena skirta ligon
+ iams ir bausmių vykdymo sistemos pareigūnams.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-comm-008
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-stat-restoration@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270216
+DTEND;VALUE=DATE:20270217
+SUMMARY:Lietuvos valstybės atkūrimo diena
+DESCRIPTION:Šventinė diena · DK 123 str.. Vasario 16-ąją minima Lietuv
+ os valstybės atkūrimo diena ir 1918 m. Lietuvos Tarybos paskelbtas nepri
+ klausomos valstybės atkūrimo aktas.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-stat-restoration
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-009@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270217
+DTEND;VALUE=DATE:20270218
+SUMMARY:Nacionalinė emancipacijos diena
+DESCRIPTION:Atmintina diena · įstatymas. Emancipacijai ir lygiateisiškum
+ ui skirtas Lietuvos kalendoriaus įrašas.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-comm-009
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-mother-language@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Tarptautinė gimtosios kalbos diena
+DESCRIPTION:Tarptautinė diena. UNESCO kalendorinė data skirta kalbų įva
+ irovei ir daugiakalbystei.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-mother-language
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-010@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Pasaulinė nevyriausybinių organizacijų diena
+DESCRIPTION:Atmintina diena · įstatymas. Nevyriausybinių organizacijų v
+ aidmeniui visuomenėje skirta diena.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-comm-010
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

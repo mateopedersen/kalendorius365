@@ -1,0 +1,122 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2027 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2027 m. lapkričio datos
+BEGIN:VEVENT
+UID:2027-stat-all-saints@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Visų Šventųjų diena
+DESCRIPTION:Šventinė diena · DK 123 str.. Lapkričio 1-oji – Visų Šv
+ entųjų diena. Ji skirta šventiesiems\; lapkričio 2-oji yra atskira Mir
+ usiųjų atminimo (Vėlinių) diena.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-stat-all-saint
+ s
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-stat-all-souls@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271102
+DTEND;VALUE=DATE:20271103
+SUMMARY:Mirusiųjų atminimo (Vėlinių) diena
+DESCRIPTION:Šventinė diena · DK 123 str.. Vėlinės – lapkričio 2 d. 
+ minima Mirusiųjų atminimo diena\; ji atskira nuo lapkričio 1-osios Vis
+ ų Šventųjų dienos.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-stat-all-souls
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-089@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271103
+DTEND;VALUE=DATE:20271104
+SUMMARY:Šv. Huberto\, medžiotojų globėjo\, diena
+DESCRIPTION:Atmintina diena · įstatymas. Šv. Hubertui ir medžiotojams s
+ kirtas įstatymo įrašas.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-089
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-090@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271112
+DTEND;VALUE=DATE:20271113
+SUMMARY:Karjeros specialistų diena
+DESCRIPTION:Atmintina diena · įstatymas. Karjeros specialistų veiklai sk
+ irta diena.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-090
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-091@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271114
+DTEND;VALUE=DATE:20271115
+SUMMARY:Pasaulinė diabeto diena
+DESCRIPTION:Atmintina diena · įstatymas. Diabetui ir visuomenės informav
+ imui apie jį skirta diena.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-091
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-092@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271115
+DTEND;VALUE=DATE:20271116
+SUMMARY:Mecenatystės diena
+DESCRIPTION:Atmintina diena · įstatymas. Mecenatystei ir kultūros rėmim
+ ui skirta atmintina diena.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-092
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-093@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271116
+DTEND;VALUE=DATE:20271117
+SUMMARY:Tarptautinė tolerancijos diena\, Lietuvių polifoninių dainų –
+  sutartinių diena
+DESCRIPTION:Atmintina diena · įstatymas. Šiai dienai įstatymas priskiri
+ a tolerancijos ir lietuvių sutartinių minėjimus.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-093
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-094@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271120
+DTEND;VALUE=DATE:20271121
+SUMMARY:Pasaulinė vaiko teisių diena
+DESCRIPTION:Atmintina diena · įstatymas. Vaiko teisėms skirta atmintina 
+ diena\, atskira nuo gegužės Vaiko dienos.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-094
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-095@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271123
+DTEND;VALUE=DATE:20271124
+SUMMARY:Lietuvos kariuomenės diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos kariuomenei skirta atmi
+ ntina diena.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-095
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-096@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271130
+DTEND;VALUE=DATE:20271201
+SUMMARY:Mažosios Lietuvos prisijungimo prie Didžiosios Lietuvos akto dien
+ a
+DESCRIPTION:Atmintina diena · įstatymas. Mažosios Lietuvos ir Didžiosio
+ s Lietuvos jungimosi aktui skirtas atminimo įrašas.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-096
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

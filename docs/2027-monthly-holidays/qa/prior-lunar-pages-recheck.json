@@ -1,0 +1,253 @@
+{
+  "status": "passed",
+  "pages": 41,
+  "method": "Independent HTML parser: visible Lithuanian text, decimal commas, document language, H1, canonical, OG, all dates, exact requested downloads and local primary moments. Editorial review is recorded separately.",
+  "results": [
+    {
+      "route": "/menulio-kalendorius/",
+      "status": "passed",
+      "days": 0,
+      "html_sha256": "09b03ba6ae4c677e30db8985c1d7b42162d647250f1025f56732b9e8fb9bb8ac"
+    },
+    {
+      "route": "/menulio-fazes/",
+      "status": "passed",
+      "days": 0,
+      "html_sha256": "dce422973a499e4149a6a4963773cac39c7435395826938fffc3c202f48913e6"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/balandis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "962070ec8b6bf8e4be29c8e35782dc192a49ea4e200775cfa5f99fb6be74a9fa"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/birzelis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "a83279204bea899fd815a858c126209f70538accad86fa7a3c2d5670c0b4413b"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/geguze/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "5adf356ce413c7ff868e524fc81ea44905c88bf2166465b998c33f004bc2ff6a"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/gruodis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "0222a7457a385ea3c36e42b35f44bc09da74853905fcf8f0085553a617232fd5"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/",
+      "status": "passed",
+      "days": 0,
+      "html_sha256": "524a82492c46c2e3c935deedabfe4d5daca74e6a6ff2f388292681b3127b334f"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/kovas/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "946d8d0f0015b72a61617521a48aed4f94acf83cb8c030ce5915016d6703e5eb"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/lapkritis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "038f7665ec10bc5e062e6e9dac23c2f51b13c75f302e185fa8293362c2d89407"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/liepa/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "1bb5055387d805d26b742081550197ea64198576cd8e767985d3fd866d30fd41"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/rugpjutis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "4aa6b55201eee04fce31b38958dcc71c4dbfdba3919f6929f39688ed0be677e6"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/rugsejis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "9318ad6f2940533d96c4240488ab119fcffbd39a5d0ed7f2461f6d0c38323233"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "02d62549f50db02d571baf339b27239e4591f10bb24e7906fa3ddecafcd2904c"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/spalis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "56a2b3b6a5bcb5272f0085192b6a4805110b71ded57c3ff866a1e60ade471bec"
+    },
+    {
+      "route": "/menulio-kalendorius/2027/vasaris/",
+      "status": "passed",
+      "days": 28,
+      "html_sha256": "73c03b054e910cd589ba4d9f2b239e7cdf96a4bffce36af937b9f2816c724d6c"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/balandis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "31603e6a24ae742698e16780f1b8991b18f231d6413cf1440670402916e4e7f2"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/birzelis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "e638d3c0fcba497b5078ca528b96a80c4f3f37cfb3d682646d4db13834bfa8be"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/geguze/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "8f5085764a443dc956ae8bd348c0583dac435ddcd29af9da7dd044d9916531d2"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/gruodis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "dff942a8a00c5bdacb1770d0687c6fa3c9260f6b2df13ad168485ee2b531ade7"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/",
+      "status": "passed",
+      "days": 0,
+      "html_sha256": "06a522a0aebaa202c26ae86c870cd1ac4e8951c5669f03a3c4e4e667f10187b7"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/kovas/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "1bd7ca54cb278a9650f21035d1e559d907949e87b116d5f57d2a26e90dbadda3"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/lapkritis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "9ecacc1173b77342b97da918d200aa97cdbcf3cc77646fd407cf255e8b98ffa6"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/liepa/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "bcf948dedaa5416229e8141a5123dbd0028d0db3750d0e7f08c468f244da5233"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/rugpjutis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "c7206d08d14586e99be26eac8aabf321cbda895cc31dcc5edd6d9f8c33cdcc88"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/rugsejis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "39d5594b6a0dadaa1fec42e40af9d3d9f7e69ec4c03e323131eefb40e81b1079"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/sausis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "69a43aa43ddadb524e329ff99e215184837fa60169b60ac4f6c3e806f2dcd2ef"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/spalis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "b82f1d9b5b3d3eb1f85c90e6ba633ddf277ae9b70483badd620cd7c37df620e8"
+    },
+    {
+      "route": "/menulio-kalendorius/2028/vasaris/",
+      "status": "passed",
+      "days": 29,
+      "html_sha256": "794ddaa4648617f799d384f42fb9e4c490c7f5d662ce8b50122cc17aaa65d548"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/balandis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "e876bd8d51bffe59f789e8dd1eb5e0ecc687f04053f147cd6aa84d4ba50ba5e2"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/birzelis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "ceed66a04b24ddddcedc6a39e7ae8637b26b25542b18f5aae6dd987da0e971a3"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/geguze/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "2d17b77761cfe307aa027a1a0357ec38309daee2ff9741f590fd60356cdf8646"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/gruodis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "b24d84e24e97b56e509ed264f6701bd0a2552de2461edd2e4c98f8bfd8680b24"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/",
+      "status": "passed",
+      "days": 0,
+      "html_sha256": "e3b5a2da7f02fe1cc937d929797d4124a5dd1ebd23c2ac7c9212d0efd571e8ae"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/kovas/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "3e8fef082a9d9eefb7c363cfa9a828786c46e0baa765b4b3c051d5a2013779a8"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/lapkritis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "d067a593897ae2acd5256850557749ee1e934ce274b9a79d2b1e820c984404cd"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/liepa/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "f03b05d7574c131ed8fab34e03eb33fe9eb82af895f5ee5fb9136dbc843e4f38"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/rugpjutis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "fc6b4cdcf906add04981f0652d421256342fd65e1cc3e3275c15ab63592ad620"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/rugsejis/",
+      "status": "passed",
+      "days": 30,
+      "html_sha256": "96d5b9874dc7813607ef5e8dd2960a0e91f1bc8dfa3dcf1e41e0c6fa6888f3e6"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/sausis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "b405d6d50afba0da8e8586b944026a81cdd85038ff9970fb512b9d4f9d0ab503"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/spalis/",
+      "status": "passed",
+      "days": 31,
+      "html_sha256": "06ae7aef824450d99a4f59965895cd4de3ab8925aca2eb81190b0195f7bc0d87"
+    },
+    {
+      "route": "/menulio-kalendorius/2029/vasaris/",
+      "status": "passed",
+      "days": 28,
+      "html_sha256": "99a1764489273cb2d9a6185d5ea14530334dc82bda8019320a14db7e2ec3d67a"
+    }
+  ]
+}

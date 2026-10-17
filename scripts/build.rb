@@ -83,9 +83,11 @@ Dir.chdir(ROOT) do
   headers+="/#{path.delete_prefix('public/')}\n  #{one_day}\n"
  end
  headers+="/assets/visuals/*\n  #{one_day}\n/assets/previews/*\n  #{one_day}\n/assets/previews-small/*\n  #{one_day}\n/assets/holiday-ics/*\n  #{one_day}\n/downloads/*\n  #{one_day}\n"
+ headers+="/assets/holiday-guides-ics/*\n  #{one_day}\n"
  headers+="/assets/lunar/days/*\n  #{one_day}\n/assets/lunar/albedo-web.png\n  #{one_day}\n/assets/lunar/albedo.png\n  #{one_day}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{one_day}\n"
  File.write('public/_headers',headers)
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
+ system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release
  puts "Built #{urls.length} canonical HTML pages; #{files.length} static files; release=#{release}"
 end

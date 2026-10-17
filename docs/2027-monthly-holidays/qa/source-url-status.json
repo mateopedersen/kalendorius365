@@ -1,0 +1,168 @@
+[
+  {
+    "id": "law",
+    "url": "https://www.e-tar.lt/portal/lt/legalAct/TAR.D570962773F8/asr",
+    "status": 403,
+    "error": "HTTP Error 403: Forbidden",
+    "browser_review": "Full current consolidated law read in browser; all 101 entries saved in source-evidence/atmintinos-2026-07-04.txt. HTTP client 403 is source WAF, not a broken legal URL.",
+    "content_access_verified": true
+  },
+  {
+    "id": "dk",
+    "url": "https://www.e-tar.lt/portal/lt/legalAct/f6d686707e7011e6b969d7ae07280e89/mWmwpkqsvb",
+    "status": 403,
+    "error": "HTTP Error 403: Forbidden",
+    "browser_review": "Full future 2027 edition read in browser and article 123 compared with current edition; evidence saved. HTTP client 403 is source WAF.",
+    "content_access_verified": true
+  },
+  {
+    "id": "three-kings",
+    "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/trys-karaliai--sausio-6-oji.html",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/trys-karaliai--sausio-6-oji.html",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "spring",
+    "url": "https://www.ekgt.lt/media/Globali-Lietuva/Paskaitos%20apie%20pavasario%20papro%C4%8Dius%20tekstas.pdf",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/media/Globali-Lietuva/Paskaitos%20apie%20pavasario%20papro%C4%8Dius%20tekstas.pdf",
+    "mime": "application/pdf",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "easter",
+    "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velykos.html",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velykos.html",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "atvelykis",
+    "url": "https://ktkc.lt/atvelykis/",
+    "status": 200,
+    "final_url": "https://ktkc.lt/atvelykis/",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "jonines",
+    "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kupoliu-laikas-ir-jonines-rasu-svente.html",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kupoliu-laikas-ir-jonines-rasu-svente.html",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "zoline",
+    "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/zoline--rugpjucio-15-oji.html",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/zoline--rugpjucio-15-oji.html",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "velines",
+    "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "kucios",
+    "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html",
+    "status": 200,
+    "final_url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "book-carriers",
+    "url": "https://www.lrs.lt/sip/portal.show?p_k=1&p_r=40564&p_t=280289",
+    "status": 200,
+    "final_url": "https://www.lrs.lt/sip/portal.show?p_k=1&p_r=40564&p_t=280289",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "mother-language",
+    "url": "https://www.unesco.org/en/days/mother-language",
+    "status": 200,
+    "final_url": "https://www.unesco.org/en/days/mother-language",
+    "mime": "text/html; charset=utf-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "world-book",
+    "url": "https://www.unesco.org/en/days/world-book-and-copyright",
+    "status": 200,
+    "final_url": "https://www.unesco.org/en/days/world-book-and-copyright",
+    "mime": "text/html; charset=utf-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "earth",
+    "url": "https://www.un.org/en/observances/earth-day/background",
+    "status": 504,
+    "error": "HTTP Error 504: Gateway Time-out",
+    "browser_review": "Browser successfully displayed the exact UN background page, including 22 April and the 2009 designation; automated client returned 504 / web parser 403.",
+    "content_access_verified": true
+  },
+  {
+    "id": "environment",
+    "url": "https://www.unesco.org/en/days/environment",
+    "status": 200,
+    "final_url": "https://www.unesco.org/en/days/environment",
+    "mime": "text/html; charset=utf-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "child",
+    "url": "https://vaikoteises.lrv.lt/lt/naujienos/nuo-siu-metu-vaiko-diena-svesime-treciaji-geguzes-penktadieni/",
+    "status": 403,
+    "error": "HTTP Error 403: Forbidden",
+    "browser_review": "Official agency text read with web parser; title and body confirm third May Friday. Client WAF 403.",
+    "content_access_verified": true
+  },
+  {
+    "id": "straw",
+    "url": "https://www.lnkc.lt/go.php/lit/Siaudiniu-sodu-tradicija-itraukta-i-unesco-nematerialaus-kulturos-paveldo-sarasa/140385",
+    "status": 403,
+    "error": "HTTP Error 403: Forbidden",
+    "browser_review": "LNKC primary article read with web parser; describes original geometric straw tradition and UNESCO inscription. Client WAF 403.",
+    "content_access_verified": true
+  },
+  {
+    "id": "eggs",
+    "url": "https://lnm.lt/eksponatai/margutis/",
+    "status": 200,
+    "final_url": "https://lnm.lt/eksponatai/margutis/",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  },
+  {
+    "id": "tower",
+    "url": "https://lnm.lt/muziejai/gedimino-pilies-bokstas/",
+    "status": 200,
+    "final_url": "https://lnm.lt/muziejai/gedimino-pilies-bokstas/",
+    "mime": "text/html; charset=UTF-8",
+    "browser_review": "Primary source content reviewed separately; saved legal evidence where applicable.",
+    "sample_bytes": 4096
+  }
+]
