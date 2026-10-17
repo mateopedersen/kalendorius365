@@ -1,6 +1,6 @@
-import * as cal from "./calendar.js?v=865f81e8689e";
-import { Store, download } from "./storage.js?v=865f81e8689e";
-import { notice } from "./common.js?v=865f81e8689e";
+import * as cal from "./calendar.js?v=4d35e0869c52";
+import { Store, download } from "./storage.js?v=4d35e0869c52";
+import { notice } from "./common.js?v=4d35e0869c52";
 const $ = (s) => document.querySelector(s),
   data = await fetch("/assets/data/calendar.json").then((r) => r.json());
 const escape = (s) =>
@@ -37,7 +37,7 @@ if ($("#design-picker")) {
       previewFormat = $("#preview-format"),
       fullPreviewLink = $("#preview-full");
     if (previewTitle) previewTitle.textContent = name;
-    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Portretas");
+    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Stačias");
     if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
     $("#selected-pdf").href = pdf.href;
     $("#selected-webp").href = webp.href;

@@ -51,7 +51,7 @@ test('ascendant longitude normalizes complete turns without changing sign', () =
 });
 
 test('ascendant local birth time preserves Vilnius clock-change handling', () => {
-  assert.throws(() => localTimeToUtc('2026-03-29', '03:30', 'Europe/Vilnius'), /laikrodis galėjo būti persuktas/);
+  assert.throws(() => localTimeToUtc('2026-03-29', '03:30', 'Europe/Vilnius'), /Dėl laikrodžio persukimo.*tokio laiko nebuvo/);
   const repeated = localTimeToUtc('2026-10-25', '03:30', 'Europe/Vilnius');
   assert.equal(repeated.repeated, true);
   assert.equal(new Date(repeated.instant).toISOString(), '2026-10-25T00:30:00.000Z');

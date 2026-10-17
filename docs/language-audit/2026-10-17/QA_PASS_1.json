@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-10-17T17:11:07.233768+00:00",
+  "baseline_urls": 185,
+  "final_urls": 186,
+  "preserved": 185,
+  "new": 1,
+  "deleted": 0,
+  "redirected_new": 0,
+  "exact_source_language_changes": 387,
+  "source_files_with_language_changes": 26,
+  "main_content_changed_existing_urls": 184,
+  "unique_titles_changed_existing_urls": 20,
+  "unique_descriptions_changed_existing_urls": 120,
+  "independent_content_coverage": 186,
+  "production_qa2_complete": false,
+  "technical_issue_counts": {},
+  "limits": [
+    "AI-assisted two-pass editorial QA; native-human review was not performed.",
+    "Technical eligibility does not prove Google indexing or rankings.",
+    "No Search Console, traffic or backlink account evidence was available; no indexed page was removed.",
+    "External source origin blocks/rate limits remain separately reported; no blocked source is falsely marked reachable.",
+    "Local file status values are not HTTP observations. Final HTTP fields use original/final actual live crawls only."
+  ]
+}

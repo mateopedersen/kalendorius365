@@ -3,12 +3,21 @@ require 'fileutils'
 require 'json'
 require 'digest'
 require 'base64'
+require 'tempfile'
 require_relative '../lib/calendar'
+require_relative '../lib/build_policy'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
+ # A release request is insufficient on a Cloudflare feature branch. Keep
+ # preview HTML and response headers out of search even if its build command
+ # uses the same K365_RELEASE flag as production.
+ release=Kalendorius::BuildPolicy.release?(ENV)
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
- system('bundle','exec','jekyll','build','--source','site','--destination','public',exception:true)
+ Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
+  config.write(JSON.generate({'release'=>release}));config.flush
+  system('bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
+ end
  homepage=File.read('public/index.html')
  css_version=homepage[%r{/assets/style\.css\?v=([^"' >]+)},1]
  script_version=homepage[%r{/assets/common\.js\?v=([^"' >]+)},1]
@@ -33,7 +42,6 @@ Dir.chdir(ROOT) do
  abort 'Cloudflare static asset size limit exceeded' if files.any? { |p|File.size(p)>25*1024*1024 }
  urls=files.select { |p|p.end_with?('/index.html') }.map { |p|'https://kalendorius365.lt/'+p.delete_prefix('public/').delete_suffix('index.html') }
  # Preview remains noindex until the release gate has passed. Sitemap is intentionally empty.
- release=ENV['K365_RELEASE']=='1'
  if release
   manifest_check=JSON.parse(File.read('site/assets/data/manifest.json'))
   digest=Digest::SHA256.hexdigest(%w[scripts/render_prints.py data/calendar.json site/assets/data/years.json site/assets/fonts/Inter-Regular.ttf site/assets/fonts/Inter-Bold.ttf].map { |p|File.binread(p) }.join)
@@ -41,9 +49,6 @@ Dir.chdir(ROOT) do
   %w[docs/sample-preflight.json docs/print-preflight.json].each do |p|
    report=JSON.parse(File.read(p));abort "Missing or stale preflight: #{p}" unless report['status']=='passed' && report['generator']==digest
   end
- end
- if release
-  files.select { |p|p.end_with?('.html') && p!='public/404.html' }.each { |p|s=File.read(p).sub('<meta name="robots" content="noindex, follow">','<meta name="robots" content="index, follow">');File.write(p,s) }
  end
  require 'cgi'
  xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'

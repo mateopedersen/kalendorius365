@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 from datetime import date
 
 SIGN_NAMES = {
@@ -24,128 +23,128 @@ ENGLISH_SIGNS = {
 # not a factual prediction or professional advice.
 SOLAR_HOUSES = {
     1: {
-        "heading": "Dėmesį verta grąžinti prie savo pasirinkimo",
+        "heading": "Pradėk nuo vieno savo pasirinkimo",
         "focus": "asmeninė kryptis ir saviraiška",
-        "overview": "Šios dienos simboliniame skaityme pirmiausia išryškėja tavo laikysena ir tai, kaip pradedi darbus. Tai nėra raginimas viską daryti vienam: veikiau proga aiškiau įvardyti, ko nori ir kokiu tempu gali judėti. Nedidelis, sąmoningas sprendimas dažnai pasako daugiau nei skubus pažadas.",
-        "relationships": "Bendraudamas pasakyk savo poreikį paprastai ir palik kitam žmogui vietos atsakyti. Aiški saviraiška ir pagarbus klausymasis gali puikiai derėti. Jei nuomonės išsiskiria, pirmiausia susitarkite, ką kiekvienas iš tikrųjų nori apsaugoti, o ne skubėkite ieškoti laimėtojo.",
-        "work": "Veikloje išsirink vieną darbą, kuriam reikia tavo iniciatyvos, ir apibrėžk, ką šiandien reiškia jį užbaigti. Pradėk nuo pirmo patikrinamo žingsnio. Taip energija turės aiškią kryptį, o naujos užduotys neužgoš to, ką jau nusprendei padaryti.",
+        "overview": "Šiandienos tema – savarankiškas pasirinkimas. Pagalvok, kurio darbo nori imtis pats, o kurį pradedi vien todėl, kad taip tikisi kiti. Nebūtina visko atlikti vienam. Aiškiai pasakyk, ko sieki ir kokios pagalbos tau reikia, kad galėtum pradėti.",
+        "relationships": "Pasakyk, ko tau reikia, ir išklausyk atsakymą. Jei nuomonės skiriasi, pasiaiškinkite, kas kiekvienam svarbu. Pokalbis bus naudingesnis, jei mėginsite suprasti vienas kitą, užuot ieškoję, kuris teisus. Galite nesutikti ir vis tiek kalbėtis pagarbiai.",
+        "work": "Pasirink vieną darbą, kurį gali pradėti savo iniciatyva. Nuspręsk, kokio rezultato šiandien pakaks, ir pradėk nuo nedidelės užduoties. Prieš imdamasis naujų reikalų pasitikrink, ar užbaigei tai, ką jau buvai suplanavęs.",
         "reflection": "Paklausk savęs, kuris sprendimas iš tiesų tavo, o kurį priimi vien dėl kitų lūkesčių. Simbolinė astrologija nepateikia garantijų; ši tema gali būti tik patogus atspirties taškas ramesniam apsisprendimui.",
         "tip": "Užrašyk vieną šiandienos prioritetą ir jam skirtą pirmą veiksmą.",
     },
     2: {
-        "heading": "Vertę kuria apgalvotas, ne skubotas pasirinkimas",
+        "heading": "Prieš įsipareigodamas įvertink savo laiką",
         "focus": "vertybės, laikas ir turimi ištekliai",
-        "overview": "Simbolinė dienos tema kviečia pastebėti, kam skiri savo laiką, dėmesį ir pastangas. Tai nėra finansinė prognozė ar nurodymas, ką pirkti. Naudingiau pasitikrinti, ar kasdieniai įsipareigojimai dera su tuo, ką laikai svarbiausia, ir ar tavo tempas palieka vietos atsigauti.",
+        "overview": "Šiandien verta peržiūrėti, kam skiri laiką ir pastangas. Prieš sutikdamas padėti ar imtis dar vieno darbo, pasižiūrėk į savo dienotvarkę. Ar joje telpa ir poilsis? Ši tema nesusijusi su finansine prognoze: ji siūlo atidžiau rinktis kasdienius įsipareigojimus.",
         "relationships": "Santykiuose patikimumą dažnai parodo maži, įvykdomi susitarimai. Jei kažko negali pažadėti, pasakyk tai laiku ir pasiūlyk realią alternatyvą. Toks atvirumas sumažina spėliojimą ir leidžia abiem pusėms aiškiau suprasti, kokios pagalbos galima tikėtis.",
         "work": "Prieš imdamasis naujo darbo, įvertink, kiek jis pareikalaus laiko ir kokį jau pradėtą dalyką gali tekti atidėti. Susirašyk būtiniausias priemones ar informaciją, kurios trūksta. Tvarka čia skirta padėti rinktis, o ne sukurti dar vieną ilgą kontrolinį sąrašą.",
-        "reflection": "Kuris tavo įprotis suteikia tikros atramos, o kuris tik užima vietą kalendoriuje? Atsakymo nereikia paversti dideliu pokyčiu: pakanka pastebėti, ką verta išsaugoti, o ką galima supaprastinti.",
+        "reflection": "Kuris įprotis padeda laikytis dienotvarkės, o kuris tik atima laiko? Nereikia iš karto visko keisti. Išsirink vieną pasikartojantį darbą ir pagalvok, ar jį galėtum atlikti paprasčiau.",
         "tip": "Išsirink vieną įsipareigojimą, kurį gali sumažinti arba aiškiau apibrėžti.",
     },
     3: {
-        "heading": "Tikslus klausimas sutaupys ilgą aiškinimąsi",
+        "heading": "Užduok vieną aiškų klausimą",
         "focus": "pokalbiai, informacija ir artima aplinka",
-        "overview": "Dienos simbolika iškelia žinių apykaitą ir mažus susitarimus. Prieš reaguodamas į naują informaciją, patikrink, ką tikrai žinai, o ką tik numanai. Trumpas pokalbis gali padėti susidėlioti mintis, jei jame paliksi vietos patikslinimui ir nesistengsi atsakyti greičiau, nei spėji suprasti klausimą.",
+        "overview": "Šiandienos tema – bendravimas ir informacijos tikrinimas. Prieš atsakydamas į žinutę atskirk tai, ką žinai, nuo to, ką tik numanai. Jei ko nors nesupratai, paprašyk patikslinti. Trumpas pokalbis gali būti naudingesnis už ilgą susirašinėjimą, kuriame kiekvienas kalba apie skirtingus dalykus.",
         "relationships": "Artimam žmogui skirk dėmesį ne vien atsakydamas, bet ir pasitikrindamas, ar teisingai jį supratai. Jei pokalbis jautrus, rinkis aiškius, paprastus žodžius. Vienas konkretus klausimas dažnai atveria daugiau nei ilgas spėjimų sąrašas.",
         "work": "Darbe ar moksluose suskaidyk didesnę užduotį į kelis aiškius veiksmus. Užrašyk, kokios informacijos dar trūksta ir kas gali ją patvirtinti. Taip pokalbiai virsta naudingu darbu, o skirtingos užduotys mažiau konkuruoja dėl tavo dėmesio.",
-        "reflection": "Kokią mintį norėtum perduoti taip, kad kitam nereikėtų jos spėlioti? Prieš siųsdamas žinutę perskaityk ją dar kartą ir pašalink tai, kas užtemdo pagrindinę mintį.",
+        "reflection": "Ką nori pasakyti kitam žmogui? Prieš siųsdamas žinutę perskaityk ją dar kartą. Ar joje aišku, ko klausi arba prašai? Pašalink sakinius, kurie kartoja tą pačią mintį ar nukreipia dėmesį nuo esmės.",
         "tip": "Svarbiausią klausimą suformuluok vienu sakiniu ir užduok tiesiai.",
     },
     4: {
-        "heading": "Ramybė prasideda nuo saugios kasdienės erdvės",
+        "heading": "Pasirūpink vieta, kurioje gali ramiai pabūti",
         "focus": "namų aplinka, artumas ir vidinė atrama",
-        "overview": "Šios dienos simbolinis akcentas siejamas su tuo, kas leidžia jaustis turinčiam pagrindą po kojomis. Tai gali būti namų tvarka, pažįstamas ritualas ar laikas be papildomų reikalavimų. Nebūtina spręsti visko iš karto: pasirink vieną mažą dalyką, kuris aplinką ar dienotvarkę padarytų šiek tiek ramesnę.",
-        "relationships": "Artumo nereikia įrodinėti dideliais gestais. Pasidomėk, kokios pagalbos iš tavęs tikimasi, ir pasakyk, kokią dalį realiai gali prisiimti. Jei tau pačiam reikia tylos ar laiko, įvardyk tai švelniai ir konkrečiai, nelaukdamas, kol kitas žmogus perskaitys tavo nuotaiką.",
+        "overview": "Šiandienos tema – namai ir įprasta dienotvarkė. Pagalvok, kas tavo aplinkoje padeda pailsėti, o kas nuolat erzina ar blaško. Nebūtina sutvarkyti visų namų. Pakanka vieno aiškaus darbo: atlaisvinti stalą, sutvarkyti dokumentus ar susitarti dėl ramaus laiko sau.",
+        "relationships": "Pasidomėk, kokios pagalbos reikia artimam žmogui, ir pasakyk, ką iš tikrųjų gali padaryti. Jei pačiam reikia pabūti vienam, paaiškink tai ramiai. Kitam nereikės spėlioti tavo nuotaikos, o tau bus lengviau išvengti neišsakytų lūkesčių.",
         "work": "Praktiniuose reikaluose pradėk nuo aplinkos, kuri trukdo susikaupti: sutvarkyk vieną paviršių, dokumentą ar atidėtą smulkmeną. Aiški darbo vieta nėra tikslas savaime; ji turi padėti atlikti tai, kas svarbu, ir neužimti visos dienos.",
         "reflection": "Kokia maža rutina tau suteikia pastovumo, o kokia tapo papildoma našta? Galima išlaikyti tai, kas ramina, ir pakeisti vieną įprotį, kuris nebeatitinka dabartinių poreikių.",
         "tip": "Skirk dešimt minučių vienai erdvei ar rutinai, kuri padeda nusiraminti.",
     },
     5: {
-        "heading": "Kūrybiškumui padeda žaidimas be tobulo rezultato",
+        "heading": "Išbandyk idėją nesiekdamas tobulo rezultato",
         "focus": "kūryba, džiaugsmas ir laisva iniciatyva",
-        "overview": "Dienos simbolika primena apie kūrybinę raišką ir tai, kas teikia gyvo susidomėjimo. Tai nereiškia, kad privalai sukurti įspūdingą rezultatą. Leisk sau išbandyti mažą idėją, net jei dar nežinai, kuo ji baigsis. Smalsumas gali būti vertingas ir tada, kai jis lieka paprastu malonumu.",
-        "relationships": "Bendra veikla gali suartinti, kai jos tikslas nėra pasirodyti ar įrodyti savo teisumą. Pasiūlyk tai, kas abiem atrodo malonu, ir pasiteirauk, ar kitas žmogus turi kitą sumanymą. Lengvumas geriausiai veikia tada, kai niekas nejaučia spaudimo linksmintis pagal grafiką.",
+        "overview": "Šiandienos tema – kūryba ir mėgstama veikla. Išbandyk idėją, kuri tau įdomi, net jei dar nežinai, ką su ja darysi toliau. Tai gali būti piešinys, tekstas ar naujas įprasto darbo būdas. Ne kiekvienas bandymas turi virsti dideliu projektu.",
+        "relationships": "Pasiūlyk artimam žmogui veiklą, kuri patiktų jums abiem, ir paklausk, ką jis norėtų nuveikti. Nebūtina visko suplanuoti iš anksto. Bendrai praleistas laikas bus malonesnis, jei abu galėsite laisvai pasakyti, kas jums tinka, o kas ne.",
         "work": "Darbo užduotyje pabandyk vieną naują būdą pateikti idėją, išdėstyti informaciją ar pradėti projektą. Laikyk eksperimentą nedidelį: aiškiai nuspręsk, ką tikrinsi, ir kada įvertinsi rezultatą. Taip kūryba papildo atsakomybę, o ne ją pakeičia.",
         "reflection": "Kokią veiklą rinktumeisi, jei šiandien nereikėtų jos rodyti ar vertinti? Atsakymas gali priminti, kas tave domina dėl pačios patirties, o ne dėl aplodismentų.",
         "tip": "Skirk trumpą laiką vienai kūrybinei idėjai, nevertindamas galutinio rezultato.",
     },
     6: {
-        "heading": "Kasdienybė palengvėja, kai planas turi ribas",
+        "heading": "Dienotvarkėje palik laiko pertraukoms",
         "focus": "dienos tvarka, įpročiai ir užduočių ritmas",
-        "overview": "Simbolinė dienos kryptis susijusi su tuo, kaip išdėstai įprastas užduotis. Geras planas turi ne tik darbų, bet ir pabaigos tašką. Pasirink, kas iš tiesų būtina, ir palik tarpą nenumatytiems reikalams. Tvarka turi sumažinti sprendimų skaičių, o ne reikalauti nuolat ją tobulinti.",
+        "overview": "Šiandienos tema – kasdieniai darbai ir įpročiai. Išsirink svarbiausias užduotis ir nuspręsk, kada darbą baigsi. Palik laiko pietums, pertraukai ir nenumatytiems reikalams. Planas turėtų padėti orientuotis dienoje, o ne tapti dar vienu darbu, kurį nuolat reikia taisyti.",
         "relationships": "Bendruose reikaluose aiškiai pasidalykite kasdienėmis pareigomis. Jei susitarimas nebeveikia, aptarkite, kuri jo dalis per sunki ar neaiški, užuot tyliai prisiėmę dar daugiau. Konkretus prašymas kitam žmogui suteikia daugiau galimybių padėti.",
-        "work": "Užduotis grupuok pagal panašumą ir vienu kartu skirk dėmesį vienai jų rūšiai. Prieš pradėdamas pasitikrink, ko reikia rezultatui, o atlikęs pažymėk darbą užbaigtu. Taip išvengsi ilgo taisymo vien dėl to, kad nebuvo aiškaus pakankamo rezultato kriterijaus.",
+        "work": "Panašias užduotis atlik paeiliui: pavyzdžiui, vienu metu atsakyk į laiškus, kitu – tvarkyk dokumentus. Prieš pradėdamas nuspręsk, kokio rezultato reikia. Baigęs darbą pažymėk jį atliktu, kad nereikėtų vėl prie jo grįžti vien iš įpročio.",
         "reflection": "Kuri darbo dalis iš tiesų svarbi, o kuri kartojasi vien iš inercijos? Galbūt verta pakeisti seką, paprašyti patikslinimo ar atsisakyti vieno perteklinio žingsnio.",
         "tip": "Pasirink tris būtinas užduotis ir vieną sąmoningai palik kitai dienai.",
     },
     7: {
-        "heading": "Geresnis susitarimas prasideda išklausymu",
+        "heading": "Prieš susitardamas išklausyk kitą",
         "focus": "partnerystė, susitarimai ir abipusės ribos",
-        "overview": "Šiandienos simbolinis skaitymas išryškina bendradarbiavimą ir tai, kaip derini savo planus su kitais. Kompromisas nėra automatiškai teisingas vien todėl, kad visi nutilo. Iš pradžių išsiaiškinkite, kas kiekvienai pusei svarbiausia, tada ieškokite konkretaus susitarimo, kurį galima ramiai paaiškinti.",
-        "relationships": "Pokalbyje pabandyk apibendrinti, ką išgirdai, prieš pateikdamas savo atsakymą. Tai nereiškia, kad privalai sutikti. Aiški riba ir nuoširdus noras suprasti kitą gali egzistuoti kartu. Jei tema jautri, susitarkite, kada prie jos grįšite, o ne veržkitės viską užbaigti akimirksniu.",
+        "overview": "Šiandienos tema – bendradarbiavimas. Prieš priimdami bendrą sprendimą išsiaiškinkite, kas kiekvienam svarbiausia. Nesutik vien tam, kad greičiau baigtųsi pokalbis. Geriau paprašyti laiko pagalvoti ir vėliau aiškiai pasakyti, ką gali pasiūlyti. Susitarimas turi būti suprantamas abiem pusėms.",
+        "relationships": "Prieš atsakydamas savais žodžiais apibendrink, ką išgirdai. Paklausk, ar teisingai supratai. Išklausyti nereiškia su viskuo sutikti: gali ramiai pasakyti savo nuomonę ir ribas. Jei tema jautri, susitarkite, kada prie jos grįšite.",
         "work": "Bendrame darbe įvardykite atsakomybę, terminą ir tai, kokio rezultato tikitės vieni iš kitų. Pasitikrink, ar visi supranta susitarimą vienodai. Toks aiškumas padeda išvengti situacijos, kai žmonės sąžiningai stengiasi, bet siekia skirtingų tikslų.",
         "reflection": "Kurioje situacijoje ieškai vien pritarimo, o kur reikia tikro pokalbio? Atskirti šiuos dalykus gali padėti pasirinkti tinkamą klausimą ir tinkamą laiką.",
         "tip": "Prieš atsakydamas į svarbų prašymą, savais žodžiais pakartok jo esmę.",
     },
     8: {
-        "heading": "Pasitikėjimą augina aiškios ribos ir atvirumas",
+        "heading": "Aiškiai aptark bendrą atsakomybę",
         "focus": "pasitikėjimas, bendri įsipareigojimai ir pokyčiai",
-        "overview": "Simbolinis dienos akcentas liečia temas, kurioms reikia daugiau pasitikėjimo ir atidaus pokalbio. Neskubėk atskleisti to, kam dar neradai tinkamų žodžių. Kartu verta atskirti faktus nuo nuogąstavimų ir pasitikrinti, kokie susitarimai jau galioja. Aiškumas gali būti ir švelnus, ir tvirtas.",
+        "overview": "Šiandienos tema – pasitikėjimas ir bendri įsipareigojimai. Jei susitarimas neaiškus, pasitikslink, kas už ką atsako. Atskirti faktus nuo nuogąstavimų padės konkretūs klausimai. Neskubėk atskleisti asmeninių dalykų vien todėl, kad jautiesi spaudžiamas kalbėti; gali pats pasirinkti pokalbio laiką.",
         "relationships": "Jei su artimu žmogumi dalijatės atsakomybe ar jautria tema, iš anksto susitarkite, ką galima aptarti ir kokios ribos svarbios abiem. Nespėliok apie nutylėjimų priežastis. Tiesus klausimas, užduotas be kaltinimo, leidžia pokalbiui tapti saugesniam.",
         "work": "Bendrame projekte peržiūrėk, kas už ką atsako, kokia informacija prieinama ir kada reikia atnaujinti susitarimą. Jei kyla neaiškumas, užrašyk jį ir kreipkis į tinkamą atsakingą žmogų. Nedaryk išvadų apie kitų ketinimus be patikrinamų faktų.",
         "reflection": "Kokį pokytį gali pradėti nepažeisdamas savo galimybių ir kitų žmonių ribų? Kartais geriausia pradžia yra ne drąsus šuolis, o aiškiai įvardytas klausimas.",
-        "tip": "Vieną neaiškų susitarimą paversk konkrečiu klausimu apie atsakomybę ar ribas.",
+        "tip": "Paklausk, kas atliks sutartą darbą ir iki kada jį reikia užbaigti.",
     },
     9: {
-        "heading": "Platesnis požiūris prasideda nuo patikrinto klausimo",
+        "heading": "Prieš darydamas išvadą patikrink šaltinį",
         "focus": "mokymasis, idėjos ir platesnis požiūris",
-        "overview": "Dienos simbolika kviečia praplėsti akiratį, bet neatsisakyti kruopštumo. Nauja idėja gali būti įdomi, net jei dar neaišku, kaip ją pritaikysi. Pasirink patikimą šaltinį, pasižymėk, ko dar nežinai, ir leisk savo nuomonei keistis, kai atsiranda geresnių argumentų.",
-        "relationships": "Pokalbyje skirtingas požiūris gali padėti geriau suprasti kitą, jei nekonkuruojate, kuris teisus. Paklausk, kokia patirtis formuoja kito žmogaus nuomonę. Tada papasakok savo požiūrį kaip vieną perspektyvą, o ne vienintelę galimą tiesą.",
+        "overview": "Šiandienos tema – mokymasis ir naujos idėjos. Pasirink klausimą, į kurį norėtum atsakyti, ir paieškok patikimos informacijos. Palygink bent du paaiškinimus, jei jie vienas kitam prieštarauja. Gali pakeisti nuomonę, kai sužinai daugiau; nebūtina iš karto turėti galutinį atsakymą.",
+        "relationships": "Pokalbyje paklausk, kokia patirtis padėjo kitam žmogui susidaryti nuomonę. Tada paaiškink, kaip tą patį klausimą matai pats. Skirtingi požiūriai neturi virsti ginču dėl to, kuris iš jūsų protingesnis ar geriau išmano temą.",
         "work": "Mokymuisi ar projektui pasirink vieną temą, kuri dabar būtų praktiškai naudinga. Užsibrėžk nedidelį tikslą: perskaityti, palyginti ar išbandyti vieną dalyką. Įsitikink, kad informacijos šaltinis patikimas, prieš paversdamas jos teiginius savo sprendimų pagrindu.",
         "reflection": "Kokią nuomonę laikai savaime suprantama, nors seniai jos netikrinai? Atvirumas naujam įrodymui stiprina, o ne silpnina gebėjimą spręsti.",
         "tip": "Išsirink vieną patikimą šaltinį ir užrašyk vieną naują klausimą.",
     },
     10: {
-        "heading": "Atsakomybė aiškėja įvardijus tikrąjį tikslą",
+        "heading": "Didelį tikslą suskaidyk į aiškius darbus",
         "focus": "atsakomybė, ilgalaikiai tikslai ir matomas darbas",
-        "overview": "Simbolinė dienos tema susijusi su vaidmeniu, kurį prisiimi, ir rezultatu, kurį nori pasiekti. Didelis tikslas tampa lengviau valdomas, kai jį suskaidai į patikrinamus etapus. Nebūtina šiandien padaryti visko: svarbiau suprasti, kuris žingsnis iš tiesų artina prie pasirinktos krypties.",
+        "overview": "Šiandienos tema – atsakomybė ir ilgesnio laikotarpio planai. Išsirink vieną tikslą ir pasižymėk, ką dėl jo gali padaryti artimiausiu metu. Nuspręsk, kaip suprasi, kad šį etapą baigei. Jei reikia kitų žmonių pagalbos, kreipkis į juos prieš prisiimdamas naują terminą.",
         "relationships": "Jei tavo įsipareigojimai veikia ir kitus, iš anksto pasakyk apie laiką, kurio tau reikia, ir ką jie gali planuoti. Patikimumą kuria ne vien sėkmė, bet ir laiku pateikta aiški informacija. Prašymas pasidalyti atsakomybe nėra silpnumas.",
-        "work": "Profesiniame ar asmeniniame projekte atskirk svarbų rezultatą nuo užduočių, kurios tik atrodo užimtos. Vieną etapą apibrėžk taip, kad galėtum patikrinti, ar jis baigtas. Jei trūksta informacijos ar pagalbos, įvardyk tai prieš terminui tampant problema.",
+        "work": "Atskirk užduotis, kurios padeda pasiekti rezultatą, nuo tų, kurios tik užima laiką. Vieną darbo etapą aprašyk taip, kad galėtum aiškiai patikrinti, ar jis baigtas. Jei trūksta informacijos, pasitikslink ją prieš pažadėdamas konkrečią užbaigimo datą.",
         "reflection": "Kokį tikslą sieki dėl savęs, o kokį vien tam, kad jis atrodytų įspūdingai? Atsakymas gali padėti pasirinkti tvaresnį tempą ir aiškesnį kriterijų.",
         "tip": "Užrašyk vieną artimiausią patikrinamą žingsnį savo didesniame plane.",
     },
     11: {
-        "heading": "Bendruomenės idėją verta paversti konkrečiu veiksmu",
+        "heading": "Pasiūlyk vieną bendrą veiklą",
         "focus": "draugystė, bendruomenė ir ateities planai",
-        "overview": "Dienos simbolika atkreipia dėmesį į grupes, bendrus sumanymus ir tai, kokią ateitį kuri kartu su kitais. Idėjų gali būti daug, todėl pasirink tą, kuriai atsirado realių bendraminčių ir aiškus pirmas žingsnis. Bendras tikslas tampa tvirtesnis, kai kiekvienas žino, kaip prisidėti.",
-        "relationships": "Draugystėje verta parodyti dėmesį ne tik reaguojant į didelį įvykį. Parašyk žmogui, su kuriuo seniai norėjai pasikalbėti, arba pasidomėk, ko jam šiuo metu reikia. Grupėje suteik erdvės ir tylesniam balsui, o ne vien greičiausiai išsakytai nuomonei.",
+        "overview": "Šiandienos tema – draugai ir bendri sumanymai. Išsirink vieną idėją, kurią norėtum aptarti su kitais. Paklausk, kas iš tiesų norėtų prisidėti ir kiek laiko galėtų tam skirti. Pradėti bus paprasčiau, jei susitarsite dėl nedidelio darbo, o ne iš karto suplanuosite visą projektą.",
+        "relationships": "Parašyk draugui, su kuriuo seniai norėjai pasikalbėti. Gali tiesiog paklausti, kaip jam sekasi, ir skirti laiko atsakymui. Būdamas grupėje pakviesk pasisakyti ir tuos, kurie paprastai klausosi, tačiau nespausk jų kalbėti, jei jie to nenori.",
         "work": "Komandos veikloje aiškiai apibrėžkite bendrą rezultatą ir dalykus, kuriuos kiekvienas gali nuspręsti savarankiškai. Jei planas platus, pradėkite nuo mažo bandymo. Taip patikrinsite, ar idėja naudinga, ir nesukursite perteklinių įsipareigojimų.",
         "reflection": "Kokioje bendruomenėje nori dalyvauti ne vien kaip stebėtojas? Pagalvok, koks indėlis tau būtų prasmingas ir realus, net jei jis nedidelis.",
         "tip": "Pasiūlyk vieną aiškų bendrą veiksmą, kuriam nereikia didelio pasiruošimo.",
     },
     12: {
-        "heading": "Tylos tarpas padės atskirti svarbą nuo triukšmo",
+        "heading": "Padaryk pauzę ir susidėliok mintis",
         "focus": "poilsis, užbaigimas ir ramesnis apmąstymas",
-        "overview": "Simbolinė dienos kryptis kviečia sulėtinti tempą ir pastebėti tai, kas lieka tarp įprastų reikalų. Tai nėra raginimas vengti atsakomybės ar pasikliauti nuojauta vietoj faktų. Trumpa pauzė gali padėti atskirti tikrai svarbų dalyką nuo informacijos, kuri tik prašo skubaus atsako.",
-        "relationships": "Jei pokalbiui reikia daugiau laiko, pasakyk, kada galėsi prie jo grįžti. Tyla neturėtų būti naudojama kaip spėjimo žaidimas. Aiškus paaiškinimas, kad nori ramiai pagalvoti, dažnai yra pagarbesnis už skubų atsakymą, kurio pats dar nelaikai tiksliu.",
+        "overview": "Šiandienos tema – poilsis ir nebaigti reikalai. Pasirink vieną smulkmeną, kurią gali užbaigti, o tada skirk laiko pertraukai. Jei koks nors klausimas vis grįžta į mintis, užrašyk, kokios informacijos tau trūksta. Ne kiekvieną rūpestį galima išspręsti ilgiau apie jį galvojant.",
+        "relationships": "Jei negali iš karto atsakyti į svarbų klausimą, pasakyk, kad nori pagalvoti, ir pasiūlyk, kada pratęsite pokalbį. Aiškus paaiškinimas padės kitam žmogui suprasti tavo tylą. Nereikia skubėti pažadėti to, dėl ko dar nesi apsisprendęs.",
         "work": "Užbaik vieną atidėtą smulkmeną, kuri nuolat blaško dėmesį, ir iš anksto nustatyk, kada darbą baigsi. Jei užduotis neaiški, užrašyk konkretų klausimą kitam darbo laikui. Taip poilsio tarpas netaps bandymu viską išspręsti vien mintyse.",
         "reflection": "Kokį rūpestį bandai išspręsti vien galvodamas, nors jam reikėtų informacijos ar pokalbio? Atskirti šiuos atvejus gali būti pirmas žingsnis į paprastesnį planą.",
-        "tip": "Padaryk trumpą pertrauką be ekrano ir užrašyk vieną kitą veiksmą.",
+        "tip": "Po pertraukos pasižymėk, nuo ko pradėsi kitą darbą.",
     },
 }
 
 MOON_FOCI = {
-    1: "dėmesį į mažą naują pradžią ir tai, ko šiuo metu nori pats",
-    2: "dėmesį į tai, kas tau suteikia pastovumo, nepriimant skubių įsipareigojimų",
-    3: "dėmesį į pokalbį, klausimą ar informaciją, kurią verta patikrinti",
-    4: "dėmesį į namų ritmą, artumą ir erdvę, kurioje gali susikaupti",
-    5: "dėmesį į kūrybinę mintį ar veiklą, kuri teikia džiaugsmo be spaudimo",
-    6: "dėmesį į vieną įprastą užduotį ir aiškią jos pabaigą",
-    7: "dėmesį į abipusį susitarimą ir kitam žmogui paliktą erdvę",
-    8: "dėmesį į pasitikėjimą, aiškią ribą ar neaptartą atsakomybę",
-    9: "dėmesį į mokymąsi ir patikimą šaltinį, kuris gali išplėsti požiūrį",
-    10: "dėmesį į vieną ilgalaikio tikslo etapą, kurį gali aiškiai įvardyti",
-    11: "dėmesį į bendrą sumanymą ir realų būdą prie jo prisidėti",
-    12: "dėmesį į trumpą pauzę ir informaciją, kuri padėtų sumažinti triukšmą",
+    1: "naujas sumanymas ir asmeninis pasirinkimas",
+    2: "pastovūs įpročiai ir saikingi įsipareigojimai",
+    3: "pokalbis ir informacijos tikrinimas",
+    4: "namai, artumas ir ramus laikas sau",
+    5: "mėgstama veikla ir kūrybinis bandymas",
+    6: "kasdienės užduotys ir jų užbaigimas",
+    7: "abipusis susitarimas ir pagarba kito pasirinkimui",
+    8: "pasitikėjimas ir atsakomybės pasidalijimas",
+    9: "mokymasis ir patikimų šaltinių paieška",
+    10: "artimiausias didesnio plano darbas",
+    11: "bendras sumanymas ir galimybė prisidėti",
+    12: "poilsis ir nebaigtų reikalų peržiūra",
 }
 
 ASPECT_MESSAGES = {
@@ -156,25 +155,12 @@ ASPECT_MESSAGES = {
     "opposition": "Astrologinėje simbolikoje opozicija primena dviem poreikiams skirti vietos; pusiausvyra prasideda nuo abiejų pusių išklausymo.",
 }
 
+# Genitive forms modify the noun “aspektas” in the generated sentence.
 PLANETS_LT = {
-    "Sun": "Saulė", "Moon": "Mėnulis", "Mercury": "Merkurijus", "Venus": "Venera",
-    "Mars": "Marsas", "Jupiter": "Jupiteris", "Saturn": "Saturnas", "Uranus": "Uranas",
-    "Neptune": "Neptūnas", "Pluto": "Plutonas",
+    "Sun": "Saulės", "Moon": "Mėnulio", "Mercury": "Merkurijaus", "Venus": "Veneros",
+    "Mars": "Marso", "Jupiter": "Jupiterio", "Saturn": "Saturno", "Uranus": "Urano",
+    "Neptune": "Neptūno", "Pluto": "Plutono",
 }
-
-
-def _daily_variation(target_date: date, sign_key: str, moon_house: int) -> str:
-    options = (
-        "Tai simbolinis pasiūlymas, o ne pažadas apie įvykių baigtį.",
-        "Šį akcentą naudok kaip klausimą sau, ne kaip sprendimą už tave.",
-        "Palik vietos faktams ir aplinkybėms, kurių horoskopo tekstas negali numatyti.",
-        "Ši mintis skirta apmąstymui; svarbius pasirinkimus grįsk tikrais duomenimis.",
-        "Kiekvieno žmogaus dieną lemia tikros aplinkybės, o ne vien zodiako ženklas.",
-        "Rinkis tik tai, kas dera su tavo situacija ir realiomis galimybėmis.",
-        "Astrologija čia pateikiama kaip kultūrinė simbolių sistema pramogai.",
-    )
-    digest = hashlib.sha256(f"{target_date.isoformat()}:{sign_key}:{moon_house}".encode()).digest()
-    return options[int.from_bytes(digest[:2], "big") % len(options)]
 
 
 def render_forecast(sign_key: str, solar_house: int, moon_house: int, aspect: dict, target_date: date) -> dict[str, str]:
@@ -194,16 +180,17 @@ def render_forecast(sign_key: str, solar_house: int, moon_house: int, aspect: di
     orb = float(aspect.get("orb"))
     if not 0 <= orb <= 20:
         raise ValueError("Aspekto nuokrypis nepatenka į leistiną intervalą")
-    body_context = f"{ASPECT_MESSAGES[aspect_type]} Šios dienos skaičiavime užfiksuotas {planet1} ir {planet2} aspektas; jo nuokrypis – {orb:.1f}°."
-    overview = f"{house['overview']} Dėmesio kryptį gali padėti apmąstyti ir šiandienos simbolinis Mėnulio akcentas: {MOON_FOCI[moon_house]}. {body_context}"
+    orb_label = f"{orb:.1f}".replace(".", ",")
+    body_context = f"{ASPECT_MESSAGES[aspect_type]} Šios dienos skaičiavimuose nurodytas {planet1} ir {planet2} aspektas; jo nuokrypis nuo tikslaus kampo – {orb_label}°."
+    overview = f"{house['overview']} Papildoma astrologinė Mėnulio tema – {MOON_FOCI[moon_house]}. {body_context}"
     return {
         "sign_key": sign_key,
         "editorial_heading": house["heading"],
-        "lead": f"{genitive} dienos tema – {house['focus']}. Rinkis tempą pagal savo aplinkybes.",
+        "lead": f"{genitive} dienos tema – {house['focus']}.",
         "overview": overview,
         "relationships": house["relationships"],
         "work": house["work"],
-        "reflection": f"{house['reflection']} {_daily_variation(target_date, sign_key, moon_house)}",
+        "reflection": house["reflection"],
         "tip": house["tip"],
         "source_solar_house": str(solar_house),
         "source_moon_house": str(moon_house),

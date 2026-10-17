@@ -4,6 +4,117 @@ import csv,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+LEGEND_TRANSITION_VERSION='2026-10-17-annual-monochrome-legend-v2'
+LEGEND_TRANSITION_PATH='docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json'
+# Deliberately pinned after independent review. Any later permitted correction
+# needs another reviewed version; this is not a path-pattern bypass.
+LEGEND_TRANSITION_SHA256='c9fb55864d9afc0ae1d77b6c70ca893b1c6d3689404599ce6d7d19ceb0bec4d0'
+
+def legacy_legend_paths():
+    stems={f'{year}-metinis-{design:02d}' for year in (2027,2028,2029) for design in (1,2,3,4,5)}
+    downloads={f'site/downloads/{stem}.{ext}' for stem in stems for ext in ('pdf','webp')}
+    previews={f'site/assets/{folder}/{stem}.webp' for stem in stems for folder in ('previews','previews-small')}
+    return stems,downloads|previews
+
+def approved_legacy_replacements(baseline,transition):
+    assert transition['version']==LEGEND_TRANSITION_VERSION,'Unreviewed legacy transition version'
+    stems,expected=legacy_legend_paths()
+    rows=transition['changed_files'];changes={row['path']:row for row in rows}
+    assert len(rows)==len(changes)==60 and set(changes)==expected,'Legacy correction must cover exactly the reviewed 60 monochrome annual artifacts'
+    selected=transition['selected_assets']
+    assert len(selected)==15 and {row['stem'] for row in selected}==stems,'Legacy correction must cover exactly the reviewed 15 monochrome annual designs'
+    assert transition['before_text']=='Šventės pažymėtos raudonai' and transition['after_text']=='12 mėnesių apžvalga','Unreviewed legend wording'
+    replacements={}
+    for path,row in changes.items():
+        assert len(row['before']['sha256'])==len(row['after']['sha256'])==64,'Invalid transition digest'
+        assert all(c in '0123456789abcdef' for key in ('before','after') for c in row[key]['sha256']),'Invalid transition digest'
+        assert row['before']['sha256']!=row['after']['sha256'],'Unchanged artifact cannot be an allowed correction'
+        if path.startswith('site/downloads/'):
+            public='public/'+path.removeprefix('site/')
+            assert public in baseline and baseline[public]==row['before']['sha256'],('Legacy correction old hash does not match immutable original baseline',public)
+            replacements[public]=row['after']['sha256']
+    assert len(replacements)==30,'Only 30 legacy download hashes may transition'
+    return replacements
+
+def verify_existing_downloads(root,baseline,transition=None):
+    replacements=approved_legacy_replacements(baseline,transition) if transition else {}
+    for path,old_sha in baseline.items():
+        expected=replacements.get(path,old_sha)
+        assert sha(root/path)==expected,('Preexisting asset changed without the exact reviewed correction',path)
+    if transition:
+        for row in transition['changed_files']:
+            assert sha(root/row['path'])==row['after']['sha256'],('Reviewed correction source differs from pinned artifact',row['path'])
+            built='public/'+row['path'].removeprefix('site/')
+            assert sha(root/built)==row['after']['sha256'],('Reviewed correction output differs from pinned artifact',built)
+    return len(baseline)-len(replacements),len(replacements)
+
+LEGACY_BASELINE_SHA256='ec0bec25e7100438f7dc48c804ca4a31893483178c702b7064344d200e40e80d'
+
+def read_approved_legacy_transition(root,baseline):
+    path=root/LEGEND_TRANSITION_PATH
+    assert sha(path)==LEGEND_TRANSITION_SHA256,'Legacy transition differs from the independently reviewed version'
+    assert sha(root/'docs/lunar/qa/existing-downloads-before.json')==LEGACY_BASELINE_SHA256,'Original 832-asset baseline must never be rewritten'
+    transition=json.loads(path.read_text())
+    approved_legacy_replacements(baseline,transition)
+    assert transition['preflight_status']=='passed-twice' and transition['visual_status']=='all15-reviewed','Reviewed print correction requires completed visual and print preflights'
+    manifest=json.loads((root/'site/assets/data/manifest.json').read_text())
+    assert manifest['generator']==transition['after_generator'],'Print manifest does not match the reviewed correction renderer'
+    assets={a['stem']:a for a in manifest['assets']}
+    selected_stems,_=legacy_legend_paths()
+    legacy_stems={Path(p).stem for p in baseline if p.endswith('.pdf')}
+    assert len(legacy_stems)==416 and selected_stems<=legacy_stems
+    for proof in transition['selected_assets']:
+        asset=assets[proof['stem']]
+        assert asset['kind']=='annual' and asset['style']=='bw','Correction attempted on a non-monochrome annual design'
+        assert proof['all_other_text_positions_equal'] is True and proof['vector_geometry_equal'] is True and proof['grayscale_paint_sequence_equal'] is True,'Legend change lacks exact text/date/vector/paint preservation proof'
+        assert proof['before_geometry_sha256']==proof['after_geometry_sha256'],'Reviewed annual geometry changed'
+        layout=hashlib.sha256(json.dumps(asset['dateLayout'],sort_keys=True).encode()).hexdigest()
+        assert layout==proof['date_layout_sha256'],'Current annual date layout differs from reviewed original'
+    unaffected=transition['unchanged_current_renderer_pdf_proofs']
+    assert len(unaffected)==401 and {r['stem'] for r in unaffected}==legacy_stems-selected_stems,'Correction must prove all 401 other legacy print layout'
+    for proof in unaffected:
+        asset=assets[proof['stem']]
+        assert proof['current_renderer_text_positions_equal'] is True and proof['current_renderer_vector_geometry_equal'] is True and proof['original_paint_preserved_without_regeneration'] is True,'Unaffected legacy print proof is incomplete'
+        layout=hashlib.sha256(json.dumps(asset['dateLayout'],sort_keys=True).encode()).hexdigest()
+        assert layout==proof['date_layout_sha256'],'Unaffected legacy date layout changed'
+        public='public'+asset['pdf']
+        assert proof['pdf_sha256']==baseline[public]==sha(root/'site'/asset['pdf'].lstrip('/')),'Unaffected legacy PDF is no longer byte-identical'
+    assert sha(root/transition['manifest_path'])==transition['after_manifest_sha256'],'Current print metadata differs from reviewed transition'
+    sources=transition['calendar_sources']
+    assert len(sources)==2 and {r['path'] for r in sources}=={'data/calendar.json','site/assets/data/years.json'}
+    for source in sources:
+        assert source['before_sha256']==source['after_sha256']==sha(root/source['path']),'Calendar source changed during a text-only correction'
+    preflights=transition['preflight_runs']
+    assert len(preflights)==2 and {r['path'] for r in preflights}=={
+        'docs/language-audit/2026-10-17/print-preflight-pass-a.json',
+        'docs/language-audit/2026-10-17/print-preflight-pass-b.json'}
+    for proof in preflights:
+        assert sha(root/proof['path'])==proof['sha256'],'Reviewed print preflight evidence changed'
+        report=json.loads((root/proof['path']).read_text())
+        assert proof['status']==report['status']=='passed' and report['generator']==transition['after_generator']
+        assert len(report['results'])==proof['pdf_count']==416 and all(r['status']=='passed' for r in report['results'])
+        assert sum(r['datePlacementsChecked'] for r in report['results'])==proof['date_placements']
+    operator_proof=transition['operator_and_cache_proof']
+    assert sha(root/operator_proof['path'])==operator_proof['sha256'],'Reviewed non-text/cache evidence changed'
+    operators=json.loads((root/operator_proof['path']).read_text())
+    assert operators['status']=='passed' and len(operators['assets'])==15 and {r['stem'] for r in operators['assets']}==selected_stems
+    for proof in operators['assets']:
+        assert proof['all_non_text_operators_exactly_equal'] is True and proof['original_operators_sha256']==proof['corrected_operators_sha256']
+        assert proof['cache_miss_pdf_byte_reproduction'] is True and proof['new_pdf_sha256']==proof['cache_miss_pdf_sha256']==sha(root/'site'/assets[proof['stem']]['pdf'].lstrip('/'))
+    lunar=json.loads((root/'data/lunar/assets.json').read_text())['assets']
+    expected_lunar={'public'+asset[ext]:asset[f'{ext}_sha256'] for asset in lunar for ext in ('pdf','webp')}
+    lunar_proofs=transition['unchanged_lunar_asset_proofs']
+    actual_lunar={proof[ext]:proof[f'{ext}_sha256'] for proof in lunar_proofs for ext in ('pdf','webp')}
+    assert len(lunar_proofs)==73 and actual_lunar==expected_lunar,'A legacy legend correction cannot change any lunar download'
+    aliases=transition['public_file_aliases']
+    changes={r['path']:r for r in transition['changed_files']}
+    assert len(aliases)==60 and {r['source_path'] for r in aliases}==set(changes)
+    for alias in aliases:
+        source=alias['source_path'];row=changes[source]
+        assert alias['path']=='public/'+source.removeprefix('site/')
+        assert alias['before_sha256']==row['before']['sha256'] and alias['after_sha256']==row['after']['sha256']
+    return transition
+
 def main():
     assets=json.loads((ROOT/'data/lunar/assets.json').read_text())['assets']
     assert len([a for a in assets if a['month'] is not None])==72
@@ -27,11 +138,12 @@ def main():
             assert sha(source)==sha(built)==asset[f'{ext}_sha256']==qa[f'{ext}_sha256'],asset[ext]
             assert built.stat().st_size<25*1024*1024
         assert qb['pdf_sha256']==asset['pdf_sha256']
-    for path,old_sha in json.loads((ROOT/'docs/lunar/qa/existing-downloads-before.json').read_text()).items():
-        assert sha(ROOT/path)==old_sha,('Preexisting asset changed',path)
+    baseline=json.loads((ROOT/'docs/lunar/qa/existing-downloads-before.json').read_text())
+    transition=read_approved_legacy_transition(ROOT,baseline)
+    unchanged,reviewed=verify_existing_downloads(ROOT,baseline,transition)
     assert not (ROOT/'public/lunar-responsive-qa.html').exists(),'Local QA harness must not be published'
     assert not (ROOT/'public/lunar-qa-axe.js').exists(),'Local QA library must not be published'
     assert len([r for r in (ROOT/'public/_headers').read_text().splitlines() if r.startswith('/')])<=100
-    print('Lunar release gate: all 146 downloads match both preflight passes; all 832 original assets unchanged.')
+    print(f'Lunar release gate: all 146 lunar downloads match both preflight passes; {unchanged} original legacy downloads unchanged; {reviewed} annual legend corrections match the pinned reviewed transition.')
 
 if __name__=='__main__':main()

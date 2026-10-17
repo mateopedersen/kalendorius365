@@ -28,7 +28,7 @@ MONTHS = (
     "sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio",
     "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio",
 )
-ENGINE_VERSION = "original-lithuanian-calculation-copy-v1.0"
+ENGINE_VERSION = "original-lithuanian-calculation-copy-v1.1"
 SOURCE_ID = "astroway-public-calculations-original-lithuanian"
 LICENSE_EVIDENCE_ID = "astroway-terms-2026-07-31-calculations-own-interpretation"
 
