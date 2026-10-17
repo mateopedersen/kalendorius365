@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2028-rudens-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20280922T114500Z
+SUMMARY:Rudens lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2028 m. rugsėjo 22 d. 14:45 
+ (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/rudens-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

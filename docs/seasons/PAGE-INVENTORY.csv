@@ -1,0 +1,6 @@
+url,type,status,default_year,comparison_years,cities,calendar_exports,language
+https://kalendorius365.lt/metu-laikai/,hub,implemented; local double QA passed,2027,2027;2028;2029,5,annual bundle,lt-LT
+https://kalendorius365.lt/pavasario-lygiadienis/,event,implemented; local double QA passed,2027,2027;2028;2029,5,event + next occurrence,lt-LT
+https://kalendorius365.lt/vasaros-saulegriza/,event,implemented; local double QA passed,2027,2027;2028;2029,5,event + next occurrence,lt-LT
+https://kalendorius365.lt/rudens-lygiadienis/,event,implemented; local double QA passed,2027,2027;2028;2029,5,event + next occurrence,lt-LT
+https://kalendorius365.lt/ziemos-saulegriza/,event,implemented; local double QA passed,2027,2027;2028;2029,5,event + next occurrence,lt-LT

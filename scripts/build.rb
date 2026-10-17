@@ -83,6 +83,7 @@ Dir.chdir(ROOT) do
   headers+="/#{path.delete_prefix('public/')}\n  #{one_day}\n"
  end
  headers+="/assets/visuals/*\n  #{one_day}\n/assets/previews/*\n  #{one_day}\n/assets/previews-small/*\n  #{one_day}\n/assets/holiday-ics/*\n  #{one_day}\n/downloads/*\n  #{one_day}\n"
+ headers+="/assets/seasons-ics/*\n  #{one_day}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/holiday-guides-ics/*\n  #{one_day}\n"
  headers+="/assets/lunar/days/*\n  #{one_day}\n/assets/lunar/albedo-web.png\n  #{one_day}\n/assets/lunar/albedo.png\n  #{one_day}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{one_day}\n"
  File.write('public/_headers',headers)

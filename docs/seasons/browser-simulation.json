@@ -1,0 +1,243 @@
+[
+  {
+    "route": "metu-laikai",
+    "step": 0,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/spring-earth.svg",
+    "name": "Pavasario lygiadienis",
+    "pressed": [
+      "0"
+    ]
+  },
+  {
+    "route": "metu-laikai",
+    "step": 1,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/summer-earth.svg",
+    "name": "Vasaros saulėgrįža",
+    "pressed": [
+      "1"
+    ]
+  },
+  {
+    "route": "metu-laikai",
+    "step": 2,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/autumn-earth.svg",
+    "name": "Rudens lygiadienis",
+    "pressed": [
+      "2"
+    ]
+  },
+  {
+    "route": "metu-laikai",
+    "step": 3,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/winter-earth.svg",
+    "name": "Žiemos saulėgrįža",
+    "pressed": [
+      "3"
+    ]
+  },
+  {
+    "route": "metu-laikai",
+    "playPause": true,
+    "passed": true
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "step": 0,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/spring-earth.svg",
+    "hero": "22:25",
+    "name": "Pavasario lygiadienis",
+    "pressed": [
+      "0"
+    ]
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "step": 1,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/summer-earth.svg",
+    "hero": "22:25",
+    "name": "Vasaros saulėgrįža",
+    "pressed": [
+      "1"
+    ]
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "step": 2,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/autumn-earth.svg",
+    "hero": "22:25",
+    "name": "Rudens lygiadienis",
+    "pressed": [
+      "2"
+    ]
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "step": 3,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/winter-earth.svg",
+    "hero": "22:25",
+    "name": "Žiemos saulėgrįža",
+    "pressed": [
+      "3"
+    ]
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "playPause": true,
+    "passed": true
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "step": 0,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/spring-earth.svg",
+    "hero": "17:11",
+    "name": "Pavasario lygiadienis",
+    "pressed": [
+      "0"
+    ]
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "step": 1,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/summer-earth.svg",
+    "hero": "17:11",
+    "name": "Vasaros saulėgrįža",
+    "pressed": [
+      "1"
+    ]
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "step": 2,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/autumn-earth.svg",
+    "hero": "17:11",
+    "name": "Rudens lygiadienis",
+    "pressed": [
+      "2"
+    ]
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "step": 3,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/winter-earth.svg",
+    "hero": "17:11",
+    "name": "Žiemos saulėgrįža",
+    "pressed": [
+      "3"
+    ]
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "playPause": true,
+    "passed": true
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "step": 0,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/spring-earth.svg",
+    "hero": "09:02",
+    "name": "Pavasario lygiadienis",
+    "pressed": [
+      "0"
+    ]
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "step": 1,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/summer-earth.svg",
+    "hero": "09:02",
+    "name": "Vasaros saulėgrįža",
+    "pressed": [
+      "1"
+    ]
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "step": 2,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/autumn-earth.svg",
+    "hero": "09:02",
+    "name": "Rudens lygiadienis",
+    "pressed": [
+      "2"
+    ]
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "step": 3,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/winter-earth.svg",
+    "hero": "09:02",
+    "name": "Žiemos saulėgrįža",
+    "pressed": [
+      "3"
+    ]
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "playPause": true,
+    "passed": true
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "step": 0,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/spring-earth.svg",
+    "hero": "04:42",
+    "name": "Pavasario lygiadienis",
+    "pressed": [
+      "0"
+    ]
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "step": 1,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/summer-earth.svg",
+    "hero": "04:42",
+    "name": "Vasaros saulėgrįža",
+    "pressed": [
+      "1"
+    ]
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "step": 2,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/autumn-earth.svg",
+    "hero": "04:42",
+    "name": "Rudens lygiadienis",
+    "pressed": [
+      "2"
+    ]
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "step": 3,
+    "passed": true,
+    "earth": "/assets/visuals/seasons/winter-earth.svg",
+    "hero": "04:42",
+    "name": "Žiemos saulėgrįža",
+    "pressed": [
+      "3"
+    ]
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "playPause": true,
+    "passed": true
+  }
+]

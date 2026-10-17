@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "checks": 1577,
+  "failures": [],
+  "existing_dom_unchanged": 163,
+  "existing_source_assets": 2564,
+  "downloads_preserved": 980,
+  "pages": [
+    "/metu-laikai/",
+    "/pavasario-lygiadienis/",
+    "/vasaros-saulegriza/",
+    "/rudens-lygiadienis/",
+    "/ziemos-saulegriza/"
+  ],
+  "calendar_files": 23,
+  "event_instances": 32,
+  "unique_instants": 20,
+  "notes": [
+    "Year/city selectors support 2027–2029; countdown supports boundary years 2026 and 2030.",
+    "Minute predictions differ by at most one minute between primary USNO and independent Espenak tables.",
+    "Solar context remains approximate and uses the unmodified existing engine."
+  ]
+}

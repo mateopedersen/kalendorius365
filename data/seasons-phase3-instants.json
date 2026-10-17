@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "primary_source": "USNO API 4.0.1, UTC, no US DST applied",
+  "precision": "minute",
+  "review_date": "2026-10-17",
+  "comparison_years": [
+    2027,
+    2028,
+    2029
+  ],
+  "countdown_years": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "events": [
+    {
+      "year": 2026,
+      "utc": [
+        "2026-03-20T14:46:00Z",
+        "2026-06-21T08:24:00Z",
+        "2026-09-23T00:05:00Z",
+        "2026-12-21T20:50:00Z"
+      ],
+      "source": "https://aa.usno.navy.mil/api/seasons?year=2026",
+      "sha256": "6d62dcd6de55cc5b9cf94df813844bda6750a2438098256e6826e56bcf5c22c4"
+    },
+    {
+      "year": 2027,
+      "utc": [
+        "2027-03-20T20:25:00Z",
+        "2027-06-21T14:11:00Z",
+        "2027-09-23T06:02:00Z",
+        "2027-12-22T02:42:00Z"
+      ],
+      "source": "https://aa.usno.navy.mil/api/seasons?year=2027",
+      "sha256": "1a0c001621026c30979abb78c5036f43b9234b1000640db588a12cffbc0f6310"
+    },
+    {
+      "year": 2028,
+      "utc": [
+        "2028-03-20T02:17:00Z",
+        "2028-06-20T20:02:00Z",
+        "2028-09-22T11:45:00Z",
+        "2028-12-21T08:19:00Z"
+      ],
+      "source": "https://aa.usno.navy.mil/api/seasons?year=2028",
+      "sha256": "5b021f3139ac79fca8e26e571faee646d6597bfa6093d188ebc580326a20d68f"
+    },
+    {
+      "year": 2029,
+      "utc": [
+        "2029-03-20T08:02:00Z",
+        "2029-06-21T01:48:00Z",
+        "2029-09-22T17:38:00Z",
+        "2029-12-21T14:14:00Z"
+      ],
+      "source": "https://aa.usno.navy.mil/api/seasons?year=2029",
+      "sha256": "49d8f8504ddf71c1dc38092f90dbbf98540fecef0b711972a8ee0f83817e740a"
+    },
+    {
+      "year": 2030,
+      "utc": [
+        "2030-03-20T13:52:00Z",
+        "2030-06-21T07:31:00Z",
+        "2030-09-22T23:27:00Z",
+        "2030-12-21T20:09:00Z"
+      ],
+      "source": "https://aa.usno.navy.mil/api/seasons?year=2030",
+      "sha256": "7f97ea94eafb66f72be327470c9df126476ab184f21cc5ab6a45462dc6fdc9a4"
+    }
+  ]
+}

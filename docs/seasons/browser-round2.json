@@ -1,0 +1,432 @@
+[
+  {
+    "route": "metu-laikai",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Keturi metų laikai.Vienas šviesos ciklas.",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 768,
+    "width": 768
+  },
+  {
+    "route": "metu-laikai",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Keturi metų laikai.Vienas šviesos ciklas.",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 360,
+    "width": 360
+  },
+  {
+    "route": "metu-laikai",
+    "round": 2,
+    "text": 2,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Keturi metų laikai.Vienas šviesos ciklas.",
+    "overflow": [
+      {
+        "cl": "",
+        "scroll": 142,
+        "tag": "H3",
+        "text": "Pavasaris",
+        "width": 134
+      },
+      {
+        "cl": "",
+        "scroll": 139,
+        "tag": "P",
+        "text": "2027 m. kovo 20 d.22:25 · UTC+02:00",
+        "width": 134
+      },
+      {
+        "cl": "",
+        "scroll": 139,
+        "tag": "P",
+        "text": "2027 m. birželio 21 d.17:11 · UTC+03:00",
+        "width": 134
+      },
+      {
+        "cl": "",
+        "scroll": 139,
+        "tag": "P",
+        "text": "2027 m. rugsėjo 23 d.09:02 · UTC+03:00",
+        "width": 134
+      },
+      {
+        "cl": "",
+        "scroll": 139,
+        "tag": "P",
+        "text": "2027 m. gruodžio 22 d.04:42 · UTC+02:00",
+        "width": 134
+      },
+      {
+        "cl": "",
+        "scroll": 341,
+        "tag": "ARTICLE",
+        "text": "02 · Kalendorinė tvarkaMeteorologinis trijų mėnesių skirstymasPavasarisKova",
+        "width": 330
+      },
+      {
+        "cl": "",
+        "scroll": 219,
+        "tag": "BUTTON",
+        "text": "01Pavasaris",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 181,
+        "tag": "BUTTON",
+        "text": "02Vasara",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 179,
+        "tag": "BUTTON",
+        "text": "03Ruduo",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 174,
+        "tag": "BUTTON",
+        "text": "04Žiema",
+        "width": 154
+      }
+    ],
+    "ready": "true",
+    "scroll": 588,
+    "width": 360
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Pavasario lygiadienis",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 768,
+    "width": 768
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Pavasario lygiadienis",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 360,
+    "width": 360
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "round": 2,
+    "text": 2,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Pavasario lygiadienis",
+    "overflow": [
+      {
+        "cl": "sp3-metric",
+        "scroll": 120,
+        "tag": "DIV",
+        "text": "Saulėtekis06:22",
+        "width": 109
+      },
+      {
+        "cl": "sp3-metric",
+        "scroll": 118,
+        "tag": "DIV",
+        "text": "Saulėlydis18:31",
+        "width": 110
+      },
+      {
+        "cl": "",
+        "scroll": 219,
+        "tag": "BUTTON",
+        "text": "01Pavasaris",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 181,
+        "tag": "BUTTON",
+        "text": "02Vasara",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 179,
+        "tag": "BUTTON",
+        "text": "03Ruduo",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 174,
+        "tag": "BUTTON",
+        "text": "04Žiema",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 270,
+        "tag": "H2",
+        "text": "Pavasario kalendorius",
+        "width": 223
+      }
+    ],
+    "ready": "true",
+    "scroll": 467,
+    "width": 360
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Vasaros saulėgrįža",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 768,
+    "width": 768
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Vasaros saulėgrįža",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 360,
+    "width": 360
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "round": 2,
+    "text": 2,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Vasaros saulėgrįža",
+    "overflow": [
+      {
+        "cl": "sp3-metric",
+        "scroll": 120,
+        "tag": "DIV",
+        "text": "Saulėtekis04:41",
+        "width": 109
+      },
+      {
+        "cl": "sp3-metric",
+        "scroll": 118,
+        "tag": "DIV",
+        "text": "Saulėlydis21:59",
+        "width": 110
+      },
+      {
+        "cl": "",
+        "scroll": 219,
+        "tag": "BUTTON",
+        "text": "01Pavasaris",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 181,
+        "tag": "BUTTON",
+        "text": "02Vasara",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 179,
+        "tag": "BUTTON",
+        "text": "03Ruduo",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 174,
+        "tag": "BUTTON",
+        "text": "04Žiema",
+        "width": 154
+      }
+    ],
+    "ready": "true",
+    "scroll": 467,
+    "width": 360
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Rudens lygiadienis",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 768,
+    "width": 768
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Rudens lygiadienis",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 360,
+    "width": 360
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "round": 2,
+    "text": 2,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Rudens lygiadienis",
+    "overflow": [
+      {
+        "cl": "sp3-metric",
+        "scroll": 120,
+        "tag": "DIV",
+        "text": "Saulėtekis07:05",
+        "width": 109
+      },
+      {
+        "cl": "sp3-metric",
+        "scroll": 118,
+        "tag": "DIV",
+        "text": "Saulėlydis19:16",
+        "width": 110
+      },
+      {
+        "cl": "",
+        "scroll": 219,
+        "tag": "BUTTON",
+        "text": "01Pavasaris",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 181,
+        "tag": "BUTTON",
+        "text": "02Vasara",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 179,
+        "tag": "BUTTON",
+        "text": "03Ruduo",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 174,
+        "tag": "BUTTON",
+        "text": "04Žiema",
+        "width": 154
+      }
+    ],
+    "ready": "true",
+    "scroll": 467,
+    "width": 360
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Žiemos saulėgrįža",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 768,
+    "width": 768
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "round": 2,
+    "text": 1,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Žiemos saulėgrįža",
+    "overflow": [],
+    "ready": "true",
+    "scroll": 360,
+    "width": 360
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "round": 2,
+    "text": 2,
+    "broken": [],
+    "font": "Lato, Arial, sans-serif",
+    "h1": "Žiemos saulėgrįža",
+    "overflow": [
+      {
+        "cl": "sp3-metric",
+        "scroll": 120,
+        "tag": "DIV",
+        "text": "Saulėtekis08:40",
+        "width": 109
+      },
+      {
+        "cl": "sp3-metric",
+        "scroll": 118,
+        "tag": "DIV",
+        "text": "Saulėlydis15:54",
+        "width": 110
+      },
+      {
+        "cl": "",
+        "scroll": 219,
+        "tag": "BUTTON",
+        "text": "01Pavasaris",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 181,
+        "tag": "BUTTON",
+        "text": "02Vasara",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 179,
+        "tag": "BUTTON",
+        "text": "03Ruduo",
+        "width": 154
+      },
+      {
+        "cl": "",
+        "scroll": 174,
+        "tag": "BUTTON",
+        "text": "04Žiema",
+        "width": 154
+      }
+    ],
+    "ready": "true",
+    "scroll": 467,
+    "width": 360
+  }
+]

@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2029-pavasario-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20290320T080200Z
+SUMMARY:Pavasario lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2029 m. kovo 20 d. 10:02 (UTC
+ +02:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/pavasario-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

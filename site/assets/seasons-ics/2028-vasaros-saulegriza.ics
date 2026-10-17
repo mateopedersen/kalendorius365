@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2028-vasaros-saulegriza@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20280620T200200Z
+SUMMARY:Vasaros saulėgrįža
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2028 m. birželio 20 d. 23:02
+  (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/vasaros-saulegriza/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

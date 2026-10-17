@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2026-ziemos-saulegriza@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20261221T205000Z
+SUMMARY:Žiemos saulėgrįža
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2026 m. gruodžio 21 d. 22:50
+  (UTC+02:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/ziemos-saulegriza/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
