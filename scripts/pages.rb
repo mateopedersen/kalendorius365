@@ -364,6 +364,7 @@ require_relative '../lib/horoscopes_pages'
 HoroscopesPages.run
 system('python3',File.join(Pages::ROOT,'scripts/lunar/pages.py'),exception:true)
 system('python3',File.join(Pages::ROOT,'scripts/monthly_holidays/pages.py'),exception:true)
+system('python3',File.join(Pages::ROOT,'scripts/holiday_phase2/pages.py'),exception:true)
 search_page=<<~HTML
  <section class="search-page" aria-labelledby="search-page-title">
   <div class="search-page__hero">
@@ -401,7 +402,7 @@ Pages.page('paieska','Paieška – visi kalendoriaus puslapiai','Ieškokite visa
 search_aliases={
  '/'=>'šiandien asmeninis kalendorius įvykiai užrašai pastabos užduotys laikas laikrodis orai paieška dienos planai weather calendar events takvim',
  '/paieska/'=>'paieška paieska rasti puslapis puslapiai rezultatai search find all pages',
- '/sventes/'=>'valstybinės nedarbo šventinės atmintinos dienos kalėdos velykos joninės holiday holidays bayram resmi tatil',
+ '/sventes/'=>'valstybinės nedarbo šventinės atmintinos dienos holiday holidays bayram resmi tatil',
  '/atostogu-planavimas/'=>'ilgieji savaitgaliai poilsio dienos atostogos dienų skaičiuoklė vacation leave tatil',
  '/horoskopai/'=>'zodiakas zodiako ženklai astrologija ascendentas kylantis ženklas horoscope zodiac rising sign burc burcu burclar',
  '/horoskopai/avinas/'=>'aries ram koç koc koç burcu',

@@ -1,0 +1,496 @@
+{
+  "status": "passed",
+  "untargeted_canonical_pages_checked": 122,
+  "allowed_changes": "Only the 12-character asset cache fingerprints and whitespace-only template lines; all DOM text, attributes and order otherwise equal.",
+  "failures": [],
+  "items": [
+    {
+      "path": "public/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/birzelis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/geguze/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/kovas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/lapkritis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/rugpjutis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/rugsejis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/sausis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/spalis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2027/vasaris/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/birzelis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/geguze/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/kovas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/lapkritis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/rugpjutis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/rugsejis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/sausis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/spalis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2028/vasaris/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/birzelis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/geguze/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/kovas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/lapkritis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/rugpjutis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/rugsejis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/sausis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/spalis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/2029/vasaris/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/astronominis-kalendorius/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/atostogu-planavimas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/darbo-dienos/2027/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/darbo-dienos/2028/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/darbo-dienos/2029/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/darbo-grafiko-sablonai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/datos-skaiciuokle/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/dienos-planuoklis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/avinas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/dvyniai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/jautis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/liutas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/mergele/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/oziaragis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/saulys/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/skorpionas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/svarstykles/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/vandenis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/vezys/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/horoskopai/zuvys/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/irankiai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/kurti-kalendoriu/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menesiai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-fazes/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/birzelis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/geguze/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/kovas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/lapkritis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/rugpjutis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/rugsejis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/sausis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/spalis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2027/vasaris/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/birzelis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/geguze/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/kovas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/lapkritis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/rugpjutis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/rugsejis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/sausis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/spalis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2028/vasaris/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/birzelis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/geguze/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/kovas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/lapkritis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/rugpjutis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/rugsejis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/sausis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/spalis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/menulio-kalendorius/2029/vasaris/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/metai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/mokiniu-atostogos/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/paieska/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/pamainu-grafikas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/pamoku-tvarkarascio-sablonai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/pamoku-tvarkarastis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/privatumas/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/saule/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/savaites/2027/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/savaites/2028/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/savaites/2029/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/savaitiniai-planuokliai/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/seimos-kalendorius/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/sventes/2027/balandis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/sventes/2027/gruodis/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/sventes/2027/liepa/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    },
+    {
+      "path": "public/tuscias-kalendorius/index.html",
+      "dom_identical_after_cache_query_normalization": true
+    }
+  ]
+}

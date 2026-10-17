@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:vilniaus-gimtadienis-2029-01-25@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20290125
+DTEND;VALUE=DATE:20290126
+SUMMARY:Vilniaus gimtadienis
+DESCRIPTION:Atmintina diena · įstatymas. Sausio 25-oji siejama su pirmuoj
+ u Vilniaus paminėjimu 1323 metų Gedimino laiške.
+URL:https://kalendorius365.lt/sventes/vilniaus-gimtadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:boso-diena-2028-10-16@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20281016
+DTEND;VALUE=DATE:20281017
+SUMMARY:Boso diena
+DESCRIPTION:Neoficiali profesinė proga. Spalio 16-oji – neoficiali proga
+  padėkoti vadovui už bendrą darbą. Tai nėra papildoma nedarbo diena.
+URL:https://kalendorius365.lt/sventes/boso-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

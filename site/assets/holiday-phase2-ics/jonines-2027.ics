@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:jonines-2027-06-24@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270625
+SUMMARY:Rasos ir Joninių diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama · tradicinė šventė.
+  Birželio 24-oji yra Rasos ir Joninių diena: teisėje vartojamas bendras
+  pavadinimas\, o gyvos tradicijos gali vadinti Rasomis\, Kupolinėmis ar J
+ oninėmis.
+URL:https://kalendorius365.lt/sventes/jonines/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,1409 @@
+{
+  "reviewed": "2026-10-17",
+  "sources": {
+    "labour-code": {
+      "title": "Lietuvos Respublikos darbo kodekso 123 straipsnis „Švenčių dienos“ (suvestinė redakcija 2026-06-07–2026-10-31)",
+      "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr",
+      "publisher": "Lietuvos Respublikos Seimas, Teisės aktų registras",
+      "access_note": "Tiesiogiai perskaitytas oficialus suvestinės redakcijos tekstas ir visas 123 straipsnis. Redakcija galioja 2026-06-07–2026-10-31; jos švenčių sąrašas palygintas su nuo 2027-01-01 numatyta redakcija.",
+      "license": "Teisės akto tekstas; cituojamas tik kaip teisės šaltinis."
+    },
+    "memoriam-law": {
+      "title": "Lietuvos Respublikos atmintinų dienų įstatymas, suvestinė redakcija nuo 2026-07-04",
+      "url": "https://www.e-tar.lt/rs/actualedition/TAR.D570962773F8/PSOYUzcVVr/",
+      "publisher": "Teisės aktų registras",
+      "access_note": "E-TAR suvestinių redakcijų puslapyje nurodyta 2026-07-04 redakcija; sausio 1-osios ir sausio 13-osios atmintinų dienų įrašai tikrinti pagal šį teisės aktą.",
+      "license": "Teisės akto tekstas."
+    },
+    "jan13-history": {
+      "title": "Sausio 13-oji – Laisvės gynėjų diena",
+      "url": "https://www.genocid.lt/centras/lt/3280/a/print_version/",
+      "publisher": "Lietuvos gyventojų genocido ir rezistencijos tyrimo centras",
+      "access_note": "Atverto oficialios institucijos teksto paieškos išrašas pateikė 1991 m. sausio įvykių ir aukų skaičių.",
+      "license": "Nuoroda ir originalus apibendrinimas; teksto nekopijuojame."
+    },
+    "feb16": {
+      "title": "Vasario 16-oji – Lietuvos valstybės atkūrimo diena",
+      "url": "https://lrkm.lrv.lt/lt/veiklos-sritys/lietuvos-valstybei-reiksmingu-kulturiniu-istoriniu-ivykiu-iprasminimas/vasario-16-oji-lietuvos-valstybes-atkurimo-diena/",
+      "publisher": "Lietuvos Respublikos kultūros ministerija",
+      "access_note": "Atverta; puslapis datą sieja su 1918 m. Lietuvos valstybės atkūrimo aktu.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "mar11": {
+      "title": "Kovo 11-ajai skirti renginiai",
+      "url": "https://lrkm.lrv.lt/lt/naujienos/kvieciame-dalyvauti-sventiniuose-kovo-11-osios-minejimo-renginiuose-lUEV/",
+      "publisher": "Lietuvos Respublikos kultūros ministerija",
+      "access_note": "Atverta; nurodytas 1990 m. nepriklausomybės atkūrimas ir valstybinio minėjimo kontekstas.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "easter-culture": {
+      "title": "Velykos",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velykos.html",
+      "publisher": "Etninės kultūros globos taryba",
+      "access_note": "Atverta; aprašyti krikščioniški ir senesni pavasario papročiai, margučiai ir jų marginimas.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "jonines-culture": {
+      "title": "Rasos / Joninės",
+      "url": "https://ekgt.lt/veiklos-sritys/gidai/vasara/rasos--jonines.html",
+      "publisher": "Etninės kultūros globos taryba",
+      "access_note": "Atverta; pateikti Rasų/Joninių nakties papročių pavyzdžiai.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "statehood-culture": {
+      "title": "Liepos 6-ąją Lietuvos nacionalinis muziejus kviečia švęsti karališkai",
+      "url": "https://lnm.lt/aktualijos/liepos-6-aja-lietuvos-nacionalinis-muziejus-kviecia-svesti-karaliskai/",
+      "publisher": "Lietuvos nacionalinis muziejus",
+      "access_note": "Atverta; patvirtintas oficialus dienos pavadinimas ir Tautiškos giesmės kontekstas.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "all-saints-vėlinės": {
+      "title": "Vėlinės",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html",
+      "publisher": "Etninės kultūros globos taryba",
+      "access_note": "Atverta; aiškiai atskirta lapkričio 1-osios Visų Šventųjų paskirtis nuo mirusiųjų atminimo papročių.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "kucios-culture": {
+      "title": "Kūčios",
+      "url": "https://ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html",
+      "publisher": "Etninės kultūros globos taryba",
+      "access_note": "Atverta; aprašyta Kūčių vakarienė, kūčios patiekalas ir namų papročiai.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "christmas-culture": {
+      "title": "Kalėdos",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kaledos.html",
+      "publisher": "Etninės kultūros globos taryba",
+      "access_note": "Paieškos išraše matomas EKGT pasakojimas apie krikščioniškų ir senesnių sezoninių papročių sampyną.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "zoline-culture": {
+      "title": "Žolinė – rugpjūčio 15-oji",
+      "url": "https://ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/zoline--rugpjucio-15-oji.html",
+      "publisher": "Etninės kultūros globos taryba",
+      "access_note": "Atverta per oficialios EKGT svetainės paieškos išrašą; aptariami derliaus ir religiniai papročių sluoksniai.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "e-tar-versions": {
+      "title": "Darbo kodekso suvestinių redakcijų sąrašas",
+      "url": "https://www.e-tar.lt/portal/lt/legalActEditions/f6d686707e7011e6b969d7ae07280e89?faces-redirect=true",
+      "publisher": "Teisės aktų registras",
+      "access_note": "Oficialus redakcijų sąrašas nurodo dabar galiojančią 2026-06-07–2026-10-31 redakciją ir būsimą 2026-11-01–2026-12-31 redakciją.",
+      "license": "Teisės akto metaduomenys."
+    },
+    "flag-law": {
+      "title": "Lietuvos Respublikos valstybės vėliavos ir kitų vėliavų įstatymas",
+      "url": "https://www.e-tar.lt/portal/lt/legalActPrint?actualEditionId=KqjqEhMSyc&documentId=TAR.07CAE5E6C2B3",
+      "publisher": "Teisės aktų registras",
+      "access_note": "Oficialiame teisės akto tekste patikrinama vėliavų naudojimo tvarka; šiame puslapyje nenurodoma konkreti pareiga iškelti vėliavą, nes jos taikymas priklauso nuo normos ir subjekto.",
+      "license": "Teisės akto tekstas."
+    },
+    "labour-history": {
+      "title": "May Day: International Workers’ Day",
+      "url": "https://www.ilo.org/resource/statement/may-day-international-day-labour-day-labour-and-solidarity",
+      "publisher": "International Labour Organization",
+      "access_note": "ILO paaiškinime Tarptautinė darbo diena siejama su darbo judėjimo ir darbo laiko istorija; šis kontekstas atskirtas nuo Lietuvos teisinio statuso.",
+      "license": "Nuoroda ir originalus apibendrinimas."
+    },
+    "labour-code-future": {
+      "title": "Lietuvos Respublikos darbo kodeksas, suvestinė redakcija 2026-11-01–2026-12-31 (numatyta įsigalioti)",
+      "url": "https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/",
+      "publisher": "Teisės aktų registras",
+      "access_note": "E-TAR redakcijų sąraše nurodytas šios redakcijos įsigaliojimas 2026-11-01. Šios būsimos redakcijos netaikome iki jos įsigaliojimo; jos pakeitimai susiję su kitomis normomis, o 123 straipsnio nedarbo dienų sąrašą tiesiogiai palyginome su galiojančia ir nuo 2027-01-01 numatyta redakcijomis.",
+      "license": "Teisės akto tekstas; cituojamas tik kaip teisės šaltinis."
+    },
+    "labour-code-2027": {
+      "title": "Lietuvos Respublikos darbo kodeksas, suvestinė redakcija nuo 2027-01-01 (numatyta įsigalioti)",
+      "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz",
+      "publisher": "Lietuvos Respublikos Seimas, Teisės aktų registras",
+      "access_note": "Atverta būsima oficiali redakcija, numatyta nuo 2027-01-01. Visas 123 straipsnis perskaitytas ir palygintas su 2026-06-07–2026-10-31 redakcija; šventinių dienų sąrašas sutampa. Ateities teisės pakeitimai po peržiūros datos gali turėti įtakos.",
+      "license": "Teisės akto tekstas; cituojamas kaip teisinis šaltinis."
+    },
+    "mothers-day-research": {
+      "title": "Motinos diena",
+      "url": "https://www.lituanistika.lt/content/89256",
+      "publisher": "Lietuvos istorijos institutas; Lituanistika",
+      "access_note": "Irmos Šidiškienės 2016 m. recenzuoto / mokslinio leidinio skyrius, p. 223–246; puslapio anotacija ir publikacijos duomenys tiesiogiai peržiūrėti. Vilniaus šeimų etnografinio tyrimo išvados aiškiai apribotos imtimi ir neapibendrinamos visai Lietuvai.",
+      "license": "Nuoroda ir trumpa originali santrauka; publikuotas tekstas nekopijuojamas."
+    },
+    "fathers-day-research": {
+      "title": "Tėvo diena",
+      "url": "https://www.lituanistika.lt/content/89260",
+      "publisher": "Lietuvos istorijos institutas; Lituanistika",
+      "access_note": "Irmos Šidiškienės 2016 m. mokslinio leidinio skyrius, p. 247–261; puslapio anotacija ir bibliografiniai duomenys tiesiogiai peržiūrėti. Istorinis pasakojimas atskiria Vilniaus šeimų etnografinę imtį nuo visos Lietuvos ir nuo teisės į tėvystės atostogas.",
+      "license": "Nuoroda ir trumpa originali santrauka; publikuotas tekstas nekopijuojamas."
+    },
+    "law": {
+      "title": "Atmintinų dienų įstatymas: redakcija nuo 2026-07-04",
+      "url": "https://www.e-tar.lt/portal/lt/legalAct/TAR.D570962773F8/asr",
+      "publisher": "Teisės aktų registras",
+      "version": "2026-07-04",
+      "access": "Official current consolidated text read in the browser, full source evidence saved."
+    },
+    "dk": {
+      "title": "Darbo kodekso 123 straipsnis: redakcija nuo 2027-01-01",
+      "url": "https://www.e-tar.lt/portal/lt/legalAct/f6d686707e7011e6b969d7ae07280e89/mWmwpkqsvb",
+      "publisher": "Teisės aktų registras",
+      "version": "2027-01-01 (paskelbta būsima redakcija)",
+      "access": "Official future consolidated text read in the browser. Article 123 compared with current 2026-06-07–2026-10-31 edition; identical."
+    },
+    "three-kings": {
+      "title": "Trys Karaliai – sausio 6-oji",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/trys-karaliai--sausio-6-oji.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "spring": {
+      "title": "Pavasario švenčių datos ir jų ryšys su Velykomis",
+      "url": "https://www.ekgt.lt/media/Globali-Lietuva/Paskaitos%20apie%20pavasario%20papro%C4%8Dius%20tekstas.pdf",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "easter": {
+      "title": "Velykų papročiai",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velykos.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "atvelykis": {
+      "title": "Atvelykis – pirmasis sekmadienis po Velykų",
+      "url": "https://ktkc.lt/atvelykis/",
+      "publisher": "Kauno tautinės kultūros centras"
+    },
+    "jonines": {
+      "title": "Kupolių laikas ir Joninės (Rasų šventė)",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kupoliu-laikas-ir-jonines-rasu-svente.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "zoline": {
+      "title": "Žolinė – rugpjūčio 15-oji",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/zoline--rugpjucio-15-oji.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "velines": {
+      "title": "Vėlinių papročiai",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "kucios": {
+      "title": "Kūčios: šeimos vakaro papročiai",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "book-carriers": {
+      "title": "Knygnešio diena – kovo 16-oji",
+      "url": "https://www.lrs.lt/sip/portal.show?p_k=1&p_r=40564&p_t=280289",
+      "publisher": "Lietuvos Respublikos Seimas"
+    },
+    "mother-language": {
+      "title": "UNESCO: vasario 21-oji – gimtosios kalbos diena",
+      "url": "https://www.unesco.org/en/days/mother-language",
+      "publisher": "UNESCO"
+    },
+    "world-book": {
+      "title": "UNESCO: balandžio 23-oji – knygos ir autorių teisių diena",
+      "url": "https://www.unesco.org/en/days/world-book-and-copyright",
+      "publisher": "UNESCO"
+    },
+    "earth": {
+      "title": "Jungtinės Tautos: balandžio 22-oji – Motinos Žemės diena",
+      "url": "https://www.un.org/en/observances/earth-day/background",
+      "publisher": "Jungtinės Tautos"
+    },
+    "environment": {
+      "title": "UNESCO: birželio 5-oji – aplinkos apsaugos diena",
+      "url": "https://www.unesco.org/en/days/environment",
+      "publisher": "UNESCO"
+    },
+    "child": {
+      "title": "Vaiko diena – trečiasis gegužės penktadienis",
+      "url": "https://vaikoteises.lrv.lt/lt/naujienos/nuo-siu-metu-vaiko-diena-svesime-treciaji-geguzes-penktadieni/",
+      "publisher": "Valstybės vaiko teisių apsaugos ir įvaikinimo tarnyba"
+    },
+    "straw": {
+      "title": "Šiaudinių sodų tradicija Lietuvoje",
+      "url": "https://www.lnkc.lt/go.php/lit/Siaudiniu-sodu-tradicija-itraukta-i-unesco-nematerialaus-kulturos-paveldo-sarasa/140385",
+      "publisher": "Lietuvos nacionalinis kultūros centras"
+    },
+    "eggs": {
+      "title": "Lietuvos muziejaus margučių raštai",
+      "url": "https://lnm.lt/eksponatai/margutis/",
+      "publisher": "Lietuvos nacionalinis muziejus"
+    },
+    "tower": {
+      "title": "Gedimino pilies bokštas",
+      "url": "https://lnm.lt/muziejai/gedimino-pilies-bokstas/",
+      "publisher": "Lietuvos nacionalinis muziejus"
+    },
+    "boss": {
+      "title": "Boso dienos minėjimas Tauragės profesinio rengimo centre",
+      "url": "https://www.tauragesprc.lt/naujienos/boso-diena-diena-kupina-sypsenu-dekingumo-ir-nuosirdziu-emociju/",
+      "publisher": "Tauragės profesinio rengimo centras"
+    },
+    "client": {
+      "title": "Kovo 19-osios Kliento dienos iniciatyvos",
+      "url": "https://uzt.lt/naujienos/8/siauliu-departamento-skyriai-tarptautine-kliento-diena-iprasmino-gausybeje-renginiu:473",
+      "publisher": "Užimtumo tarnyba"
+    },
+    "casimir": {
+      "title": "Šv. Kazimiero diena ir pamaldumo tradicija",
+      "url": "https://katedra.lt/sv-kazimieras/pamaldumas/",
+      "publisher": "Vilniaus arkikatedra bazilika"
+    },
+    "name": {
+      "title": "Kvedlinburgo analai ir pirmasis Lietuvos vardo paminėjimas",
+      "url": "https://www.valdovurumai.lt/lt/naujienos/i/10317/vilnius-litua-rotary-klubo-dovana-muziejui--istorinio-dokumento-kuriame-pirma-karta-pamineta-lietuva-faksimile/",
+      "publisher": "Valdovų rūmų muziejus"
+    },
+    "book": {
+      "title": "Knygnešio dienai skirta ekskursija",
+      "url": "https://lnm.lt/renginiai/temine-ekskursija-knygnesio-dienai/",
+      "publisher": "Lietuvos nacionalinis muziejus"
+    },
+    "baltic": {
+      "title": "Baltijos kelias – UNESCO Pasaulio atminties registras",
+      "url": "https://www.unesco.org/en/memory-world/baltic-way-human-chain-linking-three-states-their-drive-freedom",
+      "publisher": "UNESCO"
+    },
+    "constitution": {
+      "title": "Lietuvos Respublikos Konstitucija",
+      "url": "https://www3.lrs.lt/home/Konstitucija/Konstitucija.htm",
+      "publisher": "Lietuvos Respublikos Seimas"
+    },
+    "army": {
+      "title": "Lapkričio 23-ioji – Lietuvos kariuomenės diena",
+      "url": "https://kam.lt/lapkricio-23-ioji-lietuvos-kariuomenes-diena-2/",
+      "publisher": "Krašto apsaugos ministerija"
+    },
+    "vilnius": {
+      "title": "Vakarietiško Vilniaus pradžia",
+      "url": "https://www.govilnius.lt/visos-naujienos/vakarietisko-vilniaus-pradzia",
+      "publisher": "Go Vilnius"
+    },
+    "teachers": {
+      "title": "Pasaulinė mokytojų diena",
+      "url": "https://www.unesco.org/en/days/teachers",
+      "publisher": "UNESCO"
+    },
+    "shrove": {
+      "title": "Užgavėnės",
+      "url": "https://ekgt.lt/veiklos-sritys/gidai/ziema/uzgavenes.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "deportation": {
+      "title": "1941 m. birželio 14–19 d. trėmimo atminimas",
+      "url": "https://www.genocid.lt/centras/lt/3344/a/print_version/",
+      "publisher": "Lietuvos gyventojų genocido ir rezistencijos tyrimo centras"
+    }
+  },
+  "articles": [
+    {
+      "id": "boso-diena",
+      "slug": "boso-diena",
+      "title": "Boso diena",
+      "month": 10,
+      "day": 16,
+      "holiday_ids": [],
+      "category": "Neoficiali profesinė proga",
+      "summary": "Spalio 16-oji – neoficiali proga padėkoti vadovui už bendrą darbą. Tai nėra papildoma nedarbo diena.",
+      "what": "Boso diena minima darbo kolektyvuose savanoriškai. Ji nėra įrašyta į Lietuvos Atmintinų dienų įstatymą ar DK 123 straipsnio švenčių sąrašą.",
+      "history": "Spalio 16-osios minėjimą dokumentuoja Lietuvos įstaigų pranešimai apie jų pačių renginius. Tai pagrindžia dabartinę praktiką, tačiau nenustato valstybinės šventės statuso.",
+      "traditions": "",
+      "practical": "Padėka gali būti trumpa ir asmeniška. Dovana ar bendras rinkliavos fondas neturėtų būti prievolė. Savaitgalį tenkanti data automatiškai neperkeliama.",
+      "sources": [
+        "boss",
+        "law",
+        "labour-code-2027"
+      ],
+      "related": [
+        "kliento-diena",
+        "labour"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 16
+      },
+      "law_point": null,
+      "faq": [],
+      "meta_description": "Spalio 16-oji – neoficiali proga padėkoti vadovui už bendrą darbą. Tai nėra papildoma nedarbo diena.",
+      "accent": "#4a5e7b",
+      "tint": "#eff4f1"
+    },
+    {
+      "id": "kliento-diena",
+      "slug": "kliento-diena",
+      "title": "Kliento diena",
+      "month": 3,
+      "day": 19,
+      "holiday_ids": [],
+      "category": "Neoficiali profesinė proga",
+      "summary": "Kovo 19-ąją įstaigos ir verslai mini Kliento dieną – progą išklausyti klientus ir gerinti aptarnavimą.",
+      "what": "Tai neoficiali aptarnavimo ir bendradarbiavimo proga. Kliento diena nėra DK nustatyta šventinė nedarbo diena.",
+      "history": "Užimtumo tarnyba aprašo kovo 19-ąją vykusias Kliento dienos iniciatyvas: susitikimus, konsultacijas ir grįžtamojo ryšio rinkimą. Šis pavyzdys nėra visoms įstaigoms privaloma programa.",
+      "traditions": "",
+      "practical": "Pasitikrinkite konkrečios įstaigos darbo laiką ir siūlomas veiklas. Kalendoriaus data savaime negarantuoja akcijų, nuolaidų ar nemokamų paslaugų.",
+      "sources": [
+        "client",
+        "labour-code-2027"
+      ],
+      "related": [
+        "boso-diena",
+        "tarptautine-mokytoju-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 19
+      },
+      "law_point": null,
+      "faq": [],
+      "meta_description": "Kovo 19-ąją įstaigos ir verslai mini Kliento dieną – progą išklausyti klientus ir gerinti aptarnavimą.",
+      "accent": "#805136",
+      "tint": "#f0f3f7"
+    },
+    {
+      "id": "tarptautine-moters-diena",
+      "slug": "tarptautine-moters-diena",
+      "title": "Tarptautinė moters diena",
+      "month": 3,
+      "day": 8,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Kovo 8-oji Lietuvos įstatyme vadinama Tarptautine moterų solidarumo diena. Ji nėra šventinė nedarbo diena.",
+      "what": "Kasdienėje kalboje vartojamas pavadinimas „Moters diena“, o Atmintinų dienų įstatyme įrašyta „Tarptautinė moterų solidarumo diena“.",
+      "history": "Minėjimo centre – moterų solidarumas ir lygios galimybės. Teisinį dienos pavadinimą verta atskirti nuo asmeninių sveikinimo papročių.",
+      "traditions": "",
+      "practical": "Pagarbus sveikinimas gali būti derinamas su pokalbiu apie lygias galimybes. Dalyvavimas ir gėlių dovanojimas yra asmeninis pasirinkimas.",
+      "sources": [
+        "law"
+      ],
+      "related": [
+        "mothers",
+        "kliento-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 8
+      },
+      "law_point": 13,
+      "faq": [],
+      "meta_description": "Kovo 8-oji Lietuvos įstatyme vadinama Tarptautine moterų solidarumo diena. Ji nėra šventinė nedarbo diena.",
+      "accent": "#864f6a",
+      "tint": "#f4f3ed"
+    },
+    {
+      "id": "sv-kazimiero-diena",
+      "slug": "sv-kazimiero-diena",
+      "title": "Šv. Kazimiero diena",
+      "month": 3,
+      "day": 4,
+      "holiday_ids": [],
+      "category": "Religinė tradicija",
+      "summary": "Kovo 4-oji – šv. Kazimiero diena. Religinė data ir Kaziuko mugės renginių datos nėra tas pats.",
+      "what": "Kazimierinės – su Lietuvos globėjo šv. Kazimiero gerbimu susijusi religinė diena. Ji nėra įstatyme nustatyta šventinė nedarbo diena.",
+      "history": "Vilniaus arkikatedra aprašo šv. Kazimiero gerbimo tradiciją ir kovo 4-osios minėjimą. Su ja siejama Kaziuko mugė yra atskirai organizuojamas renginys.",
+      "traditions": "",
+      "practical": "Mugės laikas kasmet skelbiamas organizatorių. Neplanuokite kelionės vien pagal šventojo dieną; patikrinkite konkrečių metų programą.",
+      "sources": [
+        "casimir",
+        "labour-code-2027"
+      ],
+      "related": [
+        "uzgavenes",
+        "easter"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 4
+      },
+      "law_point": null,
+      "faq": [],
+      "meta_description": "Kovo 4-oji – šv. Kazimiero diena. Religinė data ir Kaziuko mugės renginių datos nėra tas pats.",
+      "accent": "#685a86",
+      "tint": "#eff4f1"
+    },
+    {
+      "id": "lietuvos-vardo-diena",
+      "slug": "lietuvos-vardo-diena",
+      "title": "Lietuvos vardo diena",
+      "month": 3,
+      "day": 9,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Kovo 9-ąją minima Lietuvos vardo diena, susijusi su 1009 metų Kvedlinburgo analų įrašu.",
+      "what": "Lietuvos vardo diena įtraukta į Atmintinų dienų įstatymą. Ji skiriasi nuo Kovo 11-osios nepriklausomybės atkūrimo šventės.",
+      "history": "Kvedlinburgo analuose 1009 metais užrašytas seniausias žinomas Lietuvos vardo paminėjimas. Išlikęs tekstas yra vėlesnis nuorašas, o ne Lietuvos valstybės įkūrimo aktas.",
+      "traditions": "",
+      "practical": "Apsilankykite muziejuje ar peržiūrėkite suskaitmenintą dokumentą. Dokumento įrašas ir šiuolaikinės valstybės atkūrimo datos žymi skirtingus istorijos reiškinius.",
+      "sources": [
+        "law",
+        "name"
+      ],
+      "related": [
+        "mar11",
+        "vilniaus-gimtadienis"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 9
+      },
+      "law_point": 14,
+      "faq": [],
+      "meta_description": "Kovo 9-ąją minima Lietuvos vardo diena, susijusi su 1009 metų Kvedlinburgo analų įrašu.",
+      "accent": "#52694e",
+      "tint": "#f0f3f7"
+    },
+    {
+      "id": "knygnesio-diena",
+      "slug": "knygnesio-diena",
+      "title": "Knygnešio diena",
+      "month": 3,
+      "day": 16,
+      "holiday_ids": [],
+      "category": "Kultūrinė tradicija",
+      "summary": "Kovo 16-oji skirta knygnešystei ir lietuviško rašto išsaugojimui prisiminti. Tai nėra šventinė nedarbo diena.",
+      "what": "Knygnešio dieną mini muziejai, bibliotekos ir bendruomenės. Ši kultūrinė data nėra įrašyta į peržiūrėtą Atmintinų dienų įstatymo sąrašą.",
+      "history": "Knygnešiai platino lietuviškus leidinius spaudos draudimo laikotarpiu. Lietuvos nacionalinio muziejaus Knygnešio dienos programa padeda pažinti jų veiklą ir asmenines istorijas.",
+      "traditions": "",
+      "practical": "Rinkitės patikrintą muziejaus edukaciją ar skaitmeninę parodą. Leidinio istorinis viršelis nėra visų knygnešių veiklos iliustracija.",
+      "sources": [
+        "book",
+        "law",
+        "labour-code-2027"
+      ],
+      "related": [
+        "mokslo-ir-ziniu-diena",
+        "lietuvos-vardo-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 16
+      },
+      "law_point": null,
+      "faq": [],
+      "meta_description": "Kovo 16-oji skirta knygnešystei ir lietuviško rašto išsaugojimui prisiminti. Tai nėra šventinė nedarbo diena.",
+      "accent": "#805a32",
+      "tint": "#f4f3ed"
+    },
+    {
+      "id": "gedulo-ir-vilties-diena",
+      "slug": "gedulo-ir-vilties-diena",
+      "title": "Gedulo ir vilties diena",
+      "month": 6,
+      "day": 14,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Birželio 14-oji skirta sovietinių trėmimų aukoms prisiminti. Atmintina diena savaime nesuteikia nedarbo dienos.",
+      "what": "Gedulo ir vilties diena primena 1941 m. birželio 14 d. pradėtus masinius Lietuvos gyventojų trėmimus.",
+      "history": "Atminimo diena sieja istorinės prievartos liudijimus su pagarba tremtiniams ir jų šeimoms. Vėlesni minėjimai ir skirtingų laikotarpių tremties nuotraukos turi būti aiškiai datuojami.",
+      "traditions": "",
+      "practical": "Renginių programą tikrinkite organizatorių svetainėse. Prisimindami aukas rinkitės santūrų bendravimą ir patikimus liudijimus.",
+      "sources": [
+        "law",
+        "deportation"
+      ],
+      "related": [
+        "freedom-defenders",
+        "baltijos-kelio-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 14
+      },
+      "law_point": 50,
+      "faq": [],
+      "meta_description": "Birželio 14-oji skirta sovietinių trėmimų aukoms prisiminti. Atmintina diena savaime nesuteikia nedarbo dienos.",
+      "accent": "#5b607b",
+      "tint": "#eff4f1"
+    },
+    {
+      "id": "vaiko-diena",
+      "slug": "vaiko-diena",
+      "title": "Vaiko diena",
+      "month": 5,
+      "day": 21,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Lietuvoje Vaiko diena minima trečiąjį gegužės penktadienį. Pasirinkę metus sužinosite tikslią datą.",
+      "what": "Atmintinų dienų įstatyme nustatytas trečiasis gegužės penktadienis. Vaiko diena nėra papildoma šventinė nedarbo diena.",
+      "history": "Ši data skiriasi nuo anksčiau birželio 1-ąją įprastai minėtos vaikų gynimo dienos ir lapkričio 20-osios Pasaulinės vaiko teisių dienos.",
+      "traditions": "",
+      "practical": "Planuokite vaikams prieinamas veiklas, atsižvelgdami į jų nuomonę ir amžių. Šeimos, mokyklos ar savivaldybės renginys nėra visos šalies nedarbo diena.",
+      "sources": [
+        "law",
+        "child"
+      ],
+      "related": [
+        "mothers",
+        "fathers",
+        "mokslo-ir-ziniu-diena"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 5,
+        "weekday": 5,
+        "ordinal": 3
+      },
+      "law_point": 45,
+      "faq": [],
+      "meta_description": "Lietuvoje Vaiko diena minima trečiąjį gegužės penktadienį. 2027 metais tai gegužės 21-oji.",
+      "accent": "#2d6c68",
+      "tint": "#f0f3f7"
+    },
+    {
+      "id": "baltijos-kelio-diena",
+      "slug": "baltijos-kelio-diena",
+      "title": "Baltijos kelio diena",
+      "month": 8,
+      "day": 23,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Rugpjūčio 23-ioji primena 1989 metų Baltijos kelią – taikią žmonių grandinę per Lietuvą, Latviją ir Estiją.",
+      "what": "Lietuvos įstatyme Baltijos kelio diena minima kartu su Europos diena stalinizmo ir nacizmo aukoms atminti. Tai nėra šventinė nedarbo diena.",
+      "history": "1989 m. rugpjūčio 23 d. žmonių grandinė sujungė Vilnių, Rygą ir Taliną. UNESCO 2009 m. įrašė Baltijos kelio dokumentinį paveldą į Pasaulio atminties registrą.",
+      "traditions": "",
+      "practical": "Peržiūrėkite originalias archyvų nuotraukas ir liudijimus. Istorinė 1989 metų akcija ir šiandien rengiami jos minėjimai turi atskiras datas bei programas.",
+      "sources": [
+        "law",
+        "baltic"
+      ],
+      "related": [
+        "mar11",
+        "gedulo-ir-vilties-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 23
+      },
+      "law_point": 65,
+      "faq": [],
+      "meta_description": "Rugpjūčio 23-ioji primena 1989 metų Baltijos kelią – taikią žmonių grandinę per Lietuvą, Latviją ir Estiją.",
+      "accent": "#355f81",
+      "tint": "#f4f3ed"
+    },
+    {
+      "id": "mokslo-ir-ziniu-diena",
+      "slug": "mokslo-ir-ziniu-diena",
+      "title": "Mokslo ir žinių diena",
+      "month": 9,
+      "day": 1,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Rugsėjo 1-oji – Mokslo ir žinių diena. Konkrečios mokyklos mokslo metų pradžios programą skelbia pati mokykla.",
+      "what": "Tai įstatyme nustatyta atmintina diena, skirta mokymuisi ir žinioms. Ji nėra visiems darbuotojams laisva šventinė diena.",
+      "history": "Rugsėjo pirmosios minėjimas siejamas su mokslo metų pradžia, tačiau kalendorinė data nepatvirtina kiekvienos įstaigos pamokų ar šventės tvarkaraščio.",
+      "traditions": "",
+      "practical": "Patikrinkite mokyklos pranešimą, klasės susitikimo vietą ir laiką. Kalendoriaus diena nesuteikia individualaus leidimo neatvykti į darbą.",
+      "sources": [
+        "law"
+      ],
+      "related": [
+        "tarptautine-mokytoju-diena",
+        "vaiko-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 1
+      },
+      "law_point": 67,
+      "faq": [],
+      "meta_description": "Rugsėjo 1-oji – Mokslo ir žinių diena. Konkrečios mokyklos mokslo metų pradžios programą skelbia pati mokykla.",
+      "accent": "#776334",
+      "tint": "#eff4f1"
+    },
+    {
+      "id": "tarptautine-mokytoju-diena",
+      "slug": "tarptautine-mokytoju-diena",
+      "title": "Tarptautinė mokytojų diena",
+      "month": 10,
+      "day": 5,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Spalio 5-oji skirta mokytojų darbui ir švietimo reikšmei. Lietuvoje tai atmintina, o ne šventinė nedarbo diena.",
+      "what": "Tarptautinė mokytojų diena įrašyta į Lietuvos Atmintinų dienų įstatymą. Pasaulinį minėjimą koordinuoja UNESCO ir jos partneriai.",
+      "history": "UNESCO spalio 5-ąją sieja su mokytojų vaidmens, profesinių sąlygų ir švietimo ateities aptarimu. Tai proga išgirsti pačių mokytojų patirtis.",
+      "traditions": "",
+      "practical": "Padėkokite už konkretų darbą ar pamoką. Mokyklos renginių laiką ir mokymo organizavimą tikrinkite jos pačios pranešimuose.",
+      "sources": [
+        "law",
+        "teachers"
+      ],
+      "related": [
+        "mokslo-ir-ziniu-diena",
+        "knygnesio-diena"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 5
+      },
+      "law_point": 80,
+      "faq": [],
+      "meta_description": "Spalio 5-oji skirta mokytojų darbui ir švietimo reikšmei. Lietuvoje tai atmintina, o ne šventinė nedarbo diena.",
+      "accent": "#72604d",
+      "tint": "#f0f3f7"
+    },
+    {
+      "id": "konstitucijos-diena",
+      "slug": "konstitucijos-diena",
+      "title": "Konstitucijos diena",
+      "month": 10,
+      "day": 25,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Spalio 25-ąją minima 1992 metų referendumu priimta Lietuvos Respublikos Konstitucija.",
+      "what": "Konstitucijos diena yra įstatyme nustatyta atmintina diena. Konstitucija apibrėžia valstybės santvarką, žmogaus teises ir valdžios institucijų veikimą.",
+      "history": "Lietuvos Respublikos piliečiai Konstituciją priėmė 1992 m. spalio 25 d. referendume. Priėmimo data nėra tas pats, kas vėlesnė įsigaliojimo data.",
+      "traditions": "",
+      "practical": "Skaitykite oficialų Konstitucijos tekstą. Konstitucijos diena savaime nesuteikia papildomos nedarbo dienos.",
+      "sources": [
+        "law",
+        "constitution"
+      ],
+      "related": [
+        "mar11",
+        "feb16"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 25
+      },
+      "law_point": 86,
+      "faq": [],
+      "meta_description": "Spalio 25-ąją minima 1992 metų referendumu priimta Lietuvos Respublikos Konstitucija.",
+      "accent": "#7d4d42",
+      "tint": "#f4f3ed"
+    },
+    {
+      "id": "lietuvos-kariuomenes-diena",
+      "slug": "lietuvos-kariuomenes-diena",
+      "title": "Lietuvos kariuomenės diena",
+      "month": 11,
+      "day": 23,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Lapkričio 23-ioji – Lietuvos kariuomenės diena, siejama su 1918 metų įsakymu Nr. 1 Apsaugos ministerijai.",
+      "what": "Tai įstatyme nustatyta atmintina diena, skirta Lietuvos kariuomenei. Ji nėra DK 123 straipsnio šventinė nedarbo diena.",
+      "history": "1918 m. lapkričio 23 d. Augustinas Voldemaras pasirašė įsakymą Nr. 1 Apsaugos ministerijai. Krašto apsaugos ministerija šią datą nurodo kaip oficialią kariuomenės atkūrimo dieną.",
+      "traditions": "",
+      "practical": "Parado vieta, dalyviai ir lankymo sąlygos kasmet gali keistis. Tikrinkite Krašto apsaugos ministerijos ir kariuomenės paskelbtą programą.",
+      "sources": [
+        "law",
+        "army"
+      ],
+      "related": [
+        "statehood",
+        "freedom-defenders"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 23
+      },
+      "law_point": 95,
+      "faq": [],
+      "meta_description": "Lapkričio 23-ioji – Lietuvos kariuomenės diena, siejama su 1918 metų įsakymu Nr. 1 Apsaugos ministerijai.",
+      "accent": "#466555",
+      "tint": "#eff4f1"
+    },
+    {
+      "id": "vilniaus-gimtadienis",
+      "slug": "vilniaus-gimtadienis",
+      "title": "Vilniaus gimtadienis",
+      "month": 1,
+      "day": 25,
+      "holiday_ids": [],
+      "category": "Atmintina diena · įstatymas",
+      "summary": "Sausio 25-oji siejama su pirmuoju Vilniaus paminėjimu 1323 metų Gedimino laiške.",
+      "what": "Atmintinų dienų įstatyme ši data įvardyta kaip Vilniaus pagarsinimo diena kartu su Lietuvos samariečių bendrijos diena. Kasdienėje kalboje vartojamas miesto gimtadienio pavadinimas.",
+      "history": "1323 m. sausio 25 d. Gedimino laiške pirmą kartą žinomuose rašytiniuose šaltiniuose paminėtas Vilnius. Tai pirmojo paminėjimo, o ne tiksliai nustatyta miesto įkūrimo data.",
+      "traditions": "",
+      "practical": "Miesto renginiai nebūtinai vyksta tik sausio 25-ąją. Programą ir lankymo sąlygas tikrinkite oficialiuose Vilniaus pranešimuose.",
+      "sources": [
+        "law",
+        "vilnius"
+      ],
+      "related": [
+        "lietuvos-vardo-diena",
+        "lithuanian-flag-day"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 25
+      },
+      "law_point": 6,
+      "faq": [],
+      "meta_description": "Sausio 25-oji siejama su pirmuoju Vilniaus paminėjimu 1323 metų Gedimino laiške.",
+      "accent": "#6b5178",
+      "tint": "#f0f3f7"
+    },
+    {
+      "id": "uzgavenes",
+      "slug": "uzgavenes",
+      "title": "Užgavėnės",
+      "month": 2,
+      "day": 9,
+      "holiday_ids": [],
+      "category": "Kultūrinė tradicija",
+      "summary": "Užgavėnės – žiemos palydų tradicija. Jos švenčiamos antradienį, likus 47 dienoms iki vakarietiškųjų Velykų.",
+      "what": "Data kasmet kinta pagal Grigaliaus kalendoriaus Velykas. Užgavėnės nėra įstatyme nustatyta šventinė nedarbo diena.",
+      "history": "Etninės kultūros globos taryba aprašo persirengėlių, vaišių ir žiemos palydų papročius. Jų formos skiriasi pagal vietovę ir bendruomenę.",
+      "traditions": "",
+      "practical": "Vieša Užgavėnių šventė gali vykti artimiausią savaitgalį. Lentelėje rodoma tradicinė kalendorinė data; renginio laiką tikrinkite pas organizatorių.",
+      "sources": [
+        "shrove",
+        "labour-code-2027"
+      ],
+      "related": [
+        "easter",
+        "sv-kazimiero-diena"
+      ],
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -47
+      },
+      "law_point": null,
+      "faq": [],
+      "meta_description": "Užgavėnės – žiemos palydų tradicija. Jos švenčiamos antradienį, likus 47 dienoms iki vakarietiškųjų Velykų.",
+      "accent": "#875335",
+      "tint": "#f4f3ed"
+    }
+  ],
+  "media": {
+    "new-year": {
+      "src": "/assets/visuals/holiday-new-year-vilnius-1200.webp",
+      "srcset": "/assets/visuals/holiday-new-year-vilnius-640.webp 640w, /assets/visuals/holiday-new-year-vilnius-1200.webp 1200w",
+      "width": 1200,
+      "height": 792,
+      "caption": "Naujųjų metų naktis Vilniuje, 2009 m. sausio 1 d. Fotografuota Katedros aikštėje.",
+      "author": "Dmitrijus Jarašius",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:New_Year_in_Vilnius_%2709.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/New_Year_in_Vilnius_%2709.jpg",
+      "institution_url": "https://www.flickr.com/photos/9897428@N06/3160250366",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 894630383,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "feb16": {
+      "src": "/assets/visuals/holiday-feb16-resolution-1200.webp",
+      "srcset": "/assets/visuals/holiday-feb16-resolution-640.webp 640w, /assets/visuals/holiday-feb16-resolution-1200.webp 1200w",
+      "width": 1200,
+      "height": 1697,
+      "caption": "Lietuvos Tarybos 1918 m. vasario 16 d. nutarimo rankraščio puslapis su signatarų parašais.",
+      "author": "Tomas Stasiulevičius",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Manuscript_of_the_Resolution_of_the_Council_of_Lithuania_on_Reinstating_Independence_of_Lithuania_in_the_Lithuanian_language,_which_was_adopted_on_16_February_1918_in_Vilnius.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Manuscript_of_the_Resolution_of_the_Council_of_Lithuania_on_Reinstating_Independence_of_Lithuania_in_the_Lithuanian_language%2C_which_was_adopted_on_16_February_1918_in_Vilnius.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1149992715,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "mar11": {
+      "src": "/assets/visuals/holiday-march11-restoration-act-800.webp",
+      "srcset": "/assets/visuals/holiday-march11-restoration-act-640.webp 640w, /assets/visuals/holiday-march11-restoration-act-800.webp 800w",
+      "width": 800,
+      "height": 1136,
+      "caption": "Lietuvos Respublikos Aukščiausiosios Tarybos 1990 m. kovo 11 d. nepriklausomybės atkūrimo akto dokumentas su signatarų parašais.",
+      "author": "Lietuvos Respublikos Aukščiausioji Taryba",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Act_of_Restoration_of_Independence_of_Lithuania_1990-03-11.png#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Act_of_Restoration_of_Independence_of_Lithuania_1990-03-11.png",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Act_of_Restoration_of_Independence_of_Lithuania_1990-03-11.png",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 880428760,
+      "license_rationale": "{{PD-LT-exempt|type=documents}}",
+      "restrictions": ""
+    },
+    "easter": {
+      "src": "/assets/visuals/holiday-easter-marguciai-1200.webp",
+      "srcset": "/assets/visuals/holiday-easter-marguciai-640.webp 640w, /assets/visuals/holiday-easter-marguciai-1200.webp 1200w",
+      "width": 1200,
+      "height": 900,
+      "caption": "Lėkštėje sudėti įvairiaspalviai tradiciniais vaškuotais raštais marginti lietuviški Velykų margučiai.",
+      "author": "Algirdas",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Marguciai2._2007-04-21.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Marguciai2._2007-04-21.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1256070081,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "labour": {
+      "src": "/assets/visuals/holiday-mayday-siauliai-1200.webp",
+      "srcset": "/assets/visuals/holiday-mayday-siauliai-640.webp 640w, /assets/visuals/holiday-mayday-siauliai-1200.webp 1200w",
+      "width": 1200,
+      "height": 761,
+      "caption": "Gegužės 1-osios demonstracija Šiauliuose, 1946 m. Archyvinėje nuotraukoje matomi sovietmečio propagandos atributai; tai nėra dabartinio minėjimo vaizdas.",
+      "author": "Stasys Ivanauskas",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:May_Day_demonstration_in_%C5%A0iauliai,_1946.jpeg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/May_Day_demonstration_in_%C5%A0iauliai%2C_1946.jpeg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1278200797,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "mothers": {
+      "src": "/assets/visuals/holiday-mothers-day-flowers-1200.webp",
+      "srcset": "/assets/visuals/holiday-mothers-day-flowers-640.webp 640w, /assets/visuals/holiday-mothers-day-flowers-1200.webp 1200w",
+      "width": 1200,
+      "height": 900,
+      "caption": "Motinos dienai skirtas gėlės žiedas delne, 2013 m. Scott Darbey nuotrauka; vieta nesiejama su Lietuva.",
+      "author": "Scott Darbey",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Mother%27s_Day_Flowers,_by_Melody_(8728386163).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Mother%27s_Day_Flowers%2C_by_Melody_%288728386163%29.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1191009481,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "fathers": {
+      "src": "/assets/visuals/holiday-fathers-day-lake-1200.webp",
+      "srcset": "/assets/visuals/holiday-fathers-day-lake-640.webp 640w, /assets/visuals/holiday-fathers-day-lake-1200.webp 1200w",
+      "width": 1200,
+      "height": 900,
+      "caption": "Tėvas su vaiku prie ežero. Karen Laubenstein / JAV Žuvų ir laukinės gamtos tarnybos nuotrauka; vieta nesiejama su Lietuva.",
+      "author": "Karen Laubenstein, U.S. Fish and Wildlife Service",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Fathers_day_father_with_kid_on_lake.jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Fathers_day_father_with_kid_on_lake.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Fathers_day_father_with_kid_on_lake.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 942940942,
+      "license_rationale": "{{PD-author|1=Laubenstein Karen, U.S. Fish and Wildlife Service}}",
+      "restrictions": ""
+    },
+    "jonines": {
+      "src": "/assets/visuals/holiday-jonines-nida-1200.webp",
+      "srcset": "/assets/visuals/holiday-jonines-nida-640.webp 640w, /assets/visuals/holiday-jonines-nida-1200.webp 1200w",
+      "width": 1200,
+      "height": 660,
+      "caption": "Scenoje koncertuoja tautiniais drabužiais vilkintys atlikėjai per Joninių renginį Nidoje.",
+      "author": "Derbrauni",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Midsummer_in_Nida_08.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Midsummer_in_Nida_08.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1261058998,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "statehood": {
+      "src": "/assets/visuals/holiday-statehood-gediminas-1200.webp",
+      "srcset": "/assets/visuals/holiday-statehood-gediminas-640.webp 640w, /assets/visuals/holiday-statehood-gediminas-1200.webp 1200w",
+      "width": 1200,
+      "height": 900,
+      "caption": "Gedimino prospektas Vilniuje papuoštas 2023 m. liepos 6-osios Valstybės dienos minėjimui. 2023 m. liepos 2 d. fotografija.",
+      "author": "Pofka",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Gediminas_Avenue_in_Vilnius,_decorated_for_the_upcoming_commemoration_of_the_Statehood_Day_(6_July_2023),_related_with_the_crowning_of_Mindaugas_as_the_King_of_Lithuania_in_1253.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Gediminas_Avenue_in_Vilnius%2C_decorated_for_the_upcoming_commemoration_of_the_Statehood_Day_%286_July_2023%29%2C_related_with_the_crowning_of_Mindaugas_as_the_King_of_Lithuania_in_1253.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1100741223,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "assumption": {
+      "src": "/assets/visuals/holiday-assumption-pivasiunai-1200.webp",
+      "srcset": "/assets/visuals/holiday-assumption-pivasiunai-640.webp 640w, /assets/visuals/holiday-assumption-pivasiunai-1200.webp 1200w",
+      "width": 1200,
+      "height": 900,
+      "caption": "Pivašiūnų Švč. Mergelės Marijos Ėmimo į dangų bažnyčia, 2014 m. spalio 24 d. Nuotraukoje matyti bažnyčia ir kapai; tai ne Žolinės atlaidų dokumentas.",
+      "author": "Vilensija",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Piva%C5%A1i%C5%ABnai,_ba%C5%BEny%C4%8Dia.JPG",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Piva%C5%A1i%C5%ABnai%2C_ba%C5%BEny%C4%8Dia.JPG",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1232200142,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "all-saints": {
+      "src": "/assets/visuals/holiday-all-saints-lithuania-1200.webp",
+      "srcset": "/assets/visuals/holiday-all-saints-lithuania-640.webp 640w, /assets/visuals/holiday-all-saints-lithuania-1200.webp 1200w",
+      "width": 1200,
+      "height": 894,
+      "caption": "Žvakėmis apšviesti kapai Lietuvoje 2006 m. lapkričio 1 d.; pirminis Commons aprašas šią nuotrauką vadina Vėlinėmis.",
+      "author": "Algirdas (lt.wikipedia)",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Velines,_2006-11-01.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Velines%2C_2006-11-01.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1256079449,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "all-souls": {
+      "src": "/assets/visuals/holiday-velines-lithuania-1024.webp",
+      "srcset": "/assets/visuals/holiday-velines-lithuania-640.webp 640w, /assets/visuals/holiday-velines-lithuania-1024.webp 1024w",
+      "width": 1024,
+      "height": 768,
+      "caption": "Vėlinių vakarą Lietuvos kapinėse dega žvakutės ant kapų.",
+      "author": "Jaunius (lt.wikipedia)",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Velines.jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Velines.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Velines.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1173192049,
+      "license_rationale": "{{PD-user-w|lt|wikipedia|Jaunius}}",
+      "restrictions": ""
+    },
+    "kucios": {
+      "src": "/assets/visuals/holiday-kucios-lithuania-1200.webp",
+      "srcset": "/assets/visuals/holiday-kucios-lithuania-640.webp 640w, /assets/visuals/holiday-kucios-lithuania-1200.webp 1200w",
+      "width": 1200,
+      "height": 795,
+      "caption": "Kūčių stalas su kūčiukais, žvake, žuvimi ir kitais patiekalais.",
+      "author": "Hugo.arg ir Viktorija O.",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:K%C5%AB%C4%8Dios.JPG#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:K%C5%AB%C4%8Dios.JPG",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/K%C5%AB%C4%8Dios.JPG",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1281775998,
+      "license_rationale": "{{PD-self}}",
+      "restrictions": ""
+    },
+    "christmas": {
+      "src": "/assets/visuals/holiday-phase2/kaledos-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/kaledos-480.webp 480w, /assets/visuals/holiday-phase2/kaledos-800.webp 800w, /assets/visuals/holiday-phase2/kaledos-1200.webp 1200w",
+      "width": 1200,
+      "height": 2133,
+      "caption": "Šiaudiniais sodais ir tradiciniais papuošalais puošta kalėdinė eglutė, 2024 m.",
+      "author": "Zykasaa",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Lithuanian_style_Christmas_tree_and_sodas.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Lithuanian_style_Christmas_tree_and_sodas.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "9d184aed6936b3dfd0797750f816a62d31c0593f48cb9b5bb41e10d86fc60009",
+      "commons_revision": 1200628584,
+      "license_rationale": "",
+      "restrictions": "",
+      "webp_quality": 83
+    },
+    "lithuanian-flag-day": {
+      "src": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+      "srcset": "/assets/visuals/holiday-lithuanian-flag-640.webp 640w, /assets/visuals/holiday-lithuanian-flag-1200.webp 1200w",
+      "width": 1200,
+      "height": 900,
+      "caption": "Lietuvos trispalvė plevėsuoja Vilniuje; kadre matyti vėliava prieš debesuotą dangų.",
+      "author": "Ypsilon from Finland",
+      "license": "CC0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1205968218,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "freedom-defenders": {
+      "src": "/assets/visuals/holiday-jan13-archive-1200.webp",
+      "srcset": "/assets/visuals/holiday-jan13-archive-640.webp 640w, /assets/visuals/holiday-jan13-archive-1200.webp 1200w",
+      "width": 1200,
+      "height": 826,
+      "caption": "Neapginkluotas Lietuvos pilietis stovi prieš sovietų tanką Vilniuje per 1991 m. sausio 13-osios įvykius.",
+      "author": "Andrius Petrulevičius; Lietuvos centrinis valstybės archyvas",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Unarmed_Lithuanian_citizen_standing_against_Soviet_tank,_Vilnius,_January_13,_1991.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Unarmed_Lithuanian_citizen_standing_against_Soviet_tank%2C_Vilnius%2C_January_13%2C_1991.jpg",
+      "institution_url": "https://ltmkm.lt/revoliucija/exhibitions/1991/",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "preserved baseline source; see original audit",
+      "commons_revision": 1271893101,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "boso-diena": {
+      "src": "/assets/visuals/holiday-phase2/boso-diena-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/boso-diena-480.webp 480w, /assets/visuals/holiday-phase2/boso-diena-800.webp 800w, /assets/visuals/holiday-phase2/boso-diena-1200.webp 1200w",
+      "width": 1200,
+      "height": 800,
+      "caption": "Lietuvos ir JAV karių darbo susitikimas Pabradėje, 2024 m. rugsėjo 18 d. Komandinio darbo pavyzdys, ne Boso dienos minėjimas.",
+      "author": "Cody Nelson / JAV kariuomenė",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:TSAE_ETSD_Lithuania_(8711938).jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:TSAE_ETSD_Lithuania_(8711938).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/TSAE_ETSD_Lithuania_%288711938%29.jpg",
+      "institution_url": "https://www.dvidshub.net/image/8711938",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "4289e5e23104ff66d39af1646819efcd286ea2f3198e3f6774bbba70eefc8c67",
+      "commons_revision": 1115813357,
+      "license_rationale": "{{PD-USGov-Military-Army}}",
+      "restrictions": ""
+    },
+    "kliento-diena": {
+      "src": "/assets/visuals/holiday-phase2/kliento-diena-1024.webp",
+      "srcset": "/assets/visuals/holiday-phase2/kliento-diena-480.webp 480w, /assets/visuals/holiday-phase2/kliento-diena-800.webp 800w, /assets/visuals/holiday-phase2/kliento-diena-1024.webp 1024w",
+      "width": 1024,
+      "height": 770,
+      "caption": "Duonos pirkimas lietuvių kepykloje Pitsberge, JAV, 1943 m. birželį. Istorinė aptarnavimo scena, ne Kliento dienos renginys.",
+      "author": "Marjory Collins / JAV Kongreso biblioteka",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg",
+      "institution_url": "https://www.loc.gov/resource/fsa.8d19617/",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "ad8c0fe741ba86cb1acda2191b4abb3a8b6e9f00a0f661aa26d330b351a0d602",
+      "commons_revision": 1010449905,
+      "license_rationale": "{{PD-USGov-FSA}}",
+      "restrictions": ""
+    },
+    "tarptautine-moters-diena": {
+      "src": "/assets/visuals/holiday-phase2/tarptautine-moters-diena-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/tarptautine-moters-diena-480.webp 480w, /assets/visuals/holiday-phase2/tarptautine-moters-diena-800.webp 800w, /assets/visuals/holiday-phase2/tarptautine-moters-diena-1200.webp 1200w",
+      "width": 1200,
+      "height": 899,
+      "caption": "Sofija Smetonienė, Elena Gimbutienė, Ona Mašiotienė ir kitos visuomenės veikėjos, 1933 m. Istorinis moterų visuomeninės veiklos vaizdas.",
+      "author": "Nežinomas fotografas / Lenkijos nacionalinė biblioteka",
+      "license": "CC0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Sofija_Smetonien%C4%97,_Elena_Gimbutien%C4%97.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Sofija_Smetonien%C4%97%2C_Elena_Gimbutien%C4%97.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "0d0138a5338e946d7983f0c6f6c8c538728973e283f35337a03de7fe54123277",
+      "commons_revision": 1258030660,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "sv-kazimiero-diena": {
+      "src": "/assets/visuals/holiday-phase2/sv-kazimiero-verba-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/sv-kazimiero-verba-480.webp 480w, /assets/visuals/holiday-phase2/sv-kazimiero-verba-800.webp 800w, /assets/visuals/holiday-phase2/sv-kazimiero-verba-1200.webp 1200w",
+      "width": 1200,
+      "height": 800,
+      "caption": "Verbos Kaziuko mugėje, 2010 m. kovo 6 d. Mugės renginių data skiriasi nuo kovo 4-osios šv. Kazimiero dienos.",
+      "author": "Evaldas Liutkus",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Verbos_Kaziuko_mugeje.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Verbos_Kaziuko_mugeje.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "7e6ee2fa71ffdba53db71837d3e3e6d9b20023e8324d52b5c1915ed967a3acf4",
+      "commons_revision": 1213619308,
+      "license_rationale": "",
+      "restrictions": "",
+      "webp_quality": 84
+    },
+    "lietuvos-vardo-diena": {
+      "src": "/assets/visuals/holiday-phase2/lietuvos-vardo-diena-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/lietuvos-vardo-diena-480.webp 480w, /assets/visuals/holiday-phase2/lietuvos-vardo-diena-800.webp 800w, /assets/visuals/holiday-phase2/lietuvos-vardo-diena-1200.webp 1200w",
+      "width": 1200,
+      "height": 384,
+      "caption": "Kvedlinburgo analų XVI a. nuorašo ištrauka su 1009 metų Lietuvos paminėjimu.",
+      "author": "Nežinomas nuorašo autorius",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Quedlinburger_Annalen,_31v_(detail).jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Quedlinburger_Annalen,_31v_(detail).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Quedlinburger_Annalen%2C_31v_%28detail%29.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "5775c38a498c13a421f2082114b9f9c8dc74087752d28d6eb3d6e974d15440ec",
+      "commons_revision": 1040560131,
+      "license_rationale": "{{PD-old-100}}",
+      "restrictions": ""
+    },
+    "knygnesio-diena": {
+      "src": "/assets/visuals/holiday-phase2/knygnesio-diena-900.webp",
+      "srcset": "/assets/visuals/holiday-phase2/knygnesio-diena-480.webp 480w, /assets/visuals/holiday-phase2/knygnesio-diena-800.webp 800w, /assets/visuals/holiday-phase2/knygnesio-diena-900.webp 900w",
+      "width": 900,
+      "height": 1277,
+      "caption": "Jurgio Bielinio leidinio „1901. Testamentas Lietuvos tautai dėl dvidešimto amžiaus“ viršelis.",
+      "author": "Jurgis Bielinis",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Bielinis_1901_testamentas_Lietuvos_tautai.jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Bielinis_1901_testamentas_Lietuvos_tautai.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Bielinis_1901_testamentas_Lietuvos_tautai.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "e8bfdefa9aa9c44009f9fee19e4ce1c3393786c1711e7b4a0faf7f1b62044c6d",
+      "commons_revision": 1086439930,
+      "license_rationale": "{{PD-old-100-1923}}",
+      "restrictions": ""
+    },
+    "gedulo-ir-vilties-diena": {
+      "src": "/assets/visuals/holiday-phase2/gedulo-ir-vilties-diena-921.webp",
+      "srcset": "/assets/visuals/holiday-phase2/gedulo-ir-vilties-diena-480.webp 480w, /assets/visuals/holiday-phase2/gedulo-ir-vilties-diena-800.webp 800w, /assets/visuals/holiday-phase2/gedulo-ir-vilties-diena-921.webp 921w",
+      "width": 921,
+      "height": 670,
+      "caption": "Trėmimų aukų pagerbimas Panevėžio geležinkelio stotyje 1989 m. birželio 14 d. Tai minėjimo, o ne 1941 metų trėmimo nuotrauka.",
+      "author": "Alfonsas Vytautas Augulis / Europeana 1989",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Tremtini%C5%B3_dienos_min%C4%97jimas_Panev%C4%97%C5%BEio_gele%C5%BEinkelio_stotyje.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Tremtini%C5%B3_dienos_min%C4%97jimas_Panev%C4%97%C5%BEio_gele%C5%BEinkelio_stotyje.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "d178fe3a8b61092471fed7537afa6977160248b0c6977817f8217972cb507c70",
+      "commons_revision": 1235099013,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "vaiko-diena": {
+      "src": "/assets/visuals/holiday-phase2/vaiko-diena-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/vaiko-diena-480.webp 480w, /assets/visuals/holiday-phase2/vaiko-diena-800.webp 800w, /assets/visuals/holiday-phase2/vaiko-diena-1200.webp 1200w",
+      "width": 1200,
+      "height": 1839,
+      "caption": "Vaikai „Roko maršo“ renginyje Biržuose, 1988 m. liepos 28 d. Nuotrauka nėra dabartinės Vaiko dienos minėjimas.",
+      "author": "Viktoras Kapočius / Lietuvos centrinis valstybės archyvas",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Happy_children_from_the_second_edition_of_the_Rock_March_(Vilnius,_Lithuania,_1988).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Happy_children_from_the_second_edition_of_the_Rock_March_%28Vilnius%2C_Lithuania%2C_1988%29.jpg",
+      "institution_url": "https://ltmkm.lt/revoliucija/exhibitions/1988/",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "c99598c8710e52843af4f4631dfdedae8846bec340ed046e37bc233cb6a1397f",
+      "commons_revision": 1259483462,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "baltijos-kelio-diena": {
+      "src": "/assets/visuals/holiday-phase2/baltijos-kelio-diena-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/baltijos-kelio-diena-480.webp 480w, /assets/visuals/holiday-phase2/baltijos-kelio-diena-800.webp 800w, /assets/visuals/holiday-phase2/baltijos-kelio-diena-1200.webp 1200w",
+      "width": 1200,
+      "height": 793,
+      "caption": "Baltijos kelio dalyviai Vilniaus–Ukmergės kelyje, Molėtų rajone, 1989 m. rugpjūčio 23 d.",
+      "author": "Saulius Gruodis / Lietuvos centrinis valstybės archyvas",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Baltic_Way_(Mol%C4%97tai_Region,_Lithuania).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Baltic_Way_%28Mol%C4%97tai_Region%2C_Lithuania%29.jpg",
+      "institution_url": "https://ltmkm.lt/revoliucija/exhibitions/1989/",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "ba65b5a9236128a7152efd010877d196d092369d1b7ba658ecb07ed98183c018",
+      "commons_revision": 1099933091,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "mokslo-ir-ziniu-diena": {
+      "src": "/assets/visuals/holiday-phase2/mokslo-ir-ziniu-diena-800.webp",
+      "srcset": "/assets/visuals/holiday-phase2/mokslo-ir-ziniu-diena-480.webp 480w, /assets/visuals/holiday-phase2/mokslo-ir-ziniu-diena-800.webp 800w",
+      "width": 800,
+      "height": 597,
+      "caption": "Mokinių pasirodymas Kukutėlių mokykloje, 1935 m. Nalšios muziejaus rinkinys; tai ne rugsėjo 1-osios renginio nuotrauka.",
+      "author": "Karolis Ulozas / Nalšios muziejus",
+      "license": "CC0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:School_performance_in_Kukut%C4%97liai.jpeg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/School_performance_in_Kukut%C4%97liai.jpeg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "757e3c4c7da13b0dc53ae6d3232d3c4efa9692b3bbb1cdfd4308d2702644a9e3",
+      "commons_revision": 1108414290,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "tarptautine-mokytoju-diena": {
+      "src": "/assets/visuals/holiday-phase2/tarptautine-mokytoju-diena-800.webp",
+      "srcset": "/assets/visuals/holiday-phase2/tarptautine-mokytoju-diena-480.webp 480w, /assets/visuals/holiday-phase2/tarptautine-mokytoju-diena-800.webp 800w",
+      "width": 800,
+      "height": 613,
+      "caption": "Vilniaus lietuvių dviklasės mokyklos mokytojų ir mokinių grupė, 1914 m. Kauno miesto muziejaus rinkinys.",
+      "author": "Nežinomas fotografas / Kauno miesto muziejus",
+      "license": "CC0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Staff_of_five-year_Lithuanian_school_in_Vilnius.jpeg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Staff_of_five-year_Lithuanian_school_in_Vilnius.jpeg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "e200f4d5a783e61d4b5b7d718c700c6400ed5a7181ab7e128cfc11c52daa9a32",
+      "commons_revision": 843774182,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "konstitucijos-diena": {
+      "src": "/assets/visuals/holiday-phase2/konstitucijos-diena-400.webp",
+      "srcset": "/assets/visuals/holiday-phase2/konstitucijos-diena-400.webp 400w",
+      "width": 400,
+      "height": 583,
+      "caption": "Lietuvos Respublikos Konstitucijos leidinio viršelis, nufotografuotas 2020 m. Tai ne 1992 metų referendumo nuotrauka.",
+      "author": "Arz",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Constitution_of_Lithuania_(cover).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Constitution_of_Lithuania_%28cover%29.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "40aa0a07bf53a749033c68c96838e0b5eb42ca40cb5c2beb78d401322c1e431a",
+      "commons_revision": 867660339,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "lietuvos-kariuomenes-diena": {
+      "src": "/assets/visuals/holiday-phase2/lietuvos-kariuomenes-diena-800.webp",
+      "srcset": "/assets/visuals/holiday-phase2/lietuvos-kariuomenes-diena-480.webp 480w, /assets/visuals/holiday-phase2/lietuvos-kariuomenes-diena-800.webp 800w",
+      "width": 800,
+      "height": 466,
+      "caption": "Antanas Smetona lankosi Kauno karo mokykloje, 1934 m. Istorinis kariuomenės vaizdas, ne 1918 metų įsakymo pasirašymas.",
+      "author": "Nežinomas fotografas / Zarasų krašto muziejus",
+      "license": "CC0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Antanas_Smetona_visiting_the_War_School_of_Kaunas.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Antanas_Smetona_visiting_the_War_School_of_Kaunas.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "209ba208fadbdb839c1b49b266c8ff1f4e4b408527bf2ec49cb4f2d907596dac",
+      "commons_revision": 884820323,
+      "license_rationale": "",
+      "restrictions": ""
+    },
+    "vilniaus-gimtadienis": {
+      "src": "/assets/visuals/holiday-phase2/vilniaus-gimtadienis-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/vilniaus-gimtadienis-480.webp 480w, /assets/visuals/holiday-phase2/vilniaus-gimtadienis-800.webp 800w, /assets/visuals/holiday-phase2/vilniaus-gimtadienis-1200.webp 1200w",
+      "width": 1200,
+      "height": 619,
+      "caption": "1323 m. sausio 25 d. Gedimino laiško nuorašas; Vilniaus paminėjimo vietos paryškintos.",
+      "author": "Nežinomas nuorašo autorius",
+      "license": "Viešo naudojimo kūrinys (PD)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Transcript_of_Gediminas%27_letter,_which_is_the_oldest_known_mentioning_of_Vilnius_in_written_sources_(25_January_1323).jpg#Licensing",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Transcript_of_Gediminas%27_letter,_which_is_the_oldest_known_mentioning_of_Vilnius_in_written_sources_(25_January_1323).jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Transcript_of_Gediminas%27_letter%2C_which_is_the_oldest_known_mentioning_of_Vilnius_in_written_sources_%2825_January_1323%29.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "3d6094a39b58ce6b4f83ce39e73a3d8daee29385df8e8902347cc7206890a343",
+      "commons_revision": 1275555556,
+      "license_rationale": "{{PD-old-1923}}",
+      "restrictions": ""
+    },
+    "uzgavenes": {
+      "src": "/assets/visuals/holiday-phase2/uzgavenes-1200.webp",
+      "srcset": "/assets/visuals/holiday-phase2/uzgavenes-480.webp 480w, /assets/visuals/holiday-phase2/uzgavenes-800.webp 800w, /assets/visuals/holiday-phase2/uzgavenes-1200.webp 1200w",
+      "width": 1200,
+      "height": 1800,
+      "caption": "Užgavėnių šventė Rumšiškėse, 2011 m. kovo 6 d. Viešos šventės data gali skirtis nuo tradicinio Užgavėnių antradienio.",
+      "author": "Michavilnius",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Folklorefestival_Rumsiskis_Lithuania_005.jpg",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Folklorefestival_Rumsiskis_Lithuania_005.jpg",
+      "institution_url": "",
+      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "original_sha256": "7d5224fcf624f609c578a6fe73da66db461199149cef68b24f12af658057b881",
+      "commons_revision": 1255829228,
+      "license_rationale": "",
+      "restrictions": "",
+      "webp_quality": 84
+    }
+  },
+  "overrides": {
+    "new-year": {
+      "accent": "#17634f",
+      "tint": "#f4f3ed"
+    },
+    "feb16": {
+      "accent": "#8b4234",
+      "tint": "#eff4f1"
+    },
+    "mar11": {
+      "accent": "#255d74",
+      "tint": "#f0f3f7"
+    },
+    "easter": {
+      "accent": "#8b5a15",
+      "tint": "#f4f3ed"
+    },
+    "labour": {
+      "accent": "#775129",
+      "tint": "#eff4f1"
+    },
+    "mothers": {
+      "accent": "#745077",
+      "tint": "#f0f3f7"
+    },
+    "fathers": {
+      "accent": "#336b5b",
+      "tint": "#f4f3ed"
+    },
+    "jonines": {
+      "accent": "#536827",
+      "tint": "#eff4f1"
+    },
+    "statehood": {
+      "accent": "#925225",
+      "tint": "#f0f3f7"
+    },
+    "assumption": {
+      "accent": "#476d4d",
+      "tint": "#f4f3ed"
+    },
+    "all-saints": {
+      "accent": "#686144",
+      "tint": "#eff4f1"
+    },
+    "all-souls": {
+      "accent": "#6c536d",
+      "tint": "#f0f3f7"
+    },
+    "kucios": {
+      "accent": "#77583d",
+      "tint": "#f4f3ed"
+    },
+    "christmas": {
+      "accent": "#9c4138",
+      "tint": "#eff4f1"
+    },
+    "lithuanian-flag-day": {
+      "accent": "#526f40",
+      "tint": "#f0f3f7"
+    },
+    "freedom-defenders": {
+      "accent": "#465e76",
+      "tint": "#f4f3ed"
+    }
+  }
+}

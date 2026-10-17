@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:konstitucijos-diena-2027-10-25@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20271025
+DTEND;VALUE=DATE:20271026
+SUMMARY:Konstitucijos diena
+DESCRIPTION:Atmintina diena · įstatymas. Spalio 25-ąją minima 1992 met
+ ų referendumu priimta Lietuvos Respublikos Konstitucija.
+URL:https://kalendorius365.lt/sventes/konstitucijos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

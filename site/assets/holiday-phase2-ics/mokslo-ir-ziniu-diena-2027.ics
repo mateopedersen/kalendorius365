@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mokslo-ir-ziniu-diena-2027-09-01@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Mokslo ir žinių diena
+DESCRIPTION:Atmintina diena · įstatymas. Rugsėjo 1-oji – Mokslo ir ži
+ nių diena. Konkrečios mokyklos mokslo metų pradžios programą skelbia 
+ pati mokykla.
+URL:https://kalendorius365.lt/sventes/mokslo-ir-ziniu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

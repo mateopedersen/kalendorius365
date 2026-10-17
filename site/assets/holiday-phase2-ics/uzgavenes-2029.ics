@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:uzgavenes-2029-02-13@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20290213
+DTEND;VALUE=DATE:20290214
+SUMMARY:Užgavėnės
+DESCRIPTION:Kultūrinė tradicija. Užgavėnės – žiemos palydų tradici
+ ja. Jos švenčiamos antradienį\, likus 47 dienoms iki vakarietiškųjų 
+ Velykų.
+URL:https://kalendorius365.lt/sventes/uzgavenes/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

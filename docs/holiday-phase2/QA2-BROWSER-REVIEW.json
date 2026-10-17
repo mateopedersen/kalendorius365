@@ -1,0 +1,225 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-17",
+  "routes": 31,
+  "layout_cases": 248,
+  "actual_css_widths": [
+    1440,
+    1280,
+    768,
+    390,
+    360
+  ],
+  "text_200_percent_widths": [
+    768,
+    390,
+    360
+  ],
+  "year_selections": 93,
+  "keyboard_method": "2029 selected with Enter on each guide; 2028 and 2027 clicked",
+  "screenshots": 93,
+  "initial_findings": "Two overflows at 768px with 200% text were fixed and all affected cases rerun. Initial results retained separately.",
+  "contrast": [
+    {
+      "route": "/sventes/naujuju-metu-diena/",
+      "accent": "#17634f",
+      "white_text_or_white_background_ratio": 7.16,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/vasario-16-oji/",
+      "accent": "#8b4234",
+      "white_text_or_white_background_ratio": 7.18,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/kovo-11-oji/",
+      "accent": "#255d74",
+      "white_text_or_white_background_ratio": 7.25,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/velykos/",
+      "accent": "#8b5a15",
+      "white_text_or_white_background_ratio": 5.88,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/tarptautine-darbo-diena/",
+      "accent": "#775129",
+      "white_text_or_white_background_ratio": 7.02,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/motinos-diena/",
+      "accent": "#745077",
+      "white_text_or_white_background_ratio": 6.65,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/tevo-diena/",
+      "accent": "#336b5b",
+      "white_text_or_white_background_ratio": 6.19,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/jonines/",
+      "accent": "#536827",
+      "white_text_or_white_background_ratio": 6.22,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/valstybes-diena/",
+      "accent": "#925225",
+      "white_text_or_white_background_ratio": 6.08,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/zoline/",
+      "accent": "#476d4d",
+      "white_text_or_white_background_ratio": 5.89,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/visu-sventuju-diena/",
+      "accent": "#686144",
+      "white_text_or_white_background_ratio": 6.21,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/velines/",
+      "accent": "#6c536d",
+      "white_text_or_white_background_ratio": 6.78,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/kucios/",
+      "accent": "#77583d",
+      "white_text_or_white_background_ratio": 6.47,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/kaledos/",
+      "accent": "#9c4138",
+      "white_text_or_white_background_ratio": 6.51,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/lietuvos-veliavos-diena/",
+      "accent": "#526f40",
+      "white_text_or_white_background_ratio": 5.67,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/sausio-13-oji/",
+      "accent": "#465e76",
+      "white_text_or_white_background_ratio": 6.72,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/boso-diena/",
+      "accent": "#4a5e7b",
+      "white_text_or_white_background_ratio": 6.61,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/kliento-diena/",
+      "accent": "#805136",
+      "white_text_or_white_background_ratio": 6.67,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/tarptautine-moters-diena/",
+      "accent": "#864f6a",
+      "white_text_or_white_background_ratio": 6.29,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/sv-kazimiero-diena/",
+      "accent": "#685a86",
+      "white_text_or_white_background_ratio": 6.18,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/lietuvos-vardo-diena/",
+      "accent": "#52694e",
+      "white_text_or_white_background_ratio": 6.02,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/knygnesio-diena/",
+      "accent": "#805a32",
+      "white_text_or_white_background_ratio": 6.13,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/gedulo-ir-vilties-diena/",
+      "accent": "#5b607b",
+      "white_text_or_white_background_ratio": 6.17,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/vaiko-diena/",
+      "accent": "#2d6c68",
+      "white_text_or_white_background_ratio": 6.08,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/baltijos-kelio-diena/",
+      "accent": "#355f81",
+      "white_text_or_white_background_ratio": 6.76,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/mokslo-ir-ziniu-diena/",
+      "accent": "#776334",
+      "white_text_or_white_background_ratio": 5.8,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/tarptautine-mokytoju-diena/",
+      "accent": "#72604d",
+      "white_text_or_white_background_ratio": 6.01,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/konstitucijos-diena/",
+      "accent": "#7d4d42",
+      "white_text_or_white_background_ratio": 6.97,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/lietuvos-kariuomenes-diena/",
+      "accent": "#466555",
+      "white_text_or_white_background_ratio": 6.46,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/vilniaus-gimtadienis/",
+      "accent": "#6b5178",
+      "white_text_or_white_background_ratio": 6.83,
+      "passes_4_5": true
+    },
+    {
+      "route": "/sventes/uzgavenes/",
+      "accent": "#875335",
+      "white_text_or_white_background_ratio": 6.33,
+      "passes_4_5": true
+    }
+  ],
+  "license_second_pass": "passed",
+  "limits": [
+    "Same-origin browser frames at exact CSS widths; no physical-device claim.",
+    "AI language and visual review, not independent human certification.",
+    "Local lab performance below uses a warm browser cache and no mobile-network throttle, not CrUX."
+  ],
+  "lab": {
+    "pages": 31,
+    "lcp_available": 31,
+    "lcp_ms_median": 68.0,
+    "lcp_ms_max": 104.0,
+    "cls_max": 0.0022034336538461537,
+    "instrumentation": "Local-only PerformanceObserver before rendering; never shipped to production."
+  },
+  "failures": []
+}

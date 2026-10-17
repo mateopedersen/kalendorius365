@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:sausio-13-oji-2028-01-13@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20280113
+DTEND;VALUE=DATE:20280114
+SUMMARY:Laisvės gynėjų diena
+DESCRIPTION:Atmintina diena. Sausio 13-oji skirta 1991 m. sausio įvykiams 
+ ir žmonėms\, gynusiems Lietuvos laisvę. Tai atmintina diena\; vien dėl
+  šio statuso ji nėra papildoma DK 123 straipsnio nedarbo diena.
+URL:https://kalendorius365.lt/sventes/sausio-13-oji/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

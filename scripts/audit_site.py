@@ -5,6 +5,23 @@ import struct
 import re
 import json
 ROOT=Path(__file__).resolve().parents[1];PUBLIC=ROOT/'public'
+# Detail guides use verified, uncropped photographic Open Graph images.
+# Every other page retains the existing 1200x630 PNG contract.
+_detail=json.loads((ROOT/'data/holiday-phase2.json').read_text())
+_old=json.loads((ROOT/'data/holiday-editorial.json').read_text())
+DETAIL_MEDIA={'https://kalendorius365.lt/sventes/'+a['slug']+'/':_detail['media'][a['id']] for a in _old['articles']+_old['commemorations']+_detail['articles']}
+assert len(DETAIL_MEDIA)==31
+
+def webp_dimensions(data):
+ assert data[:4]==b'RIFF' and data[8:12]==b'WEBP'
+ chunk=data[12:16]
+ if chunk==b'VP8X':return (1+int.from_bytes(data[24:27],'little'),1+int.from_bytes(data[27:30],'little'))
+ if chunk==b'VP8 ':
+  assert data[23:26]==b'\x9d\x01\x2a'
+  return tuple(n&0x3fff for n in struct.unpack('<HH',data[26:30]))
+ assert chunk==b'VP8L' and data[20]==0x2f
+ bits=int.from_bytes(data[21:25],'little');return (1+(bits&0x3fff),1+((bits>>14)&0x3fff))
+
 class Page(HTMLParser):
  def __init__(self):super().__init__();self.links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
  def handle_starttag(self,tag,attrs):
@@ -41,9 +58,13 @@ for path in files:
  assert '<html lang="lt">' in path.read_text(),path
  for key in ('og:type','og:locale','og:site_name','og:title','og:description','og:url','og:image','og:image:type','og:image:width','og:image:height','og:image:alt'):
   assert len(p.properties.get(key,[]))==1 and p.properties[key][0],(path,key,p.properties.get(key))
- assert p.properties['og:type']==['website'] and p.properties['og:locale']==['lt_LT'],path
+ media=DETAIL_MEDIA.get(p.canonical)
+ assert p.properties['og:type']==['article' if media else 'website'] and p.properties['og:locale']==['lt_LT'],path
  assert p.properties['og:url']==[p.canonical],(path,p.properties['og:url'],p.canonical)
- assert p.properties['og:image:type']==['image/png'] and p.properties['og:image:width']==['1200'] and p.properties['og:image:height']==['630'],path
+ expected_dimensions=(media['width'],media['height']) if media else (1200,630)
+ assert p.properties['og:image:type']==['image/webp' if media else 'image/png'],path
+ assert (int(p.properties['og:image:width'][0]),int(p.properties['og:image:height'][0]))==expected_dimensions,path
+ if media:assert p.properties['og:image']==['https://kalendorius365.lt'+media['src']] and p.properties['og:image:alt']==[media['caption']],path
  for key in ('twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'):
   assert len(p.named_meta.get(key,[]))==1 and p.named_meta[key][0],(path,key,p.named_meta.get(key))
  assert p.meta.get('twitter:card')=='summary_large_image',path
@@ -54,7 +75,8 @@ for path in files:
  image_path=PUBLIC/unquote(image_url.path).lstrip('/')
  assert image_path.is_file(),(path,p.properties['og:image'][0])
  image_data=image_path.read_bytes()
- assert image_data[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',image_data[16:24])==(1200,630),(path,image_path)
+ if media:assert webp_dimensions(image_data)==expected_dimensions,(path,image_path)
+ else:assert image_data[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',image_data[16:24])==(1200,630),(path,image_path)
  assert image_path.stat().st_size<=300_000,(path,image_path,image_path.stat().st_size)
  assert p.meta.get('twitter:title')==p.properties['og:title'][0] and p.meta.get('twitter:description')==p.properties['og:description'][0],path
  for text in p.jsonld:json.loads(text)
@@ -101,7 +123,7 @@ for y in [2027,2028,2029]:
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
   for e in manifest:
    if e['kind']=='monthly' and e['year']==y and e['month']==m:assert e['pdf'] in html and e['webp'] in html and e['preview'] in html
-print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 PNG, JSON-LD and 360 monthly mappings.')
+print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 360 monthly mappings.')
 if '--release' in __import__('sys').argv:
  import xml.etree.ElementTree as ET
  for path,p in pages.items():

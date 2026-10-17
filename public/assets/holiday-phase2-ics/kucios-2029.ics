@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kucios-2029-12-24@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20291224
+DTEND;VALUE=DATE:20291225
+SUMMARY:Kūčių diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama · tradicinė ir religi
+ nė šventė. Kūčios – gruodžio 24-osios vakaro šeimos susibūrimas\
+ , kurio kalendorinė diena Lietuvoje įtraukta į DK švenčių sąrašą.
+URL:https://kalendorius365.lt/sventes/kucios/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

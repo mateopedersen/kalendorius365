@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:gedulo-ir-vilties-diena-2029-06-14@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20290614
+DTEND;VALUE=DATE:20290615
+SUMMARY:Gedulo ir vilties diena
+DESCRIPTION:Atmintina diena · įstatymas. Birželio 14-oji skirta sovietin
+ ių trėmimų aukoms prisiminti. Atmintina diena savaime nesuteikia nedarb
+ o dienos.
+URL:https://kalendorius365.lt/sventes/gedulo-ir-vilties-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

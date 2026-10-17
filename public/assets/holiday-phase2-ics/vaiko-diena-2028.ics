@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:vaiko-diena-2028-05-19@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20280519
+DTEND;VALUE=DATE:20280520
+SUMMARY:Vaiko diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvoje Vaiko diena minima tre
+ čiąjį gegužės penktadienį. Pasirinkę metus sužinosite tikslią dat
+ ą.
+URL:https://kalendorius365.lt/sventes/vaiko-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

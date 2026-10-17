@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kaledos-2028-12-25@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20281225
+DTEND;VALUE=DATE:20281226
+SUMMARY:Kalėdų dienos
+DESCRIPTION:Šventinė diena · paprastai nedirbama · religinė ir kultūr
+ inė šventė. Pirmoji ir antroji Kalėdų dienos Lietuvoje yra gruodžio 
+ 25 ir 26 d.\; abi išvardytos Darbo kodekse.
+URL:https://kalendorius365.lt/sventes/kaledos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:kaledos-2028-12-26@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20281226
+DTEND;VALUE=DATE:20281227
+SUMMARY:Kalėdų dienos
+DESCRIPTION:Šventinė diena · paprastai nedirbama · religinė ir kultūr
+ inė šventė. Pirmoji ir antroji Kalėdų dienos Lietuvoje yra gruodžio 
+ 25 ir 26 d.\; abi išvardytos Darbo kodekse.
+URL:https://kalendorius365.lt/sventes/kaledos/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

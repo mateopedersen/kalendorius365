@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:tarptautine-darbo-diena-2027-05-01@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Tarptautinė darbo diena
+DESCRIPTION:Šventinė diena · paprastai nedirbama. Gegužės 1-ąją mini
+ ma Tarptautinė darbo diena\; Lietuvoje ji įrašyta į Darbo kodekso šve
+ nčių dienų sąrašą.
+URL:https://kalendorius365.lt/sventes/tarptautine-darbo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
