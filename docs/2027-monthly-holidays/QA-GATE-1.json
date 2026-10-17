@@ -135,7 +135,14 @@
       "canonical": "https://kalendorius365.lt/sventes/2027/gruodis/"
     }
   ],
-  "baseline_assets_preserved": 3152,
+  "baseline_assets_preserved": 3151,
+  "intentional_metadata_updates": [
+    {
+      "path": "site/assets/data/home-holiday-data.json",
+      "reason": "Complete the existing holiday event prefill; original ids, slugs and date rules preserved",
+      "sha256": "c7aee6472b92461edef2296fa47b325e2b78b4a17d11bf27a75da1da4021e3a7"
+    }
+  ],
   "changed_baseline_assets": [],
   "git_text_checkout_variants": {
     "site/downloads/lunar/asset-manifest.csv": {

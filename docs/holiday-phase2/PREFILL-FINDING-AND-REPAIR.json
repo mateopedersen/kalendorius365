@@ -1,0 +1,12 @@
+{
+  "observed_on": "https://kalendorius365.lt/",
+  "observed_after": "Clicked the preserved Easter 2029 personal-calendar link",
+  "before": {
+    "title": "undefined",
+    "description": "undefined. Daugiau: https://kalendorius365.lt/sventes/velykos/",
+    "date": "2029-04-01"
+  },
+  "cause": "Compact home-holiday-data generator omitted title/category fields used by the existing form",
+  "repair": "Restore original title/category fields for all sixteen records and version the compact request so cached incomplete metadata is not reused; date/storage logic unchanged",
+  "verification": "All 16 local browser prefill checks passed; form closed without saving any event"
+}

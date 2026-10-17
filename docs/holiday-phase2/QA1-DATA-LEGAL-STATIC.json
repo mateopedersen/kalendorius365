@@ -765,7 +765,19 @@
     }
   ],
   "local_targets_checked": 20230,
-  "source_assets_preserved": 2420,
+  "source_assets_preserved": 2418,
+  "intentional_metadata_updates": [
+    {
+      "path": "site/assets/app.js",
+      "reason": "Version repaired compact metadata; preserve all application logic",
+      "sha256": "2c5cdf33f59ab9d339b36007d49ee85a50539fc5969afcb379c89b4c5acfefa0"
+    },
+    {
+      "path": "site/assets/data/home-holiday-data.json",
+      "reason": "Restore title/category fields consumed by the existing event prefill form; date rules unchanged",
+      "sha256": "c7aee6472b92461edef2296fa47b325e2b78b4a17d11bf27a75da1da4021e3a7"
+    }
+  ],
   "changed_assets": [],
   "download_files_preserved": 980,
   "pdf_webp_files_preserved": 978,

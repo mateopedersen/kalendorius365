@@ -30,7 +30,7 @@ const [data, editorial] = await Promise.all([
       notice(e.message);
       throw e;
     }),
-  fetch("/assets/data/home-holiday-data.json")
+  fetch("/assets/data/home-holiday-data.json?v=2")
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);

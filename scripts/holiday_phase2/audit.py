@@ -81,10 +81,20 @@ def run():
     if path.endswith('/'):path+='index.html'
     target=ROOT/'public'/path.lstrip('/');targets+=1;check(target.is_file(),rel+' missing '+dest)
     if u.fragment and path.endswith('.html') and path in parsed:check(u.fragment in parsed[path].ids,rel+' missing anchor '+dest)
- preserved=0;changed=[]
+ preserved=0;changed=[];intentional_updates=[]
  for path,sha in base['source_assets'].items():
   if path=='site/assets/data/search.json':continue
   f=ROOT/path
+  if path=='site/assets/app.js':
+   current=f.read_bytes();updated=b'fetch("/assets/data/home-holiday-data.json?v=2")';previous=b'fetch("/assets/data/home-holiday-data.json")'
+   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'home app only versions the repaired metadata request')
+   intentional_updates.append({'path':path,'reason':'Version repaired compact metadata; preserve all application logic','sha256':hashlib.sha256(current).hexdigest()})
+   continue
+  if path=='site/assets/data/home-holiday-data.json':
+   wanted={kind:[{k:v for k,v in item.items() if k in keys}for item in old[kind]]for kind,keys in [('articles',{'id','slug','holiday_ids','title','category'}),('commemorations',{'id','slug','holiday_ids','title','category','month','day'})]}
+   check(json.loads(f.read_text())==wanted,'compact planner metadata matches all 16 original titles/categories and preserves date mapping')
+   intentional_updates.append({'path':path,'reason':'Restore title/category fields consumed by the existing event prefill form; date rules unchanged','sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
+   continue
   if not f.exists()or hashlib.sha256(f.read_bytes()).hexdigest()!=sha:changed.append(path)
   else:preserved+=1
  check(not changed,'old source assets changed '+str(changed))
@@ -93,6 +103,6 @@ def run():
   if variant:allowed.add(variant['sha256'])
   check(f.exists()and hashlib.sha256(f.read_bytes()).hexdigest() in allowed,'download changed '+path)
  check(len(data['media'])==31,'31 complete media records');check(len(uids)==99,'99 independently checked all-day events')
- report={'status':'passed'if not errors else'failed','checked_at':'2026-10-17','method':'independent Python dates, parser, rendered HTML, source/download hashes; no renderer imported','canonical_count':len(locs),'pages':rows,'local_targets_checked':targets,'source_assets_preserved':preserved,'changed_assets':changed,'download_files_preserved':len(base['downloads']),'pdf_webp_files_preserved':base['pdf_webp_count'],'failures':errors}
+ report={'status':'passed'if not errors else'failed','checked_at':'2026-10-17','method':'independent Python dates, parser, rendered HTML, source/download hashes; no renderer imported','canonical_count':len(locs),'pages':rows,'local_targets_checked':targets,'source_assets_preserved':preserved,'intentional_metadata_updates':intentional_updates,'changed_assets':changed,'download_files_preserved':len(base['downloads']),'pdf_webp_files_preserved':base['pdf_webp_count'],'failures':errors}
  out=ROOT/'docs/holiday-phase2';(out/'QA1-DATA-LEGAL-STATIC.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');(out/'FUNCTIONAL-ICS-QA.json').write_text(json.dumps({'status':report['status'],'files':len(icsrows),'events':len(uids),'items':icsrows},ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items()if k not in ['pages']},ensure_ascii=False));assert not errors
 if __name__=='__main__':run()
