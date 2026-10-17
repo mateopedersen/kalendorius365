@@ -363,6 +363,7 @@ Phase568Pages.run
 require_relative '../lib/horoscopes_pages'
 HoroscopesPages.run
 system('python3',File.join(Pages::ROOT,'scripts/lunar/pages.py'),exception:true)
+system('python3',File.join(Pages::ROOT,'scripts/monthly_holidays/pages.py'),exception:true)
 search_page=<<~HTML
  <section class="search-page" aria-labelledby="search-page-title">
   <div class="search-page__hero">
@@ -456,7 +457,7 @@ search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
   'spalis'=>'october oktober ekim', 'lapkritis'=>'november november kasim kasım',
   'gruodis'=>'december dezember aralik aralık'
  }
- aliases+=' '+calendar_month_aliases.fetch(url.split('/').reject(&:empty?).last,'') if url.match?(%r{\A/(?:menulio-kalendorius/)?20\d{2}/})
+ aliases+=' '+calendar_month_aliases.fetch(url.split('/').reject(&:empty?).last,'') if url.match?(%r{\A/(?:(?:menulio-kalendorius|sventes)/)?20\d{2}/})
  aliases+=' metinis kalendorius metų spausdinamas mėnesio pdf webp' if url.match?(%r{^/20\d\d/})
  body=raw.sub(/\A---\s*\n.*?\n---\s*\n/m,'')
  headings=body.scan(%r{<h[1-4]\b[^>]*>(.*?)</h[1-4]>}im).flatten.map { |chunk|search_plain_text.call(chunk) }.reject(&:empty?).uniq.join(' ')

@@ -1,0 +1,87 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2027 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2027 m. rugpjūčio datos
+BEGIN:VEVENT
+UID:2027-comm-061@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270802
+DTEND;VALUE=DATE:20270803
+SUMMARY:Romų genocido atminimo diena
+DESCRIPTION:Atmintina diena · įstatymas. Romų genocido aukoms skirtas at
+ minimo įrašas.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-061
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-062@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270807
+DTEND;VALUE=DATE:20270808
+SUMMARY:Bitininkų diena
+DESCRIPTION:Atmintina diena · įstatymas. Bitininkams skirta kilnojamoji d
+ ata – pirmasis rugpjūčio šeštadienis.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-062
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-063@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270810
+DTEND;VALUE=DATE:20270811
+SUMMARY:Lituanistinės mokyklos diena
+DESCRIPTION:Atmintina diena · įstatymas. Lituanistinei mokyklai skirta Li
+ etuvos atmintina diena.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-063
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-064@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270812
+DTEND;VALUE=DATE:20270813
+SUMMARY:Tarptautinė jaunimo diena
+DESCRIPTION:Atmintina diena · įstatymas. Jaunimui skirta įstatyme įvard
+ yta atmintina diena.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-064
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-stat-assumption@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270815
+DTEND;VALUE=DATE:20270816
+SUMMARY:Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)
+DESCRIPTION:Šventinė diena · DK 123 str.. Rugpjūčio 15-oji kalendoriuj
+ e yra Žolinė\; teisėje ji įvardijama ir katalikišku Švč. Mergelės 
+ Marijos ėmimo į dangų dienos pavadinimu.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-stat-assumptio
+ n
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-065@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270823
+DTEND;VALUE=DATE:20270824
+SUMMARY:Europos diena stalinizmo ir nacizmo aukoms atminti\, Baltijos kelio
+  diena
+DESCRIPTION:Atmintina diena · įstatymas. Totalitarinių režimų aukų at
+ minimą ši data sieja su Baltijos kelio diena.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-065
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-066@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270831
+DTEND;VALUE=DATE:20270901
+SUMMARY:Laisvės diena
+DESCRIPTION:Atmintina diena · įstatymas. Laisvei skirta atmintina diena\,
+  atskira nuo šventinių nedarbo dienų sąrašo.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-066
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

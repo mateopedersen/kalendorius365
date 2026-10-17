@@ -1,0 +1,2929 @@
+{
+  "year": 2027,
+  "reviewed": "2026-10-17",
+  "timezone": "Europe/Vilnius",
+  "scope": "Visos 101 Atmintinų dienų įstatymo datos, visos 2027 m. DK 123 straipsnio šventinės dienos ir aiškiai pažymėtos atrinktos tradicijos bei tarptautinės dienos.",
+  "sources": {
+    "law": {
+      "title": "Atmintinų dienų įstatymas: redakcija nuo 2026-07-04",
+      "url": "https://www.e-tar.lt/portal/lt/legalAct/TAR.D570962773F8/asr",
+      "publisher": "Teisės aktų registras",
+      "version": "2026-07-04",
+      "access": "Official current consolidated text read in the browser, full source evidence saved."
+    },
+    "dk": {
+      "title": "Darbo kodekso 123 straipsnis: redakcija nuo 2027-01-01",
+      "url": "https://www.e-tar.lt/portal/lt/legalAct/f6d686707e7011e6b969d7ae07280e89/mWmwpkqsvb",
+      "publisher": "Teisės aktų registras",
+      "version": "2027-01-01 (paskelbta būsima redakcija)",
+      "access": "Official future consolidated text read in the browser. Article 123 compared with current 2026-06-07–2026-10-31 edition; identical."
+    },
+    "three-kings": {
+      "title": "Trys Karaliai – sausio 6-oji",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/trys-karaliai--sausio-6-oji.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "spring": {
+      "title": "Pavasario švenčių datos ir jų ryšys su Velykomis",
+      "url": "https://www.ekgt.lt/media/Globali-Lietuva/Paskaitos%20apie%20pavasario%20papro%C4%8Dius%20tekstas.pdf",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "easter": {
+      "title": "Velykų papročiai",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velykos.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "atvelykis": {
+      "title": "Atvelykis – pirmasis sekmadienis po Velykų",
+      "url": "https://ktkc.lt/atvelykis/",
+      "publisher": "Kauno tautinės kultūros centras"
+    },
+    "jonines": {
+      "title": "Kupolių laikas ir Joninės (Rasų šventė)",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kupoliu-laikas-ir-jonines-rasu-svente.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "zoline": {
+      "title": "Žolinė – rugpjūčio 15-oji",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/zoline--rugpjucio-15-oji.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "velines": {
+      "title": "Vėlinių papročiai",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "kucios": {
+      "title": "Kūčios: šeimos vakaro papročiai",
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/kucios.html",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "book-carriers": {
+      "title": "Knygnešio diena – kovo 16-oji",
+      "url": "https://www.lrs.lt/sip/portal.show?p_k=1&p_r=40564&p_t=280289",
+      "publisher": "Lietuvos Respublikos Seimas"
+    },
+    "mother-language": {
+      "title": "UNESCO: vasario 21-oji – gimtosios kalbos diena",
+      "url": "https://www.unesco.org/en/days/mother-language",
+      "publisher": "UNESCO"
+    },
+    "world-book": {
+      "title": "UNESCO: balandžio 23-oji – knygos ir autorių teisių diena",
+      "url": "https://www.unesco.org/en/days/world-book-and-copyright",
+      "publisher": "UNESCO"
+    },
+    "earth": {
+      "title": "Jungtinės Tautos: balandžio 22-oji – Motinos Žemės diena",
+      "url": "https://www.un.org/en/observances/earth-day/background",
+      "publisher": "Jungtinės Tautos"
+    },
+    "environment": {
+      "title": "UNESCO: birželio 5-oji – aplinkos apsaugos diena",
+      "url": "https://www.unesco.org/en/days/environment",
+      "publisher": "UNESCO"
+    },
+    "child": {
+      "title": "Vaiko diena – trečiasis gegužės penktadienis",
+      "url": "https://vaikoteises.lrv.lt/lt/naujienos/nuo-siu-metu-vaiko-diena-svesime-treciaji-geguzes-penktadieni/",
+      "publisher": "Valstybės vaiko teisių apsaugos ir įvaikinimo tarnyba"
+    },
+    "straw": {
+      "title": "Šiaudinių sodų tradicija Lietuvoje",
+      "url": "https://www.lnkc.lt/go.php/lit/Siaudiniu-sodu-tradicija-itraukta-i-unesco-nematerialaus-kulturos-paveldo-sarasa/140385",
+      "publisher": "Lietuvos nacionalinis kultūros centras"
+    },
+    "eggs": {
+      "title": "Lietuvos muziejaus margučių raštai",
+      "url": "https://lnm.lt/eksponatai/margutis/",
+      "publisher": "Lietuvos nacionalinis muziejus"
+    },
+    "tower": {
+      "title": "Gedimino pilies bokštas",
+      "url": "https://lnm.lt/muziejai/gedimino-pilies-bokstas/",
+      "publisher": "Lietuvos nacionalinis muziejus"
+    }
+  },
+  "events": [
+    {
+      "id": "stat-new-year",
+      "date": "2027-01-01",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Naujųjų metų diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Sausio 1-oji žymi naujų kalendorinių metų pradžią pagal šiandien Lietuvoje naudojamą Grigaliaus kalendorių.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "new-year",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/naujuju-metu-diena/"
+    },
+    {
+      "id": "comm-001",
+      "date": "2027-01-01",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Lietuvos vėliavos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Valstybės vėliavai skirta atmintina diena sutampa su Naujųjų metų švente.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 1,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays.",
+      "detail_url": "/sventes/lietuvos-veliavos-diena/"
+    },
+    {
+      "id": "comm-002",
+      "date": "2027-01-04",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Pasaulinė Brailio rašto diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Išryškina rašto prieinamumo ir žmonių, naudojančių Brailio raštą, poreikius.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 4
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 2,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "three-kings",
+      "date": "2027-01-06",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Trys Karaliai",
+      "category": "traditional_cultural",
+      "statutory_nonworking": false,
+      "summary": "Tradicinis kalėdinio tarpušvenčio užbaigimas; tai nėra papildoma nedarbo diena.",
+      "sources": [
+        "three-kings"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 6
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-003",
+      "date": "2027-01-13",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Laisvės gynėjų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Skirta Lietuvos laisvės gynėjams atminti; papildoma nedarbo diena nesuteikiama.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 13
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 3,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays.",
+      "detail_url": "/sventes/sausio-13-oji/"
+    },
+    {
+      "id": "comm-004",
+      "date": "2027-01-15",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Klaipėdos krašto diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Klaipėdos kraštui skirtas istorinio atminimo įrašas Lietuvos kalendoriuje.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 4,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-005",
+      "date": "2027-01-22",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "1863–1864 m. sukilimo prieš okupacinę Rusijos imperijos valdžią pradžios diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Primena 1863–1864 m. sukilimo pradžią ir pasipriešinimo istoriją.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 22
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 5,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-006",
+      "date": "2027-01-25",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Vilniaus pagarsinimo diena, Lietuvos samariečių bendrijos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Tą pačią datą įstatymas skiria Vilniaus pagarsinimui ir samariečių bendrijai.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 25
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 6,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-007",
+      "date": "2027-02-09",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Baltijos šalių energetinės nepriklausomybės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Baltijos šalių energetinei nepriklausomybei skirtas įstatymo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 9
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 7,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "uzgavenes",
+      "date": "2027-02-09",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Užgavėnės",
+      "category": "traditional_cultural",
+      "statutory_nonworking": false,
+      "summary": "Žiemos palydų tradicija; data skaičiuojama likus 47 dienoms iki vakarietiškųjų Velykų.",
+      "sources": [
+        "spring"
+      ],
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -47
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-008",
+      "date": "2027-02-11",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Pasaulinė ligonių diena, Bausmių vykdymo sistemos pareigūnų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatyme ši diena skirta ligoniams ir bausmių vykdymo sistemos pareigūnams.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 11
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 8,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-restoration",
+      "date": "2027-02-16",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Lietuvos valstybės atkūrimo diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Vasario 16-ąją minima Lietuvos valstybės atkūrimo diena ir 1918 m. Lietuvos Tarybos paskelbtas nepriklausomos valstybės atkūrimo aktas.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 16
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "restoration",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/vasario-16-oji/"
+    },
+    {
+      "id": "comm-009",
+      "date": "2027-02-17",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Nacionalinė emancipacijos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Emancipacijai ir lygiateisiškumui skirtas Lietuvos kalendoriaus įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 17
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 9,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "mother-language",
+      "date": "2027-02-21",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Tarptautinė gimtosios kalbos diena",
+      "category": "international_observance",
+      "statutory_nonworking": false,
+      "summary": "UNESCO kalendorinė data skirta kalbų įvairovei ir daugiakalbystei.",
+      "sources": [
+        "mother-language"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 21
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-010",
+      "date": "2027-02-27",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Pasaulinė nevyriausybinių organizacijų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Nevyriausybinių organizacijų vaidmeniui visuomenėje skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 27
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 10,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-011",
+      "date": "2027-03-01",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Tarptautinė žmonių su negalia vežimėlio diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Atkreipia dėmesį į žmonių, naudojančių vežimėlį, teises ir prieinamumą.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 11,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-012",
+      "date": "2027-03-04",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Lietuvos globėjo šv. Kazimiero diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Šv. Kazimierui skirta data; konkrečios Kaziuko mugės programos čia nenustatome.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 4
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 12,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-013",
+      "date": "2027-03-08",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Tarptautinė moterų solidarumo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Moterų solidarumui skirta įstatyme nustatyta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 8
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 13,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-014",
+      "date": "2027-03-09",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Lietuvos vardo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos vardo paminėjimui skirta data, atskira nuo Kovo 11-osios šventės.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 9
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 14,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-independence",
+      "date": "2027-03-11",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Lietuvos nepriklausomybės atkūrimo diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Kovo 11-ąją minima 1990 m. Lietuvos Respublikos Aukščiausiosios Tarybos priimto nepriklausomybės atkūrimo akto sukaktis.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 11
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "independence",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/kovo-11-oji/"
+    },
+    {
+      "id": "comm-015",
+      "date": "2027-03-12",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Europos kovos su smurtu prieš gydytojus ir asmens sveikatos priežiūros specialistus diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Skirta smurto prieš gydytojus ir kitus sveikatos priežiūros specialistus prevencijai.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 12
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 15,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-016",
+      "date": "2027-03-15",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Lietuvos žydų gelbėtojų diena, Pasaulinė vartotojų teisių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatymas šią datą skiria žydų gelbėtojams ir vartotojų teisėms.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 16,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "book-carriers",
+      "date": "2027-03-16",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Knygnešio diena",
+      "category": "traditional_cultural",
+      "statutory_nonworking": false,
+      "summary": "Lietuvoje minima knygnešystės atminimo diena; jos nelaikome įstatymo nustatyta nedarbo diena.",
+      "sources": [
+        "book-carriers"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 16
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-017",
+      "date": "2027-03-20",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Žemės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos atmintinų dienų sąrašo Žemės diena; balandžio 22-oji yra kita tarptautinė data.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 20
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 17,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "palms",
+      "date": "2027-03-21",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Verbų sekmadienis",
+      "category": "traditional_cultural",
+      "statutory_nonworking": false,
+      "summary": "Sekmadienis likus savaitei iki vakarietiškųjų Velykų; verbų papročiai įvairuoja pagal regioną.",
+      "sources": [
+        "spring",
+        "easter"
+      ],
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -7
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-018",
+      "date": "2027-03-23",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Socialinio draudimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Socialiniam draudimui skirta atmintina diena, įtraukta į 2026 m. redakciją.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 23
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 18,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-019",
+      "date": "2027-03-27",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Tarptautinė teatro diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Teatrui ir jo kūrėjams skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 27
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 19,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-easter",
+      "date": "2027-03-28",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Velykos",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Velykų sekmadienis ir pirmadienis pagal vakarietiškąją krikščionišką tradiciją kasmet nustatomi pagal Grigaliaus kalendorių.",
+      "sources": [
+        "dk",
+        "easter"
+      ],
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": 0
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "easter",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/velykos/"
+    },
+    {
+      "id": "stat-easter-monday",
+      "date": "2027-03-29",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Antroji Velykų diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Velykų sekmadienis ir pirmadienis pagal vakarietiškąją krikščionišką tradiciją kasmet nustatomi pagal Grigaliaus kalendorių.",
+      "sources": [
+        "dk",
+        "easter"
+      ],
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": 1
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "easter-monday",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/velykos/"
+    },
+    {
+      "id": "comm-020",
+      "date": "2027-03-29",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Lietuvos įstojimo į NATO diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos narystei NATO skirta data; ji gali sutapti su Velykų pirmadieniu.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 29
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 20,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-021",
+      "date": "2027-03-30",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Prokuratūros diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Prokuratūrai skirta profesinė atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 30
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 21,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-022",
+      "date": "2027-04-02",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Pasaulinė autizmo supratimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Atkreipia dėmesį į autizmo supratimą ir įtraukią visuomenę.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 2
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 22,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "atvelykis",
+      "date": "2027-04-04",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Atvelykis (Vaikų Velykėlės)",
+      "category": "traditional_cultural",
+      "statutory_nonworking": false,
+      "summary": "Pirmasis sekmadienis po Velykų; vaikų žaidimai su margučiais pratęsia Velykų papročius.",
+      "sources": [
+        "atvelykis",
+        "spring"
+      ],
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": 7
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-023",
+      "date": "2027-04-06",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Saugaus eismo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Saugiam eismui skirta Lietuvos atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 6
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 23,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-024",
+      "date": "2027-04-07",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Pasaulinė sveikatos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Sveikatai skirta atmintina diena, nesuteikianti papildomos poilsio dienos.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 7
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 24,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-025",
+      "date": "2027-04-15",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Pasaulinė meno diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Pasaulinė meno diena pagal galiojantį įstatymo pavadinimą.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 25,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-026",
+      "date": "2027-04-17",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Lietuvos energetikų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos energetikų profesinei veiklai skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 17
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 26,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "earth",
+      "date": "2027-04-22",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Tarptautinė Motinos Žemės diena",
+      "category": "international_observance",
+      "statutory_nonworking": false,
+      "summary": "Jungtinių Tautų nustatyta balandžio data; jos nepainiojame su kovo 20-osios Žemės diena.",
+      "sources": [
+        "earth"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 22
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "world-book",
+      "date": "2027-04-23",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Pasaulinė knygos ir autorių teisių diena",
+      "category": "international_observance",
+      "statutory_nonworking": false,
+      "summary": "UNESCO diena, skirta skaitymui, knygoms ir autorių teisėms.",
+      "sources": [
+        "world-book"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 23
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "comm-030",
+      "date": "2027-04-24",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Tarptautinė veterinarijos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Kilnojamoji data: paskutinis balandžio šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 4,
+        "weekday": 6,
+        "ordinal": -1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 30,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-031",
+      "date": "2027-04-25",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Pasaulinė gyvybės diena, Geologų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Dviem temoms skirta kilnojamoji data – paskutinis balandžio sekmadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 4,
+        "weekday": 7,
+        "ordinal": -1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 31,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-027",
+      "date": "2027-04-26",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Pasaulinė intelektinės nuosavybės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Intelektinei nuosavybei ir kūrėjų teisėms skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 26
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 27,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-028",
+      "date": "2027-04-27",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Medicinos darbuotojų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Medicinos darbuotojams skirtas profesinis kalendoriaus įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 27
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 28,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-029",
+      "date": "2027-04-28",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Pasaulinė darbuotojų saugos ir sveikatos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Darbuotojų saugai ir sveikatai skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 28
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 29,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-labour",
+      "date": "2027-05-01",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Tarptautinė darbo diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Gegužės 1-ąją minima Tarptautinė darbo diena; Lietuvoje ji įrašyta į Darbo kodekso švenčių dienų sąrašą.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "labour",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/tarptautine-darbo-diena/"
+    },
+    {
+      "id": "comm-032",
+      "date": "2027-05-01",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Lietuvos įstojimo į Europos Sąjungą diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Narystei Europos Sąjungoje skirta data sutampa su Tarptautine darbo diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 32,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-mothers",
+      "date": "2027-05-02",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Motinos diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Motinos diena Lietuvoje minima pirmąjį gegužės sekmadienį; konkreti data priklauso nuo metų.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 5,
+        "weekday": 7,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "mothers",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/motinos-diena/"
+    },
+    {
+      "id": "comm-034",
+      "date": "2027-05-03",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "1791 m. pirmosios rašytinės Konstitucijos Europoje diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatyme įvardyta 1791 m. Konstitucijai skirta istorinė atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 34,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-035",
+      "date": "2027-05-04",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Ugniagesių globėjo šv. Florijono diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Ugniagesiams ir jų globėjui šv. Florijonui skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 4
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 35,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-033",
+      "date": "2027-05-05",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Pasaulinė mamų psichikos sveikatos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Kilnojamoji data, nustatoma pirmąjį gegužės trečiadienį.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 5,
+        "weekday": 3,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 33,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-036",
+      "date": "2027-05-05",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Europos žmonių su negalia savarankiško gyvenimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Žmonių su negalia savarankiškam gyvenimui skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 5
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 36,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-037",
+      "date": "2027-05-07",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Spaudos atgavimo, kalbos ir knygos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuviškai spaudai, kalbai ir knygai skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 7
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 37,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-038",
+      "date": "2027-05-08",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Antrojo pasaulinio karo aukų atminimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Antrojo pasaulinio karo aukoms skirtas atminimo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 8
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 38,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-039",
+      "date": "2027-05-09",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Europos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Europos diena yra atmintina, o ne papildoma DK 123 straipsnio šventinė diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 9
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 39,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-040",
+      "date": "2027-05-11",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Pagarbos mokesčių mokėtojams diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Skirta mokesčių mokėtojų vaidmeniui pažymėti.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 11
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 40,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-041",
+      "date": "2027-05-14",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Pilietinio pasipriešinimo diena, Jaunimo darbuotojų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatyme kartu įvardyti pilietinis pasipriešinimas ir jaunimo darbuotojai.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 14
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 41,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-042",
+      "date": "2027-05-15",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Steigiamojo Seimo susirinkimo diena, Respublikos diena, Tarptautinė šeimos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Vieną datą dalijasi Steigiamojo Seimo, Respublikos ir šeimos dienų temos.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 42,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-046",
+      "date": "2027-05-16",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Partizanų pagerbimo, kariuomenės ir visuomenės vienybės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Partizanų pagerbimui ir kariuomenės bei visuomenės vienybei skirtas trečiasis gegužės sekmadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 5,
+        "weekday": 7,
+        "ordinal": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 46,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-043",
+      "date": "2027-05-17",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Pasaulinė informacinės visuomenės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Informacinei visuomenei skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 17
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 43,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-044",
+      "date": "2027-05-21",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Lietuvos tautinių bendrijų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos tautinių bendrijų įvairovei ir gyvenimui skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 21
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 44,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-045",
+      "date": "2027-05-21",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Vaiko diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Trečiasis gegužės penktadienis; 2027 m. ši data sutampa su Tautinių bendrijų diena.",
+      "sources": [
+        "law",
+        "child"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 5,
+        "weekday": 5,
+        "ordinal": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 45,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-047",
+      "date": "2027-05-25",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Tarptautinė dingusių vaikų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Dingusiems vaikams ir jų paieškai skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 5,
+        "day": 25
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 47,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-048",
+      "date": "2027-06-03",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Sąjūdžio diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos Sąjūdžiui skirtas istorinio atminimo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 48,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "environment",
+      "date": "2027-06-05",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Pasaulinė aplinkos apsaugos diena",
+      "category": "international_observance",
+      "statutory_nonworking": false,
+      "summary": "Jungtinių Tautų kalendoriaus aplinkosaugos data; Lietuvoje papildomos nedarbo dienos nesuteikia.",
+      "sources": [
+        "environment"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 5
+      },
+      "verified_at": "2026-10-17"
+    },
+    {
+      "id": "stat-fathers",
+      "date": "2027-06-06",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Tėvo diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Tėvo diena Lietuvoje minima pirmąjį birželio sekmadienį, todėl tiksli data kasmet keičiasi.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 6,
+        "weekday": 7,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "fathers",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/tevo-diena/"
+    },
+    {
+      "id": "comm-049",
+      "date": "2027-06-11",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Lietuvos oreivių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos oreiviams skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 11
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 49,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-050",
+      "date": "2027-06-14",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Gedulo ir vilties diena, Palaimintojo arkivyskupo Teofiliaus Matulionio diena, Pasaulinė kraujo donorų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Vieną datą dalijasi istorinio atminimo, religinio minėjimo ir kraujo donorystės temos.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 14
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 50,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-051",
+      "date": "2027-06-15",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Okupacijos ir genocido diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Okupacijos ir genocido aukų atminimui skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 51,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-052",
+      "date": "2027-06-23",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Birželio sukilimo diena, Tarptautinė valstybės tarnautojų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Tą pačią datą minimas Birželio sukilimas ir valstybės tarnautojų veikla.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 23
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 52,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-jonines",
+      "date": "2027-06-24",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Rasos ir Joninių diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Birželio 24-oji yra Rasos ir Joninių diena: teisėje vartojamas bendras pavadinimas, o gyvos tradicijos gali vadinti Rasomis, Kupolinėmis ar Joninėmis.",
+      "sources": [
+        "dk",
+        "jonines"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 24
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "jonines",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/jonines/"
+    },
+    {
+      "id": "comm-053",
+      "date": "2027-07-03",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Giminių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Giminystės ryšiams skirta kilnojamoji data – pirmasis liepos šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 7,
+        "weekday": 6,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 53,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-054",
+      "date": "2027-07-04",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Globėjų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Globėjams skirta kilnojamoji data – pirmasis liepos sekmadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 7,
+        "weekday": 7,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 54,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-statehood",
+      "date": "2027-07-06",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Liepos 6-oji – Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 6
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "statehood",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/valstybes-diena/"
+    },
+    {
+      "id": "comm-055",
+      "date": "2027-07-13",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Durbės mūšio diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Durbės mūšiui skirtas istorinio atminimo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 13
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 55,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-056",
+      "date": "2027-07-15",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Žalgirio mūšio diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Žalgirio mūšiui skirta Lietuvos atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 56,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-057",
+      "date": "2027-07-16",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Agronomų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Agronomų profesinei veiklai skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 16
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 57,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-058",
+      "date": "2027-07-17",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Pasaulio lietuvių vienybės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Pasaulio lietuvių ryšiams ir vienybei skirta data.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 17
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 58,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-059",
+      "date": "2027-07-25",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Jūros diena, Žvejų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Jūros ir žvejų temos įstatyme siejamos su paskutiniu liepos sekmadieniu.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 7,
+        "weekday": 7,
+        "ordinal": -1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 59,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-060",
+      "date": "2027-07-31",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Medininkų žudynių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Medininkų žudynių aukų atminimui skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 31
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 60,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-061",
+      "date": "2027-08-02",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Romų genocido atminimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Romų genocido aukoms skirtas atminimo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 2
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 61,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-062",
+      "date": "2027-08-07",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Bitininkų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Bitininkams skirta kilnojamoji data – pirmasis rugpjūčio šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 8,
+        "weekday": 6,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 62,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-063",
+      "date": "2027-08-10",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Lituanistinės mokyklos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lituanistinei mokyklai skirta Lietuvos atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 10
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 63,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-064",
+      "date": "2027-08-12",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Tarptautinė jaunimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Jaunimui skirta įstatyme įvardyta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 12
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 64,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-assumption",
+      "date": "2027-08-15",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Rugpjūčio 15-oji kalendoriuje yra Žolinė; teisėje ji įvardijama ir katalikišku Švč. Mergelės Marijos ėmimo į dangų dienos pavadinimu.",
+      "sources": [
+        "dk",
+        "zoline"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "assumption",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/zoline/"
+    },
+    {
+      "id": "comm-065",
+      "date": "2027-08-23",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Europos diena stalinizmo ir nacizmo aukoms atminti, Baltijos kelio diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Totalitarinių režimų aukų atminimą ši data sieja su Baltijos kelio diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 23
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 65,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-066",
+      "date": "2027-08-31",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Laisvės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Laisvei skirta atmintina diena, atskira nuo šventinių nedarbo dienų sąrašo.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 31
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 66,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-067",
+      "date": "2027-09-01",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Mokslo ir žinių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Mokslo ir žinių diena savaime nėra visiems darbuotojams laisva diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 67,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-068",
+      "date": "2027-09-05",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Senelių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Seneliams skirta kilnojamoji data – pirmasis rugsėjo sekmadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 9,
+        "weekday": 7,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 68,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-069",
+      "date": "2027-09-08",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Šilinė (Švč. Mergelės Marijos gimimo diena), Vytauto Didžiojo karūnavimo diena, Padėkos už Lietuvos nepriklausomybės ir laisvės apgynimą diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Tą pačią dieną įstatyme minimi religiniai ir valstybingumo atminimo įvykiai.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 8
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 69,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-071",
+      "date": "2027-09-11",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Statybininkų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Statybininkams skirtas antrasis rugsėjo šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 9,
+        "weekday": 6,
+        "ordinal": 2
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 71,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-070",
+      "date": "2027-09-14",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Vilko vaikų atminimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Vilko vaikams skirta istorinės atminties diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 14
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 70,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-072",
+      "date": "2027-09-18",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Miškininkų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Miškininkams skirtas trečiasis rugsėjo šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 9,
+        "weekday": 6,
+        "ordinal": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 72,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-073",
+      "date": "2027-09-22",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Baltų vienybės diena, Kultūros diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Galiojančioje redakcijoje tą pačią dieną minima baltų vienybė ir kultūra.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 22
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 73,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-074",
+      "date": "2027-09-23",
+      "weekday": 4,
+      "weekday_lt": "ketvirtadienis",
+      "title": "Lietuvos žydų genocido atminimo diena, Tarptautinė gestų kalbų diena, Ekologijos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Šiai dienai įstatymas priskiria genocido aukų atminimą, gestų kalbas ir ekologiją.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 23
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 74,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-075",
+      "date": "2027-09-27",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Lietuvos socialinių darbuotojų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos socialiniams darbuotojams skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 27
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 75,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-076",
+      "date": "2027-09-28",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Tuskulėnų aukų atminimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Tuskulėnų aukoms skirtas atminties įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 28
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 76,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-077",
+      "date": "2027-10-01",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Tarptautinė pagyvenusių žmonių diena, Besimokančių senjorų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatymas išskiria vyresnius žmones ir besimokančius senjorus.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 77,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-079",
+      "date": "2027-10-02",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Kūno kultūros ir sporto diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Kūno kultūrai ir sportui skirtas pirmasis spalio šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 10,
+        "weekday": 6,
+        "ordinal": 1
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 79,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-078",
+      "date": "2027-10-04",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Pasaulinė gyvūnijos diena, Šv. Pranciškaus Asyžiečio, gyvūnų globėjo, diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Gyvūnijai ir jos globėjo šv. Pranciškaus Asyžiečio minėjimui skirta data.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 4
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 78,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-080",
+      "date": "2027-10-05",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Tarptautinė mokytojų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Mokytojų darbui skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 5
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 80,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-082",
+      "date": "2027-10-09",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Derliaus diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Derliui skirta kilnojamoji data – antrasis spalio šeštadienis.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "nth-weekday",
+        "month": 10,
+        "weekday": 6,
+        "ordinal": 2
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 82,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-081",
+      "date": "2027-10-10",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Vietos savivaldos diena, Pasaulinė psichikos sveikatos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatyme ši data skirta vietos savivaldai ir psichikos sveikatai.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 10
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 81,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-083",
+      "date": "2027-10-15",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Pasaulinė baltosios lazdelės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Atkreipia dėmesį į baltosios lazdelės naudojimą ir regos negalią turinčių žmonių poreikius.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 83,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-084",
+      "date": "2027-10-16",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Mažosios Lietuvos gyventojų genocido diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Mažosios Lietuvos gyventojų genocido atminimui skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 16
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 84,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-085",
+      "date": "2027-10-20",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "1791 m. Abiejų Tautų (Lietuvos ir Lenkijos) tarpusavio įžado paskelbimo diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "1791 m. Abiejų Tautų tarpusavio įžadui skirta istorinė data.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 20
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 85,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-086",
+      "date": "2027-10-25",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Konstitucijos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos Konstitucijai skirta diena; ji nėra papildoma nedarbo diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 25
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 86,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-087",
+      "date": "2027-10-29",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Teismo ekspertų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Teismo ekspertų profesinei veiklai skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 29
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 87,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-088",
+      "date": "2027-10-31",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Reformacijos diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Reformacijai skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 10,
+        "day": 31
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 88,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-all-saints",
+      "date": "2027-11-01",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Visų Šventųjų diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Lapkričio 1-oji – Visų Šventųjų diena. Ji skirta šventiesiems; lapkričio 2-oji yra atskira Mirusiųjų atminimo (Vėlinių) diena.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 1
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "all-saints",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/visu-sventuju-diena/"
+    },
+    {
+      "id": "stat-all-souls",
+      "date": "2027-11-02",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Mirusiųjų atminimo (Vėlinių) diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Vėlinės – lapkričio 2 d. minima Mirusiųjų atminimo diena; ji atskira nuo lapkričio 1-osios Visų Šventųjų dienos.",
+      "sources": [
+        "dk",
+        "velines"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 2
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "all-souls",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/velines/"
+    },
+    {
+      "id": "comm-089",
+      "date": "2027-11-03",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Šv. Huberto, medžiotojų globėjo, diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Šv. Hubertui ir medžiotojams skirtas įstatymo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 89,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-090",
+      "date": "2027-11-12",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Karjeros specialistų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Karjeros specialistų veiklai skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 12
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 90,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-091",
+      "date": "2027-11-14",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Pasaulinė diabeto diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Diabetui ir visuomenės informavimui apie jį skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 14
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 91,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-092",
+      "date": "2027-11-15",
+      "weekday": 1,
+      "weekday_lt": "pirmadienis",
+      "title": "Mecenatystės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Mecenatystei ir kultūros rėmimui skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 92,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-093",
+      "date": "2027-11-16",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Tarptautinė tolerancijos diena, Lietuvių polifoninių dainų – sutartinių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Šiai dienai įstatymas priskiria tolerancijos ir lietuvių sutartinių minėjimus.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 16
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 93,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-094",
+      "date": "2027-11-20",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Pasaulinė vaiko teisių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Vaiko teisėms skirta atmintina diena, atskira nuo gegužės Vaiko dienos.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 20
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 94,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-095",
+      "date": "2027-11-23",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Lietuvos kariuomenės diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos kariuomenei skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 23
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 95,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-096",
+      "date": "2027-11-30",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Mažosios Lietuvos prisijungimo prie Didžiosios Lietuvos akto diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Mažosios Lietuvos ir Didžiosios Lietuvos jungimosi aktui skirtas atminimo įrašas.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 30
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 96,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-097",
+      "date": "2027-12-03",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Lietuvos advokatūros diena, Tarptautinė žmonių su negalia diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Įstatyme ši data skirta Lietuvos advokatūrai ir žmonėms su negalia.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 3
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 97,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-098",
+      "date": "2027-12-05",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Padėkos savanoriams diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Padėkai savanoriams ir jų indėliui skirta diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 5
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 98,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-099",
+      "date": "2027-12-07",
+      "weekday": 2,
+      "weekday_lt": "antradienis",
+      "title": "Nacionalinė vyno kultūros diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Vyno kultūrai skirtas įstatymo įrašas; nedarbo dienos statuso nesuteikia.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 7
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 99,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-100",
+      "date": "2027-12-10",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Tarptautinė žmogaus teisių diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Žmogaus teisėms skirta atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 10
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 100,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "comm-101",
+      "date": "2027-12-15",
+      "weekday": 3,
+      "weekday_lt": "trečiadienis",
+      "title": "Lietuvos teismų diena",
+      "category": "legally_commemorative",
+      "statutory_nonworking": false,
+      "summary": "Lietuvos teismams skirta profesinė atmintina diena.",
+      "sources": [
+        "law"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 15
+      },
+      "verified_at": "2026-10-17",
+      "law_point": 101,
+      "law_version": "2026-07-04",
+      "provenance_note": "Current official consolidated law; several named observances in one legal point remain together, not counted as separate holidays."
+    },
+    {
+      "id": "stat-christmas-eve",
+      "date": "2027-12-24",
+      "weekday": 5,
+      "weekday_lt": "penktadienis",
+      "title": "Kūčių diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Kūčios – gruodžio 24-osios vakaro šeimos susibūrimas, kurio kalendorinė diena Lietuvoje įtraukta į DK švenčių sąrašą.",
+      "sources": [
+        "dk",
+        "kucios"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 24
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "christmas-eve",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/kucios/"
+    },
+    {
+      "id": "stat-christmas",
+      "date": "2027-12-25",
+      "weekday": 6,
+      "weekday_lt": "šeštadienis",
+      "title": "Kalėdos",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Pirmoji ir antroji Kalėdų dienos Lietuvoje yra gruodžio 25 ir 26 d.; abi išvardytos Darbo kodekse.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 25
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "christmas",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/kaledos/"
+    },
+    {
+      "id": "stat-christmas-second",
+      "date": "2027-12-26",
+      "weekday": 7,
+      "weekday_lt": "sekmadienis",
+      "title": "Antroji Kalėdų diena",
+      "category": "statutory_holiday",
+      "statutory_nonworking": true,
+      "summary": "Pirmoji ir antroji Kalėdų dienos Lietuvoje yra gruodžio 25 ir 26 d.; abi išvardytos Darbo kodekse.",
+      "sources": [
+        "dk"
+      ],
+      "recurrence": {
+        "type": "fixed",
+        "month": 12,
+        "day": 26
+      },
+      "verified_at": "2026-10-17",
+      "engine_holiday_id": "christmas-second",
+      "law_version": "2027-01-01",
+      "tags": [
+        "nonworking"
+      ],
+      "detail_url": "/sventes/kaledos/"
+    }
+  ],
+  "omissions": [
+    "Neįtrauktos nepatvirtintos 2027 m. festivalių programos, Kliento ar Boso dienos be pirminio šaltinio, vardadieniai ir mokyklų atostogų spėjimai.",
+    "Astronominių momentų nedubliuojame; aktualiose mėnesių nuorodose pateikiamas esamas astronominis kalendorius.",
+    "Neatliekamas visų konfesijų liturginių kalendorių suvienodinimas."
+  ]
+}

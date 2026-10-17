@@ -1,0 +1,97 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2027 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2027 m. sausio datos
+BEGIN:VEVENT
+UID:2027-stat-new-year@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Naujųjų metų diena
+DESCRIPTION:Šventinė diena · DK 123 str.. Sausio 1-oji žymi naujų kale
+ ndorinių metų pradžią pagal šiandien Lietuvoje naudojamą Grigaliaus 
+ kalendorių.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-stat-new-year
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-001@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Lietuvos vėliavos diena
+DESCRIPTION:Atmintina diena · įstatymas. Valstybės vėliavai skirta atmi
+ ntina diena sutampa su Naujųjų metų švente.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-001
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-002@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270104
+DTEND;VALUE=DATE:20270105
+SUMMARY:Pasaulinė Brailio rašto diena
+DESCRIPTION:Atmintina diena · įstatymas. Išryškina rašto prieinamumo i
+ r žmonių\, naudojančių Brailio raštą\, poreikius.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-002
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-three-kings@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270106
+DTEND;VALUE=DATE:20270107
+SUMMARY:Trys Karaliai
+DESCRIPTION:Kultūrinė ar religinė tradicija. Tradicinis kalėdinio tarpu
+ švenčio užbaigimas\; tai nėra papildoma nedarbo diena.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-three-kings
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-003@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Laisvės gynėjų diena
+DESCRIPTION:Atmintina diena · įstatymas. Skirta Lietuvos laisvės gynėja
+ ms atminti\; papildoma nedarbo diena nesuteikiama.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-003
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-004@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:Klaipėdos krašto diena
+DESCRIPTION:Atmintina diena · įstatymas. Klaipėdos kraštui skirtas isto
+ rinio atminimo įrašas Lietuvos kalendoriuje.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-004
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-005@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:1863–1864 m. sukilimo prieš okupacinę Rusijos imperijos valdži
+ ą pradžios diena
+DESCRIPTION:Atmintina diena · įstatymas. Primena 1863–1864 m. sukilimo 
+ pradžią ir pasipriešinimo istoriją.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-005
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-comm-006@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270125
+DTEND;VALUE=DATE:20270126
+SUMMARY:Vilniaus pagarsinimo diena\, Lietuvos samariečių bendrijos diena
+DESCRIPTION:Atmintina diena · įstatymas. Tą pačią datą įstatymas ski
+ ria Vilniaus pagarsinimui ir samariečių bendrijai.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-006
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,68 @@
+[
+  {
+    "month": "sausis",
+    "expected": "/sventes/naujuju-metu-diena/",
+    "url": "http://127.0.0.1:8819/sventes/naujuju-metu-diena/",
+    "heading": "Naujųjų metų diena"
+  },
+  {
+    "month": "vasaris",
+    "expected": "/sventes/vasario-16-oji/",
+    "url": "http://127.0.0.1:8819/sventes/vasario-16-oji/",
+    "heading": "Lietuvos valstybės atkūrimo diena"
+  },
+  {
+    "month": "kovas",
+    "expected": "/sventes/kovo-11-oji/",
+    "url": "http://127.0.0.1:8819/sventes/kovo-11-oji/",
+    "heading": "Lietuvos nepriklausomybės atkūrimo diena"
+  },
+  {
+    "month": "balandis",
+    "status": "not applicable; no existing specific holiday detail"
+  },
+  {
+    "month": "geguze",
+    "expected": "/sventes/tarptautine-darbo-diena/",
+    "url": "http://127.0.0.1:8819/sventes/tarptautine-darbo-diena/",
+    "heading": "Tarptautinė darbo diena"
+  },
+  {
+    "month": "birzelis",
+    "expected": "/sventes/tevo-diena/",
+    "url": "http://127.0.0.1:8819/sventes/tevo-diena/",
+    "heading": "Tėvo diena Lietuvoje"
+  },
+  {
+    "month": "liepa",
+    "expected": "/sventes/valstybes-diena/",
+    "url": "http://127.0.0.1:8819/sventes/valstybes-diena/",
+    "heading": "Valstybės ir Tautiškos giesmės diena"
+  },
+  {
+    "month": "rugpjutis",
+    "expected": "/sventes/zoline/",
+    "url": "http://127.0.0.1:8819/sventes/zoline/",
+    "heading": "Žolinė – Švč. Mergelės Marijos ėmimo į dangų diena"
+  },
+  {
+    "month": "rugsejis",
+    "status": "not applicable; no existing specific holiday detail"
+  },
+  {
+    "month": "spalis",
+    "status": "not applicable; no existing specific holiday detail"
+  },
+  {
+    "month": "lapkritis",
+    "expected": "/sventes/visu-sventuju-diena/",
+    "url": "http://127.0.0.1:8819/sventes/visu-sventuju-diena/",
+    "heading": "Visų Šventųjų diena"
+  },
+  {
+    "month": "gruodis",
+    "expected": "/sventes/kucios/",
+    "url": "http://127.0.0.1:8819/sventes/kucios/",
+    "heading": "Kūčios Lietuvoje"
+  }
+]

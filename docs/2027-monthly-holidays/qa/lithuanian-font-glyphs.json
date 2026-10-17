@@ -1,0 +1,20 @@
+{
+  "method": "Independent TrueType cmap format-4 parser; codepoints mapped to nonzero glyph IDs",
+  "fonts": [
+    {
+      "font": "Lato-Bold.ttf",
+      "lithuanian_glyphs": true,
+      "missing": []
+    },
+    {
+      "font": "Lato-Black.ttf",
+      "lithuanian_glyphs": true,
+      "missing": []
+    },
+    {
+      "font": "Lato-Regular.ttf",
+      "lithuanian_glyphs": true,
+      "missing": []
+    }
+  ]
+}

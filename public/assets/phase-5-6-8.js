@@ -1,6 +1,6 @@
-import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=0986e73c3669";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=0986e73c3669";
-import { download } from "./storage.js?v=0986e73c3669";
+import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=f004341b59cd";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=f004341b59cd";
+import { download } from "./storage.js?v=f004341b59cd";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;

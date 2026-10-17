@@ -1,0 +1,146 @@
+{
+  "status": "passed",
+  "gate": "implementation-static-independent-calendar",
+  "pages": [
+    {
+      "route": "/sventes/2027/sausis/",
+      "status": "passed",
+      "h1": "2027 m. sausio šventės ir atmintinos dienos",
+      "event_records": 8,
+      "statutory_dates": 1,
+      "source_count": 3,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/sausis/"
+    },
+    {
+      "route": "/sventes/2027/vasaris/",
+      "status": "passed",
+      "h1": "2027 m. vasario šventės ir atmintinos dienos",
+      "event_records": 7,
+      "statutory_dates": 1,
+      "source_count": 4,
+      "calendar_days": 28,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/vasaris/"
+    },
+    {
+      "route": "/sventes/2027/kovas/",
+      "status": "passed",
+      "h1": "2027 m. kovo šventės ir atmintinos dienos",
+      "event_records": 16,
+      "statutory_dates": 3,
+      "source_count": 5,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/kovas/"
+    },
+    {
+      "route": "/sventes/2027/balandis/",
+      "status": "passed",
+      "h1": "2027 m. balandžio šventės ir atmintinos dienos",
+      "event_records": 13,
+      "statutory_dates": 0,
+      "source_count": 5,
+      "calendar_days": 30,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/balandis/"
+    },
+    {
+      "route": "/sventes/2027/geguze/",
+      "status": "passed",
+      "h1": "2027 m. gegužės šventės ir atmintinos dienos",
+      "event_records": 18,
+      "statutory_dates": 2,
+      "source_count": 3,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/geguze/"
+    },
+    {
+      "route": "/sventes/2027/birzelis/",
+      "status": "passed",
+      "h1": "2027 m. birželio šventės ir atmintinos dienos",
+      "event_records": 8,
+      "statutory_dates": 2,
+      "source_count": 4,
+      "calendar_days": 30,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/birzelis/"
+    },
+    {
+      "route": "/sventes/2027/liepa/",
+      "status": "passed",
+      "h1": "2027 m. liepos šventės ir atmintinos dienos",
+      "event_records": 9,
+      "statutory_dates": 1,
+      "source_count": 2,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/liepa/"
+    },
+    {
+      "route": "/sventes/2027/rugpjutis/",
+      "status": "passed",
+      "h1": "2027 m. rugpjūčio šventės ir atmintinos dienos",
+      "event_records": 7,
+      "statutory_dates": 1,
+      "source_count": 3,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/rugpjutis/"
+    },
+    {
+      "route": "/sventes/2027/rugsejis/",
+      "status": "passed",
+      "h1": "2027 m. rugsėjo šventės ir atmintinos dienos",
+      "event_records": 10,
+      "statutory_dates": 0,
+      "source_count": 1,
+      "calendar_days": 30,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/rugsejis/"
+    },
+    {
+      "route": "/sventes/2027/spalis/",
+      "status": "passed",
+      "h1": "2027 m. spalio šventės ir atmintinos dienos",
+      "event_records": 12,
+      "statutory_dates": 0,
+      "source_count": 1,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/spalis/"
+    },
+    {
+      "route": "/sventes/2027/lapkritis/",
+      "status": "passed",
+      "h1": "2027 m. lapkričio šventės ir atmintinos dienos",
+      "event_records": 10,
+      "statutory_dates": 2,
+      "source_count": 3,
+      "calendar_days": 30,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/lapkritis/"
+    },
+    {
+      "route": "/sventes/2027/gruodis/",
+      "status": "passed",
+      "h1": "2027 m. gruodžio šventės ir atmintinos dienos",
+      "event_records": 8,
+      "statutory_dates": 3,
+      "source_count": 3,
+      "calendar_days": 31,
+      "visible_html": true,
+      "canonical": "https://kalendorius365.lt/sventes/2027/gruodis/"
+    }
+  ],
+  "baseline_assets_preserved": 3152,
+  "changed_baseline_assets": [],
+  "failures": [],
+  "checked_at": "2026-10-17",
+  "limits": [
+    "No independent native-human language or legal certification is claimed.",
+    "Browser interaction, rendered geometry, contrast and live HTTP are a separate gate."
+  ]
+}
