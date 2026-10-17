@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-05@kalendorius365.lt
+DTSTAMP:20261017T150920Z
+DTSTART;VALUE=DATE:20271205
+DTEND;VALUE=DATE:20271206
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eimilas\, Eimilė\, Eimina\, Eiminė\, Eiminta\, Eimintas\, Ei
+ mintė\, Geisvinė\, Grata\, Gratas\, Sabas\, Svaigaudas. Lietuviškos Vi
+ kipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus
+ . CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://
+ lt.wikipedia.org/wiki/Gruod%C5%BEio_5\nhttps://lt.wikipedia.org/w/index.p
+ hp?oldid=7250432#Vardadieniai
+END:VEVENT
+END:VCALENDAR

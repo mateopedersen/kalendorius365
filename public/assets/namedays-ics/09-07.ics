@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-07@kalendorius365.lt
+DTSTAMP:20261017T150726Z
+DTSTART;VALUE=DATE:20270907
+DTEND;VALUE=DATE:20270908
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bartas\, Bartė\, Falmira\, Klodas\, Klodoaldas\, Palmira\, Pa
+ lmyra\, Pulcherija\, Regina. Lietuviškos Vikipedijos bendraautoriai\; Ka
+ lendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creat
+ ivecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugs%C4
+ %97jo_7\nhttps://lt.wikipedia.org/w/index.php?oldid=7931690#Vardadieniai
+END:VEVENT
+END:VCALENDAR

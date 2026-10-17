@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-14@kalendorius365.lt
+DTSTAMP:20261017T150307Z
+DTSTART;VALUE=DATE:20270214
+DTEND;VALUE=DATE:20270215
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Kirilas\, Lijana\, Liliana\, Saulė\, Saulius\, Valentinas\, V
+ alius\, Vilmantas\, Gustautas\, Gustautė\, Gutautas\, Gutautė\, Lilė\,
+  Valentas\, Valentina. Lietuviškos Vikipedijos bendraautoriai\; Kalendor
+ ius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecom
+ mons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_14\nh
+ ttps://lt.wikipedia.org/w/index.php?oldid=7939546#Vardadieniai
+END:VEVENT
+END:VCALENDAR

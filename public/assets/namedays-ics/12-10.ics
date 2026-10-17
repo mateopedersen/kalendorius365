@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-10@kalendorius365.lt
+DTSTAMP:20261017T150926Z
+DTSTART;VALUE=DATE:20271210
+DTEND;VALUE=DATE:20271211
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eidas\, Eidė\, Eidginta\, Eidgintas\, Eidimtas\, Eidimtė\, E
+ idinta\, Eidintas\, Ilma\, Lora\, Loreta\, Rimas\, Žydrė. Lietuviškos 
+ Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vard
+ us. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps:
+ //lt.wikipedia.org/wiki/Gruod%C5%BEio_10\nhttps://lt.wikipedia.org/w/inde
+ x.php?oldid=7918266#Vardadieniai
+END:VEVENT
+END:VCALENDAR

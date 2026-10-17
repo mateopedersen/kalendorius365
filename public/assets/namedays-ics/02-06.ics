@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-06@kalendorius365.lt
+DTSTAMP:20261017T150257Z
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Alkis\, Darata\, Dorotas\, Dorotėja\, Dorotėjas\, Oksana\, P
+ aulius\, Povilas\, Rona\, Roneta\, Titas\, Urtė\, Živilė\, Žyvilė\, 
+ Alkanta\, Alkantas\, Alkantė\, Alkmena\, Alkmenas\, Alkmenė\, Dora\, Do
+ ras\, Dorė\, Dorys\, Dorotė\, Tušė\, Tužė. Lietuviškos Vikipedijos
+  bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-S
+ A 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipe
+ dia.org/wiki/Vasario_6\nhttps://lt.wikipedia.org/w/index.php?oldid=785991
+ 6#Vardadieniai
+END:VEVENT
+END:VCALENDAR

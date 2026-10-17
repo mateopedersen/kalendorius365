@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-05@kalendorius365.lt
+DTSTAMP:20261017T150411Z
+DTSTART;VALUE=DATE:20270405
+DTEND;VALUE=DATE:20270406
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Irena\, Krescencija\, Rimvydas\, Vincentas\, Zenius\, Zenonas\
+ , Žygintė\, Balandis\, Ira\, Samanta. Lietuviškos Vikipedijos bendraau
+ toriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: ht
+ tps://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/w
+ iki/Baland%C5%BEio_5\nhttps://lt.wikipedia.org/w/index.php?oldid=7892098#
+ Vardadieniai
+END:VEVENT
+END:VCALENDAR

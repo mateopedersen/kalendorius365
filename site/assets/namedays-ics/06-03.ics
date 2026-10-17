@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-03@kalendorius365.lt
+DTSTAMP:20261017T150524Z
+DTSTART;VALUE=DATE:20270603
+DTEND;VALUE=DATE:20270604
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dovilė\, Karolis\, Klotilda\, Tautkantas. Lietuviškos Vikipe
+ dijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC
+  BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.w
+ ikipedia.org/wiki/Bir%C5%BEelio_3\nhttps://lt.wikipedia.org/w/index.php?o
+ ldid=7849429#Vardadieniai
+END:VEVENT
+END:VCALENDAR

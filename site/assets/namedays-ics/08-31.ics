@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-31@kalendorius365.lt
+DTSTAMP:20261017T150717Z
+DTSTART;VALUE=DATE:20270831
+DTEND;VALUE=DATE:20270901
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Izabelė\, Raimondas\, Raimunda\, Raimundas\, Vilmantas\, Vilm
+ antė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė
+  ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/license
+ s/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_31\nhttps
+ ://lt.wikipedia.org/w/index.php?oldid=7918240#Vardadieniai
+END:VEVENT
+END:VCALENDAR

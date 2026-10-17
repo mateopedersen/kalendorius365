@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-14@kalendorius365.lt
+DTSTAMP:20261017T150228Z
+DTSTART;VALUE=DATE:20270114
+DTEND;VALUE=DATE:20270115
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Auksė\, Feliksas\, Hilarijus\, Laimis\, Lilija\, Teodozijus\,
+  Auksys\, Auksius\, Auksuolė\, Dailius\, Laimonas\, Lelija. Lietuviškos
+  Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino var
+ dus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps
+ ://lt.wikipedia.org/wiki/Sausio_14\nhttps://lt.wikipedia.org/w/index.php?
+ oldid=7936972#Vardadieniai
+END:VEVENT
+END:VCALENDAR

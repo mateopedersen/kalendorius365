@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-07@kalendorius365.lt
+DTSTAMP:20261017T150259Z
+DTSTART;VALUE=DATE:20270207
+DTEND;VALUE=DATE:20270208
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Jomantė\, Ričardas\, Romualdas\, Vilgaudas\, Vilgirdas\, Vil
+ girdė\, Augutė\, Augutis\, Jomantas\, Jomilas\, Jomilė\, Ramutis\, Rom
+ as\, Romualda\, Romulas\, Romulė\, Vildaugas\, Vilgauda\, Vilgirda. Liet
+ uviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susiste
+ mino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0
+ /\nhttps://lt.wikipedia.org/wiki/Vasario_7\nhttps://lt.wikipedia.org/w/in
+ dex.php?oldid=7917816#Vardadieniai
+END:VEVENT
+END:VCALENDAR

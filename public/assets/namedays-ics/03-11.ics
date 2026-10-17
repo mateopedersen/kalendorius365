@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-11@kalendorius365.lt
+DTSTAMP:20261017T150340Z
+DTSTART;VALUE=DATE:20270311
+DTEND;VALUE=DATE:20270312
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gedimtas\, Konstantinas\, Kostas\, Vijolė\, Gediminas\, Konst
+ ancija\, Konstantas\, Kostė\, Paulina. Lietuviškos Vikipedijos bendraau
+ toriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: ht
+ tps://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/w
+ iki/Kovo_11\nhttps://lt.wikipedia.org/w/index.php?oldid=7945015#Vardadien
+ iai
+END:VEVENT
+END:VCALENDAR

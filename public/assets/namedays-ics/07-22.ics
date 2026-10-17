@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-22@kalendorius365.lt
+DTSTAMP:20261017T150626Z
+DTSTART;VALUE=DATE:20270722
+DTEND;VALUE=DATE:20270723
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dalius\, Magdalena\, Mantilė. Lietuviškos Vikipedijos bendra
+ autoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: 
+ https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org
+ /wiki/Liepos_22\nhttps://lt.wikipedia.org/w/index.php?oldid=7883623#Varda
+ dieniai
+END:VEVENT
+END:VCALENDAR

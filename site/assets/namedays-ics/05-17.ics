@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-17@kalendorius365.lt
+DTSTAMP:20261017T150503Z
+DTSTART;VALUE=DATE:20270517
+DTEND;VALUE=DATE:20270518
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bazilė\, Gailė\, Paskalis\, Virkantas. Lietuviškos Vikipedi
+ jos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC B
+ Y-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wik
+ ipedia.org/wiki/Gegu%C5%BE%C4%97s_17\nhttps://lt.wikipedia.org/w/index.ph
+ p?oldid=7858337#Vardadieniai
+END:VEVENT
+END:VCALENDAR

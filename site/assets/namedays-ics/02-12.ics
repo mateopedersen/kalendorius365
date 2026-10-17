@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-12@kalendorius365.lt
+DTSTAMP:20261017T150305Z
+DTSTART;VALUE=DATE:20270212
+DTEND;VALUE=DATE:20270213
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benediktas\, Deimantas\, Deimantė\, Eulalija\, Mantminas\, Re
+ ginaldas\, Aleksiejus\, Deimilas\, Deimilė\, Elmis\, Eulalė\, Mantas\, 
+ Mantmina\, Rainoldas\, Renalda\, Renaldas. Lietuviškos Vikipedijos bendr
+ aautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0:
+  https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.or
+ g/wiki/Vasario_12\nhttps://lt.wikipedia.org/w/index.php?oldid=7751205#Var
+ dadieniai
+END:VEVENT
+END:VCALENDAR

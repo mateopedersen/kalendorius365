@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-26@kalendorius365.lt
+DTSTAMP:20261017T150243Z
+DTSTART;VALUE=DATE:20270126
+DTEND;VALUE=DATE:20270127
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eigilė\, Frėja\, Frėjus\, Justas\, Paulė\, Rimantas\, Rima
+ s\, Timotiejus\, Titas\, Dangis\, Daugis\, Eigintė\, Edvilė\, Justė\, 
+ Justina\, Justinas\, Rima. Lietuviškos Vikipedijos bendraautoriai\; Kale
+ ndorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativ
+ ecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_26
+ \nhttps://lt.wikipedia.org/w/index.php?oldid=7918022#Vardadieniai
+END:VEVENT
+END:VCALENDAR

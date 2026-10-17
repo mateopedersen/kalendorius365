@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-19@kalendorius365.lt
+DTSTAMP:20261017T150350Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270320
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Juozapas\, Juozas\, Vilė\, Vilys\, Juozapota\, Juzė. Lietuvi
+ škos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemin
+ o vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\n
+ https://lt.wikipedia.org/wiki/Kovo_19\nhttps://lt.wikipedia.org/w/index.p
+ hp?oldid=7898209#Vardadieniai
+END:VEVENT
+END:VCALENDAR

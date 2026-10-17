@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-02@kalendorius365.lt
+DTSTAMP:20261017T150916Z
+DTSTART;VALUE=DATE:20271202
+DTEND;VALUE=DATE:20271203
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aura\, Aurelija\, Aurė\, Aurėja\, Milkanta\, Milkantas\, Mil
+ mantė\, Paulina\, Svirgailas\, Svirgailė\, Svirganta\, Svirgauda\, Svir
+ gaudas\, Svirgaudė\, Svirgeda\, Svirgedas\, Vėjūnas\, Viviana. Lietuvi
+ škos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemin
+ o vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\n
+ https://lt.wikipedia.org/wiki/Gruod%C5%BEio_2\nhttps://lt.wikipedia.org/w
+ /index.php?oldid=7742696#Vardadieniai
+END:VEVENT
+END:VCALENDAR

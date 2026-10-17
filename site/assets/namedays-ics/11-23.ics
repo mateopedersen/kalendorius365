@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-23@kalendorius365.lt
+DTSTAMP:20261017T150905Z
+DTSTART;VALUE=DATE:20271123
+DTEND;VALUE=DATE:20271124
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Adelė\, Doviltas\, Felicita\, Klemensas\, Liubartė\, Kolumba
+ nas\, Kolumbas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 
+ išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.or
+ g/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_23\nh
+ ttps://lt.wikipedia.org/w/index.php?oldid=7904553#Vardadieniai
+END:VEVENT
+END:VCALENDAR

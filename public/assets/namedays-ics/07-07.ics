@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-07@kalendorius365.lt
+DTSTAMP:20261017T150607Z
+DTSTART;VALUE=DATE:20270707
+DTEND;VALUE=DATE:20270708
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Astijus\, Elita\, Estera\, Sangailas\, Sangaudas\, Vilgailė\,
+  Almantė\, Aistė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius
+ 365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommon
+ s.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_7\nhttps:
+ //lt.wikipedia.org/w/index.php?oldid=7917359#Vardadieniai
+END:VEVENT
+END:VCALENDAR

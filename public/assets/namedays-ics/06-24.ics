@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-24@kalendorius365.lt
+DTSTAMP:20261017T150551Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270625
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eivilitas\, Eivilitė\, Eiviltas\, Janina\, Jonas\, Ansas\, Ja
+ nė\, Jonaudas\, Jonaudė\, Jonė\, Jonis\, Žana\, Žanas\, Žaneta. Lie
+ tuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susist
+ emino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.
+ 0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%BEelio_24\nhttps://lt.wikipedia.
+ org/w/index.php?oldid=7867317#Vardadieniai
+END:VEVENT
+END:VCALENDAR

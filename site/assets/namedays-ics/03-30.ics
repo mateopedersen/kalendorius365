@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-30@kalendorius365.lt
+DTSTAMP:20261017T150403Z
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270331
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aja\, Anelė\, Ferdinandas\, Gvidonas\, Meda\, Nelė\, Virmant
+ as\, Gvidas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 iš
+ skyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/l
+ icenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Kovo_30\nhttps://lt.wik
+ ipedia.org/w/index.php?oldid=7858802#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-06@kalendorius365.lt
+DTSTAMP:20261017T150606Z
+DTSTART;VALUE=DATE:20270706
+DTEND;VALUE=DATE:20270707
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Domė\, Dominyka\, Ginvilė\, Marija\, Mindaugas\, Nerilė\, N
+ erilis\, Nervydas\, Nervilas\, Nervilė. Lietuviškos Vikipedijos bendraa
+ utoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: h
+ ttps://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/
+ wiki/Liepos_6\nhttps://lt.wikipedia.org/w/index.php?oldid=7873590#Vardadi
+ eniai
+END:VEVENT
+END:VCALENDAR

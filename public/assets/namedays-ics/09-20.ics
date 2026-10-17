@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-20@kalendorius365.lt
+DTSTAMP:20261017T150742Z
+DTSTART;VALUE=DATE:20270920
+DTEND;VALUE=DATE:20270921
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eustachijus\, Fausta\, Kolumba\, Tautgirdė\, Vainora\, Vainor
+ as\, Matas\, Vaišgirdas\, Vaižgantas. Lietuviškos Vikipedijos bendraau
+ toriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: ht
+ tps://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/w
+ iki/Rugs%C4%97jo_20\nhttps://lt.wikipedia.org/w/index.php?oldid=7934336#V
+ ardadieniai
+END:VEVENT
+END:VCALENDAR

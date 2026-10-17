@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-31@kalendorius365.lt
+DTSTAMP:20261017T150835Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Alfonsas\, Liucilė\, Tanvilė\, Vygandas\, Volfgangas. Lietuv
+ iškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemi
+ no vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\
+ nhttps://lt.wikipedia.org/wiki/Spalio_31\nhttps://lt.wikipedia.org/w/inde
+ x.php?oldid=7859688#Vardadieniai
+END:VEVENT
+END:VCALENDAR

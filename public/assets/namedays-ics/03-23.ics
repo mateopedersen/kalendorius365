@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-23@kalendorius365.lt
+DTSTAMP:20261017T150355Z
+DTSTART;VALUE=DATE:20270323
+DTEND;VALUE=DATE:20270324
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Akvilė\, Alfonsas\, Galgintas\, Ūla\, Vismantė\, Jovita\, O
+ ktavija\, Tarvydas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius
+ 365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommon
+ s.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Kovo_23\nhttps:/
+ /lt.wikipedia.org/w/index.php?oldid=7915547#Vardadieniai
+END:VEVENT
+END:VCALENDAR

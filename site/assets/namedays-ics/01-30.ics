@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-30@kalendorius365.lt
+DTSTAMP:20261017T150249Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Banguolė\, Hiacinta\, Ipolitas\, Jacinta\, Liuda\, Liudvika\,
+  Martė\, Martyna\, Milgaudas\, Algina\, Banga\, Bangas\, Bangys\, Bangiu
+ s\, Banguolis\, Milgauda\, Milgaudė\, Milius\, Sabina. Lietuviškos Viki
+ pedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. 
+ CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt
+ .wikipedia.org/wiki/Sausio_30\nhttps://lt.wikipedia.org/w/index.php?oldid
+ =7797832#Vardadieniai
+END:VEVENT
+END:VCALENDAR

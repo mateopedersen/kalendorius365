@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-09@kalendorius365.lt
+DTSTAMP:20261017T150847Z
+DTSTART;VALUE=DATE:20271109
+DTEND;VALUE=DATE:20271110
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aurelijus\, Dargintas\, Dargis\, Estela\, Paulina\, Skirtautė
+ \, Stela\, Teodoras. Lietuviškos Vikipedijos bendraautoriai\; Kalendoriu
+ s365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommo
+ ns.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_
+ 9\nhttps://lt.wikipedia.org/w/index.php?oldid=7694505#Vardadieniai
+END:VEVENT
+END:VCALENDAR

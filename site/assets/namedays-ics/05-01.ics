@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-01@kalendorius365.lt
+DTSTAMP:20261017T150443Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anelė\, Juozapas\, Vydmantė\, Zigmantas\, Zigmas\, Žilvinas
+ \, Ridmantas\, Vidmantė. Lietuviškos Vikipedijos bendraautoriai\; Kalen
+ dorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creative
+ commons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE
+ %C4%97s_1\nhttps://lt.wikipedia.org/w/index.php?oldid=7825459#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-21@kalendorius365.lt
+DTSTAMP:20261017T150352Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benediktas\, Lingailė\, Mikalojus\, Nortautas\, Reda\, Benedi
+ kta\, Redas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 iš
+ skyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/l
+ icenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Kovo_21\nhttps://lt.wik
+ ipedia.org/w/index.php?oldid=7932917#Vardadieniai
+END:VEVENT
+END:VCALENDAR

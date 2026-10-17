@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-28@kalendorius365.lt
+DTSTAMP:20261017T150713Z
+DTSTART;VALUE=DATE:20270828
+DTEND;VALUE=DATE:20270829
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Augustina\, Steigvilė\, Tarvilas. Lietuviškos Vikipedijos be
+ ndraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4
+ .0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia
+ .org/wiki/Rugpj%C5%AB%C4%8Dio_28\nhttps://lt.wikipedia.org/w/index.php?ol
+ did=7913810#Vardadieniai
+END:VEVENT
+END:VCALENDAR

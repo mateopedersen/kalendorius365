@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-29@kalendorius365.lt
+DTSTAMP:20261017T150441Z
+DTSTART;VALUE=DATE:20270429
+DTEND;VALUE=DATE:20270430
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Augustinas\, Indrė\, Kotryna\, Rita\, Tarmantas\, Geidutė. L
+ ietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susi
+ stemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/
+ 4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_29\nhttps://lt.wikiped
+ ia.org/w/index.php?oldid=7822917#Vardadieniai
+END:VEVENT
+END:VCALENDAR

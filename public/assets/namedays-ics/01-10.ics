@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-10@kalendorius365.lt
+DTSTAMP:20261017T150222Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Agatonas\, Ginvilas\, Ginvilė\, Vilhelmas\, Vilius\, Eima\, E
+ lma\, Gintvilas\, Gintvilė\, Javinė\, Jorigis\, Kolumbas\, Palemonas\, 
+ Vyda\, Vydas\, Vydautas\, Vydautė. Lietuviškos Vikipedijos bendraautori
+ ai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https:
+ //creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/
+ Sausio_10\nhttps://lt.wikipedia.org/w/index.php?oldid=7921913#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

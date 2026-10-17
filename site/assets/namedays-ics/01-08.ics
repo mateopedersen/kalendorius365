@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-08@kalendorius365.lt
+DTSTAMP:20261017T150220Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270109
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Apolinaras\, Gintė\, Severinas\, Teofilis\, Teofilius\, Vilin
+ tas\, Eivada\, Eivadas\, Eivarda\, Eivardas\, Medvaišas\, Nemira\, Teofi
+ lė\, Vilinta\, Vilintė. Lietuviškos Vikipedijos bendraautoriai\; Kalen
+ dorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creative
+ commons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_8\n
+ https://lt.wikipedia.org/w/index.php?oldid=7918349#Vardadieniai
+END:VEVENT
+END:VCALENDAR

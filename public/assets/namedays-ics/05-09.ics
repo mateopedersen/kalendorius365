@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-09@kalendorius365.lt
+DTSTAMP:20261017T150453Z
+DTSTART;VALUE=DATE:20270509
+DTEND;VALUE=DATE:20270510
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Austėja\, Beatas\, Edita\, Grigalius\, Mingailas\, Austė\, A
+ ustinėja. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išsk
+ yrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/lic
+ enses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_9\nhttp
+ s://lt.wikipedia.org/w/index.php?oldid=7931830#Vardadieniai
+END:VEVENT
+END:VCALENDAR

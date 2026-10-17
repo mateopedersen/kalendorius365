@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-23@kalendorius365.lt
+DTSTAMP:20261017T150942Z
+DTSTART;VALUE=DATE:20271223
+DTEND;VALUE=DATE:20271224
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Mina\, Veliuona\, Viktė\, Viktorija\, Vilas\, Vilbutas\, Vilb
+ utė\, Vilė\, Vilys. Lietuviškos Vikipedijos bendraautoriai\; Kalendori
+ us365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecomm
+ ons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5%BEio_
+ 23\nhttps://lt.wikipedia.org/w/index.php?oldid=7720410#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-14@kalendorius365.lt
+DTSTAMP:20261017T150538Z
+DTSTART;VALUE=DATE:20270614
+DTEND;VALUE=DATE:20270615
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Almina\, Bazilijus\, Digna\, Labvardas\, Rufinas\, Valerijus\,
+  Kristina\, Liutauras\, Paulina\, Teodora\, Vaidilė. Lietuviškos Vikipe
+ dijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC
+  BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.w
+ ikipedia.org/wiki/Bir%C5%BEelio_14\nhttps://lt.wikipedia.org/w/index.php?
+ oldid=7860443#Vardadieniai
+END:VEVENT
+END:VCALENDAR

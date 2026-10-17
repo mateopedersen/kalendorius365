@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-13@kalendorius365.lt
+DTSTAMP:20261017T150930Z
+DTSTART;VALUE=DATE:20271213
+DTEND;VALUE=DATE:20271214
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eiviltė\, Kastautas\, Kastautė\, Kastė\, Kastytis\, Liucė\
+ , Liucija\, Lucė\, Lucija\, Otilija. Lietuviškos Vikipedijos bendraauto
+ riai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: http
+ s://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wik
+ i/Gruod%C5%BEio_13\nhttps://lt.wikipedia.org/w/index.php?oldid=7712111#Va
+ rdadieniai
+END:VEVENT
+END:VCALENDAR

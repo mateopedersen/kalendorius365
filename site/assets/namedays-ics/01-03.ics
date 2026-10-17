@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-03@kalendorius365.lt
+DTSTAMP:20261017T150213Z
+DTSTART;VALUE=DATE:20270103
+DTEND;VALUE=DATE:20270104
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Genovaitė\, Vida\, Vyda\, Viltautas\, Gaudrimas\, Gordijus\, 
+ Kongailas\, Kongailė\, Kangeda\, Kangedas\, Vidas\, Vydas\, Vidgailas\, 
+ Vidgailė\, Vidginas\, Vidginė. Lietuviškos Vikipedijos bendraautoriai\
+ ; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://c
+ reativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sau
+ sio_3\nhttps://lt.wikipedia.org/w/index.php?oldid=7904811#Vardadieniai
+END:VEVENT
+END:VCALENDAR

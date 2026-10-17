@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-17@kalendorius365.lt
+DTSTAMP:20261017T150857Z
+DTSTART;VALUE=DATE:20271117
+DTEND;VALUE=DATE:20271118
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dionyzas\, Elžbieta\, Getautas\, Gilvilė\, Grigalius\, Salom
+ ėja\, Viktorija\, Benita. Lietuviškos Vikipedijos bendraautoriai\; Kale
+ ndorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativ
+ ecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4
+ %8Dio_17\nhttps://lt.wikipedia.org/w/index.php?oldid=7923558#Vardadieniai
+END:VEVENT
+END:VCALENDAR

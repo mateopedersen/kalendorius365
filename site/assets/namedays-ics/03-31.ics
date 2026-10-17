@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-31@kalendorius365.lt
+DTSTAMP:20261017T150405Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benjaminas\, Gina\, Ginas\, Kornelija\, Ginius\, Ginutis. Liet
+ uviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susiste
+ mino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0
+ /\nhttps://lt.wikipedia.org/wiki/Kovo_31\nhttps://lt.wikipedia.org/w/inde
+ x.php?oldid=7944569#Vardadieniai
+END:VEVENT
+END:VCALENDAR

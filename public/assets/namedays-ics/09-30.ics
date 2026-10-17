@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-30@kalendorius365.lt
+DTSTAMP:20261017T150755Z
+DTSTART;VALUE=DATE:20270930
+DTEND;VALUE=DATE:20271001
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bytautė\, Jeronimas\, Sofija\, Zofija\, Žymantas. Lietuvišk
+ os Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino v
+ ardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhtt
+ ps://lt.wikipedia.org/wiki/Rugs%C4%97jo_30\nhttps://lt.wikipedia.org/w/in
+ dex.php?oldid=7938073#Vardadieniai
+END:VEVENT
+END:VCALENDAR

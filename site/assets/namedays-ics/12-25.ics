@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-25@kalendorius365.lt
+DTSTAMP:20261017T150945Z
+DTSTART;VALUE=DATE:20271225
+DTEND;VALUE=DATE:20271226
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aiškutė\, Anastazija\, Eugenija\, Genė\, Gražinė\, Graži
+ nis\, Gražys\, Gražmantas\, Gražvaldas\, Gražvaldė\, Gražvilas\, Gr
+ ažvilė\, Gražvyda\, Gražvydas\, Nastė\, Sanrimė. Lietuviškos Vikip
+ edijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. C
+ C BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.
+ wikipedia.org/wiki/Gruod%C5%BEio_25\nhttps://lt.wikipedia.org/w/index.php
+ ?oldid=7715041#Vardadieniai
+END:VEVENT
+END:VCALENDAR

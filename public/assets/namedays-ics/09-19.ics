@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-19@kalendorius365.lt
+DTSTAMP:20261017T150740Z
+DTSTART;VALUE=DATE:20270919
+DTEND;VALUE=DATE:20270920
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Arnulfas\, Girvinas\, Januarijus\, Vilė\, Vilhelmina\, Vytė.
+  Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir su
+ sistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-s
+ a/4.0/\nhttps://lt.wikipedia.org/wiki/Rugs%C4%97jo_19\nhttps://lt.wikiped
+ ia.org/w/index.php?oldid=7927506#Vardadieniai
+END:VEVENT
+END:VCALENDAR

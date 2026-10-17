@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-21@kalendorius365.lt
+DTSTAMP:20261017T150902Z
+DTSTART;VALUE=DATE:20271121
+DTEND;VALUE=DATE:20271122
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eibutas\, Gomantė\, Gomantas\, Eibartė\, Honorijus\, Alberta
+ . Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir s
+ usistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-
+ sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_21\nhttps://lt.wiki
+ pedia.org/w/index.php?oldid=7904555#Vardadieniai
+END:VEVENT
+END:VCALENDAR

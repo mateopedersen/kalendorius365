@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-04@kalendorius365.lt
+DTSTAMP:20261017T150215Z
+DTSTART;VALUE=DATE:20270104
+DTEND;VALUE=DATE:20270105
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Andželika\, Anželika\, Arimantas\, Arimantė\, Arminas\, Arm
+ inė\, Benas\, Benediktas\, Titas\, Arys\, Armantas\, Armantė\, Armina\,
+  Arminta\, Armintas\, Benedikta\, Benė\, Malvina. Lietuviškos Vikipedij
+ os bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY
+ -SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wiki
+ pedia.org/wiki/Sausio_4\nhttps://lt.wikipedia.org/w/index.php?oldid=78841
+ 87#Vardadieniai
+END:VEVENT
+END:VCALENDAR

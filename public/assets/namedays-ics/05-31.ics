@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-31@kalendorius365.lt
+DTSTAMP:20261017T150521Z
+DTSTART;VALUE=DATE:20270531
+DTEND;VALUE=DATE:20270601
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Angelė\, Gintautas\, Nojus\, Petrė\, Petronėlė\, Rimvilė.
+  Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir su
+ sistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-s
+ a/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_31\nhttps://lt.wi
+ kipedia.org/w/index.php?oldid=7860457#Vardadieniai
+END:VEVENT
+END:VCALENDAR

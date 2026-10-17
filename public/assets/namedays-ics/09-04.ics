@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-04@kalendorius365.lt
+DTSTAMP:20261017T150722Z
+DTSTART;VALUE=DATE:20270904
+DTEND;VALUE=DATE:20270905
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Germantė\, Germina\, Girstautas\, Ida\, Rozalija\, Rožė. Li
+ etuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susis
+ temino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4
+ .0/\nhttps://lt.wikipedia.org/wiki/Rugs%C4%97jo_4\nhttps://lt.wikipedia.o
+ rg/w/index.php?oldid=7918328#Vardadieniai
+END:VEVENT
+END:VCALENDAR

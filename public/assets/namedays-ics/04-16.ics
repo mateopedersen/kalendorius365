@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-16@kalendorius365.lt
+DTSTAMP:20261017T150424Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270417
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Algedė\, Benediktas\, Giedrius\, Kalikstas\, Ūdrys. Lietuvi
+ škos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemin
+ o vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\n
+ https://lt.wikipedia.org/wiki/Baland%C5%BEio_16\nhttps://lt.wikipedia.org
+ /w/index.php?oldid=7843737#Vardadieniai
+END:VEVENT
+END:VCALENDAR

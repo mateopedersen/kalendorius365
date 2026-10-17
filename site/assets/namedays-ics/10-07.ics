@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-07@kalendorius365.lt
+DTSTAMP:20261017T150805Z
+DTSTART;VALUE=DATE:20271007
+DTEND;VALUE=DATE:20271008
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Butrimas\, Eivina\, Justina\, Morkus\, Renatas. Lietuviškos V
+ ikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardu
+ s. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps:/
+ /lt.wikipedia.org/wiki/Spalio_7\nhttps://lt.wikipedia.org/w/index.php?old
+ id=7939540#Vardadieniai
+END:VEVENT
+END:VCALENDAR

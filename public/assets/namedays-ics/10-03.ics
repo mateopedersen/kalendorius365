@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-03@kalendorius365.lt
+DTSTAMP:20261017T150758Z
+DTSTART;VALUE=DATE:20271003
+DTEND;VALUE=DATE:20271004
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Alanta\, Evaldas\, Kristina\, Milgintas\, Teresė\, Alanas\, V
+ alda. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė 
+ ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses
+ /by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Spalio_3\nhttps://lt.wikipedia
+ .org/w/index.php?oldid=7938502#Vardadieniai
+END:VEVENT
+END:VCALENDAR

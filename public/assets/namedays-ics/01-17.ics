@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-17@kalendorius365.lt
+DTSTAMP:20261017T150232Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Antanas\, Dovainis\, Leonilė\, Vilda\, Beatričė\, Daujotas\
+ , Dovainas\, Dovas\, Dovainė\, Dovė\, Kalnė\, Kalnius\, Merūnas\, Tar
+ iotas\, Tariotė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius36
+ 5 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.
+ org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_17\nhttps:/
+ /lt.wikipedia.org/w/index.php?oldid=7876051#Vardadieniai
+END:VEVENT
+END:VCALENDAR

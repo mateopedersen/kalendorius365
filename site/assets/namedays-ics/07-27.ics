@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-27@kalendorius365.lt
+DTSTAMP:20261017T150632Z
+DTSTART;VALUE=DATE:20270727
+DTEND;VALUE=DATE:20270728
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Natalija\, Panteleonas\, Sergijus\, Svalia\, Žintautas\, Dang
+ uolė\, Nazaras\, Subartas\, Sugauda\, Sugaudas\, Sugaudė\, Suginta\, Su
+ gintas\, Žintautė. Lietuviškos Vikipedijos bendraautoriai\; Kalendoriu
+ s365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommo
+ ns.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_27\nhttp
+ s://lt.wikipedia.org/w/index.php?oldid=7886540#Vardadieniai
+END:VEVENT
+END:VCALENDAR

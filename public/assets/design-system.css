@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=297206c1d6e8") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=1e4835ee2593") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=297206c1d6e8") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=1e4835ee2593") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=297206c1d6e8") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=1e4835ee2593") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -6312,7 +6312,7 @@ button.primary:hover, a.button.primary:hover, .success:hover {
     position: static;
     grid-column: 1 / -1;
     grid-row: 2;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     grid-auto-rows: 55px;
     align-items: stretch;
     align-self: auto;
@@ -6815,3 +6815,6 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
 .sun-moments { width: 100%; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .sun-moments button { min-width: 0; padding-inline: .12rem; }
 #sun-scrubber { min-width: 0; max-width: 100%; }
+
+/* Eleven primary destinations retain readable labels at tablet widths. */
+@media(min-width:761px) and (max-width:1050px){.site-header #primary-nav{grid-template-columns:repeat(4,minmax(0,1fr))}}

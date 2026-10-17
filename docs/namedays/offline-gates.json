@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "date_records": 366,
+  "unique_names": 2374,
+  "name_date_occurrences": 3161,
+  "names_with_multiple_dates": 534,
+  "max_names_in_a_day": 27,
+  "pages": [
+    {
+      "route": "/vardadieniai/",
+      "static_day_groups": 0,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/sausis/",
+      "static_day_groups": 31,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/vasaris/",
+      "static_day_groups": 29,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/kovas/",
+      "static_day_groups": 31,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/balandis/",
+      "static_day_groups": 30,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/geguze/",
+      "static_day_groups": 31,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/birzelis/",
+      "static_day_groups": 30,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/liepa/",
+      "static_day_groups": 31,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/rugpjutis/",
+      "static_day_groups": 31,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/rugsejis/",
+      "static_day_groups": 30,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/spalis/",
+      "static_day_groups": 31,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/lapkritis/",
+      "static_day_groups": 30,
+      "status": "passed"
+    },
+    {
+      "route": "/vardadieniai/gruodis/",
+      "static_day_groups": 31,
+      "status": "passed"
+    }
+  ],
+  "original_svgs": [
+    "hero.svg",
+    "month-01.svg",
+    "month-02.svg",
+    "month-03.svg",
+    "month-04.svg",
+    "month-05.svg",
+    "month-06.svg",
+    "month-07.svg",
+    "month-08.svg",
+    "month-09.svg",
+    "month-10.svg",
+    "month-11.svg",
+    "month-12.svg"
+  ],
+  "static_ics_checked": 366,
+  "source_quality": "Faithful extraction of attributed community source; not official certification of traditions or every name spelling."
+}

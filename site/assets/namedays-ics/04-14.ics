@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-14@kalendorius365.lt
+DTSTAMP:20261017T150422Z
+DTSTART;VALUE=DATE:20270414
+DTEND;VALUE=DATE:20270415
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Justinas\, Liuda\, Liudvika\, Luiza\, Vaišvydė\, Valerijonas
+ \, Visvaldas\, Valerijus\, Visvaldė. Lietuviškos Vikipedijos bendraauto
+ riai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: http
+ s://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wik
+ i/Baland%C5%BEio_14\nhttps://lt.wikipedia.org/w/index.php?oldid=7892341#V
+ ardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-06@kalendorius365.lt
+DTSTAMP:20261017T150334Z
+DTSTART;VALUE=DATE:20270306
+DTEND;VALUE=DATE:20270307
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gerasimas\, Norvilas\, Raminta\, Rožė\, Rozina. Lietuviškos
+  Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino var
+ dus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps
+ ://lt.wikipedia.org/wiki/Kovo_6\nhttps://lt.wikipedia.org/w/index.php?old
+ id=7943851#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-23@kalendorius365.lt
+DTSTAMP:20261017T150239Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Armandas\, Gailigedas\, Gunda\, Raimundas\, Algimantas\, Gaili
+ gedė\, Gailimantas\, Gailimantė\, Gailimina\, Gailiminas\, Gundas\, Gun
+ dė\, Ildefonsas\, Ramojus. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_2
+ 3\nhttps://lt.wikipedia.org/w/index.php?oldid=7903779#Vardadieniai
+END:VEVENT
+END:VCALENDAR

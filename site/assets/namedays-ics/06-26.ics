@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-26@kalendorius365.lt
+DTSTAMP:20261017T150553Z
+DTSTART;VALUE=DATE:20270626
+DTEND;VALUE=DATE:20270627
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Jaunius\, Jaunutis\, Paulius\, Povilas\, Viltautė\, Virgiliju
+ s\, Jaunė\, Jaunys\, Jaunutė\, Mingauda\, Mingaudas\, Ramunė\, Viltaut
+ as. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir
+  susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/b
+ y-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%BEelio_26\nhttps://lt.wik
+ ipedia.org/w/index.php?oldid=7915979#Vardadieniai
+END:VEVENT
+END:VCALENDAR

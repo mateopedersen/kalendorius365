@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-03@kalendorius365.lt
+DTSTAMP:20261017T150446Z
+DTSTART;VALUE=DATE:20270503
+DTEND;VALUE=DATE:20270504
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aleksandras\, Arvystas\, Jokūbas\, Juvenalis\, Kantvydė\, Pi
+ lypas\, Dovydas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365
+  išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.o
+ rg/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_3
+ \nhttps://lt.wikipedia.org/w/index.php?oldid=7826704#Vardadieniai
+END:VEVENT
+END:VCALENDAR

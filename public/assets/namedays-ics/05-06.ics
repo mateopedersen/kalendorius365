@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-06@kalendorius365.lt
+DTSTAMP:20261017T150450Z
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270507
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benė\, Benedikta\, Eidmantė\, Judita\, Liucijus\, Minvydas\,
+  Benis. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyr
+ ė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licen
+ ses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_6\nhttps:
+ //lt.wikipedia.org/w/index.php?oldid=7832114#Vardadieniai
+END:VEVENT
+END:VCALENDAR

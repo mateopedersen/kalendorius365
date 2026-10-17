@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-13@kalendorius365.lt
+DTSTAMP:20261017T150306Z
+DTSTART;VALUE=DATE:20270213
+DTEND;VALUE=DATE:20270214
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Algaudas\, Benignas\, Kotryna\, Ugnė\, Algauda\, Benigna\, Ei
+ sra\, Loreta\, Putaviras\, Putviras\, Ugnius. Lietuviškos Vikipedijos be
+ ndraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4
+ .0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia
+ .org/wiki/Vasario_13\nhttps://lt.wikipedia.org/w/index.php?oldid=7918339#
+ Vardadieniai
+END:VEVENT
+END:VCALENDAR

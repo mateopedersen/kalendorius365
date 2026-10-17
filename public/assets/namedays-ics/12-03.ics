@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-03@kalendorius365.lt
+DTSTAMP:20261017T150917Z
+DTSTART;VALUE=DATE:20271203
+DTEND;VALUE=DATE:20271204
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Atalija\, Audinga\, Audingas\, Gailintas\, Ksavera\, Ksaveras\
+ , Ksaverija\, Linvyda\, Linvydas\, Linvydė. Lietuviškos Vikipedijos ben
+ draautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.
+ 0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.
+ org/wiki/Gruod%C5%BEio_3\nhttps://lt.wikipedia.org/w/index.php?oldid=7756
+ 855#Vardadieniai
+END:VEVENT
+END:VCALENDAR

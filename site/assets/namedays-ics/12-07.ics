@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-07@kalendorius365.lt
+DTSTAMP:20261017T150922Z
+DTSTART;VALUE=DATE:20271207
+DTEND;VALUE=DATE:20271208
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Ašmantas\, Ašmantė\, Laigeda\, Laigedė\, Laigedas\, Leinar
+ tas\, Leinartė\, Leonarda\, Leonardas\, Lynartas\, Lynartė\, Melanijus\
+ , Vygaudė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išs
+ kyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/li
+ censes/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5%BEio_7\nhttps:/
+ /lt.wikipedia.org/w/index.php?oldid=7863871#Vardadieniai
+END:VEVENT
+END:VCALENDAR

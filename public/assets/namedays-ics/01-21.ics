@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-21@kalendorius365.lt
+DTSTAMP:20261017T150237Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Agnietė\, Galiginas\, Garsė\, Ina\, Inesa\, Ineta\, Ineza\, 
+ Agnė\, Augas\, Augė\, Augis\, Augius\, Augūnas\, Augūnė\, Galgintas\
+ , Galigina\, Galiginta\, Galigintas\, Inezė. Lietuviškos Vikipedijos be
+ ndraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4
+ .0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia
+ .org/wiki/Sausio_21\nhttps://lt.wikipedia.org/w/index.php?oldid=7923560#V
+ ardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-20@kalendorius365.lt
+DTSTAMP:20261017T150236Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Daugvydas\, Fabijonas\, Nomeda\, Sebastijonas\, Daugvyda\, Fab
+ ija\, Fabijus\, Giedrius\, Gintvainas\, Gintvainė\, Gintvilas\, Gintvil
+ ė\, Henrikas\, Liaubaras\, Nomedas\, Sebastijona\, Skaistė\, Skaistis. 
+ Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir sus
+ istemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa
+ /4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_20\nhttps://lt.wikipedia.org/
+ w/index.php?oldid=7738647#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-18@kalendorius365.lt
+DTSTAMP:20261017T150349Z
+DTSTART;VALUE=DATE:20270318
+DTEND;VALUE=DATE:20270319
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anzelmas\, Eimutė\, Eimutis\, Kirilas\, Sibilė\, Einora. Lie
+ tuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susist
+ emino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.
+ 0/\nhttps://lt.wikipedia.org/wiki/Kovo_18\nhttps://lt.wikipedia.org/w/ind
+ ex.php?oldid=7784025#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-11@kalendorius365.lt
+DTSTAMP:20261017T150612Z
+DTSTART;VALUE=DATE:20270711
+DTEND;VALUE=DATE:20270712
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benediktas\, Kipras\, Pijus\, Šarūnas\, Vilmantas\, Kiprijon
+ as. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir
+  susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/b
+ y-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_11\nhttps://lt.wikipedia.
+ org/w/index.php?oldid=7877054#Vardadieniai
+END:VEVENT
+END:VCALENDAR

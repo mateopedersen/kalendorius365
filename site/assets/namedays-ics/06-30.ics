@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-30@kalendorius365.lt
+DTSTAMP:20261017T150558Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Adelė\, Emilija\, Liucina\, Novilė\, Otas\, Otonas\, Tautgin
+ as\, Emilis. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 iš
+ skyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/l
+ icenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%BEelio_30\nhttps
+ ://lt.wikipedia.org/w/index.php?oldid=7945448#Vardadieniai
+END:VEVENT
+END:VCALENDAR

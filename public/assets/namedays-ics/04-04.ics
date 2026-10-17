@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-04@kalendorius365.lt
+DTSTAMP:20261017T150409Z
+DTSTART;VALUE=DATE:20270404
+DTEND;VALUE=DATE:20270405
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Algaudas\, Ambraziejus\, Eglė\, Izidorius\, Dzidas\, Izidora.
+  Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir su
+ sistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-s
+ a/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_4\nhttps://lt.wikipe
+ dia.org/w/index.php?oldid=7904809#Vardadieniai
+END:VEVENT
+END:VCALENDAR

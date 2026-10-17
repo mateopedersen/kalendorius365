@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-03@kalendorius365.lt
+DTSTAMP:20261017T150839Z
+DTSTART;VALUE=DATE:20271103
+DTEND;VALUE=DATE:20271104
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Hubertas\, Norvainė\, Silvija\, Vidmantas\, Vidmantė. Lietuv
+ iškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemi
+ no vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\
+ nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_3\nhttps://lt.wikipedia.org
+ /w/index.php?oldid=7858869#Vardadieniai
+END:VEVENT
+END:VCALENDAR

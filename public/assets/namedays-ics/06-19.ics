@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-19@kalendorius365.lt
+DTSTAMP:20261017T150545Z
+DTSTART;VALUE=DATE:20270619
+DTEND;VALUE=DATE:20270620
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Deodatas\, Dovilas\, Julijona\, Ramunė\, Romas\, Romualdas\, 
+ Dovilė\, Gaudvilas\, Gervazas\, Protazas\, Protazijus\, Romualda\, Svaig
+ eda\, Svaigedas\, Svaigedė. Lietuviškos Vikipedijos bendraautoriai\; Ka
+ lendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creat
+ ivecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%
+ BEelio_19\nhttps://lt.wikipedia.org/w/index.php?oldid=7863873#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

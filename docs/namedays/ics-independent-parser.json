@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "parser": "icalendar + dateutil.rrule (independent of JS and Ruby exporters)",
+  "files": 366,
+  "leap_recurrence_checked_through": 2035
+}

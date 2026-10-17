@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-29@kalendorius365.lt
+DTSTAMP:20261017T150634Z
+DTSTART;VALUE=DATE:20270729
+DTEND;VALUE=DATE:20270730
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Beatričė\, Faustinas\, Feliksas\, Laimis\, Mantvydas\, Mantv
+ ydė\, Morta\, Simplicijus. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_2
+ 9\nhttps://lt.wikipedia.org/w/index.php?oldid=7888667#Vardadieniai
+END:VEVENT
+END:VCALENDAR

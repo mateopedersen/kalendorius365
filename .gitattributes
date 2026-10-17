@@ -17,3 +17,7 @@ public/assets/holiday-phase2-ics/*.ics binary
 # Seasonal calendar exports require literal RFC 5545 CRLF bytes.
 site/assets/seasons-ics/*.ics binary
 public/assets/seasons-ics/*.ics binary
+
+# Name-day all-day calendars retain RFC 5545 CRLF and UTF-8 byte folding.
+site/assets/namedays-ics/*.ics binary
+public/assets/namedays-ics/*.ics binary

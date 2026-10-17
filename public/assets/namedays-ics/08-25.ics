@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-25@kalendorius365.lt
+DTSTAMP:20261017T150709Z
+DTSTART;VALUE=DATE:20270825
+DTEND;VALUE=DATE:20270826
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Juozapas\, Liucilė\, Liudas\, Liudvikas\, Mangailas\, Mangail
+ ė\, Patricija. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 
+ išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.or
+ g/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_
+ 25\nhttps://lt.wikipedia.org/w/index.php?oldid=7942612#Vardadieniai
+END:VEVENT
+END:VCALENDAR

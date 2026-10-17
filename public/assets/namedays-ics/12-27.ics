@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-27@kalendorius365.lt
+DTSTAMP:20261017T150947Z
+DTSTART;VALUE=DATE:20271227
+DTEND;VALUE=DATE:20271228
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dautarta\, Dautartas\, Dautartė\, Eglė\, Gedvinė\, Fabijol
+ ė\, Visalgas\, Visalgė\, Visbartas\, Visbartė\, Visdargas\, Visdagrė.
+  Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir su
+ sistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-s
+ a/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5%BEio_27\nhttps://lt.wikipe
+ dia.org/w/index.php?oldid=7713670#Vardadieniai
+END:VEVENT
+END:VCALENDAR

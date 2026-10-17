@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-17@kalendorius365.lt
+DTSTAMP:20261017T150619Z
+DTSTART;VALUE=DATE:20270717
+DTEND;VALUE=DATE:20270718
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aleksas\, Darius\, Girėnas\, Magdalena\, Vaiga\, Darutis\, Na
+ rimantas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išsky
+ rė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/lice
+ nses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_17\nhttps://lt.wiki
+ pedia.org/w/index.php?oldid=7881151#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-05@kalendorius365.lt
+DTSTAMP:20261017T150801Z
+DTSTART;VALUE=DATE:20271005
+DTEND;VALUE=DATE:20271006
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Donata\, Edvinas\, Galė\, Gilda\, Palemonas\, Placidas. Lietu
+ viškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistem
+ ino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+ \nhttps://lt.wikipedia.org/wiki/Spalio_5\nhttps://lt.wikipedia.org/w/inde
+ x.php?oldid=7938062#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-11@kalendorius365.lt
+DTSTAMP:20261017T150650Z
+DTSTART;VALUE=DATE:20270811
+DTEND;VALUE=DATE:20270812
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Filomena\, Klara\, Ligija\, Severas\, Visalgas\, Visvilė\, Zu
+ zana\, Butenis\, Visgaldas. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5
+ %AB%C4%8Dio_11\nhttps://lt.wikipedia.org/w/index.php?oldid=7937747#Vardad
+ ieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-25@kalendorius365.lt
+DTSTAMP:20261017T150907Z
+DTSTART;VALUE=DATE:20271125
+DTEND;VALUE=DATE:20271126
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Germilė\, Jaukanta\, Jaukantas\, Jaukantė\, Jaumantas\, Jaum
+ antė\, Katarina\, Katrė\, Katryna\, Kotrė\, Kotryna\, Santautas\, Sant
+ autė\, Sanvyda\, Sanvydas\, Sanvydė\, Trynė. Lietuviškos Vikipedijos 
+ bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA
+  4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikiped
+ ia.org/wiki/Lapkri%C4%8Dio_25\nhttps://lt.wikipedia.org/w/index.php?oldid
+ =7593655#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-12@kalendorius365.lt
+DTSTAMP:20261017T150929Z
+DTSTART;VALUE=DATE:20271212
+DTEND;VALUE=DATE:20271213
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dagmara\, Gaiva\, Gilmina\, Gilminas\, Kirbutas\, Kirkanta\, K
+ irkantas\, Vainė\, Vaingeda\, Vaingedas\, Vainius. Lietuviškos Vikipedi
+ jos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC B
+ Y-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wik
+ ipedia.org/wiki/Gruod%C5%BEio_12\nhttps://lt.wikipedia.org/w/index.php?ol
+ did=7932466#Vardadieniai
+END:VEVENT
+END:VCALENDAR

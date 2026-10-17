@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-22@kalendorius365.lt
+DTSTAMP:20261017T150548Z
+DTSTART;VALUE=DATE:20270622
+DTEND;VALUE=DATE:20270623
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Inocentas\, Kaributas\, Laima\, Paulinas\, Tomas\, Eigauda\, E
+ igaudas\, Eigaudė\, Eigeda\, Eigedas\, Eigė\, Kentautas\, Kentautė\, L
+ aimutė\, Paulina. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius3
+ 65 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons
+ .org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%BEelio_22\
+ nhttps://lt.wikipedia.org/w/index.php?oldid=7865564#Vardadieniai
+END:VEVENT
+END:VCALENDAR

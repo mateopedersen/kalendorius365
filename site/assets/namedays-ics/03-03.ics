@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-03@kalendorius365.lt
+DTSTAMP:20261017T150330Z
+DTSTART;VALUE=DATE:20270303
+DTEND;VALUE=DATE:20270304
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Kunigunda\, Nonita\, Tulė\, Uosis\, Daukantas\, Gunda\, Nona\
+ , Tulgauda\, Tulgaudas\, Tulkanta\, Tulkantas\, Tulmina\, Tulminas\, Tulv
+ irda\, Tulvirdas\, Tulvirdė. Lietuviškos Vikipedijos bendraautoriai\; K
+ alendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://crea
+ tivecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Kovo_3
+ \nhttps://lt.wikipedia.org/w/index.php?oldid=7920646#Vardadieniai
+END:VEVENT
+END:VCALENDAR

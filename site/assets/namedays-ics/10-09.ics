@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-09@kalendorius365.lt
+DTSTAMP:20261017T150808Z
+DTSTART;VALUE=DATE:20271009
+DTEND;VALUE=DATE:20271010
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dionyzas\, Gedėtas\, Liudas\, Liudvikas\, Virgailė\, Gedimta
+ s\, Virbutas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Spalio_9\nhttps://lt.
+ wikipedia.org/w/index.php?oldid=7941079#Vardadieniai
+END:VEVENT
+END:VCALENDAR

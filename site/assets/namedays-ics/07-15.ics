@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-15@kalendorius365.lt
+DTSTAMP:20261017T150617Z
+DTSTART;VALUE=DATE:20270715
+DTEND;VALUE=DATE:20270716
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bonaventūras\, Gerimantė\, Henrikas\, Herkus\, Mantas\, Roza
+ lija\, Rožė\, Enrikas\, Henrieta. Lietuviškos Vikipedijos bendraautori
+ ai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https:
+ //creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/
+ Liepos_15\nhttps://lt.wikipedia.org/w/index.php?oldid=7879699#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

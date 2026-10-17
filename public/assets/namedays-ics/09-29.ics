@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-29@kalendorius365.lt
+DTSTAMP:20261017T150753Z
+DTSTART;VALUE=DATE:20270929
+DTEND;VALUE=DATE:20270930
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gabrielius\, Kęsgailas\, Kęsgailė\, Michalina\, Mykolas\, M
+ ykolė\, Rapolas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius36
+ 5 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.
+ org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugs%C4%97jo_29\nh
+ ttps://lt.wikipedia.org/w/index.php?oldid=7934510#Vardadieniai
+END:VEVENT
+END:VCALENDAR

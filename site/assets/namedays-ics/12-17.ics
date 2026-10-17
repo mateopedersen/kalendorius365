@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-17@kalendorius365.lt
+DTSTAMP:20261017T150935Z
+DTSTART;VALUE=DATE:20271217
+DTEND;VALUE=DATE:20271218
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Drovydė\, Jokinta\, Jokintas\, Jolanta\, Joleta\, Jolė\, Jol
+ ita\, Lozorius\, Mantgailas\, Olimpija\, Olimpijus\, Rachelė. Lietuvišk
+ os Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino v
+ ardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhtt
+ ps://lt.wikipedia.org/wiki/Gruod%C5%BEio_17\nhttps://lt.wikipedia.org/w/i
+ ndex.php?oldid=7816987#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-12@kalendorius365.lt
+DTSTAMP:20261017T150613Z
+DTSTART;VALUE=DATE:20270712
+DTEND;VALUE=DATE:20270713
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bonifacas\, Brunonas\, Izabelė\, Margiris\, Sigisbertas\, Sig
+ itas\, Vyliaudė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius36
+ 5 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.
+ org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_12\nhttps:/
+ /lt.wikipedia.org/w/index.php?oldid=7928973#Vardadieniai
+END:VEVENT
+END:VCALENDAR

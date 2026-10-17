@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-17@kalendorius365.lt
+DTSTAMP:20261017T150542Z
+DTSTART;VALUE=DATE:20270617
+DTEND;VALUE=DATE:20270618
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Adolfas\, Daugantas\, Grigalius\, Laura\, Vilmantė\, Adolfa\,
+  Adolfina\, Adolis\, Dauganta\, Rimvydas. Lietuviškos Vikipedijos bendra
+ autoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: 
+ https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org
+ /wiki/Bir%C5%BEelio_17\nhttps://lt.wikipedia.org/w/index.php?oldid=788988
+ 8#Vardadieniai
+END:VEVENT
+END:VCALENDAR
