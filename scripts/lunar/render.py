@@ -221,6 +221,6 @@ def main():
         write_json(ROOT/'site/assets/data/lunar/assets.json',{'version':VERSION,'assets':records})
         for row in DATA['records']:
             path=LUNAR/'days'/f"{row['date_local']}.webp";path.parent.mkdir(exist_ok=True)
-            disc(row,192).save(path,'WEBP',quality=88,method=4)
+            disc(row,128).save(path,'WEBP',quality=86,method=4)
 
 if __name__=='__main__':main()

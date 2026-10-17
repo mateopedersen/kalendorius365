@@ -33,6 +33,10 @@ jobs:
           bundler-cache: true
       - name: Build the complete static release
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
+      - name: Verify committed public files match the release build
+        run: git diff --exit-code -- public
+      - name: Check CSS minifier whitespace safety
+        run: ruby test/css_minifier_test.rb
       - name: Audit every canonical page and internal link
         run: python3 scripts/audit_site.py
       - name: Run calendar, search, planner and solar tests

@@ -13,9 +13,13 @@ module Jekyll
       javascript = Dir.glob(File.join(site.source, 'assets/**/*.js')).sort.map do |path|
         path.delete_prefix(site.source + File::SEPARATOR)
       end
+      weather_images = %w[assets/visuals/weather-320.webp assets/visuals/weather-480.webp assets/visuals/weather-640.webp]
+      image_contents = weather_images.map { |path| File.binread(File.join(site.source, path)) }
+      site.config['weather_image_version'] = Digest::SHA256.hexdigest(image_contents.join("\0"))[0, 12]
       groups = {
-        'css_version' => %w[assets/style.css assets/design-system.css assets/horoscope.css assets/zodiac.css assets/namedays.css assets/lunar.css assets/monthly-holidays.css assets/holiday-phase2.css assets/seasons.css assets/contact.css] + lato_fonts,
-        'script_version' => javascript
+        'css_version' => %w[assets/style.css assets/design-system.css assets/homepage.css assets/horoscope.css assets/zodiac.css assets/namedays.css assets/lunar.css assets/monthly-holidays.css assets/holiday-phase2.css assets/seasons.css assets/contact.css] + lato_fonts,
+        # Search data is fetched lazily. Tie its long-lived URL to its content.
+        'script_version' => javascript + %w[assets/data/search.json]
       }
 
       groups.each do |key, paths|
@@ -25,6 +29,7 @@ module Jekyll
 
           File.binread(absolute_path)
         end
+        contents << File.binread(File.expand_path('../lib/css_minifier.rb', site.source)) if key == 'css_version'
         site.config[key] = Digest::SHA256.hexdigest(contents.join("\0"))[0, 12]
       end
     end

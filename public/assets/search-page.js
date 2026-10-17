@@ -1,4 +1,4 @@
-import { loadSearchIndex, searchPages } from "./search-engine.js?v=4d35e0869c52";
+import { loadSearchIndex, searchPages } from "./search-engine.js?v=5333405800fe";
 
 const form = document.querySelector("#site-search-page-form");
 const input = document.querySelector("#site-search-page-query");
@@ -10,7 +10,7 @@ const pagination = document.querySelector("#site-search-pagination");
 const clearButton = document.querySelector("#site-search-clear");
 const pageSize = 18;
 const params = new URLSearchParams(location.search);
-let index = [];
+let index;
 let currentPage = 1;
 let pendingRender;
 
@@ -49,7 +49,7 @@ function updateUrl() {
 }
 
 function browsePages() {
-  return index
+  return (index || [])
     .filter((item) => category.value === "all" || item.category === category.value)
     .sort((a, b) => a.title.localeCompare(b.title, "lt"));
 }
@@ -113,13 +113,25 @@ function render() {
 function scheduleRender() {
   clearTimeout(pendingRender);
   currentPage = 1;
-  pendingRender = setTimeout(render, 80);
+  pendingRender = setTimeout(ensureIndexAndRender, 80);
+}
+
+async function ensureIndexAndRender() {
+  if (!index) {
+    status.textContent = "Paieškos rodyklė įkeliama…";
+    try {
+      index = await loadSearchIndex();
+    } catch {
+      status.textContent = "Paieškos rodyklės įkelti nepavyko. Atnaujinkite puslapį arba naudokitės meniu.";
+      return;
+    }
+  }
+  render();
 }
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  render();
-  resultList.focus({ preventScroll: true });
+  ensureIndexAndRender().then(() => resultList.focus({ preventScroll: true }));
 });
 input.addEventListener("input", scheduleRender);
 category.addEventListener("change", scheduleRender);
@@ -128,22 +140,21 @@ clearButton.addEventListener("click", () => {
   category.value = "all";
   currentPage = 1;
   input.focus();
-  render();
+  if (index) render();
 });
 document.querySelectorAll("[data-search-query]").forEach((button) => {
   button.addEventListener("click", () => {
     input.value = button.dataset.searchQuery || "";
     category.value = "all";
     currentPage = 1;
-    render();
+    ensureIndexAndRender();
     input.focus();
   });
 });
 
-try {
-  index = await loadSearchIndex();
-  render();
+if (input.value.trim() || category.value !== "all") {
+  await ensureIndexAndRender();
   if (input.value) input.focus({ preventScroll: true });
-} catch {
-  status.textContent = "Paieškos rodyklės įkelti nepavyko. Atnaujinkite puslapį arba naudokitės meniu.";
+} else {
+  status.textContent = "Įveskite paieškos žodį arba naršykite puslapius pagal skiltį.";
 }

@@ -2,11 +2,17 @@
 from __future__ import annotations
 import calendar,csv,html,json
 from datetime import datetime
+from hashlib import sha256
 from core import ROOT,MONTHS,GENITIVE,SLUGS,WEEKDAYS,PRIMARY,STAGES,load_data
 
 D=load_data()
 A=json.loads((ROOT/'data/lunar/assets.json').read_text())['assets']
 E=html.escape
+DAY_IMAGES=sorted((ROOT/'site/assets/lunar/days').glob('*.webp'))
+DAY_VERSION=sha256(b''.join(path.name.encode()+b'\0'+path.read_bytes()+b'\0' for path in DAY_IMAGES)).hexdigest()[:12]
+
+def day_image_url(date):
+    return f'/assets/lunar/days/{date}.webp?v={DAY_VERSION}'
 
 def pct(value):
     return f'{value*100:.1f}'.replace('.',',')
@@ -51,7 +57,7 @@ def month_cards(year):
     for month in range(1,13):
         rows=[r for r in D['records'] if r['date_local'].startswith(f'{year}-{month:02}')]
         ev=[e for e in D['events'] if e['local_date'].startswith(f'{year}-{month:02}')]
-        phase_images=''.join(f'<img src="/assets/lunar/days/{rows[i]["date_local"]}.webp" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async">' for i in (0,7,14,21))
+        phase_images=''.join(f'<img src="{day_image_url(rows[i]["date_local"])}" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async">' for i in (0,7,14,21))
         cards.append(f'<a class="lunar-month-card" href="/menulio-kalendorius/{year}/{SLUGS[month-1]}/"><div class="lunar-month-card__heading"><span>{month:02}</span><h3>{MONTHS[month-1]}</h3><span aria-hidden="true">↗</span></div><div class="lunar-month-card__phases">{phase_images}</div><p>Dienų: {len(rows)} · fazių momentų: {len(ev)}</p><span>2 spausdinami maketai</span></a>')
     return '<div class="lunar-month-cards">'+''.join(cards)+'</div>'
 
@@ -64,7 +70,7 @@ def month_page(year,month):
     for (y,m),arrow in ((prev,'←'),(nxt,'→')):
         if y not in (2027,2028,2029):continue
         neighbor=[r for r in D['records'] if r['date_local'].startswith(f'{y}-{m:02}')]
-        preview=''.join(f'<img src="/assets/lunar/days/{neighbor[i]["date_local"]}.webp" width="32" height="32" alt="" aria-hidden="true" loading="lazy">' for i in (0,10,20))
+        preview=''.join(f'<img src="{day_image_url(neighbor[i]["date_local"])}" width="32" height="32" alt="" aria-hidden="true" loading="lazy">' for i in (0,10,20))
         adjacent+=f'<a href="/menulio-kalendorius/{y}/{SLUGS[m-1]}/"><span>{arrow} {y} m. {GENITIVE[m-1]} kalendorius</span><span class="lunar-adjacent-phases">{preview}</span></a>'
     lookup={int(r['date_local'][-2:]):r for r in rows};bydate={e['local_date']:e for e in events}
     trs=[]
@@ -76,7 +82,7 @@ def month_page(year,month):
             label=f"{year} m. {GENITIVE[month-1]} {day} d., {WEEKDAYS[r['weekday']].lower()}. {r['phase_label_lt']}. Apšviesta {light} %."
             if event:label+=f" Pagrindinė fazė: {event['label_lt']}, {event['local_time']} Lietuvos laiku."
             marker='<span class="lunar-day-dot" aria-hidden="true"></span>' if event else ''
-            cells.append(f'<td><button class="lunar-day{" lunar-day--event" if event else ""}" data-lunar-date="{r["date_local"]}" aria-label="{E(label)}" aria-pressed="{"true" if day==1 else "false"}" tabindex="{0 if day==1 else -1}"><span class="lunar-day-number">{day}</span><img src="/assets/lunar/days/{r["date_local"]}.webp" width="96" height="96" alt="" aria-hidden="true" decoding="async"><span class="lunar-day-light">{light} %</span>{marker}</button></td>')
+            cells.append(f'<td><button class="lunar-day{" lunar-day--event" if event else ""}" data-lunar-date="{r["date_local"]}" aria-label="{E(label)}" aria-pressed="{"true" if day==1 else "false"}" tabindex="{"0" if day==1 else -1}"><span class="lunar-day-number">{day}</span><img src="{day_image_url(r["date_local"])}" width="128" height="128" alt="" aria-hidden="true" loading="lazy" decoding="async"><span class="lunar-day-light">{light} %</span>{marker}</button></td>')
         trs.append('<tr>'+''.join(cells)+'</tr>')
     table='<table class="lunar-month-table"><caption class="visually-hidden">'+title+'; dienos vaizdas 12:00 Lietuvos laiku</caption><thead><tr>'+''.join(f'<th scope="col"><abbr title="{d}">{s}</abbr></th>' for d,s in zip(WEEKDAYS,['Pr','An','Tr','Kt','Pn','Št','Sk']))+'</tr></thead><tbody>'+''.join(trs)+'</tbody></table>'
     brightest=max(rows,key=lambda r:r['illumination_fraction']);new_count=sum(e['phase']=='new' for e in events);full_count=sum(e['phase']=='full' for e in events)

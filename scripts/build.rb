@@ -6,6 +6,7 @@ require 'base64'
 require 'tempfile'
 require_relative '../lib/calendar'
 require_relative '../lib/build_policy'
+require_relative '../lib/css_minifier'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  # A release request is insufficient on a Cloudflare feature branch. Keep
@@ -26,7 +27,7 @@ Dir.chdir(ROOT) do
  Dir.glob('public/assets/**/*.css').each do |path|
   css=File.read(path)
   css.gsub!(%r{(/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2)(?!\?v=)}) { "#{$1}?v=#{css_version}" }
-  File.write(path,css)
+  File.write(path,Kalendorius::CssMinifier.minify(css))
  end
  Dir.glob('public/assets/**/*.js').each do |path|
   javascript=File.read(path)
@@ -81,9 +82,9 @@ Dir.chdir(ROOT) do
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  files.grep(%r{public/assets/data/.*\.json\z}).sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{data_cache}\n"
+  cache=path=='public/assets/data/search.json' ? immutable : data_cache
+  headers+="/#{path.delete_prefix('public/')}\n  #{cache}\n"
  end
- headers+="/assets/fonts/Inter-Regular.woff2\n  #{one_day}\n"
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{one_day}\n"
  end
@@ -91,7 +92,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/seasons-ics/*\n  #{one_day}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/namedays-ics/*\n  #{one_day}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/holiday-guides-ics/*\n  #{one_day}\n"
- headers+="/assets/lunar/days/*\n  #{one_day}\n/assets/lunar/albedo-web.png\n  #{one_day}\n/assets/lunar/albedo.png\n  #{one_day}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{one_day}\n"
+ headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{one_day}\n/assets/lunar/albedo.png\n  #{one_day}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{one_day}\n"
  File.write('public/_headers',headers)
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release

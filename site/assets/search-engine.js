@@ -45,9 +45,16 @@ function words(value) {
 }
 
 export function loadSearchIndex() {
-  loadedIndex ||= fetch("/assets/data/search.json", { credentials: "same-origin" }).then((response) => {
+  const moduleUrl = new URL(import.meta.url);
+  const indexUrl = new URL("./data/search.json", moduleUrl);
+  const releaseVersion = moduleUrl.searchParams.get("v");
+  if (releaseVersion) indexUrl.searchParams.set("v", releaseVersion);
+  loadedIndex ||= fetch(indexUrl, { credentials: "same-origin", cache: "force-cache" }).then((response) => {
     if (!response.ok) throw new Error("Nepavyko įkelti paieškos rodyklės");
     return response.json();
+  }).catch((error) => {
+    loadedIndex = undefined;
+    throw error;
   });
   return loadedIndex;
 }
@@ -161,7 +168,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
     if (!matched.length || coverage < (queryWords.length > 2 ? 0.5 : 1 / queryWords.length)) continue;
 
     const phraseWeights = [
-      ["title", 28], ["keywords", 18], ["headings", 14], ["description", 9], ["content", 3], ["url", 8],
+      ["title", 28], ["keywords", 18], ["headings", 14], ["description", 9], ["url", 8],
     ];
     for (const [field, weight] of phraseWeights) {
       if (doc.fields[field].includes(normalizedQuery)) score += weight;
