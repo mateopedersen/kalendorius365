@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, solarPositionAt, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
 
 const day = { name: "Dieninė", start: "07:00", end: "19:00", break: 30, color: "#006a44" };
 const night = { name: "Naktinė", start: "23:00", end: "07:00", break: 0, color: "#315bd6" };
@@ -77,24 +77,57 @@ test("shift ICS uses elapsed UTC times, escapes text and folds within RFC 5545 b
   for (const line of ics.split("\r\n")) assert(Buffer.byteLength(line, "utf8") <= 75, `ICS line exceeds 75 octets: ${line}`);
 });
 
-test("NOAA solar results agree with independently tabulated USNO examples within two UTC minutes", () => {
-  const vilnius = { lat: 54.68916, lon: 25.27980 };
+test("USNO sunrise and sunset agree with 20 independently requested API examples within one UTC minute", () => {
   const references = [
-    ["2028-01-01", "06:42", "14:03"],
-    ["2028-03-20", "04:20", "16:33"],
-    ["2028-06-21", "01:42", "19:00"],
-    ["2028-10-29", "05:16", "14:48"],
+    ["Vilnius", 54.68916, 25.27980, "2028-01-01", "06:42", "14:03"],
+    ["Vilnius", 54.68916, 25.27980, "2028-03-20", "04:20", "16:33"],
+    ["Vilnius", 54.68916, 25.27980, "2028-06-21", "01:42", "19:00"],
+    ["Vilnius", 54.68916, 25.27980, "2028-10-29", "05:16", "14:48"],
+    ["Kaunas", 54.90156, 23.90909, "2028-01-01", "06:49", "14:07"],
+    ["Kaunas", 54.90156, 23.90909, "2028-03-20", "04:26", "16:39"],
+    ["Kaunas", 54.90156, 23.90909, "2028-06-21", "01:46", "19:07"],
+    ["Kaunas", 54.90156, 23.90909, "2028-10-29", "05:22", "14:53"],
+    ["Klaipėda", 55.70680, 21.13912, "2028-01-01", "07:05", "14:13"],
+    ["Klaipėda", 55.70680, 21.13912, "2028-03-20", "04:37", "16:50"],
+    ["Klaipėda", 55.70680, 21.13912, "2028-06-21", "01:51", "19:24"],
+    ["Klaipėda", 55.70680, 21.13912, "2028-10-29", "05:36", "15:01"],
+    ["Šiauliai", 55.93333, 23.31667, "2028-01-01", "06:58", "14:03"],
+    ["Šiauliai", 55.93333, 23.31667, "2028-03-20", "04:28", "16:41"],
+    ["Šiauliai", 55.93333, 23.31667, "2028-06-21", "01:41", "19:17"],
+    ["Šiauliai", 55.93333, 23.31667, "2028-10-29", "05:28", "14:52"],
+    ["Panevėžys", 55.73186, 24.35983, "2028-01-01", "06:52", "14:00"],
+    ["Panevėžys", 55.73186, 24.35983, "2028-03-20", "04:24", "16:37"],
+    ["Panevėžys", 55.73186, 24.35983, "2028-06-21", "01:38", "19:11"],
+    ["Panevėžys", 55.73186, 24.35983, "2028-10-29", "05:23", "14:49"],
   ];
-  for (const [date, rise, set] of references) {
-    const result = solarFor(date, vilnius);
+  for (const [name, lat, lon, date, rise, set] of references) {
+    const result = solarFor(date, { lat, lon });
     const actual = [result.sunrise, result.sunset].map((value) => new Date(value).toISOString().slice(11, 16));
     for (let i = 0; i < 2; i++) {
       const a = actual[i].split(":").reduce((n, x) => n * 60 + Number(x), 0);
       const b = [rise, set][i].split(":").reduce((n, x) => n * 60 + Number(x), 0);
-      assert(Math.abs(a - b) <= 2, `${date}: ${actual[i]} differs from reference ${[rise,set][i]}`);
+      assert(Math.abs(a - b) <= 1, `${name} ${date}: ${actual[i]} differs from USNO ${[rise, set][i]}`);
     }
   }
-  assert.throws(() => solarFor("2027-02-29", vilnius), /data/);
+  assert.throws(() => solarFor("2027-02-29", { lat: 54.68916, lon: 25.27980 }), /data/);
+});
+
+test("solar illustration coordinates follow the calculated seasonal path over Lithuania", () => {
+  const vilnius = { lat: 54.68916, lon: 25.27980 };
+  const summer = solarFor("2028-06-21", vilnius);
+  const winter = solarFor("2028-12-21", vilnius);
+  const summerNoon = solarPositionAt("2028-06-21", summer.noon, vilnius);
+  const winterNoon = solarPositionAt("2028-12-21", winter.noon, vilnius);
+  const summerRise = solarPositionAt("2028-06-21", summer.sunrise, vilnius);
+  const summerSet = solarPositionAt("2028-06-21", summer.sunset, vilnius);
+
+  assert(Math.abs(summerNoon.azimuth - 180) < 1, "summer solar transit should be due south");
+  assert(summerNoon.altitude > 58 && summerNoon.altitude < 60, "summer midday altitude follows Vilnius latitude and solar declination");
+  assert(winterNoon.altitude > 10 && winterNoon.altitude < 14, "winter midday remains low above the southern horizon");
+  assert(Math.abs(summerRise.altitude + 0.833) < 0.05, "rise uses the conventional apparent horizon");
+  assert(Math.abs(summerSet.altitude + 0.833) < 0.05, "set uses the conventional apparent horizon");
+  assert(summerRise.azimuth < 55 && summerSet.azimuth > 305, "summer path rises northeast and sets northwest");
+  assert.throws(() => solarPositionAt("2028-06-20", summer.noon, vilnius), /datos UTC momento/);
 });
 
 test("lunar illumination approximation stays bounded and reaches phase extrema", () => {

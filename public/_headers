@@ -37,6 +37,8 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/style.css
   Cache-Control: public, max-age=31536000, immutable
+/assets/sunrise.js
+  Cache-Control: public, max-age=31536000, immutable
 /assets/tools.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/weather.js

@@ -134,19 +134,49 @@ export function buildShiftIcs(shifts, definitions, stampNow = Date.now()) {
   return lines.map(fold).join("\r\n") + "\r\n";
 }
 
-/** NOAA fractional-year equations iterated at each event's UTC instant. */
-export function solarFor(date, city) {
+function solarElements(instant) {
+  // USNO's compact solar-coordinate algorithm: apparent ecliptic longitude,
+  // right ascension, declination and equation of time from Julian date.
+  const julianDays = instant / DAY_MS + 2440587.5 - 2451545.0;
+  const rad = (value) => value * Math.PI / 180;
+  const wrap = (value) => ((value % 360) + 360) % 360;
+  const anomaly = rad(wrap(357.529 + 0.98560028 * julianDays));
+  const meanLongitude = wrap(280.459 + 0.98564736 * julianDays);
+  const apparentLongitude = rad(wrap(meanLongitude + 1.915 * Math.sin(anomaly) + 0.020 * Math.sin(2 * anomaly)));
+  const obliquity = rad(23.439 - 0.00000036 * julianDays);
+  const rightAscension = wrap(Math.atan2(Math.cos(obliquity) * Math.sin(apparentLongitude), Math.cos(apparentLongitude)) * 180 / Math.PI);
+  const declination = Math.asin(Math.sin(obliquity) * Math.sin(apparentLongitude));
+  const equationDegrees = ((meanLongitude - rightAscension + 540) % 360) - 180;
+  return { equation: equationDegrees * 4, declination };
+}
+
+function solarDate(date, city) {
   if (!/^\d{4}-\d\d-\d\d$/.test(date) || !city || !Number.isFinite(city.lat) || !Number.isFinite(city.lon) || Math.abs(city.lat)>90 || Math.abs(city.lon)>180) throw Error("Neteisinga data arba miesto koordinatės.");
   const [year, month, day] = date.split("-").map(Number), midnight = Date.UTC(year, month - 1, day);
   if (new Date(midnight).toISOString().slice(0, 10) !== date) throw Error("Neteisinga data.");
   const doy = Math.floor((midnight - Date.UTC(year, 0, 0)) / DAY_MS), leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0), yearLength = leap ? 366 : 365;
+  return { year, doy, yearLength, midnight };
+}
+
+/** Solar altitude and azimuth at a UTC instant, using the same USNO elements as rise/set. */
+export function solarPositionAt(date, instant, city) {
+  const { midnight } = solarDate(date, city);
+  if (!Number.isFinite(instant) || new Date(instant).toISOString().slice(0, 10) !== date) throw Error("Saulės padėčiai reikia pasirinktos datos UTC momento.");
   const rad = (n) => n * Math.PI / 180;
-  const elements = (utcMinutes) => {
-    const gamma = 2 * Math.PI / yearLength * (doy - 1 + utcMinutes / 1440);
-    const equation = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma) - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
-    const declination = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma) - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma) - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
-    return { equation, declination };
-  };
+  const { equation, declination } = solarElements(instant);
+  const trueSolarTime = ((instant - midnight) / 60000 + equation + 4 * city.lon + 1440) % 1440;
+  const hourAngle = rad(trueSolarTime / 4 - 180), latitude = rad(city.lat);
+  const sineAltitude = Math.sin(latitude) * Math.sin(declination) + Math.cos(latitude) * Math.cos(declination) * Math.cos(hourAngle);
+  const altitude = Math.asin(Math.max(-1, Math.min(1, sineAltitude))) * 180 / Math.PI;
+  const azimuth = (Math.atan2(Math.sin(hourAngle), Math.cos(hourAngle) * Math.sin(latitude) - Math.tan(declination) * Math.cos(latitude)) * 180 / Math.PI + 180 + 360) % 360;
+  return { altitude, azimuth };
+}
+
+/** USNO approximate solar coordinates iterated at each event's UTC instant. */
+export function solarFor(date, city) {
+  const { midnight } = solarDate(date, city);
+  const rad = (n) => n * Math.PI / 180;
+  const elements = (utcMinutes) => solarElements(midnight + utcMinutes * 60000);
   const hourAngle = (zenith, declination) => {
     const cosine = Math.cos(rad(zenith)) / (Math.cos(rad(city.lat)) * Math.cos(declination)) - Math.tan(rad(city.lat)) * Math.tan(declination);
     if (cosine > 1) return null; if (cosine < -1) return 180;
