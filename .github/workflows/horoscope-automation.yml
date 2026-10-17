@@ -14,9 +14,20 @@ on:
       - 'site/horoskopai/**'
       - 'docs/horoscopes/**'
   schedule:
+    # Start before the requested 06:20 Vilnius publication time. GitHub may
+    # delay or drop scheduled events during high load, so the later entries
+    # are idempotent recovery attempts; only the first successful run publishes.
+    - cron: '20 5 * * *'
+      timezone: 'Europe/Vilnius'
     - cron: '20 6 * * *'
       timezone: 'Europe/Vilnius'
+    - cron: '20 7 * * *'
+      timezone: 'Europe/Vilnius'
     - cron: '20 8 * * *'
+      timezone: 'Europe/Vilnius'
+    - cron: '20 9 * * *'
+      timezone: 'Europe/Vilnius'
+    - cron: '20 10 * * *'
       timezone: 'Europe/Vilnius'
   workflow_dispatch:
 
