@@ -37,7 +37,11 @@
 .mh-calendar{min-width:19rem}
 .mh-day{grid-template-columns:minmax(0,1fr) auto}
 .mh-day-number{min-width:0}
-.mh-month-grid a>span{min-width:0;overflow-wrap:break-word}
+.mh-month-grid a>span{min-width:0;overflow-wrap:anywhere;flex:1;grid-template-columns:minmax(0,1fr)}
+/* Hubs can place the selector in a narrow sidebar, independent of viewport width. */
+.mh-hub .mh-month-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
+.mh-hub .mh-section-head{display:block}
+.mh-hub .mh-section-head>p{margin-top:.5rem}
 @media(max-width:720px){
  .mh-date-group{display:block}
  .mh-date-group h3{padding:0;margin:0 0 .65rem}

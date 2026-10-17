@@ -1,0 +1,722 @@
+[
+  {
+    "route": "/sventes/2027/",
+    "width": 1440,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 1440,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 1024,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 1024,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 720,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 720,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 390,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 390,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 360,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/2027/",
+    "width": 360,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 1440,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 1440,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1440
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 1024,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 1024,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 1024
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 720,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 720,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 720
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 390,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 390,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 390
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 360,
+    "font_percent": "100",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  },
+  {
+    "route": "/sventes/",
+    "width": 360,
+    "font_percent": "200",
+    "checks": [
+      {
+        "name": "CSS viewport",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "No horizontal overflow",
+        "passed": true,
+        "detail": 360
+      },
+      {
+        "name": "All twelve links",
+        "passed": true
+      },
+      {
+        "name": "Lato loaded",
+        "passed": true
+      },
+      {
+        "name": "No clipped card text",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Card content contained",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "failures": []
+  }
+]
