@@ -362,38 +362,116 @@ require_relative '../lib/phase_5_6_8_pages'
 Phase568Pages.run
 require_relative '../lib/horoscopes_pages'
 HoroscopesPages.run
+search_page=<<~HTML
+ <section class="search-page" aria-labelledby="search-page-title">
+  <div class="search-page__hero">
+   <span class="eyebrow">Visos svetainės paieška</span>
+   <h1 id="search-page-title">Raskite reikalingą datą ar įrankį</h1>
+   <p>Ieškokite visuose Kalendorius365 puslapiuose: švenčių, 2027–2029 m. kalendorių, darbo ir mokinių atostogų, planuoklių, Saulės bei Mėnulio duomenų ir horoskopų.</p>
+   <form id="site-search-page-form" class="search-page__form panel" role="search" action="/paieska/" method="get">
+    <label for="site-search-page-query">Ko ieškote?</label>
+    <div class="search-page__controls">
+     <input id="site-search-page-query" name="q" type="search" placeholder="Pvz., Velykos 2028, saulėlydis Kaune…" autocomplete="off">
+     <label class="search-page__category">Skiltis<select id="site-search-category" name="skiltis"><option value="all">Visa svetainė</option><option value="calendar">Kalendoriai</option><option value="holiday">Šventės</option><option value="planning">Planavimas ir darbo laikas</option><option value="school">Mokykla</option><option value="astronomy">Astronomija</option><option value="horoscope">Horoskopai</option><option value="tools">Įrankiai</option><option value="privacy">Privatumas</option><option value="home">Pagrindinis puslapis</option></select></label>
+     <button class="primary" type="submit">Ieškoti</button>
+     <button id="site-search-clear" type="button">Išvalyti</button>
+    </div>
+   </form>
+   <nav class="search-page__quick" aria-label="Populiarios paieškos temos">
+    <span>Greita paieška:</span>
+    <button type="button" data-search-query="Lietuvos šventės">Lietuvos šventės</button>
+    <button type="button" data-search-query="2029 gegužė">2029 m. gegužė</button>
+    <button type="button" data-search-query="atostogų planavimas">Atostogų planavimas</button>
+    <button type="button" data-search-query="saulėtekis">Saulėtekis</button>
+    <button type="button" data-search-query="Mėnulio fazės">Mėnulio fazės</button>
+    <button type="button" data-search-query="horoskopai">Horoskopai</button>
+   </nav>
+  </div>
+  <section class="search-page__results panel" aria-labelledby="site-search-page-heading">
+   <div class="search-page__results-head"><div><span class="eyebrow">Svetainės katalogas</span><h2 id="site-search-page-heading">Visi svetainės puslapiai</h2></div><p id="site-search-page-status" role="status" aria-live="polite" aria-atomic="true">Įkeliama paieškos rodyklė…</p></div>
+   <ul id="site-search-page-results" class="search-page__list" tabindex="-1"></ul>
+   <nav id="site-search-pagination" class="search-page__pagination" aria-label="Paieškos rezultatų puslapiai"></nav>
+  </section>
+  <p class="search-page__tip">Paieška supranta lietuviškas rašmenų formas, dažnas žodžių galūnes ir artimas rašybos formas. Asmeniniai kalendoriaus įrašai saugomi tik jūsų naršyklėje ir į bendrą paiešką neįtraukiami.</p>
+ </section>
+HTML
+Pages.page('paieska','Paieška – visi kalendoriaus puslapiai','Ieškokite visame Kalendorius365 puslapyje: kalendorių, Lietuvos švenčių, darbo ir mokinių atostogų, astronomijos, planuoklių bei įrankių.',search_page)
 search_aliases={
- '/'=>'šiandien asmeninis kalendorius įvykiai užrašai pastabos užduotys laikas laikrodis orai paieška dienos planai',
- '/sventes/'=>'valstybinės nedarbo šventinės atmintinos dienos kalėdos velykos joninės',
- '/atostogu-planavimas/'=>'ilgieji savaitgaliai poilsio dienos atostogos dienų skaičiuoklė',
- '/horoskopai/'=>'zodiakas astrologija avinas jautis dvyniai liūtas mergelė skorpionas',
- '/saule/'=>'saulėtekis saulėlydis saulės laikai dienos šviesa',
- '/menulio-fazes/'=>'jaunatis pilnatis mėnulio kalendorius ketvirčiai',
- '/irankiai/'=>'skaičiuoklės planuokliai tvarkaraščiai šablonai įrankiai',
- '/tuscias-kalendorius/'=>'atsisiųsti spausdinti pdf webp kalendoriaus šablonas',
- '/darbo-dienos/'=>'darbo valandos darbo dienos sutrumpinta darbo diena',
- '/mokiniu-atostogos/'=>'mokyklos atostogų datos žiemos pavasario vasaros rudens',
- '/privatumas/'=>'duomenų saugojimas slapukai naršyklė vietiniai įrašai'
+ '/'=>'šiandien asmeninis kalendorius įvykiai užrašai pastabos užduotys laikas laikrodis orai paieška dienos planai weather calendar events takvim',
+ '/paieska/'=>'paieška paieska rasti puslapis puslapiai rezultatai search find all pages',
+ '/sventes/'=>'valstybinės nedarbo šventinės atmintinos dienos kalėdos velykos joninės holiday holidays bayram resmi tatil',
+ '/atostogu-planavimas/'=>'ilgieji savaitgaliai poilsio dienos atostogos dienų skaičiuoklė vacation leave tatil',
+ '/horoskopai/'=>'zodiakas zodiako ženklai astrologija ascendentas kylantis ženklas horoscope zodiac rising sign burc burcu burclar',
+ '/horoskopai/avinas/'=>'aries ram koç koc koç burcu',
+ '/horoskopai/jautis/'=>'taurus boğa boga boğa burcu',
+ '/horoskopai/dvyniai/'=>'gemini ikizler ikizler burcu',
+ '/horoskopai/vezys/'=>'cancer yengeç yengec yengeç burcu',
+ '/horoskopai/liutas/'=>'leo aslan aslan burcu',
+ '/horoskopai/mergele/'=>'virgo başak basak başak burcu',
+ '/horoskopai/svarstykles/'=>'libra terazi terazi burcu',
+ '/horoskopai/skorpionas/'=>'scorpio akrep akrep burcu',
+ '/horoskopai/saulys/'=>'sagittarius yay yay burcu',
+ '/horoskopai/oziaragis/'=>'capricorn oğlak oglak oğlak burcu',
+ '/horoskopai/vandenis/'=>'aquarius kova kova burcu',
+ '/horoskopai/zuvys/'=>'pisces balık balik balık burcu',
+ '/saule/'=>'saulėtekis saulėlydis saulės laikai dienos šviesa sunrise sunset solar daylight',
+ '/menulio-fazes/'=>'jaunatis pilnatis mėnulio kalendorius ketvirčiai moon phases lunar',
+ '/irankiai/'=>'skaičiuoklės planuokliai tvarkaraščiai šablonai įrankiai calculator planner tools',
+ '/tuscias-kalendorius/'=>'atsisiųsti spausdinti pdf webp kalendoriaus šablonas download print',
+ '/darbo-dienos/'=>'darbo valandos darbo dienos sutrumpinta darbo diena workdays working hours',
+ '/mokiniu-atostogos/'=>'mokyklos atostogų datos žiemos pavasario vasaros rudens school holidays',
+ '/privatumas/'=>'duomenų saugojimas slapukai naršyklė vietiniai įrašai privacy data'
 }
+search_plain_text = lambda do |html|
+ text=html.to_s.gsub(/<!--.*?-->/m,' ')
+ text=text.gsub(%r{<(script|style|svg|noscript|template)\b[^>]*>.*?</\1\s*>}im,' ')
+ text=text.gsub(/\{%.*?%\}|\{\{.*?\}\}/m,' ')
+ CGI.unescapeHTML(text.gsub(/<[^>]*>/,' ').gsub(/\s+/,' ')).strip
+end
+search_category = lambda do |url|
+ case url
+ when '/' then 'home'
+ when %r{\A/(?:20\d{2})(?:/|\z)} then 'calendar'
+ when %r{\A/sventes/} then 'holiday'
+ when %r{\A/horoskopai/} then 'horoscope'
+ when %r{\A/(?:saule|menulio-fazes|menulio-kalendorius|astronominis-kalendorius)/} then 'astronomy'
+ when %r{\A/(?:mokiniu-atostogos|pamoku-tvarkarastis|pamoku-tvarkarascio-sablonai)/} then 'school'
+ when %r{\A/(?:darbo-dienos|atostogu-planavimas|pamainu-grafikas|savaites|savaitiniai-planuokliai|dienos-planuoklis|seimos-kalendorius)/} then 'planning'
+ when %r{\A/privatumas/} then 'privacy'
+ else 'tools'
+ end
+end
 search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
- raw=File.read(path); fm=raw.split("---",3)[1]; next unless fm
- require 'yaml'; front=YAML.safe_load(fm); next unless front['title']
+ raw=File.read(path); fm=raw[/\A---\s*\n(.*?)\n---\s*\n/m,1]; next unless fm
+ require 'yaml'; front=YAML.safe_load(fm); next unless front && front['title']
  url='/'+path.delete_prefix("#{Pages::ROOT}/site/").delete_suffix('index.html')
  url='/' if url.empty?
  path_terms=url.delete_prefix('/').delete_suffix('/').tr('/-','  ')
  aliases=search_aliases.select { |prefix,_|url==prefix || (prefix!='/' && url.start_with?(prefix)) }.values.join(' ')
+ calendar_month_aliases={
+  'sausis'=>'january januar ocak', 'vasaris'=>'february februar subat şubat', 'kovas'=>'march mart',
+  'balandis'=>'april nisan', 'geguze'=>'may mayis mayıs', 'birzelis'=>'june juni haziran',
+  'liepa'=>'july temmuz', 'rugpjutis'=>'august agustos ağustos', 'rugsejis'=>'september eylul eylül',
+  'spalis'=>'october oktober ekim', 'lapkritis'=>'november november kasim kasım',
+  'gruodis'=>'december dezember aralik aralık'
+ }
+ aliases+=' '+calendar_month_aliases.fetch(url.split('/').reject(&:empty?).last,'') if url.match?(%r{\A/20\d{2}/})
  aliases+=' metinis kalendorius metų spausdinamas mėnesio pdf webp' if url.match?(%r{^/20\d\d/})
- {'title'=>front['title'],'url'=>url,'description'=>front['description'].to_s,'keywords'=>[path_terms,aliases].join(' ').strip}
+ body=raw.sub(/\A---\s*\n.*?\n---\s*\n/m,'')
+ headings=body.scan(%r{<h[1-4]\b[^>]*>(.*?)</h[1-4]>}im).flatten.map { |chunk|search_plain_text.call(chunk) }.reject(&:empty?).uniq.join(' ')
+ content=search_plain_text.call(body)
+ {'title'=>front['title'].to_s,'url'=>url,'description'=>front['description'].to_s,
+  'keywords'=>[path_terms,aliases].join(' ').strip,'headings'=>headings,'content'=>content,
+  'category'=>search_category.call(url)}
 end
-search.unshift({'title'=>'Kalendorius – šiandien, įvykiai ir planai','url'=>'/','description'=>'Atverkite asmeninį kalendorių, įvykius, užrašus, užduotis ir orus.','keywords'=>search_aliases['/']})
 search.concat([
- {'title'=>'Pridėti įvykį į kalendorių','url'=>'/#add-event','description'=>'Atverkite pasirinktos dienos įvykio kūrimo mygtuką.','keywords'=>'naujas susitikimas gimtadienis priminimas renginys planas','action'=>true},
- {'title'=>'Dienos užrašai','url'=>'/#daily-note','description'=>'Pereikite į šios dienos užrašų lauką. Įrašai saugomi tik naršyklėje.','keywords'=>'pastabos užrašyti išsaugoti note dienos planai','action'=>true},
- {'title'=>'Užduočių sąrašas','url'=>'/#task-title','description'=>'Pereikite į šios dienos užduoties įvedimo lauką.','keywords'=>'užduotis darbai sąrašas atlikti checklist task','action'=>true},
- {'title'=>'Kalendoriaus dienų ir įvykių paieška','url'=>'/#search','description'=>'Ieškokite datos arba įvykio asmeniniame kalendoriuje.','keywords'=>'filtruoti kalendorius konkreti data įvykis','action'=>true},
- {'title'=>'Pasirinkti orų miestą','url'=>'/#weather-city','description'=>'Keiskite orų miestą arba naudokite automatinį pasirinkimą.','keywords'=>'oras orai temperatūra miestas vilnius kaunas klaipėda','action'=>true},
- {'title'=>'Kalendoriaus sluoksniai ir kategorijos','url'=>'/#layers','description'=>'Rodykite arba slėpkite šventes, asmeninius ir darbinius įvykius.','keywords'=>'filtrai sluoksniai darbo šeima sveikata mokslai','action'=>true},
- {'title'=>'Kalendoriaus atsarginė kopija','url'=>'/#backup','description'=>'Atsisiųskite arba atkurkite savo kalendoriaus duomenų kopiją.','keywords'=>'eksportuoti importuoti atsarginė kopija json duomenys','action'=>true},
- {'title'=>'Keisti šviesią arba tamsią temą','url'=>'/#theme','description'=>'Perjunkite svetainės šviesią ir tamsią išvaizdą.','keywords'=>'naktinis dark mode kontrastas spalvos tamsa','action'=>true}
+ {'title'=>'Pridėti įvykį į kalendorių','url'=>'/#add-event','description'=>'Atverkite pasirinktos dienos įvykio kūrimo mygtuką.','keywords'=>'naujas susitikimas gimtadienis priminimas renginys planas new event birthday reminder','category'=>'home','action'=>true},
+ {'title'=>'Dienos užrašai','url'=>'/#daily-note','description'=>'Pereikite į šios dienos užrašų lauką. Įrašai saugomi tik naršyklėje.','keywords'=>'pastabos užrašyti išsaugoti note dienos planai notes','category'=>'home','action'=>true},
+ {'title'=>'Užduočių sąrašas','url'=>'/#task-title','description'=>'Pereikite į šios dienos užduoties įvedimo lauką.','keywords'=>'užduotis darbai sąrašas atlikti checklist task tasks','category'=>'home','action'=>true},
+ {'title'=>'Kalendoriaus dienų ir įvykių paieška','url'=>'/#search','description'=>'Ieškokite datos arba įvykio asmeniniame kalendoriuje.','keywords'=>'filtruoti kalendorius konkreti data įvykis search filter date','category'=>'home','action'=>true},
+ {'title'=>'Pasirinkti orų miestą','url'=>'/#weather-city','description'=>'Keiskite orų miestą arba naudokite automatinį pasirinkimą.','keywords'=>'oras orai temperatūra miestas vilnius kaunas klaipėda weather city temperature','category'=>'home','action'=>true},
+ {'title'=>'Kalendoriaus sluoksniai ir kategorijos','url'=>'/#layers','description'=>'Rodykite arba slėpkite šventes, asmeninius ir darbinius įvykius.','keywords'=>'filtrai sluoksniai darbo šeima sveikata mokslai categories filters','category'=>'home','action'=>true},
+ {'title'=>'Kalendoriaus atsarginė kopija','url'=>'/#backup','description'=>'Atsisiųskite arba atkurkite savo kalendoriaus duomenų kopiją.','keywords'=>'eksportuoti importuoti atsarginė kopija json duomenys backup export import','category'=>'home','action'=>true},
+ {'title'=>'Keisti šviesią arba tamsią temą','url'=>'/#theme','description'=>'Perjunkite svetainės šviesią ir tamsią išvaizdą.','keywords'=>'naktinis dark mode kontrastas spalvos tamsa theme','category'=>'home','action'=>true}
 ])
 File.write("#{Pages::ROOT}/site/assets/data/search.json",JSON.generate(search))
