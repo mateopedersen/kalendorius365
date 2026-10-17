@@ -365,6 +365,8 @@ HoroscopesPages.run
 system('python3',File.join(Pages::ROOT,'scripts/lunar/pages.py'),exception:true)
 system('python3',File.join(Pages::ROOT,'scripts/monthly_holidays/pages.py'),exception:true)
 system('python3',File.join(Pages::ROOT,'scripts/holiday_phase2/pages.py'),exception:true)
+system(ENV.fetch('K365_NODE','node'),File.join(Pages::ROOT,'scripts/seasons/prepare.mjs'),exception:true)
+system('python3',File.join(Pages::ROOT,'scripts/seasons/pages.py'),exception:true)
 search_page=<<~HTML
  <section class="search-page" aria-labelledby="search-page-title">
   <div class="search-page__hero">
@@ -417,6 +419,11 @@ search_aliases={
  '/horoskopai/oziaragis/'=>'capricorn oğlak oglak oğlak burcu',
  '/horoskopai/vandenis/'=>'aquarius kova kova burcu',
  '/horoskopai/zuvys/'=>'pisces balık balik balık burcu',
+ '/metu-laikai/'=>'metų laikai astronominiai meteorologiniai seasons equinox solstice mevsimler',
+ '/pavasario-lygiadienis/'=>'pavasario lygiadienis spring equinox ilkbahar ekinoks',
+ '/vasaros-saulegriza/'=>'vasaros saulėgrįža ilgiausia diena summer solstice yaz gündönümü',
+ '/rudens-lygiadienis/'=>'rudens lygiadienis autumn equinox sonbahar ekinoks',
+ '/ziemos-saulegriza/'=>'žiemos saulėgrįža trumpiausia diena winter solstice kış gündönümü',
  '/saule/'=>'saulėtekis saulėlydis saulės laikai dienos šviesa sunrise sunset solar daylight',
  '/menulio-fazes/'=>'jaunatis pilnatis mėnulio kalendorius ketvirčiai moon phases lunar',
  '/irankiai/'=>'skaičiuoklės planuokliai tvarkaraščiai šablonai įrankiai calculator planner tools',
@@ -437,7 +444,7 @@ search_category = lambda do |url|
  when %r{\A/(?:20\d{2})(?:/|\z)} then 'calendar'
  when %r{\A/sventes/} then 'holiday'
  when %r{\A/horoskopai/} then 'horoscope'
- when %r{\A/(?:saule|menulio-fazes|menulio-kalendorius|astronominis-kalendorius)/} then 'astronomy'
+ when %r{\A/(?:saule|menulio-fazes|menulio-kalendorius|astronominis-kalendorius|metu-laikai|pavasario-lygiadienis|vasaros-saulegriza|rudens-lygiadienis|ziemos-saulegriza)/} then 'astronomy'
  when %r{\A/(?:mokiniu-atostogos|pamoku-tvarkarastis|pamoku-tvarkarascio-sablonai)/} then 'school'
  when %r{\A/(?:darbo-dienos|atostogu-planavimas|pamainu-grafikas|savaites|savaitiniai-planuokliai|dienos-planuoklis|seimos-kalendorius)/} then 'planning'
  when %r{\A/privatumas/} then 'privacy'

@@ -1,0 +1,47 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2029-pavasario-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20290320T080200Z
+SUMMARY:Pavasario lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2029 m. kovo 20 d. 10:02 (UTC
+ +02:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/pavasario-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-vasaros-saulegriza@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20290621T014800Z
+SUMMARY:Vasaros saulėgrįža
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2029 m. birželio 21 d. 04:48
+  (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/vasaros-saulegriza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-rudens-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20290922T173800Z
+SUMMARY:Rudens lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2029 m. rugsėjo 22 d. 20:38 
+ (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/rudens-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-ziemos-saulegriza@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20291221T141400Z
+SUMMARY:Žiemos saulėgrįža
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2029 m. gruodžio 21 d. 16:14
+  (UTC+02:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/ziemos-saulegriza/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

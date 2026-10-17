@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2027-rudens-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20270923T060200Z
+SUMMARY:Rudens lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2027 m. rugsėjo 23 d. 09:02 
+ (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/rudens-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

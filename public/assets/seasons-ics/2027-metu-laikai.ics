@@ -1,0 +1,47 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Astronominiai metu laikai//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lygiadieniai ir saulėgrįžos
+BEGIN:VEVENT
+UID:2027-pavasario-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20270320T202500Z
+SUMMARY:Pavasario lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2027 m. kovo 20 d. 22:25 (UTC
+ +02:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/pavasario-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-vasaros-saulegriza@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20270621T141100Z
+SUMMARY:Vasaros saulėgrįža
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2027 m. birželio 21 d. 17:11
+  (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/vasaros-saulegriza/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-rudens-lygiadienis@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20270923T060200Z
+SUMMARY:Rudens lygiadienis
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2027 m. rugsėjo 23 d. 09:02 
+ (UTC+03:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/rudens-lygiadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-ziemos-saulegriza@kalendorius365.lt
+DTSTAMP:20261017T000000Z
+DTSTART:20271222T024200Z
+SUMMARY:Žiemos saulėgrįža
+DESCRIPTION:Astronominis momentas. Lietuvoje: 2027 m. gruodžio 22 d. 04:42
+  (UTC+02:00\; Europe/Vilnius). Šaltinis: USNO. Minučių tikslumu.
+URL:https://kalendorius365.lt/ziemos-saulegriza/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

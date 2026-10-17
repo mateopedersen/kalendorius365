@@ -18,23 +18,24 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
 
-<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=3e6167773477" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=3e6167773477" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/style.css?v=3e6167773477" as="style">
-<link rel="preload" href="/assets/design-system.css?v=3e6167773477" as="style">
-<link rel="stylesheet" href="/assets/style.css?v=3e6167773477"><link rel="stylesheet" href="/assets/design-system.css?v=3e6167773477">
+<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=7822f8296648" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=7822f8296648" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/style.css?v=7822f8296648" as="style">
+<link rel="preload" href="/assets/design-system.css?v=7822f8296648" as="style">
+<link rel="stylesheet" href="/assets/style.css?v=7822f8296648"><link rel="stylesheet" href="/assets/design-system.css?v=7822f8296648">
 
 
 
 
 
 
-<script type="module" src="/assets/common.js?v=4b4b0a589cc1"></script>
-<script type="module" src="/assets/cookie-notice.js?v=4b4b0a589cc1"></script>
 
-<script type="module" src="/assets/tools.js?v=4b4b0a589cc1"></script>
+<script type="module" src="/assets/common.js?v=a4a5bd14545c"></script>
+<script type="module" src="/assets/cookie-notice.js?v=a4a5bd14545c"></script>
 
-<script type="module" src="/assets/sunrise.js?v=4b4b0a589cc1"></script>
+<script type="module" src="/assets/tools.js?v=a4a5bd14545c"></script>
+
+<script type="module" src="/assets/sunrise.js?v=a4a5bd14545c"></script>
 
 
 
@@ -60,6 +61,8 @@
  <section class="sun-method panel" aria-labelledby="sun-method-title"><div class="sun-section-heading"><div><p class="sun-eyebrow">Metodika ir šaltiniai</p><h2 id="sun-method-title">Kaip apskaičiuojami saulėtekio ir saulėlydžio laikai?</h2><p>Aiškiai nurodome, ką reiškia skaičiavimas ir kas gali pakeisti stebimą laiką.</p></div><span class="sun-section-heading__symbol sun-section-heading__symbol--method" aria-hidden="true">⌖</span></div><div class="sun-method__grid"><article><h3>Astronominis skaičiavimas</h3><p>Skaičiuojant naudojamos USNO aprašytos apytikslės Saulės koordinatės: ekliptinė ilguma, rektascensija ir deklinacija. Saulės kelias atnaujinamas pagal pasirinktą UTC momentą, o saulėtekis ir saulėlydis iteruojami iki įprastinės 90,833° zenito ribos. Ji atitinka Saulės disko viršutinio krašto pasirodymą ties lygiu horizontu, esant vidutinei refrakcijai. Skaičiavimą palyginome su USNO API 20 atvejų penkiuose miestuose ir keturiomis skirtingo sezono datomis; visuose šiame patikrinime skirtumas neviršijo vienos UTC minutės.</p></article><article><h3>Ką rodo simuliacija?</h3><p>Saulės disko vieta ir kryptis diagramoje apskaičiuojamos pagal pasirinktą datą ir miesto koordinates. Ji padeda suprasti dienos ritmą, tačiau nėra konkrečios gatvės, oro ar horizonto fotografija.</p></article><article><h3>Kodėl stebimas laikas gali skirtis?</h3><p>Rezultatai paremti apytikslėmis miesto centro koordinatėmis ir jūros lygio horizontu. Pastatai, medžiai, vietovės aukštis, debesys, slėgis, temperatūra ir kitos atmosferos sąlygos gali pakeisti tai, ką matote realybėje. Dėl refrakcijos saulėtekio ir saulėlydžio laiko negalima garantuoti iki sekundės.</p></article><article><h3>Civilinė prieblanda</h3><p>Aušros pradžia ir vakaro pabaiga skaičiuojamos, kai geometrinis Saulės centras yra 6° žemiau horizonto. Prieblandos šviesumas priklauso ir nuo debesuotumo bei vietos aplinkos.</p></article></div><p class="sun-method__sources">Šaltiniai: <a href="https://aa.usno.navy.mil/faq/sun_approx" rel="noopener noreferrer">USNO apytikslių Saulės koordinačių metodas</a>, <a href="https://aa.usno.navy.mil/faq/alt_az" rel="noopener noreferrer">USNO aukščio ir azimuto skaičiavimas</a>, <a href="https://aa.usno.navy.mil/faq/RST_defs" rel="noopener noreferrer">patekėjimo, nusileidimo ir prieblandos apibrėžimai</a>, <a href="https://aa.usno.navy.mil/faq/rs_algor" rel="noopener noreferrer">USNO algoritmų apžvalga</a>, <a href="https://aa.usno.navy.mil/data/api" rel="noopener noreferrer">USNO API dokumentacija</a>. Miestų koordinatės iš <a href="https://www.geonames.org/export/" rel="noopener noreferrer">GeoNames</a> (CC BY; apytiksliai miesto centro taškai).</p></section>
 </section>
 <nav class="resource-grid" aria-label="Susiję puslapiai"><a class="resource-card resource-card--orbit" href="/astronominis-kalendorius/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-orbit"></use></svg></span><h2>Astronominis kalendorius</h2><small>Lygiadieniai, saulėgrįžos ir dangaus reiškiniai.</small></a><a class="resource-card resource-card--moon" href="/menulio-fazes/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-moon"></use></svg></span><h2>Mėnulio fazės</h2><small>Jaunatis, ketvirčiai ir pilnatis Lietuvos laiku.</small></a><a class="resource-card resource-card--year" href="/2027/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-year"></use></svg></span><h2>2027 metų kalendorius</h2><small>Šventės ir spausdinami metų failai.</small></a></nav>
+
+<!-- phase3-related --><section class="panel"><h2>Metų laikų šviesos ciklas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2029 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section><!-- /phase3-related -->
 
 </main>
 <footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/privatumas/">Privatumas ir duomenys</a></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>

@@ -1,0 +1,64 @@
+{
+  "checked_at": "2026-10-17T13:24:56.740414+00:00",
+  "round_1": {
+    "scope": "Source facts, independent calculations, Lithuanian copy and first desktop/mobile rendering",
+    "methods": [
+      "20 USNO instants from cached official API responses",
+      "20 AstroPixels independent predictions, maximum difference 60 seconds",
+      "20 independent Astronomy Engine calculations, tolerance 90 seconds",
+      "Python zoneinfo versus browser Intl Europe/Vilnius conversions",
+      "34 new Node tests; existing 55 tests preserved",
+      "Individual native-browser desktop and 390px inspection of all five pages"
+    ]
+  },
+  "round_2": {
+    "scope": "Independent produced HTML, native browser interactions, reflow, semantics and preservation",
+    "methods": [
+      "1577 independent static/preservation checks",
+      "171 canonical pages and 20370 internal targets; zero broken links",
+      "All five pages at 1440, 768, 390, 360 CSS pixels and 360px with 200% text",
+      "75 page/year/city combinations; matching event dates, solar data and calendar links",
+      "20 manual diagram states plus five play/pause cycles",
+      "Rendered text contrast >=5.30:1 for sampled new-page text",
+      "Independent icalendar parser validates 23 files and 32 UTC VEVENTs",
+      "Full Lithuanian glyph coverage in Lato Regular, Bold and Black"
+    ]
+  },
+  "findings_fixed": [
+    {
+      "finding": "Zero rounded daylight difference described as more daylight",
+      "fix": "Explicit Lithuanian equal-at-minute-precision wording",
+      "status": "rechecked"
+    },
+    {
+      "finding": "Enlarged text overflow in step buttons, timeline, metrics, culture heading and year summary",
+      "fix": "Responsive reflow, constrained flex children and long-word wrapping",
+      "status": "all five 360px / 200% cases rechecked with zero document overflow"
+    },
+    {
+      "finding": "SVG intrinsic aspect ratio exceeded fixed chart grid height",
+      "fix": "Explicit minmax(0,1fr) grid row and zero minimum SVG height",
+      "status": "both charts checked in all 75 interactions; SVG height equals container"
+    },
+    {
+      "finding": "Transient missing local images while a complete build recreated the preview directory",
+      "fix": "Fresh preview origin after build completion; no source vector corruption",
+      "status": "all nine SVGs XML-valid; zero broken hero images in final cases"
+    },
+    {
+      "finding": "Existing preservation gate rejects CI workflow edits",
+      "fix": "Existing workflow kept byte-identical; new test wrapper uses its existing test glob",
+      "status": "release gate passed"
+    }
+  ],
+  "language_review": [
+    "Pass 1: original concise Lithuanian scientific and cultural copy; UTC/local/calendar distinctions checked.",
+    "Pass 2: rendered headings, captions, buttons, legends, date cases and long Lithuanian words reviewed; city caption and zero-delta wording corrected."
+  ],
+  "limitations": [
+    "City-centre solar calculations use the unmodified existing engine and standard horizon; weather, obstacles and relief are not included.",
+    "Minute-level astronomical predictions may differ by one minute between independent methods.",
+    "Comparison covers 2027–2029; next occurrence data includes boundary years 2026 and 2030 and fails gracefully thereafter.",
+    "No claim of guaranteed search ranking or real-world Core Web Vitals field measurement."
+  ]
+}

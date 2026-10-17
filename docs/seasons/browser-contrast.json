@@ -1,0 +1,27 @@
+[
+  {
+    "route": "metu-laikai",
+    "minimum": 5.686972432645504,
+    "failures": []
+  },
+  {
+    "route": "pavasario-lygiadienis",
+    "minimum": 5.413318992165127,
+    "failures": []
+  },
+  {
+    "route": "vasaros-saulegriza",
+    "minimum": 5.534910771061141,
+    "failures": []
+  },
+  {
+    "route": "rudens-lygiadienis",
+    "minimum": 5.301140082492427,
+    "failures": []
+  },
+  {
+    "route": "ziemos-saulegriza",
+    "minimum": 5.328244334578151,
+    "failures": []
+  }
+]
