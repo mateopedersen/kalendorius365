@@ -9,6 +9,7 @@ on:
       - '.ruby-version'
       - 'lib/**'
       - 'scripts/build.rb'
+      - 'scripts/css_route_split.py'
       - 'scripts/pages.rb'
       - 'scripts/audit_site.py'
       - 'site/**'
@@ -44,6 +45,10 @@ jobs:
         run: git diff --exit-code -- public
       - name: Check CSS minifier whitespace safety
         run: ruby test/css_minifier_test.rb
+      - name: Verify route-specific CSS pruning and page bundles
+        run: python3 -m unittest test.css_route_split_test
+      - name: Verify immutable static asset URL versioning
+        run: ruby test/static_asset_urls_test.rb
       - name: Audit every canonical page and internal link
         run: python3 scripts/audit_site.py
       - name: Run calendar, search, planner and solar tests
