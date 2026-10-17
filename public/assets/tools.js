@@ -1,8 +1,8 @@
-import * as cal from "/assets/releases/5838c74c429cb383b9d2/calendar.js";
-import { Store, download } from "/assets/releases/5838c74c429cb383b9d2/storage.js";
-import { notice } from "/assets/releases/5838c74c429cb383b9d2/common.js";
+import * as cal from "/assets/releases/a37f5af136edcd839497/calendar.js";
+import { Store, download } from "/assets/releases/a37f5af136edcd839497/storage.js";
+import { notice } from "/assets/releases/a37f5af136edcd839497/common.js";
 const $ = (s) => document.querySelector(s),
-  data = await fetch("/assets/releases/5838c74c429cb383b9d2/data/calendar.json").then((r) => r.json());
+  data = await fetch("/assets/releases/a37f5af136edcd839497/data/calendar.json").then((r) => r.json());
 const escape = (s) =>
   String(s).replace(
     /[&<>"']/g,
@@ -462,7 +462,7 @@ if ($("#generator")) {
   $("#generator-webp").onclick = async () => {
     draw();
     try {
-      const font = await fetch("/assets/releases/5838c74c429cb383b9d2/fonts/Inter-Regular.woff2").then((r) =>
+      const font = await fetch("/assets/releases/a37f5af136edcd839497/fonts/Inter-Regular.woff2").then((r) =>
         r.arrayBuffer(),
       );
       let chars = "";

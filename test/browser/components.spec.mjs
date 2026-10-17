@@ -127,7 +127,13 @@ test('ascendant computes valid input and rejects unknown cities',async({page})=>
 test('sun city/date and simulation moment update the displayed calculations',async({page})=>{
  await page.goto('/saule/');await page.locator('#sun-city').selectOption('kaunas');await page.locator('#sun-date').fill('2028-02-29');await page.locator('#sun-date').press('Tab');
  await expect(page.locator('#sun-summary')).toContainText('Kaunas');await expect(page.locator('#sun-rows tr')).toHaveCount(29);
- await page.locator('[data-sun-moment="sunset"]').click();await expect(page.locator('#sun-sim-output')).toHaveText(await page.locator('#sunset-time').innerText());
+ await page.locator('[data-sun-moment="sunset"]').click();
+ // The visualization slider has 1000 steps across daylight; its rounded
+ // simulation moment can differ from the exact event label by one minute.
+ const minute=text=>{const [h,m]=text.trim().split(':').map(Number);return h*60+m;};
+ const simulated=minute(await page.locator('#sun-sim-output').innerText());
+ const actual=minute(await page.locator('#sunset-time').innerText());
+ expect(Math.abs(simulated-actual)).toBeLessThanOrEqual(1);
 });
 
 test('seasons year/city and orbit selector preserve context in navigation and ICS',async({page})=>{

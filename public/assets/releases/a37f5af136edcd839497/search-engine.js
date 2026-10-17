@@ -152,10 +152,15 @@ const MONTH_FORMS = [
 ];
 const MONTH_PATHS = ["sausis", "vasaris", "kovas", "balandis", "geguze", "birzelis", "liepa", "rugpjutis", "rugsejis", "spalis", "lapkritis", "gruodis"];
 
-function navigationalTarget(queryWords, year, lunarIntent) {
+function navigationalTarget(queryWords, year, lunarIntent, dateIntent) {
   const month = MONTH_FORMS.findIndex(forms => queryWords.some(word => forms.includes(word)));
   const nameDay = queryWords.some(word => synonymGroups.get(word)?.includes("nameday"));
   const holiday = queryWords.some(word => synonymGroups.get(word)?.includes("holiday"));
+  if (dateIntent) {
+    if (nameDay) return `/vardadieniai/${MONTH_PATHS[dateIntent.month - 1]}/`;
+    const prefix = lunarIntent ? "/menulio-kalendorius" : holiday ? "/sventes" : "";
+    return `${prefix}/${dateIntent.year}/${MONTH_PATHS[dateIntent.month - 1]}/`;
+  }
   if (queryWords.includes("rugsejo") && queryWords.includes("1")
     && queryWords.every(word => ["rugsejo", "1", "oji", "svente", "diena", year].includes(word))) return "/sventes/mokslo-ir-ziniu-diena/";
   if (queryWords.some(word => ["menesio", "monthly"].includes(word))
@@ -178,6 +183,15 @@ function navigationalTarget(queryWords, year, lunarIntent) {
 export function searchPages(index, query, { category = "all", limit = Infinity } = {}) {
   // Bound pasted or shared input before ranking so it cannot lock up a phone.
   const boundedQuery = String(query ?? "").normalize("NFC").slice(0, 256);
+  const isoDate = boundedQuery.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
+  let dateIntent;
+  if (isoDate) {
+    const [year, month, day] = isoDate.slice(1).map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day));
+    if (date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day)
+      dateIntent = { year, month, day };
+    else if (boundedQuery.trim() === isoDate[0]) return [];
+  }
   const normalizedQuery = normalizeSearchText(boundedQuery);
   const rawWords = [...new Set(words(boundedQuery))].slice(0, 32);
   const queryWords = rawWords.length > 1 ? rawWords.filter((word) => !STOP_WORDS.has(word)) : rawWords;
@@ -189,7 +203,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
   const lunarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("moon"));
   const lunarOverviewIntent = lunarIntent && queryWords.every((word) =>
     word === year || synonymGroups.get(word)?.includes("moon") || synonymGroups.get(word)?.includes("kalendorius"));
-  const navigationTarget = navigationalTarget(queryWords, year, lunarIntent);
+  const navigationTarget = navigationalTarget(queryWords, year, lunarIntent, dateIntent);
   const scored = [];
   for (const doc of docs) {
     if (category !== "all" && doc.item.category !== category) continue;
@@ -242,7 +256,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
         const [name, dates] = names[0];
         const monthLabels = ["sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio", "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio"];
         const labels = dates.map(date => `${monthLabels[Number(date.slice(0, 2)) - 1]} ${Number(date.slice(3))} d.`);
-        result = { ...doc.item, title: `${name} – vardadienis`, url: `/vardadieniai/?q=${encodeURIComponent(name)}#nd-search-title`, description: `Vardadieniai: ${labels.join(", ")}. Atverkite visas datas ir jų šaltinius.` };
+        result = { ...doc.item, title: `${name} – vardadienis`, url: `/vardadieniai/?q=${encodeURIComponent(name)}#nd-search-title`, description: `Vardadieniai: ${labels.join(", ")} Atverkite visas datas ir jų šaltinius.` };
         score += 100;
       }
     }

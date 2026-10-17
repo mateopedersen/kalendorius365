@@ -91,12 +91,17 @@ test('unknown filters and out-of-range pages recover to usable results',async({p
  await expect(page.locator('#site-search-page-results a').first()).toHaveAttribute('href','/2029/');
 });
 
-test('major category navigation remains available without JavaScript',async({browser,baseURL})=>{
- const context=await browser.newContext({javaScriptEnabled:false,baseURL});
+for(const width of [320,390,768,1280])test(`major category navigation remains available without JavaScript at ${width}px`,async({browser,baseURL})=>{
+ const context=await browser.newContext({javaScriptEnabled:false,baseURL,viewport:{width,height:844}});
  try{
   const page=await context.newPage();await page.goto('/paieska/');
   await expect(page.locator('#main')).toContainText('kalendori');
   await expect(page.getByRole('navigation',{name:'Svetainės skiltys',exact:true}).locator('a[href="/2027/"]')).toBeVisible();
   await expect(page.getByRole('navigation',{name:'Svetainės skiltys',exact:true}).locator('a[href="/sventes/"]')).toBeVisible();
+  await expect(page.getByRole('navigation',{name:'Paieška ir svetainės skiltys',exact:true}).locator('a[href="/paieska/"]')).toBeVisible();
+  await expect(page.locator('#site-search-page-form')).toBeHidden();
+  await expect(page.locator('.search-page__results')).toBeHidden();
+  const layout=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
+  expect(layout.scroll).toBeLessThanOrEqual(layout.width+1);
  }finally{await context.close();}
 });

@@ -1,18 +1,18 @@
 {
   "baseline_commit": "a35fef0c2def78d88dd328a4765e50de7e2b781f",
   "baseline_deployment": "b80422eb-e3fa-485d-8258-cca3912daf74",
-  "asset_revision": "5838c74c429cb383b9d2",
+  "asset_revision": "a37f5af136edcd839497",
   "release_mode": true,
   "executed_before_push": {
     "node_tests": {
-      "passed": 272,
+      "passed": 273,
       "failed": 0,
       "skipped": 0
     },
     "static_audit": {
       "canonical_pages": 185,
       "html_pages": 186,
-      "local_targets": 24306,
+      "local_targets": 24318,
       "broken": 0
     },
     "public_baseline": {

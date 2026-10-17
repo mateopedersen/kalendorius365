@@ -68,3 +68,15 @@ test('one transient index failure can be retried; concurrent consumers share one
   assert.deepEqual(await first,pages);assert.equal(requests,2);
  }finally{globalThis.fetch=originalFetch;}
 });
+
+test('generated search keeps a no-JavaScript directory whose destinations all exist',()=>{
+ const generated=fs.readFileSync(new URL('../site/paieska/index.html',import.meta.url),'utf8');
+ const generator=fs.readFileSync(new URL('../scripts/pages.rb',import.meta.url),'utf8');
+ const layout=fs.readFileSync(new URL('../site/_layouts/default.html',import.meta.url),'utf8');
+ const directory=generated.match(/<nav id="search-no-js-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+ assert.ok(directory,'build-time output must retain the fallback directory');
+ assert.ok(generator.replace(/\s+/g,' ').includes(directory.replace(/\s+/g,' ')),'fallback must be owned by the generator');
+ for(const match of directory.matchAll(/href="([^"]+)"/g))assert.ok(pages.some(item=>item.url===match[1]),`missing fallback target ${match[1]}`);
+ const globalFallback=layout.indexOf('aria-label="Paieška ir svetainės skiltys"');
+ assert.ok(globalFallback>layout.indexOf('</header>'),'fallback must avoid mobile header navigation hiding rules');
+});

@@ -8,7 +8,7 @@ export function notice(message) {
 
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-  import("/assets/releases/5838c74c429cb383b9d2/calendar.js").then(({ today, formatDate }) => {
+  import("/assets/releases/a37f5af136edcd839497/calendar.js").then(({ today, formatDate }) => {
     const refreshUpdateLabels = () => {
       const currentDate = today();
       for (const label of horoscopeUpdates) {
@@ -143,7 +143,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
 
     siteSearchStatus.textContent = "Ieškoma visuose puslapiuose…";
     try {
-      searchEnginePromise ||= import("/assets/releases/5838c74c429cb383b9d2/search-engine.js");
+      searchEnginePromise ||= import("/assets/releases/a37f5af136edcd839497/search-engine.js");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
       if (request !== searchRequest || normalizeSearchText(siteSearch.value.trim().slice(0, 500)) !== normalizeSearchText(query)) return;
