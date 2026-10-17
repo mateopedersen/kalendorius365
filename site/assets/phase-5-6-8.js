@@ -1,5 +1,5 @@
 import { addDays, difference, holidays, today, TZ } from "./calendar.js";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, updateLessonField } from "./phase-5-6-8-core.js";
 import { download } from "./storage.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -244,10 +244,12 @@ function setupSchool() {
         const td = make("td"), input = make("input", undefined, { "aria-label": `${subjects[l.day]}, ${l.number} pamoka: ${fieldNames[name]}`, maxlength: max, value: l[name] || "" });
         if (["start","end"].includes(name)) input.type = "time";
         input.onchange = () => {
-          if (input.value && !/^\d{2}:\d{2}$/.test(input.value)) { input.setCustomValidity("Įrašykite galiojantį laiką."); input.reportValidity(); return; }
-          const next = name === "start" ? input.value : l.start, end = name === "end" ? input.value : l.end;
-          if (next && end && next >= end) { input.setCustomValidity("Pamokos pabaiga turi būti vėlesnė už pradžią."); input.reportValidity(); return; }
-          input.setCustomValidity(""); l[name] = input.value; persist();
+          try {
+            updateLessonField(l, name, input.value);
+            input.setCustomValidity(""); persist();
+          } catch (error) {
+            input.setCustomValidity(error.message); input.reportValidity();
+          }
         };
         td.append(input); tr.append(td);
       }

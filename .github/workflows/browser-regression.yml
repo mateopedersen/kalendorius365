@@ -1,0 +1,33 @@
+name: Browser regression
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Optional deployed URL for live QA
+        required: false
+        type: string
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - name: Install pinned development-only browser test runner
+        run: npm install --no-save --ignore-scripts @playwright/test@1.56.1
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Exercise every public route and distinct search journeys
+        env:
+          K365_BASE_URL: ${{ inputs.base_url }}
+        run: npx playwright test
+      - name: Save executed browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: browser-regression-evidence
+          path: |
+            test-results/
+            playwright-report/

@@ -45,10 +45,21 @@ function words(value) {
 }
 
 export function loadSearchIndex() {
-  loadedIndex ||= fetch("/assets/data/search.json", { credentials: "same-origin" }).then((response) => {
-    if (!response.ok) throw new Error("Nepavyko įkelti paieškos rodyklės");
-    return response.json();
-  });
+  loadedIndex ||= fetch(new URL("./data/search.json", import.meta.url), { credentials: "same-origin", cache: "no-cache" })
+    .then((response) => {
+      if (!response.ok) throw new Error("Nepavyko įkelti paieškos rodyklės");
+      return response.json();
+    })
+    .then((index) => {
+      if (!Array.isArray(index) || !index.every(item => item && typeof item.title === "string" && typeof item.url === "string" && /^\/(?!\/)/.test(item.url)))
+        throw new Error("Paieškos rodyklė netinkama");
+      return index;
+    })
+    .catch((error) => {
+      // A transient network failure must not disable search for the whole visit.
+      loadedIndex = undefined;
+      throw error;
+    });
   return loadedIndex;
 }
 
@@ -130,9 +141,59 @@ function bestFieldMatch(queryWord, doc, groupWords) {
   return best + secondary;
 }
 
+
+const MONTH_FORMS = [
+  ["sausis", "sausio", "sausi", "january"], ["vasaris", "vasario", "vasari", "february"],
+  ["kovas", "kovo", "kova", "march"], ["balandis", "balandzio", "balandi", "april"],
+  ["geguze", "geguzes", "geguzi", "may"], ["birzelis", "birzelio", "birzeli", "june"],
+  ["liepa", "liepos", "liepą", "july"], ["rugpjutis", "rugpjucio", "rugpjuti", "august"],
+  ["rugsejis", "rugsejo", "rugseji", "september"], ["spalis", "spalio", "spali", "october"],
+  ["lapkritis", "lapkricio", "lapkriti", "november"], ["gruodis", "gruodzio", "gruodi", "december"],
+];
+const MONTH_PATHS = ["sausis", "vasaris", "kovas", "balandis", "geguze", "birzelis", "liepa", "rugpjutis", "rugsejis", "spalis", "lapkritis", "gruodis"];
+
+function navigationalTarget(queryWords, year, lunarIntent, dateIntent) {
+  const month = MONTH_FORMS.findIndex(forms => queryWords.some(word => forms.includes(word)));
+  const nameDay = queryWords.some(word => synonymGroups.get(word)?.includes("nameday"));
+  const holiday = queryWords.some(word => synonymGroups.get(word)?.includes("holiday"));
+  if (dateIntent) {
+    if (nameDay) return `/vardadieniai/${MONTH_PATHS[dateIntent.month - 1]}/`;
+    const prefix = lunarIntent ? "/menulio-kalendorius" : holiday ? "/sventes" : "";
+    return `${prefix}/${dateIntent.year}/${MONTH_PATHS[dateIntent.month - 1]}/`;
+  }
+  if (queryWords.includes("rugsejo") && queryWords.includes("1")
+    && queryWords.every(word => ["rugsejo", "1", "oji", "svente", "diena", year].includes(word))) return "/sventes/mokslo-ir-ziniu-diena/";
+  if (queryWords.some(word => ["menesio", "monthly"].includes(word))
+    && queryWords.some(word => ["planuoklis", "planner"].includes(word))
+    && queryWords.every(word => ["menesio", "monthly", "planuoklis", "planner"].includes(word))) return "/kurti-kalendoriu/";
+  if (nameDay && month >= 0) return `/vardadieniai/${MONTH_PATHS[month]}/`;
+  const generalMonthQuery = month >= 0 && queryWords.every(word => word === year || MONTH_FORMS[month].includes(word)
+    || ["kalendorius", "holiday", "moon"].some(intent => synonymGroups.get(word)?.includes(intent))
+    || ["metu", "menuo", "menesio", "menesis", "pdf", "webp", "jpg", "spausdinamas"].includes(word));
+  if (year && generalMonthQuery) {
+    const prefix = lunarIntent ? "/menulio-kalendorius" : holiday ? "/sventes" : "";
+    return `${prefix}/${year}/${MONTH_PATHS[month]}/`;
+  }
+  if (queryWords.some(word => ["sauletekis", "saulelydis", "sunrise", "sunset"].includes(word))) return "/saule/";
+  if (queryWords.every(word => ["horoskopai", "horoskopas", "siandien", "dienos", "rytoj", "horoscope", "horoscopes"].includes(word))) return "/horoskopai/";
+  if (queryWords.every(word => ["astrologija", "zodiakas", "zodiako", "zodiac", "zenklas", "zenklai"].includes(word))) return "/zodiakas/";
+  return null;
+}
+
 export function searchPages(index, query, { category = "all", limit = Infinity } = {}) {
-  const normalizedQuery = normalizeSearchText(query);
-  const rawWords = words(query);
+  // Bound pasted or shared input before ranking so it cannot lock up a phone.
+  const boundedQuery = String(query ?? "").normalize("NFC").slice(0, 256);
+  const isoDate = boundedQuery.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
+  let dateIntent;
+  if (isoDate) {
+    const [year, month, day] = isoDate.slice(1).map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day));
+    if (date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day)
+      dateIntent = { year, month, day };
+    else if (boundedQuery.trim() === isoDate[0]) return [];
+  }
+  const normalizedQuery = normalizeSearchText(boundedQuery);
+  const rawWords = [...new Set(words(boundedQuery))].slice(0, 32);
   const queryWords = rawWords.length > 1 ? rawWords.filter((word) => !STOP_WORDS.has(word)) : rawWords;
   if (!queryWords.length) return [];
 
@@ -142,6 +203,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
   const lunarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("moon"));
   const lunarOverviewIntent = lunarIntent && queryWords.every((word) =>
     word === year || synonymGroups.get(word)?.includes("moon") || synonymGroups.get(word)?.includes("kalendorius"));
+  const navigationTarget = navigationalTarget(queryWords, year, lunarIntent, dateIntent);
   const scored = [];
   for (const doc of docs) {
     if (category !== "all" && doc.item.category !== category) continue;
@@ -177,8 +239,28 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
     if (nameDayOverview && doc.item.url === '/vardadieniai/') score += 45;
     if (coverage === 1 && queryWords.length > 1) score += 12;
     score *= coverage ** 1.4;
+    if (doc.item.url === navigationTarget) score += 100;
+    // Prefer an exact holiday entity over generic month/year listings, even
+    // when the visitor also supplies a year.
+    if (/^\/sventes\/[^/]+\/$/.test(doc.item.url) && !/^\/sventes\/20\d{2}\//.test(doc.item.url)) {
+      const entityWords = words(doc.item.url.split("/")[2]);
+      if (entityWords.every(word => queryWords.includes(word))) score += 35;
+    }
     if (score < 4) continue;
-    scored.push({ ...doc.item, score, matchedTerms: matched.length, totalTerms: queryWords.length });
+    let result = doc.item;
+    if (doc.item.namedays) {
+      const nameQuery = queryWords.filter(word => !synonymGroups.get(word)?.includes("nameday")).join(" ");
+      const names = Object.entries(doc.item.namedays).filter(([name]) => normalizeSearchText(name) === nameQuery);
+      names.sort(([a], [b]) => Number(b.toLocaleLowerCase("lt") === boundedQuery.toLocaleLowerCase("lt")) - Number(a.toLocaleLowerCase("lt") === boundedQuery.toLocaleLowerCase("lt")));
+      if (names.length) {
+        const [name, dates] = names[0];
+        const monthLabels = ["sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio", "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio"];
+        const labels = dates.map(date => `${monthLabels[Number(date.slice(0, 2)) - 1]} ${Number(date.slice(3))} d.`);
+        result = { ...doc.item, title: `${name} – vardadienis`, url: `/vardadieniai/?q=${encodeURIComponent(name)}#nd-search-title`, description: `Vardadieniai: ${labels.join(", ")} Atverkite visas datas ir jų šaltinius.` };
+        score += 100;
+      }
+    }
+    scored.push({ ...result, score, matchedTerms: matched.length, totalTerms: queryWords.length });
   }
 
   scored.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, "lt"));

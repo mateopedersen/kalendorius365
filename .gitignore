@@ -27,3 +27,6 @@ __pycache__/
 node_modules/
 test-results/
 .venv/
+
+playwright-report/
+package-lock.json

@@ -4,29 +4,14 @@ require 'json'
 require 'digest'
 require 'base64'
 require_relative '../lib/calendar'
+require_relative '../lib/asset_release'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
+ previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
  system('bundle','exec','jekyll','build','--source','site','--destination','public',exception:true)
- homepage=File.read('public/index.html')
- css_version=homepage[%r{/assets/style\.css\?v=([^"' >]+)},1]
- script_version=homepage[%r{/assets/common\.js\?v=([^"' >]+)},1]
- abort 'Generated CSS version was not found in the homepage' unless css_version
- abort 'Generated JavaScript version was not found in the homepage' unless script_version
- Dir.glob('public/assets/**/*.css').each do |path|
-  css=File.read(path)
-  css.gsub!(%r{(/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2)(?!\?v=)}) { "#{$1}?v=#{css_version}" }
-  File.write(path,css)
- end
- Dir.glob('public/assets/**/*.js').each do |path|
-  javascript=File.read(path)
-  javascript.gsub!(/((?:\bfrom\s*|\bimport\s*(?:\(\s*)?)["'])([^"']+\.js)(?:\?[^"']*)?(["'])/) do
-   prefix,specifier,quote=Regexp.last_match.values_at(1,2,3)
-   specifier.start_with?('.', '/') ? "#{prefix}#{specifier}?v=#{script_version}#{quote}" : Regexp.last_match(0)
-  end
-  File.write(path,javascript)
- end
+ release_manifest=AssetRelease.publish(File.join(ROOT,'public'),previous:previous_revisions)
  # Fail on accidentally exceeding the existing Free static hosting limits.
  files=Dir.glob('public/**/*').select { |p|File.file?(p) }
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
@@ -66,14 +51,21 @@ Dir.chdir(ROOT) do
  headers+="  X-Robots-Tag: noindex\n" unless release
  one_day='Cache-Control: public, max-age=86400'
  immutable='Cache-Control: public, max-age=31536000, immutable'
- data_cache='Cache-Control: public, max-age=3600, stale-while-revalidate=86400'
+ revalidate='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+ # Trailing-slash page patterns never overlap file assets. Cloudflare Pages
+ # accepts at most 100 rules; avoid one rule per each of the 185 HTML routes.
+ %w[/ /:section/ /:section/:child/ /:section/:child/:page/ /*.html /404 /robots.txt /sitemap.xml /assets/release-manifest.json].each do |route|
+  headers+="#{route}\n  #{revalidate}\n"
+ end
+ headers+="/assets/releases/*\n  #{immutable}\n"
+ data_cache=revalidate
  # Use exact paths for versioned code and data, so _headers never applies
  # multiple Cache-Control values to one response through overlapping globs.
- files.select { |path|path.end_with?('.js','.css') }.sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') }.sort.each do |path|
+  headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  files.grep(%r{public/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2\z}).sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
+  headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  files.grep(%r{public/assets/data/.*\.json\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{data_cache}\n"
@@ -87,9 +79,11 @@ Dir.chdir(ROOT) do
  headers+="/assets/namedays-ics/*\n  #{one_day}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/holiday-guides-ics/*\n  #{one_day}\n"
  headers+="/assets/lunar/days/*\n  #{one_day}\n/assets/lunar/albedo-web.png\n  #{one_day}\n/assets/lunar/albedo.png\n  #{one_day}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{one_day}\n"
+ abort 'Cloudflare Pages header rule limit exceeded' if headers.lines.count { |line|line.start_with?('/') }>100
  File.write('public/_headers',headers)
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release
+ puts "Asset release #{release_manifest.fetch('revision')}; retained #{release_manifest.fetch('retained_revisions').length} revision(s)"
  puts "Built #{urls.length} canonical HTML pages; #{files.length} static files; release=#{release}"
 end

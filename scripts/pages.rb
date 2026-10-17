@@ -480,6 +480,16 @@ search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
   'keywords'=>[path_terms,aliases].join(' ').strip,'headings'=>headings,'content'=>content,
   'category'=>search_category.call(url)}
 end
+# Keep genuine name/date entities on their canonical hub record rather than
+# creating duplicate pages or thousands of thin name landing routes.
+nameday_hub=search.find { |item|item['url']=='/vardadieniai/' }
+if nameday_hub
+ names={}
+ JSON.parse(File.read("#{Pages::ROOT}/data/namedays/cc-by-sa-4.0/snapshot.json")).fetch('records').each do |record|
+  record.fetch('names').each { |name|(names[name]||=[]) << record.fetch('date') }
+ end
+ nameday_hub['namedays']=names.transform_values { |dates|dates.uniq.sort }
+end
 search.concat([
  {'title'=>'Pridėti įvykį į kalendorių','url'=>'/#add-event','description'=>'Atverkite pasirinktos dienos įvykio kūrimo mygtuką.','keywords'=>'naujas susitikimas gimtadienis priminimas renginys planas new event birthday reminder','category'=>'home','action'=>true},
  {'title'=>'Dienos užrašai','url'=>'/#daily-note','description'=>'Pereikite į šios dienos užrašų lauką. Įrašai saugomi tik naršyklėje.','keywords'=>'pastabos užrašyti išsaugoti note dienos planai notes','category'=>'home','action'=>true},

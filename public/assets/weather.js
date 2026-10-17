@@ -1,6 +1,6 @@
-import { icon as uiIcon } from "./icons.js?v=865f81e8689e";
-import { TZ, today } from "./calendar.js?v=865f81e8689e";
-import { WEATHER_CITY_BY_ID } from "./data/weather-cities.js?v=865f81e8689e";
+import { icon as uiIcon } from "/assets/releases/5838c74c429cb383b9d2/icons.js";
+import { TZ, today } from "/assets/releases/5838c74c429cb383b9d2/calendar.js";
+import { WEATHER_CITY_BY_ID } from "/assets/releases/5838c74c429cb383b9d2/data/weather-cities.js";
 const names = {
   clear: "Giedra",
   "partly-cloudy": "Mažai debesuota",

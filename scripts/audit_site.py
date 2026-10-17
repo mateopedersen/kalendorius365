@@ -101,23 +101,37 @@ headers=(PUBLIC/'_headers').read_text()
 header_paths=[line for line in headers.splitlines() if line.startswith('/')]
 assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
 assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
+assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
+release_manifest=json.loads((PUBLIC/'assets/release-manifest.json').read_text())
+release_prefix='/assets/releases/'+release_manifest['revision']+'/'
+assert '/assets/releases/*\n  Cache-Control: public, max-age=31536000, immutable' in headers
+import hashlib
+for original,item in release_manifest['assets'].items():
+ assert item['url'].startswith(release_prefix),(original,item)
+ assert hashlib.sha256((PUBLIC/item['url'].lstrip('/')).read_bytes()).hexdigest()==item['sha256'],item
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
- assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+ fingerprinted='/assets/releases/' in str(path)
+ if not fingerprinted:
+  assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,path
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
   specifier=match.group(2)
-  if specifier.startswith(('./','/')):assert '?v=' in specifier,(path,specifier)
+  if specifier.startswith(('./','../','/')):
+   # Relative imports are safe within a revision directory. Compatibility
+   # modules must import the immutable directory explicitly.
+   assert (fingerprinted and specifier.startswith(('./','../'))) or specifier.startswith('/assets/releases/'),(path,specifier)
+   parsed=urlsplit(specifier)
+   target=PUBLIC/parsed.path.lstrip('/') if specifier.startswith('/') else path.parent/parsed.path
+   assert target.is_file(),(path,specifier)
 for path,page in pages.items():
  for url in page.links:
   parsed=urlsplit(url)
   if parsed.scheme or parsed.netloc:continue
-  if parsed.path.startswith('/assets/') and parsed.path.endswith(('.js','.css')):
-   assert parsed.query.startswith('v='),(path,url)
- for url in re.findall(r'href="(/assets/fonts/Lato-[^"]+\.woff2)"',path.read_text()):
-  assert '?' in url,(path,url)
-for path in (PUBLIC/'assets').rglob('*.css'):
- for match in re.finditer(r'/assets/fonts/Lato-[^"\')\s]+\.woff2(?:\?[^"\')\s]*)?',path.read_text()):
-  assert '?v=' in match.group(0),(path,match.group(0))
+  if parsed.path.startswith('/assets/') and parsed.path.endswith(('.js','.css','.woff2')):
+   assert parsed.path.startswith(release_prefix),(path,url)
+for original in release_manifest['assets']:
+ if original.startswith('/assets/data/'):
+  assert f'{original}\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,original
 for y in [2027,2028,2029]:
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10

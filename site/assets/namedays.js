@@ -131,6 +131,10 @@ async function init(){
   $('#nd-export-form').addEventListener('submit',e=>{e.preventDefault();try{const item=event();clearPrepared();preparedURL=URL.createObjectURL(new Blob([exportICS([item])],{type:'text/calendar;charset=utf-8'}));const link=$('#nd-file-link');link.href=preparedURL;link.download=`vardadienis-${selected}.ics`;link.hidden=false;link.click();feedback(item.repeat==='yearly'?'Parengtas kasmetinis ICS įrašas. Jei atsisiuntimas neprasidėjo, paspauskite žemiau esančią failo nuorodą. Vasario 29-oji neperkeliama.':'Parengtas vienkartinis visos dienos ICS įrašas. Jei atsisiuntimas neprasidėjo, paspauskite žemiau esančią failo nuorodą.');}catch(error){feedback(error.message,true);}});
   $('#nd-add').addEventListener('click',()=>{try{const item=event(),store=new Store();if(store.data.events.some(e=>e.id===item.id)){feedback('Šis vardadienis jau įtrauktas į šios naršyklės kalendorių.');return;}store.update(state=>state.events.push(item));feedback(`Išsaugota šioje naršyklėje: ${item.title}. Atverkite asmeninį kalendorių.`);}catch(error){feedback(error.message,true);}});
   if(pageMonth)$('#nd-month-filter').value=String(pageMonth);
+  // Global-search entity links land on this existing lookup with the native
+  // name prefilled; visitors can then choose any of its verified dates.
+  const initialQuery=new URLSearchParams(location.search).get('q');
+  if(initialQuery){$('#nd-query').value=initialQuery.normalize('NFC').slice(0,80);$('#nd-month-filter').value='';}
   const hash=location.hash.match(/^#diena-(\d{2})$/);if(hash&&pageMonth)chooseKey(`${String(pageMonth).padStart(2,'0')}-${hash[1]}`);else selectDate(selected);
   renderSearch();renderToday();
   let last=today();

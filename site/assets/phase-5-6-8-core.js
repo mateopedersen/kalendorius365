@@ -217,3 +217,21 @@ export function lunarIllumination(instant, newMoonInstants) {
   const angle = 2 * Math.PI * (instant - previous) / (next - previous);
   return Math.round(100 * (1 - Math.cos(angle)) / 2);
 }
+
+
+/** Validate a single school field before changing the saved lesson. */
+export function updateLessonField(lesson, field, value) {
+  const limits = { start: 5, end: 5, subject: 50, room: 30, teacher: 30 };
+  if (!Object.hasOwn(limits, field) || typeof value !== "string" || value.length > limits[field])
+    throw Error("Pamokos lauko reikšmė netinkama arba per ilga.");
+  if (field === "start" || field === "end") {
+    if (value && !/^([01]\d|2[0-3]):[0-5]\d$/.test(value))
+      throw Error("Įrašykite galiojantį laiką.");
+    const start = field === "start" ? value : lesson.start;
+    const end = field === "end" ? value : lesson.end;
+    if (start && end && start >= end)
+      throw Error("Pamokos pabaiga turi būti vėlesnė už pradžią.");
+  }
+  lesson[field] = value;
+  return lesson;
+}

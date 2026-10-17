@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=865f81e8689e";
-import * as cal from "./calendar.js?v=865f81e8689e";
-import { Store, download } from "./storage.js?v=865f81e8689e";
-import { exportICS, importICS } from "./ics.js?v=865f81e8689e";
-import { notice } from "./common.js?v=865f81e8689e";
-import { renderWeather } from "./weather.js?v=865f81e8689e";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=865f81e8689e";
+import { icon } from "/assets/releases/5838c74c429cb383b9d2/icons.js";
+import * as cal from "/assets/releases/5838c74c429cb383b9d2/calendar.js";
+import { Store, download } from "/assets/releases/5838c74c429cb383b9d2/storage.js";
+import { exportICS, importICS } from "/assets/releases/5838c74c429cb383b9d2/ics.js";
+import { notice } from "/assets/releases/5838c74c429cb383b9d2/common.js";
+import { renderWeather } from "/assets/releases/5838c74c429cb383b9d2/weather.js";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "/assets/releases/5838c74c429cb383b9d2/data/weather-cities.js";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -21,7 +21,7 @@ const homeIcon = (name, className = "") => {
   return svg;
 };
 const [data, editorial] = await Promise.all([
-  fetch("/assets/data/calendar.json")
+  fetch("/assets/releases/5838c74c429cb383b9d2/data/calendar.json")
     .then((r) => {
       if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
       return r.json();
@@ -30,7 +30,7 @@ const [data, editorial] = await Promise.all([
       notice(e.message);
       throw e;
     }),
-  fetch("/assets/data/home-holiday-data.json?v=2")
+  fetch("/assets/releases/5838c74c429cb383b9d2/data/home-holiday-data.json")
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);

@@ -1,0 +1,32 @@
+{
+  "baseline_commit": "a35fef0c2def78d88dd328a4765e50de7e2b781f",
+  "baseline_deployment": "b80422eb-e3fa-485d-8258-cca3912daf74",
+  "asset_revision": "5838c74c429cb383b9d2",
+  "release_mode": true,
+  "executed_before_push": {
+    "node_tests": {
+      "passed": 272,
+      "failed": 0,
+      "skipped": 0
+    },
+    "static_audit": {
+      "canonical_pages": 185,
+      "html_pages": 186,
+      "local_targets": 24306,
+      "broken": 0
+    },
+    "public_baseline": {
+      "canonical_http_pages": 185,
+      "distinct_extra_internal_targets": 3871,
+      "browser_route_header_search_actions": 185
+    },
+    "independent_search_browser_checks": 23
+  },
+  "pending_at_commit": [
+    "CI Playwright Chromium, Firefox, WebKit and mobile-emulation projects",
+    "production deployment and purge",
+    "post-deployment actual live verification"
+  ],
+  "physical_devices_tested": false,
+  "personal_storage_clear_operations": 0
+}

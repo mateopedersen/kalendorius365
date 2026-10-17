@@ -48,7 +48,7 @@ for route in routes:
  check('No placeholders '+route,not re.search(r'TODO|lorem ipsum|placeholder graphic|Full Moon|Monday|undefined|�',s))
  check('No artificial rich-result markup '+route,'"@type": "WebPage"'in s and '"@type": "Event"'not in s and '"@type": "FAQPage"'not in s)
  check('Accessible SSR data '+route,'data-annual-rows'in s and 'data-area'in s)
- check('New CSS scoped '+route,'seasons-app'in s and 'seasons.css?v='in s)
+ check('New CSS scoped '+route,'seasons-app'in s and re.search(r'/assets/releases/[0-9a-f]{20}/seasons\.css[\"\']',s))
 for p in (O/'assets/visuals/seasons').glob('*.svg'):
  root=ET.parse(p).getroot();check('Vector budget '+p.name,p.stat().st_size<65000);check('No raster '+p.name,not any(n.tag.endswith('image')or n.tag.endswith('foreignObject')for n in root.iter()))
  if p.name!='controls.svg':check('Lithuanian SVG accessible '+p.name,bool(root.find('{http://www.w3.org/2000/svg}title').text))

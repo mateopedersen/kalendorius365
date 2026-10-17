@@ -8,6 +8,7 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - 'lib/**'
+      - 'site/_config.yml'
       - 'scripts/build.rb'
       - 'scripts/pages.rb'
       - 'scripts/audit_site.py'
@@ -34,6 +35,6 @@ jobs:
       - name: Build the complete static release
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Audit every canonical page and internal link
-        run: python3 scripts/audit_site.py
+        run: python3 scripts/audit_site.py --release
       - name: Run calendar, search, planner and solar tests
         run: node --test test/*.test.js
