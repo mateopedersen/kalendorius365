@@ -47,6 +47,7 @@ module AssetRelease
   end
 
   def restore_previous_releases(public_dir, stash_dir, previous)
+    restored = []
     Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES - 1).each do |revision|
       source = File.join(stash_dir, revision)
       next unless File.directory?(source)
@@ -55,7 +56,9 @@ module AssetRelease
       FileUtils.rm_rf(destination)
       FileUtils.mkdir_p(File.dirname(destination))
       FileUtils.cp_r(source, destination)
+      restored << revision
     end
+    restored
   end
 
   def rewrite_references(content, urls)

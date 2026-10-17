@@ -42,7 +42,7 @@ Dir.chdir(ROOT) do
   end
   File.write(path,javascript)
  end
-  AssetRelease.restore_previous_releases(File.join(ROOT,'public'),release_backup,previous_revisions)
+  previous_revisions=AssetRelease.restore_previous_releases(File.join(ROOT,'public'),release_backup,previous_revisions)
   release_manifest=AssetRelease.publish(File.join(ROOT,'public'),previous:previous_revisions)
  end
  # Fail on accidentally exceeding the existing Free static hosting limits.
