@@ -5,37 +5,6 @@ export function notice(message) {
   clearTimeout(el.timer);
   el.timer = setTimeout(() => (el.hidden = true), 10000);
 }
-function applyTheme(mode) {
-  document.documentElement.dataset.theme = mode;
-  document
-    .querySelector("#theme")
-    ?.setAttribute(
-      "aria-label",
-      mode === "dark" ? "Įjungti šviesią temą" : "Įjungti tamsią temą",
-    );
-  document.querySelector("#theme")?.setAttribute("aria-pressed", String(mode === "dark"));
-}
-applyTheme(
-  document.documentElement.dataset.theme ||
-    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
-);
-document.querySelector("#theme")?.addEventListener("click", () => {
-  const mode =
-    document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  applyTheme(mode);
-  try {
-    const key = "kalendorius365:v1";
-    const data = JSON.parse(localStorage.getItem(key) || "{}");
-    data.schema = 1;
-    data.events ||= [];
-    data.tasks ||= [];
-    data.notes ||= {};
-    data.preferences ||= {};
-    data.preferences.theme = mode;
-    localStorage.setItem(key, JSON.stringify(data));
-  } catch {}
-});
-
 // Fetch an internal page only after a clear navigation intent. This keeps
 // idle/mobile connections free while making the next click reuse the response.
 const prefetchedPages = new Set();
@@ -154,7 +123,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
 
     siteSearchStatus.textContent = "Ieškoma visuose puslapiuose…";
     try {
-      searchEnginePromise ||= import("./search-engine.js?v=a9da1124b901");
+      searchEnginePromise ||= import("./search-engine.js?v=22a5bf7343e0");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
       if (normalizeSearchText(siteSearch.value.trim()) !== normalizeSearchText(query)) return;

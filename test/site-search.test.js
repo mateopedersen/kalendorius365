@@ -45,11 +45,11 @@ test("global search covers pages and direct homepage functions in the built outp
     ["Užduočių sąrašas", "task-title"],
     ["Pasirinkti orų miestą", "weather-city"],
     ["Kalendoriaus sluoksniai ir kategorijos", "layers"],
-    ["Keisti šviesią arba tamsią temą", "theme"],
   ]) {
     assert.ok(sourceIndex.some((item) => item.title === title && item.url === `/#${fragment}`));
-    assert.match(fragment === "theme" ? html : homepage, new RegExp(`id="${fragment}"`));
+    assert.match(homepage, new RegExp(`id="${fragment}"`));
   }
+  assert.ok(!sourceIndex.some((item) => item.url === "/#theme"), "removed appearance controls must not remain in search");
 });
 
 test("site search exposes an accessible combobox and keyboard-selectable results", () => {
