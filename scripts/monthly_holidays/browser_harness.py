@@ -45,4 +45,19 @@ if(q.get('axe')==='1'){const s=d.createElement('script');s.src='/__monthly_qa/ax
 o.textContent=JSON.stringify(out);o.dataset.state='done';
 }catch(e){o.dataset.state='failed';o.textContent=String(e.stack)}});
 </script></html>''')
-print('Local-only browser fixture created; removed by release build.')
+(OUT/'hubs.html').write_text('''<!doctype html><html lang="lt"><meta charset="utf-8"><title>Vietinė švenčių sąrašų patikra</title><style>html,body{margin:0;background:#e5ebe6;font:14px sans-serif}iframe{display:block;border:0;background:white}pre{white-space:pre-wrap;max-width:1400px}</style><iframe title="Tikrinamas švenčių sąrašas"></iframe><pre data-state="running">Tikrinama…</pre><script>
+const q=new URLSearchParams(location.search),f=document.querySelector('iframe'),o=document.querySelector('pre'),width=Number(q.get('width')||1440);
+f.style.width=width+'px';f.style.height='1000px';f.src=q.get('hub')==='annual'?'/sventes/2027/':'/sventes/';
+f.addEventListener('load',async()=>{try{const d=f.contentDocument,w=f.contentWindow;await d.fonts.ready;
+if(q.get('font')==='200')d.documentElement.style.fontSize='200%';await new Promise(r=>w.requestAnimationFrame(()=>w.requestAnimationFrame(r)));
+const cards=[...d.querySelectorAll('.mh-month-grid a')],checks=[];const add=(name,ok,detail)=>checks.push({name,passed:!!ok,detail});
+add('CSS viewport',w.innerWidth===width,w.innerWidth);add('No horizontal overflow',d.documentElement.scrollWidth<=width+1,d.documentElement.scrollWidth);
+add('All twelve links',cards.length===12&&new Set(cards.map(a=>a.pathname)).size===12);add('Lato loaded',d.fonts.check('16px Lato'));
+const clipped=cards.flatMap(a=>[a,...a.querySelectorAll('span')]).filter(e=>e.clientWidth&&e.scrollWidth>e.clientWidth+2).map(e=>({text:e.textContent,width:e.clientWidth,scroll:e.scrollWidth}));
+add('No clipped card text',!clipped.length,clipped);
+const outside=cards.flatMap(a=>[...a.children].filter(e=>{const r=e.getBoundingClientRect(),p=a.getBoundingClientRect();return r.width&&r.right>p.right+1}).map(e=>e.textContent));
+add('Card content contained',!outside.length,outside);
+o.textContent=JSON.stringify({route:w.location.pathname,width:w.innerWidth,font_percent:q.get('font')||'100',checks,failures:checks.filter(c=>!c.passed)});o.dataset.state='done';
+}catch(e){o.dataset.state='failed';o.textContent=String(e.stack)}});
+</script></html>''')
+print('Local-only guide and hub browser fixtures created; removed by release build.')
