@@ -31,7 +31,7 @@ const two=days.find(e=>e.querySelector('.mh-daycount')?.textContent==='2');if(tw
 const ordinary=days.find(e=>!e.querySelector('.mh-daycount'));if(ordinary){ordinary.click();add('Ordinary date selection',d.querySelector('#mh-day-info').textContent.includes('įrašų nėra'));}
 days[0].focus();days[0].dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));add('Arrow keyboard navigation',d.activeElement===days[1]);
 let printRequested=false;w.print=()=>{printRequested=true};d.querySelector('[data-print]').click();add('Print handler called',printRequested);
-const source=d.querySelector('.mh-event-source');source.querySelector('summary').click();add('Source disclosure',source.open&&source.textContent.includes('2026-10-17'));source.querySelector('summary').click();
+const source=d.querySelector('.mh-event-source');source.querySelector('summary').click();add('Source disclosure',source.open&&source.textContent.includes('2026-10-17'));add('Source punctuation',![...d.querySelectorAll('.mh-event-source')].some(e=>e.textContent.includes('d..')));source.querySelector('summary').click();
 const faq=d.querySelector('.mh-faq details');faq.querySelector('summary').click();add('FAQ disclosure',faq.open);faq.querySelector('summary').click();
 const checkElements=[...root.querySelectorAll('h1,h2,h3,h4,p,button,input,a,summary,figcaption,dt,dd')].filter(e=>e.getClientRects().length&&getComputedStyle(e).display!=='none');
 const clipped=checkElements.filter(e=>e.clientWidth&&e.scrollWidth>e.clientWidth+2&&!['inline','contents'].includes(getComputedStyle(e).display)).map(e=>({tag:e.tagName,class:e.className,text:e.textContent.slice(0,100),width:e.clientWidth,scroll:e.scrollWidth}));

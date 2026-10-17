@@ -19,3 +19,5 @@ Manual review of axe's incomplete findings:
 - Native details/summary, normal hrefs and standard buttons retain keyboard behavior. Calendar arrow keys, reset, search with/without diacritics, no-results state, filtered-next selection, two-entry dates, source disclosure, FAQ and the existing print handler were exercised.
 
 The contact sheets are visual-review aids. Original full screenshots and machine results remain in `qa/`. No photographic authenticity, historical crown reconstruction, human proofreading or ranking score is claimed.
+
+Final expanded-source review also found doubled full stops after abbreviated dates (for example `d..`). The source-note formatter now adds a final full stop only when needed and puts the legal citation in its own sentence. A release assertion rejects this regression on every new monthly page.

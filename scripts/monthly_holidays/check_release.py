@@ -52,6 +52,7 @@ def run():
  for m,(slug,name,gen) in enumerate(months,1):
   route=f'/sventes/2027/{slug}/';routes.append(route);canonical='https://kalendorius365.lt'+route;s=(ROOT/'public'/route.lstrip('/')/'index.html').read_text();p=Page(s);es=[e for e in events if date.fromisoformat(e['date']).month==m]
   before=len(failures)
+  check(not re.search(r'\bd\.\.',s),route+' doubled date-abbreviation punctuation')
   check(p.h1==[f'2027 m. {gen} šventės ir atmintinos dienos'],route+' H1')
   check(len(p.attrs('link',rel='canonical',href=canonical))==1,route+' canonical')
   check(canonical in locs,route+' sitemap');check(p.attrs('html')[0].get('lang')=='lt',route+' language');check(p.attrs('meta',name='robots')[0].get('content')=='index, follow',route+' robots')
