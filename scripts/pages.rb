@@ -472,6 +472,5 @@ search.concat([
  {'title'=>'Pasirinkti orų miestą','url'=>'/#weather-city','description'=>'Keiskite orų miestą arba naudokite automatinį pasirinkimą.','keywords'=>'oras orai temperatūra miestas vilnius kaunas klaipėda weather city temperature','category'=>'home','action'=>true},
  {'title'=>'Kalendoriaus sluoksniai ir kategorijos','url'=>'/#layers','description'=>'Rodykite arba slėpkite šventes, asmeninius ir darbinius įvykius.','keywords'=>'filtrai sluoksniai darbo šeima sveikata mokslai categories filters','category'=>'home','action'=>true},
  {'title'=>'Kalendoriaus atsarginė kopija','url'=>'/#backup','description'=>'Atsisiųskite arba atkurkite savo kalendoriaus duomenų kopiją.','keywords'=>'eksportuoti importuoti atsarginė kopija json duomenys backup export import','category'=>'home','action'=>true},
- {'title'=>'Keisti šviesią arba tamsią temą','url'=>'/#theme','description'=>'Perjunkite svetainės šviesią ir tamsią išvaizdą.','keywords'=>'naktinis dark mode kontrastas spalvos tamsa theme','category'=>'home','action'=>true}
 ])
 File.write("#{Pages::ROOT}/site/assets/data/search.json",JSON.generate(search))

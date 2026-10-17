@@ -1,0 +1,39 @@
+name: Static site release QA
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/site-release-qa.yml'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '.ruby-version'
+      - 'lib/**'
+      - 'scripts/build.rb'
+      - 'scripts/pages.rb'
+      - 'scripts/audit_site.py'
+      - 'site/**'
+      - 'public/**'
+      - 'test/**'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+      - name: Build the complete static release
+        run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
+      - name: Audit every canonical page and internal link
+        run: python3 scripts/audit_site.py
+      - name: Run calendar, search, planner and solar tests
+        run: node --test test/*.test.js
