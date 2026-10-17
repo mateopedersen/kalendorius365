@@ -49,8 +49,10 @@ def day_calendar(m,events,engine):
 def event_card(e):
     extra=link(e['detail_url'],'Apie šią dieną '+icon('arrow'),'mh-detail-link') if e.get('detail_url') else ''
     cite=' · '.join(source_link(s) for s in e['sources'])
-    law_note=f"; įstatymo 1 str. 2 d. {e['law_point']} p." if e.get("law_point") else ""
-    return f'<article class="mh-event" id="ivykis-{E(e["id"])}" data-event="{E(e["id"])}" data-date="{e["date"]}" data-category="{e["category"]}" data-statutory="{str(e["statutory_nonworking"]).lower()}"><div>{badge(e["category"])}<h4>{E(e["title"])}</h4><p>{E(e["summary"])}</p><details class="mh-event-source"><summary>Šaltinis ir datos pagrindas</summary><p>{cite}</p><p>{E(e.get("rule_lt",readable(e["date"])))}{law_note}. Patikrinta 2026-10-17.</p></details>{extra}</div></article>'
+    law_note=f" Įstatymo 1 str. 2 d. {e['law_point']} p." if e.get("law_point") else ""
+    rule_text=e.get("rule_lt",readable(e["date"]))
+    if not rule_text.endswith("."):rule_text+="."
+    return f'<article class="mh-event" id="ivykis-{E(e["id"])}" data-event="{E(e["id"])}" data-date="{e["date"]}" data-category="{e["category"]}" data-statutory="{str(e["statutory_nonworking"]).lower()}"><div>{badge(e["category"])}<h4>{E(e["title"])}</h4><p>{E(e["summary"])}</p><details class="mh-event-source"><summary>Šaltinis ir datos pagrindas</summary><p>{cite}</p><p>{E(rule_text)}{law_note} Patikrinta 2026-10-17.</p></details>{extra}</div></article>'
 def ics_escape(s):return s.replace('\\','\\\\').replace('\n','\\n').replace(';','\\;').replace(',','\\,')
 def fold_ics(line):
     out=[];cur='';limit=75
