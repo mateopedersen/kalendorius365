@@ -360,6 +360,8 @@ Pages.run
 Pages.generate_blank
 require_relative '../lib/phase_5_6_8_pages'
 Phase568Pages.run
+require_relative '../lib/zodiac_pages'
+ZodiacPages.run
 require_relative '../lib/horoscopes_pages'
 HoroscopesPages.run
 system('python3',File.join(Pages::ROOT,'scripts/lunar/pages.py'),exception:true)
@@ -402,6 +404,7 @@ search_page=<<~HTML
 HTML
 Pages.page('paieska','Paieška – visi kalendoriaus puslapiai','Ieškokite visame Kalendorius365 puslapyje: kalendorių, Lietuvos švenčių, darbo ir mokinių atostogų, astronomijos, planuoklių bei įrankių.',search_page)
 search_aliases={
+ '/zodiakas/'=>'zodiako ženklas pagal gimimo dieną stichijos ženklų palyginimas burc hesapla zodiac sign finder aries taurus gemini cancer leo virgo libra scorpio sagittarius capricorn aquarius pisces',
  '/'=>'šiandien asmeninis kalendorius įvykiai užrašai pastabos užduotys laikas laikrodis orai paieška dienos planai weather calendar events takvim',
  '/paieska/'=>'paieška paieska rasti puslapis puslapiai rezultatai search find all pages',
  '/sventes/'=>'valstybinės nedarbo šventinės atmintinos dienos holiday holidays bayram resmi tatil',
@@ -443,7 +446,7 @@ search_category = lambda do |url|
  when '/' then 'home'
  when %r{\A/(?:20\d{2})(?:/|\z)} then 'calendar'
  when %r{\A/sventes/} then 'holiday'
- when %r{\A/horoskopai/} then 'horoscope'
+ when %r{\A/(?:horoskopai|zodiakas)/} then 'horoscope'
  when %r{\A/(?:saule|menulio-fazes|menulio-kalendorius|astronominis-kalendorius|metu-laikai|pavasario-lygiadienis|vasaros-saulegriza|rudens-lygiadienis|ziemos-saulegriza)/} then 'astronomy'
  when %r{\A/(?:mokiniu-atostogos|pamoku-tvarkarastis|pamoku-tvarkarascio-sablonai)/} then 'school'
  when %r{\A/(?:darbo-dienos|atostogu-planavimas|pamainu-grafikas|savaites|savaitiniai-planuokliai|dienos-planuoklis|seimos-kalendorius)/} then 'planning'

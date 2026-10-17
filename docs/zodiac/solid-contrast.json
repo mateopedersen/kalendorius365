@@ -1,0 +1,103 @@
+{
+  "method": "Computed solid RGB and color(srgb) pairs; gradients and transparency excluded for manual review. Large-text threshold 3, normal 4.5. Not a complete accessibility certification.",
+  "pages": [
+    {
+      "route": "/zodiakas/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 50,
+      "measured": 119,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 11,
+      "measured": 98,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/avinas/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/jautis/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/dvyniai/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.01
+    },
+    {
+      "route": "/horoskopai/vezys/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/liutas/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/mergele/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/svarstykles/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.01
+    },
+    {
+      "route": "/horoskopai/skorpionas/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/saulys/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/oziaragis/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    },
+    {
+      "route": "/horoskopai/vandenis/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.01
+    },
+    {
+      "route": "/horoskopai/zuvys/",
+      "failures": [],
+      "gradientOrTranslucentSkipped": 27,
+      "measured": 49,
+      "minimum": 5.16
+    }
+  ]
+}

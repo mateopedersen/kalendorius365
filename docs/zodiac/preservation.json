@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "baseline_commit": "83b62a2098c867e598f95fdbef36a76e5e1612e6",
+  "phase4_base_commit": "0615efdb79ac77b4be849d49140bf817ddfe866f",
+  "existing_pdf_webp_assets": 3236,
+  "changed_pdf_webp_assets": [],
+  "existing_downloads": 980,
+  "changed_downloads": [],
+  "unrelated_html_checked": 159,
+  "unrelated_content_changes": [],
+  "html_comparison": "Only 12-hex cache query values and empty lines are normalized; visible text and markup are retained.",
+  "protected_files": {
+    ".github/workflows/horoscope-automation.yml": true,
+    "site/_data/horoscope_current.json": true,
+    "scripts/horoscopes/fetch_daily.py": true,
+    "site/assets/ascendant-calculator.js": true,
+    "site/assets/fonts/Lato-Regular.ttf": true,
+    "site/assets/fonts/Lato-Bold.ttf": true,
+    "site/assets/fonts/Lato-Black.ttf": true
+  }
+}

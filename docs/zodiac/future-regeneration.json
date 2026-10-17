@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "isolated_future_publications": [
+    {
+      "date": "2026-10-18",
+      "detail_pages": 12,
+      "hub": true,
+      "guide_sha256": "ceb904626e3de5345b4be5067b34e251b616d025e36e9b15bc21f3070106d540",
+      "unchanged_profiles": 12,
+      "real_daily_dataset_modified": false
+    },
+    {
+      "date": "2027-01-01",
+      "detail_pages": 12,
+      "hub": true,
+      "guide_sha256": "ceb904626e3de5345b4be5067b34e251b616d025e36e9b15bc21f3070106d540",
+      "unchanged_profiles": 12,
+      "real_daily_dataset_modified": false
+    }
+  ]
+}

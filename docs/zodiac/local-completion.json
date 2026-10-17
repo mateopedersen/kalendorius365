@@ -1,0 +1,34 @@
+{
+  "status": "local-qa-passed; production verification pending",
+  "reviewed_at_utc": "2026-10-17T14:37:37.351685+00:00",
+  "canonical_pages": 172,
+  "affected_pages": 14,
+  "node_tests": 128,
+  "additional_python_validation_and_pipeline_tests": 19,
+  "responsive_rounds": 2,
+  "responsive_cases": 168,
+  "widths": [
+    360,
+    390,
+    768,
+    1280,
+    1440
+  ],
+  "large_text_scale": 2,
+  "final_round_horizontal_overflow": 0,
+  "solid_text_contrast_pairs": 805,
+  "solid_text_contrast_failures": 0,
+  "original_zodiac_figures": 12,
+  "original_element_motifs": 4,
+  "og_png_bytes": 87670,
+  "preserved_downloads": 980,
+  "preserved_existing_pdf_webp_assets": 3236,
+  "local_targets": 20623,
+  "broken_internal_targets": 0,
+  "limitations": [
+    "Available in-app browser; fixed CSS widths use same-origin frames. No second engine or physical-device execution claimed.",
+    "Text contrast measurement excludes gradients/transparency, which were inspected visually; this is not a full accessibility certification.",
+    "Conventional month/day lookup, not exact solar longitude. Cusp warnings are explicit.",
+    "No independent native-human proofread or ranking guarantee claimed."
+  ]
+}

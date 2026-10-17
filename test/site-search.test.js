@@ -74,6 +74,9 @@ test("site search exposes an accessible combobox and keyboard-selectable results
 
 test("search ranks page content, Lithuanian forms, misspellings, aliases and deep links", () => {
   const cases = [
+    ["zodiakas", "/zodiakas/"],
+    ["burc hesapla", "/zodiakas/"],
+    ["ženklų palyginimas", "/zodiakas/"],
     ["2029 geguze", "/2029/geguze/"],
     ["May 2029", "/2029/geguze/"],
     ["2029", "/2029/"],
