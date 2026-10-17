@@ -1,4 +1,4 @@
-import { BIRTH_CITIES } from "/assets/data/birth-cities.js?v=14016600565a";
+import { BIRTH_CITIES } from "/assets/data/birth-cities.js?v=ee9b589d835b";
 
 const SIGNS = [
   { key: "avinas", name: "Avinas", theme: "#b34235", reading: "Astrologinėje simbolikoje siejamas su tiesiu, iniciatyviu įspūdžiu ir veržliu įsitraukimu." },
@@ -119,7 +119,9 @@ function ascendantLongitude(instant, latitude, longitude) {
 }
 
 function resultParts(longitude) {
-  const totalMinutes = Math.round(mod(longitude, 360) * 60) % (360 * 60);
+  // Truncate the displayed arcminute: rounding first can move a position
+  // just below a 30-degree boundary into the following zodiac sign.
+  const totalMinutes = Math.floor(mod(longitude, 360) * 60) % (360 * 60);
   const signIndex = Math.floor(totalMinutes / 1800);
   const withinSign = totalMinutes % 1800;
   return { sign: SIGNS[signIndex], degree: Math.floor(withinSign / 60), minute: withinSign % 60 };
