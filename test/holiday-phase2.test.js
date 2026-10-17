@@ -6,6 +6,17 @@ const registry=JSON.parse(readFileSync(new URL('../data/holiday-phase2.json',imp
 const old=JSON.parse(readFileSync(new URL('../data/holiday-editorial.json',import.meta.url)));
 const all=[...old.articles,...old.commemorations,...registry.articles];
 const years=['2027','2028','2029'];
+test('all 16 existing planner links receive complete compact title and category metadata',()=>{
+ const compact=JSON.parse(readFileSync(new URL('../site/assets/data/home-holiday-data.json',import.meta.url)));
+ const records=[...compact.articles,...compact.commemorations];
+ assert.match(readFileSync(new URL('../site/assets/app.js',import.meta.url),'utf8'),/fetch\("\/assets\/data\/home-holiday-data\.json\?v=2"\)/);
+ assert.equal(records.length,16);
+ for(const article of [...old.articles,...old.commemorations]){
+  const item=records.find(x=>x.slug===article.slug);assert.ok(item,article.slug);
+  assert.equal(item.title,article.title);assert.equal(item.category,article.category);
+  assert.ok(item.title.trim());assert.ok(item.category.trim());
+ }
+});
 test('31 manifest guides have unique routes and verified original media records',()=>{
  assert.equal(all.length,31);assert.equal(new Set(all.map(a=>a.slug)).size,31);
  for(const a of all){const m=registry.media[a.id];assert.ok(m,a.id);assert.match(m.commons_url,/commons.wikimedia.org\/wiki\/File:/);assert.ok(m.license_url);assert.ok(m.author);assert.ok(m.caption);assert.ok(m.commons_revision);assert.ok(a.sources.every(s=>registry.sources[s]),a.id);}

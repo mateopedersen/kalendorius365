@@ -27,6 +27,10 @@ Revert the Phase 2 merge only, then let the existing GitHub/Cloudflare pipeline 
 
 ## Acceptance results
 
-54 Node tests; 20,230 local destinations; 248 responsive/text-scale cases; 93 browser year selections including keyboard activation; 31 independently rechecked image source/license records. All passed. The 122 non-target canonical pages retain identical DOM content after cache-version normalization. Local warm-cache lab observations are recorded in QA2-BROWSER-REVIEW.json (31 available LCP observations out of 31, 68 ms median, 104 ms maximum; CLS maximum 0.00221). These are not field or throttled-mobile results.
+55 Node tests; 20,230 local destinations; 248 responsive/text-scale cases; 93 browser year selections including keyboard activation; 31 independently rechecked image source/license records. All passed. The 122 non-target canonical pages retain identical DOM content after cache-version normalization. Local warm-cache lab observations are recorded in QA2-BROWSER-REVIEW.json (31 available LCP observations out of 31, 68 ms median, 104 ms maximum; CLS maximum 0.00221). These are not field or throttled-mobile results.
 
 The existing sixteen planner-prefill actions and page-print action are retained. New guides provide an actual ICS download and print action. New ICS directories are marked binary in .gitattributes so RFC-required CRLF survives Git checkouts.
+
+## Final live interaction finding
+
+The initial production release exposed a pre-existing prefill bug: the compact home metadata omitted title/category values consumed by the event form. The follow-up restores those original fields for all sixteen records and versions the request to avoid a cached incomplete payload. All sixteen local form prefills were checked without saving any event. The preservation gates validate the exact original identifiers/date fields and restored title/category values; every other old source asset and all 978 binary downloads remain unchanged. Production confirmation is saved in the final delivery report.

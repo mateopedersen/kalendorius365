@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=c3a989653224";
-import * as cal from "./calendar.js?v=c3a989653224";
-import { Store, download } from "./storage.js?v=c3a989653224";
-import { exportICS, importICS } from "./ics.js?v=c3a989653224";
-import { notice } from "./common.js?v=c3a989653224";
-import { renderWeather } from "./weather.js?v=c3a989653224";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=c3a989653224";
+import { icon } from "./icons.js?v=4b4b0a589cc1";
+import * as cal from "./calendar.js?v=4b4b0a589cc1";
+import { Store, download } from "./storage.js?v=4b4b0a589cc1";
+import { exportICS, importICS } from "./ics.js?v=4b4b0a589cc1";
+import { notice } from "./common.js?v=4b4b0a589cc1";
+import { renderWeather } from "./weather.js?v=4b4b0a589cc1";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=4b4b0a589cc1";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -30,7 +30,7 @@ const [data, editorial] = await Promise.all([
       notice(e.message);
       throw e;
     }),
-  fetch("/assets/data/home-holiday-data.json")
+  fetch("/assets/data/home-holiday-data.json?v=2")
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);

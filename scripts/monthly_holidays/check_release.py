@@ -98,16 +98,30 @@ def run():
   for el in sv.iter():
    check(el.tag.split('}')[-1] not in ['script','foreignObject','image','animate','filter'],a['slug']+' unsafe/heavy SVG element')
    check(all(not k.lower().startswith('on') for k in el.attrib),a['slug']+' event handler in SVG')
- # Everything saved before this feature stays byte-identical except the expanded search index.
- preserved=0;changed=[]
+ # Preserve the baseline; the later planner repair restores two documented metadata fields only.
+ preserved=0;changed=[];intentional_updates=[]
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
   p=ROOT/path
+  if path=='site/assets/app.js':
+   current=p.read_bytes();updated=b'fetch("/assets/data/home-holiday-data.json?v=2")';previous=b'fetch("/assets/data/home-holiday-data.json")'
+   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'home app changes only the compact metadata schema version to avoid a cached incomplete payload')
+   intentional_updates.append({'path':path,'reason':'Version the repaired compact metadata request; all application logic unchanged','sha256':hashlib.sha256(current).hexdigest()})
+   continue
+  if path=='site/assets/data/home-holiday-data.json':
+   original=json.loads((ROOT/'data/holiday-editorial.json').read_text())
+   field_sets={'articles':{'id','slug','holiday_ids'},'commemorations':{'id','slug','holiday_ids','title','month','day'}}
+   before={kind:[{k:v for k,v in a.items() if k in fields}for a in original[kind]]for kind,fields in field_sets.items()}
+   wanted={kind:[{k:v for k,v in a.items() if k in fields|{'title','category'}}for a in original[kind]]for kind,fields in field_sets.items()}
+   check(hashlib.sha256(json.dumps(before,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()==sha,'planner pre-repair metadata matches the saved baseline')
+   check(json.loads(p.read_text())==wanted,'planner metadata changes only restore original titles/categories')
+   intentional_updates.append({'path':path,'reason':'Complete the existing holiday event prefill; original ids, slugs and date rules preserved','sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+   continue
   allowed={sha}
   if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
   if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
   else:preserved+=1
  check(not changed,'baseline assets changed: '+str(changed[:20]))
- report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':'2026-10-17','limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
+ report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'intentional_metadata_updates':intentional_updates,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':'2026-10-17','limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
  out=ROOT/'docs/2027-monthly-holidays/QA-GATE-1.json';out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'status':report['status'],'pages':len(results),'preserved_assets':preserved,'failures':failures},ensure_ascii=False));assert not failures
 if __name__=='__main__':run()

@@ -61,8 +61,8 @@ end
 File.write("#{ROOT}/site/assets/data/holiday-editorial.json",JSON.generate(editorial))
 File.write("#{ROOT}/site/_data/holiday-editorial.json",JSON.generate(editorial))
 home_editorial = {
- 'articles' => editorial.fetch('articles').map { |item|item.select { |key,_|%w[id slug holiday_ids].include?(key) } },
- 'commemorations' => editorial.fetch('commemorations').map { |item|item.select { |key,_|%w[id slug holiday_ids title month day].include?(key) } }
+ 'articles' => editorial.fetch('articles').map { |item|item.select { |key,_|%w[id slug holiday_ids title category].include?(key) } },
+ 'commemorations' => editorial.fetch('commemorations').map { |item|item.select { |key,_|%w[id slug holiday_ids title category month day].include?(key) } }
 }
 File.write("#{ROOT}/site/assets/data/home-holiday-data.json",JSON.generate(home_editorial))
 File.write("#{ROOT}/site/assets/data/years.json",JSON.generate([2027,2028,2029].map { |y| Kalendorius.year(y) }))

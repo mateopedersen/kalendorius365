@@ -1,4 +1,4 @@
-import { loadSearchIndex, searchPages } from "./search-engine.js?v=c3a989653224";
+import { loadSearchIndex, searchPages } from "./search-engine.js?v=4b4b0a589cc1";
 
 const form = document.querySelector("#site-search-page-form");
 const input = document.querySelector("#site-search-page-query");
