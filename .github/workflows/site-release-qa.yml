@@ -8,6 +8,7 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - 'lib/**'
+      - 'scripts/**'
       - 'scripts/build.rb'
       - 'scripts/css_route_split.py'
       - 'scripts/pages.rb'
