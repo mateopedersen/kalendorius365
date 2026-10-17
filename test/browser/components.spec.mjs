@@ -37,7 +37,12 @@ test('header search recovers from a failed index request without a reload',async
  const input=page.locator('#site-search');
  await input.focus();
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
+ await input.evaluate(el=>{
+  window.__k365KeyboardTrace=[];
+  for(const capture of [true,false])document.addEventListener('keydown',event=>window.__k365KeyboardTrace.push({capture,key:event.key,target:event.target.id,active:document.activeElement.id,hidden:document.querySelector('#site-search-results').hidden,options:document.querySelectorAll('#site-search-results [role=option]').length,selected:document.querySelector('#site-search').getAttribute('aria-activedescendant'),prevented:event.defaultPrevented}),capture);
+ });
  await page.keyboard.press('ArrowDown');
+ console.log('SEARCH_KEYBOARD_DIAGNOSTIC',JSON.stringify(await page.evaluate(()=>window.__k365KeyboardTrace)));
  await expect(input).toHaveAttribute('aria-activedescendant','site-search-option-0');
  await page.keyboard.press('Enter');await expect(page).toHaveURL(/\/saule\/$/);
 });
