@@ -6822,3 +6822,17 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
 @media (max-width: 760px) {
   .site-header #primary-nav { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
+
+/* Keep the footer calendar mark, brand, and tagline aligned on every page. */
+.site-footer .footer-mark {
+  grid-row: 1;
+}
+.site-footer .footer-brand-wordmark {
+  grid-row: 1;
+  align-self: center;
+  margin: 0;
+}
+.site-footer > div:first-child p {
+  grid-row: 2;
+  grid-column: 1 / -1;
+}
