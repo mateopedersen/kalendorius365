@@ -1,0 +1,36 @@
+---
+title: "Paieška – visi kalendoriaus puslapiai"
+description: "Ieškokite visame Kalendorius365 puslapyje: kalendorių, Lietuvos švenčių, darbo ir mokinių atostogų, astronomijos, planuoklių bei įrankių."
+tool: false
+---
+<section class="search-page" aria-labelledby="search-page-title">
+ <div class="search-page__hero">
+  <span class="eyebrow">Visos svetainės paieška</span>
+  <h1 id="search-page-title">Raskite reikalingą datą ar įrankį</h1>
+  <p>Ieškokite visuose Kalendorius365 puslapiuose: švenčių, 2027–2029 m. kalendorių, darbo ir mokinių atostogų, planuoklių, Saulės bei Mėnulio duomenų ir horoskopų.</p>
+  <form id="site-search-page-form" class="search-page__form panel" role="search" action="/paieska/" method="get">
+   <label for="site-search-page-query">Ko ieškote?</label>
+   <div class="search-page__controls">
+    <input id="site-search-page-query" name="q" type="search" placeholder="Pvz., Velykos 2028, saulėlydis Kaune…" autocomplete="off">
+    <label class="search-page__category">Skiltis<select id="site-search-category" name="skiltis"><option value="all">Visa svetainė</option><option value="calendar">Kalendoriai</option><option value="holiday">Šventės</option><option value="planning">Planavimas ir darbo laikas</option><option value="school">Mokykla</option><option value="astronomy">Astronomija</option><option value="horoscope">Horoskopai</option><option value="tools">Įrankiai</option><option value="privacy">Privatumas</option><option value="home">Pagrindinis puslapis</option></select></label>
+    <button class="primary" type="submit">Ieškoti</button>
+    <button id="site-search-clear" type="button">Išvalyti</button>
+   </div>
+  </form>
+  <nav class="search-page__quick" aria-label="Populiarios paieškos temos">
+   <span>Greita paieška:</span>
+   <button type="button" data-search-query="Lietuvos šventės">Lietuvos šventės</button>
+   <button type="button" data-search-query="2029 gegužė">2029 m. gegužė</button>
+   <button type="button" data-search-query="atostogų planavimas">Atostogų planavimas</button>
+   <button type="button" data-search-query="saulėtekis">Saulėtekis</button>
+   <button type="button" data-search-query="Mėnulio fazės">Mėnulio fazės</button>
+   <button type="button" data-search-query="horoskopai">Horoskopai</button>
+  </nav>
+ </div>
+ <section class="search-page__results panel" aria-labelledby="site-search-page-heading">
+  <div class="search-page__results-head"><div><span class="eyebrow">Svetainės katalogas</span><h2 id="site-search-page-heading">Visi svetainės puslapiai</h2></div><p id="site-search-page-status" role="status" aria-live="polite" aria-atomic="true">Įkeliama paieškos rodyklė…</p></div>
+  <ul id="site-search-page-results" class="search-page__list" tabindex="-1"></ul>
+  <nav id="site-search-pagination" class="search-page__pagination" aria-label="Paieškos rezultatų puslapiai"></nav>
+ </section>
+ <p class="search-page__tip">Paieška supranta lietuviškas rašmenų formas, dažnas žodžių galūnes ir artimas rašybos formas. Asmeniniai kalendoriaus įrašai saugomi tik jūsų naršyklėje ir į bendrą paiešką neįtraukiami.</p>
+</section>
