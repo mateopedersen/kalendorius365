@@ -243,7 +243,7 @@ function setupSchool() {
       for (const [name, max] of [["start",5],["end",5],["subject",50],["room",30],["teacher",30]]) {
         const td = make("td"), input = make("input", undefined, { "aria-label": `${subjects[l.day]}, ${l.number} pamoka: ${fieldNames[name]}`, maxlength: max, value: l[name] || "" });
         if (["start","end"].includes(name)) input.type = "time";
-        input.onchange = () => {
+        const saveField = () => {
           try {
             updateLessonField(l, name, input.value);
             input.setCustomValidity(""); persist();
@@ -251,6 +251,11 @@ function setupSchool() {
             input.setCustomValidity(error.message); input.reportValidity();
           }
         };
+        // Text fields save as the user types, which protects edits if mobile
+        // Safari or another browser delays the blur/change event. Time inputs
+        // save on change so a partially entered time is never committed.
+        if (name === "start" || name === "end") input.onchange = saveField;
+        else { input.oninput = saveField; input.onchange = saveField; }
         td.append(input); tr.append(td);
       }
       const td = make("td"), remove = make("button", "Pašalinti", { type: "button", "aria-label": `${subjects[l.day]} ${l.number} pamoką pašalinti` });

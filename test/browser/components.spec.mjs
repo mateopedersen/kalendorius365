@@ -169,7 +169,9 @@ test('shift planner generates a real cycle, validates bad JSON and exports ICS',
 
 test('school lesson text edits persist after reload and duplication can be undone',async({page})=>{
  await page.goto('/pamoku-tvarkarastis/');await page.locator('#lesson-add').click();
- const subject=page.getByLabel('Pirmadienis, 1 pamoka: dalykas',{exact:true});await subject.fill('Lietuvių kalba');await subject.press('Tab');
+ const subject=page.getByLabel('Pirmadienis, 1 pamoka: dalykas',{exact:true});await subject.fill('Lietuvių kalba');
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('k365:phase568:school:v1')||'{}').lessons?.[0]?.subject)).toBe('Lietuvių kalba');
+ await subject.press('Tab');
  await page.getByLabel('Pirmadienis, 1 pamoka: kabinetas',{exact:true}).fill('205A');await page.getByLabel('Pirmadienis, 1 pamoka: kabinetas',{exact:true}).press('Tab');
  await page.getByLabel('Pirmadienis, 1 pamoka: mokytojo trumpinys',{exact:true}).fill('Ž. Jonaitė');await page.getByLabel('Pirmadienis, 1 pamoka: mokytojo trumpinys',{exact:true}).press('Tab');
  await page.reload();await expect(subject).toHaveValue('Lietuvių kalba');await expect(page.getByLabel('Pirmadienis, 1 pamoka: kabinetas',{exact:true})).toHaveValue('205A');
