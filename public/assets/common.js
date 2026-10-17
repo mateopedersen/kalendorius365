@@ -8,7 +8,7 @@ export function notice(message) {
 
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-  import("./calendar.js?v=e96a0ebcd787").then(({ today, formatDate }) => {
+  import("./calendar.js?v=865f81e8689e").then(({ today, formatDate }) => {
     const refreshUpdateLabels = () => {
       const currentDate = today();
       for (const label of horoscopeUpdates) {
@@ -98,6 +98,18 @@ const headerSearch = document.querySelector(".header-search");
 const siteSearchStatus = document.querySelector("#site-search-status") || document.createElement("div");
 let searchEnginePromise;
 let activeSearchOption = -1;
+function setSearchOpen(open, focus = false) {
+  if (!siteSearch || !siteSearchResults || !headerSearch) return;
+  headerSearch.classList.toggle("search-open", open);
+  if (open && focus) siteSearch.focus({ preventScroll: true });
+  if (!open) {
+    siteSearchResults.setAttribute("hidden", "");
+    siteSearch.setAttribute("aria-expanded", "false");
+    siteSearch.removeAttribute("aria-activedescendant");
+    activeSearchOption = -1;
+    if (document.activeElement === siteSearch) siteSearch.blur();
+  }
+}
 if (siteSearch && siteSearchResults && headerSearch) {
   siteSearch.setAttribute("role", "combobox");
   siteSearch.setAttribute("aria-autocomplete", "list");
@@ -113,18 +125,6 @@ if (siteSearch && siteSearchResults && headerSearch) {
   siteSearchStatus.setAttribute("aria-live", "polite");
   siteSearchStatus.setAttribute("aria-atomic", "true");
   headerSearch.append(siteSearchStatus);
-
-  const setSearchOpen = (open, focus = false) => {
-    headerSearch.classList.toggle("search-open", open);
-    if (open && focus) siteSearch.focus({ preventScroll: true });
-    if (!open) {
-      siteSearchResults.setAttribute("hidden", "");
-      siteSearch.setAttribute("aria-expanded", "false");
-      siteSearch.removeAttribute("aria-activedescendant");
-      activeSearchOption = -1;
-      if (document.activeElement === siteSearch) siteSearch.blur();
-    }
-  };
 
   siteSearch.addEventListener("focus", () => {
     if (matchMedia("(max-width: 760px)").matches)
@@ -143,7 +143,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
 
     siteSearchStatus.textContent = "Ieškoma visuose puslapiuose…";
     try {
-      searchEnginePromise ||= import("./search-engine.js?v=e96a0ebcd787");
+      searchEnginePromise ||= import("./search-engine.js?v=865f81e8689e");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
       if (normalizeSearchText(siteSearch.value.trim()) !== normalizeSearchText(query)) return;
