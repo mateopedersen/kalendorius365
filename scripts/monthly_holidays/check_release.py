@@ -272,7 +272,7 @@ def run():
    check(valid,'reviewed holiday editorial preservation: '+str(evidence))
    if valid:intentional_updates.append(evidence)
    else:changed.append(path)
-   continue
+  continue
   allowed={sha}
   if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
   if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
