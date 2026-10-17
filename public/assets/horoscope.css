@@ -233,7 +233,7 @@
 .ascendant-calculator__header .horoscope-kicker { margin: 1px 0 5px; color: var(--sign-accent); font-size: .69rem; letter-spacing: .11em; }
 .ascendant-calculator__header h2 { margin: 0; color: var(--horoscope-ink); font-size: clamp(1.12rem, 2.2vw, 1.45rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
 .ascendant-calculator__intro { max-width: 760px; margin: 8px 0 0; color: var(--horoscope-muted); font-size: .88rem; line-height: 1.6; }
-.ascendant-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: 12px; }
+.ascendant-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 12px; }
 .ascendant-form__field { position: relative; display: grid; min-width: 0; gap: 7px; }
 .ascendant-form__field label { color: var(--horoscope-ink); font-size: .8rem; font-weight: 800; letter-spacing: -.01em; }
 .ascendant-form__field input { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--horoscope-border) 82%, var(--sign-accent)); border-radius: 12px; outline: none; color: var(--horoscope-ink); background: color-mix(in srgb, var(--horoscope-panel) 96%, var(--sign-accent)); font: inherit; font-size: .86rem; box-shadow: inset 0 1px 2px #17223608, 0 2px 4px #17223606; transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease; color-scheme: light; }
