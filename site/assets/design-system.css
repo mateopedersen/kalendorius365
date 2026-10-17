@@ -6752,6 +6752,30 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
     margin-inline-start: auto;
   }
 }
+@media (max-width: 760px) {
+  .site-header .header-search:not(.search-open) {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+  .site-header #nav-toggle,
+  .site-header .header-search:not(.search-open) input {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel) !important;
+  }
+  .site-header #nav-toggle { flex: 0 0 44px; }
+  .site-header .header-search > .icon {
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
+  }
+}
 @media (max-width: 960px) {
   .homepage-app #category-chips {
     flex-wrap: wrap;
