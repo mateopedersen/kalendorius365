@@ -1,6 +1,6 @@
-import * as cal from "./calendar.js?v=a4a5bd14545c";
-import { Store, download } from "./storage.js?v=a4a5bd14545c";
-import { notice } from "./common.js?v=a4a5bd14545c";
+import * as cal from "./calendar.js?v=14016600565a";
+import { Store, download } from "./storage.js?v=14016600565a";
+import { notice } from "./common.js?v=14016600565a";
 const $ = (s) => document.querySelector(s),
   data = await fetch("/assets/data/calendar.json").then((r) => r.json());
 const escape = (s) =>

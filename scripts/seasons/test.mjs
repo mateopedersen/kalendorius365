@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
-import {SEASON_IDS,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts} from '../../site/assets/seasons-core.js';
+import {SEASON_IDS,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts,seasonGuideHref} from '../../site/assets/seasons-core.js';
 import {Astronomy} from '../../site/assets/lunar/astronomy-engine.js';
 const d=JSON.parse(fs.readFileSync('site/assets/data/seasons.json'));
 const fields=['mar_equinox','jun_solstice','sep_equinox','dec_solstice'];
@@ -19,3 +19,7 @@ for(const y of d.years)for(const c of d.cities)test(`Solar context consistency $
  const a=d.annual[y][c.id];assert.equal(a.curve.length,y===2028?366:365);assert.equal(Math.min(...a.curve),a.min);assert.equal(Math.max(...a.curve),a.max);
  for(const id of SEASON_IDS){const e=d.events.find(e=>e.year===y&&e.id===id),rows=d.contexts[`${id}-${y}`][c.id].days;assert.equal(rows.length,15);assert.equal(rows[7][0],e.date);for(const r of rows){const n=(Date.parse(r[0])-Date.UTC(y,0,1))/86400000;assert.equal(a.curve[n],r[3]);assert.ok(r[1]<r[2]);}}
 });
+
+test('Guide links retain selected year and city',()=>assert.equal(seasonGuideHref('/vasaros-saulegriza/',2029,'klaipeda'),'/vasaros-saulegriza/?metai=2029&miestas=klaipeda'));
+test('Guide link rejects unknown route',()=>assert.throws(()=>seasonGuideHref('/unsafe/',2027,'vilnius')));
+test('Guide link rejects unsupported year and city',()=>{assert.throws(()=>seasonGuideHref('/metu-laikai/',2030,'vilnius'));assert.throws(()=>seasonGuideHref('/metu-laikai/',2027,'<script>'));});

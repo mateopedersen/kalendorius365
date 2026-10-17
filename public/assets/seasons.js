@@ -1,4 +1,4 @@
-import {SEASON_IDS,SEASON_NAMES,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts} from './seasons-core.js?v=a4a5bd14545c';
+import {SEASON_IDS,SEASON_NAMES,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts,seasonGuideHref} from './seasons-core.js?v=14016600565a';
 const app=document.querySelector('.sp3');
 if(app)initialize();
 async function initialize(){
@@ -46,6 +46,10 @@ async function initialize(){
     link.href=y===2027?`/sventes/2027/${month}/`:`/sventes/${y}/`;link.textContent=`${y} m. ${y===2027?'šio mėnesio':'Lietuvos'} šventės`;
    }else{
     SEASON_IDS.forEach(s=>{const e=find(s);text(`[data-card-time="${s}"]`,`${e.label} · ${e.clock}`);const cell=$(`[data-timeline="${s}"]`);cell.replaceChildren(document.createTextNode(e.label),document.createElement('br'));const strong=document.createElement('strong');strong.textContent=e.clock;cell.append(strong,document.createTextNode(` · ${e.offset}`));});
+   }
+   for(const a of all('a')){
+    const href=a.getAttribute('href')||'',route=href.split(/[?#]/)[0];
+    if(['/metu-laikai/',...slugs.map(s=>'/'+s+'/')].includes(route))a.setAttribute('href',seasonGuideHref(route,y,c.id));
    }
    line('annual',annual.curve,mark);all('[data-ics]').forEach(a=>{const slug=a.dataset.ics==='all'?'metu-laikai':slugs[SEASON_IDS.indexOf(a.dataset.ics)];a.href=`/assets/seasons-ics/${y}-${slug}.ics`;});showStep();
   }
