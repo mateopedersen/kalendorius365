@@ -1,0 +1,309 @@
+{
+  "status": "passed",
+  "canonical_pages_total": 172,
+  "phase4_pages": [
+    {
+      "route": "/zodiakas/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        3,
+        3,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/avinas/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/jautis/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/dvyniai/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/vezys/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/liutas/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/mergele/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/svarstykles/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/skorpionas/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/saulys/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/oziaragis/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/vandenis/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    },
+    {
+      "route": "/horoskopai/zuvys/",
+      "status": "passed",
+      "h1": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "canonical": true,
+      "indexable": true,
+      "lithuanian_nfc": true
+    }
+  ],
+  "unique_titles": 14,
+  "unique_descriptions": 14,
+  "svg_security": "passed",
+  "calendar_downloads": 980
+}

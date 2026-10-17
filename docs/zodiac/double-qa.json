@@ -1,0 +1,55 @@
+{
+  "rounds": 2,
+  "cases": 168,
+  "widths": [
+    360,
+    390,
+    768,
+    1280,
+    1440
+  ],
+  "text_scale": 2,
+  "first_round_detected_issues": [
+    {
+      "route": "/horoskopai/mergele/",
+      "cycle": 1,
+      "width": 360,
+      "textScale": 2,
+      "overflow": [
+        {
+          "cl": "",
+          "tag": "SPAN",
+          "text": "Kitas ženklas →"
+        },
+        {
+          "cl": "",
+          "tag": "STRONG",
+          "text": "Svarstyklės"
+        }
+      ]
+    },
+    {
+      "route": "/horoskopai/svarstykles/",
+      "cycle": 1,
+      "width": 360,
+      "textScale": 2,
+      "overflow": [
+        {
+          "cl": "",
+          "tag": "SPAN",
+          "text": "Kitas ženklas →"
+        },
+        {
+          "cl": "",
+          "tag": "STRONG",
+          "text": "Skorpionas"
+        }
+      ]
+    }
+  ],
+  "final_round_cases": 84,
+  "final_round_horizontal_overflow": 0,
+  "intentional_hidden_labels": "On small screens wheel names are visually hidden; full button aria-labels and all twelve visible HTML cards remain. These are not clipped user content.",
+  "browser": "Available in-app browser only; exact CSS widths use same-origin frames. The viewport override did not apply to the native host; no second engine or physical device is claimed.",
+  "additional_final_language_review_cases": 28
+}

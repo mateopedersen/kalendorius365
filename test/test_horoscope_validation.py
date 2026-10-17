@@ -47,11 +47,21 @@ class HoroscopeValidationTests(unittest.TestCase):
         data["source_publication_date"] = data["local_date"]
         VALIDATOR.validate(data, self.signs)
 
-    def test_candidate_promotion_requires_a_native_editor_review(self):
+    def test_legacy_manual_candidate_promotion_requires_a_native_editor_review(self):
         data = copy.deepcopy(self.data)
+        # Exercise the legacy manual-promotion gate independently of the newer
+        # automated publication metadata gate. Production automation keeps both QA checks.
+        data.pop("automation", None)
         data["editorial_review_status"] = "automated-structure-review; native-human-proofread-not-performed"
         with self.assertRaisesRegex(VALIDATOR.ValidationError, "native-language editor"):
             VALIDATOR.validate(data, self.signs, require_review=True)
+
+    def test_automated_publication_does_not_claim_a_human_proofreader(self):
+        data = copy.deepcopy(self.data)
+        VALIDATOR.validate(data, self.signs)
+        data["editorial_review_status"] = "native-human-proofread-approved"
+        with self.assertRaisesRegex(VALIDATOR.ValidationError, "no person proofread"):
+            VALIDATOR.validate(data, self.signs)
 
 
 if __name__ == "__main__":

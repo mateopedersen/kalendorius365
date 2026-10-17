@@ -1,0 +1,56 @@
+{
+  "reviewed": "2026-10-17",
+  "claims": [
+    {
+      "claim": "Tropinis zodiakas: 12 vienodų dalių po 30°, atskaita nuo pavasario lygiadienio taško",
+      "source": "https://www.vle.lt/straipsnis/zodiakas/",
+      "use": "Independent concise paraphrase, no copied illustration"
+    },
+    {
+      "claim": "Ekliptika kerta 13 žvaigždynų; Gyvatnešis nėra papildomas tropinis ženklas",
+      "source": "https://www.vle.lt/straipsnis/zodiakas/",
+      "use": "Astronomy distinguished from the cultural twelve-sign system"
+    },
+    {
+      "claim": "Žvaigždynai yra apibrėžtos dangaus sritys",
+      "source": "https://www.iau.org/IAU/Astronomy-FAQs/Constellations.aspx",
+      "use": "Unequal outer sectors are explicitly schematic, not measured boundaries"
+    },
+    {
+      "claim": "Žemės ašies precesijos ciklas apie 26 000 metų",
+      "source": "https://science.nasa.gov/learn/basics-of-space-flight/chapter2-1/",
+      "use": "Original schematic only; no NASA illustration reused"
+    },
+    {
+      "claim": "Astrologija ir astronomija nėra tas pats; interpretacijos nėra moksliškai patvirtintos prognozės",
+      "source": "https://spaceplace.nasa.gov/constellations/en/",
+      "use": "No scientific personality claims, no relationship scores"
+    },
+    {
+      "claim": "Lithuanian terminology and cultural context",
+      "source": "https://www.vle.lt/straipsnis/astrologija/",
+      "use": "Short independently authored explanations"
+    },
+    {
+      "claim": "Conventional start dates",
+      "source": "site/_data/horoscope_signs.json and site/_data/zodiac_profiles.json",
+      "use": "Existing project convention preserved; not an ephemeris. VLE and other references may choose different cusp dates. Every result is approximate; two-day boundary warning is an editorial rule."
+    },
+    {
+      "claim": "Element grouping",
+      "source": "Existing project convention; cross-reference https://www.astro.com/astrology/in_elements_e.htm",
+      "use": "Cultural convention only. Astro.com direct browser-check challenge prevented full direct page retrieval; no scientific claims or prose copied."
+    },
+    {
+      "claim": "Google technical SEO and useful content guidance",
+      "sources": [
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+        "https://developers.google.com/search/docs/appearance/google-images",
+        "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb"
+      ],
+      "use": "Visible substantive HTML, meaningful image alternatives, truthful breadcrumbs, self-canonical, no rating or FAQ rich-result promise."
+    }
+  ],
+  "artwork": "All 12 figures, four elements, wheels and diagram are original project SVG paths. No stock imagery, NASA art, horoscope prose or third-party figures reused.",
+  "editorial": "AI-assisted original Lithuanian copy, source and rendered review. Independent native-human proofreading not performed."
+}
