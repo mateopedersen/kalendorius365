@@ -8,6 +8,12 @@ export function parse(s) {
   return d;
 }
 export const iso = (d) => d.toISOString().slice(0, 10);
+// A shared date link opens the day without creating or changing any saved data.
+export function dateFromSearch(search) {
+  const params = new URLSearchParams(search), value = params.get('data');
+  if (params.has('prideti') || !value || value < '1900-01-01' || value > '2100-12-31') return null;
+  try { parse(value); return value; } catch { return null; }
+}
 export const addDays = (s, n) => iso(new Date(+parse(s) + Number(n) * DAY));
 export const difference = (a, b) => Math.round((+parse(b) - parse(a)) / DAY);
 export const weekday = (s) => (parse(s).getUTCDay() + 6) % 7;

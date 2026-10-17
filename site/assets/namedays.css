@@ -34,3 +34,12 @@
 
 /* Monthly mobile entry prioritizes the usable calendar and larger seasonal art. */
 @media(max-width:760px){.nd-hero--month{display:grid;grid-template-columns:minmax(0,1fr) 116px;gap:12px;align-items:center}.nd-hero--month>div{display:contents}.nd-hero--month .nd-eyebrow{grid-column:1;grid-row:1}.nd-hero--month h1{grid-column:1;grid-row:2;margin:0;font-size:1.85rem;overflow-wrap:normal}.nd-hero--month .nd-hero__image{grid-column:2;grid-row:1/3;max-width:116px;width:116px;height:116px}.nd-hero--month .nd-hero__lead,.nd-hero--month .nd-hero__links{grid-column:1/-1;margin-top:8px}.nd-app[data-namedays-month] .nd-tools>#pasirinkta-data{order:-1}}
+
+/* Beat the shared input:not(...) rule without changing other site forms. */
+.nd-app[data-namedays-source] :is(input[type="search"],input[type="date"],select){min-height:52px;padding:12px 13px;border:1px solid #819d88;border-radius:10px;font:400 1rem/1.4 Lato,Arial,sans-serif;font-size:max(1rem,16px);background:#fff;color:#20382e}
+.nd-app[data-namedays-source] select{padding-right:2.5em}
+.nd-hero__links{align-items:center}
+.nd-search-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:14px 0 8px}.nd-search-meta .nd-search-status{flex:1;min-width:180px;margin:0}.nd-app .nd-search-reset{min-height:44px;padding:8px 12px;border:1px solid #bccbbb;border-radius:9px;background:#f6f9f2;color:#28543d;font:700 .9rem/1.35 Lato,Arial,sans-serif}
+.nd-calendar-title{margin:24px 0 8px!important;font-size:1.25rem!important}.nd-calendar{margin-top:10px}
+.nd-month-nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px 18px}.nd-month-nav a:nth-child(2){justify-self:center}.nd-month-nav a:last-child{justify-self:end;text-align:right;justify-content:flex-end}
+@media(max-width:600px){.nd-month-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px}.nd-month-nav a:nth-child(2){grid-column:1/-1;grid-row:2}.nd-month-nav a:last-child{grid-column:2;grid-row:1}}

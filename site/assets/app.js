@@ -36,7 +36,7 @@ const [data, editorial] = await Promise.all([
 ]);
 const store = new Store();
 if (store.error) notice(store.error);
-let selected = cal.today(),
+let selected = cal.dateFromSearch(location.search) || cal.today(),
   display = selected,
   mini = selected,
   view = "month",
@@ -50,7 +50,7 @@ let selected = cal.today(),
     true,
   ],
   showHolidays = store.data.preferences.holidays !== false;
-let lastToday = selected,
+let lastToday = cal.today(),
   noteDate = selected,
   noteDirty = false;
 const hs = (y) => cal.holidays(y, data),

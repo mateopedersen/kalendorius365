@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=237ff9217798";
-import * as cal from "./calendar.js?v=237ff9217798";
-import { Store, download } from "./storage.js?v=237ff9217798";
-import { exportICS, importICS } from "./ics.js?v=237ff9217798";
-import { notice } from "./common.js?v=237ff9217798";
-import { renderWeather } from "./weather.js?v=237ff9217798";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=237ff9217798";
+import { icon } from "./icons.js?v=e96a0ebcd787";
+import * as cal from "./calendar.js?v=e96a0ebcd787";
+import { Store, download } from "./storage.js?v=e96a0ebcd787";
+import { exportICS, importICS } from "./ics.js?v=e96a0ebcd787";
+import { notice } from "./common.js?v=e96a0ebcd787";
+import { renderWeather } from "./weather.js?v=e96a0ebcd787";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=e96a0ebcd787";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -36,7 +36,7 @@ const [data, editorial] = await Promise.all([
 ]);
 const store = new Store();
 if (store.error) notice(store.error);
-let selected = cal.today(),
+let selected = cal.dateFromSearch(location.search) || cal.today(),
   display = selected,
   mini = selected,
   view = "month",
@@ -50,7 +50,7 @@ let selected = cal.today(),
     true,
   ],
   showHolidays = store.data.preferences.holidays !== false;
-let lastToday = selected,
+let lastToday = cal.today(),
   noteDate = selected,
   noteDirty = false;
 const hs = (y) => cal.holidays(y, data),
