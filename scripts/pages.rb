@@ -79,7 +79,7 @@ module Pages
      labels=(holiday_links+commemoration_links).map(&:first)
      date_target=holiday_links.first||commemoration_links.first
      spoken_label=([d['date']]+labels).join(': ')
-     date=date_target ? "<a class=\"calendar-holiday-date\" href=\"#{date_target[1]}\" aria-label=\"#{esc(spoken_label)}\" title=\"#{esc(labels.join(' · '))}\"><time datetime=\"#{d['date']}\">#{d['day']}</time></a>" : "<time datetime=\"#{d['date']}\">#{d['day']}</time>"
+     date=date_target ? "<a class=\"calendar-holiday-date\" href=\"#{date_target[1]}\" aria-label=\"#{esc(spoken_label)}\" title=\"#{esc(labels.join(' · '))}\"><time datetime=\"#{d['date']}\">#{d['day']}</time><span class=\"calendar-day-marker\" aria-hidden=\"true\"></span></a>" : "<time datetime=\"#{d['date']}\">#{d['day']}</time>"
      classes=[];classes<<'holiday' if hs.any?;classes<<'commemoration-day' if cs.any?
      html+="<td class=\"#{classes.join(' ')}\">#{date}</td>"
     else
