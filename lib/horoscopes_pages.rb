@@ -128,20 +128,8 @@ module HoroscopesPages
     %(<svg class="zodiac-mark #{extra_class}" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><use href="/assets/visuals/zodiac-signs.svg#zodiac-#{escape(key)}"></use></svg>)
   end
 
-  def notice(daily, date_label)
-    origin = if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'
-      'Lietuviški tekstai originaliai sugeneruoti pagal datą atitinkančius astrologinius skaičiavimus. AstroWay horoskopo tekstas nebuvo paimtas ar verstas. Automatinė patikra apėmė šaltinio duomenis, turinio struktūrą, teksto saugą ir pasikartojimus; gimtakalbis redaktorius jų neperžiūrėjo.'
-    elsif daily['automation'] && daily.dig('automation', 'qa_status') == 'passed'
-      'Tekstai sukurti automatiniu procesu ir įvertinti kalbos, nuoseklumo bei saugaus turinio taisyklėmis; žmogaus lietuvių kalbos redaktorius jų neperžiūrėjo.'
-    else
-      'Tekstai sukurti Kalendorius365.lt, DI naudotas rengiant pirmąjį variantą; nepriklausomas lietuvių kalbos redaktorius jų neperžiūrėjo.'
-    end
-    credit = if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'
-      %(<span class="horoscope-editorial-note__source">Skaičiavimų šaltinis: <a href="https://api.astroway.info/" rel="noopener noreferrer">AstroWay /api</a>. #{escape(daily['provider_footer'])}</span>)
-    else
-      ''
-    end
-    %(<aside class="horoscope-editorial-note" aria-label="Turinio, šaltinio ir datos pastaba"><span class="horoscope-editorial-note__icon" aria-hidden="true">i</span><p><strong>Turinio pastaba.</strong> #{escape(origin)} #{credit} Horoskopai yra bendro pobūdžio, skirti pramogai ir apmąstymui. <span>Turinio data: <time datetime="#{escape(daily['local_date'])}">#{escape(date_label)}</time>; parengta <time datetime="#{escape(daily['prepared_at_vilnius'])}">#{escape(daily['prepared_at_display_lt'])}</time>.</span></p></aside>)
+  def update_status(daily, class_name)
+    %(<p class="#{escape(class_name)}"><time datetime="#{escape(daily['local_date'])}" data-horoscope-updated>Atnaujinta: #{escape(daily['display_date_lt'])}</time></p>)
   end
 
   def forecast_card(sign, forecast, date_label)
@@ -171,7 +159,7 @@ module HoroscopesPages
     %(<article class="horoscope-detail" style="--sign-accent: #{escape(sign['theme'])}">
       <header class="horoscope-sign-hero">
         <div class="horoscope-sign-hero__art">#{mark(sign['key'], 'zodiac-mark--hero')}<span class="horoscope-sign-hero__ring" aria-hidden="true"></span></div>
-        <div class="horoscope-sign-hero__copy"><p class="horoscope-kicker">Dienos horoskopas <span aria-hidden="true">·</span> Vakarų tropinis zodiakas</p><h1>#{escape(sign['genitive'])} dienos horoskopas</h1><p class="horoscope-sign-hero__date"><time datetime="#{date_iso}">#{escape(date_label)}</time></p><p class="horoscope-sign-hero__heading">#{escape(forecast['editorial_heading'])}</p></div>
+        <div class="horoscope-sign-hero__copy"><p class="horoscope-kicker">Dienos horoskopas <span aria-hidden="true">·</span> Vakarų tropinis zodiakas</p><h1>#{escape(sign['genitive'])} dienos horoskopas</h1>#{update_status(daily, 'horoscope-sign-hero__date')}<p class="horoscope-sign-hero__heading">#{escape(forecast['editorial_heading'])}</p></div>
       </header>
       <div class="horoscope-body-grid">
         <section class="horoscope-lead" aria-labelledby="horoscope-lead-title"><p class="horoscope-kicker">Dienos kryptis</p><h2 id="horoscope-lead-title">#{escape(forecast['lead'])}</h2></section>
@@ -183,7 +171,6 @@ module HoroscopesPages
       </div>
       <section class="horoscope-profile" aria-labelledby="horoscope-profile-title"><div class="horoscope-profile__symbol">#{mark(sign['key'])}</div><div><p class="horoscope-kicker">Ženklo profilis</p><h2 id="horoscope-profile-title">#{escape(sign['name'])}</h2><p>#{escape(sign['element'])} · orientacinis Vakarų tropinio zodiako laikotarpis: <strong>#{escape(sign['range'])}</strong>. Gimimo datos ribos skirtinguose šaltiniuose ar konkrečiais metais gali šiek tiek skirtis.</p></div></section>
       #{ascendant_calculator(sign)}
-      #{notice(daily, date_label)}
       <nav class="horoscope-related" aria-label="Susiję kalendoriaus puslapiai"><a href="/2027/">2027 m. kalendorius</a><a href="/menulio-fazes/">Mėnulio fazės</a><a href="/saule/">Saulėtekis ir saulėlydis</a><a href="/horoskopai/">Visi dienos horoskopai</a></nav>
       <section class="horoscope-sign-selector" aria-labelledby="horoscope-sign-selector-title"><div class="horoscope-section-heading"><div><p class="horoscope-kicker">Dvylika ženklų</p><h2 id="horoscope-sign-selector-title">Kiti dienos horoskopai</h2></div><time datetime="#{date_iso}">#{escape(date_label)}</time></div><div class="horoscope-sign-links">#{@signs.map { |item| sign_link(item, daily, item['key'] == sign['key']) }.join}</div></section>
       <p class="horoscope-disclaimer">Horoskopas yra bendro pobūdžio pramoginis tekstas ir savirefleksijos pasiūlymas. Jis nėra mokslinė prognozė, asmeninė konsultacija ar patarimas priimant sveikatos, teisės, finansų ar kitus svarbius sprendimus.</p>
@@ -205,11 +192,9 @@ module HoroscopesPages
     month_title = "#{date.year} m. #{MONTHS[date.month - 1]} #{date.day} d."
     hub_description = "Dienos horoskopai #{month_title}: 12 Vakarų zodiako ženklų apžvalgos, santykių, veiklos ir apmąstymo skiltys. Bendro pobūdžio tekstai pramogai."
     cards = @signs.map { |sign| forecast_card(sign, forecasts.fetch(sign.fetch('key')), date_label) }.join
-    hub = %(<div class="horoscope-hub"><section class="horoscope-hub-hero"><div class="horoscope-hub-hero__copy"><p class="horoscope-kicker">Dienos horoskopai <span aria-hidden="true">/</span> 12 Vakarų zodiako ženklų</p><h1>Horoskopai</h1><p class="horoscope-hub-hero__intro">Perskaitykite bendro pobūdžio dienos įžvalgas kiekvienam ženklui. Rinkinyje atskirtos santykių, veiklos ir asmeninio apmąstymo temos, o kiekvieno puslapio data pateikiama Lietuvos laiku.</p><p class="horoscope-hub-hero__date"><span>Tekstų data</span><time datetime="#{escape(daily['local_date'])}">#{escape(date_label)}</time></p></div><div class="horoscope-hub-hero__art"><img src="/assets/visuals/zodiac-wheel.svg" width="180" height="180" alt="" aria-hidden="true" decoding="async"><div><strong>12 ženklų</strong><span>Vienas aiškus dienos skaitymas kiekvienam</span></div></div></section>
-      <div class="horoscope-hub-intro"><p><strong>Kaip skaityti:</strong> pasirinkite Vakarų tropinio zodiako ženklą ir peržiūrėkite tos dienos bendro pobūdžio tekstą. Ženklo datų ribos yra orientacinės; jei gimimo data patenka į ribinę dieną, vien pagal kalendorinę datą tikslaus astrologinio ženklo nustatyti negalima.</p></div>
-      #{notice(daily, date_label)}
+    hub = %(<div class="horoscope-hub"><section class="horoscope-hub-hero"><div class="horoscope-hub-hero__copy"><p class="horoscope-kicker">Dienos horoskopai <span aria-hidden="true">/</span> 12 Vakarų zodiako ženklų</p><h1>Horoskopai</h1><p class="horoscope-hub-hero__intro">Perskaitykite bendro pobūdžio dienos įžvalgas kiekvienam ženklui. Rinkinyje atskirtos santykių, veiklos ir asmeninio apmąstymo temos, o kiekvieno puslapio data pateikiama Lietuvos laiku.</p>#{update_status(daily, 'horoscope-hub-hero__date')}</div><div class="horoscope-hub-hero__art"><img src="/assets/visuals/zodiac-wheel.svg" width="180" height="180" alt="" aria-hidden="true" decoding="async"><div><strong>12 ženklų</strong><span>Vienas aiškus dienos skaitymas kiekvienam</span></div></div></section>
       <section class="horoscope-directory" aria-labelledby="horoscope-directory-title"><div class="horoscope-section-heading"><div><p class="horoscope-kicker">Pasirinkite ženklą</p><h2 id="horoscope-directory-title">Šios dienos horoskopai</h2></div><span class="horoscope-directory__count">12 ženklų</span></div><div class="horoscope-card-grid">#{cards}</div></section>
-      <section class="horoscope-about" aria-labelledby="horoscope-about-title"><p class="horoscope-kicker">Apie šį puslapį</p><h2 id="horoscope-about-title">Dienos tekstai pramogai ir apmąstymui</h2><p>Vakarų tropinio zodiako ženklai šiame puslapyje pateikti kaip kultūrinė astrologijos sistema. Horoskopai nėra mokslu pagrįstos asmeninės prognozės. Tekstuose nepateikiami sveikatos diagnozės, finansiniai nurodymai ar garantuotos baigtys.</p><p>#{if daily['source_provider_id'] == 'astroway-public-calculations-original-lithuanian'; 'Lietuviškas tekstas kuriamas pagal šaltinyje pateiktus datos skaičiavimus ir redakcines taisykles; tiekėjo horoskopo proza nepaimama, neverčiama ir nekaupiama. Tekstas automatiškai patikrinamas, tačiau gimtakalbis lietuvių kalbos redaktorius kiekvienos dienos rinkinio netikrina.'; elsif daily['automation']; 'Originalūs tekstai kuriami automatiniu procesu ir prieš publikavimą tikrinami atskirais automatiniais etapais. Gimtakalbis redaktorius jų neperžiūrėjo.'; else; 'Šis originalus rinkinys parengtas DI pagalba. Naujausi tekstai rodomi su tikrąja rinkinio data; kasdienis atnaujinimas nėra automatizuotas.'; end} Rinkinys rodomas su tikrąja paskelbimo data; pasenęs tekstas nėra žymimas nauju.</p></section>
+      <section class="horoscope-about" aria-labelledby="horoscope-about-title"><p class="horoscope-kicker">Apie šį puslapį</p><h2 id="horoscope-about-title">Dienos tekstai pramogai ir apmąstymui</h2><p>Vakarų tropinio zodiako ženklai šiame puslapyje pateikti kaip kultūrinė astrologijos sistema. Horoskopai nėra mokslu pagrįstos asmeninės prognozės. Tekstuose nepateikiami sveikatos diagnozės, finansiniai nurodymai ar garantuotos baigtys.</p></section>
       <nav class="horoscope-related" aria-label="Kiti kalendoriaus įrankiai"><a href="/sventes/">Lietuvos šventės</a><a href="/menulio-fazes/">Mėnulio fazės</a><a href="/saule/">Saulės laikai</a><a href="/atostogu-planavimas/">Atostogų planavimas</a></nav>
       <p class="horoscope-disclaimer">Horoskopas yra bendro pobūdžio pramoginis tekstas ir savirefleksijos pasiūlymas. Jis nėra mokslinė prognozė, asmeninė konsultacija ar patarimas priimant sveikatos, teisės, finansų ar kitus svarbius sprendimus.</p></div>)
     write_page('horoskopai', "Dienos horoskopai – #{month_title}", hub_description, hub)

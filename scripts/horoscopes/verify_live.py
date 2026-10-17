@@ -34,7 +34,7 @@ class PageAudit(HTMLParser):
         self.in_h1 = False
         self.h1_parts = []
         self.text_parts = []
-        self.has_provider_credit = False
+        self.update_dates: list[str] = []
         self.noindex = False
 
     def handle_starttag(self, tag, attrs):
@@ -48,11 +48,11 @@ class PageAudit(HTMLParser):
             self.noindex = "noindex" in self.robots.casefold()
         if tag == "time" and values.get("datetime"):
             self.times.append(values["datetime"])
+            if "data-horoscope-updated" in values:
+                self.update_dates.append(values["datetime"])
         if tag == "h1":
             self.h1_count += 1
             self.in_h1 = True
-        if tag == "a" and values.get("href", "").startswith("https://api.astroway.info"):
-            self.has_provider_credit = True
 
     def handle_endtag(self, tag):
         if tag == "h1":
@@ -93,8 +93,8 @@ def audit_url(route: str, target_date: str, expected_h1: str, required_text: lis
             errors.append(f"expected one H1, got {audit.h1_count}")
         if normalized("".join(audit.h1_parts)) != normalized(expected_h1):
             errors.append("H1 text mismatch")
-        if not audit.has_provider_credit:
-            errors.append("missing AstroWay calculation source link")
+        if audit.update_dates != [target_date]:
+            errors.append("missing or incorrect compact update label")
         visible_text = normalized(" ".join(audit.text_parts))
         missing_text = [text for text in required_text if normalized(text) not in visible_text]
         if missing_text:
@@ -103,7 +103,7 @@ def audit_url(route: str, target_date: str, expected_h1: str, required_text: lis
             raise ValueError(f"{route}: " + ", ".join(errors))
         return {"url": expected, "http_status": response.status, "canonical": audit.canonical,
                 "lang": audit.lang, "indexable": True, "publication_date": target_date,
-                "single_h1": True, "h1": normalized(expected_h1), "provider_credit": True,
+                "single_h1": True, "h1": normalized(expected_h1), "compact_update_label": True,
                 "content_fields_checked": len(required_text), "complete_content": True}
 
 
@@ -132,12 +132,12 @@ def expected_page_content() -> dict[str, tuple[str, list[str]]]:
                  + key + "/"] = (
             f"{sign['genitive']} dienos horoskopas",
             [forecast[field] for field in ("editorial_heading", "lead", "overview", "relationships", "work", "reflection", "tip")]
-            + [sign["name"], daily["provider_footer"]],
+            + [sign["name"]],
         )
     expected["/horoskopai/"] = (
         "Horoskopai",
-        [daily["provider_footer"]] + [forecasts[sign["key"]][field]
-                                      for sign in signs for field in ("editorial_heading", "lead")]
+        [forecasts[sign["key"]][field]
+         for sign in signs for field in ("editorial_heading", "lead")]
         + [sign_by_key[sign["key"]]["name"] for sign in signs],
     )
     return expected

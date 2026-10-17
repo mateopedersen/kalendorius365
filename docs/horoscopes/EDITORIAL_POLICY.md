@@ -5,7 +5,7 @@
 1. Each publication contains one complete set for all twelve Western tropical zodiac signs for the same Lithuanian date.
 2. AstroWay is used only for date-bound calculation fields (date, transits, aspects and events). Provider horoscope prose is not requested, copied, translated or retained.
 3. A local deterministic rule set creates the Lithuanian copy. The Sun's house selects the main theme; the Moon's house adds a variable focus; the closest calculated aspect supplies symbolic context. This is not a scientifically supported prediction of events.
-4. Content is generated automatically and is not proofread daily by a native Lithuanian editor. Every page discloses this. The content is for entertainment and reflection; it does not provide health, legal, investment or financial advice, or promise outcomes.
+4. Content is generated automatically and is not proofread daily by a native Lithuanian editor. The dataset records this status; public pages show a compact, date-correct update label. The content is for entertainment and reflection; it does not provide health, legal, investment or financial advice, or promise outcomes.
 
 ## Two independent publication gates
 

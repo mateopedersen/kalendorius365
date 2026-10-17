@@ -11,6 +11,6 @@
 
 ## Provenance shown to visitors
 
-Each page displays its actual content date, that automated checks ran, that a native Lithuanian editor did not proofread the text, a link to AstroWay, and the provider's returned `_footer` attribution escaped as text. The pages describe astrology as entertainment and reflection, not as a scientific prediction.
+Each page displays one compact update label. It reads “Šiandien atnaujinta” only when the content date matches the current Europe/Vilnius date; older sets keep their actual date. Provider provenance, returned footer, and automated review details remain in the internal dataset and validation records. The pages describe astrology as entertainment and reflection, not as a scientific prediction.
 
 The current site states that it does not display ads. Before adding AdSense or other paid advertising, recheck that the provider's then-current plan permits this commercial use.

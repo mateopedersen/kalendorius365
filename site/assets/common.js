@@ -5,6 +5,26 @@ export function notice(message) {
   clearTimeout(el.timer);
   el.timer = setTimeout(() => (el.hidden = true), 10000);
 }
+
+const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
+if (horoscopeUpdates.length) {
+  import("./calendar.js").then(({ today, formatDate }) => {
+    const refreshUpdateLabels = () => {
+      const currentDate = today();
+      for (const label of horoscopeUpdates) {
+        label.textContent = label.dateTime === currentDate
+          ? "Šiandien atnaujinta"
+          : `Atnaujinta: ${formatDate(label.dateTime)}`;
+      }
+    };
+    refreshUpdateLabels();
+    setInterval(refreshUpdateLabels, 60_000);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refreshUpdateLabels();
+    });
+  });
+}
+
 // Fetch an internal page only after a clear navigation intent. This keeps
 // idle/mobile connections free while making the next click reuse the response.
 const prefetchedPages = new Set();

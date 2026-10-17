@@ -9,7 +9,7 @@ Reviewed 2026-10-16.
 - Service terms: https://api.astroway.info/en/terms/
 - Requests contain a sign, explicit Lithuanian `YYYY-MM-DD` date, `lang=en`, and only `sign,date,transits,aspects,events` fields.
 - Permission to republish or translate the provider's horoscope prose was not clearly established, so the system never requests, uses, translates or archives that prose.
-- The permitted fallback is selected: the local `editorial_lt.py` rules create original Lithuanian text from date-specific calculations. Helsinki-NLP and other translation models are not used. AstroWay's returned `_footer` is retained, and each page links to the calculation source.
+- The permitted fallback is selected: the local `editorial_lt.py` rules create original Lithuanian text from date-specific calculations. Helsinki-NLP and other translation models are not used. AstroWay's returned `_footer` and calculation provenance are retained in the internal dataset and QA records; public pages show only the compact update status.
 - A real 2026-10-16 live API run validated all twelve signs and dates with the requested calculation-only fields. Sanitized evidence is stored in `validation/horoscope-source-qa.json`.
 
 ## Rights and usage limits
