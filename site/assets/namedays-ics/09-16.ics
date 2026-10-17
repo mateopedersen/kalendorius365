@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-16@kalendorius365.lt
+DTSTAMP:20261017T150737Z
+DTSTART;VALUE=DATE:20270916
+DTEND;VALUE=DATE:20270917
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Edita\, Eufemija\, Jogintė\, Kamilė\, Kipras\, Kiprijonas\, 
+ Kornelijus\, Liudmila\, Rimgaudas. Lietuviškos Vikipedijos bendraautoria
+ i\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https:/
+ /creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/R
+ ugs%C4%97jo_16\nhttps://lt.wikipedia.org/w/index.php?oldid=7925417#Vardad
+ ieniai
+END:VEVENT
+END:VCALENDAR

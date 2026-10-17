@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-31@kalendorius365.lt
+DTSTAMP:20261017T150250Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Budvilė\, Liudvika\, Luizė\, Marcelė\, Skirmantas\, Skirman
+ tė\, Astra\, Astrida\, Budvyda\, Budvydas\, Budvydė\, Budvilas\, Judra\
+ , Judrė\, Liuda\, Luiza\, Skirma\, Skirmis. Lietuviškos Vikipedijos ben
+ draautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.
+ 0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.
+ org/wiki/Sausio_31\nhttps://lt.wikipedia.org/w/index.php?oldid=7859608#Va
+ rdadieniai
+END:VEVENT
+END:VCALENDAR

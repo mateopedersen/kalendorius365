@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-18@kalendorius365.lt
+DTSTAMP:20261017T150659Z
+DTSTART;VALUE=DATE:20270818
+DTEND;VALUE=DATE:20270819
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Elena\, Gendvilė\, Ilona\, Mantautas. Lietuviškos Vikipedijo
+ s bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-
+ SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikip
+ edia.org/wiki/Rugpj%C5%AB%C4%8Dio_18\nhttps://lt.wikipedia.org/w/index.ph
+ p?oldid=7905899#Vardadieniai
+END:VEVENT
+END:VCALENDAR

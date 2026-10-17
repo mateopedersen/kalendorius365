@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-05@kalendorius365.lt
+DTSTAMP:20261017T150527Z
+DTSTART;VALUE=DATE:20270605
+DTEND;VALUE=DATE:20270606
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bonfacas\, Kantautas\, Kantvydė\, Marcė\, Vinfridas\, Elvyra
+ \, Kantalgas\, Kantalgė\, Kantas\, Kantautė\, Kantenis\, Kantė\, Namka
+ ntas\, Namkantė\, Namkinta\, Namkintas\, Namkintė. Lietuviškos Vikiped
+ ijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC 
+ BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wi
+ kipedia.org/wiki/Bir%C5%BEelio_5\nhttps://lt.wikipedia.org/w/index.php?ol
+ did=7933792#Vardadieniai
+END:VEVENT
+END:VCALENDAR

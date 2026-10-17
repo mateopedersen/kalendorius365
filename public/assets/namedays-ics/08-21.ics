@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-21@kalendorius365.lt
+DTSTAMP:20261017T150703Z
+DTSTART;VALUE=DATE:20270821
+DTEND;VALUE=DATE:20270822
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gaudvydas\, Joana\, Kazimiera\, Linda\, Medeinė\, Pijus. Liet
+ uviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susiste
+ mino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0
+ /\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_21\nhttps://lt.wikip
+ edia.org/w/index.php?oldid=7909074#Vardadieniai
+END:VEVENT
+END:VCALENDAR

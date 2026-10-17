@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-12@kalendorius365.lt
+DTSTAMP:20261017T150851Z
+DTSTART;VALUE=DATE:20271112
+DTEND;VALUE=DATE:20271113
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Akvilė\, Ašmantas\, Juozapotas\, Kristina\, Kristinas\, Rena
+ ta\, Teodoras. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_12\nht
+ tps://lt.wikipedia.org/w/index.php?oldid=7892100#Vardadieniai
+END:VEVENT
+END:VCALENDAR

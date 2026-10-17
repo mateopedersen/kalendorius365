@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-28@kalendorius365.lt
+DTSTAMP:20261017T150911Z
+DTSTART;VALUE=DATE:20271128
+DTEND;VALUE=DATE:20271129
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Egmontas\, Eidenė\, Eidenis\, Gintenė\, Gintenis\, Gintilas\
+ , Gintilė\, Jokūbas\, Rimgauda\, Rimgaudas\, Rimgaudė\, Rufas\, Stepon
+ as\, Vakarė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_28\nht
+ tps://lt.wikipedia.org/w/index.php?oldid=7896725#Vardadieniai
+END:VEVENT
+END:VCALENDAR

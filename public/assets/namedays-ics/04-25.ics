@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-25@kalendorius365.lt
+DTSTAMP:20261017T150436Z
+DTSTART;VALUE=DATE:20270425
+DTEND;VALUE=DATE:20270426
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Morkus\, Tolmantas\, Žadmantas\, Žavinta\, Arėjus\, Žadman
+ tė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė i
+ r susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/
+ by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_25\nhttps://lt.w
+ ikipedia.org/w/index.php?oldid=7823629#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-20@kalendorius365.lt
+DTSTAMP:20261017T150351Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270321
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Filomenas\, Irma\, Irmantas\, Irmgarda\, Tautvilė\, Žygimant
+ as\, Irmantė\, Irmina\, Joakimas. Lietuviškos Vikipedijos bendraautoria
+ i\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https:/
+ /creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/K
+ ovo_20\nhttps://lt.wikipedia.org/w/index.php?oldid=7934534#Vardadieniai
+END:VEVENT
+END:VCALENDAR

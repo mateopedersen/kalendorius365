@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-09@kalendorius365.lt
+DTSTAMP:20261017T150416Z
+DTSTART;VALUE=DATE:20270409
+DTEND;VALUE=DATE:20270410
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aurimas\, Dalia\, Gitana\, Gitanas\, Kleopas\, Maja\, Milena\,
+  Paladijus\, Dalė\, Dalius. Lietuviškos Vikipedijos bendraautoriai\; Ka
+ lendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creat
+ ivecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%
+ C5%BEio_9\nhttps://lt.wikipedia.org/w/index.php?oldid=7825620#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

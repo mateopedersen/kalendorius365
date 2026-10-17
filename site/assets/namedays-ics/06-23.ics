@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-23@kalendorius365.lt
+DTSTAMP:20261017T150550Z
+DTSTART;VALUE=DATE:20270623
+DTEND;VALUE=DATE:20270624
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Agripina\, Arvydas\, Ligita\, Ligitas\, Rūtilė\, Vaida\, Vai
+ das\, Vanda\, Zenonas\, Arvyda\, Arvydė\, Arvys\, Vaidauga\, Vaidaugas\,
+  Vaidenė\, Vaidenis\, Vandalinas\, Vandalius\, Žydrius. Lietuviškos Vi
+ kipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus
+ . CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://
+ lt.wikipedia.org/wiki/Bir%C5%BEelio_23\nhttps://lt.wikipedia.org/w/index.
+ php?oldid=7946237#Vardadieniai
+END:VEVENT
+END:VCALENDAR

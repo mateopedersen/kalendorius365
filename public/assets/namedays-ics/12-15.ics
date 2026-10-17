@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-15@kalendorius365.lt
+DTSTAMP:20261017T150932Z
+DTSTART;VALUE=DATE:20271215
+DTEND;VALUE=DATE:20271216
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Celsas\, Čiovyda\, Čiovydas\, Gaudas\, Gaudencija\, Gaudenis
+ \, Gaudenė\, Gaudė\, Justas\, Kristijonas\, Kristijona\, Libertas\, Lib
+ artė\, Lygauda\, Lygaudas. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5
+ %BEio_15\nhttps://lt.wikipedia.org/w/index.php?oldid=7858399#Vardadieniai
+END:VEVENT
+END:VCALENDAR

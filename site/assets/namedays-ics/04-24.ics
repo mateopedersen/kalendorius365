@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-24@kalendorius365.lt
+DTSTAMP:20261017T150435Z
+DTSTART;VALUE=DATE:20270424
+DTEND;VALUE=DATE:20270425
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Ervina\, Fidelis\, Gražvyda\, Kantrimas\, Viltrūda. Lietuvi
+ škos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemin
+ o vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\n
+ https://lt.wikipedia.org/wiki/Baland%C5%BEio_24\nhttps://lt.wikipedia.org
+ /w/index.php?oldid=7913835#Vardadieniai
+END:VEVENT
+END:VCALENDAR

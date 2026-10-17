@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-05@kalendorius365.lt
+DTSTAMP:20261017T150642Z
+DTSTART;VALUE=DATE:20270805
+DTEND;VALUE=DATE:20270806
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Felicismas\, Mintarė\, Nona\, Osvaldas\, Paris\, Rimtas\, Vil
+ ija. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė i
+ r susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/
+ by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_5\nhttps://
+ lt.wikipedia.org/w/index.php?oldid=7929465#Vardadieniai
+END:VEVENT
+END:VCALENDAR

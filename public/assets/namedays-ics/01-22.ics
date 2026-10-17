@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-22@kalendorius365.lt
+DTSTAMP:20261017T150238Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anastazas\, Aušrius\, Džiugas\, Gaudentas\, Skaistė\, Vinca
+ s\, Vincentas\, Anastazija\, Asta\, Astijus\, Audrys\, Audrius\, Aušrys\
+ , Nastas\, Nastazija\, Nastė\, Nastys\, Vincenta\, Vincė\, Vincentina. 
+ Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir sus
+ istemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa
+ /4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_22\nhttps://lt.wikipedia.org/
+ w/index.php?oldid=7859604#Vardadieniai
+END:VEVENT
+END:VCALENDAR

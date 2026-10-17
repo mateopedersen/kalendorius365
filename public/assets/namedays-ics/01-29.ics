@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-29@kalendorius365.lt
+DTSTAMP:20261017T150247Z
+DTSTART;VALUE=DATE:20270129
+DTEND;VALUE=DATE:20270130
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aivaras\, Girkantas\, Valerijus\, Žibutė\, Gilda\, Gildas\, 
+ Ginkantas\, Gintas\, Nygailas\, Nygailė\, Nykanta\, Nykantas\, Valerijon
+ as\, Žiba\, Žibuolė. Lietuviškos Vikipedijos bendraautoriai\; Kalendo
+ rius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativeco
+ mmons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_29\nh
+ ttps://lt.wikipedia.org/w/index.php?oldid=7884864#Vardadieniai
+END:VEVENT
+END:VCALENDAR

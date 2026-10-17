@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-06@kalendorius365.lt
+DTSTAMP:20261017T150217Z
+DTSTART;VALUE=DATE:20270106
+DTEND;VALUE=DATE:20270107
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Arūnas\, Arūnė\, Baltazaras\, Kasparas\, Melchioras\, Merke
+ lis\, Aras. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išs
+ kyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/li
+ censes/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_6\nhttps://lt.wik
+ ipedia.org/w/index.php?oldid=7757389#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-10@kalendorius365.lt
+DTSTAMP:20261017T150339Z
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270311
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Butgailė\, Emilis\, Geraldas\, Naubartas\, Silvija\, Medūnė
+ \, Mintautas\, Mintautė\, Naumantas. Lietuviškos Vikipedijos bendraauto
+ riai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: http
+ s://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wik
+ i/Kovo_10\nhttps://lt.wikipedia.org/w/index.php?oldid=7897245#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-08@kalendorius365.lt
+DTSTAMP:20261017T150727Z
+DTSTART;VALUE=DATE:20270908
+DTEND;VALUE=DATE:20270909
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Adrijonas\, Daumantė\, Klementina\, Liaugaudas\, Marija\, Adr
+ iana\, Marė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugs%C4%97jo_8\nhttps
+ ://lt.wikipedia.org/w/index.php?oldid=7942661#Vardadieniai
+END:VEVENT
+END:VCALENDAR

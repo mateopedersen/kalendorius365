@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-22@kalendorius365.lt
+DTSTAMP:20261017T150432Z
+DTSTART;VALUE=DATE:20270422
+DTEND;VALUE=DATE:20270423
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Kajus\, Leonas\, Leonidas\, Norvaidė\, Vadimas\, Visgailas\, 
+ Visgaudė\, Visgirdas. Lietuviškos Vikipedijos bendraautoriai\; Kalendor
+ ius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecom
+ mons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEi
+ o_22\nhttps://lt.wikipedia.org/w/index.php?oldid=7917918#Vardadieniai
+END:VEVENT
+END:VCALENDAR

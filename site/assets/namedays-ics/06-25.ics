@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-25@kalendorius365.lt
+DTSTAMP:20261017T150552Z
+DTSTART;VALUE=DATE:20270625
+DTEND;VALUE=DATE:20270626
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Baniutė\, Epika\, Geistautas\, Geistautė\, Geisvyda\, Geisvy
+ das\, Vilhelmas\, Vilius\, Geismantas\, Geismantė\, Geistara\, Geistaras
+ \, Geisvina\, Geisvinas\, Girvydas\, Prosperas\, Vilhelma\, Vilhelmina. L
+ ietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susi
+ stemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/
+ 4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%BEelio_25\nhttps://lt.wikipedi
+ a.org/w/index.php?oldid=7868013#Vardadieniai
+END:VEVENT
+END:VCALENDAR

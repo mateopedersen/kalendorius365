@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-10@kalendorius365.lt
+DTSTAMP:20261017T150417Z
+DTSTART;VALUE=DATE:20270410
+DTEND;VALUE=DATE:20270411
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Agna\, Apolonijus\, Margarita\, Mintautas\, Apolonija\, Hilda\
+ , Polė\, Polina. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius36
+ 5 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.
+ org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_10\
+ nhttps://lt.wikipedia.org/w/index.php?oldid=7825091#Vardadieniai
+END:VEVENT
+END:VCALENDAR

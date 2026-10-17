@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-26@kalendorius365.lt
+DTSTAMP:20261017T150946Z
+DTSTART;VALUE=DATE:20271226
+DTEND;VALUE=DATE:20271227
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gaudilas\, Gaudilė\, Ginda\, Gindas\, Gindvilas\, Gindvilė\,
+  Relinda\, Stepa\, Stepanija\, Stepas\, Steponas\, Steponė. Lietuviškos
+  Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino var
+ dus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps
+ ://lt.wikipedia.org/wiki/Gruod%C5%BEio_26\nhttps://lt.wikipedia.org/w/ind
+ ex.php?oldid=7858403#Vardadieniai
+END:VEVENT
+END:VCALENDAR

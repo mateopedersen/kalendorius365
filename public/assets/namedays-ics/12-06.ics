@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-06@kalendorius365.lt
+DTSTAMP:20261017T150921Z
+DTSTART;VALUE=DATE:20271206
+DTEND;VALUE=DATE:20271207
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Bilmantas\, Bilmantė\, Bilminas\, Bilminė\, Bylenis\, Koleta
+ \, Mikalojus\, Mikas\, Mikita\, Norvydė. Lietuviškos Vikipedijos bendra
+ autoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: 
+ https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org
+ /wiki/Gruod%C5%BEio_6\nhttps://lt.wikipedia.org/w/index.php?oldid=7858406
+ #Vardadieniai
+END:VEVENT
+END:VCALENDAR

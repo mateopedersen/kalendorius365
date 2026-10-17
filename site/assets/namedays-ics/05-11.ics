@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-11@kalendorius365.lt
+DTSTAMP:20261017T150456Z
+DTSTART;VALUE=DATE:20270511
+DTEND;VALUE=DATE:20270512
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Mamertas\, Miglė\, Pilypas\, Skirgaudas\, Vaitnoras\, Vaitnor
+ ė\, Dileta. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 iš
+ skyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/l
+ icenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_11\nh
+ ttps://lt.wikipedia.org/w/index.php?oldid=7946263#Vardadieniai
+END:VEVENT
+END:VCALENDAR

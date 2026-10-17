@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-04@kalendorius365.lt
+DTSTAMP:20261017T150919Z
+DTSTART;VALUE=DATE:20271204
+DTEND;VALUE=DATE:20271205
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Airė\, Barbė\, Barbora\, Barė\, Bušė\, Liugailė\, Liutau
+ rė\, Liutauras\, Nadruvė\, Nadruvis\, Osmundas\, Vainota\, Vainotas\, V
+ ainotė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyr
+ ė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licen
+ ses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5%BEio_4\nhttps://lt
+ .wikipedia.org/w/index.php?oldid=7858405#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-13@kalendorius365.lt
+DTSTAMP:20261017T150343Z
+DTSTART;VALUE=DATE:20270313
+DTEND;VALUE=DATE:20270314
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Kristina\, Liutauras\, Paulina\, Teodora\, Vaidilė\, Liutaur
+ ė\, Varbutas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Kovo_13\nhttps://lt.w
+ ikipedia.org/w/index.php?oldid=7938067#Vardadieniai
+END:VEVENT
+END:VCALENDAR

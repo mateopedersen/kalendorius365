@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-13@kalendorius365.lt
+DTSTAMP:20261017T150421Z
+DTSTART;VALUE=DATE:20270413
+DTEND;VALUE=DATE:20270414
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Algaudė\, Ida\, Martynas\, Mingaudas\, Idalija\, Liaugaudas\,
+  Liaugintė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 iš
+ skyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/l
+ icenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_13\nhttp
+ s://lt.wikipedia.org/w/index.php?oldid=7938064#Vardadieniai
+END:VEVENT
+END:VCALENDAR

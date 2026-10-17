@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-07@kalendorius365.lt
+DTSTAMP:20261017T150844Z
+DTSTART;VALUE=DATE:20271107
+DTEND;VALUE=DATE:20271108
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Ernestas\, Evelina\, Gotautė\, Karina\, Sirtautas. Lietuvišk
+ os Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino v
+ ardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhtt
+ ps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_7\nhttps://lt.wikipedia.org/w/i
+ ndex.php?oldid=7858871#Vardadieniai
+END:VEVENT
+END:VCALENDAR

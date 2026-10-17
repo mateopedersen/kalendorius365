@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-27@kalendorius365.lt
+DTSTAMP:20261017T150245Z
+DTSTART;VALUE=DATE:20270127
+DTEND;VALUE=DATE:20270128
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anelė\, Angelė\, Ilona\, Jogundė\, Jogundas\, Natalis\, Ave
+ ntinas\, Jogunda\, Jogvilas\, Jogvilė\, Mainotas\, Mainotė\, Vytenis. L
+ ietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susi
+ stemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/
+ 4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_27\nhttps://lt.wikipedia.org/w
+ /index.php?oldid=7747757#Vardadieniai
+END:VEVENT
+END:VCALENDAR

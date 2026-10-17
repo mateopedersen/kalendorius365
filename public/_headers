@@ -45,6 +45,12 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/monthly-holidays.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/namedays-engine.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/namedays.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/namedays.js
+  Cache-Control: public, max-age=31536000, immutable
 /assets/phase-5-6-8-core.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/phase-5-6-8.js
@@ -99,6 +105,10 @@
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 /assets/data/lunar/calendar.json
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/namedays/calendar.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/data/namedays/cc-by-sa-4.0.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 /assets/data/search.json
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 /assets/data/seasons.json
@@ -122,6 +132,9 @@
 /downloads/*
   Cache-Control: public, max-age=86400
 /assets/seasons-ics/*
+  Cache-Control: public, max-age=86400
+  Content-Type: text/calendar; charset=utf-8
+/assets/namedays-ics/*
   Cache-Control: public, max-age=86400
   Content-Type: text/calendar; charset=utf-8
 /assets/holiday-guides-ics/*

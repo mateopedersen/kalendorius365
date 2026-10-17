@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-12@kalendorius365.lt
+DTSTAMP:20261017T150536Z
+DTSTART;VALUE=DATE:20270612
+DTEND;VALUE=DATE:20270613
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anupras\, Dovė\, Kristė\, Kristijonas\, Kristis\, Ramūnas\,
+  Vilma\, Krisčius\, Kristijona\, Kristina\, Kristinas\, Mangirdas\, Ram
+ ūnė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė
+  ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/license
+ s/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%BEelio_12\nhttps://lt.
+ wikipedia.org/w/index.php?oldid=7898060#Vardadieniai
+END:VEVENT
+END:VCALENDAR

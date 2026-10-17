@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-09-22@kalendorius365.lt
+DTSTAMP:20261017T150744Z
+DTSTART;VALUE=DATE:20270922
+DTEND;VALUE=DATE:20270923
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Mauricijus\, Tarvinas\, Tomas\, Virmantė\, Eigantė\, Tamoši
+ us. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir
+  susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/b
+ y-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugs%C4%97jo_22\nhttps://lt.wiki
+ pedia.org/w/index.php?oldid=7931176#Vardadieniai
+END:VEVENT
+END:VCALENDAR

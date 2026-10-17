@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-11@kalendorius365.lt
+DTSTAMP:20261017T150418Z
+DTSTART;VALUE=DATE:20270411
+DTEND;VALUE=DATE:20270412
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Arielė\, Arielis\, Arielius\, Daugailė\, Leonas\, Stanislova
+ s\, Vykintas\, Eigmantas\, Eigminas. Lietuviškos Vikipedijos bendraautor
+ iai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https
+ ://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki
+ /Baland%C5%BEio_11\nhttps://lt.wikipedia.org/w/index.php?oldid=7931228#Va
+ rdadieniai
+END:VEVENT
+END:VCALENDAR

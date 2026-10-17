@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-16@kalendorius365.lt
+DTSTAMP:20261017T150816Z
+DTSTART;VALUE=DATE:20271016
+DTEND;VALUE=DATE:20271017
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Ambraziejus\, Aurelija\, Dovaidas\, Dovaidė\, Dovaldė\, Gali
+ us\, Greta\, Gretė\, Gutautas\, Jadvyga\, Margarita. Lietuviškos Vikipe
+ dijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC
+  BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.w
+ ikipedia.org/wiki/Spalio_16\nhttps://lt.wikipedia.org/w/index.php?oldid=7
+ 945877#Vardadieniai
+END:VEVENT
+END:VCALENDAR

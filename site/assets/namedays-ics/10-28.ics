@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-28@kalendorius365.lt
+DTSTAMP:20261017T150831Z
+DTSTART;VALUE=DATE:20271028
+DTEND;VALUE=DATE:20271029
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Judas\, Tadas\, Simonas\, Almantė\, Gaudrimas\, Simas. Lietuv
+ iškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemi
+ no vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\
+ nhttps://lt.wikipedia.org/wiki/Spalio_28\nhttps://lt.wikipedia.org/w/inde
+ x.php?oldid=7859685#Vardadieniai
+END:VEVENT
+END:VCALENDAR

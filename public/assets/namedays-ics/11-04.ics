@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-04@kalendorius365.lt
+DTSTAMP:20261017T150840Z
+DTSTART;VALUE=DATE:20271104
+DTEND;VALUE=DATE:20271105
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Agrikola\, Eibartas\, Karolis\, Modesta\, Vaidmina\, Vitalijus
+ \, Vitalis. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išs
+ kyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/li
+ censes/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_4\nhttps:
+ //lt.wikipedia.org/w/index.php?oldid=7934329#Vardadieniai
+END:VEVENT
+END:VCALENDAR

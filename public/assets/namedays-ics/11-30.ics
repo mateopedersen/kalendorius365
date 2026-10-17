@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-30@kalendorius365.lt
+DTSTAMP:20261017T150914Z
+DTSTART;VALUE=DATE:20271130
+DTEND;VALUE=DATE:20271201
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Andrė\, Andrėja\, Andriejus\, Andrius\, Andrys\, Dovainė\, 
+ Saugarda\, Saugardas\, Saugardė\, Saugina\, Sauginas\, Sauginė\, Saugir
+ das\, Saugirdė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365
+  išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.o
+ rg/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_30\n
+ https://lt.wikipedia.org/w/index.php?oldid=7917481#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-29@kalendorius365.lt
+DTSTAMP:20261017T150518Z
+DTSTART;VALUE=DATE:20270529
+DTEND;VALUE=DATE:20270530
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Algedas\, Erdvilė\, Magdalena\, Magdė\, Teodozija. Lietuviš
+ kos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino 
+ vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nht
+ tps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_29\nhttps://lt.wikipedia.or
+ g/w/index.php?oldid=7904895#Vardadieniai
+END:VEVENT
+END:VCALENDAR

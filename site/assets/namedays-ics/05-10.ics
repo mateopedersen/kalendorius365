@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-10@kalendorius365.lt
+DTSTAMP:20261017T150455Z
+DTSTART;VALUE=DATE:20270510
+DTEND;VALUE=DATE:20270511
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Antoninas\, Putinas\, Sangailė\, Viktorina. Lietuviškos Viki
+ pedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. 
+ CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt
+ .wikipedia.org/wiki/Gegu%C5%BE%C4%97s_10\nhttps://lt.wikipedia.org/w/inde
+ x.php?oldid=7932453#Vardadieniai
+END:VEVENT
+END:VCALENDAR

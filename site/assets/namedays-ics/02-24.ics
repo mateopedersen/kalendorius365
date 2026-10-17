@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-24@kalendorius365.lt
+DTSTAMP:20261017T150320Z
+DTSTART;VALUE=DATE:20270224
+DTEND;VALUE=DATE:20270225
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Demetrija\, Gedmantas\, Goda\, Matas\, Motiejus\, Livija. Liet
+ uviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susiste
+ mino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0
+ /\nhttps://lt.wikipedia.org/wiki/Vasario_24\nhttps://lt.wikipedia.org/w/i
+ ndex.php?oldid=7946266#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-22@kalendorius365.lt
+DTSTAMP:20261017T150941Z
+DTSTART;VALUE=DATE:20271222
+DTEND;VALUE=DATE:20271223
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dovilė\, Gedvarda\, Gedvardas\, Gedvardė\, Gedvė\, Gedvyda\
+ , Gedvydas\, Ksavera\, Ksaveras\, Rimbertas\, Zenonas. Lietuviškos Vikip
+ edijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. C
+ C BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.
+ wikipedia.org/wiki/Gruod%C5%BEio_22\nhttps://lt.wikipedia.org/w/index.php
+ ?oldid=7903857#Vardadieniai
+END:VEVENT
+END:VCALENDAR

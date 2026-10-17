@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-15@kalendorius365.lt
+DTSTAMP:20261017T150655Z
+DTSTART;VALUE=DATE:20270815
+DTEND;VALUE=DATE:20270816
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Napalys\, Napoleonas\, Rugilė\, Sigita\, Visvilas\, Vydenė\,
+  Visvydas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išsk
+ yrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/lic
+ enses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_15\nh
+ ttps://lt.wikipedia.org/w/index.php?oldid=7904637#Vardadieniai
+END:VEVENT
+END:VCALENDAR

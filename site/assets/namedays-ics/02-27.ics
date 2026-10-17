@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-27@kalendorius365.lt
+DTSTAMP:20261017T150324Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Fortunatas\, Gabrielius\, Ginvilas\, Livija\, Mandravas\, Mand
+ ravė\, Skirmantė\, Gabija\, Gabrielė\, Fortūnata\, Fortunatė\, Leand
+ ras. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė i
+ r susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/
+ by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_27\nhttps://lt.wikipedi
+ a.org/w/index.php?oldid=7765258#Vardadieniai
+END:VEVENT
+END:VCALENDAR

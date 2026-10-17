@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-26@kalendorius365.lt
+DTSTAMP:20261017T150909Z
+DTSTART;VALUE=DATE:20271126
+DTEND;VALUE=DATE:20271127
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dobilas\, Dobilė\, Krizostomas\, Leonardas\, Silvestras\, Vai
+ geta\, Vygantė\, Vygintė. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C
+ 4%8Dio_26\nhttps://lt.wikipedia.org/w/index.php?oldid=7938973#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

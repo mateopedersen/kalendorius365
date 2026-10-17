@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-28@kalendorius365.lt
+DTSTAMP:20261017T150517Z
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270529
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Augustinas\, Jogirdas\, Justas\, Rima. Lietuviškos Vikipedijo
+ s bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-
+ SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikip
+ edia.org/wiki/Gegu%C5%BE%C4%97s_28\nhttps://lt.wikipedia.org/w/index.php?
+ oldid=7907137#Vardadieniai
+END:VEVENT
+END:VCALENDAR

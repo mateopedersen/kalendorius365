@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-17@kalendorius365.lt
+DTSTAMP:20261017T150426Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anicetas\, Dravenis\, Robertas\, Skaidra\, Aniceta\, Heraklis\
+ , Skaidrė\, Skaidrys. Lietuviškos Vikipedijos bendraautoriai\; Kalendor
+ ius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecom
+ mons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEi
+ o_17\nhttps://lt.wikipedia.org/w/index.php?oldid=7927515#Vardadieniai
+END:VEVENT
+END:VCALENDAR

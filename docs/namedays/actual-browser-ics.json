@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "actual_browser_download": "/Users/melihozcan/Downloads/vardadienis-2028-02-29.ics",
+  "summary": "Gustis: vardadienis",
+  "start": "2028-02-29",
+  "exclusive_end": "2028-03-01",
+  "recurrence_years_before_2036": [
+    2028,
+    2032
+  ],
+  "parser": "icalendar + dateutil.rrule",
+  "crlf_and_utf8_folding": "passed"
+}

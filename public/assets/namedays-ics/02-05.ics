@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-05@kalendorius365.lt
+DTSTAMP:20261017T150256Z
+DTSTART;VALUE=DATE:20270205
+DTEND;VALUE=DATE:20270206
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Agata\, Agota\, Birutė\, Gaudvinas\, Aga\, Agatas\, Agatė\, 
+ Birenė\, Birenis\, Birutis\, Birvyda\, Birvydas\, Gaudvilas\, Gaudvilė\
+ , Gaudvina\, Ilona. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius
+ 365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommon
+ s.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_5\nhttps
+ ://lt.wikipedia.org/w/index.php?oldid=7746164#Vardadieniai
+END:VEVENT
+END:VCALENDAR

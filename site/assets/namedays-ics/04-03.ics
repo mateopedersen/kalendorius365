@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-03@kalendorius365.lt
+DTSTAMP:20261017T150408Z
+DTSTART;VALUE=DATE:20270403
+DTEND;VALUE=DATE:20270404
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Irena\, Kristijonas\, Ričardas\, Rimtautė\, Vytenis\, Rikard
+ as\, Vytenė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_3\nhtt
+ ps://lt.wikipedia.org/w/index.php?oldid=7797510#Vardadieniai
+END:VEVENT
+END:VCALENDAR

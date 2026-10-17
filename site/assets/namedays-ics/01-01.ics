@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-01@kalendorius365.lt
+DTSTAMP:20261017T150211Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Arvaidas\, Arvaidė\, Eufrozija\, Eufrozina\, Mečislovas\, Me
+ čys\, Arvaida\, Arvaldas\, Arvaldė\, Arvė\, Mečius. Lietuviškos Viki
+ pedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. 
+ CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt
+ .wikipedia.org/wiki/Sausio_1\nhttps://lt.wikipedia.org/w/index.php?oldid=
+ 7918252#Vardadieniai
+END:VEVENT
+END:VCALENDAR

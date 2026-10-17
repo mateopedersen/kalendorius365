@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-14@kalendorius365.lt
+DTSTAMP:20261017T150931Z
+DTSTART;VALUE=DATE:20271214
+DTEND;VALUE=DATE:20271215
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Alfreda\, Alfredas\, Augeda\, Augedas\, Augenė\, Augenis\, Fr
+ edas\, Kintibutas\, Kintrimas\, Kintrimė\, Kintvilas\, Kintvilė\, Tarva
+ inas\, Tarvainė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius36
+ 5 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.
+ org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5%BEio_14\n
+ https://lt.wikipedia.org/w/index.php?oldid=7756594#Vardadieniai
+END:VEVENT
+END:VCALENDAR

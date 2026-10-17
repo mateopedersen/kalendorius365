@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-22@kalendorius365.lt
+DTSTAMP:20261017T150509Z
+DTSTART;VALUE=DATE:20270522
+DTEND;VALUE=DATE:20270523
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aldona\, Eimantas\, Elena\, Julė\, Julija\, Rita\, Aldas. Lie
+ tuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susist
+ emino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.
+ 0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_22\nhttps://lt.wikipe
+ dia.org/w/index.php?oldid=7843739#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-12@kalendorius365.lt
+DTSTAMP:20261017T150419Z
+DTSTART;VALUE=DATE:20270412
+DTEND;VALUE=DATE:20270413
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Damijonas\, Galmantas\, Julius\, Julijus\, Jūratė\, Zenonas\
+ , Galkantas\, Galkantė. Lietuviškos Vikipedijos bendraautoriai\; Kalend
+ orius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativec
+ ommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%B
+ Eio_12\nhttps://lt.wikipedia.org/w/index.php?oldid=7805035#Vardadieniai
+END:VEVENT
+END:VCALENDAR

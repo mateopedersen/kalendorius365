@@ -12,6 +12,7 @@ const INTENT_GROUPS = [
   ["saule", "saules", "sauletekis", "saulelydis", "sunrise", "sunset", "sun", "solar", "daylight", "sviesa", "gunes"],
   ["menulis", "menulio", "menulio-faze", "faze", "fazes", "jaunatis", "pilnatis", "moon", "lunar", "phases", "ay"],
   ["horoskopas", "horoskopai", "zodiakas", "zodiako", "astrologija", "horoscope", "zodiac", "ascendentas", "ascendenta", "ascendant", "burc", "burclar", "yukselen"],
+  ["vardadienis", "vardadieniai", "vardadienio", "vardadieniu", "varduves", "nameday", "namedays"],
   ["irankis", "irankiai", "skaiciuokle", "skaiciuokles", "planuoklis", "planuokliai", "calculator", "planner", "tool", "tools"],
   ["oras", "orai", "temperatura", "weather", "forecast", "prognoze"],
   ["pamainos", "pamainu", "grafikas", "grafiku", "shift", "shifts", "schedule", "tvarkarastis", "tvarkarascio"],
@@ -172,6 +173,8 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
     }
     if (lunarOverviewIntent && year && doc.item.url === `/menulio-kalendorius/${year}/`) score += 45;
     if (lunarOverviewIntent && calendarIntent && !year && doc.item.url === '/menulio-kalendorius/') score += 40;
+    const nameDayOverview = queryWords.some(word => synonymGroups.get(word)?.includes('nameday')) && queryWords.every(word => synonymGroups.get(word)?.includes('nameday') || ['siandien','rytoj','paieska','vardai','kalendorius'].includes(word));
+    if (nameDayOverview && doc.item.url === '/vardadieniai/') score += 45;
     if (coverage === 1 && queryWords.length > 1) score += 12;
     score *= coverage ** 1.4;
     if (score < 4) continue;

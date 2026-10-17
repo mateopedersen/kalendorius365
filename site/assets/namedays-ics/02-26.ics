@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-26@kalendorius365.lt
+DTSTAMP:20261017T150323Z
+DTSTART;VALUE=DATE:20270226
+DTEND;VALUE=DATE:20270227
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aleksandras\, Alius\, Aurimė\, Izabelė\, Jogintas\, Sandra\,
+  Aleksandra\, Aleksas\, Alė. Lietuviškos Vikipedijos bendraautoriai\; K
+ alendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://crea
+ tivecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasari
+ o_26\nhttps://lt.wikipedia.org/w/index.php?oldid=7890345#Vardadieniai
+END:VEVENT
+END:VCALENDAR

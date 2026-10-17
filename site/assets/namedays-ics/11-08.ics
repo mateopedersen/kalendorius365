@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-08@kalendorius365.lt
+DTSTAMP:20261017T150845Z
+DTSTART;VALUE=DATE:20271108
+DTEND;VALUE=DATE:20271109
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Domantė\, Gotfridas\, Severijonas\, Severinas\, Svirbutas\, V
+ iktorinas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išsk
+ yrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/lic
+ enses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C4%8Dio_8\nhttps:/
+ /lt.wikipedia.org/w/index.php?oldid=7860459#Vardadieniai
+END:VEVENT
+END:VCALENDAR

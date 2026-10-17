@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-07-13@kalendorius365.lt
+DTSTAMP:20261017T150614Z
+DTSTART;VALUE=DATE:20270713
+DTEND;VALUE=DATE:20270714
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Anakletas\, Anys\, Arvilas\, Arvilė\, Eugenijus\, Henrikas\, 
+ Meinardas\, Rida\, Ryda\, Ridas\, Rydas\, Ridija\, Ridijus\, Šarūnas. L
+ ietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susi
+ stemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/
+ 4.0/\nhttps://lt.wikipedia.org/wiki/Liepos_13\nhttps://lt.wikipedia.org/w
+ /index.php?oldid=7877525#Vardadieniai
+END:VEVENT
+END:VCALENDAR

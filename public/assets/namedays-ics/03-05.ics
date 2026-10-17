@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-05@kalendorius365.lt
+DTSTAMP:20261017T150333Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270306
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aurora\, Austra\, Giedrė\, Klemensas\, Liucijus\, Olivija\, V
+ ydotas\, Virgilijus\, Giedra\, Giedrius\, Girmantas. Lietuviškos Vikiped
+ ijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC 
+ BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wi
+ kipedia.org/wiki/Kovo_5\nhttps://lt.wikipedia.org/w/index.php?oldid=77705
+ 30#Vardadieniai
+END:VEVENT
+END:VCALENDAR

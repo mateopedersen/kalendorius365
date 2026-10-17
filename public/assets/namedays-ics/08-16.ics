@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-16@kalendorius365.lt
+DTSTAMP:20261017T150657Z
+DTSTART;VALUE=DATE:20270816
+DTEND;VALUE=DATE:20270817
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Alvita\, Butvydas\, Jokimas\, Rokas\, Steponas. Lietuviškos V
+ ikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardu
+ s. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps:/
+ /lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_16\nhttps://lt.wikipedia.org/w
+ /index.php?oldid=7904859#Vardadieniai
+END:VEVENT
+END:VCALENDAR

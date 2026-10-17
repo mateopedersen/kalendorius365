@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-07@kalendorius365.lt
+DTSTAMP:20261017T150530Z
+DTSTART;VALUE=DATE:20270607
+DTEND;VALUE=DATE:20270608
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Lukrecija\, Radvydė\, Ratautas\, Roberta\, Robertas\, Svajūn
+ as\, Svajūnė\, Lukrecijus. Lietuviškos Vikipedijos bendraautoriai\; Ka
+ lendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creat
+ ivecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Bir%C5%
+ BEelio_7\nhttps://lt.wikipedia.org/w/index.php?oldid=7860441#Vardadieniai
+END:VEVENT
+END:VCALENDAR

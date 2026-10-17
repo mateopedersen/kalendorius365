@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-22@kalendorius365.lt
+DTSTAMP:20261017T150354Z
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270323
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benvenutas\, Gedgaudas\, Gedgaudė\, Kotryna\, Vydūnas. Lietu
+ viškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistem
+ ino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+ \nhttps://lt.wikipedia.org/wiki/Kovo_22\nhttps://lt.wikipedia.org/w/index
+ .php?oldid=7932918#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-26@kalendorius365.lt
+DTSTAMP:20261017T150514Z
+DTSTART;VALUE=DATE:20270526
+DTEND;VALUE=DATE:20270527
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Algimantas\, Eduardas\, Milvydė\, Pilypas\, Vilhelmina. Lietu
+ viškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistem
+ ino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+ \nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_26\nhttps://lt.wikipedi
+ a.org/w/index.php?oldid=7852262#Vardadieniai
+END:VEVENT
+END:VCALENDAR

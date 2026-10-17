@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-07@kalendorius365.lt
+DTSTAMP:20261017T150218Z
+DTSTART;VALUE=DATE:20270107
+DTEND;VALUE=DATE:20270108
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Liucijus\, Raimundas\, Raudvilė\, Rūtenis\, Valentinas\, Jau
+ geda\, Jaugedas\, Jaugėla\, Jaugėlė\, Jaugilė\, Jaugys\, Julius\, Liu
+ cidas\, Liucilė\, Liucina\, Liucius\, Raudvydė. Lietuviškos Vikipedijo
+ s bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-
+ SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikip
+ edia.org/wiki/Sausio_7\nhttps://lt.wikipedia.org/w/index.php?oldid=781711
+ 5#Vardadieniai
+END:VEVENT
+END:VCALENDAR

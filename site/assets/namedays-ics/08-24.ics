@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-24@kalendorius365.lt
+DTSTAMP:20261017T150708Z
+DTSTART;VALUE=DATE:20270824
+DTEND;VALUE=DATE:20270825
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Alicija\, Baltramiejus\, Baltrus\, Michalina\, Mykolė\, Rasuo
+ lė\, Viešvilas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius36
+ 5 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.
+ org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Di
+ o_24\nhttps://lt.wikipedia.org/w/index.php?oldid=7909813#Vardadieniai
+END:VEVENT
+END:VCALENDAR

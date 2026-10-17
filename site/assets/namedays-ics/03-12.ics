@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-12@kalendorius365.lt
+DTSTAMP:20261017T150341Z
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270313
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Darmantė\, Galvirdas\, Teofanas\, Goštautas\, Žostautė. Li
+ etuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susis
+ temino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4
+ .0/\nhttps://lt.wikipedia.org/wiki/Kovo_12\nhttps://lt.wikipedia.org/w/in
+ dex.php?oldid=7927519#Vardadieniai
+END:VEVENT
+END:VCALENDAR

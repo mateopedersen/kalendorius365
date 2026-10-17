@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-29@kalendorius365.lt
+DTSTAMP:20261017T150557Z
+DTSTART;VALUE=DATE:20270629
+DTEND;VALUE=DATE:20270630
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Benita\, Gedrimė\, Mantigirdas\, Paulius\, Petras\, Povilas\,
+  Benitas\, Benius\, Giedrimė\, Manta\, Paulė\, Petrė\, Svirkanta\, Svi
+ rkantas\, Svirkantė\, Svirmantas\, Svirmantė. Lietuviškos Vikipedijos 
+ bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA
+  4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikiped
+ ia.org/wiki/Bir%C5%BEelio_29\nhttps://lt.wikipedia.org/w/index.php?oldid=
+ 7904817#Vardadieniai
+END:VEVENT
+END:VCALENDAR

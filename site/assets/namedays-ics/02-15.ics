@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-15@kalendorius365.lt
+DTSTAMP:20261017T150309Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Faustinas\, Girdenė\, Girdenis\, Jordanas\, Jovita\, Jurgina\
+ , Jurgita\, Vytis\, Zygfridas\, Girdas\, Girdys\, Girdmantas\, Girdmantė
+ \, Girdutė\, Girdutis\, Jotautas\, Jotautė\, Jotys\, Jovitas. Lietuviš
+ kos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino 
+ vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nht
+ tps://lt.wikipedia.org/wiki/Vasario_15\nhttps://lt.wikipedia.org/w/index.
+ php?oldid=7859914#Vardadieniai
+END:VEVENT
+END:VCALENDAR

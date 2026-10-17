@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-08@kalendorius365.lt
+DTSTAMP:20261017T150300Z
+DTSTART;VALUE=DATE:20270208
+DTEND;VALUE=DATE:20270209
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aldona\, Daugvilė\, Dromantas\, Honorata\, Jeronimas\, Saliam
+ onas\, Salys\, Daugvilas\, Daugvina\, Daugvinas\, Daugvinė\, Honoratas. 
+ Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir sus
+ istemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa
+ /4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_8\nhttps://lt.wikipedia.org/
+ w/index.php?oldid=7919080#Vardadieniai
+END:VEVENT
+END:VCALENDAR

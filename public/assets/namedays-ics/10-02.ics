@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-02@kalendorius365.lt
+DTSTAMP:20261017T150757Z
+DTSTART;VALUE=DATE:20271002
+DTEND;VALUE=DATE:20271003
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Eidvilas\, Getautė\, Modestas\, Gervilė\, Gervydas\, Geržad
+ as. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir
+  susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/b
+ y-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Spalio_2\nhttps://lt.wikipedia.o
+ rg/w/index.php?oldid=7936974#Vardadieniai
+END:VEVENT
+END:VCALENDAR

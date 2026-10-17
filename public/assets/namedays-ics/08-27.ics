@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-27@kalendorius365.lt
+DTSTAMP:20261017T150712Z
+DTSTART;VALUE=DATE:20270827
+DTEND;VALUE=DATE:20270828
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Aušrinė\, Cezarijus\, Monika\, Tolvydas\, Geidė\, Tolvyda. 
+ Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir sus
+ istemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa
+ /4.0/\nhttps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_27\nhttps://lt.w
+ ikipedia.org/w/index.php?oldid=7938071#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-08@kalendorius365.lt
+DTSTAMP:20261017T150646Z
+DTSTART;VALUE=DATE:20270808
+DTEND;VALUE=DATE:20270809
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Daina\, Dominykas\, Elidijus\, Gustavas\, Tulgirdas. Lietuviš
+ kos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino 
+ vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nht
+ tps://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_8\nhttps://lt.wikipedia.o
+ rg/w/index.php?oldid=7898034#Vardadieniai
+END:VEVENT
+END:VCALENDAR

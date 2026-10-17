@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-23@kalendorius365.lt
+DTSTAMP:20261017T150319Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270224
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Butvilė\, Gantautas\, Roma\, Romana\, Severinas\, Gantautė\,
+  Haroldas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išsk
+ yrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/lic
+ enses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_23\nhttps://lt.wi
+ kipedia.org/w/index.php?oldid=7797501#Vardadieniai
+END:VEVENT
+END:VCALENDAR

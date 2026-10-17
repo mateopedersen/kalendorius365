@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-08-19@kalendorius365.lt
+DTSTAMP:20261017T150701Z
+DTSTART;VALUE=DATE:20270819
+DTEND;VALUE=DATE:20270820
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Argaudas\, Balys\, Boleslovas\, Emilija\, Tolvina. Lietuviško
+ s Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino va
+ rdus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttp
+ s://lt.wikipedia.org/wiki/Rugpj%C5%AB%C4%8Dio_19\nhttps://lt.wikipedia.or
+ g/w/index.php?oldid=7926002#Vardadieniai
+END:VEVENT
+END:VCALENDAR

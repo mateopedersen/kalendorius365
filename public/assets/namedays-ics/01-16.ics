@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-16@kalendorius365.lt
+DTSTAMP:20261017T150230Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Marcelis\, Norgailas\, Norgailė\, Honoratas\, Jovaras\, Leika
+ ntas\, Leimantas\, Leimantė\, Marcelijus\, Marcelinas\, Marcijonas\, Mar
+ cys\, Marcelina\, Marcelė\, Marcė\, Marčius\, Norgeda\, Norgedas\, Nor
+ gėlė\, Norgilas\, Utenis. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_1
+ 6\nhttps://lt.wikipedia.org/w/index.php?oldid=7924583#Vardadieniai
+END:VEVENT
+END:VCALENDAR

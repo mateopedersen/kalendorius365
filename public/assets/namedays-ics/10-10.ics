@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-10-10@kalendorius365.lt
+DTSTAMP:20261017T150809Z
+DTSTART;VALUE=DATE:20271010
+DTEND;VALUE=DATE:20271011
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Butautė\, Danielius\, Danys\, Gilvydas\, Pranciškus. Lietuvi
+ škos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistemin
+ o vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\n
+ https://lt.wikipedia.org/wiki/Spalio_10\nhttps://lt.wikipedia.org/w/index
+ .php?oldid=7944240#Vardadieniai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-04-01@kalendorius365.lt
+DTSTAMP:20261017T150406Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Dainora\, Hugonas\, Rimgaudas\, Teodora\, Teodoras\, Ringailė
+ \, Ringaudas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 i
+ šskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org
+ /licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Baland%C5%BEio_1\nhtt
+ ps://lt.wikipedia.org/w/index.php?oldid=7906308#Vardadieniai
+END:VEVENT
+END:VCALENDAR

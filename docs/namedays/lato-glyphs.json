@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "unique_characters": 63,
+  "fonts": [
+    {
+      "font": "Lato-Bold.ttf",
+      "sha256": "f0b168bf34febc8a34cbbc96fbde80f58a59996f3be9ed47f4a47cf7f2959cb3",
+      "missing_used_characters": []
+    },
+    {
+      "font": "Lato-Black.ttf",
+      "sha256": "1c856bee24e1af1751d2f93421c9d3da12e4c11c74497b35cdb7b78f8073e53a",
+      "missing_used_characters": []
+    },
+    {
+      "font": "Lato-Regular.ttf",
+      "sha256": "d259e6e3be4c315c64b412a6082bedcd15d7f30b9e49be41b4cd823e069dca08",
+      "missing_used_characters": []
+    }
+  ]
+}

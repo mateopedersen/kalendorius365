@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-06-18@kalendorius365.lt
+DTSTAMP:20261017T150543Z
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270619
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Arnulfas\, Ginbutas\, Marcelinas\, Marina\, Morkus\, Vaiva\, E
+ rdmantas\, Erdmantė\, Erdmas\, Erdmė\, Erdmilas\, Erdmilė\, Erikas\, J
+ ulita\, Rytė\, Rytis\, Venancijus\, Venantas. Lietuviškos Vikipedijos b
+ endraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 
+ 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedi
+ a.org/wiki/Bir%C5%BEelio_18\nhttps://lt.wikipedia.org/w/index.php?oldid=7
+ 918248#Vardadieniai
+END:VEVENT
+END:VCALENDAR

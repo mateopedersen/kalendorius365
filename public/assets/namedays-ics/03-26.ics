@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-26@kalendorius365.lt
+DTSTAMP:20261017T150359Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Arbutas\, Emanuelis\, Feliksas\, Laimis\, Liudgaras\, Teklė\,
+  Vydmantė\, Ema\, Emanuelė\, Josvainė\, Josvilas. Lietuviškos Vikiped
+ ijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC 
+ BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wi
+ kipedia.org/wiki/Kovo_26\nhttps://lt.wikipedia.org/w/index.php?oldid=7858
+ 800#Vardadieniai
+END:VEVENT
+END:VCALENDAR

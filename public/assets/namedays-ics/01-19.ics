@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-19@kalendorius365.lt
+DTSTAMP:20261017T150234Z
+DTSTART;VALUE=DATE:20270119
+DTEND;VALUE=DATE:20270120
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gedvilė\, Kanutas\, Marijus\, Marius\, Morta\, Raivedys\, Hen
+ rikas\, Kunotas\, Kleopatra\, Marina. Lietuviškos Vikipedijos bendraauto
+ riai\; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: http
+ s://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wik
+ i/Sausio_19\nhttps://lt.wikipedia.org/w/index.php?oldid=7737834#Vardadien
+ iai
+END:VEVENT
+END:VCALENDAR

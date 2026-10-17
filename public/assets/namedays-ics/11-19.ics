@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-19@kalendorius365.lt
+DTSTAMP:20261017T150900Z
+DTSTART;VALUE=DATE:20271119
+DTEND;VALUE=DATE:20271120
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Matilda\, Dainotas\, Rimgaudė\, Dainius. Lietuviškos Vikiped
+ ijos bendraautoriai\; Kalendorius365 išskyrė ir susistemino vardus. CC 
+ BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wi
+ kipedia.org/wiki/Lapkri%C4%8Dio_19\nhttps://lt.wikipedia.org/w/index.php?
+ oldid=7858864#Vardadieniai
+END:VEVENT
+END:VCALENDAR

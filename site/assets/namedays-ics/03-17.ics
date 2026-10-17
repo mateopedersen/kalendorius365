@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-03-17@kalendorius365.lt
+DTSTAMP:20261017T150348Z
+DTSTART;VALUE=DATE:20270317
+DTEND;VALUE=DATE:20270318
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gendvilas\, Gentvila\, Gerda\, Gertrūda\, Patrikas\, Varūna\
+ , Vita\, Patricija\, Patricijus. Lietuviškos Vikipedijos bendraautoriai\
+ ; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://c
+ reativecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Kov
+ o_17\nhttps://lt.wikipedia.org/w/index.php?oldid=7904827#Vardadieniai
+END:VEVENT
+END:VCALENDAR

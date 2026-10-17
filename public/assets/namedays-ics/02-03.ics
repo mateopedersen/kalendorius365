@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-03@kalendorius365.lt
+DTSTAMP:20261017T150253Z
+DTSTART;VALUE=DATE:20270203
+DTEND;VALUE=DATE:20270204
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Asta\, Blažiejus\, Blažys\, Oskaras\, Radvilas\, Radvilė\, 
+ Radvas\, Radvė\, Radvina\, Radvinas\, Remigijus\, Tolbaudas\, Toldravas\
+ , Toliotas\, Toliotė. Lietuviškos Vikipedijos bendraautoriai\; Kalendor
+ ius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecom
+ mons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_3\nht
+ tps://lt.wikipedia.org/w/index.php?oldid=7922339#Vardadieniai
+END:VEVENT
+END:VCALENDAR

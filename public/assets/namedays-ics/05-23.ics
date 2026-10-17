@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-23@kalendorius365.lt
+DTSTAMP:20261017T150511Z
+DTSTART;VALUE=DATE:20270523
+DTEND;VALUE=DATE:20270524
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gertautas\, Ivona\, Tautvydė\, Žydrūnas\, Žydrūnė. Lietu
+ viškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė ir susistem
+ ino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+ \nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%97s_23\nhttps://lt.wikipedi
+ a.org/w/index.php?oldid=7842945#Vardadieniai
+END:VEVENT
+END:VCALENDAR

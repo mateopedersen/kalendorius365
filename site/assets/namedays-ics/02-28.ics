@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-02-28@kalendorius365.lt
+DTSTAMP:20261017T150325Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Osvaldas\, Romanas\, Romas\, Vilgardas\, Žygimantė\, Draudvi
+ las\, Draudvilė\, Ramona\, Ramonas\, Roma\, Romana\, Valdas\, Vilgarda\,
+  Vilgardė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išs
+ kyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/li
+ censes/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Vasario_28\nhttps://lt.w
+ ikipedia.org/w/index.php?oldid=7934225#Vardadieniai
+END:VEVENT
+END:VCALENDAR

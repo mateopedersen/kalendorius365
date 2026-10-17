@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-12-28@kalendorius365.lt
+DTSTAMP:20261017T150948Z
+DTSTART;VALUE=DATE:20271228
+DTEND;VALUE=DATE:20271229
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Albutas\, Albutė\, Algardas\, Algardė\, Ema\, Jaugina\, Jaug
+ inas\, Inga\, Ivita\, Irvita\, Ingeborga\, Kamilė\, Kantvilas\, Vaidilut
+ ė\, Vidas. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išs
+ kyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/li
+ censes/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gruod%C5%BEio_28\nhttps:
+ //lt.wikipedia.org/w/index.php?oldid=7724177#Vardadieniai
+END:VEVENT
+END:VCALENDAR

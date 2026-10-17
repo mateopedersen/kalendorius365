@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-01-28@kalendorius365.lt
+DTSTAMP:20261017T150246Z
+DTSTART;VALUE=DATE:20270128
+DTEND;VALUE=DATE:20270129
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Gedautas\, Leonidas\, Manfredas\, Nijolė\, Tomas\, Karlas\, K
+ arolė\, Leonida\, Leonidė\, Liaudginas\, Sambangas\, Sambartas\, Sambar
+ tė. Lietuviškos Vikipedijos bendraautoriai\; Kalendorius365 išskyrė i
+ r susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/
+ by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Sausio_28\nhttps://lt.wikipedia
+ .org/w/index.php?oldid=7935169#Vardadieniai
+END:VEVENT
+END:VCALENDAR

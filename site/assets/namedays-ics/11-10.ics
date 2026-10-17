@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-11-10@kalendorius365.lt
+DTSTAMP:20261017T150848Z
+DTSTART;VALUE=DATE:20271110
+DTEND;VALUE=DATE:20271111
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Andrius\, Dainius\, Galvydė\, Leonas\, Vaišvilas\, Vaišvil
+ ė\, Vaišviltas\, Evelina. Lietuviškos Vikipedijos bendraautoriai\; Kal
+ endorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creati
+ vecommons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Lapkri%C
+ 4%8Dio_10\nhttps://lt.wikipedia.org/w/index.php?oldid=7533245#Vardadienia
+ i
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Vardadieniai//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vardadieniai-05-16@kalendorius365.lt
+DTSTAMP:20261017T150502Z
+DTSTART;VALUE=DATE:20270516
+DTEND;VALUE=DATE:20270517
+RRULE:FREQ=YEARLY
+SUMMARY:Dienos vardadieniai
+DESCRIPTION:Andriejus\, Andrius\, Bitė\, Ubaldas\, Vaidmantas\, Celestina
+ s\, Gilvinas\, Taura. Lietuviškos Vikipedijos bendraautoriai\; Kalendori
+ us365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecomm
+ ons.org/licenses/by-sa/4.0/\nhttps://lt.wikipedia.org/wiki/Gegu%C5%BE%C4%
+ 97s_16\nhttps://lt.wikipedia.org/w/index.php?oldid=7933787#Vardadieniai
+END:VEVENT
+END:VCALENDAR
