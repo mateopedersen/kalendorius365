@@ -14,3 +14,9 @@ export function chartPath(values,width=1000,height=250){
 }
 export function calendarDayLabel(date){return new Intl.DateTimeFormat('lt-LT',{timeZone:'UTC',month:'long',day:'numeric'}).format(new Date(date+'T12:00:00Z'));}
 export function countdownParts(utc,now){const delta=Math.max(0,Date.parse(utc)-now);return {days:Math.floor(delta/86400000),hours:Math.floor(delta/3600000)%24,minutes:Math.floor(delta/60000)%60};}
+
+export function seasonGuideHref(path,year,city){
+ const allowed=['/metu-laikai/','/pavasario-lygiadienis/','/vasaros-saulegriza/','/rudens-lygiadienis/','/ziemos-saulegriza/'];
+ if(!allowed.includes(path)||![2027,2028,2029].includes(year)||!['vilnius','kaunas','klaipeda','siauliai','panevezys'].includes(city))throw Error('Neteisinga metų laikų nuoroda.');
+ return `${path}?${new URLSearchParams({metai:String(year),miestas:city})}`;
+}

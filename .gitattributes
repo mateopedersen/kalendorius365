@@ -16,3 +16,4 @@ public/assets/holiday-phase2-ics/*.ics binary
 
 # Seasonal calendar exports require literal RFC 5545 CRLF bytes.
 site/assets/seasons-ics/*.ics binary
+public/assets/seasons-ics/*.ics binary

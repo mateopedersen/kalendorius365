@@ -7,7 +7,7 @@
       "20 AstroPixels independent predictions, maximum difference 60 seconds",
       "20 independent Astronomy Engine calculations, tolerance 90 seconds",
       "Python zoneinfo versus browser Intl Europe/Vilnius conversions",
-      "34 new Node tests; existing 55 tests preserved",
+      "37 new Node tests; existing 55 tests preserved",
       "Individual native-browser desktop and 390px inspection of all five pages"
     ]
   },
@@ -49,6 +49,11 @@
       "finding": "Existing preservation gate rejects CI workflow edits",
       "fix": "Existing workflow kept byte-identical; new test wrapper uses its existing test glob",
       "status": "release gate passed"
+    },
+    {
+      "finding": "Selected year/city were reset when opening a seasonal card or related event guide",
+      "fix": "Validated topic URLs preserve metai and miestas across cards, comparison headers and previous/next links",
+      "status": "Native-browser 2029 Klaipėda hub-to-summer navigation preserves selection and correct 04:48 local event time; three regression tests added"
     }
   ],
   "language_review": [
