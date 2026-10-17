@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Regular.woff2?v=b92d168fe645") format("woff2");
+  src: url("/assets/fonts/Lato-Regular.woff2?v=fa37858a8f64") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Bold.woff2?v=b92d168fe645") format("woff2");
+  src: url("/assets/fonts/Lato-Bold.woff2?v=fa37858a8f64") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/fonts/Lato-Black.woff2?v=b92d168fe645") format("woff2");
+  src: url("/assets/fonts/Lato-Black.woff2?v=fa37858a8f64") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -6750,6 +6750,30 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
     width: clamp(260px, 18vw, 340px);
     min-width: 240px;
     margin-inline-start: auto;
+  }
+}
+@media (max-width: 760px) {
+  .site-header .header-search:not(.search-open) {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+  .site-header #nav-toggle,
+  .site-header .header-search:not(.search-open) input {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel) !important;
+  }
+  .site-header #nav-toggle { flex: 0 0 44px; }
+  .site-header .header-search > .icon {
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
   }
 }
 @media (max-width: 960px) {
