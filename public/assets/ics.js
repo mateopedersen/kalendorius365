@@ -1,5 +1,5 @@
-import { addDays, wallTime, zonedInstant } from "/assets/releases/673b7c135b10a817906e/calendar.js";
-import { validate, empty } from "/assets/releases/673b7c135b10a817906e/storage.js";
+import { addDays, wallTime, zonedInstant } from "./calendar.js?v=4d35e0869c52";
+import { validate, empty } from "./storage.js?v=4d35e0869c52";
 const escape = (s) =>
   String(s)
     .replace(/\\/g, "\\\\")

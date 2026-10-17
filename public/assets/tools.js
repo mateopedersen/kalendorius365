@@ -1,8 +1,8 @@
-import * as cal from "/assets/releases/673b7c135b10a817906e/calendar.js";
-import { Store, download } from "/assets/releases/673b7c135b10a817906e/storage.js";
-import { notice } from "/assets/releases/673b7c135b10a817906e/common.js";
+import * as cal from "./calendar.js?v=4d35e0869c52";
+import { Store, download } from "./storage.js?v=4d35e0869c52";
+import { notice } from "./common.js?v=4d35e0869c52";
 const $ = (s) => document.querySelector(s),
-  data = await fetch("/assets/releases/673b7c135b10a817906e/data/calendar.json").then((r) => r.json());
+  data = await fetch("/assets/data/calendar.json").then((r) => r.json());
 const escape = (s) =>
   String(s).replace(
     /[&<>"']/g,
@@ -37,7 +37,7 @@ if ($("#design-picker")) {
       previewFormat = $("#preview-format"),
       fullPreviewLink = $("#preview-full");
     if (previewTitle) previewTitle.textContent = name;
-    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Portretas");
+    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Stačias");
     if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
     $("#selected-pdf").href = pdf.href;
     $("#selected-webp").href = webp.href;
@@ -462,7 +462,7 @@ if ($("#generator")) {
   $("#generator-webp").onclick = async () => {
     draw();
     try {
-      const font = await fetch("/assets/releases/673b7c135b10a817906e/fonts/Inter-Regular.woff2").then((r) =>
+      const font = await fetch("/assets/fonts/Inter-Regular.woff2").then((r) =>
         r.arrayBuffer(),
       );
       let chars = "";

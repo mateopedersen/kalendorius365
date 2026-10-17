@@ -22,9 +22,15 @@ retryButton.addEventListener("click", () => renderWhenReady());
 status.after(retryButton);
 
 const categoryLabels = {
-  calendar: "Kalendoriai", holiday: "Šventės", horoscope: "Horoskopai",
-  astronomy: "Astronomija", planning: "Planavimas ir darbo laikas", school: "Mokykla",
-  tools: "Įrankiai", privacy: "Privatumas", home: "Pagrindinis puslapis",
+  calendar: "Kalendoriai",
+  holiday: "Šventės",
+  horoscope: "Horoskopai",
+  astronomy: "Astronomija",
+  planning: "Planavimas ir darbo laikas",
+  school: "Mokykla",
+  tools: "Įrankiai",
+  privacy: "Svetainės informacija",
+  home: "Pagrindinis puslapis",
 };
 
 function resultCountLabel(count) {

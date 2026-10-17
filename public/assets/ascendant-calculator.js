@@ -1,18 +1,18 @@
-import { BIRTH_CITIES } from "/assets/releases/673b7c135b10a817906e/data/birth-cities.js";
+import { BIRTH_CITIES } from "/assets/data/birth-cities.js?v=4d35e0869c52";
 
 const SIGNS = [
-  { key: "avinas", name: "Avinas", theme: "#b34235", reading: "Astrologinėje simbolikoje siejamas su tiesiu, iniciatyviu įspūdžiu ir veržliu įsitraukimu." },
-  { key: "jautis", name: "Jautis", theme: "#527a59", reading: "Simboliškai siejamas su ramiu, pastoviu bendravimo tonu ir dėmesiu patogumui." },
-  { key: "dvyniai", name: "Dvyniai", theme: "#58799d", reading: "Dažnai apibūdinamas kaip smalsus, judrus ir klausimų kupinas bendravimo būdas." },
-  { key: "vezys", name: "Vėžys", theme: "#3e7187", reading: "Simboliškai siejamas su jautrumu aplinkai, rūpestingumu ir saugumo poreikiu." },
-  { key: "liutas", name: "Liūtas", theme: "#b34235", reading: "Astrologinėje simbolikoje siejamas su šiltu, kūrybišku ir pastebimu prisistatymu." },
-  { key: "mergele", name: "Mergelė", theme: "#527a59", reading: "Dažnai apibūdinamas kaip pastabus, santūrus ir praktiškas pirmasis įspūdis." },
-  { key: "svarstykles", name: "Svarstyklės", theme: "#58799d", reading: "Simboliškai siejamos su diplomatišku bendravimu, bendradarbiavimu ir harmonijos paieška." },
-  { key: "skorpionas", name: "Skorpionas", theme: "#3e7187", reading: "Astrologinėje simbolikoje siejamas su susitelkimu, įžvalgumu ir santūriu prisistatymu." },
-  { key: "saulys", name: "Šaulys", theme: "#b34235", reading: "Dažnai apibūdinamas kaip atviras, tiesus ir plačiu požiūriu į situacijas." },
-  { key: "oziaragis", name: "Ožiaragis", theme: "#527a59", reading: "Simboliškai siejamas su santūrumu, atsakomybe ir nuosekliu bendravimo būdu." },
-  { key: "vandenis", name: "Vandenis", theme: "#58799d", reading: "Astrologinėje simbolikoje siejamas su originaliu, savarankišku ir idėjomis grįstu įspūdžiu." },
-  { key: "zuvys", name: "Žuvys", theme: "#3e7187", reading: "Dažnai apibūdinamas kaip empatiškas, vaizduotę įtraukiantis ir švelnus bendravimo tonas." },
+  { key: "avinas", name: "Avinas", theme: "#b34235", reading: "Avino ascendentas astrologinėje simbolikoje siejamas su iniciatyva ir tiesiu bendravimu." },
+  { key: "jautis", name: "Jautis", theme: "#527a59", reading: "Jaučio ascendentas astrologinėje simbolikoje siejamas su ramiu bendravimu ir pastovumo poreikiu." },
+  { key: "dvyniai", name: "Dvyniai", theme: "#58799d", reading: "Šioje astrologinėje interpretacijoje Dvynių ascendentas siejamas su smalsumu, klausimais ir noru bendrauti." },
+  { key: "vezys", name: "Vėžys", theme: "#3e7187", reading: "Vėžio ascendentas astrologinėje simbolikoje siejamas su rūpestingumu ir saugumo poreikiu." },
+  { key: "liutas", name: "Liūtas", theme: "#b34235", reading: "Liūto ascendentas astrologinėje simbolikoje siejamas su šiltu bendravimu ir noru būti pastebėtam." },
+  { key: "mergele", name: "Mergelė", theme: "#527a59", reading: "Mergelės ascendentas astrologinėje simbolikoje siejamas su pastabumu, santūrumu ir praktišku bendravimu." },
+  { key: "svarstykles", name: "Svarstyklės", theme: "#58799d", reading: "Svarstyklių ascendentas astrologinėje simbolikoje siejamas su diplomatišku bendravimu ir noru bendradarbiauti." },
+  { key: "skorpionas", name: "Skorpionas", theme: "#3e7187", reading: "Skorpiono ascendentas astrologinėje simbolikoje siejamas su susitelkimu, įžvalgumu ir santūriu bendravimu." },
+  { key: "saulys", name: "Šaulys", theme: "#b34235", reading: "Šioje astrologinėje interpretacijoje Šaulio ascendentas siejamas su atvirumu, tiesumu ir domėjimusi naujomis patirtimis." },
+  { key: "oziaragis", name: "Ožiaragis", theme: "#527a59", reading: "Ožiaragio ascendentas astrologinėje simbolikoje siejamas su santūrumu ir atsakomybe." },
+  { key: "vandenis", name: "Vandenis", theme: "#58799d", reading: "Vandenio ascendentas astrologinėje simbolikoje siejamas su savarankiškumu ir pomėgiu dalytis idėjomis." },
+  { key: "zuvys", name: "Žuvys", theme: "#3e7187", reading: "Šioje astrologinėje interpretacijoje Žuvų ascendentas siejamas su atjauta, vaizduote ir švelniu bendravimu." },
 ];
 
 const mod = (value, divisor) => ((value % divisor) + divisor) % divisor;
@@ -80,7 +80,7 @@ function localTimeToUtc(date, time, timeZone) {
     .map((offset) => localAsUtc - offset)
     .filter((instant) => sameWallTime(zonedParts(instant, timeZone), expected))
     .sort((a, b) => a - b);
-  if (!matches.length) throw new Error("Šiuo vietos laiku laikrodis galėjo būti persuktas. Pasirinkite kitą gimimo laiką arba patikrinkite jo įrašą.");
+  if (!matches.length) throw new Error("Dėl laikrodžio persukimo pasirinktoje vietoje tokio laiko nebuvo. Patikrinkite gimimo dokumentuose nurodytą laiką.");
   return { instant: matches[0], repeated: matches.length > 1 };
 }
 
@@ -172,7 +172,7 @@ if (form) {
     result.classList.remove("ascendant-result--error");
     try {
       const city = cityByName.get(normalizeCity(cityInput.value));
-      if (!city) throw new Error("Pasirinkite miestą iš pateikto sąrašo arba artimiausią miestą.");
+      if (!city) throw new Error("Pasirinkite gimimo miestą iš sąrašo. Jei jo nėra, pasirinkite artimiausią miestą.");
       const { instant, repeated } = localTimeToUtc(form.elements["birth-date"].value, form.elements["birth-time"].value, city.zone);
       const ascendant = resultParts(ascendantLongitude(instant, city.lat, city.lon));
       result.style.setProperty("--ascendant-sign-accent", ascendant.sign.theme);
@@ -183,7 +183,7 @@ if (form) {
       copy.className = "ascendant-result__copy";
       const eyebrow = document.createElement("span");
       eyebrow.className = "ascendant-result__eyebrow";
-      eyebrow.textContent = "Jūsų kylantis ženklas";
+      eyebrow.textContent = "Jūsų ascendentas";
       const title = document.createElement("strong");
       title.className = "ascendant-result__title";
       title.textContent = ascendant.sign.name;
@@ -198,7 +198,7 @@ if (form) {
       if (repeated) {
         const caveat = document.createElement("p");
         caveat.className = "ascendant-result__caveat";
-        caveat.textContent = "Šis vietos laikas pasikartojo dėl sezoninio laiko keitimo; naudotas pirmasis jo pasikartojimas.";
+        caveat.textContent = "Dėl laikrodžio persukimo šis vietos laikas pasitaikė du kartus. Skaičiuojant pasirinktas ankstesnis momentas.";
         result.append(caveat);
       }
     } catch (error) {

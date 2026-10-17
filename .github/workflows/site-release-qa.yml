@@ -38,3 +38,14 @@ jobs:
         run: python3 scripts/audit_site.py --release
       - name: Run calendar, search, planner and solar tests
         run: node --test test/*.test.js
+      - name: Save the verified generated release for integration
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: generated-site-${{ github.sha }}
+          path: |
+            public/
+            site/assets/data/search.json
+            docs/lunar/qa/pages-language-semantics.json
+            docs/2027-monthly-holidays/QA-GATE-1.json
+          if-no-files-found: error
+          retention-days: 1

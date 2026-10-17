@@ -175,6 +175,8 @@ test('school lesson text edits persist after reload and duplication can be undon
  await page.reload();await expect(subject).toHaveValue('Lietuvių kalba');await expect(page.getByLabel('Pirmadienis, 1 pamoka: kabinetas',{exact:true})).toHaveValue('205A');
  await page.locator('#school-duplicate-week').click();await expect(page.locator('#school-lessons tr')).toHaveCount(5);await page.locator('#school-undo').click();await expect(page.locator('#school-lessons tr')).toHaveCount(1);
  const backup=await downloadBytes(page,()=>page.locator('#school-json-export').click());expect(JSON.parse(backup.bytes).lessons[0].teacher).toBe('Ž. Jonaitė');
+ await page.getByRole('button',{name:'Pirmadienis 1 pamoką pašalinti'}).click();await expect(page.locator('#school-lessons tr')).toHaveCount(0);
+ await expect(page.locator('#school-message')).toHaveText('Pamoka pašalinta.');await expect(page.locator('#daily-note')).toHaveValue('QA saved note');
 });
 
 test('leave planner produces inspectable date rows and a valid ICS',async({page})=>{

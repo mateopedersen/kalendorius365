@@ -1,7 +1,7 @@
-import { addDays, today, formatDate, weekday, monthLength } from '/assets/releases/673b7c135b10a817906e/calendar.js';
-import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from '/assets/releases/673b7c135b10a817906e/namedays-engine.js';
-import { Store } from '/assets/releases/673b7c135b10a817906e/storage.js';
-import { exportICS } from '/assets/releases/673b7c135b10a817906e/ics.js';
+import { addDays, today, formatDate, weekday, monthLength } from './calendar.js?v=4d35e0869c52';
+import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from './namedays-engine.js?v=4d35e0869c52';
+import { Store } from './storage.js?v=4d35e0869c52';
+import { exportICS } from './ics.js?v=4d35e0869c52';
 
 const root=document.querySelector('[data-namedays-source]');
 const $=(s)=>root.querySelector(s);
@@ -33,12 +33,12 @@ async function init(){
   function source(container,record){
     container.replaceChildren();
     const a=node('a',`„${record.source_title}“ · redakcija ${record.source_revision_id}`);a.href=record.source_revision;
-    const h=node('a','autorių istorija');h.href=record.source_history;
+    const h=node('a','straipsnio keitimų istorija');h.href=record.source_history;
     container.append(a,document.createTextNode(' · '),h);
   }
   function selectDate(date,name=''){
     const r=records.get(date.slice(5));
-    if(!r || !validOccurrence(r.date,Number(date.slice(0,4)))){clearPrepared();$('#nd-ics').disabled=true;$('#nd-add').disabled=true;feedback('Pasirinkite galiojančią datą. Įrašas nebus sukurtas, kol data neužpildyta.',true);return;}
+    if(!r || !validOccurrence(r.date,Number(date.slice(0,4)))){clearPrepared();$('#nd-ics').disabled=true;$('#nd-add').disabled=true;feedback('Pasirinkite galiojančią datą. Prieš kurdami įrašą pasirinkite datą.',true);return;}
     $('#nd-ics').disabled=false;$('#nd-add').disabled=false;
     selected=date;$('#nd-date').value=date;ensureYear(Number(date.slice(0,4)));
     $('#nd-open-calendar').href=`/?data=${date}#day-details`;
@@ -56,7 +56,7 @@ async function init(){
     const y=Number(selected.slice(0,4));
     const date=validOccurrence(key,y)||nextOccurrence(key,`${y}-01-01`);
     selectDate(date,name);
-    if(date.slice(0,4)!==String(y))feedback(`Vasario 29-oji ${y} m. neegzistuoja. Parodyta artimiausia data: ${dateLabel(date)}.`);
+    if(date.slice(0,4)!==String(y))feedback(`${y} m. vasaris turi 28 dienas. Parodyta artimiausia data: ${dateLabel(date)}.`);
   }
   function renderGrid(){
     const grid=$('#nd-calendar');if(!grid)return;
@@ -131,10 +131,6 @@ async function init(){
   $('#nd-export-form').addEventListener('submit',e=>{e.preventDefault();try{const item=event();clearPrepared();preparedURL=URL.createObjectURL(new Blob([exportICS([item])],{type:'text/calendar;charset=utf-8'}));const link=$('#nd-file-link');link.href=preparedURL;link.download=`vardadienis-${selected}.ics`;link.hidden=false;link.click();feedback(item.repeat==='yearly'?'Parengtas kasmetinis ICS įrašas. Jei atsisiuntimas neprasidėjo, paspauskite žemiau esančią failo nuorodą. Vasario 29-oji neperkeliama.':'Parengtas vienkartinis visos dienos ICS įrašas. Jei atsisiuntimas neprasidėjo, paspauskite žemiau esančią failo nuorodą.');}catch(error){feedback(error.message,true);}});
   $('#nd-add').addEventListener('click',()=>{try{const item=event(),store=new Store();if(store.data.events.some(e=>e.id===item.id)){feedback('Šis vardadienis jau įtrauktas į šios naršyklės kalendorių.');return;}store.update(state=>state.events.push(item));feedback(`Išsaugota šioje naršyklėje: ${item.title}. Atverkite asmeninį kalendorių.`);}catch(error){feedback(error.message,true);}});
   if(pageMonth)$('#nd-month-filter').value=String(pageMonth);
-  // Global-search entity links land on this existing lookup with the native
-  // name prefilled; visitors can then choose any of its verified dates.
-  const initialQuery=new URLSearchParams(location.search).get('q');
-  if(initialQuery){$('#nd-query').value=initialQuery.normalize('NFC').slice(0,80);$('#nd-month-filter').value='';}
   const hash=location.hash.match(/^#diena-(\d{2})$/);if(hash&&pageMonth)chooseKey(`${String(pageMonth).padStart(2,'0')}-${hash[1]}`);else selectDate(selected);
   renderSearch();renderToday();
   let last=today();

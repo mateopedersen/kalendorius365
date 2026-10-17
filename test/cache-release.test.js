@@ -68,3 +68,26 @@ test('generated release manifest matches every emitted immutable byte and stays 
  assert.match(headers,/(?:^|\n)\/\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
  assert.ok(manifest.retained_revisions.length<=3);
 });
+
+test('previous immutable releases survive Jekyll destination cleanup',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-retain-'));
+ const stash=fs.mkdtempSync(path.join(os.tmpdir(),'k365-stash-'));
+ try {
+  const revisions=['a'.repeat(20),'b'.repeat(20),'c'.repeat(20)];
+  fs.mkdirSync(path.join(dir,'assets/releases'),{recursive:true});
+  fs.writeFileSync(path.join(dir,'assets/release-manifest.json'),JSON.stringify({retained_revisions:revisions}));
+  for(const revision of revisions){
+   fs.mkdirSync(path.join(dir,'assets/releases',revision),{recursive:true});
+   fs.writeFileSync(path.join(dir,'assets/releases',revision,'app.js'),`// ${revision}`);
+  }
+  const source=`dir=ARGV.fetch(0); stash=ARGV.fetch(1); previous=AssetRelease.previous_revisions(dir); AssetRelease.stash_previous_releases(dir,stash,previous); FileUtils.rm_rf(File.join(dir,'assets','releases')); FileUtils.mkdir_p(File.join(dir,'assets','releases')); AssetRelease.restore_previous_releases(dir,stash,previous)`;
+  const result=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e',source,dir,stash],{encoding:'utf8'});
+  assert.equal(result.status,0,result.stderr);
+  assert.ok(fs.existsSync(path.join(dir,'assets/releases',revisions[0],'app.js')));
+  assert.ok(fs.existsSync(path.join(dir,'assets/releases',revisions[1],'app.js')));
+  assert.equal(fs.existsSync(path.join(dir,'assets/releases',revisions[2])),false,'retention keeps only two previous versions');
+ } finally {
+  fs.rmSync(dir,{recursive:true,force:true});
+  fs.rmSync(stash,{recursive:true,force:true});
+ }
+});

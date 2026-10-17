@@ -8,7 +8,7 @@ export function notice(message) {
 
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-  import("/assets/releases/673b7c135b10a817906e/calendar.js").then(({ today, formatDate }) => {
+  import("./calendar.js?v=4d35e0869c52").then(({ today, formatDate }) => {
     const refreshUpdateLabels = () => {
       const currentDate = today();
       for (const label of horoscopeUpdates) {
@@ -98,15 +98,11 @@ const headerSearch = document.querySelector(".header-search");
 const siteSearchStatus = document.querySelector("#site-search-status") || document.createElement("div");
 let searchEnginePromise;
 let activeSearchOption = -1;
-let searchRequest = 0;
-let searchTimer;
 function setSearchOpen(open, focus = false) {
   if (!siteSearch || !siteSearchResults || !headerSearch) return;
   headerSearch.classList.toggle("search-open", open);
   if (open && focus) siteSearch.focus({ preventScroll: true });
   if (!open) {
-    searchRequest++;
-    clearTimeout(searchTimer);
     siteSearchResults.setAttribute("hidden", "");
     siteSearch.setAttribute("aria-expanded", "false");
     siteSearch.removeAttribute("aria-activedescendant");
@@ -130,9 +126,13 @@ if (siteSearch && siteSearchResults && headerSearch) {
   siteSearchStatus.setAttribute("aria-atomic", "true");
   headerSearch.append(siteSearchStatus);
 
-  const runSearch = async () => {
-    const request = ++searchRequest;
-    const query = siteSearch.value.trim().slice(0, 500);
+  siteSearch.addEventListener("focus", () => {
+    if (matchMedia("(max-width: 760px)").matches)
+      headerSearch.classList.add("search-open");
+  });
+
+  siteSearch.addEventListener("input", async () => {
+    const query = siteSearch.value.trim();
     siteSearchResults.replaceChildren();
     siteSearchStatus.textContent = "";
     activeSearchOption = -1;
@@ -143,10 +143,10 @@ if (siteSearch && siteSearchResults && headerSearch) {
 
     siteSearchStatus.textContent = "Ieškoma visuose puslapiuose…";
     try {
-      searchEnginePromise ||= import("/assets/releases/673b7c135b10a817906e/search-engine.js");
+      searchEnginePromise ||= import("./search-engine.js?v=4d35e0869c52");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
-      if (request !== searchRequest || normalizeSearchText(siteSearch.value.trim().slice(0, 500)) !== normalizeSearchText(query)) return;
+      if (normalizeSearchText(siteSearch.value.trim()) !== normalizeSearchText(query)) return;
       const matches = searchPages(index, query);
       const items = matches.slice(0, 7);
       siteSearchResults.replaceChildren();
@@ -185,45 +185,13 @@ if (siteSearch && siteSearchResults && headerSearch) {
         siteSearchResults.prepend(message);
       }
     } catch {
-      if (request !== searchRequest) return;
-      searchEnginePromise = undefined;
       siteSearchResults.replaceChildren();
       const message = document.createElement("p");
       message.className = "header-search-empty";
       message.textContent = "Paieška nepasiekiama. Bandykite dar kartą arba atverkite puslapių sąrašą.";
       siteSearchResults.append(message);
-      const retry = document.createElement("button");
-      retry.type = "button";
-      retry.textContent = "Bandyti dar kartą";
-      retry.addEventListener("click", () => runSearch());
-      const catalog = document.createElement("a");
-      catalog.href = `/paieska/?q=${encodeURIComponent(query)}`;
-      catalog.textContent = "Atverti paieškos puslapį →";
-      siteSearchResults.append(retry, catalog);
       siteSearchStatus.textContent = message.textContent;
     }
-  };
-  const scheduleSearch = () => {
-    // Invalidate pending work immediately; both successful and failed old requests
-    // must be ignored while the visitor types or dismisses the dropdown.
-    searchRequest++;
-    clearTimeout(searchTimer);
-    siteSearchResults.hidden = true;
-    siteSearch.setAttribute("aria-expanded", "false");
-    siteSearch.removeAttribute("aria-activedescendant");
-    activeSearchOption = -1;
-    searchTimer = setTimeout(runSearch, 120);
-  };
-  siteSearch.addEventListener("input", scheduleSearch);
-  siteSearch.addEventListener("focus", () => {
-    if (matchMedia("(max-width: 760px)").matches) {
-      headerSearch.classList.add("search-open");
-      const toggle = document.querySelector("#nav-toggle");
-      toggle?.setAttribute("aria-expanded", "false");
-      toggle?.setAttribute("aria-label", "Atverti meniu");
-      document.querySelector("#primary-nav")?.classList.remove("nav-open");
-    }
-    if (siteSearch.value.trim() && siteSearchResults.hidden) scheduleSearch();
   });
 
   siteSearch.addEventListener("keydown", (event) => {
@@ -232,7 +200,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
       setSearchOpen(false);
       return;
     }
-    const options = siteSearchResults.hidden ? [] : [...siteSearchResults.querySelectorAll('[role="option"]')];
+    const options = [...siteSearchResults.querySelectorAll('[role="option"]')];
     if (!options.length) return;
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
       event.preventDefault();
@@ -267,8 +235,6 @@ document.querySelector("#nav-toggle")?.addEventListener("click", (e) => {
   const nav = document.querySelector("#primary-nav");
   b.setAttribute("aria-expanded", String(open));
   b.setAttribute("aria-label", open ? "Užverti meniu" : "Atverti meniu");
-  if (!nav) return;
-  if (open) setSearchOpen(false);
   nav.classList.toggle("nav-open", open);
   if (open) nav.querySelector("a[href]")?.focus({ preventScroll: true });
   else b.focus({ preventScroll: true });

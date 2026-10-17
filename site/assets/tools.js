@@ -37,7 +37,7 @@ if ($("#design-picker")) {
       previewFormat = $("#preview-format"),
       fullPreviewLink = $("#preview-full");
     if (previewTitle) previewTitle.textContent = name;
-    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Portretas");
+    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Stačias");
     if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
     $("#selected-pdf").href = pdf.href;
     $("#selected-webp").href = webp.href;

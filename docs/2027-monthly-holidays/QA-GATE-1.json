@@ -135,22 +135,387 @@
       "canonical": "https://kalendorius365.lt/sventes/2027/gruodis/"
     }
   ],
-  "baseline_assets_preserved": 3149,
+  "baseline_assets_preserved": 3089,
   "intentional_metadata_updates": [
+    {
+      "path": "site/downloads/2027-metinis-01.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "29ed6a2c329a60dbf0970746aeca0fec263aae85834a40f0f43087396905e230",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "9aa3639048b399d8855857fbc4267f4bedb0233312bad0c3ed6bcaad8d631480",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-02.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "a2742d42f7e71890f76a2c43d9252d32517642f6c805d46ee750f821007112ae",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "710c9d00ad1215a2ef93c2cf815c38a254f76156f3831f9f165aaf4b86cab334",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-03.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "b907eb9b871a6c76aea15bc55a0c8a5da9daa7fb6e82355fc5215a8e6cf85355",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "13f0cb3b7ec4eee28d42b5823cef4f02b79b4ee040cab548ea92fafd8ede4fa5",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-04.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "612f33c866ca2e3a3acd73a25d9d14f184405e13ddd057c927def4d687f9ad39",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "cd14c4af85dc2fa65f909ce9944dfaa7595b2dcb34dff21537181714243cfda9",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-05.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "d931393e41b683972b03eb5c15e53a9af05bbaf839bfd119849c7a36d6ea2c53",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2027-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "f128051e484bf8646b944615f1c71cec16842e68f3032428cd8dcf275ccc2c1f",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-01.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "ae630b192bf221725344479b487ffa4049d55015842114887e301f84dfd4e75f",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "b5f515df848d1fe206e9a8172c19de63af147433649a3f62df573f1696e21f65",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-02.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "64a3ea9e1a4251aaee57e5eef4e68b9e10d990d59de4248ef066864d713ea66e",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "b32a50bf97c4bcce2b711a76d8a9a743959d01375c2c588fb925ccfad676c4e8",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-03.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "a16d9a5fcfe700d11f6fa668080b79688cfc81c62c22bc571e9187431bc144b9",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "a8ec06fcaed5c3defc1b20cef0ed5cf7fa3a9d18e05ecffc56d00746ede274a0",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-04.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "092358239e5033d826dbfe3a8f3188b02d20469015e3748d0010a8378a90c47f",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "79f247fbaebd8a35e7c2f3a03b0720d526b8c9080f565be25f268d0f00d13785",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-05.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "4fe332e0a948a8d9e8f5e45af4d4a2f5b55bab02c38c7cbb2dba3ca533929e8e",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2028-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "93b8068fbdd41951447ec1690d119e2552e9bf1db0510f530814e8c904ab6b2b",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-01.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "ad9a49a1d41da0c517a2aaeb317b7ee434bef774d34e991c1295f89f19ff520e",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "d2f7c45effad9b58b6fbb442d9c34de88748707cbe6e4c5468fa2f70784c5169",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-02.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "6df1719c99a6101970a6805923591d66831572ef0eba7f9e84f07870c341f99f",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "2c06b2b3b1c0fb29673770f6251b3049ab5eedb7449d0191223ee40d63bcb091",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-03.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "854bd5a87c37604678add629d65036a0d3e5664ae85ff4cb4676f842100f3164",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "b2b9eac734e705e0ebb7219eaaaa6d4f4e88ff06ae014a53b3e10147afd089cc",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-04.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "7e05fa086b2fca4f6f60323ac6680969e3ac1314aa79b78ef168c36918ad6508",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "55caed8d0d9059bd96cab04199c42c45a5529afb7978c55112a8335a1a9fb94f",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-05.pdf",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "fc96ecef4b7dbd4d7c105be7b63c3c3be00c4b4dc856b4604fe2920f7ef8096d",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/downloads/2029-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "731998c418733b218d2da636eab2cb09fe000bc7a818e7258b403b3f2f903ae4",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2027-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "dc24864e69dbeb58a94bc6c023d6508c30743d5f1a5faf016952ffcd0f8a588f",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2027-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "5f597db3ba3dc874521b057a7c219d849bdbca7f4d489a2e8c2e85ad766ebbf7",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2027-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "9ffbc57fd7b94b039aa39a1f01ce365b594de0ddbf37b133690a2c9d78970d35",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2027-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "d68c3b06ea5f3b877e894de674978ccfb63ae8e627aead85ec1e18c8cb130962",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2027-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "389c135db3fe591700faa75783bf6000c5521e181b44411ec1a21555cca7477c",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2028-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "3915ff0d28504976d7937d740f8247775fb1148c024984d725a6895d5046f3f7",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2028-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "f57c7535218b7912f0c21881d9770f048e3fca10a0fbf9da9b5052d341b7a9be",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2028-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "dd8771f1c489bcd04a9df56f12c5a390274f3a543ab0a8513c8c6bf5fc661d0b",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2028-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "145bd0b9eb0ddc17146518ff3cf422232effdd916caf88ba180efe09dbe01065",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2028-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "197880dde6984cbcbfeccc4c03bc5cdd07fa54dc47644c22f843b6f5c8516b1d",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2029-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "fe2a7b29a3b023522d7f24ea86918296071d5bc73f6ca5439786e27172e92d60",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2029-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "b2e48a6db06c4c1e0c1e769ef3526f70fc2eb84b047047e5ec4e8cd77d93d48d",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2029-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "8807ff909f5a90673a9a858b8f601d872434a07727023400bf9407e002083c25",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2029-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "12411e371b844cbb0e59fdccf1fa4b1bc5ec94d20ea25cb1bb2964206b269ab9",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews/2029-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "67584a5e8ea320cabec3ce1891d131dfc66a84a3d4b8f944c2647422c4bcf97e",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2027-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "9185c5e6f3684bbfe1f2307fe1fa5350a3c774727ca10fe3d6e6192b27c434ee",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2027-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "d9176e72a8376ec7b9430133df9ab35b68fa417c1482f9c6f384854927a7c305",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2027-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "79deaaecc9d64971897eecb65bd3092a5a478df0eed22a72c5f8eefc20867b89",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2027-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "4e38b94a1b220f3a3fb38840449ee32ba5728889ef036c0ba0b3ffe2b9f5f0b1",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2027-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "5980da076610b40ed935998fc15334e83ea30ed65291b07d56b5240edc0a44bb",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2028-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "7a4acf594744e2b1488627ec461757585b7116f36db7850ae03ad69a5a76ced4",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2028-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "a04ca7cb1c419b7e89981d8a95f19df2139a981196ec71694c0c7243e95d7d1c",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2028-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "2a730817af8fa98cbfb22f8cdee5a7a54ce97915b34870eb06a9d05fc8aaf5ec",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2028-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "0643ac0c9cf5edb25aa052265cc3bfe24c7a970c2caf94cc0115de2316feda4e",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2028-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "139af80b061c8f385d4f8984d89392d2caf48b52afc5859d8fbe659b40109db0",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2029-metinis-01.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "710e6cd3b010fcbf3ac0f604fa377072504f0dbe91f0286d54b0b599a3f401b8",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2029-metinis-02.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "500c737f4245008366813d8ce61733dd3960730d1b77e07ea9eeff4a394631b7",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2029-metinis-03.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "b68626d70980239371071714c0cb9df8e812f11b8804f8b79ebe66336568b1e7",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2029-metinis-04.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "e090d8e46630c2739250b7bb0f0e8fa1547f617dbfcf69cfedfb7e755de62248",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": "site/assets/previews-small/2029-metinis-05.webp",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "0ac071d67c0104a5ffef5f296591c0f9b8ec942e9196189e815c5a63dbf69f65",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "version": "2026-10-17-lt-editorial-v1",
+      "path": "site/assets/data/holiday-editorial.json",
+      "before_sha256": "2390de90d277539c22ec2ec15114d5e3eb1941ff019498b119e28352741a4a34",
+      "sha256": "e8708d8fc7f5a102df01168dc9816a6a57a6cf0a72382d13cdabe5171925c744",
+      "review_manifest": "docs/language-audit/2026-10-17/holiday-editorial-v1.json",
+      "reviewed_text_paths": 17,
+      "reason": "Reviewed Lithuanian prose only; reconstructed baseline hash and full JSON structural diff verified"
+    },
     {
       "path": "site/assets/data/home-holiday-data.json",
       "reason": "Complete the existing holiday event prefill; original ids, slugs and date rules preserved",
-      "sha256": "c7aee6472b92461edef2296fa47b325e2b78b4a17d11bf27a75da1da4021e3a7"
+      "sha256": "5584381a8f9ac36294bdab4a3cffa62814fdb796505be7eeceb104f52d109aae"
     },
     {
-      "path": ".github/workflows/horoscope-automation.yml",
-      "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "a7ca311f6b01cfb6434976b34249ee90d56dc901647a58985285d9c017b6fa8a"
-    },
-    {
-      "path": ".github/workflows/site-release-qa.yml",
-      "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "f00ebb4d88539d2db472c45dc44f9548ea338384415c487b4c38b0f5f8117e69"
+      "path": "site/assets/data/manifest.json",
+      "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
+      "sha256": "4775ddb7772a0522a742f887d447c9635651ea2b27e80accce6d04c667c62394",
+      "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
     }
   ],
   "changed_baseline_assets": [],

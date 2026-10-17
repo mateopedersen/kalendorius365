@@ -1,5 +1,5 @@
-import { addDays, parse, today } from '/assets/releases/673b7c135b10a817906e/calendar.js';
-import { validate, empty } from '/assets/releases/673b7c135b10a817906e/storage.js';
+import { addDays, parse, today } from './calendar.js?v=4d35e0869c52';
+import { validate, empty } from './storage.js?v=4d35e0869c52';
 export { today as vilniusToday };
 export const ALPHABET = 'A Ą B C Č D E Ę Ė F G H I Į Y J K L M N O P R S Š T U Ų Ū V Z Ž'.split(' ');
 export const collator = new Intl.Collator('lt', { sensitivity: 'variant' });
@@ -36,7 +36,7 @@ export function nameDayEvent(record, date, name = '', recurring = false) {
   let hash=2166136261;
   for(const c of `${date}|${name}|${recurring}`) hash=Math.imul(hash^c.codePointAt(0),16777619)>>>0;
   const event={ id:`vardadienis-${date}-${hash.toString(16)}`, title:name ? `${name}: vardadienis` : 'Dienos vardadieniai',
-    description:`${name || record.names.join(', ')}. Vardadieniai pagal nurodytą kalendorių.\nŠaltinis: ${record.source_page}\nRedakcija: ${record.source_revision}\nLietuviškos Vikipedijos bendraautoriai; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/`,
+    description:`${name || record.names.join(', ')}. Vardadienių data pagal lietuviškos Vikipedijos dienos straipsnį.\nŠaltinis: ${record.source_page}\nRedakcija: ${record.source_revision}\nLietuviškos Vikipedijos bendraautoriai; Kalendorius365 išskyrė ir susistemino vardus. CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/`,
     start:date,end:date,allDay:true,category:0,important:false,repeat:recurring?'yearly':'none',until:'' };
   const state=empty(); state.events=[event]; validate(state); return event;
 }

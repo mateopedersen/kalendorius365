@@ -36,6 +36,28 @@ module AssetRelease
     []
   end
 
+  # Jekyll clears its destination on each build. Stage the two previous
+  # immutable releases before that clean and restore them before publishing
+  # the new manifest, so already-open tabs can still lazy-load old modules.
+  def stash_previous_releases(public_dir, stash_dir, previous)
+    Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES - 1).each do |revision|
+      source = File.join(public_dir, 'assets', 'releases', revision)
+      FileUtils.cp_r(source, File.join(stash_dir, revision)) if File.directory?(source)
+    end
+  end
+
+  def restore_previous_releases(public_dir, stash_dir, previous)
+    Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES - 1).each do |revision|
+      source = File.join(stash_dir, revision)
+      next unless File.directory?(source)
+
+      destination = File.join(public_dir, 'assets', 'releases', revision)
+      FileUtils.rm_rf(destination)
+      FileUtils.mkdir_p(File.dirname(destination))
+      FileUtils.cp_r(source, destination)
+    end
+  end
+
   def rewrite_references(content, urls)
     # Only known, generated files are changed. Download URLs, routes, API paths,
     # fragment IDs, unknown strings and user-generated data remain untouched.

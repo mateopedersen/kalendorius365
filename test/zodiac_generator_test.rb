@@ -44,9 +44,14 @@ Dir.mktmpdir('zodiac-generator-', ENV.fetch('K365_QA_TMP') { Dir.tmpdir }) do |s
       raise "Source metadata lost: #{key}" unless page.include?(%(content_date: "#{date}"))
       raise "Ascendant calculator lost: #{key}" unless page.include?('id="ascendant-form"')
       raise "Daily text lost: #{key}" unless page.include?("Patikros scenarijus #{index + 1}.")
+      raise "Uppercase month after date label: #{key}" if page.match?(/Orientacinės datos: <strong>[A-ZĄČĘĖĮŠŲŪŽ]/)
+      raise "Double date-abbreviation period: #{key}" if page.include?('d..')
+      raise "Malformed Lithuanian Moon sentence returned: #{key}" if page.include?('Mėnulio akcentas: dėmesį')
+      raise "Source-methodology link lost: #{key}" unless page.include?('href="/horoskopai/#horoscope-about-title"')
     end
     hub = File.read(File.join(sandbox, 'site/horoskopai/index.html'))
     raise 'Daily hub lost guide CTA' unless hub.include?('href="/zodiakas/"')
+    raise 'Honest automation-method disclosure lost' unless hub.include?('Kaip parengiami dienos tekstai?') && hub.include?('Nepriklausomas gimtakalbis redaktorius jų neperžiūri.')
     report << { date: date, detail_pages: profiles.length, hub: true, guide_sha256: guide_hash,
                 unchanged_profiles: profiles.length, real_daily_dataset_modified: false }
   end
