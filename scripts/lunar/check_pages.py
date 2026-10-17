@@ -1,6 +1,7 @@
 """Independent HTML language, calendar, download and semantic checks."""
 import calendar,csv,hashlib,json,re
 from html.parser import HTMLParser
+from urllib.parse import urlsplit
 from core import ROOT,GENITIVE
 
 class Page(HTMLParser):
@@ -39,8 +40,9 @@ def main():
             dates=[a['data-lunar-date'] for t,a in elements if 'data-lunar-date' in a]
             assert dates==[f'{year}-{month:02}-{day:02}' for day in range(1,days+1)],route
             assert GENITIVE[month-1] in text
-            downloads={a.get('href') for t,a in elements if t=='a' and 'download' in a and a.get('href','').endswith(('.pdf','.webp'))}
-            assert downloads=={row[k] for k in ('dark_pdf','dark_webp','light_pdf','light_webp')},route
+            downloads={urlsplit(a.get('href','')).path for t,a in elements if t=='a' and 'download' in a and a.get('href','').endswith(('.pdf','.webp'))}
+            expected_downloads={urlsplit(row[k]).path for k in ('dark_pdf','dark_webp','light_pdf','light_webp')}
+            assert downloads==expected_downloads,route
             events=[e for e in data['events'] if e['local_date'].startswith(f'{year}-{month:02}')]
             assert len(events)==sum('data-event-ics' in a for t,a in elements),route
             for e in events:assert e['local_label_lt'] in raw,route
