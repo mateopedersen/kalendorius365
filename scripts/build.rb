@@ -22,7 +22,7 @@ Dir.chdir(ROOT) do
   system('bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
  end
  homepage=File.read('public/index.html')
- css_version=homepage[%r{/assets/style\.css\?v=([^"' >]+)},1]
+ css_version=homepage[%r{/assets/(?:style|homepage-bundle)\.css\?v=([^"' >]+)},1]
  script_version=homepage[%r{/assets/common\.js\?v=([^"' >]+)},1]
  abort 'Generated CSS version was not found in the homepage' unless css_version
  abort 'Generated JavaScript version was not found in the homepage' unless script_version
