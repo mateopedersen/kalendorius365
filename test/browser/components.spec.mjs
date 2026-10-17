@@ -34,9 +34,12 @@ test('header search recovers from a failed index request without a reload',async
  await page.getByRole('button',{name:'Bandyti dar kartą',exact:true}).click();
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
  expect(requests).toBeGreaterThanOrEqual(2);
- await page.locator('#site-search').press('ArrowDown');
- await expect(page.locator('#site-search')).toHaveAttribute('aria-activedescendant','site-search-option-0');
- await page.locator('#site-search').press('Enter');await expect(page).toHaveURL(/\/saule\/$/);
+ const input=page.locator('#site-search');
+ await input.focus();
+ await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
+ await page.keyboard.press('ArrowDown');
+ await expect(input).toHaveAttribute('aria-activedescendant','site-search-option-0');
+ await page.keyboard.press('Enter');await expect(page).toHaveURL(/\/saule\/$/);
 });
 
 test('calendar event create, edit, reload, export and delete preserve notes and tasks',async({page})=>{
