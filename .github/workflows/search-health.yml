@@ -1,0 +1,89 @@
+name: Live search health
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+    - cron: '43 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: Run lightweight daily checks or the complete weekly audit
+        type: choice
+        options:
+          - daily
+          - weekly
+        default: daily
+        required: true
+  pull_request:
+    paths:
+      - '.github/workflows/search-health.yml'
+      - 'scripts/search_health.py'
+      - 'test/test_search_automation.py'
+
+permissions:
+  contents: read
+
+jobs:
+  source-tests:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+      - name: Run offline search automation tests
+        run: python3 -m unittest test.test_search_automation
+      - name: Validate workflow YAML and Python syntax
+        run: |
+          ruby -e 'require "yaml"; ARGV.each { |path| YAML.load_file(path) }' .github/workflows/search-health.yml .github/workflows/indexnow-notify.yml .github/workflows/horoscope-automation.yml
+          python3 -m py_compile scripts/search_health.py scripts/indexnow_notify.py test/test_search_automation.py
+
+  daily:
+    if: >
+      (github.event_name == 'schedule' && github.event.schedule == '17 5 * * *') ||
+      (github.event_name == 'workflow_dispatch' && inputs.scope == 'daily')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+      - name: Check homepage, robots, sitemap and llms.txt
+        run: python3 scripts/search_health.py --scope daily --output "$RUNNER_TEMP/search-health-daily.json"
+      - name: Write failure details to the run summary
+        if: failure()
+        run: echo 'The daily production check failed. Review the failed step and saved report; GitHub Actions will mark this run failed.' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: search-health-daily
+          path: "$RUNNER_TEMP/search-health-daily.json"
+          if-no-files-found: ignore
+          retention-days: 14
+
+  weekly:
+    if: >
+      (github.event_name == 'schedule' && github.event.schedule == '43 5 * * 1') ||
+      (github.event_name == 'workflow_dispatch' && inputs.scope == 'weekly')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+      - name: Check every sitemap page, internal link and representative 2028 downloads
+        run: python3 scripts/search_health.py --scope weekly --output "$RUNNER_TEMP/search-health-weekly.json"
+      - name: Write failure details to the run summary
+        if: failure()
+        run: echo 'The weekly production audit failed. Review the failed step and saved report; GitHub Actions will mark this run failed.' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: search-health-weekly
+          path: "$RUNNER_TEMP/search-health-weekly.json"
+          if-no-files-found: ignore
+          retention-days: 14
