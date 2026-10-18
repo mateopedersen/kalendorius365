@@ -4,7 +4,7 @@ import { upload, originals, forget, source, photoURLs, palette, dpi, byteTotal }
 import * as storage from "./storage.js";
 import * as output from "./export.js";
 const root = document.querySelector("#calendar-editor");
-let state = initial(), data, editorial, pages = [], index = 0, scope = "all", selectedPhoto = null, zoom = 1, undo = [], redo = [], rangeBefore = null, revision = 0, saveTimer, previewTimer, busy = false, cancelled = false, tab = "settings", previewVersion = 0;
+let state = initial(), data, editorial, pages = [], index = 0, scope = "all", selectedPhoto = null, zoom = 1, undo = [], redo = [], rangeBefore = null, revision = 0, savedRevision = 0, saveTimer, previewTimer, busy = false, cancelled = false, tab = "settings", previewVersion = 0;
 const photoCache = /* @__PURE__ */ new Map();
 let statusText = "Pakeitimai išsaugomi šiame įrenginyje.", statusError = false;
 const categoryNames = { birthday: "Gimtadienis", family: "Šeima", work: "Darbas", school: "Mokykla", vacation: "Atostogos", other: "Kita" };
@@ -28,7 +28,10 @@ function history(previous) {
   undo.push(clone(previous));
   if (undo.length > 40) undo.shift();
   redo = [];
-  if(q('[data-action="undo"]')){q('[data-action="undo"]').disabled=false;q('[data-action="redo"]').disabled=true;}
+  if (q('[data-action="undo"]')) {
+    q('[data-action="undo"]').disabled = false;
+    q('[data-action="redo"]').disabled = true;
+  }
 }
 function change(fn, rerender = true) {
   if (busy) return;
@@ -36,21 +39,25 @@ function change(fn, rerender = true) {
   try {
     fn(state);
     validate(state);
-    scenes(state,data,editorial);
+    scenes(state, data, editorial);
     history(before);
     dirty();
     if (rerender) render();
     else schedulePreview();
   } catch (error) {
     state = before;
-    if(rerender)render();
+    if (rerender) render();
     status(error.message, true);
   }
 }
 function dirty() {
-  let retained=()=>new Set([state,...undo,...redo].flatMap(s=>s.photos.map(p=>p.id)));
-  let ids=retained();while(undo.length>1&&[...ids].reduce((n,id)=>n+(originals.get(id)?.size||0),0)>160*1024*1024){undo.shift();ids=retained();}
-  for(let id of originals.keys())if(!ids.has(id))forget(id);
+  let retained = () => new Set([state, ...undo, ...redo].flatMap((s) => s.photos.map((p) => p.id)));
+  let ids = retained();
+  while (undo.length > 1 && [...ids].reduce((n, id) => n + (originals.get(id)?.size || 0), 0) > 160 * 1024 * 1024) {
+    undo.shift();
+    ids = retained();
+  }
+  for (let id of originals.keys()) if (!ids.has(id)) forget(id);
   revision++;
   status("Yra neišsaugotų pakeitimų…");
   clearTimeout(saveTimer);
@@ -58,6 +65,7 @@ function dirty() {
   saveTimer = setTimeout(async () => {
     try {
       await storage.save(clone(state));
+      savedRevision = Math.max(savedRevision, r);
       if (r === revision && !statusError) status("Išsaugota šiame įrenginyje · " + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
     } catch (error) {
       status("Nepavyko išsaugoti. Atsisiųskite projekto kopiją: " + error.message, true);
@@ -132,7 +140,7 @@ async function preview() {
     let n = Math.round(dpi(i.photo, i.w, i.h));
     return `Nuotraukos efektyvi raiška: ${n} PPI${n < 200 ? " · maža raiška spaudai" : n < 300 ? " · mažiau nei 300 PPI" : ""}`;
   });
-  q("#ce-preview-info").textContent = `${Math.round(page.w / 72 * 25.4)} × ${Math.round(page.h / 72 * 25.4)} mm · 300 PPI: ${Math.round(page.w / 72 * 300)} × ${Math.round(page.h / 72 * 300)} px. ${warnings.join(". ")}${warnings.some(x=>/maža|mažiau/.test(x))?". Įkelkite didesnę nuotrauką arba sumažinkite jos plotą.":""}`;
+  q("#ce-preview-info").textContent = `${Math.round(page.w / 72 * 25.4)} × ${Math.round(page.h / 72 * 25.4)} mm · 300 PPI: ${Math.round(page.w / 72 * 300)} × ${Math.round(page.h / 72 * 300)} px. ${warnings.join(". ")}${warnings.some((x) => /maža|mažiau/.test(x)) ? ". Įkelkite didesnę nuotrauką arba sumažinkite jos plotą." : ""}`;
 }
 function renderEvents() {
   let search = (q("#ce-event-search")?.value || "").toLocaleLowerCase("lt"), filter = q("#ce-event-filter")?.value || "all";
@@ -228,9 +236,11 @@ async function projectList() {
 }
 async function loadProject(record) {
   clearTimeout(saveTimer);
+  revision = 0;
+  savedRevision = 0;
   state = clone(record.state);
   validate(state);
-  for(let id of originals.keys())forget(id);
+  for (let id of originals.keys()) forget(id);
   for (let p of record.photos) originals.set(p.id, p.blob);
   undo = [];
   redo = [];
@@ -244,8 +254,14 @@ async function exportFiles() {
   if (busy) return;
   let format = q("#ce-format").value;
   sessionStorage.setItem("ce-format", format);
-  let frozen=clone(state),frozenIndex=index,list;
-  try{validate(frozen);list=scenes(frozen,data,editorial);}catch(error){status(error.message,true);return;}
+  let frozen = clone(state), frozenIndex = index, list;
+  try {
+    validate(frozen);
+    list = scenes(frozen, data, editorial);
+  } catch (error) {
+    status(error.message, true);
+    return;
+  }
   busy = true;
   cancelled = false;
   clearTimeout(saveTimer);
@@ -284,12 +300,21 @@ async function exportFiles() {
     }
     try {
       await storage.save(frozen);
+      savedRevision = revision;
     } catch (error) {
       status("Failas paruoštas, bet juodraštis neišsaugotas: " + error.message, true);
     }
   } catch (error) {
     status(error.name === "AbortError" ? "Ruošimas atšauktas" : error.message, error.name !== "AbortError");
   } finally {
+    if (savedRevision < revision) {
+      try {
+        await storage.save(state);
+        savedRevision = revision;
+      } catch (error) {
+        status("Nepavyko išsaugoti juodraščio. Atsisiųskite projekto kopiją: " + error.message, true);
+      }
+    }
     busy = false;
     qa("button,input,select,textarea").forEach((n) => n.disabled = false);
     q("#ce-progress-wrap").hidden = true;
@@ -345,7 +370,7 @@ root.addEventListener("change", async (event) => {
       let file = n.files[0];
       if (!file) return;
       let project = await storage.readPortable(file);
-      scenes(project.state,data,editorial);
+      scenes(project.state, data, editorial);
       for (let p of project.state.photos) {
         let im = await sourceFrom(project.photos.get(p.id));
         if (im.naturalWidth !== p.width || im.naturalHeight !== p.height) throw Error("Nuotraukos matmenys nesutampa su projektu");
@@ -357,7 +382,7 @@ root.addEventListener("change", async (event) => {
       clearTimeout(saveTimer);
       state = project.state;
       state.id = uid();
-      for(let id of originals.keys())forget(id);
+      for (let id of originals.keys()) forget(id);
       for (let [id, blob] of project.photos) originals.set(id, blob);
       undo = [];
       redo = [];
@@ -397,7 +422,7 @@ root.addEventListener("change", async (event) => {
         rangeBefore = null;
         try {
           validate(state);
-          scenes(state,data,editorial);
+          scenes(state, data, editorial);
           history(before);
           dirty();
         } catch (error) {
@@ -419,9 +444,10 @@ root.addEventListener("change", async (event) => {
     if (n.dataset.color || n.dataset.hex) {
       let k = n.dataset.color || n.dataset.hex;
       if (!/^#[0-9a-f]{6}$/i.test(n.value)) throw Error("Spalvą įrašykite HEX formatu, pvz., #19594A");
-      change((s) => setPath(s, "theme.colors." + k, n.value),false);
-      let c=effective(state,scope==='month'?currentKey():'').theme.colors[k];
-      q(`[data-color="${k}"]`).value=c;q(`[data-hex="${k}"]`).value=c;
+      change((s) => setPath(s, "theme.colors." + k, n.value), false);
+      let c = effective(state, scope === "month" ? currentKey() : "").theme.colors[k];
+      q(`[data-color="${k}"]`).value = c;
+      q(`[data-hex="${k}"]`).value = c;
       return;
     }
     if (n.dataset.photo) {
@@ -736,7 +762,7 @@ for (let type of ["dragenter", "dragover", "dragleave", "drop"]) root.addEventLi
   if (type === "drop") addPhotos(event.dataTransfer.files);
 });
 window.addEventListener("beforeunload", (event) => {
-  if (busy) {
+  if (busy || revision > savedRevision) {
     event.preventDefault();
     event.returnValue = "";
   }

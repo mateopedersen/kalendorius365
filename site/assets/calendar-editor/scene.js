@@ -51,7 +51,7 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
   let key = monthKey(y, m), first = key + "-01", last = key + "-" + monthLength(y, m), all = entries(s, data, editorial, first, last);
   let grid = monthGrid(y, m, s.layout.weekstart);
   let rows = Math.ceil(((weekday(first) - s.layout.weekstart + 7) % 7 + monthLength(y, m)) / 7);
-  if (box.h < (mini ? 35 : rows * (sz + 7) + sz * 2) || box.w < 100 && !mini) throw Error('Šiam lapui per mažai vietos. Sumažinkite paraštes, šriftą ar užrašų eilučių skaičių.');
+  if (box.h < (mini ? 35 : rows * (sz + 7) + sz * 2) || box.w < 100 && !mini) throw Error("Šiam lapui per mažai vietos. Sumažinkite paraštes, šriftą ar užrašų eilučių skaičių.");
   let gutter = s.layout.isoWeeks ? mini ? 15 : 25 : 0;
   let cw = (box.w - gutter) / 7, ch = (box.h - sz * 2) / rows;
   for (let k = 0; k < 7; k++) {
@@ -96,7 +96,7 @@ function appendices(s, lines, label, key) {
   const fresh = () => {
     p = empty(s, `${label} · Įrašų sąrašas ${out.length + 1}`, key);
     out.push(p);
-    text(p, `${label} · Visi įrašai`, margin, margin + 22, Math.min(20, s.theme.titleSize,(p.w-2*margin)/(`${label} · Visi įrašai`.length*.6)), s.theme.colors.title, true);
+    text(p, `${label} · Visi įrašai`, margin, margin + 22, Math.min(20, s.theme.titleSize, (p.w - 2 * margin) / (`${label} · Visi įrašai`.length * 0.6)), s.theme.colors.title, true);
     y = margin + 45;
   };
   for (let item of lines) {
@@ -117,8 +117,8 @@ function scenes(state, data, editorial) {
   let result = [], period = months(state), annual = state.period.mode === "annual";
   if (annual) {
     let s = effective(state, ""), p = empty(s, `${state.period.year} metai`, "annual"), margin = s.layout.margin * MM;
-    text(p, `${state.period.year} metų kalendorius`, margin, margin + 25, Math.min(s.theme.titleSize,(p.w-2*margin)/12), s.theme.colors.title, true);
-    text(p, wrap(state.name,p.w-2*margin,8,s.theme.font)[0],margin,margin+39,8,s.theme.colors.weekday);
+    text(p, `${state.period.year} metų kalendorius`, margin, margin + 25, Math.min(s.theme.titleSize, (p.w - 2 * margin) / 12), s.theme.colors.title, true);
+    text(p, wrap(state.name, p.w - 2 * margin, 8, s.theme.font)[0], margin, margin + 39, 8, s.theme.colors.weekday);
     let cols = p.w > p.h ? 4 : 3, rows = 12 / cols, gap = 14, w = (p.w - 2 * margin - gap * (cols - 1)) / cols, h = (p.h - 2 * margin - 65 - gap * (rows - 1)) / rows, all = [];
     for (let i = 0; i < 12; i++) {
       let [y, m] = period[i], x = margin + i % cols * (w + gap), yy = margin + 55 + Math.floor(i / cols) * (h + gap);
@@ -135,13 +135,14 @@ function scenes(state, data, editorial) {
     let photoId = Object.hasOwn(s.assignments.months, key) ? s.assignments.months[key] : s.assignments.all, photo = s.photos.find((x) => x.id === photoId);
     let photoH = Math.min(s.layout.photoHeight * MM, p.h * 0.4), gridX = margin, gridW = p.w - 2 * margin;
     let notesH = s.layout.notes * 14 + 20;
-    let fullEntries=entries(s,data,editorial,key+'-01',key+'-'+monthLength(y,m));
-    let full=entryLines(fullEntries);if(s.notes[key])full.push('Užrašai: '+s.notes[key]);
-    let legendLines=full.flatMap(value=>wrap(value,p.w-2*margin,8,/[♥★]/.test(value)?'Inter':p.font));
-    let compact=legendLines.length<=5,legendH=compact&&legendLines.length?legendLines.length*10+12:0;
-    let bottom = p.h - margin - notesH - 20-legendH;
-    let monthRows=Math.ceil(((weekday(key+'-01')-s.layout.weekstart+7)%7+monthLength(y,m))/7);
-    if(s.theme.placement==='top') photoH=Math.max(0,Math.min(photoH,bottom-top-(monthRows*(s.theme.bodySize+7)+2*s.theme.bodySize)-15));
+    let fullEntries = entries(s, data, editorial, key + "-01", key + "-" + monthLength(y, m));
+    let full = entryLines(fullEntries);
+    if (s.notes[key]) full.push("Užrašai: " + s.notes[key]);
+    let legendLines = full.flatMap((value) => wrap(value, p.w - 2 * margin, 8, /[♥★]/.test(value) ? "Inter" : p.font));
+    let compact = legendLines.length <= 5, legendH = compact && legendLines.length ? legendLines.length * 10 + 12 : 0;
+    let bottom = p.h - margin - notesH - 20 - legendH;
+    let monthRows = Math.ceil(((weekday(key + "-01") - s.layout.weekstart + 7) % 7 + monthLength(y, m)) / 7);
+    if (s.theme.placement === "top") photoH = Math.max(0, Math.min(photoH, bottom - top - (monthRows * (s.theme.bodySize + 7) + 2 * s.theme.bodySize) - 15));
     let ph;
     if (photo && photoH > 0 && !s.lowInk) {
       if (s.theme.placement === "side") {
@@ -159,7 +160,7 @@ function scenes(state, data, editorial) {
     }
     text(p, `${y}`, margin, titleY, Math.max(14, s.theme.titleSize * 0.62), c.weekday);
     text(p, MONTHS[m - 1], p.w - margin, titleY, s.theme.titleSize, c.title, true, "right");
-    text(p, wrap(s.name,p.w-2*margin,8,s.theme.font)[0], margin, titleY + 15, 8, c.weekday);
+    text(p, wrap(s.name, p.w - 2 * margin, 8, s.theme.font)[0], margin, titleY + 15, 8, c.weekday);
     let all = drawGrid(p, s, data, editorial, y, m, { x: gridX, y: top, w: gridW, h: bottom - top });
     for (let n = 0; n < s.layout.notes; n++) {
       let yy = bottom + 28 + n * 14;
@@ -167,11 +168,11 @@ function scenes(state, data, editorial) {
       line(p, margin + 13, yy, p.w - margin, yy, c.grid, 0.35);
     }
     text(p, "Užrašai ir darbai", margin, bottom + 16, 8, c.weekday, true);
-    if(compact)legendLines.forEach((value,n)=>text(p,value,margin,bottom+notesH+10+n*10,8,c.day));
-    let info = !compact&&full.length ? "Visi pažymėti įrašai ir užrašai pateikti priede." : compact&&full.length?"Visi pažymėti įrašai pateikti po kalendoriumi.": "ISO savaitė: pirmadienio sistema; „52/1“ žymi dvi savaites.";
+    if (compact) legendLines.forEach((value, n) => text(p, value, margin, bottom + notesH + 10 + n * 10, 8, c.day));
+    let info = !compact && full.length ? "Visi pažymėti įrašai ir užrašai pateikti priede." : compact && full.length ? "Visi pažymėti įrašai pateikti po kalendoriumi." : "ISO savaitė: pirmadienio sistema; „52/1“ žymi dvi savaites.";
     text(p, info, margin, p.h - margin + 5, 6.5, c.weekday);
     result.push(p);
-    if(!compact)result.push(...appendices(s,full,label,key));
+    if (!compact) result.push(...appendices(s, full, label, key));
   }
   return result;
 }

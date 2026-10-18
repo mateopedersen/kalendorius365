@@ -148,9 +148,12 @@ function validate(s) {
   if (!s.layers || Object.keys(f.layers).some((k) => typeof s.layers[k] !== typeof f.layers[k]) || !["basic", "secondary"].includes(s.layers.schoolStage) || !["cell", "legend", "marks"].includes(s.layers.display)) throw Error("Neteisingi duomenų sluoksniai");
   if (!Array.isArray(s.events) || s.events.length > 500) throw Error("Leidžiama iki 500 įvykių");
   s.events.forEach(validateEvent);
+  if (s.events.some((e) => typeof e.id !== "string" || !e.id || e.id.length > 100) || new Set(s.events.map((e) => e.id)).size !== s.events.length) throw Error("Neteisingi arba pasikartojantys įvykių identifikatoriai");
   if (!Array.isArray(s.workdays) || !s.workdays.length || s.workdays.some((n) => !Number.isInteger(n) || n < 0 || n > 6)) throw Error("Pasirinkite darbo savaitės dienas");
   if (!Array.isArray(s.photos) || s.photos.length > 24) throw Error("Leidžiamos iki 24 nuotraukų");
+  if (new Set(s.photos.map((p) => p.id)).size !== s.photos.length) throw Error("Pasikartojantis nuotraukos identifikatorius");
   for (let p of s.photos) {
+    if (typeof p.name !== "string" || p.name.length > 140 || p.overlayColor !== void 0 && !["light", "dark"].includes(p.overlayColor)) throw Error("Neteisingi nuotraukos duomenys");
     if (typeof p.id !== "string" || !/^[a-z0-9-]{1,100}$/i.test(p.id) || !["image/jpeg", "image/png", "image/webp"].includes(p.type) || !Number.isFinite(p.width) || !Number.isFinite(p.height) || p.width < 1 || p.height < 1 || p.width * p.height > 4e7) throw Error("Neteisinga nuotrauka");
     for (let [k, min, max] of [["x", 0, 1], ["y", 0, 1], ["zoom", 1, 4], ["brightness", 0.3, 1.7], ["contrast", 0.3, 1.7], ["saturation", 0, 2], ["warmth", -1, 1], ["opacity", 0.1, 1], ["overlay", 0, 0.8]]) if (!Number.isFinite(p[k]) || p[k] < min || p[k] > max) throw Error("Neteisingas nuotraukos filtras");
     if (![0, 90, 180, 270].includes(p.rotation) || !["cover", "contain"].includes(p.fit) || typeof p.mono !== "boolean") throw Error("Neteisingas nuotraukos kirpimas");
