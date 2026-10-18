@@ -1,51 +1,52 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildMailtoDraft, CONTACT_EMAIL, safeSourcePage } from "../site/assets/contact.js";
+import { buildContactFormUrl, CONTACT_FORM_URL, CONTACT_TOPICS, safeSourcePage } from "../site/assets/contact.js";
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
 
-test("contact page contains its metadata, the required inbox, and working destinations", () => {
+test("contact URLs always use the published form and allow only the six real topics", () => {
+  for (const [topic, label] of Object.entries(CONTACT_TOPICS)) {
+    const url = new URL(buildContactFormUrl({ topic, embedded: true }));
+    assert.equal(url.origin + url.pathname, CONTACT_FORM_URL);
+    assert.equal(url.searchParams.get("entry.122884581"), label);
+    assert.equal(url.searchParams.get("embedded"), "true");
+  }
+  for (const topic of ["__proto__", "constructor", "attacker@example.com", "<script>", ""]) {
+    const url = new URL(buildContactFormUrl({ topic }));
+    assert.equal(url.searchParams.has("entry.122884581"), false);
+    assert.equal(url.origin + url.pathname, CONTACT_FORM_URL);
+  }
+});
+
+test("source prefill strips private query data, normalizes the host and rejects unsafe URLs", () => {
+  assert.equal(safeSourcePage("http://www.kalendorius365.lt/sventes/?q=private#id"), "https://kalendorius365.lt/sventes/");
+  assert.equal(safeSourcePage("/apie/"), "https://kalendorius365.lt/apie/");
+  for (const value of ["javascript:alert(1)", "https://attacker.example/path", "https://kalendorius365.lt:444/path", "https://user:pass@kalendorius365.lt/", "https://kalendorius365.lt/" + "a".repeat(2050)]) {
+    assert.equal(safeSourcePage(value), "");
+  }
+  const url = new URL(buildContactFormUrl({ topic: "date_error", pageUrl: "https://kalendorius365.lt/apie/?q=private#id", name: "private", email: "private@example.com", message: "private message" }));
+  assert.equal(url.searchParams.get("entry.1784264088"), "https://kalendorius365.lt/apie/");
+  assert.doesNotMatch(url.href, /private/);
+});
+
+test("the rendered integration has a titled Google frame and a direct non-JavaScript fallback", () => {
   const page = read("../site/kontaktai/index.html");
   assert.match(page, /schema_type: ContactPage/);
-  assert.match(page, /title: "Kontaktai – susisiekite su mumis"/);
+  assert.match(page, /title="Kalendorius365 kontaktinė forma"/);
+  assert.match(page, /referrerpolicy="no-referrer"/);
+  assert.ok(page.includes(CONTACT_FORM_URL + "?embedded=true&amp;hl=lt"));
   assert.match(page, /mailto:kalendorius365@gmail\.com/);
-  for (const href of ["/menesiai/", "/sventes/", "/irankiai/", "/apie/"]) assert.ok(page.includes(`href="${href}"`));
-  for (const topic of ["calendar", "date_error", "technical", "namedays", "collaboration", "other"]) assert.ok(page.includes(`data-topic="${topic}"`));
+  assert.doesNotMatch(page, /data-contact-submit|data-contact-form|laiško juodrašt/);
+  assert.match(read("../scripts/build.rb"), /frame-src https:\/\/docs\.google\.com;/);
 });
 
-test("mailto draft encodes Lithuanian, treats content as plain text, and fixes the subject topic", () => {
-  const href = buildMailtoDraft({
-    name: "Ieva\nBcc: attacker@example.com",
-    email: "ieva@example.com",
-    topic: "date_error",
-    pageUrl: "https://kalendorius365.lt/sventes/velykos/?q=private#data",
-    message: "Data netiksli — patikrinkite, prašau.\nAntroji eilutė <script>alert(1)</script>",
-  });
-  const parsed = new URL(href);
-  assert.equal(parsed.protocol, "mailto:");
-  assert.equal(parsed.pathname, CONTACT_EMAIL);
-  assert.equal(parsed.searchParams.get("subject"), "Kalendorius365 — Klaida kalendoriuje ar datoje");
-  const body = parsed.searchParams.get("body");
-  assert.match(body, /Vardas: Ieva Bcc: attacker@example\.com/);
-  assert.match(body, /Puslapis: https:\/\/kalendorius365\.lt\/sventes\/velykos\//);
-  assert.match(body, /Data netiksli — patikrinkite, prašau\./);
-  assert.match(body, /<script>alert\(1\)<\/script>/);
-  assert.doesNotMatch(body, /\nBcc:/);
-});
-
-test("source page parameter accepts only canonical HTTP(S) pages and drops query data", () => {
-  assert.equal(safeSourcePage("https://kalendorius365.lt/sventes/?q=private#id"), "https://kalendorius365.lt/sventes/");
-  assert.equal(safeSourcePage("/apie/"), "https://kalendorius365.lt/apie/");
-  assert.equal(safeSourcePage("javascript:alert(1)"), "");
-  assert.equal(safeSourcePage("https://attacker.example/path"), "");
-  assert.equal(safeSourcePage("https://user:pass@kalendorius365.lt/"), "");
-  assert.equal(safeSourcePage("https://kalendorius365.lt/" + "a".repeat(2050)), "");
-});
-
-test("privacy wording matches the mail-draft flow and updated Gmail contact", () => {
-  const privacy = read("../site/privatumas/index.html");
-  assert.match(privacy, /Kontaktų puslapio forma parengia laiško juodraštį/);
-  assert.match(privacy, /kalendorius365@gmail\.com/);
-  assert.match(privacy, /Google/);
+test("privacy source describes Forms storage, Gmail notifications and restricted response access", () => {
+  for (const path of ["../site/_includes/privacy-policy-lt.html", "../site/privatumas/index.html"]) {
+    const privacy = read(path);
+    assert.match(privacy, /Formos atsakymai saugomi „Google Forms“/);
+    assert.match(privacy, /pranešimai apie naujus atsakymus siunčiami/);
+    assert.match(privacy, /Formos atsakymų suvestinė lankytojams neskelbiama/);
+    assert.doesNotMatch(privacy, /forma parengia laiško juodraštį/);
+  }
 });

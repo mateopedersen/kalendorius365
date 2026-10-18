@@ -1,5 +1,5 @@
-import { parse, zonedInstant } from "./calendar.js?v=98ff1d55777c";
-import { WEATHER_CITY_IDS } from "./data/weather-cities.js?v=98ff1d55777c";
+import { parse, zonedInstant } from "./calendar.js?v=d2d84b990885";
+import { WEATHER_CITY_IDS } from "./data/weather-cities.js?v=d2d84b990885";
 export const KEY = "kalendorius365:v1";
 export const empty = () => ({
   schema: 1,
