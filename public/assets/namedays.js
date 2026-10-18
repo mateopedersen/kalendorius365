@@ -1,7 +1,7 @@
-import { addDays, today, formatDate, weekday, monthLength } from './calendar.js?v=4d35e0869c52';
-import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from './namedays-engine.js?v=4d35e0869c52';
-import { Store } from './storage.js?v=4d35e0869c52';
-import { exportICS } from './ics.js?v=4d35e0869c52';
+import { addDays, today, formatDate, weekday, monthLength } from './calendar.js?v=2827d897e091';
+import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from './namedays-engine.js?v=2827d897e091';
+import { Store } from './storage.js?v=2827d897e091';
+import { exportICS } from './ics.js?v=2827d897e091';
 
 const root=document.querySelector('[data-namedays-source]');
 const $=(s)=>root.querySelector(s);

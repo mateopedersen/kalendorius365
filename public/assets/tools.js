@@ -1,6 +1,6 @@
-import * as cal from "./calendar.js?v=4d35e0869c52";
-import { Store, download } from "./storage.js?v=4d35e0869c52";
-import { notice } from "./common.js?v=4d35e0869c52";
+import * as cal from "./calendar.js?v=2827d897e091";
+import { Store, download } from "./storage.js?v=2827d897e091";
+import { notice } from "./common.js?v=2827d897e091";
 const $ = (s) => document.querySelector(s),
   data = await fetch("/assets/data/calendar.json").then((r) => r.json());
 const escape = (s) =>
@@ -39,6 +39,12 @@ if ($("#design-picker")) {
     if (previewTitle) previewTitle.textContent = name;
     if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Stačias");
     if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
+    const printSource = $("#selected-print-source");
+    if (printSource) printSource.srcset = webp.href;
+    const printRoot = selectedPreview?.closest("[data-print-root]");
+    if (printRoot) printRoot.dataset.printPaper = landscape ? "landscape" : "portrait";
+    const printStyle = $("#artwork-print-style");
+    if (printStyle) printStyle.textContent = `@page{size:A4 ${landscape ? "landscape" : "portrait"};margin:0}`;
     $("#selected-pdf").href = pdf.href;
     $("#selected-webp").href = webp.href;
     $("#selected-print").href = pdf.href;
@@ -276,7 +282,7 @@ if ($("#generator")) {
     form.elements.month.value = wantedMonth;
   function draw(e) {
     e?.preventDefault();
-    if (!form.reportValidity()) return;
+    if (!form.reportValidity()) return false;
     const a = form.elements,
       y = +a.year.value,
       m = +a.month.value,
@@ -448,16 +454,19 @@ if ($("#generator")) {
       style.id = "generator-print-style";
       document.head.append(style);
     }
-    style.textContent = `@media print{@page{size:${a.paper.value === "a4" ? "A4" : "Letter"} ${a.orientation.value};margin:0}.tool-preview{padding:0}.tool-preview svg{width:${(w / 72) * 25.4}mm;height:${(h / 72) * 25.4}mm}.content-main>h1,.page-heading,.source-note{display:none}}`;
+    const paper = a.paper.value === "a4" ? [210, 297] : [215.9, 279.4],
+      [printWidth, printHeight] = a.orientation.value === "landscape" ? [...paper].reverse() : paper;
+    style.textContent = `@media print{@page{size:${a.paper.value === "a4" ? "A4" : "Letter"} ${a.orientation.value};margin:0}#main #generator-preview{width:${printWidth}mm!important;height:${printHeight - 0.3}mm!important}#main #generator-preview svg{width:100%!important;height:100%!important}}`;
+    return true;
   }
   form.onsubmit = draw;
   form.addEventListener("change", draw);
   document.addEventListener("change", (e) => {
     if (e.target.form === form && !form.contains(e.target)) draw();
   });
+  window.addEventListener("beforeprint", draw);
   $("#generator-print").onclick = () => {
-    draw();
-    window.print();
+    if (draw()) window.print();
   };
   $("#generator-webp").onclick = async () => {
     draw();
