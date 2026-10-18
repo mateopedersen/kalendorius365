@@ -131,6 +131,7 @@
     overflow: visible !important;
     box-sizing: border-box !important;
     width: 100%;
+    min-width: 0 !important;
     height: auto !important;
     min-height: 22mm !important;
     padding: 2mm !important;
