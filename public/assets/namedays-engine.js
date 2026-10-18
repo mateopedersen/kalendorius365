@@ -1,5 +1,5 @@
-import { addDays, parse, today } from '/assets/releases/fe8dd749b6454e86e34d/calendar.js';
-import { validate, empty } from '/assets/releases/fe8dd749b6454e86e34d/storage.js';
+import { addDays, parse, today } from '/assets/releases/675aca80be49ea9f1d25/calendar.js';
+import { validate, empty } from '/assets/releases/675aca80be49ea9f1d25/storage.js';
 export { today as vilniusToday };
 export const ALPHABET = 'A Ą B C Č D E Ę Ė F G H I Į Y J K L M N O P R S Š T U Ų Ū V Z Ž'.split(' ');
 export const collator = new Intl.Collator('lt', { sensitivity: 'variant' });

@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Regular.woff2") format("woff2");
+  src: url("/assets/releases/675aca80be49ea9f1d25/fonts/Lato-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Bold.woff2") format("woff2");
+  src: url("/assets/releases/675aca80be49ea9f1d25/fonts/Lato-Bold.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Black.woff2") format("woff2");
+  src: url("/assets/releases/675aca80be49ea9f1d25/fonts/Lato-Black.woff2") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -6829,9 +6829,9 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
 }
 @media (max-width: 760px) {
   /* Keep focused controls and anchor targets above the fixed bottom menu. */
-  html { scroll-padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-bottom: calc(max(80px, 5.5rem) + env(safe-area-inset-bottom)); }
   main :is(button, input, select, textarea, a) {
-    scroll-margin-bottom: calc(80px + env(safe-area-inset-bottom));
+    scroll-margin-bottom: calc(max(80px, 5.5rem) + env(safe-area-inset-bottom));
   }
   .site-header #primary-nav { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
@@ -7048,4 +7048,31 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
     font-size: .9rem;
   }
   .site-header .header-search-panel .header-search-results a small { display: none; }
+}
+
+/* Let enlarged text determine row height and intrinsic grid widths. */
+.header-search-panel > .header-search-results {
+  display: flex;
+  flex-direction: column;
+}
+.header-search-panel > .header-search-results > a {
+  flex: 0 0 auto;
+  height: auto;
+}
+@media (max-width: 760px) {
+  body { padding-bottom: calc(max(80px, 5.5rem) + env(safe-area-inset-bottom)); }
+  #main { overflow-wrap: anywhere; }
+  #main :is(section, article, header, div, form, label, ul, nav) { min-width: 0; }
+  #main :is(input, select, textarea) { min-width: 0; max-width: 100%; }
+  /* Native Safari menu text must stay inside the field; the picker keeps full labels. */
+  #main select { overflow: hidden; text-overflow: ellipsis; }
+  .search-page { grid-template-columns: minmax(0, 1fr); }
+  .panel-title { flex-wrap: wrap; }
+  .homepage-app #layers,
+  .homepage-app .calendar-links { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8em), 1fr)); }
+  .homepage-app .layer-name { min-width: 0; }
+  .mobile-dock { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mobile-dock a { min-width: 0; overflow-wrap: anywhere; }
+  .site-footer .footer-brand-wordmark { display: block; white-space: normal; overflow-wrap: anywhere; }
+  .form-row { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 }

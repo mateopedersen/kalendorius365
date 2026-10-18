@@ -1,6 +1,6 @@
-import { addDays, difference, holidays, today, TZ } from "/assets/releases/fe8dd749b6454e86e34d/calendar.js";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, updateLessonField } from "/assets/releases/fe8dd749b6454e86e34d/phase-5-6-8-core.js";
-import { download } from "/assets/releases/fe8dd749b6454e86e34d/storage.js";
+import { addDays, difference, holidays, today, TZ } from "/assets/releases/675aca80be49ea9f1d25/calendar.js";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, updateLessonField } from "/assets/releases/675aca80be49ea9f1d25/phase-5-6-8-core.js";
+import { download } from "/assets/releases/675aca80be49ea9f1d25/storage.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
@@ -31,11 +31,11 @@ const validISODate = (value) => {
   const date = new Date(Date.UTC(y, m - 1, d));
   return date.toISOString().slice(0, 10) === value;
 };
-const [CALENDAR_DATA, REST_RULES] = $("#shift-planner") ? await Promise.all([fetch("/assets/releases/fe8dd749b6454e86e34d/data/calendar.json").then((r) => {
+const [CALENDAR_DATA, REST_RULES] = $("#shift-planner") ? await Promise.all([fetch("/assets/releases/675aca80be49ea9f1d25/data/calendar.json").then((r) => {
   if (!r.ok) throw Error("Kalendoriaus dienų rinkinio nepavyko įkelti.");
   return r.json();
 }).catch(() => ({ holidays: [] })),
-fetch("/assets/releases/fe8dd749b6454e86e34d/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null)]) : [{ holidays: [] }, null];
+fetch("/assets/releases/675aca80be49ea9f1d25/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null)]) : [{ holidays: [] }, null];
 
 function readLocal(key, fallback) {
   try {
@@ -332,7 +332,7 @@ function setupSchool() {
 
 // NOAA solar position equations: equation of time + declination; sunrise zenith 90.833°,
 // civil twilight 96°. Events are calculations, not observations.
-const CITY_DATA = $("#sun-tool") ? await fetch("/assets/releases/fe8dd749b6454e86e34d/data/astronomy/cities.json").then((r) => {
+const CITY_DATA = $("#sun-tool") ? await fetch("/assets/releases/675aca80be49ea9f1d25/data/astronomy/cities.json").then((r) => {
   if (!r.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return r.json();
 }).catch(() => ({ cities: [] })) : { cities: [] };
@@ -381,8 +381,8 @@ async function setupMoon() {
   if (!$("#moon-tool") && !$("#moon-year-tool") && !$("#season-rows")) return;
   try {
     const [data, seasons] = await Promise.all([
-      fetch("/assets/releases/fe8dd749b6454e86e34d/data/astronomy/moon-phases-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
-      fetch("/assets/releases/fe8dd749b6454e86e34d/data/astronomy/seasons-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/releases/675aca80be49ea9f1d25/data/astronomy/moon-phases-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/releases/675aca80be49ea9f1d25/data/astronomy/seasons-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
     ]);
     const instants=data.events.map(e=>({ ...e, instant:Date.parse(e.utc) }));
     const newMoons=instants.filter(e=>e.phase==="new").map(e=>e.instant);

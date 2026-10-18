@@ -1,4 +1,4 @@
-import { solarFor } from '/assets/releases/fe8dd749b6454e86e34d/phase-5-6-8-core.js';
+import { solarFor } from '/assets/releases/675aca80be49ea9f1d25/phase-5-6-8-core.js';
 function setupDiscovery() {
 const search = document.querySelector('#commemoration-search');
 if (search) {
@@ -28,7 +28,7 @@ if (form) {
   if (!form.reportValidity()) return;
   try {
    if (!cities) {
-    const response = await fetch('/assets/releases/fe8dd749b6454e86e34d/data/astronomy/cities.json');
+    const response = await fetch('/assets/releases/675aca80be49ea9f1d25/data/astronomy/cities.json');
     if (!response.ok) throw new Error();
     cities = (await response.json()).cities;
    }
