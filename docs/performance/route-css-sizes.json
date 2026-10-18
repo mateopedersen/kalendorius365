@@ -1,5 +1,5 @@
 {
-  "pages": 191,
+  "pages": 192,
   "method": "Full-route CSS with runtime classes and print rules; no hidden content",
   "results": [
     {
@@ -247,6 +247,12 @@
       "source_bytes": 174496,
       "route_bytes": 56150,
       "stylesheet_requests_removed": 2
+    },
+    {
+      "path": "apie-mus/index.html",
+      "source_bytes": 180681,
+      "route_bytes": 61446,
+      "stylesheet_requests_removed": 3
     },
     {
       "path": "astronominis-kalendorius/index.html",
