@@ -574,6 +574,9 @@ search.concat([
  {'title'=>'Kalendoriaus sluoksniai ir kategorijos','url'=>'/#layers','description'=>'Rodykite arba slėpkite šventes, asmeninius ir darbinius įvykius.','keywords'=>'filtrai sluoksniai darbo šeima sveikata mokslai categories filters','category'=>'home','action'=>true},
  {'title'=>'Kalendoriaus atsarginė kopija','url'=>'/#backup','description'=>'Atsisiųskite arba atkurkite savo kalendoriaus duomenų kopiją.','keywords'=>'eksportuoti importuoti atsarginė kopija json duomenys backup export import','category'=>'home','action'=>true},
 ])
+# Keep the generated index stable across filesystems and Ruby runtimes so the
+# source and published copies remain byte-for-byte identical.
+search.sort_by! { |item|[item['category'],item['url']] }
 File.write("#{Pages::ROOT}/site/assets/data/search.json",JSON.generate(search))
 # A crawlable, keyboard-accessible catalogue remains available while the search
 # module is loading and when JavaScript is disabled. It links canonical URLs,
