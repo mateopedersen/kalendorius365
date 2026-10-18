@@ -1,4 +1,4 @@
-import { findSign, filterSigns, comparison, wheelIndex } from '/assets/releases/8b7318010daef83f89c1/zodiac-engine.js';
+import { findSign, filterSigns, comparison, wheelIndex } from '/assets/releases/1d950bf3e4e71cfc5e7a/zodiac-engine.js';
 
 const root = document.querySelector('.zodiac-guide');
 const node = (tag, text, className) => {

@@ -44,6 +44,8 @@ test('header search recovers from a failed index request without a reload',async
 });
 
 test('calendar event create, edit, reload, export and delete preserve notes and tasks',async({page})=>{
+ // Full backup/event journeys include several navigations, dialogs and downloads.
+ test.setTimeout(90000);
  await page.goto('/?data=2028-02-29');await page.locator('#add-event').click();
  const form=page.locator('#event-form');await form.locator('[name=title]').fill('QA leap-day event');
  await form.locator('[name=allDay]').check();await form.locator('button[type=submit]').click();

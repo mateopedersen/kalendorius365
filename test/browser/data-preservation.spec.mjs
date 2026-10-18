@@ -29,6 +29,8 @@ test('school startup does not wait for unrelated calendar or astronomy data',asy
 });
 
 test('calendar backups round trip, malformed imports preserve data and deletion keeps preferences',async({page})=>{
+ // Full backup/event journeys include several navigations, dialogs and downloads.
+ test.setTimeout(90000);
  await page.goto('/?data=2028-02-29');
  await page.locator('#daily-note').fill('Disposable QA note');await page.locator('#save-note').click();
  await page.locator('#hour12').check();
