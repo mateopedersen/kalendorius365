@@ -1,7 +1,60 @@
 ---
 discovery: true
 title: "Dienos ilgumo palyginimas Lietuvos miestuose"
-description: "Pasirinkite 2027–2029 metų datą ir vienoje lentelėje palyginkite Vilniaus, Kauno, Klaipėdos, Šiaulių bei Panevėžio dienos šviesą."
+description: "Pasirinkite 2027–2029 m. datą ir palyginkite penkių Lietuvos miestų saulėtekį, saulės vidurdienį, saulėlydį bei dienos šviesą."
 tool: false
 ---
-<header class="discovery-heading"><img src="/assets/visuals/discovery-sun.svg" width="72" height="72" alt="" aria-hidden="true"><div><div class="page-heading"><div><h1>Dienos ilgumo palyginimas Lietuvos miestuose</h1><p class="page-intro">Pasirinkite 2027–2029 metų datą ir vienoje lentelėje palyginkite Vilniaus, Kauno, Klaipėdos, Šiaulių bei Panevėžio dienos šviesą.</p></div><div class="toolbar-group"></div></div></div></header><form id="daylight-form" class="panel"><label>Palyginimo data<input id="daylight-date" type="date" min="2027-01-01" max="2029-12-31" value="2027-06-21" required></label><button type="submit">Palyginti miestus</button></form><p id="daylight-status" role="status">Įjunkite JavaScript, kad palygintumėte miestus.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Slenkama duomenų lentelė"><table class="data-table"><caption>Penkių Lietuvos miestų dienos šviesa</caption><thead><tr><th>Miestas</th><th>Saulėtekis</th><th>Saulėlydis</th><th>Dienos ilgumas</th><th>Šviesa per 24 val.</th></tr></thead><tbody id="daylight-rows"></tbody></table></div><h2>Ką parodo palyginimas?</h2><p>Tą pačią dieną šiauriau esantys miestai vasarą paprastai gauna daugiau dienos šviesos, žiemą – mažiau. Juostų skalė visiems miestams vienoda: 24 valandos.</p><p class="source-note">Laikai pateikiami Europe/Vilnius laiko juosta, įvertinus vasaros laiką. Skaičiavimas apytikslis miesto centrui, pagal −0,833° Saulės horizonto kampą; pastatai, reljefas ir faktinė atmosfera neįvertinami. Koordinatės: <a href="https://www.geonames.org/export/">GeoNames, CC BY</a>. Skaičiavimo metodas ir vieno miesto Saulės kelias – <a href="/saule/">Saulės įrankyje</a>.</p>
+<header class="discovery-heading discovery-heading--editorial">
+  <img src="/assets/visuals/discovery-sun.svg?v={{ site.visual_version }}" width="300" height="210" alt="" aria-hidden="true">
+  <div><p class="eyebrow">SAULĖS KELIAS · LIETUVA</p>
+    <div class="page-heading"><div>
+      <h1>Dienos ilgumas Lietuvos miestuose</h1>
+      <p class="page-intro">Palyginkite, kada skirtinguose Lietuvos miestuose pateka ir leidžiasi Saulė. Pasirinkite datą, miestus ir išsaugokite rezultatą.</p>
+    </div></div>
+  </div>
+</header>
+
+<section class="discovery-tool panel" aria-labelledby="daylight-controls-title">
+  <div class="discovery-tool-heading"><div><p class="eyebrow">PASIRINKITE DATĄ</p><h2 id="daylight-controls-title">Vienas dangus, penki miestai</h2></div><span class="discovery-tool-mark" aria-hidden="true">02</span></div>
+  <div class="daylight-presets" aria-label="Greitos datos">
+    <button class="button button--subtle daylight-preset" type="button" data-month-day="06-21">Vasaros pradžia · apie 06-21</button>
+    <button class="button button--subtle daylight-preset" type="button" data-month-day="03-20">Pavasario lygiadienis · apie 03-20</button>
+    <button class="button button--subtle daylight-preset" type="button" data-month-day="09-22">Rudens lygiadienis · apie 09-22</button>
+    <button class="button button--subtle daylight-preset" type="button" data-month-day="12-21">Žiemos pradžia · apie 12-21</button>
+  </div>
+  <form id="daylight-form" class="daylight-form">
+    <label>Palyginimo data
+      <input id="daylight-date" type="date" min="2027-01-01" max="2029-12-31" value="2027-06-21" required>
+    </label>
+    <button class="button primary" type="submit">Palyginti pasirinktą datą</button>
+  </form>
+  <fieldset class="daylight-city-fieldset"><legend>Įtraukite miestus į palyginimą</legend>
+    <div id="daylight-cities" class="daylight-city-choices" aria-live="polite"></div>
+    <button class="text-button" id="daylight-all-cities" type="button">Pasirinkti visus miestus</button>
+  </fieldset>
+  <p id="daylight-status" class="tool-status" role="status" aria-live="polite">Skaičiuojama pagal miesto centro koordinates.</p>
+</section>
+
+<section class="daylight-results panel" aria-labelledby="daylight-results-title">
+  <div class="discovery-tool-heading"><div><p class="eyebrow">REZULTATAI</p><h2 id="daylight-results-title">Kiek šviesos gauna kiekvienas miestas?</h2></div>
+    <button class="button button--subtle" id="daylight-export" type="button" disabled>Atsisiųsti CSV</button>
+  </div>
+  <p id="daylight-summary" class="daylight-summary"></p>
+  <div id="daylight-chart" class="daylight-chart" role="list" aria-label="Saulės šviesos laikas nuo vidurnakčio iki vidurnakčio"></div>
+  <div class="daylight-chart-key" aria-hidden="true"><span><i></i>Saulės šviesa</span><span>Visų miestų mastelis vienodas · vietos laiku</span></div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Slenkama miestų palyginimo lentelė">
+    <table class="data-table daylight-table">
+      <caption>Pasirinktos datos Saulės laikai ir dienos trukmė</caption>
+      <thead><tr><th scope="col">Miestas</th><th scope="col">Saulėtekis</th><th scope="col">Vidurdienis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos ilgumas</th><th scope="col">24 val. skalė</th></tr></thead>
+      <tbody id="daylight-rows"></tbody>
+    </table>
+  </div>
+</section>
+
+<div class="resource-grid daylight-explainers">
+  <article class="panel"><span class="discovery-kicker">01 · SAULĖTEKIS</span><h2>Kada prasideda diena?</h2><p>Saulėtekis žymi akimirką, kai virš matematinio horizonto pasirodo viršutinis Saulės kraštas. Pastatai ir vietovės reljefas tikrą matomą laiką gali pakeisti.</p></article>
+  <article class="panel"><span class="discovery-kicker">02 · VIDURDIENIS</span><h2>Kodėl jis ne visada 12:00?</h2><p>Saulės vidurdienis – aukščiausias Saulės taškas tą dieną. Jį veikia miesto ilguma ir metų eigoje kintantis regimasis Saulės judėjimas.</p></article>
+  <article class="panel"><span class="discovery-kicker">03 · DIENOS TRUKMĖ</span><h2>Ką lygina juosta?</h2><p>Juosta rodo apytikslį laiką nuo saulėtekio iki saulėlydžio. Jos pradžia atitinka vietos saulėtekį; 24 valandų mastelis visiems miestams vienodas.</p></article>
+</div>
+
+<aside class="source-note">Skaičiavimas apytikslis miesto centrui, pagal −0,833° Saulės horizonto kampą ir Europe/Vilnius laiko juostą, įskaitant vasaros laiką. Atmosferos lūžis, pastatai ir reljefas neįvertinami. Koordinatės: <a href="https://www.geonames.org/export/">GeoNames, CC BY</a>. Vieno miesto saulėtekio, saulėlydžio ir prieblandos įrankis – <a href="/saule/">Saulės skaičiuoklėje</a>.</aside>
