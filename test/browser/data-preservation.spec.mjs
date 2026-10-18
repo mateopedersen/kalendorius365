@@ -112,10 +112,15 @@ test('lunar month vertical arrow keys select the adjacent week and update detail
 });
 
 test('lunar selection keeps the latest keyboard choice while its texture is still loading',async({page})=>{
+ // Firefox keeps window.load pending for the deliberately paused image.
+ // Observe the actual loader script event instead of awaiting that image.
+ await page.addInitScript(()=>document.addEventListener('load',event=>{
+  if(event.target instanceof HTMLScriptElement&&/\/lunar\/lunar-loader\.js(?:\?|$)/.test(event.target.src))window.__qaLunarLoaderReady=true;
+ },true));
  let releaseTexture;const gate=new Promise(done=>{releaseTexture=done;});
  await page.route(/\/assets\/lunar\/albedo-web\.webp(?:\?.*)?$/,async route=>{await gate;await route.continue();});
  try{
-  await page.goto('/menulio-kalendorius/2028/vasaris/');const day=page.locator('[data-lunar-date="2028-02-15"]');await day.click();await day.press('ArrowUp');await expect(page.locator('[data-selected-date]')).toHaveValue('2028-02-08');
+  await page.goto('/menulio-kalendorius/2028/vasaris/',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.__qaLunarLoaderReady===true);const day=page.locator('[data-lunar-date="2028-02-15"]');await day.click();await day.press('ArrowUp');await expect(page.locator('[data-selected-date]')).toHaveValue('2028-02-08');
   releaseTexture();await expect.poll(()=>page.locator('[data-selected-moon]').evaluate(c=>c.getContext('2d').getImageData(c.width>>1,c.height>>1,1,1).data[3])).toBeGreaterThan(0);
   await expect(page.locator('[data-selected-date]')).toHaveValue('2028-02-08');await expect(page.locator('[data-lunar-date="2028-02-08"]')).toHaveAttribute('aria-pressed','true');
  }finally{releaseTexture();}
