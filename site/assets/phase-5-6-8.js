@@ -1,5 +1,5 @@
 import { addDays, difference, holidays, today, TZ } from "./calendar.js";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js";
+import { buildShiftCsv, buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js";
 import { download } from "./storage.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -77,10 +77,32 @@ function setupShift() {
   const saved = readLocal(key, {});
   const todayLT = today();
   for (const id of ["shift-anchor", "shift-from", "shift-to"]) $("#" + id).value = saved[id] || todayLT;
-  for (const id of ["shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"])
+  for (const id of ["shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-monthly-target"])
     if (saved[id] !== undefined) $("#" + id).value = saved[id];
-  const preset = $("#shift-preset");
-  if (preset) preset.value = saved["shift-cycle"] === "D,D,N,N,P,P,P,P" ? "day-night" : saved["shift-cycle"] === "D,D,P,P" ? "day-rest" : "custom";
+  const patternButtons = Array.from($("#shift-patterns").querySelectorAll("[data-cycle]"));
+  const syncPatternButtons = () => {
+    const cycle = $("#shift-cycle").value.split(",").map((part) => part.trim().toUpperCase()).join(",");
+    for (const button of patternButtons) {
+      const selected = button.dataset.cycle === cycle;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    }
+  };
+  function fillDefinitionFields() {
+    try {
+      const definitions = JSON.parse($("#shift-definitions").value);
+      for (const [code, prefix] of [["D", "day"], ["N", "night"]]) {
+        const definition = definitions[code];
+        if (!definition) continue;
+        $("#shift-" + prefix + "-name").value = definition.name || "";
+        $("#shift-" + prefix + "-start").value = definition.start || "";
+        $("#shift-" + prefix + "-end").value = definition.end || "";
+        $("#shift-" + prefix + "-break").value = String(definition.break ?? 0);
+      }
+    } catch { /* The editor reports invalid advanced JSON when the plan is computed. */ }
+  }
+  fillDefinitionFields();
+  syncPatternButtons();
   const weekdays = ["Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis", "Sekmadienis"];
   const dayList = $("#shift-custom-days-list");
   weekdays.forEach((name, index) => {
@@ -96,6 +118,8 @@ function setupShift() {
   function compute() {
     const start = $("#shift-anchor").value, from = $("#shift-from").value, to = $("#shift-to").value;
     if (!start || !from || !to) throw Error("Įrašykite ciklo pradžią ir abi laikotarpio datas.");
+    const target = $("#shift-monthly-target").valueAsNumber;
+    if (!Number.isInteger(target) || target < 1 || target > 320) throw Error("Mėnesio valandų tikslas turi būti nuo 1 iki 320.");
     let definitions;
     try { definitions = JSON.parse($("#shift-definitions").value); } catch { throw Error("Pamainų aprašai turi būti galiojantis JSON."); }
     const legalHolidays = [...new Set(Array.from({ length: +to.slice(0, 4) - +from.slice(0, 4) + 1 }, (_, i) => +from.slice(0, 4) + i)
@@ -121,6 +145,8 @@ function setupShift() {
       const daysInRange = difference($("#shift-from").value, $("#shift-to").value) + 1;
       const daysOff = Math.max(0, daysInRange - new Set(shifts.map((s) => s.date)).size);
       const belowRest = shifts.filter((s) => s.rest !== null && s.rest < s.requiredRest);
+      const definitions = JSON.parse($("#shift-definitions").value);
+      renderMonthlyHours(shifts);
       const tbody = $("#shift-rows");
       replace(tbody, shownShifts.map((s) => {
         const tr = make("tr");
@@ -135,19 +161,25 @@ function setupShift() {
         return tr;
       }));
       $("#shift-list-region").hidden = $("#shift-display").value !== "list";
-      replace($("#shift-summary"), [
-        ...[[shifts.length, "Pamainos"], [hours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Įvertintos darbo valandos"], [elapsedHours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Pamainų trukmė"], [shifts.filter((s) => s.code === "D").length, "Dieninės D pamainos"], [shifts.filter((s) => s.code === "N").length, "Naktinės N pamainos"], [daysOff, "Laisvos ciklo dienos"], [shifts.reduce((n,s)=>n+s.holidayDates.length,0), "Šventinių datų sankirtos"]].map(([v, l]) => { const box = make("div"); box.append(make("strong", String(v)), make("span", l)); return box; }),
+      const typeSummary = Object.entries(definitions).map(([code, definition]) => [
+        shifts.filter((shift) => shift.code === code).length,
+        `${definition.name} (${code})`,
       ]);
+      replace($("#shift-summary"), [
+        ...[[shifts.length, "Pamainos"], [hours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Apmokamos darbo valandos"], [elapsedHours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Praėjusios pamainų valandos"], ...typeSummary, [daysOff, "Laisvos ciklo dienos"], [shifts.reduce((n,s)=>n+s.holidayDates.length,0), "Šventinių datų sankirtos"]].map(([v, l]) => { const box = make("div"); box.append(make("strong", String(v)), make("span", l)); return box; }),
+      ]);
+      const periodHead = $("#shift-periods").closest("table").querySelector("thead tr");
+      replace(periodHead, [make("th", "Laikotarpis"), make("th", "Pamainos"), ...Object.entries(definitions).map(([, definition]) => make("th", definition.name)), make("th", "Apmokamos valandos"), make("th", "Šventinių datų sankirtos")]);
       const groups = new Map();
       for (const s of shifts) {
         const d = new Date(s.date + "T12:00:00Z"), monthKey=s.date.slice(0,7), monday=dateAt(s.date,-((d.getUTCDay()+6)%7)), weekKey=monday;
         const yearKey=s.date.slice(0,4);
         for (const [key,label] of [[weekKey,`Savaitė nuo ${displayDate(monday)}`],[monthKey,new Intl.DateTimeFormat("lt-LT",{month:"long",year:"numeric",timeZone:"UTC"}).format(d)],[yearKey,`${s.date.slice(0,4)} metai`]]) {
-          const g=groups.get(key)||{label,count:0,day:0,night:0,hours:0,holidays:new Set()};g.count++;g.day+=s.code==="D"?1:0;g.night+=s.code==="N"?1:0;g.hours+=s.worked;s.holidayDates.forEach(x=>g.holidays.add(x));groups.set(key,g);
+          const g=groups.get(key)||{label,count:0,types:{},hours:0,holidays:new Set()};g.count++;g.types[s.code]=(g.types[s.code]||0)+1;g.hours+=s.worked;s.holidayDates.forEach(x=>g.holidays.add(x));groups.set(key,g);
         }
       }
       const periodRows=[];const view=$("#shift-view").value;
-      for(const [key,g] of groups){if(view==="week"&&!/^\d{4}-\d{2}-\d{2}$/.test(key))continue;if(view==="month"&&!/^\d{4}-\d\d$/.test(key))continue;if(view==="year"&&!/^\d{4}$/.test(key))continue;if(view==="list")continue;const tr=make("tr");tr.append(make("td",g.label),make("td",String(g.count)),make("td",String(g.day)),make("td",String(g.night)),make("td",`${g.hours.toFixed(2).replace(".",",")} val.`),make("td",String(g.holidays.size)));periodRows.push(tr);}
+      for(const [key,g] of groups){if(view==="week"&&!/^\d{4}-\d{2}-\d{2}$/.test(key))continue;if(view==="month"&&!/^\d{4}-\d\d$/.test(key))continue;if(view==="year"&&!/^\d{4}$/.test(key))continue;if(view==="list")continue;const tr=make("tr");tr.append(make("td",g.label),make("td",String(g.count)),...Object.keys(definitions).map((code)=>make("td",String(g.types[code]||0))),make("td",`${g.hours.toFixed(2).replace(".",",")} val.`),make("td",String(g.holidays.size)));periodRows.push(tr);}
       replace($("#shift-periods"),periodRows);
       const visualization=$("#shift-visualization"), display=$("#shift-display").value;
       visualization.replaceChildren();
@@ -194,25 +226,74 @@ function setupShift() {
       if (result.weeklyWarnings.length) warnings.push(`galimai trūksta ${REST_RULES?.weeklyRestHours || 35} val. nepertraukiamo poilsio ${result.weeklyWarnings.length} iš eilės einančių 7 dienų laikotarpiuose`);
       $("#shift-warning").textContent = `${warnings.length ? "Peržiūros pastaba: " + warnings.join("; ") + ". " : "Šiose pamainose pagal parodytą laikotarpį neužfiksuota trumpesnio nei nustatyto bendro poilsio tarpo. "}VDI informaciniame šaltinyje nurodomi bendrieji ${REST_RULES?.dailyRestHours || 11} val. paros ir ${REST_RULES?.weeklyRestHours || 35} val. savaitės poilsio dydžiai. Įrankis nepatikrina visų teisės išimčių, ankstesnio grafiko, kelių darbdavių ar apskaitos laikotarpio ir nepateikia teisėtumo išvados.`;
       message(`${shifts.length} pamainos apskaičiuotos. Faktinis laikas atsižvelgia į Europe/Vilnius vasaros laiką; darbo valandos atimant pertrauką yra planavimo įvertis.`);
-      const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value]));
+      const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-monthly-target"].map((id) => [id, $("#" + id).value]));
       state["shift-week-days"] = Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value));
       writeLocal(key, { schema: 1, ...state });
-    } catch (error) { latest = []; $("#shift-rows").replaceChildren(); $("#shift-periods").replaceChildren(); $("#shift-summary").replaceChildren(); $("#shift-visualization").replaceChildren(); $("#shift-warning").textContent = "Patikrinkite įvestį. Teisinė atitiktis nėra nustatoma."; message(error.message, true); }
+    } catch (error) { latest = []; $("#shift-rows").replaceChildren(); $("#shift-periods").replaceChildren(); $("#shift-summary").replaceChildren(); $("#shift-hours-chart").replaceChildren(); $("#shift-visualization").replaceChildren(); $("#shift-warning").textContent = "Patikrinkite įvestį. Teisinė atitiktis nėra nustatoma."; message(error.message, true); }
   }
-  if (preset) preset.onchange = () => {
-    const value = preset.value;
-    if (value === "day-rest") $("#shift-cycle").value = "D,D,P,P";
-    else if (value === "day-night") $("#shift-cycle").value = "D,D,N,N,P,P,P,P";
-    else return;
-    render();
+  function renderMonthlyHours(shifts) {
+    const root = $("#shift-hours-chart"), target = Number($("#shift-monthly-target").value);
+    const first = $("#shift-from").value.slice(0, 7), last = $("#shift-to").value.slice(0, 7), monthly = new Map();
+    for (let key = first; key <= last; ) {
+      monthly.set(key, 0);
+      const [year, month] = key.split("-").map(Number);
+      key = month === 12 ? `${year + 1}-01` : `${year}-${pad(month + 1)}`;
+    }
+    for (const shift of shifts) monthly.set(shift.date.slice(0, 7), (monthly.get(shift.date.slice(0, 7)) || 0) + shift.worked);
+    const peak = Math.max(target, ...monthly.values(), 1) * 1.08;
+    const list = make("div"); list.className = "shift-hours-chart__months";
+    for (const [month, value] of monthly) {
+      const row = make("div"); row.className = "shift-hours-month";
+      const date = new Date(`${month}-01T12:00:00Z`), label = new Intl.DateTimeFormat("lt-LT", { timeZone: "UTC", month: "short" }).format(date);
+      const amount = value.toLocaleString("lt-LT", { maximumFractionDigits: 1 });
+      const over = value > target;
+      const title = make("div"); title.className = "shift-hours-month__title";
+      title.append(make("strong", label), make("span", `${amount} val.`));
+      const track = make("div"); track.className = "shift-hours-month__track";
+      track.setAttribute("role", "img");
+      track.setAttribute("aria-label", `${label}: ${amount} apmokamų valandų, mėnesio tikslas ${target} valandų`);
+      const bar = make("span"); bar.className = "shift-hours-month__bar"; bar.style.width = `${Math.min(100, value / peak * 100)}%`; bar.dataset.overTarget = String(over);
+      const marker = make("span"); marker.className = "shift-hours-month__target"; marker.style.left = `${Math.min(100, target / peak * 100)}%`; marker.setAttribute("aria-hidden", "true");
+      track.append(bar, marker); row.append(title, track);
+      if (over) row.dataset.overTarget = "true";
+      list.append(row);
+    }
+    const section = make("section"); section.className = "shift-hours-chart__inner";
+    const title = make("div"); title.className = "shift-hours-chart__heading";
+    title.append(make("h3", "Apmokamos valandos per mėnesį"), make("span", `Tikslas: ${target} val.`));
+    section.append(title, list);
+    const legend = make("p", "Spalvota juosta rodo suplanuotas valandas; vertikali žyma – jūsų nustatytą tikslą."); legend.className = "shift-hours-chart__legend"; section.append(legend);
+    replace(root, [section]);
+  }
+  for (const button of patternButtons) button.onclick = () => {
+    $("#shift-cycle").value = button.dataset.cycle;
+    syncPatternButtons(); render();
   };
+  $("#shift-cycle").oninput = syncPatternButtons;
+  const updateBasicDefinitions = () => {
+    try {
+      const definitions = JSON.parse($("#shift-definitions").value);
+      if (!definitions || typeof definitions !== "object" || Array.isArray(definitions)) throw Error("Papildomų pamainų JSON turi būti objektas.");
+      for (const [code, prefix, color] of [["D", "day", "#006a44"], ["N", "night", "#315bd6"]]) {
+        const name = $("#shift-" + prefix + "-name").value.trim(), start = $("#shift-" + prefix + "-start").value;
+        const end = $("#shift-" + prefix + "-end").value, pause = $("#shift-" + prefix + "-break").value;
+        if (!name || !start || !end || pause === "" || !Number.isInteger(Number(pause)) || Number(pause) < 0 || Number(pause) > 720)
+          throw Error("Patikrinkite pamainos pavadinimą, laiką ir pertraukos trukmę.");
+        definitions[code] = { ...(definitions[code] || {}), name, start, end, break: Number(pause), color: definitions[code]?.color || color };
+      }
+      $("#shift-definitions").value = JSON.stringify(definitions, null, 2);
+      render();
+    } catch (error) { message(error.message === "Patikrinkite pamainos pavadinimą, laiką ir pertraukos trukmę." ? error.message : "Papildomų pamainų JSON netaisyklingas; pataisykite jį prieš keisdami laikus.", true); }
+  };
+  ["day", "night"].forEach((prefix) => ["name", "start", "end", "break"].forEach((field) => $("#shift-" + prefix + "-" + field).onchange = updateBasicDefinitions));
+  $("#shift-definitions").onchange = () => { fillDefinitionFields(); render(); };
   form.onsubmit = (event) => { event.preventDefault(); render(); };
-  ["shift-view", "shift-display", "shift-week-filter"].forEach((id) => $("#" + id).onchange = () => { updateCustomDays(); render(); });
+  ["shift-view", "shift-display", "shift-week-filter", "shift-monthly-target"].forEach((id) => $("#" + id).onchange = () => { updateCustomDays(); render(); });
   dayList.onchange = render;
-  const backupData = () => ({ ...Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value])), "shift-week-days": Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value)) });
+  const backupData = () => ({ ...Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-monthly-target"].map((id) => [id, $("#" + id).value])), "shift-week-days": Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value)) });
   $("#shift-json-export").onclick = () => saveJSON("pamainu-grafikas.json", { schema: 1, data: backupData() });
   $("#shift-json-import").onchange = async (event) => {
-    try { const json = await readJSONFile(event.target.files[0]); const d = json.data; if (!d || Object.keys(d).length > 10 || typeof d["shift-cycle"] !== "string" || d["shift-cycle"].length > 160 || typeof d["shift-definitions"] !== "string" || d["shift-definitions"].length > 5000 || (d["shift-week-days"] !== undefined && (!Array.isArray(d["shift-week-days"]) || d["shift-week-days"].length > 7 || d["shift-week-days"].some((n) => !Number.isInteger(n) || n<1 || n>7)))) throw Error("Kopijos turinys netinkamas."); for (const [id, value] of Object.entries(d)) if ($("#" + id)) $("#" + id).value = String(value); if (Array.isArray(d["shift-week-days"])) dayList.querySelectorAll("input").forEach((input)=>{input.checked=d["shift-week-days"].includes(Number(input.value));}); updateCustomDays(); render(); }
+    try { const json = await readJSONFile(event.target.files[0]); const d = json.data; if (!d || Object.keys(d).length > 11 || typeof d["shift-cycle"] !== "string" || d["shift-cycle"].length > 160 || typeof d["shift-definitions"] !== "string" || d["shift-definitions"].length > 5000 || (d["shift-week-days"] !== undefined && (!Array.isArray(d["shift-week-days"]) || d["shift-week-days"].length > 7 || d["shift-week-days"].some((n) => !Number.isInteger(n) || n<1 || n>7)))) throw Error("Kopijos turinys netinkamas."); for (const [id, value] of Object.entries(d)) if ($("#" + id)) $("#" + id).value = String(value); fillDefinitionFields(); syncPatternButtons(); if (Array.isArray(d["shift-week-days"])) dayList.querySelectorAll("input").forEach((input)=>{input.checked=d["shift-week-days"].includes(Number(input.value));}); updateCustomDays(); render(); }
     catch (error) { message(error.message, true); } finally { event.target.value = ""; }
   };
   $("#shift-ics").onclick = () => {
@@ -220,6 +301,12 @@ function setupShift() {
       render(); if (!latest.length) throw Error("Pirmiausia pataisykite įvestį ir apskaičiuokite grafiką.");
       const defs=JSON.parse($("#shift-definitions").value);
       safeFile("pamainu-grafikas.ics", buildShiftIcs(latest, defs), "text/calendar;charset=utf-8");
+    } catch (error) { message(error.message, true); }
+  };
+  $("#shift-csv").onclick = () => {
+    try {
+      render(); if (!latest.length) throw Error("Pirmiausia apskaičiuokite grafiką.");
+      safeFile("pamainu-grafikas.csv", buildShiftCsv(latest), "text/csv;charset=utf-8");
     } catch (error) { message(error.message, true); }
   };
   $("#shift-print").onclick = () => window.print();
