@@ -67,7 +67,7 @@ Dir.chdir(ROOT) do
  if release
   urls.sort.each do |url|
    xml+="<url><loc>#{CGI.escapeHTML(url)}</loc>"
-   manifest.select { |e|e['kind']=='monthly' && url=="https://kalendorius365.lt/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" }.each { |e|xml+="<image:image><image:loc>https://kalendorius365.lt#{e['webp']}</image:loc></image:image>" }
+   manifest.select { |e|e['kind']=='monthly' && url=="https://kalendorius365.lt/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" }.each { |e|xml+="<image:image><image:loc>https://kalendorius365.lt#{e['webp']}?v=#{e.dig('files','webp','sha256')[0,16]}</image:loc></image:image>" }
    xml+='</url>'
   end
  end

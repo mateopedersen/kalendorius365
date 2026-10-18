@@ -136,7 +136,15 @@ for y in [2027,2028,2029]:
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
   for e in manifest:
-   if e['kind']=='monthly' and e['year']==y and e['month']==m:assert e['pdf'] in html and e['webp'] in html and e['preview'] in html
+   if e['kind']=='monthly' and e['year']==y and e['month']==m:
+    assert f"{e['pdf']}?v={e['files']['pdf']['sha256'][:16]}" in html
+    assert f"{e['webp']}?v={e['files']['webp']['sha256'][:16]}" in html
+    assert e['preview'] in html
+all_local_links={url for page in pages.values() for url in page.links}
+for asset in manifest:
+ for kind in ('pdf','webp'):
+  expected=f"{asset[kind]}?v={asset['files'][kind]['sha256'][:16]}"
+  assert expected in all_local_links,('unversioned or missing print download link',asset['stem'],kind,expected)
 print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 360 monthly mappings.')
 if '--release' in __import__('sys').argv:
  import xml.etree.ElementTree as ET
