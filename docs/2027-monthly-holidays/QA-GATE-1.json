@@ -135,7 +135,7 @@
       "canonical": "https://kalendorius365.lt/sventes/2027/gruodis/"
     }
   ],
-  "baseline_assets_preserved": 490,
+  "baseline_assets_preserved": 386,
   "intentional_metadata_updates": [
     {
       "path": "site/assets/data/manifest.json",
@@ -144,6 +144,636 @@
       "evidence_sha256": "7f6da5c8ea78c56e3028fca8813a3f1a801190ffe8e526a2af7a9367808373a5",
       "retired_asset_paths": 1560,
       "imported_records": 390
+    },
+    {
+      "path": "docs/blank-calendar-redesign/asset-transition.json",
+      "reason": "Pinned selective redesign of exactly 26 blank calendar/planner print sets; 390 dated print assets and the other baseline files remain hash-verified",
+      "updated_files": 104,
+      "sha256": "13bbd9348cabe8965b7590ad1e8714bd032956441ecc7b894ae26341f2b9c8ae"
+    },
+    {
+      "path": "site/downloads/tuscias-01-5-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "baba9f8e5fbd64a9bbc4114f7226c2020b62f866ba861a7d1b22ad03f2632c10",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-01-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "6366f78335fe8cc056f388a3b1d9137da658a5377f2af32e4b80ce1566bba000",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-01-6-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "e44e15ab7939b420d9db3f2e33d0c78d9da4e9c2db3044a6fef22ceae6d3c467",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-01-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "7986e727f955ea48507fffc38c2d87c10ee09d295190c58260b333b0a95fb141",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-02-5-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "343c6d9c79b9dc9e00460a1ca5320f3621ef8be72aa027a299416125f9a8ab5b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-02-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "d6c42245ccdc1599d226b00b81cf16ef892f5b75602eef439bacf3a45030c95e",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-02-6-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "c69222f5abe59c5f4af296989b6412b3a46f5122cb94a5fb5ea29817e9dfbe6c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-02-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "a776c0061dd9f8ed4eba953186873d23c2d2bb3e99654401f4da7e03452c6b7b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-03.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "049269f157205c217462ce29c783ca483a35b81f6026fade5c9a51bb9b754925",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-03.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "4e7d09a2c0a8fd66c0ec63d47e6380aa3178d14d5772b7d4a74eec05f84afd82",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-04-5-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f140981ca78854fcc9636d3af2f8f0baeac60eea1c2e474d85c03c498f732a04",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-04-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "42aa277e04937e75af517971fad016a8c3fe75e220fb7057393ac535bd734bea",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-04-6-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f4f977dad790beea49d15eacff98d83f5b6b3c3fb0f2db371d50e4765274eb50",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-04-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "1042f8f55614656e204afc31c0879cb26dae6c4ab547b918a3183a507323c18e",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-05-5-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "21f4f704a8800c8845687c6e3c59ab497bd2d40f3e43afafe38154b590b1eb62",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-05-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "bd55fca6a2e7b6ca660a45cfca9d072aa3a24585e5b425f3c7e428de27c57e96",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-05-6-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "963009140d909b9fb33479a7fed363fdc659f4c6e37c38a053fecee2f21fc98b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-05-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "81a0e2f15560b6c29ab1bc30fa25523e03656aa7626aa905a67f01c99e581cb3",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-06.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "fb2c8a6a0116e236b942f044934770b62c11be43a3ed431b51b7043d4254d965",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-06.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "44ec7ad2a9d7cbffc246c9a9ce7aa3b6a417d6309be8a1b2df44f41b19ebef1b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-07.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "745f79683f0487422bc2bb12309b3a1a6a3e147d22127f66584ccd614f75ce21",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-07.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "93337977f9336dab32b7839e3050306b417fff175fab64d4311a124bd433c079",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-08.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "480c1b2928ca86cb9738cc4966d45be5918bd8de652126e3927a939e61db39f9",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-08.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "b3ea98537d693905e6c7bf0716aee5a8b0881251cde5d41588fd9cbfb0c18b57",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-09-5-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "a149d18a4c0a7fec412deadf1fc67f0547d8a7218ae0ca368ddf1ea7443a1fee",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-09-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "73e6218d1983fcff8842e0f354a792f90322e05c2ceff1338c9955569a058d7d",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-09-6-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "7ea10984572ed62fd7e73741190a48492dffa5176b266e7b722cf02ab6812a89",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-09-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "36a2344ed76a440a79d5b20076c61519e27cc74dd5a2523aea7b1b495783d4d1",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-10-5-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "261682f0860e8de245ecf2895934cd33ff7eefdbeec9e150cbbec2cc94329a0a",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-10-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "8eb25aa2819d0524a9daac6ae402c2e35a1692349ef7ef32a9a7ae98c98ee2a6",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-10-6-eilutes.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "346c33b9975cd2d54f6e97be0cad3c68f2bcca13c4240ced86699866d740d673",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-10-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "fb0bf05ecbe0992562420593c0174db82997503accb1c0ab4eb9f38bfd0fe9c5",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-11.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "5e49db9da71050a3d793e94d60e99926ed94d0b1b02c01cc40a332e0fe0447d4",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-11.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "88f1897c6d93a9ac4aba8fc98f29909787a29b4ca41b5e9e37e9ada7639f7365",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-12.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2a1101b0ebb8ca631744170c6d043c464644bd9d24091ec382217eb7d4c6f640",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-12.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "52ff40fbbc0ac53c98227f1b3e6d9fc86c17f749257134cea90afa28134e257c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-13.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "611af55e669537f386b5765b2b184baa9651c51364ddd799c055685b413d1902",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-13.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "e9c65044a7b021df6f25ae85da65583b044bfbbe5a94f8c2053e49c68f5e42f1",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-14.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f6b5c15a343f0f9bee56b15f20f7778e192c131bdc710149bc38a045e2e47a0f",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-14.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f47617a38b00b67e125a656aaef2c3224ef59021d3cd9cac2f5e7b3f05403d2f",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-15.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "0ca24465d84ca9ba39197ba6a470bbec0717c29ef2ceddbb8b03d1a8cb24303c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-15.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "c3d2d56a45f5b5c4f08a2fa5761a22002d148b7dba98acc8e1d00bbe27d6d55c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-16.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "a758fcbd2670b2fc826aa3ed06934f0731ad78866092d9a6348375d25b1d5085",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-16.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2a597ad0ebb25383d585c53259db25466aeeee733234fe1a64f15fbc25a511c0",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-17.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "978562acd491d9daacb475def753b9eed841e81d2c4e2acb2ca60ce702a57aae",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-17.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f9c0c40a015ffe2e72c7ded394e7e5711e39fade9c7d00c3fbc408d447f37ae5",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-18.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "86ae2b6824379a3f296b1741611e287f2205a1098a39db55b43390b3bf812263",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-18.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "5eef52adc153247316026f1102191c551ee8ca7cf44564f09f3891d817311706",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-19.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "059f2c084c631512e62580ab845739a69379cee3fc12a00a92bf7f7f0b200702",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-19.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "c8e036002f27cea02349089bd4dddaa253c24834d21d0d78b419d0b0efebd6c4",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-20.pdf",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "78bd7fce4bc53ae4e3abc44e9adaac834987ce0b2125d9e190f287c2f3e7a127",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/downloads/tuscias-20.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2b88c27f0ccaed9cb4a421db19af24892a4d57a27394919cd31a03289fa5b128",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-01-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f4b87de4477b5632971b2ae0e6f147d750679046e1d3c2f74b03ee5145691029",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-01-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "769412df8e3d3016a6de44cb46858a40ca45a490f2d29673763d818ec341b543",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-02-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "95bc8bdf58fa5964b091e859f2f7b6658cbc6227ef772941b2c07cdf7a9c416d",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-02-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "1765e305bf617787e69f512437df0d1cd7db2aef8e82ebea9fdb80e95366f007",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-03.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "30fd223113a42586dcc8b7cb0aa4b0fa665141e638f82dd23eb281bcefaa7a57",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-04-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2662719f0b4fa43585443c4f5bf126ca9becb7b0906ba8af3849378cf5d1e4ae",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-04-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "1b8efb2ff6832d12761e9d09333fc13188dd360f6cbd2393aaaa860b496a8006",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-05-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2e63d1b14a7e5702624797bc5faed607385c798290dff1d01722695e59ebbcec",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-05-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "73ec792343ceb8869e48eebacbac29f73ad793b137064c7cc401063a52ce3a0d",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-06.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "1d08a1a8990c75500b83ab6ab62c026d507c3044842dc72b7270b25aac7fb0f6",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-07.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "3fcae0374c83f71e2e44d641a513e6fff875ceb32ab4f4ca25fa60f2e4258a4c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-08.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "c3988e90e846f007706dd34696dee49d6c8c9bcbb8dfdb4b9c0e8835968997b8",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-09-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "aadf5d7ba1a92fca2607ee5383d1a26aeacefa69d698000bb421794e700d5b75",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-09-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "d426274b01614230ebd7f4d10fefacfbef9e44a11c4388ef54b7090149b1200b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-10-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2a673119c648f400021f05f871e8534c69f1454f83283f805593559554dfd76e",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-10-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "cbcdc908ae72f38adaa91cb210d6fe4f14bda2c08f571a4ab84ed7e1dd21f41b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-11.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2dd36f4e368fadd3d56bad1ab98c72f3129913d026fc226e2f74eec453355757",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-12.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "a0594512a6770599171bfb2afa299729469a53a9d7b345618755433ae87d405c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-13.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "a50cf39e5292f2c1d1bf9b7943a85cea7dd2df547ce66a494580fa4d77144ad2",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-14.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "4d7389002c54a89e6593fefc26fb98481a7348613002a07cc5426287fbbf03cc",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-15.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "8a6497b5804307cb54289bd21c252f91497d4ebed4be6684511c26e315fe032f",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-16.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2681902beae13b69db176e7ca8fdac43fb06c4b5f32e94e3ecd20f8518a94181",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-17.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2b396ca4a472280cea3236b4e621197ba63c236ec90896980560023836a54a65",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-18.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "35ed772f1a1b1c8c30879ec0fe998ad46cae99ca14875bc5edeae1e550191ba0",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-19.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "6a744a7255eab52373e120df6470c636ef340a02b0317403452be836cd30fb6a",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews/tuscias-20.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "2b3563b67b164850dc7c60847b3b3be97d8a84ef7b9570ea9b6fd2f37e2e6bf2",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-01-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "507d481d99b84ebb89bf653ca083ef3bc9835e5637f5641e5e77c5f5ed90fb2c",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-01-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "cb8b62adc5ede82de9a45b74a2e169c8627a0b97498333415ef64c070df37f80",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-02-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "6d0d44b110fa37fff0e4e4254b8e2ddd8a0217925dd38a9fe2814079bd494981",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-02-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "734c963122e814e785633bdb898d30b53ac0ada3a7d4c6062d9060e64f2fb9b3",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-03.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "ebe136263bcec30e26f774a178e4bb4b4c027ed5faf4012c4f51e14904e23fd9",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-04-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "7ebae4df222060a0cf986d91a71400f52ef963e87e8a483231e886ca70d511da",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-04-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "0619e14481232b7a6c71c8fe47baeba0d7f6418283bd374bd86077f28bedd706",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-05-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "78482981a52e3946cde63b42d8229d947a786a021b6768b970925d8c69e89ec9",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-05-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "4c3706a832ed1ae9340cde9ceb27db2b85d47f43caca94d297d1c056a6021a3a",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-06.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "fc23e123c890d1786fe5305cda76bba6b2d908af32f95ab94c9e445a71320f21",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-07.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "dc2a304edb2fd1c2a2222b03264d15742d1657b28e626b40126ed7648d856a8f",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-08.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "752478afee975e61687c7f44f6c44c1860fe4f423d98a7b97f33b4cdb7137234",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-09-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "bfaaa54a16b77145ad3ae30bedf89c381318c09e7bb441a41758dcdacb3b6104",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-09-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "0bf27284f95a03bcdcbe828780673addb189949cde622e547088795ed0dbfaac",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-10-5-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "8a74e8708e16191be96596a535e6ca2c3c7f514a834f55467f79b46e465e64fa",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-10-6-eilutes.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "6e1b91011221c231400ba4c0a330b20ca374fb177098fcbc54ad2046b2da76de",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-11.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "96d76add321bbcafa05ed384c3e99768ef5ffbcaa482f44d52d416a9ef94cee5",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-12.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "df68224f80c4aa79d09d320016522b846357b6657150b56c554101df16c987d6",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-13.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "4ff0901b690cf92cd7705e195345d10a21cd1c3eb3d5a1ad6803c595bed06659",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-14.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "e49ff9f5d5ca65f5456d78474408e48e3f0de0d6b9e0a2e525d843f0a0f7c2b1",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-15.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "0a2cb458f3880aab94d7e0c564f3dd6e6e9319a1b6a4c98d26eccdada732b5ef",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-16.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "31a2d3dd1b18b1145df696f9a8ce9de7a2dbc2c7972c517724baf887bb5eebbe",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-17.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "f141564097a7d37912d9b16c6fd8e0c4e3c6adf95893c7a18d58696fecbfabd4",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-18.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "4618dde45a0829f09e14a512b2e28596dc937a99ad7a2c9b2192a9dfef15604d",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-19.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "4f4176e048d988810cfa732708a03d2fcf0e73ba7adeb03a312d0f5ca592678b",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
+    },
+    {
+      "path": "site/assets/previews-small/tuscias-20.webp",
+      "reason": "Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign",
+      "sha256": "ecb83eef85e1c2b14a16c9bf63acd39fe02bb27b64694b7ff732259d33545cb3",
+      "review_manifest": "docs/blank-calendar-redesign/asset-transition.json"
     },
     {
       "path": "site/assets/lunar/days/2027-01-01.webp",
@@ -6723,8 +7353,21 @@
     },
     {
       "path": "site/assets/lunar/lunar.js",
-      "reason": "Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained",
-      "sha256": "6b6c13083eae92c21abf10516f2a9ec505d3fc26c643d240ab1e04e4495b8618"
+      "reason": "Use a reviewed Q95 screen-only WebP with exact alpha and measured >=45 dB composite PSNR; preserve source PNG and full-resolution print texture",
+      "verification": {
+        "path": "site/assets/lunar/albedo-web.webp",
+        "bytes": 81880,
+        "dimensions": [
+          512,
+          512
+        ],
+        "alpha_identical": true,
+        "composited_rgb_psnr_db": {
+          "black": 45.277,
+          "white": 45.277
+        },
+        "print_source_unchanged": true
+      }
     },
     {
       "version": "2026-10-17-lt-editorial-v1",
@@ -6743,7 +7386,7 @@
     {
       "path": ".github/workflows/horoscope-automation.yml",
       "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "158ecad2cca3792b505de6f35ac24c32560ade74759c22b6d22f60074756a718"
+      "sha256": "13d62eaf2e06b4833ebd8b2105f6c46275e5aeeca9ebfa95005ea3b2877dacd2"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",

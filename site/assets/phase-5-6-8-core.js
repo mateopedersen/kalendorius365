@@ -1,8 +1,16 @@
 export const ZONE = "Europe/Vilnius";
 const DAY_MS = 86400000;
-const partsAt = (instant, zone) => Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
-  timeZone: zone, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
-}).formatToParts(new Date(instant)).filter((x) => x.type !== "literal").map((x) => [x.type, x.value]));
+const datePartsFormatters = new Map();
+const partsAt = (instant, zone) => {
+  let formatter = datePartsFormatters.get(zone);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat("en-CA", {
+      timeZone: zone, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    });
+    datePartsFormatters.set(zone, formatter);
+  }
+  return Object.fromEntries(formatter.formatToParts(new Date(instant)).filter((x) => x.type !== "literal").map((x) => [x.type, x.value]));
+};
 
 /** All UTC instants that round-trip to an IANA local wall time. */
 export function zonedCandidates(local, zone = ZONE) {
@@ -11,9 +19,9 @@ export function zonedCandidates(local, zone = ZONE) {
   const target = Date.UTC(year, month - 1, day, hour, minute);
   if (month < 1 || month > 12 || day < 1 || day > 31 || hour > 23 || minute > 59 || new Date(target).toISOString().slice(0, 10) !== ymd) throw Error("Patikrinkite datą ir laiką.");
   const matches = new Set(), offsets = new Set();
-  // Sample offsets around the wall time, then round-trip each candidate. This is
-  // faster than formatting every 30-minute instant while still detecting DST folds.
-  for (let probe = target - 36 * 3600000; probe <= target + 36 * 3600000; probe += 3 * 3600000) {
+  // Sample before, at and after the wall time. These points cover both sides of
+  // nearby DST changes while avoiding dozens of redundant Intl formatter calls.
+  for (const probe of [target - 36 * 3600000, target, target + 36 * 3600000]) {
     const p = partsAt(probe, zone);
     const representedAsUtc = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute);
     offsets.add(representedAsUtc - probe);

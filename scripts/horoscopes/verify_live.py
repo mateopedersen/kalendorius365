@@ -124,7 +124,7 @@ def expected_page_content() -> dict[str, tuple[str, list[str]]]:
     signs = json.loads(SIGNS_PATH.read_text(encoding="utf-8"))
     forecasts = {row["sign_key"]: row for row in daily["forecasts"]}
     sign_by_key = {row["key"]: row for row in signs}
-    expected = {"/horoskopai/": ("Horoskopai", [])}
+    expected = {"/horoskopai/": ("Dienos horoskopai", [])}
     for sign in signs:
         key = sign["key"]
         forecast = forecasts[key]
@@ -135,7 +135,7 @@ def expected_page_content() -> dict[str, tuple[str, list[str]]]:
             + [sign["name"]],
         )
     expected["/horoskopai/"] = (
-        "Horoskopai",
+        "Dienos horoskopai",
         [forecasts[sign["key"]][field]
          for sign in signs for field in ("editorial_heading", "lead")]
         + [sign_by_key[sign["key"]]["name"] for sign in signs],

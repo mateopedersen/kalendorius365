@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 36819,
-      "generated_bytes": 23996
+      "source_bytes": 38006,
+      "generated_bytes": 24414
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -18,8 +18,8 @@
     },
     {
       "path": "/assets/calendar-editor/editor.js",
-      "source_bytes": 49255,
-      "generated_bytes": 36579
+      "source_bytes": 49221,
+      "generated_bytes": 36550
     },
     {
       "path": "/assets/calendar-editor/export.js",
@@ -53,8 +53,8 @@
     },
     {
       "path": "/assets/calendar-editor/scene.js",
-      "source_bytes": 11985,
-      "generated_bytes": 7726
+      "source_bytes": 12047,
+      "generated_bytes": 7771
     },
     {
       "path": "/assets/calendar-editor/storage.js",
@@ -68,8 +68,8 @@
     },
     {
       "path": "/assets/calendar.js",
-      "source_bytes": 7562,
-      "generated_bytes": 4979
+      "source_bytes": 9062,
+      "generated_bytes": 5796
     },
     {
       "path": "/assets/common.js",
@@ -168,8 +168,8 @@
     },
     {
       "path": "/assets/phase-5-6-8-core.js",
-      "source_bytes": 14083,
-      "generated_bytes": 8402
+      "source_bytes": 14267,
+      "generated_bytes": 8451
     },
     {
       "path": "/assets/phase-5-6-8.js",
@@ -208,8 +208,8 @@
     },
     {
       "path": "/assets/tools.js",
-      "source_bytes": 20071,
-      "generated_bytes": 12632
+      "source_bytes": 34182,
+      "generated_bytes": 21664
     },
     {
       "path": "/assets/weather.js",

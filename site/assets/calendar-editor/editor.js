@@ -795,7 +795,7 @@ async function start() {
       if (month === 0) state.period.mode = "annual";
       else state.period.month = month;
     }
-    await Promise.all(["Lato", "Inter"].flatMap((f) => [document.fonts.load(`12px ${f}`), document.fonts.load(`bold 12px ${f}`)]));
+    await Promise.all([document.fonts.load("12px Lato"), document.fonts.load("bold 12px Lato")]);
     render();
     let records;
     try {

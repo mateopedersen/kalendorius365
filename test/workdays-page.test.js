@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const page = readFileSync(new URL("../site/darbo-dienos/2027/index.html", import.meta.url), "utf8");
+const publicPages = [2027, 2028, 2029].map((year) =>
+  readFileSync(new URL(`../public/darbo-dienos/${year}/index.html`, import.meta.url), "utf8"),
+);
 const template = readFileSync(new URL("../site/_layouts/default.html", import.meta.url), "utf8");
 
 test("2027 workday page renders the annual planner and accessible date checker", () => {
@@ -29,4 +32,8 @@ test("published workday pages activate their scoped responsive styles", () => {
   }
   assert.match(designSystem, /body\.tool-workdays \.workyear-month-grid\{display:grid/, "month cards should use the responsive grid layout");
   assert.match(designSystem, /body\.tool-workdays \.workyear-hero__art img\{[^}]*width:min\(100%,410px\)/, "hero illustration should stay within its layout bounds");
+});
+
+test("annual workday pages activate their responsive layout styles", () => {
+  for (const output of publicPages) assert.match(output, /<body class="tool-workdays">/);
 });
