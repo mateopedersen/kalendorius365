@@ -29,6 +29,12 @@ tool: false
   </div>
 </section>
 
+<section class="commemoration-next panel" aria-live="polite" aria-labelledby="commemoration-next-title">
+  <div class="commemoration-next-symbol" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 13v12l8 5"/><path d="M8 7 5 10m35-3 3 3"/></svg></div>
+  <div class="commemoration-next-copy"><p class="eyebrow">ARTIMIAUSIA PAGAL PASIRINKTUS FILTRUS</p><h2 id="commemoration-next-title">Atraskite artimiausią datą</h2><p id="commemoration-next-date">Pasirinkite metus ir temą – gidas parinks kitą progą.</p><a id="commemoration-next-link" href="/sventes/">Atverti dienos aprašymą →</a></div>
+  <div class="commemoration-countdown"><strong id="commemoration-next-count">—</strong><span id="commemoration-next-label">dienų liko</span></div>
+</section>
+
 <section class="discovery-tool panel" aria-labelledby="commemoration-tools-title">
   <div class="discovery-tool-heading"><div><p class="eyebrow">GREITA PAIEŠKA</p><h2 id="commemoration-tools-title">Raskite ir išsisaugokite datas</h2></div>
     <span class="discovery-tool-mark" aria-hidden="true">01</span>
@@ -53,7 +59,7 @@ tool: false
   </div>
   <div class="discovery-actions">
     <p id="commemoration-status" role="status" aria-live="polite"></p>
-    <div><button class="button button--subtle" type="button" id="commemoration-clear">Išvalyti filtrus</button>
+    <div class="discovery-actions-buttons"><label class="favorite-filter"><input id="commemoration-favorites-only" type="checkbox"> Tik išsaugotos</label><button class="button button--subtle" type="button" id="commemoration-clear">Išvalyti filtrus</button>
       <button class="button primary" type="button" id="commemoration-export">Atsisiųsti .ics kalendorių</button></div>
   </div>
 </section>

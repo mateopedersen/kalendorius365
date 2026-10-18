@@ -24,7 +24,7 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=1fcf2129a917 /assets/design-system.css?v=1fcf2129a917 /assets/discovery.css?v=1fcf2129a917">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=330768858b3e /assets/design-system.css?v=330768858b3e /assets/discovery.css?v=330768858b3e">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -720,6 +720,38 @@ button:hover,.button:hover{transform: none;}}
 .weekend-recommendation > p:nth-of-type(1){color: #087653;font-weight: 800;}
 .weekend-recommendation .muted{color: var(--muted);}
 .weekend-recommendation .button{min-height: 34px;margin-top: .3rem;padding: .35rem .55rem;font-size: .73rem;}
+.commemoration-next{display: grid;grid-template-columns: 58px minmax(0,1fr) auto;align-items: center;gap: 1rem;margin: 1.35rem 0;padding: 1rem 1.2rem;border: 1px solid #d9e8df;border-radius: 16px;background: linear-gradient(110deg,#edf8f1 0%,#fff 65%,#fff8ea 100%);}
+.commemoration-next-symbol{display: grid;place-items: center;width: 52px;height: 52px;border: 1px solid #c8e1d2;border-radius: 16px;background: #fff;color: #0a7955;}
+.commemoration-next-symbol svg{width: 33px;height: 33px;fill: none;stroke: currentColor;stroke-width: 2.4;stroke-linecap: round;stroke-linejoin: round;}
+.commemoration-next-copy .eyebrow{margin-bottom: .2rem;font-size: .65rem;}
+.commemoration-next-copy h2{margin: 0 0 .2rem;font-size: 1.1rem;}
+.commemoration-next-copy > p:not(.eyebrow){margin: 0 0 .25rem;color: var(--muted);font-size: .82rem;}
+.commemoration-next-copy > a{font-size: .8rem;font-weight: 800;}
+.commemoration-countdown{display: grid;justify-items: center;min-width: 92px;padding: .55rem .75rem;border-left: 1px solid #dce8df;color: #087653;}
+.commemoration-countdown strong{font-size: 1.75rem;line-height: 1;font-variant-numeric: tabular-nums;}
+.commemoration-countdown span{margin-top: .25rem;color: var(--muted);font-size: .66rem;text-align: center;}
+.discovery-actions-buttons{align-items: center;}
+.favorite-filter{display: inline-flex;align-items: center;gap: .4rem;padding: .4rem .6rem;color: #435365;font-size: .8rem;font-weight: 700;cursor: pointer;}
+.favorite-filter input{accent-color: var(--green);}
+.commemoration-card .muted{padding-right: 2.2rem;}
+.commemoration-favorite{position: absolute;top: .8rem;right: .8rem;display: grid;place-items: center;width: 34px;height: 34px;padding: 0;border: 1px solid #e5e9e6;border-radius: 50%;background: #fff;color: #b18035;font-size: 1.25rem;line-height: 1;box-shadow: 0 2px 7px #17372a0a;}
+.commemoration-favorite[aria-pressed="true"]{border-color: #efd7a2;background: #fff8e8;color: #a16d19;}
+.commemoration-favorite:hover{transform: scale(1.06);}
+.daylight-focus-city{display: grid;gap: .3rem;color: #34455a;font-size: .77rem;font-weight: 700;}
+.daylight-focus-city select{min-width: 150px;min-height: 39px;padding: .45rem .65rem;border: 1px solid #ccd8d2;border-radius: 9px;background: white;color: var(--ink);}
+.daylight-year-gridline{fill: none;stroke: #dfe8e2;stroke-width: 1;stroke-dasharray: 2 6;}
+.daylight-year-axis-label{fill: #7b887f;font-size: 11px;font-variant-numeric: tabular-nums;}
+.daylight-year-area{fill: url(#daylight-area);}
+.daylight-year-line{fill: none;stroke: #d99c3d;stroke-width: 4;stroke-linecap: round;stroke-linejoin: round;}
+.daylight-year-month{fill: #617064;font-size: 11px;font-weight: 700;}
+.daylight-year-point{fill: #fff;stroke: #d99c3d;stroke-width: 2.5;cursor: pointer;transition: r .15s ease,fill .15s ease;}
+.daylight-year-point:hover{r: 8;fill: #fff6df;}
+.daylight-year-point:focus{outline: none;stroke: #087653;stroke-width: 4;}
+.daylight-year-point--turn{stroke: #0b805b;stroke-width: 3;}
+.daylight-year-point-core{fill: #f2c365;pointer-events: none;}
+.daylight-year-summary{margin: .55rem 0 0;padding: .65rem .8rem;border-left: 3px solid #d99c3d;border-radius: 0 8px 8px 0;background: #fff8ea;color: #55472e;font-size: .83rem;line-height: 1.5;}
+.weekend-recommendation > a{display: inline-block;margin-top: .25rem;font-size: .75rem;font-weight: 800;}
+.weekend-plan-empty{grid-column: 1 / -1;margin: 0;padding: .9rem 1rem;border: 1px dashed #d8e4dc;border-radius: 12px;color: var(--muted);font-size: .84rem;}
 @media (max-width: 800px){.discovery-heading--editorial{padding: 1rem;}
 .discovery-filter-grid{grid-template-columns: repeat(2,minmax(0,1fr));}
 .commemoration-search-label{grid-column: 1 / -1;}}
@@ -747,7 +779,18 @@ button:hover,.button:hover{transform: none;}}
 .daylight-line{grid-template-columns: 5.4rem minmax(300px,1fr);gap: .45rem;}
 .daylight-city{font-size: .72rem;}
 .daylight-time{font-size: .6rem;}
-.weekend-recommendations{grid-template-columns: 1fr;}}
+.weekend-recommendations{grid-template-columns: 1fr;}
+.commemoration-next{grid-template-columns: 48px minmax(0,1fr);gap: .65rem;padding: .8rem;}
+.commemoration-next-symbol{width: 44px;height: 44px;border-radius: 13px;}
+.commemoration-countdown{grid-column: 2;grid-row: 1;justify-items: end;min-width: auto;padding: 0;border: 0;}
+.commemoration-countdown strong{font-size: 1.35rem;}
+.commemoration-countdown span{font-size: .59rem;}
+.commemoration-next-copy{grid-column: 1 / -1;}
+.commemoration-next-copy h2{font-size: .98rem;}
+.discovery-actions-buttons{display: grid !important;grid-template-columns: 1fr;}
+.favorite-filter{justify-content: flex-start;}
+.daylight-focus-city{width: 100%;}
+.daylight-focus-city select{width: 100%;}}
 @media (prefers-reduced-motion: reduce){.commemoration-card{transition: none;}
 .commemoration-card:hover{transform: none;}}</style>
 
@@ -761,7 +804,7 @@ button:hover,.button:hover{transform: none;}}
 
 
 
-<link rel="stylesheet" href="/assets/print.css?v=1fcf2129a917" media="print">
+<link rel="stylesheet" href="/assets/print.css?v=330768858b3e" media="print">
 
 
 
@@ -776,11 +819,11 @@ button:hover,.button:hover{transform: none;}}
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pradžia","item":"https://kalendorius365.lt/"},{"@type":"ListItem","position":2,"name":"Lietuvos atmintinų dienų gidas","item":"https://kalendorius365.lt/atmintinos-dienos/"}]}</script>
 
-<link rel="modulepreload" href="/assets/common.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/cookie-notice.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/discovery-core.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/discovery.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/phase-5-6-8-core.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/common.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/cookie-notice.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/discovery-core.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/discovery.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/phase-5-6-8-core.js?v=3399465e8f23">
 </head>
 <body>
 <a class="skip" href="#main">Pereiti prie turinio</a>
@@ -791,7 +834,7 @@ button:hover,.button:hover{transform: none;}}
 <main id="main" class="content-main">
 <nav class="breadcrumbs" aria-label="Naršymo kelias"><a href="/">Pradžia</a><span aria-hidden="true">/</span><span>Lietuvos atmintinų dienų gidas</span></nav>
 <header class="discovery-heading discovery-heading--editorial">
-  <img src="/assets/visuals/discovery-holidays.svg?v=9e6798d104e7" width="300" height="210" alt="" aria-hidden="true">
+  <img src="/assets/visuals/discovery-holidays.svg?v=503c057b720d" width="300" height="210" alt="" aria-hidden="true">
   <div>
     <p class="eyebrow">ISTORIJA · KULTŪRA · DATOS</p>
     <div class="page-heading"><div>
@@ -813,6 +856,12 @@ button:hover,.button:hover{transform: none;}}
     <p>Šiame puslapyje atrinktos dienos, skirtos Lietuvos istorijai, žmonėms ir bendruomenėms prisiminti. Atmintinos dienos statusas pats savaime nesuteikia laisvos dienos nuo darbo.</p>
     <a href="/sventes/">Nedarbo švenčių dienas tikrinkite švenčių kalendoriuje →</a>
   </div>
+</section>
+
+<section class="commemoration-next panel" aria-live="polite" aria-labelledby="commemoration-next-title">
+  <div class="commemoration-next-symbol" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 13v12l8 5"/><path d="M8 7 5 10m35-3 3 3"/></svg></div>
+  <div class="commemoration-next-copy"><p class="eyebrow">ARTIMIAUSIA PAGAL PASIRINKTUS FILTRUS</p><h2 id="commemoration-next-title">Atraskite artimiausią datą</h2><p id="commemoration-next-date">Pasirinkite metus ir temą – gidas parinks kitą progą.</p><a id="commemoration-next-link" href="/sventes/">Atverti dienos aprašymą →</a></div>
+  <div class="commemoration-countdown"><strong id="commemoration-next-count">—</strong><span id="commemoration-next-label">dienų liko</span></div>
 </section>
 
 <section class="discovery-tool panel" aria-labelledby="commemoration-tools-title">
@@ -839,7 +888,7 @@ button:hover,.button:hover{transform: none;}}
   </div>
   <div class="discovery-actions">
     <p id="commemoration-status" role="status" aria-live="polite"></p>
-    <div><button class="button button--subtle" type="button" id="commemoration-clear">Išvalyti filtrus</button>
+    <div class="discovery-actions-buttons"><label class="favorite-filter"><input id="commemoration-favorites-only" type="checkbox"> Tik išsaugotos</label><button class="button button--subtle" type="button" id="commemoration-clear">Išvalyti filtrus</button>
       <button class="button primary" type="button" id="commemoration-export">Atsisiųsti .ics kalendorių</button></div>
   </div>
 </section>
@@ -901,5 +950,5 @@ button:hover,.button:hover{transform: none;}}
   </div>
 </aside>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
-<script type="module" async src="/assets/common.js?v=ec7c1098941b"></script><script type="module" async src="/assets/cookie-notice.js?v=ec7c1098941b"></script><script type="module" async src="/assets/discovery.js?v=ec7c1098941b"></script>
+<script type="module" async src="/assets/common.js?v=3399465e8f23"></script><script type="module" async src="/assets/cookie-notice.js?v=3399465e8f23"></script><script type="module" async src="/assets/discovery.js?v=3399465e8f23"></script>
 </body></html>
