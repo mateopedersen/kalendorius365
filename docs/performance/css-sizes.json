@@ -1,0 +1,90 @@
+{
+  "method": "esbuild 0.28.2 CSS syntax minification; Chrome 100 / Safari 15.4 target; no selector renaming",
+  "styles": [
+    {
+      "path": "/assets/contact.css",
+      "source_bytes": 9702,
+      "generated_bytes": 9632
+    },
+    {
+      "path": "/assets/design-system.css",
+      "source_bytes": 129541,
+      "generated_bytes": 121803
+    },
+    {
+      "path": "/assets/discovery.css",
+      "source_bytes": 13643,
+      "generated_bytes": 12932
+    },
+    {
+      "path": "/assets/holiday-phase2.css",
+      "source_bytes": 10686,
+      "generated_bytes": 10638
+    },
+    {
+      "path": "/assets/homepage-bundle.css",
+      "source_bytes": 122900,
+      "generated_bytes": 115173
+    },
+    {
+      "path": "/assets/homepage.css",
+      "source_bytes": 58033,
+      "generated_bytes": 55017
+    },
+    {
+      "path": "/assets/horoscope-detail.css",
+      "source_bytes": 75149,
+      "generated_bytes": 69801
+    },
+    {
+      "path": "/assets/horoscope-hub.css",
+      "source_bytes": 64651,
+      "generated_bytes": 59649
+    },
+    {
+      "path": "/assets/horoscope.css",
+      "source_bytes": 31614,
+      "generated_bytes": 30100
+    },
+    {
+      "path": "/assets/lunar.css",
+      "source_bytes": 14351,
+      "generated_bytes": 14348
+    },
+    {
+      "path": "/assets/monthly-holidays.css",
+      "source_bytes": 21681,
+      "generated_bytes": 21237
+    },
+    {
+      "path": "/assets/namedays.css",
+      "source_bytes": 13623,
+      "generated_bytes": 13308
+    },
+    {
+      "path": "/assets/print.css",
+      "source_bytes": 9177,
+      "generated_bytes": 8043
+    },
+    {
+      "path": "/assets/seasons.css",
+      "source_bytes": 18212,
+      "generated_bytes": 17938
+    },
+    {
+      "path": "/assets/style.css",
+      "source_bytes": 43690,
+      "generated_bytes": 43331
+    },
+    {
+      "path": "/assets/zodiac-guide.css",
+      "source_bytes": 67072,
+      "generated_bytes": 62193
+    },
+    {
+      "path": "/assets/zodiac.css",
+      "source_bytes": 19155,
+      "generated_bytes": 18673
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import {transformSync} from 'esbuild';
 import {readdir, readFile, writeFile} from 'node:fs/promises';
 import {resolve, relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {validateCSS} from './minify_css.mjs';
 
 // Each module retains its exports, import boundaries, property names and legal
 // notices. Source files remain readable; only generated browser assets change.
@@ -18,7 +19,7 @@ export function staticImports(source) {
 }
 
 async function preloadInitialModules(directory) {
-  const root = resolve(directory, '..'), imports = new Map();
+  const root = resolve(directory, '..'), imports = new Map(), validatedStyles=new Set();
   async function dependencies(url, seen) {
     if (seen.has(url)) return;
     seen.add(url);
@@ -37,6 +38,9 @@ async function preloadInitialModules(directory) {
       if (entry.isDirectory()) { if (entry.name !== 'assets' && entry.name !== 'downloads') await visit(path); }
       else if (entry.name.endsWith('.html')) {
         const html = await readFile(path, 'utf8');
+        for(const match of html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)){
+          if(!validatedStyles.has(match[1])){validateCSS(match[1],relative(root,path));validatedStyles.add(match[1]);}
+        }
         const roots = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js\?v=[^"]+)"[^>]*>/g)].map(match=>match[1]);
         const seen = new Set();
         for (const url of roots) await dependencies(url, seen);

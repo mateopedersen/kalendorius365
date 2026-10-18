@@ -8,6 +8,21 @@ module DiscoveryPages
   File.write(path,File.read(path).sub("---\n","---\ndiscovery: true\n"))
  end
  def run
+  # These three curated pages are authored as complete Jekyll source files.
+  # Keep the older generated fallback only for checkouts where those page
+  # templates are absent or have not yet been upgraded.
+  authored_pages={
+   'atmintinos-dienos'=>'commemoration-year',
+   'dienos-ilgumas'=>'daylight-chart',
+   'ilgieji-savaitgaliai'=>'weekend-planner'
+  }
+  if authored_pages.all? do |slug,marker|
+    path="#{Pages::ROOT}/site/#{slug}/index.html"
+    File.file?(path) && File.read(path).include?(marker)
+   end
+   return
+  end
+
   phase2=JSON.parse(File.read("#{Pages::ROOT}/data/holiday-phase2.json"))
   entries=(Pages::EDITORIAL['commemorations']+phase2['articles'].select { |a| a['category'].start_with?('Atmintina diena') }).sort_by { |a|[a['month'],a['day']] }
   months=entries.group_by { |a|a['month'] }

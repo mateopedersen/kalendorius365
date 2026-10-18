@@ -96,6 +96,30 @@ test("Vilnius date rollover, DST gaps and repeated hour", () => {
   );
   assert.equal(c.difference("2027-03-27", "2027-03-29"), 2);
 });
+test("reused date formatters preserve Lithuanian options and every supplied instant", () => {
+  const settings = [
+    {}, { weekday: "long" }, { month: "short", year: undefined },
+    { weekday: "long", year: undefined, month: undefined, day: undefined },
+    { timeZone: "Europe/Vilnius", month: "2-digit", day: "2-digit" },
+  ];
+  for (const date of ["1900-01-01", "2000-02-29", "2027-03-28", "2027-10-31", "2100-12-31"])
+    for (const options of settings) {
+      const expected = new Intl.DateTimeFormat("lt-LT", {
+        timeZone: "UTC", year: "numeric", month: "long", day: "numeric", ...options,
+      }).format(c.parse(date));
+      assert.equal(c.formatDate(date, options), expected);
+      assert.equal(c.formatDate(date, Object.fromEntries(Object.entries(options).reverse())), expected);
+    }
+  for (const instant of ["2027-03-27T21:59:59Z", "2027-03-27T22:00:00Z", "2027-03-28T21:00:00Z", "2027-10-30T20:59:59Z", "2027-10-30T21:00:00Z", "2027-10-31T22:00:00Z"]) {
+    const now = new Date(instant), parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: c.TZ, year: "numeric", month: "2-digit", day: "2-digit",
+    }).formatToParts(now), values = Object.fromEntries(parts.map(p => [p.type, p.value]));
+    assert.equal(c.today(now), `${values.year}-${values.month}-${values.day}`);
+  }
+  assert.throws(() => c.formatDate("2027-02-29"));
+  assert.throws(() => c.formatDate("2027-01-01", { timeZone: "invalid" }));
+  assert.throws(() => c.formatDate("2027-01-01", { weekday: null, year: undefined, month: undefined, day: undefined }));
+});
 const event = () => ({
   id: "test",
   title: "Šeimos įvykis, šiandien",

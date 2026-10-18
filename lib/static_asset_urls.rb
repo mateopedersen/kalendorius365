@@ -11,7 +11,9 @@ module Kalendorius
     STATIC_ASSET_EXTENSIONS = (IMAGE_EXTENSIONS + FONT_EXTENSIONS).freeze
     DOWNLOAD_EXTENSIONS = (IMAGE_EXTENSIONS + %w[.pdf .csv .json .ics]).freeze
     JSON_DOCUMENTS_WITH_ASSET_REFERENCES = %w[assets/data/zodiac.json].freeze
-    REFERENCE_PATTERN = %r{(?<prefix>^|[\s"'=(])(?<path>/(?:assets|downloads)/[^"'<>\s?#()]+\.(?:svg|png|webp|jpe?g|avif|woff2?|pdf|csv|json|ics))(?<query>\?[^"'<>\s#]*)?(?<fragment>\#[^"'<>\s]*)?}i
+    # Parentheses terminate unquoted CSS url(...) values. Keeping them out of
+    # query/fragment captures preserves the closing delimiter after minifying.
+    REFERENCE_PATTERN = %r{(?<prefix>^|[\s"'=(])(?<path>/(?:assets|downloads)/[^"'<>\s?#()]+\.(?:svg|png|webp|jpe?g|avif|woff2?|pdf|csv|json|ics))(?<query>\?[^"'<>\s#()]*)?(?<fragment>\#[^"'<>\s()]*)?}i
     DYNAMIC_TEMPLATE_PATTERN = %r{`(?<url>/(?:assets|downloads)/[^`\s]*\.(?:svg|png|webp|jpe?g|avif|woff2?|pdf|csv|json|ics))`}
 
     module_function

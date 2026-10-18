@@ -8,6 +8,11 @@ export function minifyCSS(source, filename = 'style.css') {
     target:['chrome100','safari15.4'], legalComments:'inline', charset:'utf8'}).code;
 }
 
+export function validateCSS(source, filename = 'style.css') {
+  const result=transformSync(source,{sourcefile:filename,loader:'css',logLevel:'silent'});
+  if(result.warnings.length)throw new Error(`Invalid generated CSS in ${filename}: ${result.warnings.map(w=>w.text).join('; ')}`);
+}
+
 async function build(directory) {
   const rows=[];
   async function visit(dir) {

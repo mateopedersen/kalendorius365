@@ -85,4 +85,19 @@ class StaticAssetUrlsTest < Minitest::Test
     refute_includes paths, 'assets/previews/unreferenced.webp'
     refute_includes paths, 'assets/data/manifest.json'
   end
+
+  def test_unquoted_css_urls_keep_closing_parentheses_and_font_formats
+    FileUtils.mkdir_p(File.join(@root, 'assets/fonts'))
+    File.binwrite(File.join(@root, 'assets/fonts/font.woff2'), 'font bytes')
+    font_hash = Digest::SHA256.file(File.join(@root, 'assets/fonts/font.woff2')).hexdigest[0, 12]
+    svg_hash = Digest::SHA256.file(File.join(@root, 'assets/visuals/icon.svg')).hexdigest[0, 12]
+    css = '@font-face{src:url(/assets/fonts/font.woff2?v=old) format("woff2")}.icon{mask:url(/assets/visuals/icon.svg?size=2&v=old#calendar)}'
+    path = File.join(@root, 'assets/unquoted.css')
+    File.write(path, css)
+    Kalendorius::StaticAssetUrls.rewrite!(@root)
+    output = File.read(path)
+    assert_includes output, "url(/assets/fonts/font.woff2?v=#{font_hash}) format(\"woff2\")"
+    assert_includes output, "url(/assets/visuals/icon.svg?size=2&v=#{svg_hash}#calendar)"
+    assert_equal 0, Kalendorius::StaticAssetUrls.rewrite!(@root)
+  end
 end

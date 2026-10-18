@@ -22,5 +22,5 @@ class InlineImageTests(unittest.TestCase):
   self.assertIn('/assets/visuals/weather-320.webp?',document)
   self.assertIn('/assets/visuals/weather-480.webp?',document)
   self.assertIn('/assets/visuals/weather-640.webp?',document)
-  self.assertNotRegex(document,r'<link[^>]*preload[^>]*weather-')
+  self.assertFalse(re.search(r'<link\b(?=[^>]*\brel="preload")(?=[^>]*\bas="image")(?=[^>]*weather-)[^>]*>',document),'The embedded image must not also trigger an external image preload')
 if __name__=='__main__':unittest.main()

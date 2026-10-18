@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { solarFor } from '../site/assets/phase-5-6-8-core.js';
+import { foldIcsLine, recommendExtendedWeekend, thirdFridayOfMay } from '../site/assets/discovery-core.js';
 const read = path => fs.readFileSync(new URL('../'+path, import.meta.url),'utf8');
 test('all 22 links in the header and discovery area have different existing page destinations',()=>{
  const html=read('public/index.html');
@@ -21,7 +22,12 @@ test('the three focused pages are indexed and have independent titles, content a
  for(const type of ['holidays','sun','planning']){
   const svg=read('site/assets/visuals/discovery-'+type+'.svg');
   assert.doesNotMatch(svg,/<(?:script|image|foreignObject)/);
+  assert.match(svg,/viewBox="0 0 320 210"/);
+  assert.match(svg,/<linearGradient/);
  }
+ assert.match(read('public/atmintinos-dienos/index.html'),/commemoration-export/);
+ assert.match(read('public/dienos-ilgumas/index.html'),/daylight-chart/);
+ assert.match(read('public/ilgieji-savaitgaliai/index.html'),/weekend-recommendations/);
 });
 test('five city comparison uses the existing solar calculation and sensible common-scale durations',()=>{
  const cities=JSON.parse(read('site/assets/data/astronomy/cities.json')).cities;
@@ -33,18 +39,30 @@ test('five city comparison uses the existing solar calculation and sensible comm
  }
 });
 
-test('commemoration filtering waits for the DOM and handles accent-insensitive matches and empty results',async()=>{
- const {runInNewContext}=await import('node:vm');
- const makeCard=textContent=>({textContent,hidden:false});
- const cards=[makeCard('Tarptautinė mokytojų diena'),makeCard('Lietuvos vėliavos diena')];
- const sections=cards.map(card=>({hidden:false,querySelectorAll:()=>[card]}));
- const status={textContent:''};const events={};
- const input={value:'',addEventListener:(type,fn)=>{events[type]=fn;}};
- const callbacks={};
- const document={readyState:'loading',addEventListener:(type,fn)=>{callbacks[type]=fn;},querySelector:selector=>({'#commemoration-search':input,'#commemoration-status':status}[selector]||null),querySelectorAll:selector=>selector==='[data-commemoration]'?cards:sections};
- runInNewContext(read('site/assets/discovery.js').replace(/^import .*\n/,''),{document});
- assert.equal(events.input,undefined);callbacks.DOMContentLoaded();
- assert.equal(status.textContent,'Rasta dienų: 2');
- input.value='mokytoju';events.input();assert.equal(cards[0].hidden,false);assert.equal(cards[1].hidden,true);assert.equal(sections[1].hidden,true);
- input.value='zzzz';events.input();assert.ok(cards.every(card=>card.hidden));assert.ok(status.textContent.includes('Nieko nerasta'));
+test('floating commemoration dates resolve to the third Friday in May',()=>{
+ assert.deepEqual([2027,2028,2029].map(thirdFridayOfMay),['2027-05-21','2028-05-19','2029-05-18']);
+});
+test('iCalendar line folding preserves Lithuanian UTF-8 and the 75-octet limit',()=>{
+ const source='DESCRIPTION:'+('Šv. ' + 'kalendorinis įvykis ').repeat(12);
+ const folded=foldIcsLine(source);
+ assert.equal(folded.replace(/\r\n /g,''),source);
+ for(const line of folded.split('\r\n')) assert.ok(new TextEncoder().encode(line).length<=75);
+});
+test('weekend planner extends adjacent weekends and spends only selected weekday leave',()=>{
+ assert.deepEqual(recommendExtendedWeekend('2027-01-01','2027-01-03',0),{
+  start:'2027-01-01',end:'2027-01-03',daysOff:3,leaveDays:0,leaveDates:[],
+ });
+ const one=recommendExtendedWeekend('2027-01-01','2027-01-03',1);
+ assert.equal(one.daysOff,4);assert.equal(one.leaveDays,1);
+ assert.deepEqual(one.leaveDates,['2026-12-31']);
+ assert.ok(one.start==='2026-12-31'||one.end==='2027-01-04');
+ const two=recommendExtendedWeekend('2027-01-01','2027-01-03',2);
+ assert.equal(two.daysOff,5);assert.equal(two.leaveDays,2);
+ assert.deepEqual(two.leaveDates,['2026-12-30','2026-12-31']);
+ assert.deepEqual(recommendExtendedWeekend('2027-01-01','2027-01-03',0).leaveDates,[]);
+});
+test('weekend planner validates dates and keeps the leave-day limit bounded',()=>{
+ assert.throws(()=>recommendExtendedWeekend('2027-02-30','2027-03-01',1));
+ assert.throws(()=>recommendExtendedWeekend('2027-03-02','2027-03-01',1));
+ assert.throws(()=>recommendExtendedWeekend('2027-03-01','2027-03-02',4));
 });

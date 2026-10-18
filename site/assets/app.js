@@ -872,33 +872,36 @@ $("#search").oninput = (e) => {
   if (!host.children.length)
     host.append(el("small", "Įvykių nerasta. Datos pavyzdys: 2027-03-28."));
 };
-function tick() {
-  const now = new Date();
-  $("#clock").textContent = new Intl.DateTimeFormat("lt-LT", {
-    timeZone: cal.TZ,
-    hour: "2-digit",
-    minute: "2-digit",
-    second: $("#seconds").checked ? "2-digit" : undefined,
-    hour12: $("#hour12").checked,
-  }).format(now);
-  $("#clock-date").textContent = cal.formatDate(cal.today(now));
-  $("#clock-weekday").textContent = new Intl.DateTimeFormat("lt-LT", {
+const clockFormatters = new Map(),
+  clockWeekdayFormatter = new Intl.DateTimeFormat("lt-LT", {
     timeZone: cal.TZ,
     weekday: "long",
-  }).format(now);
+  }),
+  clockZoneFormatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: cal.TZ,
+    timeZoneName: "short",
+  });
+function tick() {
+  const now = new Date();
+  const seconds = $("#seconds").checked, hour12 = $("#hour12").checked,
+    clockKey = `${seconds}:${hour12}`, currentDate = cal.today(now);
+  if (!clockFormatters.has(clockKey)) clockFormatters.set(clockKey, new Intl.DateTimeFormat("lt-LT", {
+    timeZone: cal.TZ, hour: "2-digit", minute: "2-digit",
+    second: seconds ? "2-digit" : undefined, hour12,
+  }));
+  $("#clock").textContent = clockFormatters.get(clockKey).format(now);
+  $("#clock-date").textContent = cal.formatDate(currentDate);
+  $("#clock-weekday").textContent = clockWeekdayFormatter.format(now);
   const cityId = window.k365WeatherCity || DEFAULT_WEATHER_CITY;
   const cityName = WEATHER_CITY_BY_ID.get(cityId)?.name || "Vilnius";
   $("#clock").setAttribute("aria-label", `Dabartinis ${cityName} laikas`);
   $("#clock-zone").textContent =
     cityName + " · " +
-    new Intl.DateTimeFormat("en-GB", {
-      timeZone: cal.TZ,
-      timeZoneName: "short",
-    })
+    clockZoneFormatter
       .formatToParts(now)
       .find((p) => p.type === "timeZoneName").value;
-  if (lastToday !== cal.today(now)) {
-    lastToday = cal.today(now);
+  if (lastToday !== currentDate) {
+    lastToday = currentDate;
     renderCalendar();
     renderHolidayList();
   }

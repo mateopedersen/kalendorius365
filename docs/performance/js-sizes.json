@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 36638,
-      "generated_bytes": 24078
+      "source_bytes": 36943,
+      "generated_bytes": 24146
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -18,8 +18,8 @@
     },
     {
       "path": "/assets/calendar.js",
-      "source_bytes": 6264,
-      "generated_bytes": 4410
+      "source_bytes": 6824,
+      "generated_bytes": 4588
     },
     {
       "path": "/assets/common.js",
@@ -28,8 +28,8 @@
     },
     {
       "path": "/assets/contact.js",
-      "source_bytes": 3895,
-      "generated_bytes": 2640
+      "source_bytes": 4613,
+      "generated_bytes": 3002
     },
     {
       "path": "/assets/cookie-notice.js",
@@ -47,9 +47,14 @@
       "generated_bytes": 2126
     },
     {
+      "path": "/assets/discovery-core.js",
+      "source_bytes": 3232,
+      "generated_bytes": 1838
+    },
+    {
       "path": "/assets/discovery.js",
-      "source_bytes": 2922,
-      "generated_bytes": 2288
+      "source_bytes": 15473,
+      "generated_bytes": 9978
     },
     {
       "path": "/assets/holiday-editorial.js",

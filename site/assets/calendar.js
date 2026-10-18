@@ -77,13 +77,17 @@ export function shiftMonth(s, n) {
   );
   return iso(d);
 }
+// Reuse formatters, never dates: midnight and daylight-saving changes must
+// still use the instant supplied by the caller.
+const todayFormatter = new Intl.DateTimeFormat("en-CA", {
+  timeZone: TZ,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+const dateFormatters = new Map();
 export function today(now = new Date()) {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: TZ,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(now);
+  const parts = todayFormatter.formatToParts(now);
   const value = Object.fromEntries(
     parts
       .filter((part) => part.type !== "literal")
@@ -92,13 +96,21 @@ export function today(now = new Date()) {
   return `${value.year}-${value.month}-${value.day}`;
 }
 export function formatDate(s, options = {}) {
-  return new Intl.DateTimeFormat("lt-LT", {
+  const settings = {
     timeZone: "UTC",
     year: "numeric",
     month: "long",
     day: "numeric",
     ...options,
-  }).format(parse(s));
+  };
+  const key = JSON.stringify(Object.keys(settings).sort().map(key => [key, typeof settings[key], settings[key]]));
+  let formatter = dateFormatters.get(key);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat("lt-LT", settings);
+    if (dateFormatters.size >= 32) dateFormatters.delete(dateFormatters.keys().next().value);
+    dateFormatters.set(key, formatter);
+  }
+  return formatter.format(parse(s));
 }
 export function workStats(a, b, data, six = false) {
   parse(a);
