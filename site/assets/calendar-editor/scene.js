@@ -135,7 +135,11 @@ function scenes(state, data, editorial) {
     let photoId = Object.hasOwn(s.assignments.months, key) ? s.assignments.months[key] : s.assignments.all, photo = s.photos.find((x) => x.id === photoId);
     let photoH = Math.min(s.layout.photoHeight * MM, p.h * 0.4), gridX = margin, gridW = p.w - 2 * margin;
     let notesH = s.layout.notes * 14 + 20;
-    let bottom = p.h - margin - notesH - 20;
+    let fullEntries=entries(s,data,editorial,key+'-01',key+'-'+monthLength(y,m));
+    let full=entryLines(fullEntries);if(s.notes[key])full.push('Užrašai: '+s.notes[key]);
+    let legendLines=full.flatMap(value=>wrap(value,p.w-2*margin,8,/[♥★]/.test(value)?'Inter':p.font));
+    let compact=legendLines.length<=5,legendH=compact&&legendLines.length?legendLines.length*10+12:0;
+    let bottom = p.h - margin - notesH - 20-legendH;
     let monthRows=Math.ceil(((weekday(key+'-01')-s.layout.weekstart+7)%7+monthLength(y,m))/7);
     if(s.theme.placement==='top') photoH=Math.max(0,Math.min(photoH,bottom-top-(monthRows*(s.theme.bodySize+7)+2*s.theme.bodySize)-15));
     let ph;
@@ -163,12 +167,11 @@ function scenes(state, data, editorial) {
       line(p, margin + 13, yy, p.w - margin, yy, c.grid, 0.35);
     }
     text(p, "Užrašai ir darbai", margin, bottom + 16, 8, c.weekday, true);
-    let info = all.length ? "Visi pažymėti įrašai ir užrašai pateikti priede." : "ISO savaitė: pirmadienio sistema; „52/1“ žymi dvi savaites.";
+    if(compact)legendLines.forEach((value,n)=>text(p,value,margin,bottom+notesH+10+n*10,8,c.day));
+    let info = !compact&&full.length ? "Visi pažymėti įrašai ir užrašai pateikti priede." : compact&&full.length?"Visi pažymėti įrašai pateikti po kalendoriumi.": "ISO savaitė: pirmadienio sistema; „52/1“ žymi dvi savaites.";
     text(p, info, margin, p.h - margin + 5, 6.5, c.weekday);
     result.push(p);
-    let full = entryLines(all);
-    if (s.notes[key]) full.push("Užrašai: " + s.notes[key]);
-    result.push(...appendices(s, full, label, key));
+    if(!compact)result.push(...appendices(s,full,label,key));
   }
   return result;
 }
