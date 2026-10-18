@@ -209,9 +209,17 @@
     line-height: 0 !important;
     break-inside: avoid;
   }
+  #main [data-print-root="art"][data-print-size="A3"] {
+    width: 297mm !important;
+    height: 420mm !important;
+  }
   #main [data-print-root="art"][data-print-paper="landscape"] {
     width: 297mm !important;
     height: 209mm !important;
+  }
+  #main [data-print-root="art"][data-print-size="A3"][data-print-paper="landscape"] {
+    width: 420mm !important;
+    height: 297mm !important;
   }
   #main [data-print-root="art"] .panel-title { display: none !important; }
   #main [data-print-root="art"] :is(a, picture) {

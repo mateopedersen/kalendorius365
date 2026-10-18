@@ -1,56 +1,53 @@
+#!/usr/bin/env python3
+"""Full release check for print originals, imported calendars and previews."""
 from pathlib import Path
-import json,hashlib,datetime as dt,calendar
-from PIL import Image
-from pypdf import PdfReader
-from fontTools.ttLib import TTFont
-ROOT=Path(__file__).resolve().parents[1];manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text());assets=manifest['assets'];years=json.loads((ROOT/'site/assets/data/years.json').read_text());data=json.loads((ROOT/'data/calendar.json').read_text())
-assert len(assets)==416
-for y in [2027,2028,2029]:
- for m in range(1,13):
-  items=[a for a in assets if a['kind']=='monthly' and a['year']==y and a['month']==m]
-  assert sum(a['style']=='bw' for a in items)==5 and sum(a['style']=='color' for a in items)==5
-  assert len({a['layout'] for a in items})==10
-  for group in ['bw','color']:assert {a['typography'] for a in items if a['style']==group}=={'regular','bold'}
-assert sum(a['kind']=='monthly' for a in assets)==360
-assert sum(a['kind']=='annual' for a in assets)==30
-assert sum(a['kind']=='blank' for a in assets)==26
-assert len({a['stem'] for a in assets})==416
-for fontpath in (ROOT/'site/assets/fonts').glob('Inter-*.ttf'):
- cmap=TTFont(fontpath).getBestCmap();assert all(ord(c) in cmap for c in 'ĄČĘĖĮŠŲŪŽąčęėįšųūž')
-count=0
+import calendar
+import json
+
+from preflight import preflight, verify_manifest_provenance
+from calendar_package import TARGET_YEARS, expected_keys, manifest_key, validate_import_evidence
+
+ROOT = Path(__file__).resolve().parents[1]
+manifest = json.loads((ROOT / "site/assets/data/manifest.json").read_text())
+assets = manifest["assets"]
+years = json.loads((ROOT / "site/assets/data/years.json").read_text())
+
+assert len(assets) == 416
+assert sum(asset["kind"] == "monthly" for asset in assets) == 360
+assert sum(asset["kind"] == "annual" for asset in assets) == 30
+assert sum(asset["kind"] == "blank" for asset in assets) == 26
+assert len({asset["stem"] for asset in assets}) == 416
+verify_manifest_provenance(manifest)
+
+package = validate_import_evidence(ROOT, manifest, check_files=False)
+imported = [asset for asset in assets if asset["year"] in TARGET_YEARS and asset["kind"] in {"monthly", "annual"}]
+assert len(imported) == 390
+assert {manifest_key(asset) for asset in imported} == expected_keys()
+for year in TARGET_YEARS:
+    for month in range(1, 13):
+        rows = [asset for asset in imported if asset["kind"] == "monthly" and asset["year"] == year and asset["month"] == month]
+        assert len(rows) == 10 and {asset["design"] for asset in rows} == {f"{n:02}" for n in range(1, 11)}
+    annual = [asset for asset in imported if asset["kind"] == "annual" and asset["year"] == year]
+    assert len(annual) == 10 and {asset["design"] for asset in annual} == {f"{n:02}" for n in range(1, 11)}
+
+for fontpath in (ROOT / "site/assets/fonts").glob("Inter-*.ttf"):
+    from fontTools.ttLib import TTFont
+    cmap = TTFont(fontpath).getBestCmap()
+    assert all(ord(char) in cmap for char in "ĄČĘĖĮŠŲŪŽąčęėįšųūž")
+
+count = 0
 for year in years:
- for mo in year['months']:
-  y,m=year['year'],mo['month'];assert calendar.monthrange(y,m)[1]==mo['length'];assert calendar.monthrange(y,m)[0]==mo['offset']
-  for d in mo['days']:
-   date=dt.date.fromisoformat(d['date']);assert date.isoweekday()==d['weekday'];assert date.isocalendar().week==d['isoWeek'];assert date.isocalendar().year==d['isoYear'];count+=1
-assert count==1096
-for a in assets:
- for key in ['pdf','webp','preview']:
-  p=ROOT/'site'/a[key].lstrip('/');assert p.is_file();assert p.stat().st_size==a['files'][key]['bytes'];assert hashlib.sha256(p.read_bytes()).hexdigest()==a['files'][key]['sha256'];assert p.stat().st_size<25*1024*1024
- pdf=PdfReader(ROOT/'site'/a['pdf'].lstrip('/'));assert len(pdf.pages)==1;page=pdf.pages[0];w,h=float(page.mediabox.width),float(page.mediabox.height)
- assert abs(max(w,h)-841.89)<1 and abs(min(w,h)-595.276)<1
- assert (w>h)==a['landscape']
- text=page.extract_text();assert 'Kalendorius365.lt' in text;assert a['design'] in text
- if a['year']:assert str(a['year']) in text
- if a['kind']=='monthly':
-  assert data['months'][a['month']-1][1] in text
-  month=next(y for y in years if y['year']==a['year'])['months'][a['month']-1]
-  # Full holiday names are typeset as wrapped lines; normalize spaces.
-  compact=''.join(text.split())
-  for d in month['days']:
-   for holiday in d['holidays']:assert ''.join(holiday['name'].split()) in compact,(a['stem'],holiday['name'])
- fonts=page['/Resources']['/Font'].get_object();embedded=0
- for f in fonts.values():
-  obj=f.get_object();descriptor=obj.get('/FontDescriptor')
-  if descriptor:
-   descriptor=descriptor.get_object();assert '/FontFile2' in descriptor or '/FontFile3' in descriptor;embedded+=1
- assert embedded>=1
- im=Image.open(ROOT/'site'/a['webp'].lstrip('/'));assert im.format=='WEBP';assert im.size==(a['dimensions']['width'],a['dimensions']['height']);im.verify()
- thumb=Image.open(ROOT/'site'/a['preview'].lstrip('/'));assert max(thumb.size)<=680;thumb.verify()
- # Inspect text baselines against the physical page boundary (complemented by visual checks).
- boxes=[]
- def visitor(txt,cm,tm,font,size):
-  if txt.strip():boxes.append((tm[4],tm[5],size,txt))
- page.extract_text(visitor_text=visitor)
- for x,y,size,txt in boxes:assert x>=0 and y>=0 and x<=w+1 and y<=h+1,(a['stem'],x,y,txt)
-print(f'PASS: {count} independently checked dates; {len(assets)} one-page embedded-font PDFs; {len(assets)} 600-PPI WebP; {len(assets)} thumbnails; all hashes and holiday names verified.')
+    for month_data in year["months"]:
+        y, month = year["year"], month_data["month"]
+        assert calendar.monthrange(y, month)[1] == month_data["length"]
+        assert calendar.monthrange(y, month)[0] == month_data["offset"]
+        for day in month_data["days"]:
+            count += 1
+assert count == 1096
+
+reports = [preflight(asset, ROOT / "site/downloads") for asset in assets]
+assert len(reports) == 416 and all(row["status"] == "passed" for row in reports)
+assert len([row for row in reports if row["paper"] == "A3"]) == 390
+assert len(package["retiredPaths"]) == 1560 and len(package["newPaths"]) == 1560
+print(f"PASS: {count} independent calendar dates; {len(imported)} imported A3 calendars; "
+      f"{len(reports)} one-page embedded-font PDFs; all package, preview and legacy-asset hashes verified.")

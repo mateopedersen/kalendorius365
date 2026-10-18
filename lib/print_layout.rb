@@ -32,7 +32,7 @@ module Pages
     href=artwork[/href="([^"]+)"/,1]
     image=artwork[/<img [^>]+>/]
     asset=MANIFEST.find { |entry|href.split('?').first==entry['webp'] }
-    html=html.sub('data-print-root="art"',"data-print-root=\"art\" data-print-paper=\"#{asset && asset['landscape'] ? 'landscape' : 'portrait'}\"")
+    html=html.sub('data-print-root="art"',"data-print-root=\"art\" data-print-paper=\"#{asset && asset['landscape'] ? 'landscape' : 'portrait'}\" data-print-size=\"#{asset && asset['paper'] ? asset['paper'] : 'A4'}\"")
     html=html.sub(image,"<picture><source id=\"selected-print-source\" media=\"print\" srcset=\"#{href}\">#{image}</picture>")
    end
   end
