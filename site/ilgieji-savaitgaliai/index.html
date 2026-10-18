@@ -23,10 +23,13 @@ tool: false
         <option value="1" selected>1 atostogų dieną</option>
         <option value="2">2 atostogų dienas</option>
         <option value="3">3 atostogų dienas</option>
+        <option value="4">4 atostogų dienas</option>
+        <option value="5">5 atostogų dienas</option>
       </select>
     </label>
-    <p>Skaičiuoklė prideda darbo dienas prie jau esančio ilgojo savaitgalio ir įtraukia pakeliui pasitaikančius šeštadienius bei sekmadienius.</p>
+    <p>Įveskite bendrą metinį limitą. Planuoklė paskirstys jį tarp skirtingų progų, kad papildomos atostogų dienos nesikartotų.</p>
   </div>
+  <div class="weekend-plan-summary" aria-live="polite"><div><span class="discovery-kicker">METŲ PLANAS</span><strong id="weekend-plan-total">Ruošiamas planas…</strong><p id="weekend-plan-caption"></p></div><button class="button button--subtle" id="weekend-plan-export" type="button" disabled>Atsisiųsti planą .ics</button></div>
   <div id="weekend-recommendations" class="weekend-recommendations" aria-live="polite"></div>
 </section>
 
@@ -68,7 +71,7 @@ tool: false
 </section>
 
 <section class="weekend-howto panel"><div><p class="eyebrow">KAIP SKAIČIUOJAMA</p><h2>Poilsio planas, kuris atitinka jūsų grafiką</h2></div>
-  <div><p>Sąrašas daromas pagal įprastą penkių darbo dienų savaitę nuo pirmadienio iki penktadienio. Įtraukiamos įstatyme nustatytos šventės ir gretimi savaitgaliai; papildomos atostogos prie pradinių datų nepridedamos.</p><p>Atostogų planuoklė parodo, kaip pasirinktos atostogų dienos galėtų pailginti poilsį. Patikrinkite savo darbovietės grafiką ir atostogų tvirtinimo tvarką.</p><a href="/atostogu-planavimas/">Atidaryti išsamų atostogų planuoklį →</a></div>
+  <div><p>Sąrašas daromas pagal įprastą penkių darbo dienų savaitę nuo pirmadienio iki penktadienio. Įtraukiamos įstatyme nustatytos šventės ir gretimi savaitgaliai; papildomos atostogos prie pradinių datų nepridedamos.</p><p>Viršuje esanti metinio plano skaičiuoklė atostogų limitą paskirsto tarp nesikertančių laikotarpių, todėl ta pati darbo diena nepriskiriama dviem poilsio planams. Prieš tvirtindami atostogas patikrinkite savo darbovietės grafiką ir tvarką.</p><a href="/atostogu-planavimas/">Atidaryti išsamų atostogų planuoklį →</a></div>
 </section>
 
 <aside class="source-note">Teisės aktų duomenys sutikrinti 2026-10-16. 2027–2029 m. datos skaičiuotos pagal nuo 2027-01-01 numatytą galioti Darbo kodekso 123 straipsnio redakciją. Savaitgalį pasitaikanti šventė automatiškai neperkeliama į pirmadienį; atmintina diena savaime nėra nedarbo diena. <a href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz" rel="noopener">Darbo kodekso 123 straipsnis</a>.</aside>
