@@ -147,3 +147,11 @@ if '--release' in __import__('sys').argv:
  assert sitemap==canonical and len(sitemap)==len(pages)-1
  assert len(xml.findall('.//i:loc',ns))==360
  print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 360 monthly image entries, and no global noindex header.')
+
+# Check the generated release, not only the authored editor source.
+editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()
+assert 'id="calendar-editor"' in editor_html,'Release preparation replaced the personal editor'
+assert '/assets/calendar-editor/editor.js?v=' in editor_html,'Editor module missing from built route'
+assert '/assets/calendar-editor/editor.css?v=' in editor_html,'Editor stylesheet missing from built route'
+assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
+print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
