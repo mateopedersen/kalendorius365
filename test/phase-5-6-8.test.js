@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, solarPositionAt, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
+import { readFileSync } from "node:fs";
+import { buildShiftCsv, buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, solarPositionAt, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
 
 const day = { name: "Dieninė", start: "07:00", end: "19:00", break: 30, color: "#006a44" };
 const night = { name: "Naktinė", start: "23:00", end: "07:00", break: 0, color: "#315bd6" };
@@ -75,6 +76,34 @@ test("shift ICS uses elapsed UTC times, escapes text and folds within RFC 5545 b
   assert.equal((ics.match(/BEGIN:VEVENT/g) || []).length, 1);
   assert(ics.endsWith("END:VCALENDAR\r\n"));
   for (const line of ics.split("\r\n")) assert(Buffer.byteLength(line, "utf8") <= 75, `ICS line exceeds 75 octets: ${line}`);
+});
+
+test("shift CSV opens cleanly in spreadsheets, quotes Lithuanian text and neutralizes formulas", () => {
+  const shifts = buildShiftPlan({ anchor: "2027-01-01", from: "2027-01-01", to: "2027-01-01", cycleText: "D",
+    definitions: { D: { ...day, name: 'Dieninė; "A"', location: "=HYPERLINK(\"https://example.com\")", note: "Vilnius, pamaina" } } }).visible;
+  const csv = buildShiftCsv(shifts);
+  assert(csv.startsWith("\uFEFF"));
+  assert.match(csv, /"Dieninė; ""A"""/);
+  assert.match(csv, /"'=HYPERLINK\(""https:\/\/example\.com""\)"/);
+  assert.match(csv, /"Vilnius, pamaina"/);
+  assert.match(csv, /"2027-01-01 07:00"/);
+  assert.equal(csv.split("\r\n").length, 3);
+  assert.throws(() => buildShiftCsv([]), /apskaičiuokite grafiką/);
+});
+
+test("every visible shift-cycle shortcut produces a valid, populated plan", () => {
+  const page = readFileSync(new URL("../site/pamainu-grafikas/index.html", import.meta.url), "utf8");
+  const cycles = [...page.matchAll(/<button class="shift-pattern[^\"]*" type="button" data-cycle="([^\"]+)" aria-pressed="(?:true|false)"[^>]*>/g)].map((match) => match[1]);
+  assert.equal(cycles.length, 4);
+  for (const cycleText of cycles) {
+    const result = buildShiftPlan({ anchor: "2027-01-01", from: "2027-01-01", to: "2027-01-28", cycleText,
+      definitions: { D: day, N: night } });
+    assert(result.visible.length > 0, `${cycleText} should create visible work shifts`);
+    assert(result.visible.every((shift) => ["D", "N"].includes(shift.code)), `${cycleText} should use the configured shift definitions`);
+  }
+  assert.match(page, /id="shift-day-start" type="time"/);
+  assert.match(page, /id="shift-night-start" type="time"/);
+  assert.match(page, /id="shift-csv"/);
 });
 
 test("USNO sunrise and sunset agree with 20 independently requested API examples within one UTC minute", () => {

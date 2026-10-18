@@ -3,174 +3,168 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs=' 'sha256-7XjXEIEi6ZTxkej37JThBvkvOtnvPOveDHVxCHNljFY='; connect-src 'self'; upgrade-insecure-requests
+/assets/calendar-editor-release-b949a823124d/*
+  Cache-Control: public, max-age=31536000, immutable
+/
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/:section/
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/:section/:child/
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/:section/:child/:page/
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/404
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/release-manifest.json
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /sitemap.xml
   Cache-Control: public, max-age=3600
 /robots.txt
   Cache-Control: public, max-age=3600
+/assets/releases/*
+  Cache-Control: public, max-age=31536000, immutable
 /assets/about-us.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/app.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/ascendant-calculator.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/ascendant-loader.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/calendar.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/common.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/contact.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/contact.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/cookie-notice.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/birth-cities.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/weather-cities.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/design-system.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/discovery-core.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/discovery.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/discovery.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/holiday-editorial.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/holiday-phase2.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/holiday-phase2.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/homepage-bundle.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/homepage.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/horoscope-detail.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/horoscope-hub.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/horoscope.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/icons.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/ics.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/leave-planner.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/lunar.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/lunar/astronomy-engine.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/lunar/lunar-engine.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/lunar/lunar-loader.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/lunar/lunar.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/monthly-holidays.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/monthly-holidays.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/namedays-engine.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/namedays.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/namedays.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/phase-5-6-8-core.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/phase-5-6-8.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/print.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/search-engine.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/search-page.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/seasons-core.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/seasons.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/seasons.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/storage.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/style.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/sunrise.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/tools.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/weather.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/zodiac-engine.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/zodiac-guide.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/zodiac.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/zodiac.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/calendar-editor/*
-  Cache-Control: public, max-age=31536000, immutable
-/assets/calendar-editor-release-bbd15a21a82d/*
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Inter-Bold-web.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Inter-Bold.ttf
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Inter-Regular-web.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Inter-Regular.ttf
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Inter-Regular.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Black-latin-lt.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Black.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Bold-latin-lt.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Bold.ttf
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Bold.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Regular-latin-lt.woff2
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Regular.ttf
-  Cache-Control: public, max-age=31536000, immutable
-/assets/fonts/Lato-Regular.woff2
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/data/astronomy/cities.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/astronomy/moon-phases-utc.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/astronomy/seasons-utc.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/calendar.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/holiday-editorial.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/home-holiday-data.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/lt/work-rest-rules.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/lunar/assets.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/lunar/calendar.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/namedays/calendar.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/namedays/cc-by-sa-4.0.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/search.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/seasons.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/zodiac.json
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/downloads/lunar/asset-manifest.json
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/favicon-2026.svg
   Cache-Control: public, max-age=31536000, immutable
 /assets/favicon.svg
