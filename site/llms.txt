@@ -1,53 +1,78 @@
 # Kalendorius365
 
-> Kalendorius365 – lietuviška Lietuvos kalendorių ir kasdienio planavimo svetainė. Joje pateikiamos datos, valstybinės šventės, vardadieniai, Mėnulio fazės, Saulės ir metų laikų informacija, planavimo įrankiai bei spausdinami kalendoriai.
+> Kalendorius365 – lietuviška Lietuvos datų, kalendorių ir planavimo svetainė. Turinys apima 2027–2029 m. kalendorius, Lietuvos šventes, vardadienius, astronominius reiškinius, skaičiuokles ir spausdinamus planuoklius.
 
-Svetainės kalba – lietuvių; Lietuvos datos ir laikai pateikiami pagal Europe/Vilnius laiko juostą, kai ji aktuali. Rinkdamiesi datą atskirkite įstatymuose nustatytas nedarbo šventines dienas nuo atmintinų dienų, mokinių atostogų ir kitų redakcinių kalendoriaus įrašų – jų paskirtis ir teisinis statusas skiriasi.
+Kalba – lietuvių. Datos ir astronominių reiškinių laikai pateikiami Lietuvos laiku (Europe/Vilnius), kai tai nurodyta puslapyje. Atskirkite įstatymuose nustatytas šventines nedarbo dienas nuo atmintinų dienų, mokinių atostogų ir kitų kalendoriaus įrašų: jų paskirtis ir teisinis statusas skiriasi. Konkrečių skaičiavimų prielaidos ir šaltiniai aiškinami atitinkamuose teminiuose puslapiuose.
 
-Asmeniniai įvykiai, užrašai, užduotys ir nuostatos planavimo funkcijose saugomi lankytojo naršyklėje; svetainėje nėra paskyrų ar sinchronizavimo. Šiame faile ir nuorodose nėra lankytojų asmeninių kalendorių duomenų. Išsamesnė informacija pateikiama privatumo politikoje.
+Asmeniniai kalendoriaus įvykiai, užrašai, užduotys ir nuostatos saugomi lankytojo naršyklėje; svetainėje nėra paskyrų ar sinchronizavimo. Horoskopai yra pramoginis turinys, ne faktinės prognozės ar profesionalus patarimas. Mėnulio iliustracija yra vizualinė, o ne astronominių skaičių šaltinis.
 
-Horoskopų tekstai skirti pramogai ir apmąstymui, o ne faktinėms prognozėms ar profesionaliam patarimui. Astronomijos puslapiuose nurodomos skaičiavimo prielaidos ir ribos; vaizdinė Mėnulio tekstūra nėra astronominių skaičių šaltinis. Spausdinami PDF ir WebP failai yra atskiri atsisiunčiami ištekliai, kai kurie jų – didelės raiškos.
+Ši teminė rodyklė parengta pagal atvirą `llms.txt` pasiūlymą. Ji nepakeičia robots.txt, sitemap.xml ar puslapių turinio; jos nuskaitymo, indeksavimo ar citavimo negali garantuoti. Nuorodos yra puslapių canonical adresai. Puslapių būklė patikrinta 2026-10-18.
 
-Šis failas yra teminė nuorodų rodyklė, parengta pagal atvirą `llms.txt` pasiūlymą. Jis nepakeičia robots.txt, svetainės žemėlapio ar puslapių turinio, o jo nuskaitymo, įtraukimo į paiešką ar citavimo negali garantuoti.
+## Metų ir mėnesių kalendoriai
 
-## Kalendoriai ir Lietuvos datos
+- [2027 m. kalendorius](https://kalendorius365.lt/2027/): 12 mėnesių, Lietuvos datos ir spausdinami metiniai bei mėnesiniai variantai.
+- [2028 m. kalendorius](https://kalendorius365.lt/2028/): metų ir mėnesių kalendorius, šventės ir spausdinami variantai.
+- [2029 m. kalendorius](https://kalendorius365.lt/2029/): metų ir mėnesių kalendorius, šventės ir spausdinami variantai.
+- [Metų kalendorių apžvalga](https://kalendorius365.lt/metai/): svetainės 2027–2029 m. metiniai kalendoriai.
+- [Mėnesių kalendorių apžvalga](https://kalendorius365.lt/menesiai/): 2027–2029 m. mėnesiai ir jų atsisiunčiami kalendoriai.
 
-- [Pradinis puslapis](https://kalendorius365.lt/): šiandienos informacija, kalendoriaus sluoksniai ir asmeninio planavimo pradžia.
-- [2027 metų kalendorius](https://kalendorius365.lt/2027/): mėnesiai, šventinės ir atmintinos dienos bei spausdinami kalendoriai.
-- [2028 metų kalendorius](https://kalendorius365.lt/2028/): metų ir mėnesių kalendoriai.
-- [2029 metų kalendorius](https://kalendorius365.lt/2029/): metų ir mėnesių kalendoriai.
-- [Mėnesių kalendoriai](https://kalendorius365.lt/menesiai/): mėnesių puslapiai ir jų atsisiunčiami maketai.
-- [Lietuvos šventės ir atmintinos dienos](https://kalendorius365.lt/sventes/): šventės, statusų paaiškinimai, tradicijos ir atskiri datų puslapiai.
-- [Mokinių atostogos](https://kalendorius365.lt/mokiniu-atostogos/): mokslo metų atostogų kalendorius ir susiję planuokliai.
-- [Ilgieji savaitgaliai](https://kalendorius365.lt/ilgieji-savaitgaliai/): poilsio laikotarpių kalendorius.
+## Lietuvos šventės, vardai ir darbo datos
 
-## Vardadieniai
-
-- [Vardadieniai pagal datą](https://kalendorius365.lt/vardadieniai/): vardų paieška, datos pasirinkimas ir dienų sąrašas su šaltinių nuorodomis.
-- [Vardadieniai pagal mėnesius](https://kalendorius365.lt/vardadieniai/sausis/): sausio puslapio pavyzdys; kitų mėnesių nuorodos pateikiamos vardadienių puslapyje.
+- [Lietuvos šventės](https://kalendorius365.lt/sventes/): 2027–2029 m. šventinės ir atmintinos datos, savaitės dienos, statuso paaiškinimai ir šaltiniai.
+- [2027 m. šventės](https://kalendorius365.lt/sventes/2027/): metų šventinės ir atmintinos dienos bei teisės šaltiniai.
+- [2028 m. šventės](https://kalendorius365.lt/sventes/2028/): metų šventinių dienų kalendorius.
+- [2029 m. šventės](https://kalendorius365.lt/sventes/2029/): metų šventinių dienų kalendorius.
+- [Atmintinų dienų gidas](https://kalendorius365.lt/atmintinos-dienos/): Lietuvos istorijos ir kultūros datos pagal dieną ar temą.
+- [Vardadieniai](https://kalendorius365.lt/vardadieniai/): šiandienos, rytojaus ir visų metų vardai; vardų paieška ir šaltiniai.
+- [Mokinių atostogos](https://kalendorius365.lt/mokiniu-atostogos/): puslapyje nurodyti 2026–2027 mokslo metų laikotarpiai pagal ugdymo pakopą.
+- [Ilgieji savaitgaliai](https://kalendorius365.lt/ilgieji-savaitgaliai/): Lietuvos 2027–2029 m. poilsio laikotarpiai ir atostogų dienų skaičiavimas.
+- [2027 m. darbo dienos](https://kalendorius365.lt/darbo-dienos/2027/): darbo dienos, valandos, šventės ir prieššventiniai trumpinimai.
+- [2028 m. darbo dienos](https://kalendorius365.lt/darbo-dienos/2028/): darbo dienos, valandos, šventės ir prieššventiniai trumpinimai.
+- [2029 m. darbo dienos](https://kalendorius365.lt/darbo-dienos/2029/): darbo dienos, valandos, šventės ir prieššventiniai trumpinimai.
+- [2027 m. ISO savaitės](https://kalendorius365.lt/savaites/2027/): savaitės numeriai ir pirmadienio–sekmadienio datos.
+- [2028 m. ISO savaitės](https://kalendorius365.lt/savaites/2028/): savaitės numeriai ir pirmadienio–sekmadienio datos.
+- [2029 m. ISO savaitės](https://kalendorius365.lt/savaites/2029/): savaitės numeriai ir pirmadienio–sekmadienio datos.
 
 ## Saulė, Mėnulis ir metų laikai
 
-- [Mėnulio kalendorius](https://kalendorius365.lt/menulio-kalendorius/): dabartinė fazė, 2027–2029 m. mėnesių kalendoriai ir spausdinami failai.
-- [Mėnulio fazės](https://kalendorius365.lt/menulio-fazes/): fazių paaiškinimai, skaičiavimo metodas ir jo ribos.
-- [Saulėtekis, saulėlydis ir Saulės kelias](https://kalendorius365.lt/saule/): Saulės padėtis ir šviesaus paros meto duomenys.
-- [Metų laikai ir dienos ilgumas](https://kalendorius365.lt/metu-laikai/): astronominių metų laikų pradžia, dienos trukmė ir skaičiavimo pastabos.
-- [Astronominis kalendorius](https://kalendorius365.lt/astronominis-kalendorius/): dangaus įvykių kalendoriaus skiltis.
+- [Astronominių įvykių kalendorius](https://kalendorius365.lt/astronominis-kalendorius/): 2027–2029 m. lygiadieniai, saulėgrįžos ir pagrindinės Mėnulio fazės Lietuvos laiku.
+- [Mėnulio kalendorius](https://kalendorius365.lt/menulio-kalendorius/): 2027–2029 m. fazės, kasdieniai Mėnulio vaizdai ir spausdinami kalendoriai.
+- [2027 m. Mėnulio kalendorius](https://kalendorius365.lt/menulio-kalendorius/2027/): metų fazės ir jaunaties bei pilnaties laikai Lietuvos laiku.
+- [2028 m. Mėnulio kalendorius](https://kalendorius365.lt/menulio-kalendorius/2028/): metų fazės ir jaunaties bei pilnaties laikai Lietuvos laiku.
+- [2029 m. Mėnulio kalendorius](https://kalendorius365.lt/menulio-kalendorius/2029/): metų fazės ir jaunaties bei pilnaties laikai Lietuvos laiku.
+- [Mėnulio fazių paaiškinimas](https://kalendorius365.lt/menulio-fazes/): fazių sąvokos, skaičiavimo metodas ir ribos.
+- [Saulėtekis, saulėlydis ir Saulės kelias](https://kalendorius365.lt/saule/): Saulės laikai ir kelio simuliacija Lietuvos vietovėms.
+- [Dienos ilgumas Lietuvos miestuose](https://kalendorius365.lt/dienos-ilgumas/): 2027–2029 m. saulėtekio, vidurdienio, saulėlydžio ir dienos šviesos palyginimas penkiuose miestuose.
+- [Metų laikai Lietuvoje](https://kalendorius365.lt/metu-laikai/): astronominių ir meteorologinių metų laikų datos, dienos šviesa, šaltiniai ir skaičiavimo ribos.
+- [Pavasario lygiadienis](https://kalendorius365.lt/pavasario-lygiadienis/): 2027–2029 m. datos Lietuvos laiku ir dienos šviesos palyginimas.
+- [Vasaros saulėgrįža](https://kalendorius365.lt/vasaros-saulegriza/): 2027–2029 m. datos Lietuvos laiku ir dienos šviesos palyginimas.
+- [Rudens lygiadienis](https://kalendorius365.lt/rudens-lygiadienis/): 2027–2029 m. datos Lietuvos laiku ir dienos šviesos palyginimas.
+- [Žiemos saulėgrįža](https://kalendorius365.lt/ziemos-saulegriza/): 2027–2029 m. datos Lietuvos laiku ir dienos šviesos palyginimas.
 
-## Planavimas ir spausdinimas
+## Skaičiuoklės, planavimas ir spausdinimas
 
-- [Datos skaičiuoklė](https://kalendorius365.lt/datos-skaiciuokle/): datų intervalai, darbo dienos ir ISO savaitės.
-- [Atostogų planuoklis](https://kalendorius365.lt/atostogu-planavimas/): pasirinktų atostogų datų ir darbo dienų įvertinimas.
-- [Asmeninio kalendoriaus kūrėjas](https://kalendorius365.lt/kurti-kalendoriu/): naršyklėje kuriamas ir spausdinamas kalendorius.
-- [Tušti kalendoriai spausdinimui](https://kalendorius365.lt/tuscias-kalendorius/): tušti mėnesio, savaitės, dienos, šeimos ir mokyklos šablonai.
-- [Dienos planuoklis](https://kalendorius365.lt/dienos-planuoklis/): dienos planuoklio maketai spausdinimui.
-- [Pamainų grafikas](https://kalendorius365.lt/pamainu-grafikas/): pamainų planavimo įrankis.
+- [Datos skaičiuoklė](https://kalendorius365.lt/datos-skaiciuokle/): laikotarpio trukmė, darbo dienos su Lietuvos šventėmis ir ISO savaitės.
+- [Atostogų planuoklis](https://kalendorius365.lt/atostogu-planavimas/): poilsio ir atostogų dienų palyginimas pagal darbo savaitę bei šventes.
+- [Pamainų grafiko planuoklis](https://kalendorius365.lt/pamainu-grafikas/): pamainų ciklai, poilsio dienos ir darbo valandos.
+- [Pamokų tvarkaraštis](https://kalendorius365.lt/pamoku-tvarkarastis/): savaitinis mokyklos tvarkaraštis ir namų darbai, saugomi naršyklėje.
+- [Asmeninio kalendoriaus kūrėjas](https://kalendorius365.lt/kurti-kalendoriu/): nuotraukomis ir įvykiais pritaikomas kalendorius, PDF ir WebP eksportas.
+- [Tušti kalendoriai spausdinimui](https://kalendorius365.lt/tuscias-kalendorius/): mėnesio, savaitės, dienos, šeimos, mokyklos ir pamainų šablonai.
+- [Dienos planuoklis](https://kalendorius365.lt/dienos-planuoklis/): nedatuoti dienos planavimo maketai.
+- [Savaitiniai planuokliai](https://kalendorius365.lt/savaitiniai-planuokliai/): nedatuoti savaitės planavimo maketai.
+- [Šeimos savaitės planuoklis](https://kalendorius365.lt/seimos-kalendorius/): savaitės lapas šeimos narių planams.
+- [Darbo grafiko šablonai](https://kalendorius365.lt/darbo-grafiko-sablonai/): spausdinami darbo ir pamainų planavimo lapai.
+- [Pamokų tvarkaraščio šablonai](https://kalendorius365.lt/pamoku-tvarkarascio-sablonai/): spausdinami savaitės tvarkaraščiai mokyklai.
+- [Įrankių katalogas](https://kalendorius365.lt/irankiai/): kalendoriaus, datos, darbo, mokymosi, astronomijos ir spausdinimo įrankių rodyklė.
 
-## Kitos temos ir privatumas
+## Zodiakas ir dienos horoskopai
 
-- [Dienos horoskopai](https://kalendorius365.lt/horoskopai/): pramoginiai zodiako ženklų tekstai.
-- [Paieška](https://kalendorius365.lt/paieska/): svetainės puslapių ir įrankių paieška.
-- [Apie Kalendorius365](https://kalendorius365.lt/apie-mus/): svetainės paskirtis ir turinio apžvalga.
-- [Privatumo politika](https://kalendorius365.lt/privatumas/): naršyklėje saugomi duomenys, išoriniai šaltiniai ir privatumo praktika.
-- [Kontaktai](https://kalendorius365.lt/kontaktai/): susisiekimo būdai.
-- [Svetainės žemėlapis](https://kalendorius365.lt/sitemap.xml): viešų puslapių techninis sąrašas.
+- [Dienos horoskopai](https://kalendorius365.lt/horoskopai/): dienos tekstai visiems 12 Zodiako ženklų; turinys yra pramoginis ir keičiasi pagal datą.
+- [Zodiako ženklai ir datos](https://kalendorius365.lt/zodiakas/): gimimo datos, 12 ženklų simboliai ir stichijos.
+
+## Svetainė ir privatumas
+
+- [Kaip veikia Kalendorius365](https://kalendorius365.lt/apie/): kalendorių datos, duomenų šaltiniai, tikrinimas ir atnaujinimas.
+- [Apie Kalendorius365](https://kalendorius365.lt/apie-mus/): svetainės paskirtis ir temų apžvalga.
+- [Privatumo politika](https://kalendorius365.lt/privatumas/): naršyklėje saugomi duomenys, orų užklausos ir privatumo praktika.
+- [Kontaktai](https://kalendorius365.lt/kontaktai/): susisiekimo būdai dėl turinio ir techninių klausimų.
+- [Svetainės žemėlapis](https://kalendorius365.lt/sitemap.xml): visų viešų canonical puslapių URL sąrašas.
