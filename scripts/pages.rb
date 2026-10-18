@@ -357,6 +357,8 @@ end
 require_relative '../lib/page_designs'
 require_relative '../lib/visual_design'
 Pages.run
+require_relative '../lib/discovery_pages'
+DiscoveryPages.run
 Pages.generate_blank
 require_relative '../lib/phase_5_6_8_pages'
 Phase568Pages.run
