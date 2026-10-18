@@ -110,16 +110,18 @@ def ics():
   return '\r\n'.join(fold(l)for l in lines+['END:VCALENDAR'])+'\r\n'
  for e in D['events']:(out/f'{e["year"]}-{SLUGS[IDS.index(e["id"])]}.ics').write_bytes(make([e]).encode())
  for y in D['years']:(out/f'{y}-metu-laikai.ics').write_bytes(make([event(s,y)for s in IDS]).encode())
-def integrations():
+def integrations(root=ROOT):
  # These pages are freshly regenerated upstream on every build; insertion is idempotent.
  for route in ['saule','irankiai','astronominis-kalendorius']:
-  p=ROOT/'site'/route/'index.html';text=p.read_text();start='<!-- phase3-related -->';end='<!-- /phase3-related -->'
-  if start in text:text=text.split(start)[0]+text.split(end)[1]
+  p=root/'site'/route/'index.html';text=p.read_text();start='<!-- phase3-related -->';end='<!-- /phase3-related -->'
+  if start in text:
+   before,remainder=text.split(start,1);after=remainder.split(end,1)[1]
+   text=before.rstrip('\n')+'\n'+after.lstrip('\n')
   if route=='astronominis-kalendorius':
    rows=''.join('<tr><th scope="row">'+str(y)+'</th>'+''.join(f'<td>{event(s,y)["label"]} {event(s,y)["clock"]}</td>'for s in IDS)+'</tr>'for y in D['years'])
    text=text.replace('<tbody id="season-rows"></tbody>','<tbody id="season-rows">'+rows+'</tbody>')
   block=f'{start}<section class="panel"><h2>Metų laikai ir dienos ilgumas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2029 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section>{end}'
-  p.write_text(text+'\n'+block+'\n')
+  p.write_text(text.rstrip('\n')+'\n'+block+'\n')
 if __name__=='__main__':
  artwork.run();ics();build_hub()
  for s in IDS:build_event(s)
