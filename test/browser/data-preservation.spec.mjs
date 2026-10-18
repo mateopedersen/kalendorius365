@@ -90,7 +90,10 @@ test('name-day filters, more results, reset and calendar insertion respond',asyn
  await page.locator('#nd-query').fill('Jonas');await page.locator('#nd-results a').first().click();await expect(page.locator('#nd-export-name')).toHaveValue('Jonas');
  await page.locator('#nd-add').click();await expect(page.locator('#nd-feedback')).toContainText('Išsaugota');
  await page.locator('#nd-add').click();await expect(page.locator('#nd-feedback')).toContainText('jau įtrauktas');
- await page.locator('#nd-tomorrow').click();const tomorrow=await page.locator('#nd-date').inputValue();await page.locator('#nd-today').click();expect(await page.locator('#nd-date').inputValue()).not.toBe(tomorrow);
+ const expectedDates=await page.evaluate(()=>{const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vilnius',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const values=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));const today=`${values.year}-${values.month}-${values.day}`;const tomorrow=new Date(`${today}T12:00:00Z`);tomorrow.setUTCDate(tomorrow.getUTCDate()+1);return{today,tomorrow:tomorrow.toISOString().slice(0,10)};});
+ await page.locator('#nd-tomorrow').click();await expect(page.locator('#nd-date')).toHaveValue(expectedDates.tomorrow);
+ await page.locator('#nd-today').click();await expect(page.locator('#nd-date')).toHaveValue(expectedDates.today);
+ await page.locator('#nd-live-day .nd-tomorrow a').click();await expect(page.locator('#nd-date')).toHaveValue(expectedDates.tomorrow);
 });
 
 test('shift presets, view controls and JSON restore retain the chosen cycle',async({page})=>{

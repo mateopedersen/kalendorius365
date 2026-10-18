@@ -177,727 +177,827 @@
       "generated_bytes": 30478
     },
     {
-      "path": "/assets/releases/37de31afbba8108b1ebd/app.js",
+      "path": "/assets/releases/3360a0579a790ec36158/app.js",
       "source_bytes": 24056,
       "generated_bytes": 24362
     },
     {
-      "path": "/assets/releases/37de31afbba8108b1ebd/ascendant-calculator.js",
+      "path": "/assets/releases/3360a0579a790ec36158/ascendant-calculator.js",
       "source_bytes": 7470,
       "generated_bytes": 7642
     },
     {
-      "path": "/assets/releases/37de31afbba8108b1ebd/ascendant-loader.js",
+      "path": "/assets/releases/3360a0579a790ec36158/ascendant-loader.js",
       "source_bytes": 891,
       "generated_bytes": 973
     },
     {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/editor.js",
-      "source_bytes": 36772,
-      "generated_bytes": 37152
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/export.js",
-      "source_bytes": 6310,
-      "generated_bytes": 6464
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/filters.js",
-      "source_bytes": 576,
-      "generated_bytes": 667
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/lt.js",
-      "source_bytes": 19139,
-      "generated_bytes": 19139
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/model.js",
-      "source_bytes": 11824,
-      "generated_bytes": 12005
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/photo-worker.js",
-      "source_bytes": 180,
-      "generated_bytes": 180
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/photos.js",
-      "source_bytes": 4884,
-      "generated_bytes": 5065
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/scene.js",
-      "source_bytes": 7726,
-      "generated_bytes": 7884
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/storage.js",
-      "source_bytes": 5586,
-      "generated_bytes": 5776
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
-      "source_bytes": 420165,
-      "generated_bytes": 425462
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/calendar.js",
-      "source_bytes": 4979,
-      "generated_bytes": 5196
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/common.js",
-      "source_bytes": 9710,
-      "generated_bytes": 9837
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/contact.js",
-      "source_bytes": 3002,
-      "generated_bytes": 3111
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/cookie-notice.js",
-      "source_bytes": 728,
-      "generated_bytes": 819
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/data/birth-cities.js",
-      "source_bytes": 6751,
-      "generated_bytes": 6751
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/data/weather-cities.js",
-      "source_bytes": 2126,
-      "generated_bytes": 2226
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/discovery-core.js",
-      "source_bytes": 3468,
-      "generated_bytes": 3631
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/discovery.js",
-      "source_bytes": 19750,
-      "generated_bytes": 19955
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/holiday-editorial.js",
-      "source_bytes": 1507,
-      "generated_bytes": 1607
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/holiday-phase2.js",
-      "source_bytes": 1336,
-      "generated_bytes": 1445
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/icons.js",
-      "source_bytes": 455,
-      "generated_bytes": 546
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/ics.js",
-      "source_bytes": 4346,
-      "generated_bytes": 4464
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/leave-planner.js",
-      "source_bytes": 20737,
-      "generated_bytes": 21102
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/lunar/astronomy-engine.js",
-      "source_bytes": 116487,
-      "generated_bytes": 116087
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/lunar/lunar-engine.js",
-      "source_bytes": 3026,
-      "generated_bytes": 3189
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/lunar/lunar-loader.js",
-      "source_bytes": 1824,
-      "generated_bytes": 1915
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/lunar/lunar.js",
-      "source_bytes": 6055,
-      "generated_bytes": 6182
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/monthly-holidays.js",
-      "source_bytes": 4474,
-      "generated_bytes": 4629
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/namedays-engine.js",
-      "source_bytes": 2855,
-      "generated_bytes": 3000
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/namedays.js",
-      "source_bytes": 9898,
-      "generated_bytes": 10074
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/phase-5-6-8-core.js",
-      "source_bytes": 8908,
-      "generated_bytes": 9080
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/phase-5-6-8.js",
-      "source_bytes": 30628,
-      "generated_bytes": 30877
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/search-engine.js",
-      "source_bytes": 9017,
-      "generated_bytes": 9189
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/search-page.js",
-      "source_bytes": 4900,
-      "generated_bytes": 5063
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/seasons-core.js",
-      "source_bytes": 1801,
-      "generated_bytes": 1946
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/seasons.js",
-      "source_bytes": 6741,
-      "generated_bytes": 6881
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/storage.js",
-      "source_bytes": 4038,
-      "generated_bytes": 4153
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/sunrise.js",
-      "source_bytes": 15940,
-      "generated_bytes": 16062
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/tools.js",
-      "source_bytes": 12451,
-      "generated_bytes": 12570
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/weather.js",
-      "source_bytes": 4013,
-      "generated_bytes": 4113
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/zodiac-engine.js",
-      "source_bytes": 1602,
-      "generated_bytes": 1720
-    },
-    {
-      "path": "/assets/releases/37de31afbba8108b1ebd/zodiac.js",
-      "source_bytes": 5195,
-      "generated_bytes": 5313
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/app.js",
-      "source_bytes": 24056,
-      "generated_bytes": 24362
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/ascendant-calculator.js",
-      "source_bytes": 7470,
-      "generated_bytes": 7642
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/ascendant-loader.js",
-      "source_bytes": 891,
-      "generated_bytes": 973
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/editor.js",
-      "source_bytes": 36772,
-      "generated_bytes": 37152
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/export.js",
-      "source_bytes": 6310,
-      "generated_bytes": 6464
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/filters.js",
-      "source_bytes": 576,
-      "generated_bytes": 667
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/lt.js",
-      "source_bytes": 19139,
-      "generated_bytes": 19139
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/model.js",
-      "source_bytes": 11824,
-      "generated_bytes": 12005
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/photo-worker.js",
-      "source_bytes": 180,
-      "generated_bytes": 180
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/photos.js",
-      "source_bytes": 4884,
-      "generated_bytes": 5065
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/scene.js",
-      "source_bytes": 7726,
-      "generated_bytes": 7884
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/storage.js",
-      "source_bytes": 5586,
-      "generated_bytes": 5776
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
-      "source_bytes": 420165,
-      "generated_bytes": 425462
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/calendar.js",
-      "source_bytes": 4979,
-      "generated_bytes": 5196
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/common.js",
-      "source_bytes": 9710,
-      "generated_bytes": 9837
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/contact.js",
-      "source_bytes": 3002,
-      "generated_bytes": 3111
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/cookie-notice.js",
-      "source_bytes": 728,
-      "generated_bytes": 819
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/data/birth-cities.js",
-      "source_bytes": 6751,
-      "generated_bytes": 6751
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/data/weather-cities.js",
-      "source_bytes": 2126,
-      "generated_bytes": 2226
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/discovery-core.js",
-      "source_bytes": 3468,
-      "generated_bytes": 3631
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/discovery.js",
-      "source_bytes": 19750,
-      "generated_bytes": 19955
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/holiday-editorial.js",
-      "source_bytes": 1507,
-      "generated_bytes": 1607
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/holiday-phase2.js",
-      "source_bytes": 1336,
-      "generated_bytes": 1445
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/icons.js",
-      "source_bytes": 455,
-      "generated_bytes": 546
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/ics.js",
-      "source_bytes": 4346,
-      "generated_bytes": 4464
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/leave-planner.js",
-      "source_bytes": 20737,
-      "generated_bytes": 21102
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/lunar/astronomy-engine.js",
-      "source_bytes": 116487,
-      "generated_bytes": 116087
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/lunar/lunar-engine.js",
-      "source_bytes": 3026,
-      "generated_bytes": 3189
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/lunar/lunar-loader.js",
-      "source_bytes": 1824,
-      "generated_bytes": 1915
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/lunar/lunar.js",
-      "source_bytes": 6055,
-      "generated_bytes": 6182
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/monthly-holidays.js",
-      "source_bytes": 4474,
-      "generated_bytes": 4629
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/namedays-engine.js",
-      "source_bytes": 2855,
-      "generated_bytes": 3000
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/namedays.js",
-      "source_bytes": 9898,
-      "generated_bytes": 10074
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/phase-5-6-8-core.js",
-      "source_bytes": 8908,
-      "generated_bytes": 9080
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/phase-5-6-8.js",
-      "source_bytes": 30628,
-      "generated_bytes": 30877
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/search-engine.js",
-      "source_bytes": 9017,
-      "generated_bytes": 9189
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/search-page.js",
-      "source_bytes": 4900,
-      "generated_bytes": 5063
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/seasons-core.js",
-      "source_bytes": 1801,
-      "generated_bytes": 1946
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/seasons.js",
-      "source_bytes": 6741,
-      "generated_bytes": 6881
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/storage.js",
-      "source_bytes": 4038,
-      "generated_bytes": 4153
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/sunrise.js",
-      "source_bytes": 15940,
-      "generated_bytes": 16062
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/tools.js",
-      "source_bytes": 12451,
-      "generated_bytes": 12570
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/weather.js",
-      "source_bytes": 4013,
-      "generated_bytes": 4113
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/zodiac-engine.js",
-      "source_bytes": 1602,
-      "generated_bytes": 1720
-    },
-    {
-      "path": "/assets/releases/594925b46a5a7c775bc8/zodiac.js",
-      "source_bytes": 5195,
-      "generated_bytes": 5313
-    },
-    {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/app.js",
-      "source_bytes": 24056,
-      "generated_bytes": 24362
-    },
-    {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/ascendant-calculator.js",
-      "source_bytes": 7470,
-      "generated_bytes": 7642
-    },
-    {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/ascendant-loader.js",
-      "source_bytes": 891,
-      "generated_bytes": 973
-    },
-    {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/editor.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/editor.js",
       "source_bytes": 36793,
       "generated_bytes": 37173
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/export.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/export.js",
       "source_bytes": 6310,
       "generated_bytes": 6464
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/filters.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/filters.js",
       "source_bytes": 576,
       "generated_bytes": 667
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/lt.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/lt.js",
       "source_bytes": 19139,
       "generated_bytes": 19139
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/model.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/model.js",
       "source_bytes": 11824,
       "generated_bytes": 12005
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/photo-worker.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/photo-worker.js",
       "source_bytes": 180,
       "generated_bytes": 180
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/photos.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/photos.js",
       "source_bytes": 4884,
       "generated_bytes": 5065
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/scene.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/scene.js",
       "source_bytes": 7726,
       "generated_bytes": 7884
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/storage.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/storage.js",
       "source_bytes": 5586,
       "generated_bytes": 5776
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
       "source_bytes": 420165,
       "generated_bytes": 425462
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/editor.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/editor.js",
       "source_bytes": 36793,
       "generated_bytes": 37173
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/export.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/export.js",
       "source_bytes": 6310,
       "generated_bytes": 6464
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/filters.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/filters.js",
       "source_bytes": 576,
       "generated_bytes": 667
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/lt.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/lt.js",
       "source_bytes": 19139,
       "generated_bytes": 19139
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/model.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/model.js",
       "source_bytes": 11824,
       "generated_bytes": 12005
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/photo-worker.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/photo-worker.js",
       "source_bytes": 180,
       "generated_bytes": 180
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/photos.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/photos.js",
       "source_bytes": 4884,
       "generated_bytes": 5065
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/scene.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/scene.js",
       "source_bytes": 7726,
       "generated_bytes": 7884
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/storage.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/storage.js",
       "source_bytes": 5586,
       "generated_bytes": 5776
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar-editor-release-b4237f8c82d6/vendor/jspdf-4.2.1.umd.min.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar-editor-release-92a560b29c69/vendor/jspdf-4.2.1.umd.min.js",
       "source_bytes": 420165,
       "generated_bytes": 425462
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/calendar.js",
+      "path": "/assets/releases/3360a0579a790ec36158/calendar.js",
       "source_bytes": 4979,
       "generated_bytes": 5196
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/common.js",
+      "path": "/assets/releases/3360a0579a790ec36158/common.js",
       "source_bytes": 9710,
       "generated_bytes": 9837
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/contact.js",
+      "path": "/assets/releases/3360a0579a790ec36158/contact.js",
       "source_bytes": 3002,
       "generated_bytes": 3111
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/cookie-notice.js",
+      "path": "/assets/releases/3360a0579a790ec36158/cookie-notice.js",
       "source_bytes": 728,
       "generated_bytes": 819
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/data/birth-cities.js",
+      "path": "/assets/releases/3360a0579a790ec36158/data/birth-cities.js",
       "source_bytes": 6751,
       "generated_bytes": 6751
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/data/weather-cities.js",
+      "path": "/assets/releases/3360a0579a790ec36158/data/weather-cities.js",
       "source_bytes": 2126,
       "generated_bytes": 2226
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/discovery-core.js",
+      "path": "/assets/releases/3360a0579a790ec36158/discovery-core.js",
       "source_bytes": 3468,
       "generated_bytes": 3631
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/discovery.js",
+      "path": "/assets/releases/3360a0579a790ec36158/discovery.js",
       "source_bytes": 19750,
       "generated_bytes": 19955
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/holiday-editorial.js",
+      "path": "/assets/releases/3360a0579a790ec36158/holiday-editorial.js",
       "source_bytes": 1507,
       "generated_bytes": 1607
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/holiday-phase2.js",
+      "path": "/assets/releases/3360a0579a790ec36158/holiday-phase2.js",
       "source_bytes": 1336,
       "generated_bytes": 1445
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/icons.js",
+      "path": "/assets/releases/3360a0579a790ec36158/icons.js",
       "source_bytes": 455,
       "generated_bytes": 546
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/ics.js",
+      "path": "/assets/releases/3360a0579a790ec36158/ics.js",
       "source_bytes": 4346,
       "generated_bytes": 4464
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/leave-planner.js",
+      "path": "/assets/releases/3360a0579a790ec36158/leave-planner.js",
       "source_bytes": 20737,
       "generated_bytes": 21102
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/lunar/astronomy-engine.js",
+      "path": "/assets/releases/3360a0579a790ec36158/lunar/astronomy-engine.js",
       "source_bytes": 116487,
       "generated_bytes": 116087
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/lunar/lunar-engine.js",
+      "path": "/assets/releases/3360a0579a790ec36158/lunar/lunar-engine.js",
       "source_bytes": 3026,
       "generated_bytes": 3189
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/lunar/lunar-loader.js",
+      "path": "/assets/releases/3360a0579a790ec36158/lunar/lunar-loader.js",
       "source_bytes": 1824,
       "generated_bytes": 1915
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/lunar/lunar.js",
+      "path": "/assets/releases/3360a0579a790ec36158/lunar/lunar.js",
       "source_bytes": 6055,
       "generated_bytes": 6182
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/monthly-holidays.js",
+      "path": "/assets/releases/3360a0579a790ec36158/monthly-holidays.js",
       "source_bytes": 4474,
       "generated_bytes": 4629
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/namedays-engine.js",
+      "path": "/assets/releases/3360a0579a790ec36158/namedays-engine.js",
       "source_bytes": 2855,
       "generated_bytes": 3000
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/namedays.js",
+      "path": "/assets/releases/3360a0579a790ec36158/namedays.js",
       "source_bytes": 9898,
       "generated_bytes": 10074
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/phase-5-6-8-core.js",
+      "path": "/assets/releases/3360a0579a790ec36158/phase-5-6-8-core.js",
       "source_bytes": 8908,
       "generated_bytes": 9080
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/phase-5-6-8.js",
+      "path": "/assets/releases/3360a0579a790ec36158/phase-5-6-8.js",
       "source_bytes": 30628,
       "generated_bytes": 30877
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/search-engine.js",
+      "path": "/assets/releases/3360a0579a790ec36158/search-engine.js",
       "source_bytes": 9017,
       "generated_bytes": 9189
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/search-page.js",
+      "path": "/assets/releases/3360a0579a790ec36158/search-page.js",
       "source_bytes": 4900,
       "generated_bytes": 5063
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/seasons-core.js",
+      "path": "/assets/releases/3360a0579a790ec36158/seasons-core.js",
       "source_bytes": 1801,
       "generated_bytes": 1946
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/seasons.js",
+      "path": "/assets/releases/3360a0579a790ec36158/seasons.js",
       "source_bytes": 6741,
       "generated_bytes": 6881
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/storage.js",
+      "path": "/assets/releases/3360a0579a790ec36158/storage.js",
       "source_bytes": 4038,
       "generated_bytes": 4153
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/sunrise.js",
+      "path": "/assets/releases/3360a0579a790ec36158/sunrise.js",
       "source_bytes": 15940,
       "generated_bytes": 16062
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/tools.js",
+      "path": "/assets/releases/3360a0579a790ec36158/tools.js",
       "source_bytes": 12451,
       "generated_bytes": 12570
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/weather.js",
+      "path": "/assets/releases/3360a0579a790ec36158/weather.js",
       "source_bytes": 4013,
       "generated_bytes": 4113
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/zodiac-engine.js",
+      "path": "/assets/releases/3360a0579a790ec36158/zodiac-engine.js",
       "source_bytes": 1602,
       "generated_bytes": 1720
     },
     {
-      "path": "/assets/releases/7481d5e6c9c553c5feaa/zodiac.js",
+      "path": "/assets/releases/3360a0579a790ec36158/zodiac.js",
+      "source_bytes": 5195,
+      "generated_bytes": 5313
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/app.js",
+      "source_bytes": 24056,
+      "generated_bytes": 24362
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/ascendant-calculator.js",
+      "source_bytes": 7470,
+      "generated_bytes": 7642
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/ascendant-loader.js",
+      "source_bytes": 891,
+      "generated_bytes": 973
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/editor.js",
+      "source_bytes": 36793,
+      "generated_bytes": 37173
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/export.js",
+      "source_bytes": 6310,
+      "generated_bytes": 6464
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/filters.js",
+      "source_bytes": 576,
+      "generated_bytes": 667
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/lt.js",
+      "source_bytes": 19139,
+      "generated_bytes": 19139
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/model.js",
+      "source_bytes": 11824,
+      "generated_bytes": 12005
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/photo-worker.js",
+      "source_bytes": 180,
+      "generated_bytes": 180
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/photos.js",
+      "source_bytes": 4884,
+      "generated_bytes": 5065
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/scene.js",
+      "source_bytes": 7726,
+      "generated_bytes": 7884
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/storage.js",
+      "source_bytes": 5586,
+      "generated_bytes": 5776
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
+      "source_bytes": 420165,
+      "generated_bytes": 425462
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/editor.js",
+      "source_bytes": 36793,
+      "generated_bytes": 37173
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/export.js",
+      "source_bytes": 6310,
+      "generated_bytes": 6464
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/filters.js",
+      "source_bytes": 576,
+      "generated_bytes": 667
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/lt.js",
+      "source_bytes": 19139,
+      "generated_bytes": 19139
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/model.js",
+      "source_bytes": 11824,
+      "generated_bytes": 12005
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/photo-worker.js",
+      "source_bytes": 180,
+      "generated_bytes": 180
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/photos.js",
+      "source_bytes": 4884,
+      "generated_bytes": 5065
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/scene.js",
+      "source_bytes": 7726,
+      "generated_bytes": 7884
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/storage.js",
+      "source_bytes": 5586,
+      "generated_bytes": 5776
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar-editor-release-cdf34ebdf383/vendor/jspdf-4.2.1.umd.min.js",
+      "source_bytes": 420165,
+      "generated_bytes": 425462
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/calendar.js",
+      "source_bytes": 4979,
+      "generated_bytes": 5196
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/common.js",
+      "source_bytes": 9710,
+      "generated_bytes": 9837
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/contact.js",
+      "source_bytes": 3002,
+      "generated_bytes": 3111
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/cookie-notice.js",
+      "source_bytes": 728,
+      "generated_bytes": 819
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/data/birth-cities.js",
+      "source_bytes": 6751,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/data/weather-cities.js",
+      "source_bytes": 2126,
+      "generated_bytes": 2226
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/discovery-core.js",
+      "source_bytes": 3468,
+      "generated_bytes": 3631
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/discovery.js",
+      "source_bytes": 19750,
+      "generated_bytes": 19955
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/holiday-editorial.js",
+      "source_bytes": 1507,
+      "generated_bytes": 1607
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/holiday-phase2.js",
+      "source_bytes": 1336,
+      "generated_bytes": 1445
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/icons.js",
+      "source_bytes": 455,
+      "generated_bytes": 546
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/ics.js",
+      "source_bytes": 4346,
+      "generated_bytes": 4464
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/leave-planner.js",
+      "source_bytes": 20737,
+      "generated_bytes": 21102
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116087
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/lunar/lunar-engine.js",
+      "source_bytes": 3026,
+      "generated_bytes": 3189
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/lunar/lunar-loader.js",
+      "source_bytes": 1824,
+      "generated_bytes": 1915
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/lunar/lunar.js",
+      "source_bytes": 6055,
+      "generated_bytes": 6182
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/monthly-holidays.js",
+      "source_bytes": 4474,
+      "generated_bytes": 4629
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/namedays-engine.js",
+      "source_bytes": 2855,
+      "generated_bytes": 3000
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/namedays.js",
+      "source_bytes": 9898,
+      "generated_bytes": 10074
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/phase-5-6-8-core.js",
+      "source_bytes": 8908,
+      "generated_bytes": 9080
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/phase-5-6-8.js",
+      "source_bytes": 30628,
+      "generated_bytes": 30877
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/search-engine.js",
+      "source_bytes": 9017,
+      "generated_bytes": 9189
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/search-page.js",
+      "source_bytes": 4900,
+      "generated_bytes": 5063
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/seasons-core.js",
+      "source_bytes": 1801,
+      "generated_bytes": 1946
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/seasons.js",
+      "source_bytes": 6741,
+      "generated_bytes": 6881
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/storage.js",
+      "source_bytes": 4038,
+      "generated_bytes": 4153
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/sunrise.js",
+      "source_bytes": 15940,
+      "generated_bytes": 16062
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/tools.js",
+      "source_bytes": 12451,
+      "generated_bytes": 12570
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/weather.js",
+      "source_bytes": 4013,
+      "generated_bytes": 4113
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/zodiac-engine.js",
+      "source_bytes": 1602,
+      "generated_bytes": 1720
+    },
+    {
+      "path": "/assets/releases/874ac7e1927f95c417e7/zodiac.js",
+      "source_bytes": 5195,
+      "generated_bytes": 5313
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/app.js",
+      "source_bytes": 24056,
+      "generated_bytes": 24362
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/ascendant-calculator.js",
+      "source_bytes": 7470,
+      "generated_bytes": 7642
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/ascendant-loader.js",
+      "source_bytes": 891,
+      "generated_bytes": 973
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/editor.js",
+      "source_bytes": 36793,
+      "generated_bytes": 37173
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/export.js",
+      "source_bytes": 6310,
+      "generated_bytes": 6464
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/filters.js",
+      "source_bytes": 576,
+      "generated_bytes": 667
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/lt.js",
+      "source_bytes": 19139,
+      "generated_bytes": 19139
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/model.js",
+      "source_bytes": 11824,
+      "generated_bytes": 12005
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/photo-worker.js",
+      "source_bytes": 180,
+      "generated_bytes": 180
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/photos.js",
+      "source_bytes": 4884,
+      "generated_bytes": 5065
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/scene.js",
+      "source_bytes": 7726,
+      "generated_bytes": 7884
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/storage.js",
+      "source_bytes": 5586,
+      "generated_bytes": 5776
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
+      "source_bytes": 420165,
+      "generated_bytes": 425462
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/editor.js",
+      "source_bytes": 36793,
+      "generated_bytes": 37173
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/export.js",
+      "source_bytes": 6310,
+      "generated_bytes": 6464
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/filters.js",
+      "source_bytes": 576,
+      "generated_bytes": 667
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/lt.js",
+      "source_bytes": 19139,
+      "generated_bytes": 19139
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/model.js",
+      "source_bytes": 11824,
+      "generated_bytes": 12005
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/photo-worker.js",
+      "source_bytes": 180,
+      "generated_bytes": 180
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/photos.js",
+      "source_bytes": 4884,
+      "generated_bytes": 5065
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/scene.js",
+      "source_bytes": 7726,
+      "generated_bytes": 7884
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/storage.js",
+      "source_bytes": 5586,
+      "generated_bytes": 5776
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar-editor-release-633f0c2c6084/vendor/jspdf-4.2.1.umd.min.js",
+      "source_bytes": 420165,
+      "generated_bytes": 425462
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/calendar.js",
+      "source_bytes": 4979,
+      "generated_bytes": 5196
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/common.js",
+      "source_bytes": 9710,
+      "generated_bytes": 9837
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/contact.js",
+      "source_bytes": 3002,
+      "generated_bytes": 3111
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/cookie-notice.js",
+      "source_bytes": 728,
+      "generated_bytes": 819
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/data/birth-cities.js",
+      "source_bytes": 6751,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/data/weather-cities.js",
+      "source_bytes": 2126,
+      "generated_bytes": 2226
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/discovery-core.js",
+      "source_bytes": 3468,
+      "generated_bytes": 3631
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/discovery.js",
+      "source_bytes": 19750,
+      "generated_bytes": 19955
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/holiday-editorial.js",
+      "source_bytes": 1507,
+      "generated_bytes": 1607
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/holiday-phase2.js",
+      "source_bytes": 1336,
+      "generated_bytes": 1445
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/icons.js",
+      "source_bytes": 455,
+      "generated_bytes": 546
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/ics.js",
+      "source_bytes": 4346,
+      "generated_bytes": 4464
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/leave-planner.js",
+      "source_bytes": 20737,
+      "generated_bytes": 21102
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116087
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/lunar/lunar-engine.js",
+      "source_bytes": 3026,
+      "generated_bytes": 3189
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/lunar/lunar-loader.js",
+      "source_bytes": 1824,
+      "generated_bytes": 1915
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/lunar/lunar.js",
+      "source_bytes": 6055,
+      "generated_bytes": 6182
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/monthly-holidays.js",
+      "source_bytes": 4474,
+      "generated_bytes": 4629
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/namedays-engine.js",
+      "source_bytes": 2855,
+      "generated_bytes": 3000
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/namedays.js",
+      "source_bytes": 9898,
+      "generated_bytes": 10074
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/phase-5-6-8-core.js",
+      "source_bytes": 8908,
+      "generated_bytes": 9080
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/phase-5-6-8.js",
+      "source_bytes": 30628,
+      "generated_bytes": 30877
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/search-engine.js",
+      "source_bytes": 9017,
+      "generated_bytes": 9189
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/search-page.js",
+      "source_bytes": 4900,
+      "generated_bytes": 5063
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/seasons-core.js",
+      "source_bytes": 1801,
+      "generated_bytes": 1946
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/seasons.js",
+      "source_bytes": 6741,
+      "generated_bytes": 6881
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/storage.js",
+      "source_bytes": 4038,
+      "generated_bytes": 4153
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/sunrise.js",
+      "source_bytes": 15940,
+      "generated_bytes": 16062
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/tools.js",
+      "source_bytes": 12451,
+      "generated_bytes": 12570
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/weather.js",
+      "source_bytes": 4013,
+      "generated_bytes": 4113
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/zodiac-engine.js",
+      "source_bytes": 1602,
+      "generated_bytes": 1720
+    },
+    {
+      "path": "/assets/releases/99a47921a06037e56bd4/zodiac.js",
       "source_bytes": 5195,
       "generated_bytes": 5313
     },

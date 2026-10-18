@@ -102,6 +102,7 @@ assert len(compact)<len(full)*0.5,(len(compact),len(full))
 headers=(PUBLIC/'_headers').read_text()
 header_paths=[line for line in headers.splitlines() if line.startswith('/')]
 assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
+assert all(path.count('*')<=1 for path in header_paths),'Cloudflare Pages _headers supports at most one splat per path rule'
 assert not any(p.startswith('/assets/calendar-editor/') and p!='/assets/calendar-editor/*' for p in header_paths),'Overlapping editor cache rules'
 assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
 assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
@@ -121,7 +122,7 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
    cache_path='/assets/calendar-editor/*'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif editor_versioned:
-   cache_path='/assets/calendar-editor-release-*/*'
+   cache_path=f'/assets/{relative_asset.parts[0]}/*'
    cache_value='Cache-Control: public, max-age=31536000, immutable'
   else:
    cache_path=f'/{path.relative_to(PUBLIC)}'

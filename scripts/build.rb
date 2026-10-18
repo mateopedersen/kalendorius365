@@ -15,6 +15,7 @@ Dir.chdir(ROOT) do
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
  release_manifest=nil
  release=false
+ editor_release_version=nil
  Dir.mktmpdir('kalendorius-previous-releases') do |release_backup|
   AssetRelease.stash_previous_releases(File.join(ROOT,'public'),release_backup,previous_revisions)
  # A release request is insufficient on a Cloudflare feature branch. Keep
@@ -103,7 +104,7 @@ Dir.chdir(ROOT) do
  immutable='Cache-Control: public, max-age=31536000, immutable'
  # The editor's isolated versioned copy is also immutable before the main
  # release rewrite, so one wildcard rule covers its modules and JSON payload.
- headers+="/assets/calendar-editor-release-*/*\n  #{immutable}\n"
+ headers+="/assets/calendar-editor-release-#{editor_release_version}/*\n  #{immutable}\n"
  revalidate='Cache-Control: public, no-cache, max-age=0, must-revalidate'
  # Trailing-slash page patterns never overlap file assets. Cloudflare Pages
  # accepts at most 100 rules; avoid one rule per each of the 185 HTML routes.

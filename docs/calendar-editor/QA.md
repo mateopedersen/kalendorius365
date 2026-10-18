@@ -1,31 +1,29 @@
-# Calendar editor QA record — 2026-10-18
+# Site-wide release QA — 2026-10-18
 
-## Confirmed Safari/WebKit defect
+This record covers the current release candidate. It separates checks that ran locally from CI and production checks that have not yet run against the final commit.
 
-Before the fix, a real WebKit browser test imported a photo and failed to save its project in IndexedDB. WebKit rejected the native `Blob` structured-clone record with `UnknownError: Error preparing Blob/File data to be stored in object store`; the unsaved project could not be restored after reload. The underlying code now stores the photo bytes as `ArrayBuffer`, restores both the new byte representation and existing `{ blob }` records, and keeps all records in place. It does not clear localStorage or IndexedDB.
+## Reproduced defect and repair
 
-The report below distinguishes executed checks from checks that still require the full CI and production rounds. Earlier unverified claims about twelve-photo visual comparisons, printer behavior, image modes and device testing have been removed from this record.
+The permanent editor regression reproduced a WebKit/Safari failure when saving a photo as a native `Blob` in IndexedDB: WebKit returned `UnknownError: Error preparing Blob/File data to be stored in object store`, so the project could not be restored after reload. New photo records now store bytes as `ArrayBuffer`; restore accepts both this format and existing `{ blob }` records. The repair leaves localStorage, IndexedDB records, calendar notes, and preferences intact.
 
 ## Executed source checks
 
-- Full package unit suite after merging the latest main content and performance releases: **353 passed, 0 failed** (`node --test test/*.test.js`); output: `outputs/final-node-tests.log`.
-- Release audit after the latest About-page publication: **192 HTML files including 404, 191 canonical pages, 25,718 local targets, 0 broken links**. It also checked indexability, canonical/sitemap parity, metadata/schema, the generated editor route, and its four published fonts. Output: `outputs/final-release-audit.log`.
-- CSS minifier: **2 tests, 14 assertions, 0 failures**.
-- Static asset URL checks: **4 tests, 47 assertions, 0 failures**.
-- Inline and route-specific CSS checks: **14 tests, 0 failures**.
-- Performance-release fingerprint parser: **1/1 regression passed** for the current content-addressed `/assets/releases/<revision>/common.js` URL and the legacy query-version format. Its CLI and workflow YAML syntax also parsed successfully.
-- Current full build: **191 canonical pages and 4,508 static files** at release revision `594925b46a5a7c775bc8`; 76 stylesheets were reduced by 123,201 bytes (4.1%) and 180 JavaScript modules by 110,611 bytes (3.0%). The generated headers contain 96 path rules.
+- Release build with Ruby 3.4.11, Bundler 2.6.9, and the pinned Node runtime: **191 canonical pages, 4,560 generated static files, release revision `874ac7e1927f95c417e7`**. Three retained immutable releases are published. A clean repeat build reproduced the same revision and byte-for-byte identical 4,563-file public tree.
+- `scripts/audit_site.py --release`: **192 HTML files including the 404 page; 191 canonical landing pages; 25,718 local targets; zero broken local links**. Canonical and sitemap parity, indexability, metadata, JSON-LD, the editor bundle, fonts, and 360 monthly image entries passed.
+- `node --test test/*.test.js`: **353 passed, 0 failed**.
+- Ruby static asset URL tests: **5 tests, 58 assertions, 0 failures**. CSS minifier tests: **2 tests, 14 assertions, 0 failures**.
+- The generated Cloudflare `_headers` file has **97 rules**; every rule contains at most one wildcard, within the 100-rule limit. Immutable release assets use versioned paths; HTML and mutable data are revalidated.
 
-## Executed browser checks — editor regression round 1
+## Executed browser checks
 
-Playwright 1.56.1 ran the permanent editor spec against three generated source releases in four browser profiles: desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation. **12/12 passed on each release** (three editor scenarios in each profile). Evidence is in `outputs/final-editor-browser-round1.json`, `outputs/final-editor-browser-round2.json`, and `outputs/final-editor-browser-round3.json`.
+- Permanent editor regression: **12/12 passed** on desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation. It exercised mobile editor controls, leap-day preview, event/note persistence, preservation of an existing note and 12-hour preference, unrelated localStorage data, photo-byte persistence across reload, ZIP import/export, a real generated PDF download, font loading, and no unexpected external or mutating requests.
+- Search acceptance: **96 fixtures × 3 browser profiles = 288/288 passed** on the generated release using desktop Chromium, Android Chrome emulation, and iPhone WebKit emulation.
+- Lithuanian name-day “Rytoj” regression: **4/4 passed** across the four editor/browser profiles. It compares the displayed “today” and “tomorrow” cards with consecutive dates in `Europe/Vilnius` rather than only recording rendered text.
 
-The scenarios exercised the mobile preview/settings tabs and overflow, leap-day preview, event and note save/restore, preservation of the existing home-calendar note and 12-hour preference, preservation of an unrelated localStorage value, exact photo-byte persistence in IndexedDB across reload, portable ZIP import/export, real PDF download, font loading, and absence of external or mutating requests.
+## Release gates still pending
 
-The reproduced WebKit Blob failure passed after the ArrayBuffer change. The browser upload used one synthetic PNG created by the browser test; the PDF was generated and checked for its signature and nontrivial size. This run did not inspect a twelve-photo PDF visually or send a document to a physical printer.
+The full five-project CI route/component suite, production deployment, live-page crawl, live mobile search, production cache-header verification, production daily publication verification, and a post-deployment performance sample must run against the final commit and deployed release. The Cloudflare cache purge is also pending. These items are not counted as passed here. Browser profiles are emulations; no physical iPhone or Android handset, paper printer, or outgoing email delivery was tested.
 
-## Scope and remaining verification
+## Known environment limitations
 
-These are browser emulations, not tests on physical iOS or Android devices. The full 292-case browser suite across five profiles (1,460 planned profile executions), the independent live-site round, production cache/ETag checks, and Cloudflare purge evidence are not included in these editor checks. Local Firefox is available but hangs on launch in this macOS environment; Firefox coverage must come from the configured CI runner before release acceptance.
-
-School dates are limited to the official 2026–2027 schedule in the dataset. Later dates require an official source update. Statutory rules for historical/future years are projections of current rules, not retrospective legal certification.
+The default system Ruby 2.6.10 and system Node path are too old or incomplete for this repository. The executed release build used the repository's documented project Ruby 3.4.11/Bundler 2.6.9 toolchain and the pinned Node runtime. A direct build with the default system Ruby failed before generating the site; that failed attempt did not change the verified release tree.
