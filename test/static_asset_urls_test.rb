@@ -123,4 +123,30 @@ class StaticAssetUrlsTest < Minitest::Test
     assert_includes output, "url(/assets/visuals/icon.svg?size=2&v=#{svg_hash}#calendar)"
     assert_equal 0, Kalendorius::StaticAssetUrls.rewrite!(@root)
   end
+
+  def test_calendar_editor_uses_a_versioned_path_to_bypass_query_ignoring_caches
+    editor_dir = File.join(@root, 'assets/calendar-editor')
+    FileUtils.mkdir_p(File.join(editor_dir, 'vendor'))
+    File.write(File.join(editor_dir, 'editor.js'), "import './export.js?v=abc';\nconst data = '/assets/calendar-editor/data.json';")
+    File.write(File.join(editor_dir, 'export.js'), 'export const print = true;')
+    File.write(File.join(editor_dir, 'data.json'), '{"ok":true}')
+    File.write(File.join(editor_dir, 'vendor', 'print.js'), 'export const print = true;')
+    File.write(File.join(@root, 'kurti-kalendoriu.html'), <<~HTML)
+      <link rel="modulepreload" href="/assets/calendar-editor/export.js?v=abc">
+      <script type="module" src="/assets/calendar-editor/editor.js?v=abc"></script>
+    HTML
+
+    changed = Kalendorius::StaticAssetUrls.version_calendar_editor_paths!(@root, 'abcdef123456')
+    output = File.read(File.join(@root, 'kurti-kalendoriu.html'))
+    versioned_dir = File.join(@root, 'assets/calendar-editor-release-abcdef123456')
+    versioned_editor = File.read(File.join(versioned_dir, 'editor.js'))
+
+    assert_equal 4, changed
+    assert_includes output, '/assets/calendar-editor-release-abcdef123456/editor.js?v=abc'
+    assert_includes output, '/assets/calendar-editor-release-abcdef123456/export.js?v=abc'
+    assert_includes versioned_editor, "import './export.js?v=abc'"
+    assert_includes versioned_editor, '/assets/calendar-editor-release-abcdef123456/data.json'
+    assert File.file?(File.join(versioned_dir, 'vendor', 'print.js'))
+    assert File.file?(File.join(editor_dir, 'editor.js'))
+  end
 end

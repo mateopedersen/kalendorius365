@@ -106,7 +106,11 @@ assert not any(p.startswith('/assets/calendar-editor/') and p!='/assets/calendar
 assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
 assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
- cache_path='/assets/calendar-editor/*' if path.is_relative_to(PUBLIC/'assets/calendar-editor') else f'/{path.relative_to(PUBLIC)}'
+ relative=path.relative_to(PUBLIC).as_posix()
+ editor_release=re.match(r'assets/calendar-editor-release-([a-f0-9]{12})/',relative)
+ if editor_release:cache_path=f"/assets/calendar-editor-release-{editor_release.group(1)}/*"
+ elif path.is_relative_to(PUBLIC/'assets/calendar-editor'):cache_path='/assets/calendar-editor/*'
+ else:cache_path=f'/{relative}'
  assert f'{cache_path}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
@@ -153,8 +157,8 @@ if '--release' in __import__('sys').argv:
 # Check the generated release, not only the authored editor source.
 editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()
 assert 'id="calendar-editor"' in editor_html,'Release preparation replaced the personal editor'
-assert '/assets/calendar-editor/editor.js?v=' in editor_html,'Editor module missing from built route'
-assert '/assets/calendar-editor/editor.css?v=' in editor_html,'Editor stylesheet missing from built route'
+assert re.search(r'/assets/calendar-editor(?:-release-[a-f0-9]{12})/editor\.js\?v=',editor_html),'Editor module missing from built route'
+assert re.search(r'/assets/calendar-editor(?:-release-[a-f0-9]{12})/editor\.css\?v=',editor_html),'Editor stylesheet missing from built route'
 assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
 print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
 
