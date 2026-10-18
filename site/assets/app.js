@@ -132,7 +132,7 @@ function selectDate(s) {
   $("#day-details").open = true;
   render();
 }
-function monthTable(date, isMini = false) {
+function monthTable(date, isMini = false, todayDate = cal.today()) {
   const y = +date.slice(0, 4),
     m = +date.slice(5, 7),
     table = el("table", undefined, "month-table");
@@ -182,7 +182,7 @@ function monthTable(date, isMini = false) {
           (items.length ? `; ${items.length} įvykiai` : ""),
       );
       if (s.slice(0, 7) !== date.slice(0, 7)) b.classList.add("other-month");
-      if (s === cal.today()) b.classList.add("today");
+      if (s === todayDate) b.classList.add("today");
       if (d > 4) b.classList.add("weekend");
       if (holiday.some((h) => h.classification === "statutory"))
         b.classList.add("holiday");
@@ -333,7 +333,8 @@ function syncFilters() {
 function renderCalendar() {
   renderFilterChips();
   const y = +display.slice(0, 4),
-    m = +display.slice(5, 7);
+    m = +display.slice(5, 7),
+    todayDate = cal.today();
   $("#period-title").textContent =
     view === "year"
       ? `${y} metai`
@@ -343,7 +344,7 @@ function renderCalendar() {
   $("#jump-year").value = y;
   const host = $("#calendar");
   host.replaceChildren();
-  if (view === "month") host.append(monthTable(display));
+  if (view === "month") host.append(monthTable(display, false, todayDate));
   else if (view === "week")
     host.append(listDates(cal.addDays(selected, -cal.weekday(selected)), 7));
   else if (view === "day") host.append(listDates(selected, 1));
@@ -353,7 +354,7 @@ function renderCalendar() {
     for (let month = 1; month <= 12; month++) {
       const d = `${y}-${String(month).padStart(2, "0")}-01`,
         section = el("section", undefined, "mini-calendar");
-      section.append(el("h3", data.months[month - 1][1]), monthTable(d, true));
+      section.append(el("h3", data.months[month - 1][1]), monthTable(d, true, todayDate));
       grid.append(section);
     }
     host.append(grid);
@@ -361,14 +362,14 @@ function renderCalendar() {
   for (const b of document.querySelectorAll("[data-view]"))
     b.setAttribute("aria-pressed", String(b.dataset.view === view));
   $("#mini-title").textContent = cal.formatDate(mini, { day: undefined });
-  $("#mini").replaceChildren(monthTable(mini, true));
+  $("#mini").replaceChildren(monthTable(mini, true, todayDate));
   let last = `${y}-${String(m).padStart(2, "0")}-${cal.monthLength(y, m)}`,
     first = `${y}-${String(m).padStart(2, "0")}-01`;
   const remaining = cal.workStats(
-    display > cal.today()
+    display > todayDate
       ? first
-      : cal.today().slice(0, 7) === first.slice(0, 7)
-        ? cal.today()
+      : todayDate.slice(0, 7) === first.slice(0, 7)
+        ? todayDate
         : first,
     last,
     data,
@@ -378,16 +379,16 @@ function renderCalendar() {
   );
   $("#stats").replaceChildren(
     ...[
-      [cal.isoWeek(cal.today()).week, "Dabartinė ISO savaitė"],
+      [cal.isoWeek(todayDate).week, "Dabartinė ISO savaitė"],
       [
         remaining.days,
-        display.slice(0, 7) === cal.today().slice(0, 7)
+        display.slice(0, 7) === todayDate.slice(0, 7)
           ? "Liko darbo dienų"
           : "Darbo dienos mėnesį",
       ],
       [monthH.length, "Šventės ir atmintinos dienos"],
       [
-        cal.difference(cal.today(), `${+cal.today().slice(0, 4) + 1}-01-01`),
+        cal.difference(todayDate, `${+todayDate.slice(0, 4) + 1}-01-01`),
         "Iki Naujųjų metų",
       ],
     ].map(([n, label], index) => {
@@ -425,7 +426,7 @@ function renderCalendar() {
       ? list
       : el("p", "Šį mėnesį šventinių ar atmintinų dienų nėra.", "muted"),
   );
-  const current = cal.today(),
+  const current = todayDate,
     currentYear = +current.slice(0, 4),
     dayNumber = cal.difference(`${currentYear}-01-01`, current) + 1;
   $("#today-facts").textContent =
@@ -875,25 +876,46 @@ const clockFormatters = new Map(),
     timeZone: cal.TZ,
     timeZoneName: "short",
   });
+let clockTimer = 0,
+  lastClockDate = "",
+  lastClockCity = "",
+  lastClockMinute = "";
+const clockElement = $("#clock"),
+  clockDateElement = $("#clock-date"),
+  clockWeekdayElement = $("#clock-weekday"),
+  clockZoneElement = $("#clock-zone");
 function tick() {
+  clearTimeout(clockTimer);
+  if (document.visibilityState !== "visible") return;
   const now = new Date();
   const seconds = $("#seconds").checked, hour12 = $("#hour12").checked,
-    clockKey = `${seconds}:${hour12}`, currentDate = cal.today(now);
+    clockKey = `${seconds}:${hour12}`;
   if (!clockFormatters.has(clockKey)) clockFormatters.set(clockKey, new Intl.DateTimeFormat("lt-LT", {
     timeZone: cal.TZ, hour: "2-digit", minute: "2-digit",
     second: seconds ? "2-digit" : undefined, hour12,
   }));
-  $("#clock").textContent = clockFormatters.get(clockKey).format(now);
-  $("#clock-date").textContent = cal.formatDate(currentDate);
-  $("#clock-weekday").textContent = clockWeekdayFormatter.format(now);
+  clockElement.textContent = clockFormatters.get(clockKey).format(now);
   const cityId = window.k365WeatherCity || DEFAULT_WEATHER_CITY;
-  const cityName = WEATHER_CITY_BY_ID.get(cityId)?.name || "Vilnius";
-  $("#clock").setAttribute("aria-label", `Dabartinis ${cityName} laikas`);
-  $("#clock-zone").textContent =
-    cityName + " · " +
-    clockZoneFormatter
-      .formatToParts(now)
-      .find((p) => p.type === "timeZoneName").value;
+  const minuteKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}`;
+  const updateMinute = minuteKey !== lastClockMinute,
+    updateCity = cityId !== lastClockCity,
+    currentDate = updateMinute || updateCity ? cal.today(now) : lastClockDate;
+  if (updateMinute) lastClockMinute = minuteKey;
+  if (currentDate !== lastClockDate || updateCity) {
+    lastClockDate = currentDate;
+    lastClockCity = cityId;
+    clockDateElement.textContent = cal.formatDate(currentDate);
+    clockWeekdayElement.textContent = clockWeekdayFormatter.format(now);
+    const cityName = WEATHER_CITY_BY_ID.get(cityId)?.name || "Vilnius";
+    clockElement.setAttribute("aria-label", `Dabartinis ${cityName} laikas`);
+  }
+  if (updateMinute || updateCity) {
+    const cityName = WEATHER_CITY_BY_ID.get(cityId)?.name || "Vilnius";
+    clockZoneElement.textContent = cityName + " · " +
+      clockZoneFormatter.formatToParts(now).find((part) => part.type === "timeZoneName").value;
+  }
+  const interval = seconds ? 1000 : 60_000;
+  clockTimer = setTimeout(tick, interval - (now.getTime() % interval) + 5);
   if (lastToday !== currentDate) {
     lastToday = currentDate;
     renderCalendar();
@@ -1126,3 +1148,7 @@ dashboard.removeAttribute("inert");
 dashboard.setAttribute("aria-busy", "false");
 $("#calendar-app-status").hidden = true;
 setInterval(tick, 1000);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") tick();
+  else clearTimeout(clockTimer);
+});

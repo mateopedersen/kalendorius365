@@ -834,7 +834,7 @@
     },
     "easter": {
       "src": "/assets/visuals/holiday-easter-marguciai-1200.webp",
-      "srcset": "/assets/visuals/holiday-easter-marguciai-640.webp 640w, /assets/visuals/holiday-easter-marguciai-1200.webp 1200w",
+      "srcset": "/assets/visuals/holiday-easter-marguciai-640.webp 640w, /assets/visuals/holiday-easter-marguciai-800.webp 800w, /assets/visuals/holiday-easter-marguciai-1080.webp 1080w, /assets/visuals/holiday-easter-marguciai-1200.webp 1200w",
       "width": 1200,
       "height": 900,
       "caption": "Lėkštėje sudėti įvairiaspalviai tradiciniais vaškuotais raštais marginti lietuviški Velykų margučiai.",
@@ -844,7 +844,7 @@
       "commons_url": "https://commons.wikimedia.org/wiki/File:Marguciai2._2007-04-21.jpg",
       "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Marguciai2._2007-04-21.jpg",
       "institution_url": "",
-      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
+      "changes": "Paruošti 640, 800, 1080 ir 1200 px WebP variantai; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
       "original_sha256": "preserved baseline source; see original audit",
       "commons_revision": 1256070081,
       "license_rationale": "",

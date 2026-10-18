@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 37172,
-      "generated_bytes": 24271
+      "source_bytes": 38006,
+      "generated_bytes": 24414
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -18,13 +18,13 @@
     },
     {
       "path": "/assets/calendar-editor/editor.js",
-      "source_bytes": 49512,
-      "generated_bytes": 36712
+      "source_bytes": 49221,
+      "generated_bytes": 36550
     },
     {
       "path": "/assets/calendar-editor/export.js",
-      "source_bytes": 8594,
-      "generated_bytes": 6190
+      "source_bytes": 8355,
+      "generated_bytes": 5994
     },
     {
       "path": "/assets/calendar-editor/filters.js",
@@ -53,13 +53,13 @@
     },
     {
       "path": "/assets/calendar-editor/scene.js",
-      "source_bytes": 11985,
-      "generated_bytes": 7726
+      "source_bytes": 12047,
+      "generated_bytes": 7771
     },
     {
       "path": "/assets/calendar-editor/storage.js",
-      "source_bytes": 7557,
-      "generated_bytes": 5586
+      "source_bytes": 7147,
+      "generated_bytes": 5260
     },
     {
       "path": "/assets/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
@@ -73,8 +73,8 @@
     },
     {
       "path": "/assets/common.js",
-      "source_bytes": 16572,
-      "generated_bytes": 9710
+      "source_bytes": 15405,
+      "generated_bytes": 9195
     },
     {
       "path": "/assets/contact.js",
@@ -98,13 +98,13 @@
     },
     {
       "path": "/assets/discovery-core.js",
-      "source_bytes": 6275,
-      "generated_bytes": 3468
+      "source_bytes": 5735,
+      "generated_bytes": 3213
     },
     {
       "path": "/assets/discovery.js",
-      "source_bytes": 31362,
-      "generated_bytes": 19690
+      "source_bytes": 29920,
+      "generated_bytes": 18820
     },
     {
       "path": "/assets/holiday-editorial.js",
@@ -143,13 +143,13 @@
     },
     {
       "path": "/assets/lunar/lunar-loader.js",
-      "source_bytes": 2822,
-      "generated_bytes": 1824
+      "source_bytes": 2806,
+      "generated_bytes": 1808
     },
     {
       "path": "/assets/lunar/lunar.js",
-      "source_bytes": 8022,
-      "generated_bytes": 6055
+      "source_bytes": 7850,
+      "generated_bytes": 6038
     },
     {
       "path": "/assets/monthly-holidays.js",
@@ -158,33 +158,33 @@
     },
     {
       "path": "/assets/namedays-engine.js",
-      "source_bytes": 3674,
-      "generated_bytes": 2855
+      "source_bytes": 3580,
+      "generated_bytes": 2828
     },
     {
       "path": "/assets/namedays.js",
-      "source_bytes": 12654,
-      "generated_bytes": 9898
+      "source_bytes": 12321,
+      "generated_bytes": 9754
     },
     {
       "path": "/assets/phase-5-6-8-core.js",
-      "source_bytes": 14890,
-      "generated_bytes": 8908
+      "source_bytes": 14267,
+      "generated_bytes": 8451
     },
     {
       "path": "/assets/phase-5-6-8.js",
-      "source_bytes": 41325,
-      "generated_bytes": 30478
+      "source_bytes": 40918,
+      "generated_bytes": 30393
     },
     {
       "path": "/assets/search-engine.js",
-      "source_bytes": 15194,
-      "generated_bytes": 9017
+      "source_bytes": 9128,
+      "generated_bytes": 5591
     },
     {
       "path": "/assets/search-page.js",
-      "source_bytes": 7452,
-      "generated_bytes": 4900
+      "source_bytes": 5863,
+      "generated_bytes": 3909
     },
     {
       "path": "/assets/seasons-core.js",

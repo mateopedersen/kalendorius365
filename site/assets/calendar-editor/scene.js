@@ -185,7 +185,8 @@ function svg(p, photoURLs = {}, fontCSS = "") {
       let u = photoURLs[i.photo.id + ":" + i.w + ":" + i.h];
       return u ? `<image x="${i.x}" y="${i.y}" width="${i.w}" height="${i.h}" opacity="${i.background ? 0.18 : 1}" href="${escape(u)}"/>` : "";
     }
-    return `<text x="${i.x}" y="${i.y}" font-size="${i.size}" font-family="${i.font || p.font}" font-weight="${i.bold ? 700 : 400}" fill="${i.color}" text-anchor="${i.align === "center" ? "middle" : i.align === "right" ? "end" : "start"}"${i.date && i.date >= "1900-01-01" && i.date <= "2100-12-31" ? ` data-editor-date="${i.date}" tabindex="0" role="button" aria-label="${i.date}${LT.prideti_ivyki}` : ""}>${escape(i.value)}</text>`;
+    let font = /[♥★]/.test(i.value) ? "system-ui" : i.font || p.font;
+    return `<text x="${i.x}" y="${i.y}" font-size="${i.size}" font-family="${font}" font-weight="${i.bold ? 700 : 400}" fill="${i.color}" text-anchor="${i.align === "center" ? "middle" : i.align === "right" ? "end" : "start"}"${i.date && i.date >= "1900-01-01" && i.date <= "2100-12-31" ? ` data-editor-date="${i.date}" tabindex="0" role="button" aria-label="${i.date}${LT.prideti_ivyki}` : ""}>${escape(i.value)}</text>`;
   }).join("");
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${p.w}" height="${p.h}" viewBox="0 0 ${p.w} ${p.h}" role="group" aria-label="${escape(p.label)}"><style>${fontCSS}text{white-space:pre}</style>${items}</svg>`;
 }

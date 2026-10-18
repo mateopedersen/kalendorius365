@@ -1,0 +1,37 @@
+{
+  "method": "Screen-only WebP Q95; the pixel-identical PNG and full-resolution print texture remain unchanged",
+  "encoding": {
+    "format": "WebP",
+    "quality": 95,
+    "method": 6
+  },
+  "dimensions": [
+    512,
+    512
+  ],
+  "alpha_pixels_identical": true,
+  "composited_rgb_psnr_db": {
+    "black": 45.277,
+    "white": 45.277
+  },
+  "before": {
+    "path": "site/assets/lunar/albedo-web.png",
+    "bytes": 370707,
+    "sha256": "56652da19d8bbc84809cf98a66d06269b7d84dbc33c8203403269f3fc47c3f22"
+  },
+  "previous_webp": {
+    "path": "site/assets/lunar/albedo-web.webp",
+    "bytes": 232384,
+    "sha256": "cfe251e9b0f291f508e5336f0e9fb0f0090173a7c995d7c447191107215ef3e0"
+  },
+  "after": {
+    "path": "site/assets/lunar/albedo-web.webp",
+    "bytes": 81880,
+    "sha256": "2f032d5bcfcf5e4df467d86c171913ae39d49f77a0f7f3143e7e346304ccdb73"
+  },
+  "print_source": {
+    "path": "site/assets/lunar/albedo.png",
+    "bytes": 1477843,
+    "sha256": "1dfe2728a4a23ea00cc0a1c14c4528701ba775db4cecb483eb277f62d1dcc211"
+  }
+}
