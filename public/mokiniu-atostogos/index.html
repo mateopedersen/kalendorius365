@@ -19,13 +19,12 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg?v=217add829468" type="image/svg+xml">
 
+<link rel="preload" href="/assets/releases/c504fba065925e87b3eb/fonts/Lato-Regular-latin-lt.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/releases/c504fba065925e87b3eb/fonts/Lato-Bold-latin-lt.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/releases/c504fba065925e87b3eb/fonts/Lato-Black-latin-lt.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="preload" href="/assets/releases/4ce074782b704cd9919a/fonts/Lato-Regular-latin-lt.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/releases/4ce074782b704cd9919a/fonts/Lato-Bold-latin-lt.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/releases/4ce074782b704cd9919a/fonts/Lato-Black-latin-lt.woff2" as="font" type="font/woff2" crossorigin>
 
-
-<style data-route-css="/assets/releases/4ce074782b704cd9919a/style.css /assets/releases/4ce074782b704cd9919a/design-system.css">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/releases/c504fba065925e87b3eb/style.css /assets/releases/c504fba065925e87b3eb/design-system.css">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -261,12 +260,12 @@ a{color:inherit;text-decoration:none}
 @media(max-width:400px){#calc-result{min-height:28rem}}
 @media print{#calc-result{min-height:0}}
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
-@font-face{font-family: Lato;src: url("/assets/releases/4ce074782b704cd9919a/fonts/Lato-Regular.woff2") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
-@font-face{font-family: Lato;src: url("/assets/releases/4ce074782b704cd9919a/fonts/Lato-Regular-latin-lt.woff2") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
-@font-face{font-family: Lato;src: url("/assets/releases/4ce074782b704cd9919a/fonts/Lato-Bold.woff2") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
-@font-face{font-family: Lato;src: url("/assets/releases/4ce074782b704cd9919a/fonts/Lato-Bold-latin-lt.woff2") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
-@font-face{font-family: Lato;src: url("/assets/releases/4ce074782b704cd9919a/fonts/Lato-Black.woff2") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
-@font-face{font-family: Lato;src: url("/assets/releases/4ce074782b704cd9919a/fonts/Lato-Black-latin-lt.woff2") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
+@font-face{font-family: Lato;src: url("/assets/releases/c504fba065925e87b3eb/fonts/Lato-Regular.woff2") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
+@font-face{font-family: Lato;src: url("/assets/releases/c504fba065925e87b3eb/fonts/Lato-Regular-latin-lt.woff2") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
+@font-face{font-family: Lato;src: url("/assets/releases/c504fba065925e87b3eb/fonts/Lato-Bold.woff2") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
+@font-face{font-family: Lato;src: url("/assets/releases/c504fba065925e87b3eb/fonts/Lato-Bold-latin-lt.woff2") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
+@font-face{font-family: Lato;src: url("/assets/releases/c504fba065925e87b3eb/fonts/Lato-Black.woff2") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
+@font-face{font-family: Lato;src: url("/assets/releases/c504fba065925e87b3eb/fonts/Lato-Black-latin-lt.woff2") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
 :root{--font-ui: Lato,Arial,sans-serif;--ink: #111b2e;--muted: #5c6980;--green: #006a44;--green-dark: #005235;--red: #c1272d;--yellow: #fdb913;--bg: #f4f7fa;--panel: #fff;--border: #e1e7ee;--soft: #f7f9fc;--tint: #edf7f2;--shadow: 0 2px 10px #182b4804,0 8px 28px #182b4803;--radius: 12px;--blue: #1478db;--purple: #8250c4;font-family: var(--font-ui);font-size: 15px;color: var(--ink);background: var(--bg);}
 body,button,input,select,textarea{font-family: var(--font-ui);}
 body{color: var(--ink);background: var(--bg);line-height: 1.5;}
@@ -840,10 +839,10 @@ main :is(button,input,select,textarea,a){scroll-margin-bottom: calc(max(80px,5.5
 
 
 
-<link rel="stylesheet" href="/assets/releases/4ce074782b704cd9919a/print.css" media="print">
+<link rel="stylesheet" href="/assets/releases/c504fba065925e87b3eb/print.css" media="print">
 
-<script type="module" src="/assets/releases/4ce074782b704cd9919a/common.js"></script>
-<script type="module" src="/assets/releases/4ce074782b704cd9919a/cookie-notice.js"></script>
+
+
 
 
 
@@ -855,6 +854,8 @@ main :is(button,input,select,textarea,a){scroll-margin-bottom: calc(max(80px,5.5
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pradžia","item":"https://kalendorius365.lt/"},{"@type":"ListItem","position":2,"name":"Mokinių atostogos 2026–2027","item":"https://kalendorius365.lt/mokiniu-atostogos/"}]}</script>
 
+<link rel="modulepreload" href="/assets/releases/c504fba065925e87b3eb/common.js">
+<link rel="modulepreload" href="/assets/releases/c504fba065925e87b3eb/cookie-notice.js">
 </head>
 <body>
 <a class="skip" href="#main">Pereiti prie turinio</a>
@@ -884,4 +885,5 @@ main :is(button,input,select,textarea,a){scroll-margin-bottom: calc(max(80px,5.5
   </div>
 </aside>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+<script type="module" async src="/assets/releases/c504fba065925e87b3eb/common.js"></script><script type="module" async src="/assets/releases/c504fba065925e87b3eb/cookie-notice.js"></script>
 </body></html>

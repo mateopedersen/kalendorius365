@@ -1,297 +1,297 @@
 {
-  "revision": "4ce074782b704cd9919a",
+  "revision": "c504fba065925e87b3eb",
   "retained_revisions": [
+    "c504fba065925e87b3eb",
     "4ce074782b704cd9919a",
-    "675aca80be49ea9f1d25",
-    "9b98741e23c1d9bba6ac"
+    "675aca80be49ea9f1d25"
   ],
   "assets": {
     "/assets/app.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/app.js",
-      "sha256": "f02cf116b21c42a65885ecb8c99bf9d7a9fee12a2377e09c5430ce68731a4c04"
+      "url": "/assets/releases/c504fba065925e87b3eb/app.js",
+      "sha256": "ff0adfd50972a706b892f42185c9bf90b292933559bfbc562524e3ff72494f54"
     },
     "/assets/ascendant-calculator.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/ascendant-calculator.js",
-      "sha256": "4e384a1648afd18f88f6f9fd4b6497c54efb54fbdab8a64167eed236b947ef68"
+      "url": "/assets/releases/c504fba065925e87b3eb/ascendant-calculator.js",
+      "sha256": "cb8d419f119673245633c893c0fc1484e6fa9a8294b57d0b484372fcd2b6129c"
     },
     "/assets/ascendant-loader.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/ascendant-loader.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/ascendant-loader.js",
       "sha256": "902b33ffee02065466892aaba83309b9416e5b50b6fb32bbbbff5a6707b14b58"
     },
     "/assets/calendar.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/calendar.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/calendar.js",
       "sha256": "3fc486c0d3a06483cb706acbbac5b2c1390c8f3133ea39ed140c2a705052d2ff"
     },
     "/assets/common.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/common.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/common.js",
       "sha256": "96919eec6d69931d35daed6c4e65fd42baa2b3dc8d8af0098088babf05d5038e"
     },
     "/assets/contact.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/contact.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/contact.css",
       "sha256": "669b4fd9dafc6481c5258c2b7f2a356f93f64bc9e46796a4964398a3576c052a"
     },
     "/assets/contact.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/contact.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/contact.js",
       "sha256": "944cbe26df8016ee54e7d6dacaed6cfbfca40e99378f37e7456d3c21d9549ec4"
     },
     "/assets/cookie-notice.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/cookie-notice.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/cookie-notice.js",
       "sha256": "a8c99ba6965071e94d2589d795f8fb11461ea1fc6a3ef3aec176ac3339c77770"
     },
     "/assets/data/astronomy/cities.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/astronomy/cities.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/astronomy/cities.json",
       "sha256": "2e0949eb82e7538c93ff77e171045ee509d46a336f85107532e821924608aeab"
     },
     "/assets/data/astronomy/moon-phases-utc.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/astronomy/moon-phases-utc.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/astronomy/moon-phases-utc.json",
       "sha256": "8e2eabe998c25b128503f10bd36e6d624b5863dab0f71fad147b6aaffc15f96a"
     },
     "/assets/data/astronomy/seasons-utc.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/astronomy/seasons-utc.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/astronomy/seasons-utc.json",
       "sha256": "8f297af9abb2a94d56dd1c5fe07a13d211474691f5332bf967cdb0d544ab4a4d"
     },
     "/assets/data/birth-cities.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/birth-cities.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/birth-cities.js",
       "sha256": "b3805cd38620f241115677b8526ef42c8660232a13eb5ca0c13b54dc2c338b5e"
     },
     "/assets/data/calendar.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/calendar.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/calendar.json",
       "sha256": "d2f3d4db84c065b4078fd55fd00cdaa090fb4f1db179cd871acec5cb83e84359"
     },
     "/assets/data/holiday-editorial.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/holiday-editorial.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/holiday-editorial.json",
       "sha256": "e8708d8fc7f5a102df01168dc9816a6a57a6cf0a72382d13cdabe5171925c744"
     },
     "/assets/data/home-holiday-data.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/home-holiday-data.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/home-holiday-data.json",
       "sha256": "5584381a8f9ac36294bdab4a3cffa62814fdb796505be7eeceb104f52d109aae"
     },
     "/assets/data/lt/work-rest-rules.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/lt/work-rest-rules.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/lt/work-rest-rules.json",
       "sha256": "5618dd1bec18d3abcc0358391da0cb818366efeba458d8ac1b7e0dc7d850e19a"
     },
     "/assets/data/lunar/assets.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/lunar/assets.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/lunar/assets.json",
       "sha256": "6c13b8cd551e22f35c6df3981e8516ed592e55b4f547855b4647656dd9ed371e"
     },
     "/assets/data/lunar/calendar.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/lunar/calendar.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/lunar/calendar.json",
       "sha256": "1777fec375b780da1ae2ed68a5667f4981803363927dbe02e9eb1d959dcf910c"
     },
     "/assets/data/namedays/calendar.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/namedays/calendar.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/namedays/calendar.json",
       "sha256": "f4659877c19baed6bef0798639a8ce2617b032de3a0af95630f306684fc7096a"
     },
     "/assets/data/namedays/cc-by-sa-4.0.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/namedays/cc-by-sa-4.0.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/namedays/cc-by-sa-4.0.json",
       "sha256": "be264a6a2161e95c98f4a005903a2592f33524234e08991ee4094b9bee143748"
     },
     "/assets/data/search.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/search.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/search.json",
       "sha256": "07bee353cb92aa4587b9afafc80f0e30fe6d53390bdf9cdd0e37388a6d2f2c9f"
     },
     "/assets/data/seasons.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/seasons.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/seasons.json",
       "sha256": "f6b9dd84bdaf8066704680e1ae53b6ac978089b733f3624a2bb9cc01f2e1113f"
     },
     "/assets/data/weather-cities.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/weather-cities.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/weather-cities.js",
       "sha256": "b1135d8f391f991c246064704203e224915458036b0a8b97a6f51fbc243ba27b"
     },
     "/assets/data/zodiac.json": {
-      "url": "/assets/releases/4ce074782b704cd9919a/data/zodiac.json",
+      "url": "/assets/releases/c504fba065925e87b3eb/data/zodiac.json",
       "sha256": "87bb16483997c9a4004893fe2100a50844ff00fb93f711ebc795d5d8b8491470"
     },
     "/assets/design-system.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/design-system.css",
-      "sha256": "4e01dcf6d820a3dc5ee9e1600ed6004f6fb06e1d6f4f6b53a4a7f816de049dc3"
+      "url": "/assets/releases/c504fba065925e87b3eb/design-system.css",
+      "sha256": "e127106305cb1c39931edc861823fab1f39fbab91187c0e3b2346c2f6654d706"
     },
     "/assets/discovery.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/discovery.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/discovery.css",
       "sha256": "567929541856576cf662d4e2503618176ee8bd5b65da017f1af7e1987b8a31e2"
     },
     "/assets/discovery.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/discovery.js",
-      "sha256": "3dc959bb9b638183f01b98f4f2d1eb16ed575e42287dc0ff09a9817e9ac4e15d"
+      "url": "/assets/releases/c504fba065925e87b3eb/discovery.js",
+      "sha256": "3b223c44161e52885b79adf0fbf8ecfc6a48eab92d6c6ee0e6e81aa7981c6bbe"
     },
     "/assets/fonts/Inter-Regular.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Inter-Regular.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Inter-Regular.woff2",
       "sha256": "cfe8757b551c4c9b8cabadc09d5de70819829aec8981da30697bd6f5b06aa59e"
     },
     "/assets/fonts/Lato-Black-latin-lt.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Lato-Black-latin-lt.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Lato-Black-latin-lt.woff2",
       "sha256": "7aeb43d2c52268e80a875d1dc07d23e0dc5bb3886e8ddafd8da37a2279cb8f90"
     },
     "/assets/fonts/Lato-Black.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Lato-Black.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Lato-Black.woff2",
       "sha256": "6b5486e4bbb685b026ec8e7d0c212e2d80fffb6a9baaf18b3802b97e8041f7d4"
     },
     "/assets/fonts/Lato-Bold-latin-lt.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Lato-Bold-latin-lt.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Lato-Bold-latin-lt.woff2",
       "sha256": "9136e9af7d2cdc9d1e7f5726c07abe4b00aa5ee40c1609533d0d2a5d730fe282"
     },
     "/assets/fonts/Lato-Bold.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Lato-Bold.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Lato-Bold.woff2",
       "sha256": "94b1e33bd87f2a6b6549fb50874c3553a6fd5b2954baddc303a980cf961299c4"
     },
     "/assets/fonts/Lato-Regular-latin-lt.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Lato-Regular-latin-lt.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Lato-Regular-latin-lt.woff2",
       "sha256": "130290c9370eb11148bd6ae8609bf41058bcdd9f1f519bbd54a5aff17c3fe0ec"
     },
     "/assets/fonts/Lato-Regular.woff2": {
-      "url": "/assets/releases/4ce074782b704cd9919a/fonts/Lato-Regular.woff2",
+      "url": "/assets/releases/c504fba065925e87b3eb/fonts/Lato-Regular.woff2",
       "sha256": "9bd23c13b68e2468193aad4e871cd619b8e3c9add577820035291c4eb3dc76a0"
     },
     "/assets/holiday-editorial.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/holiday-editorial.js",
-      "sha256": "abf4ff58f4c39832bb28fe964681f802691fe911012f56cef02b6d2f22725c85"
+      "url": "/assets/releases/c504fba065925e87b3eb/holiday-editorial.js",
+      "sha256": "1c5db68fad822658b50f4501833693777e9ed6914e0b54eaeb7e8b897b2c9dcb"
     },
     "/assets/holiday-phase2.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/holiday-phase2.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/holiday-phase2.css",
       "sha256": "25349638464f4a18ff896e861e25ae061a4e2c41b87bd9beee3a6bbceebe6c3b"
     },
     "/assets/holiday-phase2.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/holiday-phase2.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/holiday-phase2.js",
       "sha256": "64cea9a73cc385c896a3e9b1d56611084a8bb0ddd0138a4444c3ad7477e68b86"
     },
     "/assets/homepage-bundle.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/homepage-bundle.css",
-      "sha256": "4b28f2dee837fa0431ab0e61712ec0013835d19cb8e0fbf4b0d2604c6dfd4a26"
+      "url": "/assets/releases/c504fba065925e87b3eb/homepage-bundle.css",
+      "sha256": "f53b427cf85a751e4f743c3445e2a3cd66cb2a19e1a3114feb6badd6efdfd905"
     },
     "/assets/homepage.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/homepage.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/homepage.css",
       "sha256": "6ab5bdb650a571196764f588ed4b4facfdccb25bb2f6af1f59f816210a67be1d"
     },
     "/assets/horoscope-detail.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/horoscope-detail.css",
-      "sha256": "f23683faa707784a17d8e9619c1db33a2e47bfcfbeea6db3d76b00e894373882"
+      "url": "/assets/releases/c504fba065925e87b3eb/horoscope-detail.css",
+      "sha256": "6a3f4ecc2200babf24d5e8e1946f21b0f632849c7a08273c10ed64ebb73ef9c4"
     },
     "/assets/horoscope-hub.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/horoscope-hub.css",
-      "sha256": "05d5bbe3ef59b0983d482a6e402f7f9dc89ad5d66a3433afef39967099daf081"
+      "url": "/assets/releases/c504fba065925e87b3eb/horoscope-hub.css",
+      "sha256": "df915b1edcec922034d2d268ab5cc4152d0ace8c510608c7ad42a6f04c1083a4"
     },
     "/assets/horoscope.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/horoscope.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/horoscope.css",
       "sha256": "b82f0838191c712b20364c3a3fc237cf3e4ee4d49f50c98872adfb377b955238"
     },
     "/assets/icons.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/icons.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/icons.js",
       "sha256": "e5ec390eb3ce31a7dd1b2b556b5f908df16e6a452c5f8534a357b58536e47f4c"
     },
     "/assets/ics.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/ics.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/ics.js",
       "sha256": "3bc0141e264108a97d3fa758ba4744902a14aa00bac9b0cb9de163f88303e314"
     },
     "/assets/leave-planner.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/leave-planner.js",
-      "sha256": "d90ddc7fc182a6fb080a8b86656ee09d336bdcba3c3668a16efb004c51d4ef83"
+      "url": "/assets/releases/c504fba065925e87b3eb/leave-planner.js",
+      "sha256": "873622429554670c2fe1dd12120de87e2138f78b72e5cfd18c8545dbdcd4e5ce"
     },
     "/assets/lunar.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/lunar.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/lunar.css",
       "sha256": "ac9f43027f6aa9cba6ea03b77b1518c42f39c2b5045ec4fca9e94dc3dfa77c26"
     },
     "/assets/lunar/astronomy-engine.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/lunar/astronomy-engine.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/lunar/astronomy-engine.js",
       "sha256": "048b9173939be29b7e02c01e927754789cf36210d7eb2374a57c9ab444cdab15"
     },
     "/assets/lunar/lunar-engine.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/lunar/lunar-engine.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/lunar/lunar-engine.js",
       "sha256": "11911f149b374ed98e23ac6ca59d25cbf8f332550b95efad94b60394063e118e"
     },
     "/assets/lunar/lunar-loader.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/lunar/lunar-loader.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/lunar/lunar-loader.js",
       "sha256": "06539f0fc2dcdfb4ff01e3078fbd8b05c29ca56084c54789030d00fe6922fc28"
     },
     "/assets/lunar/lunar.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/lunar/lunar.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/lunar/lunar.js",
       "sha256": "90fc229a831bfce4177f8521dd9d7eee148f241e7e888d084125a162af02490b"
     },
     "/assets/monthly-holidays.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/monthly-holidays.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/monthly-holidays.css",
       "sha256": "8b54dd00c0e6a7f36237d688cdf88b7ec6ba3d430058e372f7abc52682dc7bc9"
     },
     "/assets/monthly-holidays.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/monthly-holidays.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/monthly-holidays.js",
       "sha256": "b080d56e474499464c73c2ede1b47c2e797c1c7660cf82e00365c1432477a106"
     },
     "/assets/namedays-engine.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/namedays-engine.js",
-      "sha256": "48e8252208e6688009cdda7eeb784e2b77784715c170bbd7d12da4f8a950f27e"
+      "url": "/assets/releases/c504fba065925e87b3eb/namedays-engine.js",
+      "sha256": "eb8afcee3afede99b7c7f161a60d3f25efa3e05ae706b18035ccc29bc405daeb"
     },
     "/assets/namedays.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/namedays.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/namedays.css",
       "sha256": "a2d538f9c1ccd145816b4983affd719ccdc72b3339b12d14c7929aa195e0f2e9"
     },
     "/assets/namedays.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/namedays.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/namedays.js",
       "sha256": "1bbb0032ded55fb7a00379052f8a49fe44e5c599d484c60d75b30d75440d7618"
     },
     "/assets/phase-5-6-8-core.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/phase-5-6-8-core.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/phase-5-6-8-core.js",
       "sha256": "65aef73063e8f7f742d9a93bc423e6c8827b9f82cd6851b1937a3d72896149c9"
     },
     "/assets/phase-5-6-8.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/phase-5-6-8.js",
-      "sha256": "ca95c222eb88447f0ec86c16a8de8677aa15bbe8876d17d22baf785623573e4a"
+      "url": "/assets/releases/c504fba065925e87b3eb/phase-5-6-8.js",
+      "sha256": "0c35d3be5dbd87388befbc9873deefd405497fd31862d64f67d63a8170143567"
     },
     "/assets/print.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/print.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/print.css",
       "sha256": "e2c11b6e1508b615820f47b38d60601bd434168f70d49caf9488eba14bcce0de"
     },
     "/assets/search-engine.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/search-engine.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/search-engine.js",
       "sha256": "f81869c3bdbafe6ac6a0df983bffede31cf406d2312c56e3ca9d0ba91aaacf18"
     },
     "/assets/search-page.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/search-page.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/search-page.js",
       "sha256": "3bcabadff79b8d22efc6490f45e0c05de1ca2b38599ba633a7f7e283d78ee48f"
     },
     "/assets/seasons-core.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/seasons-core.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/seasons-core.js",
       "sha256": "edb27a20ffc22cef924c998eb7da7b55645e93bc821ad152d703e55b31778cb5"
     },
     "/assets/seasons.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/seasons.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/seasons.css",
       "sha256": "8102096e41c63e18bce9ef3e92987af9f0c5b0512e747e45f9bc9c74283c8453"
     },
     "/assets/seasons.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/seasons.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/seasons.js",
       "sha256": "3943193280012d7e22dbdbb0c01f4eb76581f2d013d328c8610ee4013b702bf3"
     },
     "/assets/storage.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/storage.js",
-      "sha256": "51aa4e6307f0ad94eddce5873e7bb3f89d6b27fc325a5e966b04a5f93596e6dc"
+      "url": "/assets/releases/c504fba065925e87b3eb/storage.js",
+      "sha256": "d1344f1003c29334df618e7a2b3fb8832a1dd0298d4041b3e9ef6d3f0519ab34"
     },
     "/assets/style.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/style.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/style.css",
       "sha256": "7a579cd4ef6e1cea31c1e02a34d6cf222b2a6e7bdde7b93bdd0bda480ae5f457"
     },
     "/assets/sunrise.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/sunrise.js",
-      "sha256": "a6dc28483a430bbaa3809103e9aad058542a4a89a1454db7349f735fd41dfcbd"
+      "url": "/assets/releases/c504fba065925e87b3eb/sunrise.js",
+      "sha256": "bbf5fd91d1331f7ff98577303dc3b2144b5085854e72baab5f5a1deadbfb4f69"
     },
     "/assets/tools.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/tools.js",
-      "sha256": "8a7304fd3e3dbbfb920df6f08c3226c54b40e838de61fdb6499cdcca16bba17f"
+      "url": "/assets/releases/c504fba065925e87b3eb/tools.js",
+      "sha256": "87436e47b04131fcda6f92e1fc38544ef067a787a5e418db3859b40a47134370"
     },
     "/assets/weather.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/weather.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/weather.js",
       "sha256": "6166b77c53ee8be044177e9df612dacdc53aba88231de899ba700986adb2ef53"
     },
     "/assets/zodiac-engine.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/zodiac-engine.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/zodiac-engine.js",
       "sha256": "a8c6ded38badc7fd174fc5fc5312911c0ea8b330935d064d29ae08ec9c265d3a"
     },
     "/assets/zodiac-guide.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/zodiac-guide.css",
-      "sha256": "b44add79eec25e7ab8dbe8d1c65bad5a10d2fb5acec5800b7b0cec358379981a"
+      "url": "/assets/releases/c504fba065925e87b3eb/zodiac-guide.css",
+      "sha256": "9000f28ca049b21c43556e07b7730d01546efbf88cc3520340899cf0f6a7ff03"
     },
     "/assets/zodiac.css": {
-      "url": "/assets/releases/4ce074782b704cd9919a/zodiac.css",
+      "url": "/assets/releases/c504fba065925e87b3eb/zodiac.css",
       "sha256": "5945e0fa91d7a455f1f79b0fa7f133a77b891b26265e06e5ca858236c35be7d7"
     },
     "/assets/zodiac.js": {
-      "url": "/assets/releases/4ce074782b704cd9919a/zodiac.js",
+      "url": "/assets/releases/c504fba065925e87b3eb/zodiac.js",
       "sha256": "97560f162c470eec10cf2553df9e0ab1add825400c529381683bfb31c80f2d2b"
     }
   }
