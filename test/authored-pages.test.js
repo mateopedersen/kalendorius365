@@ -17,9 +17,9 @@ const authoredRoutes = [
   "savaites/2029",
   "savaitiniai-planuokliai",
   "seimos-kalendorius",
-  "vardadieniai",
 ];
 const generator = readFileSync(new URL("../scripts/pages.rb", import.meta.url), "utf8");
+const namedaysGenerator = readFileSync(new URL("../lib/namedays_pages.rb", import.meta.url), "utf8");
 
 test("the release generator preserves authored interactive tool pages", () => {
   assert.match(generator, /return if preserve_authored_source\?\(target\)/);
@@ -29,6 +29,12 @@ test("the release generator preserves authored interactive tool pages", () => {
     assert.ok(frontMatter, `${route} must keep valid front matter`);
     assert.match(frontMatter[1], /^preserve_source: true$/m, `${route} must opt out of generated replacement`);
   }
+});
+
+test("the name-day hub is generated from its complete calendar source", () => {
+  assert.match(namedaysGenerator, /def hub/);
+  assert.match(namedaysGenerator, /def month_page\(month\)/);
+  assert.match(namedaysGenerator, /def run\s+write_data\s+hub\s+\(1\.\.12\)\.each \{ \|month\| month_page\(month\) \}/);
 });
 
 test("year and weekly planner pages connect the next useful planning step", () => {
