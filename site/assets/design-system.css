@@ -1575,8 +1575,10 @@ main.content-main{
 }
 .preview-link img{
   object-fit: contain;
-  width: 100%;
-  height: 150px;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
   filter: drop-shadow(0 2px 4px #1b294625);
   transition: transform 0.2s;
 }
@@ -1763,8 +1765,10 @@ main.content-main{
   background:linear-gradient(145deg,#f7f8fa,#eef2f1);
 }
 .blank-design-card .preview-link img{
-  width:100%;
-  height:210px;
+  width:auto;
+  max-width:100%;
+  max-height:100%;
+  height:auto;
   object-fit:contain;
 }
 .blank-design-card .design-info{
@@ -1926,7 +1930,10 @@ main.content-main{
   display: none;
 }
 .compact-gallery .preview-link img{
-  height: 128px;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
 }
 .compact-gallery .preview-link{
   min-height: 150px;
