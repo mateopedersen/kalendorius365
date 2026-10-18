@@ -1,5 +1,5 @@
-import { addDays, today, formatDate, weekday, monthLength } from './calendar.js';
-import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates } from './namedays-engine.js';
+import { addDays, today, formatDate, weekday, monthLength, countNoun } from './calendar.js';
+import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates, sanitizeFavoriteNames, favoriteNameDayEvents } from './namedays-engine.js';
 import { Store } from './storage.js';
 import { exportICS } from './ics.js';
 
@@ -23,8 +23,20 @@ async function init(){
   let selected=pageMonth?`2027-${String(pageMonth).padStart(2,'0')}-01`:today();
   let preparedURL='';
   let letter='',shown=12;
+  const favoriteKey='k365:namedays:favorites:v1',favoriteLimit=200;
+  let favorites=new Set(),favoriteStorageAvailable=true;
+  try {
+    const stored=JSON.parse(localStorage.getItem(favoriteKey)||'[]');
+    favorites=new Set(sanitizeFavoriteNames(stored,index,favoriteLimit));
+  } catch { favoriteStorageAvailable=false; }
   function clearPrepared(){if(preparedURL)URL.revokeObjectURL(preparedURL);preparedURL='';$('#nd-file-link').hidden=true;$('#nd-file-link').removeAttribute('href');}
   const feedback=(message,error=false)=>{const e=$('#nd-feedback');e.textContent=message;e.setAttribute('role',error?'alert':'status');};
+  function updateFavoriteStatus(){
+    $('#nd-favorites-status').textContent=favoriteStorageAvailable
+      ? `Išsaugotų vardų: ${favorites.size}. ${favorites.size?'Eksportuokite visas jų datas vienu ICS failu.':'Paspauskite žvaigždutę prie vardo, kad jį išsaugotumėte.'}`
+      : 'Naršyklė neleido išsaugoti mėgstamų vardų. Paieška ir kalendoriaus eksportas vis tiek veikia.';
+    $('#nd-export-favorites').disabled=!favorites.size;
+  }
   function ensureYear(year){
     const select=$('#nd-year');
     if(![...select.options].some(o=>o.value===String(year))){const option=node('option',String(year));option.value=year;select.prepend(option);}
@@ -89,16 +101,32 @@ async function init(){
     $('#nd-calendar-note').textContent=month===2&&monthLength(year,month)===28?'Šiais metais vasaris turi 28 dienas. Vasario 29-osios vardai išlieka sąraše; jų datai rinkitės 2028 metus.':`${year} m. ${monthNames[month-1]} mėnesio dienos. Savaitė prasideda pirmadienį.`;
   }
   function renderSearch(){
-    const matches=searchNames(index,{query:$('#nd-query').value,letter,month:$('#nd-month-filter').value});
+    const allMatches=searchNames(index,{query:$('#nd-query').value,letter,month:$('#nd-month-filter').value});
+    const matches=$('#nd-favorites-only').checked?allMatches.filter(result=>favorites.has(result.name)):allMatches;
     const list=$('#nd-results');list.replaceChildren();
     for(const result of matches.slice(0,shown)){
-      const li=node('li');li.append(node('strong',result.name));const dates=node('div',undefined,'nd-result-dates');
+      const li=node('li'),heading=node('div',undefined,'nd-result-heading');heading.append(node('strong',result.name));
+      const favorite=node('button',favorites.has(result.name)?'★':'☆','nd-favorite-toggle');favorite.type='button';favorite.dataset.favoriteName=result.name;
+      favorite.setAttribute('aria-pressed',String(favorites.has(result.name)));
+      favorite.setAttribute('aria-label',`${favorites.has(result.name)?'Pašalinti iš išsaugotų vardų':'Išsaugoti vardą'}: ${result.name}`);
+      favorite.title=favorites.has(result.name)?'Pašalinti iš išsaugotų vardų':'Išsaugoti vardą';
+      favorite.addEventListener('click',()=>{
+        const wasFavorite=favorites.has(result.name);
+        if(!wasFavorite&&favorites.size>=favoriteLimit){$('#nd-favorites-status').textContent=`Galima išsaugoti iki ${favoriteLimit} vardų.`;return;}
+        wasFavorite?favorites.delete(result.name):favorites.add(result.name);
+        try{localStorage.setItem(favoriteKey,JSON.stringify([...favorites]));favoriteStorageAvailable=true;}
+        catch{wasFavorite?favorites.add(result.name):favorites.delete(result.name);favoriteStorageAvailable=false;updateFavoriteStatus();return;}
+        updateFavoriteStatus();renderSearch();
+        const next=[...$('#nd-results').querySelectorAll('[data-favorite-name]')].find(button=>button.dataset.favoriteName===result.name);
+        (next||$('#nd-query')).focus();
+      });
+      heading.append(favorite);li.append(heading);const dates=node('div',undefined,'nd-result-dates');
       for(const key of result.dates){const a=node('a',label(key));a.href=`/vardadieniai/${data.months[Number(key.slice(0,2))-1][0]}/#diena-${key.slice(3)}`;
         a.setAttribute('aria-label',`${result.name}: ${label(key)} Pasirinkti kalendoriuje.`);
         a.addEventListener('click',e=>{e.preventDefault();chooseKey(key,result.name);$('#nd-selected-title').scrollIntoView({block:'center',behavior:'auto'});$('#nd-export-name').focus({preventScroll:true});});dates.append(a);}
       li.append(dates);list.append(li);
     }
-    $('#nd-search-status').textContent=matches.length?`Rasta vardų: ${matches.length}. Rodoma: ${Math.min(shown,matches.length)}. Paspauskite datą, kad pasirinktumėte būtent tą vardadienį.`:'Vardo pagal šias parinktis nerasta. Patikrinkite rašybą arba išvalykite raidės ir mėnesio filtrus.';
+    $('#nd-search-status').textContent=matches.length?`Rasta vardų: ${matches.length}. Rodoma: ${Math.min(shown,matches.length)}${$('#nd-favorites-only').checked?' išsaugotų vardų':''}. Paspauskite datą, kad pasirinktumėte būtent tą vardadienį.`:$('#nd-favorites-only').checked&&!favorites.size?'Dar neišsaugojote vardų. Išjunkite filtrą ir pažymėkite žvaigždute patinkančius vardus.':'Vardo pagal šias parinktis nerasta. Patikrinkite rašybą arba išvalykite raidės ir mėnesio filtrus.';
     $('#nd-more').hidden=shown>=matches.length;
     $('#nd-reset').hidden=!($('#nd-query').value||letter||$('#nd-month-filter').value);
   }
@@ -116,9 +144,19 @@ async function init(){
   }
   $('#nd-query').addEventListener('input',()=>{shown=12;renderSearch();});
   $('#nd-month-filter').addEventListener('change',()=>{shown=12;renderSearch();});
+  $('#nd-favorites-only').addEventListener('change',()=>{shown=12;renderSearch();});
   $('#nd-reset').addEventListener('click',()=>{letter='';shown=12;$('#nd-query').value='';$('#nd-month-filter').value='';for(const b of root.querySelectorAll('[data-letter]'))b.setAttribute('aria-pressed',String(b.dataset.letter===''));renderSearch();$('#nd-query').focus();});
   for(const b of root.querySelectorAll('[data-letter]'))b.addEventListener('click',()=>{letter=b.dataset.letter;shown=12;for(const x of root.querySelectorAll('[data-letter]'))x.setAttribute('aria-pressed',String(x===b));renderSearch();});
   $('#nd-more').addEventListener('click',()=>{shown+=12;renderSearch();});
+  $('#nd-export-favorites').addEventListener('click',()=>{
+    try{
+      const events=favoriteNameDayEvents(index,[...favorites],records,2028);
+      if(!events.length)throw Error('Nėra išsaugotų vardų, kuriuos būtų galima eksportuoti.');
+      clearPrepared();preparedURL=URL.createObjectURL(new Blob([exportICS(events)],{type:'text/calendar;charset=utf-8'}));
+      const link=$('#nd-file-link');link.href=preparedURL;link.download='isaugoti-vardadieniai.ics';link.hidden=false;link.click();
+      feedback(`Paruoštas ICS failas su ${countNoun(events.length,'kasmetinis vardadienio įvykis','kasmetiniai vardadienio įvykiai','kasmetinių vardadienio įvykių')}. Atsisiuntimas pradėtas; jei jis neatsidarė, naudokite failo nuorodą prie datos pasirinkimo.`);
+    }catch(error){feedback(error.message,true);}
+  });
   $('#nd-date').addEventListener('change',e=>selectDate(e.target.value));
   $('#nd-year').addEventListener('change',e=>{
     const date=validOccurrence(selected.slice(5),Number(e.target.value));
@@ -131,6 +169,7 @@ async function init(){
   $('#nd-export-form').addEventListener('submit',e=>{e.preventDefault();try{const item=event();clearPrepared();preparedURL=URL.createObjectURL(new Blob([exportICS([item])],{type:'text/calendar;charset=utf-8'}));const link=$('#nd-file-link');link.href=preparedURL;link.download=`vardadienis-${selected}.ics`;link.hidden=false;link.click();feedback(item.repeat==='yearly'?'Parengtas kasmetinis ICS įrašas. Jei atsisiuntimas neprasidėjo, paspauskite žemiau esančią failo nuorodą. Vasario 29-oji neperkeliama.':'Parengtas vienkartinis visos dienos ICS įrašas. Jei atsisiuntimas neprasidėjo, paspauskite žemiau esančią failo nuorodą.');}catch(error){feedback(error.message,true);}});
   $('#nd-add').addEventListener('click',()=>{try{const item=event(),store=new Store();if(store.data.events.some(e=>e.id===item.id)){feedback('Šis vardadienis jau įtrauktas į šios naršyklės kalendorių.');return;}store.update(state=>state.events.push(item));feedback(`Išsaugota šioje naršyklėje: ${item.title}. Atverkite asmeninį kalendorių.`);}catch(error){feedback(error.message,true);}});
   if(pageMonth)$('#nd-month-filter').value=String(pageMonth);
+  updateFavoriteStatus();
   const hash=location.hash.match(/^#diena-(\d{2})$/);if(hash&&pageMonth)chooseKey(`${String(pageMonth).padStart(2,'0')}-${hash[1]}`);else selectDate(selected);
   renderSearch();renderToday();
   let last=today();

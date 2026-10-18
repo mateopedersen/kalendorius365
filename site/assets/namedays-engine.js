@@ -22,6 +22,18 @@ export function buildIndex(records) {
   }
   return [...map.values()].map(r => ({ ...r, dates: [...new Set(r.dates)].sort() })).sort((a,b)=>collator.compare(a.name,b.name));
 }
+export function sanitizeFavoriteNames(values, index, limit = 200) {
+  if (!Array.isArray(values) || !Number.isInteger(limit) || limit < 0) return [];
+  const valid = new Set(index.map(item => item.name));
+  return [...new Set(values.filter(name => typeof name === 'string' && valid.has(name)))].slice(0, limit);
+}
+export function favoriteNameDayEvents(index, favorites, records, year = 2028) {
+  const selected = new Set(favorites);
+  return index.filter(item => selected.has(item.name)).flatMap(item => item.dates.map(key => {
+    const record = records.get(key), date = validOccurrence(key, year);
+    return record && date ? nameDayEvent(record, date, item.name, true) : null;
+  }).filter(Boolean));
+}
 export function searchNames(index, { query = '', letter = '', month = '' } = {}) {
   const q = query.trim().normalize('NFC').toLocaleLowerCase('lt').slice(0,80);
   const foldedQuery = foldName(q), selectedMonth = Number(month);

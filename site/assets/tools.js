@@ -128,6 +128,26 @@ for (const b of document.querySelectorAll("[data-design-filter]"))
       section.hidden = !section.querySelector(".design-card:not([hidden])");
   };
 if ($("#work-schedule")) {
+  const comparison = document.querySelector("#workday-compare");
+  if (comparison) {
+    const totals = {};
+    for (const schedule of ["5", "6"]) {
+      const row = document.querySelector(`[data-work-table="${schedule}"] tfoot tr`);
+      if (!row || row.children.length < 6) continue;
+      totals[schedule] = { days: Number(row.children[1].textContent), hours: Number(row.children[5].textContent) };
+      const card = comparison.querySelector(`[data-work-compare="${schedule}"]`);
+      if (card) {
+        card.querySelector("[data-work-days]").textContent = totals[schedule].days.toLocaleString("lt-LT");
+        card.querySelector("[data-work-hours]").textContent = totals[schedule].hours.toLocaleString("lt-LT");
+      }
+    }
+    const delta = comparison.querySelector("#workday-compare-delta");
+    if (delta && totals["5"] && totals["6"]) {
+      const difference = totals["6"].hours - totals["5"].hours;
+      const hours = cal.countNoun(Math.abs(difference), "darbo valanda", "darbo valandos", "darbo valandų");
+      delta.textContent = `Šešių dienų pavyzdyje yra ${cal.countNoun(totals["6"].days - totals["5"].days, "darbo diena", "darbo dienos", "darbo dienų")} daugiau, o įvertintų valandų ${hours} ${difference > 0 ? "daugiau" : difference < 0 ? "mažiau" : "tiek pat"} nei penkių dienų pavyzdyje.`;
+    }
+  }
   $("#work-schedule").onchange = (e) => {
     for (const section of document.querySelectorAll("[data-work-table]"))
       section.hidden = section.dataset.workTable !== e.target.value;

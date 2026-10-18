@@ -31,6 +31,10 @@
 {% else %}<link rel="stylesheet" href="/assets/style.css?v={{ site.css_version }}"><link rel="stylesheet" href="/assets/design-system.css?v={{ site.css_version }}">{% endif %}
 {% if page.calendar_editor %}<link rel="stylesheet" href="/assets/calendar-editor/editor.css?v={{ site.css_version }}">{% endif %}
 {% if page.planner_studio %}<link rel="stylesheet" href="/assets/planner-studio.css?v={{ site.css_version }}">{% endif %}
+{% if page.year_directory %}<link rel="stylesheet" href="/assets/year-directory.css?v={{ site.css_version }}">{% endif %}
+{% if page.astronomy_agenda %}<link rel="stylesheet" href="/assets/astronomy-agenda.css?v={{ site.css_version }}">{% endif %}
+{% if page.url contains '/darbo-dienos/' %}<link rel="stylesheet" href="/assets/workdays.css?v={{ site.css_version }}">{% endif %}
+{% if page.phase_module == "shift" %}<link rel="stylesheet" href="/assets/shift-exceptions.css?v={{ site.css_version }}">{% endif %}
 {% if page.contact %}<link rel="stylesheet" href="/assets/contact.css?v={{ site.css_version }}">{% endif %}{% if page.about_us %}<link rel="stylesheet" href="/assets/about-us.css?v={{ site.css_version }}">{% endif %}
 {% if page.horoscope and page.sign_key == nil and page.url != "/horoskopai/" and page.url != "/zodiakas/" %}<link rel="stylesheet" href="/assets/horoscope.css?v={{ site.css_version }}">{% endif %}
 {% if page.zodiac and page.sign_key == nil and page.url != "/horoskopai/" and page.url != "/zodiakas/" %}<link rel="stylesheet" href="/assets/zodiac.css?v={{ site.css_version }}">{% endif %}
@@ -51,6 +55,8 @@
 {% if page.discovery %}<link rel="stylesheet" href="/assets/discovery.css?v={{ site.css_version }}">{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/discovery.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.calendar_editor %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/calendar-editor/editor.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.planner_studio %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/planner-studio.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
+{% if page.year_directory %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/year-directory.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
+{% if page.astronomy_agenda %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/astronomy-agenda.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.tool %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/tools.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.tool_directory %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/tool-directory.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.planner %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/leave-planner.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}

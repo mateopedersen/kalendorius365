@@ -76,6 +76,7 @@ function setupShift() {
   const key = "k365:phase568:shift:v1";
   const saved = readLocal(key, {});
   const hasSavedDraft = Boolean(saved.schema);
+  let exceptions = Array.isArray(saved["shift-exceptions"]) ? saved["shift-exceptions"] : [];
   const requestedTemplate = new URLSearchParams(location.search).get("template");
   const todayLT = today();
   const defaultDates = { "shift-anchor": todayLT, "shift-from": todayLT, "shift-to": todayLT };
@@ -90,6 +91,8 @@ function setupShift() {
   for (const id of ["shift-anchor", "shift-from", "shift-to"]) $("#" + id).value = saved[id] || defaultDates[id];
   for (const id of ["shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"])
     if (saved[id] !== undefined) $("#" + id).value = saved[id];
+  $("#shift-exception-date").value = saved["shift-exception-date"] || todayLT;
+  $("#shift-exception-reason").value = saved["shift-exception-reason"] || "shift";
   const preset = $("#shift-preset");
   if (requestedTemplate === "cycle") {
     if (!hasSavedDraft) $("#shift-cycle").value = "D,D,N,N,P,P,P,P";
@@ -110,8 +113,9 @@ function setupShift() {
     const node = $("#shift-message"); node.textContent = value; node.setAttribute("role", error ? "alert" : "status");
   };
   function persistDraft() {
-    const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value]));
+    const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-exception-date", "shift-exception-reason"].map((id) => [id, $("#" + id).value]));
     state["shift-week-days"] = Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value));
+    state["shift-exceptions"] = exceptions;
     try { writeLocal(key, { schema: 1, ...state }); return true; }
     catch { message("Nepavyko išsaugoti juodraščio šiame įrenginyje. Atsisiųskite JSON kopiją prieš išeidami.", true); return false; }
   }
@@ -173,18 +177,50 @@ function setupShift() {
         if (Object.entries(definitions).some(([existing, item]) => existing !== originalCode && typeof item.color === "string" && item.color.toLowerCase() === color.toLowerCase())) return message("Kiekvienai pamainai pasirinkite skirtingą spalvą.", true);
         const next = { ...definitions }; delete next[originalCode]; next[code] = { ...def, name, start, end, break: pause, color };
         $("#shift-definitions").value = JSON.stringify(next, null, 2);
-        if (code !== originalCode) $("#shift-cycle").value = $("#shift-cycle").value.split(",").map((item) => item.trim() === originalCode ? code : item.trim()).join(",");
+        if (code !== originalCode) {
+          $("#shift-cycle").value = $("#shift-cycle").value.split(",").map((item) => item.trim() === originalCode ? code : item.trim()).join(",");
+          exceptions = exceptions.map((exception) => exception.reason === "shift" && exception.code === originalCode ? { ...exception, code } : exception);
+        }
         syncShiftEditors(); render(); message(`Pamaina ${code} išsaugota.`);
       };
       const remove = make("button", "Pašalinti rūšį", { type: "button" });
       remove.onclick = () => {
         if ($("#shift-cycle").value.split(",").map((item) => item.trim()).includes(originalCode)) return message("Pirmiausia pašalinkite šią žymą iš ciklo.", true);
+        if (exceptions.some((exception) => exception.reason === "shift" && exception.code === originalCode)) return message("Pirmiausia pašalinkite arba pakeiskite šią pamainą naudojančias vienos dienos išimtis.", true);
         const next = { ...definitions }; delete next[originalCode]; $("#shift-definitions").value = JSON.stringify(next, null, 2); syncShiftEditors(); render();
       };
       fieldset.append(save, remove); return fieldset;
     }));
   }
-  function syncShiftEditors() { syncCycleEditor(); syncDefinitionEditor(); }
+  function syncExceptionCodes() {
+    const select = $("#shift-exception-code"), reason = $("#shift-exception-reason").value;
+    let definitions = {};
+    try { definitions = readDefinitions(); } catch { /* allow JSON editing to finish */ }
+    select.replaceChildren(...Object.entries(definitions).map(([code, def]) => make("option", `${code} · ${def.name || "pamaina"}`, { value: code })));
+    if (!select.options.length) select.append(make("option", "Pirmiausia sukurkite pamainą", { value: "" }));
+    select.disabled = reason !== "shift";
+    if (reason === "shift" && !Object.hasOwn(definitions, select.value)) select.value = Object.keys(definitions)[0] || "";
+    $("#shift-exception-add").disabled = reason === "shift" && !Object.keys(definitions).length;
+  }
+  function renderExceptions() {
+    const list = $("#shift-exception-list"), labels = { shift: "Pakeista pamaina", rest: "Poilsio diena", leave: "Atostogos", sick: "Liga", other: "Kita neatvykimo diena" };
+    const from = $("#shift-from").value, to = $("#shift-to").value;
+    const items = exceptions.map((exception) => {
+      const li = make("li"), definition = exception.reason === "shift" ? (() => { try { return readDefinitions()[exception.code]?.name || exception.code; } catch { return exception.code; } })() : "0 darbo valandų";
+      const outside = from && to && (exception.date < from || exception.date > to);
+      li.append(make("span", `${displayDate(exception.date)} · ${labels[exception.reason] || "Vienos dienos pakeitimas"}${exception.reason === "shift" ? ` · ${exception.code} ${definition}` : " · P"}${outside ? " · už rodomo laikotarpio, dabar netaikoma" : ""}`));
+      const remove = make("button", "Pašalinti", { type: "button", "aria-label": `Pašalinti pakeitimą ${displayDate(exception.date)}` });
+      remove.onclick = () => {
+        const previous = exceptions; exceptions = exceptions.filter((entry) => entry.date !== exception.date);
+        if (!persistDraft()) { exceptions = previous; return; }
+        render(); message(`Vienos dienos pakeitimas ${displayDate(exception.date)} pašalintas; ciklas vėl taikomas.`);
+      };
+      li.append(remove); return li;
+    });
+    replace(list, items);
+    list.hidden = !items.length;
+  }
+  function syncShiftEditors() { syncCycleEditor(); syncDefinitionEditor(); syncExceptionCodes(); renderExceptions(); }
   $("#shift-cycle-add").onclick = () => setCycle([...$("#shift-cycle").value.split(",").map((code) => code.trim()).filter(Boolean), cycleCode.value]);
   $("#shift-definition-add").onclick = () => {
     try {
@@ -200,7 +236,21 @@ function setupShift() {
     } catch (error) { message(error.message, true); }
   };
   $("#shift-cycle").onchange = () => { syncCycleEditor(); persistDraft(); };
-  $("#shift-definitions").onchange = () => { syncShiftEditors(); persistDraft(); };
+  $("#shift-definitions").onchange = () => { syncShiftEditors(); persistDraft(); render(); };
+  $("#shift-exception-reason").onchange = syncExceptionCodes;
+  $("#shift-exception-add").onclick = () => {
+    const date = $("#shift-exception-date").value, reason = $("#shift-exception-reason").value;
+    if (!date || date < $("#shift-from").value || date > $("#shift-to").value) return message("Pasirinkite datą rodomame laikotarpyje.", true);
+    if (!exceptions.some((entry) => entry.date === date) && exceptions.length >= 370) return message("Vienam grafikui galima pridėti iki 370 vienos dienos pakeitimų.", true);
+    const item = { date, reason, code: reason === "shift" ? $("#shift-exception-code").value : "P" };
+    const wasExisting = exceptions.some((entry) => entry.date === date);
+    const previous = exceptions;
+    exceptions = [...exceptions.filter((entry) => entry.date !== date), item].sort((a, b) => a.date.localeCompare(b.date));
+    if (!persistDraft()) { exceptions = previous; return; }
+    render();
+    const reasonLabel = { shift: "pamaina pakeista", rest: "pažymėta poilsio diena", leave: "pažymėtos atostogos", sick: "pažymėta liga", other: "pažymėta neatvykimo diena" }[reason];
+    message(`${displayDate(date)}: ${reasonLabel}${wasExisting ? "; ankstesnis tos dienos pakeitimas atnaujintas" : ""}. Kitos ciklo dienos nepakeistos.`);
+  };
   function compute() {
     const start = $("#shift-anchor").value, from = $("#shift-from").value, to = $("#shift-to").value;
     if (!start || !from || !to) throw Error("Įrašykite ciklo pradžią ir abi laikotarpio datas.");
@@ -208,13 +258,15 @@ function setupShift() {
     try { definitions = JSON.parse($("#shift-definitions").value); } catch { throw Error("Pamainų aprašai turi būti galiojantis JSON."); }
     const legalHolidays = [...new Set(Array.from({ length: +to.slice(0, 4) - +from.slice(0, 4) + 1 }, (_, i) => +from.slice(0, 4) + i)
       .flatMap((year) => holidays(year, CALENDAR_DATA)))].filter((holiday) => holiday.date >= from && holiday.date <= to);
+    const activeExceptions = exceptions.filter((exception) => exception.date >= from && exception.date <= to);
     const plan = buildShiftPlan({ anchor: start, from, to, cycleText: $("#shift-cycle").value, definitions,
-      foldPolicy: $("#shift-fold").value, holidayDates: legalHolidays.map((h) => h.date), zone: TZ });
+      foldPolicy: $("#shift-fold").value, holidayDates: legalHolidays.map((h) => h.date), exceptions: activeExceptions, zone: TZ });
     return { ...plan, legalHolidays };
   }
   function render() {
     try {
       const result = compute(), shifts = result.visible; latest = shifts;
+      renderExceptions();
       const filterMode = $("#shift-week-filter").value;
       const customWeekdays = new Set(Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value)));
       const shownShifts = shifts.filter((shift) => {
@@ -223,6 +275,8 @@ function setupShift() {
       });
       const shiftsByDate = new Map(shownShifts.map((shift) => [shift.date, shift]));
       const holidayByDate = new Map();
+      const exceptionByDate = new Map(result.exceptions.map((exception) => [exception.date, exception]));
+      const exceptionLabels = { shift: "Vienos dienos pamainos pakeitimas", rest: "Poilsio diena", leave: "Atostogos", sick: "Liga", other: "Kita neatvykimo diena" };
       for(const holiday of result.legalHolidays)holidayByDate.set(holiday.date,[...(holidayByDate.get(holiday.date)||[]),holiday.name]);
       const hours = shifts.reduce((n, s) => n + s.worked, 0);
       const elapsedHours = shifts.reduce((n, s) => n + s.elapsed, 0);
@@ -232,7 +286,7 @@ function setupShift() {
       const tbody = $("#shift-rows");
       replace(tbody, shownShifts.map((s) => {
         const tr = make("tr");
-        const labelCell = make("td"), symbol = make("strong", s.symbol), name = make("span", ` · ${s.name}${s.holidayDates.length ? " · šventė: " + s.holidayDates.join(", ") : ""}`);
+        const labelCell = make("td"), symbol = make("strong", s.symbol), name = make("span", ` · ${s.name}${s.exception === "shift" ? " · vienos dienos pakeitimas" : ""}${s.holidayDates.length ? " · šventė: " + s.holidayDates.join(", ") : ""}`);
         labelCell.append(symbol, name);
         const details = [s.location, s.note].filter(Boolean);
         if (details.length) labelCell.append(make("small", details.join(" · "), { class: "shift-row-note" }));
@@ -244,7 +298,7 @@ function setupShift() {
       }));
       $("#shift-list-region").hidden = $("#shift-display").value !== "list";
       replace($("#shift-summary"), [
-        ...[[shifts.length, "Pamainos"], [hours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Įvertintos darbo valandos"], [elapsedHours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Pamainų trukmė"], [shifts.filter((s) => s.code === "D").length, "Dieninės D pamainos"], [shifts.filter((s) => s.code === "N").length, "Naktinės N pamainos"], [daysOff, "Laisvos ciklo dienos"], [shifts.reduce((n,s)=>n+s.holidayDates.length,0), "Šventinių datų sankirtos"]].map(([v, l]) => { const box = make("div"); box.append(make("strong", String(v)), make("span", l)); return box; }),
+        ...[[shifts.length, "Pamainos"], [hours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Įvertintos darbo valandos"], [elapsedHours.toLocaleString("lt-LT", { maximumFractionDigits: 2 }), "Pamainų trukmė"], [shifts.filter((s) => s.code === "D").length, "Dieninės D pamainos"], [shifts.filter((s) => s.code === "N").length, "Naktinės N pamainos"], [daysOff, "Laisvos ciklo dienos"], [result.exceptions.length, "Vienos dienos pakeitimai"], [shifts.reduce((n,s)=>n+s.holidayDates.length,0), "Šventinių datų sankirtos"]].map(([v, l]) => { const box = make("div"); box.append(make("strong", String(v)), make("span", l)); return box; }),
       ]);
       const groups = new Map();
       for (const s of shifts) {
@@ -270,11 +324,12 @@ function setupShift() {
           for(let i=0;i<cells;i+=7){const row=make("tr");for(let col=0;col<7;col++){
             const number=i+col-offset+1,cell=make("td");
             if(number<1||number>length){cell.setAttribute("aria-hidden","true");row.append(cell);continue;}
-            const date=`${year}-${pad(month)}-${pad(number)}`,holidayNames=holidayByDate.get(date)||[],shift=shiftsByDate.get(date),dateLabel=displayDate(date);
+            const date=`${year}-${pad(month)}-${pad(number)}`,holidayNames=holidayByDate.get(date)||[],shift=shiftsByDate.get(date),exception=exceptionByDate.get(date),dateLabel=displayDate(date);
             if(col>=5)cell.classList.add("is-weekend");if(holidayNames.length)cell.classList.add("is-holiday");
-            cell.setAttribute("aria-label",[dateLabel,holidayNames.length?`Įstatyminė šventė: ${holidayNames.join(", ")}`:"",shift?`${shift.symbol} · ${shift.name}, ${shift.startTime}–${shift.endTime}`:"Poilsio diena"].filter(Boolean).join(". "));
+            cell.setAttribute("aria-label",[dateLabel,holidayNames.length?`Įstatyminė šventė: ${holidayNames.join(", ")}`:"",exception?exceptionLabels[exception.reason]:"",shift?`${shift.symbol} · ${shift.name}, ${shift.startTime}–${shift.endTime}`:"Poilsio diena"].filter(Boolean).join(". "));
             cell.append(make("span",String(number),{class:"shift-calendar-day"}));
-            if(shift){const chip=make("span",shift.symbol,{class:"shift-calendar-chip",title:`${shift.name}, ${shift.startTime}–${shift.endTime}`});chip.style.borderInlineStart=`3px solid ${shift.color}`;cell.append(chip);}
+            if(shift){const chip=make("span",shift.symbol,{class:"shift-calendar-chip",title:`${shift.name}, ${shift.startTime}–${shift.endTime}${shift.exception==="shift"?" · vienos dienos pakeitimas":""}`});chip.style.borderInlineStart=`3px solid ${shift.color}`;cell.append(chip);}
+            if(exception)cell.append(make("small",exception.reason==="shift"?"Pakeista pamaina":exceptionLabels[exception.reason],{class:`shift-exception-chip${exception.reason==="shift"?" is-shift":""}`}));
             row.append(cell);
           }body.append(row);}
           table.append(body);section.append(table);visualization.append(section);monthKey=month===12?`${year+1}-01`:`${year}-${pad(month+1)}`;
@@ -285,9 +340,9 @@ function setupShift() {
         const table=make("table",undefined,{class:"data-table shift-week-table"}),thead=make("thead"),header=make("tr");header.append(make("th","Savaitė"));["Pr","An","Tr","Kt","Pn","Št","Sk"].forEach((day,index)=>{const th=make("th",day);th.setAttribute("aria-label",weekdays[index]);header.append(th);});thead.append(header);table.append(thead);
         const body=make("tbody");let monday=dateAt($("#shift-from").value,-((new Date($("#shift-from").value+"T12:00:00Z").getUTCDay()+6)%7));
         while(monday<=$("#shift-to").value){const row=make("tr"),weekEnd=dateAt(monday,6);row.append(make("th",`${displayDate(monday)} – ${displayDate(weekEnd)}`,{scope:"row"}));
-          for(let col=0;col<7;col++){const date=dateAt(monday,col),cell=make("td"),shift=shiftsByDate.get(date),holidayNames=holidayByDate.get(date)||[];if(col>=5)cell.classList.add("is-weekend");if(holidayNames.length)cell.classList.add("is-holiday");
-            cell.setAttribute("aria-label",[displayDate(date),holidayNames.length?`Įstatyminė šventė: ${holidayNames.join(", ")}`:"",shift?`${shift.symbol} · ${shift.name}, ${shift.startTime}–${shift.endTime}`:"Poilsio diena"].filter(Boolean).join(". "));
-            cell.append(make("strong",date.slice(-2)));if(shift){const item=make("div",`${shift.symbol} · ${shift.startTime}–${shift.endTime}`);item.style.borderInlineStart=`3px solid ${shift.color}`;cell.append(item);}row.append(cell);
+          for(let col=0;col<7;col++){const date=dateAt(monday,col),cell=make("td"),shift=shiftsByDate.get(date),holidayNames=holidayByDate.get(date)||[],exception=exceptionByDate.get(date);if(col>=5)cell.classList.add("is-weekend");if(holidayNames.length)cell.classList.add("is-holiday");
+            cell.setAttribute("aria-label",[displayDate(date),holidayNames.length?`Įstatyminė šventė: ${holidayNames.join(", ")}`:"",exception?exceptionLabels[exception.reason]:"",shift?`${shift.symbol} · ${shift.name}, ${shift.startTime}–${shift.endTime}`:"Poilsio diena"].filter(Boolean).join(". "));
+            cell.append(make("strong",date.slice(-2)));if(shift){const item=make("div",`${shift.code} · ${shift.startTime}–${shift.endTime}`);item.style.borderInlineStart=`3px solid ${shift.color}`;cell.append(item);}if(exception)cell.append(make("small",exception.reason==="shift"?"Pakeista pamaina":exceptionLabels[exception.reason],{class:`shift-exception-chip${exception.reason==="shift"?" is-shift":""}`}));row.append(cell);
           }body.append(row);monday=dateAt(monday,7);}
         table.append(body);const scroll=make("div");scroll.className="table-scroll";scroll.setAttribute("tabindex","0");scroll.setAttribute("role","region");scroll.setAttribute("aria-label","Savaitės pamainų laiko juosta; siaurame ekrane slinkite horizontaliai");scroll.append(table);section.append(scroll);visualization.append(section);
       }else if(display==="year"){
@@ -302,8 +357,9 @@ function setupShift() {
       if (result.weeklyWarnings.length) warnings.push(`galimai trūksta ${REST_RULES?.weeklyRestHours || 35} val. nepertraukiamo poilsio ${result.weeklyWarnings.length} iš eilės einančių 7 dienų laikotarpiuose`);
       $("#shift-warning").textContent = `${warnings.length ? "Peržiūros pastaba: " + warnings.join("; ") + ". " : "Šiose pamainose pagal parodytą laikotarpį neužfiksuota trumpesnio nei nustatyto bendro poilsio tarpo. "}VDI informaciniame šaltinyje nurodomi bendrieji ${REST_RULES?.dailyRestHours || 11} val. paros ir ${REST_RULES?.weeklyRestHours || 35} val. savaitės poilsio dydžiai. Įrankis nepatikrina visų teisės išimčių, ankstesnio grafiko, kelių darbdavių ar apskaitos laikotarpio ir nepateikia teisėtumo išvados.`;
       message(`${shifts.length} pamainos apskaičiuotos. Faktinis laikas atsižvelgia į Europe/Vilnius vasaros laiką; darbo valandos atimant pertrauką yra planavimo įvertis.`);
-      const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value]));
+      const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-exception-date", "shift-exception-reason"].map((id) => [id, $("#" + id).value]));
       state["shift-week-days"] = Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value));
+      state["shift-exceptions"] = exceptions;
       writeLocal(key, { schema: 1, ...state });
     } catch (error) { latest = []; $("#shift-rows").replaceChildren(); $("#shift-periods").replaceChildren(); $("#shift-summary").replaceChildren(); $("#shift-visualization").replaceChildren(); $("#shift-warning").textContent = "Patikrinkite įvestį. Teisinė atitiktis nėra nustatoma."; message(error.message, true); }
   }
@@ -316,15 +372,33 @@ function setupShift() {
     render();
   };
   form.onsubmit = (event) => { event.preventDefault(); render(); };
-  ["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].forEach((id) => {
+  ["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-exception-date", "shift-exception-reason"].forEach((id) => {
     $("#" + id).addEventListener("input", persistDraft);
     $("#" + id).addEventListener("change", () => { persistDraft(); if (["shift-view", "shift-display", "shift-week-filter"].includes(id)) updateCustomDays(); render(); });
   });
   dayList.onchange = () => { persistDraft(); render(); };
-  const backupData = () => ({ ...Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value])), "shift-week-days": Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value)) });
+  const backupData = () => ({ ...Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-exception-date", "shift-exception-reason"].map((id) => [id, $("#" + id).value])), "shift-week-days": Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value)), "shift-exceptions": exceptions });
   $("#shift-json-export").onclick = () => saveJSON("pamainu-grafikas.json", { schema: 1, data: backupData() });
   $("#shift-json-import").onchange = async (event) => {
-    try { const json = await readJSONFile(event.target.files[0]); const d = json.data; if (!d || Object.keys(d).length > 10 || typeof d["shift-cycle"] !== "string" || d["shift-cycle"].length > 160 || typeof d["shift-definitions"] !== "string" || d["shift-definitions"].length > 5000 || (d["shift-week-days"] !== undefined && (!Array.isArray(d["shift-week-days"]) || d["shift-week-days"].length > 7 || d["shift-week-days"].some((n) => !Number.isInteger(n) || n<1 || n>7)))) throw Error("Kopijos turinys netinkamas."); for (const [id, value] of Object.entries(d)) if ($("#" + id)) $("#" + id).value = String(value); if (Array.isArray(d["shift-week-days"])) dayList.querySelectorAll("input").forEach((input)=>{input.checked=d["shift-week-days"].includes(Number(input.value));}); updateCustomDays(); syncShiftEditors(); render(); }
+    try {
+      const json = await readJSONFile(event.target.files[0]), d = json.data;
+      const allowedKeys = new Set(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter", "shift-exception-date", "shift-exception-reason", "shift-week-days", "shift-exceptions"]);
+      if (!d || typeof d !== "object" || Array.isArray(d) || Object.keys(d).length > allowedKeys.size || Object.keys(d).some((key) => !allowedKeys.has(key)) || typeof d["shift-cycle"] !== "string" || d["shift-cycle"].length > 160 || typeof d["shift-definitions"] !== "string" || d["shift-definitions"].length > 5000 || (d["shift-week-days"] !== undefined && (!Array.isArray(d["shift-week-days"]) || d["shift-week-days"].length > 7 || new Set(d["shift-week-days"]).size !== d["shift-week-days"].length || d["shift-week-days"].some((n) => !Number.isInteger(n) || n<1 || n>7)))) throw Error("Kopijos turinys netinkamas.");
+      const importedExceptions=d["shift-exceptions"]===undefined?[]:d["shift-exceptions"], importedDefinitions=JSON.parse(d["shift-definitions"]);
+      if (!Array.isArray(importedExceptions) || importedExceptions.length > 370 || new Set(importedExceptions.map((x)=>x?.date)).size !== importedExceptions.length || importedExceptions.some((x)=>!x || typeof x.date!=="string" || !["shift","rest","leave","sick","other"].includes(x.reason) || typeof x.code!=="string")) throw Error("Vienos dienos pakeitimų sąrašas netinkamas.");
+      const importedFrom=d["shift-from"],importedTo=d["shift-to"];
+      if(typeof importedFrom!=="string"||typeof importedTo!=="string"||difference(importedFrom,importedTo)<0) throw Error("Kopijoje nurodytas laikotarpis netinkamas.");
+      for(const exception of importedExceptions){
+        difference(exception.date,exception.date);
+        const invalidCode=exception.reason==="shift"?(!importedDefinitions?.[exception.code]||exception.code==="P"):exception.code!=="P";
+        if(exception.date<importedFrom||exception.date>importedTo||invalidCode) throw Error("Patikrinkite vienos dienos pakeitimo datą ir pamainos žymą.");
+      }
+      buildShiftPlan({ anchor: d["shift-anchor"], from: importedFrom, to: importedTo, cycleText: d["shift-cycle"], definitions: importedDefinitions, foldPolicy: d["shift-fold"], exceptions: importedExceptions, zone: TZ });
+      if ((d["shift-view"] !== undefined && !["week", "month", "year", "list"].includes(d["shift-view"])) || (d["shift-display"] !== undefined && !["list", "month", "week", "year"].includes(d["shift-display"])) || (d["shift-week-filter"] !== undefined && !["all", "five", "six", "custom"].includes(d["shift-week-filter"]))) throw Error("Kopijos peržiūros nustatymai netinkami.");
+      for (const [id, value] of Object.entries(d)) if ($("#" + id)) $("#" + id).value = String(value);
+      if (Array.isArray(d["shift-week-days"])) dayList.querySelectorAll("input").forEach((input)=>{input.checked=d["shift-week-days"].includes(Number(input.value));});
+      exceptions=importedExceptions;updateCustomDays();syncShiftEditors();render();
+    }
     catch (error) { message(error.message, true); } finally { event.target.value = ""; }
   };
   $("#shift-ics").onclick = () => {

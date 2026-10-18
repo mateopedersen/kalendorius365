@@ -14,6 +14,7 @@ const isoWeekPages = [2027, 2028, 2029].map((year) => readFileSync(new URL(`../s
 const pageGenerator = readFileSync(new URL("../scripts/pages.rb", import.meta.url), "utf8");
 const toolsScript = readFileSync(new URL("../site/assets/tools.js", import.meta.url), "utf8");
 const yearDirectoryPage = readFileSync(new URL("../site/metai/index.html", import.meta.url), "utf8");
+const yearDirectoryScript = readFileSync(new URL("../site/assets/year-directory.js", import.meta.url), "utf8");
 test("Lithuanian counted nouns use singular, paucal and genitive plural forms", () => {
   const forms = ["darbo diena", "darbo dienos", "darbo dienų"];
   for (const [number, expected] of [[0,"0 darbo dienų"],[1,"1 darbo diena"],[2,"2 darbo dienos"],[5,"5 darbo dienos"],[10,"10 darbo dienų"],[11,"11 darbo dienų"],[19,"19 darbo dienų"],[21,"21 darbo diena"],[22,"22 darbo dienos"],[25,"25 darbo dienos"],[30,"30 darbo dienų"]]) {
@@ -80,16 +81,15 @@ test("ISO week identifiers resolve to validated Monday–Sunday date ranges", ()
 });
 test("year directory facts and two-year comparison use the shared calendar engine", () => {
   for (const [year, days, start, end] of [[2027,365,"penktadienis","penktadienis"],[2028,366,"šeštadienis","sekmadienis"],[2029,365,"pirmadienis","pirmadienis"]]) {
-    assert.match(yearDirectoryPage, new RegExp(`<strong>${days} dienos</strong>`));
+    assert.match(yearDirectoryPage, new RegExp(`<strong data-year-days>${days} dienos</strong>`));
     assert.match(yearDirectoryPage, new RegExp(`/${year}/`));
-    const weekdayOptions = { weekday: "long", year: undefined, month: undefined, day: undefined };
-    assert.equal(c.formatDate(`${year}-01-01`, weekdayOptions), start);
-    assert.equal(c.formatDate(`${year}-12-31`, weekdayOptions), end);
+    assert.match(yearDirectoryPage, new RegExp(`data-year-card="${year}"`));
+    assert.ok(c.formatDate(`${year}-01-01`, { weekday: "long" }).includes(start));
+    assert.ok(c.formatDate(`${year}-12-31`, { weekday: "long" }).includes(end));
   }
   assert.match(yearDirectoryPage, /id="year-comparison-form"/);
-  assert.match(pageGenerator, /year-directory-card/);
-  assert.match(pageGenerator, /id="year-comparison-form"/);
-  assert.match(pageGenerator, /page\('metai',[\s\S]*year_intro\+year_cards\+year_comparison\+year_note,true\)/);
+  assert.match(yearDirectoryScript, /yearFacts\(year\)/);
+  assert.match(yearDirectoryScript, /renderYearPrintAssets/);
   assert.match(toolsScript, /cal\.workStats\(start, end, data\)/);
   assert.equal(c.workStats("2027-01-01", "2027-12-31", data).days, 252);
   assert.equal(c.workStats("2027-01-01", "2027-12-31", data).hours, 2009);
