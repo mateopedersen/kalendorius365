@@ -220,7 +220,7 @@ test('lunar leap-date selection, keyboard movement, ICS and lightbox work',async
 });
 
 test('shift planner generates a real cycle, validates bad JSON and exports ICS',async({page})=>{
- await page.goto('/pamainu-grafikas/');await page.locator('#shift-anchor').fill('2028-02-28');await page.locator('#shift-from').fill('2028-02-28');await page.locator('#shift-to').fill('2028-03-06');
+ await page.goto('/pamainu-grafikas/');await expect(page.locator('#shift-planner')).toHaveJSProperty('inert',false);await page.locator('#shift-anchor').fill('2028-02-28');await page.locator('#shift-from').fill('2028-02-28');await page.locator('#shift-to').fill('2028-03-06');
  await page.locator('#shift-planner details').first().locator('summary').click();
  const cycle='D,D,P,P,D,D,D,P,P,D,D,P,P,P';await page.locator('#shift-cycle').fill(cycle);await page.locator('#shift-cycle').press('Tab');await expect(page.locator('#shift-cycle')).toHaveValue(cycle);
  // The saved weekday filter is a user preference; make the full-cycle expectation explicit.
