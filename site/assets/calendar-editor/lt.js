@@ -1,4 +1,6 @@
 const LT = Object.freeze({
+  apply_current_all: "Šio mėnesio dizainą taikyti visiems",
+  reorder_hint: "Eilė pakeista. Paspauskite paskirstymo mygtuką, kad pritaikytumėte naują eilę mėnesiams.",
   "lapkritis": "Lapkritis",
   "gruodis": "Gruodis",
   "gimtadienis": "Gimtadienis",
