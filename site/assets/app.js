@@ -180,8 +180,11 @@ function monthTable(date, isMini = false) {
       b.setAttribute("aria-pressed", String(s === selected));
       b.setAttribute(
         "aria-label",
-        cal.formatDate(s, { weekday: "long" }) +
-          (holiday.length ? "; " + holiday.map((h) => h.name).join(", ") : "") +
+        [String(+s.slice(8)),
+          ...(!isMini ? holiday.map(h => (h.classification === "commemoration" ? "◦ " : "◆ ") + h.name) : []),
+          ...items.slice(0, 2).map(e => (e.important ? "! " : "") + e.title),
+          ...(items.length > 2 ? ["+" + (items.length - 2)] : []),
+        ].join(" ") + "; " + cal.formatDate(s, { weekday: "long" }) +
           (items.length ? `; ${items.length} įvykiai` : ""),
       );
       if (s.slice(0, 7) !== date.slice(0, 7)) b.classList.add("other-month");

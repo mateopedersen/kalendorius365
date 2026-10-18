@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {minifyJavaScript} from '../scripts/minify_js.mjs';
+import {minifyJavaScript, staticImports} from '../scripts/minify_js.mjs';
 
 test('generated modules preserve names, exports, Unicode and public property names', async () => {
   const source = `/*! Test licence */
@@ -20,4 +20,12 @@ test('module minification retains versioned lazy import and asset URL strings', 
   assert.ok(output.includes('./engine.js?v=abc123'));
   assert.ok(output.includes('/assets/moon.webp?v=123abc#moon'));
   assert.ok(output.includes('import('));
+});
+
+test('preloads follow static dependencies while leaving intent-driven imports lazy', () => {
+  assert.deepEqual(staticImports(`import { Store } from './storage.js?v=123';
+import * as cal from './calendar.js?v=123';
+export { x } from './shared.js?v=123';
+const lazy = () => import('./search-engine.js?v=123');
+fetch('/api/location');`), ['./storage.js?v=123','./calendar.js?v=123','./shared.js?v=123']);
 });
