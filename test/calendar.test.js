@@ -59,6 +59,21 @@ test("movable and statutory holidays; no substitute Mondays", () => {
   }
   assert(!c.holidays(2028, data).some((h) => h.date === "2028-01-03"));
 });
+test("public holiday lookup reuses immutable years and retains classifications", () => {
+  const commemorations = [{ id: "example", title: "Atmintina diena", month: 2, day: 16 }];
+  const lookup = c.createCalendarEntries(data, commemorations), original = lookup(2028);
+  assert.equal(lookup(2028), original);
+  assert.deepEqual(original, [...c.holidays(2028, data), {
+    id: "example", name: "Atmintina diena", date: "2028-02-16", classification: "commemoration",
+  }]);
+  assert.ok(Object.isFrozen(original) && original.every(Object.isFrozen));
+  assert.throws(() => original.push({}));
+  assert.throws(() => { original[0].date = "2028-12-31"; });
+  for (let year = 2030; year < 2046; year++) lookup(year);
+  assert.notEqual(lookup(2028), original);
+  assert.deepEqual(lookup(2028), original);
+  assert.notEqual(c.createCalendarEntries(data, commemorations)(2028), original);
+});
 test("all monthly workdays and preholiday hours match Ruby; target includes Jan 1 next year", () => {
   for (const y of years)
     for (const six of [false, true])
@@ -95,6 +110,30 @@ test("Vilnius date rollover, DST gaps and repeated hour", () => {
     "2027-10-31T00:30:00.000Z",
   );
   assert.equal(c.difference("2027-03-27", "2027-03-29"), 2);
+});
+test("reused date formatters preserve Lithuanian options and every supplied instant", () => {
+  const settings = [
+    {}, { weekday: "long" }, { month: "short", year: undefined },
+    { weekday: "long", year: undefined, month: undefined, day: undefined },
+    { timeZone: "Europe/Vilnius", month: "2-digit", day: "2-digit" },
+  ];
+  for (const date of ["1900-01-01", "2000-02-29", "2027-03-28", "2027-10-31", "2100-12-31"])
+    for (const options of settings) {
+      const expected = new Intl.DateTimeFormat("lt-LT", {
+        timeZone: "UTC", year: "numeric", month: "long", day: "numeric", ...options,
+      }).format(c.parse(date));
+      assert.equal(c.formatDate(date, options), expected);
+      assert.equal(c.formatDate(date, Object.fromEntries(Object.entries(options).reverse())), expected);
+    }
+  for (const instant of ["2027-03-27T21:59:59Z", "2027-03-27T22:00:00Z", "2027-03-28T21:00:00Z", "2027-10-30T20:59:59Z", "2027-10-30T21:00:00Z", "2027-10-31T22:00:00Z"]) {
+    const now = new Date(instant), parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: c.TZ, year: "numeric", month: "2-digit", day: "2-digit",
+    }).formatToParts(now), values = Object.fromEntries(parts.map(p => [p.type, p.value]));
+    assert.equal(c.today(now), `${values.year}-${values.month}-${values.day}`);
+  }
+  assert.throws(() => c.formatDate("2027-02-29"));
+  assert.throws(() => c.formatDate("2027-01-01", { timeZone: "invalid" }));
+  assert.throws(() => c.formatDate("2027-01-01", { weekday: null, year: undefined, month: undefined, day: undefined }));
 });
 const event = () => ({
   id: "test",

@@ -7101,12 +7101,12 @@
     {
       "path": ".github/workflows/horoscope-automation.yml",
       "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "8fa23a10d18c050e27f9e1b4bb499436c735b1ab361dbf67948187e66a1efc25"
+      "sha256": "158ecad2cca3792b505de6f35ac24c32560ade74759c22b6d22f60074756a718"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "9715e322b4c165fc4b5bad50ee40a7f38f77c2ffbd170b532e6b8396b2738432"
+      "sha256": "6aa61c2d5f72faa09c10fb63457d46486f27e744fac1bd482c8f8436f232b84b"
     }
   ],
   "changed_baseline_assets": [],

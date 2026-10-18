@@ -8,7 +8,7 @@ async function pdfLibrary() {
   if (window.jspdf) return window.jspdf.jsPDF;
   loader ??= new Promise((resolve, reject) => {
     let script = document.createElement("script");
-    script.src = new URL("./vendor/jspdf-4.2.1.umd.min.js", import.meta.url).href;
+    script.src = new URL("./vendor/jspdf-4.2.1.umd.min.js" + new URL(import.meta.url).search, import.meta.url).href;
     script.onload = resolve;
     script.onerror = () => {
       loader = null;
