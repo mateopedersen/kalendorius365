@@ -38,6 +38,8 @@ module Jekyll
         contents << File.binread(File.expand_path('../lib/css_minifier.rb', site.source)) if key == 'css_version'
         contents << File.binread(File.expand_path('../scripts/css_route_split.py', site.source)) if key == 'css_version'
         contents << File.binread(File.expand_path('../scripts/inline_route_css.py', site.source)) if key == 'css_version'
+        contents << File.binread(File.expand_path('../scripts/minify_css.mjs', site.source)) if key == 'css_version'
+        contents << File.binread(File.expand_path('../package-lock.json', site.source)) if key == 'css_version'
         contents << File.binread(File.expand_path('../lib/static_asset_urls.rb', site.source))
         contents << File.binread(File.expand_path('../scripts/build.rb', site.source))
         if key == 'script_version'

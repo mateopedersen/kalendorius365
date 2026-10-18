@@ -36,43 +36,64 @@ export function buildContactFormUrl({ topic = "", pageUrl = "", embedded = false
   return url.href;
 }
 
-function initializeContactPage() {
-  const frame = document.querySelector("[data-contact-frame]");
+export function initializeContactPage(doc = document, search = window.location.search) {
+  const frame = doc.querySelector("[data-contact-frame]");
   if (!frame) return;
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(search);
   const topic = params.get("tema") || "";
   const pageUrl = safeSourcePage(params.get("puslapis"));
-  // Keep the static iframe untouched when no prefill is needed, avoiding a reload.
-  if (Object.hasOwn(CONTACT_TOPICS, topic) || pageUrl) frame.src = buildContactFormUrl({ topic, pageUrl, embedded: true });
-  document.querySelectorAll("[data-open-contact-form]").forEach((link) => {
+  // Load the external application only when a visitor chooses to use it.
+  // Source-page sanitization and the direct no-JavaScript links stay available.
+  frame.dataset.src = buildContactFormUrl({ topic, pageUrl, embedded: true });
+  const launch = doc.querySelector("[data-contact-launch]");
+  const loading = doc.querySelector("[data-contact-loading]");
+  if (launch) {
+    launch.hidden = false;
+    launch.addEventListener("click", () => {
+      if (!frame.getAttribute("src")) {
+        if (loading) loading.hidden = false;
+        frame.setAttribute("aria-busy", "true");
+        frame.addEventListener("load", () => {
+          if (loading) loading.hidden = true;
+          frame.setAttribute("aria-busy", "false");
+        }, {once:true});
+        frame.src = frame.dataset.src;
+      }
+      frame.hidden = false;
+      launch.setAttribute("aria-expanded", "true");
+      launch.hidden = true;
+      frame.focus();
+    });
+  }
+  doc.querySelectorAll("[data-open-contact-form]").forEach((link) => {
     link.href = buildContactFormUrl({ topic, pageUrl });
   });
-  document.querySelectorAll("[data-topic]").forEach((link) => {
+  doc.querySelectorAll("[data-topic]").forEach((link) => {
     link.href = buildContactFormUrl({ topic: link.dataset.topic, pageUrl });
   });
-  const sourceNote = document.querySelector("[data-contact-source]");
-  const sourceLink = document.querySelector("[data-contact-source-link]");
+  const sourceNote = doc.querySelector("[data-contact-source]");
+  const sourceLink = doc.querySelector("[data-contact-source-link]");
   if (pageUrl && sourceNote && sourceLink) {
     sourceLink.textContent = pageUrl;
     sourceLink.href = pageUrl;
     sourceNote.hidden = false;
   }
-  const copyButton = document.querySelector("[data-copy-email]");
-  const copyStatus = document.querySelector("[data-copy-status]");
+  const copyButton = doc.querySelector("[data-copy-email]");
+  const copyStatus = doc.querySelector("[data-copy-status]");
   copyButton?.addEventListener("click", async () => {
     let copied = false;
     try {
       if (navigator.clipboard?.writeText) { await navigator.clipboard.writeText(CONTACT_EMAIL); copied = true; }
     } catch { copied = false; }
     if (!copied) {
-      const temporary = document.createElement("textarea");
+      const temporary = doc.createElement("textarea");
       temporary.value = CONTACT_EMAIL;
       temporary.setAttribute("readonly", "");
       temporary.style.position = "fixed";
       temporary.style.insetInlineStart = "-9999px";
-      document.body.append(temporary);
+      doc.body.append(temporary);
       temporary.select();
-      try { copied = document.execCommand("copy"); } catch { copied = false; }
+      try { copied = doc.execCommand("copy"); } catch { copied = false; }
       temporary.remove();
     }
     if (copyStatus) copyStatus.textContent = copied ? "El. pašto adresas nukopijuotas." : "Nepavyko nukopijuoti. Pažymėkite adresą ir kopijuokite ranka.";

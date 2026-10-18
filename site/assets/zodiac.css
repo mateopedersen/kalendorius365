@@ -1,5 +1,5 @@
 /* Shared, daylight-only zodiac editorial system; never styles unrelated tools. */
-.zodiac-guide { --z-ink:#162d35; --z-muted:#53656c; --z-line:#dbe4e2; --z-gold:#a87732; display:grid; gap:34px; max-width:1280px; margin:0 auto 42px; color:var(--z-ink); font-family:Lato,Arial,sans-serif; }
+.zodiac-guide { --z-ink:#162d35; --z-muted:#53656c; --z-line:#dbe4e2; --z-gold:#a87732; display:grid; gap:34px; max-width:1280px; margin:0 auto 42px; color:var(--z-ink); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
 .zodiac-guide *, .z-sign-profile *, .z-daily-cta * { box-sizing:border-box; }
 .zodiac-guide h1,.zodiac-guide h2,.zodiac-guide h3 { color:var(--z-ink); font-weight:900; text-wrap:balance; }
 .zodiac-guide h2 { margin:0 0 12px; font-size:clamp(1.45rem,2.6vw,2rem); letter-spacing:-.035em; line-height:1.2; }
@@ -13,7 +13,7 @@
 .z-hero__copy { min-width:0; }
 .z-hero h1 { max-width:640px; margin:0; font-size:clamp(2rem,3.4vw,3.25rem); line-height:1.05; letter-spacing:-.052em; }
 .z-hero .z-intro { max-width:540px; margin:18px 0 22px; color:#53656c; font-size:1.06rem; line-height:1.6; }
-.horoscope-app .z-button { display:inline-flex; min-height:48px; min-width:0; align-items:center; justify-content:space-between; gap:22px; padding:12px 20px; border:1px solid #006342; border-radius:13px; color:#fff; background:linear-gradient(135deg,#087c56,#006143); box-shadow:inset 0 1px #ffffff55,0 5px 14px #00614320; font:800 1rem/1.35 Lato,Arial,sans-serif; text-align:left; text-decoration:none; cursor:pointer; }
+.horoscope-app .z-button { display:inline-flex; min-height:48px; min-width:0; align-items:center; justify-content:space-between; gap:22px; padding:12px 20px; border:1px solid #006342; border-radius:13px; color:#fff; background:linear-gradient(135deg,#087c56,#006143); box-shadow:inset 0 1px #ffffff55,0 5px 14px #00614320; font:800 1rem/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; text-align:left; text-decoration:none; cursor:pointer; }
 .horoscope-app .z-button:hover { background:#005e40; box-shadow:inset 0 1px #ffffff55,0 7px 19px #0061432c; }
 .z-button span[aria-hidden] { font-size:1.25rem; font-weight:400; line-height:1; }
 .zodiac-guide :is(a,button,input,select,summary):focus-visible,.z-sign-profile a:focus-visible,.z-neighbours a:focus-visible,.z-daily-cta a:focus-visible { outline:3px solid #a87322; outline-offset:4px; }
@@ -22,7 +22,7 @@
 .z-wheel__dial { width:100%; height:100%; display:block; filter:drop-shadow(0 10px 14px #19372e10); }
 .z-wheel__center { position:absolute; inset:27%; display:grid; place-items:center; pointer-events:none; }
 .z-wheel__image { display:block; width:100%; height:auto; filter:drop-shadow(0 7px 7px #0004); }
-.z-wheel__button { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); display:grid; place-items:center; align-content:center; gap:3px; width:74px; min-height:72px; margin:0; padding:4px; border:1px solid transparent; border-radius:14px; color:#253f45; background:transparent; cursor:pointer; font-family:Lato,Arial,sans-serif; }
+.z-wheel__button { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); display:grid; place-items:center; align-content:center; gap:3px; width:74px; min-height:72px; margin:0; padding:4px; border:1px solid transparent; border-radius:14px; color:#253f45; background:transparent; cursor:pointer; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
 .z-wheel__button .zodiac-mark { width:46px; height:46px; filter:none; }
 .z-wheel__name { display:block; font-size:12px; font-weight:800; line-height:1.2; }
 .z-wheel__button[aria-pressed=true] { color:#253f45; border-color:#947238; background:#f3e8d0; box-shadow:0 3px 10px #62481718; }
@@ -45,7 +45,7 @@
 .zodiac-guide #z-finder :is(input,select) { min-height:3.125rem; padding:11px 14px; border-color:#738d83; }
 .z-finder__fields > div,.z-compare-controls > div { display:grid; gap:8px; min-width:0; }
 .zodiac-guide label { color:#203a40; font-size:.88rem; font-weight:800; line-height:1.4; }
-.zodiac-guide :is(input,select) { box-sizing:border-box; width:100%; min-width:0; min-height:50px; padding:11px 14px; border:1px solid #738d83; border-radius:11px; color:#162d35; background:#fff; font:400 1rem/1.4 Lato,Arial,sans-serif; color-scheme:light; }
+.zodiac-guide :is(input,select) { box-sizing:border-box; width:100%; min-width:0; min-height:50px; padding:11px 14px; border:1px solid #738d83; border-radius:11px; color:#162d35; background:#fff; font:400 1rem/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color-scheme:light; }
 .zodiac-guide input[aria-invalid=true],.zodiac-guide select[aria-invalid=true] { border-color:#a13c32; }
 .z-finder-result { display:grid; grid-template-columns:92px minmax(0,1fr); align-items:start; gap:20px; margin:20px 0; padding:20px; border:1px solid #b8cdc0; border-radius:18px; background:#fff; box-shadow:inset 3px 0 #16805c; }
 .z-finder-result[hidden] { display:none; }
@@ -60,7 +60,7 @@
 .z-section-heading h2 { margin-bottom:0; }
 .z-section-heading > a { font-size:.9rem; font-weight:700; }
 .z-filters { display:flex; flex-wrap:wrap; gap:9px; margin:20px 0 10px; }
-.z-filters button,.z-text-button { min-height:44px; padding:9px 15px; border:1px solid #bfceca; border-radius:999px; background:#fff; color:#344f50; font:700 .9rem/1.35 Lato,Arial,sans-serif; cursor:pointer; }
+.z-filters button,.z-text-button { min-height:44px; padding:9px 15px; border:1px solid #bfceca; border-radius:999px; background:#fff; color:#344f50; font:700 .9rem/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; cursor:pointer; }
 .z-filters button[aria-pressed=true] { color:#fff; border-color:#076b4c; background:#076b4c; }
 .z-filters button:hover:not([aria-pressed=true]) { background:#edf4ef; border-color:#6c9382; }
 .z-sign-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
