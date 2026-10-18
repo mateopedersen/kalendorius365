@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Regular.woff2") format("woff2");
+  src: url("/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Bold.woff2") format("woff2");
+  src: url("/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Bold.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Black.woff2") format("woff2");
+  src: url("/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Black.woff2") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;

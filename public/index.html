@@ -19,18 +19,16 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/visuals/weather-fast-640.webp" imagesrcset="/assets/visuals/weather-fast-480.webp 480w, /assets/visuals/weather-fast-640.webp 640w" imagesizes="(max-width: 760px) calc(100vw - 26px), 280px" as="image" type="image/webp" fetchpriority="high">
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/data/calendar.json" as="fetch" crossorigin>
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/data/home-holiday-data.json" as="fetch" crossorigin>
-<link rel="modulepreload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/calendar.js"><link rel="modulepreload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/storage.js"><link rel="modulepreload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/ics.js"><link rel="modulepreload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/icons.js"><link rel="modulepreload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/weather.js"><link rel="modulepreload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/data/weather-cities.js">
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Black.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/style.css" as="style">
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/design-system.css" as="style">
-<link rel="stylesheet" href="/assets/releases/e4d0b4c1c5ab76e39d0c/style.css"><link rel="stylesheet" href="/assets/releases/e4d0b4c1c5ab76e39d0c/design-system.css">
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/data/calendar.json" as="fetch" crossorigin>
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/data/home-holiday-data.json" as="fetch" crossorigin>
+<link rel="modulepreload" href="/assets/releases/fe8dd749b6454e86e34d/calendar.js"><link rel="modulepreload" href="/assets/releases/fe8dd749b6454e86e34d/storage.js"><link rel="modulepreload" href="/assets/releases/fe8dd749b6454e86e34d/ics.js"><link rel="modulepreload" href="/assets/releases/fe8dd749b6454e86e34d/icons.js"><link rel="modulepreload" href="/assets/releases/fe8dd749b6454e86e34d/weather.js"><link rel="modulepreload" href="/assets/releases/fe8dd749b6454e86e34d/data/weather-cities.js">
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/style.css" as="style">
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/design-system.css" as="style">
+<link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/style.css"><link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/design-system.css">
 
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/horoscope.css" as="style"><link rel="stylesheet" href="/assets/releases/e4d0b4c1c5ab76e39d0c/horoscope.css">
-
-
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/horoscope.css" as="style"><link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/horoscope.css">
 
 
 
@@ -38,10 +36,14 @@
 
 
 
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/common.js"></script>
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/cookie-notice.js"></script>
 
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/app.js"></script>
+
+<link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/print.css" media="print">
+
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/common.js"></script>
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/cookie-notice.js"></script>
+
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/app.js"></script>
 
 
 
@@ -89,7 +91,7 @@
 </aside>
 <section class="center-column" aria-label="Pagrindinis kalendorius">
 <div class="stats" id="stats"></div>
-<section class="panel calendar-panel"><div class="calendar-toolbar"><div class="toolbar-group calendar-nav"><button id="prev" aria-label="Ankstesnis laikotarpis"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-left"></use></svg></button><h2 id="period-title">Kalendorius</h2><button id="next" aria-label="Kitas laikotarpis"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-right"></use></svg></button></div><button id="today">Šiandien</button></div>
+<section class="panel calendar-panel" data-print-root="calendar"><div class="calendar-toolbar"><div class="toolbar-group calendar-nav"><button id="prev" aria-label="Ankstesnis laikotarpis"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-left"></use></svg></button><h2 id="period-title">Kalendorius</h2><button id="next" aria-label="Kitas laikotarpis"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-right"></use></svg></button></div><button id="today">Šiandien</button></div>
 <div class="calendar-options"><div class="segmented" role="group" aria-label="Kalendoriaus vaizdas"><button data-view="month" aria-pressed="true">Mėnuo</button><button data-view="week" aria-pressed="false">Savaitė</button><button data-view="day" aria-pressed="false">Diena</button><button data-view="agenda" aria-pressed="false">Darbotvarkė</button><button data-view="year" aria-pressed="false">Metai</button></div><label><span class="visually-hidden">Ieškoti datos arba įvykio</span><input id="search" type="search" placeholder="Data arba įvykis…" aria-label="Ieškoti datos arba įvykio"></label><label class="year-jump">Metai <input id="jump-year" type="number" min="1900" max="2100" value="2027" aria-label="Rodyti metus"></label></div>
 <div id="category-chips" class="category-chips" role="group" aria-label="Greitieji kalendoriaus filtrai"></div><div id="search-results" class="search-results" hidden></div><div id="calendar"></div><div class="calendar-legend"><span>● Šiandien</span><span>◆ Šventinė diena</span><span>ISO savaitės · Pradžia pirmadienį</span></div></section>
 <div class="calendar-links"><a href="/2027/"><div><strong>2027 kalendorius</strong><small>12 mėnesių · PDF ir WebP</small></div><span>↗</span></a><a href="/2028/"><div><strong>2028 kalendorius</strong><small>Keliamieji metai · 366 dienos</small></div><span>↗</span></a></div>

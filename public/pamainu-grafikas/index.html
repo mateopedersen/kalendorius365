@@ -19,11 +19,11 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
 
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Black.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/style.css" as="style">
-<link rel="preload" href="/assets/releases/e4d0b4c1c5ab76e39d0c/design-system.css" as="style">
-<link rel="stylesheet" href="/assets/releases/e4d0b4c1c5ab76e39d0c/style.css"><link rel="stylesheet" href="/assets/releases/e4d0b4c1c5ab76e39d0c/design-system.css">
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/fonts/Lato-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/style.css" as="style">
+<link rel="preload" href="/assets/releases/fe8dd749b6454e86e34d/design-system.css" as="style">
+<link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/style.css"><link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/design-system.css">
 
 
 
@@ -35,14 +35,16 @@
 
 
 
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/common.js"></script>
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/cookie-notice.js"></script>
+<link rel="stylesheet" href="/assets/releases/fe8dd749b6454e86e34d/print.css" media="print">
+
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/common.js"></script>
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/cookie-notice.js"></script>
 
 
 
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/tools.js"></script>
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/tools.js"></script>
 
-<script type="module" src="/assets/releases/e4d0b4c1c5ab76e39d0c/phase-5-6-8.js"></script>
+<script type="module" src="/assets/releases/fe8dd749b6454e86e34d/phase-5-6-8.js"></script>
 
 
 
@@ -67,7 +69,7 @@
  <div class="form-row"><label>Suvestinės grupavimas<select id="shift-view" data-tool-pending disabled><option value="week">Pagal savaites</option><option value="month">Pagal mėnesius</option><option value="year">Pagal metus</option><option value="list">Nerodyti grupuotos lentelės</option></select></label><label>Grafiko vaizdas<select id="shift-display" data-tool-pending disabled><option value="list">Išsamus sąrašas</option><option value="month">Mėnesio kalendorius</option><option value="week">Savaitės laiko juosta</option><option value="year">Metų apžvalga</option></select></label><label>Savaitės dienų filtras<select id="shift-week-filter" data-tool-pending disabled><option value="all">Visos dienos</option><option value="five">5 dienos · pirm.–penkt.</option><option value="six">6 dienos · pirm.–šešt.</option><option value="custom">Pasirinkti dienas</option></select></label></div><fieldset id="shift-custom-days" class="weekday-filter" hidden><legend>Rodyti šias pamainų pradžios dienas</legend><div id="shift-custom-days-list" class="weekday-options"></div></fieldset><p class="source-note">Savaitės dienų filtras veikia tik pasirinktą vaizdą. Suvestinės ir atsisiunčiamas ICS apima visą sudarytą grafiką.</p><div class="form-actions"><button class="primary" type="submit" data-tool-pending disabled>Apskaičiuoti grafiką</button><button type="button" id="shift-json-export" data-tool-pending disabled>Atsisiųsti JSON kopiją</button><label class="button">Atkurti JSON kopiją<input id="shift-json-import" type="file" accept="application/json,.json" hidden data-tool-pending disabled></label><button type="button" id="shift-ics" data-tool-pending disabled>Atsisiųsti ICS</button><button type="button" id="shift-print" data-tool-pending disabled>Spausdinti grafiką</button></div>
  <p id="shift-message" class="result" role="status" aria-live="polite">Pasirinkite ne ilgesnį kaip 370 dienų laikotarpį.</p>
 </form>
-<section class="panel"><h2>Grafiko suvestinė</h2><div id="shift-summary" class="calculator-results" aria-live="polite"><p>Įveskite ciklą ir apskaičiuokite peržiūrą.</p></div><div id="shift-visualization" class="shift-visualization" aria-live="polite"></div><div class="table-scroll" tabindex="0" role="region" aria-label="Pamainų laikotarpio suvestinė"><table class="data-table"><thead><tr><th>Laikotarpis</th><th>Pamainos</th><th>Dieninės</th><th>Naktinės</th><th>Įvertintos valandos</th><th>Įstatymo švenčių datos</th></tr></thead><tbody id="shift-periods"></tbody></table></div><div id="shift-list-region" class="table-scroll" tabindex="0" role="region" aria-label="Išsamus pamainų sąrašas"><table class="data-table"><thead><tr><th>Data</th><th>Ciklo žyma</th><th>Pamainos laikas</th><th>Praėjęs laikas</th><th>Įvertintos darbo valandos</th><th>Poilsis iki kitos</th></tr></thead><tbody id="shift-rows"></tbody></table></div><p id="shift-warning" class="source-note">Planavimo priminimai nėra teisinė išvada. Nakties, viršvalandžių, suminės apskaitos, sutarčių, profesijos ir taikomų išimčių įrankis netikrina.</p></section>
+<section class="panel" data-print-root="result"><h2>Grafiko suvestinė</h2><div id="shift-summary" class="calculator-results" aria-live="polite"><p>Įveskite ciklą ir apskaičiuokite peržiūrą.</p></div><div id="shift-visualization" class="shift-visualization" aria-live="polite"></div><div class="table-scroll" tabindex="0" role="region" aria-label="Pamainų laikotarpio suvestinė"><table class="data-table"><thead><tr><th>Laikotarpis</th><th>Pamainos</th><th>Dieninės</th><th>Naktinės</th><th>Įvertintos valandos</th><th>Įstatymo švenčių datos</th></tr></thead><tbody id="shift-periods"></tbody></table></div><div id="shift-list-region" class="table-scroll" tabindex="0" role="region" aria-label="Išsamus pamainų sąrašas"><table class="data-table"><thead><tr><th>Data</th><th>Ciklo žyma</th><th>Pamainos laikas</th><th>Praėjęs laikas</th><th>Įvertintos darbo valandos</th><th>Poilsis iki kitos</th></tr></thead><tbody id="shift-rows"></tbody></table></div><p id="shift-warning" class="source-note">Planavimo priminimai nėra teisinė išvada. Nakties, viršvalandžių, suminės apskaitos, sutarčių, profesijos ir taikomų išimčių įrankis netikrina.</p></section>
 <h2>Kaip naudoti pasikartojantį grafiką</h2><p>Įrašykite ciklą, pavyzdžiui, <strong>D,D,P,P</strong> arba <strong>D,D,N,N,P,P,P,P</strong>. Pirma ciklo žyma taikoma pradžios dienai, o paskesnės kartojamos iš eilės. Jei pasirinktame cikle nėra N žymos, nakties laikai nebus naudojami. Per naktį besitęsianti pamaina priskiriama jos pradžios kalendorinei dienai.</p><p>Įvestis gali būti netaisyklinga konkrečiai darbo vietai. <a href="https://vdi.lrv.lt/lt/naujienos/vdi-informuoja-ka-apie-poilsio-laika-butina-zinoti-kiekvienam-darbuotojui/?lang=en" rel="noopener">VDI bendroje informacijoje apie poilsį</a> nurodomi 11 valandų nepertraukiamo paros poilsio, 35 valandų savaitės poilsio ir ilgesnei nei 12 val. pamainai – 24 val. poilsio atskaitos dydžiai; išimtys ir režimai skiriasi. Šis įrankis gali pažymėti trumpą tarpą kaip peržiūros priminimą, bet nesprendžia teisėtumo.</p>
 <nav class="resource-grid" aria-label="Susiję puslapiai"><a class="resource-card resource-card--workdays" href="/darbo-dienos/2027/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-workdays"></use></svg></span><h2>Darbo dienų kalendorius</h2><small>Įstatymo šventės ir standartinės savaitės skaičiavimo metodika.</small></a><a class="resource-card resource-card--shift-template" href="/darbo-grafiko-sablonai/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-shift-template"></use></svg></span><h2>Darbo grafiko šablonai</h2><small>Atsisiunčiami tušti ciklo lapai.</small></a><a class="resource-card resource-card--year" href="/irankiai/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-year"></use></svg></span><h2>Visi įrankiai</h2><small>Kalendoriaus ir darbo laiko skaičiuoklės.</small></a></nav>
 

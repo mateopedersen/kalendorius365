@@ -1,4 +1,4 @@
-import { formatDate, holidays, today } from "/assets/releases/e4d0b4c1c5ab76e39d0c/calendar.js";
+import { formatDate, holidays, today } from "/assets/releases/fe8dd749b6454e86e34d/calendar.js";
 
 const weekday = new Intl.DateTimeFormat("lt-LT", {
   weekday: "long",
@@ -31,8 +31,8 @@ async function refresh() {
 
   try {
     const [editorialResponse, calendarResponse] = await Promise.all([
-      fetch("/assets/releases/e4d0b4c1c5ab76e39d0c/data/holiday-editorial.json"),
-      fetch("/assets/releases/e4d0b4c1c5ab76e39d0c/data/calendar.json", { cache: "force-cache" }),
+      fetch("/assets/releases/fe8dd749b6454e86e34d/data/holiday-editorial.json"),
+      fetch("/assets/releases/fe8dd749b6454e86e34d/data/calendar.json", { cache: "force-cache" }),
     ]);
     if (!editorialResponse.ok || !calendarResponse.ok) return;
     const [editorial, calendarData] = await Promise.all([

@@ -28,7 +28,7 @@ if (form) {
   if (!form.reportValidity()) return;
   try {
    if (!cities) {
-    const response = await fetch('/assets/releases/7ae5541cf6447a0d381c/data/astronomy/cities.json');
+    const response = await fetch('/assets/releases/fe8dd749b6454e86e34d/data/astronomy/cities.json');
     if (!response.ok) throw new Error();
     cities = (await response.json()).cities;
    }
