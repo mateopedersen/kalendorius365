@@ -75,12 +75,28 @@ function setupShift() {
   if (!form) return;
   const key = "k365:phase568:shift:v1";
   const saved = readLocal(key, {});
+  const hasSavedDraft = Boolean(saved.schema);
+  const requestedTemplate = new URLSearchParams(location.search).get("template");
   const todayLT = today();
-  for (const id of ["shift-anchor", "shift-from", "shift-to"]) $("#" + id).value = saved[id] || todayLT;
+  const defaultDates = { "shift-anchor": todayLT, "shift-from": todayLT, "shift-to": todayLT };
+  if (!hasSavedDraft && requestedTemplate === "cycle") {
+    defaultDates["shift-from"] = todayLT;
+    defaultDates["shift-to"] = dateAt(todayLT, 27);
+  } else if (!hasSavedDraft && requestedTemplate === "month") {
+    defaultDates["shift-from"] = todayLT.slice(0, 7) + "-01";
+    const [year, month] = todayLT.slice(0, 7).split("-").map(Number);
+    defaultDates["shift-to"] = `${year}-${pad(month)}-${pad(new Date(Date.UTC(year, month, 0)).getUTCDate())}`;
+  }
+  for (const id of ["shift-anchor", "shift-from", "shift-to"]) $("#" + id).value = saved[id] || defaultDates[id];
   for (const id of ["shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"])
     if (saved[id] !== undefined) $("#" + id).value = saved[id];
   const preset = $("#shift-preset");
-  if (preset) preset.value = saved["shift-cycle"] === "D,D,N,N,P,P,P,P" ? "day-night" : saved["shift-cycle"] === "D,D,P,P" ? "day-rest" : "custom";
+  if (requestedTemplate === "cycle") {
+    if (!hasSavedDraft) $("#shift-cycle").value = "D,D,N,N,P,P,P,P";
+    $("#shift-display").value = "list";
+  }
+  if (requestedTemplate === "month") { $("#shift-view").value = "month"; $("#shift-display").value = "month"; }
+  if (preset) preset.value = $("#shift-cycle").value === "D,D,N,N,P,P,P,P" ? "day-night" : $("#shift-cycle").value === "D,D,P,P" ? "day-rest" : "custom";
   const weekdays = ["Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis", "Sekmadienis"];
   const dayList = $("#shift-custom-days-list");
   weekdays.forEach((name, index) => {
@@ -321,12 +337,21 @@ function setupShift() {
   $("#shift-print").onclick = () => window.print();
   syncShiftEditors();
   render();
+  if (["cycle", "month"].includes(requestedTemplate)) {
+    const explanation = requestedTemplate === "cycle" ? "Atidarytas ciklo šablonas: 2 dieninės, 2 naktinės ir 4 poilsio dienos." : "Atidarytas mėnesio šablonas su pasirinkto mėnesio dienomis.";
+    message(hasSavedDraft ? `Atidarytas šablonas. Esamas ciklas ir datos išsaugoti; pakeistas tik vaizdas. ${explanation}` : explanation);
+  }
 }
 
 function setupSchool() {
   const root = $("#school-planner"); if (!root) return;
   const key = "k365:phase568:school:v1";
+  let hasSavedDraft = false;
+  try { hasSavedDraft = Boolean(localStorage.getItem(key)); } catch { /* local persistence is optional */ }
   let state = readLocal(key, { schema: 1, title: "", days: 5, template: "regular", lessons: [], homework: [] });
+  const requestedTemplate = new URLSearchParams(location.search).get("template");
+  if (!hasSavedDraft && requestedTemplate === "week-grid") state.template = "regular";
+  if (!hasSavedDraft && requestedTemplate === "lesson-homework") state.template = "large";
   const subjects = ["Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis"];
   const fieldNames = { start: "pradžia", end: "pabaiga", subject: "dalykas", room: "kabinetas", teacher: "mokytojo trumpinys" };
   let undoSnapshot = null;
@@ -484,6 +509,19 @@ function setupSchool() {
   $("#school-reset").onclick = () => { if (!confirm("Ištrinti šio įrenginio tvarkaraštį ir namų darbus? Jei reikia, atsisiųskite kopiją pirma.")) return; const previous = state; state = { schema: 1, title: "", days: 5, template: "regular", lessons: [], homework: [] }; if (!persist()) state = previous; else { renderLessons(); renderHomework(); put("Vietiniai duomenys ištrinti."); } };
   $("#school-print").onclick = () => window.print();
   renderLessons(); renderHomework();
+  if (["week-grid", "lesson-homework"].includes(requestedTemplate)) {
+    const homework = requestedTemplate === "lesson-homework";
+    const target = homework ? $("#homework-section") : root;
+    if (!hasSavedDraft) {
+      state.template = homework ? "large" : "regular";
+      persist(); renderLessons();
+    }
+    put(hasSavedDraft ? "Atidarytas šablonas. Esamas tvarkaraštis ir užduotys išsaugoti; pasirinkimas jų nepakeitė." : (homework ? "Atidarytas pamokų ir namų darbų šablonas." : "Atidarytas savaitės pamokų tinklelis."));
+    setTimeout(() => {
+      target?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      if (homework) $("#homework-subject")?.focus({ preventScroll: true });
+    }, 80);
+  }
 }
 
 // NOAA solar position equations: equation of time + declination; sunrise zenith 90.833°,

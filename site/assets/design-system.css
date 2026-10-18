@@ -5567,6 +5567,16 @@ button.primary:hover, a.button.primary:hover, .success:hover{
 .resource-card--day{ --tool-accent: #997039; }
 .resource-card--family{ --tool-accent: #a55472; }
 .resource-card--school-template{ --tool-accent: #43839c; }
+.school-table[data-template="large"] td input{min-height:48px;font-size:1rem;font-weight:600}
+.school-table[data-template="compact"] td input{min-height:34px;padding:.35rem;font-size:.78rem}
+.school-table[data-template="mono"] thead{background:#f0f0f0;color:#111}
+.school-table[data-template="mono"] input{border-color:#555;color:#111;background:#fff}
+.template-fill{flex:1 1 100%;font-weight:750}
+.content-main:has(.template-fill) .compact-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.content-main:has(.template-fill) .compact-gallery .preview-link{height:clamp(220px,30vw,360px);padding:1rem;background:linear-gradient(145deg,#edf5ef,#f8f5eb)}
+.content-main:has(.template-fill) .compact-gallery .design-info h2{font-size:1rem;min-height:0}
+.content-main:has(.template-fill) .compact-gallery .design-info p{min-height:0;font-size:.83rem}
+@media(max-width:620px){.content-main:has(.template-fill) .compact-gallery{grid-template-columns:minmax(0,1fr)}.content-main:has(.template-fill) .compact-gallery .preview-link{height:min(72vw,330px)}}
 .resource-card--shift-template{ --tool-accent: #885b91; }
 .resource-card--iso{ --tool-accent: #347d83; }
 .resource-card--school-break{ --tool-accent: #af772f; }
