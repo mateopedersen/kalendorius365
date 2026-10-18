@@ -110,3 +110,19 @@ test('lunar month vertical arrow keys select the adjacent week and update detail
  await page.locator('[data-lunar-date="2028-02-08"]').press('ArrowDown');await expect(page.locator('[data-selected-date]')).toHaveValue('2028-02-15');
  await expect(page.locator('[data-selected-details]')).not.toBeEmpty();
 });
+
+test('lunar selection keeps the latest keyboard choice while its texture is still loading',async({page})=>{
+ let releaseTexture;const gate=new Promise(done=>{releaseTexture=done;});
+ await page.route(/\/assets\/lunar\/albedo-web\.webp(?:\?.*)?$/,async route=>{await gate;await route.continue();});
+ try{
+  await page.goto('/menulio-kalendorius/2028/vasaris/');const day=page.locator('[data-lunar-date="2028-02-15"]');await day.click();await day.press('ArrowUp');await expect(page.locator('[data-selected-date]')).toHaveValue('2028-02-08');
+  releaseTexture();await expect.poll(()=>page.locator('[data-selected-moon]').evaluate(c=>c.getContext('2d').getImageData(c.width>>1,c.height>>1,1,1).data[3])).toBeGreaterThan(0);
+  await expect(page.locator('[data-selected-date]')).toHaveValue('2028-02-08');await expect(page.locator('[data-lunar-date="2028-02-08"]')).toHaveAttribute('aria-pressed','true');
+ }finally{releaseTexture();}
+});
+
+test('annual lunar ICS downloads on the first interaction without loading another tool',async({page})=>{
+ await page.goto('/menulio-kalendorius/2028/');
+ const [file]=await Promise.all([page.waitForEvent('download',{timeout:15000}),page.locator('[data-all-ics]').click()]);
+ expect(await file.failure()).toBeNull();const text=(await fs.readFile(await file.path())).toString('utf8');expect(text).toContain('BEGIN:VCALENDAR');expect(text).toContain('BEGIN:VEVENT');expect(text).toContain('2028');
+});

@@ -7075,8 +7075,9 @@
     },
     {
       "path": "site/assets/lunar/lunar.js",
-      "reason": "Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained",
-      "sha256": "6b6c13083eae92c21abf10516f2a9ec505d3fc26c643d240ab1e04e4495b8618"
+      "reason": "Pinned lossless screen texture URL and synchronous latest-date selection repair; original PNG and print texture retained",
+      "sha256": "2dc8cc4adce2265285a2b66932c9c4b096401a3998864c08643e1956b8315c6a",
+      "review_manifest": "docs/qa/lunar-selection-race.json"
     },
     {
       "version": "2026-10-17-lt-editorial-v1",

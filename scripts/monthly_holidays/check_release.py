@@ -261,12 +261,14 @@ def run():
    current=p.read_bytes();updated=b"'/assets/lunar/albedo-web.webp'";previous=b"'/assets/lunar/albedo-web.png'"
    evidence=(ROOT/'docs/performance/lunar-texture-lossless.json').read_bytes()
    texture=json.loads(evidence)
-   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'lunar runtime changes only the lossless screen texture URL')
+   runtime_review_path='docs/qa/lunar-selection-race.json'
+   runtime_review_raw=(ROOT/runtime_review_path).read_bytes();runtime_review=json.loads(runtime_review_raw)
+   check(hashlib.sha256(runtime_review_raw).hexdigest()=='9a569fa272b0a1386ac40e620edf2383cd1638d18cc55a3a8d96681d34071b41' and runtime_review['baseline_sha256']==sha and hashlib.sha256(current).hexdigest()==runtime_review['after_sha256'],'lunar runtime matches the pinned texture URL and latest-selection repair; no unlisted runtime edits')
    check(hashlib.sha256(evidence).hexdigest()=='64be7cf140fb4bebddf3697228bb328093724acbc4ab2190648e285abfa90011' and texture['rgba_pixels_identical'] is True,'pinned lossless texture comparison')
    for item in [texture['before'],texture['after']]:
     raw=(ROOT/item['path']).read_bytes()
     check(len(raw)==item['bytes'] and hashlib.sha256(raw).hexdigest()==item['sha256'],'lossless texture asset matches reviewed bytes')
-   intentional_updates.append({'path':path,'reason':'Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained','sha256':hashlib.sha256(current).hexdigest()})
+   intentional_updates.append({'path':path,'reason':'Pinned lossless screen texture URL and synchronous latest-date selection repair; original PNG and print texture retained','sha256':hashlib.sha256(current).hexdigest(),'review_manifest':runtime_review_path})
    continue
   if path in screen_updates:
    intentional_updates.append({'path':path,'reason':'Pinned screen-only thumbnail resize from 192px to 128px; print and SVG originals unchanged','sha256':screen_updates[path],'transition_manifest':SCREEN_THUMBNAIL_TRANSITION})

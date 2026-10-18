@@ -28,6 +28,10 @@ module Jekyll
         'script_version' => javascript + script_dependencies
       }
 
+      discovery_visuals = Dir.glob(File.join(site.source, 'assets/visuals/discovery-*.svg')).sort
+      visual_contents = discovery_visuals.map { |path| File.binread(path) }
+      site.config['visual_version'] = Digest::SHA256.hexdigest(visual_contents.join("\0"))[0, 12]
+
       groups.each do |key, paths|
         contents = paths.map do |path|
           absolute_path = File.expand_path(path, site.source)

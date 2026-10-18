@@ -1,5 +1,5 @@
 const scope = document.querySelector(".lunar-app");
-const interactiveControl = "[data-lunar-date], [data-event-ics], .lunar-preview-button, [data-print-image]";
+const interactiveControl = "[data-lunar-date], [data-all-ics], [data-event-ics], .lunar-preview-button, [data-print-image]";
 let modulePromise;
 let moduleLoaded = false;
 

@@ -39,7 +39,7 @@ jobs:
         env:
           K365_BASE_URL: ${{ inputs.base_url }}
         run: >-
-          npx playwright test test/browser/components.spec.mjs test/browser/data-preservation.spec.mjs test/browser/accessibility.spec.mjs --project=${{ matrix.project }} -g "header search recovers|shift input waits|school startup|shift planner generates|school lesson|school homework|shift presets|enlarged text at 320px: /$"
+          npx playwright test test/browser/components.spec.mjs test/browser/data-preservation.spec.mjs test/browser/accessibility.spec.mjs --project=${{ matrix.project }} -g "annual lunar ICS|lunar selection keeps|header search recovers|shift input waits|school startup|shift planner generates|school lesson|school homework|shift presets|enlarged text at 320px: /$"
       - name: Exercise every public route and distinct search journeys
         env:
           K365_BASE_URL: ${{ inputs.base_url }}

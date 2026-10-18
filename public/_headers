@@ -45,6 +45,8 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/design-system.css
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/discovery-core.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/discovery.css
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/discovery.js
