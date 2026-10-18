@@ -1,4 +1,4 @@
-import { BIRTH_CITIES } from "/assets/data/birth-cities.js?v=e4b3a87af576";
+import { BIRTH_CITIES } from "/assets/data/birth-cities.js?v=69ab96efeef8";
 
 const SIGNS = [
   { key: "avinas", name: "Avinas", theme: "#b34235", reading: "Avino ascendentas astrologinėje simbolikoje siejamas su iniciatyva ir tiesiu bendravimu." },
