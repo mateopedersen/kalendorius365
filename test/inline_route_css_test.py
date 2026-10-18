@@ -32,11 +32,15 @@ class InlineRouteCssTests(unittest.TestCase):
     def test_initial_modules_are_preloaded_and_evaluate_after_the_dom_exists(self):
         for page in (ROOT / 'public').rglob('*.html'):
             source = page.read_text()
-            modules = re.findall(r'<script\b([^>]*)\bsrc="([^"]+\.js\?v=[^"]+)"[^>]*>', source)
+            modules = re.findall(r'<script\b([^>]*)\bsrc="([^"]+\.js(?:\?v=[^"]+)?)"[^>]*>', source)
             self.assertGreaterEqual(len(modules), 2, str(page))
             self.assertEqual(len({url for _,url in modules}), len(modules), str(page))
             for attributes,url in modules:
-                self.assertRegex(attributes, r'\basync\b', str(page))
+                if url.split('?', 1)[0].endswith('/app.js'):
+                    self.assertNotRegex(attributes, r'\basync\b', str(page))
+                    self.assertIn('<div class="dashboard" inert aria-busy="true">', source, str(page))
+                else:
+                    self.assertRegex(attributes, r'\basync\b', str(page))
                 self.assertIn('<link rel="modulepreload" href="'+url+'">', source[:source.index('</head>')], str(page))
             self.assertGreater(source.index('<script type="module"'), source.index('<p id="notice"'), str(page))
 

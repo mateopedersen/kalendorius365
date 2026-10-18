@@ -10,6 +10,10 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - 'lib/horoscopes_pages.rb'
+      - 'lib/asset_release.rb'
+      - 'scripts/build.rb'
+      - 'site/_plugins/asset_versions.rb'
+      - 'test/cache-release.test.js'
       - 'scripts/horoscopes/**'
       - 'scripts/validate_horoscopes.py'
       - 'site/_data/horoscope_*.json'
@@ -119,6 +123,8 @@ jobs:
         if: steps.generate.outputs.changed == 'true'
         run: |
           python3 scripts/validate_horoscopes.py --require-current --check-rendered --release
+          python3 scripts/audit_site.py --release
+          node --test test/*.test.js
           git diff --check
       - name: Commit the validated daily pages for the existing Cloudflare Pages integration
         id: publish_commit
@@ -131,7 +137,9 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site/_data/horoscope_current.json site/horoskopai public docs/horoscopes/validation/horoscope-source-qa.json docs/performance
+          # A data-only update changes the content-addressed asset graph on
+          # every page. Commit the complete generated output atomically.
+          git add site/_data/horoscope_current.json site/horoskopai site/assets/data/search.json public docs/horoscopes/validation/horoscope-source-qa.json docs/performance
           git diff --cached --check
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"

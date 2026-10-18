@@ -1,0 +1,9 @@
+{
+  "issue": "Lunar click followed by an arrow key while the texture decodes can restore the earlier date",
+  "baseline_sha256": "11aaae707282c88f150f27692a379436012ba396726baf364b31bef3ab1939a3",
+  "before_sha256": "6b6c13083eae92c21abf10516f2a9ec505d3fc26c643d240ab1e04e4495b8618",
+  "after_sha256": "2dc8cc4adce2265285a2b66932c9c4b096401a3998864c08643e1956b8315c6a",
+  "authorized_scope": "User-requested functional repair; original texture and all print files remain byte-identical",
+  "repair": "Update the selected date immediately; defer only the canvas paint and discard stale paint requests",
+  "regression": "Real browser test blocks the texture, selects February15, presses ArrowUp, releases the texture and verifies February8 remains selected"
+}

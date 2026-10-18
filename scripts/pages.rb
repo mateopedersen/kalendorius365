@@ -480,6 +480,21 @@ search_page=<<~HTML
    <span class="eyebrow">Visos svetainės paieška</span>
    <h1 id="search-page-title">Raskite reikalingą datą ar įrankį</h1>
    <p>Ieškokite visuose Kalendorius365 puslapiuose: švenčių, 2027–2029 m. kalendorių, darbo ir mokinių atostogų, planuoklių, Saulės bei Mėnulio duomenų ir horoskopų.</p>
+   <noscript>
+    <style>#site-search-page-form,.search-page__quick,.search-page__results{display:none}</style>
+    <section class="panel" aria-labelledby="search-no-js-title">
+     <h2 id="search-no-js-title">Pasirinkite svetainės skiltį</h2>
+     <p>Interaktyviai paieškai reikia įjungto JavaScript. Visą svetainės turinį galite pasiekti šiomis nuorodomis.</p>
+     <nav id="search-no-js-nav" aria-label="Svetainės skiltys"><ul>
+      <li><a href="/2027/">2027 m. kalendorius</a> · <a href="/2028/">2028 m. kalendorius</a> · <a href="/2029/">2029 m. kalendorius</a></li>
+      <li><a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a></li>
+      <li><a href="/vardadieniai/">Vardadieniai pagal datą</a></li>
+      <li><a href="/horoskopai/">Horoskopai</a> · <a href="/zodiakas/">Zodiako ženklai</a></li>
+      <li><a href="/saule/">Saulėtekis ir saulėlydis</a> · <a href="/menulio-kalendorius/">Mėnulio kalendorius</a> · <a href="/metu-laikai/">Metų laikai</a></li>
+      <li><a href="/tuscias-kalendorius/">Spausdinami kalendoriai</a> · <a href="/irankiai/">Įrankiai ir planuokliai</a></li>
+     </ul></nav>
+    </section>
+   </noscript>
    <form id="site-search-page-form" class="search-page__form panel" role="search" action="/paieska/" method="get">
     <label for="site-search-page-query">Ko ieškote?</label>
     <div class="search-page__controls">
@@ -587,6 +602,16 @@ search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
  {'title'=>front['title'].to_s,'url'=>url,'description'=>front['description'].to_s,
   'keywords'=>[path_terms,aliases].join(' ').strip,'headings'=>headings,'content'=>content,
   'category'=>search_category.call(url)}
+end
+# Keep genuine name/date entities on their canonical hub record rather than
+# creating duplicate pages or thousands of thin name landing routes.
+nameday_hub=search.find { |item|item['url']=='/vardadieniai/' }
+if nameday_hub
+ names={}
+ JSON.parse(File.read("#{Pages::ROOT}/data/namedays/cc-by-sa-4.0/snapshot.json")).fetch('records').each do |record|
+  record.fetch('names').each { |name|(names[name]||=[]) << record.fetch('date') }
+ end
+ nameday_hub['namedays']=names.transform_values { |dates|dates.uniq.sort }
 end
 search.concat([
  {'title'=>'Pridėti įvykį į kalendorių','url'=>'/#add-event','description'=>'Atverkite pasirinktos dienos įvykio kūrimo mygtuką.','keywords'=>'naujas susitikimas gimtadienis priminimas renginys planas new event birthday reminder','category'=>'home','action'=>true},

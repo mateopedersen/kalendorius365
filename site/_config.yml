@@ -9,7 +9,9 @@ exclude:
   - assets/fonts/Lato-Black.ttf
   - assets/data/manifest.json
   - assets/data/years.json
-keep_files: []
+keep_files:
+  - assets/releases
+  - assets/release-manifest.json
 defaults:
   - scope:
       path: ''

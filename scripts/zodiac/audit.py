@@ -25,7 +25,7 @@ def audit():
   assert next(a['href']for t,a in p.tags if t=='link'and a.get('rel')=='canonical')=='https://kalendorius365.lt'+route
   title=re.search(r'<title>(.*?)</title>',source,re.S).group(1);titles.append(title)
   expected_css = 'zodiac-guide.css?v=' if route == '/zodiakas/' else ('horoscope-hub.css?v=' if route == '/horoskopai/' else 'horoscope-detail.css?v=')
-  assert expected_css in source,(route,'route CSS bundle')
+  assert expected_css.split('?')[0].removeprefix('/assets/') in source,(route,'route CSS bundle')
   visible=' '.join(p.text);assert unicodedata.normalize('NFC',visible)==visible
   assert not re.search(r'\b(?:Aries|Taurus|Gemini|Cancer|Leo|Virgo|Libra|Scorpio|Sagittarius|Capricorn|Aquarius|Pisces|Lorem ipsum)\b',visible),(route,'English or placeholder')
   for tag,a in p.tags:

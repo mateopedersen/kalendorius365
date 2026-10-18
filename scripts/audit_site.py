@@ -128,34 +128,67 @@ assert len(compact)<len(full)*0.5,(len(compact),len(full))
 headers=(PUBLIC/'_headers').read_text()
 header_paths=[line for line in headers.splitlines() if line.startswith('/')]
 assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
+assert all(path.count('*')<=1 for path in header_paths),'Cloudflare Pages _headers supports at most one splat per path rule'
 assert not any(p.startswith('/assets/calendar-editor/') and p!='/assets/calendar-editor/*' for p in header_paths),'Overlapping editor cache rules'
 assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
 assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
+release_manifest=json.loads((PUBLIC/'assets/release-manifest.json').read_text())
+release_prefix='/assets/releases/'+release_manifest['revision']+'/'
+assert '/assets/releases/*\n  Cache-Control: public, max-age=31536000, immutable' in headers
+import hashlib
+for original,item in release_manifest['assets'].items():
+ assert item['url'].startswith(release_prefix),(original,item)
+ assert hashlib.sha256((PUBLIC/item['url'].lstrip('/')).read_bytes()).hexdigest()==item['sha256'],item
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
- relative=path.relative_to(PUBLIC).as_posix()
- editor_release=re.match(r'assets/calendar-editor-release-([a-f0-9]{12})/',relative)
- if editor_release:cache_path=f"/assets/calendar-editor-release-{editor_release.group(1)}/*"
- elif path.is_relative_to(PUBLIC/'assets/calendar-editor'):cache_path='/assets/calendar-editor/*'
- else:cache_path=f'/{relative}'
- assert f'{cache_path}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+ fingerprinted='/assets/releases/' in str(path)
+ if not fingerprinted:
+  relative_asset=path.relative_to(PUBLIC/'assets')
+  editor_versioned=relative_asset.parts[0].startswith('calendar-editor-release-')
+  if path.is_relative_to(PUBLIC/'assets/calendar-editor'):
+   cache_path='/assets/calendar-editor/*'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif relative_asset.parts[0]=='data':
+   cache_path='/assets/data/*'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif editor_versioned:
+   cache_path=f'/assets/{relative_asset.parts[0]}/*'
+   cache_value='Cache-Control: public, max-age=31536000, immutable'
+  else:
+   cache_path=f'/{path.relative_to(PUBLIC)}'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  assert f'{cache_path}\n  {cache_value}' in headers,path
+
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
   specifier=match.group(2)
-  if specifier.startswith(('./','/')):assert '?v=' in specifier,(path,specifier)
-for path in list((PUBLIC/'assets/fonts').glob('*.woff*'))+[PUBLIC/'assets/lunar/albedo-web.webp']:
- assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+  if specifier.startswith(('./','../','/')):
+   # Relative imports are safe within a revision directory. Compatibility
+   # modules must import the immutable directory explicitly.
+   assert (fingerprinted and specifier.startswith(('./','../'))) or specifier.startswith('/assets/releases/') or '?v=' in specifier,(path,specifier)
+   parsed=urlsplit(specifier)
+   target=PUBLIC/parsed.path.lstrip('/') if specifier.startswith('/') else path.parent/parsed.path
+   assert target.is_file(),(path,specifier)
+font_files=list((PUBLIC/'assets/fonts').glob('*.woff*'))+list((PUBLIC/'assets/fonts').glob('*.ttf'))
+font_wildcard='/assets/fonts/*\n  Cache-Control: public, max-age=31536000, immutable'
+if font_wildcard in headers:
+ assert '/assets/fonts/*' in header_paths
+ for path in font_files:
+  assert f'/{path.relative_to(PUBLIC)}\n' not in headers,path
+else:
+ for path in font_files:
+  assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+for path in font_files+[PUBLIC/'assets/lunar/albedo-web.webp']:
+ assert path.is_file(),path
 assert (PUBLIC/'assets/lunar/albedo-web.webp').stat().st_size<=85_000,'Lunar live texture should stay under 85 KB'
 for path,page in pages.items():
  for url in page.links:
   parsed=urlsplit(url)
   if parsed.scheme or parsed.netloc:continue
-  if parsed.path.startswith('/assets/') and parsed.path.endswith(('.js','.css')):
-   assert parsed.query.startswith('v='),(path,url)
- for url in re.findall(r'href="(/assets/fonts/Lato-[^"]+\.woff2)"',path.read_text()):
-  assert '?' in url,(path,url)
-for path in (PUBLIC/'assets').rglob('*.css'):
- for match in re.finditer(r'/assets/fonts/Lato-[^"\')\s]+\.woff2(?:\?[^"\')\s]*)?',path.read_text()):
-  assert '?v=' in match.group(0),(path,match.group(0))
+  if parsed.path.startswith('/assets/') and parsed.path.endswith(('.js','.css','.woff2')):
+   assert parsed.path.startswith(release_prefix),(path,url)
+for original in release_manifest['assets']:
+ if original.startswith('/assets/data/'):
+  assert '/assets/data/*\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,original
 for y in [2027,2028,2029]:
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
@@ -220,8 +253,9 @@ if '--release' in __import__('sys').argv:
 # Check the generated release, not only the authored editor source.
 editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()
 assert 'id="calendar-editor"' in editor_html,'Release preparation replaced the personal editor'
-assert re.search(r'/assets/calendar-editor(?:-release-[a-f0-9]{12})/editor\.js\?v=',editor_html),'Editor module missing from built route'
-assert re.search(r'/assets/calendar-editor(?:-release-[a-f0-9]{12})/editor\.css\?v=',editor_html),'Editor stylesheet missing from built route'
+editor_release_path=re.escape(release_prefix)+r'calendar-editor-release-[a-f0-9]{12}/'
+assert re.search(editor_release_path+r'editor\.js',editor_html),'Path-versioned editor module missing from built route'
+assert re.search(editor_release_path+r'editor\.css',editor_html),'Path-versioned editor stylesheet missing from built route'
 assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
 print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
 

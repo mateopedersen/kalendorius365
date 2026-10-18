@@ -27,6 +27,9 @@ const [data, editorial] = await Promise.all([
       return r.json();
     })
     .catch((e) => {
+      const loading = $("#calendar-app-status");
+      if (loading)
+        loading.textContent = "Asmeninio kalendoriaus duomenų nepavyko įkelti. Patikrinkite ryšį ir atnaujinkite puslapį.";
       notice(e.message);
       throw e;
     }),
@@ -579,7 +582,7 @@ function composeHolidayFromLink() {
     slug = params.get("prideti"),
     date = params.get("data");
   if (!slug || !date) return;
-  const article = editorialArticles().find((item) => item.slug === slug),
+  const article = editorialArticles.find((item) => item.slug === slug),
     dateShape = /^20\d{2}-\d{2}-\d{2}$/.test(date),
     dateYear = dateShape ? Number(date.slice(0, 4)) : 0,
     mapped = article && dateShape && [2027, 2028, 2029].includes(dateYear)
@@ -1140,6 +1143,11 @@ render();
 renderHolidayList();
 composeHolidayFromLink();
 tick();
+const dashboard = $(".dashboard");
+dashboard.removeAttribute("inert");
+dashboard.setAttribute("aria-busy", "false");
+$("#calendar-app-status").hidden = true;
+setInterval(tick, 1000);
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") tick();
   else clearTimeout(clockTimer);

@@ -23,7 +23,7 @@ test('mobile search has an explicit opener, closer, and native submit button', a
   assert.ok(h.document.documentElement.classList.contains('search-active'));
   assert.equal(h.submit.className, 'header-search-submit');
   h.input.value = 'Velykos';
-  await h.input.emit('input');
+  await h.input.emit('input'); await h.flush();
   assert.equal(h.panel.hidden, false);
   assert.equal(h.results.children.length, 4);
   assert.equal(h.all.parent, h.panel, 'the all-results link stays outside the scrolling listbox');
@@ -55,7 +55,7 @@ test('suggestions fit the visual viewport when the phone keyboard opens', async 
   const h = headerHarness();
   await h.toggle.click();
   h.input.value = 'velykos';
-  await h.input.emit('input');
+  await h.input.emit('input'); await h.flush();
   h.viewport.height = 360;
   await h.viewport.emit('resize');
   const height = Number.parseInt(h.form.style.get('--search-results-height'));
@@ -71,12 +71,13 @@ test('suggestions fit the visual viewport when the phone keyboard opens', async 
 });
 
 test('a delayed index response cannot reopen a closed search panel', async () => {
-  let resolve;
-  const h = headerHarness({loadIndex: () => new Promise(done => { resolve = done; })});
+  let resolve, started;
+  const ready = new Promise(done => { started = done; });
+  const h = headerHarness({loadIndex: () => new Promise(done => { resolve = done; started(); })});
   await h.toggle.click();
   h.input.value = 'velykos';
-  const pending = h.input.emit('input');
-  await Promise.resolve();
+  await h.input.emit('input'); const pending = h.flush();
+  await ready;
   await h.close.click();
   resolve([]);
   await pending;
@@ -88,7 +89,7 @@ test('keyboard selection, Escape, and form submission remain usable', async () =
   const h = headerHarness({mobile: false});
   h.input.focus();
   h.input.value = 'velykos';
-  await h.input.emit('input');
+  await h.input.emit('input'); await h.flush();
   assert.equal(h.results.children.length, 7);
   await h.input.emit('keydown', {key: 'ArrowDown', preventDefault() {}});
   assert.equal(h.input.getAttribute('aria-activedescendant'), 'site-search-option-0');
@@ -98,7 +99,7 @@ test('keyboard selection, Escape, and form submission remain usable', async () =
   assert.equal(h.document.activeElement, h.input);
   assert.equal(h.panel.hidden, true);
   h.input.value = 'kalendorius';
-  await h.input.emit('input');
+  await h.input.emit('input'); await h.flush();
   assert.equal(h.panel.hidden, false, 'typing after Escape reopens desktop suggestions');
   await h.form.emit('submit');
   assert.equal(h.panel.hidden, true);
@@ -112,11 +113,11 @@ test('a temporary search-index failure can be retried', async () => {
   let attempts = 0;
   global.fetch = async () => {
     if (++attempts === 1) throw new Error('Temporary network error');
-    return {ok: true, json: async () => [{title: 'Velykos'}]};
+    return {ok: true, json: async () => [{title: 'Velykos', url: '/sventes/velykos/'}]};
   };
   try {
     await assert.rejects(loadSearchIndex(), /Temporary network error/);
-    assert.deepEqual(await loadSearchIndex(), [{title: 'Velykos'}]);
+    assert.deepEqual(await loadSearchIndex(), [{title: 'Velykos', url: '/sventes/velykos/'}]);
     assert.equal(attempts, 2);
   } finally {
     global.fetch = original;

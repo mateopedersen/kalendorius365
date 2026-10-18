@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-export function headerHarness({mobile = true, serverRendered = false, loadIndex = async () => []} = {}) {
-  const listeners = new Map();
+export function headerHarness({mobile = true, serverRendered = false, loadIndex = async () => [], search = null} = {}) {
+  const timers = new Map(); let nextTimer = 0; let imports = 0;
+  const flush = async () => { const pending = [...timers.values()]; timers.clear(); await Promise.all(pending.map(fn => fn())); };
   const events = target => {
     target.handlers = new Map();
     target.addEventListener = (name, handler) => {
@@ -111,16 +112,17 @@ export function headerHarness({mobile = true, serverRendered = false, loadIndex 
   const viewport = events({height: 844, offsetTop: 0});
   const window = events({innerHeight: 844, visualViewport: viewport, matchMedia: () => media});
   const matches = Array.from({length: 10}, (_, index) => ({url: `/page-${index}/`, title: `Page ${index}`, description: 'A description'}));
-  const engine = {loadSearchIndex: loadIndex, normalizeSearchText: text => text.toLowerCase(), searchPages: () => matches};
+  const engine = {loadSearchIndex: loadIndex, normalizeSearchText: text => text.toLowerCase(), searchPages: search || (() => matches)};
   const code = fs.readFileSync(new URL('../../site/assets/common.js', import.meta.url), 'utf8')
     .replace('export function notice', 'function notice')
-    .replace('import("./search-engine.js")', 'Promise.resolve(testSearchEngine)');
+    .replace('import("./search-engine.js")', 'testLoadEngine()');
   vm.runInNewContext(code, {
     document, window, location: {pathname: '/'}, localStorage: {getItem: () => null},
-    clearTimeout, setTimeout, testSearchEngine: engine,
+    clearTimeout: id => timers.delete(id), setTimeout: fn => { timers.set(++nextTimer,fn); return nextTimer; },
+    testLoadEngine: async () => { imports++; return engine; },
   });
   return {
-    document, form, input, results, submit, header, nav, viewport, media,
+    document, form, input, results, submit, header, nav, viewport, media, flush, imports: () => imports,
     navToggle: selectors.get('#nav-toggle'),
     toggle: header.querySelector('.header-search-toggle'),
     close: header.querySelector('.header-search-close'),

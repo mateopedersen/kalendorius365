@@ -1475,6 +1475,9 @@ main.content-main{
 .download-panel select{
   margin-top: 7px;
   font-size: 0.82rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .download-panel .button{
   font-size: 0.85rem;
@@ -5669,6 +5672,8 @@ button.primary:hover, a.button.primary:hover, .success:hover{
 .shift-cycle-items{display:flex;flex-wrap:wrap;gap:.5rem;margin:.7rem 0;padding:0;list-style:none;counter-reset:cycle}
 .shift-cycle-items li{display:flex;align-items:center;gap:.35rem;padding:.35rem;border:1px solid var(--border);border-radius:10px;background:var(--panel);counter-increment:cycle}
 .shift-cycle-items li>span{min-width:5rem;font-weight:700}
+.shift-cycle-items li{min-width:0;max-width:100%;flex-wrap:wrap}
+.shift-cycle-items li>span{min-width:0;flex:1 1 100%;overflow-wrap:anywhere}
 .shift-cycle-items button{min-width:40px;min-height:40px;padding:.35rem}
 .shift-definition-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:.75rem;margin-block:.75rem}
 .shift-definition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;align-content:start}
@@ -6341,8 +6346,13 @@ button.primary:hover, a.button.primary:hover, .success:hover{
   .site-header #primary-nav{ grid-auto-rows: minmax(55px, auto); }
   .site-header #primary-nav > a{ height: auto; min-height: 55px; }
 }
-@media (max-width: 760px){
-  .site-header #primary-nav{ overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+@media (max-width: 760px) {
+  /* Keep focused controls and anchor targets above the fixed bottom menu. */
+  html { scroll-padding-bottom: calc(max(80px, 5.5rem) + env(safe-area-inset-bottom)); }
+  main :is(button, input, select, textarea, a) {
+    scroll-margin-bottom: calc(max(80px, 5.5rem) + env(safe-area-inset-bottom));
+  }
+  .site-header #primary-nav { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
 
 /* Align the calendar mark beside the wordmark, with the tagline beneath it. */
@@ -6566,6 +6576,33 @@ button.primary:hover, a.button.primary:hover, .success:hover{
   .site-header .header-search-panel .header-search-results a small { display: none; }
 }
 
+/* Let enlarged text determine row height and intrinsic grid widths. */
+.header-search-panel > .header-search-results {
+  display: flex;
+  flex-direction: column;
+}
+.header-search-panel > .header-search-results > a {
+  flex: 0 0 auto;
+  height: auto;
+}
+@media (max-width: 760px) {
+  body { padding-bottom: calc(max(80px, 5.5rem) + env(safe-area-inset-bottom)); }
+  #main { overflow-wrap: anywhere; }
+  #main :is(section, article, header, div, form, label, ul, nav) { min-width: 0; }
+  #main :is(input, select, textarea) { min-width: 0; max-width: 100%; }
+  /* Native Safari menu text must stay inside the field; the picker keeps full labels. */
+  #main select { overflow: hidden; text-overflow: ellipsis; }
+  .search-page { grid-template-columns: minmax(0, 1fr); }
+  .panel-title { flex-wrap: wrap; }
+  .homepage-app #layers,
+  .homepage-app .calendar-links { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8em), 1fr)); }
+  .homepage-app .layer-name { min-width: 0; }
+  .mobile-dock { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mobile-dock a { min-width: 0; overflow-wrap: anywhere; }
+  .mobile-dock a > span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; text-align: center; }
+  .site-footer .footer-brand-wordmark { display: block; white-space: normal; overflow-wrap: anywhere; }
+  .form-row { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+}
 /* Reserve the date label before the live clock initializes. */
 .clock-date{min-height:1.55em}@media(max-width:400px){.clock-date{min-height:3.1em}}
 

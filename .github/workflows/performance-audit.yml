@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       expected_script_version:
-        description: Expected 12-character production script fingerprint
+        description: First 12 characters of the deployed release revision
         required: true
         type: string
       repetitions:

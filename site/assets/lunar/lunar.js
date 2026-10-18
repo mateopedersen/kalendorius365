@@ -44,7 +44,9 @@ function selectDate(value,focus=false){
   if(value<input.min||value>input.max)return;
   const state=lunarState(noonInVilnius(value));input.value=value;
   const selectedCanvas=scope.querySelector('[data-selected-moon]');
-  renderMoon(selectedCanvas,state);
+  // Selection is synchronous; texture decoding must never overwrite a newer
+  // click or keyboard choice. Only paint the still-selected date when ready.
+  textureReady.then(()=>{if(input.value===value)renderMoon(selectedCanvas,state);}).catch(()=>{});
   selectedCanvas.setAttribute('aria-label',`${value}: ${state.label}; apšviesta ${number.format(state.illumination*100)} % disko, 12:00 Lietuvos laiku.`);
   text('#lunar-selected-title',new Intl.DateTimeFormat('lt-LT',{timeZone:'UTC',year:'numeric',month:'long',day:'numeric'}).format(new Date(value+'T12:00:00Z')));
   const details=scope.querySelector('[data-selected-details]');details.replaceChildren();
@@ -69,7 +71,7 @@ const zoomImage=document.createElement('img');const caption=document.createEleme
 close.addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
 scope.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
-  if(button.dataset.lunarDate)textureReady.then(()=>selectDate(button.dataset.lunarDate));
+  if(button.dataset.lunarDate)selectDate(button.dataset.lunarDate);
   if(button.hasAttribute('data-all-ics'))downloadICS(calendarEvents);
   if(button.dataset.eventIcs)downloadICS(calendarEvents.filter(e=>e.utc===button.dataset.eventIcs));
   if(button.dataset.zoom){zoomImage.src=button.dataset.zoom;zoomImage.alt=button.dataset.caption;caption.textContent=button.dataset.caption;dialog.showModal();}
@@ -85,7 +87,7 @@ scope.addEventListener('click',event=>{
     image.src=button.dataset.printImage;
   }
 });
-scope.querySelector('[data-selected-date]')?.addEventListener('change',event=>textureReady.then(()=>selectDate(event.target.value)));
+scope.querySelector('[data-selected-date]')?.addEventListener('change',event=>selectDate(event.target.value));
 scope.querySelector('.lunar-month-table')?.addEventListener('keydown',event=>{
   const button=event.target.closest('[data-lunar-date]');if(!button)return;
   const move={ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7}[event.key];if(!move)return;

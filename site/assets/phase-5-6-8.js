@@ -31,11 +31,12 @@ const validISODate = (value) => {
   const date = new Date(Date.UTC(y, m - 1, d));
   return date.toISOString().slice(0, 10) === value;
 };
-const CALENDAR_DATA = await fetch("/assets/data/calendar.json").then((r) => {
+const hasShiftPlanner = Boolean($("#shift-planner"));
+const CALENDAR_DATA = hasShiftPlanner ? await fetch("/assets/data/calendar.json").then((r) => {
   if (!r.ok) throw Error("Kalendoriaus dienų rinkinio nepavyko įkelti.");
   return r.json();
-}).catch(() => ({ holidays: [] }));
-const REST_RULES = await fetch("/assets/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null);
+}).catch(() => ({ holidays: [] })) : { holidays: [] };
+const REST_RULES = hasShiftPlanner ? await fetch("/assets/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null) : null;
 
 function readLocal(key, fallback) {
   try {
@@ -421,6 +422,10 @@ function setupShift() {
     const explanation = requestedTemplate === "cycle" ? "Atidarytas ciklo šablonas: 2 dieninės, 2 naktinės ir 4 poilsio dienos." : "Atidarytas mėnesio šablonas su pasirinkto mėnesio dienomis.";
     message(hasSavedDraft ? `Atidarytas šablonas. Esamas ciklas ir datos išsaugoti; pakeistas tik vaizdas. ${explanation}` : explanation);
   }
+  form.inert = false;
+  form.removeAttribute("aria-busy");
+  const startupStatus = $("#shift-startup-status");
+  if (startupStatus) startupStatus.hidden = true;
 }
 
 function setupSchool() {
@@ -457,7 +462,7 @@ function setupSchool() {
       for (const [name, max] of [["start",5],["end",5],["subject",50],["room",30],["teacher",30]]) {
         const td = make("td", undefined, { "data-label": fieldNames[name] }), input = make("input", undefined, { "aria-label": `${subjects[l.day]}, ${l.number} pamoka: ${fieldNames[name]}`, maxlength: max, value: l[name] || "" });
         if (["start","end"].includes(name)) input.type = "time";
-        input.onchange = () => {
+        const saveField = () => {
           const error = lessonFieldError(name, input.value, l.start, l.end);
           input.setCustomValidity(error);
           if (error) { input.reportValidity(); return; }
@@ -465,6 +470,7 @@ function setupSchool() {
           if (persist()) put("Pamokos pakeitimas išsaugotas šiame įrenginyje.");
           renderLessonConflicts();
         };
+        input.addEventListener(name === "start" || name === "end" ? "change" : "input", saveField);
         td.append(input); tr.append(td);
       }
       const td = make("td", undefined, { "data-label": "Veiksmai" }), remove = make("button", "Pašalinti", { type: "button", "aria-label": `${subjects[l.day]} ${l.number} pamoką pašalinti` });
@@ -606,10 +612,10 @@ function setupSchool() {
 
 // NOAA solar position equations: equation of time + declination; sunrise zenith 90.833°,
 // civil twilight 96°. Events are calculations, not observations.
-const CITY_DATA = await fetch("/assets/data/astronomy/cities.json").then((r) => {
+const CITY_DATA = $("#sun-tool") ? await fetch("/assets/data/astronomy/cities.json").then((r) => {
   if (!r.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return r.json();
-}).catch(() => ({ cities: [] }));
+}).catch(() => ({ cities: [] })) : { cities: [] };
 const CITIES = Object.fromEntries(CITY_DATA.cities.map((c) => [c.id, { name: c.name, lat: c.latitude, lon: c.longitude }]));
 const clock = (n) => n === null ? "—" : new Intl.DateTimeFormat("lt-LT", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(n));
 function setupSun() {
