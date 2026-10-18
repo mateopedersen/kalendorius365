@@ -152,6 +152,54 @@
 .weekend-howto p { margin: 0 0 .65rem; color: var(--muted); font-size: .86rem; }
 .weekend-howto a { font-size: .84rem; font-weight: 800; }
 
+.commemoration-next { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; align-items: center; gap: 1rem; margin: 1.35rem 0; padding: 1rem 1.2rem; border: 1px solid #d9e8df; border-radius: 16px; background: linear-gradient(110deg, #edf8f1 0%, #fff 65%, #fff8ea 100%); }
+.commemoration-next-symbol { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid #c8e1d2; border-radius: 16px; background: #fff; color: #0a7955; }
+.commemoration-next-symbol svg { width: 33px; height: 33px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.commemoration-next-copy .eyebrow { margin-bottom: .2rem; font-size: .65rem; }
+.commemoration-next-copy h2 { margin: 0 0 .2rem; font-size: 1.1rem; }
+.commemoration-next-copy > p:not(.eyebrow) { margin: 0 0 .25rem; color: var(--muted); font-size: .82rem; }
+.commemoration-next-copy > a { font-size: .8rem; font-weight: 800; }
+.commemoration-countdown { display: grid; justify-items: center; min-width: 92px; padding: .55rem .75rem; border-left: 1px solid #dce8df; color: #087653; }
+.commemoration-countdown strong { font-size: 1.75rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.commemoration-countdown span { margin-top: .25rem; color: var(--muted); font-size: .66rem; text-align: center; }
+.discovery-actions-buttons { align-items: center; }
+.favorite-filter { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .6rem; color: #435365; font-size: .8rem; font-weight: 700; cursor: pointer; }
+.favorite-filter input { accent-color: var(--green); }
+.commemoration-card .muted { padding-right: 2.2rem; }
+.commemoration-favorite { position: absolute; top: .8rem; right: .8rem; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid #e5e9e6; border-radius: 50%; background: #fff; color: #b18035; font-size: 1.25rem; line-height: 1; box-shadow: 0 2px 7px #17372a0a; }
+.commemoration-favorite[aria-pressed="true"] { border-color: #efd7a2; background: #fff8e8; color: #a16d19; }
+.commemoration-favorite:hover { transform: scale(1.06); }
+.daylight-date-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin-top: .75rem; }
+.daylight-date-actions button { min-height: 36px; padding: .4rem .65rem; font-size: .77rem; }
+.daylight-date-actions button:disabled { opacity: .46; cursor: not-allowed; }
+.daylight-focus-city { display: grid; gap: .3rem; color: #34455a; font-size: .77rem; font-weight: 700; }
+.daylight-focus-city select { min-width: 150px; min-height: 39px; padding: .45rem .65rem; border: 1px solid #ccd8d2; border-radius: 9px; background: white; color: var(--ink); }
+.daylight-year-panel { margin: 1.4rem 0; padding: clamp(1rem, 3vw, 1.6rem); overflow: hidden; border: 1px solid #dbe6e0; border-radius: 18px; background: linear-gradient(145deg, #fff 35%, #fffaf0); box-shadow: 0 12px 34px #17372a08; }
+.daylight-year-panel .discovery-tool-heading { align-items: end; }
+.daylight-year-chart-wrap { overflow-x: auto; padding: .35rem .2rem 0; border-radius: 12px; background: linear-gradient(180deg, #fffdfa, #fff 70%); }
+.daylight-year-chart-wrap svg { display: block; width: 100%; min-width: 630px; height: auto; }
+.daylight-year-gridline { fill: none; stroke: #dfe8e2; stroke-width: 1; stroke-dasharray: 2 6; }
+.daylight-year-axis-label { fill: #7b887f; font-size: 11px; font-variant-numeric: tabular-nums; }
+.daylight-year-area { fill: url(#daylight-area); }
+.daylight-year-line { fill: none; stroke: #d99c3d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.daylight-year-month { fill: #617064; font-size: 11px; font-weight: 700; }
+.daylight-year-point { fill: #fff; stroke: #d99c3d; stroke-width: 2.5; cursor: pointer; transition: r .15s ease, fill .15s ease; }
+.daylight-year-point:hover { r: 8; fill: #fff6df; }
+.daylight-year-point:focus { outline: none; stroke: #087653; stroke-width: 4; }
+.daylight-year-point--turn { stroke: #0b805b; stroke-width: 3; }
+.daylight-year-point-core { fill: #f2c365; pointer-events: none; }
+.daylight-year-summary { margin: .55rem 0 0; padding: .65rem .8rem; border-left: 3px solid #d99c3d; border-radius: 0 8px 8px 0; background: #fff8ea; color: #55472e; font-size: .83rem; line-height: 1.5; }
+.daylight-chart-hint { margin: .55rem 0 0; color: var(--muted); font-size: .72rem; }
+.daylight-table { min-width: 850px; }
+.weekend-plan-summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding: .85rem 1rem; border: 1px solid #e7ecde; border-radius: 12px; background: linear-gradient(110deg, #fff8e8, #f5faf6); }
+.weekend-plan-summary .discovery-kicker { display: block; margin-bottom: .15rem; }
+.weekend-plan-summary strong { display: block; color: #0a7553; font-size: 1.13rem; }
+.weekend-plan-summary p { margin: .25rem 0 0; color: var(--muted); font-size: .78rem; }
+.weekend-plan-summary > button { flex: 0 0 auto; min-height: 37px; padding: .45rem .65rem; font-size: .76rem; }
+.weekend-plan-summary > button:disabled { opacity: .5; cursor: not-allowed; }
+.weekend-recommendation > a { display: inline-block; margin-top: .25rem; font-size: .75rem; font-weight: 800; }
+.weekend-plan-empty { grid-column: 1 / -1; margin: 0; padding: .9rem 1rem; border: 1px dashed #d8e4dc; border-radius: 12px; color: var(--muted); font-size: .84rem; }
+
 @media (max-width: 800px) {
   .discovery-heading--editorial { padding: 1rem; }
   .discovery-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -188,6 +236,20 @@
   .daylight-chart-key { display: grid; }
   .weekend-planner-controls, .weekend-howto { grid-template-columns: 1fr; }
   .weekend-recommendations { grid-template-columns: 1fr; }
+  .commemoration-next { grid-template-columns: 48px minmax(0, 1fr); gap: .65rem; padding: .8rem; }
+  .commemoration-next-symbol { width: 44px; height: 44px; border-radius: 13px; }
+  .commemoration-countdown { grid-column: 2; grid-row: 1; justify-items: end; min-width: auto; padding: 0; border: 0; }
+  .commemoration-countdown strong { font-size: 1.35rem; }
+  .commemoration-countdown span { font-size: .59rem; }
+  .commemoration-next-copy { grid-column: 1 / -1; }
+  .commemoration-next-copy h2 { font-size: .98rem; }
+  .discovery-actions-buttons { display: grid !important; grid-template-columns: 1fr; }
+  .favorite-filter { justify-content: flex-start; }
+  .daylight-year-panel .discovery-tool-heading { align-items: start; flex-direction: column; }
+  .daylight-focus-city { width: 100%; }
+  .daylight-focus-city select { width: 100%; }
+  .weekend-plan-summary { align-items: stretch; flex-direction: column; }
+  .weekend-plan-summary > button { width: 100%; }
   .weekend-year-heading { align-items: start; flex-direction: column; }
   .weekend-year-picker { display: grid; grid-template-columns: repeat(3, 1fr); }
   .weekend-year-picker button { padding: .5rem; }

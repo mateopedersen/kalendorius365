@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { solarFor } from '../site/assets/phase-5-6-8-core.js';
-import { foldIcsLine, recommendExtendedWeekend, thirdFridayOfMay } from '../site/assets/discovery-core.js';
+import { foldIcsLine, recommendAnnualWeekendPlan, recommendExtendedWeekend, thirdFridayOfMay } from '../site/assets/discovery-core.js';
 const read = path => fs.readFileSync(new URL('../'+path, import.meta.url),'utf8');
 test('all 22 links in the header and discovery area have different existing page destinations',()=>{
  const html=read('public/index.html');
@@ -26,8 +26,16 @@ test('the three focused pages are indexed and have independent titles, content a
   assert.match(svg,/<linearGradient/);
  }
  assert.match(read('public/atmintinos-dienos/index.html'),/commemoration-export/);
+ assert.match(read('public/atmintinos-dienos/index.html'),/commemoration-favorites-only/);
+ assert.match(read('public/atmintinos-dienos/index.html'),/commemoration-next-count/);
  assert.match(read('public/dienos-ilgumas/index.html'),/daylight-chart/);
+ assert.match(read('public/dienos-ilgumas/index.html'),/daylight-year-chart/);
+ assert.match(read('public/dienos-ilgumas/index.html'),/daylight-copy-link/);
  assert.match(read('public/ilgieji-savaitgaliai/index.html'),/weekend-recommendations/);
+ assert.match(read('public/ilgieji-savaitgaliai/index.html'),/weekend-plan-export/);
+ assert.match(read('public/ilgieji-savaitgaliai/index.html'),/value="5">5 atostogų dienas/);
+ const css=read('public/assets/discovery.css');
+ for(const selector of ['.commemoration-favorite','.commemoration-next','.daylight-year-area','.daylight-year-point','.weekend-plan-summary']) assert.ok(css.includes(selector),selector);
 });
 test('five city comparison uses the existing solar calculation and sensible common-scale durations',()=>{
  const cities=JSON.parse(read('site/assets/data/astronomy/cities.json')).cities;
@@ -64,5 +72,26 @@ test('weekend planner extends adjacent weekends and spends only selected weekday
 test('weekend planner validates dates and keeps the leave-day limit bounded',()=>{
  assert.throws(()=>recommendExtendedWeekend('2027-02-30','2027-03-01',1));
  assert.throws(()=>recommendExtendedWeekend('2027-03-02','2027-03-01',1));
- assert.throws(()=>recommendExtendedWeekend('2027-03-01','2027-03-02',4));
+ assert.equal(recommendExtendedWeekend('2027-03-01','2027-03-02',5).leaveDays,5);
+ assert.throws(()=>recommendExtendedWeekend('2027-03-01','2027-03-02',6));
+});
+
+test('annual weekend plan allocates one leave budget without overlapping dates or crossing leave years',()=>{
+ const events=[
+  {start:'2027-01-01',end:'2027-01-03',name:'Naujieji',baseDays:3},
+  {start:'2027-03-27',end:'2027-03-29',name:'Velykos',baseDays:3},
+  {start:'2027-10-30',end:'2027-11-02',name:'Ruduo',baseDays:4},
+  {start:'2027-12-24',end:'2027-12-26',name:'Kalėdos',baseDays:3},
+ ];
+ const plan=recommendAnnualWeekendPlan(events,3,'2027');
+ assert.ok(plan.leaveDays<=3);
+ assert.ok(plan.extraDays>0);
+ const used=plan.recommendations.flatMap(item=>item.leaveDates);
+ assert.equal(new Set(used).size,used.length);
+ assert.ok(used.every(date=>date.startsWith('2027-')));
+ for(let index=1;index<plan.recommendations.length;index+=1){
+  assert.ok(plan.recommendations[index-1].end<plan.recommendations[index].start);
+ }
+ assert.deepEqual(recommendAnnualWeekendPlan(events,0,'2027'),{recommendations:[],leaveDays:0,extraDays:0,restDays:0});
+ assert.throws(()=>recommendAnnualWeekendPlan(events,6,'2027'));
 });

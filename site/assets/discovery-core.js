@@ -59,12 +59,12 @@ function extendSide(boundary, direction, leaveAllowance) {
   return { edge, addedDays, leaveDays, leaveDates };
 }
 
-/** Extends a published long weekend with up to three weekday leave days. */
+/** Extends a published long weekend with up to five weekday leave days. */
 export function recommendExtendedWeekend(start, end, maximumLeaveDays = 1) {
   validDate(start);
   validDate(end);
   if (end < start) throw new Error("Laikotarpio pabaiga negali būti ankstesnė už pradžią.");
-  if (!Number.isInteger(maximumLeaveDays) || maximumLeaveDays < 0 || maximumLeaveDays > 3) throw new Error("Galima palyginti nuo 0 iki 3 atostogų dienų.");
+  if (!Number.isInteger(maximumLeaveDays) || maximumLeaveDays < 0 || maximumLeaveDays > 5) throw new Error("Galima palyginti nuo 0 iki 5 atostogų dienų.");
 
   const baseDays = Math.round((validDate(end) - validDate(start)) / DAY_MS) + 1;
   let best = null;
@@ -86,4 +86,47 @@ export function recommendExtendedWeekend(start, end, maximumLeaveDays = 1) {
     }
   }
   return best;
+}
+
+/** Allocates one annual leave budget across distinct long weekends. */
+export function recommendAnnualWeekendPlan(events, maximumLeaveDays = 0, leaveYear = null) {
+  if (!Array.isArray(events)) throw new Error("Reikia pateikti savaitgalių sąrašą.");
+  if (!Number.isInteger(maximumLeaveDays) || maximumLeaveDays < 0 || maximumLeaveDays > 5) {
+    throw new Error("Galima paskirstyti nuo 0 iki 5 atostogų dienų.");
+  }
+  const ordered = events.map((event) => {
+    validDate(event.start);
+    validDate(event.end);
+    if (event.end < event.start) throw new Error("Laikotarpio pabaiga negali būti ankstesnė už pradžią.");
+    return { ...event, baseDays: Math.round((validDate(event.end) - validDate(event.start)) / DAY_MS) + 1 };
+  }).sort((a, b) => a.start.localeCompare(b.start));
+  const memo = new Map();
+
+  function bestPlan(index, remaining, lastEnd) {
+    if (index >= ordered.length || remaining === 0) return { recommendations: [], leaveDays: 0, extraDays: 0, restDays: 0 };
+    const key = index + "|" + remaining + "|" + lastEnd;
+    if (memo.has(key)) return memo.get(key);
+    const event = ordered[index];
+    let best = bestPlan(index + 1, remaining, lastEnd);
+    for (let allowance = 1; allowance <= Math.min(3, remaining); allowance += 1) {
+      const recommendation = recommendExtendedWeekend(event.start, event.end, allowance);
+      if (recommendation.leaveDays === 0 || recommendation.start <= lastEnd) continue;
+      if (leaveYear && !recommendation.leaveDates.every((date) => date.startsWith(String(leaveYear) + "-"))) continue;
+      const next = bestPlan(index + 1, remaining - recommendation.leaveDays, recommendation.end);
+      const current = {
+        recommendations: [{ ...event, ...recommendation, extraDays: recommendation.daysOff - event.baseDays }, ...next.recommendations],
+        leaveDays: recommendation.leaveDays + next.leaveDays,
+        extraDays: recommendation.daysOff - event.baseDays + next.extraDays,
+        restDays: recommendation.daysOff + next.restDays,
+      };
+      if (current.extraDays > best.extraDays ||
+        (current.extraDays === best.extraDays && current.leaveDays < best.leaveDays) ||
+        (current.extraDays === best.extraDays && current.leaveDays === best.leaveDays &&
+          current.recommendations.map((item) => item.start).join(",") < best.recommendations.map((item) => item.start).join(","))) best = current;
+    }
+    memo.set(key, best);
+    return best;
+  }
+
+  return bestPlan(0, maximumLeaveDays, "");
 }

@@ -28,6 +28,11 @@ tool: false
     </label>
     <button class="button primary" type="submit">Palyginti pasirinktą datą</button>
   </form>
+  <div class="daylight-date-actions" role="group" aria-label="Keisti palyginimo datą">
+    <button class="button button--subtle" id="daylight-previous-day" type="button">← Ankstesnė diena</button>
+    <button class="button button--subtle" id="daylight-next-day" type="button">Kita diena →</button>
+    <button class="text-button" id="daylight-copy-link" type="button">Kopijuoti šios datos nuorodą</button>
+  </div>
   <fieldset class="daylight-city-fieldset"><legend>Įtraukite miestus į palyginimą</legend>
     <div id="daylight-cities" class="daylight-city-choices" aria-live="polite"></div>
     <button class="text-button" id="daylight-all-cities" type="button">Pasirinkti visus miestus</button>
@@ -45,10 +50,21 @@ tool: false
   <div class="table-scroll" tabindex="0" role="region" aria-label="Slenkama miestų palyginimo lentelė">
     <table class="data-table daylight-table">
       <caption>Pasirinktos datos Saulės laikai ir dienos trukmė</caption>
-      <thead><tr><th scope="col">Miestas</th><th scope="col">Saulėtekis</th><th scope="col">Vidurdienis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos ilgumas</th><th scope="col">24 val. skalė</th></tr></thead>
+      <thead><tr><th scope="col">Miestas</th><th scope="col">Saulėtekis</th><th scope="col">Vidurdienis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos ilgumas</th><th scope="col">Skirtumas nuo Vilniaus</th><th scope="col">24 val. skalė</th></tr></thead>
       <tbody id="daylight-rows"></tbody>
     </table>
   </div>
+</section>
+
+<section class="daylight-year-panel panel" aria-labelledby="daylight-year-title">
+  <div class="discovery-tool-heading"><div><p class="eyebrow">METŲ RITMAS</p><h2 id="daylight-year-title">Kaip keičiasi šviesa per metus?</h2></div>
+    <label class="daylight-focus-city">Palyginti miestą
+      <select id="daylight-focus-city" aria-label="Pasirinkite miestą metinei dienos šviesos kreivei"></select>
+    </label>
+  </div>
+  <div class="daylight-year-chart-wrap"><svg id="daylight-year-chart" viewBox="0 0 800 300" role="group" aria-labelledby="daylight-year-svg-title daylight-year-svg-desc"></svg></div>
+  <p id="daylight-year-summary" class="daylight-year-summary" aria-live="polite"></p>
+  <p class="daylight-chart-hint">Kreivė rodo kiekvieno mėnesio 21 dienos apytikslę šviesaus laiko trukmę. Pasirinkite tašką pele arba klaviatūra, kad atvertumėte tos dienos palyginimą.</p>
 </section>
 
 <div class="resource-grid daylight-explainers">
