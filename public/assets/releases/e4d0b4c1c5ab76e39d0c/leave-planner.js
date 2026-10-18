@@ -404,7 +404,7 @@ function showDayTable(container, period, data, options) {
 function plannerPage() {
   const form = $("#leave-planner");
   if (!form) return;
-  const dataPromise = fetch("/assets/releases/1d950bf3e4e71cfc5e7a/data/calendar.json").then((response) => {
+  const dataPromise = fetch("/assets/releases/e4d0b4c1c5ab76e39d0c/data/calendar.json").then((response) => {
     if (!response.ok) throw Error("Nepavyko įkelti patvirtinto Lietuvos švenčių rinkinio.");
     return response.json();
   });

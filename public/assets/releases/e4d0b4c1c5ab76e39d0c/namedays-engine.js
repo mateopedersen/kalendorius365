@@ -13,12 +13,27 @@ export function buildIndex(records) {
   }
   return [...map.values()].map(r => ({ ...r, dates: [...new Set(r.dates)].sort() })).sort((a,b)=>collator.compare(a.name,b.name));
 }
+// Index rows are reused across keystrokes; cache only derived name text.
+const preparedNames = new WeakMap();
+function preparedName(row) {
+ let prepared = preparedNames.get(row);
+ if (!prepared || prepared.name !== row.name) {
+  prepared = {name:row.name, folded:foldName(row.name), native:row.name.toLocaleLowerCase('lt'), initial:row.name[0].toLocaleUpperCase('lt')};
+  preparedNames.set(row, prepared);
+ }
+ return prepared;
+}
 export function searchNames(index, { query = '', letter = '', month = '' } = {}) {
-  const q = query.trim().normalize('NFC').toLocaleLowerCase('lt').slice(0,80);
-  const match = index.filter(r => (!letter || r.name[0].toLocaleUpperCase('lt') === letter) && (!q || foldName(r.name).includes(foldName(q))))
-    .map(r => ({ ...r, dates: r.dates.filter(d => !month || Number(d.slice(0,2)) === Number(month)) })).filter(r=>r.dates.length);
-  // Exact native spelling precedes accent-insensitive convenience matches.
-  return match.sort((a,b) => Number(b.name.toLocaleLowerCase('lt') === q) - Number(a.name.toLocaleLowerCase('lt') === q) || collator.compare(a.name,b.name));
+ const q = query.trim().normalize('NFC').toLocaleLowerCase('lt').slice(0,80);
+ const folded = foldName(q);
+ const match = index.filter(row => {
+  const name = preparedName(row);
+  return (!letter || name.initial === letter) && (!q || name.folded.includes(folded)) &&
+   row.dates.some(date => !month || Number(date.slice(0,2)) === Number(month));
+ });
+ // Keep exact native spelling first and preserve the original output schema.
+ return match.sort((a,b) => Number(preparedName(b).native === q) - Number(preparedName(a).native === q) || collator.compare(a.name,b.name))
+  .map(row => ({...row,dates:row.dates.filter(date => !month || Number(date.slice(0,2)) === Number(month))}));
 }
 export function validOccurrence(key, year) {
   if (!/^\d{2}-\d{2}$/.test(key) || !Number.isInteger(year) || year < 1900 || year > 2100) return null;

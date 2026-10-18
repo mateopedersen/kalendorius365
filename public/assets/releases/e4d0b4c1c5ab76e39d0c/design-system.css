@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/1d950bf3e4e71cfc5e7a/fonts/Lato-Regular.woff2") format("woff2");
+  src: url("/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/1d950bf3e4e71cfc5e7a/fonts/Lato-Bold.woff2") format("woff2");
+  src: url("/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Bold.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/1d950bf3e4e71cfc5e7a/fonts/Lato-Black.woff2") format("woff2");
+  src: url("/assets/releases/e4d0b4c1c5ab76e39d0c/fonts/Lato-Black.woff2") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -6861,4 +6861,191 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
   grid-row: 2;
   font-size: .88rem;
   margin: 0;
+}
+
+/* Search stays anchored to its field; only the suggestions scroll. */
+.header-search-toggle,
+.header-search-close,
+.header-search-submit { display: none; }
+.header-search-panel {
+  position: absolute;
+  top: calc(100% + 7px);
+  right: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  width: max(100%, 320px);
+  max-width: calc(100vw - 24px);
+  max-height: min(62vh, 520px);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 12px 30px #15283d24;
+}
+.header-search-panel[hidden] { display: none; }
+.header-search-panel > .header-search-results {
+  position: static;
+  inset: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.header-search-panel > .header-search-all {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-height: 44px;
+  margin: 4px 0 0;
+  padding: 8px 11px;
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 7px 7px;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+@media (max-width: 760px) {
+  /* The plain form remains usable if JavaScript has not loaded. */
+  .search-active .mobile-dock { display: none; }
+  .site-header:not(.search-ready) {
+    height: auto;
+    flex-wrap: wrap;
+    padding-block: 10px;
+  }
+  .site-header:not(.search-ready) .header-search {
+    position: relative;
+    order: 6;
+    flex: 1 0 100%;
+    width: 100%;
+    height: auto;
+  }
+  .site-header:not(.search-ready) .header-search input,
+  .site-header.search-ready .header-search.search-open input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 10px 0 36px !important;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--ink);
+    caret-color: var(--ink);
+    background: var(--panel) !important;
+    font-size: 16px;
+    box-shadow: none;
+  }
+  .site-header:not(.search-ready) .header-search input::placeholder,
+  .site-header.search-ready .header-search.search-open input::placeholder {
+    color: var(--muted);
+  }
+  .site-header.search-ready .header-search-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--ink);
+    background: var(--panel);
+  }
+  .header-search-toggle > .icon { width: 20px; height: 20px; }
+  .site-header.search-ready .header-search { display: none; }
+  .site-header.search-ready .header-search.search-open {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 12px;
+    right: 12px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+    width: auto;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--panel);
+    box-shadow: 0 8px 24px #15283d24;
+  }
+  .site-header.search-ready .header-search.search-open label {
+    display: block;
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+  }
+  .site-header.search-ready .header-search.search-open > .icon {
+    left: 19px;
+    top: 30px;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .site-header.search-ready .header-search-submit,
+  .site-header.search-ready .header-search-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: .88rem;
+  }
+  .site-header.search-ready .header-search-close {
+    width: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    background: var(--panel);
+    font-size: 26px;
+    line-height: 1;
+  }
+  .site-header.search-ready .header-search-panel {
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    width: auto;
+    max-width: none;
+    max-height: var(--search-results-height, min(40dvh, 320px));
+    padding: 4px;
+  }
+  .site-header .header-search-panel .header-search-results a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 9px 10px !important;
+  }
+  .site-header .header-search-panel .header-search-results a strong {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: .9rem;
+  }
+  .site-header .header-search-panel .header-search-results a small { display: none; }
 }
