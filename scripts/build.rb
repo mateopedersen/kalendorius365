@@ -77,7 +77,7 @@ Dir.chdir(ROOT) do
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
  abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
  theme_hash=Base64.strict_encode64(Digest::SHA256.digest(theme_script))
- headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
+ headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
  headers+="  X-Robots-Tag: noindex\n" unless release
  one_day='Cache-Control: public, max-age=86400'
  immutable='Cache-Control: public, max-age=31536000, immutable'

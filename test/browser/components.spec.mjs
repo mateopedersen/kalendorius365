@@ -187,17 +187,17 @@ test('leave planner produces inspectable date rows and a valid ICS',async({page}
  const result=await downloadBytes(page,()=>card.getByRole('button',{name:'Atsisiųsti ICS',exact:true}).click());ics(result.bytes);
 });
 
-test('contact topic, validation and address copy work without sending a message',async({page,context})=>{
+test('contact Google form prefill, source link and email copy work without sending a message',async({page,context})=>{
  await context.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window.__copiedContact=value;}}}));
  await page.goto('/kontaktai/?tema=technical&puslapis=https%3A%2F%2Fkalendorius365.lt%2F2028%2F%3Fq%3Dprivate');
- await expect(page.locator('#contact-topic')).toHaveValue('technical');
- await expect(page.locator('#contact-page-url')).toHaveValue('https://kalendorius365.lt/2028/');
- await page.locator('[data-contact-submit]').click();await expect(page.locator('#contact-email')).toHaveAttribute('aria-invalid','true');
- await page.locator('#contact-email').fill('qa@example.test');await page.locator('#contact-email').press('Tab');
- await expect(page.locator('#contact-email')).not.toHaveAttribute('aria-invalid','true');
- await page.locator('#contact-page-url').fill('https://example.test/');await page.locator('#contact-page-url').press('Tab');
- await expect(page.locator('#contact-page-error')).toBeVisible();
- await page.locator('[data-topic="namedays"]').click();await expect(page.locator('#contact-topic')).toHaveValue('namedays');
+ const frame=page.locator('[data-contact-frame]');
+ await expect(frame).toHaveAttribute('src',/entry.122884581=/);
+ const source=new URL(await frame.getAttribute('src'));
+ expect(source.origin).toBe('https://docs.google.com');expect(source.searchParams.get('embedded')).toBe('true');
+ expect(source.searchParams.get('entry.122884581')).toBe('Techninė problema');expect(source.searchParams.get('entry.1784264088')).toBe('https://kalendorius365.lt/2028/');
+ await expect(page.locator('[data-contact-source-link]')).toHaveAttribute('href','https://kalendorius365.lt/2028/');
+ const topic=new URL(await page.locator('[data-topic="namedays"]').getAttribute('href'));expect(topic.searchParams.get('entry.122884581')).toBe('Vardadieniai ir šventės');
+ for(const link of await page.locator('[data-open-contact-form]').all())await expect(link).toHaveAttribute('href',/docs.google.com\/forms\//);
  await page.locator('[data-copy-email]').click();await expect(page.locator('[data-copy-status]')).toHaveText('El. pašto adresas nukopijuotas.');
  expect(await page.evaluate(()=>window.__copiedContact)).toBe('kalendorius365@gmail.com');
 });
