@@ -72,7 +72,7 @@ function dirty() {
     try {
       await storage.save(clone(state));
       savedRevision = Math.max(savedRevision, r);
-      if (r === revision && !statusError) status(LT.issaugota_siame_irenginyje + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
+      if (r === revision && !statusError && !busy) status(LT.issaugota_siame_irenginyje + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
     } catch (error) {
       status(LT.nepavyko_issaugoti_atsisiuskite_projekto_kopija + readableError(error), true);
     }
@@ -120,6 +120,7 @@ ${section(LT.tekstas_05_uzrasai_ir_atostogu_planas, `${range(LT.uzrasu_darbu_eil
   if (focused) q(`[data-path="${focused}"]`)?.focus({ preventScroll: true });
 }
 function schedulePreview() {
+  previewVersion++;
   clearTimeout(previewTimer);
   previewTimer = setTimeout(() => preview().catch((error) => status(readableError(error), true)), 70);
 }
@@ -134,6 +135,7 @@ async function preview() {
   let urls = photoCache.get(cacheKey);
   if (!urls) {
     urls = await photoURLs(page, 85);
+    if(version!==previewVersion)return;
     photoCache.set(cacheKey, urls);
     if (photoCache.size > 18) photoCache.delete(photoCache.keys().next().value);
   }
