@@ -1,6 +1,6 @@
-import { icon as uiIcon } from "./icons.js?v=5333405800fe";
-import { TZ, today } from "./calendar.js?v=5333405800fe";
-import { WEATHER_CITY_BY_ID } from "./data/weather-cities.js?v=5333405800fe";
+import { icon as uiIcon } from "./icons.js?v=0cb6808075af";
+import { TZ, today } from "./calendar.js?v=0cb6808075af";
+import { WEATHER_CITY_BY_ID } from "./data/weather-cities.js?v=0cb6808075af";
 const names = {
   clear: "Giedra",
   "partly-cloudy": "Mažai debesuota",
@@ -98,7 +98,7 @@ export async function renderWeather(city) {
             : "cloud";
   document.querySelector(".climate-card").dataset.weather = condition;
   const illustration = document.createElement("img");
-  illustration.src = "/assets/visuals/weather-" + condition + ".svg";
+  illustration.src = `/assets/visuals/weather-${condition}.svg?v=1e6104110a36`;
   illustration.width = 84;
   illustration.height = 75;
   illustration.alt = "";

@@ -39,6 +39,7 @@ Dir.chdir(ROOT) do
   end
   File.write(path,javascript)
  end
+ system('python3','scripts/inline_route_css.py',exception:true)
  versioned_asset_references=Kalendorius::StaticAssetUrls.rewrite!('public')
  puts "Content-versioned #{versioned_asset_references} static image, data and print URLs"
  # Fail on accidentally exceeding the existing Free static hosting limits.

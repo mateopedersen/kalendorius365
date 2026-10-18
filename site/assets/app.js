@@ -924,7 +924,11 @@ function renderHolidayList() {
       .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 4);
   const yearLink = $("#upcoming-holiday-year");
-  if (yearLink) yearLink.textContent = (items[0]?.date || now).slice(0, 4);
+  if (yearLink) {
+    const upcomingYear = (items[0]?.date || now).slice(0, 4);
+    yearLink.textContent = upcomingYear;
+    yearLink.closest("a").setAttribute("aria-label", `${upcomingYear} m. – visos šventės ir datos`);
+  }
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
       const li = el("li"),
@@ -949,7 +953,7 @@ function renderHolidayList() {
       mark.setAttribute("aria-hidden", "true");
       date.type = "button";
       date.dataset.date = h.date;
-      date.setAttribute("aria-label", `Rodyti ${cal.formatDate(h.date)} kalendoriuje`);
+      date.setAttribute("aria-label", `${date.textContent} – rodyti ${cal.formatDate(h.date)} kalendoriuje`);
       a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
       a.className = "holiday-select holiday-article-link";
       title.append(mark, a);

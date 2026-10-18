@@ -1,4 +1,4 @@
-import { findSign, filterSigns, comparison, wheelIndex } from './zodiac-engine.js?v=5333405800fe';
+import { findSign, filterSigns, comparison, wheelIndex } from './zodiac-engine.js?v=0cb6808075af';
 
 const root = document.querySelector('.zodiac-guide');
 const node = (tag, text, className) => {
@@ -18,7 +18,7 @@ async function initialize() {
   if (!response.ok) throw new Error('Ženklų lentelės nepavyko įkelti. Datos ir nuorodos pateiktos žemiau.');
   const { signs } = await response.json();
   if (!Array.isArray(signs) || signs.length !== 12 || new Set(signs.map(sign => sign.key)).size !== 12 || signs.some(sign =>
-    !/^[a-z]+$/.test(sign.key) || !/^\/horoskopai\/[a-z]+\/$/.test(sign.url) || !/^\/assets\/visuals\/zodiac\/[a-z]+\.svg$/.test(sign.art))) {
+    !/^[a-z]+$/.test(sign.key) || !/^\/horoskopai\/[a-z]+\/$/.test(sign.url) || !/^\/assets\/visuals\/zodiac\/[a-z]+\.svg(?:\?v=[a-f0-9]{12})?$/.test(sign.art))) {
     throw new Error('Ženklų lentelė neatpažinta. Naudokitės žemiau pateiktu datų sąrašu.');
   }
   const wheelButtons = [...root.querySelectorAll('[data-wheel-sign]')];

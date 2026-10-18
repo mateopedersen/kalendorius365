@@ -21,6 +21,7 @@ async function showPrivacyNotice() {
       cache: "no-store",
       credentials: "same-origin",
       headers: { Accept: "application/json" },
+      priority: "low",
     });
     if (!response.ok) throw new Error("Region lookup unavailable");
     const region = await response.json();

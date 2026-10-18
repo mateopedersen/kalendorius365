@@ -1,5 +1,5 @@
-import { solarFor, solarPositionAt } from "./phase-5-6-8-core.js?v=5333405800fe";
-import { today, TZ } from "./calendar.js?v=5333405800fe";
+import { solarFor, solarPositionAt } from "./phase-5-6-8-core.js?v=0cb6808075af";
+import { today, TZ } from "./calendar.js?v=0cb6808075af";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
@@ -26,7 +26,7 @@ const html = (tag, content, attrs = {}) => {
   for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
   return node;
 };
-const solarCities = fetch("/assets/data/astronomy/cities.json").then((response) => {
+const solarCities = fetch("/assets/data/astronomy/cities.json?v=2e0949eb82e7").then((response) => {
   if (!response.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return response.json();
 }).catch(() => ({ cities: [] }));
@@ -154,7 +154,7 @@ function setupSun() {
       const momentLabels = { civilStart: "Aušra", sunrise: "Saulėtekis", noon: "Vidurdienis", sunset: "Saulėlydis", civilEnd: "Vakaras" };
       for (const [key, id] of [["civilStart", "#sun-civil-start"], ["sunrise", "#sun-rise-time"], ["noon", "#sun-noon-time"], ["sunset", "#sun-set-time"], ["civilEnd", "#sun-civil-end"]]) {
         const node = $(id); node.textContent = clock(times[key]);
-        const button = root.querySelector(`[data-sun-moment="${key}"]`); button.setAttribute("aria-label", `${momentLabels[key]}, ${clock(times[key])} Lietuvos laiku`); button.querySelector("time").dateTime = new Date(times[key]).toISOString();
+        const button = root.querySelector(`[data-sun-moment="${key}"]`); button.setAttribute("aria-label", `${momentLabels[key]} ${clock(times[key])} Lietuvos laiku`); button.querySelector("time").dateTime = new Date(times[key]).toISOString();
         button.onclick = () => { slider.value = String(Math.round((times[key] - times.civilStart) / (times.civilEnd - times.civilStart) * 1000)); slider.dispatchEvent(new Event("input")); };
       }
       const setInstant = buildScene(date, city, times), updateFromSlider = () => setInstant(times.civilStart + (times.civilEnd - times.civilStart) * Number(slider.value) / 1000);

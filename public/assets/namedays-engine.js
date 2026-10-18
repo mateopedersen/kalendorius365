@@ -1,9 +1,18 @@
-import { addDays, parse, today } from './calendar.js?v=5333405800fe';
-import { validate, empty } from './storage.js?v=5333405800fe';
+import { addDays, parse, today } from './calendar.js?v=0cb6808075af';
+import { validate, empty } from './storage.js?v=0cb6808075af';
 export { today as vilniusToday };
 export const ALPHABET = 'A Ą B C Č D E Ę Ė F G H I Į Y J K L M N O P R S Š T U Ų Ū V Z Ž'.split(' ');
 export const collator = new Intl.Collator('lt', { sensitivity: 'variant' });
 export const foldName = (s) => String(s).normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('lt');
+const searchMetadata = new WeakMap();
+function searchable(row) {
+  let cached = searchMetadata.get(row);
+  if (!cached || cached.name !== row.name) {
+    cached = { name: row.name, folded: foldName(row.name), native: row.name.toLocaleLowerCase('lt'), initial: row.name[0].toLocaleUpperCase('lt') };
+    searchMetadata.set(row, cached);
+  }
+  return cached;
+}
 export function buildIndex(records) {
   const map = new Map();
   for (const row of records) for (const name of row.names) {
@@ -15,10 +24,14 @@ export function buildIndex(records) {
 }
 export function searchNames(index, { query = '', letter = '', month = '' } = {}) {
   const q = query.trim().normalize('NFC').toLocaleLowerCase('lt').slice(0,80);
-  const match = index.filter(r => (!letter || r.name[0].toLocaleUpperCase('lt') === letter) && (!q || foldName(r.name).includes(foldName(q))))
-    .map(r => ({ ...r, dates: r.dates.filter(d => !month || Number(d.slice(0,2)) === Number(month)) })).filter(r=>r.dates.length);
+  const foldedQuery = foldName(q), selectedMonth = Number(month);
+  const match = index.filter(r => {
+    const key = searchable(r);
+    return (!letter || key.initial === letter) && (!q || key.folded.includes(foldedQuery));
+  });
   // Exact native spelling precedes accent-insensitive convenience matches.
-  return match.sort((a,b) => Number(b.name.toLocaleLowerCase('lt') === q) - Number(a.name.toLocaleLowerCase('lt') === q) || collator.compare(a.name,b.name));
+  match.sort((a,b) => Number(searchable(b).native === q) - Number(searchable(a).native === q) || collator.compare(a.name,b.name));
+  return match.map(r => ({ ...r, dates: r.dates.filter(d => !month || Number(d.slice(0,2)) === selectedMonth) })).filter(r=>r.dates.length);
 }
 export function validOccurrence(key, year) {
   if (!/^\d{2}-\d{2}$/.test(key) || !Number.isInteger(year) || year < 1900 || year > 2100) return null;

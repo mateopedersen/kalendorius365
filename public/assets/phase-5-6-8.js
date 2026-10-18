@@ -1,6 +1,6 @@
-import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=5333405800fe";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=5333405800fe";
-import { download } from "./storage.js?v=5333405800fe";
+import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=0cb6808075af";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=0cb6808075af";
+import { download } from "./storage.js?v=0cb6808075af";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
@@ -31,11 +31,11 @@ const validISODate = (value) => {
   const date = new Date(Date.UTC(y, m - 1, d));
   return date.toISOString().slice(0, 10) === value;
 };
-const CALENDAR_DATA = await fetch("/assets/data/calendar.json").then((r) => {
+const CALENDAR_DATA = await fetch("/assets/data/calendar.json?v=d2f3d4db84c0").then((r) => {
   if (!r.ok) throw Error("Kalendoriaus dienų rinkinio nepavyko įkelti.");
   return r.json();
 }).catch(() => ({ holidays: [] }));
-const REST_RULES = await fetch("/assets/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null);
+const REST_RULES = await fetch("/assets/data/lt/work-rest-rules.json?v=5618dd1bec18").then((r) => r.ok ? r.json() : null).catch(() => null);
 
 function readLocal(key, fallback) {
   try {
@@ -325,7 +325,7 @@ function setupSchool() {
 
 // NOAA solar position equations: equation of time + declination; sunrise zenith 90.833°,
 // civil twilight 96°. Events are calculations, not observations.
-const CITY_DATA = await fetch("/assets/data/astronomy/cities.json").then((r) => {
+const CITY_DATA = await fetch("/assets/data/astronomy/cities.json?v=2e0949eb82e7").then((r) => {
   if (!r.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return r.json();
 }).catch(() => ({ cities: [] }));
@@ -374,8 +374,8 @@ async function setupMoon() {
   if (!$("#moon-tool") && !$("#moon-year-tool") && !$("#season-rows")) return;
   try {
     const [data, seasons] = await Promise.all([
-      fetch("/assets/data/astronomy/moon-phases-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
-      fetch("/assets/data/astronomy/seasons-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/data/astronomy/moon-phases-utc.json?v=8e2eabe998c2").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/data/astronomy/seasons-utc.json?v=8f297af9abb2").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
     ]);
     const instants=data.events.map(e=>({ ...e, instant:Date.parse(e.utc) }));
     const newMoons=instants.filter(e=>e.phase==="new").map(e=>e.instant);

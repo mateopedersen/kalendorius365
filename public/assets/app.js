@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=5333405800fe";
-import * as cal from "./calendar.js?v=5333405800fe";
-import { Store, download } from "./storage.js?v=5333405800fe";
-import { exportICS, importICS } from "./ics.js?v=5333405800fe";
-import { notice } from "./common.js?v=5333405800fe";
-import { renderWeather } from "./weather.js?v=5333405800fe";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=5333405800fe";
+import { icon } from "./icons.js?v=0cb6808075af";
+import * as cal from "./calendar.js?v=0cb6808075af";
+import { Store, download } from "./storage.js?v=0cb6808075af";
+import { exportICS, importICS } from "./ics.js?v=0cb6808075af";
+import { notice } from "./common.js?v=0cb6808075af";
+import { renderWeather } from "./weather.js?v=0cb6808075af";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=0cb6808075af";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -16,12 +16,12 @@ const homeIcon = (name, className = "") => {
   const svg = icon(name, className);
   svg.querySelector("use").setAttribute(
     "href",
-    "/assets/visuals/home-icons.svg?v=icons-20261016a#" + name,
+    "/assets/visuals/home-icons.svg?v=ffa2352a4742#" + name,
   );
   return svg;
 };
 const [data, editorial] = await Promise.all([
-  fetch("/assets/data/calendar.json")
+  fetch("/assets/data/calendar.json?v=d2f3d4db84c0")
     .then((r) => {
       if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
       return r.json();
@@ -30,7 +30,7 @@ const [data, editorial] = await Promise.all([
       notice(e.message);
       throw e;
     }),
-  fetch("/assets/data/home-holiday-data.json?v=2")
+  fetch("/assets/data/home-holiday-data.json?v=5584381a8f9a")
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);
@@ -924,7 +924,11 @@ function renderHolidayList() {
       .sort((a, b) => a.date.localeCompare(b.date))
       .slice(0, 4);
   const yearLink = $("#upcoming-holiday-year");
-  if (yearLink) yearLink.textContent = (items[0]?.date || now).slice(0, 4);
+  if (yearLink) {
+    const upcomingYear = (items[0]?.date || now).slice(0, 4);
+    yearLink.textContent = upcomingYear;
+    yearLink.closest("a").setAttribute("aria-label", `${upcomingYear} m. – visos šventės ir datos`);
+  }
   $("#upcoming-holidays").replaceChildren(
     ...items.map((h) => {
       const li = el("li"),
@@ -949,7 +953,7 @@ function renderHolidayList() {
       mark.setAttribute("aria-hidden", "true");
       date.type = "button";
       date.dataset.date = h.date;
-      date.setAttribute("aria-label", `Rodyti ${cal.formatDate(h.date)} kalendoriuje`);
+      date.setAttribute("aria-label", `${date.textContent} – rodyti ${cal.formatDate(h.date)} kalendoriuje`);
       a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
       a.className = "holiday-select holiday-article-link";
       title.append(mark, a);

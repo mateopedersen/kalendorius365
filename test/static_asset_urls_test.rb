@@ -30,7 +30,7 @@ class StaticAssetUrlsTest < Minitest::Test
   def test_rewrites_static_asset_urls_with_content_versions
     svg_hash = Digest::SHA256.file(File.join(@root, 'assets/visuals/icon.svg')).hexdigest[0, 12]
     json_hash = Digest::SHA256.file(File.join(@root, 'assets/data/index.json')).hexdigest[0, 12]
-    pdf_hash = Digest::SHA256.file(File.join(@root, 'downloads/print.pdf')).hexdigest[0, 12]
+    pdf_hash = Digest::SHA256.file(File.join(@root, 'downloads/print.pdf')).hexdigest[0, 16]
     source = <<~HTML
       <img src="/assets/visuals/icon.svg#sun">
       <link href="/assets/visuals/icon.svg?v=old#calendar">

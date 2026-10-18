@@ -58,12 +58,12 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 }
 .homepage-app .filter-chip--holiday{ --filter-accent: #c43b43; }
 .homepage-app .filter-chip--category-0{ --filter-accent: #087b58; }
-.homepage-app .filter-chip--category-1{ --filter-accent: #2874c7; }
+.homepage-app .filter-chip--category-1{ --filter-accent: #2166b1; }
 .homepage-app .filter-chip--category-2{ --filter-accent: #8050b7; }
 .homepage-app .filter-chip--category-3{ --filter-accent: #c43b43; }
-.homepage-app .filter-chip--category-4{ --filter-accent: #ad741b; }
+.homepage-app .filter-chip--category-4{ --filter-accent: #86570f; }
 .homepage-app .filter-chip--category-5{ --filter-accent: #a34e85; }
-.homepage-app .filter-chip--category-6{ --filter-accent: #68778b; }
+.homepage-app .filter-chip--category-6{ --filter-accent: #58677b; }
 .homepage-app .category-chips .filter-chip[aria-pressed="true"]{
   border-color: color-mix(in srgb, var(--filter-accent, var(--green)) 42%, var(--border));
   background: color-mix(in srgb, var(--filter-accent, var(--green)) 7%, var(--panel));

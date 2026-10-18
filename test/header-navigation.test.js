@@ -22,7 +22,9 @@ test('the shared header exposes fourteen unique destinations with named decorati
     const link = links.find(link => link[1] === route);
     assert.ok(link, route);
     assert.ok(link[2].includes(`<span>${label}</span>`));
-    assert.ok(link[2].includes(`nav-20261017a#${symbol}`));
+    const sprite = link[2].match(/href="(\/assets\/visuals\/navigation-extras\.svg\?v=([a-f0-9]{12})#[^"]+)"/);
+    assert.ok(sprite, 'navigation sprite uses a content version');
+    assert.ok(sprite[1].endsWith(`#${symbol}`));
     assert.ok(link[2].includes('aria-hidden="true" focusable="false"'));
     assert.ok(fs.existsSync(path.join(root, 'public', route, 'index.html')));
   }

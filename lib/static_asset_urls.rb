@@ -112,7 +112,10 @@ module Kalendorius
         directory = relative.split('/', 2).first
         next unless path.file? && versionable?(directory, path.extname.downcase)
 
-        versions['/' + relative] = Digest::SHA256.file(path).hexdigest[0, 12]
+        # Preserve the existing print-manifest URL convention, also used by
+        # the sitemap and download metadata embedded in the page.
+        length = directory == 'downloads' ? 16 : 12
+        versions['/' + relative] = Digest::SHA256.file(path).hexdigest[0, length]
       end
       versions
     end

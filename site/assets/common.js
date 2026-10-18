@@ -8,13 +8,20 @@ export function notice(message) {
 
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-  import("./calendar.js").then(({ today, formatDate }) => {
+    // This label needs two formatters, not the calendar calculation module.
+    const currentDay = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit",
+    });
+    const displayDate = new Intl.DateTimeFormat("lt-LT", {
+      timeZone: "UTC", year: "numeric", month: "long", day: "numeric",
+    });
     const refreshUpdateLabels = () => {
-      const currentDate = today();
+      const parts = Object.fromEntries(currentDay.formatToParts(new Date()).map(({type,value}) => [type,value]));
+      const currentDate = `${parts.year}-${parts.month}-${parts.day}`;
       for (const label of horoscopeUpdates) {
         label.textContent = label.dateTime === currentDate
           ? "Šiandien atnaujinta"
-          : `Atnaujinta: ${formatDate(label.dateTime)}`;
+          : `Atnaujinta: ${displayDate.format(new Date(`${label.dateTime}T00:00:00Z`))}`;
       }
     };
     refreshUpdateLabels();
@@ -22,7 +29,6 @@ if (horoscopeUpdates.length) {
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) refreshUpdateLabels();
     });
-  });
 }
 
 // Fetch an internal page only after a clear navigation intent. This keeps

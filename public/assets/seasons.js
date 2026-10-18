@@ -1,4 +1,4 @@
-import {SEASON_IDS,SEASON_NAMES,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts,seasonGuideHref} from './seasons-core.js?v=5333405800fe';
+import {SEASON_IDS,SEASON_NAMES,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts,seasonGuideHref} from './seasons-core.js?v=0cb6808075af';
 const app=document.querySelector('.sp3');
 if(app)initialize();
 async function initialize(){
@@ -21,7 +21,7 @@ async function initialize(){
    for(const row of rows){const tr=document.createElement('tr');row.forEach((value,i)=>{const cell=document.createElement(i?'td':'th');if(!i)cell.scope='row';cell.textContent=value;tr.append(cell);});fragment.append(tr);}tbody.replaceChildren(fragment);
   }
   function showStep(announce=false){
-   const s=SEASON_IDS[step],e=find(s);$('#sp3-earth').src=`/assets/visuals/seasons/${s}-earth.svg`;$('#sp3-earth').alt=`${SEASON_NAMES[step]}: Žemės apšvietimo schema`;
+   const s=SEASON_IDS[step],e=find(s);$('#sp3-earth').src=`/assets/visuals/seasons/${s}-earth.svg?v=d6b46a12e659`;$('#sp3-earth').alt=`${SEASON_NAMES[step]}: Žemės apšvietimo schema`;
    text('#sp3-diagram-name',e.name);text('#sp3-diagram-time',`${e.label} · ${e.clock} · ${e.offset}`);
    all('[data-step]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.step)===step)));
    all('.sp3-orbit-stop').forEach(g=>g.classList.toggle('is-active',Number(g.dataset.orbitIndex)===step));
@@ -51,14 +51,14 @@ async function initialize(){
     const href=a.getAttribute('href')||'',route=href.split(/[?#]/)[0];
     if(['/metu-laikai/',...slugs.map(s=>'/'+s+'/')].includes(route))a.setAttribute('href',seasonGuideHref(route,y,c.id));
    }
-   line('annual',annual.curve,mark);all('[data-ics]').forEach(a=>{const slug=a.dataset.ics==='all'?'metu-laikai':slugs[SEASON_IDS.indexOf(a.dataset.ics)];a.href=`/assets/seasons-ics/${y}-${slug}.ics`;});showStep();
+   line('annual',annual.curve,mark);all('[data-ics]').forEach(a=>{const slug=a.dataset.ics==='all'?'metu-laikai':slugs[SEASON_IDS.indexOf(a.dataset.ics)];a.href=`/assets/seasons-ics/${y}-${slug}.ics?v=60c31d980671`;});showStep();
   }
   function plural(n,one,few,many){return n%10===1&&n%100!==11?one:n%10>=2&&n%10<=9&&(n%100<10||n%100>=20)?few:many;}
   function countdown(){
    if(id==='hub')return;const e=nextSeasonEvent(d.events,id),link=$('#sp3-next-ics');
    if(!e){text('#sp3-next-date','Patikrintų būsimų momentų sąrašas baigėsi. Palyginimo lentelėje išlieka 2027–2029 m. datos.');text('#sp3-countdown','Naujos datos dar nepateiktos');link.hidden=true;return;}
    const now=Date.now(),p=countdownParts(e.utc,now);text('#sp3-next-date',`${e.label} · ${e.clock} · ${e.offset}`);
-   text('#sp3-countdown',`Liko ${p.days} ${plural(p.days,'para','paros','parų')}, ${p.hours} val. ${p.minutes} min.`);link.href=`/assets/seasons-ics/${e.year}-${slugs[SEASON_IDS.indexOf(id)]}.ics`;link.hidden=false;
+   text('#sp3-countdown',`Liko ${p.days} ${plural(p.days,'para','paros','parų')}, ${p.hours} val. ${p.minutes} min.`);link.href=`/assets/seasons-ics/${e.year}-${slugs[SEASON_IDS.indexOf(id)]}.ics?v=60c31d980671`;link.hidden=false;
   }
   function stop(){clearInterval(timer);timer=null;$('#sp3-play').setAttribute('aria-pressed','false');$('#sp3-play span').textContent='Paleisti metų ciklą';}
   all('[data-step]').forEach(b=>b.addEventListener('click',()=>{stop();step=Number(b.dataset.step);showStep(true);}));

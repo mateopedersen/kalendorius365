@@ -182,7 +182,7 @@ module HoroscopesPages
 
   def sign_link(sign, daily, current = false)
     current_attr = current ? ' aria-current="page"' : ''
-    %(<a class="horoscope-sign-link" href="/horoskopai/#{escape(sign['key'])}/" aria-label="#{escape(sign['genitive'])} dienos horoskopas"#{current_attr}><span class="horoscope-sign-link__mark">#{mark(sign['key'])}</span><span>#{escape(sign['name'])}</span></a>)
+    %(<a class="horoscope-sign-link" href="/horoskopai/#{escape(sign['key'])}/" aria-label="#{escape(sign['name'])} – dienos horoskopas"#{current_attr}><span class="horoscope-sign-link__mark">#{mark(sign['key'])}</span><span>#{escape(sign['name'])}</span></a>)
   end
 
   def run
