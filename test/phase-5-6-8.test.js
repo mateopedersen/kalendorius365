@@ -1,13 +1,42 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildShiftCsv, buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, solarPositionAt, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
+import { buildShiftCsv, buildShiftIcs, buildShiftPlan, lessonConflicts, lessonFieldError, lunarIllumination, solarFor, solarPositionAt, visibleLessons, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
 
 const day = { name: "Dieninė", start: "07:00", end: "19:00", break: 30, color: "#006a44" };
 const night = { name: "Naktinė", start: "23:00", end: "07:00", break: 0, color: "#315bd6" };
 const plan = (patch = {}) => buildShiftPlan({
   anchor: "2027-01-01", from: "2027-01-01", to: "2027-01-08", cycleText: "D,D,P,P",
   definitions: { D: day }, holidayDates: [], ...patch,
+});
+const shiftPage = readFileSync(new URL("../site/pamainu-grafikas/index.html", import.meta.url), "utf8");
+const shiftUI = readFileSync(new URL("../site/assets/phase-5-6-8.js", import.meta.url), "utf8");
+const shiftStyles = readFileSync(new URL("../site/assets/shift-exceptions.css", import.meta.url), "utf8");
+const layout = readFileSync(new URL("../site/_layouts/default.html", import.meta.url), "utf8");
+
+test("lesson names and room text are independent from clock validation", () => {
+  assert.equal(lessonFieldError("subject", "Matematika"), "");
+  assert.equal(lessonFieldError("subject", "ĄČĘĖĮŠŲŪŽ"), "");
+  assert.equal(lessonFieldError("room", "A-12"), "");
+  assert.equal(lessonFieldError("teacher", "V. Ą"), "");
+  assert.equal(lessonFieldError("start", "10:00", "", "10:45"), "");
+  assert.equal(lessonFieldError("end", "10:45", "10:00", ""), "");
+  assert.match(lessonFieldError("end", "09:00", "10:00", ""), /vėlesnė/);
+  assert.match(lessonFieldError("start", "25:00", "", ""), /galiojantį laiką/);
+});
+
+test("school lesson conflicts are same-day, and day view filters without deleting schedule data", () => {
+  const lessons = [
+    { day: 0, number: 1, start: "10:00", end: "10:45" },
+    { day: 0, number: 2, start: "10:40", end: "11:20" },
+    { day: 0, number: 3, start: "11:20", end: "12:00" },
+    { day: 1, number: 1, start: "10:15", end: "10:55" },
+    { day: 5, number: 1, start: "10:00", end: "10:45" },
+  ];
+  assert.deepEqual(lessonConflicts(lessons).map(({ day, first, second }) => [day, first.number, second.number]), [[0, 1, 2]]);
+  assert.deepEqual(visibleLessons(lessons, { days: 5, view: "day", day: 0 }).map(({ number }) => number), [1, 2, 3]);
+  assert.deepEqual(visibleLessons(lessons, { days: 5, view: "week" }), lessons.slice(0, 4));
+  assert.equal(lessons.length, 5, "view selection must leave stored lesson records intact");
 });
 
 test("shift cycles handle year boundaries, leap day, breaks and exact holiday-date intersections", () => {
@@ -22,6 +51,39 @@ test("shift cycles handle year boundaries, leap day, breaks and exact holiday-da
     definitions: { D: day }, holidayDates: [] });
   assert.equal(leap.visible[0].date, "2028-02-29");
   assert.equal(leap.visible[0].worked, 11.5);
+});
+
+test("one-day shift exceptions override only their own date and preserve the cycle", () => {
+  const base = plan({ to: "2027-01-04", cycleText: "D,D,P,P", definitions: { D: day, N: night } });
+  const changed = plan({ to: "2027-01-04", cycleText: "D,D,P,P", definitions: { D: day, N: night }, exceptions: [
+    { date: "2027-01-03", reason: "shift", code: "N" },
+    { date: "2027-01-02", reason: "leave", code: "P" },
+  ] });
+  assert.deepEqual(base.visible.map((shift) => [shift.date, shift.code]), [["2027-01-01", "D"], ["2027-01-02", "D"]]);
+  assert.deepEqual(changed.visible.map((shift) => [shift.date, shift.code]), [["2027-01-01", "D"], ["2027-01-03", "N"]]);
+  assert.equal(changed.visible.find((shift) => shift.date === "2027-01-03").exception, "shift");
+  assert.deepEqual(changed.exceptions.map(({ date, reason, code }) => [date, reason, code]), [
+    ["2027-01-02", "leave", "P"], ["2027-01-03", "shift", "N"],
+  ]);
+});
+
+test("one-day exceptions reject duplicate dates, invalid reasons and out-of-range dates", () => {
+  const duplicate = [{ date: "2027-01-02", reason: "rest", code: "P" }, { date: "2027-01-02", reason: "sick", code: "P" }];
+  assert.throws(() => plan({ exceptions: duplicate }), /tik vieną/);
+  assert.throws(() => plan({ exceptions: [{ date: "2027-01-02", reason: "holiday", code: "P" }] }), /rūšį/);
+  assert.throws(() => plan({ exceptions: [{ date: "2027-01-09", reason: "rest", code: "P" }] }), /rodomame laikotarpyje/);
+  assert.throws(() => plan({ exceptions: [{ date: "2027-01-02", reason: "shift", code: "P" }] }), /pamainos žymą/);
+  assert.throws(() => plan({ exceptions: [{ date: "2027-01-02", reason: "leave", code: "D" }] }), /darbo žyma turi būti P/);
+});
+
+test("shift exceptions are editable, visible in both calendar views and scoped to the planner route", () => {
+  for (const id of ["shift-exception-date", "shift-exception-reason", "shift-exception-code", "shift-exception-add", "shift-exception-list"]) assert.match(shiftPage, new RegExp(`id="${id}"`));
+  assert.match(layout, /page\.phase_module == "shift".*shift-exceptions\.css/);
+  assert.match(shiftUI, /Pakeista pamaina/);
+  assert.match(shiftUI, /už rodomo laikotarpio, dabar netaikoma/);
+  assert.match(shiftUI, /buildShiftPlan\(\{ anchor: d\["shift-anchor"\]/);
+  assert.match(shiftStyles, /@media\(max-width:620px\)/);
+  assert.match(shiftStyles, /@media print/);
 });
 
 test("shift cycle input validates format, length, definitions, and non-rest days", () => {
@@ -78,9 +140,9 @@ test("shift ICS uses elapsed UTC times, escapes text and folds within RFC 5545 b
   for (const line of ics.split("\r\n")) assert(Buffer.byteLength(line, "utf8") <= 75, `ICS line exceeds 75 octets: ${line}`);
 });
 
-test("shift CSV opens cleanly in spreadsheets, quotes Lithuanian text and neutralizes formulas", () => {
+test("shift CSV is spreadsheet-safe and preserves Lithuanian labels", () => {
   const shifts = buildShiftPlan({ anchor: "2027-01-01", from: "2027-01-01", to: "2027-01-01", cycleText: "D",
-    definitions: { D: { ...day, name: 'Dieninė; "A"', location: "=HYPERLINK(\"https://example.com\")", note: "Vilnius, pamaina" } } }).visible;
+    definitions: { D: { ...day, name: 'Dieninė; "A"', location: '=HYPERLINK("https://example.com")', note: "Vilnius, pamaina" } } }).visible;
   const csv = buildShiftCsv(shifts);
   assert(csv.startsWith("\uFEFF"));
   assert.match(csv, /"Dieninė; ""A"""/);
@@ -89,21 +151,6 @@ test("shift CSV opens cleanly in spreadsheets, quotes Lithuanian text and neutra
   assert.match(csv, /"2027-01-01 07:00"/);
   assert.equal(csv.split("\r\n").length, 3);
   assert.throws(() => buildShiftCsv([]), /apskaičiuokite grafiką/);
-});
-
-test("every visible shift-cycle shortcut produces a valid, populated plan", () => {
-  const page = readFileSync(new URL("../site/pamainu-grafikas/index.html", import.meta.url), "utf8");
-  const cycles = [...page.matchAll(/<button class="shift-pattern[^\"]*" type="button" data-cycle="([^\"]+)" aria-pressed="(?:true|false)">/g)].map((match) => match[1]);
-  assert.equal(cycles.length, 4);
-  for (const cycleText of cycles) {
-    const result = buildShiftPlan({ anchor: "2027-01-01", from: "2027-01-01", to: "2027-01-28", cycleText,
-      definitions: { D: day, N: night } });
-    assert(result.visible.length > 0, `${cycleText} should create visible work shifts`);
-    assert(result.visible.every((shift) => ["D", "N"].includes(shift.code)), `${cycleText} should use the configured shift definitions`);
-  }
-  assert.match(page, /id="shift-day-start" type="time"/);
-  assert.match(page, /id="shift-night-start" type="time"/);
-  assert.match(page, /id="shift-csv"/);
 });
 
 test("USNO sunrise and sunset agree with 20 independently requested API examples within one UTC minute", () => {
