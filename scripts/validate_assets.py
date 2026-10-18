@@ -30,7 +30,7 @@ for year in TARGET_YEARS:
     annual = [asset for asset in imported if asset["kind"] == "annual" and asset["year"] == year]
     assert len(annual) == 10 and {asset["design"] for asset in annual} == {f"{n:02}" for n in range(1, 11)}
 
-for fontpath in (ROOT / "site/assets/fonts").glob("Inter-*.ttf"):
+for fontpath in list((ROOT / "site/assets/fonts").glob("Inter-*.ttf")) + [ROOT / "site/assets/fonts" / name for name in ["Lato-Regular.ttf", "Lato-Bold.ttf", "Lato-Black.ttf"]]:
     from fontTools.ttLib import TTFont
     cmap = TTFont(fontpath).getBestCmap()
     assert all(ord(char) in cmap for char in "ĄČĘĖĮŠŲŪŽąčęėįšųūž")
