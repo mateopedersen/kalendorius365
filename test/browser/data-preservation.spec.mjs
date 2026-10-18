@@ -33,7 +33,7 @@ test('shift planner does not accept and discard input before required data loads
   await expect(page.locator('#shift-planner')).toHaveAttribute('aria-busy','true');
   expect(await page.locator('#shift-planner').evaluate(el=>el.inert)).toBe(true);
   release();await expect(page.locator('#shift-planner')).not.toHaveAttribute('aria-busy');
-  await page.locator('[data-cycle="D,D,N,N,P,P,P,P"]').click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+  await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
   expect(await page.locator('#shift-planner').evaluate(el=>el.inert)).toBe(false);
  } finally {release();}
 });
