@@ -7353,8 +7353,21 @@
     },
     {
       "path": "site/assets/lunar/lunar.js",
-      "reason": "Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained",
-      "sha256": "6b6c13083eae92c21abf10516f2a9ec505d3fc26c643d240ab1e04e4495b8618"
+      "reason": "Use a reviewed Q95 screen-only WebP with exact alpha and measured >=45 dB composite PSNR; preserve source PNG and full-resolution print texture",
+      "verification": {
+        "path": "site/assets/lunar/albedo-web.webp",
+        "bytes": 81880,
+        "dimensions": [
+          512,
+          512
+        ],
+        "alpha_identical": true,
+        "composited_rgb_psnr_db": {
+          "black": 45.277,
+          "white": 45.277
+        },
+        "print_source_unchanged": true
+      }
     },
     {
       "version": "2026-10-17-lt-editorial-v1",
@@ -7373,7 +7386,7 @@
     {
       "path": ".github/workflows/horoscope-automation.yml",
       "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "158ecad2cca3792b505de6f35ac24c32560ade74759c22b6d22f60074756a718"
+      "sha256": "13d62eaf2e06b4833ebd8b2105f6c46275e5aeeca9ebfa95005ea3b2877dacd2"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",

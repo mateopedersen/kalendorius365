@@ -70,6 +70,7 @@ module Pages
   FileUtils.mkdir_p(File.dirname(target))
   html=print_html(path,visual_html(path,html))
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
+  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/202[789]\z})
   print=html[/data-print-root="art" data-print-paper="(portrait|landscape)" data-print-size="(A[34])"/,0]
   if print
    orientation=print[/data-print-paper="(portrait|landscape)"/,1]

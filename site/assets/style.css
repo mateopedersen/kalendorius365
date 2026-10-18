@@ -68,3 +68,8 @@
 
 /* Reserve the automatically populated calculator result to prevent content shifts. */
 #calc-result{min-height:19rem}@media(max-width:760px){#calc-result{min-height:25rem}}@media(max-width:400px){#calc-result{min-height:28rem}}@media print{#calc-result{min-height:0}}
+/* Grid gaps replace the panel's flow margin so every card in a row aligns. */
+.resource-grid > .panel {
+  align-self: stretch;
+  margin-bottom: 0;
+}

@@ -45,7 +45,9 @@ def project_texture(source):
     alpha=np.clip((1-np.sqrt(x*x+y*y))*n/2+.5,0,1)
     image=Image.fromarray(np.dstack([projected,alpha*255]).astype('uint8'),'RGBA')
     image.save(LUNAR/'albedo.png',optimize=True)
-    image.resize((512,512),Image.Resampling.LANCZOS).save(LUNAR/'albedo-web.png',optimize=True)
+    web_texture=image.resize((512,512),Image.Resampling.LANCZOS)
+    web_texture.save(LUNAR/'albedo-web.png',optimize=True)
+    web_texture.save(LUNAR/'albedo-web.webp',format='WEBP',quality=95,method=6)
     write_json(ROOT/'data/lunar/texture-source.json',{'source_url':'https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_8k.tif','source_sha256':digest(source),'credit_lt':'Paviršiaus žemėlapis: NASA mokslinės vizualizacijos studija (Ernie Wright), LRO / LROC.','usage':'NASA informational media use guidance; source item 4720 requests NASA SVS credit; no endorsement implied','guidance_url':'https://www.nasa.gov/nasa-brand-center/images-and-media/','derived_sha256':digest(LUNAR/'albedo.png'),'projection':'Orthographic, center 0° longitude/latitude, north up, no libration or topocentric rotation','source_dimensions':[tex.shape[1],tex.shape[0]],'derived_dimensions':[1024,1024]})
 
 @lru_cache(maxsize=4)
