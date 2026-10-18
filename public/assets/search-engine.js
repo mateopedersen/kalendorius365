@@ -45,9 +45,15 @@ function words(value) {
 }
 
 export function loadSearchIndex() {
-  loadedIndex ||= fetch("/assets/data/search.json", { credentials: "same-origin" }).then((response) => {
+  const indexUrl = new URL("./data/search.json", import.meta.url);
+  const version = new URL(import.meta.url).searchParams.get("v");
+  if (version) indexUrl.searchParams.set("v", version);
+  loadedIndex ||= fetch(indexUrl, { credentials: "same-origin" }).then((response) => {
     if (!response.ok) throw new Error("Nepavyko įkelti paieškos rodyklės");
     return response.json();
+  }).catch((error) => {
+    loadedIndex = undefined;
+    throw error;
   });
   return loadedIndex;
 }
