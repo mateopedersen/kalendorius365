@@ -6820,6 +6820,11 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
   .site-header #primary-nav > a { height: auto; min-height: 55px; }
 }
 @media (max-width: 760px) {
+  /* Keep focused controls and anchor targets above the fixed bottom menu. */
+  html { scroll-padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  main :is(button, input, select, textarea, a) {
+    scroll-margin-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
   .site-header #primary-nav { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
 

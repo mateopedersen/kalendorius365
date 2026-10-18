@@ -6,8 +6,8 @@ test.beforeEach(async({context})=>{
  await context.addInitScript(()=>{try{localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed');}catch{}});
 });
 const exported=async(page,selector)=>{
- const pending=page.waitForEvent('download');await page.locator(selector).click();
- const file=await pending;expect(await file.failure()).toBeNull();return fs.readFile(await file.path());
+ const [file]=await Promise.all([page.waitForEvent('download'),page.locator(selector).click()]);
+ expect(await file.failure()).toBeNull();return fs.readFile(await file.path());
 };
 const upload=(name,bytes)=>({name,mimeType:'application/json',buffer:bytes});
 

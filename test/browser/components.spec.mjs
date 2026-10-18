@@ -7,7 +7,7 @@ test.beforeEach(async({context})=>{
  await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
 });
 const downloadBytes=async(page,action)=>{
- const pending=page.waitForEvent('download');await action();const file=await pending;
+ const [file]=await Promise.all([page.waitForEvent('download'),action()]);
  expect(await file.failure()).toBeNull();return {file,bytes:await fs.readFile(await file.path())};
 };
 const ics=bytes=>{const text=bytes.toString();expect(text).toContain('BEGIN:VCALENDAR');expect(text).toContain('BEGIN:VEVENT');expect(text).toContain('END:VCALENDAR');return text;};
