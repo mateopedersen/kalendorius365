@@ -1,0 +1,196 @@
+categories:
+  - id: dates
+    title: Kalendoriai ir datos
+    tools:
+      - route: /vardadieniai/
+        title: Vardadieniai
+        description: Šiandienos vardai, paieška, mėnesių sąrašai ir pasirinkti įrašai kalendoriui.
+        example: Raskite vardą ir pasirinkite, kurią jo šventimo datą įtraukti.
+        kind: Vardų datų paieška
+        outputs: [ICS]
+        keywords: vardai vardadienis vardu diena vardas paieska kalendorius
+        icon: tool-year
+        card_class: resource-card--year
+      - route: /metai/
+        title: Metų kalendoriai
+        description: 2027–2029 metų kalendorių, mėnesių ir metinių spaudinių apžvalga.
+        example: Palyginkite 2028 keliamuosius metus su 2027 metais.
+        kind: Metų kalendorių apžvalga
+        outputs: [PDF, WebP]
+        keywords: metu metai metinis kalendorius keliamieji vasaris spausdinamas
+        icon: tool-year
+        card_class: resource-card--year
+      - route: /datos-skaiciuokle/
+        title: Datos skaičiuoklė
+        description: Dienų skirtumas, darbo dienos, dienų pridėjimas ir likęs laikas.
+        example: Patikrinkite, kiek darbo dienų yra tarp dviejų datų.
+        kind: Datos skaičiuoklis
+        outputs: [Ekrane]
+        keywords: datos dienos skirtumas kiek dienu darbo dienos prideti atimti liko savaites terminas
+        icon: tool-date
+        card_class: resource-card--date
+      - route: /savaites/2027/
+        title: ISO savaitės
+        description: Savaičių numeriai ir tikslūs pirmadienio–sekmadienio intervalai.
+        example: 2027 m. sausio 1 d. priklauso 2026-W53 savaitei.
+        kind: ISO savaičių lentelė
+        outputs: [Ekrane]
+        keywords: savaite savaites numeris iso 2027 savaitgaliai pirmadienis sekmadienis
+        icon: tool-iso
+        card_class: resource-card--iso
+  - id: work
+    title: Darbas ir atostogos
+    tools:
+      - route: /atostogu-planavimas/
+        title: Atostogų planuoklis
+        description: Palyginkite ilgesnį poilsį, dienų santykį ir kelių laikotarpių planus.
+        example: Įveskite likusį dienų biudžetą ir palyginkite siūlomus intervalus.
+        kind: Interaktyvus planuoklis
+        outputs: [Ekrane, spausdinti]
+        keywords: atostogos poilsis laisvadieniai ilgas savaitgalis atostogu planavimas
+        icon: tool-vacation
+        card_class: resource-card--vacation
+      - route: /pamainu-grafikas/
+        title: Pamainų grafiko planuoklis
+        description: Kartojami ciklai, dieninės ir naktinės pamainos, darbo valandos.
+        example: Apskaičiuokite naktinę pamainą per vasaros laiko pasikeitimą.
+        kind: Redaguojamas planuoklis
+        outputs: [JSON, ICS, spausdinti]
+        keywords: pamaina pamainos darbas naktine dienine grafikas ciklas valandos
+        icon: tool-shift
+        card_class: resource-card--shift
+      - route: /darbo-dienos/2027/
+        title: Darbo dienų kalendorius
+        description: Mėnesių darbo dienos, valandos, šventės ir trumpinimai.
+        example: Palyginkite 5 ir 6 darbo dienų savaitės lenteles.
+        kind: Darbo laiko lentelė
+        outputs: [CSV, spausdinti]
+        keywords: darbas darbo laikas darbo valandos darbo dienos savaites grafikas kalendorius
+        icon: tool-workdays
+        card_class: resource-card--workdays
+      - route: /darbo-grafiko-sablonai/
+        title: Darbo grafiko šablonai
+        description: Tušti pamainų ciklo ir mėnesio grafikai pildymui ranka.
+        example: Atsisiųskite 28–31 dienos mėnesio lapą be asmens duomenų.
+        kind: Tuščias spausdinamas šablonas
+        outputs: [PDF, WebP]
+        keywords: pamaina grafikas sablonas tuscias spausdinamas darbo grafiko sablonai
+        icon: tool-shift-template
+        card_class: resource-card--shift-template
+  - id: school
+    title: Mokslai ir šeima
+    tools:
+      - route: /pamoku-tvarkarastis/
+        title: Pamokų tvarkaraštis
+        description: Redaguojamas savaitės tvarkaraštis ir namų darbų sąrašas.
+        example: Sudėkite pirmadienio pamokas nuo 10:00 iki 10:45.
+        kind: Redaguojamas planuoklis
+        outputs: [JSON, spausdinti]
+        keywords: pamokos mokykla dalykai namu darbai pamoku tvarkarastis mokinio planas
+        icon: tool-school
+        card_class: resource-card--school
+      - route: /mokiniu-atostogos/
+        title: Mokinių atostogos
+        description: Paskelbtos 2026–2027 mokslo metų datos pagal ugdymo pakopą.
+        example: Patikrinkite, kada Velykų atostogos skiriasi pagal ugdymo pakopą.
+        kind: Oficialiai paskelbtų datų lentelė
+        outputs: [PDF, WebP, spausdinti]
+        keywords: mokykla mokiniu atostogos velykos mokiniu poilsis ugdymo pakopa
+        icon: tool-school-break
+        card_class: resource-card--school-break
+      - route: /pamoku-tvarkarascio-sablonai/
+        title: Pamokų tvarkaraščio šablonai
+        description: Spausdinami mokyklos savaitės tinkleliai su skirtingu rašymo plotu.
+        example: Atsisiųskite tuščią 5 arba 6 dienų savaitės lapą.
+        kind: Tuščias spausdinamas šablonas
+        outputs: [PDF, WebP]
+        keywords: mokykla pamoku tvarkarastis tuscias sablonas dalykai klase
+        icon: tool-school-template
+        card_class: resource-card--school-template
+      - route: /seimos-kalendorius/
+        title: Šeimos savaitės planas
+        description: Kelių žmonių veikloms skirti tušti spausdinami planai.
+        example: Pasirinkite bendrų įvykių arba kelių žmonių stulpelių lapą.
+        kind: Tuščias spausdinamas šablonas
+        outputs: [PDF, WebP]
+        keywords: seima seimos planas vaikai bendras kalendorius savaitinis
+        icon: tool-family
+        card_class: resource-card--family
+  - id: astronomy
+    title: Saulė, Mėnulis ir astronomija
+    tools:
+      - route: /saule/
+        title: Saulėtekis ir saulėlydis
+        description: Saulės padėtis, civilinė prieblanda ir dienos ilgumas penkiuose miestuose.
+        example: Palyginkite birželio dienos šviesą Vilniuje ir Klaipėdoje.
+        kind: Miesto ir datos skaičiuoklis
+        outputs: [Ekrane]
+        keywords: saule saulėtekis sauletekis saulelydis dienos ilgumas prieblanda miestas
+        icon: tool-sun
+        card_class: resource-card--sun
+      - route: /menulio-fazes/
+        title: Mėnulio fazės
+        description: Jaunaties, ketvirčių ir pilnaties akimirkos Lietuvos vietos laiku.
+        example: Raskite artimiausios pilnaties datą ir laiką.
+        kind: Astronominių įvykių apžvalga
+        outputs: [Ekrane, CSV]
+        keywords: menulis menulio faze jaunatis pilnatis ketvirtis menulio fazes
+        icon: tool-moon
+        card_class: resource-card--moon
+      - route: /menulio-kalendorius/
+        title: Mėnulio kalendorius
+        description: Kasdienės Mėnulio fazės, mėnesių spaudiniai ir metinė apžvalga.
+        example: Atverkite mėnesio fazių vaizdą arba atsisiųskite PDF.
+        kind: Mėnulio kalendorius
+        outputs: [PDF, WebP, CSV]
+        keywords: menulis menulio kalendorius menulio fazes dienos plakatas
+        icon: tool-moon
+        card_class: resource-card--moon
+      - route: /astronominis-kalendorius/
+        title: Astronominis kalendorius
+        description: Lygiadieniai, saulėgrįžos, Saulės ir Mėnulio reiškiniai.
+        example: Peržiūrėkite artėjančių astronominių įvykių laiką.
+        kind: Astronominių duomenų apžvalga
+        outputs: [Ekrane]
+        keywords: astronomija lygiadienis saulegraza menulis saule kosmosas
+        icon: tool-orbit
+        card_class: resource-card--orbit
+  - id: templates
+    title: Spausdinami kalendoriai ir planuokliai
+    tools:
+      - route: /kurti-kalendoriu/
+        title: Kalendoriaus kūrėjas
+        description: Pasirinkite laikotarpį, popierių, šventes, asmeninius įvykius ir nuotraukas.
+        example: Sukurkite vieno mėnesio kalendorių ir atsisiųskite PDF arba WebP.
+        kind: Redaguojamas kalendorius
+        outputs: [PDF, WebP, spausdinti]
+        keywords: kalendorius sukurti kurti nuotrauka asmeninis ivykiai pdf
+        icon: tool-builder
+        card_class: resource-card--builder
+      - route: /savaitiniai-planuokliai/
+        title: Savaitės planuokliai
+        description: Tušti savaitės planai atsisiųsti ir pildyti ranka.
+        example: Pasirinkite savaitinį lapą su laiko juosta arba užrašų vieta.
+        kind: Tuščias spausdinamas šablonas
+        outputs: [PDF, WebP]
+        keywords: savaite savaitinis planuoklis planas tuscias spausdinamas
+        icon: tool-week
+        card_class: resource-card--week
+      - route: /dienos-planuoklis/
+        title: Dienos planuoklis
+        description: Tušti dienos laiko juostos ir prioritetų lapai.
+        example: Atsispausdinkite dienos užduočių ir prioritetų planą.
+        kind: Tuščias spausdinamas šablonas
+        outputs: [PDF, WebP]
+        keywords: diena dienos planas prioritetai laikas planuoklis tuscias
+        icon: tool-day
+        card_class: resource-card--day
+      - route: /tuscias-kalendorius/
+        title: Tušti planuokliai
+        description: Mėnesio ir savaitės lapai rašyti ranka, be automatiškai įrašytų datų.
+        example: Pasirinkite mėnesio lapą su penkiomis arba šešiomis savaitės eilutėmis.
+        kind: Tuščias spausdinamas šablonas
+        outputs: [PDF, WebP]
+        keywords: tuscias kalendorius sablonai spausdinami be datu menesio savaites lapas
+        icon: tool-blank
+        card_class: resource-card--blank

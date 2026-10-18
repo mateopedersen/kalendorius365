@@ -1,12 +1,37 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, solarPositionAt, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
+import { buildShiftIcs, buildShiftPlan, lessonConflicts, lessonFieldError, lunarIllumination, solarFor, solarPositionAt, visibleLessons, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
 
 const day = { name: "Dieninė", start: "07:00", end: "19:00", break: 30, color: "#006a44" };
 const night = { name: "Naktinė", start: "23:00", end: "07:00", break: 0, color: "#315bd6" };
 const plan = (patch = {}) => buildShiftPlan({
   anchor: "2027-01-01", from: "2027-01-01", to: "2027-01-08", cycleText: "D,D,P,P",
   definitions: { D: day }, holidayDates: [], ...patch,
+});
+
+test("lesson names and room text are independent from clock validation", () => {
+  assert.equal(lessonFieldError("subject", "Matematika"), "");
+  assert.equal(lessonFieldError("subject", "ĄČĘĖĮŠŲŪŽ"), "");
+  assert.equal(lessonFieldError("room", "A-12"), "");
+  assert.equal(lessonFieldError("teacher", "V. Ą"), "");
+  assert.equal(lessonFieldError("start", "10:00", "", "10:45"), "");
+  assert.equal(lessonFieldError("end", "10:45", "10:00", ""), "");
+  assert.match(lessonFieldError("end", "09:00", "10:00", ""), /vėlesnė/);
+  assert.match(lessonFieldError("start", "25:00", "", ""), /galiojantį laiką/);
+});
+
+test("school lesson conflicts are same-day, and day view filters without deleting schedule data", () => {
+  const lessons = [
+    { day: 0, number: 1, start: "10:00", end: "10:45" },
+    { day: 0, number: 2, start: "10:40", end: "11:20" },
+    { day: 0, number: 3, start: "11:20", end: "12:00" },
+    { day: 1, number: 1, start: "10:15", end: "10:55" },
+    { day: 5, number: 1, start: "10:00", end: "10:45" },
+  ];
+  assert.deepEqual(lessonConflicts(lessons).map(({ day, first, second }) => [day, first.number, second.number]), [[0, 1, 2]]);
+  assert.deepEqual(visibleLessons(lessons, { days: 5, view: "day", day: 0 }).map(({ number }) => number), [1, 2, 3]);
+  assert.deepEqual(visibleLessons(lessons, { days: 5, view: "week" }), lessons.slice(0, 4));
+  assert.equal(lessons.length, 5, "view selection must leave stored lesson records intact");
 });
 
 test("shift cycles handle year boundaries, leap day, breaks and exact holiday-date intersections", () => {

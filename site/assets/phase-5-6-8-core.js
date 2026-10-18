@@ -42,6 +42,37 @@ const shiftDate = (date, amount) => new Date(dateParts(date).instant + amount * 
 const daysBetween = (a, b) => Math.round((dateParts(b).instant - dateParts(a).instant) / DAY_MS);
 const validClock = (value) => typeof value === "string" && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value);
 
+/** Validate one lesson field without treating ordinary text as a clock value. */
+export function lessonFieldError(name, value, start = "", end = "") {
+  if (name !== "start" && name !== "end") return "";
+  if (value && !validClock(value)) return "Įrašykite galiojantį laiką.";
+  const nextStart = name === "start" ? value : start;
+  const nextEnd = name === "end" ? value : end;
+  if (nextStart && nextEnd && nextEnd <= nextStart) return "Pamokos pabaiga turi būti vėlesnė už pradžią.";
+  return "";
+}
+
+/** Return same-day lesson pairs whose clock intervals overlap. */
+export function lessonConflicts(lessons) {
+  const conflicts = [];
+  for (const day of new Set(lessons.map((lesson) => lesson.day))) {
+    const ordered = lessons.filter((lesson) => lesson.day === day && validClock(lesson.start) && validClock(lesson.end) && lesson.end > lesson.start)
+      .sort((a, b) => a.start.localeCompare(b.start) || a.end.localeCompare(b.end));
+    for (let i = 0; i < ordered.length; i++) {
+      for (let j = i + 1; j < ordered.length && ordered[j].start < ordered[i].end; j++) {
+        conflicts.push({ day, first: ordered[i], second: ordered[j] });
+      }
+    }
+  }
+  return conflicts;
+}
+
+/** Choose rows for a week or one-day view without altering the saved schedule. */
+export function visibleLessons(lessons, { days = 5, view = "week", day = 0 } = {}) {
+  return lessons.filter((lesson) => lesson.day < days && (view !== "day" || lesson.day === day))
+    .sort((a, b) => a.day - b.day || a.number - b.number);
+}
+
 /** Build a validated, DST-aware local shift cycle. holidayDates is a verified date list. */
 export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldPolicy = "ask", holidayDates = [], zone = ZONE }) {
   dateParts(anchor); dateParts(from); dateParts(to);

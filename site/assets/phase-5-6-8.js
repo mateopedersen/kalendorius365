@@ -1,5 +1,5 @@
 import { addDays, difference, holidays, today, TZ } from "./calendar.js";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js";
+import { buildShiftIcs, buildShiftPlan, lessonConflicts, lessonFieldError, lunarIllumination, solarFor, visibleLessons } from "./phase-5-6-8-core.js";
 import { download } from "./storage.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -93,6 +93,98 @@ function setupShift() {
   const message = (value, error = false) => {
     const node = $("#shift-message"); node.textContent = value; node.setAttribute("role", error ? "alert" : "status");
   };
+  function persistDraft() {
+    const state = Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value]));
+    state["shift-week-days"] = Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value));
+    try { writeLocal(key, { schema: 1, ...state }); return true; }
+    catch { message("Nepavyko išsaugoti juodraščio šiame įrenginyje. Atsisiųskite JSON kopiją prieš išeidami.", true); return false; }
+  }
+  const cycleCode = $("#shift-cycle-code"), cycleItems = $("#shift-cycle-items"), definitionList = $("#shift-definition-list");
+  function readDefinitions() {
+    const value = JSON.parse($("#shift-definitions").value);
+    if (!value || typeof value !== "object" || Array.isArray(value)) throw Error("Pamainų aprašai turi būti objektas.");
+    return value;
+  }
+  function setCycle(codes) {
+    if (!codes.length || codes.length > 31) return message("Cikle turi būti nuo 1 iki 31 žymos.", true);
+    $("#shift-cycle").value = codes.join(",");
+    preset.value = "custom";
+    syncCycleEditor();
+    render();
+  }
+  function syncCycleEditor() {
+    let definitions = {};
+    try { definitions = readDefinitions(); } catch { /* advanced JSON is being edited */ }
+    cycleCode.replaceChildren(make("option", "P · poilsio diena", { value: "P" }), ...Object.entries(definitions).map(([code, def]) => make("option", `${code} · ${def?.name || "pamaina"}`, { value: code })));
+    const codes = $("#shift-cycle").value.split(",").map((code) => code.trim()).filter(Boolean);
+    replace(cycleItems, codes.map((code, index) => {
+      const item = make("li"), title = code === "P" ? "Poilsio diena · P" : `${code} · ${definitions[code]?.name || "neaprašyta pamaina"}`;
+      item.append(make("span", title));
+      for (const [delta, label] of [[-1, "Perkelti aukštyn"], [1, "Perkelti žemyn"]]) {
+        const button = make("button", delta < 0 ? "↑" : "↓", { type: "button", "aria-label": `${label}: ${title}` });
+        button.disabled = index + delta < 0 || index + delta >= codes.length;
+        button.onclick = () => { const next = [...codes]; [next[index], next[index + delta]] = [next[index + delta], next[index]]; setCycle(next); };
+        item.append(button);
+      }
+      const remove = make("button", "Pašalinti", { type: "button", "aria-label": `Pašalinti iš ciklo: ${title}` });
+      remove.onclick = () => setCycle(codes.filter((_, at) => at !== index)); item.append(remove); return item;
+    }));
+  }
+  function syncDefinitionEditor() {
+    let definitions;
+    try { definitions = readDefinitions(); }
+    catch (error) { definitionList.replaceChildren(make("p", error.message, { class: "result" })); return; }
+    replace(definitionList, Object.entries(definitions).map(([originalCode, raw]) => {
+      const def = raw && typeof raw === "object" && !Array.isArray(raw) ? raw : {};
+      const fieldset = make("fieldset", undefined, { class: "shift-definition" });
+      fieldset.append(make("legend", `Pamaina ${originalCode}`));
+      const controls = {};
+      for (const [key, title, type, value, max] of [
+        ["code", "Žyma", "text", originalCode, 4], ["name", "Pavadinimas", "text", def.name || "", 40],
+        ["start", "Pradžia", "time", def.start || "", 0], ["end", "Pabaiga", "time", def.end || "", 0],
+        ["break", "Neapmokama pertrauka · min.", "number", String(def.break ?? 0), 0], ["color", "Spalva", "color", def.color || "#006a44", 0],
+      ]) {
+        const label = make("label", title), input = make("input", undefined, { type, value, ...(max ? { maxlength: String(max) } : {}) });
+        if (key === "break") { input.min = "0"; input.max = "720"; input.step = "1"; }
+        controls[key] = input; label.append(input); fieldset.append(label);
+      }
+      const save = make("button", "Išsaugoti pamainą", { type: "button" });
+      save.onclick = () => {
+        const code = controls.code.value.trim().toUpperCase(), name = controls.name.value.trim(), start = controls.start.value, end = controls.end.value;
+        const pause = Number(controls.break.value), color = controls.color.value;
+        if (!/^[A-Z0-9]{1,4}$/.test(code) || code === "P" || (code !== originalCode && definitions[code])) return message("Naudokite unikalią 1–4 raidžių ar skaitmenų žymą; P skirta poilsiui.", true);
+        if (!name || name.length > 40 || !/^([01]\d|2[0-3]):[0-5]\d$/.test(start) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(end) || !Number.isInteger(pause) || pause < 0 || pause > 720) return message("Patikrinkite pavadinimą, laiką ir 0–720 min. pertrauką.", true);
+        if (Object.entries(definitions).some(([existing, item]) => existing !== originalCode && typeof item.color === "string" && item.color.toLowerCase() === color.toLowerCase())) return message("Kiekvienai pamainai pasirinkite skirtingą spalvą.", true);
+        const next = { ...definitions }; delete next[originalCode]; next[code] = { ...def, name, start, end, break: pause, color };
+        $("#shift-definitions").value = JSON.stringify(next, null, 2);
+        if (code !== originalCode) $("#shift-cycle").value = $("#shift-cycle").value.split(",").map((item) => item.trim() === originalCode ? code : item.trim()).join(",");
+        syncShiftEditors(); render(); message(`Pamaina ${code} išsaugota.`);
+      };
+      const remove = make("button", "Pašalinti rūšį", { type: "button" });
+      remove.onclick = () => {
+        if ($("#shift-cycle").value.split(",").map((item) => item.trim()).includes(originalCode)) return message("Pirmiausia pašalinkite šią žymą iš ciklo.", true);
+        const next = { ...definitions }; delete next[originalCode]; $("#shift-definitions").value = JSON.stringify(next, null, 2); syncShiftEditors(); render();
+      };
+      fieldset.append(save, remove); return fieldset;
+    }));
+  }
+  function syncShiftEditors() { syncCycleEditor(); syncDefinitionEditor(); }
+  $("#shift-cycle-add").onclick = () => setCycle([...$("#shift-cycle").value.split(",").map((code) => code.trim()).filter(Boolean), cycleCode.value]);
+  $("#shift-definition-add").onclick = () => {
+    try {
+      const definitions = readDefinitions();
+      if (Object.keys(definitions).length >= 8) return message("Galima aprašyti iki 8 pamainų rūšių.", true);
+      const code = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"].find((candidate) => candidate !== "P" && !definitions[candidate]);
+      if (!code) return message("Nebėra laisvos trumpos žymos. Pakeiskite žymą JSON nustatymuose.", true);
+      const colors = ["#ad5b38", "#8656a8", "#b47b22", "#247a93", "#687c35", "#7a5969", "#365f91", "#895f35", "#3d765f", "#a14561", "#594b93", "#64767f"];
+      const color = colors.find((candidate) => !Object.values(definitions).some((item) => typeof item.color === "string" && item.color.toLowerCase() === candidate));
+      if (!color) return message("Spalvą pamainai pasirinkite išplėstiniuose JSON nustatymuose.", true);
+      definitions[code] = { name: "Nauja pamaina", start: "15:00", end: "23:00", break: 0, color };
+      $("#shift-definitions").value = JSON.stringify(definitions, null, 2); syncShiftEditors(); render();
+    } catch (error) { message(error.message, true); }
+  };
+  $("#shift-cycle").onchange = () => { syncCycleEditor(); persistDraft(); };
+  $("#shift-definitions").onchange = () => { syncShiftEditors(); persistDraft(); };
   function compute() {
     const start = $("#shift-anchor").value, from = $("#shift-from").value, to = $("#shift-to").value;
     if (!start || !from || !to) throw Error("Įrašykite ciklo pradžią ir abi laikotarpio datas.");
@@ -204,15 +296,19 @@ function setupShift() {
     if (value === "day-rest") $("#shift-cycle").value = "D,D,P,P";
     else if (value === "day-night") $("#shift-cycle").value = "D,D,N,N,P,P,P,P";
     else return;
+    syncCycleEditor();
     render();
   };
   form.onsubmit = (event) => { event.preventDefault(); render(); };
-  ["shift-view", "shift-display", "shift-week-filter"].forEach((id) => $("#" + id).onchange = () => { updateCustomDays(); render(); });
-  dayList.onchange = render;
+  ["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].forEach((id) => {
+    $("#" + id).addEventListener("input", persistDraft);
+    $("#" + id).addEventListener("change", () => { persistDraft(); if (["shift-view", "shift-display", "shift-week-filter"].includes(id)) updateCustomDays(); render(); });
+  });
+  dayList.onchange = () => { persistDraft(); render(); };
   const backupData = () => ({ ...Object.fromEntries(["shift-anchor", "shift-from", "shift-to", "shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"].map((id) => [id, $("#" + id).value])), "shift-week-days": Array.from(dayList.querySelectorAll("input:checked"), (input) => Number(input.value)) });
   $("#shift-json-export").onclick = () => saveJSON("pamainu-grafikas.json", { schema: 1, data: backupData() });
   $("#shift-json-import").onchange = async (event) => {
-    try { const json = await readJSONFile(event.target.files[0]); const d = json.data; if (!d || Object.keys(d).length > 10 || typeof d["shift-cycle"] !== "string" || d["shift-cycle"].length > 160 || typeof d["shift-definitions"] !== "string" || d["shift-definitions"].length > 5000 || (d["shift-week-days"] !== undefined && (!Array.isArray(d["shift-week-days"]) || d["shift-week-days"].length > 7 || d["shift-week-days"].some((n) => !Number.isInteger(n) || n<1 || n>7)))) throw Error("Kopijos turinys netinkamas."); for (const [id, value] of Object.entries(d)) if ($("#" + id)) $("#" + id).value = String(value); if (Array.isArray(d["shift-week-days"])) dayList.querySelectorAll("input").forEach((input)=>{input.checked=d["shift-week-days"].includes(Number(input.value));}); updateCustomDays(); render(); }
+    try { const json = await readJSONFile(event.target.files[0]); const d = json.data; if (!d || Object.keys(d).length > 10 || typeof d["shift-cycle"] !== "string" || d["shift-cycle"].length > 160 || typeof d["shift-definitions"] !== "string" || d["shift-definitions"].length > 5000 || (d["shift-week-days"] !== undefined && (!Array.isArray(d["shift-week-days"]) || d["shift-week-days"].length > 7 || d["shift-week-days"].some((n) => !Number.isInteger(n) || n<1 || n>7)))) throw Error("Kopijos turinys netinkamas."); for (const [id, value] of Object.entries(d)) if ($("#" + id)) $("#" + id).value = String(value); if (Array.isArray(d["shift-week-days"])) dayList.querySelectorAll("input").forEach((input)=>{input.checked=d["shift-week-days"].includes(Number(input.value));}); updateCustomDays(); syncShiftEditors(); render(); }
     catch (error) { message(error.message, true); } finally { event.target.value = ""; }
   };
   $("#shift-ics").onclick = () => {
@@ -223,6 +319,7 @@ function setupShift() {
     } catch (error) { message(error.message, true); }
   };
   $("#shift-print").onclick = () => window.print();
+  syncShiftEditors();
   render();
 }
 
@@ -233,46 +330,104 @@ function setupSchool() {
   const subjects = ["Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis"];
   const fieldNames = { start: "pradžia", end: "pabaiga", subject: "dalykas", room: "kabinetas", teacher: "mokytojo trumpinys" };
   let undoSnapshot = null;
-  const put = (msg) => { $("#school-message").textContent = msg; };
-  function persist() { writeLocal(key, state); }
+  const put = (msg, error = false) => { const message = $("#school-message"); message.textContent = msg; message.setAttribute("role", error ? "alert" : "status"); };
+  function persist() {
+    try { writeLocal(key, state); return true; }
+    catch { put("Nepavyko išsaugoti įrenginyje. Pakeitimai dar matomi šiame puslapyje; prieš išeidami atsisiųskite JSON kopiją.", true); return false; }
+  }
+  function renderLessonConflicts() {
+    const message = $("#school-conflicts"), conflicts = lessonConflicts(state.lessons.filter((lesson) => lesson.day < state.days))
+      .map(({ day, first, second }) => `${subjects[day]}: ${first.number} (${first.start}–${first.end}) ir ${second.number} (${second.start}–${second.end})`);
+    message.hidden = !conflicts.length;
+    message.textContent = conflicts.length ? `Pamokų laikai persidengia. Patikrinkite: ${conflicts.join("; ")}.` : "";
+    if (conflicts.length) message.setAttribute("role", "alert");
+    else message.setAttribute("role", "status");
+  }
   function renderLessons() {
     const body = $("#school-lessons");
-    replace(body, state.lessons.filter((l) => l.day < state.days).map((l, index) => {
+    const view = $("#school-view").value, viewDay = Number($("#school-view-day").value);
+    replace(body, visibleLessons(state.lessons, { days: state.days, view, day: viewDay }).map((l) => {
       const tr = make("tr");
-      tr.append(make("td", subjects[l.day])); tr.append(make("td", String(l.number)));
+      tr.append(make("td", subjects[l.day], { "data-label": "Diena" })); tr.append(make("td", String(l.number), { "data-label": "Pamokos Nr." }));
       for (const [name, max] of [["start",5],["end",5],["subject",50],["room",30],["teacher",30]]) {
-        const td = make("td"), input = make("input", undefined, { "aria-label": `${subjects[l.day]}, ${l.number} pamoka: ${fieldNames[name]}`, maxlength: max, value: l[name] || "" });
+        const td = make("td", undefined, { "data-label": fieldNames[name] }), input = make("input", undefined, { "aria-label": `${subjects[l.day]}, ${l.number} pamoka: ${fieldNames[name]}`, maxlength: max, value: l[name] || "" });
         if (["start","end"].includes(name)) input.type = "time";
         input.onchange = () => {
-          if (input.value && !/^\d{2}:\d{2}$/.test(input.value)) { input.setCustomValidity("Įrašykite galiojantį laiką."); input.reportValidity(); return; }
-          const next = name === "start" ? input.value : l.start, end = name === "end" ? input.value : l.end;
-          if (next && end && next >= end) { input.setCustomValidity("Pamokos pabaiga turi būti vėlesnė už pradžią."); input.reportValidity(); return; }
-          input.setCustomValidity(""); l[name] = input.value; persist();
+          const error = lessonFieldError(name, input.value, l.start, l.end);
+          input.setCustomValidity(error);
+          if (error) { input.reportValidity(); return; }
+          l[name] = input.value;
+          if (persist()) put("Pamokos pakeitimas išsaugotas šiame įrenginyje.");
+          renderLessonConflicts();
         };
         td.append(input); tr.append(td);
       }
-      const td = make("td"), remove = make("button", "Pašalinti", { type: "button", "aria-label": `${subjects[l.day]} ${l.number} pamoką pašalinti` });
-      remove.onclick = () => { state.lessons.splice(state.lessons.indexOf(l), 1); persist(); renderLessons(); };
+      const td = make("td", undefined, { "data-label": "Veiksmai" }), remove = make("button", "Pašalinti", { type: "button", "aria-label": `${subjects[l.day]} ${l.number} pamoką pašalinti` });
+      remove.onclick = () => {
+        const index = state.lessons.indexOf(l), [removed] = state.lessons.splice(index, 1);
+        if (!persist()) { state.lessons.splice(index, 0, removed); renderLessons(); return; }
+        renderLessons(); put("Pamoka pašalinta.");
+      };
       td.append(remove); tr.append(td); return tr;
     }));
     $("#school-title").value = state.title; $("#school-days").value = String(state.days); $("#school-template").value = state.template;
+    const dayPicker = $("#lesson-add-day");
+    for (const option of dayPicker.options) option.hidden = Number(option.value) >= state.days;
+    if (Number(dayPicker.value) >= state.days) dayPicker.value = "0";
+    const viewDayPicker = $("#school-view-day");
+    for (const option of viewDayPicker.options) option.hidden = Number(option.value) >= state.days;
+    if (Number(viewDayPicker.value) >= state.days) viewDayPicker.value = "0";
+    $("#school-view-day").closest("label").hidden = view !== "day";
+    $("#school-lessons-heading").textContent = view === "day" ? `${subjects[Number(viewDayPicker.value)]} pamokos` : "Savaitės pamokos";
+    $("#school-view-status").textContent = view === "day"
+      ? `Rodoma ${subjects[Number(viewDayPicker.value)].toLowerCase()}; kitos savaitės pamokos lieka tvarkaraštyje ir atsarginėje kopijoje.`
+      : "Rodoma visa pasirinktos trukmės savaitė.";
     body.closest("table").dataset.template = state.template;
+    renderLessonConflicts();
   }
   function renderHomework() {
     const list = $("#homework-list");
     const sorted = [...state.homework].sort((a,b) => Number(a.done)-Number(b.done) || a.due.localeCompare(b.due) || (a.priority === "high" ? -1 : 0) - (b.priority === "high" ? -1 : 0));
-    replace(list, sorted.map((task) => {
+    const filter = $("#homework-filter").value, subjectFilter = $("#homework-subject-filter"), selectedSubject = subjectFilter.value, todayLT = today();
+    const subjects = [...new Set(sorted.map((task) => task.subject))].sort((a, b) => a.localeCompare(b, "lt-LT"));
+    subjectFilter.replaceChildren(make("option", "Visi dalykai", { value: "" }), ...subjects.map((subject) => make("option", subject, { value: subject })));
+    subjectFilter.value = subjects.includes(selectedSubject) ? selectedSubject : "";
+    const visible = sorted.filter((task) => (!subjectFilter.value || task.subject === subjectFilter.value) && (filter === "all" || filter === "completed" && task.done || filter === "upcoming" && !task.done && task.due >= todayLT || filter === "overdue" && !task.done && task.due < todayLT));
+    $("#homework-count").textContent = visible.length ? `Rodoma ${visible.length} iš ${sorted.length} užduočių.` : sorted.length ? "Pagal šį filtrą užduočių nėra." : "Užduočių dar nėra.";
+    replace(list, visible.map((task) => {
       const li = make("li"), check = make("input", undefined, { type: "checkbox", checked: task.done, "aria-label": `${task.subject}: atlikta` });
-      check.onchange = () => { task.done = check.checked; persist(); };
+      check.onchange = () => { const previous = task.done; task.done = check.checked; if (!persist()) { task.done = previous; check.checked = previous; return; } renderHomework(); put(task.done ? "Užduotis pažymėta kaip atlikta." : "Užduotis vėl aktyvi."); };
       const text = make("span", `${task.subject} · ${task.task} · ${displayDate(task.due)}`);
-      if (task.priority === "high") text.classList.add("important"); if (task.done) text.classList.add("done");
-      const remove = make("button", "Pašalinti", { type: "button" }); remove.onclick = () => { state.homework = state.homework.filter((x) => x !== task); persist(); renderHomework(); };
-      li.append(check, text, remove); return li;
+      if (task.priority === "high" || !task.done && task.due < todayLT) text.classList.add("important"); if (task.done) text.classList.add("done");
+      const edit = make("button", "Redaguoti", { type: "button", "aria-label": `${task.subject} užduotį redaguoti` });
+      edit.onclick = () => {
+        const form = make("form", undefined, { class: "homework-edit-form" }), subjectLabel = make("label", "Dalykas"), taskLabel = make("label", "Užduotis"), dueLabel = make("label", "Terminas");
+        const subjectInput = make("input", undefined, { maxlength: 50, required: "required", value: task.subject }), taskInput = make("input", undefined, { maxlength: 180, required: "required", value: task.task }), dueInput = make("input", undefined, { type: "date", required: "required", value: task.due });
+        const priorityLabel = make("label", "Prioritetas"), priorityInput = make("select");
+        for (const [value, label] of [["normal", "Įprastas"], ["high", "Svarbus"]]) { const option = make("option", label, { value }); option.selected = value === task.priority; priorityInput.append(option); }
+        subjectLabel.append(subjectInput); taskLabel.append(taskInput); dueLabel.append(dueInput); priorityLabel.append(priorityInput);
+        const save = make("button", "Išsaugoti pakeitimus", { type: "submit" }), cancel = make("button", "Atšaukti", { type: "button" });
+        cancel.onclick = renderHomework;
+        form.append(subjectLabel, taskLabel, dueLabel, priorityLabel, save, cancel);
+        form.onsubmit = (event) => {
+          event.preventDefault();
+          if (!subjectInput.value.trim() || !taskInput.value.trim() || !validISODate(dueInput.value)) { put("Patikrinkite dalyką, užduoties tekstą ir terminą.", true); return; }
+          const previous = { ...task };
+          Object.assign(task, { subject: subjectInput.value.trim().slice(0, 50), task: taskInput.value.trim().slice(0, 180), due: dueInput.value, priority: priorityInput.value });
+          if (!persist()) { Object.assign(task, previous); return; }
+          renderHomework(); put("Užduoties pakeitimai išsaugoti šiame įrenginyje.");
+        };
+        li.replaceChildren(form); subjectInput.focus();
+      };
+      const remove = make("button", "Pašalinti", { type: "button" }); remove.onclick = () => { const previous = state.homework; state.homework = state.homework.filter((x) => x !== task); if (!persist()) { state.homework = previous; return; } renderHomework(); put("Užduotis pašalinta."); };
+      li.append(check, text, edit, remove); return li;
     }));
   }
-  $("#school-days").onchange = (e) => { state.days = Number(e.target.value); persist(); renderLessons(); put("Savaitės dienų pasirinkimas išsaugotas šiame įrenginyje."); };
-  $("#school-title").onchange = (e) => { state.title = e.target.value.slice(0, 60); persist(); };
-  $("#school-template").onchange = (e) => { state.template = e.target.value; persist(); renderLessons(); };
+  $("#school-view").onchange = renderLessons;
+  $("#school-view-day").onchange = renderLessons;
+  $("#school-days").onchange = (e) => { state.days = Number(e.target.value); const saved = persist(); renderLessons(); if (saved) put("Savaitės dienų pasirinkimas išsaugotas šiame įrenginyje."); };
+  $("#school-title").onchange = (e) => { state.title = e.target.value.slice(0, 60); if (persist()) put("Tvarkaraščio pavadinimas išsaugotas šiame įrenginyje."); };
+  $("#school-template").onchange = (e) => { state.template = e.target.value; const saved = persist(); renderLessons(); if (saved) put("Šablonas išsaugotas šiame įrenginyje."); };
   $("#school-duplicate-week").onclick = () => {
     const source = state.lessons.filter((l) => l.day === 0 && l.day < state.days);
     if (!source.length) return put("Pirmiausia pridėkite pirmadienio pamokas.");
@@ -282,31 +437,36 @@ function setupSchool() {
       if (state.lessons.some((x) => x.day === day && x.number === lesson.number)) continue;
       state.lessons.push({ ...lesson, day }); added++;
     }
-    state.lessons.sort((a,b) => a.day-b.day || a.number-b.number); persist(); renderLessons();
+    state.lessons.sort((a,b) => a.day-b.day || a.number-b.number); const saved = persist(); renderLessons();
     $("#school-undo").disabled = !undoSnapshot;
-    put(added ? `${added} pamoka nukopijuota į neužpildytas savaitės vietas. Esami įrašai nepakeisti; prireikus galite anuliuoti.` : "Tuščios savaitės vietos nerastos.");
+    if (saved) put(added ? `${added} pamoka nukopijuota į neužpildytas savaitės vietas. Esami įrašai nepakeisti; prireikus galite anuliuoti.` : "Tuščios savaitės vietos nerastos.");
   };
   $("#school-clear-week").onclick = () => {
     if (!state.lessons.length) return put("Tvarkaraštis jau tuščias.");
-    undoSnapshot = structuredClone(state.lessons); state.lessons = []; persist(); renderLessons();
-    $("#school-undo").disabled = false; put("Savaitės pamokos pašalintos. Galite anuliuoti veiksmą.");
+    undoSnapshot = structuredClone(state.lessons); state.lessons = []; const saved = persist(); renderLessons();
+    $("#school-undo").disabled = !saved; if (saved) put("Savaitės pamokos pašalintos. Galite anuliuoti veiksmą.");
   };
   $("#school-undo").onclick = () => {
     if (!undoSnapshot) return;
-    state.lessons = undoSnapshot; undoSnapshot = null; persist(); renderLessons();
-    $("#school-undo").disabled = true; put("Paskutinis tvarkaraščio veiksmas atšauktas.");
+    state.lessons = undoSnapshot; const saved = persist(); renderLessons();
+    if (saved) { undoSnapshot = null; $("#school-undo").disabled = true; put("Paskutinis tvarkaraščio veiksmas atšauktas."); }
   };
   $("#lesson-add").onclick = () => {
     if (state.lessons.length >= 120) return put("Viename atsarginės kopijos faile galima turėti iki 120 pamokų.");
-    const day = Math.min(state.days - 1, state.lessons.length % state.days), number = state.lessons.filter((l) => l.day === day).reduce((n, l) => Math.max(n, l.number), 0) + 1;
-    state.lessons.push({ day, number, start: "", end: "", subject: "", room: "", teacher: "" }); state.lessons.sort((a, b) => a.day - b.day || a.number - b.number); persist(); renderLessons(); put("Pamoka pridėta; jos laiką ir pavadinimą galite pakeisti lentelėje.");
+    const day = Math.min(state.days - 1, Number($("#lesson-add-day").value)), number = state.lessons.filter((l) => l.day === day).reduce((n, l) => Math.max(n, l.number), 0) + 1;
+    state.lessons.push({ day, number, start: "", end: "", subject: "", room: "", teacher: "" }); state.lessons.sort((a, b) => a.day - b.day || a.number - b.number); const saved = persist(); renderLessons(); if (saved) put(`${subjects[day]} pridėta ${number} pamoka; nustatykite jos laiką ir dalyką.`);
   };
+  $("#homework-filter").onchange = renderHomework;
+  $("#homework-subject-filter").onchange = renderHomework;
   $("#homework-form").onsubmit = (e) => {
     e.preventDefault(); if (state.homework.length >= 300) return put("Pasiektas 300 užduočių limitas.");
     const task = $("#homework-task").value.trim(), subject = $("#homework-subject").value.trim(), due = $("#homework-due").value;
     if (!task || !subject || !due) return put("Užpildykite dalyką, užduotį ir terminą.");
     try { const p = isoParts(due); if (new Date(Date.UTC(p.y,p.m-1,p.d)).toISOString().slice(0,10) !== due) throw Error(); } catch { return put("Terminas turi būti galiojanti data."); }
-    state.homework.push({ subject: subject.slice(0,50), task: task.slice(0,180), due, priority: $("#homework-priority").value, done: false }); persist(); renderHomework(); e.target.reset(); put("Užduotis pridėta ir saugoma šiame įrenginyje.");
+    const item = { subject: subject.slice(0,50), task: task.slice(0,180), due, priority: $("#homework-priority").value, done: false };
+    state.homework.push(item);
+    if (!persist()) { state.homework.pop(); return; }
+    renderHomework(); e.target.reset(); put("Užduotis pridėta ir saugoma šiame įrenginyje.");
   };
   $("#school-json-export").onclick = () => saveJSON("pamoku-tvarkarastis.json", state);
   $("#school-json-import").onchange = async (e) => {
@@ -315,10 +475,13 @@ function setupSchool() {
       if (!Array.isArray(x.lessons) || x.lessons.length > 120 || !Array.isArray(x.homework) || x.homework.length > 300 || ![5,6].includes(x.days) || typeof x.title !== "string" || x.title.length > 60) throw Error("Kopijoje yra netinkamų laukų arba per daug duomenų.");
       if (x.lessons.some((l) => !Number.isInteger(l.day) || l.day < 0 || l.day >= x.days || !Number.isInteger(l.number) || l.number < 1 || l.number > 30 || [l.start,l.end,l.subject,l.room,l.teacher].some((v) => typeof v !== "string" || v.length > 50) || (l.start && !/^([01]\d|2[0-3]):[0-5]\d$/.test(l.start)) || (l.end && !/^([01]\d|2[0-3]):[0-5]\d$/.test(l.end)) || (l.start && l.end && l.start >= l.end))) throw Error("Pamokų įrašai netinkami.");
       if (x.homework.some((t) => typeof t.task !== "string" || t.task.length > 180 || typeof t.subject !== "string" || t.subject.length > 50 || !validISODate(t.due) || typeof t.done !== "boolean" || !["high","normal"].includes(t.priority))) throw Error("Namų darbų įrašai netinkami.");
-      state = { schema: 1, title: x.title, days: x.days, template: ["regular","large","compact","mono"].includes(x.template) ? x.template : "regular", lessons: x.lessons, homework: x.homework }; persist(); renderLessons(); renderHomework(); put("Atsarginė kopija atkurta.");
-    } catch (error) { put(error.message); } finally { e.target.value = ""; }
+      const previous = state;
+      state = { schema: 1, title: x.title, days: x.days, template: ["regular","large","compact","mono"].includes(x.template) ? x.template : "regular", lessons: x.lessons, homework: x.homework };
+      if (!persist()) state = previous;
+      else { renderLessons(); renderHomework(); put("Atsarginė kopija atkurta."); }
+    } catch (error) { put(error.message, true); } finally { e.target.value = ""; }
   };
-  $("#school-reset").onclick = () => { if (!confirm("Ištrinti šio įrenginio tvarkaraštį ir namų darbus? Jei reikia, atsisiųskite kopiją pirma.")) return; state = { schema: 1, title: "", days: 5, template: "regular", lessons: [], homework: [] }; persist(); renderLessons(); renderHomework(); put("Vietiniai duomenys ištrinti."); };
+  $("#school-reset").onclick = () => { if (!confirm("Ištrinti šio įrenginio tvarkaraštį ir namų darbus? Jei reikia, atsisiųskite kopiją pirma.")) return; const previous = state; state = { schema: 1, title: "", days: 5, template: "regular", lessons: [], homework: [] }; if (!persist()) state = previous; else { renderLessons(); renderHomework(); put("Vietiniai duomenys ištrinti."); } };
   $("#school-print").onclick = () => window.print();
   renderLessons(); renderHomework();
 }

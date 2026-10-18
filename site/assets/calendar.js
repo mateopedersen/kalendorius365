@@ -8,6 +8,18 @@ export function parse(s) {
   return d;
 }
 export const iso = (d) => d.toISOString().slice(0, 10);
+// Lithuanian count forms: singular, paucal and genitive plural.
+export function countForm(value, one, few, many) {
+  const numeric = Number(value);
+  if (!Number.isSafeInteger(numeric)) throw Error("Netinkamas skaičius.");
+  const count = Math.abs(numeric);
+  const lastTwo = count % 100, last = count % 10;
+  if (lastTwo >= 11 && lastTwo <= 19) return many;
+  if (last === 1) return one;
+  if (last >= 2 && last <= 9) return few;
+  return many;
+}
+export const countNoun = (value, one, few, many) => `${value} ${countForm(value, one, few, many)}`;
 // A shared date link opens the day without creating or changing any saved data.
 export function dateFromSearch(search) {
   const params = new URLSearchParams(search), value = params.get('data');
@@ -31,6 +43,14 @@ export function isoWeek(s) {
           (7 * DAY),
       ),
   };
+}
+export function isoWeekRange(year, week) {
+  if (!Number.isInteger(year) || year < 1900 || year > 9999 || !Number.isInteger(week) || week < 1 || week > 53) throw Error("Įrašykite ISO metus nuo 1900 iki 9999 ir savaitę nuo 1 iki 53.");
+  const januaryFourth = `${year}-01-04`;
+  const monday = addDays(januaryFourth, -weekday(januaryFourth) + (week - 1) * 7);
+  const actual = isoWeek(monday);
+  if (actual.year !== year || actual.week !== week) throw Error(`${year} ISO metais ${week} savaitės nėra.`);
+  return { year, week, start: monday, end: addDays(monday, 6) };
 }
 export function easter(y) {
   let a = y % 19,
