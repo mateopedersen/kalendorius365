@@ -126,6 +126,9 @@
   #main .calendar-panel .month-table tbody td { height: auto !important; padding: 0 !important; }
   #main .calendar-panel .day-cell {
     display: flex !important;
+    position: static !important;
+    inset: auto !important;
+    overflow: visible !important;
     box-sizing: border-box !important;
     width: 100%;
     height: auto !important;
@@ -143,7 +146,8 @@
     overflow: visible !important;
     text-overflow: clip !important;
   }
-  #main .calendar-panel .day-number { font-size: 11pt !important; }
+  #main .calendar-panel .day-number { font-size: 11pt !important; color: inherit !important; background: transparent !important; }
+  #main .calendar-panel .day-cell.today .day-number { outline: .3mm solid #006a44; outline-offset: -.3mm; border-radius: 50%; }
   #main .calendar-panel :is(.holiday-label, .event-chip) { font-size: 7pt !important; line-height: 1.2 !important; }
   #main .calendar-panel .calendar-legend { margin-top: 3mm; font-size: 8pt; }
   #main .calendar-panel .date-link { display: block !important; border: 0; padding: 2mm 0; font-size: 11pt; }
