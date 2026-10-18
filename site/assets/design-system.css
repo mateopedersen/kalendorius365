@@ -1572,6 +1572,7 @@ main.content-main{
   padding: 14px 11px;
   border-bottom: 1px solid var(--border);
   min-height: 150px;
+  overflow: hidden;
 }
 .preview-link img{
   object-fit: contain;
