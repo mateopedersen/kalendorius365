@@ -5623,6 +5623,10 @@ button.primary:hover, a.button.primary:hover, .success:hover{
 .content-main:has(.template-fill) .compact-gallery .design-info h2{font-size:1rem;min-height:0}
 .content-main:has(.template-fill) .compact-gallery .design-info p{min-height:0;font-size:.83rem}
 @media(max-width:620px){.content-main:has(.template-fill) .compact-gallery{grid-template-columns:minmax(0,1fr)}.content-main:has(.template-fill) .compact-gallery .preview-link{height:min(72vw,330px)}}
+/* Keep portrait daily-planner sheets inside their thumbnail frame, clear of card labels. */
+.content-main:has(.planner-studio[data-kind="daily"]) .compact-gallery .preview-link{display:flex;align-items:center;justify-content:center;height:clamp(220px,24vw,300px);min-height:0;overflow:hidden;padding:1rem}
+.content-main:has(.planner-studio[data-kind="daily"]) .compact-gallery .preview-link img{display:block;flex:0 1 auto;width:auto;height:100%;min-width:0;min-height:0;max-width:100%;max-height:100%;object-fit:contain;margin:auto}
+@media(max-width:620px){.content-main:has(.planner-studio[data-kind="daily"]) .compact-gallery .preview-link{height:min(72vw,330px)}}
 .resource-card--shift-template{ --tool-accent: #885b91; }
 .resource-card--iso{ --tool-accent: #347d83; }
 .resource-card--school-break{ --tool-accent: #af772f; }
