@@ -143,7 +143,7 @@ async function printPages(pages, check, progress) {
     win.document.write('<!doctype html><html lang="lt"><head><meta charset="utf-8"><title>Mano kalendorius · Spausdinti</title></head><body></body></html>');
     win.document.close();
     let style = win.document.createElement("style");
-    style.textContent = `@page{size:${pages[0].w}pt ${pages[0].h}pt;margin:0}body{margin:0}section{width:${pages[0].w}pt;height:${pages[0].h}pt;break-after:page}section:last-child{break-after:auto}svg{width:100%;height:100%}@media screen{body{background:#ddd}section{background:white;margin:12px auto}}`;
+    style.textContent = `@page{size:${pages[0].w}pt ${pages[0].h}pt;margin:0}html,body{width:100%;height:auto;margin:0;padding:0}section{display:block;box-sizing:border-box;width:${pages[0].w}pt;height:${pages[0].h}pt;margin:0;padding:0;break-inside:avoid;page-break-inside:avoid}section:not(:last-child){break-after:page;page-break-after:always}svg{display:block;width:100%;height:100%}@media print{section{overflow:hidden}}@media screen{body{background:#ddd}section{background:white;margin:12px auto}}`;
     win.document.head.append(style);
     for (let i = 0; i < pages.length; i++) {
       check();
