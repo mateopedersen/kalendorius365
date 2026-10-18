@@ -63,7 +63,8 @@ test('generated release manifest matches every emitted immutable byte and stays 
  const headers=fs.readFileSync(path.join(publicDir,'_headers'),'utf8');
  assert.ok(headers.split('\n').filter(line=>line.startsWith('/')).length<=100);
  assert.match(headers,/\/assets\/releases\/\*\n  Cache-Control: public, max-age=31536000, immutable/);
- assert.match(headers,/\/assets\/data\/\*\n  Cache-Control: public, max-age=31536000, immutable/);
+ assert.match(headers,/\/assets\/data\/\*\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
+ assert.match(headers,/\/assets\/releases\/\*\n  Cache-Control: public, max-age=31536000, immutable/);
  assert.match(headers,/\/assets\/common\.js\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
  assert.match(headers,/(?:^|\n)\/\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
  assert.ok(manifest.retained_revisions.length<=3);
@@ -154,6 +155,6 @@ test('each current root and fingerprinted application asset matches exactly one 
  const policies=rules.filter(r=>r.policies.length).map(r=>({...r,regex:compile(r.pattern)}));
  const urls=[...Object.keys(manifest.assets),...Object.values(manifest.assets).map(a=>a.url),'/', '/2028/vasaris/','/menulio-kalendorius/2028/vasaris/','/404.html','/assets/release-manifest.json','/sitemap.xml'];
  for(const url of urls){const matches=policies.filter(r=>r.regex.test(url)).flatMap(r=>r.policies);assert.equal(matches.length,1,url+' matched '+JSON.stringify(matches));
-  if(url.startsWith('/assets/data/'))assert.deepEqual(matches,['Cache-Control: public, max-age=31536000, immutable'],url);
+  if(url.startsWith('/assets/data/'))assert.deepEqual(matches,['Cache-Control: public, no-cache, max-age=0, must-revalidate'],url);
  }
 });

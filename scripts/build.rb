@@ -139,13 +139,12 @@ Dir.chdir(ROOT) do
   headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
  end
  headers+="/assets/releases/*\n  #{immutable}\n"
- # Code and data URLs carry content fingerprints. Group data beneath one
- # non-overlapping path rule so the growing calendar catalog stays below the
- # Cloudflare Pages header-rule limit.
+ # Compatibility endpoints stay revalidatable because their URLs are stable.
+ # Their content-addressed copies under /assets/releases remain immutable.
  files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
- headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{immutable}\n"
+ headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
  headers+="/assets/fonts/*\n  #{immutable}\n"
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"

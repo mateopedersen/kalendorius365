@@ -149,7 +149,7 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif relative_asset.parts[0]=='data':
    cache_path='/assets/data/*'
-   cache_value='Cache-Control: public, max-age=31536000, immutable'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif editor_versioned:
    cache_path=f'/assets/{relative_asset.parts[0]}/*'
    cache_value='Cache-Control: public, max-age=31536000, immutable'
@@ -188,7 +188,7 @@ for path,page in pages.items():
    assert parsed.path.startswith(release_prefix),(path,url)
 for original in release_manifest['assets']:
  if original.startswith('/assets/data/'):
-  assert '/assets/data/*\n  Cache-Control: public, max-age=31536000, immutable' in headers,original
+  assert '/assets/data/*\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,original
 for y in [2027,2028,2029]:
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
