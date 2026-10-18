@@ -27,6 +27,8 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/design-system.css
   Cache-Control: public, max-age=31536000, immutable
+/assets/discovery-core.js
+  Cache-Control: public, max-age=31536000, immutable
 /assets/discovery.css
   Cache-Control: public, max-age=31536000, immutable
 /assets/discovery.js
