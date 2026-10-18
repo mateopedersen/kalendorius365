@@ -1,0 +1,27 @@
+{
+  "method": "480-pixel screen variants with responsive 340/480/680 selection; original 680-pixel previews and full-resolution printable assets unchanged",
+  "assets": [
+    {
+      "original": "site/assets/previews/2027-metinis-10.webp",
+      "original_sha256": "974b9ecda817783999390c21d38284731b5583ba3d3b637966e044a54f5af8a6",
+      "original_bytes": 28160,
+      "responsive": "site/assets/previews-small/2027-metinis-10-480.webp",
+      "responsive_bytes": 21306,
+      "dimensions": [
+        480,
+        340
+      ]
+    },
+    {
+      "original": "site/assets/previews/2027-sausis-01.webp",
+      "original_sha256": "265aa3a2c0c3f58ae102bd5bcf98de3faa2d294b4042395d2a7c684fd2ef5d80",
+      "original_bytes": 7736,
+      "responsive": "site/assets/previews-small/2027-sausis-01-480.webp",
+      "responsive_bytes": 5724,
+      "dimensions": [
+        480,
+        340
+      ]
+    }
+  ]
+}

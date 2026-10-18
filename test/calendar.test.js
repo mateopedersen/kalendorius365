@@ -59,6 +59,21 @@ test("movable and statutory holidays; no substitute Mondays", () => {
   }
   assert(!c.holidays(2028, data).some((h) => h.date === "2028-01-03"));
 });
+test("public holiday lookup reuses immutable years and retains classifications", () => {
+  const commemorations = [{ id: "example", title: "Atmintina diena", month: 2, day: 16 }];
+  const lookup = c.createCalendarEntries(data, commemorations), original = lookup(2028);
+  assert.equal(lookup(2028), original);
+  assert.deepEqual(original, [...c.holidays(2028, data), {
+    id: "example", name: "Atmintina diena", date: "2028-02-16", classification: "commemoration",
+  }]);
+  assert.ok(Object.isFrozen(original) && original.every(Object.isFrozen));
+  assert.throws(() => original.push({}));
+  assert.throws(() => { original[0].date = "2028-12-31"; });
+  for (let year = 2030; year < 2046; year++) lookup(year);
+  assert.notEqual(lookup(2028), original);
+  assert.deepEqual(lookup(2028), original);
+  assert.notEqual(c.createCalendarEntries(data, commemorations)(2028), original);
+});
 test("all monthly workdays and preholiday hours match Ruby; target includes Jan 1 next year", () => {
   for (const y of years)
     for (const six of [false, true])

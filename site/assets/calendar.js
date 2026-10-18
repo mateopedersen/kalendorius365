@@ -62,6 +62,23 @@ export function holidays(y, data) {
     })
     .sort((a, b) => a.date.localeCompare(b.date));
 }
+// Only public holiday records are memoized. Personal events, notes and
+// preferences remain live in Store and never enter this bounded lookup.
+export function createCalendarEntries(data, commemorations = []) {
+  const years = new Map();
+  return (year) => {
+    if (!years.has(year)) {
+      const records = [...holidays(year, data), ...commemorations.map(item => ({
+        id: item.id, name: item.title,
+        date: `${year}-${String(item.month).padStart(2, "0")}-${String(item.day).padStart(2, "0")}`,
+        classification: "commemoration",
+      }))].map(Object.freeze);
+      if (years.size >= 16) years.delete(years.keys().next().value);
+      years.set(year, Object.freeze(records));
+    }
+    return years.get(year);
+  };
+}
 export function monthGrid(y, m, start = 0) {
   let first = `${y}-${String(m).padStart(2, "0")}-01`,
     offset = (weekday(first) - start + 7) % 7;

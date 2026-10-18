@@ -1,3 +1,19 @@
+/* Let the browser skip off-screen calendar and planner layout. All content
+   stays in the document and remains fully rendered for printing. */
+@media screen{
+  .homepage-app .dashboard > .center-column,
+  .homepage-app .dashboard > .right-column{
+    content-visibility:auto;
+    contain-intrinsic-block-size:auto 1200px;
+  }
+}
+@media print{
+  .homepage-app .dashboard > .center-column,
+  .homepage-app .dashboard > .right-column{
+    content-visibility:visible;
+    contain-intrinsic-block-size:none;
+  }
+}
 body.homepage-app #primary-nav > a > .icon,
 body.homepage-app #primary-nav > a:hover > .icon,
 body.homepage-app #primary-nav > a[aria-current="page"] > .icon{

@@ -53,24 +53,15 @@ let selected = cal.dateFromSearch(location.search) || cal.today(),
 let lastToday = cal.today(),
   noteDate = selected,
   noteDirty = false;
-const hs = (y) => cal.holidays(y, data),
-  editorialArticles = () => [
+const editorialArticles = [
     ...(editorial.articles || []),
     ...(editorial.commemorations || []),
   ],
   editorialForHoliday = (id) =>
-    editorialArticles().find(
+    editorialArticles.find(
       (article) => article.id === id || article.holiday_ids?.includes(id),
     ),
-  calendarEntries = (y) => [
-    ...hs(y),
-    ...(editorial.commemorations || []).map((item) => ({
-      id: item.id,
-      name: item.title,
-      date: `${y}-${String(item.month).padStart(2, "0")}-${String(item.day).padStart(2, "0")}`,
-      classification: "commemoration",
-    })),
-  ],
+  calendarEntries = cal.createCalendarEntries(data, editorial.commemorations || []),
   dayHolidays = (s) =>
     showHolidays
       ? calendarEntries(+s.slice(0, 4)).filter((h) => h.date === s)

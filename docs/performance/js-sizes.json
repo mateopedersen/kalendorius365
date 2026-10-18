@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 36943,
-      "generated_bytes": 24146
+      "source_bytes": 36691,
+      "generated_bytes": 23930
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -18,8 +18,8 @@
     },
     {
       "path": "/assets/calendar.js",
-      "source_bytes": 6824,
-      "generated_bytes": 4588
+      "source_bytes": 7562,
+      "generated_bytes": 4979
     },
     {
       "path": "/assets/common.js",

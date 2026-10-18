@@ -1,0 +1,34 @@
+{
+  "method": "SVGO 4.1.0, ten-digit precision; merge equivalent paths and simplify markup; keep a fully scalable SVG, title, description and viewBox. Original complete vector retained. Browser rasterization can differ slightly at anti-aliased edges; separate Chrome/WebKit 88/320-pixel comparisons are retained.",
+  "source": "site/assets/visuals/zodiac-wheel.svg",
+  "target": "site/assets/visuals/zodiac-wheel-screen.svg",
+  "original_bytes": 177760,
+  "optimized_bytes": 105949,
+  "original_elements": 1310,
+  "optimized_elements": 746,
+  "original_sha256": "df25ea6bffd2c3aa80f76c0c7b88c36f71ad08369ac49b188c41e5bb1d1fd52c",
+  "optimized_sha256": "d11c026567d21ff63e813740364b8e72d075075cba5828b18df93ee3276d25ed",
+  "config": {
+    "multipass": true,
+    "floatPrecision": 10,
+    "plugins": [
+      {
+        "name": "preset-default",
+        "params": {
+          "overrides": {
+            "removeDesc": false,
+            "cleanupIds": {
+              "preserve": [
+                "title",
+                "desc"
+              ]
+            },
+            "removeUnknownsAndDefaults": {
+              "keepRoleAttr": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}
