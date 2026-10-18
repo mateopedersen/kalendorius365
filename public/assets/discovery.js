@@ -1,4 +1,4 @@
-import { solarFor } from './phase-5-6-8-core.js?v=69ab96efeef8';
+import { solarFor } from './phase-5-6-8-core.js?v=d8af0f782f4a';
 function setupDiscovery() {
 const search = document.querySelector('#commemoration-search');
 if (search) {
