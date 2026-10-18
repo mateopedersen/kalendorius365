@@ -1,3 +1,4 @@
+import {openHeaderSearch} from './header-helpers.mjs';
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 
@@ -30,7 +31,7 @@ test('full search filters, shareable URL, back, pagination, clear and XSS text',
 
 test('header search recovers from a failed index request without a reload',async({page})=>{
  let requests=0;await page.route('**/data/search.json',route=>++requests===1?route.abort():route.continue());
- await page.goto('/2028/');await page.locator('#site-search').fill('saulėlydis Kaune');
+ await page.goto('/2028/');await openHeaderSearch(page);await page.locator('#site-search').fill('saulėlydis Kaune');
  await page.getByRole('button',{name:'Bandyti dar kartą',exact:true}).click();
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
  await expect(page.locator('#site-search-results')).toBeVisible();

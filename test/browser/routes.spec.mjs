@@ -1,3 +1,4 @@
+import {openHeaderSearch} from './header-helpers.mjs';
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs';
 const sitemap=fs.readFileSync(new URL('../../public/sitemap.xml',import.meta.url),'utf8');
@@ -8,7 +9,7 @@ for (const route of routes) test(`canonical route, runtime, responsive header: $
  await expect(page.locator('#main h1').first()).toBeVisible();
  await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href',`https://kalendorius365.lt${route}`);
  expect(await page.locator('meta[name=robots]').getAttribute('content')).not.toContain('noindex');
- const input=page.locator('#site-search');await input.fill('2029 gegužė');
+ const input=await openHeaderSearch(page);await input.fill('2029 gegužė');
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/2029/geguze/');
  await input.press('Escape');await expect(page.locator('#site-search-results')).toBeHidden();
  if(info.project.use.isMobile){

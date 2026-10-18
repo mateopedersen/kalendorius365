@@ -1,10 +1,11 @@
+import {openHeaderSearch} from './header-helpers.mjs';
 import {test,expect} from '@playwright/test';
 
 for(const width of [320,360,375,390,414,768,1024,1280,1440,1920])test(`header search works at ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:900});
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
  await page.goto('/paieska/');
- const input=page.locator('#site-search');await input.fill('2029 geguze');
+ const input=await openHeaderSearch(page);await input.fill('2029 geguze');
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/2029/geguze/');
  await expect(input).toHaveAttribute('aria-expanded','true');
  const bounds=await input.boundingBox();expect(bounds.width).toBeGreaterThan(100);
@@ -19,7 +20,7 @@ for(const width of [320,360,375,390,414,768,1024,1280,1440,1920])test(`header se
 });
 
 test('name-day search opens the native name with all genuine dates prefilled',async({page})=>{
- await page.goto('/paieska/');await page.locator('#site-search').fill('zivile');
+ await page.goto('/paieska/');await openHeaderSearch(page);await page.locator('#site-search').fill('zivile');
  const first=page.locator('#site-search-results [role=option]').first();
  await expect(first).toContainText('Živilė – vardadienis');await first.click();
  await expect(page.locator('#nd-query')).toHaveValue('Živilė');
@@ -67,7 +68,7 @@ test('header fetch failure recovers on the next query in the same visit',async({
  let requests=0;await page.route('**/data/search.json',async route=>{
   if(++requests===1)await route.abort('failed');else await route.continue();
  });
- await page.goto('/saule/');await page.locator('#site-search').fill('2029');
+ await page.goto('/saule/');await openHeaderSearch(page);await page.locator('#site-search').fill('2029');
  await expect(page.locator('#site-search-results')).toContainText('Paieška nepasiekiama');
  await page.locator('#site-search').fill('2028');
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/2028/');expect(requests).toBe(2);
@@ -104,4 +105,17 @@ for(const width of [320,390,768,1280])test(`major category navigation remains av
   const layout=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
   expect(layout.scroll).toBeLessThanOrEqual(layout.width+1);
  }finally{await context.close();}
+});
+
+test('mobile search opener, close, outside tap and native submit preserve the visitor query',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await page.goto('/2028/');
+ const input=await openHeaderSearch(page);await input.fill('Jonas');
+ await expect(page.locator('#site-search-results [role=option]').first()).toContainText('Jonas');
+ await page.locator('.header-search-close').click();await expect(input).toBeHidden();
+ await page.locator('.header-search-toggle').click();await expect(input).toHaveValue('Jonas');
+ await expect(page.locator('#site-search-results [role=option]').first()).toBeVisible();
+ await page.locator('#main h1').click();await expect(input).toBeHidden();
+ await page.locator('.header-search-toggle').click();await page.locator('.header-search-submit').click();
+ await expect(page).toHaveURL(/\/paieska\/\?q=Jonas$/);
+ await expect(page.locator('#site-search-page-results a').first()).toContainText('Jonas');
 });

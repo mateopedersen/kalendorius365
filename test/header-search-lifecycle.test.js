@@ -1,36 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import vm from 'node:vm';
+import {headerHarness} from './helpers/header-dom.js';
 
-// Exercise the actual event handlers with controlled network completion order.
+// Use the real shared handlers with controlled network completion and timers.
 function setup(load) {
-  const timers = new Map(); let nextTimer = 0;
-  const element = tag => ({tag, value:'', hidden:true, attrs:new Map(), handlers:new Map(), children:[], dataset:{},
-    classList:{add(){},remove(){},toggle(){}},
-    setAttribute(k,v){this.attrs.set(k,v); if(k==='hidden')this.hidden=true;},
-    getAttribute(k){return this.attrs.get(k);}, removeAttribute(k){this.attrs.delete(k);},
-    addEventListener(k,f){this.handlers.set(k,f);},
-    append(...items){this.children.push(...items);}, prepend(item){this.children.unshift(item);}, replaceChildren(...items){this.children=items;},
-    querySelector(){return null;},querySelectorAll(){return this.children.filter(x=>x.attrs.get('role')==='option');},
-    focus(){},blur(){},scrollIntoView(){},click(){this.handlers.get('click')?.({currentTarget:this});},
-  });
-  const selectors=['#site-search','#site-search-results','.header-search','#site-search-status','#nav-toggle','#primary-nav'];
-  const els=new Map(selectors.map(s=>[s,element('div')])); const handlers=new Map();
-  const document={querySelector:s=>els.get(s)||null,querySelectorAll:()=>[],createElement:element,documentElement:element('html'),
-    addEventListener(k,f){handlers.set(k,f);}};
-  let imports=0;
-  vm.runInNewContext(fs.readFileSync(new URL('../site/assets/common.js',import.meta.url),'utf8')
-    .replace('export function notice','function notice').replace('import("./search-engine.js")','__loadSearchEngine()'),{
-      document,location:{pathname:'/'},localStorage:{getItem:()=>null},matchMedia:()=>({matches:true}),
-      setTimeout:f=>{timers.set(++nextTimer,f);return nextTimer;},clearTimeout:id=>timers.delete(id),
-      __loadSearchEngine:async()=>{imports++;return {loadSearchIndex:load,normalizeSearchText:s=>s.toLowerCase(),searchPages:(_,q)=>[{url:'/result/',title:q}]};},
-    });
-  const input=els.get('#site-search'),results=els.get('#site-search-results');
-  return {input,results,els,handlers,imports:()=>imports,
-    async run(q){input.value=q;input.handlers.get('input')();return this.flush();},
-    async flush(){const pending=[...timers.values()];timers.clear();return Promise.all(pending.map(f=>f()));},
-  };
+ const h=headerHarness({loadIndex:load,search:(_,q)=>[{url:'/result/',title:q}]});
+ h.toggle.click();
+ const handlers=new Map(['keydown','click'].map(name=>[name,event=>h.document.emit(name,event)]));
+ const inputEmit=(name,event={})=>h.input.emit(name,event);
+ const input={...h.input,handlers:new Map(['input','focus','keydown'].map(name=>[name,event=>inputEmit(name,event)]))};
+ Object.defineProperty(input,'value',{get:()=>h.input.value,set:value=>{h.input.value=value;}});
+ return {...h,input,els:new Map([['#nav-toggle',h.navToggle],['.header-search',h.form]]),handlers,
+  async run(q){h.input.value=q;h.input.emit('input');return h.flush();}};
 }
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
 
@@ -43,12 +24,12 @@ test('a late rejected request cannot replace results for the latest query',async
 test('dismissing in-flight search cancels its rendered response',async()=>{
  const pending=deferred();const h=setup(()=>pending.promise);const request=h.run('Velykos');await Promise.resolve();
  h.handlers.get('keydown')({key:'Escape'});pending.resolve([]);await request;
- assert.equal(h.results.hidden,true);assert.equal(h.results.children.length,0);
+ assert.equal(h.results.hidden,true);assert.equal(h.panel.hidden,true);
 });
 test('failed search offers retry and succeeds without page reload',async()=>{
  let count=0;const h=setup(async()=>{if(++count===1)throw new Error('offline');return [];});
  await h.run('Joninės');const retry=h.results.children.find(e=>e.tag==='button');assert.ok(retry);
- await retry.handlers.get('click')();assert.equal(h.results.children[0].children[0].textContent,'Joninės');
+ await retry.emit('click');assert.equal(h.results.children[0].children[0].textContent,'Joninės');
  assert.equal(h.imports(),2);
 });
 test('typing coalesces work and refocusing restores unchanged-query results',async()=>{
@@ -74,7 +55,7 @@ test('returning focus from retry controls preserves visible keyboard options',as
 test('closed dropdown options cannot be selected before refocus finishes loading',async()=>{
  const h=setup(async()=>[]);await h.run('Kaunas');h.handlers.get('keydown')({key:'Escape'});
  h.input.handlers.get('focus')();h.input.handlers.get('keydown')({key:'ArrowDown',preventDefault(){}});
- assert.equal(h.input.getAttribute('aria-activedescendant'),undefined);
+ assert.equal(h.input.getAttribute('aria-activedescendant'),null);
 });
 
 test('retry remains an inside click after its button is detached',async()=>{
