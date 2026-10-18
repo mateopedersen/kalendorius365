@@ -14,8 +14,13 @@ permissions:
   contents: read
 jobs:
   browser:
+    name: browser (${{ matrix.project }})
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium, firefox, webkit, android-chromium, iphone-webkit]
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
@@ -31,16 +36,16 @@ jobs:
       - name: Verify search retry and keyboard focus recovery in every engine
         env:
           K365_BASE_URL: ${{ inputs.base_url }}
-        run: npx playwright test test/browser/components.spec.mjs -g "header search recovers"
+        run: npx playwright test test/browser/components.spec.mjs --project=${{ matrix.project }} -g "header search recovers"
       - name: Exercise every public route and distinct search journeys
         env:
           K365_BASE_URL: ${{ inputs.base_url }}
-        run: npx playwright test
+        run: npx playwright test --project=${{ matrix.project }}
       - name: Save executed browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: browser-regression-evidence
+          name: browser-regression-evidence-${{ matrix.project }}
           path: |
             test-results/
             playwright-report/

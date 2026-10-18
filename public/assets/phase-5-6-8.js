@@ -1,6 +1,6 @@
-import { addDays, difference, holidays, today, TZ } from "./calendar.js?v=4d35e0869c52";
-import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor } from "./phase-5-6-8-core.js?v=4d35e0869c52";
-import { download } from "./storage.js?v=4d35e0869c52";
+import { addDays, difference, holidays, today, TZ } from "/assets/releases/1647f7e580d119c4fc40/calendar.js";
+import { buildShiftIcs, buildShiftPlan, lunarIllumination, solarFor, updateLessonField } from "/assets/releases/1647f7e580d119c4fc40/phase-5-6-8-core.js";
+import { download } from "/assets/releases/1647f7e580d119c4fc40/storage.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
@@ -31,11 +31,11 @@ const validISODate = (value) => {
   const date = new Date(Date.UTC(y, m - 1, d));
   return date.toISOString().slice(0, 10) === value;
 };
-const CALENDAR_DATA = await fetch("/assets/data/calendar.json").then((r) => {
+const CALENDAR_DATA = await fetch("/assets/releases/1647f7e580d119c4fc40/data/calendar.json").then((r) => {
   if (!r.ok) throw Error("Kalendoriaus dienų rinkinio nepavyko įkelti.");
   return r.json();
 }).catch(() => ({ holidays: [] }));
-const REST_RULES = await fetch("/assets/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null);
+const REST_RULES = await fetch("/assets/releases/1647f7e580d119c4fc40/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null);
 
 function readLocal(key, fallback) {
   try {
@@ -243,16 +243,23 @@ function setupSchool() {
       for (const [name, max] of [["start",5],["end",5],["subject",50],["room",30],["teacher",30]]) {
         const td = make("td"), input = make("input", undefined, { "aria-label": `${subjects[l.day]}, ${l.number} pamoka: ${fieldNames[name]}`, maxlength: max, value: l[name] || "" });
         if (["start","end"].includes(name)) input.type = "time";
-        input.onchange = () => {
-          if (input.value && !/^\d{2}:\d{2}$/.test(input.value)) { input.setCustomValidity("Įrašykite galiojantį laiką."); input.reportValidity(); return; }
-          const next = name === "start" ? input.value : l.start, end = name === "end" ? input.value : l.end;
-          if (next && end && next >= end) { input.setCustomValidity("Pamokos pabaiga turi būti vėlesnė už pradžią."); input.reportValidity(); return; }
-          input.setCustomValidity(""); l[name] = input.value; persist();
+        const saveField = () => {
+          try {
+            updateLessonField(l, name, input.value);
+            input.setCustomValidity(""); persist();
+          } catch (error) {
+            input.setCustomValidity(error.message); input.reportValidity();
+          }
         };
+        // Text fields save as the user types, which protects edits if mobile
+        // Safari or another browser delays the blur/change event. Time inputs
+        // save on change so a partially entered time is never committed.
+        if (name === "start" || name === "end") input.onchange = saveField;
+        else { input.oninput = saveField; input.onchange = saveField; }
         td.append(input); tr.append(td);
       }
       const td = make("td"), remove = make("button", "Pašalinti", { type: "button", "aria-label": `${subjects[l.day]} ${l.number} pamoką pašalinti` });
-      remove.onclick = () => { state.lessons.splice(state.lessons.indexOf(l), 1); persist(); renderLessons(); };
+      remove.onclick = () => { state.lessons.splice(state.lessons.indexOf(l), 1); persist(); renderLessons(); put("Pamoka pašalinta."); };
       td.append(remove); tr.append(td); return tr;
     }));
     $("#school-title").value = state.title; $("#school-days").value = String(state.days); $("#school-template").value = state.template;
@@ -325,7 +332,7 @@ function setupSchool() {
 
 // NOAA solar position equations: equation of time + declination; sunrise zenith 90.833°,
 // civil twilight 96°. Events are calculations, not observations.
-const CITY_DATA = await fetch("/assets/data/astronomy/cities.json").then((r) => {
+const CITY_DATA = await fetch("/assets/releases/1647f7e580d119c4fc40/data/astronomy/cities.json").then((r) => {
   if (!r.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return r.json();
 }).catch(() => ({ cities: [] }));
@@ -374,8 +381,8 @@ async function setupMoon() {
   if (!$("#moon-tool") && !$("#moon-year-tool") && !$("#season-rows")) return;
   try {
     const [data, seasons] = await Promise.all([
-      fetch("/assets/data/astronomy/moon-phases-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
-      fetch("/assets/data/astronomy/seasons-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/releases/1647f7e580d119c4fc40/data/astronomy/moon-phases-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/releases/1647f7e580d119c4fc40/data/astronomy/seasons-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
     ]);
     const instants=data.events.map(e=>({ ...e, instant:Date.parse(e.utc) }));
     const newMoons=instants.filter(e=>e.phase==="new").map(e=>e.instant);

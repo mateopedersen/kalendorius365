@@ -31,6 +31,10 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/common.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/contact.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/contact.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/cookie-notice.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/birth-cities.js

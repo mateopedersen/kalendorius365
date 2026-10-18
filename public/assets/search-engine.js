@@ -45,7 +45,9 @@ function words(value) {
 }
 
 export function loadSearchIndex() {
-  loadedIndex ||= fetch(new URL("./data/search.json", import.meta.url), { credentials: "same-origin", cache: "no-cache" })
+  // Release URLs change with the data. Let their immutable HTTP cache work;
+  // legacy URLs still revalidate according to their response headers.
+  loadedIndex ||= fetch(new URL("./data/search.json", import.meta.url), { credentials: "same-origin", cache: "default" })
     .then((response) => {
       if (!response.ok) throw new Error("Nepavyko įkelti paieškos rodyklės");
       return response.json();
@@ -74,8 +76,14 @@ function prepare(index) {
       description: normalizeSearchText(item.description),
       content: normalizeSearchText(item.content),
     };
-    const tokens = Object.fromEntries(Object.entries(fields).map(([key, value]) => [key, new Set(words(value))]));
-    return { item, fields, tokens };
+    const tokens = Object.fromEntries(Object.entries(fields).map(([key, value]) => [key, new Set(value.match(/[\p{L}\p{N}]+/gu) || [])]));
+    const names = new Map();
+    for (const entry of Object.entries(item.namedays || {})) {
+      const key = normalizeSearchText(entry[0]);
+      if (!names.has(key)) names.set(key, []);
+      names.get(key).push(entry);
+    }
+    return { item, fields, tokens, names };
   });
   preparedIndex = { source: index, docs };
   return preparedIndex;
@@ -114,7 +122,7 @@ function tokenSimilarity(query, candidate) {
 
 const FIELD_WEIGHT = { title: 13, keywords: 8, url: 6, headings: 5.5, description: 4, content: 1.7 };
 
-function bestFieldMatch(queryWord, doc, groupWords) {
+function bestFieldMatch(doc, groupWords, similarities) {
   const fieldScores = {};
   for (const [field, weight] of Object.entries(FIELD_WEIGHT)) {
     const tokens = doc.tokens[field];
@@ -124,7 +132,13 @@ function bestFieldMatch(queryWord, doc, groupWords) {
       if (exact > fieldBest) fieldBest = exact;
       if (fieldBest === 1) break;
       for (const candidate of tokens) {
-        const similarity = tokenSimilarity(term, candidate);
+        let candidates = similarities.get(term);
+        if (!candidates) { candidates = new Map(); similarities.set(term, candidates); }
+        let similarity = candidates.get(candidate);
+        if (similarity === undefined) {
+          similarity = tokenSimilarity(term, candidate);
+          candidates.set(candidate, similarity);
+        }
         if (similarity > fieldBest) fieldBest = similarity;
         if (fieldBest >= 0.99) break;
       }
@@ -205,14 +219,17 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
     word === year || synonymGroups.get(word)?.includes("moon") || synonymGroups.get(word)?.includes("kalendorius"));
   const navigationTarget = navigationalTarget(queryWords, year, lunarIntent, dateIntent);
   const scored = [];
+  // A word occurs in many pages and fields. Compare it once per query instead
+  // of repeating the same fuzzy comparison throughout the whole index.
+  const similarities = new Map();
   for (const doc of docs) {
     if (category !== "all" && doc.item.category !== category) continue;
     const matched = [];
     let score = 0;
     for (const queryWord of queryWords) {
       const group = synonymGroups.get(queryWord) || [queryWord];
-      const direct = bestFieldMatch(queryWord, doc, [queryWord]);
-      const synonym = group.length > 1 ? bestFieldMatch(queryWord, doc, group) * 0.62 : 0;
+      const direct = bestFieldMatch(doc, [queryWord], similarities);
+      const synonym = group.length > 1 ? bestFieldMatch(doc, group, similarities) * 0.62 : 0;
       const termScore = Math.max(direct, synonym);
       if (termScore > 0) {
         matched.push(queryWord);
@@ -250,7 +267,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
     let result = doc.item;
     if (doc.item.namedays) {
       const nameQuery = queryWords.filter(word => !synonymGroups.get(word)?.includes("nameday")).join(" ");
-      const names = Object.entries(doc.item.namedays).filter(([name]) => normalizeSearchText(name) === nameQuery);
+      const names = [...(doc.names.get(nameQuery) || [])];
       names.sort(([a], [b]) => Number(b.toLocaleLowerCase("lt") === boundedQuery.toLocaleLowerCase("lt")) - Number(a.toLocaleLowerCase("lt") === boundedQuery.toLocaleLowerCase("lt")));
       if (names.length) {
         const [name, dates] = names[0];

@@ -58,7 +58,7 @@ test('one transient index failure can be retried; concurrent consumers share one
  const originalFetch=globalThis.fetch;
  let requests=0;
  globalThis.fetch=async(url,options)=>{
-  requests++;assert.equal(options.cache,'no-cache');assert.ok(String(url).endsWith('/data/search.json'));
+  requests++;assert.equal(options.cache,'default');assert.ok(String(url).endsWith('/data/search.json'));
   if(requests===1)throw Error('temporary network failure');
   return{ok:true,json:async()=>pages};
  };

@@ -18,14 +18,17 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":{{ page.schema_type | default: 'WebPage' | jsonify }},"@id":"{{ site.url }}{{ page.url | replace: 'index.html', '' }}#webpage","url":"{{ site.url }}{{ page.url | replace: 'index.html', '' }}","name":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"inLanguage":"lt-LT","isPartOf":{"@type":"WebSite","name":"Kalendorius365","url":"https://kalendorius365.lt/"}}</script>
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
-{% if page.app %}<link rel="preload" href="/assets/visuals/weather-640.webp" as="image" type="image/webp" fetchpriority="high">{% endif %}
+{% if page.app %}<link rel="preload" href="/assets/visuals/weather-fast-640.webp" imagesrcset="/assets/visuals/weather-fast-480.webp 480w, /assets/visuals/weather-fast-640.webp 640w" imagesizes="(max-width: 760px) calc(100vw - 26px), 280px" as="image" type="image/webp" fetchpriority="high">
+<link rel="preload" href="/assets/data/calendar.json" as="fetch" crossorigin>
+<link rel="preload" href="/assets/data/home-holiday-data.json?v=2" as="fetch" crossorigin>
+{% for module in site.data.home_modules %}<link rel="modulepreload" href="/assets/{{ module }}?v={{ site.script_version }}">{% endfor %}{% endif %}
 <link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Lato-Black.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/style.css?v={{ site.css_version }}" as="style">
 <link rel="preload" href="/assets/design-system.css?v={{ site.css_version }}" as="style">
 <link rel="stylesheet" href="/assets/style.css?v={{ site.css_version }}"><link rel="stylesheet" href="/assets/design-system.css?v={{ site.css_version }}">
 {% if page.contact %}<link rel="stylesheet" href="/assets/contact.css?v={{ site.css_version }}">{% endif %}
-{% if page.horoscope or page.app %}<link rel="stylesheet" href="/assets/horoscope.css?v={{ site.css_version }}">{% endif %}
+{% if page.horoscope or page.app %}<link rel="preload" href="/assets/horoscope.css?v={{ site.css_version }}" as="style"><link rel="stylesheet" href="/assets/horoscope.css?v={{ site.css_version }}">{% endif %}
 {% if page.zodiac %}<link rel="stylesheet" href="/assets/zodiac.css?v={{ site.css_version }}">{% endif %}
 {% if page.zodiac_hub %}<script type="module" src="/assets/zodiac.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.holiday_phase2 or page.holiday_phase2_hub %}<link rel="stylesheet" href="/assets/holiday-phase2.css?v={{ site.css_version }}">{% endif %}

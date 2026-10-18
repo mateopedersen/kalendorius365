@@ -1,6 +1,6 @@
-import * as cal from "./calendar.js?v=4d35e0869c52";
-import { Store, download } from "./storage.js?v=4d35e0869c52";
-import { exportICS } from "./ics.js?v=4d35e0869c52";
+import * as cal from "/assets/releases/1647f7e580d119c4fc40/calendar.js";
+import { Store, download } from "/assets/releases/1647f7e580d119c4fc40/storage.js";
+import { exportICS } from "/assets/releases/1647f7e580d119c4fc40/ics.js";
 
 const DAY_MS = 86400000;
 const MIN_YEAR = 2026;
@@ -404,7 +404,7 @@ function showDayTable(container, period, data, options) {
 function plannerPage() {
   const form = $("#leave-planner");
   if (!form) return;
-  const dataPromise = fetch("/assets/data/calendar.json").then((response) => {
+  const dataPromise = fetch("/assets/releases/1647f7e580d119c4fc40/data/calendar.json").then((response) => {
     if (!response.ok) throw Error("Nepavyko įkelti patvirtinto Lietuvos švenčių rinkinio.");
     return response.json();
   });

@@ -1,21 +1,21 @@
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/673b7c135b10a817906e/fonts/Lato-Regular.woff2") format("woff2");
+  src: url("/assets/releases/1647f7e580d119c4fc40/fonts/Lato-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/673b7c135b10a817906e/fonts/Lato-Bold.woff2") format("woff2");
+  src: url("/assets/releases/1647f7e580d119c4fc40/fonts/Lato-Bold.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Lato;
-  src: url("/assets/releases/673b7c135b10a817906e/fonts/Lato-Black.woff2") format("woff2");
+  src: url("/assets/releases/1647f7e580d119c4fc40/fonts/Lato-Black.woff2") format("woff2");
   font-style: normal;
   font-weight: 900;
   font-display: swap;
@@ -6822,7 +6822,6 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon {
 @media (max-width: 760px) {
   .site-header #primary-nav { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
-
 
 /* Align the calendar mark beside the wordmark, with the tagline beneath it. */
 .site-footer > div:first-child {

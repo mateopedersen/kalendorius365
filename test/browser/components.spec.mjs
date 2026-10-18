@@ -33,16 +33,12 @@ test('header search recovers from a failed index request without a reload',async
  await page.goto('/2028/');await page.locator('#site-search').fill('saulėlydis Kaune');
  await page.getByRole('button',{name:'Bandyti dar kartą',exact:true}).click();
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
+ await expect(page.locator('#site-search-results')).toBeVisible();
  expect(requests).toBeGreaterThanOrEqual(2);
  const input=page.locator('#site-search');
  await input.focus();
  await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
- await input.evaluate(el=>{
-  window.__k365KeyboardTrace=[];
-  for(const capture of [true,false])document.addEventListener('keydown',event=>window.__k365KeyboardTrace.push({capture,key:event.key,target:event.target.id,active:document.activeElement.id,hidden:document.querySelector('#site-search-results').hidden,options:document.querySelectorAll('#site-search-results [role=option]').length,selected:document.querySelector('#site-search').getAttribute('aria-activedescendant'),prevented:event.defaultPrevented}),capture);
- });
  await page.keyboard.press('ArrowDown');
- console.log('SEARCH_KEYBOARD_DIAGNOSTIC',JSON.stringify(await page.evaluate(()=>window.__k365KeyboardTrace)));
  await expect(input).toHaveAttribute('aria-activedescendant','site-search-option-0');
  await page.keyboard.press('Enter');await expect(page).toHaveURL(/\/saule\/$/);
 });
@@ -168,6 +164,8 @@ test('shift planner generates a real cycle, validates bad JSON and exports ICS',
 });
 
 test('school lesson text edits persist after reload and duplication can be undone',async({page})=>{
+ await page.goto('/?data=2028-02-29');
+ await page.locator('#daily-note').fill('QA saved note');await page.locator('#save-note').click();
  await page.goto('/pamoku-tvarkarastis/');await page.locator('#lesson-add').click();
  const subject=page.getByLabel('Pirmadienis, 1 pamoka: dalykas',{exact:true});await subject.fill('Lietuvių kalba');
  await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('k365:phase568:school:v1')||'{}').lessons?.[0]?.subject)).toBe('Lietuvių kalba');
@@ -178,7 +176,8 @@ test('school lesson text edits persist after reload and duplication can be undon
  await page.locator('#school-duplicate-week').click();await expect(page.locator('#school-lessons tr')).toHaveCount(5);await page.locator('#school-undo').click();await expect(page.locator('#school-lessons tr')).toHaveCount(1);
  const backup=await downloadBytes(page,()=>page.locator('#school-json-export').click());expect(JSON.parse(backup.bytes).lessons[0].teacher).toBe('Ž. Jonaitė');
  await page.getByRole('button',{name:'Pirmadienis 1 pamoką pašalinti'}).click();await expect(page.locator('#school-lessons tr')).toHaveCount(0);
- await expect(page.locator('#school-message')).toHaveText('Pamoka pašalinta.');await expect(page.locator('#daily-note')).toHaveValue('QA saved note');
+ await expect(page.locator('#school-message')).toHaveText('Pamoka pašalinta.');
+ await page.goto('/?data=2028-02-29');await expect(page.locator('#daily-note')).toHaveValue('QA saved note');
 });
 
 test('leave planner produces inspectable date rows and a valid ICS',async({page})=>{
@@ -186,4 +185,19 @@ test('leave planner produces inspectable date rows and a valid ICS',async({page}
  await expect(page.locator('#leave-results .leave-result-card').first()).toBeVisible();const card=page.locator('#leave-results .leave-result-card').first();
  await card.getByRole('button',{name:'Dienų eiga',exact:true}).click();await expect(page.locator('#leave-detail tbody tr').first()).toBeVisible();
  const result=await downloadBytes(page,()=>card.getByRole('button',{name:'Atsisiųsti ICS',exact:true}).click());ics(result.bytes);
+});
+
+test('contact topic, validation and address copy work without sending a message',async({page,context})=>{
+ await context.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window.__copiedContact=value;}}}));
+ await page.goto('/kontaktai/?tema=technical&puslapis=https%3A%2F%2Fkalendorius365.lt%2F2028%2F%3Fq%3Dprivate');
+ await expect(page.locator('#contact-topic')).toHaveValue('technical');
+ await expect(page.locator('#contact-page-url')).toHaveValue('https://kalendorius365.lt/2028/');
+ await page.locator('[data-contact-submit]').click();await expect(page.locator('#contact-email')).toHaveAttribute('aria-invalid','true');
+ await page.locator('#contact-email').fill('qa@example.test');await page.locator('#contact-email').press('Tab');
+ await expect(page.locator('#contact-email')).not.toHaveAttribute('aria-invalid','true');
+ await page.locator('#contact-page-url').fill('https://example.test/');await page.locator('#contact-page-url').press('Tab');
+ await expect(page.locator('#contact-page-error')).toBeVisible();
+ await page.locator('[data-topic="namedays"]').click();await expect(page.locator('#contact-topic')).toHaveValue('namedays');
+ await page.locator('[data-copy-email]').click();await expect(page.locator('[data-copy-status]')).toHaveText('El. pašto adresas nukopijuotas.');
+ expect(await page.evaluate(()=>window.__copiedContact)).toBe('kalendorius365@gmail.com');
 });

@@ -1,4 +1,4 @@
-import {lunarState,noonInVilnius,nextPhase,lunarAge,countdown,localMoment,phaseICS,PHASES} from './lunar-engine.js?v=4d35e0869c52';
+import {lunarState,noonInVilnius,nextPhase,lunarAge,countdown,localMoment,phaseICS,PHASES} from '/assets/releases/1647f7e580d119c4fc40/lunar/lunar-engine.js';
 
 const scope=document.querySelector('.lunar-app');
 const texture=new Image();texture.src='/assets/lunar/albedo-web.png';

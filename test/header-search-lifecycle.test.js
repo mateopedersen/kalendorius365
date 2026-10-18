@@ -76,3 +76,11 @@ test('closed dropdown options cannot be selected before refocus finishes loading
  h.input.handlers.get('focus')();h.input.handlers.get('keydown')({key:'ArrowDown',preventDefault(){}});
  assert.equal(h.input.getAttribute('aria-activedescendant'),undefined);
 });
+
+test('retry remains an inside click after its button is detached',async()=>{
+ const h=setup(async()=>[]);await h.run('Kaunas');
+ h.handlers.get('click')({composedPath:()=>[{},h.els.get('.header-search')],target:{closest:()=>null}});
+ assert.equal(h.results.hidden,false);
+ h.handlers.get('click')({composedPath:()=>[{}],target:{closest:()=>null}});
+ assert.equal(h.results.hidden,true);
+});

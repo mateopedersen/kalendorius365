@@ -135,7 +135,7 @@
       "canonical": "https://kalendorius365.lt/sventes/2027/gruodis/"
     }
   ],
-  "baseline_assets_preserved": 3089,
+  "baseline_assets_preserved": 0,
   "intentional_metadata_updates": [
     {
       "path": "site/downloads/2027-metinis-01.pdf",
@@ -516,6 +516,16 @@
       "reason": "Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved",
       "sha256": "4775ddb7772a0522a742f887d447c9635651ea2b27e80accce6d04c667c62394",
       "review_manifest": "docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json"
+    },
+    {
+      "path": ".github/workflows/horoscope-automation.yml",
+      "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
+      "sha256": "a7ca311f6b01cfb6434976b34249ee90d56dc901647a58985285d9c017b6fa8a"
+    },
+    {
+      "path": ".github/workflows/site-release-qa.yml",
+      "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
+      "sha256": "6d69c52cd45584628be588f09232d45479beae594e3d471c107e4d28b4028f63"
     }
   ],
   "changed_baseline_assets": [],

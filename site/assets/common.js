@@ -253,7 +253,9 @@ if (siteSearch && siteSearchResults && headerSearch) {
   });
 }
 document.addEventListener("click", (event) => {
-  if (!event.target.closest(".header-search")) {
+  // Retry replaces its own button before the click reaches document. The
+  // original event path still identifies this as a click inside search.
+  if (!event.composedPath().includes(headerSearch)) {
     siteSearchResults?.setAttribute("hidden", "");
     siteSearch?.setAttribute("aria-expanded", "false");
     siteSearch?.removeAttribute("aria-activedescendant");
