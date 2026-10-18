@@ -51,12 +51,82 @@ module AssetRelease
     Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES).each do |revision|
       source = File.join(stash_dir, revision)
       next unless File.directory?(source)
+      unless complete_module_tree?(source, public_dir)
+        warn "Skipping incomplete retained asset release #{revision}"
+        next
+      end
 
       destination = File.join(public_dir, 'assets', 'releases', revision)
       FileUtils.rm_rf(destination)
       FileUtils.mkdir_p(File.dirname(destination))
       FileUtils.cp_r(source, destination)
       restored << revision
+    end
+    restored
+  end
+
+  # A retained immutable release is useful only when its module graph is whole.
+  # Older partial builds can contain editor entry points whose relative imports
+  # were never copied; do not publish those broken trees as supported releases.
+  def complete_module_tree?(tree_dir, public_dir)
+    Dir.glob(File.join(tree_dir, '**/*.js')).all? do |path|
+      content = File.read(path)
+      next false if content.match?(/^(?:<<<<<<<|=======|>>>>>>>)(?: |$)/)
+
+      content.scan(/\b(?:from\s*|import\s*(?:\(\s*)?)["']([^"']+\.js(?:\?[^"']*)?)["']/).flatten.all? do |specifier|
+        clean = specifier.split('?', 2).first
+        target = if clean.start_with?('/')
+          own_prefix = "/assets/releases/#{File.basename(tree_dir)}/"
+          clean.start_with?(own_prefix) ? File.join(tree_dir, clean.delete_prefix(own_prefix)) : File.join(public_dir, clean.delete_prefix('/'))
+        elsif clean.start_with?('./', '../')
+          File.expand_path(clean, File.dirname(path))
+        else
+          next true
+        end
+        File.file?(target)
+      end
+    end
+  end
+
+  # Keep complete sibling editor bundles referenced by pages from the prior
+  # deployment. They predate release-manifest and are fetched lazily by open
+  # tabs after deployment or an edge-cache purge.
+  def stash_previous_editor_releases(public_dir, stash_dir, limit: RETAIN_RELEASES - 1)
+    assets = File.join(public_dir, 'assets')
+    directories = Dir.glob(File.join(assets, 'calendar-editor-release-*')).select do |path|
+      File.directory?(path) && File.basename(path).match?(/\Acalendar-editor-release-[0-9a-f]{12}\z/) &&
+        complete_module_tree?(path, public_dir)
+    end
+    referenced = Hash.new(0)
+    Dir.glob(File.join(public_dir, '**/*.html')).each do |page|
+      File.read(page).scan(%r{/assets/(calendar-editor-release-[0-9a-f]{12})/}).flatten.each do |name|
+        referenced[name] += 1
+      end
+    end
+    selected = directories.sort_by do |path|
+      name = File.basename(path)
+      [-referenced[name], -File.mtime(path).to_f, name]
+    end.first([Integer(limit), 0].max)
+    selected.each do |source|
+      name = File.basename(source)
+      FileUtils.cp_r(source, File.join(stash_dir, name))
+    end
+    selected.map { |path| File.basename(path).delete_prefix('calendar-editor-release-') }
+  end
+
+  def restore_previous_editor_releases(public_dir, stash_dir, previous, current:)
+    restored = []
+    Array(previous).grep(/\A[0-9a-f]{12}\z/).each do |version|
+      next if version == current
+
+      name = "calendar-editor-release-#{version}"
+      source = File.join(stash_dir, name)
+      destination = File.join(public_dir, 'assets', name)
+      next unless File.directory?(source)
+      next if File.directory?(destination)
+
+      FileUtils.cp_r(source, destination)
+      restored << version
     end
     restored
   end

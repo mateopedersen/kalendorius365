@@ -77,6 +77,38 @@ test('date calculator handles leap-day difference, inclusive endpoints and ISO w
  await page.locator('#iso-date').fill('2028-01-01');await page.locator('#iso-date').press('Tab');await expect(page.locator('#iso-result')).toContainText('52');
 });
 
+test('date calculator skips Lithuanian holidays for workday offsets and shares a reusable result',async({page})=>{
+ await page.setViewportSize({width:320,height:812});
+ await page.goto('/datos-skaiciuokle/?nuo=2027-06-23&iki=2027-06-25&imtinai=1&poslinkis=1&vienetas=darbo');
+ const form=page.locator('#calculator');
+ await expect(form.locator('[name=start]')).toHaveValue('2027-06-23');
+ await expect(form.locator('[name=end]')).toHaveValue('2027-06-25');
+ await expect(form.locator('[name=inclusive]')).toBeChecked();
+ await expect(form.locator('[name=offset-unit]')).toHaveValue('workday');
+ const cards=page.locator('#calc-result .calculator-results > div');
+ await expect(cards).toHaveCount(4);
+ await expect(cards.nth(0)).toContainText('3');await expect(cards.nth(0)).toContainText('Kalendorinės dienos');
+ await expect(cards.nth(1)).toContainText('2');await expect(cards.nth(1)).toContainText('Darbo dienos');
+ await expect(cards.nth(2)).toContainText('0');await expect(cards.nth(2)).toContainText('Savaitgalio dienos');
+ await expect(cards.nth(3)).toContainText('1');await expect(cards.nth(3)).toContainText('Šventės darbo dienomis');
+ await expect(page.locator('#calc-result')).toContainText('penktadienis');
+ await expect(page.locator('#calc-chart svg')).toHaveAttribute('aria-label',/2 darbo dienų, 0 savaitgalio dienų ir 1 šventinių darbo dienų/);
+ const geometry=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
+ expect(geometry.scroll,JSON.stringify(geometry)).toBeLessThanOrEqual(geometry.viewport+1);
+ await page.evaluate(()=>{
+  Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>{window.__copiedDateResult=value;}}});
+  Object.defineProperty(navigator,'share',{configurable:true,value:async value=>{window.__sharedDateResult=value;}});
+ });
+ await page.locator('#share-date-result').click();
+ await expect(page.locator('#date-calculator-status')).toHaveText('Nuoroda paruošta dalytis.');
+ const shared=await page.evaluate(()=>window.__sharedDateResult);
+ const url=new URL(shared.url);expect(url.searchParams.get('nuo')).toBe('2027-06-23');expect(url.searchParams.get('iki')).toBe('2027-06-25');
+ expect(url.searchParams.get('imtinai')).toBe('1');expect(url.searchParams.get('poslinkis')).toBe('1');expect(url.searchParams.get('vienetas')).toBe('darbo');
+ await page.locator('#copy-date-result').click();
+ await expect(page.locator('#date-calculator-status')).toHaveText('Rezultatas nukopijuotas.');
+ expect(await page.evaluate(()=>window.__copiedDateResult)).toContain('šventės darbo dienomis: 1');
+});
+
 test('workweek selector changes visible table and CSV exports real content',async({page})=>{
  await page.goto('/darbo-dienos/2028/');await page.locator('#work-schedule').selectOption('6');
  await expect(page.locator('[data-work-table="6"]')).toBeVisible();await expect(page.locator('[data-work-table="5"]')).toBeHidden();

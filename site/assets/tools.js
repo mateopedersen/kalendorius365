@@ -168,30 +168,65 @@ if ($("#next-holiday-aside"))
   $("#next-holiday-aside").textContent = $("#next-holiday").textContent;
 if ($("#calculator")) {
   const f = $("#calculator");
-  f.elements.start.value = cal.today();
-  f.elements.end.value = cal.addDays(cal.today(), 30);
+  const startInput = f.elements.start,
+    endInput = f.elements.end,
+    offsetInput = f.elements.offset,
+    offsetUnit = f.elements.namedItem("offset-unit"),
+    status = $("#date-calculator-status");
+  const isValidDate = (value) => {
+    try {
+      if (!value || value < "1900-01-01" || value > "2100-12-31") return false;
+      cal.parse(value);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  const params = new URLSearchParams(location.search),
+    sharedStart = params.get("nuo"),
+    sharedEnd = params.get("iki");
+  if (isValidDate(sharedStart) && isValidDate(sharedEnd) && sharedStart <= sharedEnd) {
+    startInput.value = sharedStart;
+    endInput.value = sharedEnd;
+  } else {
+    startInput.value = cal.today();
+    endInput.value = cal.addDays(cal.today(), 30);
+  }
+  f.elements.inclusive.checked = params.get("imtinai") === "1";
+  const sharedOffset = Number(params.get("poslinkis"));
+  if (params.has("poslinkis") && Number.isInteger(sharedOffset) && Math.abs(sharedOffset) <= 36600)
+    offsetInput.value = sharedOffset;
+  if (params.get("vienetas") === "darbo") offsetUnit.value = "workday";
+  let summary = "";
+  const dayForm = (n) => {
+    const lastTwo = Math.abs(n) % 100,
+      last = Math.abs(n) % 10;
+    return last === 1 && lastTwo !== 11 ? "diena" : last >= 2 && last <= 9 && (lastTwo < 12 || lastTwo > 19) ? "dienos" : "dienų";
+  };
   const run = (e) => {
     e?.preventDefault();
     try {
-      const a = f.elements.start.value,
-        b = f.elements.end.value,
+      const a = startInput.value,
+        b = endInput.value,
         days = cal.difference(a, b),
         work = cal.workStats(a, b, data);
       const n = days + (f.elements.inclusive.checked ? 1 : 0),
         offset = Number(f.elements.offset.value);
       if (!Number.isInteger(offset) || Math.abs(offset) > 36600)
-        throw Error(
-          "Dienų poslinkis turi būti sveikas skaičius nuo −36600 iki 36600.",
-        );
-      const result = cal.addDays(a, offset),
+        throw Error("Dienų skaičius turi būti sveikas nuo −36600 iki 36600.");
+      const result = offsetUnit.value === "workday"
+          ? cal.addWorkdays(a, offset, data)
+          : cal.addDays(a, offset),
+        duration = cal.calendarDuration(a, b),
         target = $("#calc-result");
       target.replaceChildren();
       const metrics = document.createElement("div");
       metrics.className = "calculator-results";
       for (const [number, label] of [
         [n, "Kalendorinės dienos"],
-        [Math.floor(n / 7), "Pilnos savaitės"],
         [work.days, "Darbo dienos"],
+        [work.weekends, "Savaitgalio dienos"],
+        [work.publicDays, "Šventės darbo dienomis"],
       ]) {
         const block = document.createElement("div"),
           strong = document.createElement("strong"),
@@ -202,31 +237,159 @@ if ($("#calculator")) {
         metrics.append(block);
       }
       target.append(metrics);
-      for (const s of [
-        `${n} kalendorinės dienos · ${Math.floor(n / 7)} savaitės ir ${n % 7} dienos.`,
-        `${work.days} darbo dienos, ${work.hours} darbo valandos; prieššventinių trumpinimų: ${work.shortened.length}.`,
-        `${work.weekends} savaitgalio dienos; šventės darbo dienomis: ${work.publicDays}.`,
-        `Pradžios data ${offset < 0 ? "−" : "+"} ${Math.abs(offset)} d. = ${cal.formatDate(result, { weekday: "long" })}.`,
-      ]) {
+      const interval = document.createElement("p");
+      interval.className = "date-result__interval";
+      interval.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 14h14M6 3v6m8 2v6"/></svg>';
+      const intervalText = document.createElement("span");
+      intervalText.textContent = `Tarp pasirinktų datų: ${duration.years} m. ${duration.months} mėn. ${duration.days} d.`;
+      interval.append(intervalText);
+      target.append(interval);
+      const lines = [
+        `${n} ${dayForm(n)} pagal kalendorių${f.elements.inclusive.checked ? " (abi ribinės datos įtrauktos)" : " (pabaigos data neįtraukta)"}. Tai ${Math.floor(n / 7)} pilnos savaitės ir ${n % 7} d.`,
+        `${work.days} darbo dienos · ${work.hours} standartinės darbo valandos · ${work.shortened.length} prieššventinių trumpinimų.`,
+        `${work.weekends} savaitgalio dienos ir ${work.publicDays} šventinės darbo dienos.`,
+        `${offsetUnit.value === "workday" ? "Darbo" : "Kalendorinių"} dienų poslinkis: ${offset < 0 ? "−" : "+"}${Math.abs(offset)} nuo pradžios datos → ${cal.formatDate(result, { weekday: "long" })}.`,
+      ];
+      for (const line of lines) {
         const p = document.createElement("p");
-        p.textContent = s;
+        p.textContent = line;
         target.append(p);
       }
+      summary = [
+        `Laikotarpis: ${cal.formatDate(a)} – ${cal.formatDate(b)}`,
+        `Tiksli trukmė: ${duration.years} m. ${duration.months} mėn. ${duration.days} d.`,
+        `Kalendorinės dienos: ${n}; darbo dienos: ${work.days}; savaitgaliai: ${work.weekends}; šventės darbo dienomis: ${work.publicDays}.`,
+        `Standartinės darbo valandos: ${work.hours}; prieššventiniai trumpinimai: ${work.shortened.length}.`,
+        `Data po ${offset < 0 ? "−" : "+"}${Math.abs(offset)} ${offsetUnit.value === "workday" ? "darbo" : "kalendorinių"} dienų: ${cal.formatDate(result, { weekday: "long" })}.`,
+      ].join("\n");
+
+      const chart = $("#calc-chart");
+      chart.replaceChildren();
+      const heading = document.createElement("p");
+      heading.className = "date-chart__title";
+      heading.textContent = "Laikotarpio dienų pasiskirstymas";
+      chart.append(heading);
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 720 58");
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", `Laikotarpis apima ${work.days} darbo dienų, ${work.weekends} savaitgalio dienų ir ${work.publicDays} šventinių darbo dienų.`);
+      const total = work.days + work.weekends + work.publicDays || 1;
+      const background = document.createElementNS(svg.namespaceURI, "rect");
+      background.setAttribute("x", "4"); background.setAttribute("y", "17");
+      background.setAttribute("width", "712"); background.setAttribute("height", "24");
+      background.setAttribute("rx", "12"); background.setAttribute("fill", "#edf2ee");
+      svg.append(background);
+      const categories = [
+        { id: "work", name: "Darbo dienos", value: work.days, color: "#087c56" },
+        { id: "weekend", name: "Savaitgaliai", value: work.weekends, color: "#f2bd48" },
+        { id: "holiday", name: "Šventės darbo dienomis", value: work.publicDays, color: "#8797c7" },
+      ];
+      let x = 4;
+      for (const item of categories) {
+        const width = (712 * item.value) / total;
+        if (width > 0.5) {
+          const segment = document.createElementNS(svg.namespaceURI, "rect");
+          segment.setAttribute("x", String(x)); segment.setAttribute("y", "17");
+          segment.setAttribute("width", String(width)); segment.setAttribute("height", "24");
+          segment.setAttribute("rx", width >= 18 ? "8" : "1"); segment.setAttribute("fill", item.color);
+          svg.append(segment);
+        }
+        x += width;
+      }
+      chart.append(svg);
+      const legend = document.createElement("div");
+      legend.className = "date-chart__legend";
+      for (const item of categories) {
+        const label = document.createElement("span"), swatch = document.createElement("i");
+        swatch.className = `date-chart__swatch--${item.id}`;
+        swatch.setAttribute("aria-hidden", "true");
+        label.append(swatch, `${item.name} · ${item.value}`);
+        legend.append(label);
+      }
+      chart.append(legend);
+      if (status) status.textContent = "Rezultatas atnaujintas.";
     } catch (error) {
       $("#calc-result").textContent = error.message;
+      $("#calc-chart")?.replaceChildren();
+      summary = "";
+      if (status) status.textContent = "Patikrinkite datas ir pasirinkimus.";
     }
   };
   f.onsubmit = run;
+  const shareUrl = () => {
+    const url = new URL(location.href);
+    url.searchParams.set("nuo", startInput.value);
+    url.searchParams.set("iki", endInput.value);
+    url.searchParams.set("imtinai", f.elements.inclusive.checked ? "1" : "0");
+    url.searchParams.set("poslinkis", offsetInput.value || "0");
+    url.searchParams.set("vienetas", offsetUnit.value === "workday" ? "darbo" : "kalendorine");
+    return url.toString();
+  };
+  const copyText = async (value) => {
+    if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(value);
+    const input = document.createElement("textarea");
+    input.value = value;
+    input.setAttribute("readonly", "");
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+    document.body.append(input);
+    input.select();
+    const copied = document.execCommand("copy");
+    input.remove();
+    if (!copied) throw Error("Nukopijuoti nepavyko. Pabandykite dar kartą.");
+  };
+  $("#copy-date-result")?.addEventListener("click", async () => {
+    try {
+      await copyText(summary);
+      if (status) status.textContent = "Rezultatas nukopijuotas.";
+    } catch (error) {
+      if (status) status.textContent = error.message;
+    }
+  });
+  $("#share-date-result")?.addEventListener("click", async () => {
+    try {
+      if (navigator.share) await navigator.share({ title: "Datos skaičiuoklė", text: summary, url: shareUrl() });
+      else await copyText(shareUrl());
+      if (status) status.textContent = navigator.share ? "Nuoroda paruošta dalytis." : "Dalijimosi nuoroda nukopijuota.";
+    } catch (error) {
+      if (error.name !== "AbortError" && status) status.textContent = error.message || "Nuorodos paruošti nepavyko.";
+    }
+  });
+  $("#date-swap")?.addEventListener("click", () => {
+    [startInput.value, endInput.value] = [endInput.value, startInput.value];
+    run();
+  });
+  for (const button of document.querySelectorAll("[data-range]"))
+    button.addEventListener("click", () => {
+      const today = cal.today(), year = Number(today.slice(0, 4)), month = Number(today.slice(5, 7));
+      if (button.dataset.range === "week") {
+        startInput.value = cal.addDays(today, -cal.weekday(today));
+        endInput.value = cal.addDays(startInput.value, 6);
+      } else if (button.dataset.range === "month") {
+        startInput.value = `${today.slice(0, 7)}-01`;
+        endInput.value = cal.addDays(startInput.value, cal.monthLength(year, month) - 1);
+      } else if (button.dataset.range === "year") {
+        startInput.value = `${year}-01-01`;
+        endInput.value = `${year}-12-31`;
+      } else {
+        startInput.value = today;
+        endInput.value = cal.addDays(today, Number(button.dataset.range) - 1);
+      }
+      run();
+    });
+  for (const input of [startInput, endInput, offsetInput, offsetUnit, f.elements.inclusive])
+    input.addEventListener("change", () => run());
   run();
   const countdown = () => {
     try {
       const now = cal.today(),
         d = $("#countdown-date").value,
         n = cal.difference(now, d);
-      $("#countdown-result").textContent =
-        n >= 0
-          ? `Iki ${cal.formatDate(d)} liko ${n} dienos.`
-          : `Nuo ${cal.formatDate(d)} praėjo ${-n} dienos.`;
+      $("#countdown-result").textContent = n === 0
+        ? `${cal.formatDate(d)} yra šiandien.`
+        : n > 0
+          ? `Iki ${cal.formatDate(d)} liko ${n} ${dayForm(n)}.`
+          : `Nuo ${cal.formatDate(d)} praėjo ${-n} ${dayForm(-n)}.`;
       const y = +now.slice(0, 4),
         monthEnd = `${now.slice(0, 7)}-${cal.monthLength(y, +now.slice(5, 7))}`;
       $("#countdown-standard").textContent =

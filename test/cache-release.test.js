@@ -78,7 +78,8 @@ test('previous immutable releases survive Jekyll destination cleanup',()=>{
   fs.writeFileSync(path.join(dir,'assets/release-manifest.json'),JSON.stringify({retained_revisions:revisions}));
   for(const revision of revisions){
    fs.mkdirSync(path.join(dir,'assets/releases',revision),{recursive:true});
-   fs.writeFileSync(path.join(dir,'assets/releases',revision,'app.js'),`// ${revision}`);
+   fs.writeFileSync(path.join(dir,'assets/releases',revision,'app.js'),`import "/assets/releases/${revision}/engine.js";`);
+   fs.writeFileSync(path.join(dir,'assets/releases',revision,'engine.js'),`// complete module ${revision}`);
   }
   const source=`dir=ARGV.fetch(0); stash=ARGV.fetch(1); previous=AssetRelease.previous_revisions(dir); AssetRelease.stash_previous_releases(dir,stash,previous); FileUtils.rm_rf(File.join(dir,'assets','releases')); FileUtils.mkdir_p(File.join(dir,'assets','releases')); AssetRelease.restore_previous_releases(dir,stash,previous)`;
   const result=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e',source,dir,stash],{encoding:'utf8'});
@@ -90,6 +91,42 @@ test('previous immutable releases survive Jekyll destination cleanup',()=>{
   fs.rmSync(dir,{recursive:true,force:true});
   fs.rmSync(stash,{recursive:true,force:true});
  }
+});
+
+test('incomplete historical module graphs are not re-published as retained releases',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-prune-incomplete-'));
+ const stash=fs.mkdtempSync(path.join(os.tmpdir(),'k365-prune-stash-'));
+ try{
+  const revision='d'.repeat(20),conflicted='e'.repeat(20);
+  fs.mkdirSync(path.join(stash,revision),{recursive:true});
+  fs.writeFileSync(path.join(stash,revision,'editor.js'),'import "./missing.js";');
+  fs.mkdirSync(path.join(stash,conflicted),{recursive:true});
+  fs.writeFileSync(path.join(stash,conflicted,'scene.js'),'<<<<<<< HEAD\nconst a=1;\n=======\nconst b=2;\n>>>>>>> main\n');
+  const source=`dir,stash,revision,conflicted=ARGV; restored=AssetRelease.restore_previous_releases(dir,stash,[revision,conflicted]); puts JSON.generate(restored)`;
+  const result=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e',source,dir,stash,revision,conflicted],{encoding:'utf8'});
+  assert.equal(result.status,0,result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout),[]);
+  assert.equal(fs.existsSync(path.join(dir,'assets','releases',revision)),false);
+  assert.equal(fs.existsSync(path.join(dir,'assets','releases',conflicted)),false);
+ }finally{fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(stash,{recursive:true,force:true});}
+});
+
+test('previous path-versioned calendar editor bundles survive Jekyll cleanup when prior HTML references them',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-editor-retain-'));
+ const stash=fs.mkdtempSync(path.join(os.tmpdir(),'k365-editor-stash-'));
+ try{
+  const referenced='a'.repeat(12),unreferenced='b'.repeat(12),current='c'.repeat(12);
+  fs.mkdirSync(path.join(dir,'assets',`calendar-editor-release-${referenced}`),{recursive:true});
+  fs.mkdirSync(path.join(dir,'assets',`calendar-editor-release-${unreferenced}`),{recursive:true});
+  fs.writeFileSync(path.join(dir,'assets',`calendar-editor-release-${referenced}`,'editor.js'),'// referenced prior bundle');
+  fs.writeFileSync(path.join(dir,'assets',`calendar-editor-release-${unreferenced}`,'editor.js'),'// unreferenced prior bundle');
+  fs.writeFileSync(path.join(dir,'index.html'),`<script src="/assets/calendar-editor-release-${referenced}/editor.js"></script>`);
+  const source=`dir,stash,current=ARGV; previous=AssetRelease.stash_previous_editor_releases(dir,stash,limit:1); Dir.glob(File.join(dir,'assets','calendar-editor-release-*')).each { |path| FileUtils.rm_rf(path) }; AssetRelease.restore_previous_editor_releases(dir,stash,previous,current:current)`;
+  const result=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e',source,dir,stash,current],{encoding:'utf8'});
+  assert.equal(result.status,0,result.stderr);
+  assert.ok(fs.existsSync(path.join(dir,'assets',`calendar-editor-release-${referenced}`,'editor.js')),'retain the complete bundle referenced by an already-open page');
+  assert.equal(fs.existsSync(path.join(dir,'assets',`calendar-editor-release-${unreferenced}`,'editor.js')),false,'do not spend retention capacity on an unreferenced bundle');
+ }finally{fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(stash,{recursive:true,force:true});}
 });
 
 test('unchanged clean rebuilds retain two previous revisions and a fourth release prunes only the oldest',()=>{
