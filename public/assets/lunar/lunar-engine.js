@@ -1,4 +1,4 @@
-import { Astronomy as A } from '/assets/releases/7ae5541cf6447a0d381c/lunar/astronomy-engine.js';
+import { Astronomy as A } from '/assets/releases/44a637431a29b376b683/lunar/astronomy-engine.js';
 
 export const ZONE = 'Europe/Vilnius';
 export const PHASES = ['Jaunatis','Priešpilnis','Pilnatis','Delčia'];
