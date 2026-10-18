@@ -83,6 +83,14 @@ test('workweek selector changes visible table and CSV exports real content',asyn
  const result=await downloadBytes(page,()=>page.locator('#work-csv').click());expect(result.file.suggestedFilename()).toMatch(/\.csv$/);expect(result.file.suggestedFilename()).toContain('2028');expect(result.bytes.length).toBeGreaterThan(100);
 });
 
+test('printable template selector stays inside the desktop viewport and remains selectable',async({page})=>{
+ await page.setViewportSize({width:1280,height:900});await page.goto('/tuscias-kalendorius/');
+ const select=page.locator('#design-picker');await expect(select).toBeVisible();
+ const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,controlRight:document.querySelector('#design-picker').getBoundingClientRect().right,panelRight:document.querySelector('.download-panel').getBoundingClientRect().right}));
+ expect(layout.scroll,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);expect(layout.controlRight).toBeLessThanOrEqual(layout.panelRight);
+ await select.selectOption('tuscias-03');await expect(select).toHaveValue('tuscias-03');
+});
+
 test('calendar builder renders leap month and print template picker downloads valid PDF',async({page})=>{
  await page.goto('/kurti-kalendoriu/?metai=2028&menuo=2');
  await expect(page.locator('#calendar-editor [data-path="period.year"]')).toHaveValue('2028');await expect(page.locator('#calendar-editor [data-path="period.month"]')).toHaveValue('2');

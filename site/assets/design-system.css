@@ -1475,6 +1475,9 @@ main.content-main{
 .download-panel select{
   margin-top: 7px;
   font-size: 0.82rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .download-panel .button{
   font-size: 0.85rem;
