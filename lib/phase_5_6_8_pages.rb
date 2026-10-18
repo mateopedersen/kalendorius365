@@ -93,7 +93,7 @@ module Phase568Pages
     'school'=>['/pamoku-tvarkarastis/','Kurti skaitmeninį pamokų tvarkaraštį'],
     'shift'=>['/pamainu-grafikas/','Apskaičiuoti pamainų grafiką']
    }.fetch(category)
-   body=Pages.intro(title,copy+' Nespalvotas ir spalvotas variantas paruoštas spausdinti A4 lape.')+"<section class=\"panel\"><h2>Pasirinkite spausdinamą variantą</h2><p>PDF yra vektorinis, o WebP sukurtas iš to paties PDF 600 PPI raiška. Peržiūros paveikslėlis yra tik miniatiūra. Spausdindami pasirinkite A4 lapą, tinkamą orientaciją ir 100 % dydį.</p></section>"+(items.empty? ? '<p>Šio rinkinio failai dar neparengti.</p>' : Pages.gallery(items,true))+"<p><a href=\"/tuscias-kalendorius/\">Peržiūrėti visus tuščius kalendorius</a> · <a href=\"#{digital[0]}\">#{digital[1]}</a></p>"
+   body=Pages.intro(title,copy+' Nespalvotas ir spalvotas variantas paruoštas spausdinti A4 lape.')+"<section class=\"panel\"><h2>Pasirinkite spausdinamą variantą</h2><p>PDF yra vektorinis, o WebP sukurtas iš to paties PDF 600 PPI raiška. Peržiūros paveikslėlis yra tik miniatiūra. Spausdindami pasirinkite A4 lapą, tinkamą orientaciją ir 100 % dydį.</p></section>"+(items.empty? ? '<p>Šio rinkinio failai dar neparengti.</p>' : Pages.gallery(items,true))+"<p><a href=\"/tuscias-kalendorius/\">Peržiūrėti visus tuščius kalendorius</a> · <a href=\"#{digital[0]}\">#{digital[1]}</a>#{category=='week' ? %q( · <a href="/seimos-kalendorius/">Šeimos savaitės planuoklis</a>) : ''}</p>"
    page(slug,title+' – PDF ir WebP',description,body)
   end
  end

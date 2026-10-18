@@ -30,3 +30,17 @@ test("the release generator preserves authored interactive tool pages", () => {
     assert.match(frontMatter[1], /^preserve_source: true$/m, `${route} must opt out of generated replacement`);
   }
 });
+
+test("year and weekly planner pages connect the next useful planning step", () => {
+  const links = [
+    ["metai", ["/sventes/", "/tuscias-kalendorius/"]],
+    ["savaites/2027", ["/2027/", "/savaitiniai-planuokliai/", "/tuscias-kalendorius/"]],
+    ["savaites/2028", ["/2028/", "/savaitiniai-planuokliai/", "/tuscias-kalendorius/"]],
+    ["savaites/2029", ["/2029/", "/savaitiniai-planuokliai/", "/tuscias-kalendorius/"]],
+    ["savaitiniai-planuokliai", ["/seimos-kalendorius/", "/tuscias-kalendorius/"]],
+  ];
+  for (const [route, targets] of links) {
+    const page = readFileSync(new URL(`../site/${route}/index.html`, import.meta.url), "utf8");
+    for (const target of targets) assert.ok(page.includes(`href="${target}"`), `${route} should link to ${target}`);
+  }
+});
