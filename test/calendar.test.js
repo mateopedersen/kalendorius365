@@ -113,6 +113,26 @@ test("all monthly workdays and preholiday hours match Ruby; target includes Jan 
       .shortened.includes("2027-12-31"),
   );
 });
+test("single-date workday status covers public holidays, shortened eves and six-day Saturdays", () => {
+  const regular = c.workStats("2027-01-04", "2027-01-04", data);
+  assert.equal(regular.days, 1);
+  assert.equal(regular.hours, 8);
+
+  const eve = c.workStats("2027-02-15", "2027-02-15", data);
+  assert.equal(eve.days, 1);
+  assert.equal(eve.hours, 7);
+  assert.deepEqual(eve.shortened, ["2027-02-15"]);
+
+  const holiday = c.workStats("2027-02-16", "2027-02-16", data);
+  assert.equal(holiday.days, 0);
+  assert.equal(holiday.publicDays, 1);
+
+  assert.equal(c.workStats("2027-06-26", "2027-06-26", data).days, 0);
+  const saturday = c.workStats("2027-06-26", "2027-06-26", data, true);
+  assert.equal(saturday.days, 1);
+  assert.equal(saturday.hours, 5);
+  assert.equal(c.workStats("2027-06-27", "2027-06-27", data, true).days, 0);
+});
 test("Vilnius date rollover, DST gaps and repeated hour", () => {
   assert.equal(c.today(new Date("2027-01-01T22:30:00Z")), "2027-01-02");
   assert.equal(c.today(new Date("2027-07-01T21:30:00Z")), "2027-07-02");
