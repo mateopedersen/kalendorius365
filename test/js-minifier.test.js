@@ -29,3 +29,9 @@ export { x } from './shared.js?v=123';
 const lazy = () => import('./search-engine.js?v=123');
 fetch('/api/location');`), ['./storage.js?v=123','./calendar.js?v=123','./shared.js?v=123']);
 });
+
+test('minification does not introduce class static blocks beyond the Safari 15.4 syntax target', () => {
+ const output=minifyJavaScript('export class Calendar { value() { return 1; } }');
+ assert.doesNotMatch(output, /static\s*\{/);
+ assert.ok(output.includes('Calendar'));
+});
