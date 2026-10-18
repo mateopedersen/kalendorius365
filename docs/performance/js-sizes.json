@@ -68,8 +68,8 @@
     },
     {
       "path": "/assets/calendar.js",
-      "source_bytes": 7562,
-      "generated_bytes": 4979
+      "source_bytes": 10187,
+      "generated_bytes": 6458
     },
     {
       "path": "/assets/common.js",
@@ -168,13 +168,13 @@
     },
     {
       "path": "/assets/phase-5-6-8-core.js",
-      "source_bytes": 14083,
-      "generated_bytes": 8402
+      "source_bytes": 15611,
+      "generated_bytes": 9239
     },
     {
       "path": "/assets/phase-5-6-8.js",
-      "source_bytes": 40918,
-      "generated_bytes": 30393
+      "source_bytes": 55008,
+      "generated_bytes": 39458
     },
     {
       "path": "/assets/search-engine.js",
@@ -207,9 +207,19 @@
       "generated_bytes": 15910
     },
     {
+      "path": "/assets/tool-directory-core.js",
+      "source_bytes": 611,
+      "generated_bytes": 558
+    },
+    {
+      "path": "/assets/tool-directory.js",
+      "source_bytes": 2218,
+      "generated_bytes": 1604
+    },
+    {
       "path": "/assets/tools.js",
-      "source_bytes": 20071,
-      "generated_bytes": 12632
+      "source_bytes": 35025,
+      "generated_bytes": 22713
     },
     {
       "path": "/assets/weather.js",
