@@ -9,6 +9,7 @@ require_relative '../lib/calendar'
 require_relative '../lib/build_policy'
 require_relative '../lib/css_minifier'
 require_relative '../lib/static_asset_urls'
+require_relative '../lib/sitemap'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  # A release request is insufficient on a Cloudflare feature branch. Keep
@@ -59,7 +60,8 @@ Dir.chdir(ROOT) do
  files=Dir.glob('public/**/*').select { |p|File.file?(p) }
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
  abort 'Cloudflare static asset size limit exceeded' if files.any? { |p|File.size(p)>25*1024*1024 }
- urls=files.select { |p|p.end_with?('/index.html') }.map { |p|'https://kalendorius365.lt/'+p.delete_prefix('public/').delete_suffix('index.html') }
+ page_paths=files.select { |path|path.end_with?('/index.html') }
+ urls=page_paths.map { |path|'https://kalendorius365.lt/'+path.delete_prefix('public/').delete_suffix('index.html') }
  # Preview remains noindex until the release gate has passed. Sitemap is intentionally empty.
  if release
   manifest_check=JSON.parse(File.read('site/assets/data/manifest.json'))
@@ -69,25 +71,12 @@ Dir.chdir(ROOT) do
    report=JSON.parse(File.read(p));abort "Missing or stale preflight: #{p}" unless report['status']=='passed' && report['generator']==digest
   end
  end
- require 'cgi'
  url_encode=->(path){URI::DEFAULT_PARSER.escape(path, /[^A-Za-z0-9\-._~\/]/)}
- xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
  manifest=JSON.parse(File.read('site/assets/data/manifest.json'))['assets']
  abort 'Release requires every print asset to pass preflight' if release && manifest.any? { |e|e.dig('verification','status')!='passed' }
- if release
-  urls.sort.each do |url|
-   xml+="<url><loc>#{CGI.escapeHTML(url)}</loc>"
-   manifest.select do |e|
-    route=e['kind']=='monthly' ? "/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" : e['kind']=='annual' ? "/#{e['year']}/" : nil
-    route && url=="https://kalendorius365.lt#{route}"
-   end.each do |e|
-    image_path=url_encode.call(e['webp'])
-    xml+="<image:image><image:loc>https://kalendorius365.lt#{CGI.escapeHTML(image_path)}?v=#{e.dig('files','webp','sha256')[0,16]}</image:loc></image:image>"
-   end
-   xml+='</url>'
-  end
- end
- File.write('public/sitemap.xml',xml+'</urlset>')
+ sitemap=Kalendorius::Sitemap.write(
+  public_dir:'public',page_paths:page_paths,release:release,manifest:manifest,months:Kalendorius::DATA['months']
+ )
  redirects=manifest.flat_map do |asset|
   legacy=asset['legacyPaths']||{}
   legacy.map do |kind,source|
@@ -114,6 +103,9 @@ Dir.chdir(ROOT) do
  headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}' 'sha256-#{header_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
  headers+="  X-Robots-Tag: noindex\n" unless release
  immutable='Cache-Control: public, max-age=31536000, immutable'
+ (sitemap[:files]+['robots.txt']).each do |path|
+  headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
+ end
  # Use exact paths for versioned code and data, so _headers never applies
  # multiple Cache-Control values to one response through overlapping globs.
  editor_release_prefix="public/assets/calendar-editor-release-#{editor_release_version}/"
@@ -139,5 +131,5 @@ Dir.chdir(ROOT) do
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release
- puts "Built #{urls.length} canonical HTML pages; #{files.length} static files; release=#{release}"
+ puts "Built #{sitemap[:canonical_urls].length} canonical HTML pages and #{sitemap[:image_urls].length} sitemap images; #{files.length} static files; release=#{release}"
 end
