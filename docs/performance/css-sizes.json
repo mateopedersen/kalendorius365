@@ -2,6 +2,11 @@
   "method": "esbuild 0.28.2 CSS syntax minification; Chrome 100 / Safari 15.4 target; no selector renaming",
   "styles": [
     {
+      "path": "/assets/about-us.css",
+      "source_bytes": 6184,
+      "generated_bytes": 5884
+    },
+    {
       "path": "/assets/contact.css",
       "source_bytes": 9702,
       "generated_bytes": 9632
