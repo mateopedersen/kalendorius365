@@ -230,7 +230,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
     allSearchResults.textContent = "Visi rezultatai →";
     updateSearchGeometry();
     try {
-      searchEnginePromise ||= import("./search-engine.js?v=cd07f2e424fb");
+      searchEnginePromise ||= import("./search-engine.js?v=2f62d0a9fccd");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
       if (request !== searchRequest ||
