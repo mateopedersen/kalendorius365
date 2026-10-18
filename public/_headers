@@ -3,6 +3,10 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs='; connect-src 'self'; upgrade-insecure-requests
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600
 /assets/app.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/ascendant-calculator.js

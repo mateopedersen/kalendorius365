@@ -6,6 +6,7 @@ require 'base64'
 require 'tempfile'
 require_relative '../lib/calendar'
 require_relative '../lib/build_policy'
+require_relative '../lib/sitemap'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  # A release request is insufficient on a Cloudflare feature branch. Keep
@@ -40,7 +41,7 @@ Dir.chdir(ROOT) do
  files=Dir.glob('public/**/*').select { |p|File.file?(p) }
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
  abort 'Cloudflare static asset size limit exceeded' if files.any? { |p|File.size(p)>25*1024*1024 }
- urls=files.select { |p|p.end_with?('/index.html') }.map { |p|'https://kalendorius365.lt/'+p.delete_prefix('public/').delete_suffix('index.html') }
+ page_paths=files.select { |p|p.end_with?('/index.html') }
  # Preview remains noindex until the release gate has passed. Sitemap is intentionally empty.
  if release
   manifest_check=JSON.parse(File.read('site/assets/data/manifest.json'))
@@ -50,18 +51,11 @@ Dir.chdir(ROOT) do
    report=JSON.parse(File.read(p));abort "Missing or stale preflight: #{p}" unless report['status']=='passed' && report['generator']==digest
   end
  end
- require 'cgi'
- xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
  manifest=JSON.parse(File.read('site/assets/data/manifest.json'))['assets']
  abort 'Release requires every print asset to pass preflight' if release && manifest.any? { |e|e.dig('verification','status')!='passed' }
- if release
-  urls.sort.each do |url|
-   xml+="<url><loc>#{CGI.escapeHTML(url)}</loc>"
-   manifest.select { |e|e['kind']=='monthly' && url=="https://kalendorius365.lt/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" }.each { |e|xml+="<image:image><image:loc>https://kalendorius365.lt#{e['webp']}?v=#{e.dig('files','webp','sha256')[0,16]}</image:loc></image:image>" }
-   xml+='</url>'
-  end
- end
- File.write('public/sitemap.xml',xml+'</urlset>')
+ sitemap=Kalendorius::Sitemap.write(
+  public_dir:'public',page_paths:page_paths,release:release,manifest:manifest,months:Kalendorius::DATA['months']
+ )
  File.write('public/robots.txt',"User-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
  headers="/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n"
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
@@ -72,6 +66,9 @@ Dir.chdir(ROOT) do
  one_day='Cache-Control: public, max-age=86400'
  immutable='Cache-Control: public, max-age=31536000, immutable'
  data_cache='Cache-Control: public, max-age=3600, stale-while-revalidate=86400'
+ (sitemap[:files]+['robots.txt']).each do |path|
+  headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
+ end
  # Use exact paths for versioned code and data, so _headers never applies
  # multiple Cache-Control values to one response through overlapping globs.
  files.select { |path|path.end_with?('.js','.css') }.sort.each do |path|
@@ -96,5 +93,5 @@ Dir.chdir(ROOT) do
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release
- puts "Built #{urls.length} canonical HTML pages; #{files.length} static files; release=#{release}"
+ puts "Built #{sitemap[:canonical_urls].length} canonical HTML pages and #{sitemap[:image_urls].length} sitemap images; #{files.length} static files; release=#{release}"
 end

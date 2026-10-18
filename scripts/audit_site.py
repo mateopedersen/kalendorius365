@@ -137,8 +137,41 @@ if '--release' in __import__('sys').argv:
  for path,p in pages.items():
   assert p.meta.get('robots')==('noindex, follow' if path.name=='404.html' else 'index, follow'),path
  headers=(PUBLIC/'_headers').read_text();assert 'X-Robots-Tag: noindex' not in headers
- xml=ET.parse(PUBLIC/'sitemap.xml');ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
- sitemap={e.text for e in xml.findall('.//s:loc',ns)};canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
- assert sitemap==canonical and len(sitemap)==len(pages)-1
- assert len(xml.findall('.//i:loc',ns))==360
- print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 360 monthly image entries, and no global noindex header.')
+ ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
+ sitemap_path=PUBLIC/'sitemap.xml';root=ET.parse(sitemap_path).getroot()
+ assert sitemap_path.stat().st_size<=50*1024*1024
+ sitemap_files=[sitemap_path]
+ if root.tag=='{'+ns['s']+'}sitemapindex':
+  children=root.findall('s:sitemap/s:loc',ns);assert children
+  for element in children:
+   child_url=urlsplit(element.text or '')
+   assert child_url.scheme=='https' and child_url.netloc=='kalendorius365.lt' and not child_url.query and not child_url.fragment
+   assert re.fullmatch(r'/sitemap-[0-9]+\.xml',child_url.path),element.text
+   child_path=PUBLIC/child_url.path.lstrip('/');assert child_path.is_file() and child_path.stat().st_size<=50*1024*1024
+   sitemap_files.append(child_path)
+  assert len(children)<=50_000
+  docs=[ET.parse(path).getroot() for path in sitemap_files[1:]]
+ else:
+  assert root.tag=='{'+ns['s']+'}urlset'
+  docs=[root]
+ sitemap=[];image_urls=[]
+ for doc in docs:
+  assert doc.tag=='{'+ns['s']+'}urlset'
+  entries=doc.findall('s:url',ns);assert len(entries)<=50_000
+  for entry in entries:
+   element=entry.find('s:loc',ns);assert element is not None and element.text
+   page_url=urlsplit(element.text);assert page_url.scheme=='https' and page_url.netloc=='kalendorius365.lt' and not page_url.query and not page_url.fragment
+   sitemap.append(element.text)
+   images=entry.findall('i:image/i:loc',ns);assert len(images)<=1_000
+   for image in images:
+    assert image.text
+    image_url=urlsplit(image.text);assert image_url.scheme=='https' and image_url.netloc=='kalendorius365.lt' and not image_url.query and not image_url.fragment
+    image_file=PUBLIC/unquote(image_url.path).lstrip('/');assert image_file.is_file(),image.text
+    image_urls.append(image.text)
+ canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
+ assert len(sitemap)==len(set(sitemap)) and set(sitemap)==canonical and len(sitemap)==len(pages)-1
+ expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind']=='monthly'}
+ assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
+ assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)
+ assert 'Sitemap: https://kalendorius365.lt/sitemap.xml' in (PUBLIC/'robots.txt').read_text()
+ print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals across {len(sitemap_files)} XML file(s), {len(image_urls)} clean monthly image URLs, and no global noindex header.')
