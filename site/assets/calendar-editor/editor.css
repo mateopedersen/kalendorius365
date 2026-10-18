@@ -11,3 +11,7 @@
 .ce-day-records{margin-bottom:1rem;border-bottom:1px solid var(--ce-border);padding-bottom:1rem}.ce-day-records ul{padding-left:1.2rem}.ce-day-records li{margin-bottom:.6rem;font-size:.85rem;overflow-wrap:anywhere}.ce-day-records p{white-space:pre-wrap}
 
 .ce-template-grid button>svg{display:block;width:56px;height:72px;margin:0 auto .55rem}.ce-template-grid button{min-height:120px;text-align:center}.ce-template-grid button>span{display:block}
+
+/* The editor is mounted after its page shell. Keep the following guidance in place while saved state loads. */
+#calendar-editor{min-height:2850px}
+@media(max-width:680px){#calendar-editor{min-height:3000px}}
