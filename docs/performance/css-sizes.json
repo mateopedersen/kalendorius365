@@ -3,127 +3,122 @@
   "styles": [
     {
       "path": "/assets/about-us.css",
-      "source_bytes": 9007,
+      "source_bytes": 8306,
       "generated_bytes": 7908
     },
     {
       "path": "/assets/astronomy-agenda.css",
-      "source_bytes": 5044,
+      "source_bytes": 5006,
       "generated_bytes": 5003
     },
     {
       "path": "/assets/calendar-editor/editor.css",
-      "source_bytes": 8872,
-      "generated_bytes": 8836
-    },
-    {
-      "path": "/assets/calendar-editor-release-9c0543b97744/editor.css",
-      "source_bytes": 8866,
-      "generated_bytes": 8866
+      "source_bytes": 9066,
+      "generated_bytes": 8931
     },
     {
       "path": "/assets/contact.css",
-      "source_bytes": 9731,
+      "source_bytes": 9702,
       "generated_bytes": 9632
     },
     {
       "path": "/assets/design-system.css",
-      "source_bytes": 202502,
-      "generated_bytes": 174840
+      "source_bytes": 185722,
+      "generated_bytes": 177050
     },
     {
       "path": "/assets/discovery.css",
-      "source_bytes": 21101,
+      "source_bytes": 19528,
       "generated_bytes": 18505
     },
     {
       "path": "/assets/holiday-phase2.css",
-      "source_bytes": 10703,
+      "source_bytes": 10686,
       "generated_bytes": 10638
     },
     {
       "path": "/assets/homepage-bundle.css",
-      "source_bytes": 148607,
-      "generated_bytes": 126914
+      "source_bytes": 137536,
+      "generated_bytes": 128806
     },
     {
       "path": "/assets/homepage.css",
-      "source_bytes": 63434,
-      "generated_bytes": 55374
+      "source_bytes": 58659,
+      "generated_bytes": 55488
     },
     {
       "path": "/assets/horoscope-detail.css",
-      "source_bytes": 91990,
-      "generated_bytes": 78684
+      "source_bytes": 87026,
+      "generated_bytes": 80816
     },
     {
       "path": "/assets/horoscope-hub.css",
-      "source_bytes": 80883,
-      "generated_bytes": 68523
+      "source_bytes": 76528,
+      "generated_bytes": 70664
     },
     {
       "path": "/assets/horoscope.css",
-      "source_bytes": 33891,
-      "generated_bytes": 30129
+      "source_bytes": 31614,
+      "generated_bytes": 30100
     },
     {
       "path": "/assets/lunar.css",
-      "source_bytes": 14362,
+      "source_bytes": 14351,
       "generated_bytes": 14348
     },
     {
       "path": "/assets/monthly-holidays.css",
-      "source_bytes": 21753,
+      "source_bytes": 21681,
       "generated_bytes": 21237
     },
     {
       "path": "/assets/namedays.css",
-      "source_bytes": 14874,
+      "source_bytes": 14830,
       "generated_bytes": 14515
     },
     {
       "path": "/assets/planner-studio.css",
-      "source_bytes": 12294,
-      "generated_bytes": 12191
+      "source_bytes": 12371,
+      "generated_bytes": 12354
     },
     {
       "path": "/assets/print.css",
-      "source_bytes": 10820,
+      "source_bytes": 9411,
       "generated_bytes": 8257
     },
     {
       "path": "/assets/seasons.css",
-      "source_bytes": 18224,
+      "source_bytes": 18212,
       "generated_bytes": 17938
     },
     {
       "path": "/assets/shift-exceptions.css",
-      "source_bytes": 1936,
+      "source_bytes": 1920,
       "generated_bytes": 1921
     },
     {
       "path": "/assets/style.css",
-      "source_bytes": 43906,
+      "source_bytes": 43831,
       "generated_bytes": 43388
     },
     {
       "path": "/assets/workdays.css",
-      "source_bytes": 1630,
+      "source_bytes": 1617,
       "generated_bytes": 1618
     },
     {
       "path": "/assets/year-directory.css",
-      "source_bytes": 5144,
+      "source_bytes": 5098,
       "generated_bytes": 5099
     },
     {
       "path": "/assets/zodiac-guide.css",
-      "source_bytes": 83548,
-      "generated_bytes": 71058
+      "source_bytes": 78949,
+      "generated_bytes": 73208
     },
     {
       "path": "/assets/zodiac.css",
-      "source_bytes": 20668,
+      "source_bytes": 19155,
       "generated_bytes": 18673
     }
   ]
