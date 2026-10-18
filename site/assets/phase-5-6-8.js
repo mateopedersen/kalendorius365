@@ -422,6 +422,10 @@ function setupShift() {
     const explanation = requestedTemplate === "cycle" ? "Atidarytas ciklo šablonas: 2 dieninės, 2 naktinės ir 4 poilsio dienos." : "Atidarytas mėnesio šablonas su pasirinkto mėnesio dienomis.";
     message(hasSavedDraft ? `Atidarytas šablonas. Esamas ciklas ir datos išsaugoti; pakeistas tik vaizdas. ${explanation}` : explanation);
   }
+  form.inert = false;
+  form.removeAttribute("aria-busy");
+  const startupStatus = $("#shift-startup-status");
+  if (startupStatus) startupStatus.hidden = true;
 }
 
 function setupSchool() {

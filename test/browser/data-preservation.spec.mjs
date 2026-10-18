@@ -25,14 +25,16 @@ test('homepage blocks note controls until its calendar data and handlers are rea
  await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('kalendorius365:v1')||'{}').notes?.['2028-02-29'])).toBe('Ready only after startup');
 });
 
-test('shift preset becomes active after its required calendar data loads',async({page})=>{
+test('shift planner does not accept and discard input before required data loads',async({page})=>{
  let release;const gate=new Promise(resolve=>{release=resolve;});
  await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
  try {
-  await page.goto('/pamainu-grafikas/',{waitUntil:'domcontentloaded'});const preset=page.locator('#shift-preset');
-  await preset.selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,P,P');
-  release();await expect.poll(()=>page.locator('#shift-preset').evaluate(el=>el.value)).toBe('day-rest');
-  await preset.selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+  await page.goto('/pamainu-grafikas/',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('#shift-planner')).toHaveAttribute('aria-busy','true');
+  expect(await page.locator('#shift-planner').evaluate(el=>el.inert)).toBe(true);
+  release();await expect(page.locator('#shift-planner')).not.toHaveAttribute('aria-busy');
+  await page.locator('[data-cycle="D,D,N,N,P,P,P,P"]').click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+  expect(await page.locator('#shift-planner').evaluate(el=>el.inert)).toBe(false);
  } finally {release();}
 });
 
