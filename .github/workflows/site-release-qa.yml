@@ -32,12 +32,12 @@ jobs:
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: '3.12'
-      - name: Install the pinned print validators
-        run: python -m pip install -r requirements-print.txt
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: Install pinned Python release validators after Ruby setup
+        run: python3 -m pip install -r requirements-print.txt
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '24'
