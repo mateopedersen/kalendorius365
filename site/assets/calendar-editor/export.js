@@ -147,7 +147,7 @@ async function printPages(pages, check, progress) {
     win.document.head.append(style);
     for (let i = 0; i < pages.length; i++) {
       check();
-      let page = pages[i], [normal, bold] = await fonts(page.font), [inter, interBold] = await fonts("Inter"), urls = await photoURLs(page, 150), section = win.document.createElement("section");
+      let page = pages[i], [normal, bold] = await fonts(page.font), [inter, interBold] = await fonts("Inter"), urls = await photoURLs(page, 300), section = win.document.createElement("section");
       section.innerHTML = svg(page, urls, `@font-face{font-family:Inter;src:url(data:font/ttf;base64,${inter})}@font-face{font-family:Inter;font-weight:700;src:url(data:font/ttf;base64,${interBold})}@font-face{font-family:${page.font};src:url(data:font/ttf;base64,${normal})}@font-face{font-family:${page.font};font-weight:700;src:url(data:font/ttf;base64,${bold})}`);
       win.document.body.append(section);
       progress(i + 1, pages.length);
