@@ -20,7 +20,11 @@ Dir.chdir(ROOT) do
  system('python3','scripts/css_route_split.py',exception:true)
  Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
   config.write(JSON.generate({'release'=>release}));config.flush
-  system('bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
+  # Cloudflare can run builds with the C locale, which makes Ruby expose
+  # filesystem paths as ASCII-8BIT. Jekyll must treat Lithuanian filenames as
+  # UTF-8 when resolving destination URLs, regardless of the host locale.
+  rubyopt=[ENV['RUBYOPT'],'-EUTF-8:UTF-8'].compact.reject(&:empty?).join(' ')
+  system({'RUBYOPT'=>rubyopt},'bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
  end
  homepage=File.read('public/index.html')
  css_version=homepage[%r{/assets/(?:style|homepage-bundle)\.css\?v=([^"' >]+)},1]

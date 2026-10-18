@@ -6748,7 +6748,7 @@
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "75b71c2148c5d80fc2f995aecac4236d79b4d7cb1a005e19aadfd449d582516d"
+      "sha256": "eb1fd62af5193c03509f54a1ed9dab98c8640ea4f604ed52cedbe3bd9fdc8fb8"
     }
   ],
   "changed_baseline_assets": [],
