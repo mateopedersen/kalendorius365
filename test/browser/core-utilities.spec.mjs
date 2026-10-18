@@ -39,7 +39,10 @@ test('404 template is excluded from indexing and its home link recovers navigati
 test('weather city and clock preferences survive reload without changing the saved note',async({page,context})=>{
  await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
  await page.goto('/?data=2028-02-29');await page.locator('#daily-note').fill('Disposable weather preference note');await page.locator('#save-note').click();
- await page.locator('#weather-city').selectOption('kaunas');await page.locator('#seconds').uncheck();
+ const cityPicker=page.locator('.weather-city-picker');const weatherCity=page.locator('#weather-city');
+ await expect(cityPicker).toBeVisible();await expect(cityPicker.locator('.weather-city-picker__location')).toBeVisible();await expect(cityPicker.locator('.weather-city-picker__chevron')).toBeVisible();
+ const pickerBox=await cityPicker.boundingBox();expect(pickerBox.height).toBeGreaterThanOrEqual(44);await weatherCity.focus();await expect(cityPicker).toHaveCSS('outline-style','solid');
+ await weatherCity.selectOption('kaunas');await page.locator('#seconds').uncheck();
  await expect(page.locator('#clock-zone')).toContainText('Kaunas');await page.reload();
  await expect(page.locator('#weather-city')).toHaveValue('kaunas');await expect(page.locator('#seconds')).not.toBeChecked();
  await expect(page.locator('#daily-note')).toHaveValue('Disposable weather preference note');
