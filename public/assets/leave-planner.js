@@ -1,6 +1,6 @@
-import * as cal from "./calendar.js?v=0cb6808075af";
-import { Store, download } from "./storage.js?v=0cb6808075af";
-import { exportICS } from "./ics.js?v=0cb6808075af";
+import * as cal from "./calendar.js?v=cd07f2e424fb";
+import { Store, download } from "./storage.js?v=cd07f2e424fb";
+import { exportICS } from "./ics.js?v=cd07f2e424fb";
 
 const DAY_MS = 86400000;
 const MIN_YEAR = 2026;

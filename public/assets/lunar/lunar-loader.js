@@ -5,7 +5,7 @@ let moduleLoaded = false;
 
 function loadLunarTools() {
   if (moduleLoaded) return Promise.resolve(true);
-  modulePromise ||= import("./lunar.js?v=0cb6808075af").then(() => {
+  modulePromise ||= import("./lunar.js?v=cd07f2e424fb").then(() => {
     moduleLoaded = true;
     return true;
   }).catch(() => {

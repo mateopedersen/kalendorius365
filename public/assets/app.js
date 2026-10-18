@@ -1,10 +1,10 @@
-import { icon } from "./icons.js?v=0cb6808075af";
-import * as cal from "./calendar.js?v=0cb6808075af";
-import { Store, download } from "./storage.js?v=0cb6808075af";
-import { exportICS, importICS } from "./ics.js?v=0cb6808075af";
-import { notice } from "./common.js?v=0cb6808075af";
-import { renderWeather } from "./weather.js?v=0cb6808075af";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=0cb6808075af";
+import { icon } from "./icons.js?v=cd07f2e424fb";
+import * as cal from "./calendar.js?v=cd07f2e424fb";
+import { Store, download } from "./storage.js?v=cd07f2e424fb";
+import { exportICS, importICS } from "./ics.js?v=cd07f2e424fb";
+import { notice } from "./common.js?v=cd07f2e424fb";
+import { renderWeather } from "./weather.js?v=cd07f2e424fb";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js?v=cd07f2e424fb";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);

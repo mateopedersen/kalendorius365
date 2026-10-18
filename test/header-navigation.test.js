@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import vm from 'node:vm';
+import {headerHarness} from './helpers/header-dom.js';
 
 const root = path.resolve(import.meta.dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
@@ -65,33 +65,12 @@ test('the original vector sprite has three distinct symbols and no embedded rast
 });
 
 test('Escape closes the navigation and search through the shared script', () => {
-  const listeners = new Map();
-  const element = () => ({
-    attrs: new Map(), handlers: new Map(),
-    classList: {toggle() {}, remove() {}},
-    setAttribute(key, value) { this.attrs.set(key, value); },
-    getAttribute(key) { return this.attrs.get(key); },
-    removeAttribute(key) { this.attrs.delete(key); },
-    addEventListener(key, fn) { this.handlers.set(key, fn); },
-    click() { this.handlers.get('click')?.({currentTarget:this}); },
-    append() {}, focus() {}, blur() {}, querySelector() { return null; },
-  });
-  const elements = new Map(['#site-search', '#site-search-results', '.header-search', '#site-search-status', '#nav-toggle', '#primary-nav'].map(key => [key, element()]));
-  const document = {
-    querySelector: selector => elements.get(selector) || null,
-    querySelectorAll: () => [], createElement: element,
-    addEventListener(key, fn) { listeners.set(key, fn); },
-    documentElement: element(),
-  };
-  vm.runInNewContext(read('site/assets/common.js').replace('export function notice', 'function notice'), {
-    document, location:{pathname:'/'}, localStorage:{getItem:()=>null},
-    clearTimeout, setTimeout,
-  });
-  const toggle = elements.get('#nav-toggle');
+  const h = headerHarness();
+  const toggle = h.navToggle;
   toggle.click();
   assert.equal(toggle.getAttribute('aria-expanded'), 'true');
-  assert.doesNotThrow(() => listeners.get('keydown')({key:'Escape'}));
+  assert.doesNotThrow(() => h.document.emit('keydown', {key:'Escape'}));
   assert.equal(toggle.getAttribute('aria-expanded'), 'false');
-  assert.equal(elements.get('#site-search').getAttribute('aria-expanded'), 'false');
-  assert.equal(elements.get('#site-search-results').getAttribute('hidden'), '');
+  assert.equal(h.input.getAttribute('aria-expanded'), 'false');
+  assert.equal(h.results.getAttribute('hidden'), '');
 });

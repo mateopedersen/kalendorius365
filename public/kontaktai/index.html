@@ -24,13 +24,13 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=faad50f124eb" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=ffc2af6e0100 /assets/design-system.css?v=ffc2af6e0100 /assets/contact.css?v=ffc2af6e0100">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=dd6f0d8e53cc /assets/design-system.css?v=dd6f0d8e53cc /assets/contact.css?v=dd6f0d8e53cc">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:1px solid var(--border);background:var(--surface);border-radius:7px;padding:.55rem .8rem;color:var(--ink);min-height:40px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
-button:hover{background:var(--accent);border-color:var(--green)}
+button,.button{cursor:pointer;border:1px solid var(--border);background:var(--surface);border-radius:7px;padding:.55rem .8rem;color:var(--ink);min-height:40px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+button:hover,.button:hover{background:var(--accent);border-color:var(--green)}
 button[aria-pressed=true],.primary{background:var(--green);color:var(--surface);border-color:var(--green)}
 button:disabled{opacity:.55;cursor:not-allowed}
 input,select,textarea{max-width:100%;min-height:42px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--ink);padding:.6rem}
@@ -182,12 +182,12 @@ small{color: var(--muted);}
 a{color: var(--green);}
 a:hover{color: var(--green-dark);}
 .icon{width: 20px;height: 20px;display: inline-block;flex: none;vertical-align: middle;pointer-events: none;color: currentColor;}
-button{min-height: 40px;border: 1px solid var(--border);border-radius: 7px;background: var(--panel);color: var(--ink);padding: 9px 13px;font-weight: 700;line-height: 1.25;display: inline-flex;align-items: center;justify-content: center;gap: 8px;box-shadow: 0 1px 2px #14293c04;transition: background 0.15s,border-color 0.15s,box-shadow 0.15s,transform 0.15s;}
-button:hover{background: var(--soft);border-color: #adc3b8;color: var(--green);box-shadow: 0 2px 5px #14293c09;}
-button:active{transform: translateY(1px);}
-button.primary{color: #fff;background: var(--green);border-color: var(--green);box-shadow: 0 3px 7px #006a4417;}
-button.primary:hover{color: #fff;background: var(--green-dark);border-color: var(--green-dark);}
-button:disabled{opacity: 0.5;cursor: not-allowed;box-shadow: none;}
+button,.button{min-height: 40px;border: 1px solid var(--border);border-radius: 7px;background: var(--panel);color: var(--ink);padding: 9px 13px;font-weight: 700;line-height: 1.25;display: inline-flex;align-items: center;justify-content: center;gap: 8px;box-shadow: 0 1px 2px #14293c04;transition: background 0.15s,border-color 0.15s,box-shadow 0.15s,transform 0.15s;}
+button:hover,.button:hover{background: var(--soft);border-color: #adc3b8;color: var(--green);box-shadow: 0 2px 5px #14293c09;}
+button:active,.button:active{transform: translateY(1px);}
+button.primary,a.button.primary{color: #fff;background: var(--green);border-color: var(--green);box-shadow: 0 3px 7px #006a4417;}
+button.primary:hover,a.button.primary:hover{color: #fff;background: var(--green-dark);border-color: var(--green-dark);}
+button:disabled,.button[aria-disabled="true"]{opacity: 0.5;cursor: not-allowed;box-shadow: none;}
 :focus-visible{outline: 3px solid #237ed3;outline-offset: 3px;box-shadow: 0 0 0 2px #fff;}
 .icon-button{width: 40px;min-width: 40px;padding: 9px;border-radius: 50%;background: var(--soft);}
 input:not([type="checkbox"]):not([type="radio"]),select,textarea{border: 1px solid var(--border);border-radius: 7px;background: var(--panel);color: var(--ink);min-height: 40px;font-weight: 400;padding: 9px 11px;box-shadow: inset 0 1px 2px #172a3d02;}
@@ -391,10 +391,10 @@ h1,h2{font-weight: 700;}
 #primary-nav > a{font-size: .84rem;font-weight: 700;}
 #primary-nav > a .icon{width: 18px;height: 18px;color: var(--green);}
 #primary-nav > a:nth-child(2) .icon,#primary-nav > a:nth-child(3) .icon{display: inline-block;}
-button{border-radius: 9px;font-weight: 700;box-shadow: 0 2px 5px #17334b0a;transition: transform .16s ease,box-shadow .16s ease,background-color .16s ease,border-color .16s ease;}
-button:hover{transform: translateY(-1px);box-shadow: 0 5px 12px #17334b12;}
-button.primary{background: linear-gradient(135deg,#087b52,#00613f 78%);border-color: #08754e;box-shadow: 0 4px 10px #006a4422,inset 0 1px #ffffff26;}
-button.primary:hover{background: linear-gradient(135deg,#0a895c,#005b3b 78%);box-shadow: 0 7px 16px #006a4430,inset 0 1px #ffffff2b;}
+button,.button{border-radius: 9px;font-weight: 700;box-shadow: 0 2px 5px #17334b0a;transition: transform .16s ease,box-shadow .16s ease,background-color .16s ease,border-color .16s ease;}
+button:hover,.button:hover{transform: translateY(-1px);box-shadow: 0 5px 12px #17334b12;}
+button.primary,a.button.primary{background: linear-gradient(135deg,#087b52,#00613f 78%);border-color: #08754e;box-shadow: 0 4px 10px #006a4422,inset 0 1px #ffffff26;}
+button.primary:hover,a.button.primary:hover{background: linear-gradient(135deg,#0a895c,#005b3b 78%);box-shadow: 0 7px 16px #006a4430,inset 0 1px #ffffff2b;}
 .site-footer{font-size: .9rem;line-height: 1.7;}
 .site-footer > div:first-child{display: grid;grid-template-columns: 42px auto;align-items: center;column-gap: 10px;}
 .site-footer .footer-mark{width: 42px;height: 42px;margin: 0;grid-row: span 2;}
@@ -413,8 +413,8 @@ button.primary:hover{background: linear-gradient(135deg,#0a895c,#005b3b 78%);box
 .site-header .brand-logo{width: 38px;height: 38px;}
 .brand-wordmark{font-size: clamp(18px,5.2vw,21px);}
 .site-footer > div:first-child p{grid-column: 1 / -1;}}
-@media (prefers-reduced-motion: reduce){button{transition: none;}
-button:hover{transform: none;}}
+@media (prefers-reduced-motion: reduce){button,.button{transition: none;}
+button:hover,.button:hover{transform: none;}}
 /* High-clarity micro-details shared by the entire site. */
 /* Keep desktop navigation on one row and give calendar markers their own space. */
 @media (min-width: 1101px) and (max-width: 1220px){.site-header{height: 68px;min-height: 68px;flex-wrap: nowrap;gap: 12px;padding-inline: 16px;}
@@ -566,6 +566,30 @@ button:hover{transform: none;}}
 .site-footer .footer-mark{width: 42px;height: 42px;margin: 0;grid-column: 1;grid-row: 1;}
 .site-footer .footer-brand-wordmark{grid-column: 2;grid-row: 1;align-self: center;margin: 0;}
 .site-footer > div:first-child p{grid-column: 2;grid-row: 2;font-size: .88rem;margin: 0;}
+/* Search stays anchored to its field; only the suggestions scroll. */
+.header-search-toggle,.header-search-close,.header-search-submit{display: none;}
+.header-search-panel{position: absolute;top: calc(100% + 7px);right: 0;z-index: 60;display: flex;flex-direction: column;width: max(100%,320px);max-width: calc(100vw - 24px);max-height: min(62vh,520px);overflow: hidden;box-sizing: border-box;padding: 6px;border: 1px solid var(--border);border-radius: 12px;background: var(--panel);box-shadow: 0 12px 30px #15283d24;}
+.header-search-panel[hidden]{display: none;}
+.header-search-panel > .header-search-results{position: static;inset: auto;flex: 1 1 auto;min-width: 0;min-height: 0;width: 100%;max-height: none;margin: 0;padding: 0;border: 0;border-radius: 0;box-shadow: none;overscroll-behavior: contain;-webkit-overflow-scrolling: touch;}
+.header-search-panel > .header-search-all{display: flex;align-items: center;flex: 0 0 auto;min-height: 44px;margin: 4px 0 0;padding: 8px 11px;border-top: 1px solid var(--border);border-radius: 0 0 7px 7px;font-size: .88rem;line-height: 1.35;}
+@media (max-width: 760px){/* The plain form remains usable if JavaScript has not loaded. */
+.search-active .mobile-dock{display: none;}
+.site-header:not(.search-ready){height: auto;flex-wrap: wrap;padding-block: 10px;}
+.site-header:not(.search-ready) .header-search{position: relative;order: 6;flex: 1 0 100%;width: 100%;height: auto;}
+.site-header:not(.search-ready) .header-search input,.site-header.search-ready .header-search.search-open input{width: 100%;min-width: 0;height: 44px;min-height: 44px;padding: 0 10px 0 36px !important;border: 1px solid var(--border);border-radius: 10px;color: var(--ink);caret-color: var(--ink);background: var(--panel) !important;font-size: 16px;box-shadow: none;}
+.site-header:not(.search-ready) .header-search input::placeholder,.site-header.search-ready .header-search.search-open input::placeholder{color: var(--muted);}
+.site-header.search-ready .header-search-toggle{display: inline-flex;align-items: center;justify-content: center;order: 3;flex: 0 0 44px;width: 44px;min-width: 44px;height: 44px;min-height: 44px;padding: 11px;border: 1px solid var(--border);border-radius: 12px;color: var(--ink);background: var(--panel);}
+.header-search-toggle > .icon{width: 20px;height: 20px;}
+.site-header.search-ready .header-search{display: none;}
+.site-header.search-ready .header-search.search-open{position: absolute;top: calc(100% + 6px);left: 12px;right: 12px;z-index: 60;display: flex;align-items: center;gap: 6px;flex: none;width: auto;min-width: 0;height: auto;margin: 0;padding: 8px;border: 1px solid var(--border);border-radius: 14px;background: var(--panel);box-shadow: 0 8px 24px #15283d24;}
+.site-header.search-ready .header-search.search-open label{display: block;flex: 1 1 auto;width: auto;min-width: 0;margin: 0;}
+.site-header.search-ready .header-search.search-open > .icon{left: 19px;top: 30px;width: 18px;height: 18px;transform: translateY(-50%);pointer-events: none;}
+.site-header.search-ready .header-search-submit,.site-header.search-ready .header-search-close{display: inline-flex;align-items: center;justify-content: center;flex: 0 0 auto;min-width: 44px;height: 44px;min-height: 44px;margin: 0;padding: 0 10px;border-radius: 10px;font-size: .88rem;}
+.site-header.search-ready .header-search-close{width: 44px;padding: 0;border: 1px solid var(--border);color: var(--ink);background: var(--panel);font-size: 26px;line-height: 1;}
+.site-header.search-ready .header-search-panel{top: calc(100% + 6px);left: 0;right: 0;width: auto;max-width: none;max-height: var(--search-results-height,min(40dvh,320px));padding: 4px;}
+.site-header .header-search-panel .header-search-results a{display: flex;align-items: center;min-height: 44px;margin: 0;padding: 9px 10px !important;}
+.site-header .header-search-panel .header-search-results a strong{display: -webkit-box;overflow: hidden;-webkit-box-orient: vertical;-webkit-line-clamp: 2;font-size: .9rem;}
+.site-header .header-search-panel .header-search-results a small{display: none;}}
 /* Contact page styles; all selectors stay under .contact-page. */
 .contact-page{--contact-forest:#0b4a39;--contact-deep:#063a2d;--contact-paper:#f4efe2;--contact-gold:#c18a29;--contact-red:#a92b31;width:min(100%,1320px);margin-inline:auto;color:var(--ink,#111b2e)}
 .contact-page *,.contact-page *::before,.contact-page *::after{box-sizing:border-box}
@@ -584,7 +608,7 @@ button:hover{transform: none;}}
 .contact-email-card__address{color:var(--contact-forest);font-size:clamp(.92rem,1.45vw,1.16rem);font-weight:900;overflow-wrap:anywhere;text-decoration-thickness:1px;text-underline-offset:4px}
 .contact-email-card__copy p{margin:6px 0 0;color:#46574c;font-size:.82rem;line-height:1.5}
 .contact-copy{min-width:46px;min-height:46px;padding:8px;color:var(--contact-forest);border-color:#cbd8ce}
-.contact-copy svg,.contact-submit svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact-copy svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .contact-copy span{font-size:.74rem}
 .contact-copy-status{grid-column:2/-1;min-height:1.2em;color:var(--contact-forest);font-size:.78rem;font-weight:700}
 .contact-art{min-width:0;margin:0;padding:clamp(9px,1.4vw,17px);border:1px solid #dfd6c3;border-radius:15px;background:var(--contact-paper);box-shadow:0 15px 35px #4238230c}
@@ -604,37 +628,16 @@ button:hover{transform: none;}}
 .contact-form-panel__step i{display:inline-block;width:34px;margin:0 6px 2px;border-top:1px solid #c9ae7c}
 .contact-form-panel__heading h2{margin:0 0 7px;color:var(--contact-deep);font-size:clamp(1.35rem,2vw,1.75rem);letter-spacing:-.03em}
 .contact-form-panel__heading p{max-width:60ch;margin:0;color:var(--muted,#5c6980);font-size:.88rem;line-height:1.6}
-.contact-form__fields{min-width:0;margin:0;padding:0;border:0}
-.contact-form__fields:disabled{opacity:.62}
-.contact-form__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
-.contact-field{min-width:0;display:grid;align-content:start;gap:6px}
-.contact-field--full{grid-column:1/-1}
-.contact-field label{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;color:#263c31;font-size:.87rem;font-weight:800}
-.contact-required{color:var(--contact-red);font-size:.75rem;font-weight:900}
-.contact-optional{color:#536258;font-size:.72rem;font-weight:400}
-.contact-field input,.contact-field select,.contact-field textarea{width:100%;min-width:0;min-height:48px;border:1px solid #c4d1c7;border-radius:7px;background:#fff;color:#172d23;font:inherit;font-size:1rem;padding:11px 12px;box-shadow:0 1px 2px #173b2206}
-.contact-field select{appearance:auto;padding-right:34px}
-.contact-field textarea{min-height:148px;resize:vertical;line-height:1.55}
-.contact-field input::placeholder{color:#505f55;opacity:1}
-.contact-field input:focus,.contact-field select:focus,.contact-field textarea:focus{border-color:var(--contact-forest);outline:3px solid #006a4426;outline-offset:1px;box-shadow:none}
-.contact-field [aria-invalid=true]{border-color:#a92b31}
-.contact-field [aria-invalid=true]:focus{outline-color:#a92b3128}
-.contact-help,.contact-field-error{display:block;min-height:1.2em;font-size:.75rem;line-height:1.4}
-.contact-help{color:#4c5d51}
-.contact-field-error{color:#8d1e27;font-weight:700}
-.contact-field-error[hidden],.contact-error-summary[hidden]{display:none}
-.contact-error-summary{margin:0 0 14px;padding:11px 13px;border:1px solid #d99393;border-left:4px solid #a92b31;border-radius:6px;background:#fff6f4;color:#702027;font-size:.84rem;font-weight:700}
+.contact-form-panel--google{padding:clamp(18px,2vw,28px)}
+.contact-google-form{display:block;width:100%;height:1280px;border:0;border-radius:9px;background:#e7edeb}
+.contact-form-external{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin-top:13px;padding:9px 13px;border:1px solid #b5c9bb;border-radius:7px;background:#edf5ee;color:#0b4a39;font-size:.84rem;font-weight:800;text-decoration:none}
+.contact-form-external:hover{background:#e1eee3;border-color:#729b7f}
+.contact-source{overflow-wrap:anywhere;font-size:.8rem}
+.contact-source a{font-weight:700}
 .contact-privacy-note{margin:18px 0 13px;color:#435549;font-size:.78rem;line-height:1.55}
 .contact-privacy-note a{font-weight:800;text-underline-offset:3px}
-.contact-form__actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
-.contact-submit{min-height:50px;padding:11px 16px;border:1px solid var(--contact-forest);border-radius:7px;background:var(--contact-forest);color:#fff;font-size:.89rem;font-weight:900}
-.contact-submit:hover{background:var(--contact-deep);border-color:var(--contact-deep);color:#fff}
-.contact-submit:focus-visible{outline:3px solid #1876b8;outline-offset:3px}
-.contact-submit:disabled{opacity:.55;cursor:wait}
-.contact-submit svg{width:18px;height:18px}
-.contact-form__delivery-note{max-width:30ch;margin:0;color:#4c5d51;font-size:.76rem}
-.contact-status,.contact-noscript{min-height:2.6em;margin:14px 0 0;color:#3f5647;font-size:.79rem;line-height:1.5}
-.contact-status a,.contact-noscript a{font-weight:800}
+.contact-status{margin:14px 0 0;color:#3f5647;font-size:.79rem;line-height:1.5}
+.contact-status a{font-weight:800}
 .contact-related{margin:36px 0 2px;padding:25px clamp(18px,3vw,34px) 29px;border:1px solid #dcd6c6;border-radius:13px;background:#f4efe2}
 .contact-related__heading{margin-bottom:16px}
 .contact-related__heading .contact-eyebrow{margin:0 0 5px}
@@ -676,8 +679,8 @@ button:hover{transform: none;}}
 .contact-topics{grid-column:1;grid-row:auto}
 .contact-topic-links{grid-template-columns:repeat(2,minmax(0,1fr))}
 .contact-form-panel{padding:21px 16px}
-.contact-form__grid{grid-template-columns:minmax(0,1fr);gap:15px}
-.contact-field--full{grid-column:1}
+.contact-form-panel--google{padding:18px 10px}
+.contact-google-form{height:1480px}
 .contact-related{padding:20px 15px 22px}}
 @media(max-width:370px){.contact-email-card{grid-template-columns:38px minmax(0,1fr)}
 .contact-email-card__icon{width:38px;height:38px;border-radius:11px}
@@ -697,9 +700,10 @@ button:hover{transform: none;}}
 
 
 
-<script type="module" src="/assets/common.js?v=0cb6808075af"></script>
-<script type="module" src="/assets/cookie-notice.js?v=0cb6808075af"></script>
-<script type="module" src="/assets/contact.js?v=0cb6808075af"></script>
+<script type="module" src="/assets/common.js?v=cd07f2e424fb"></script>
+<script type="module" src="/assets/cookie-notice.js?v=cd07f2e424fb"></script>
+<script type="module" src="/assets/contact.js?v=cd07f2e424fb"></script>
+
 
 
 
@@ -796,66 +800,29 @@ button:hover{transform: none;}}
 
       <section class="contact-topics" aria-labelledby="contact-topics-title">
         <h2 id="contact-topics-title">Kuo galime padėti?</h2>
-        <p>Pasirinkite temą — ji bus įrašyta laiško juodraštyje.</p>
+        <p>Atverkite formą naujame skirtuke su pasirinkta tema.</p>
         <nav class="contact-topic-links" aria-label="Greitosios kontaktų temos">
-          <a href="mailto:kalendorius365@gmail.com?subject=Kalendorius365%20%E2%80%94%20Kalendoriai%20ir%20atsisiuntimai" data-topic="calendar">Kalendoriai ir atsisiuntimai <span aria-hidden="true">↗</span></a>
-          <a href="mailto:kalendorius365@gmail.com?subject=Kalendorius365%20%E2%80%94%20Klaida%20kalendoriuje%20ar%20datoje" data-topic="date_error">Klaida kalendoriuje ar datoje <span aria-hidden="true">↗</span></a>
-          <a href="mailto:kalendorius365@gmail.com?subject=Kalendorius365%20%E2%80%94%20Technin%C4%97%20problema" data-topic="technical">Techninė problema <span aria-hidden="true">↗</span></a>
-          <a href="mailto:kalendorius365@gmail.com?subject=Kalendorius365%20%E2%80%94%20Vardadieniai%20ir%20%C5%A1vent%C4%97s" data-topic="namedays">Vardadieniai ir šventės <span aria-hidden="true">↗</span></a>
-          <a href="mailto:kalendorius365@gmail.com?subject=Kalendorius365%20%E2%80%94%20Bendradarbiavimas" data-topic="collaboration">Bendradarbiavimas <span aria-hidden="true">↗</span></a>
-          <a href="mailto:kalendorius365@gmail.com?subject=Kalendorius365%20%E2%80%94%20Kitas%20klausimas" data-topic="other">Kitas klausimas <span aria-hidden="true">↗</span></a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?usp=pp_url&amp;hl=lt&amp;entry.122884581=Kalendoriai+ir+atsisiuntimai" data-topic="calendar" target="_blank" rel="noopener">Kalendoriai ir atsisiuntimai <span aria-hidden="true">↗</span></a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?usp=pp_url&amp;hl=lt&amp;entry.122884581=Klaida+kalendoriuje+ar+datoje" data-topic="date_error" target="_blank" rel="noopener">Klaida kalendoriuje ar datoje <span aria-hidden="true">↗</span></a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?usp=pp_url&amp;hl=lt&amp;entry.122884581=Technin%C4%97+problema" data-topic="technical" target="_blank" rel="noopener">Techninė problema <span aria-hidden="true">↗</span></a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?usp=pp_url&amp;hl=lt&amp;entry.122884581=Vardadieniai+ir+%C5%A1vent%C4%97s" data-topic="namedays" target="_blank" rel="noopener">Vardadieniai ir šventės <span aria-hidden="true">↗</span></a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?usp=pp_url&amp;hl=lt&amp;entry.122884581=Bendradarbiavimas" data-topic="collaboration" target="_blank" rel="noopener">Bendradarbiavimas <span aria-hidden="true">↗</span></a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?usp=pp_url&amp;hl=lt&amp;entry.122884581=Kitas+klausimas" data-topic="other" target="_blank" rel="noopener">Kitas klausimas <span aria-hidden="true">↗</span></a>
         </nav>
       </section>
     </section>
 
-    <section class="contact-form-panel" aria-labelledby="contact-form-title">
+    <section class="contact-form-panel contact-form-panel--google" aria-labelledby="contact-form-title">
       <div class="contact-form-panel__heading">
-        <span class="contact-form-panel__step">01 <i aria-hidden="true"></i> 02</span>
-        <h2 id="contact-form-title">Parenkite žinutę</h2>
-        <p>Užpildę laukus atidarysite juodraštį savo el. pašto programoje. Prieš išsiunčiant galėsite viską peržiūrėti.</p>
+        <span class="contact-form-panel__step">KLAUSIMAS · ŽINUTĖ · ATSAKYMAS</span>
+        <h2 id="contact-form-title">Parašykite mums</h2>
+        <p>Užpildykite „Google Forms“ formą. Pateikta žinutė išsaugoma formos atsakymuose, o pranešimas apie ją siunčiamas į kalendorius365@gmail.com. Registruotis nereikia.</p>
+        <a class="contact-form-external" data-open-contact-form href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?hl=lt" target="_blank" rel="noopener">Atidaryti formą atskirame skirtuke <span aria-hidden="true">↗</span></a>
+        <p class="contact-source" data-contact-source hidden>Puslapis, apie kurį pranešate: <a data-contact-source-link></a></p>
       </div>
-      <form id="contact-form" class="contact-form" data-contact-form>
-        <div class="contact-error-summary" data-error-summary role="alert" aria-live="assertive" hidden></div>
-        <fieldset class="contact-form__fields" data-contact-fields disabled>
-          <legend class="visually-hidden">Žinutės duomenys</legend>
-          <div class="contact-form__grid">
-            <div class="contact-field">
-              <label for="contact-name">Vardas <span class="contact-optional">Neprivaloma</span></label>
-              <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" aria-describedby="contact-name-help contact-name-error">
-              <span class="contact-help" id="contact-name-help">Nurodykite tik tiek, kiek norite.</span><span class="contact-field-error" id="contact-name-error" hidden></span>
-            </div>
-            <div class="contact-field">
-              <label for="contact-email">El. pašto adresas <span class="contact-required"><span aria-hidden="true">*</span><span class="visually-hidden">Privaloma</span></span></label>
-              <input id="contact-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="contact-email-help contact-email-error">
-              <span class="contact-help" id="contact-email-help">Įrašykite adresą, kuriuo galėtume atsakyti.</span><span class="contact-field-error" id="contact-email-error" hidden></span>
-            </div>
-            <div class="contact-field contact-field--full">
-              <label for="contact-topic">Tema <span class="contact-required"><span aria-hidden="true">*</span><span class="visually-hidden">Privaloma</span></span></label>
-              <select id="contact-topic" name="topic" required aria-describedby="contact-topic-help contact-topic-error">
-                <option value="">Pasirinkite temą</option><option value="calendar">Kalendoriai ir atsisiuntimai</option><option value="date_error">Klaida kalendoriuje ar datoje</option><option value="technical">Techninė problema</option><option value="namedays">Vardadieniai ir šventės</option><option value="collaboration">Bendradarbiavimas</option><option value="other">Kitas klausimas</option>
-              </select>
-              <span class="contact-help" id="contact-topic-help">Pasirinkimas aiškiai pažymės laiško temą.</span><span class="contact-field-error" id="contact-topic-error" hidden></span>
-            </div>
-            <div class="contact-field contact-field--full">
-              <label for="contact-page-url">Puslapio nuoroda <span class="contact-optional">Neprivaloma</span></label>
-              <input id="contact-page-url" name="pageUrl" type="url" inputmode="url" autocomplete="url" maxlength="2048" placeholder="https://kalendorius365.lt/..." aria-describedby="contact-page-help contact-page-error">
-              <span class="contact-help" id="contact-page-help">Jei pranešate apie netikslumą, įrašykite atitinkamo puslapio adresą.</span><span class="contact-field-error" id="contact-page-error" hidden></span>
-            </div>
-            <div class="contact-field contact-field--full">
-              <label for="contact-message">Žinutė <span class="contact-required"><span aria-hidden="true">*</span><span class="visually-hidden">Privaloma</span></span></label>
-              <textarea id="contact-message" name="message" rows="6" maxlength="3000" required aria-describedby="contact-message-help contact-message-error"></textarea>
-              <span class="contact-help" id="contact-message-help">Nesiųskite asmeninių kalendoriaus įrašų ar jautrios informacijos.</span><span class="contact-field-error" id="contact-message-error" hidden></span>
-            </div>
-          </div>
-          <p class="contact-privacy-note">Paspaudus mygtuką, svetainė žinutės negauna: atidaromas laiško juodraštis jūsų el. pašto programoje. Prireikus jį dar galėsite pataisyti ir išsiųsti. <a href="/privatumas/#contact-email">Kaip tvarkomi el. laiškai</a>.</p>
-          <div class="contact-form__actions">
-            <button class="contact-submit" type="submit" data-contact-submit disabled><span>Atidaryti laiško juodraštį</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
-            <p class="contact-form__delivery-note">Laišką reikės išsiųsti savo pašto programoje.</p>
-          </div>
-        </fieldset>
-        <p class="contact-status" data-contact-status role="status" aria-live="polite" aria-atomic="true">Jei forma neatsidaro, parašykite tiesiogiai adresu <a href="mailto:kalendorius365@gmail.com">kalendorius365@gmail.com</a>.</p>
-        <noscript><p class="contact-noscript">Forma veikia su JavaScript. Norėdami parašyti be jos, naudokite <a href="mailto:kalendorius365@gmail.com">tiesioginį el. pašto adresą</a>.</p></noscript>
-      </form>
+      <iframe class="contact-google-form" data-contact-frame src="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?embedded=true&amp;hl=lt" title="Kalendorius365 kontaktinė forma" width="640" height="1280" loading="lazy" referrerpolicy="no-referrer">Atidarykite kontaktinę formą naudodami aukščiau pateiktą nuorodą.</iframe>
+      <p class="contact-privacy-note">Formos duomenis tvarko „Google“. Įrašykite tik klausimui reikalingą informaciją. <a href="/privatumas/#contact-email">Kaip tvarkomos užklausos</a>.</p>
+      <p class="contact-status">Jei forma neįkeliama, <a data-open-contact-form href="https://docs.google.com/forms/d/e/1FAIpQLScGI5U9JY8NdRizTYWlvi19OG5xLGF40R9kTyNgyJb13zV7zg/viewform?hl=lt" target="_blank" rel="noopener">atidarykite ją atskirame skirtuke</a> arba parašykite <a href="mailto:kalendorius365@gmail.com">kalendorius365@gmail.com</a>.</p>
     </section>
   </div>
 
@@ -871,7 +838,7 @@ button:hover{transform: none;}}
 </div>
 
 </main>
-<footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg?v=217add829468" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/paieska/">Paieška</a> · <a href="/apie/">Apie svetainę ir šaltinius</a> · <a href="/privatumas/">Privatumas ir duomenys</a> · <strong><a class="footer-contact-link" href="/kontaktai/">Kontaktai</a></strong></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>
+<footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg?v=217add829468" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/paieska/">Paieška</a> · <a href="/apie/">Apie svetainę ir šaltinius</a> · <a href="/privatumas/">Privatumas ir duomenys</a> · <a class="footer-contact-link" href="/kontaktai/">Kontaktai</a></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>
 <nav class="mobile-dock" aria-label="Greitasis meniu"><a href="/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-calendar"></use></svg><span>Kalendorius</span></a><a href="/menesiai/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-download"></use></svg><span>Atsisiųsti</span></a><a href="/sventes/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-holidays"></use></svg><span>Šventės</span></a><a href="/irankiai/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-tools"></use></svg><span>Įrankiai</span></a></nav>
 <aside id="cookie-notice" class="cookie-notice" role="region" aria-labelledby="cookie-notice-title" aria-describedby="cookie-notice-copy" aria-live="polite" hidden>
   <div class="cookie-notice__copy-wrap">

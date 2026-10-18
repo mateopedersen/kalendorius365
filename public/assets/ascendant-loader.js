@@ -4,7 +4,7 @@ const form = document.querySelector("#ascendant-form");
 if (form) {
   let ready;
   let loaded = false;
-  const prepare = () => ready ||= import("./ascendant-calculator.js?v=0cb6808075af").then(() => {
+  const prepare = () => ready ||= import("./ascendant-calculator.js?v=cd07f2e424fb").then(() => {
     loaded = true;
   }).catch((error) => {
     ready = undefined;

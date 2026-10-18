@@ -24,13 +24,13 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=faad50f124eb" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=ffc2af6e0100 /assets/design-system.css?v=ffc2af6e0100 /assets/holiday-phase2.css?v=ffc2af6e0100">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=dd6f0d8e53cc /assets/design-system.css?v=dd6f0d8e53cc /assets/holiday-phase2.css?v=dd6f0d8e53cc">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:1px solid var(--border);background:var(--surface);border-radius:7px;padding:.55rem .8rem;color:var(--ink);min-height:40px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
-button:hover{background:var(--accent);border-color:var(--green)}
+button,.button{cursor:pointer;border:1px solid var(--border);background:var(--surface);border-radius:7px;padding:.55rem .8rem;color:var(--ink);min-height:40px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+button:hover,.button:hover{background:var(--accent);border-color:var(--green)}
 button[aria-pressed=true],.primary{background:var(--green);color:var(--surface);border-color:var(--green)}
 button:disabled{opacity:.55;cursor:not-allowed}
 input,select,textarea{max-width:100%;min-height:42px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--ink);padding:.6rem}
@@ -183,12 +183,12 @@ small{color: var(--muted);}
 a{color: var(--green);}
 a:hover{color: var(--green-dark);}
 .icon{width: 20px;height: 20px;display: inline-block;flex: none;vertical-align: middle;pointer-events: none;color: currentColor;}
-button{min-height: 40px;border: 1px solid var(--border);border-radius: 7px;background: var(--panel);color: var(--ink);padding: 9px 13px;font-weight: 700;line-height: 1.25;display: inline-flex;align-items: center;justify-content: center;gap: 8px;box-shadow: 0 1px 2px #14293c04;transition: background 0.15s,border-color 0.15s,box-shadow 0.15s,transform 0.15s;}
-button:hover{background: var(--soft);border-color: #adc3b8;color: var(--green);box-shadow: 0 2px 5px #14293c09;}
-button:active{transform: translateY(1px);}
-button.primary{color: #fff;background: var(--green);border-color: var(--green);box-shadow: 0 3px 7px #006a4417;}
-button.primary:hover{color: #fff;background: var(--green-dark);border-color: var(--green-dark);}
-button:disabled{opacity: 0.5;cursor: not-allowed;box-shadow: none;}
+button,.button{min-height: 40px;border: 1px solid var(--border);border-radius: 7px;background: var(--panel);color: var(--ink);padding: 9px 13px;font-weight: 700;line-height: 1.25;display: inline-flex;align-items: center;justify-content: center;gap: 8px;box-shadow: 0 1px 2px #14293c04;transition: background 0.15s,border-color 0.15s,box-shadow 0.15s,transform 0.15s;}
+button:hover,.button:hover{background: var(--soft);border-color: #adc3b8;color: var(--green);box-shadow: 0 2px 5px #14293c09;}
+button:active,.button:active{transform: translateY(1px);}
+button.primary,a.button.primary{color: #fff;background: var(--green);border-color: var(--green);box-shadow: 0 3px 7px #006a4417;}
+button.primary:hover,a.button.primary:hover{color: #fff;background: var(--green-dark);border-color: var(--green-dark);}
+button:disabled,.button[aria-disabled="true"]{opacity: 0.5;cursor: not-allowed;box-shadow: none;}
 :focus-visible{outline: 3px solid #237ed3;outline-offset: 3px;box-shadow: 0 0 0 2px #fff;}
 .icon-button{width: 40px;min-width: 40px;padding: 9px;border-radius: 50%;background: var(--soft);}
 input:not([type="checkbox"]):not([type="radio"]),select,textarea{border: 1px solid var(--border);border-radius: 7px;background: var(--panel);color: var(--ink);min-height: 40px;font-weight: 400;padding: 9px 11px;box-shadow: inset 0 1px 2px #172a3d02;}
@@ -392,10 +392,10 @@ h1,h2{font-weight: 700;}
 #primary-nav > a{font-size: .84rem;font-weight: 700;}
 #primary-nav > a .icon{width: 18px;height: 18px;color: var(--green);}
 #primary-nav > a:nth-child(2) .icon,#primary-nav > a:nth-child(3) .icon{display: inline-block;}
-button{border-radius: 9px;font-weight: 700;box-shadow: 0 2px 5px #17334b0a;transition: transform .16s ease,box-shadow .16s ease,background-color .16s ease,border-color .16s ease;}
-button:hover{transform: translateY(-1px);box-shadow: 0 5px 12px #17334b12;}
-button.primary{background: linear-gradient(135deg,#087b52,#00613f 78%);border-color: #08754e;box-shadow: 0 4px 10px #006a4422,inset 0 1px #ffffff26;}
-button.primary:hover{background: linear-gradient(135deg,#0a895c,#005b3b 78%);box-shadow: 0 7px 16px #006a4430,inset 0 1px #ffffff2b;}
+button,.button{border-radius: 9px;font-weight: 700;box-shadow: 0 2px 5px #17334b0a;transition: transform .16s ease,box-shadow .16s ease,background-color .16s ease,border-color .16s ease;}
+button:hover,.button:hover{transform: translateY(-1px);box-shadow: 0 5px 12px #17334b12;}
+button.primary,a.button.primary{background: linear-gradient(135deg,#087b52,#00613f 78%);border-color: #08754e;box-shadow: 0 4px 10px #006a4422,inset 0 1px #ffffff26;}
+button.primary:hover,a.button.primary:hover{background: linear-gradient(135deg,#0a895c,#005b3b 78%);box-shadow: 0 7px 16px #006a4430,inset 0 1px #ffffff2b;}
 .site-footer{font-size: .9rem;line-height: 1.7;}
 .site-footer > div:first-child{display: grid;grid-template-columns: 42px auto;align-items: center;column-gap: 10px;}
 .site-footer .footer-mark{width: 42px;height: 42px;margin: 0;grid-row: span 2;}
@@ -414,8 +414,8 @@ button.primary:hover{background: linear-gradient(135deg,#0a895c,#005b3b 78%);box
 .site-header .brand-logo{width: 38px;height: 38px;}
 .brand-wordmark{font-size: clamp(18px,5.2vw,21px);}
 .site-footer > div:first-child p{grid-column: 1 / -1;}}
-@media (prefers-reduced-motion: reduce){button{transition: none;}
-button:hover{transform: none;}}
+@media (prefers-reduced-motion: reduce){button,.button{transition: none;}
+button:hover,.button:hover{transform: none;}}
 /* High-clarity micro-details shared by the entire site. */
 /* Keep desktop navigation on one row and give calendar markers their own space. */
 @media (min-width: 1101px) and (max-width: 1220px){.site-header{height: 68px;min-height: 68px;flex-wrap: nowrap;gap: 12px;padding-inline: 16px;}
@@ -567,6 +567,30 @@ button:hover{transform: none;}}
 .site-footer .footer-mark{width: 42px;height: 42px;margin: 0;grid-column: 1;grid-row: 1;}
 .site-footer .footer-brand-wordmark{grid-column: 2;grid-row: 1;align-self: center;margin: 0;}
 .site-footer > div:first-child p{grid-column: 2;grid-row: 2;font-size: .88rem;margin: 0;}
+/* Search stays anchored to its field; only the suggestions scroll. */
+.header-search-toggle,.header-search-close,.header-search-submit{display: none;}
+.header-search-panel{position: absolute;top: calc(100% + 7px);right: 0;z-index: 60;display: flex;flex-direction: column;width: max(100%,320px);max-width: calc(100vw - 24px);max-height: min(62vh,520px);overflow: hidden;box-sizing: border-box;padding: 6px;border: 1px solid var(--border);border-radius: 12px;background: var(--panel);box-shadow: 0 12px 30px #15283d24;}
+.header-search-panel[hidden]{display: none;}
+.header-search-panel > .header-search-results{position: static;inset: auto;flex: 1 1 auto;min-width: 0;min-height: 0;width: 100%;max-height: none;margin: 0;padding: 0;border: 0;border-radius: 0;box-shadow: none;overscroll-behavior: contain;-webkit-overflow-scrolling: touch;}
+.header-search-panel > .header-search-all{display: flex;align-items: center;flex: 0 0 auto;min-height: 44px;margin: 4px 0 0;padding: 8px 11px;border-top: 1px solid var(--border);border-radius: 0 0 7px 7px;font-size: .88rem;line-height: 1.35;}
+@media (max-width: 760px){/* The plain form remains usable if JavaScript has not loaded. */
+.search-active .mobile-dock{display: none;}
+.site-header:not(.search-ready){height: auto;flex-wrap: wrap;padding-block: 10px;}
+.site-header:not(.search-ready) .header-search{position: relative;order: 6;flex: 1 0 100%;width: 100%;height: auto;}
+.site-header:not(.search-ready) .header-search input,.site-header.search-ready .header-search.search-open input{width: 100%;min-width: 0;height: 44px;min-height: 44px;padding: 0 10px 0 36px !important;border: 1px solid var(--border);border-radius: 10px;color: var(--ink);caret-color: var(--ink);background: var(--panel) !important;font-size: 16px;box-shadow: none;}
+.site-header:not(.search-ready) .header-search input::placeholder,.site-header.search-ready .header-search.search-open input::placeholder{color: var(--muted);}
+.site-header.search-ready .header-search-toggle{display: inline-flex;align-items: center;justify-content: center;order: 3;flex: 0 0 44px;width: 44px;min-width: 44px;height: 44px;min-height: 44px;padding: 11px;border: 1px solid var(--border);border-radius: 12px;color: var(--ink);background: var(--panel);}
+.header-search-toggle > .icon{width: 20px;height: 20px;}
+.site-header.search-ready .header-search{display: none;}
+.site-header.search-ready .header-search.search-open{position: absolute;top: calc(100% + 6px);left: 12px;right: 12px;z-index: 60;display: flex;align-items: center;gap: 6px;flex: none;width: auto;min-width: 0;height: auto;margin: 0;padding: 8px;border: 1px solid var(--border);border-radius: 14px;background: var(--panel);box-shadow: 0 8px 24px #15283d24;}
+.site-header.search-ready .header-search.search-open label{display: block;flex: 1 1 auto;width: auto;min-width: 0;margin: 0;}
+.site-header.search-ready .header-search.search-open > .icon{left: 19px;top: 30px;width: 18px;height: 18px;transform: translateY(-50%);pointer-events: none;}
+.site-header.search-ready .header-search-submit,.site-header.search-ready .header-search-close{display: inline-flex;align-items: center;justify-content: center;flex: 0 0 auto;min-width: 44px;height: 44px;min-height: 44px;margin: 0;padding: 0 10px;border-radius: 10px;font-size: .88rem;}
+.site-header.search-ready .header-search-close{width: 44px;padding: 0;border: 1px solid var(--border);color: var(--ink);background: var(--panel);font-size: 26px;line-height: 1;}
+.site-header.search-ready .header-search-panel{top: calc(100% + 6px);left: 0;right: 0;width: auto;max-width: none;max-height: var(--search-results-height,min(40dvh,320px));padding: 4px;}
+.site-header .header-search-panel .header-search-results a{display: flex;align-items: center;min-height: 44px;margin: 0;padding: 9px 10px !important;}
+.site-header .header-search-panel .header-search-results a strong{display: -webkit-box;overflow: hidden;-webkit-box-orient: vertical;-webkit-line-clamp: 2;font-size: .9rem;}
+.site-header .header-search-panel .header-search-results a small{display: none;}}
 /* Holiday guides: isolated editorial surfaces; global navigation stays unchanged. */
 .hd2{--hd-accent:#09674d;--hd-tint:#eff6f2;color:#172336;max-width:1280px;margin:0 auto;font-family:Lato,sans-serif;font-size:1.0625rem;line-height:1.65}
 .hd2 *{box-sizing:border-box;min-width:0}
@@ -711,14 +735,15 @@ button:hover{transform: none;}}
 
 
 
-<script type="module" src="/assets/holiday-phase2.js?v=0cb6808075af"></script>
+<script type="module" src="/assets/holiday-phase2.js?v=cd07f2e424fb"></script>
 
 
 
 
 
-<script type="module" src="/assets/common.js?v=0cb6808075af"></script>
-<script type="module" src="/assets/cookie-notice.js?v=0cb6808075af"></script>
+<script type="module" src="/assets/common.js?v=cd07f2e424fb"></script>
+<script type="module" src="/assets/cookie-notice.js?v=cd07f2e424fb"></script>
+
 
 
 
@@ -747,7 +772,7 @@ button:hover{transform: none;}}
 <section class="hd-sources" id="saltiniai"><h2>Šaltiniai ir rengimo principai</h2><p>Šį gidą parengė Kalendorius365. Datos apskaičiuotos pagal svetainės kalendorių, dienos statusas sutikrintas su nurodytais teisės aktais, o istorinis kontekstas – su muziejų ir kitų institucijų šaltiniais. Konkrečių renginių programas ir vėlesnius teisės aktų pakeitimus tikrinkite pirminiuose šaltiniuose.</p><ul><li><a href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr">Lietuvos Respublikos darbo kodekso 123 straipsnis „Švenčių dienos“ (suvestinė redakcija 2026-06-07–2026-10-31)</a> <span>Lietuvos Respublikos Seimas, Teisės aktų registras</span></li><li><a href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz">Lietuvos Respublikos darbo kodeksas, suvestinė redakcija nuo 2027-01-01 (numatyta įsigalioti)</a> <span>Lietuvos Respublikos Seimas, Teisės aktų registras</span></li><li><a href="https://www.e-tar.lt/rs/actualedition/f6d686707e7011e6b969d7ae07280e89/BXFztiXOjw/">Lietuvos Respublikos darbo kodeksas, suvestinė redakcija 2026-11-01–2026-12-31 (numatyta įsigalioti)</a> <span>Teisės aktų registras</span></li><li><a href="https://www.e-tar.lt/rs/actualedition/TAR.D570962773F8/PSOYUzcVVr/">Lietuvos Respublikos atmintinų dienų įstatymas, suvestinė redakcija nuo 2026-07-04</a> <span>Teisės aktų registras</span></li><li><a href="https://www.ilo.org/resource/statement/may-day-international-day-labour-day-labour-and-solidarity">May Day: International Workers’ Day</a> <span>International Labour Organization</span></li></ul><p class="hd-help">Turinys ir kalba peržiūrėti pasitelkiant dirbtinį intelektą. Šaltinių ir vaizdo licencijos patikra: <time datetime="2026-10-17">2026-10-17</time>. Nuotraukos kilmė bei naudojimo sąlygos nurodytos prie vaizdo.</p></section>
 <nav class="hd-related" aria-label="Susijusios dienos"><h2>Pažinkite susijusias datas</h2><div><a href="/sventes/motinos-diena/"><span>Motinos diena Lietuvoje</span><svg class="hd-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/holiday-phase2/controls.svg?v=48e940bcf0f9#arrow"></use></svg></a><a href="/sventes/tevo-diena/"><span>Tėvo diena Lietuvoje</span><svg class="hd-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/holiday-phase2/controls.svg?v=48e940bcf0f9#arrow"></use></svg></a></div></nav></article><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Tarptautinė darbo diena", "description": "Tarptautinė darbo diena minima gegužės 1 d. Sužinokite apie jos reikšmę, šventės statusą Lietuvoje ir savaitės dienas 2027–2029 m.", "inLanguage": "lt-LT", "mainEntityOfPage": "https://kalendorius365.lt/sventes/tarptautine-darbo-diena/", "dateModified": "2026-10-17", "author": {"@type": "Organization", "name": "Kalendorius365", "url": "https://kalendorius365.lt/"}, "publisher": {"@type": "Organization", "name": "Kalendorius365", "url": "https://kalendorius365.lt/"}, "image": {"@type": "ImageObject", "url": "https://kalendorius365.lt/assets/visuals/holiday-mayday-siauliai-1200.webp", "caption": "Gegužės 1-osios demonstracija Šiauliuose, 1946 m. Archyvinėje nuotraukoje matomi sovietmečio propagandos atributai; tai nėra dabartinio minėjimo vaizdas.", "creditText": "Stasys Ivanauskas", "license": "https://creativecommons.org/licenses/by/4.0", "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:May_Day_demonstration_in_%C5%A0iauliai,_1946.jpeg", "isBasedOn": "https://commons.wikimedia.org/wiki/File:May_Day_demonstration_in_%C5%A0iauliai,_1946.jpeg"}}</script>
 </main>
-<footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg?v=217add829468" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/paieska/">Paieška</a> · <a href="/apie/">Apie svetainę ir šaltinius</a> · <a href="/privatumas/">Privatumas ir duomenys</a> · <strong><a class="footer-contact-link" href="/kontaktai/">Kontaktai</a></strong></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>
+<footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg?v=217add829468" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/paieska/">Paieška</a> · <a href="/apie/">Apie svetainę ir šaltinius</a> · <a href="/privatumas/">Privatumas ir duomenys</a> · <a class="footer-contact-link" href="/kontaktai/">Kontaktai</a></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>
 <nav class="mobile-dock" aria-label="Greitasis meniu"><a href="/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-calendar"></use></svg><span>Kalendorius</span></a><a href="/menesiai/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-download"></use></svg><span>Atsisiųsti</span></a><a href="/sventes/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-holidays"></use></svg><span>Šventės</span></a><a href="/irankiai/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-tools"></use></svg><span>Įrankiai</span></a></nav>
 <aside id="cookie-notice" class="cookie-notice" role="region" aria-labelledby="cookie-notice-title" aria-describedby="cookie-notice-copy" aria-live="polite" hidden>
   <div class="cookie-notice__copy-wrap">
