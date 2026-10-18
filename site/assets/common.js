@@ -110,6 +110,7 @@ const allSearchResults = document.createElement("a");
 let searchEnginePromise;
 let activeSearchOption = -1;
 let searchRequest = 0;
+let searchTimer;
 function closeNavigation() {
   const toggle = document.querySelector("#nav-toggle");
   toggle?.setAttribute("aria-expanded", "false");
@@ -144,6 +145,7 @@ function setSearchOpen(open, focus = false, returnFocus = false) {
   if (open && focus) siteSearch.focus({ preventScroll: true });
   if (!open) {
     searchRequest++;
+    clearTimeout(searchTimer);
     searchPanel.setAttribute("hidden", "");
     siteSearchResults.setAttribute("hidden", "");
     siteSearch.setAttribute("aria-expanded", "false");
@@ -204,10 +206,6 @@ if (siteSearch && siteSearchResults && headerSearch) {
     }
   });
   searchClose.addEventListener("click", () => setSearchOpen(false, false, true));
-  siteSearch.addEventListener("focus", () => {
-    setSearchOpen(true);
-    if (siteSearch.value.trim()) renderSearchResults();
-  });
   headerSearch.addEventListener("focusout", (event) => {
     // Safari may blur the input before firing a tapped result's click event.
     // A null destination is handled by the outside-click listener instead.
@@ -216,9 +214,9 @@ if (siteSearch && siteSearchResults && headerSearch) {
   });
   headerSearch.addEventListener("submit", () => setSearchOpen(false));
 
-  async function renderSearchResults() {
+  async function runSearch() {
     const request = ++searchRequest;
-    const query = siteSearch.value.trim();
+    const query = siteSearch.value.trim().slice(0, 500);
     siteSearchResults.replaceChildren();
     siteSearchStatus.textContent = "";
     activeSearchOption = -1;
@@ -240,8 +238,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
       searchEnginePromise ||= import("./search-engine.js");
       const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
       const index = await loadSearchIndex();
-      if (request !== searchRequest ||
-          normalizeSearchText(siteSearch.value.trim()) !== normalizeSearchText(query)) return;
+      if (request !== searchRequest || normalizeSearchText(siteSearch.value.trim().slice(0, 500)) !== normalizeSearchText(query)) return;
       const matches = searchPages(index, query);
       const items = matches.slice(0, mobileSearch.matches ? 4 : 7);
       siteSearchResults.replaceChildren();
@@ -284,13 +281,36 @@ if (siteSearch && siteSearchResults && headerSearch) {
       message.className = "header-search-empty";
       message.textContent = "Paieška nepasiekiama. Bandykite dar kartą arba atverkite puslapių sąrašą.";
       siteSearchResults.append(message);
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.textContent = "Bandyti dar kartą";
+      retry.addEventListener("click", () => runSearch());
+      const catalog = document.createElement("a");
+      catalog.href = `/paieska/?q=${encodeURIComponent(query)}`;
+      catalog.textContent = "Atverti paieškos puslapį →";
+      siteSearchResults.append(retry, catalog);
       siteSearchStatus.textContent = message.textContent;
       updateSearchGeometry();
     }
-  }
-  siteSearch.addEventListener("input", () => {
+  };
+  const scheduleSearch = () => {
     setSearchOpen(true);
-    return renderSearchResults();
+    // Invalidate pending work immediately; both successful and failed old requests
+    // must be ignored while the visitor types or dismisses the dropdown.
+    searchRequest++;
+    clearTimeout(searchTimer);
+    searchPanel.hidden = true;
+    siteSearchResults.hidden = true;
+    siteSearch.setAttribute("aria-expanded", "false");
+    siteSearch.removeAttribute("aria-activedescendant");
+    activeSearchOption = -1;
+    searchTimer = setTimeout(runSearch, 120);
+  };
+  siteSearch.addEventListener("input", scheduleSearch);
+  siteSearch.addEventListener("focus", () => {
+    const needsResults = siteSearchResults.hidden;
+    setSearchOpen(true);
+    if (siteSearch.value.trim() && needsResults) scheduleSearch();
   });
   window.addEventListener("resize", updateSearchGeometry);
   window.visualViewport?.addEventListener("resize", updateSearchGeometry);
@@ -303,8 +323,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
       setSearchOpen(false, false, true);
       return;
     }
-    const options = siteSearchResults.hidden ? [] :
-      [...siteSearchResults.querySelectorAll('[role="option"]')];
+    const options = siteSearchResults.hidden ? [] : [...siteSearchResults.querySelectorAll('[role="option"]')];
     if (!options.length) return;
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
       event.preventDefault();
@@ -325,7 +344,9 @@ if (siteSearch && siteSearchResults && headerSearch) {
   });
 }
 document.addEventListener("click", (event) => {
-  if (!event.target.closest(".header-search, .header-search-toggle")) setSearchOpen(false);
+  // The retry button detaches before bubbling; keep the original click path.
+  const path = event.composedPath();
+  if (!path.includes(headerSearch) && !path.includes(searchToggle)) setSearchOpen(false);
 });
 document.querySelector("#nav-toggle")?.addEventListener("click", (e) => {
   const b = e.currentTarget,
@@ -334,6 +355,8 @@ document.querySelector("#nav-toggle")?.addEventListener("click", (e) => {
   setSearchOpen(false);
   b.setAttribute("aria-expanded", String(open));
   b.setAttribute("aria-label", open ? "Užverti meniu" : "Atverti meniu");
+  if (!nav) return;
+  if (open) setSearchOpen(false);
   nav.classList.toggle("nav-open", open);
   if (open) nav.querySelector("a[href]")?.focus({ preventScroll: true });
   else b.focus({ preventScroll: true });

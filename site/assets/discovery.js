@@ -1,3 +1,4 @@
+import { holidays as statutoryHolidays, today as currentVilniusDate } from "./calendar.js";
 import { solarFor } from "./phase-5-6-8-core.js";
 import { foldIcsLine, recommendAnnualWeekendPlan, shiftIsoDate, thirdFridayOfMay } from "./discovery-core.js";
 
@@ -91,7 +92,7 @@ function setupCommemorations() {
     }
     for (const month of months) month.hidden = !$$("[data-commemoration]:not([hidden])", month).length;
     const visible = cards.filter((card) => !card.hidden).map((card) => ({ card, date: eventDate(card) })).sort((a, b) => a.date.localeCompare(b.date));
-    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+    const today = currentVilniusDate();
     const upcoming = visible.filter((item) => item.date >= today);
     const next = upcoming[0] || visible[0];
     if (next) {
@@ -464,8 +465,10 @@ function setupWeekendPlanner() {
   const yearButtons = $$("[data-weekend-year]");
   let selectedYear = "2027";
   let currentPlan = null;
+  let holidayDates = null;
 
   function render() {
+    if (!holidayDates) return;
     const leaveDays = Number(budget.value);
     output.replaceChildren();
     const section = sections.find((item) => item.dataset.weekendSection === selectedYear);
@@ -477,7 +480,7 @@ function setupWeekendPlanner() {
       monthLink: $("a", event)?.href || "",
       baseDays: Math.round((utcDate(event.dataset.end) - utcDate(event.dataset.start)) / 86400000) + 1,
     }));
-    currentPlan = recommendAnnualWeekendPlan(events, leaveDays, selectedYear);
+    currentPlan = recommendAnnualWeekendPlan(events, leaveDays, selectedYear, { holidayDates });
     exportButton.disabled = currentPlan.recommendations.length === 0;
     total.textContent = currentPlan.extraDays
       ? "+" + countWord(currentPlan.extraDays, "papildoma poilsio diena", "papildomos poilsio dienos", "papildomų poilsio dienų")
@@ -554,7 +557,39 @@ function setupWeekendPlanner() {
     const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Kalendorius365//LT", "CALSCALE:GREGORIAN", ...events, "END:VCALENDAR"];
     downloadText("ilgieji-savaitgaliai-" + selectedYear + ".ics", lines.map(foldIcsLine).join("\r\n") + "\r\n", "text/calendar;charset=utf-8");
   });
-  render();
+  const setReady = ready => {
+    budget.disabled = !ready;
+    for (const button of yearButtons) button.disabled = !ready;
+    if (!ready) exportButton.disabled = true;
+  };
+  async function loadHolidays() {
+    setReady(false);
+    caption.textContent = "Ruošiamas poilsio planas…";
+    $("#weekend-plan-retry")?.remove();
+    try {
+      const response = await fetch("/assets/data/calendar.json");
+      if (!response.ok) throw new Error("Švenčių duomenų nepavyko gauti.");
+      const data = await response.json();
+      if (!Array.isArray(data.holidays)) throw new Error("Švenčių duomenys netinkami.");
+      const years = new Set(yearButtons.flatMap(button => {
+        const year = Number(button.dataset.weekendYear);
+        return [year - 1, year, year + 1];
+      }));
+      holidayDates = new Set([...years].flatMap(year => statutoryHolidays(year, data).map(day => day.date)));
+      setReady(true);
+      render();
+    } catch {
+      caption.textContent = "Švenčių duomenų nepavyko įkelti. Bandykite dar kartą.";
+      const retry = document.createElement("button");
+      retry.id = "weekend-plan-retry";
+      retry.type = "button";
+      retry.className = "button button--subtle";
+      retry.textContent = "Bandyti dar kartą";
+      retry.addEventListener("click", loadHolidays);
+      caption.after(retry);
+    }
+  }
+  loadHolidays();
 }
 
 function setupDiscovery() {

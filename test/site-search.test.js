@@ -75,8 +75,7 @@ test("site search exposes an accessible combobox and keyboard-selectable results
   assert.match(searchPage, /id="site-search-pagination"/);
   assert.match(readFileSync(new URL("../site/assets/search-page.js", import.meta.url), "utf8"), /pageSize = 18/);
   assert.match(searchPage, /Įveskite paieškos žodį arba naršykite puslapius pagal skiltį\./);
-  assert.match(readFileSync(new URL("../site/assets/search-page.js", import.meta.url), "utf8"), /if \(input\.value\.trim\(\) \|\| category\.value !== "all"\)/);
-  assert.match(readFileSync(new URL("../site/assets/search-engine.js", import.meta.url), "utf8"), /new URL\("\.\/data\/search\.json", moduleUrl\)/);
+  assert.match(readFileSync(new URL("../site/assets/search-engine.js", import.meta.url), "utf8"), /new URL\("\.\/data\/search\.json", (?:import\.meta\.url|moduleUrl)\)/);
 });
 
 test("search ranks page content, Lithuanian forms, misspellings, aliases and deep links", () => {

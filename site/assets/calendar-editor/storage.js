@@ -102,6 +102,12 @@ async function readPortable(blob) {
   if (files.size !== photos.size + 1 || total > 96 * 1024 * 1024) throw Error(LT.projekte_yra_pertekliniu_arba_per_dideliu_failu);
   return { state, photos };
 }
+function photoBlob(record, type) {
+  if (record?.blob instanceof Blob) return record.blob;
+  if (record?.bytes instanceof ArrayBuffer || ArrayBuffer.isView(record?.bytes))
+    return new Blob([record.bytes], { type: type || record.type || "application/octet-stream" });
+  throw Error(LT.truksta_nuotraukos_originalo);
+}
 let dbPromise;
 function db() {
   if (!globalThis.indexedDB) return Promise.reject(Error(LT.sioje_narsykleje_saugykla_neprieinama));
@@ -125,14 +131,17 @@ async function list() {
 async function save(s) {
   validate(s);
   if (s.photos.reduce((n, p) => n + (originals.get(p.id)?.size || 0), 0) > 96 * 1024 * 1024) throw Error(LT.bendra_nuotrauku_riba_96_mb);
-  let d = await db(), photos = s.photos.map((p) => ({ id: p.id, blob: originals.get(p.id) }));
-  if (photos.some((p) => !p.blob)) throw Error(LT.truksta_nuotraukos_originalo);
+  let photos = await Promise.all(s.photos.map(async (p) => {
+    let blob = originals.get(p.id);
+    if (!blob) throw Error(LT.truksta_nuotraukos_originalo);
+    return { id: p.id, type: p.type, bytes: await blob.arrayBuffer() };
+  })), d = await db();
   return new Promise((resolve, reject) => {
     let tx = d.transaction("projects", "readwrite");
-    tx.objectStore("projects").put({ id: s.id, name: s.name, state: clone(s), photos, updated: Date.now() });
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
     tx.onabort = () => reject(tx.error || Error(LT.saugojimas_nutrauktas));
+    tx.objectStore("projects").put({ id: s.id, name: s.name, state: clone(s), photos, updated: Date.now() });
   });
 }
 async function remove(id) {
@@ -154,6 +163,7 @@ export {
   crc,
   duplicate,
   list,
+  photoBlob,
   portable,
   readPortable,
   remove,

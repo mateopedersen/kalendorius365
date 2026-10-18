@@ -1,0 +1,36 @@
+{
+  "baseline_commit": "a35fef0c2def78d88dd328a4765e50de7e2b781f",
+  "baseline_deployment": "b80422eb-e3fa-485d-8258-cca3912daf74",
+  "asset_revision": "673b7c135b10a817906e",
+  "release_mode": true,
+  "executed_before_push": {
+    "node_tests": {
+      "passed": 275,
+      "failed": 0,
+      "skipped": 0
+    },
+    "static_audit": {
+      "canonical_pages": 185,
+      "html_pages": 186,
+      "local_targets": 24318,
+      "broken": 0
+    },
+    "public_baseline": {
+      "canonical_http_pages": 185,
+      "distinct_extra_internal_targets": 3871,
+      "browser_route_header_search_actions": 185
+    },
+    "independent_search_browser_checks": 23
+  },
+  "pending_at_commit": [
+    "CI Playwright Chromium, Firefox, WebKit and mobile-emulation projects",
+    "production deployment and purge",
+    "post-deployment actual live verification"
+  ],
+  "physical_devices_tested": false,
+  "personal_storage_clear_operations": 0,
+  "ci_discovered_and_fixed": [
+    "Retry-button focus scheduled a dropdown rerender before Enter; visible results now survive refocus",
+    "Hidden old dropdown options could be selected during debounce; keyboard handler now ignores hidden results"
+  ]
+}

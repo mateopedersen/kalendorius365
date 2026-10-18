@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {holidays,addDays,weekday,difference} from '../site/assets/calendar.js';
 import { solarFor } from '../site/assets/phase-5-6-8-core.js';
 import { foldIcsLine, recommendAnnualWeekendPlan, recommendExtendedWeekend, thirdFridayOfMay } from '../site/assets/discovery-core.js';
 const read = path => fs.readFileSync(new URL('../'+path, import.meta.url),'utf8');
@@ -16,7 +17,7 @@ test('the three focused pages are indexed and have independent titles, content a
  for(const slug of ['atmintinos-dienos','dienos-ilgumas','ilgieji-savaitgaliai']){
   const html=read('public/'+slug+'/index.html');
   assert.equal((html.match(/<h1\b/g)||[]).length,1);
-  assert.ok(html.includes('discovery.js?v='));
+  assert.match(html, /\/assets\/releases\/[a-f0-9]{20}\/discovery\.js/);
   assert.ok(search.some(item=>item.url==='/'+slug+'/'));
  }
  for(const type of ['holidays','sun','planning']){
@@ -94,4 +95,57 @@ test('annual weekend plan allocates one leave budget without overlapping dates o
  }
  assert.deepEqual(recommendAnnualWeekendPlan(events,0,'2027'),{recommendations:[],leaveDays:0,extraDays:0,restDays:0});
  assert.throws(()=>recommendAnnualWeekendPlan(events,6,'2027'));
+});
+
+test('every displayed long weekend matches statutory free days including the previous December',()=>{
+ const html=read('site/ilgieji-savaitgaliai/index.html');const data=JSON.parse(read('data/calendar.json'));
+ for(const year of [2027,2028,2029]){
+  const section=html.match(new RegExp('<section id="savaitgaliai-'+year+'"[\\s\\S]*?</section>'))[0];
+  const actual=[...section.matchAll(/data-start="([^"]+)" data-end="([^"]+)"/g)].map(m=>m.slice(1));
+  const days=new Set([year-1,year,year+1].flatMap(y=>holidays(y,data).map(h=>h.date)));
+  const free=d=>weekday(d)>=5||days.has(d);const first=year+'-01-01',last=year+'-12-31',expected=[];
+  for(let day=addDays(first,-7);day<=addDays(last,7);day=addDays(day,1)){
+   if(!free(day)||free(addDays(day,-1)))continue;let end=day;while(free(addDays(end,1)))end=addDays(end,1);
+   if(difference(day,end)>=2&&end>=first&&day<=last)expected.push([day,end]);day=end;
+  }
+  assert.deepEqual(actual,expected,String(year));
+ }
+});
+
+test('extended breaks include adjacent statutory holidays without spending annual leave on them',()=>{
+ const data=JSON.parse(read('data/calendar.json'));
+ const holidayDates=new Set([2026,2027,2028,2029,2030].flatMap(year=>holidays(year,data).map(day=>day.date)));
+ const plan=recommendExtendedWeekend('2028-12-23','2028-12-26',3,{holidayDates});
+ assert.equal(plan.start,'2028-12-23');assert.equal(plan.end,'2029-01-01');assert.equal(plan.daysOff,10);
+ assert.deepEqual(plan.leaveDates,['2028-12-27','2028-12-28','2028-12-29']);
+ const newYear=recommendAnnualWeekendPlan([{start:'2027-01-01',end:'2027-01-03'}],1,'2027',{holidayDates});
+ assert.equal(newYear.leaveDays,1);assert.equal(newYear.recommendations[0].end,'2027-01-04');assert.deepEqual(newYear.recommendations[0].leaveDates,['2027-01-04']);
+ const fullWeek=recommendAnnualWeekendPlan([{start:'2027-03-27',end:'2027-03-29'}],5,'2027',{holidayDates});
+ assert.equal(fullWeek.leaveDays,5);assert.equal(fullWeek.recommendations[0].daysOff,10);
+});
+
+test('annual allocation matches an independent exhaustive date-window search around overlapping year-end breaks',()=>{
+ const data=JSON.parse(read('data/calendar.json'));
+ const holidayDates=new Set([2027,2028,2029].flatMap(year=>holidays(year,data).map(day=>day.date)));
+ const events=[{start:'2028-12-23',end:'2028-12-26'},{start:'2028-12-30',end:'2029-01-01'}];
+ const candidates=events.map(event=>{
+  const windows=[];const baseDays=difference(event.start,event.end)+1;
+  for(let before=0;before<=12;before++)for(let after=0;after<=12;after++){
+   const start=addDays(event.start,-before),end=addDays(event.end,after),leave=[];
+   for(let day=start;day<=end;day=addDays(day,1))if(weekday(day)<5&&!holidayDates.has(day))leave.push(day);
+   if(!leave.length||leave.length>5||leave.some(day=>!day.startsWith('2028-')))continue;
+   windows.push({start,end,leave:leave.length,extra:difference(start,end)+1-baseDays});
+  }
+  return windows;
+ });
+ for(let budget=0;budget<=5;budget++){
+  let best={extra:0,leave:0};
+  for(const a of [null,...candidates[0]])for(const b of [null,...candidates[1]]){
+   if(a&&b&&a.end>=b.start)continue;
+   const leave=(a?.leave||0)+(b?.leave||0),extra=(a?.extra||0)+(b?.extra||0);
+   if(leave<=budget&&(extra>best.extra||(extra===best.extra&&leave<best.leave)))best={extra,leave};
+  }
+  const actual=recommendAnnualWeekendPlan(events,budget,'2028',{holidayDates});
+  assert.deepEqual({extra:actual.extraDays,leave:actual.leaveDays},best,'budget '+budget);
+ }
 });

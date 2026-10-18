@@ -9,6 +9,7 @@ const publicPages = [2027, 2028, 2029].map((year) =>
 const template = readFileSync(new URL("../site/_layouts/default.html", import.meta.url), "utf8");
 
 test("2027 workday page renders the annual planner and accessible date checker", () => {
+  assert.match(page, /^workdays: true$/m, "the workday-specific responsive styles must be activated by the shared layout");
   assert.match(page, /<h2 id="workyear-hero-title">Metų ritmas, vienu žvilgsniu<\/h2>/);
   assert.equal((page.match(/class="workyear-month"/g) || []).length, 12);
   assert.match(page, /data-days-five="20" data-days-six="25"/);

@@ -4,6 +4,13 @@
 module Phase568Pages
  extend self
  def page(path,title,description,body,module_name=nil)
+  if %w[shift school].include?(module_name)
+   # Native disabled controls cannot accept an edit that asynchronous startup
+   # would overwrite. Keep intentionally disabled buttons (Undo) separate.
+   body=body.gsub(/<(?:input|select|textarea|button)\b[^>]*>/i) do |tag|
+    tag.match?(/\sdisabled(?:\s|=|>)/i) ? tag : tag.sub(/>\z/,' data-tool-pending disabled>')
+   end
+  end
   Pages.page(path,title,description,body,true,nil,false,module_name)
  end
  def links(items)
@@ -13,7 +20,8 @@ module Phase568Pages
   shift=<<~HTML
    <div class="page-heading shift-page-heading"><div><p class="eyebrow">DARBO LAIKO PLANAVIMAS · LIETUVA</p><h1>Pamainų grafiko planuoklis</h1><p class="page-intro">Susidėliokite pamainas, pasitikrinkite mėnesio valandas ir atsisiųskite paruoštą grafiką.</p></div><div class="shift-page-mark" aria-hidden="true"><span>D</span><span>N</span><span>P</span></div></div>
    <section class="panel shift-intro-panel"><div><h2>Nuo pasikartojančio ciklo iki paruošto grafiko</h2><p>Pasirinkite ritmą arba įrašykite savo ciklą. Pakoreguokite pamainų laiką ir laikotarpį – planuoklis parodys kalendorių, apmokamas valandas, poilsio tarpus bei šventines datas.</p></div><p class="shift-privacy-note"><strong>Privatu pagal nutylėjimą</strong><span>Duomenys lieka šiame įrenginyje. Paskyros kurti nereikia.</span></p></section>
-   <form id="shift-planner" class="panel phase-tool" novalidate>
+   <p id="shift-startup-status" class="source-note" role="status" aria-live="polite">Planuoklis įkelia kalendoriaus duomenis. Įvestis taps prieinama užbaigus paruošimą.</p>
+   <form id="shift-planner" class="panel phase-tool" aria-busy="true" inert novalidate>
     <div class="form-row"><label>Ciklo pradžios data<input id="shift-anchor" type="date" required></label><label>Rodomas laikotarpis nuo<input id="shift-from" type="date" required></label><label>Iki (imtinai)<input id="shift-to" type="date" required></label></div>
     <fieldset class="shift-pattern-fieldset"><legend>1. Pasirinkite pamainų ritmą</legend><div id="shift-patterns" class="shift-patterns" role="group" aria-label="Paruošti pamainų ciklai">
      <button class="shift-pattern is-selected" type="button" data-cycle="D,D,P,P" aria-pressed="true"><span class="shift-pattern__mark">2 + 2</span><span><strong>Dvi darbo, dvi poilsio</strong><small>D, D, poilsis, poilsis</small></span></button>

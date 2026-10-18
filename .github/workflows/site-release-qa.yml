@@ -11,6 +11,7 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - 'lib/**'
+      - 'site/_config.yml'
       - 'scripts/**'
       - 'scripts/build.rb'
       - 'scripts/css_route_split.py'
@@ -33,12 +34,12 @@ jobs:
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: '3.12'
-      - name: Install the pinned print validators
-        run: python -m pip install -r requirements-print.txt
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: Install pinned Python release validators after Ruby setup
+        run: python3 -m pip install -r requirements-print.txt
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '24'
@@ -69,6 +70,17 @@ jobs:
       - name: Verify immutable static asset URL versioning
         run: ruby test/static_asset_urls_test.rb
       - name: Audit every canonical page and internal link
-        run: python3 scripts/audit_site.py
+        run: python3 scripts/audit_site.py --release
       - name: Run calendar, search, planner and solar tests
         run: node --test test/*.test.js
+      - name: Save the verified generated release for integration
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: generated-site-${{ github.sha }}
+          path: |
+            public/
+            site/assets/data/search.json
+            docs/lunar/qa/pages-language-semantics.json
+            docs/2027-monthly-holidays/QA-GATE-1.json
+          if-no-files-found: error
+          retention-days: 1

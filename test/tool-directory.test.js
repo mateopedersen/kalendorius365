@@ -30,7 +30,7 @@ test("release HTML keeps all 20 inventory routes and the separate seasons link",
   assert.ok(generatedDirectory.includes('href="/metu-laikai/"'));
   assert.ok(existsSync(new URL("../public/metu-laikai/index.html", import.meta.url)));
   assert.match(generatedDirectory, /data-tool-filter="templates"/);
-  assert.match(generatedDirectory, /tool-directory\.js\?v=/);
+  assert.match(generatedDirectory, /\/assets\/releases\/[0-9a-f]{20}\/tool-directory\.js/);
   assert.match(directory, /tool_directory: true/);
   assert.doesNotMatch(generator, /page\('irankiai'/);
 });

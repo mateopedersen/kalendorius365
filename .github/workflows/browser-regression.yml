@@ -1,0 +1,61 @@
+name: Browser regression
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Optional deployed URL for live QA
+        required: false
+        type: string
+concurrency:
+  group: browser-regression-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  browser:
+    name: browser (${{ matrix.project }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      K365_BROWSER_WORKERS: ${{ contains(matrix.project, 'webkit') && '1' || '2' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium, firefox, webkit, android-chromium, iphone-webkit]
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+      - name: Install pinned Python validators used by the release build
+        run: python3 -m pip install -r requirements-print.txt
+      - name: Install pinned module compiler
+        run: npm ci --ignore-scripts
+      - name: Build the current source before browser testing
+        run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
+      - name: Install pinned development-only browser test runner
+        run: npm install --no-save --ignore-scripts @playwright/test@1.56.1
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Verify search recovery, planner startup and enlarged text before the complete route round
+        env:
+          K365_BASE_URL: ${{ inputs.base_url }}
+        run: >-
+          npx playwright test test/browser/components.spec.mjs test/browser/data-preservation.spec.mjs test/browser/accessibility.spec.mjs --project=${{ matrix.project }} -g "annual lunar ICS|lunar selection keeps|header search recovers|shift input waits|school startup|shift planner generates|school lesson|school homework|shift presets|enlarged text at 320px: /$"
+      - name: Exercise every public route and distinct search journeys
+        env:
+          K365_BASE_URL: ${{ inputs.base_url }}
+        run: npx playwright test --project=${{ matrix.project }}
+      - name: Save executed browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: browser-regression-evidence-${{ matrix.project }}-attempt-${{ github.run_attempt }}
+          path: |
+            test-results/
+            playwright-report/

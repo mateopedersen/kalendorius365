@@ -33,7 +33,7 @@ def check(path):
             assert '<link rel="canonical" href="https://kalendorius365.lt'+path+'">'in text
             assert 'noindex'not in (item['x_robots_tag']or'')
             assert 'CC BY-SA 4.0'in text and 'cc-by-sa-4.0.json'in text
-            assert 'namedays.js?v='in text
+            assert re.search(r'/assets/releases/[0-9a-f]{20}/namedays\.js[\"\']',text)
             item['indexable']=True
         else:
             expected=(ROOT/'public'/path.lstrip('/')).read_bytes()

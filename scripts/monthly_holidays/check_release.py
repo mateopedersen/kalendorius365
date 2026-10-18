@@ -108,6 +108,13 @@ def reviewed_blank_calendar_updates(root, baseline, manifest):
  if len(updates)!=104:raise ValueError('blank calendar transition must authorize exactly 104 print and preview files')
  return updates
 
+def preservation_accounting(preserved, intentional_updates, retired_asset_count, changed, baseline):
+ """Count only reviewed file paths present in the frozen asset inventory."""
+ intentional_assets=sum(1 for item in intentional_updates if item.get('path') in baseline)
+ expected=len(baseline)-int('site/assets/data/search.json' in baseline)
+ return {'accounted':preserved+intentional_assets+retired_asset_count+len(changed),
+         'expected':expected,'intentional_baseline_assets':intentional_assets}
+
 def verified_screen_thumbnail_updates(root, baseline):
  """Allow only the pinned 192-to-128 screen images; keep print assets frozen."""
  raw=(root/SCREEN_THUMBNAIL_TRANSITION).read_bytes()
@@ -382,9 +389,6 @@ def run():
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'reviewed print preservation: '+str(error))
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
-  if path in ('.github/workflows/site-release-qa.yml','.github/workflows/horoscope-automation.yml'):
-   intentional_updates.append({'path':path,'reason':'Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset','sha256':hashlib.sha256((ROOT/path).read_bytes()).hexdigest()})
-   continue
   p=ROOT/path
   if path in package_updates:
    expected=package_updates[path];package_paths_seen.add(path)
@@ -399,12 +403,18 @@ def run():
    continue
   if path=='site/assets/lunar/lunar.js':
    current=p.read_bytes();updated=b"'/assets/lunar/albedo-web.webp'";previous=b"'/assets/lunar/albedo-web.png'"
-   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'lunar runtime changes only the screen texture URL')
+   check(current.count(updated)==1 and previous not in current,'lunar runtime uses the reviewed screen texture without removing the original PNG')
+   runtime_review_path='docs/qa/lunar-selection-race.json'
+   try:
+    runtime_review_raw=(ROOT/runtime_review_path).read_bytes();runtime_review=json.loads(runtime_review_raw)
+    check(hashlib.sha256(runtime_review_raw).hexdigest()=='9a569fa272b0a1386ac40e620edf2383cd1638d18cc55a3a8d96681d34071b41' and runtime_review['baseline_sha256']==sha and hashlib.sha256(current).hexdigest()==runtime_review['after_sha256'],'lunar runtime retains the reviewed latest-selection race repair')
+   except (OSError,ValueError,KeyError,TypeError) as error:
+    runtime_review=None;check(False,'lunar selection race evidence: '+str(error))
    try:texture_evidence=verified_lunar_screen_texture(ROOT)
    except (OSError,ValueError,KeyError,TypeError,AssertionError)as error:
     texture_evidence=None;check(False,'reviewed high-quality screen texture: '+str(error))
    else:check(True,'reviewed high-quality screen texture, exact alpha, and unchanged print source')
-   if texture_evidence:intentional_updates.append({'path':path,'reason':'Use a reviewed Q95 screen-only WebP with exact alpha and measured >=45 dB composite PSNR; preserve source PNG and full-resolution print texture','verification':texture_evidence})
+   intentional_updates.append({'path':path,'reason':'Preserve the reviewed latest-date selection repair and use the reviewed Q95 screen texture; source PNG and full-resolution print texture remain available','sha256':hashlib.sha256(current).hexdigest(),'review_manifest':runtime_review_path,'texture_verification':texture_evidence})
    continue
   if path in screen_updates:
    intentional_updates.append({'path':path,'reason':'Pinned screen-only thumbnail resize from 192px to 128px; print and SVG originals unchanged','sha256':screen_updates[path],'transition_manifest':SCREEN_THUMBNAIL_TRANSITION})
@@ -426,7 +436,23 @@ def run():
    check(json.loads(p.read_text())==wanted,'planner metadata changes only restore original titles/categories')
    intentional_updates.append({'path':path,'reason':'Complete the existing holiday event prefill; original ids, slugs and date rules preserved','sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
    continue
-  if path==EDITORIAL_REVIEW_PATH and p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest()!=sha:
+  if path in {'.github/workflows/horoscope-automation.yml','.github/workflows/site-release-qa.yml'}:
+   # This release intentionally repairs cache publication and regression gates.
+   # Keep those reviewed build/deployment contracts explicit instead of freezing
+   # workflow bytes to the older monthly-editorial feature snapshot.
+   workflow=p.read_text()
+   check('K365_RELEASE=1 bundle exec ruby scripts/build.rb' in workflow,path+' retains release build')
+   check('python3 scripts/audit_site.py --release' in workflow,path+' audits release indexing and cache graph')
+   check('node --test test/*.test.js' in workflow,path+' runs permanent regression suites')
+   check('git push --force' not in workflow,path+' does not force-push')
+   if path.endswith('horoscope-automation.yml'):
+    check('git add site/_data/horoscope_current.json site/horoskopai site/assets/data/search.json public docs/horoscopes/validation/horoscope-source-qa.json' in workflow,'daily publisher stages the entire content-addressed release')
+    check('main changed during generation; refusing to overwrite concurrent work' in workflow,'daily publisher retains concurrent-main guard')
+    check('git push origin HEAD:refs/heads/main' in workflow,'daily publisher retains existing main-to-Pages integration')
+   else:
+    check('contents: read' in workflow and 'contents: write' not in workflow,'release QA retains read-only permission')
+   intentional_updates.append({'path':path,'reason':'Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates','sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+  elif path==EDITORIAL_REVIEW_PATH and p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest()!=sha:
    try:
     manifest=json.loads((ROOT/EDITORIAL_REVIEW_MANIFEST).read_text())
     valid,evidence=reviewed_editorial_update(p.read_bytes(),sha,manifest)
@@ -435,13 +461,19 @@ def run():
    check(valid,'reviewed holiday editorial preservation: '+str(evidence))
    if valid:intentional_updates.append(evidence)
    else:changed.append(path)
-   continue
-  allowed={sha}
-  if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
-  if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
-  else:preserved+=1
+  else:
+   allowed={sha}
+   if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
+   if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
+   else:preserved+=1
+ # Package imports retire many individual legacy download paths while keeping
+ # their exact scope in the pinned package evidence. Count those retired paths
+ # alongside the one manifest record that summarizes the transition.
+ retired_package_assets=sum(int(item.get('retired_asset_paths',0)) for item in intentional_updates)
+ accounting=preservation_accounting(preserved,intentional_updates,retired_package_assets,changed,base['assets'])
+ check(accounting['accounted']==accounting['expected'],'every frozen asset must be accounted for by a byte check or explicit reviewed transition')
  check(not changed,'baseline assets changed: '+str(changed[:20]))
  if current_manifest.get('packageImport'):check(package_paths_seen==set(package_updates),'pinned calendar package transition did not cover every retired file and the manifest')
- report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'intentional_metadata_updates':intentional_updates,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':date.today().isoformat(),'limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
+ report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'baseline_asset_accounting':accounting,'intentional_metadata_updates':intentional_updates,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':date.today().isoformat(),'limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
  out=ROOT/'docs/2027-monthly-holidays/QA-GATE-1.json';out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'status':report['status'],'pages':len(results),'preserved_assets':preserved,'failures':failures},ensure_ascii=False));assert not failures
 if __name__=='__main__':run()

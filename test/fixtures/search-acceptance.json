@@ -1,0 +1,492 @@
+[
+  {
+    "id": "S001",
+    "query": "2027 kalendorius",
+    "expected": "/2027/"
+  },
+  {
+    "id": "S002",
+    "query": "2028 metų kalendorius",
+    "expected": "/2028/"
+  },
+  {
+    "id": "S003",
+    "query": "2029 m. sausio kalendorius",
+    "expected": "/2029/sausis/"
+  },
+  {
+    "id": "S004",
+    "query": "2027 sausis",
+    "expected": "/2027/sausis/"
+  },
+  {
+    "id": "S005",
+    "query": "sausio 2027",
+    "expected": "/2027/sausis/"
+  },
+  {
+    "id": "S006",
+    "query": "2028 vasaris",
+    "expected": "/2028/vasaris/"
+  },
+  {
+    "id": "S007",
+    "query": "2029 gegužė",
+    "expected": "/2029/geguze/"
+  },
+  {
+    "id": "S008",
+    "query": "2029 geguze",
+    "expected": "/2029/geguze/"
+  },
+  {
+    "id": "S009",
+    "query": "rugsejis 2027",
+    "expected": "/2027/rugsejis/"
+  },
+  {
+    "id": "S010",
+    "query": "rugsėjis 2027",
+    "expected": "/2027/rugsejis/"
+  },
+  {
+    "id": "S011",
+    "query": "tuščias kalendorius",
+    "expected": "/tuscias-kalendorius/"
+  },
+  {
+    "id": "S012",
+    "query": "spausdinamas kalendorius",
+    "expected": "/2027/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S013",
+    "query": "PDF kalendorius 2027",
+    "expected": "/2027/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S014",
+    "query": "kalendorius atsisiųsti",
+    "expected": "/2027/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S015",
+    "query": "savaitinis planuoklis",
+    "expected": "/savaitiniai-planuokliai/"
+  },
+  {
+    "id": "S016",
+    "query": "pamokų tvarkaraštis",
+    "expected": "/pamoku-tvarkarastis/"
+  },
+  {
+    "id": "S017",
+    "query": "darbo dienos 2028",
+    "expected": "/darbo-dienos/2028/"
+  },
+  {
+    "id": "S018",
+    "query": "pamainų grafikas",
+    "expected": "/pamainu-grafikas/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S019",
+    "query": "mokinių atostogos",
+    "expected": "/mokiniu-atostogos/"
+  },
+  {
+    "id": "S020",
+    "query": "atostogų planavimas",
+    "expected": "/atostogu-planavimas/"
+  },
+  {
+    "id": "S021",
+    "query": "datos skaičiuoklė",
+    "expected": "/datos-skaiciuokle/"
+  },
+  {
+    "id": "S022",
+    "query": "Velykos",
+    "expected": "/sventes/velykos/"
+  },
+  {
+    "id": "S023",
+    "query": "Velykos 2027",
+    "expected": "/sventes/velykos/"
+  },
+  {
+    "id": "S024",
+    "query": "Joninės",
+    "expected": "/sventes/jonines/"
+  },
+  {
+    "id": "S025",
+    "query": "Rasos",
+    "expected": "/sventes/jonines/"
+  },
+  {
+    "id": "S026",
+    "query": "Kūčios",
+    "expected": "/sventes/kucios/"
+  },
+  {
+    "id": "S027",
+    "query": "Kovo 11",
+    "expected": "/sventes/kovo-11-oji/"
+  },
+  {
+    "id": "S028",
+    "query": "Vasario 16",
+    "expected": "/sventes/vasario-16-oji/"
+  },
+  {
+    "id": "S029",
+    "query": "Boso diena",
+    "expected": "/sventes/boso-diena/"
+  },
+  {
+    "id": "S030",
+    "query": "Užgavėnės",
+    "expected": "/sventes/uzgavenes/"
+  },
+  {
+    "id": "S031",
+    "query": "Motinos diena",
+    "expected": "/sventes/motinos-diena/"
+  },
+  {
+    "id": "S032",
+    "query": "2027 gruodžio šventės",
+    "expected": "/sventes/2027/gruodis/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S033",
+    "query": "2027 m. sausio šventės",
+    "expected": "/sventes/2027/sausis/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S034",
+    "query": "šventinės nedarbo dienos",
+    "expected": "/sventes/2027/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S035",
+    "query": "vardadieniai šiandien",
+    "expected": "/vardadieniai/"
+  },
+  {
+    "id": "S036",
+    "query": "rytojaus vardadieniai",
+    "expected": "/vardadieniai/"
+  },
+  {
+    "id": "S037",
+    "query": "vardadieniai sausį",
+    "expected": "/vardadieniai/sausis/"
+  },
+  {
+    "id": "S038",
+    "query": "Jonas vardadienis",
+    "expected": "/vardadieniai/"
+  },
+  {
+    "id": "S039",
+    "query": "Ona",
+    "expected": "/vardadieniai/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S040",
+    "query": "Živilė",
+    "expected": "/vardadieniai/"
+  },
+  {
+    "id": "S041",
+    "query": "zivile",
+    "expected": "/vardadieniai/"
+  },
+  {
+    "id": "S042",
+    "query": "29 vasario vardadieniai",
+    "expected": "/vardadieniai/vasaris/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S043",
+    "query": "saulėtekis Vilniuje",
+    "expected": "/saule/"
+  },
+  {
+    "id": "S044",
+    "query": "sauletekis",
+    "expected": "/saule/"
+  },
+  {
+    "id": "S045",
+    "query": "saulėlydis Kaune",
+    "expected": "/saule/"
+  },
+  {
+    "id": "S046",
+    "query": "saulėlydis šiandien",
+    "expected": "/saule/"
+  },
+  {
+    "id": "S047",
+    "query": "Mėnulio kalendorius 2027",
+    "expected": "/menulio-kalendorius/2027/"
+  },
+  {
+    "id": "S048",
+    "query": "menulio fazes",
+    "expected": "/menulio-fazes/"
+  },
+  {
+    "id": "S049",
+    "query": "pilnatis",
+    "expected": "/menulio-fazes/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S050",
+    "query": "jaunatis",
+    "expected": "/menulio-fazes/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S051",
+    "query": "2028 mėnulio kalendorius",
+    "expected": "/menulio-kalendorius/2028/"
+  },
+  {
+    "id": "S052",
+    "query": "2029 liepos Mėnulis",
+    "expected": "/menulio-kalendorius/2029/liepa/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S053",
+    "query": "pavasario lygiadienis",
+    "expected": "/pavasario-lygiadienis/"
+  },
+  {
+    "id": "S054",
+    "query": "vasaros saulėgrįža",
+    "expected": "/vasaros-saulegriza/"
+  },
+  {
+    "id": "S055",
+    "query": "rudens lygiadienis",
+    "expected": "/rudens-lygiadienis/"
+  },
+  {
+    "id": "S056",
+    "query": "žiemos saulėgrįža",
+    "expected": "/ziemos-saulegriza/"
+  },
+  {
+    "id": "S057",
+    "query": "metų laikai",
+    "expected": "/metu-laikai/"
+  },
+  {
+    "id": "S058",
+    "query": "zodiakas",
+    "expected": "/zodiakas/"
+  },
+  {
+    "id": "S059",
+    "query": "koks mano zodiako ženklas",
+    "expected": "/zodiakas/"
+  },
+  {
+    "id": "S060",
+    "query": "Žuvys",
+    "expected": "/horoskopai/zuvys/"
+  },
+  {
+    "id": "S061",
+    "query": "zuvys",
+    "expected": "/horoskopai/zuvys/"
+  },
+  {
+    "id": "S062",
+    "query": "Avino dienos horoskopas",
+    "expected": "/horoskopai/avinas/"
+  },
+  {
+    "id": "S063",
+    "query": "Skorpionas",
+    "expected": "/horoskopai/skorpionas/"
+  },
+  {
+    "id": "S064",
+    "query": "horoskopai",
+    "expected": "/horoskopai/"
+  },
+  {
+    "id": "S065",
+    "query": "asdcxz_no_such_term",
+    "expected": "NO_RESULTS + HELP"
+  },
+  {
+    "id": "S067",
+    "query": "Kalendorius 2027 m.",
+    "expected": "/2027/"
+  },
+  {
+    "id": "S068",
+    "query": "2029 birželis",
+    "expected": "/2029/birzelis/"
+  },
+  {
+    "id": "S069",
+    "query": "2028 lapkritis",
+    "expected": "/2028/lapkritis/"
+  },
+  {
+    "id": "S070",
+    "query": "2027 kovo mėnuo",
+    "expected": "/2027/kovas/"
+  },
+  {
+    "id": "S071",
+    "query": "2028 m. rugsėjis",
+    "expected": "/2028/rugsejis/"
+  },
+  {
+    "id": "S072",
+    "query": "2029 metų kalendorius",
+    "expected": "/2029/"
+  },
+  {
+    "id": "S073",
+    "query": "2027 metinis kalendorius",
+    "expected": "/2027/"
+  },
+  {
+    "id": "S074",
+    "query": "mokyklos pamokų tvarkaraštis",
+    "expected": "/pamoku-tvarkarastis/"
+  },
+  {
+    "id": "S075",
+    "query": "mėnesio planuoklis",
+    "expected": "/kurti-kalendoriu/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S076",
+    "query": "2028 darbo dienų skaičius",
+    "expected": "/darbo-dienos/2028/"
+  },
+  {
+    "id": "S077",
+    "query": "Kalėdos Lietuvoje",
+    "expected": "/sventes/kaledos/"
+  },
+  {
+    "id": "S078",
+    "query": "Visų šventųjų diena",
+    "expected": "/sventes/visu-sventuju-diena/"
+  },
+  {
+    "id": "S079",
+    "query": "Rugsėjo 1-oji",
+    "expected": "/sventes/mokslo-ir-ziniu-diena/"
+  },
+  {
+    "id": "S080",
+    "query": "Tėvo diena",
+    "expected": "/sventes/tevo-diena/"
+  },
+  {
+    "id": "S081",
+    "query": "Žolinė",
+    "expected": "/sventes/zoline/"
+  },
+  {
+    "id": "S082",
+    "query": "šiandien vardadieniai",
+    "expected": "/vardadieniai/"
+  },
+  {
+    "id": "S083",
+    "query": "vasario vardadieniai",
+    "expected": "/vardadieniai/vasaris/"
+  },
+  {
+    "id": "S084",
+    "query": "2028 pilnatis",
+    "expected": "/menulio-kalendorius/2028/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S085",
+    "query": "Saulės tekėjimas Klaipėdoje",
+    "expected": "/saule/"
+  },
+  {
+    "id": "S086",
+    "query": "žiemos saulėgrįža 2028",
+    "expected": "/ziemos-saulegriza/"
+  },
+  {
+    "id": "S087",
+    "query": "astrologija",
+    "expected": "/zodiakas/"
+  },
+  {
+    "id": "S088",
+    "query": "horoskopai šiandien",
+    "expected": "/horoskopai/"
+  },
+  {
+    "id": "S089",
+    "query": "Svarstyklių horoskopas",
+    "expected": "/horoskopai/svarstykles/"
+  },
+  {
+    "id": "S090",
+    "query": "zodiac",
+    "expected": "/zodiakas/"
+  },
+  {
+    "id": "S091",
+    "query": "moon calendar 2027",
+    "expected": "/menulio-kalendorius/2027/"
+  },
+  {
+    "id": "S092",
+    "query": "printable calendar 2029",
+    "expected": "/2029/"
+  },
+  {
+    "id": "S093",
+    "query": "Jonines",
+    "expected": "/sventes/jonines/"
+  },
+  {
+    "id": "S094",
+    "query": "motinos diena 2028",
+    "expected": "/sventes/motinos-diena/"
+  },
+  {
+    "id": "S095",
+    "query": "kalendorius pdf",
+    "expected": "/2027/balandis/",
+    "review": "Relevant existing public destination selected from observed content; exact rank may vary within top five."
+  },
+  {
+    "id": "S096",
+    "query": "404_nonexistent_search_example",
+    "expected": "NO_RESULTS + HELP"
+  }
+]

@@ -7,6 +7,7 @@ import hashlib
 import json
 import sys
 import unittest
+from unittest.mock import patch
 import urllib.error
 import urllib.parse
 from dataclasses import replace
@@ -23,6 +24,7 @@ from fetch_daily import SourceError, SourceResult, fetch_all, validate_response
 from publish import build_data
 from validate_source import validate_batch
 from validate_horoscopes import validate as validate_release_data
+import verify_live
 
 
 DAY = date(2026, 10, 16)
@@ -271,6 +273,30 @@ class EditorialAndPublishTests(unittest.TestCase):
                 self.assertIn("Saulės ir Jupiterio aspektas", row["overview"])
                 self.assertNotIn("akcentas: dėmesį", row["overview"])
 
+
+
+class ProductionVerifierTests(unittest.TestCase):
+    """Exercise the real verifier against committed built pages, without HTTP."""
+    def test_all_rendered_horoscope_pages_match_production_requirements(self):
+        target = json.loads(verify_live.DATA_PATH.read_text(encoding="utf-8"))["local_date"]
+        expected = verify_live.expected_page_content()
+        class Response:
+            status = 200
+            def __init__(self, body): self.body = body
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def read(self, size): return self.body[:size]
+        def opener(request, timeout):
+            route = urllib.parse.urlsplit(request.full_url).path
+            return Response((HERE.parents[1] / "public" / route.lstrip("/") / "index.html").read_bytes())
+        with patch.object(verify_live, "urlopen", opener):
+            for route in verify_live.ROUTES:
+                with self.subTest(route=route):
+                    result = verify_live.audit_url(route, target, *expected[route])
+                    self.assertTrue(result["complete_content"])
+                    self.assertTrue(result["compact_update_label"])
+            with self.assertRaisesRegex(ValueError, "H1 text mismatch"):
+                verify_live.audit_url("/horoskopai/", target, "An obsolete title", expected["/horoskopai/"][1])
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

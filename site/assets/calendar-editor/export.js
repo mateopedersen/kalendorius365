@@ -20,11 +20,15 @@ async function pdfLibrary() {
   await loader;
   return window.jspdf.jsPDF;
 }
+const fontUrls = {
+  Lato: { Regular: "/assets/fonts/Lato-Regular.ttf", Bold: "/assets/fonts/Lato-Bold.ttf" },
+  Inter: { Regular: "/assets/fonts/Inter-Regular.ttf", Bold: "/assets/fonts/Inter-Bold.ttf" },
+};
 const fontCache = /* @__PURE__ */ new Map();
 async function fonts(family) {
   if (!fontCache.has(family)) {
     fontCache.set(family, Promise.all(["Regular", "Bold"].map(async (weight) => {
-      let response = await fetch(`/assets/fonts/${family}-${weight}.ttf`);
+      let response = await fetch(fontUrls[family][weight]);
       if (!response.ok) throw Error(LT.nepavyko_ikelti_lietuvisko_srifto);
       let bytes = new Uint8Array(await response.arrayBuffer());
       let result = "";

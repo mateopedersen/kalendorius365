@@ -29,6 +29,8 @@ async function init(){
     const stored=JSON.parse(localStorage.getItem(favoriteKey)||'[]');
     favorites=new Set(sanitizeFavoriteNames(stored,index,favoriteLimit));
   } catch { favoriteStorageAvailable=false; }
+  const requestedQuery=new URLSearchParams(location.search).get('q');
+  if(requestedQuery)$('#nd-query').value=requestedQuery.slice(0,80);
   function clearPrepared(){if(preparedURL)URL.revokeObjectURL(preparedURL);preparedURL='';$('#nd-file-link').hidden=true;$('#nd-file-link').removeAttribute('href');}
   const feedback=(message,error=false)=>{const e=$('#nd-feedback');e.textContent=message;e.setAttribute('role',error?'alert':'status');};
   function updateFavoriteStatus(){

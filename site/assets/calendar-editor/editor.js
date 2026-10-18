@@ -251,8 +251,13 @@ async function loadProject(record) {
   savedRevision = 0;
   state = clone(record.state);
   validate(state);
+  let projectPhotos = record.photos.map((photo) => {
+    let metadata = state.photos.find((p) => p.id === photo.id);
+    if (!metadata) throw Error(LT.truksta_nuotraukos_originalo);
+    return [photo.id, storage.photoBlob(photo, metadata.type)];
+  });
   for (let id of originals.keys()) forget(id);
-  for (let p of record.photos) originals.set(p.id, p.blob);
+  for (let [id, blob] of projectPhotos) originals.set(id, blob);
   undo = [];
   redo = [];
   index = 0;
