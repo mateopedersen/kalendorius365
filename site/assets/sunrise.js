@@ -154,7 +154,7 @@ function setupSun() {
       const momentLabels = { civilStart: "Aušra", sunrise: "Saulėtekis", noon: "Vidurdienis", sunset: "Saulėlydis", civilEnd: "Vakaras" };
       for (const [key, id] of [["civilStart", "#sun-civil-start"], ["sunrise", "#sun-rise-time"], ["noon", "#sun-noon-time"], ["sunset", "#sun-set-time"], ["civilEnd", "#sun-civil-end"]]) {
         const node = $(id); node.textContent = clock(times[key]);
-        const button = root.querySelector(`[data-sun-moment="${key}"]`); button.setAttribute("aria-label", `${momentLabels[key]}, ${clock(times[key])} Lietuvos laiku`); button.querySelector("time").dateTime = new Date(times[key]).toISOString();
+        const button = root.querySelector(`[data-sun-moment="${key}"]`); button.setAttribute("aria-label", `${momentLabels[key]} ${clock(times[key])} Lietuvos laiku`); button.querySelector("time").dateTime = new Date(times[key]).toISOString();
         button.onclick = () => { slider.value = String(Math.round((times[key] - times.civilStart) / (times.civilEnd - times.civilStart) * 1000)); slider.dispatchEvent(new Event("input")); };
       }
       const setInstant = buildScene(date, city, times), updateFromSlider = () => setInstant(times.civilStart + (times.civilEnd - times.civilStart) * Number(slider.value) / 1000);

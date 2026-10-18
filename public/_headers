@@ -2,10 +2,12 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs='; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs=' 'sha256-7XjXEIEi6ZTxkej37JThBvkvOtnvPOveDHVxCHNljFY='; connect-src 'self'; upgrade-insecure-requests
 /assets/app.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/ascendant-calculator.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/ascendant-loader.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/calendar.js
   Cache-Control: public, max-age=31536000, immutable
@@ -33,6 +35,14 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/holiday-phase2.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/homepage-bundle.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/homepage.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/horoscope-detail.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/horoscope-hub.css
+  Cache-Control: public, max-age=31536000, immutable
 /assets/horoscope.css
   Cache-Control: public, max-age=31536000, immutable
 /assets/icons.js
@@ -46,6 +56,8 @@
 /assets/lunar/astronomy-engine.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/lunar-engine.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/lunar/lunar-loader.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/lunar.js
   Cache-Control: public, max-age=31536000, immutable
@@ -87,73 +99,83 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/zodiac-engine.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/zodiac-guide.css
+  Cache-Control: public, max-age=31536000, immutable
 /assets/zodiac.css
   Cache-Control: public, max-age=31536000, immutable
 /assets/zodiac.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Inter-Regular.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Black-latin-lt.woff2
+  Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/Lato-Black.woff2
   Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Bold-latin-lt.woff2
+  Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/Lato-Bold.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Regular-latin-lt.woff2
   Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/Lato-Regular.woff2
   Cache-Control: public, max-age=31536000, immutable
 /assets/data/astronomy/cities.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/astronomy/moon-phases-utc.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/astronomy/seasons-utc.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/calendar.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/holiday-editorial.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/home-holiday-data.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/lt/work-rest-rules.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/lunar/assets.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/lunar/calendar.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/namedays/calendar.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/namedays/cc-by-sa-4.0.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/search.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/seasons.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/data/zodiac.json
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-/assets/fonts/Inter-Regular.woff2
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/favicon-2026.svg
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/favicon.svg
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/visuals/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/previews/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/previews-small/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/holiday-ics/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /downloads/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/seasons-ics/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
   Content-Type: text/calendar; charset=utf-8
 /assets/namedays-ics/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
   Content-Type: text/calendar; charset=utf-8
 /assets/holiday-guides-ics/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/days/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/albedo-web.png
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
+/assets/lunar/albedo-web.webp
+  Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/albedo.png
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/menulio-kalendorius-1200x630.png
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000, immutable

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { searchPages } from "../site/assets/search-engine.js";
+import { normalizeSearchText, searchPages } from "../site/assets/search-engine.js";
 
 const html = readFileSync(new URL("../site/_layouts/default.html", import.meta.url), "utf8");
 const homepage = readFileSync(new URL("../site/index.html", import.meta.url), "utf8");
@@ -36,6 +36,10 @@ test("global search covers pages and direct homepage functions in the built outp
   assert.deepEqual([...contentRoutes].sort(), [...pageRoutes].sort(), "every canonical HTML page should be searchable");
   assert.ok(sourceIndex.every((item) => item.description && item.category));
   assert.ok(sourceIndex.filter((item) => !item.action).every((item) => item.headings && item.content));
+  for (const item of sourceIndex.filter((entry) => !entry.action)) {
+    const terms = normalizeSearchText(item.content).split(/\s+/).filter(Boolean);
+    assert.equal(terms.length, new Set(terms).size, `search vocabulary should be deduplicated for ${item.url}`);
+  }
   for (const path of ["/2027/", "/2028/", "/2029/geguze/", "/sventes/velykos/", "/saule/", "/horoskopai/"]) {
     assert.ok(sourceIndex.some((item) => item.url === path), `missing page ${path}`);
   }
@@ -70,6 +74,9 @@ test("site search exposes an accessible combobox and keyboard-selectable results
   assert.match(searchPage, /id="site-search-page-query" name="q"/);
   assert.match(searchPage, /id="site-search-pagination"/);
   assert.match(readFileSync(new URL("../site/assets/search-page.js", import.meta.url), "utf8"), /pageSize = 18/);
+  assert.match(searchPage, /Įveskite paieškos žodį arba naršykite puslapius pagal skiltį\./);
+  assert.match(readFileSync(new URL("../site/assets/search-page.js", import.meta.url), "utf8"), /if \(input\.value\.trim\(\) \|\| category\.value !== "all"\)/);
+  assert.match(readFileSync(new URL("../site/assets/search-engine.js", import.meta.url), "utf8"), /new URL\("\.\/data\/search\.json", moduleUrl\)/);
 });
 
 test("search ranks page content, Lithuanian forms, misspellings, aliases and deep links", () => {

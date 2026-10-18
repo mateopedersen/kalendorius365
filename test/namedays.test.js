@@ -44,6 +44,14 @@ test('all alphabet and month combinations preserve dates and native initials',()
  assert.deepEqual(searchNames(index,{query:'<img onerror=alert(1)>'}),[]);
  assert.deepEqual(searchNames(index,{query:'zzzzzzzzzzzzzz'}),[]);
 });
+test('cached search normalization follows a changed name without altering date records',()=>{
+ const row={name:'Jonas',dates:['06-24']},items=[row];
+ assert.equal(searchNames(items,{query:'jonas'})[0].name,'Jonas');
+ row.name='Živilė';
+ assert.deepEqual(searchNames(items,{query:'jonas'}),[]);
+ assert.deepEqual(searchNames(items,{query:'zivile'})[0],row);
+ assert.deepEqual(row.dates,['06-24']);
+});
 test('all name/date occurrences make valid one-off and recurring schema-safe events and round-trip ICS',()=>{
  for(const row of records){const date=validOccurrence(row.date,2028);
   for(const recurring of [false,true]){

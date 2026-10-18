@@ -1,7 +1,7 @@
 import {lunarState,noonInVilnius,nextPhase,lunarAge,countdown,localMoment,phaseICS,PHASES} from './lunar-engine.js';
 
 const scope=document.querySelector('.lunar-app');
-const texture=new Image();texture.src='/assets/lunar/albedo-web.png';
+const texture=new Image();texture.src='/assets/lunar/albedo-web.webp';
 const textureReady=texture.decode();
 const geometry=new Map();
 function renderMoon(canvas,state) {

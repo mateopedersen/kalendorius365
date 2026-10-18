@@ -1,0 +1,35 @@
+[
+  {
+    "source": "site/assets/visuals/weather-320.webp",
+    "source_sha256": "24cfc14b76d0b4f50b0349ae8e1877498c0e8fa2bc1ea291c09bc6e9ec1deea4",
+    "source_retained": true,
+    "target": "site/assets/visuals/weather-320.avif",
+    "width": 320,
+    "height": 180,
+    "source_bytes": 11394,
+    "generated_bytes": 8863,
+    "method": "AVIF quality=60, speed=6; same resolution, unchanged WebP fallback and full 1280px original retained"
+  },
+  {
+    "source": "site/assets/visuals/weather-480.webp",
+    "source_sha256": "06196a5cf732b6132878b723d3791de5d01f7e3ae365d7f0b654b5a7d6d773f4",
+    "source_retained": true,
+    "target": "site/assets/visuals/weather-480.avif",
+    "width": 480,
+    "height": 270,
+    "source_bytes": 19120,
+    "generated_bytes": 15162,
+    "method": "AVIF quality=60, speed=6; same resolution, unchanged WebP fallback and full 1280px original retained"
+  },
+  {
+    "source": "site/assets/visuals/weather-640.webp",
+    "source_sha256": "7adcf39a2d799ec402894eedf49dce7635419fcb1dcebf6ed06ea512fb0f97e1",
+    "source_retained": true,
+    "target": "site/assets/visuals/weather-640.avif",
+    "width": 640,
+    "height": 360,
+    "source_bytes": 45046,
+    "generated_bytes": 26686,
+    "method": "AVIF quality=60, speed=6; same resolution, unchanged WebP fallback and full 1280px original retained"
+  }
+]

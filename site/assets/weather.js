@@ -98,7 +98,7 @@ export async function renderWeather(city) {
             : "cloud";
   document.querySelector(".climate-card").dataset.weather = condition;
   const illustration = document.createElement("img");
-  illustration.src = "/assets/visuals/weather-" + condition + ".svg";
+  illustration.src = `/assets/visuals/weather-${condition}.svg`;
   illustration.width = 84;
   illustration.height = 75;
   illustration.alt = "";

@@ -8,13 +8,20 @@ export function notice(message) {
 
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-  import("./calendar.js").then(({ today, formatDate }) => {
+    // This label needs two formatters, not the calendar calculation module.
+    const currentDay = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit",
+    });
+    const displayDate = new Intl.DateTimeFormat("lt-LT", {
+      timeZone: "UTC", year: "numeric", month: "long", day: "numeric",
+    });
     const refreshUpdateLabels = () => {
-      const currentDate = today();
+      const parts = Object.fromEntries(currentDay.formatToParts(new Date()).map(({type,value}) => [type,value]));
+      const currentDate = `${parts.year}-${parts.month}-${parts.day}`;
       for (const label of horoscopeUpdates) {
         label.textContent = label.dateTime === currentDate
           ? "Šiandien atnaujinta"
-          : `Atnaujinta: ${formatDate(label.dateTime)}`;
+          : `Atnaujinta: ${displayDate.format(new Date(`${label.dateTime}T00:00:00Z`))}`;
       }
     };
     refreshUpdateLabels();
@@ -22,7 +29,6 @@ if (horoscopeUpdates.length) {
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) refreshUpdateLabels();
     });
-  });
 }
 
 // Fetch an internal page only after a clear navigation intent. This keeps
@@ -97,7 +103,7 @@ const siteSearchResults = document.querySelector("#site-search-results");
 const headerSearch = document.querySelector(".header-search");
 const siteSearchStatus = document.querySelector("#site-search-status") || document.createElement("div");
 const mobileSearch = window.matchMedia("(max-width: 760px)");
-const searchToggle = document.createElement("button");
+const searchToggle = document.querySelector(".header-search-toggle") || document.createElement("button");
 const searchClose = document.createElement("button");
 const searchPanel = document.createElement("div");
 const allSearchResults = document.createElement("a");
@@ -149,7 +155,7 @@ function setSearchOpen(open, focus = false, returnFocus = false) {
   if (open) updateSearchGeometry();
 }
 if (siteSearch && siteSearchResults && headerSearch) {
-  searchToggle.type = "button";
+  if (searchToggle.tagName !== "A") searchToggle.type = "button";
   searchToggle.className = "header-search-toggle icon-button";
   searchToggle.setAttribute("aria-label", "Atverti paiešką");
   searchToggle.setAttribute("aria-controls", "site-search");
@@ -186,9 +192,16 @@ if (siteSearch && siteSearchResults && headerSearch) {
   siteSearchStatus.setAttribute("aria-atomic", "true");
   headerSearch.append(siteSearchStatus);
 
-  searchToggle.addEventListener("click", () => {
+  searchToggle.addEventListener("click", (event) => {
+    event.preventDefault();
     const open = !headerSearch.classList.contains("search-open");
     setSearchOpen(open, open);
+  });
+  searchToggle.addEventListener("keydown", (event) => {
+    if (searchToggle.tagName === "A" && event.key === " ") {
+      event.preventDefault();
+      searchToggle.click();
+    }
   });
   searchClose.addEventListener("click", () => setSearchOpen(false, false, true));
   siteSearch.addEventListener("focus", () => {

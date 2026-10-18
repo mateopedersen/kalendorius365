@@ -402,7 +402,7 @@ search_page=<<~HTML
    </nav>
   </div>
   <section class="search-page__results panel" aria-labelledby="site-search-page-heading">
-   <div class="search-page__results-head"><div><span class="eyebrow">Svetainės katalogas</span><h2 id="site-search-page-heading">Visi svetainės puslapiai</h2></div><p id="site-search-page-status" role="status" aria-live="polite" aria-atomic="true">Įkeliama paieškos rodyklė…</p></div>
+   <div class="search-page__results-head"><div><span class="eyebrow">Svetainės katalogas</span><h2 id="site-search-page-heading">Visi svetainės puslapiai</h2></div><p id="site-search-page-status" role="status" aria-live="polite" aria-atomic="true">Įveskite paieškos žodį arba naršykite puslapius pagal skiltį.</p></div>
    <ul id="site-search-page-results" class="search-page__list" tabindex="-1"></ul>
    <nav id="site-search-pagination" class="search-page__pagination" aria-label="Paieškos rezultatų puslapiai"></nav>
   </section>
@@ -480,7 +480,12 @@ search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
  aliases+=' metinis kalendorius metų spausdinamas mėnesio pdf webp' if url.match?(%r{^/20\d\d/})
  body=raw.sub(/\A---\s*\n.*?\n---\s*\n/m,'')
  headings=body.scan(%r{<h[1-4]\b[^>]*>(.*?)</h[1-4]>}im).flatten.map { |chunk|search_plain_text.call(chunk) }.reject(&:empty?).uniq.join(' ')
- content=search_plain_text.call(body)
+ # Search only needs each page's searchable vocabulary, not repeated copies of
+ # its full prose. The client turns this field into a Set of words for ranking,
+ # so keep each normalized term once and avoid downloading redundant text.
+ content=search_plain_text.call(body).downcase.unicode_normalize(:nfd)
+  .gsub(/\p{Mn}/,'').tr('ł','l').gsub('&',' ir ').gsub(/[’'`]/,'')
+  .scan(/[\p{L}\p{N}]+/).uniq.join(' ')
  {'title'=>front['title'].to_s,'url'=>url,'description'=>front['description'].to_s,
   'keywords'=>[path_terms,aliases].join(' ').strip,'headings'=>headings,'content'=>content,
   'category'=>search_category.call(url)}
