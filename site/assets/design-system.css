@@ -1611,16 +1611,20 @@ main.content-main{
 }
 .design-style{
   display: inline-flex;
-  gap: 5px;
+  max-width: 100%;
+  gap: .45rem;
   align-items: center;
+  flex-wrap: wrap;
   font-size: 0.61rem;
+  line-height: 1.4;
   color: var(--muted);
   margin-top: 8px;
 }
 .design-style:before{
   content: "";
-  width: 7px;
-  height: 7px;
+  flex: 0 0 .75rem;
+  width: .75rem;
+  height: .75rem;
   border-radius: 50%;
   background: #3c4350;
 }
