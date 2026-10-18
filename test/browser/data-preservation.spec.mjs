@@ -113,7 +113,7 @@ test('name-day filters, more results, reset and calendar insertion respond',asyn
 });
 
 test('shift presets, view controls and JSON restore retain the chosen cycle',async({page})=>{
- await page.goto('/pamainu-grafikas/');await page.locator('#shift-preset').selectOption('day-rest');await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+ await page.goto('/pamainu-grafikas/');await expect(page.locator('#shift-planner')).toHaveJSProperty('inert',false);await page.locator('#shift-preset').selectOption('day-rest');await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
  for(const view of ['month','week','year','list']){await page.locator('#shift-display').selectOption(view);await expect(page.locator('#shift-display')).toHaveValue(view);}
  await page.locator('#shift-week-filter').selectOption('custom');await expect(page.locator('#shift-custom-days')).toBeVisible();
  await page.locator('#shift-custom-days-list input').first().uncheck();
