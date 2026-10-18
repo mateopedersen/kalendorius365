@@ -1,34 +1,29 @@
-# Calendar editor acceptance evidence — 2026-10-18
+# Calendar editor QA record — 2026-10-18
 
-## Automated checks
+## Confirmed Safari/WebKit defect
 
-- Full Node suite: **200 passed, 0 failed**, including 17 focused editor tests.
-- Editor suite under `Pacific/Honolulu` and `Pacific/Kiritimati`: **17/17 each**.
-- Independent Python datetime/calendar oracle covers every day of 2027–2029, ISO boundaries and Gregorian century cases. Statutory holiday fixtures are independent known dates.
-- Layout tests cover all supported paper sizes/orientations, modes, compact photos and dense events. Archive tests reject invalid CRC, unsafe paths, oversized/unsupported data; a failed IndexedDB transaction must reject.
+Before the fix, a real WebKit browser test imported a photo and failed to save its project in IndexedDB. WebKit rejected the native `Blob` structured-clone record with `UnknownError: Error preparing Blob/File data to be stored in object store`; the unsaved project could not be restored after reload. The underlying code now stores the photo bytes as `ArrayBuffer`, restores both the new byte representation and existing `{ blob }` records, and keeps all records in place. It does not clear localStorage or IndexedDB.
 
-## Actual browser output checks
+The report below distinguishes executed checks from checks that still require the full CI and production rounds. Earlier unverified claims about twelve-photo visual comparisons, printer behavior, image modes and device testing have been removed from this record.
 
-- Twelve original synthetic 3600×2400 photographs, visibly numbered 1–12, were imported, assigned and exported in chronological order.
-- Year PDF: 12 A4 pages, 595.28×841.89 points. First/last pages rendered and visually inspected; all 12 Lithuanian month titles extracted.
-- PDF/WebP ZIP: CRC passed; 24 entries = 12 matching monthly pairs. Each PDF has one A4 page; every WebP is 2480×3508 pixels.
-- Portable project: 12 original photographs and 12 month assignments. All original image SHA256 values match the input files. Two personal records survive import/export.
-- Monthly PDF: embedded TrueType fonts; all Lithuanian lowercase/uppercase test glyphs and heart preserved as extractable text. Long text receives a complete appendix.
-- One-sheet annual PDF: one A4 page, rendered and inspected.
-- EXIF orientation 6: 1200×800 stored image correctly displayed as 800×1200; grayscale/contain PDF rendered and inspected.
-- Photo interior in the February PDF rasterized at 300 PPI vs actual WebP: mean absolute RGB channel differences below 0.84/255. Poppler rounds A4 width to 2481; WebP follows rounded physical target 2480. Shared crop/filter appearance verified visually.
-- Direct print opened the native print dialog and returned the Lithuanian status. The user cancelled the dialog. Physical paper printing is not claimed. Print document contains only fixed-size calendar sections, embedded fonts and 300 PPI images.
+## Executed source checks
 
-## Browser and accessibility checks
+- Full package unit suite: **337 passed, 0 failed** (`node --test test/*.test.js`); output: `outputs/final-merged-node-tests.log`.
+- Release audit: **192 HTML files including 404, 191 canonical pages, 26,288 local targets, 0 broken links**. It also checked indexability, canonical/sitemap parity, metadata/schema, the generated editor route, and its four published fonts. Output: `outputs/final-release-audit.log`.
+- CSS minifier: **2 tests, 14 assertions, 0 failures**.
+- Static asset URL checks: **2 tests, 35 assertions, 0 failures**.
+- Inline and route-specific CSS checks: **14 tests, 0 failures**.
 
-Safari responsive design mode: CSS widths 320, 390, 768 and 1440; screenshots saved outside the repo in the task output folder. At 390, native file upload, keyboard brightness adjustment, photo palette, adding a dated family event and a real PDF download were completed. The tablet native select overflow was corrected and rechecked. Chromium-based in-app browser completed project restoration, import/export, EXIF, unsupported upload, year package and same-day holiday/birthday/vacation flows. Date dialog retains hidden-layer records. Controls have labels and date buttons are keyboard reachable.
+## Executed browser checks — editor regression round 1
 
-These are desktop browser responsive emulations, not physical iOS/Android device tests. No hardware, Lighthouse score, cross-device synchronization or printer color calibration is claimed. RGB exports are for normal home/office printing, without CMYK profiles or bleed.
+Playwright 1.56.1 ran the permanent editor spec against the freshly generated release in four browser profiles: desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation. **12/12 passed** (three editor scenarios in each profile). JSON evidence is in `outputs/final-editor-browser-round1.json`.
 
-## Sources and maintenance
+The scenarios exercised the mobile preview/settings tabs and overflow, leap-day preview, event and note save/restore, preservation of the existing home-calendar note and 12-hour preference, preservation of an unrelated localStorage value, exact photo-byte persistence in IndexedDB across reload, portable ZIP import/export, real PDF download, font loading, and absence of external or mutating requests.
 
-See IMPLEMENTATION.md and the visible static guide for source links, review dates and validity. School dates are restricted to ministry-published 2026–2027; later school years require published source updates. Historical and future statutory dates are projections of current rules, not historical legal certification. Optional ICS/CSV import, account synchronization and public sharing are outside this release.
+The reproduced WebKit Blob failure passed after the ArrayBuffer change. The browser upload used one synthetic PNG created by the browser test; the PDF was generated and checked for its signature and nontrivial size. This run did not inspect a twelve-photo PDF visually or send a document to a physical printer.
 
-## Integrated release verification
+## Scope and remaining verification
 
-The complete generated release includes the editor (not the former generator), scoped CSS/module and all four TrueType fonts. The existing build exclusion for these fonts was removed only for the four required regular/bold Lato/Inter files. The final minified release was opened under its CSP, the 12-photo portable project restored and a real 12-page PDF downloaded. Integrated site audit: 192 HTML files, 191 canonical pages, 25,312 local targets, zero broken links. Cloudflare cache rules remain within its 100-rule limit.
+These are browser emulations, not tests on physical iOS or Android devices. The full 292-case browser suite across five profiles, its independent second round, live-site browser checks, production cache/ETag checks, and Cloudflare purge evidence are not included in this round and must be added only after those steps actually run. Local Firefox is available but hangs on launch in this macOS environment; Firefox coverage must come from the configured CI runner before release acceptance.
+
+School dates are limited to the official 2026–2027 schedule in the dataset. Later dates require an official source update. Statutory rules for historical/future years are projections of current rules, not retrospective legal certification.
