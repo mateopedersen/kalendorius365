@@ -111,24 +111,6 @@ test('incomplete historical module graphs are not re-published as retained relea
  }finally{fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(stash,{recursive:true,force:true});}
 });
 
-test('previous path-versioned calendar editor bundles survive Jekyll cleanup when prior HTML references them',()=>{
- const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-editor-retain-'));
- const stash=fs.mkdtempSync(path.join(os.tmpdir(),'k365-editor-stash-'));
- try{
-  const referenced='a'.repeat(12),unreferenced='b'.repeat(12),current='c'.repeat(12);
-  fs.mkdirSync(path.join(dir,'assets',`calendar-editor-release-${referenced}`),{recursive:true});
-  fs.mkdirSync(path.join(dir,'assets',`calendar-editor-release-${unreferenced}`),{recursive:true});
-  fs.writeFileSync(path.join(dir,'assets',`calendar-editor-release-${referenced}`,'editor.js'),'// referenced prior bundle');
-  fs.writeFileSync(path.join(dir,'assets',`calendar-editor-release-${unreferenced}`,'editor.js'),'// unreferenced prior bundle');
-  fs.writeFileSync(path.join(dir,'index.html'),`<script src="/assets/calendar-editor-release-${referenced}/editor.js"></script>`);
-  const source=`dir,stash,current=ARGV; previous=AssetRelease.stash_previous_editor_releases(dir,stash,limit:1); Dir.glob(File.join(dir,'assets','calendar-editor-release-*')).each { |path| FileUtils.rm_rf(path) }; AssetRelease.restore_previous_editor_releases(dir,stash,previous,current:current)`;
-  const result=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e',source,dir,stash,current],{encoding:'utf8'});
-  assert.equal(result.status,0,result.stderr);
-  assert.ok(fs.existsSync(path.join(dir,'assets',`calendar-editor-release-${referenced}`,'editor.js')),'retain the complete bundle referenced by an already-open page');
-  assert.equal(fs.existsSync(path.join(dir,'assets',`calendar-editor-release-${unreferenced}`,'editor.js')),false,'do not spend retention capacity on an unreferenced bundle');
- }finally{fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(stash,{recursive:true,force:true});}
-});
-
 test('unchanged clean rebuilds retain two previous revisions and a fourth release prunes only the oldest',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-stable-retain-'));
  const stash=fs.mkdtempSync(path.join(os.tmpdir(),'k365-stable-stash-'));

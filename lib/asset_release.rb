@@ -88,49 +88,6 @@ module AssetRelease
     end
   end
 
-  # Keep complete sibling editor bundles referenced by pages from the prior
-  # deployment. They predate release-manifest and are fetched lazily by open
-  # tabs after deployment or an edge-cache purge.
-  def stash_previous_editor_releases(public_dir, stash_dir, limit: RETAIN_RELEASES - 1)
-    assets = File.join(public_dir, 'assets')
-    directories = Dir.glob(File.join(assets, 'calendar-editor-release-*')).select do |path|
-      File.directory?(path) && File.basename(path).match?(/\Acalendar-editor-release-[0-9a-f]{12}\z/) &&
-        complete_module_tree?(path, public_dir)
-    end
-    referenced = Hash.new(0)
-    Dir.glob(File.join(public_dir, '**/*.html')).each do |page|
-      File.read(page).scan(%r{/assets/(calendar-editor-release-[0-9a-f]{12})/}).flatten.each do |name|
-        referenced[name] += 1
-      end
-    end
-    selected = directories.sort_by do |path|
-      name = File.basename(path)
-      [-referenced[name], -File.mtime(path).to_f, name]
-    end.first([Integer(limit), 0].max)
-    selected.each do |source|
-      name = File.basename(source)
-      FileUtils.cp_r(source, File.join(stash_dir, name))
-    end
-    selected.map { |path| File.basename(path).delete_prefix('calendar-editor-release-') }
-  end
-
-  def restore_previous_editor_releases(public_dir, stash_dir, previous, current:)
-    restored = []
-    Array(previous).grep(/\A[0-9a-f]{12}\z/).each do |version|
-      next if version == current
-
-      name = "calendar-editor-release-#{version}"
-      source = File.join(stash_dir, name)
-      destination = File.join(public_dir, 'assets', name)
-      next unless File.directory?(source)
-      next if File.directory?(destination)
-
-      FileUtils.cp_r(source, destination)
-      restored << version
-    end
-    restored
-  end
-
   def rewrite_references(content, urls)
     # Only known, generated files are changed. Download URLs, routes, API paths,
     # fragment IDs, unknown strings and user-generated data remain untouched.

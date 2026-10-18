@@ -71,9 +71,9 @@ test('calendar views and period navigation update actual state',async({page})=>{
 
 test('date calculator handles leap-day difference, inclusive endpoints and ISO week',async({page})=>{
  await page.goto('/datos-skaiciuokle/');const f=page.locator('#calculator');
- await f.locator('[name=start]').fill('2028-02-28');await f.locator('[name=end]').fill('2028-03-01');await f.locator('[name=offset]').fill('1');await f.locator('button').click();
+ await f.locator('[name=start]').fill('2028-02-28');await f.locator('[name=end]').fill('2028-03-01');await f.locator('[name=offset]').fill('1');await f.locator('button[type="submit"]').click();
  await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('2');
- await f.locator('[name=inclusive]').check();await f.locator('button').click();await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('3');
+ await f.locator('[name=inclusive]').check();await f.locator('button[type="submit"]').click();await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('3');
  await page.locator('#iso-date').fill('2028-01-01');await page.locator('#iso-date').press('Tab');await expect(page.locator('#iso-result')).toContainText('52');
 });
 
@@ -115,12 +115,19 @@ test('workweek selector changes visible table and CSV exports real content',asyn
  const result=await downloadBytes(page,()=>page.locator('#work-csv').click());expect(result.file.suggestedFilename()).toMatch(/\.csv$/);expect(result.file.suggestedFilename()).toContain('2028');expect(result.bytes.length).toBeGreaterThan(100);
 });
 
-test('printable template selector stays inside the desktop viewport and remains selectable',async({page})=>{
- await page.setViewportSize({width:1280,height:900});await page.goto('/tuscias-kalendorius/');
- const select=page.locator('#design-picker');await expect(select).toBeVisible();
- const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,controlRight:document.querySelector('#design-picker').getBoundingClientRect().right,panelRight:document.querySelector('.download-panel').getBoundingClientRect().right}));
- expect(layout.scroll,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);expect(layout.controlRight).toBeLessThanOrEqual(layout.panelRight);
- await select.selectOption('tuscias-03');await expect(select).toHaveValue('tuscias-03');
+test('blank-calendar gallery filters on mobile, changes 5/6-row downloads and exports valid PDF',async({page})=>{
+ await page.setViewportSize({width:320,height:812});await page.goto('/tuscias-kalendorius/');
+ const select=page.locator('#dizainas-tuscias-01-5-eilutes [data-blank-rows]');await expect(select).toBeVisible();
+ await expect(select).toHaveValue('tuscias-01-5-eilutes');
+ await select.selectOption('tuscias-01-6-eilutes');await expect(select).toHaveValue('tuscias-01-6-eilutes');
+ await expect(page.locator('#selected-preview')).toHaveAttribute('src',/tuscias-01-6-eilutes\.webp/);
+ await expect(page.locator('#preview-format')).toContainText('6 eilutės');
+ const download=page.locator('#selected-pdf');await expect(download).toHaveAttribute('download','tuscias-01-6-eilutes.pdf');await expect(download).toHaveAttribute('href',/tuscias-01-6-eilutes\.pdf/);
+ const school=page.locator('[data-design-filter="school"]');await school.click();await expect(school).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('[data-blank-section="month"]')).toBeHidden();await expect(page.locator('[data-blank-section="school"]')).toBeVisible();
+ await page.locator('[data-design-filter="all"]').click();await expect(page.locator('[data-blank-section="month"]')).toBeVisible();
+ const geometry=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));expect(geometry.scroll,JSON.stringify(geometry)).toBeLessThanOrEqual(geometry.viewport+1);
+ const pdf=await downloadBytes(page,()=>download.click());expect(pdf.bytes.subarray(0,5).toString()).toBe('%PDF-');
 });
 
 test('calendar builder renders leap month and print template picker downloads valid PDF',async({page})=>{
