@@ -17,6 +17,7 @@ on:
       - 'scripts/pages.rb'
       - 'scripts/audit_site.py'
       - 'site/**'
+      # Generated pages inline route CSS, so changes to published output require release QA too.
       - 'public/**'
       - 'test/**'
 
