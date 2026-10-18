@@ -17,6 +17,8 @@ jobs:
     name: browser (${{ matrix.project }})
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    env:
+      K365_BROWSER_WORKERS: ${{ contains(matrix.project, 'webkit') && '1' || '2' }}
     strategy:
       fail-fast: false
       matrix:
@@ -48,7 +50,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: browser-regression-evidence-${{ matrix.project }}
+          name: browser-regression-evidence-${{ matrix.project }}-attempt-${{ github.run_attempt }}
           path: |
             test-results/
             playwright-report/

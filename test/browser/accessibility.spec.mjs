@@ -6,6 +6,8 @@ for(const width of[320,390])for(const route of routes)test(`enlarged text at ${w
  await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
  await page.setViewportSize({width,height:844});await page.goto(route);
  await page.addStyleTag({content:'html {font-size:200% !important}'});
+ // Measure the enlarged layout after its actual font faces have settled.
+ await page.evaluate(()=>document.fonts.ready);
  const input=await openHeaderSearch(page);await input.fill('2029 gegužė');
  const options=page.locator('#site-search-results [role=option]');
  await expect(options.first()).toHaveAttribute('href','/2029/geguze/');
