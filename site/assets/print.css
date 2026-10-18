@@ -25,7 +25,7 @@
     color: #111 !important;
   }
   body > :not(main):not(.lunar-print-output),
-  #main :is(nav, aside, dialog, form, .breadcrumbs, .page-line,
+  #main :is(nav, aside, dialog, form, iframe, embed, object, .breadcrumbs, .page-line,
     .home-discovery, .horoscope-teaser, .mobile-dock, .cookie-notice,
     .resource-aside, .builder-aside, .download-panel, .month-sidebar,
     .toolbar-group, .form-actions, .design-actions, .design-filters,
@@ -40,6 +40,8 @@
     width: auto !important;
     max-width: none !important;
     min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -118,8 +120,8 @@
     text-align: center;
   }
   #main #period-title { margin: 0; font-size: 18pt; }
-  #main #calendar { overflow: visible !important; }
-  #main .calendar-panel .month-table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+  #main #calendar { min-height: 0 !important; overflow: visible !important; }
+  #main .calendar-panel .month-table { width: 100%; height: auto !important; table-layout: fixed; border-collapse: collapse; }
   #main .calendar-panel .month-table :is(td, th) { border: .25mm solid #aaa; }
   #main .calendar-panel .month-table tbody td { height: auto !important; padding: 0 !important; }
   #main .calendar-panel .day-cell {
@@ -149,6 +151,7 @@
     display: grid !important;
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 4mm !important;
+    padding: 0 !important;
   }
   #main [data-print-root="annual"]::before {
     content: attr(data-print-title);
@@ -166,7 +169,15 @@
     line-height: 1.2 !important;
   }
   #main .year-app-grid .day-cell { min-height: 0 !important; padding: 0 !important; }
-  #main .year-app-grid .day-number { font-size: 7pt !important; }
+  #main .year-app-grid .day-number {
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+    font-size: 7pt !important;
+  }
 
   #main [data-print-root="art"] {
     display: block !important;
