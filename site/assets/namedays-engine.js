@@ -4,6 +4,15 @@ export { today as vilniusToday };
 export const ALPHABET = 'A Ą B C Č D E Ę Ė F G H I Į Y J K L M N O P R S Š T U Ų Ū V Z Ž'.split(' ');
 export const collator = new Intl.Collator('lt', { sensitivity: 'variant' });
 export const foldName = (s) => String(s).normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('lt');
+const searchMetadata = new WeakMap();
+function searchable(row) {
+  let cached = searchMetadata.get(row);
+  if (!cached || cached.name !== row.name) {
+    cached = { name: row.name, folded: foldName(row.name), native: row.name.toLocaleLowerCase('lt'), initial: row.name[0].toLocaleUpperCase('lt') };
+    searchMetadata.set(row, cached);
+  }
+  return cached;
+}
 export function buildIndex(records) {
   const map = new Map();
   for (const row of records) for (const name of row.names) {
@@ -13,27 +22,28 @@ export function buildIndex(records) {
   }
   return [...map.values()].map(r => ({ ...r, dates: [...new Set(r.dates)].sort() })).sort((a,b)=>collator.compare(a.name,b.name));
 }
-// Index rows are reused across keystrokes; cache only derived name text.
-const preparedNames = new WeakMap();
-function preparedName(row) {
- let prepared = preparedNames.get(row);
- if (!prepared || prepared.name !== row.name) {
-  prepared = {name:row.name, folded:foldName(row.name), native:row.name.toLocaleLowerCase('lt'), initial:row.name[0].toLocaleUpperCase('lt')};
-  preparedNames.set(row, prepared);
- }
- return prepared;
+export function sanitizeFavoriteNames(values, index, limit = 200) {
+  if (!Array.isArray(values) || !Number.isInteger(limit) || limit < 0) return [];
+  const valid = new Set(index.map(item => item.name));
+  return [...new Set(values.filter(name => typeof name === 'string' && valid.has(name)))].slice(0, limit);
+}
+export function favoriteNameDayEvents(index, favorites, records, year = 2028) {
+  const selected = new Set(favorites);
+  return index.filter(item => selected.has(item.name)).flatMap(item => item.dates.map(key => {
+    const record = records.get(key), date = validOccurrence(key, year);
+    return record && date ? nameDayEvent(record, date, item.name, true) : null;
+  }).filter(Boolean));
 }
 export function searchNames(index, { query = '', letter = '', month = '' } = {}) {
- const q = query.trim().normalize('NFC').toLocaleLowerCase('lt').slice(0,80);
- const folded = foldName(q);
- const match = index.filter(row => {
-  const name = preparedName(row);
-  return (!letter || name.initial === letter) && (!q || name.folded.includes(folded)) &&
-   row.dates.some(date => !month || Number(date.slice(0,2)) === Number(month));
- });
- // Keep exact native spelling first and preserve the original output schema.
- return match.sort((a,b) => Number(preparedName(b).native === q) - Number(preparedName(a).native === q) || collator.compare(a.name,b.name))
-  .map(row => ({...row,dates:row.dates.filter(date => !month || Number(date.slice(0,2)) === Number(month))}));
+  const q = query.trim().normalize('NFC').toLocaleLowerCase('lt').slice(0,80);
+  const foldedQuery = foldName(q), selectedMonth = Number(month);
+  const match = index.filter(r => {
+    const key = searchable(r);
+    return (!letter || key.initial === letter) && (!q || key.folded.includes(foldedQuery));
+  });
+  // Exact native spelling precedes accent-insensitive convenience matches.
+  match.sort((a,b) => Number(searchable(b).native === q) - Number(searchable(a).native === q) || collator.compare(a.name,b.name));
+  return match.map(r => ({ ...r, dates: r.dates.filter(d => !month || Number(d.slice(0,2)) === selectedMonth) })).filter(r=>r.dates.length);
 }
 export function validOccurrence(key, year) {
   if (!/^\d{2}-\d{2}$/.test(key) || !Number.isInteger(year) || year < 1900 || year > 2100) return null;

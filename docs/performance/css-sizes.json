@@ -7,6 +7,11 @@
       "generated_bytes": 7908
     },
     {
+      "path": "/assets/astronomy-agenda.css",
+      "source_bytes": 5006,
+      "generated_bytes": 5003
+    },
+    {
       "path": "/assets/calendar-editor/editor.css",
       "source_bytes": 8859,
       "generated_bytes": 8836
@@ -18,8 +23,8 @@
     },
     {
       "path": "/assets/design-system.css",
-      "source_bytes": 164691,
-      "generated_bytes": 156240
+      "source_bytes": 171714,
+      "generated_bytes": 163251
     },
     {
       "path": "/assets/discovery.css",
@@ -33,8 +38,8 @@
     },
     {
       "path": "/assets/homepage-bundle.css",
-      "source_bytes": 125473,
-      "generated_bytes": 116906
+      "source_bytes": 126266,
+      "generated_bytes": 117699
     },
     {
       "path": "/assets/homepage.css",
@@ -43,13 +48,13 @@
     },
     {
       "path": "/assets/horoscope-detail.css",
-      "source_bytes": 77500,
-      "generated_bytes": 71453
+      "source_bytes": 78293,
+      "generated_bytes": 72246
     },
     {
       "path": "/assets/horoscope-hub.css",
-      "source_bytes": 67002,
-      "generated_bytes": 61301
+      "source_bytes": 67795,
+      "generated_bytes": 62094
     },
     {
       "path": "/assets/horoscope.css",
@@ -68,8 +73,13 @@
     },
     {
       "path": "/assets/namedays.css",
-      "source_bytes": 13623,
-      "generated_bytes": 13308
+      "source_bytes": 14830,
+      "generated_bytes": 14515
+    },
+    {
+      "path": "/assets/planner-studio.css",
+      "source_bytes": 12207,
+      "generated_bytes": 12190
     },
     {
       "path": "/assets/print.css",
@@ -82,14 +92,29 @@
       "generated_bytes": 17938
     },
     {
+      "path": "/assets/shift-exceptions.css",
+      "source_bytes": 1920,
+      "generated_bytes": 1921
+    },
+    {
       "path": "/assets/style.css",
       "source_bytes": 43831,
       "generated_bytes": 43388
     },
     {
+      "path": "/assets/workdays.css",
+      "source_bytes": 1617,
+      "generated_bytes": 1618
+    },
+    {
+      "path": "/assets/year-directory.css",
+      "source_bytes": 5098,
+      "generated_bytes": 5099
+    },
+    {
       "path": "/assets/zodiac-guide.css",
-      "source_bytes": 69423,
-      "generated_bytes": 63845
+      "source_bytes": 70216,
+      "generated_bytes": 64638
     },
     {
       "path": "/assets/zodiac.css",

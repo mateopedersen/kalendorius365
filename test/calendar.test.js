@@ -10,6 +10,19 @@ const data = JSON.parse(
   years = JSON.parse(
     readFileSync(new URL("../site/assets/data/years.json", import.meta.url)),
   );
+const isoWeekPages = [2027, 2028, 2029].map((year) => readFileSync(new URL(`../site/savaites/${year}/index.html`, import.meta.url), "utf8"));
+const pageGenerator = readFileSync(new URL("../scripts/pages.rb", import.meta.url), "utf8");
+const toolsScript = readFileSync(new URL("../site/assets/tools.js", import.meta.url), "utf8");
+const yearDirectoryPage = readFileSync(new URL("../site/metai/index.html", import.meta.url), "utf8");
+const yearDirectoryScript = readFileSync(new URL("../site/assets/year-directory.js", import.meta.url), "utf8");
+test("Lithuanian counted nouns use singular, paucal and genitive plural forms", () => {
+  const forms = ["darbo diena", "darbo dienos", "darbo dienų"];
+  for (const [number, expected] of [[0,"0 darbo dienų"],[1,"1 darbo diena"],[2,"2 darbo dienos"],[5,"5 darbo dienos"],[10,"10 darbo dienų"],[11,"11 darbo dienų"],[19,"19 darbo dienų"],[21,"21 darbo diena"],[22,"22 darbo dienos"],[25,"25 darbo dienos"],[30,"30 darbo dienų"]]) {
+    assert.equal(c.countNoun(number, ...forms), expected);
+  }
+  assert.equal(c.countForm(1, "diena", "dienos", "dienų"), "diena");
+  assert.equal(c.countForm(30, "diena", "dienos", "dienų"), "dienų");
+});
 test("every one of 1096 target dates agrees with Ruby Gregorian/ISO data", () => {
   let count = 0;
   for (const y of years)
@@ -43,16 +56,43 @@ test("leap years, 6-row months, navigation and ISO boundaries", () => {
   assert.throws(() => c.parse("2027-02-29"));
 });
 test("calendar-month durations handle month ends, leap days and full years", () => {
-  assert.deepEqual(c.calendarDuration("2028-01-31", "2028-03-01"), {
-    years: 0, months: 1, days: 1,
-  });
-  assert.deepEqual(c.calendarDuration("2028-02-29", "2029-02-28"), {
-    years: 1, months: 0, days: 0,
-  });
-  assert.deepEqual(c.calendarDuration("2027-12-31", "2028-01-01"), {
-    years: 0, months: 0, days: 1,
-  });
+  assert.deepEqual(c.calendarDuration("2028-01-31", "2028-03-01"), { years: 0, months: 1, days: 1 });
+  assert.deepEqual(c.calendarDuration("2028-02-29", "2029-02-28"), { years: 1, months: 0, days: 0 });
+  assert.deepEqual(c.calendarDuration("2027-12-31", "2028-01-01"), { years: 0, months: 0, days: 1 });
   assert.throws(() => c.calendarDuration("2028-03-01", "2028-02-29"));
+});
+test("ISO week identifiers resolve to validated Monday–Sunday date ranges", () => {
+  assert.deepEqual(c.isoWeekRange(2026, 53), { year: 2026, week: 53, start: "2026-12-28", end: "2027-01-03" });
+  assert.deepEqual(c.isoWeekRange(2027, 1), { year: 2027, week: 1, start: "2027-01-04", end: "2027-01-10" });
+  assert.deepEqual(c.isoWeekRange(2028, 1), { year: 2028, week: 1, start: "2028-01-03", end: "2028-01-09" });
+  for (const range of [c.isoWeekRange(2026, 53), c.isoWeekRange(2027, 1), c.isoWeekRange(2028, 1)]) {
+    assert.deepEqual(c.isoWeek(range.start), { year: range.year, week: range.week });
+    assert.deepEqual(c.isoWeek(range.end), { year: range.year, week: range.week });
+  }
+  assert.throws(() => c.isoWeekRange(2027, 53), /savaitės nėra/);
+  assert.throws(() => c.isoWeekRange(2027, 0), /ISO metus/);
+  for (const [index, year] of [2027, 2028, 2029].entries()) {
+    assert.match(isoWeekPages[index], /id="iso-week-range"/);
+    assert.match(isoWeekPages[index], /id="iso-week-copy"/);
+    assert.match(isoWeekPages[index], new RegExp(`id="iso-week-year"[^>]+value="${year}"`));
+  }
+  assert.match(pageGenerator, /id="iso-week-range"/);
+  assert.match(toolsScript, /cal\.isoWeekRange\(Number\(\$\("#iso-week-year"\)\.value\), Number\(\$\("#iso-week-number"\)\.value\)\)/);
+});
+test("year directory facts and two-year comparison use the shared calendar engine", () => {
+  for (const [year, days, start, end] of [[2027,365,"penktadienis","penktadienis"],[2028,366,"šeštadienis","sekmadienis"],[2029,365,"pirmadienis","pirmadienis"]]) {
+    assert.match(yearDirectoryPage, new RegExp(`<strong data-year-days>${days} dienos</strong>`));
+    assert.match(yearDirectoryPage, new RegExp(`/${year}/`));
+    assert.match(yearDirectoryPage, new RegExp(`data-year-card="${year}"`));
+    assert.ok(c.formatDate(`${year}-01-01`, { weekday: "long" }).includes(start));
+    assert.ok(c.formatDate(`${year}-12-31`, { weekday: "long" }).includes(end));
+  }
+  assert.match(yearDirectoryPage, /id="year-comparison-form"/);
+  assert.match(yearDirectoryScript, /yearFacts\(year\)/);
+  assert.match(yearDirectoryScript, /renderYearPrintAssets/);
+  assert.match(toolsScript, /cal\.workStats\(start, end, data\)/);
+  assert.equal(c.workStats("2027-01-01", "2027-12-31", data).days, 252);
+  assert.equal(c.workStats("2027-01-01", "2027-12-31", data).hours, 2009);
 });
 test("movable and statutory holidays; no substitute Mondays", () => {
   assert.equal(c.easter(2027), "2027-03-28");

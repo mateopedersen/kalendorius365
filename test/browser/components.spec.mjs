@@ -86,11 +86,12 @@ test('date calculator skips Lithuanian holidays for workday offsets and shares a
  await expect(form.locator('[name=inclusive]')).toBeChecked();
  await expect(form.locator('[name=offset-unit]')).toHaveValue('workday');
  const cards=page.locator('#calc-result .calculator-results > div');
- await expect(cards).toHaveCount(4);
+ await expect(cards).toHaveCount(5);
  await expect(cards.nth(0)).toContainText('3');await expect(cards.nth(0)).toContainText('Kalendorinės dienos');
- await expect(cards.nth(1)).toContainText('2');await expect(cards.nth(1)).toContainText('Darbo dienos');
- await expect(cards.nth(2)).toContainText('0');await expect(cards.nth(2)).toContainText('Savaitgalio dienos');
- await expect(cards.nth(3)).toContainText('1');await expect(cards.nth(3)).toContainText('Šventės darbo dienomis');
+ await expect(cards.nth(1)).toContainText('0');await expect(cards.nth(1)).toContainText('Pilnų savaičių');
+ await expect(cards.nth(2)).toContainText('2');await expect(cards.nth(2)).toContainText('Darbo dienos');
+ await expect(cards.nth(3)).toContainText('0');await expect(cards.nth(3)).toContainText('Savaitgalio dienų');
+ await expect(cards.nth(4)).toContainText('1');await expect(cards.nth(4)).toContainText('Šventinė darbo diena');
  await expect(page.locator('#calc-result')).toContainText('penktadienis');
  await expect(page.locator('#calc-chart svg')).toHaveAttribute('aria-label',/2 darbo dienų, 0 savaitgalio dienų ir 1 šventinių darbo dienų/);
  const geometry=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
@@ -220,11 +221,12 @@ test('lunar leap-date selection, keyboard movement, ICS and lightbox work',async
 
 test('shift planner generates a real cycle, validates bad JSON and exports ICS',async({page})=>{
  await page.goto('/pamainu-grafikas/');await page.locator('#shift-anchor').fill('2028-02-28');await page.locator('#shift-from').fill('2028-02-28');await page.locator('#shift-to').fill('2028-03-06');
- const cycle=page.locator('#shift-patterns [data-cycle="D,D,P,P,D,D,D,P,P,D,D,P,P,P"]');await cycle.click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,P,P,D,D,D,P,P,D,D,P,P,P');
+ await page.locator('#shift-planner details').first().locator('summary').click();
+ const cycle='D,D,P,P,D,D,D,P,P,D,D,P,P,P';await page.locator('#shift-cycle').fill(cycle);await page.locator('#shift-cycle').press('Tab');await expect(page.locator('#shift-cycle')).toHaveValue(cycle);
  await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-rows tr')).toHaveCount(5);
  const csv=await downloadBytes(page,()=>page.locator('#shift-csv').click());expect(csv.bytes.toString('utf8')).toContain('Savaitės diena');expect(csv.bytes.toString('utf8')).toContain('2028-02-29');
  const result=await downloadBytes(page,()=>page.locator('#shift-ics').click());expect(ics(result.bytes)).toContain('20280229');
- await page.locator('.shift-advanced summary').click();await page.locator('#shift-definitions').fill('{bad');await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-message')).toHaveAttribute('role','alert');await expect(page.locator('#shift-rows tr')).toHaveCount(0);
+ await page.locator('#shift-definitions').fill('{bad');await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-message')).toHaveAttribute('role','alert');await expect(page.locator('#shift-rows tr')).toHaveCount(0);
 });
 
 test('school lesson text edits persist after reload and duplication can be undone',async({page})=>{

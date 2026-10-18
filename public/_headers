@@ -3,7 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs=' 'sha256-7XjXEIEi6ZTxkej37JThBvkvOtnvPOveDHVxCHNljFY='; connect-src 'self'; upgrade-insecure-requests
-/assets/calendar-editor-release-c97e53e92cf6/*
+/assets/calendar-editor-release-98f500670c95/*
   Cache-Control: public, max-age=31536000, immutable
 /
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -33,6 +33,12 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/ascendant-loader.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/astronomy-agenda-core.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/astronomy-agenda.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/astronomy-agenda.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/calendar.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/common.js
@@ -42,10 +48,6 @@
 /assets/contact.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/cookie-notice.js
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/birth-cities.js
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/weather-cities.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/design-system.css
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -101,6 +103,12 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/phase-5-6-8.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/planner-studio-core.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/planner-studio.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/planner-studio.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/print.css
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/search-engine.js
@@ -113,15 +121,29 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/seasons.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/shift-exceptions.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/storage.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/style.css
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/sunrise.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/tool-directory-core.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/tool-directory.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/tools.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/weather.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/workdays.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/year-directory-core.js
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/year-directory.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/year-directory.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/zodiac-engine.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -133,38 +155,10 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/calendar-editor/*
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/data/*
+  Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
-/assets/data/astronomy/cities.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/astronomy/moon-phases-utc.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/astronomy/seasons-utc.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/calendar.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/holiday-editorial.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/home-holiday-data.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/lt/work-rest-rules.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/lunar/assets.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/lunar/calendar.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/namedays/calendar.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/namedays/cc-by-sa-4.0.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/search.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/seasons.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/assets/data/zodiac.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
-/downloads/lunar/asset-manifest.json
-  Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/favicon-2026.svg
   Cache-Control: public, max-age=31536000, immutable
 /assets/favicon.svg

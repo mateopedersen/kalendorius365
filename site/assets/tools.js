@@ -128,6 +128,26 @@ for (const b of document.querySelectorAll("[data-design-filter]"))
       section.hidden = !section.querySelector(".design-card:not([hidden])");
   };
 if ($("#work-schedule")) {
+  const comparison = document.querySelector("#workday-compare");
+  if (comparison) {
+    const totals = {};
+    for (const schedule of ["5", "6"]) {
+      const row = document.querySelector(`[data-work-table="${schedule}"] tfoot tr`);
+      if (!row || row.children.length < 6) continue;
+      totals[schedule] = { days: Number(row.children[1].textContent), hours: Number(row.children[5].textContent) };
+      const card = comparison.querySelector(`[data-work-compare="${schedule}"]`);
+      if (card) {
+        card.querySelector("[data-work-days]").textContent = totals[schedule].days.toLocaleString("lt-LT");
+        card.querySelector("[data-work-hours]").textContent = totals[schedule].hours.toLocaleString("lt-LT");
+      }
+    }
+    const delta = comparison.querySelector("#workday-compare-delta");
+    if (delta && totals["5"] && totals["6"]) {
+      const difference = totals["6"].hours - totals["5"].hours;
+      const hours = cal.countNoun(Math.abs(difference), "darbo valanda", "darbo valandos", "darbo valandų");
+      delta.textContent = `Šešių dienų pavyzdyje yra ${cal.countNoun(totals["6"].days - totals["5"].days, "darbo diena", "darbo dienos", "darbo dienų")} daugiau, o įvertintų valandų ${hours} ${difference > 0 ? "daugiau" : difference < 0 ? "mažiau" : "tiek pat"} nei penkių dienų pavyzdyje.`;
+    }
+  }
   $("#work-schedule").onchange = (e) => {
     const schedule = e.target.value;
     for (const section of document.querySelectorAll("[data-work-table]"))
@@ -273,6 +293,27 @@ if ($("#iso-date")) {
   };
   input.onchange();
 }
+if ($("#iso-week-range")) {
+  const form = $("#iso-week-range"), output = $("#iso-week-range-result"), copy = $("#iso-week-copy");
+  const showRange = (event) => {
+    event?.preventDefault();
+    try {
+      const range = cal.isoWeekRange(Number($("#iso-week-year").value), Number($("#iso-week-number").value));
+      copy.dataset.interval = `${range.start} – ${range.end}`;
+      copy.disabled = false;
+      output.textContent = `${range.year}-W${String(range.week).padStart(2, "0")}: ${range.start} (pirmadienis) – ${range.end} (sekmadienis).`;
+    } catch (error) { copy.disabled = true; output.textContent = error.message; }
+  };
+  form.onsubmit = showRange;
+  copy.onclick = async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw Error();
+      await navigator.clipboard.writeText(copy.dataset.interval);
+      output.textContent += " Datų intervalas nukopijuotas.";
+    } catch { output.textContent += " Nukopijuoti nepavyko; pažymėkite ir kopijuokite datų intervalą rankiniu būdu."; }
+  };
+  showRange();
+}
 if ($("#next-holiday")) {
   const now = cal.today(),
     y = +now.slice(0, 4),
@@ -342,10 +383,11 @@ if ($("#calculator")) {
       const metrics = document.createElement("div");
       metrics.className = "calculator-results";
       for (const [number, label] of [
-        [n, "Kalendorinės dienos"],
-        [work.days, "Darbo dienos"],
-        [work.weekends, "Savaitgalio dienos"],
-        [work.publicDays, "Šventės darbo dienomis"],
+        [n, cal.countForm(n, "Kalendorinė diena", "Kalendorinės dienos", "Kalendorinių dienų")],
+        [Math.floor(n / 7), cal.countForm(Math.floor(n / 7), "Pilna savaitė", "Pilnos savaitės", "Pilnų savaičių")],
+        [work.days, cal.countForm(work.days, "Darbo diena", "Darbo dienos", "Darbo dienų")],
+        [work.weekends, cal.countForm(work.weekends, "Savaitgalio diena", "Savaitgalio dienos", "Savaitgalio dienų")],
+        [work.publicDays, cal.countForm(work.publicDays, "Šventinė darbo diena", "Šventinės darbo dienos", "Šventinių darbo dienų")],
       ]) {
         const block = document.createElement("div"),
           strong = document.createElement("strong"),
@@ -364,9 +406,9 @@ if ($("#calculator")) {
       interval.append(intervalText);
       target.append(interval);
       const lines = [
-        `${n} ${dayForm(n)} pagal kalendorių${f.elements.inclusive.checked ? " (abi ribinės datos įtrauktos)" : " (pabaigos data neįtraukta)"}. Tai ${Math.floor(n / 7)} pilnos savaitės ir ${n % 7} d.`,
-        `${work.days} darbo dienos · ${work.hours} standartinės darbo valandos · ${work.shortened.length} prieššventinių trumpinimų.`,
-        `${work.weekends} savaitgalio dienos ir ${work.publicDays} šventinės darbo dienos.`,
+        `${cal.countNoun(n, "kalendorinė diena", "kalendorinės dienos", "kalendorinių dienų")} pagal kalendorių${f.elements.inclusive.checked ? " (abi ribinės datos įtrauktos)" : " (pabaigos data neįtraukta)"}. Tai ${cal.countNoun(Math.floor(n / 7), "pilna savaitė", "pilnos savaitės", "pilnų savaičių")} ir ${cal.countNoun(n % 7, "diena", "dienos", "dienų")}.`,
+        `${cal.countNoun(work.days, "darbo diena", "darbo dienos", "darbo dienų")} · ${cal.countNoun(work.hours, "darbo valanda", "darbo valandos", "darbo valandų")} pagal standartinį grafiką · ${cal.countNoun(work.shortened.length, "prieššventinis trumpinimas", "prieššventiniai trumpinimai", "prieššventinių trumpinimų")}.`,
+        `${cal.countNoun(work.weekends, "savaitgalio diena", "savaitgalio dienos", "savaitgalio dienų")} ir ${cal.countNoun(work.publicDays, "šventinė darbo diena", "šventinės darbo dienos", "šventinių darbo dienų")}.`,
         `${offsetUnit.value === "workday" ? "Darbo" : "Kalendorinių"} dienų poslinkis: ${offset < 0 ? "−" : "+"}${Math.abs(offset)} nuo pradžios datos → ${cal.formatDate(result, { weekday: "long" })}.`,
       ];
       for (const line of lines) {
@@ -507,8 +549,8 @@ if ($("#calculator")) {
       $("#countdown-result").textContent = n === 0
         ? `${cal.formatDate(d)} yra šiandien.`
         : n > 0
-          ? `Iki ${cal.formatDate(d)} liko ${n} ${dayForm(n)}.`
-          : `Nuo ${cal.formatDate(d)} praėjo ${-n} ${dayForm(-n)}.`;
+          ? `Iki ${cal.formatDate(d)} liko ${cal.countNoun(n, "diena", "dienos", "dienų")}.`
+          : `Nuo ${cal.formatDate(d)} praėjo ${cal.countNoun(-n, "diena", "dienos", "dienų")}.`;
       const y = +now.slice(0, 4),
         monthEnd = `${now.slice(0, 7)}-${cal.monthLength(y, +now.slice(5, 7))}`;
       $("#countdown-standard").textContent =
@@ -538,6 +580,43 @@ if ($("#calculator")) {
       countdown();
     };
   countdown();
+}
+if ($("#year-comparison-form")) {
+  const form = $("#year-comparison-form"), target = $("#year-comparison-result");
+  const runComparison = (event) => {
+    event?.preventDefault();
+    const selected = [Number($("#year-compare-a").value), Number($("#year-compare-b").value)];
+    target.replaceChildren();
+    if (selected[0] === selected[1]) {
+      target.textContent = "Pasirinkite du skirtingus metus, kad palyginimas parodytų skirtumus.";
+      return;
+    }
+    for (const year of selected) {
+      const start = `${year}-01-01`, end = `${year}-12-31`, holidays = cal.holidays(year, data), stats = cal.workStats(start, end, data);
+      const days = Array.from({ length: 12 }, (_, index) => cal.monthLength(year, index + 1)).reduce((sum, length) => sum + length, 0);
+      const card = document.createElement("article"), heading = document.createElement("h3"), details = document.createElement("details"), summary = document.createElement("summary"), list = document.createElement("ul");
+      card.className = "panel year-comparison-card";
+      heading.textContent = `${year} metai`;
+      const facts = [
+        cal.countNoun(days, "kalendorinė diena", "kalendorinės dienos", "kalendorinių dienų") + (days === 366 ? " · keliamieji metai" : " · nekeliamieji metai"),
+        `Pradžia: ${cal.formatDate(start, { weekday: "long" })}; pabaiga: ${cal.formatDate(end, { weekday: "long" })}.`,
+        `5 dienų, 8 valandų grafikas: ${cal.countNoun(stats.days, "darbo diena", "darbo dienos", "darbo dienų")}, ${cal.countNoun(stats.hours, "darbo valanda", "darbo valandos", "darbo valandų")}.`,
+        `${cal.countNoun(stats.shortened.length, "prieššventinis trumpinimas", "prieššventiniai trumpinimai", "prieššventinių trumpinimų")} pagal parodytą standartinę prielaidą.`,
+      ];
+      const paragraph = document.createElement("p"); paragraph.textContent = facts.join(" ");
+      summary.textContent = `${holidays.length} įstatyminės šventės ir jų savaitės dienos`;
+      for (const holiday of holidays) {
+        const item = document.createElement("li");
+        item.textContent = `${holiday.name} · ${holiday.date} · ${cal.formatDate(holiday.date, { weekday: "long" })}${cal.weekday(holiday.date) >= 5 ? " · savaitgalis" : ""}`;
+        list.append(item);
+      }
+      details.append(summary, list); card.append(heading, paragraph, details); target.append(card);
+    }
+  };
+  form.onsubmit = runComparison;
+  $("#year-compare-a").onchange = runComparison;
+  $("#year-compare-b").onchange = runComparison;
+  runComparison();
 }
 function svgText(
   x,

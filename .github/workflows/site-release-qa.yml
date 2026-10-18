@@ -54,14 +54,14 @@ jobs:
       - name: Capture regenerated public output for parity repair
         run: |
           git add --intent-to-add -- public
-          git diff --binary -- public > public-build.patch
+          git diff --binary HEAD -- public > public-build.patch
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: regenerated-public-output
           path: public-build.patch
           retention-days: 1
       - name: Verify committed public files match the release build
-        run: git diff --exit-code -- public
+        run: git diff --exit-code HEAD -- public
       - name: Check CSS minifier whitespace safety
         run: ruby test/css_minifier_test.rb
       - name: Verify route-specific CSS pruning and page bundles

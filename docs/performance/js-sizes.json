@@ -17,6 +17,16 @@
       "generated_bytes": 891
     },
     {
+      "path": "/assets/astronomy-agenda-core.js",
+      "source_bytes": 3562,
+      "generated_bytes": 2625
+    },
+    {
+      "path": "/assets/astronomy-agenda.js",
+      "source_bytes": 5697,
+      "generated_bytes": 3806
+    },
+    {
       "path": "/assets/calendar-editor/editor.js",
       "source_bytes": 49478,
       "generated_bytes": 36683
@@ -68,8 +78,8 @@
     },
     {
       "path": "/assets/calendar.js",
-      "source_bytes": 9062,
-      "generated_bytes": 5796
+      "source_bytes": 10187,
+      "generated_bytes": 6458
     },
     {
       "path": "/assets/common.js",
@@ -158,23 +168,33 @@
     },
     {
       "path": "/assets/namedays-engine.js",
-      "source_bytes": 3674,
-      "generated_bytes": 2855
+      "source_bytes": 4285,
+      "generated_bytes": 3310
     },
     {
       "path": "/assets/namedays.js",
-      "source_bytes": 12654,
-      "generated_bytes": 9898
+      "source_bytes": 15980,
+      "generated_bytes": 12283
     },
     {
       "path": "/assets/phase-5-6-8-core.js",
-      "source_bytes": 16681,
-      "generated_bytes": 9975
+      "source_bytes": 19708,
+      "generated_bytes": 11842
     },
     {
       "path": "/assets/phase-5-6-8.js",
-      "source_bytes": 47240,
-      "generated_bytes": 34528
+      "source_bytes": 66189,
+      "generated_bytes": 46769
+    },
+    {
+      "path": "/assets/planner-studio-core.js",
+      "source_bytes": 8162,
+      "generated_bytes": 6047
+    },
+    {
+      "path": "/assets/planner-studio.js",
+      "source_bytes": 29921,
+      "generated_bytes": 19106
     },
     {
       "path": "/assets/search-engine.js",
@@ -207,14 +227,34 @@
       "generated_bytes": 15910
     },
     {
+      "path": "/assets/tool-directory-core.js",
+      "source_bytes": 611,
+      "generated_bytes": 558
+    },
+    {
+      "path": "/assets/tool-directory.js",
+      "source_bytes": 2218,
+      "generated_bytes": 1604
+    },
+    {
       "path": "/assets/tools.js",
-      "source_bytes": 34182,
-      "generated_bytes": 21664
+      "source_bytes": 40098,
+      "generated_bytes": 26041
     },
     {
       "path": "/assets/weather.js",
       "source_bytes": 5663,
       "generated_bytes": 4013
+    },
+    {
+      "path": "/assets/year-directory-core.js",
+      "source_bytes": 1915,
+      "generated_bytes": 1293
+    },
+    {
+      "path": "/assets/year-directory.js",
+      "source_bytes": 5994,
+      "generated_bytes": 4187
     },
     {
       "path": "/assets/zodiac-engine.js",

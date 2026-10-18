@@ -139,18 +139,14 @@ Dir.chdir(ROOT) do
   headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
  end
  headers+="/assets/releases/*\n  #{immutable}\n"
- data_cache=revalidate
- # Use exact paths for versioned code and data, so _headers never applies
- # multiple Cache-Control values to one response through overlapping globs.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ # Code and data URLs carry content fingerprints. Group data beneath one
+ # non-overlapping path rule so the growing calendar catalog stays below the
+ # Cloudflare Pages header-rule limit.
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
-
  end
- headers+="/assets/calendar-editor/*\n  #{revalidate}\n"
+ headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{immutable}\n"
  headers+="/assets/fonts/*\n  #{immutable}\n"
- files.select { |path|path.end_with?('.json') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') && !path.start_with?('public/assets/visuals/') && path!='public/assets/release-manifest.json' }.sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{data_cache}\n"
- end
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
