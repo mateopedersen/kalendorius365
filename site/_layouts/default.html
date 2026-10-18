@@ -39,6 +39,7 @@
 <script type="module" src="/assets/cookie-notice.js?v={{ site.script_version }}"></script>
 {% if page.contact %}<script type="module" src="/assets/contact.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.app %}<script type="module" src="/assets/app.js?v={{ site.script_version }}"></script>{% endif %}
+{% if page.discovery %}<link rel="stylesheet" href="/assets/discovery.css?v={{ site.css_version }}"><script type="module" src="/assets/discovery.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.tool %}<script type="module" src="/assets/tools.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.planner %}<script type="module" src="/assets/leave-planner.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.phase_module == "sun" %}<script type="module" src="/assets/sunrise.js?v={{ site.script_version }}"></script>{% elsif page.phase_module %}<script type="module" src="/assets/phase-5-6-8.js?v={{ site.script_version }}"></script>{% endif %}
