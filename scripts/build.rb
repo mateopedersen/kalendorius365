@@ -47,6 +47,9 @@ Dir.chdir(ROOT) do
  # Run after URL rewriting and CSS runtime-class discovery, which operate on
  # readable modules. Hashes include the compiler and its pinned dependency lock.
  system('node','scripts/minify_js.mjs','public/assets',exception:true)
+ editor_release_version=Digest::SHA256.hexdigest("#{script_version}\0#{css_version}")[0,12]
+ editor_path_references=Kalendorius::StaticAssetUrls.version_calendar_editor_paths!('public',editor_release_version)
+ puts "Path-versioned #{editor_path_references} calendar-editor references for cache-safe deployment"
  # Fail on accidentally exceeding the existing Free static hosting limits.
  files=Dir.glob('public/**/*').select { |p|File.file?(p) }
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
@@ -86,7 +89,11 @@ Dir.chdir(ROOT) do
  immutable='Cache-Control: public, max-age=31536000, immutable'
  # Use exact paths for versioned code and data, so _headers never applies
  # multiple Cache-Control values to one response through overlapping globs.
- files.select { |path|path.end_with?('.js','.css') && !path.start_with?('public/assets/calendar-editor/') }.sort.each do |path|
+ editor_release_prefix="public/assets/calendar-editor-release-#{editor_release_version}/"
+ files.select { |path|path.end_with?('.js','.css') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?(editor_release_prefix) }.sort.each do |path|
+  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
+ end
+ files.select { |path|path.start_with?(editor_release_prefix) }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{immutable}\n"

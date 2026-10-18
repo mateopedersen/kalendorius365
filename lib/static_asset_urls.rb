@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'digest'
+require 'fileutils'
 require 'json'
 require 'pathname'
 
@@ -56,6 +57,39 @@ module Kalendorius
         path.write(updated, encoding: 'UTF-8') unless updated == source
       end
 
+      changed_references
+    end
+
+    # Cloudflare cache rules can ignore query strings, so query-only asset
+    # versions are not enough to make a changed editor bundle fresh. Give the
+    # complete editor bundle a content-versioned sibling directory instead.
+    # Keeping the directory at the same depth preserves every relative import.
+    def version_calendar_editor_paths!(public_root, version)
+      raise ArgumentError, 'Editor asset version must be 12 lowercase hex characters' unless version.match?(/\A[a-f0-9]{12}\z/)
+
+      root = Pathname.new(public_root).expand_path
+      source_dir = root.join('assets/calendar-editor')
+      return 0 unless source_dir.directory?
+
+      Dir.glob(root.join('assets/calendar-editor-release-*').to_s).each { |path| FileUtils.rm_rf(path) }
+      target_dir = root.join("assets/calendar-editor-release-#{version}")
+      FileUtils.mkdir_p(target_dir)
+      FileUtils.cp_r(source_dir.children, target_dir)
+
+      original_prefix = '/assets/calendar-editor/'
+      versioned_prefix = "/assets/calendar-editor-release-#{version}/"
+      documents = Dir.glob(root.join('**/*').to_s).select do |filename|
+        path = Pathname.new(filename)
+        path.file? && %w[.html .css .js].include?(path.extname.downcase)
+      end
+
+      changed_references = 0
+      documents.each do |filename|
+        source = File.read(filename, encoding: 'UTF-8')
+        updated = source.gsub(original_prefix, versioned_prefix)
+        changed_references += source.scan(original_prefix).length
+        File.write(filename, updated, encoding: 'UTF-8') unless updated == source
+      end
       changed_references
     end
 
