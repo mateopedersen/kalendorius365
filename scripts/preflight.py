@@ -11,12 +11,24 @@ ROOT=Path(__file__).resolve().parents[1]
 from calendar_package import validate_import_evidence
 YEAR_DATA=json.loads((ROOT/'site/assets/data/years.json').read_text())
 for name in ['Regular','Bold']:pdfmetrics.registerFont(TTFont('Inter'+name,str(ROOT/f'site/assets/fonts/Inter-{name}.ttf')))
+for name in ['Regular','Bold','Black']:pdfmetrics.registerFont(TTFont('Lato'+name,str(ROOT/f'site/assets/fonts/Lato-{name}.ttf')))
 
 def current_renderer_fingerprint():
- return hashlib.sha256((ROOT/'scripts/render_prints.py').read_bytes()+(ROOT/'data/calendar.json').read_bytes()+(ROOT/'site/assets/data/years.json').read_bytes()+(ROOT/'site/assets/fonts/Inter-Regular.ttf').read_bytes()+(ROOT/'site/assets/fonts/Inter-Bold.ttf').read_bytes()).hexdigest()
+ return hashlib.sha256((ROOT/'scripts/render_prints.py').read_bytes()+(ROOT/'data/calendar.json').read_bytes()+(ROOT/'site/assets/data/years.json').read_bytes()+b''.join((ROOT/p).read_bytes() for p in ['site/assets/fonts/Inter-Regular.ttf','site/assets/fonts/Inter-Bold.ttf','site/assets/fonts/Lato-Regular.ttf','site/assets/fonts/Lato-Bold.ttf','site/assets/fonts/Lato-Black.ttf'])).hexdigest()
 
 def verify_manifest_provenance(manifest):
  assert manifest['generator']==current_renderer_fingerprint(),'Print manifest is stale for the actual current renderer/data/fonts'
+ if manifest.get('blankRedesign'):
+  transition=json.loads((ROOT/manifest['blankRedesign']).read_text())
+  assert transition['version']=='2026-10-18-blank-calendar-redesign-v1'
+  assert transition['after_generator']==manifest['generator']
+  preserved={a['stem']:a for a in transition['preserved_nonblank_assets']}
+  redesigned={a['stem']:a for a in transition['redesigned_blank_assets']}
+  assets={a['stem']:a for a in manifest['assets']}
+  assert len(preserved)==390 and set(preserved)=={stem for stem,a in assets.items() if a['kind']!='blank'}
+  assert len(redesigned)==26 and set(redesigned)=={stem for stem,a in assets.items() if a['kind']=='blank'}
+  for stem,proof in preserved.items():assert proof['files']==assets[stem]['files']
+  for stem,proof in redesigned.items():assert proof['after_files']==assets[stem]['files'] and assets[stem].get('generator')==manifest['generator']
  if manifest.get('packageImport'):
   validate_import_evidence(ROOT,manifest,check_files=False)
   return
@@ -182,11 +194,14 @@ def preflight(asset,base,sample=False):
   def visit(txt,cm,tm,font,size):
    if txt.strip():texts.append({'text':txt.strip(),'x':float(tm[4]),'y':float(tm[5]),'size':size,'font':str(font.get('/BaseFont','')) if font else ''})
   page.extract_text(visitor_text=visit)
-  brand=[t for t in texts if t['text']=='Kalendorius365.lt'];assert len(brand)==1,asset['stem']+' brand baseline missing'
-  brand_y=brand[0]['y'];assert 12<=brand_y<=25,asset['stem']+' legacy brand baseline changed'
+  brand_text='Kalendorius365' if asset['kind']=='blank' else 'Kalendorius365.lt'
+  brand=[t for t in texts if t['text']==brand_text];assert len(brand)==1,asset['stem']+' brand baseline missing'
+  brand_y=brand[0]['y'];assert 5<=brand_y<=25,asset['stem']+' brand baseline is outside the footer safe area'
   for t in texts:
    assert 12<=t['x']<=w-12 and 12<=t['y']<=h-12,(asset['stem'],t)
-   font='InterBold' if 'Bold' in t['font'] else 'InterRegular';width=pdfmetrics.stringWidth(t['text'],font,t['size']);assert t['x']+width<=w-12+.5,(asset['stem'],'text overflow',t,width)
+   family='Lato' if 'Lato-' in t['font'] else 'Inter'
+   font=family+('Black' if 'Black' in t['font'] else 'Bold' if 'Bold' in t['font'] else 'Regular')
+   width=pdfmetrics.stringWidth(t['text'],font,t['size']);assert t['x']+width<=w-12+.5,(asset['stem'],'text overflow',t,width)
   date_layout_checked=0
   if asset['kind'] in ['monthly','annual']:
    date_layout_checked=len(asset['dateLayout'])
@@ -237,12 +252,13 @@ if __name__=='__main__':
  report={'schema':1,'generator':manifest['generator'],'status':'passed','samples':args.samples,'visualReviewed':args.accept_visual,'results':reports}
  dest=base/'preflight.json' if args.samples else ROOT/'docs/print-preflight.json';dest.write_text(json.dumps(report,ensure_ascii=False,indent=2))
  if args.samples and args.accept_visual:
-  assert len(assets)==12, f'Expected 12 sample designs; got {len(assets)}'
+  assert len(assets)==28, f'Expected 28 sample designs; got {len(assets)}'
   assert {(a['kind'],a.get('year'),a.get('month'),a['design']) for a in assets if a['kind']=='monthly'}=={('monthly',2027,1,'06'),('monthly',2028,2,'02')}
   planner=[a for a in assets if a['kind']=='blank']
-  assert len(planner)==10 and {a['category'] for a in planner}=={'week','day','family','school','shift'}
-  assert all({a['style'] for a in planner if a['category']==category}=={'bw','color'} for category in {'week','day','family','school','shift'})
-  (ROOT/'.build-cache/sample-gate.json').write_text(json.dumps({'generator':manifest['generator'],'status':'passed','visualReviewed':True,'sampleCount':len(assets),'plannerCategories':['week','day','family','school','shift'],'evidence':str(dest)}))
+  assert len(planner)==26 and {a['design'] for a in planner}=={f'{i:02}' for i in range(1,21)}
+  assert all(a.get('rows') in [5,6] for a in planner if a['layout']=='month')
+  assert len({a['stem'] for a in planner})==26
+  (ROOT/'.build-cache/sample-gate.json').write_text(json.dumps({'generator':manifest['generator'],'status':'passed','visualReviewed':True,'sampleCount':len(assets),'plannerCategories':['month','week','day','family','office','school','shift'],'evidence':str(dest)}))
  for a in assets:
   details=('source hashes, A3 trim/bleed boxes, FOGRA39, embedded fonts, selectable calendar labels, lossless 600-PPI WebP and responsive previews checked'
            if a.get('paper')=='A3' else

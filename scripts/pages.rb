@@ -223,13 +223,83 @@ module Pages
    "<article class=\"design-card\" id=\"dizainas-#{e['stem']}\" data-style=\"#{e['style']}\" data-layout=\"#{layout}\" data-design=\"#{id}\" data-paper=\"#{paper}\" data-holidays=\"#{holiday}\" data-pdf-name=\"#{esc(pdf_name)}\" data-webp-name=\"#{esc(webp_name)}\"><a class=\"preview-link\" href=\"#{download_href(e,'webp')}\" target=\"_blank\" rel=\"noopener\" aria-label=\"Peržiūrėti: #{esc(e['name'])}\" title=\"#{esc(imported ? e['title'] : e['name'])}\"><img src=\"#{e['preview']}\" srcset=\"#{e['smallPreview']||'/assets/previews-small/'+File.basename(e['preview'])} 340w, #{e['preview']} 680w\" sizes=\"(max-width: 600px) 45vw, (max-width: 1100px) 25vw, 18vw\" width=\"#{smallw}\" height=\"#{smallh}\" loading=\"lazy\" decoding=\"async\" fetchpriority=\"low\" alt=\"#{esc(alt)}\"></a><div class=\"design-info\"><h2><span class=\"design-number\">#{id}</span>#{esc(e['name'])}</h2><span class=\"design-style\">#{paper} · #{e['landscape'] ? 'Gulsčias' : 'Stačias'}</span><p>#{esc(description)}</p><div class=\"design-actions\"><a class=\"button select-design\" href=\"#{download_href(e,'webp')}\" data-stem=\"#{e['stem']}\">Peržiūrėti</a><a class=\"button\" href=\"#{download_href(e,'pdf')}\" download=\"#{esc(pdf_name)}\">Atsisiųsti PDF</a><a class=\"button\" href=\"#{download_href(e,'webp')}\" download=\"#{esc(webp_name)}\">Atsisiųsti WebP</a><a class=\"button\" href=\"#{download_href(e,'pdf')}\" target=\"_blank\" rel=\"noopener\">Spausdinti PDF ↗</a></div></div></article>"
   end.join+'</div>'
  end
+ BLANK_GROUPS={
+  'month'=>['Mėnesio kalendoriai','Mėnesiui'],
+  'week'=>['Savaitės ir darbo planai','Savaitei'],
+  'day'=>['Dienos planai','Dienai'],
+  'family'=>['Šeimos planai','Šeimai'],
+  'school'=>['Mokyklos ir pamokų planai','Mokyklai'],
+  'shift'=>['Pamainų planai','Pamainoms']
+ }.freeze
+ BLANK_COPY={
+  '01'=>'Savaitė prasideda pirmadienį; palikta vietos svarbiems prioritetams.',
+  '02'=>'Savaitė prasideda sekmadienį; dienų langeliai patogiam užrašymui.',
+  '03'=>'Septynių dienų savaitės lapas su atskiromis rašymo eilutėmis.',
+  '04'=>'Atviras, lengvai pildomas mėnesio planavimo tinklelis.',
+  '05'=>'Horizontalus mėnesio kalendorius su tikslais ir svarbiausiomis datomis.',
+  '06'=>'Šeimos savaitės apžvalga bendriems planams ir keturiems nariams.',
+  '07'=>'Darbo savaitės planas su vieta dienos užduotims ir rezultatui.',
+  '08'=>'Mokyklos savaitės planas su dienomis ir pamokų vietomis.',
+  '09'=>'Ramesnio dizaino mėnesio tinklelis su didesnėmis savaitės antraštėmis.',
+  '10'=>'Kontrastingas mėnesio lapas su aiškia antrašte ir darbo zona.',
+  '11'=>'Septynių dienų lapas su laiko blokais nuo 03 iki 12 valandos.',
+  '12'=>'Savaitės lapas svarbiausiems darbams ir užrašams susidėlioti.',
+  '13'=>'Dienos laiko juosta su atskiromis užduočių ir užrašų zonomis.',
+  '14'=>'Dienos planas svarbiausiems darbams, užduotims ir pastaboms.',
+  '15'=>'Savaitės šeimos planas bendriems planams ir keturiems nariams.',
+  '16'=>'Šeimos bendrų veiklų savaitės planas su spalvotomis įrašų eilutėmis.',
+  '17'=>'Penkių dienų pamokų tvarkaraščio tinklelis su šešiomis pamokomis.',
+  '18'=>'Mokymosi savaitės planas su vieta pamokoms ir užduotims.',
+  '19'=>'Savaitinis pamainų žiniaraštis su dienomis ir pamainų žymomis.',
+  '20'=>'Mėnesio pamainų planas su dienomis ir šešiomis savaitinėmis eilutėmis.'
+ }.freeze
+ def blank_group(asset)
+  return 'month' if asset['layout']=='month'
+  return 'day' if asset['layout'].start_with?('daily-')
+  return 'family' if asset['layout']=='family'
+  return 'school' if asset['layout']=='school'
+  asset['category']||'week'
+ end
+ def blank_alt(asset)
+  orientation=asset['landscape'] ? 'horizontalus' : 'vertikalus'
+  if asset['layout']=='month'
+   "#{asset['name']}, A4 formato #{orientation} lapas; #{asset['rows']} eilučių tinklelis, savaitė prasideda #{asset['sunday'] ? 'sekmadienį' : 'pirmadienį'}. Kalendorius365 žyma lapo apačioje."
+  else
+   description=BLANK_COPY.fetch(asset['design']).sub(/[.!?]+\z/,'')
+   "#{asset['name']}, A4 formato #{orientation} lapas. #{description}. Kalendorius365 žyma lapo apačioje."
+  end
+ end
+ def blank_asset_card(asset,variants)
+  id=asset['design'];group=blank_group(asset);paper=asset['paper']||'A4';name=asset['name'];alt=blank_alt(asset)
+  w=asset['landscape'] ? 680 : 481;h=asset['landscape'] ? 481 : 680;pdf=File.basename(asset['pdf']);webp=File.basename(asset['webp'])
+  variant_control=''
+  if variants.length>1
+   variant_control='<label class="blank-row-choice"><span>Tinklelio eilutės</span><select data-blank-rows aria-label="'+esc(name)+': savaitinių eilučių skaičius">'+variants.map do |option|
+    %Q!<option value="#{esc(option['stem'])}" data-variant-stem="#{esc(option['stem'])}" data-preview="#{esc(option['preview'])}" data-webp="#{esc(download_href(option,'webp'))}" data-pdf="#{esc(download_href(option,'pdf'))}" data-alt="#{esc(blank_alt(option))}" data-pdf-name="#{esc(File.basename(option['pdf']))}" data-webp-name="#{esc(File.basename(option['webp']))}" data-width="#{option['landscape'] ? 680 : 481}" data-height="#{option['landscape'] ? 481 : 680}">#{option['rows']} eilutės</option>!
+   end.join+'</select></label>'
+  end
+  variants_data=variants.map { |option|%Q!<span data-variant-stem="#{esc(option['stem'])}" data-preview="#{esc(option['preview'])}" data-webp="#{esc(download_href(option,'webp'))}" data-pdf="#{esc(download_href(option,'pdf'))}" data-alt="#{esc(blank_alt(option))}" data-pdf-name="#{esc(File.basename(option['pdf']))}" data-webp-name="#{esc(File.basename(option['webp']))}" data-width="#{option['landscape'] ? 680 : 481}" data-height="#{option['landscape'] ? 481 : 680}"></span>! }.join
+  %Q!<article class="design-card blank-design-card" id="dizainas-#{esc(asset['stem'])}" data-style="#{esc(asset['style'])}" data-layout="#{esc(asset['layout'])}" data-category="#{group}" data-design="#{id}" data-paper="#{paper}" data-pdf-name="#{esc(pdf)}" data-webp-name="#{esc(webp)}"><a class="preview-link" href="#{download_href(asset,'webp')}" target="_blank" rel="noopener" aria-label="Padidinti: #{esc(name)}" title="#{esc(name)}"><img src="#{asset['preview']}" srcset="#{asset['smallPreview']||'/assets/previews-small/'+File.basename(asset['preview'])} 340w, #{asset['preview']} 680w" sizes="(max-width: 600px) 90vw, (max-width: 1050px) 42vw, 30vw" width="#{w}" height="#{h}" loading="lazy" decoding="async" fetchpriority="low" alt="#{esc(alt)}"></a><div class="design-info"><span class="blank-design-card__eyebrow">#{BLANK_GROUPS.fetch(group)[0]}</span><h3><span class="design-number">#{id}</span>#{esc(name)}</h3><p>#{esc(BLANK_COPY.fetch(id))}</p>#{variant_control}<span class="design-style">#{asset['style']=='bw' ? 'Nespalvotas' : 'Spalvotas'} · #{paper} · #{asset['landscape'] ? 'Gulsčias' : 'Stačias'}</span><div class="design-actions"><a class="button select-design" href="#{download_href(asset,'webp')}" data-stem="#{esc(asset['stem'])}">Peržiūrėti</a><a class="button" href="#{download_href(asset,'pdf')}" data-download-kind="pdf" download="#{esc(pdf)}">PDF</a><a class="button" href="#{download_href(asset,'webp')}" data-download-kind="webp" download="#{esc(webp)}">WebP</a></div><div class="blank-card-variants" hidden>#{variants_data}</div></div></article>!
+ end
+ def blank_gallery(items)
+  grouped=items.group_by { |asset|asset['design'] }.sort_by { |design,_|design }
+  filters='<nav class="design-filters blank-filters" aria-label="Planuoklių kategorijos" role="group">'+[['all','Visi planai'],*BLANK_GROUPS.map { |key,(_,label)|[key,label] }].map { |key,label|%Q!<button type="button" data-design-filter="#{key}" aria-pressed="#{key=='all'}">#{label}</button>! }.join+'</nav>'
+  sections=BLANK_GROUPS.map do |key,(heading,_label)|
+   designs=grouped.map { |_,variants|variants.sort_by { |asset|asset['rows']||99 } }.select { |variants|blank_group(variants.first)==key }
+   next if designs.empty?
+   count=designs.length;cards=designs.map { |variants|blank_asset_card(variants.first,variants) }.join
+   %Q!<section class="blank-category" data-blank-section="#{key}"><div class="blank-category__heading"><h2>#{heading}</h2><span>#{count} maketai</span></div><div class="gallery blank-gallery">#{cards}</div></section>!
+  end.compact.join
+  first=items.find { |asset|asset['stem']=='tuscias-01-5-eilutes' }||items.first
+  preview=%Q!<section class="blank-featured panel" id="perziura" aria-labelledby="blank-featured-title"><a class="blank-featured__image" id="preview-full" href="#{download_href(first,'webp')}" target="_blank" rel="noopener"><img id="selected-preview" src="#{first['preview']}" width="#{first['landscape'] ? 680 : 481}" height="#{first['landscape'] ? 481 : 680}" alt="#{esc(blank_alt(first))}" fetchpriority="high" decoding="async"></a><div class="blank-featured__copy"><span class="eyebrow">Spaudai paruošta kolekcija</span><h2 id="blank-featured-title"><span id="preview-title">#{esc(first['name'])}</span></h2><p id="preview-format" class="badge">A4 · Vertikalus · 5 eilučių</p><p>Pasirinkite planavimo lapą, atsisiųskite PDF spaudai arba didelės raiškos WebP peržiūrai. Mėnesio maketuose galima keisti 5 ir 6 eilučių tinklelius.</p><div class="blank-featured__actions"><a id="selected-pdf" class="button primary" href="#{download_href(first,'pdf')}" download="#{esc(File.basename(first['pdf']))}">Atsisiųsti PDF</a><a id="selected-webp" class="button" href="#{download_href(first,'webp')}" download="#{esc(File.basename(first['webp']))}">Atsisiųsti WebP</a><a id="selected-print" class="button" href="#{download_href(first,'pdf')}" target="_blank" rel="noopener">Spausdinti ↗</a></div><small>PDF spausdinkite A4 formatu ir 100 % dydžiu. Spausdinamame lape išsaugotas Lato šriftas ir Kalendorius365™ žyma.</small></div></section>!
+  related='<nav class="blank-related" aria-label="Susiję kalendoriai ir planavimo įrankiai"><h2>Susiję kalendoriai ir įrankiai</h2><p><a href="/2027/">2027 metų kalendorius</a> · <a href="/menesiai/">Mėnesių kalendoriai</a> · <a href="/kurti-kalendoriu/">Sukurkite datuotą kalendorių</a> · <a href="/savaitiniai-planuokliai/">Savaitės planuokliai</a> · <a href="/dienos-planuoklis/">Dienos planuoklis</a> · <a href="/pamoku-tvarkarascio-sablonai/">Pamokų tvarkaraščiai</a> · <a href="/darbo-grafiko-sablonai/">Pamainų grafikai</a></p><p>PDF faile tekstas ir tinklelio linijos išlieka vektoriniai. Spausdinkite A4 formatu, pasirinkę 100 % mastelį ir išjungę automatinį „talpinti puslapyje“ keitimą.</p></nav>'
+  preview+filters+sections+related
+ end
  def run
   generate_months
   [2027,2028,2029].each { |y|generate_year(y);generate_holidays(y);generate_work(y);generate_weeks(y) }
   generate_holiday_hub
   generate_holiday_articles
-  blank=MANIFEST.select { |e|e['kind']=='blank' }
-  page('tuscias-kalendorius','Tuščias kalendorius – PDF šablonai','Nedatuoti mėnesio, savaitės, šeimos ir mokyklos kalendoriai. PDF ir WebP, pirmadienio arba sekmadienio pradžia, penkios ar šešios eilutės.',intro('Tuščias kalendorius','Nedatuoti lapai: datas ir planus įrašykite patys. Mėnesio tinkleliams rinkitės 5 arba 6 eilutes; savaitės planuokliams eilučių keisti nereikia.')+'<p class="source-note">PDF atidarykite spausdinimui ir pasirinkite tikrąjį dydį (100 %). Lape jau paliktos saugios paraštės. WebP skirtas aukštos raiškos vaizdui.</p>'+gallery(blank))
   links=[['2027/','2027 metų kalendorius','Visi mėnesiai, šventės ir metiniai failai.'],['2028/','2028 metų kalendorius','Keliamieji metai ir 29 dienų vasaris.'],['2029/','2029 metų kalendorius','Įprastiniai metai: 365 dienos ir 10 metinių kalendoriaus maketų.']]
   cards=->(arr){'<div class="resource-grid">'+arr.map { |url,name,desc|resource_card(url,name,desc) }.join+'</div>'}
   page('metai','Metų kalendoriai','2027, 2028 ir 2029 metų lietuviški kalendoriai: visų mėnesių apžvalga, Lietuvos šventės ir metiniai PDF bei WebP failai.',intro('Metų kalendoriai','Matykite visus metus ir rinkitės lapą spausdinimui.')+cards.call(links))

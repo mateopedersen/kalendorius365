@@ -17,10 +17,12 @@ from pypdf.generic import ContentStream
 ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads((ROOT/'data/calendar.json').read_text())
 YEARS=json.loads((ROOT/'site/assets/data/years.json').read_text())
-OUT=ROOT/'site/downloads'; PREVIEW=ROOT/'site/assets/previews'; CACHE=ROOT/'.build-cache'; CACHE.mkdir(exist_ok=True)
-for p in [OUT,PREVIEW]:p.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'site/downloads'; PREVIEW=ROOT/'site/assets/previews'; SMALL_PREVIEW=ROOT/'site/assets/previews-small'; CACHE=ROOT/'.build-cache'; CACHE.mkdir(exist_ok=True)
+for p in [OUT,PREVIEW,SMALL_PREVIEW]:p.mkdir(parents=True,exist_ok=True)
 for name in ['Regular','Bold']:pdfmetrics.registerFont(TTFont('Inter'+name,str(ROOT/f'site/assets/fonts/Inter-{name}.ttf')))
+for name in ['Regular','Bold','Black']:pdfmetrics.registerFont(TTFont('Lato'+name,str(ROOT/f'site/assets/fonts/Lato-{name}.ttf')))
 INK=HexColor('#182b24'); GREEN=HexColor('#006A44'); RED=HexColor('#C1272D'); YELLOW=HexColor('#FDB913'); LINE=HexColor('#ccd6cf'); MUTED=HexColor('#50635a'); PALE=HexColor('#eef3ee')
+BLUE=HexColor('#3274a8'); TEAL=HexColor('#318b83'); GOLD=HexColor('#bd8423'); LILAC=HexColor('#7563a8'); CLOUD=HexColor('#f5f7f5')
 FONT='InterRegular'; BOLD='InterBold'
 ISSUES=[]
 
@@ -42,11 +44,15 @@ class PrintCanvas(canvas.Canvas):
   else:super().setStrokeColor(color,alpha)
 
 def text(c,x,y,s,size=10,color=INK,font=FONT):
- c.setFillColor(color);c.setFont(font,size);c.drawString(x,y,str(s))
+ c.setFillColor(color);c.setFont(selected_font(c,font),size);c.drawString(x,y,str(s))
 def right(c,x,y,s,size=10,color=INK,font=FONT):
- c.setFillColor(color);c.setFont(font,size);c.drawRightString(x,y,str(s))
+ c.setFillColor(color);c.setFont(selected_font(c,font),size);c.drawRightString(x,y,str(s))
 def center(c,x,y,s,size=10,color=INK,font=FONT):
- c.setFillColor(color);c.setFont(font,size);c.drawCentredString(x,y,str(s))
+ c.setFillColor(color);c.setFont(selected_font(c,font),size);c.drawCentredString(x,y,str(s))
+def selected_font(c,font):
+ if not getattr(c,'blank_font',False):return font
+ if 'Black' in font:return 'LatoBlack'
+ return 'LatoBold' if 'Bold' in font else 'LatoRegular'
 def rect(c,x,y,w,h,fill=None,stroke=LINE):
  c.setLineWidth(.5);c.setStrokeColor(stroke or white);c.setFillColor(fill or white);c.rect(x,y,w,h,fill=bool(fill),stroke=bool(stroke))
 def line(c,x1,y1,x2,y2,color=LINE,width=.5):
@@ -84,7 +90,99 @@ def header(c,w,h,title,subtitle='',kind=1):
  return y-25
 
 def footer(c,w,label=''):
- line(c,32,30,w-32,30);text(c,32,17,'Kalendorius365.lt',8,MUTED,BOLD);right(c,w-32,17,label,6.5,MUTED)
+ line(c,32,30,w-32,30)
+ if getattr(c,'brand_signature',False):
+  # Original, print-safe vector mark: calendar outline, binding rings and a
+  # small Lithuanian tricolour accent. It stays sharp at any print resolution.
+  c.setStrokeColor(GREEN);c.setLineWidth(1.1);c.roundRect(32,10,21,16,3,fill=0,stroke=1)
+  line(c,32,20,53,20,GREEN,1.2);line(c,37,24,37,28,GREEN,1.2);line(c,48,24,48,28,GREEN,1.2)
+  line(c,37,15,41,15,TEAL,1.2);line(c,44,15,48,15,TEAL,1.2)
+  rect(c,48,8,5,1.5,YELLOW,None);rect(c,48,6.5,5,1.5,GREEN,None);rect(c,48,5,5,1.5,RED,None)
+  text(c,60,15,'Kalendorius365',8.4,GREEN,'LatoBlack');text(c,126,15,'TM',3.8,MUTED,'LatoBold')
+ else:text(c,32,17,'Kalendorius365.lt',8,MUTED,BOLD)
+ right(c,w-32,17,label,6.5,MUTED)
+
+def blank_header(c,w,h,title,subtitle,design,landscape_page=False):
+ """A distinct, restrained editorial header shared by printable blank sheets."""
+ accent={1:GREEN,2:BLUE,3:TEAL,4:INK,5:GOLD,6:GREEN,7:BLUE,8:LILAC,9:TEAL,10:GREEN}.get(int(design),GREEN)
+ if int(design)==10:
+  rect(c,24,h-103,w-48,77,INK,None)
+  # Fine tricolour rule and deliberately generous title spacing.
+  rect(c,24,h-29,(w-48)/3,3,YELLOW,None);rect(c,24+(w-48)/3,h-29,(w-48)/3,3,GREEN,None);rect(c,24+2*(w-48)/3,h-29,(w-48)/3,3,RED,None)
+  text(c,40,h-60,title,22,white,'LatoBlack');text(c,40,h-82,subtitle,8,HexColor('#d7e1dc'),'LatoRegular')
+  right(c,w-42,h-48,'MĖNESIO PLANAS',6,HexColor('#d7e1dc'),'LatoBold')
+  return h-124
+ # Calm wordmark and original small arc motif make blank pages identifiable
+ # without taking writing room from the calendar.
+ c.setFillColor(accent);c.circle(39,h-39,9,fill=1,stroke=0)
+ c.setStrokeColor(white);c.setLineWidth(1.1);c.roundRect(34,h-44,10,10,1.8,fill=0,stroke=1)
+ line(c,34,h-38,44,h-38,white,.8);line(c,37,h-35,37,h-33,white,.8);line(c,41,h-35,41,h-33,white,.8)
+ text(c,55,h-37,'KALENDORIUS365  ·  NEDATUOTAS PLANAVIMO LAPAS',6.5,accent,'LatoBold')
+ text(c,32,h-70,title,20 if landscape_page else 19,INK,'LatoBlack')
+ text(c,32,h-91,subtitle,8,MUTED,'LatoRegular')
+ line(c,32,h-103,w-32,h-103,accent,1.2)
+ right(c,w-32,h-37,'A4  ·  SPAUSDINIMUI',6.2,MUTED,'LatoBold')
+ # A quiet, original arc and dot motif in the far corner adds hierarchy while
+ # keeping the printable area neutral and ink-efficient.
+ c.setStrokeColor(accent);c.setLineWidth(.6);c.arc(w-75,h-88,w-36,h-49,25,105);c.circle(w-52,h-68,1.1,fill=1,stroke=0)
+ return h-120
+
+def blank_month_grid(c,x,top,w,height,rows,design,sunday=False):
+ accent={1:GREEN,2:BLUE,4:INK,5:GOLD,9:TEAL,10:GREEN}.get(int(design),GREEN)
+ weekday_names=DATA['weekdays'][:]
+ if sunday:weekday_names=[weekday_names[-1]]+weekday_names[:-1]
+ header_h=24;cell_h=(height-header_h)/rows;cell_w=w/7
+ # Style 09 uses open writing bands and oversized weekday labels; all other
+ # styles use a carefully balanced grid with a generous writable interior.
+ for col,name in enumerate(weekday_names):
+  xx=x+col*cell_w
+  if int(design) in [2,10]:rect(c,xx,top-header_h,cell_w,header_h,accent,None)
+  elif int(design)==9:line(c,xx,top-header_h,xx+cell_w,top-header_h,accent,1.1)
+  else:rect(c,xx,top-header_h,cell_w,header_h,CLOUD if col%2==0 else white,None)
+  color=white if int(design) in [2,10] else RED if name=='Sk' or (sunday and name=='Pr') else accent
+  center(c,xx+cell_w/2,top-15,name,9 if int(design)==9 else 7.8,color,'LatoBold')
+ for row in range(rows):
+  row_top=top-header_h-row*cell_h;row_bottom=row_top-cell_h
+  for col in range(7):
+   xx=x+col*cell_w
+   if int(design)==4:
+    # Open page-like cells: vertical rails disappear, leaving a quiet writing rule.
+    line(c,xx+4,row_bottom+2,xx+cell_w-4,row_bottom+2,HexColor('#bac7bf'),.45)
+   elif int(design)==9:
+    line(c,xx,row_top,xx+cell_w,row_top,HexColor('#9dbdb3'),.55)
+    if col==0:line(c,xx,row_bottom,xx,row_top,HexColor('#9dbdb3'),.4)
+   else:
+    rect(c,xx,row_bottom,cell_w,cell_h,None,HexColor('#b7c2bb') if int(design)==10 else LINE)
+    if int(design)==5:
+     # A subtle corner index is a writing cue rather than decorative ink fill.
+     c.setFillColor(accent);c.circle(xx+7,row_top-7,1.2,fill=1,stroke=0)
+ if int(design)==9:
+  # Short weekday divider on the large-type edition.
+  line(c,x,top-header_h,x+w,top-header_h,accent,1.2)
+
+def blank_month_page(c,entry,w,h):
+ design=int(entry['design']);landscape_page=entry['landscape'];top=blank_header(c,w,h,entry['name'],'Pasirinkite datas ir pasižymėkite svarbiausius mėnesio darbus.',design,landscape_page)
+ text(c,32,top-13,'MĖNUO',6.5,MUTED,'LatoBold');line(c,57,top-15,145,top-15,LINE,.6)
+ text(c,154,top-13,'METAI',6.5,MUTED,'LatoBold');line(c,181,top-15,232,top-15,LINE,.6)
+ if design==5:
+  # Landscape edition pairs a legible calendar with an adjacent planning rail.
+  x=32;grid_w=(w-64)*.70;grid_top=top-37;grid_h=h-260
+  blank_month_grid(c,x,grid_top,grid_w,grid_h,entry['rows'],design,entry['sunday'])
+  rail_x=x+grid_w+18;rail_w=w-rail_x-32;rail_top=grid_top
+  for heading,lines_count in [('MĖNESIO KRYPTIS',3),('SVARBIAUSIOS DATOS',4),('UŽRAŠAI',5)]:
+   text(c,rail_x,rail_top-12,heading,7,accent_for(design),'LatoBold')
+   row_y=rail_top-20
+   for _ in range(lines_count):line(c,rail_x,row_y,rail_x+rail_w,row_y,LINE,.55);row_y-=21
+   rail_top=row_y-12
+ else:
+  grid_top=top-37;grid_h=h-273
+  blank_month_grid(c,32,grid_top,w-64,grid_h,entry['rows'],design,entry['sunday'])
+  notes_y=83;text(c,32,notes_y,'MĖNESIO PRIORITETAI',6.7,MUTED,'LatoBold')
+  line(c,32,notes_y-9,w-32,notes_y-9,LINE,.6);line(c,32,notes_y-25,w-32,notes_y-25,LINE,.5);line(c,32,notes_y-41,w-32,notes_y-41,LINE,.5)
+ c.brand_signature=True
+ footer(c,w,f"A4 · {entry['rows']} eilutės · {'Sekmadienio' if entry['sunday'] else 'Pirmadienio'} pradžia")
+
+def accent_for(design):return {1:GREEN,2:BLUE,4:INK,5:GOLD,9:TEAL,10:GREEN}.get(int(design),GREEN)
 
 def holiday_key(month):return {d['date']:d['holidays'] for d in month['days'] if d['holidays']}
 def holiday_lines(c,month,x,y,w,size=7):
@@ -239,9 +337,39 @@ BLANKS=[
 ]
 def planner_blank(c,e,w,h):
  mono=e['style']=='bw';bold=e.get('typography')=='bold';ink=INK;accent=GREEN if not mono else HexColor('#333333');soft=PALE if not mono else HexColor('#f0f0f0')
- title=e['name'];top=header(c,w,h,title,'Nedatuotas planas · pildykite ranka arba naudokite kaip kopiją',3 if not mono else 6)
+ title=e['name'];top=blank_header(c,w,h,title,'Aiški savaitės struktūra, palikta jūsų planams ir užrašams.',e['design'],e['landscape'])
  kind=e['layout'];days=['Pr','An','Tr','Kt','Pn','Št','Sk']
- if kind in ['weekly-time','weekly-priority']:
+ if kind in ['week','family','office','school']:
+  left=32;right=w-32;bottom=76;head=top-18
+  if kind=='week':
+   cols=7;gap=4;cw=(right-left-gap*(cols-1))/cols
+   for col,d in enumerate(days):
+    xx=left+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-24,cw,24,soft,None);text(c,xx+5,head-16,d,8,accent,BOLD if bold else FONT)
+    for rr in range(1,7):line(c,xx+6,bottom+rr*(head-bottom-31)/7,xx+cw-6,bottom+rr*(head-bottom-31)/7,LINE,.45)
+   text(c,left,54,'SAVAITĖ NUO __________________',7,MUTED,BOLD)
+  elif kind=='family':
+   cols=5;gap=7;cw=(right-left-gap*(cols-1))/cols;labels=['Bendri planai','Narys 1','Narys 2','Narys 3','Narys 4']
+   for col,label in enumerate(labels):
+    xx=left+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-28,cw,28,soft,None);text(c,xx+5,head-18,label,7,accent,BOLD if bold else FONT)
+    for rr in range(1,7):line(c,xx+7,bottom+rr*(head-bottom-36)/7,xx+cw-7,bottom+rr*(head-bottom-36)/7,LINE,.45)
+   text(c,left,54,'SAVAITĖS BENDRAS TIKSLAS: ___________________________________________',7,MUTED,BOLD)
+  elif kind=='office':
+   cols=5;gap=6;cw=(right-left-gap*(cols-1))/cols;labels=days[:5]
+   for col,d in enumerate(labels):
+    xx=left+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-25,cw,25,soft,None);text(c,xx+7,head-17,d,8,accent,BOLD if bold else FONT)
+    for rr in range(1,9):
+     yy=head-25-rr*(head-bottom-30)/9;line(c,xx+6,yy,xx+cw-6,yy,LINE,.45)
+   text(c,left,55,'SAVAITĖS TIKSLAS ______________________________   SVARBIAUSIAS REZULTATAS ______________________________',7,MUTED,BOLD)
+  else:
+   cols=5;gap=4;labelw=54;cw=(right-left-labelw-gap*(cols-1))/cols
+   for col,d in enumerate(days[:5]):
+    xx=left+labelw+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-25,cw,25,soft,None);center(c,xx+cw/2,head-17,d,8,accent,BOLD)
+   for rr in range(6):
+    yy=head-25-(rr+1)*(head-bottom-30)/6;text(c,left+3,yy+5,f'{rr+1} pam.',6,MUTED,BOLD if bold else FONT)
+    for col in range(cols):
+     xx=left+labelw+col*(cw+gap);line(c,xx,yy,xx+cw,yy,LINE,.4)
+   text(c,left,54,'KLASĖ __________________    SAVAITĖ NUO __________________',7,MUTED,BOLD)
+ elif kind in ['weekly-time','weekly-priority']:
   x=32;usable=w-64;gap=5;cols=7;cw=(usable-gap*6)/7;head=top-24;bottom=75;rowh=(head-bottom)/5
   for col,d in enumerate(days):
    xx=x+col*(cw+gap);rect(c,xx,bottom,cw,head-bottom,white,LINE);rect(c,xx,head-24,cw,24,soft,None);text(c,xx+5,head-16,d,8,accent,BOLD if bold else FONT)
@@ -295,29 +423,22 @@ def planner_blank(c,e,w,h):
     xx=left+labelw+j*cw;rect(c,xx,yy,cw,rowh,white,LINE)
     if kind=='shift-rota':line(c,xx+4,yy+rowh*.34,xx+cw-4,yy+rowh*.34,LINE,.35);line(c,xx+4,yy+rowh*.67,xx+cw-4,yy+rowh*.67,LINE,.35)
   text(c,32,52,'Pamainų žymos: D __________________  N __________________  P __________________',7,MUTED)
- footer(c,w,f"A4 · {e['design']} · {'Nespalvotas' if mono else 'Spalvotas'} · {'Įprastas' if not bold else 'Paryškintas'} šriftas")
+ c.brand_signature=True
+ footer(c,w,f"A4 · {e['design']} · {'Nespalvotas' if mono else 'Spalvotas'} · {'Paryškintas' if bold else 'Įprastas'} šriftas")
 
 def blank(c,entry,w,h):
  k=int(entry['design']);title=entry['name']
- if entry.get('category'):
-  planner_blank(c,entry,w,h);return
- top=header(c,w,h,title,'Nedatuotas · Užpildykite patys',10 if k==10 else 1)
  if entry['layout']=='month':
-  text(c,32,top-4,'MĖNUO __________________    METAI __________',10,MUTED)
-  grid(c,{},32,top-28,w-64,h-220,k,True,entry['rows'],entry['sunday'])
-  text(c,32,100,'PRIORITETAI',9,GREEN,BOLD);line(c,32,77,w-32,77)
- else:
-  layout=entry['layout'];cols=7 if layout=='week' else 5;cw=(w-64)/cols
-  for j in range(cols):
-   x=32+j*cw;rect(c,x,75,cw,top-75,None);text(c,x+7,top-20,DATA['weekdays'][j],10,GREEN,BOLD)
-   if layout=='family':
-    for i in range(1,5):line(c,x,75+i*(top-105)/4,x+cw,75+i*(top-105)/4)
-   elif layout in ['office','school']:
-    for i in range(1,10):line(c,x,75+i*(top-105)/10,x+cw,75+i*(top-105)/10)
-   else:
-    for i in range(1,7):line(c,x+7,75+i*(top-110)/7,x+cw-7,75+i*(top-110)/7)
-  text(c,32,50,{'week':'Savaitė: __________________','family':'Šeimos nariai: __________________________________','office':'Savaitės tikslas: __________________________________','school':'Klasė / savaitė: __________________________________'}[layout],9,MUTED)
- footer(c,w,f"A4 · {entry['design']} · "+('Sekmadienis pirmas' if entry['sunday'] else 'Pirmadienis pirmas'))
+  blank_month_page(c,entry,w,h);return
+ if entry.get('category') or entry['layout'] in ['week','family','office','school']:
+  planner_blank(c,entry,w,h);return
+ top=blank_header(c,w,h,title,'Naudokite atspausdintą lapą savaitės planams ir užrašams.',k,entry['landscape'])
+ layout=entry['layout'];cols=7 if layout=='week' else 5;cw=(w-64)/cols
+ for j in range(cols):
+  x=32+j*cw;rect(c,x,75,cw,top-75,None);text(c,x+7,top-20,DATA['weekdays'][j],10,GREEN,BOLD)
+  for i in range(1,7):line(c,x+7,75+i*(top-105)/7,x+cw-7,75+i*(top-105)/7)
+ c.brand_signature=True
+ footer(c,w,f"A4 · {entry['design']} · "+('Sekmadienio pradžia' if entry['sunday'] else 'Pirmadienio pradžia'))
 
 def entries():
  items=[]
@@ -332,11 +453,12 @@ def entries():
    items.append({'kind':'blank','year':None,'month':None,'design':id,'name':name,'style':style,'typography':typography,'category':category,'layout':layout,'rows':rows,'sunday':sunday,'stem':f"tuscias-{id}"+(f'-{rows}-eilutes' if rows else ''),'landscape':landscape_page})
  return items
 
-FINGERPRINT=hashlib.sha256(Path(__file__).read_bytes()+(ROOT/'data/calendar.json').read_bytes()+(ROOT/'site/assets/data/years.json').read_bytes()+(ROOT/'site/assets/fonts/Inter-Regular.ttf').read_bytes()+(ROOT/'site/assets/fonts/Inter-Bold.ttf').read_bytes()).hexdigest()
+FINGERPRINT=hashlib.sha256(Path(__file__).read_bytes()+(ROOT/'data/calendar.json').read_bytes()+(ROOT/'site/assets/data/years.json').read_bytes()+b''.join((ROOT/p).read_bytes() for p in ['site/assets/fonts/Inter-Regular.ttf','site/assets/fonts/Inter-Bold.ttf','site/assets/fonts/Lato-Regular.ttf','site/assets/fonts/Lato-Bold.ttf','site/assets/fonts/Lato-Black.ttf'])).hexdigest()
 def build_pdf(e):
  pdf=OUT/(e['stem']+'.pdf');w,h=landscape(A4) if e['landscape'] else A4
  c=PrintCanvas(str(pdf),pagesize=(w,h),pageCompression=1,invariant=1,mono=e['style']=='bw',regular=e.get('typography')=='regular');c.setCropBox((0,0,w,h),name='trim');c.setTitle(e['name']+(f" · {e['year']}" if e['year'] else ''));c.setAuthor('Kalendorius365');c.setSubject('Lietuviškas kalendorius · '+e['stem'])
  c.preserved_gray_mapping=e.get('renderCompatibility',{}).get('preserved_gray_mapping',{})
+ c.brand_signature=e['kind']=='blank';c.blank_font=e['kind']=='blank'
  if e['kind']=='monthly':monthly(c,next(y for y in YEARS if y['year']==e['year'])['months'][e['month']-1],DATA['designs'][int(e['design'])-1],w,h)
  elif e['kind']=='annual':annual(c,next(y for y in YEARS if y['year']==e['year']),DATA['designs'][int(e['design'])-1],w,h)
  else:blank(c,e,w,h)
@@ -345,7 +467,7 @@ def build_pdf(e):
 
 def generate(e):
  pdf=OUT/(e['stem']+'.pdf');webp=OUT/(e['stem']+'.webp');preview=PREVIEW/(e['stem']+'.webp');stamp=CACHE/(e['stem']+'.sha256')
- if not (stamp.exists() and stamp.read_text()==FINGERPRINT and all(p.exists() for p in [pdf,webp,preview])):
+ if not (stamp.exists() and stamp.read_text()==FINGERPRINT and all(p.exists() for p in [pdf,webp,preview,SMALL_PREVIEW/(e['stem']+'.webp')])):
   build_pdf(e)
   width,height=(7016,4961) if e['landscape'] else (4961,7016)
   with tempfile.TemporaryDirectory() as tmp:
@@ -353,13 +475,14 @@ def generate(e):
    subprocess.run(['pdftoppm','-f','1','-singlefile','-scale-to-x',str(width),'-scale-to-y',str(height),'-png',str(pdf),str(target)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
    image=Image.open(str(target)+'.png').convert('RGB');
    if SAMPLE_MODE:image.save(OUT/(e['stem']+'-600ppi-proof.png'))
-   image.save(webp,'WEBP',quality=100 if e['style']=='bw' else 96,lossless=e['style']=='bw',method=4);image.thumbnail((680,680),Image.Resampling.LANCZOS);image.save(preview,'WEBP',quality=84,method=5)
+   image.save(webp,'WEBP',quality=100 if e['style']=='bw' else 96,lossless=e['style']=='bw',method=4);image.thumbnail((680,680),Image.Resampling.LANCZOS);image.save(preview,'WEBP',quality=84,method=5);image.thumbnail((340,340),Image.Resampling.LANCZOS);image.save(SMALL_PREVIEW/(e['stem']+'.webp'),'WEBP',quality=87,method=4)
   stamp.write_text(FINGERPRINT)
   (CACHE/(e['stem']+'.layout.json')).write_text(json.dumps(e.get('dateLayout',[])))
  if 'dateLayout' not in e:e['dateLayout']=json.loads((CACHE/(e['stem']+'.layout.json')).read_text())
- e['pdf']='/downloads/'+pdf.name;e['webp']='/downloads/'+webp.name;e['preview']='/assets/previews/'+preview.name
+ small=SMALL_PREVIEW/(e['stem']+'.webp')
+ e['pdf']='/downloads/'+pdf.name;e['webp']='/downloads/'+webp.name;e['preview']='/assets/previews/'+preview.name;e['smallPreview']='/assets/previews-small/'+small.name
  e['paper']='A4';e['dimensions']={'width':7016 if e['landscape'] else 4961,'height':4961 if e['landscape'] else 7016}
- e['files']={k:{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for k,p in [('pdf',pdf),('webp',webp),('preview',preview)]}
+ e['files']={k:{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for k,p in [('pdf',pdf),('webp',webp),('preview',preview),('smallPreview',small)]}
  e['colorMode']='DeviceGray monochrome' if e['style']=='bw' else 'RGB vector artwork';e['renderPPI']=600;e['verification']={'status':'pending'}
  return e
 
@@ -457,19 +580,43 @@ def correct_annual_monochrome_legends(workers=2):
  print('Corrected15 PDF/WebP/680px/340px sets. Real preflight and visual review remain required.',flush=True)
 
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int);parser.add_argument('--samples',action='store_true');parser.add_argument('--phase-8-assets',action='store_true',help='Generate only the additive 2029 collection and new planner sheets; preserve existing assets.');parser.add_argument('--correct-annual-monochrome-legends',action='store_true',help='Reviewed selective15-asset legend correction with401-PDF compatibility proof.');parser.add_argument('--workers',type=int,default=2);args=parser.parse_args();SAMPLE_MODE=args.samples;items=entries();
+ parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int);parser.add_argument('--samples',action='store_true');parser.add_argument('--phase-8-assets',action='store_true',help='Generate only the additive 2029 collection and new planner sheets; preserve existing assets.');parser.add_argument('--redesign-blanks',action='store_true',help='Regenerate only the 26 blank planning sheets after the sample and print QA gates pass.');parser.add_argument('--correct-annual-monochrome-legends',action='store_true',help='Reviewed selective15-asset legend correction with401-PDF compatibility proof.');parser.add_argument('--workers',type=int,default=2);args=parser.parse_args();SAMPLE_MODE=args.samples;items=entries();
  if args.correct_annual_monochrome_legends:
   if args.samples or args.limit or args.phase_8_assets:raise SystemExit('The reviewed legend migration cannot be combined with other generation modes.')
   correct_annual_monochrome_legends(args.workers);raise SystemExit(0)
+ if args.redesign_blanks:
+  if args.samples or args.limit or args.phase_8_assets:raise SystemExit('--redesign-blanks cannot be combined with sample, limit or phase-8 generation.')
+  gate=json.loads((CACHE/'sample-gate.json').read_text()) if (CACHE/'sample-gate.json').exists() else {}
+  if gate.get('generator')!=FINGERPRINT or gate.get('status')!='passed' or gate.get('visualReviewed') is not True:
+   raise SystemExit('Blank calendar assets require the current complete sample set to pass automated preflight and visual review first.')
+  manifest_path=ROOT/'site/assets/data/manifest.json';original=json.loads(manifest_path.read_text());original_bytes=manifest_path.read_bytes()
+  if len(original.get('assets',[]))!=416 or sum(a['kind']=='blank' for a in original['assets'])!=26:raise SystemExit('Expected the complete 416-asset manifest with 26 existing blank designs.')
+  selected=[e for e in items if e['kind']=='blank']
+  if len(selected)!=26:raise SystemExit(f'Expected26 blank designs; found {len(selected)}')
+  preserved=[]
+  for asset in original['assets']:
+   if asset['kind']=='blank':continue
+   for kind in ['pdf','webp','preview','smallPreview']:
+    path=ROOT/'site'/asset[kind].lstrip('/');info=asset['files'][kind]
+    if not path.is_file() or path.stat().st_size!=info['bytes'] or hashlib.sha256(path.read_bytes()).hexdigest()!=info['sha256']:
+     raise SystemExit('Unchanged print asset does not match its checked manifest hash: '+str(path))
+   preserved.append({'stem':asset['stem'],'files':asset['files']})
+  with ThreadPoolExecutor(max_workers=args.workers) as pool:rendered=list(pool.map(generate,selected))
+  for asset in rendered:asset['generator']=FINGERPRINT
+  before={a['stem']:a for a in original['assets']};after={a['stem']:a for a in rendered}
+  merged=[after[a['stem']] if a['kind']=='blank' else a for a in original['assets']]
+  transition={'version':'2026-10-18-blank-calendar-redesign-v1','after_generator':FINGERPRINT,'before_manifest_sha256':hashlib.sha256(original_bytes).hexdigest(),'scope':'Only the 26 existing blank calendar/planner print sets were redesigned. All 390 dated monthly and annual PDF/WebP/preview file hashes were verified before regeneration and retained unchanged. Existing blank stems and public download paths were retained; five/six-row month designs remain separate files and are now grouped as one selectable layout on the page.','preserved_nonblank_assets':preserved,'redesigned_blank_assets':[{'stem':a['stem'],'before_files':before[a['stem']]['files'],'after_files':a['files']} for a in rendered]}
+  transition_path=ROOT/'docs/blank-calendar-redesign/asset-transition.json';transition_path.parent.mkdir(parents=True,exist_ok=True);transition_path.write_text(json.dumps(transition,ensure_ascii=False,indent=2)+'\n')
+  original['assets']=merged;original['generator']=FINGERPRINT;original['blankRedesign']='docs/blank-calendar-redesign/asset-transition.json';original['sourceReviewed']='2026-10-18'
+  manifest_path.write_text(json.dumps(original,ensure_ascii=False,indent=2));print(f'Redesigned {len(rendered)} blank print sets; retained and verified 390 other assets.',flush=True);raise SystemExit(0)
  if (ROOT/'site/assets/data/manifest.json').is_file():
   prior={a['stem']:a for a in json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets']}
   for asset in items:
    if prior.get(asset['stem'],{}).get('renderCompatibility'):asset['renderCompatibility']=prior[asset['stem']]['renderCompatibility']
  if SAMPLE_MODE:
-  OUT=ROOT.parents[1]/'outputs/print-samples';PREVIEW=OUT/'previews';OUT.mkdir(parents=True,exist_ok=True);PREVIEW.mkdir(exist_ok=True);CACHE=CACHE/'samples';CACHE.mkdir(exist_ok=True)
+  OUT=ROOT.parents[1]/'outputs/print-samples';PREVIEW=OUT/'previews';SMALL_PREVIEW=OUT/'previews-small';OUT.mkdir(parents=True,exist_ok=True);PREVIEW.mkdir(exist_ok=True);SMALL_PREVIEW.mkdir(exist_ok=True);CACHE=CACHE/'samples';CACHE.mkdir(exist_ok=True)
   required={('monthly',2027,1,'06'),('monthly',2028,2,'02')}
-  required.update(('blank',None,None,f'{design:02}') for design in range(11,21))
-  items=[e for e in items if (e['kind'],e['year'],e['month'],e['design']) in required]
+  items=[e for e in items if e['kind']=='blank' or (e['kind'],e['year'],e['month'],e['design']) in required]
  elif args.phase_8_assets:
   if args.limit:raise SystemExit('--limit is not supported with --phase-8-assets')
   gate=json.loads((CACHE/'sample-gate.json').read_text()) if (CACHE/'sample-gate.json').exists() else {}

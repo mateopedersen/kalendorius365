@@ -15,31 +15,61 @@ const escape = (s) =>
         "'": "&apos;",
       })[c],
   );
-if ($("#design-picker")) {
+if ($("#design-picker") || $("#selected-preview")) {
   function choose(stem) {
-    const card = document.getElementById("dizainas-" + stem),
+    const card =
+        document.getElementById("dizainas-" + stem) ||
+        [...document.querySelectorAll(".blank-card-variants [data-variant-stem]")].find(
+          (option) => option.dataset.variantStem === stem,
+        )?.closest(".design-card"),
       thumbnail = card?.querySelector(".preview-link img"),
       previewLink = card?.querySelector(".preview-link"),
       downloads = [...(card?.querySelectorAll("a[download]") || [])],
       pdf = downloads.find((link) => /\.pdf(?:$|\?)/.test(link.href)),
-      webp = downloads.find((link) => /\.webp(?:$|\?)/.test(link.href));
+      webp = downloads.find((link) => /\.webp(?:$|\?)/.test(link.href)),
+      variant = card?.querySelector('[data-blank-rows] option[value="' + stem + '"]');
     if (!card || !thumbnail || !previewLink || !pdf || !webp) return;
-    const landscape = Number(thumbnail.getAttribute("width")) > Number(thumbnail.getAttribute("height")),
+    const selected = variant?.dataset,
+      imageSrc = selected?.preview || thumbnail.getAttribute("src"),
+      webpHref = selected?.webp || previewLink.href,
+      pdfHref = selected?.pdf || pdf.href,
+      landscape = Number(selected?.width || thumbnail.getAttribute("width")) >
+        Number(selected?.height || thumbnail.getAttribute("height")),
       paper = card.dataset.paper || "A4",
-      name = card.querySelector(".design-info h2")?.textContent.replace(/^\s*\d+\s*/, "").trim() || "Kalendoriaus dizainas";
+      name = card.querySelector(".design-info h2, .design-info h3")?.textContent.replace(/^\s*\d+\s*/, "").trim() || "Kalendoriaus dizainas";
+    if (selected) {
+      thumbnail.src = imageSrc;
+      thumbnail.srcset = imageSrc.replace("/assets/previews/", "/assets/previews-small/") + " 340w, " + imageSrc + " 680w";
+      thumbnail.alt = selected.alt;
+      thumbnail.width = Number(selected.width);
+      thumbnail.height = Number(selected.height);
+      previewLink.href = webpHref;
+      pdf.href = pdfHref;
+      pdf.download = selected.pdfName;
+      webp.href = webpHref;
+      webp.download = selected.webpName;
+      card.dataset.pdfName = selected.pdfName;
+      card.dataset.webpName = selected.webpName;
+      for (const action of card.querySelectorAll(".select-design"))
+        action.dataset.stem = stem;
+    }
+    card.dataset.activeStem = stem;
     const selectedPreview = $("#selected-preview");
     if (selectedPreview) {
-      selectedPreview.src = thumbnail.getAttribute("src");
+      selectedPreview.src = imageSrc;
       selectedPreview.alt = thumbnail.alt;
-      selectedPreview.width = Number(thumbnail.getAttribute("width"));
-      selectedPreview.height = Number(thumbnail.getAttribute("height"));
+      selectedPreview.width = Number(selected?.width || thumbnail.getAttribute("width"));
+      selectedPreview.height = Number(selected?.height || thumbnail.getAttribute("height"));
     }
     const previewTitle = $("#preview-title"),
       previewFormat = $("#preview-format"),
       fullPreviewLink = $("#preview-full");
     if (previewTitle) previewTitle.textContent = name;
-    if (previewFormat) previewFormat.textContent = paper + " · " + (landscape ? "Gulsčias" : "Stačias");
-    if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
+    if (previewFormat) {
+      const rows = selected?.variantStem?.match(/-(5|6)-eilutes$/)?.[1];
+      previewFormat.textContent = paper + " · " + (landscape ? "Gulsčias" : "Stačias") + (rows ? " · " + rows + " eilutės" : "");
+    }
+    if (fullPreviewLink) fullPreviewLink.href = webpHref;
     const printSource = $("#selected-print-source");
     if (printSource) printSource.srcset = webp.href;
     const printRoot = selectedPreview?.closest("[data-print-root]");
@@ -49,17 +79,26 @@ if ($("#design-picker")) {
     }
     const printStyle = $("#artwork-print-style");
     if (printStyle) printStyle.textContent = `@page{size:${paper} ${landscape ? "landscape" : "portrait"};margin:0}`;
-    $("#selected-pdf").href = pdf.href;
-    $("#selected-pdf").download = card.dataset.pdfName || "calendar.pdf";
-    $("#selected-webp").href = webp.href;
-    $("#selected-webp").download = card.dataset.webpName || "calendar.webp";
-    $("#selected-print").href = pdf.href;
-    $("#design-picker").value = stem;
+    if ($("#selected-pdf")) {
+      $("#selected-pdf").href = pdfHref;
+      $("#selected-pdf").download = selected?.pdfName || card.dataset.pdfName || "calendar.pdf";
+    }
+    if ($("#selected-webp")) {
+      $("#selected-webp").href = webpHref;
+      $("#selected-webp").download = selected?.webpName || card.dataset.webpName || "calendar.webp";
+    }
+    if ($("#selected-print")) $("#selected-print").href = pdfHref;
+    if ($("#design-picker")) $("#design-picker").value = stem;
     if ($("#print-art")) $("#print-art").open = true;
     for (const card of document.querySelectorAll(".design-card"))
-      card.classList.toggle("selected-design", card.id === "dizainas-" + stem);
+      card.classList.toggle(
+        "selected-design",
+        card.id === "dizainas-" + stem || card.dataset.activeStem === stem,
+      );
   }
-  $("#design-picker").onchange = (e) => choose(e.target.value);
+  if ($("#design-picker")) $("#design-picker").onchange = (e) => choose(e.target.value);
+  for (const selector of document.querySelectorAll("[data-blank-rows]"))
+    selector.onchange = (e) => choose(e.target.value);
   for (const a of document.querySelectorAll(".select-design"))
     a.onclick = (e) => {
       e.preventDefault();
@@ -71,20 +110,23 @@ if ($("#design-picker")) {
         block: "start",
       });
     };
-  for (const b of document.querySelectorAll("[data-design-filter]"))
-    b.onclick = () => {
-      for (const x of document.querySelectorAll("[data-design-filter]"))
-        x.setAttribute("aria-pressed", String(x === b));
-      for (const c of document.querySelectorAll(".design-card"))
-        c.hidden = !(
-          b.dataset.designFilter === "all" ||
-          b.dataset.designFilter === c.dataset.style ||
-          b.dataset.designFilter === c.dataset.design ||
-          b.dataset.designFilter === c.dataset.layout ||
-          (b.dataset.designFilter === "holidays" && c.dataset.holidays === "true")
-        );
-    };
 }
+for (const b of document.querySelectorAll("[data-design-filter]"))
+  b.onclick = () => {
+    for (const x of document.querySelectorAll("[data-design-filter]"))
+      x.setAttribute("aria-pressed", String(x === b));
+    for (const c of document.querySelectorAll(".design-card"))
+      c.hidden = !(
+        b.dataset.designFilter === "all" ||
+        b.dataset.designFilter === c.dataset.category ||
+        b.dataset.designFilter === c.dataset.style ||
+        b.dataset.designFilter === c.dataset.design ||
+        b.dataset.designFilter === c.dataset.layout ||
+        (b.dataset.designFilter === "holidays" && c.dataset.holidays === "true")
+      );
+    for (const section of document.querySelectorAll("[data-blank-section]"))
+      section.hidden = !section.querySelector(".design-card:not([hidden])");
+  };
 if ($("#work-schedule")) {
   $("#work-schedule").onchange = (e) => {
     for (const section of document.querySelectorAll("[data-work-table]"))

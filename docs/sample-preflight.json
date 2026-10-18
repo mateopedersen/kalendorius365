@@ -1,96 +1,15 @@
 {
   "schema": 1,
-  "generator": "1323b4a0dacc55b6f1d85229a59c00dac4bdec4a0ffafb6210411423871b005a",
+  "generator": "11b13f15d454e2e0c0f71f7f8738c28f0601ed1376eb2ea929401f2ec07eeea7",
   "status": "passed",
   "samples": true,
   "visualReviewed": true,
-  "sampleCount": 12,
-  "sampleDirectory": "/var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/k365-current-print-samples-hrn4mbbh",
-  "currentRecipeActualRebuild": [
-    {
-      "stem": "2027-sausis-06",
-      "before_pdf_sha256": "ec65f95a2d648d978f453264ee6baeb7d2740da49b7923f8a630cc45f221356c",
-      "current_recipe_pdf_sha256": "ec65f95a2d648d978f453264ee6baeb7d2740da49b7923f8a630cc45f221356c",
-      "byte_identical": true
-    },
-    {
-      "stem": "2028-vasaris-02",
-      "before_pdf_sha256": "3602019254c53d0ae656f106eb598d9b0e87b83a73cf0a0737343d5d98be5416",
-      "current_recipe_pdf_sha256": "3602019254c53d0ae656f106eb598d9b0e87b83a73cf0a0737343d5d98be5416",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-11",
-      "before_pdf_sha256": "a1d9cf0ea098b62ad756ee2454bf02e73e1005b5e9a41c20bbe31fd1b59c0526",
-      "current_recipe_pdf_sha256": "a1d9cf0ea098b62ad756ee2454bf02e73e1005b5e9a41c20bbe31fd1b59c0526",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-12",
-      "before_pdf_sha256": "25ab1fcebce923b4ba711f71d4504800220b9bb6de72d5274408b9131f793625",
-      "current_recipe_pdf_sha256": "25ab1fcebce923b4ba711f71d4504800220b9bb6de72d5274408b9131f793625",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-13",
-      "before_pdf_sha256": "b538aa6e5df5270656633c7594df7b2403a6632940bfde495e4ac15536b3acee",
-      "current_recipe_pdf_sha256": "b538aa6e5df5270656633c7594df7b2403a6632940bfde495e4ac15536b3acee",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-14",
-      "before_pdf_sha256": "3db00afd91368e68043614db12fd25d5665ec1b129bc2c8d4bae67570dfaaabd",
-      "current_recipe_pdf_sha256": "3db00afd91368e68043614db12fd25d5665ec1b129bc2c8d4bae67570dfaaabd",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-15",
-      "before_pdf_sha256": "ae2c6a1c84982824fb6662d4db5a01bc24d12aa3942e120210736c86e7432104",
-      "current_recipe_pdf_sha256": "ae2c6a1c84982824fb6662d4db5a01bc24d12aa3942e120210736c86e7432104",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-16",
-      "before_pdf_sha256": "2168fbc4d0128923ab7645bb7f48f3e87f42cbcf9a4465c5ba343660fc794c49",
-      "current_recipe_pdf_sha256": "2168fbc4d0128923ab7645bb7f48f3e87f42cbcf9a4465c5ba343660fc794c49",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-17",
-      "before_pdf_sha256": "dc16a1bba1a113497e18aa329ec705294c3c6f610df0f5e7b1096dd85557981a",
-      "current_recipe_pdf_sha256": "dc16a1bba1a113497e18aa329ec705294c3c6f610df0f5e7b1096dd85557981a",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-18",
-      "before_pdf_sha256": "cd771c4cf837775209e4f7d8b19dccd5ba565ad01ba7028884f75b80c4d14cd4",
-      "current_recipe_pdf_sha256": "cd771c4cf837775209e4f7d8b19dccd5ba565ad01ba7028884f75b80c4d14cd4",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-19",
-      "before_pdf_sha256": "8c3711dd34ec1df7d7fadd0fda79dec653100466c660d296d67991bf065bfddc",
-      "current_recipe_pdf_sha256": "8c3711dd34ec1df7d7fadd0fda79dec653100466c660d296d67991bf065bfddc",
-      "byte_identical": true
-    },
-    {
-      "stem": "tuscias-20",
-      "before_pdf_sha256": "37933e662b2ad5b45fbf7bdb8fe4a58a691fdbc3feec3119632d8e2ff70a69dc",
-      "current_recipe_pdf_sha256": "37933e662b2ad5b45fbf7bdb8fe4a58a691fdbc3feec3119632d8e2ff70a69dc",
-      "byte_identical": true
-    }
-  ],
-  "visualEvidence": [
-    "screenshots/current-print-samples-1.png",
-    "screenshots/current-print-samples-2.png",
-    "screenshots/current-print-samples-3.png"
-  ],
-  "visualScope": "All12 actualcurrentrecipe PDFs are byte-identical to the freshlycreated600PPI-proof images that were visually inspected; changing the annual legend does not alter these two monthly and ten planner samples.",
   "results": [
     {
       "stem": "2027-sausis-06",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         595.2756,
         841.8898
@@ -107,14 +26,14 @@
       ],
       "brandBaselinePt": 17.0,
       "datePlacementsChecked": 31,
-      "vectorTextOperators": 50,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 50,
       "vectorPathOperators": 85,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "RGB vector artwork",
-      "rgbPaintOperators": 102,
-      "grayPaintOperators": 0,
       "webpPixels": [
         4961,
         7016
@@ -122,6 +41,11 @@
       "webpEffectivePPI": [
         600.044752380242,
         600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
       ],
       "proof": {
         "path": "2027-sausis-06-600ppi-proof.png",
@@ -145,6 +69,7 @@
       "stem": "2028-vasaris-02",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         595.2756,
         841.8898
@@ -161,14 +86,14 @@
       ],
       "brandBaselinePt": 17.0,
       "datePlacementsChecked": 29,
-      "vectorTextOperators": 51,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 51,
       "vectorPathOperators": 77,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "DeviceGray monochrome",
-      "rgbPaintOperators": 0,
-      "grayPaintOperators": 91,
       "webpPixels": [
         4961,
         7016
@@ -176,6 +101,11 @@
       "webpEffectivePPI": [
         600.044752380242,
         600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
       ],
       "proof": {
         "path": "2028-vasaris-02-600ppi-proof.png",
@@ -196,9 +126,254 @@
       }
     },
     {
-      "stem": "tuscias-11",
+      "stem": "tuscias-01-5-eilutes",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 108,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-01-5-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "b1d23ad1f296f102a91c4a866ff8fbc32fd3b877761f38b259e0ae0130d133f0"
+      }
+    },
+    {
+      "stem": "tuscias-01-6-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 115,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-01-6-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "731953045e3d4cacff75452a085c9eb0353eadec61c6f6b4868a72ac7446137d"
+      }
+    },
+    {
+      "stem": "tuscias-02-5-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 108,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-02-5-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "4b4da5258c102e2645d45eee9bb809dbd18e131bcf08da0ba1ceff5acb8bd59c"
+      }
+    },
+    {
+      "stem": "tuscias-02-6-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 115,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-02-6-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "bd850e771dee7a7620b20f5f92018471615a7225c96d525f7cbcc40f232b825e"
+      }
+    },
+    {
+      "stem": "tuscias-03",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -210,19 +385,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 40,
-      "vectorPathOperators": 74,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 15,
+      "vectorPathOperators": 154,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "DeviceGray monochrome",
-      "rgbPaintOperators": 0,
-      "grayPaintOperators": 98,
       "webpPixels": [
         7016,
         4961
@@ -230,6 +406,743 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
+      "proof": {
+        "path": "tuscias-03-600ppi-proof.png",
+        "pixels": [
+          7016,
+          4961
+        ],
+        "actualPPI": [
+          600.0215230069304,
+          600.044752380242
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "fc53fde58d5f1a1ad0d22df0ad20a472ed3dadcf516d1f1beda3f6b190e235b5"
+      }
+    },
+    {
+      "stem": "tuscias-04-5-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 143,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-04-5-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "cbb4e504316634f967f0e727e59825b57169a679df1e8d714fce4495e6a61ce3"
+      }
+    },
+    {
+      "stem": "tuscias-04-6-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 157,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-04-6-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "8bb41ce6ed2007defb3dc185d3e4cd030a9ec3083a17b39f38861aeda2d012f0"
+      }
+    },
+    {
+      "stem": "tuscias-05-5-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        841.8898,
+        595.2756
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        841.8898,
+        595.2756
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 19,
+      "vectorPathOperators": 301,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        7016,
+        4961
+      ],
+      "webpEffectivePPI": [
+        600.0215230069304,
+        600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
+      "proof": {
+        "path": "tuscias-05-5-eilutes-600ppi-proof.png",
+        "pixels": [
+          7016,
+          4961
+        ],
+        "actualPPI": [
+          600.0215230069304,
+          600.044752380242
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "da85c1a0aaa02d67bdbf47a99e381de2d66d1fb75a5180f6721ece1b85d94177"
+      }
+    },
+    {
+      "stem": "tuscias-05-6-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        841.8898,
+        595.2756
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        841.8898,
+        595.2756
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 19,
+      "vectorPathOperators": 343,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        7016,
+        4961
+      ],
+      "webpEffectivePPI": [
+        600.0215230069304,
+        600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
+      "proof": {
+        "path": "tuscias-05-6-eilutes-600ppi-proof.png",
+        "pixels": [
+          7016,
+          4961
+        ],
+        "actualPPI": [
+          600.0215230069304,
+          600.044752380242
+        ],
+        "webpMeanAbsoluteError": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sha256": "678ac3f6670dbc49d4100bf7bc6a77abed142c59c3dfcbb6dc41c03404a7e6bc"
+      }
+    },
+    {
+      "stem": "tuscias-06",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        841.8898,
+        595.2756
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        841.8898,
+        595.2756
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 13,
+      "vectorPathOperators": 126,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        7016,
+        4961
+      ],
+      "webpEffectivePPI": [
+        600.0215230069304,
+        600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
+      "proof": {
+        "path": "tuscias-06-600ppi-proof.png",
+        "pixels": [
+          7016,
+          4961
+        ],
+        "actualPPI": [
+          600.0215230069304,
+          600.044752380242
+        ],
+        "webpMeanAbsoluteError": [
+          0.09800804887012655,
+          0.024156579817444943,
+          0.07746540461437296
+        ],
+        "sha256": "4643ce15a8a10098dd0051b124085c8af90a15bd183de3d91e7727f87c35d11a"
+      }
+    },
+    {
+      "stem": "tuscias-07",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        841.8898,
+        595.2756
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        841.8898,
+        595.2756
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 13,
+      "vectorPathOperators": 146,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        7016,
+        4961
+      ],
+      "webpEffectivePPI": [
+        600.0215230069304,
+        600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
+      "proof": {
+        "path": "tuscias-07-600ppi-proof.png",
+        "pixels": [
+          7016,
+          4961
+        ],
+        "actualPPI": [
+          600.0215230069304,
+          600.044752380242
+        ],
+        "webpMeanAbsoluteError": [
+          0.08815439447071421,
+          0.017819177727666908,
+          0.090785550325607
+        ],
+        "sha256": "216189c503fe4e9c2df7dfbe8c5ee7b6f8b879e211ae49c3f8f79cbcae14399b"
+      }
+    },
+    {
+      "stem": "tuscias-08",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        841.8898,
+        595.2756
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        841.8898,
+        595.2756
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 19,
+      "vectorPathOperators": 126,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        7016,
+        4961
+      ],
+      "webpEffectivePPI": [
+        600.0215230069304,
+        600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
+      "proof": {
+        "path": "tuscias-08-600ppi-proof.png",
+        "pixels": [
+          7016,
+          4961
+        ],
+        "actualPPI": [
+          600.0215230069304,
+          600.044752380242
+        ],
+        "webpMeanAbsoluteError": [
+          0.05785945655474158,
+          0.022875607618558162,
+          0.08254734707227204
+        ],
+        "sha256": "0cf677b62e834f9eb4b9e7a5cd700ce8ff0ac398b42876676df080ca9977eb3e"
+      }
+    },
+    {
+      "stem": "tuscias-09-5-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 162,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-09-5-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.10041513658302145,
+          0.026757252751622287,
+          0.023341097044978196
+        ],
+        "sha256": "89bc06fa5020a90a616136614682fdead3f9ffce1a86e95bf6fc214f3e296dc5"
+      }
+    },
+    {
+      "stem": "tuscias-09-6-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 17,
+      "vectorPathOperators": 178,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-09-6-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.10447875986859419,
+          0.02744678158967196,
+          0.023843045308710106
+        ],
+        "sha256": "f2034e3310097322fc09c23d3e95d206ebec4307f68777196a4168f92e36bcf1"
+      }
+    },
+    {
+      "stem": "tuscias-10-5-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular",
+        "/AAAAAA+Lato-Bold"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 16,
+      "vectorPathOperators": 81,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-10-5-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.14370091272932292,
+          0.026363790358410195,
+          0.04426858458346827
+        ],
+        "sha256": "a9666aa9c9cc33740af528f859aab96adb09f5ee2d52c4f42ef9b235c3ac566c"
+      }
+    },
+    {
+      "stem": "tuscias-10-6-eilutes",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        595.2756,
+        841.8898
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        595.2756,
+        841.8898
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular",
+        "/AAAAAA+Lato-Bold"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 16,
+      "vectorPathOperators": 88,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "RGB vector artwork",
+      "webpPixels": [
+        4961,
+        7016
+      ],
+      "webpEffectivePPI": [
+        600.044752380242,
+        600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
+      "proof": {
+        "path": "tuscias-10-6-eilutes-600ppi-proof.png",
+        "pixels": [
+          4961,
+          7016
+        ],
+        "actualPPI": [
+          600.044752380242,
+          600.0215230069304
+        ],
+        "webpMeanAbsoluteError": [
+          0.14776712174803835,
+          0.028100081433355774,
+          0.04604127703498922
+        ],
+        "sha256": "3d2a9d08dfb719ba8a7e675c98805689090b9e5993507fc9b52d05a5a48de355"
+      }
+    },
+    {
+      "stem": "tuscias-11",
+      "status": "passed",
+      "pageCount": 1,
+      "paper": "A4",
+      "mediaBoxPoints": [
+        841.8898,
+        595.2756
+      ],
+      "trimBoxPoints": [
+        0.0,
+        0.0,
+        841.8898,
+        595.2756
+      ],
+      "fonts": [
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
+      ],
+      "brandBaselinePt": 15.0,
+      "datePlacementsChecked": 0,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 43,
+      "vectorPathOperators": 126,
+      "rasterPlacements": [],
+      "worstEffectiveRasterPPI": null,
+      "outputIntent": null,
+      "colorMode": "DeviceGray monochrome",
+      "webpPixels": [
+        7016,
+        4961
+      ],
+      "webpEffectivePPI": [
+        600.0215230069304,
+        600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-11-600ppi-proof.png",
@@ -246,13 +1159,14 @@
           0.0,
           0.0
         ],
-        "sha256": "4910eea1717d82cce0e4e0e1d6f09896a372b9c41023f3e257a2d183fa948faf"
+        "sha256": "5bf24f435a4d4b2e48ee5db1d87c3e0d12f827ff58f3384120e59a3574982fb5"
       }
     },
     {
       "stem": "tuscias-12",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -264,19 +1178,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 19,
-      "vectorPathOperators": 89,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 22,
+      "vectorPathOperators": 140,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "RGB vector artwork",
-      "rgbPaintOperators": 89,
-      "grayPaintOperators": 0,
       "webpPixels": [
         7016,
         4961
@@ -284,6 +1199,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-12-600ppi-proof.png",
@@ -296,17 +1216,18 @@
           600.044752380242
         ],
         "webpMeanAbsoluteError": [
-          0.12666955042949601,
-          0.04652432071641127,
-          0.1519283133641951
+          0.11198471222628865,
+          0.027247479025107355,
+          0.08031545714497826
         ],
-        "sha256": "3248dfa6997ab624ea20e3f5c6cd0ac438b160d21d756556c7a2e9f9a80c8400"
+        "sha256": "de06c11e7bed444a6de9768e9fdbc9363c20f01eb4d274354b7a3742335845a7"
       }
     },
     {
       "stem": "tuscias-13",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         595.2756,
         841.8898
@@ -318,19 +1239,20 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 23,
-      "vectorPathOperators": 59,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 26,
+      "vectorPathOperators": 111,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "DeviceGray monochrome",
-      "rgbPaintOperators": 0,
-      "grayPaintOperators": 54,
       "webpPixels": [
         4961,
         7016
@@ -338,6 +1260,11 @@
       "webpEffectivePPI": [
         600.044752380242,
         600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
       ],
       "proof": {
         "path": "tuscias-13-600ppi-proof.png",
@@ -354,13 +1281,14 @@
           0.0,
           0.0
         ],
-        "sha256": "9be3a97a7fb8975cdceb4678aaa5365242183428a20b2557acb78ab135cbf5fc"
+        "sha256": "11859c4e3b0de4b2bf3d752e5324cbe2cbfb1d335d1b44af7e0ed4a144d2bd5f"
       }
     },
     {
       "stem": "tuscias-14",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         595.2756,
         841.8898
@@ -372,19 +1300,20 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Regular",
-        "/AAAAAA+Inter-Bold"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 8,
-      "vectorPathOperators": 54,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 11,
+      "vectorPathOperators": 105,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "RGB vector artwork",
-      "rgbPaintOperators": 41,
-      "grayPaintOperators": 0,
       "webpPixels": [
         4961,
         7016
@@ -392,6 +1321,11 @@
       "webpEffectivePPI": [
         600.044752380242,
         600.0215230069304
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        240,
+        340
       ],
       "proof": {
         "path": "tuscias-14-600ppi-proof.png",
@@ -404,17 +1338,18 @@
           600.0215230069304
         ],
         "webpMeanAbsoluteError": [
-          0.10164307252211491,
-          0.03720008081277982,
-          0.08220933428978644
+          0.09337062266982349,
+          0.025130654222663112,
+          0.0326695603127427
         ],
-        "sha256": "3cb7fbe03424be245e4eff80199f4deadbf3cfd2d34cba2b9f1f17418aef2fa6"
+        "sha256": "a7b9e30a34ade69e16d6542cb3cbe0ea4cb3abd93b41869d4c438885a5c3d580"
       }
     },
     {
       "stem": "tuscias-15",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -426,19 +1361,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 10,
-      "vectorPathOperators": 74,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 13,
+      "vectorPathOperators": 126,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "DeviceGray monochrome",
-      "rgbPaintOperators": 0,
-      "grayPaintOperators": 62,
       "webpPixels": [
         7016,
         4961
@@ -446,6 +1382,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-15-600ppi-proof.png",
@@ -462,13 +1403,14 @@
           0.0,
           0.0
         ],
-        "sha256": "d5ddf575faa340f14e126b340beb2cb0f5dd2b08fc36cc179792f3a04cd33914"
+        "sha256": "77a4f83086bb91c1458808935a541fc0e1816c64ca1dc33eac6651c8383be69b"
       }
     },
     {
       "stem": "tuscias-16",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -480,19 +1422,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 9,
-      "vectorPathOperators": 73,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 12,
+      "vectorPathOperators": 124,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "RGB vector artwork",
-      "rgbPaintOperators": 80,
-      "grayPaintOperators": 0,
       "webpPixels": [
         7016,
         4961
@@ -500,6 +1443,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-16-600ppi-proof.png",
@@ -512,17 +1460,18 @@
           600.044752380242
         ],
         "webpMeanAbsoluteError": [
-          0.11035141952152674,
-          0.045511603965894064,
-          0.19949931012639754
+          0.0962881053747164,
+          0.02489130152475512,
+          0.13178835394986252
         ],
-        "sha256": "0552608cf28c7021dadac14a298a38c6004a8edb780c1192d488e1f779a4c29f"
+        "sha256": "72b64b8ec8791be425fe79e6e64b71f346acbc42ba21164f44498095ef6fcad8"
       }
     },
     {
       "stem": "tuscias-17",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -534,19 +1483,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 21,
-      "vectorPathOperators": 80,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 24,
+      "vectorPathOperators": 132,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "DeviceGray monochrome",
-      "rgbPaintOperators": 0,
-      "grayPaintOperators": 160,
       "webpPixels": [
         7016,
         4961
@@ -554,6 +1504,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-17-600ppi-proof.png",
@@ -570,13 +1525,14 @@
           0.0,
           0.0
         ],
-        "sha256": "ef6029ed87726e740bee1ec889c43309e041efe5743020354862e6318e4a2bdf"
+        "sha256": "4d041b6c00dcedd95a66ce4534232d8c9e0fe2cfcedcd9d3f952cb3b2d9f5d10"
       }
     },
     {
       "stem": "tuscias-18",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -588,19 +1544,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Regular",
-        "/AAAAAA+Inter-Bold"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 22,
-      "vectorPathOperators": 101,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 25,
+      "vectorPathOperators": 152,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "RGB vector artwork",
-      "rgbPaintOperators": 191,
-      "grayPaintOperators": 0,
       "webpPixels": [
         7016,
         4961
@@ -608,6 +1565,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-18-600ppi-proof.png",
@@ -620,17 +1582,18 @@
           600.044752380242
         ],
         "webpMeanAbsoluteError": [
-          0.12769005310980955,
-          0.048277332865679555,
-          0.13672173167353016
+          0.10816483738496648,
+          0.026452366083731325,
+          0.06365279166093017
         ],
-        "sha256": "362d6d895883eacb30ed4e1a5a627c9ebbf215314c6f586cfc2f1f6775dceee7"
+        "sha256": "368790e39d2a2876c1e51105cb94ce1445d02e415d37cf5ab587abf5ffe052bd"
       }
     },
     {
       "stem": "tuscias-19",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -642,19 +1605,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 18,
-      "vectorPathOperators": 221,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 21,
+      "vectorPathOperators": 273,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "DeviceGray monochrome",
-      "rgbPaintOperators": 0,
-      "grayPaintOperators": 202,
       "webpPixels": [
         7016,
         4961
@@ -662,6 +1626,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-19-600ppi-proof.png",
@@ -678,13 +1647,14 @@
           0.0,
           0.0
         ],
-        "sha256": "3729fa09bd1ed6c58b706321e5f3d2e0e6c9e51dbc4ff3e7f5add8c3bddc6cfd"
+        "sha256": "2f8dc5a6bf0387f0d8373f92a2fe356e7ceb48e021c1e69288aebb8c71134df9"
       }
     },
     {
       "stem": "tuscias-20",
       "status": "passed",
       "pageCount": 1,
+      "paper": "A4",
       "mediaBoxPoints": [
         841.8898,
         595.2756
@@ -696,19 +1666,20 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
-      "vectorTextOperators": 18,
-      "vectorPathOperators": 54,
+      "calendarDayNumbersChecked": 0,
+      "monthLabelsChecked": 0,
+      "textOperators": 21,
+      "vectorPathOperators": 105,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
-      "rasterExplanation": "No placed raster images; all artwork, grids and text are vector.",
+      "outputIntent": null,
       "colorMode": "RGB vector artwork",
-      "rgbPaintOperators": 123,
-      "grayPaintOperators": 0,
       "webpPixels": [
         7016,
         4961
@@ -716,6 +1687,11 @@
       "webpEffectivePPI": [
         600.0215230069304,
         600.044752380242
+      ],
+      "losslessWebP": false,
+      "smallPreviewPixels": [
+        340,
+        241
       ],
       "proof": {
         "path": "tuscias-20-600ppi-proof.png",
@@ -728,11 +1704,11 @@
           600.044752380242
         ],
         "webpMeanAbsoluteError": [
-          0.10631511881616172,
-          0.043488239051373806,
-          0.1397671219778813
+          0.08914648281682644,
+          0.023371608696061894,
+          0.06675311442937926
         ],
-        "sha256": "eec944f80a2c2fe6f037758c1dc5faed93b37fe9d13ec2cc5223ce9db6f17e36"
+        "sha256": "b5650ef3164612e737c4456684e43c3ebda5458432789dfcb4dc9bf7e5fcd007"
       }
     }
   ]

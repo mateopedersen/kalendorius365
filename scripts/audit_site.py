@@ -35,6 +35,11 @@ class Page(HTMLParser):
   if tag in ['a','img','script','link']:
    url=a.get('href') if tag in ['a','link'] else a.get('src')
    if url:self.links.append(url)
+  # Some galleries expose alternate print files through data attributes and
+  # update the visible download buttons when a variant is selected. Treat
+  # those destinations as local links too, so the audit checks every option.
+  for key in ('data-pdf','data-webp','data-preview','data-small-preview'):
+   if a.get(key):self.links.append(a[key])
   # Responsive image candidates are real requests too; checking only img[src]
   # misses missing files selected by the browser at smaller widths or higher DPR.
   # A standalone data URI contains a comma inside its URL, not another file.
