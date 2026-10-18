@@ -121,7 +121,7 @@ async function preview() {
   q("#ce-paper").style.width = `${600 * zoom}px`;
   q("#ce-paper").style.maxWidth = zoom > 1 ? "none" : "100%";
   q("#ce-page-label").textContent = `${page.label} · ${index + 1} / ${pages.length}`;
-  q("#ce-thumbs").innerHTML = pages.map((p, i) => `<button data-page="${i}" aria-current="${i === index}" aria-label="${e(p.label)}"><span aria-hidden="true">${svg(p, p === page ? urls : {})}</span>${e(p.label)}</button>`).join("");
+  q("#ce-thumbs").innerHTML = pages.map((p, i) => `<button data-page="${i}" aria-current="${i === index}" aria-label="${e(p.label)}"><span aria-hidden="true">${svg(p, p === page ? urls : {}).replace(/ data-editor-date="[^"<>]+" tabindex="0" role="button" aria-label="[^"<>]+"/g, "")}</span>${e(p.label)}</button>`).join("");
   let warnings = page.items.filter((i) => i.type === "photo").map((i) => {
     let n = Math.round(dpi(i.photo, i.w, i.h));
     return `Nuotraukos efektyvi raiška: ${n} PPI${n < 200 ? " · maža raiška spaudai" : n < 300 ? " · mažiau nei 300 PPI" : ""}`;
