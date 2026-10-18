@@ -11,6 +11,20 @@ const exported=async(page,selector)=>{
 };
 const upload=(name,bytes)=>({name,mimeType:'application/json',buffer:bytes});
 
+test('homepage blocks note controls until its calendar data and handlers are ready',async({page})=>{
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
+ const navigation=page.goto('/?data=2028-02-29');
+ try {
+  await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','true');
+  expect(await page.locator('.dashboard').evaluate(el=>el.inert)).toBe(true);
+ } finally {release();}
+ await navigation;
+ await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');
+ await page.locator('#daily-note').fill('Ready only after startup');await page.locator('#save-note').click();
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('kalendorius365:v1')||'{}').notes?.['2028-02-29'])).toBe('Ready only after startup');
+});
+
 test('shift input waits for delayed startup and preserves the first chosen preset',async({page})=>{
  let release;const gate=new Promise(resolve=>{release=resolve;});
  await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});

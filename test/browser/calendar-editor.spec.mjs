@@ -71,5 +71,6 @@ test('photo originals round-trip in a portable project; PDF export embeds the se
  try{await expect(page.locator('#calendar-editor')).toHaveAttribute('aria-busy','false',{timeout:30000});}catch{throw new Error(`PDF export did not unlock controls; status=${await page.locator('#ce-status').innerText()}; console=${JSON.stringify(consoleErrors)}; errors=${JSON.stringify(runtimeErrors)}`);}await expect(page.locator('#ce-status')).toHaveAttribute('data-error','false');expect(runtimeErrors).toEqual([]);expect(consoleErrors).toEqual([]);
  await page.locator('[data-path="name"]').fill('Laikinas pavadinimas');await page.locator('[data-path="name"]').press('Tab');await page.locator('#ce-project-input').setInputFiles({name:'qa-project.k365.zip',mimeType:'application/zip',buffer:projectBytes});
  await expect(page.locator('[data-path="name"]')).toHaveValue('Mano kalendorius');await expect(page.locator('#ce-photo-list')).toContainText('qa-original.png');await expect(page.locator('#ce-paper svg image')).toHaveCount(1);
- expect(requests.filter(r=>r.method!=='GET'&&r.method!=='HEAD')).toEqual([]);expect(requests.filter(r=>new URL(r.url).origin!=='http://127.0.0.1:8790')).toEqual([]);
+ const pageOrigin=new URL(page.url()).origin;
+ expect(requests.filter(r=>r.method!=='GET'&&r.method!=='HEAD')).toEqual([]);expect(requests.filter(r=>new URL(r.url).origin!==pageOrigin)).toEqual([]);
 });

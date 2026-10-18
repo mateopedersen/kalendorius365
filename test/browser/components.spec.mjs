@@ -215,8 +215,11 @@ test('shift planner generates a real cycle, validates bad JSON and exports ICS',
 
 test('school lesson text edits persist after reload and duplication can be undone',async({page})=>{
  await page.goto('/?data=2028-02-29');
+ await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');
  await page.locator('#daily-note').fill('QA saved note');await page.locator('#save-note').click();
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('kalendorius365:v1')||'{}').notes?.['2028-02-29'])).toBe('QA saved note');
  await page.goto('/pamoku-tvarkarastis/');await page.locator('#lesson-add').click();
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('kalendorius365:v1')||'{}').notes?.['2028-02-29'])).toBe('QA saved note');
  const subject=page.getByLabel('Pirmadienis, 1 pamoka: dalykas',{exact:true});await subject.fill('Lietuvių kalba');
  await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('k365:phase568:school:v1')||'{}').lessons?.[0]?.subject)).toBe('Lietuvių kalba');
  await subject.press('Tab');
@@ -227,7 +230,8 @@ test('school lesson text edits persist after reload and duplication can be undon
  const backup=await downloadBytes(page,()=>page.locator('#school-json-export').click());expect(JSON.parse(backup.bytes).lessons[0].teacher).toBe('Ž. Jonaitė');
  await page.getByRole('button',{name:'Pirmadienis 1 pamoką pašalinti'}).click();await expect(page.locator('#school-lessons tr')).toHaveCount(0);
  await expect(page.locator('#school-message')).toHaveText('Pamoka pašalinta.');
- await page.goto('/?data=2028-02-29');await expect(page.locator('#daily-note')).toHaveValue('QA saved note');
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('kalendorius365:v1')||'{}').notes?.['2028-02-29'])).toBe('QA saved note');
+ await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await expect(page.locator('#daily-note')).toHaveValue('QA saved note');
 });
 
 test('leave planner produces inspectable date rows and a valid ICS',async({page})=>{

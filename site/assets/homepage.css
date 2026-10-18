@@ -883,7 +883,8 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   min-width: 0;
 }
 @media (max-width: 760px){
-  .homepage-app .dashboard{
+.homepage-app .app-startup{margin:.5rem 0;padding:.65rem .85rem;border:1px solid var(--border);border-radius:.7rem;background:var(--panel);color:var(--muted)}
+.homepage-app .dashboard{
     gap: 16px;
   }
   .homepage-app .center-column,

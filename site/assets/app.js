@@ -27,6 +27,9 @@ const [data, editorial] = await Promise.all([
       return r.json();
     })
     .catch((e) => {
+      const loading = $("#calendar-app-status");
+      if (loading)
+        loading.textContent = "Asmeninio kalendoriaus duomenų nepavyko įkelti. Patikrinkite ryšį ir atnaujinkite puslapį.";
       notice(e.message);
       throw e;
     }),
@@ -1118,4 +1121,8 @@ render();
 renderHolidayList();
 composeHolidayFromLink();
 tick();
+const dashboard = $(".dashboard");
+dashboard.removeAttribute("inert");
+dashboard.setAttribute("aria-busy", "false");
+$("#calendar-app-status").hidden = true;
 setInterval(tick, 1000);
