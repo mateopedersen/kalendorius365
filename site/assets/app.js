@@ -578,7 +578,7 @@ function composeHolidayFromLink() {
     slug = params.get("prideti"),
     date = params.get("data");
   if (!slug || !date) return;
-  const article = editorialArticles().find((item) => item.slug === slug),
+  const article = editorialArticles.find((item) => item.slug === slug),
     dateShape = /^20\d{2}-\d{2}-\d{2}$/.test(date),
     dateYear = dateShape ? Number(date.slice(0, 4)) : 0,
     mapped = article && dateShape && [2027, 2028, 2029].includes(dateYear)

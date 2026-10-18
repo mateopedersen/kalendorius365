@@ -114,7 +114,8 @@ test('mobile search opener, close, outside tap and native submit preserve the vi
  await page.locator('.header-search-close').click();await expect(input).toBeHidden();
  await page.locator('.header-search-toggle').click();await expect(input).toHaveValue('Jonas');
  await expect(page.locator('#site-search-results [role=option]').first()).toBeVisible();
- await page.locator('#main h1').click();await expect(input).toBeHidden();
+ const suggestions=await page.locator('#site-search-results').boundingBox(),searchBox=await page.locator('.header-search').boundingBox();expect(suggestions).not.toBeNull();expect(searchBox).not.toBeNull();
+ await page.mouse.click(Math.max(1,searchBox.x-2),suggestions.y+10);await expect(input).toBeHidden();
  await page.locator('.header-search-toggle').click();await page.locator('.header-search-submit').click();
  await expect(page).toHaveURL(/\/paieska\/\?q=Jonas$/);
  await expect(page.locator('#site-search-page-results a').first()).toContainText('Jonas');

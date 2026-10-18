@@ -192,9 +192,14 @@ test('leave planner produces inspectable date rows and a valid ICS',async({page}
 
 test('contact Google form prefill, source link and email copy work without sending a message',async({page,context})=>{
  await context.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window.__copiedContact=value;}}}));
+ await page.route('https://docs.google.com/forms/**',route=>route.abort());
  await page.goto('/kontaktai/?tema=technical&puslapis=https%3A%2F%2Fkalendorius365.lt%2F2028%2F%3Fq%3Dprivate');
  const frame=page.locator('[data-contact-frame]');
+ await expect(frame).toHaveAttribute('data-src',/entry.122884581=/);
+ await expect(page.locator('[data-contact-launch]')).toBeVisible();
+ await page.locator('[data-contact-launch]').click();
  await expect(frame).toHaveAttribute('src',/entry.122884581=/);
+ await expect(frame).toBeVisible();
  const source=new URL(await frame.getAttribute('src'));
  expect(source.origin).toBe('https://docs.google.com');expect(source.searchParams.get('embedded')).toBe('true');
  expect(source.searchParams.get('entry.122884581')).toBe('Techninė problema');expect(source.searchParams.get('entry.1784264088')).toBe('https://kalendorius365.lt/2028/');
