@@ -36,11 +36,11 @@ module AssetRelease
     []
   end
 
-  # Jekyll clears its destination on each build. Stage the two previous
-  # immutable releases before that clean and restore them before publishing
-  # the new manifest, so already-open tabs can still lazy-load old modules.
+  # Stage all retained releases until the new fingerprint is known. A rebuild
+  # may produce the same current revision; discarding one here would lose an
+  # older release on every unchanged build. publish applies the final limit.
   def stash_previous_releases(public_dir, stash_dir, previous)
-    Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES - 1).each do |revision|
+    Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES).each do |revision|
       source = File.join(public_dir, 'assets', 'releases', revision)
       FileUtils.cp_r(source, File.join(stash_dir, revision)) if File.directory?(source)
     end
@@ -48,7 +48,7 @@ module AssetRelease
 
   def restore_previous_releases(public_dir, stash_dir, previous)
     restored = []
-    Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES - 1).each do |revision|
+    Array(previous).grep(/\A[0-9a-f]{20}\z/).first(RETAIN_RELEASES).each do |revision|
       source = File.join(stash_dir, revision)
       next unless File.directory?(source)
 

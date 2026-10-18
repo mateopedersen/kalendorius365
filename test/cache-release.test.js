@@ -85,9 +85,28 @@ test('previous immutable releases survive Jekyll destination cleanup',()=>{
   assert.equal(result.status,0,result.stderr);
   assert.ok(fs.existsSync(path.join(dir,'assets/releases',revisions[0],'app.js')));
   assert.ok(fs.existsSync(path.join(dir,'assets/releases',revisions[1],'app.js')));
-  assert.equal(fs.existsSync(path.join(dir,'assets/releases',revisions[2])),false,'retention keeps only two previous versions');
+  assert.ok(fs.existsSync(path.join(dir,'assets/releases',revisions[2],'app.js')),'keep all three until the next revision is known');
  } finally {
   fs.rmSync(dir,{recursive:true,force:true});
   fs.rmSync(stash,{recursive:true,force:true});
  }
+});
+
+test('unchanged clean rebuilds retain two previous revisions and a fourth release prunes only the oldest',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-stable-retain-'));
+ const stash=fs.mkdtempSync(path.join(os.tmpdir(),'k365-stable-stash-'));
+ try {
+  fs.mkdirSync(path.join(dir,'assets'),{recursive:true});
+  const run=(version,clean=false)=>{
+   const source=`dir,stash,version,clean=ARGV; previous=AssetRelease.previous_revisions(dir); if clean=='yes'; AssetRelease.stash_previous_releases(dir,stash,previous); FileUtils.rm_rf(File.join(dir,'assets','releases')); previous=AssetRelease.restore_previous_releases(dir,stash,previous); end; File.write(File.join(dir,'assets','app.js'),version); puts AssetRelease.publish(dir,previous:previous).to_json`;
+   const result=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e',source,dir,stash,version,clean?'yes':'no'],{encoding:'utf8'});
+   assert.equal(result.status,0,result.stderr);return JSON.parse(result.stdout);
+  };
+  const first=run('first'),second=run('second'),third=run('third');
+  const expected=[third.revision,second.revision,first.revision];
+  for(let n=0;n<3;n++)assert.deepEqual(run('third',true).retained_revisions,expected);
+  const fourth=run('fourth',true);
+  assert.deepEqual(fourth.retained_revisions,[fourth.revision,third.revision,second.revision]);
+  assert.equal(fs.existsSync(path.join(dir,'assets/releases',first.revision)),false);
+ } finally {fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(stash,{recursive:true,force:true});}
 });
