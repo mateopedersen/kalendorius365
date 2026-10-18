@@ -4,6 +4,13 @@
 module Phase568Pages
  extend self
  def page(path,title,description,body,module_name=nil)
+  if %w[shift school].include?(module_name)
+   # Native disabled controls cannot accept an edit that asynchronous startup
+   # would overwrite. Keep intentionally disabled buttons (Undo) separate.
+   body=body.gsub(/<(?:input|select|textarea|button)\b[^>]*>/i) do |tag|
+    tag.match?(/\sdisabled(?:\s|=|>)/i) ? tag : tag.sub(/>\z/,' data-tool-pending disabled>')
+   end
+  end
   Pages.page(path,title,description,body,true,nil,false,module_name)
  end
  def links(items)

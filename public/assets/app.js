@@ -1,10 +1,10 @@
-import { icon } from "/assets/releases/d39e5fbbc1a73294f491/icons.js";
-import * as cal from "/assets/releases/d39e5fbbc1a73294f491/calendar.js";
-import { Store, download } from "/assets/releases/d39e5fbbc1a73294f491/storage.js";
-import { exportICS, importICS } from "/assets/releases/d39e5fbbc1a73294f491/ics.js";
-import { notice } from "/assets/releases/d39e5fbbc1a73294f491/common.js";
-import { renderWeather } from "/assets/releases/d39e5fbbc1a73294f491/weather.js";
-import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "/assets/releases/d39e5fbbc1a73294f491/data/weather-cities.js";
+import { icon } from "/assets/releases/03f8bc847b2c76b203fa/icons.js";
+import * as cal from "/assets/releases/03f8bc847b2c76b203fa/calendar.js";
+import { Store, download } from "/assets/releases/03f8bc847b2c76b203fa/storage.js";
+import { exportICS, importICS } from "/assets/releases/03f8bc847b2c76b203fa/ics.js";
+import { notice } from "/assets/releases/03f8bc847b2c76b203fa/common.js";
+import { renderWeather } from "/assets/releases/03f8bc847b2c76b203fa/weather.js";
+import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "/assets/releases/03f8bc847b2c76b203fa/data/weather-cities.js";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -21,7 +21,7 @@ const homeIcon = (name, className = "") => {
   return svg;
 };
 const [data, editorial] = await Promise.all([
-  fetch("/assets/releases/d39e5fbbc1a73294f491/data/calendar.json")
+  fetch("/assets/releases/03f8bc847b2c76b203fa/data/calendar.json")
     .then((r) => {
       if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus");
       return r.json();
@@ -30,7 +30,7 @@ const [data, editorial] = await Promise.all([
       notice(e.message);
       throw e;
     }),
-  fetch("/assets/releases/d39e5fbbc1a73294f491/data/home-holiday-data.json")
+  fetch("/assets/releases/03f8bc847b2c76b203fa/data/home-holiday-data.json")
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);

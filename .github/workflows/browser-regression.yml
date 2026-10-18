@@ -33,10 +33,10 @@ jobs:
         run: npm install --no-save --ignore-scripts @playwright/test@1.56.1
       - name: Install browser engines
         run: npx playwright install --with-deps chromium firefox webkit
-      - name: Verify search retry and keyboard focus recovery in every engine
+      - name: Verify search recovery and planner startup before the complete route round
         env:
           K365_BASE_URL: ${{ inputs.base_url }}
-        run: npx playwright test test/browser/components.spec.mjs --project=${{ matrix.project }} -g "header search recovers"
+        run: npx playwright test test/browser/components.spec.mjs test/browser/data-preservation.spec.mjs --project=${{ matrix.project }} -g "header search recovers|shift input waits|school startup|shift planner generates|school lesson|school homework|shift presets"
       - name: Exercise every public route and distinct search journeys
         env:
           K365_BASE_URL: ${{ inputs.base_url }}

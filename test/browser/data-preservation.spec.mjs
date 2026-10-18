@@ -11,6 +11,23 @@ const exported=async(page,selector)=>{
 };
 const upload=(name,bytes)=>({name,mimeType:'application/json',buffer:bytes});
 
+test('shift input waits for delayed startup and preserves the first chosen preset',async({page})=>{
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
+ try {
+  await page.goto('/pamainu-grafikas/');await expect(page.locator('#shift-preset')).toBeDisabled();
+  release();await expect(page.locator('#shift-preset')).toBeEnabled();
+  await expect(page.locator('#shift-preset')).toHaveValue('day-rest');
+  await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+ } finally {release();}
+});
+
+test('school startup does not wait for unrelated calendar or astronomy data',async({page})=>{
+ const requests=[];await page.route('**/data/**/*.json',route=>{requests.push(route.request().url());return route.abort();});
+ await page.goto('/pamoku-tvarkarastis/');await page.locator('#lesson-add').click();
+ await expect(page.locator('#school-lessons tr')).toHaveCount(1);expect(requests).toEqual([]);
+});
+
 test('calendar backups round trip, malformed imports preserve data and deletion keeps preferences',async({page})=>{
  await page.goto('/?data=2028-02-29');
  await page.locator('#daily-note').fill('Disposable QA note');await page.locator('#save-note').click();

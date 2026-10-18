@@ -31,11 +31,11 @@ const validISODate = (value) => {
   const date = new Date(Date.UTC(y, m - 1, d));
   return date.toISOString().slice(0, 10) === value;
 };
-const CALENDAR_DATA = await fetch("/assets/data/calendar.json").then((r) => {
+const [CALENDAR_DATA, REST_RULES] = $("#shift-planner") ? await Promise.all([fetch("/assets/data/calendar.json").then((r) => {
   if (!r.ok) throw Error("Kalendoriaus dienų rinkinio nepavyko įkelti.");
   return r.json();
-}).catch(() => ({ holidays: [] }));
-const REST_RULES = await fetch("/assets/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null);
+}).catch(() => ({ holidays: [] })),
+fetch("/assets/data/lt/work-rest-rules.json").then((r) => r.ok ? r.json() : null).catch(() => null)]) : [{ holidays: [] }, null];
 
 function readLocal(key, fallback) {
   try {
@@ -80,7 +80,7 @@ function setupShift() {
   for (const id of ["shift-cycle", "shift-definitions", "shift-fold", "shift-view", "shift-display", "shift-week-filter"])
     if (saved[id] !== undefined) $("#" + id).value = saved[id];
   const preset = $("#shift-preset");
-  if (preset) preset.value = saved["shift-cycle"] === "D,D,N,N,P,P,P,P" ? "day-night" : saved["shift-cycle"] === "D,D,P,P" ? "day-rest" : "custom";
+  if (preset) preset.value = $("#shift-cycle").value === "D,D,N,N,P,P,P,P" ? "day-night" : $("#shift-cycle").value === "D,D,P,P" ? "day-rest" : "custom";
   const weekdays = ["Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis", "Sekmadienis"];
   const dayList = $("#shift-custom-days-list");
   weekdays.forEach((name, index) => {
@@ -332,10 +332,10 @@ function setupSchool() {
 
 // NOAA solar position equations: equation of time + declination; sunrise zenith 90.833°,
 // civil twilight 96°. Events are calculations, not observations.
-const CITY_DATA = await fetch("/assets/data/astronomy/cities.json").then((r) => {
+const CITY_DATA = $("#sun-tool") ? await fetch("/assets/data/astronomy/cities.json").then((r) => {
   if (!r.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
   return r.json();
-}).catch(() => ({ cities: [] }));
+}).catch(() => ({ cities: [] })) : { cities: [] };
 const CITIES = Object.fromEntries(CITY_DATA.cities.map((c) => [c.id, { name: c.name, lat: c.latitude, lon: c.longitude }]));
 const clock = (n) => n === null ? "—" : new Intl.DateTimeFormat("lt-LT", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(n));
 function setupSun() {
@@ -410,3 +410,7 @@ function setupHomeLink() {
 }
 
 setupShift(); setupSchool(); setupSun(); setupMoon(); setupHomeLink();
+for (const control of document.querySelectorAll('[data-tool-pending]')) {
+  control.disabled = false;
+  control.removeAttribute('data-tool-pending');
+}
