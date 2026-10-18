@@ -24,7 +24,7 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=5cc871ee5314 /assets/design-system.css?v=5cc871ee5314">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=1fcf2129a917 /assets/design-system.css?v=1fcf2129a917">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -775,7 +775,7 @@ button:hover,.button:hover{transform: none;}}
 
 
 
-<link rel="stylesheet" href="/assets/print.css?v=5cc871ee5314" media="print">
+<link rel="stylesheet" href="/assets/print.css?v=1fcf2129a917" media="print">
 
 
 
@@ -790,12 +790,12 @@ button:hover,.button:hover{transform: none;}}
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pradžia","item":"https://kalendorius365.lt/"},{"@type":"ListItem","position":2,"name":"Datos skaičiuoklė – dienos ir darbo laikas","item":"https://kalendorius365.lt/datos-skaiciuokle/"}]}</script>
 
-<link rel="modulepreload" href="/assets/calendar.js?v=c813bb50fcb4">
-<link rel="modulepreload" href="/assets/common.js?v=c813bb50fcb4">
-<link rel="modulepreload" href="/assets/cookie-notice.js?v=c813bb50fcb4">
-<link rel="modulepreload" href="/assets/data/weather-cities.js?v=c813bb50fcb4">
-<link rel="modulepreload" href="/assets/storage.js?v=c813bb50fcb4">
-<link rel="modulepreload" href="/assets/tools.js?v=c813bb50fcb4">
+<link rel="modulepreload" href="/assets/calendar.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/common.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/cookie-notice.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/data/weather-cities.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/storage.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/tools.js?v=ec7c1098941b">
 <link rel="preload" href="/assets/data/calendar.json?v=d2f3d4db84c0" as="fetch" crossorigin>
 </head>
 <body>
@@ -809,7 +809,7 @@ button:hover,.button:hover{transform: none;}}
 <div class="resource-shell"><div class="resource-content"><div class="page-heading"><div><h1>Datos skaičiuoklė</h1><p class="page-intro">Sužinokite dienų skirtumą, pridėkite dienų prie datos arba apskaičiuokite darbo laiką.</p></div><div class="toolbar-group"></div></div><section class="panel calculator"><form id="calculator"><div class="form-row"><label>Pradžios data<input name="start" type="date" required></label><label>Pabaigos data<input name="end" type="date" required></label></div><label class="check"><input name="inclusive" type="checkbox">Įtraukti abi ribines datas (darbo dienos visada imtinai)</label><label>Pridėti arba atimti dienas<input name="offset" type="number" min="-36600" max="36600" value="0"></label><button class="primary" type="submit"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#calendar"></use></svg>Skaičiuoti</button></form><div id="calc-result" class="result" aria-live="polite">Pasirinkite datas.</div></section><h2>Kaip skaičiuojama</h2><p>Darbo dienų prielaidos ir teisės aktų šaltiniai pateikti <a href="/darbo-dienos/2027/">darbo dienų kalendoriuje</a>. Dienų skirtumas skaičiuojamas tarp kalendorinių datų, todėl vasaros laiko pokyčiai rezultato nekeičia. Įtraukus abi ribines datas pridedama viena diena. Darbo dienos skaičiuojamos pirmadieniais–penktadieniais, atmetant Lietuvos šventes. Valandos ir prieššventiniai trumpinimai pateikiami pagal standartinės savaitės prielaidas. Taikomas peržiūrėtas dabartinis švenčių rinkinys; istorinės teisės aktų redakcijos neatkuriamos.</p>
 <section class="panel"><h2>ISO savaitės numeris</h2><label>Pasirinkite datą<input type="date" id="iso-date"></label><p id="iso-result" class="result" aria-live="polite"></p><div id="iso-nearby"></div><a href="/savaites/2027/">Visos 2027 savaitės</a> · <a href="/savaites/2028/">Visos 2028 savaitės</a></section></div><aside class="resource-aside"><section class="panel calculator"><h2>Kiek liko laiko?</h2><label>Pasirinkta data<input type="date" id="countdown-date"></label><p id="countdown-result" class="result" aria-live="polite"></p><p id="countdown-standard"></p></section><section class="panel"><h2>Greiti skaičiavimai</h2><div class="quick-countdowns"><button data-countdown="new-year">Iki Naujųjų metų</button><button data-countdown="easter">Iki Velykų</button><button data-countdown="jonines">Iki Joninių</button><button data-countdown="christmas">Iki Kalėdų</button></div></section></aside></div>
 </main>
-<footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg?v=217add829468" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/paieska/">Paieška</a> · <a href="/apie/">Apie svetainę ir šaltinius</a> · <a href="/privatumas/">Privatumas ir duomenys</a> · <a class="footer-contact-link" href="/kontaktai/">Kontaktai</a></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>
+<footer class="site-footer"><div><img class="footer-mark" src="/assets/visuals/brand-mark.svg?v=217add829468" width="40" height="40" alt="" aria-hidden="true" loading="lazy" decoding="async"><a class="footer-brand-wordmark" href="/" aria-label="Kalendorius365 pradžia">Kalendorius<span>365</span></a><p>Lietuviškas kalendorius. Daugiau vietos jūsų planams.</p></div><div><a href="/2027/">2027 metai</a> · <a href="/2028/">2028 metai</a> · <a href="/2029/">2029 metai</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/horoskopai/">Dienos horoskopai</a> · <a href="/atostogu-planavimas/">Atostogų planavimas</a> · <a href="/mokiniu-atostogos/">Mokinių atostogos</a> · <a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a> · <a href="/irankiai/">Darbo ir astronomijos įrankiai</a> · <a href="/paieska/">Paieška</a> · <a href="/apie-mus/">Apie mus</a> · <a href="/apie/">Apie svetainę ir šaltinius</a> · <a href="/privatumas/">Privatumas ir duomenys</a> · <a class="footer-contact-link" href="/kontaktai/">Kontaktai</a></div><p>Asmeniniai įrašai saugomi tik šioje naršyklėje. Svetainėje nėra paskyrų, reklamos ar elgsenos sekimo įrankių; techninę srauto statistiką teikia Cloudflare.</p></footer>
 <nav class="mobile-dock" aria-label="Greitasis meniu"><a href="/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-calendar"></use></svg><span>Kalendorius</span></a><a href="/menesiai/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-download"></use></svg><span>Atsisiųsti</span></a><a href="/sventes/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-holidays"></use></svg><span>Šventės</span></a><a href="/irankiai/"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-tools"></use></svg><span>Įrankiai</span></a></nav>
 <aside id="cookie-notice" class="cookie-notice" role="region" aria-labelledby="cookie-notice-title" aria-describedby="cookie-notice-copy" aria-live="polite" hidden>
   <div class="cookie-notice__copy-wrap">
@@ -826,5 +826,5 @@ button:hover,.button:hover{transform: none;}}
   </div>
 </aside>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
-<script type="module" async src="/assets/common.js?v=c813bb50fcb4"></script><script type="module" async src="/assets/cookie-notice.js?v=c813bb50fcb4"></script><script type="module" async src="/assets/tools.js?v=c813bb50fcb4"></script>
+<script type="module" async src="/assets/common.js?v=ec7c1098941b"></script><script type="module" async src="/assets/cookie-notice.js?v=ec7c1098941b"></script><script type="module" async src="/assets/tools.js?v=ec7c1098941b"></script>
 </body></html>
