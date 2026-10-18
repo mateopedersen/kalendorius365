@@ -60,7 +60,7 @@ jobs:
         if: always()
         with:
           name: search-health-daily
-          path: "$RUNNER_TEMP/search-health-daily.json"
+          path: ${{ runner.temp }}/search-health-daily.json
           if-no-files-found: ignore
           retention-days: 14
 
@@ -84,6 +84,6 @@ jobs:
         if: always()
         with:
           name: search-health-weekly
-          path: "$RUNNER_TEMP/search-health-weekly.json"
+          path: ${{ runner.temp }}/search-health-weekly.json
           if-no-files-found: ignore
           retention-days: 14

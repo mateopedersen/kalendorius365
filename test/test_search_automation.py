@@ -10,6 +10,13 @@ import search_health
 
 
 class SearchHealthTests(unittest.TestCase):
+    def test_workflow_artifact_paths_use_runner_temp_expression(self):
+        workflow = (ROOT / ".github/workflows/search-health.yml").read_text(encoding="utf-8")
+        for scope in ("daily", "weekly"):
+            report = f"search-health-{scope}.json"
+            self.assertIn(f'--output "$RUNNER_TEMP/{report}"', workflow)
+            self.assertIn(f"path: ${{{{ runner.temp }}}}/{report}", workflow)
+
     def test_robots_groups_keep_search_bots_separate(self):
         text = "User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: *\nAllow: /\n"
         groups = search_health.robots_groups(text)
