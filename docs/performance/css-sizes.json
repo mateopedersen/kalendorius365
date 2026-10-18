@@ -3,8 +3,8 @@
   "styles": [
     {
       "path": "/assets/about-us.css",
-      "source_bytes": 6184,
-      "generated_bytes": 5884
+      "source_bytes": 8306,
+      "generated_bytes": 7908
     },
     {
       "path": "/assets/calendar-editor/editor.css",
@@ -75,6 +75,101 @@
       "path": "/assets/print.css",
       "source_bytes": 9177,
       "generated_bytes": 8043
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/about-us.css",
+      "source_bytes": 5883,
+      "generated_bytes": 5884
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/calendar-editor/editor.css",
+      "source_bytes": 8895,
+      "generated_bytes": 8896
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/contact.css",
+      "source_bytes": 9631,
+      "generated_bytes": 9632
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/design-system.css",
+      "source_bytes": 123130,
+      "generated_bytes": 123131
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/discovery.css",
+      "source_bytes": 18504,
+      "generated_bytes": 18505
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/holiday-phase2.css",
+      "source_bytes": 10637,
+      "generated_bytes": 10638
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/homepage-bundle.css",
+      "source_bytes": 116749,
+      "generated_bytes": 116750
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/homepage.css",
+      "source_bytes": 55329,
+      "generated_bytes": 55330
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/horoscope-detail.css",
+      "source_bytes": 71439,
+      "generated_bytes": 71440
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/horoscope-hub.css",
+      "source_bytes": 61287,
+      "generated_bytes": 61288
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/horoscope.css",
+      "source_bytes": 30099,
+      "generated_bytes": 30100
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/lunar.css",
+      "source_bytes": 14347,
+      "generated_bytes": 14348
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/monthly-holidays.css",
+      "source_bytes": 21236,
+      "generated_bytes": 21237
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/namedays.css",
+      "source_bytes": 13307,
+      "generated_bytes": 13308
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/print.css",
+      "source_bytes": 8042,
+      "generated_bytes": 8043
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/seasons.css",
+      "source_bytes": 17937,
+      "generated_bytes": 17938
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/style.css",
+      "source_bytes": 43330,
+      "generated_bytes": 43331
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/zodiac-guide.css",
+      "source_bytes": 63831,
+      "generated_bytes": 63832
+    },
+    {
+      "path": "/assets/releases/37de31afbba8108b1ebd/zodiac.css",
+      "source_bytes": 18672,
+      "generated_bytes": 18673
     },
     {
       "path": "/assets/releases/b8d84ac0ceae488303fc/about-us.css",
@@ -168,101 +263,6 @@
     },
     {
       "path": "/assets/releases/b8d84ac0ceae488303fc/zodiac.css",
-      "source_bytes": 18940,
-      "generated_bytes": 18468
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/about-us.css",
-      "source_bytes": 6184,
-      "generated_bytes": 5884
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/calendar-editor/editor.css",
-      "source_bytes": 8907,
-      "generated_bytes": 8884
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/contact.css",
-      "source_bytes": 9517,
-      "generated_bytes": 9447
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/design-system.css",
-      "source_bytes": 130970,
-      "generated_bytes": 123004
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/discovery.css",
-      "source_bytes": 19528,
-      "generated_bytes": 18505
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/holiday-phase2.css",
-      "source_bytes": 10637,
-      "generated_bytes": 10591
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/homepage-bundle.css",
-      "source_bytes": 124222,
-      "generated_bytes": 116269
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/homepage.css",
-      "source_bytes": 57949,
-      "generated_bytes": 54933
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/horoscope-detail.css",
-      "source_bytes": 76899,
-      "generated_bytes": 71313
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/horoscope-hub.css",
-      "source_bytes": 66358,
-      "generated_bytes": 61120
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/horoscope.css",
-      "source_bytes": 31571,
-      "generated_bytes": 30057
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/lunar.css",
-      "source_bytes": 14250,
-      "generated_bytes": 14251
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/monthly-holidays.css",
-      "source_bytes": 21632,
-      "generated_bytes": 21190
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/namedays.css",
-      "source_bytes": 13365,
-      "generated_bytes": 13062
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/print.css",
-      "source_bytes": 9177,
-      "generated_bytes": 8043
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/seasons.css",
-      "source_bytes": 18212,
-      "generated_bytes": 17938
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/style.css",
-      "source_bytes": 43690,
-      "generated_bytes": 43331
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/zodiac-guide.css",
-      "source_bytes": 68693,
-      "generated_bytes": 63584
-    },
-    {
-      "path": "/assets/releases/cf3d92998a55611900f7/zodiac.css",
       "source_bytes": 18940,
       "generated_bytes": 18468
     },

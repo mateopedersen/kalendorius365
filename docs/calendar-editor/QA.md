@@ -9,15 +9,15 @@ The report below distinguishes executed checks from checks that still require th
 ## Executed source checks
 
 - Full package unit suite after merging the performance release: **352 passed, 0 failed** (`node --test test/*.test.js`); output: `outputs/final-performance-node-tests.log`.
-- Release audit: **192 HTML files including 404, 191 canonical pages, 25,714 local targets, 0 broken links**. It also checked indexability, canonical/sitemap parity, metadata/schema, the generated editor route, and its four published fonts. Output: `outputs/final-performance-release-audit.log`.
+- Release audit after the latest About-page publication: **192 HTML files including 404, 191 canonical pages, 25,718 local targets, 0 broken links**. It also checked indexability, canonical/sitemap parity, metadata/schema, the generated editor route, and its four published fonts. Output: `outputs/final-release-audit.log`.
 - CSS minifier: **2 tests, 14 assertions, 0 failures**.
 - Static asset URL checks: **4 tests, 47 assertions, 0 failures**.
 - Inline and route-specific CSS checks: **14 tests, 0 failures**.
-- Current full build: **191 canonical pages and 4,506 static files** at release revision `37de31afbba8108b1ebd`; 76 stylesheets were reduced by 163,949 bytes (5.5%) and 180 JavaScript modules by 110,629 bytes (3.0%). The generated headers contain 96 path rules.
+- Current full build: **191 canonical pages and 4,508 static files** at release revision `594925b46a5a7c775bc8`; 76 stylesheets were reduced by 123,201 bytes (4.1%) and 180 JavaScript modules by 110,611 bytes (3.0%). The generated headers contain 96 path rules.
 
 ## Executed browser checks — editor regression round 1
 
-Playwright 1.56.1 ran the permanent editor spec against two generated source releases in four browser profiles: desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation. **12/12 passed on each release** (three editor scenarios in each profile). Evidence is in `outputs/final-editor-browser-round1.json` and `outputs/final-editor-browser-round2.json`.
+Playwright 1.56.1 ran the permanent editor spec against three generated source releases in four browser profiles: desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation. **12/12 passed on each release** (three editor scenarios in each profile). Evidence is in `outputs/final-editor-browser-round1.json`, `outputs/final-editor-browser-round2.json`, and `outputs/final-editor-browser-round3.json`.
 
 The scenarios exercised the mobile preview/settings tabs and overflow, leap-day preview, event and note save/restore, preservation of the existing home-calendar note and 12-hour preference, preservation of an unrelated localStorage value, exact photo-byte persistence in IndexedDB across reload, portable ZIP import/export, real PDF download, font loading, and absence of external or mutating requests.
 
