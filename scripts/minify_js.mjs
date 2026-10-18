@@ -70,7 +70,7 @@ async function build(directory) {
         const source = await readFile(path, 'utf8');
         // The upstream MIT astronomy distribution is already minified. Preserve
         // its exact vendor code and full licence header.
-        const result = name === 'lunar/astronomy-engine.js' ? source : minifyJavaScript(source, name);
+        const result = ['lunar/astronomy-engine.js', 'calendar-editor/vendor/jspdf-4.2.1.umd.min.js'].includes(name) ? source : minifyJavaScript(source, name);
         await writeFile(path, result);
         rows.push({path: '/assets/' + name, source_bytes: Buffer.byteLength(source), generated_bytes: Buffer.byteLength(result)});
       }
