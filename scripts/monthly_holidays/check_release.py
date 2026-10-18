@@ -4,7 +4,8 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 from datetime import date,timedelta
 from collections import Counter
-import calendar,json,re,hashlib,copy,sys,xml.etree.ElementTree as ET
+import calendar,json,re,hashlib,copy,sys,math,xml.etree.ElementTree as ET
+from PIL import Image,ImageChops,ImageStat
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'scripts'))
 from calendar_package import validate_import_evidence
@@ -33,6 +34,33 @@ PRINT_LEGEND_STEMS = {f'{year}-metinis-{design:02}' for year in [2027,2028,2029]
 PRINT_LEGEND_PATHS = {f'site/downloads/{stem}.{ext}' for stem in PRINT_LEGEND_STEMS for ext in ['pdf','webp']} | {f'site/assets/{folder}/{stem}.webp' for stem in PRINT_LEGEND_STEMS for folder in ['previews','previews-small']}
 SCREEN_THUMBNAIL_TRANSITION = 'docs/performance/lunar-screen-thumbnails-128.json'
 SCREEN_THUMBNAIL_TRANSITION_SHA256 = '7b77d4625abc892464eb73942596ddbba70ba93399783392d6c04d79b4fa0766'
+
+def verified_lunar_screen_texture(root):
+ evidence_path=root/'docs/performance/lunar-texture-screen-q95.json';raw=evidence_path.read_bytes();evidence=json.loads(raw)
+ assert hashlib.sha256(raw).hexdigest()=='8745b3c750fbe58d21e4a435c82ffa4c0afb87bda8850f977bd3181c2e91b0d7', 'screen texture review manifest changed'
+ assert evidence['encoding']=={'format':'WebP','quality':95,'method':6}
+ source_path=root/'site/assets/lunar/albedo-web.png';print_path=root/'site/assets/lunar/albedo.png'
+ source_bytes=source_path.read_bytes();print_bytes=print_path.read_bytes();after_bytes=(root/evidence['after']['path']).read_bytes()
+ assert len(source_bytes)==370707 and hashlib.sha256(source_bytes).hexdigest()=='56652da19d8bbc84809cf98a66d06269b7d84dbc33c8203403269f3fc47c3f22'
+ assert evidence['previous_webp']=={'path':'site/assets/lunar/albedo-web.webp','bytes':232384,'sha256':'cfe251e9b0f291f508e5336f0e9fb0f0090173a7c995d7c447191107215ef3e0'}
+ assert len(print_bytes)==1477843 and hashlib.sha256(print_bytes).hexdigest()=='1dfe2728a4a23ea00cc0a1c14c4528701ba775db4cecb483eb277f62d1dcc211'
+ assert evidence['before']=={'path':'site/assets/lunar/albedo-web.png','bytes':len(source_bytes),'sha256':hashlib.sha256(source_bytes).hexdigest()}
+ assert evidence['print_source']=={'path':'site/assets/lunar/albedo.png','bytes':len(print_bytes),'sha256':hashlib.sha256(print_bytes).hexdigest()}
+ assert evidence['after']=={'path':'site/assets/lunar/albedo-web.webp','bytes':len(after_bytes),'sha256':hashlib.sha256(after_bytes).hexdigest()}
+ assert len(after_bytes)<=85000
+ with Image.open(source_path) as image:source=image.convert('RGBA')
+ with Image.open(root/evidence['after']['path']) as image:compressed=image.convert('RGBA')
+ assert source.size==compressed.size==(512,512)
+ assert source.getchannel('A').tobytes()==compressed.getchannel('A').tobytes(), 'screen WebP alpha channel changed'
+ results={}
+ for label,color in [('black',(0,0,0,255)),('white',(255,255,255,255))]:
+  left=Image.new('RGBA',source.size,color);right=Image.new('RGBA',source.size,color);left.alpha_composite(source);right.alpha_composite(compressed)
+  stats=ImageStat.Stat(ImageChops.difference(left.convert('RGB'),right.convert('RGB')));mse=sum(value*value for value in stats.rms)/3
+  psnr=99.0 if mse==0 else 10*math.log10(255*255/mse)
+  assert psnr>=45.0,(label,psnr)
+  assert abs(psnr-evidence['composited_rgb_psnr_db'][label])<0.01,(label,psnr)
+  results[label]=round(psnr,3)
+ return {'path':evidence['after']['path'],'bytes':len(after_bytes),'dimensions':[512,512],'alpha_identical':True,'composited_rgb_psnr_db':results,'print_source_unchanged':True}
 BLANK_CALENDAR_TRANSITION = 'docs/blank-calendar-redesign/asset-transition.json'
 BLANK_CALENDAR_TRANSITION_SHA256 = '13bbd9348cabe8965b7590ad1e8714bd032956441ecc7b894ae26341f2b9c8ae'
 BLANK_CALENDAR_TRANSITION_VERSION = '2026-10-18-blank-calendar-redesign-v1'
@@ -371,14 +399,12 @@ def run():
    continue
   if path=='site/assets/lunar/lunar.js':
    current=p.read_bytes();updated=b"'/assets/lunar/albedo-web.webp'";previous=b"'/assets/lunar/albedo-web.png'"
-   evidence=(ROOT/'docs/performance/lunar-texture-lossless.json').read_bytes()
-   texture=json.loads(evidence)
-   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'lunar runtime changes only the lossless screen texture URL')
-   check(hashlib.sha256(evidence).hexdigest()=='64be7cf140fb4bebddf3697228bb328093724acbc4ab2190648e285abfa90011' and texture['rgba_pixels_identical'] is True,'pinned lossless texture comparison')
-   for item in [texture['before'],texture['after']]:
-    raw=(ROOT/item['path']).read_bytes()
-    check(len(raw)==item['bytes'] and hashlib.sha256(raw).hexdigest()==item['sha256'],'lossless texture asset matches reviewed bytes')
-   intentional_updates.append({'path':path,'reason':'Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained','sha256':hashlib.sha256(current).hexdigest()})
+   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'lunar runtime changes only the screen texture URL')
+   try:texture_evidence=verified_lunar_screen_texture(ROOT)
+   except (OSError,ValueError,KeyError,TypeError,AssertionError)as error:
+    texture_evidence=None;check(False,'reviewed high-quality screen texture: '+str(error))
+   else:check(True,'reviewed high-quality screen texture, exact alpha, and unchanged print source')
+   if texture_evidence:intentional_updates.append({'path':path,'reason':'Use a reviewed Q95 screen-only WebP with exact alpha and measured >=45 dB composite PSNR; preserve source PNG and full-resolution print texture','verification':texture_evidence})
    continue
   if path in screen_updates:
    intentional_updates.append({'path':path,'reason':'Pinned screen-only thumbnail resize from 192px to 128px; print and SVG originals unchanged','sha256':screen_updates[path],'transition_manifest':SCREEN_THUMBNAIL_TRANSITION})

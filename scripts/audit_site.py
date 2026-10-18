@@ -123,6 +123,7 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
   if specifier.startswith(('./','/')):assert '?v=' in specifier,(path,specifier)
 for path in list((PUBLIC/'assets/fonts').glob('*.woff*'))+[PUBLIC/'assets/lunar/albedo-web.webp']:
  assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+assert (PUBLIC/'assets/lunar/albedo-web.webp').stat().st_size<=85_000,'Lunar live texture should stay under 85 KB'
 for path,page in pages.items():
  for url in page.links:
   parsed=urlsplit(url)
