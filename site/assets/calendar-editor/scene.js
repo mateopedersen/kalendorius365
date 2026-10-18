@@ -1,3 +1,4 @@
+import { LT } from "./lt.js";
 import { MONTHS, DAYS, months, monthKey, effective, monthGrid, monthLength, weekday, isoWeek, entries, today, addDays } from "./model.js";
 const MM = 72 / 25.4;
 const escape = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]);
@@ -51,7 +52,7 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
   let key = monthKey(y, m), first = key + "-01", last = key + "-" + monthLength(y, m), all = entries(s, data, editorial, first, last);
   let grid = monthGrid(y, m, s.layout.weekstart);
   let rows = Math.ceil(((weekday(first) - s.layout.weekstart + 7) % 7 + monthLength(y, m)) / 7);
-  if (box.h < (mini ? 35 : rows * (sz + 7) + sz * 2) || box.w < 100 && !mini) throw Error("Šiam lapui per mažai vietos. Sumažinkite paraštes, šriftą ar užrašų eilučių skaičių.");
+  if (box.h < (mini ? 35 : rows * (sz + 7) + sz * 2) || box.w < 100 && !mini) throw Error(LT.siam_lapui_per_mazai_vietos_sumazinkite_parastes_srifta_ar_uzrasu_eilu);
   let gutter = s.layout.isoWeeks ? mini ? 15 : 25 : 0;
   let cw = (box.w - gutter) / 7, ch = (box.h - sz * 2) / rows;
   for (let k = 0; k < 7; k++) {
@@ -83,7 +84,7 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
         for (let e of es.slice(0, 2)) {
           let value = (e.icon ? e.icon + " " : "") + e.title;
           let short = wrap(value, cw - 8, Math.max(6, sz * 0.65), p.font)[0];
-          if (yy + sz * 0.7 < cy + ch - 3) text(p, short, x + 4, yy, Math.max(6, sz * 0.65), e.color || c.personal);
+          if (yy + sz * 0.7 < cy + ch - 3) text(p, short, x + 4, yy, Math.max(6, sz * 0.65), e.person && e.personColor || e.color || c.personal);
           yy += sz * 0.85;
         }
       }
@@ -94,9 +95,9 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
 function appendices(s, lines, label, key) {
   let out = [], p, y, margin = s.layout.margin * MM, size = Math.max(8, s.theme.bodySize), leading = size * 1.45;
   const fresh = () => {
-    p = empty(s, `${label} · Įrašų sąrašas ${out.length + 1}`, key);
+    p = empty(s, `${label}${LT.irasu_sarasas}${out.length + 1}`, key);
     out.push(p);
-    text(p, `${label} · Visi įrašai`, margin, margin + 22, Math.min(20, s.theme.titleSize, (p.w - 2 * margin) / (`${label} · Visi įrašai`.length * 0.6)), s.theme.colors.title, true);
+    text(p, `${label}${LT.visi_irasai}`, margin, margin + 22, Math.min(20, s.theme.titleSize, (p.w - 2 * margin) / (`${label}${LT.visi_irasai}`.length * 0.6)), s.theme.colors.title, true);
     y = margin + 45;
   };
   for (let item of lines) {
@@ -111,13 +112,13 @@ function appendices(s, lines, label, key) {
   return out;
 }
 function entryLines(all) {
-  return all.map((e) => `${e.from}${e.to !== e.from ? " – " + e.to : ""} · ${e.kind === "statutory" ? "Šventė" : e.kind === "commemorative" ? "Atmintina diena" : e.kind === "school" ? "Mokykla" : e.person || "Asmeninis įvykis"} · ${e.icon ? e.icon + " " : ""}${e.title}${e.note ? " — " + e.note : ""}`);
+  return all.map((e) => `${e.from}${e.to !== e.from ? " – " + e.to : ""} · ${e.kind === "statutory" ? LT.svente : e.kind === "commemorative" ? LT.atmintina_diena : e.kind === "school" ? LT.mokykla : e.person || LT.asmeninis_ivykis} · ${e.icon ? e.icon + " " : ""}${e.title}${e.note ? " — " + e.note : ""}`);
 }
 function scenes(state, data, editorial) {
   let result = [], period = months(state), annual = state.period.mode === "annual";
   if (annual) {
     let s = effective(state, ""), p = empty(s, `${state.period.year} metai`, "annual"), margin = s.layout.margin * MM;
-    text(p, `${state.period.year} metų kalendorius`, margin, margin + 25, Math.min(s.theme.titleSize, (p.w - 2 * margin) / 12), s.theme.colors.title, true);
+    text(p, `${state.period.year}${LT.metu_kalendorius}`, margin, margin + 25, Math.min(s.theme.titleSize, (p.w - 2 * margin) / 12), s.theme.colors.title, true);
     text(p, wrap(state.name, p.w - 2 * margin, 8, s.theme.font)[0], margin, margin + 39, 8, s.theme.colors.weekday);
     let cols = p.w > p.h ? 4 : 3, rows = 12 / cols, gap = 14, w = (p.w - 2 * margin - gap * (cols - 1)) / cols, h = (p.h - 2 * margin - 65 - gap * (rows - 1)) / rows, all = [];
     for (let i = 0; i < 12; i++) {
@@ -125,7 +126,7 @@ function scenes(state, data, editorial) {
       text(p, MONTHS[m - 1], x, yy, 10, s.theme.colors.title, true);
       all.push(...drawGrid(p, s, data, editorial, y, m, { x, y: yy + 9, w, h: h - 22 }, true));
     }
-    text(p, "Visi pažymėti įrašai pateikti priede. ISO: eilutėje gali būti dviejų savaičių numeriai.", margin, p.h - margin + 3, 6.5, s.theme.colors.weekday);
+    text(p, LT.visi_pazymeti_irasai_pateikti_priede_iso_eiluteje_gali_buti_dvieju_sav, margin, p.h - margin + 3, 6.5, s.theme.colors.weekday);
     result.push(p, ...appendices(s, entryLines([...new Map(all.map((e) => [e.id + e.from, e])).values()]), `${state.period.year} metai`, "annual"));
     return result;
   }
@@ -137,7 +138,7 @@ function scenes(state, data, editorial) {
     let notesH = s.layout.notes * 14 + 20;
     let fullEntries = entries(s, data, editorial, key + "-01", key + "-" + monthLength(y, m));
     let full = entryLines(fullEntries);
-    if (s.notes[key]) full.push("Užrašai: " + s.notes[key]);
+    if (s.notes[key]) full.push(LT.uzrasai + s.notes[key]);
     let legendLines = full.flatMap((value) => wrap(value, p.w - 2 * margin, 8, /[♥★]/.test(value) ? "Inter" : p.font));
     let compact = legendLines.length <= 5, legendH = compact && legendLines.length ? legendLines.length * 10 + 12 : 0;
     let bottom = p.h - margin - notesH - 20 - legendH;
@@ -167,9 +168,9 @@ function scenes(state, data, editorial) {
       rect(p, margin, yy - 7, 6, 6, "none", c.grid);
       line(p, margin + 13, yy, p.w - margin, yy, c.grid, 0.35);
     }
-    text(p, "Užrašai ir darbai", margin, bottom + 16, 8, c.weekday, true);
+    text(p, LT.uzrasai_ir_darbai, margin, bottom + 16, 8, c.weekday, true);
     if (compact) legendLines.forEach((value, n) => text(p, value, margin, bottom + notesH + 10 + n * 10, 8, c.day));
-    let info = !compact && full.length ? "Visi pažymėti įrašai ir užrašai pateikti priede." : compact && full.length ? "Visi pažymėti įrašai pateikti po kalendoriumi." : "ISO savaitė: pirmadienio sistema; „52/1“ žymi dvi savaites.";
+    let info = !compact && full.length ? LT.visi_pazymeti_irasai_ir_uzrasai_pateikti_priede : compact && full.length ? LT.visi_pazymeti_irasai_pateikti_po_kalendoriumi : LT.iso_savaite_pirmadienio_sistema_52_1_zymi_dvi_savaites;
     text(p, info, margin, p.h - margin + 5, 6.5, c.weekday);
     result.push(p);
     if (!compact) result.push(...appendices(s, full, label, key));
@@ -184,7 +185,7 @@ function svg(p, photoURLs = {}, fontCSS = "") {
       let u = photoURLs[i.photo.id + ":" + i.w + ":" + i.h];
       return u ? `<image x="${i.x}" y="${i.y}" width="${i.w}" height="${i.h}" opacity="${i.background ? 0.18 : 1}" href="${escape(u)}"/>` : "";
     }
-    return `<text x="${i.x}" y="${i.y}" font-size="${i.size}" font-family="${i.font || p.font}" font-weight="${i.bold ? 700 : 400}" fill="${i.color}" text-anchor="${i.align === "center" ? "middle" : i.align === "right" ? "end" : "start"}"${i.date ? ` data-editor-date="${i.date}" tabindex="0" role="button" aria-label="${i.date}: pridėti įvykį"` : ""}>${escape(i.value)}</text>`;
+    return `<text x="${i.x}" y="${i.y}" font-size="${i.size}" font-family="${i.font || p.font}" font-weight="${i.bold ? 700 : 400}" fill="${i.color}" text-anchor="${i.align === "center" ? "middle" : i.align === "right" ? "end" : "start"}"${i.date && i.date >= "1900-01-01" && i.date <= "2100-12-31" ? ` data-editor-date="${i.date}" tabindex="0" role="button" aria-label="${i.date}${LT.prideti_ivyki}` : ""}>${escape(i.value)}</text>`;
   }).join("");
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${p.w}" height="${p.h}" viewBox="0 0 ${p.w} ${p.h}" role="group" aria-label="${escape(p.label)}"><style>${fontCSS}text{white-space:pre}</style>${items}</svg>`;
 }

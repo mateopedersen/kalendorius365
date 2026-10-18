@@ -1,14 +1,20 @@
-import { initial, clone, uid, MONTHS, DAYS, TEMPLATES, PALETTES, months, monthKey, effective, template, validate, validateEvent, vacation, suggestions, today } from "./model.js";
+import { LT } from "./lt.js";
+import { initial, clone, uid, entries, MONTHS, DAYS, TEMPLATES, PALETTES, months, monthKey, effective, template, validate, validateEvent, vacation, suggestions, today } from "./model.js";
 import { scenes, svg, escape as e } from "./scene.js";
 import { upload, originals, forget, source, photoURLs, palette, dpi, byteTotal } from "./photos.js";
 import * as storage from "./storage.js";
 import * as output from "./export.js";
 const root = document.querySelector("#calendar-editor");
 let state = initial(), data, editorial, pages = [], index = 0, scope = "all", selectedPhoto = null, zoom = 1, undo = [], redo = [], rangeBefore = null, revision = 0, savedRevision = 0, saveTimer, previewTimer, busy = false, cancelled = false, tab = "settings", previewVersion = 0;
+function readableError(error) {
+  if (Object.values(LT).includes(error.message)) return error.message;
+  console.error(error);
+  return LT.nenumatyta_klaida;
+}
 const photoCache = /* @__PURE__ */ new Map();
-let statusText = "Pakeitimai išsaugomi šiame įrenginyje.", statusError = false;
-const categoryNames = { birthday: "Gimtadienis", family: "Šeima", work: "Darbas", school: "Mokykla", vacation: "Atostogos", other: "Kita" };
-const colorNames = { background: "Lapo fonas", title: "Antraštė", day: "Dienų skaičiai", weekday: "Savaitės dienos", weekend: "Savaitgaliai", holiday: "Šventės", personal: "Asmeniniai ženklai", grid: "Tinklelis" };
+let statusText = LT.pakeitimai_issaugomi_siame_irenginyje, statusError = false;
+const categoryNames = { birthday: LT.gimtadienis, anniversary: LT.sukaktis, family: LT.seima, work: LT.darbas, school: LT.mokykla, vacation: LT.atostogos, other: LT.asmeninis_kita };
+const colorNames = { background: LT.lapo_fonas, title: LT.antraste, day: LT.dienu_skaiciai, weekday: LT.savaites_dienos, weekend: LT.savaitgaliai, holiday: LT.sventes, personal: LT.asmeniniai_zenklai, grid: LT.tinklelis };
 const q = (s) => root.querySelector(s), qa = (s) => [...root.querySelectorAll(s)];
 const key = () => months(state)[Math.min(index, months(state).length - 1)] ? monthKey(...months(state)[Math.min(index, months(state).length - 1)]) : monthKey(state.period.year, state.period.month);
 function currentKey() {
@@ -47,7 +53,7 @@ function change(fn, rerender = true) {
   } catch (error) {
     state = before;
     if (rerender) render();
-    status(error.message, true);
+    status(readableError(error), true);
   }
 }
 function dirty() {
@@ -59,16 +65,16 @@ function dirty() {
   }
   for (let id of originals.keys()) if (!ids.has(id)) forget(id);
   revision++;
-  status("Yra neišsaugotų pakeitimų…");
+  status(LT.yra_neissaugotu_pakeitimu);
   clearTimeout(saveTimer);
   let r = revision;
   saveTimer = setTimeout(async () => {
     try {
       await storage.save(clone(state));
       savedRevision = Math.max(savedRevision, r);
-      if (r === revision && !statusError) status("Išsaugota šiame įrenginyje · " + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
+      if (r === revision && !statusError) status(LT.issaugota_siame_irenginyje + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
     } catch (error) {
-      status("Nepavyko išsaugoti. Atsisiųskite projekto kopiją: " + error.message, true);
+      status(LT.nepavyko_issaugoti_atsisiuskite_projekto_kopija + readableError(error), true);
     }
   }, 650);
 }
@@ -95,16 +101,16 @@ function render() {
   let k = currentKey(), s = effective(state, scope === "month" ? k : ""), p = state.period;
   root.dataset.tab = tab;
   root.setAttribute("aria-busy", String(busy));
-  root.innerHTML = `<div class="ce-topbar"><label><span class="visually-hidden">Projekto pavadinimas</span><input class="ce-project-name" data-path="name" value="${e(state.name)}" maxlength="100" aria-label="Projekto pavadinimas"></label><div class="ce-actions"><button data-action="undo" ${!undo.length ? "disabled" : ""} aria-label="Atšaukti pakeitimą">↶ Atšaukti</button><button data-action="redo" ${!redo.length ? "disabled" : ""} aria-label="Pakartoti pakeitimą">↷ Pakartoti</button><button data-action="projects">Juodraščiai</button><button data-action="project">Išsaugoti projektą</button><button data-action="import">Atverti projektą</button><button data-action="reset">Iš naujo</button></div></div>
-<div class="ce-mobile-tabs" role="tablist" aria-label="Kūrėjo rodinys"><button data-action="tab-settings" role="tab" aria-selected="${tab === "settings"}">Nustatymai</button><button data-action="tab-preview" role="tab" aria-selected="${tab === "preview"}">Peržiūra</button></div>
-<div class="ce-workspace"><aside class="ce-controls" aria-label="Kalendoriaus nustatymai">
-${section("01 · Laikotarpis ir lapas", `${select("Kalendoriaus tipas", "period.mode", p.mode, [["month", "Vienas mėnuo"], ["annual", "12 mėnesių viename lape"], ["year", "Metai · 12 mėnesio lapų"], ["rolling", "12 mėnesių nuo pasirinktos datos"], ["selection", "Pasirinkti mėnesiai"]])}<div class="ce-row">${field("Metai", "period.year", p.year, "number", 'min="1900" max="2100"')}${select(p.mode === "rolling" ? "Pradžios mėnuo" : "Mėnuo", p.mode === "rolling" ? "period.startMonth" : "period.month", p.mode === "rolling" ? p.startMonth : p.month, MONTHS.map((n, i) => [i + 1, n]))}</div>${p.mode === "selection" ? `<fieldset><legend>Įtraukti mėnesius</legend><div class="ce-months">${MONTHS.map((n, i) => `<label class="check"><input type="checkbox" data-month="${i + 1}"${p.selected.includes(i + 1) ? " checked" : ""}>${n}</label>`).join("")}</div></fieldset>` : ""}<div class="ce-row">${select("Popierius", "layout.paper", s.layout.paper, [["a4", "A4 · 210 × 297 mm"], ["a3", "A3 · 297 × 420 mm"], ["a5", "A5 · 148 × 210 mm"], ["letter", "Letter · 216 × 279 mm"]])}${select("Kryptis", "layout.orientation", s.layout.orientation, [["portrait", "Stačias"], ["landscape", "Gulsčias"]])}</div>${range("Paraštės (mm)", "layout.margin", s.layout.margin, 5, 25)}${select("Savaitės pradžia", "layout.weekstart", s.layout.weekstart, [[0, "Pirmadienis"], [6, "Sekmadienis"]])}${check("ISO savaičių numeriai", "layout.isoWeeks", s.layout.isoWeeks)}${check("Gretimų mėnesių dienos", "layout.neighbors", s.layout.neighbors)}${check("Išskirti savaitgalius", "layout.weekends", s.layout.weekends)}${check("Žymėti šiandieną spaudinyje", "layout.printToday", s.layout.printToday)}`, true)}
-${section("02 · Šablonai ir spalvos", `<label>Keisti dizainą<select id="ce-scope">${options([["all", "Visiems mėnesiams"], ["month", "Tik šiam mėnesiui · " + k]], scope)}</select></label><small>Mėnesio išimtis išlaiko savo dizainą pakeitus bendrus nustatymus. Šablonai neištrina nuotraukų, įvykių ar užrašų.</small><div class="ce-template-grid">${Object.entries(TEMPLATES).map(([id, t]) => `<button data-template="${id}" aria-pressed="${s.theme.template === id}"><span class="ce-swatch" style="background:${t.accent}"></span>${t.name}</button>`).join("")}</div><div class="ce-palette">${PALETTES.map(([name, c, b, h], i) => `<button data-palette="${i}">${name}</button>`).join("")}<button data-action="random">Kitos spalvos</button></div>${Object.entries(colorNames).map(([k2, label]) => `<div class="ce-color"><span>${label}</span><input type="color" aria-label="${label}: spalvos parinkiklis" data-color="${k2}" value="${s.theme.colors[k2]}"><input type="text" aria-label="${label}: HEX" data-hex="${k2}" value="${s.theme.colors[k2]}" pattern="#[0-9a-fA-F]{6}" maxlength="7"></div>`).join("")}${select("Šriftas", "theme.font", s.theme.font, [["Lato", "Lato · šiltas ir aiškus"], ["Inter", "Inter · šiuolaikinis"]])}<small>Lato ir Inter šriftai naudojami pagal SIL Open Font License.</small>${range("Antraštės dydis (pt)", "theme.titleSize", s.theme.titleSize, 16, 40)}${range("Dienų dydis (pt)", "theme.bodySize", s.theme.bodySize, 7, 16)}${range("Linijos storis (pt)", "theme.lineWidth", s.theme.lineWidth, 0.1, 2, 0.1)}${check("Taupus spausdinimas · grįžtamasis režimas", "lowInk", state.lowInk)}<button data-action="clear-override">Panaikinti šio mėnesio dizaino išimtį</button>`, true)}
-${section("03 · Nuotraukos", `<div class="ce-photo-drop" id="ce-drop"><label>Įkelti nuotraukas<input id="ce-photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><small>Arba nutempkite failus čia. Iki 24 nuotraukų; JPEG, PNG, WebP.</small></div><div id="ce-photo-list" class="ce-photo-list"></div><button data-action="auto-photos">Paskirstyti nuotraukas mėnesiams iš eilės</button>${select("Nuotraukos vieta", "theme.placement", s.theme.placement, [["top", "Virš kalendoriaus"], ["side", "Šalia kalendoriaus"], ["background", "Kalendoriaus fone"]])}${range("Nuotraukos aukštis / plotis (mm)", "layout.photoHeight", s.layout.photoHeight, 0, 110)}<div id="ce-photo-settings"></div><p class="muted">Kirpimo padėtis saugoma originalo santykiu. Eksportui visuomet naudojamas originalas. Foninė nuotrauka papildomai pašviesinama, kad datos liktų įskaitomos.</p>`)}
-${section("04 · Datos ir asmeniniai įvykiai", `${check("Lietuvos šventinės dienos", "layers.statutory", state.layers.statutory)}${check("Atmintinos dienos (atskiras sluoksnis)", "layers.commemorative", state.layers.commemorative)}${check("Paskelbtos mokinių atostogos", "layers.school", state.layers.school)}${select("Ugdymo pakopa", "layers.schoolStage", state.layers.schoolStage, [["basic", "Pradinis ir pagrindinis"], ["secondary", "Vidurinis"]])}<p class="ce-inline-message">Mokinių atostogos: tik oficialūs 2026–2027 m. laikotarpiai. Vėlesnių metų datos nepildomos automatiškai. Švenčių taisyklės peržiūrėtos 2026-10-16; kitų metų datos apskaičiuotos, o ne paskelbtos individualiai.</p>${check("Asmeniniai įvykiai", "layers.personal", state.layers.personal)}${select("Įvykių rodymas", "layers.display", state.layers.display, [["cell", "Tekstas langeliuose ir visas priedas"], ["marks", "Ženklai langeliuose ir visas priedas"], ["legend", "Datos ir visas įrašų priedas"]])}<button data-action="event-new" class="primary">+ Pridėti įvykį</button><small>Taip pat galite paspausti dienos skaičių peržiūroje.</small><label>Ieškoti įvykio<input id="ce-event-search" type="search" placeholder="Pavadinimas, žmogus, pastaba"></label><label>Kategorija<select id="ce-event-filter">${options([["all", "Visos kategorijos"], ...Object.entries(categoryNames)], "all")}</select></label><div id="ce-event-list" class="ce-event-list"></div>`)}
-${section("05 · Užrašai ir atostogų planas", `${range("Užrašų / darbų eilutės", "layout.notes", s.layout.notes, 0, 10)}<label>Šio mėnesio užrašai<textarea id="ce-notes" maxlength="2000">${e(state.notes[k] || "")}</textarea></label><small>Visas tekstas bus pateiktas mėnesio priede.</small><fieldset><legend>Jūsų darbo savaitė</legend><div class="ce-months">${DAYS.map((n, i) => `<label class="check"><input type="checkbox" data-workday="${i}"${state.workdays.includes(i) ? " checked" : ""}>${n}</label>`).join("")}</div></fieldset><div class="ce-row"><label>Nuo<input id="ce-leave-start" type="date" min="1900-01-01" max="2100-12-31" value="${state.period.year}-01-01"></label><label>Iki (imtinai)<input id="ce-leave-end" type="date" min="1900-01-01" max="2100-12-31" value="${state.period.year}-01-07"></label></div><button data-action="calculate">Skaičiuoti atostogų dienas</button><p id="ce-leave-result" class="ce-inline-message">Savaitės poilsis, šventės ir atostogų dienos skaičiuojami be dubliavimo. Sluoksnių slėpimas šio skaičiavimo nekeičia.</p><button data-action="suggest">Rodyti ilgųjų savaitgalių idėjas</button><div id="ce-suggestions" class="ce-suggestions"></div>`)}
-</aside><section class="ce-preview-area" aria-label="Tiesioginė kalendoriaus peržiūra"><div class="ce-preview-toolbar"><p id="ce-page-label">Kalendorius</p><div class="ce-actions"><button data-action="zoom-out" aria-label="Sumažinti peržiūrą">−</button><button data-action="fit">Sutalpinti</button><button data-action="zoom-in" aria-label="Padidinti peržiūrą">+</button></div></div><div class="ce-preview-shell"><div class="ce-paper" id="ce-paper"></div></div><p class="muted" id="ce-preview-info">Peržiūra išlaiko tikras lapo proporcijas.</p><nav class="ce-thumbs" id="ce-thumbs" aria-label="Kalendoriaus puslapiai"></nav></section></div>
-<div class="ce-exportbar"><div><strong>Paruošta jūsų planams</strong><p class="ce-status" id="ce-status" data-error="${statusError}" role="status" aria-live="polite">${e(statusText)}</p></div><div class="ce-actions"><label><span class="visually-hidden">Atsisiuntimo formatas</span><select id="ce-format" aria-label="Atsisiuntimo formatas">${options([["pdf", "PDF · visi puslapiai"], ["webp", "WebP · šis puslapis"], ["png", "PNG · šis puslapis"], ["webp-zip", "WebP · visi ZIP faile"], ["paired", "PDF ir WebP · mėnesių ZIP"], ["print", "Spausdinti visus puslapius"]], sessionStorage.getItem("ce-format") || "pdf")}</select></label><button data-action="export" class="primary">Atsisiųsti</button></div><div id="ce-progress-wrap" hidden><progress class="ce-progress" id="ce-progress" value="0" max="1"></progress><button data-action="cancel">Atšaukti ruošimą</button></div></div>
+  root.innerHTML = `<div class="ce-topbar"><label><span class="visually-hidden">${LT.projekto_pavadinimas}</span><input class="ce-project-name" data-path="name" value="${e(state.name)}" maxlength="100" aria-label="${LT.projekto_pavadinimas}"></label><div class="ce-actions"><button data-action="undo" ${!undo.length ? "disabled" : ""} aria-label="${LT.atsaukti_pakeitima}">${LT.atsaukti}</button><button data-action="redo" ${!redo.length ? "disabled" : ""} aria-label="${LT.pakartoti_pakeitima}">↷ Pakartoti</button><button data-action="projects">${LT.juodrasciai}</button><button data-action="project">${LT.issaugoti_projekta}</button><button data-action="import">${LT.atverti_projekta}</button><button data-action="reset">${LT.is_naujo}</button></div></div>
+<div class="ce-mobile-tabs" role="tablist" aria-label="${LT.kurejo_rodinys}"><button data-action="tab-settings" role="tab" aria-selected="${tab === "settings"}">Nustatymai</button><button data-action="tab-preview" role="tab" aria-selected="${tab === "preview"}">${LT.perziura}</button></div>
+<div class="ce-workspace"><aside class="ce-controls" aria-label="${LT.kalendoriaus_nustatymai}">
+${section("01 · Laikotarpis ir lapas", `${select(LT.kalendoriaus_tipas, "period.mode", p.mode, [["month", LT.vienas_menuo], ["annual", LT.tekstas_12_menesiu_viename_lape], ["year", LT.metai_12_menesio_lapu], ["rolling", LT.tekstas_12_menesiu_nuo_pasirinktos_datos], ["selection", LT.pasirinkti_menesiai]])}<div class="ce-row">${field(LT.metai, "period.year", p.year, "number", 'min="1900" max="2100"')}${select(p.mode === "rolling" ? LT.pradzios_menuo : LT.menuo, p.mode === "rolling" ? "period.startMonth" : "period.month", p.mode === "rolling" ? p.startMonth : p.month, MONTHS.map((n, i) => [i + 1, n]))}</div>${p.mode === "selection" ? `<fieldset><legend>${LT.itraukti_menesius}</legend><div class="ce-months">${MONTHS.map((n, i) => `<label class="check"><input type="checkbox" data-month="${i + 1}"${p.selected.includes(i + 1) ? " checked" : ""}>${n}</label>`).join("")}</div></fieldset>` : ""}<div class="ce-row">${select(LT.popierius, "layout.paper", s.layout.paper, [["a4", "A4 · 210 × 297 mm"], ["a3", "A3 · 297 × 420 mm"], ["a5", "A5 · 148 × 210 mm"], ["letter", "Letter · 216 × 279 mm"]])}${select(LT.kryptis, "layout.orientation", s.layout.orientation, [["portrait", LT.stacias], ["landscape", LT.gulscias]])}</div>${range(LT.parastes_mm, "layout.margin", s.layout.margin, 5, 25)}${select(LT.savaites_pradzia, "layout.weekstart", s.layout.weekstart, [[0, "Pirmadienis"], [6, "Sekmadienis"]])}${check(LT.iso_savaiciu_numeriai, "layout.isoWeeks", s.layout.isoWeeks)}${check(LT.gretimu_menesiu_dienos, "layout.neighbors", s.layout.neighbors)}${check(LT.isskirti_savaitgalius, "layout.weekends", s.layout.weekends)}${check(LT.zymeti_siandiena_spaudinyje, "layout.printToday", s.layout.printToday)}`, true)}
+${section(LT.tekstas_02_sablonai_ir_spalvos, `<label>${LT.keisti_dizaina}<select id="ce-scope">${options([["all", LT.visiems_menesiams], ["month", LT.tik_siam_menesiui + k]], scope)}</select></label><small>${LT.menesio_isimtis_islaiko_savo_dizaina_pakeitus_bendrus_nustatymus_sablo}</small><div class="ce-template-grid">${Object.entries(TEMPLATES).map(([id, t]) => `<button data-template="${id}" aria-pressed="${s.theme.template === id}"><span class="ce-swatch" style="background:${t.accent}"></span>${t.name}</button>`).join("")}</div><div class="ce-palette">${PALETTES.map(([name, c, b, h], i) => `<button data-palette="${i}">${name}</button>`).join("")}<button data-action="random">${LT.kitos_spalvos}</button></div>${Object.entries(colorNames).map(([k2, label]) => `<div class="ce-color"><span>${label}</span><input type="color" aria-label="${label}: spalvos parinkiklis" data-color="${k2}" value="${s.theme.colors[k2]}"><input type="text" aria-label="${label}: HEX" data-hex="${k2}" value="${s.theme.colors[k2]}" pattern="#[0-9a-fA-F]{6}" maxlength="7"></div>`).join("")}${select(LT.sriftas, "theme.font", s.theme.font, [["Lato", LT.lato_siltas_ir_aiskus], ["Inter", LT.inter_siuolaikinis]])}<small>${LT.lato_ir_inter_sriftai_naudojami_pagal_sil_open_font_license}</small>${range(LT.antrastes_dydis_pt, "theme.titleSize", s.theme.titleSize, 16, 40)}${range(LT.dienu_dydis_pt, "theme.bodySize", s.theme.bodySize, 7, 16)}${range(LT.linijos_storis_pt, "theme.lineWidth", s.theme.lineWidth, 0.1, 2, 0.1)}${check(LT.taupus_spausdinimas_griztamasis_rezimas, "lowInk", state.lowInk)}<button data-action="clear-override">${LT.panaikinti_sio_menesio_dizaino_isimti}</button>`, true)}
+${section("03 · Nuotraukos", `<div class="ce-photo-drop" id="ce-drop"><label>${LT.ikelti_nuotraukas}<input id="ce-photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><small>${LT.arba_nutempkite_failus_cia_iki_24_nuotrauku_jpeg_png_webp}</small></div><div id="ce-photo-list" class="ce-photo-list"></div><button data-action="auto-photos">${LT.paskirstyti_nuotraukas_menesiams_is_eiles}</button>${select(LT.nuotraukos_vieta, "theme.placement", s.theme.placement, [["top", LT.virs_kalendoriaus], ["side", LT.salia_kalendoriaus], ["background", LT.kalendoriaus_fone]])}${range(LT.nuotraukos_aukstis_plotis_mm, "layout.photoHeight", s.layout.photoHeight, 0, 110)}<div id="ce-photo-settings"></div><p class="muted">${LT.kirpimo_padetis_saugoma_originalo_santykiu_eksportui_visuomet_naudojam}</p>`)}
+${section(LT.tekstas_04_datos_ir_asmeniniai_ivykiai, `${check(LT.lietuvos_sventines_dienos, "layers.statutory", state.layers.statutory)}${check(LT.atmintinos_dienos_atskiras_sluoksnis, "layers.commemorative", state.layers.commemorative)}${check(LT.paskelbtos_mokiniu_atostogos, "layers.school", state.layers.school)}${select(LT.ugdymo_pakopa, "layers.schoolStage", state.layers.schoolStage, [["basic", LT.pradinis_ir_pagrindinis], ["secondary", "Vidurinis"]])}<p class="ce-inline-message">${LT.mokiniu_atostogos_tik_oficialus_2026_2027_m_laikotarpiai_velesniu_metu}</p>${check(LT.asmeniniai_ivykiai, "layers.personal", state.layers.personal)}${select(LT.ivykiu_rodymas, "layers.display", state.layers.display, [["cell", LT.tekstas_langeliuose_ir_visas_priedas], ["marks", LT.zenklai_langeliuose_ir_visas_priedas], ["legend", LT.datos_ir_visas_irasu_priedas]])}<button data-action="event-new" class="primary">${LT.prideti_ivyki_2}</button><small>${LT.taip_pat_galite_paspausti_dienos_skaiciu_perziuroje}</small><label>${LT.ieskoti_ivykio}<input id="ce-event-search" type="search" placeholder="${LT.pavadinimas_zmogus_pastaba}"></label><label>${LT.kategorija}<select id="ce-event-filter">${options([["all", LT.visos_kategorijos], ...Object.entries(categoryNames)], "all")}</select></label><div id="ce-event-list" class="ce-event-list"></div>`)}
+${section(LT.tekstas_05_uzrasai_ir_atostogu_planas, `${range(LT.uzrasu_darbu_eilutes, "layout.notes", s.layout.notes, 0, 10)}<label>${LT.sio_menesio_uzrasai}<textarea id="ce-notes" maxlength="2000">${e(state.notes[k] || "")}</textarea></label><small>${LT.visas_tekstas_bus_pateiktas_menesio_priede}</small><fieldset><legend>${LT.jusu_darbo_savaite}</legend><div class="ce-months">${DAYS.map((n, i) => `<label class="check"><input type="checkbox" data-workday="${i}"${state.workdays.includes(i) ? " checked" : ""}>${n}</label>`).join("")}</div></fieldset><div class="ce-row"><label>Nuo<input id="ce-leave-start" type="date" min="1900-01-01" max="2100-12-31" value="${state.period.year}-01-01"></label><label>Iki (imtinai)<input id="ce-leave-end" type="date" min="1900-01-01" max="2100-12-31" value="${state.period.year}-01-07"></label></div><button data-action="calculate">${LT.skaiciuoti_atostogu_dienas}</button><p id="ce-leave-result" class="ce-inline-message">${LT.savaites_poilsis_sventes_ir_atostogu_dienos_skaiciuojami_be_dubliavimo}</p><button data-action="suggest">${LT.rodyti_ilguju_savaitgaliu_idejas}</button><div id="ce-suggestions" class="ce-suggestions"></div>`)}
+</aside><section class="ce-preview-area" aria-label="${LT.tiesiogine_kalendoriaus_perziura}"><div class="ce-preview-toolbar"><p id="ce-page-label">Kalendorius</p><div class="ce-actions"><button data-action="zoom-out" aria-label="${LT.sumazinti_perziura}">−</button><button data-action="fit">Sutalpinti</button><button data-action="zoom-in" aria-label="${LT.padidinti_perziura}">+</button></div></div><div class="ce-preview-shell"><div class="ce-paper" id="ce-paper"></div></div><p class="muted" id="ce-preview-info">${LT.perziura_islaiko_tikras_lapo_proporcijas}</p><nav class="ce-thumbs" id="ce-thumbs" aria-label="${LT.kalendoriaus_puslapiai}"></nav></section></div>
+<div class="ce-exportbar"><div><strong>${LT.paruosta_jusu_planams}</strong><p class="ce-status" id="ce-status" data-error="${statusError}" role="status" aria-live="polite">${e(statusText)}</p></div><div class="ce-actions"><label><span class="visually-hidden">${LT.atsisiuntimo_formatas}</span><select id="ce-format" aria-label="${LT.atsisiuntimo_formatas}">${options([["pdf", LT.pdf_visi_puslapiai], ["webp", LT.webp_sis_puslapis], ["png", LT.png_sis_puslapis], ["webp-zip", LT.webp_visi_zip_faile], ["paired", LT.pdf_ir_webp_menesiu_zip], ["print", LT.spausdinti_visus_puslapius]], sessionStorage.getItem("ce-format") || "pdf")}</select></label><button data-action="export" class="primary">${LT.atsisiusti}</button></div><div id="ce-progress-wrap" hidden><progress class="ce-progress" id="ce-progress" value="0" max="1"></progress><button data-action="cancel">${LT.atsaukti_ruosima}</button></div></div>
 <input id="ce-project-input" type="file" accept=".zip,.k365" hidden><dialog id="ce-dialog" aria-labelledby="ce-dialog-title"></dialog>`;
   if (opened.length) qa(".ce-controls details").forEach((d) => d.open = opened.includes(d.querySelector("summary").textContent));
   renderEvents();
@@ -114,7 +120,7 @@ ${section("05 · Užrašai ir atostogų planas", `${range("Užrašų / darbų ei
 }
 function schedulePreview() {
   clearTimeout(previewTimer);
-  previewTimer = setTimeout(() => preview().catch((error) => status(error.message, true)), 70);
+  previewTimer = setTimeout(() => preview().catch((error) => status(readableError(error), true)), 70);
 }
 async function preview() {
   let version = ++previewVersion;
@@ -122,7 +128,7 @@ async function preview() {
   pages = scenes(state, data, editorial);
   index = Math.min(index, pages.length - 1);
   let page = pages[index];
-  if (!page) throw Error("Pasirinkite bent vieną mėnesį");
+  if (!page) throw Error(LT.pasirinkite_bent_viena_menesi);
   let cacheKey = JSON.stringify(page.items.filter((i) => i.type === "photo"));
   let urls = photoCache.get(cacheKey);
   if (!urls) {
@@ -138,13 +144,13 @@ async function preview() {
   q("#ce-thumbs").innerHTML = pages.map((p, i) => `<button data-page="${i}" aria-current="${i === index}" aria-label="${e(p.label)}"><span aria-hidden="true">${svg(p, p === page ? urls : {}).replace(/ data-editor-date="[^"<>]+" tabindex="0" role="button" aria-label="[^"<>]+"/g, "")}</span>${e(p.label)}</button>`).join("");
   let warnings = page.items.filter((i) => i.type === "photo").map((i) => {
     let n = Math.round(dpi(i.photo, i.w, i.h));
-    return `Nuotraukos efektyvi raiška: ${n} PPI${n < 200 ? " · maža raiška spaudai" : n < 300 ? " · mažiau nei 300 PPI" : ""}`;
+    return `${LT.nuotraukos_efektyvi_raiska}${n} PPI${n < 200 ? LT.maza_raiska_spaudai : n < 300 ? LT.maziau_nei_300_ppi : ""}`;
   });
   q("#ce-preview-info").textContent = `${Math.round(page.w / 72 * 25.4)} × ${Math.round(page.h / 72 * 25.4)} mm · 300 PPI: ${Math.round(page.w / 72 * 300)} × ${Math.round(page.h / 72 * 300)} px. ${warnings.join(". ")}${warnings.some((x) => /maža|mažiau/.test(x)) ? ". Įkelkite didesnę nuotrauką arba sumažinkite jos plotą." : ""}`;
 }
 function renderEvents() {
   let search = (q("#ce-event-search")?.value || "").toLocaleLowerCase("lt"), filter = q("#ce-event-filter")?.value || "all";
-  q("#ce-event-list").innerHTML = state.events.filter((ev) => (filter === "all" || ev.category === filter) && [ev.title, ev.person, ev.note].join(" ").toLocaleLowerCase("lt").includes(search)).map((ev) => `<article class="ce-event"><p><strong>${e(ev.icon)} ${e(ev.title)}</strong></p><p>${e(ev.start)}${ev.start !== ev.end ? " – " + e(ev.end) : ""} · ${e(categoryNames[ev.category])}${ev.repeat === "yearly" ? " · Kasmet" : ""}${ev.person ? " · " + e(ev.person) : ""}</p><div class="ce-actions"><button data-edit-event="${e(ev.id)}">Keisti</button><button data-copy-event="${e(ev.id)}">Kopijuoti</button><button data-delete-event="${e(ev.id)}">Šalinti</button></div></article>`).join("") || '<p class="muted">Įvykių nerasta. Pridėkite pirmąjį.</p>';
+  q("#ce-event-list").innerHTML = state.events.filter((ev) => (filter === "all" || ev.category === filter) && [ev.title, ev.person, ev.note].join(" ").toLocaleLowerCase("lt").includes(search)).map((ev) => `<article class="ce-event"><p><strong>${e(ev.icon)} ${e(ev.title)}</strong></p><p>${e(ev.start)}${ev.start !== ev.end ? " – " + e(ev.end) : ""} · ${e(categoryNames[ev.category])}${ev.repeat === "yearly" ? " · Kasmet" : ""}${ev.person ? " · " + e(ev.person) : ""}</p><div class="ce-actions"><button data-edit-event="${e(ev.id)}">${LT.keisti}</button><button data-copy-event="${e(ev.id)}">${LT.kopijuoti}</button><button data-delete-event="${e(ev.id)}">${LT.salinti}</button></div></article>`).join("") || LT.p_class_muted_ivykiu_nerasta_pridekite_pirmaji_p;
 }
 async function renderPhotos() {
   let list = q("#ce-photo-list");
@@ -152,12 +158,12 @@ async function renderPhotos() {
   list.innerHTML = state.photos.map((p2, i) => `<button data-select-photo="${p2.id}" aria-pressed="${p2.id === selectedPhoto}">${i + 1}. ${e(p2.name)} · ${p2.width} × ${p2.height}</button>`).join("");
   let p = state.photos.find((p2) => p2.id === selectedPhoto) || state.photos[0];
   if (!p) {
-    q("#ce-photo-settings").innerHTML = '<p class="muted">Įkelkite pirmą nuotrauką. Metų rinkiniui galite įkelti 12 failų vienu metu.</p>';
+    q("#ce-photo-settings").innerHTML = LT.p_class_muted_ikelkite_pirma_nuotrauka_metu_rinkiniui_galite_ikelti_12;
     return;
   }
   selectedPhoto = p.id;
   let k = currentKey();
-  q("#ce-photo-settings").innerHTML = `<hr><strong>${e(p.name)}</strong><div class="ce-actions"><button data-action="photo-prev">↑ Ankstesnė</button><button data-action="photo-next">↓ Vėlesnė</button><button data-action="photo-replace">Pakeisti</button><button data-action="photo-remove">Šalinti</button></div><div class="ce-actions"><button data-action="photo-all">Visiems mėnesiams</button><button data-action="photo-month">Tik ${e(k)}</button><button data-action="photo-none">Šį mėnesį be nuotraukos</button><button data-action="photo-copy-month">Atskiras šio mėnesio kirpimas</button></div><label>Kirpimas<select data-photo="fit">${options([["cover", "Užpildyti (kirpti)"], ["contain", "Sutalpinti visą"]], p.fit)}</select></label>${photoRange("Horizontali padėtis", "x", p.x, 0, 1, 0.01)}${photoRange("Vertikali padėtis", "y", p.y, 0, 1, 0.01)}${photoRange("Priartinimas", "zoom", p.zoom, 1, 4, 0.01)}<button data-action="photo-rotate">Pasukti 90°</button>${photoRange("Šviesumas", "brightness", p.brightness, 0.3, 1.7, 0.01)}${photoRange("Kontrastas", "contrast", p.contrast, 0.3, 1.7, 0.01)}${photoRange("Spalvų sodrumas", "saturation", p.saturation, 0, 2, 0.01)}${photoRange("Šalta ↔ šilta", "warmth", p.warmth, -1, 1, 0.01)}${photoRange("Matomumas", "opacity", p.opacity, 0.1, 1, 0.01)}${photoRange("Šviesus uždengimas", "overlay", p.overlay, 0, 0.8, 0.01)}<label>Uždengimo spalva<select data-photo="overlayColor">${options([["light", "Šviesi"], ["dark", "Tamsi"]], p.overlayColor || "light")}</select></label><label class="check"><input type="checkbox" data-photo="mono"${p.mono ? " checked" : ""}>Nespalvota nuotrauka</label><button data-action="photo-reset">Atkurti kirpimą ir filtrus</button><button data-action="photo-palette">Spalvos iš šios nuotraukos</button><p class="muted">Norėdami pakeisti kadrą, naudokite padėties slankiklius. Jie veikia ir telefone.</p>`;
+  q("#ce-photo-settings").innerHTML = `<hr><strong>${e(p.name)}</strong><div class="ce-actions"><button data-action="photo-prev">${LT.ankstesne}</button><button data-action="photo-next">${LT.velesne}</button><button data-action="photo-replace">Pakeisti</button><button data-action="photo-remove">${LT.salinti}</button></div><div class="ce-actions"><button data-action="photo-all">${LT.visiems_menesiams}</button><button data-action="photo-month">Tik ${e(k)}</button><button data-action="photo-none">${LT.si_menesi_be_nuotraukos}</button><button data-action="photo-copy-month">${LT.atskiras_sio_menesio_kirpimas}</button></div><label>Kirpimas<select data-photo="fit">${options([["cover", LT.uzpildyti_kirpti], ["contain", LT.sutalpinti_visa]], p.fit)}</select></label>${photoRange(LT.horizontali_padetis, "x", p.x, 0, 1, 0.01)}${photoRange(LT.vertikali_padetis, "y", p.y, 0, 1, 0.01)}${photoRange("Priartinimas", "zoom", p.zoom, 1, 4, 0.01)}<button data-action="photo-rotate">Pasukti 90°</button>${photoRange(LT.sviesumas, "brightness", p.brightness, 0.3, 1.7, 0.01)}${photoRange("Kontrastas", "contrast", p.contrast, 0.3, 1.7, 0.01)}${photoRange(LT.spalvu_sodrumas, "saturation", p.saturation, 0, 2, 0.01)}${photoRange(LT.salta_silta, "warmth", p.warmth, -1, 1, 0.01)}${photoRange("Matomumas", "opacity", p.opacity, 0.1, 1, 0.01)}${photoRange(LT.sviesus_uzdengimas, "overlay", p.overlay, 0, 0.8, 0.01)}<label>${LT.uzdengimo_spalva}<select data-photo="overlayColor">${options([["light", LT.sviesi], ["dark", "Tamsi"]], p.overlayColor || "light")}</select></label><label class="check"><input type="checkbox" data-photo="mono"${p.mono ? " checked" : ""}>${LT.nespalvota_nuotrauka}</label><button data-action="photo-reset">${LT.atkurti_kirpima_ir_filtrus}</button><button data-action="photo-palette">${LT.spalvos_is_sios_nuotraukos}</button><p class="muted">${LT.noredami_pakeisti_kadra_naudokite_padeties_slankiklius_jie_veikia_ir_t}</p>`;
 }
 function photoRange(label, k, value, min, max, step) {
   return `<label>${label}<input type="range" data-photo="${k}" value="${value}" min="${min}" max="${max}" step="${step}"></label>`;
@@ -175,14 +181,16 @@ function setPath(s, path, value) {
 }
 function dialog(title, body) {
   let d = q("#ce-dialog");
-  d.innerHTML = `<button class="ce-dialog-close" data-action="close-dialog" aria-label="Uždaryti">×</button><h2 id="ce-dialog-title">${e(title)}</h2>${body}`;
+  d.innerHTML = `<button class="ce-dialog-close" data-action="close-dialog" aria-label="${LT.uzdaryti}">×</button><h2 id="ce-dialog-title">${e(title)}</h2>${body}`;
   d.showModal();
   d.querySelector("input,button,select")?.focus();
   return d;
 }
 function eventDialog(id, date) {
   let ev = state.events.find((x) => x.id === id) || { id: uid(), title: "", start: date || `${state.period.year}-${String(state.period.month).padStart(2, "0")}-01`, end: date || `${state.period.year}-${String(state.period.month).padStart(2, "0")}-01`, category: "family", color: state.theme.colors.personal, icon: "", note: "", person: "", repeat: "none", leapPolicy: "leap" };
-  dialog(id ? "Keisti įvykį" : "Naujas įvykis", `<form id="ce-event-form" data-id="${e(ev.id)}"><label>Pavadinimas<input name="title" required maxlength="140" value="${e(ev.title)}"></label><div class="ce-row"><label>Pradžia<input type="date" name="start" value="${ev.start}" min="1900-01-01" max="2100-12-31" required></label><label>Pabaiga (imtinai)<input type="date" name="end" value="${ev.end}" min="1900-01-01" max="2100-12-31" required></label></div><div class="ce-row"><label>Kategorija<select name="category">${options(Object.entries(categoryNames), ev.category)}</select></label><label>Spalva<input type="color" name="color" value="${ev.color}"></label></div><div class="ce-row"><label>Žmogus / šeimos narys<input name="person" maxlength="80" value="${e(ev.person)}"></label><label>Ženklas<select name="icon">${options([["", "Be ženklo"], ["♥", "♥ Širdis"], ["★", "★ Žvaigždė"], ["•", "• Taškas"], ["!", "! Svarbu"]], ev.icon)}</select></label></div><label>Kartojimas<select name="repeat">${options([["none", "Vieną kartą"], ["yearly", "Kasmet nuo pradžios metų"]], ev.repeat)}</select></label><label>Vasario 29 d. nekeliamaisiais metais<select name="leapPolicy">${options([["leap", "Tik keliamaisiais metais"], ["feb28", "Vasario 28 d."], ["mar1", "Kovo 1 d."]], ev.leapPolicy)}</select></label><small>Kasmetiniam kelių dienų įvykiui išlaikoma pradinė trukmė. Pabaiga įskaitoma.</small><label>Pastaba<textarea name="note" maxlength="2000">${e(ev.note)}</textarea></label><p id="ce-event-error" role="alert"></p><div class="ce-dialog-actions"><button type="button" data-action="close-dialog">Atšaukti</button><button class="primary" type="submit">Išsaugoti įvykį</button></div></form>`);
+  let dayRecords = date ? entries({ ...state, layers: { ...state.layers, statutory: true, commemorative: true, school: true, personal: true } }, data, editorial, date, date) : [];
+  let dayHTML = date ? `<section class="ce-day-records" aria-label="${LT.visi_dienos_irasai}"><h3>${e(date)}${LT.dienos_saraso_antraste}</h3><p class="muted">${LT.cia_matomi_ir_pasleptu_sluoksniu_irasai}</p><ul>${dayRecords.map((record) => `<li><strong>${e(record.title)}</strong> · ${e(record.kind === "statutory" ? LT.svente : record.kind === "commemorative" ? LT.atmintina_diena : record.kind === "school" ? LT.mokiniu_atostogos_2 : record.person || LT.asmeninis_ivykis)}${record.note ? `<p>${e(record.note)}</p>` : ""}${record.kind === "personal" ? ` <button data-edit-event="${e(record.id)}">${LT.keisti}</button>` : ""}</li>`).join("") || LT.li_irasu_nera_li}</ul><h3>${LT.prideti_ivyki_siai_dienai}</h3></section>` : "";
+  dialog(id ? LT.keisti_ivyki : date ? LT.dienos_irasai_ir_naujas_ivykis : LT.naujas_ivykis, `${dayHTML}<form id="ce-event-form" aria-describedby="ce-event-error" data-id="${e(ev.id)}"><label>${LT.pavadinimas}<input name="title" required maxlength="140" value="${e(ev.title)}"></label><div class="ce-row"><label>${LT.pradzia}<input type="date" name="start" value="${ev.start}" min="1900-01-01" max="2100-12-31" required></label><label>${LT.pabaiga_imtinai}<input type="date" name="end" value="${ev.end}" min="1900-01-01" max="2100-12-31" required></label></div><div class="ce-row"><label>${LT.kategorija}<select name="category">${options(Object.entries(categoryNames), ev.category)}</select></label><label>${LT.spalva}<input type="color" name="color" value="${ev.color}"></label></div><div class="ce-row"><label>${LT.zmogus_seimos_narys}<input name="person" maxlength="80" value="${e(ev.person)}"></label><label>${LT.asmens_spalva}<input type="color" name="personColor" value="${ev.personColor || ev.color}"></label></div><div class="ce-row"><label>${LT.zenklas}<select name="icon">${options([["", LT.be_zenklo], ["♥", LT.sirdis], ["★", LT.zvaigzde], ["•", LT.taskas], ["!", LT.svarbu]], ev.icon)}</select></label></div><label>${LT.kartojimas}<select name="repeat">${options([["none", LT.viena_karta], ["yearly", LT.kasmet_nuo_pradzios_metu]], ev.repeat)}</select></label><label>${LT.vasario_29_d_nekeliamaisiais_metais}<select name="leapPolicy">${options([["leap", LT.tik_keliamaisiais_metais], ["feb28", LT.vasario_28_d], ["mar1", LT.kovo_1_d]], ev.leapPolicy)}</select></label><small>${LT.kasmetiniam_keliu_dienu_ivykiui_islaikoma_pradine_trukme_pabaiga_iskai}</small><label>${LT.pastaba}<textarea name="note" maxlength="2000">${e(ev.note)}</textarea></label><p id="ce-event-error" role="alert"></p><div class="ce-dialog-actions"><button type="button" data-action="close-dialog">${LT.atsaukti_2}</button><button class="primary" type="submit">${LT.issaugoti_ivyki}</button></div></form>`);
 }
 async function addPhotos(files, replace = false) {
   if (busy) return;
@@ -191,9 +199,9 @@ async function addPhotos(files, replace = false) {
   let before = clone(state), added = [];
   try {
     for (let file of files) {
-      if (state.photos.length >= 24 && !replace) throw Error("Leidžiamos iki 24 nuotraukų");
-      if (state.photos.reduce((n, p2) => n + (originals.get(p2.id)?.size || 0), 0) + file.size > 96 * 1024 * 1024) throw Error("Bendra nuotraukų riba – 96 MB");
-      status("Skaitoma nuotrauka: " + file.name);
+      if (state.photos.length >= 24 && !replace) throw Error(LT.leidziamos_iki_24_nuotrauku);
+      if (state.photos.reduce((n, p2) => n + (originals.get(p2.id)?.size || 0), 0) + file.size > 96 * 1024 * 1024) throw Error(LT.bendra_nuotrauku_riba_96_mb);
+      status(LT.skaitoma_nuotrauka + file.name);
       let p = await upload(file);
       added.push(p.id);
       if (replace) {
@@ -217,7 +225,7 @@ async function addPhotos(files, replace = false) {
   } catch (error) {
     state = before;
     added.forEach(forget);
-    status(error.message, true);
+    status(readableError(error), true);
   } finally {
     busy = false;
     render();
@@ -229,9 +237,9 @@ function forgetCache() {
 async function projectList() {
   try {
     let saved = await storage.list();
-    dialog("Juodraščiai šiame įrenginyje", `<p>Įkeliant kitą juodraštį dabartinis pirmiausia išsaugomas.</p><div class="ce-event-list">${saved.map((p) => `<article class="ce-event"><p><strong>${e(p.name)}</strong> · ${e(new Date(p.updated).toLocaleString("lt-LT"))}</p><button data-open-project="${e(p.id)}">Atverti</button><button data-remove-project="${e(p.id)}">Šalinti</button></article>`).join("") || "<p>Išsaugotų juodraščių nėra.</p>"}</div><div class="ce-dialog-actions"><button data-action="duplicate">Sukurti dabartinio kopiją</button><button data-action="save-now">Išsaugoti dabar</button></div>`);
+    dialog(LT.juodrasciai_siame_irenginyje, `<p>${LT.ikeliant_kita_juodrasti_dabartinis_pirmiausia_issaugomas}</p><div class="ce-event-list">${saved.map((p) => `<article class="ce-event"><p><strong>${e(p.name)}</strong> · ${e(new Date(p.updated).toLocaleString("lt-LT"))}</p><button data-open-project="${e(p.id)}">Atverti</button><button data-remove-project="${e(p.id)}">${LT.salinti}</button></article>`).join("") || LT.p_issaugotu_juodrasciu_nera_p}</div><div class="ce-dialog-actions"><button data-action="duplicate">${LT.sukurti_dabartinio_kopija}</button><button data-action="save-now">${LT.issaugoti_dabar}</button></div>`);
   } catch (error) {
-    status(error.message, true);
+    status(readableError(error), true);
   }
 }
 async function loadProject(record) {
@@ -248,7 +256,7 @@ async function loadProject(record) {
   selectedPhoto = null;
   photoCache.clear();
   render();
-  status("Juodraštis atkurtas");
+  status(LT.juodrastis_atkurtas);
 }
 async function exportFiles() {
   if (busy) return;
@@ -259,7 +267,7 @@ async function exportFiles() {
     validate(frozen);
     list = scenes(frozen, data, editorial);
   } catch (error) {
-    status(error.message, true);
+    status(readableError(error), true);
     return;
   }
   busy = true;
@@ -270,11 +278,11 @@ async function exportFiles() {
   q("[data-action=cancel]").disabled = false;
   root.setAttribute("aria-busy", "true");
   let check2 = () => {
-    if (cancelled) throw new DOMException("Ruošimas atšauktas", "AbortError");
+    if (cancelled) throw new DOMException(LT.ruosimas_atsauktas, "AbortError");
   }, progress = (n, total) => {
     q("#ce-progress").max = total;
     q("#ce-progress").value = n;
-    status(`Ruošiama: ${n} / ${total}`);
+    status(`${LT.ruosiama}${n} / ${total}`);
   };
   try {
     await document.fonts.ready;
@@ -282,37 +290,37 @@ async function exportFiles() {
     let blob, name;
     if (format === "print") {
       await output.printPages(list, check2, progress);
-      status("Atvertas spausdinimo langas");
+      status(LT.atvertas_spausdinimo_langas);
     } else {
       if (format === "pdf") {
         blob = await output.pdf(list, check2, progress);
         name = `${frozen.period.year}-mano-kalendorius.pdf`;
       } else if (format === "webp" || format === "png") {
         blob = await output.raster(list[frozenIndex], `image/${format}`);
-        name = output.stem(list[frozenIndex]) + (list[frozenIndex].label.includes("Įrašų") ? "-priedas" : "") + "." + format;
+        name = output.stem(list[frozenIndex]) + (list[frozenIndex].label.includes(LT.irasu) ? "-priedas" : "") + "." + format;
       } else {
         blob = await output.bundle(list, format === "paired", check2, progress);
         name = `${frozen.period.year}-kalendoriai${format === "paired" ? "-pdf-ir-webp" : ""}.zip`;
       }
       check2();
       output.download(blob, name);
-      status("Failas paruoštas. Patikrinkite naršyklės atsisiuntimus.");
+      status(LT.failas_paruostas_patikrinkite_narsykles_atsisiuntimus);
     }
     try {
       await storage.save(frozen);
       savedRevision = revision;
     } catch (error) {
-      status("Failas paruoštas, bet juodraštis neišsaugotas: " + error.message, true);
+      status(LT.failas_paruostas_bet_juodrastis_neissaugotas + readableError(error), true);
     }
   } catch (error) {
-    status(error.name === "AbortError" ? "Ruošimas atšauktas" : error.message, error.name !== "AbortError");
+    status(error.name === "AbortError" ? LT.ruosimas_atsauktas : readableError(error), error.name !== "AbortError");
   } finally {
     if (savedRevision < revision) {
       try {
         await storage.save(state);
         savedRevision = revision;
       } catch (error) {
-        status("Nepavyko išsaugoti juodraščio. Atsisiųskite projekto kopiją: " + error.message, true);
+        status(LT.nepavyko_issaugoti_juodrascio_atsisiuskite_projekto_kopija + readableError(error), true);
       }
     }
     busy = false;
@@ -338,7 +346,7 @@ root.addEventListener("submit", (event) => {
     q("#ce-dialog").close();
     renderEvents();
   } catch (error) {
-    q("#ce-event-error").textContent = error.message;
+    q("#ce-event-error").textContent = readableError(error);
   }
 });
 root.addEventListener("input", (event) => {
@@ -373,7 +381,7 @@ root.addEventListener("change", async (event) => {
       scenes(project.state, data, editorial);
       for (let p of project.state.photos) {
         let im = await sourceFrom(project.photos.get(p.id));
-        if (im.naturalWidth !== p.width || im.naturalHeight !== p.height) throw Error("Nuotraukos matmenys nesutampa su projektu");
+        if (im.naturalWidth !== p.width || im.naturalHeight !== p.height) throw Error(LT.nuotraukos_matmenys_nesutampa_su_projektu);
       }
       try {
         await storage.save(state);
@@ -390,7 +398,7 @@ root.addEventListener("change", async (event) => {
       photoCache.clear();
       dirty();
       render();
-      status("Projektas importuotas. Originalai lieka šiame įrenginyje.");
+      status(LT.projektas_importuotas_originalai_lieka_siame_irenginyje);
       return;
     }
     if (n.id === "ce-scope") {
@@ -443,7 +451,7 @@ root.addEventListener("change", async (event) => {
     }
     if (n.dataset.color || n.dataset.hex) {
       let k = n.dataset.color || n.dataset.hex;
-      if (!/^#[0-9a-f]{6}$/i.test(n.value)) throw Error("Spalvą įrašykite HEX formatu, pvz., #19594A");
+      if (!/^#[0-9a-f]{6}$/i.test(n.value)) throw Error(LT.spalva_irasykite_hex_formatu_pvz_19594a);
       change((s) => setPath(s, "theme.colors." + k, n.value), false);
       let c = effective(state, scope === "month" ? currentKey() : "").theme.colors[k];
       q(`[data-color="${k}"]`).value = c;
@@ -457,7 +465,7 @@ root.addEventListener("change", async (event) => {
       }, false);
     }
   } catch (error) {
-    status(error.message, true);
+    status(readableError(error), true);
   }
 });
 async function sourceFrom(blob) {
@@ -471,7 +479,7 @@ root.addEventListener("click", async (event) => {
   try {
     if (a === "cancel") {
       cancelled = true;
-      status("Atšaukiama…");
+      status(LT.atsaukiama);
       return;
     }
     if (busy) return;
@@ -539,8 +547,8 @@ root.addEventListener("click", async (event) => {
     }
     if (n.dataset.applyLeave) {
       let [start2, end] = n.dataset.applyLeave.split("/");
-      change((s) => s.events.push({ id: uid(), title: "Atostogos", start: start2, end, category: "vacation", color: s.theme.colors.personal, icon: "", person: "", note: "Pasirinktas ilgojo savaitgalio planas", repeat: "none", leapPolicy: "leap" }));
-      status("Atostogų įvykis pridėtas tik jums pasirinkus planą.");
+      change((s) => s.events.push({ id: uid(), title: LT.atostogos, start: start2, end, category: "vacation", color: s.theme.colors.personal, icon: "", person: "", note: LT.pasirinktas_ilgojo_savaitgalio_planas, repeat: "none", leapPolicy: "leap" }));
+      status(LT.atostogu_ivykis_pridetas_tik_jums_pasirinkus_plana);
       return;
     }
     switch (a) {
@@ -594,7 +602,7 @@ root.addEventListener("click", async (event) => {
         break;
       case "project":
         output.download(await storage.portable(clone(state)), `${state.period.year}-mano-kalendoriaus-projektas.k365.zip`);
-        status("Projekto kopija su originalais paruošta");
+        status(LT.projekto_kopija_su_originalais_paruosta);
         break;
       case "import":
         q("#ce-project-input").click();
@@ -606,15 +614,15 @@ root.addEventListener("click", async (event) => {
         q("#ce-dialog").close();
         change((s) => Object.assign(s, storage.duplicate(s)));
         await storage.save(state);
-        status("Sukurta atskira projekto kopija");
+        status(LT.sukurta_atskira_projekto_kopija);
         break;
       case "save-now":
         await storage.save(state);
         q("#ce-dialog").close();
-        status("Išsaugota šiame įrenginyje");
+        status(LT.issaugota_siame_irenginyje_2);
         break;
       case "reset":
-        dialog("Pradėti iš naujo?", `<p>Pasirinkite, ką atkurti. Atkūrimą galima atšaukti mygtuku „Atšaukti“.</p><div class="ce-dialog-actions"><button data-action="reset-design">Tik dizainą</button><button data-action="reset-all">Visą kalendorių</button><button data-action="close-dialog">Tęsti kūrimą</button></div>`);
+        dialog(LT.pradeti_is_naujo, `<p>${LT.pasirinkite_ka_atkurti_atkurima_galima_atsaukti_mygtuku_atsaukti}</p><div class="ce-dialog-actions"><button data-action="reset-design">${LT.tik_dizaina}</button><button data-action="reset-all">${LT.visa_kalendoriu}</button><button data-action="close-dialog">${LT.testi_kurima}</button></div>`);
         break;
       case "reset-design":
         change((s) => {
@@ -653,12 +661,12 @@ root.addEventListener("click", async (event) => {
         break;
       }
       case "auto-photos":
-        if (!state.photos.length) throw Error("Pirmiausia įkelkite nuotraukas");
+        if (!state.photos.length) throw Error(LT.pirmiausia_ikelkite_nuotraukas);
         change((s) => months(s).forEach(([y, m], i) => {
           s.assignments.months[monthKey(y, m)] = s.photos[i % s.photos.length].id;
           if (!s.layout.photoHeight) s.layout.photoHeight = 65;
         }));
-        status("Nuotraukos paskirstytos pagal sąrašo eilę");
+        status(LT.nuotraukos_paskirstytos_pagal_saraso_eile);
         break;
       case "photo-all":
         change((s) => {
@@ -676,7 +684,7 @@ root.addEventListener("click", async (event) => {
       case "photo-copy-month":
         change((s) => {
           let old = s.photos.find((p2) => p2.id === selectedPhoto);
-          if (!old) throw Error("Pasirinkite nuotrauką");
+          if (!old) throw Error(LT.pasirinkite_nuotrauka);
           let p = clone(old);
           p.id = uid();
           p.name = (old.name + " (kopija)").slice(0, 140);
@@ -726,22 +734,22 @@ root.addEventListener("click", async (event) => {
         change((s) => {
           for (let [k, v] of Object.entries({ ...colors, weekday: colors.title, day: "#172d28", weekend: "#a13b51", holiday: "#b12f42", grid: "#cbd8d3" })) setPath(s, "theme.colors." + k, v);
         });
-        status("Iš nuotraukos parinktos antraštės, akcento ir šviesaus fono spalvos");
+        status(LT.is_nuotraukos_parinktos_antrastes_akcento_ir_sviesaus_fono_spalvos);
         break;
       }
       case "calculate": {
         let r = vacation(q("#ce-leave-start").value, q("#ce-leave-end").value, state.workdays, data);
-        q("#ce-leave-result").textContent = `${r.total} kalendorinių dienų = ${r.leave} atostogų + ${r.rest} savaitės poilsio + ${r.holiday} šventinių darbo dienų. Abi ribos įskaitomos.`;
+        q("#ce-leave-result").textContent = `${r.total}${LT.kalendoriniu_dienu}${r.leave}${LT.atostogu}${r.rest}${LT.savaites_poilsio}${r.holiday}${LT.sventiniu_darbo_dienu_abi_ribos_iskaitomos}`;
         break;
       }
       case "suggest": {
         let list = suggestions(state.period.year, state.workdays, data);
-        q("#ce-suggestions").innerHTML = list.map((r) => `<button data-apply-leave="${r.a}/${r.b}">${r.a} – ${r.b}: ${r.total} laisvos dienos, ${r.leave} atostogų d. · Pridėti šį planą</button>`).join("") || "<p>Pagal pasirinktą darbo savaitę tinkamų pasiūlymų nėra.</p>";
+        q("#ce-suggestions").innerHTML = list.map((r) => `<button data-apply-leave="${r.a}/${r.b}">${r.a} – ${r.b}: ${r.total} laisvos dienos, ${r.leave} atostogų d. · Pridėti šį planą</button>`).join("") || LT.p_pagal_pasirinkta_darbo_savaite_tinkamu_pasiulymu_nera_p;
         break;
       }
     }
   } catch (error) {
-    status(error.message, true);
+    status(readableError(error), true);
   }
 });
 root.addEventListener("keydown", (event) => {
@@ -770,7 +778,7 @@ window.addEventListener("beforeunload", (event) => {
 async function start() {
   try {
     let responses = await Promise.all(["/assets/data/calendar.json", "/assets/calendar-editor/data.json"].map((url) => fetch(url).then((r) => {
-      if (!r.ok) throw Error("Nepavyko įkelti kalendoriaus duomenų");
+      if (!r.ok) throw Error(LT.nepavyko_ikelti_kalendoriaus_duomenu);
       return r.json();
     })));
     [data, editorial] = responses;
@@ -786,23 +794,23 @@ async function start() {
     try {
       records = await storage.list();
     } catch (error) {
-      status("Juodraščių saugykla neprieinama. Naudokite projekto failą.", true);
+      status(LT.juodrasciu_saugykla_neprieinama_naudokite_projekto_faila, true);
       return;
     }
     if (records.length) {
-      dialog("Rastas išsaugotas juodraštis", `<p><strong>${e(records[0].name)}</strong> · ${e(new Date(records[0].updated).toLocaleString("lt-LT"))}</p><p>Ar norite tęsti ankstesnį darbą?</p><div class="ce-dialog-actions"><button data-action="close-dialog">Kurti naują</button><button class="primary" data-restore="${e(records[0].id)}">Tęsti juodraštį</button></div>`);
+      dialog(LT.rastas_issaugotas_juodrastis, `<p><strong>${e(records[0].name)}</strong> · ${e(new Date(records[0].updated).toLocaleString("lt-LT"))}</p><p>${LT.ar_norite_testi_ankstesni_darba}</p><div class="ce-dialog-actions"><button data-action="close-dialog">${LT.kurti_nauja}</button><button class="primary" data-restore="${e(records[0].id)}">${LT.testi_juodrasti}</button></div>`);
       q("[data-restore]").addEventListener("click", async () => {
         try {
           q("#ce-dialog").close();
           await loadProject(records[0]);
         } catch (error) {
-          status(error.message, true);
+          status(readableError(error), true);
         }
       });
     }
     root.setAttribute("aria-busy", "false");
   } catch (error) {
-    root.innerHTML = `<p role="alert">${e(error.message)}. <a href="/kurti-kalendoriu/">Bandykite dar kartą</a> arba rinkitės <a href="/menesiai/">paruoštus kalendorius</a>.</p>`;
+    root.innerHTML = `<p role="alert">${e(readableError(error))}. <a href="/kurti-kalendoriu/">${LT.bandykite_dar_karta}</a>${LT.arba_rinkites}<a href="/menesiai/">${LT.paruostus_kalendorius}</a>.</p>`;
   }
 }
 start();

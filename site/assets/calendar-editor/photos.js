@@ -1,3 +1,4 @@
+import { LT } from "./lt.js";
 import { filterPixels } from "./filters.js";
 import { uid } from "./model.js";
 const originals = /* @__PURE__ */ new Map();
@@ -17,17 +18,17 @@ function image(blob) {
     };
     img.onerror = () => {
       URL.revokeObjectURL(url);
-      reject(Error("Nuotraukos nepavyko perskaityti"));
+      reject(Error(LT.nuotraukos_nepavyko_perskaityti));
     };
     img.src = url;
   });
 }
 async function upload(file) {
-  if (file.size > 12 * 1024 * 1024) throw Error("Viena nuotrauka gali būti iki 12 MB");
+  if (file.size > 12 * 1024 * 1024) throw Error(LT.viena_nuotrauka_gali_buti_iki_12_mb);
   let b = new Uint8Array(await file.slice(0, 12).arrayBuffer()), type = b[0] === 255 && b[1] === 216 ? "image/jpeg" : b[0] === 137 && b[1] === 80 && b[2] === 78 && b[3] === 71 ? "image/png" : String.fromCharCode(...b.slice(0, 4)) === "RIFF" && String.fromCharCode(...b.slice(8, 12)) === "WEBP" ? "image/webp" : null;
-  if (!type) throw Error("Tinka tik JPEG, PNG ir WebP nuotraukos");
+  if (!type) throw Error(LT.tinka_tik_jpeg_png_ir_webp_nuotraukos);
   let blob = new Blob([file], { type }), img = await image(blob);
-  if (img.naturalWidth * img.naturalHeight > 4e7) throw Error("Nuotrauka gali turėti iki 40 megapikselių");
+  if (img.naturalWidth * img.naturalHeight > 4e7) throw Error(LT.nuotrauka_gali_tureti_iki_40_megapikseliu);
   let id = uid();
   originals.set(id, blob);
   cacheDecoded(id, img);
@@ -36,7 +37,7 @@ async function upload(file) {
 async function source(p) {
   if (!decoded.has(p.id)) {
     let blob = originals.get(p.id);
-    if (!blob) throw Error("Nerastas nuotraukos originalas. Importuokite projekto failą.");
+    if (!blob) throw Error(LT.nerastas_nuotraukos_originalas_importuokite_projekto_faila);
     cacheDecoded(p.id, await image(blob));
   }
   return decoded.get(p.id);
@@ -50,7 +51,7 @@ async function renderPhoto(p, w, h, ppi = 100) {
   let img = await source(p), canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.ceil(w * ppi / 72));
   canvas.height = Math.max(1, Math.ceil(h * ppi / 72));
-  if (canvas.width * canvas.height > 35e6) throw Error("Nuotraukos išvestis per didelė. Pasirinkite mažesnį formatą.");
+  if (canvas.width * canvas.height > 35e6) throw Error(LT.nuotraukos_isvestis_per_didele_pasirinkite_mazesni_formata);
   let ctx = canvas.getContext("2d", { willReadFrequently: true }), sw = p.rotation % 180 ? p.height : p.width, sh = p.rotation % 180 ? p.width : p.height, scale = (p.fit === "cover" ? Math.max(canvas.width / sw, canvas.height / sh) : Math.min(canvas.width / sw, canvas.height / sh)) * p.zoom;
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -116,12 +117,12 @@ function byteTotal() {
   return [...originals.values()].reduce((n, b) => n + b.size, 0);
 }
 async function filterImage(im, photo) {
-  if (typeof Worker === "undefined") throw Error("worker unavailable");
+  if (typeof Worker === "undefined") throw Error(LT.fono_darbininkas_neprieinamas);
   let worker = new Worker(new URL("./photo-worker.js" + new URL(import.meta.url).search, import.meta.url), { type: "module" });
   return new Promise((resolve, reject) => {
     let timer = setTimeout(() => {
       worker.terminate();
-      reject(Error("Nuotraukos apdorojimas užtruko per ilgai"));
+      reject(Error(LT.nuotraukos_apdorojimas_uztruko_per_ilgai));
     }, 3e4);
     worker.onmessage = ({ data }) => {
       clearTimeout(timer);
@@ -131,7 +132,7 @@ async function filterImage(im, photo) {
     worker.onerror = () => {
       clearTimeout(timer);
       worker.terminate();
-      reject(Error("Nuotraukos darbininkas neprieinamas"));
+      reject(Error(LT.nuotraukos_darbininkas_neprieinamas));
     };
     worker.postMessage({ buffer: im.data.buffer, photo }, [im.data.buffer]);
   });

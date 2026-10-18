@@ -2,8 +2,9 @@
 
 Route: `/kurti-kalendoriu/`. Scoped, native browser modules in `site/assets/calendar-editor/`; activated by `calendar_editor: true`. Existing tools and shared date API remain unchanged.
 
+- `lt.js`: central Lithuanian interface, validation and export dictionary, contextual month names, filename forms and weekday labels.
 - `model.js`: strict versioned project, 1900–2100 date-only arithmetic, event recurrence with explicit Feb29 policy, current statutory rules, independently toggled layers, custom working week and inclusive leave counts.
-- `scene.js`: single point-based layout for SVG preview, vector PDF, raster and print; full records and notes paginate into appendices. Page sizes are physical millimetres converted to PDF points. Sunday rows show both ISO week numbers where needed.
+- `scene.js`: single point-based layout for SVG preview, vector PDF, raster and print; short complete legends stay on the month page; longer records and notes paginate into appendices. Page sizes are physical millimetres converted to PDF points. Sunday rows show both ISO week numbers where needed.
 - `photos.js`: byte-signature/type/size checks, oriented image decoding, retained originals, normalized focal coordinates, rotation and nondestructive filters. Effective PPI is calculated from the cropped original, never inferred from enlarged raster dimensions.
 - `storage.js`: transactional IndexedDB projects including blobs; restore prompt, named copies, versioned portable ZIP with embedded originals. Own portable archive format uses ZIP STORE, CRC checks, bounded bytes/counts and a strict filename allowlist. Unsupported compression or versions are rejected without replacing the working project.
 - `export.js`: lazy local jsPDF 4.2.1 (MIT, vendored provenance included), real embedded Lato/Inter fonts, vector text/lines and original-derived images. Export takes an immutable state snapshot, processes pages sequentially and checks cancellation at page boundaries. RGB WebP/PNG are created at 300 PPI physical dimensions. No CMYK, bleed, archival-PDF or lossless-WebP claims.

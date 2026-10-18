@@ -1,3 +1,4 @@
+import { LT } from "./lt.js";
 import { svg } from "./scene.js";
 import { photoURLs, image } from "./photos.js";
 import { zip } from "./storage.js";
@@ -12,7 +13,7 @@ async function pdfLibrary() {
     script.onerror = () => {
       loader = null;
       script.remove();
-      reject(Error("Nepavyko įkelti PDF priemonės. Patikrinkite ryšį."));
+      reject(Error(LT.nepavyko_ikelti_pdf_priemones_patikrinkite_rysi));
     };
     document.head.append(script);
   });
@@ -24,7 +25,7 @@ async function fonts(family) {
   if (!fontCache.has(family)) {
     fontCache.set(family, Promise.all(["Regular", "Bold"].map(async (weight) => {
       let response = await fetch(`/assets/fonts/${family}-${weight}.ttf`);
-      if (!response.ok) throw Error("Nepavyko įkelti lietuviško šrifto");
+      if (!response.ok) throw Error(LT.nepavyko_ikelti_lietuvisko_srifto);
       let bytes = new Uint8Array(await response.arrayBuffer());
       let result = "";
       for (let start = 0; start < bytes.length; start += 32768) result += String.fromCharCode(...bytes.subarray(start, start + 32768));
@@ -94,7 +95,7 @@ async function pdf(pages, check, progress) {
     await new Promise((r) => setTimeout(r, 0));
   }
   check();
-  doc.setProperties({ title: "Asmeninis kalendorius", subject: "Kalendorius365 · lietuviškas spausdinamas kalendorius", creator: "Kalendorius365" });
+  doc.setProperties({ title: LT.asmeninis_kalendorius, subject: LT.kalendorius365_lietuviskas_spausdinamas_kalendorius, creator: "Kalendorius365" });
   return doc.output("blob");
 }
 async function raster(page, type = "image/webp", ppi = 300) {
@@ -103,14 +104,14 @@ async function raster(page, type = "image/webp", ppi = 300) {
   let img = await image(new Blob([markup], { type: "image/svg+xml" })), canvas = document.createElement("canvas");
   canvas.width = Math.round(page.w / 72 * ppi);
   canvas.height = Math.round(page.h / 72 * ppi);
-  if (canvas.width * canvas.height > 35e6) throw Error("Pasirinktas lapas viršija naršyklės išvesties ribą");
+  if (canvas.width * canvas.height > 35e6) throw Error(LT.pasirinktas_lapas_virsija_narsykles_isvesties_riba);
   let ctx = canvas.getContext("2d");
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   let blob = await new Promise((r) => canvas.toBlob(r, type, 0.98));
   canvas.width = canvas.height = 1;
-  if (!blob || blob.type !== type) throw Error(type === "image/webp" ? "Ši naršyklė negali sukurti WebP failo. Pasirinkite PNG arba PDF." : "Nepavyko sukurti paveikslo");
+  if (!blob || blob.type !== type) throw Error(type === "image/webp" ? LT.si_narsykle_negali_sukurti_webp_failo_pasirinkite_png_arba_pdf : LT.nepavyko_sukurti_paveikslo);
   return blob;
 }
 async function bundle(pages, paired, check, progress) {
@@ -137,7 +138,7 @@ async function bundle(pages, paired, check, progress) {
 }
 async function printPages(pages, check, progress) {
   let win = window.open("", "_blank");
-  if (!win) throw Error("Leiskite atverti spausdinimo langą");
+  if (!win) throw Error(LT.leiskite_atverti_spausdinimo_langa);
   try {
     win.document.write('<!doctype html><html lang="lt"><head><meta charset="utf-8"><title>Mano kalendorius · Spausdinti</title></head><body></body></html>');
     win.document.close();
