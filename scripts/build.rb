@@ -88,7 +88,7 @@ Dir.chdir(ROOT) do
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{immutable}\n"
- files.grep(%r{public/assets/fonts/[^/]+\.woff2?\z}).sort.each do |path|
+ files.grep(%r{public/assets/fonts/[^/]+\.(?:woff2?|ttf)\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  files.grep(%r{public/assets/data/.*\.json\z}).sort.each do |path|

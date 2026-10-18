@@ -155,3 +155,9 @@ assert '/assets/calendar-editor/editor.js?v=' in editor_html,'Editor module miss
 assert '/assets/calendar-editor/editor.css?v=' in editor_html,'Editor stylesheet missing from built route'
 assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
 print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
+
+for family in ('Lato','Inter'):
+ for weight in ('Regular','Bold'):
+  font=PUBLIC/'assets/fonts'/f'{family}-{weight}.ttf'
+  assert font.exists() and font.stat().st_size>100000,f'PDF/preview font excluded from release: {font}'
+print('PASS: all four embedded PDF/preview fonts are published')
