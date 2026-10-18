@@ -1,6 +1,6 @@
 from pathlib import Path
 from html.parser import HTMLParser
-from urllib.parse import urlsplit,unquote
+from urllib.parse import urlsplit,unquote,urljoin
 import struct
 import re
 import json
@@ -23,7 +23,7 @@ def webp_dimensions(data):
  bits=int.from_bytes(data[21:25],'little');return (1+(bits&0x3fff),1+((bits>>14)&0x3fff))
 
 class Page(HTMLParser):
- def __init__(self):super().__init__();self.links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
+ def __init__(self):super().__init__();self.links=[];self.anchor_links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if 'id' in a:self.ids.add(a['id'])
@@ -32,6 +32,7 @@ class Page(HTMLParser):
   if tag=='meta' and 'name' in a:self.meta[a['name']]=a.get('content','');self.named_meta.setdefault(a['name'],[]).append(a.get('content',''))
   if tag=='meta' and 'property' in a:self.properties.setdefault(a['property'],[]).append(a.get('content',''))
   if tag=='link' and a.get('rel')=='canonical':self.canonical=a.get('href')
+  if tag=='a' and a.get('href'):self.anchor_links.append(a['href'])
   if tag in ['a','img','script','link']:
    url=a.get('href') if tag in ['a','link'] else a.get('src')
    if url:self.links.append(url)
@@ -98,6 +99,26 @@ for path,p in pages.items():
   if not target.exists():fail.append((str(path.relative_to(PUBLIC)),url))
   if parsed.fragment and target in pages and parsed.fragment not in pages[target].ids:fail.append((str(path.relative_to(PUBLIC)),url+' (anchor missing)'))
 assert not fail,json.dumps(fail[:30])
+public_pages={p.canonical:path for path,p in pages.items() if path.name!='404.html'}
+route_pages={urlsplit(canonical).path:canonical for canonical in public_pages}
+graph={canonical:set() for canonical in public_pages}
+for path,p in pages.items():
+ if path.name=='404.html':continue
+ for href in p.anchor_links:
+  target=urlsplit(urljoin(p.canonical,href))
+  if target.scheme!='https' or target.netloc!='kalendorius365.lt':continue
+  route=target.path
+  if not route.endswith('/') and not Path(route).suffix:route+='/'
+  if route in route_pages:graph[p.canonical].add(route_pages[route])
+start=next((canonical for canonical,path in public_pages.items() if path==PUBLIC/'index.html'),None)
+assert start,'Homepage canonical missing from public page graph'
+reachable={start};pending=[start]
+while pending:
+ for target in graph[pending.pop()]:
+  if target not in reachable:reachable.add(target);pending.append(target)
+orphans=sorted(set(public_pages)-reachable)
+assert not orphans,'Public pages are unreachable through crawlable internal links: '+json.dumps([str(public_pages[u].relative_to(PUBLIC)) for u in orphans[:30]])
+print(f'PASS: {len(reachable)} public pages are reachable from the homepage through crawlable internal links; 0 orphans.')
 manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets']
 for unused in ('manifest.json','years.json','catalog.json'):
  assert not (PUBLIC/'assets/data'/unused).exists(),f'Build-only or obsolete browser payload was published: {unused}'
