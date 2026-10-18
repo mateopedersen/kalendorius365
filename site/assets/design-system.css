@@ -1,4 +1,4 @@
-/* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
+/* Kalendorius365 — Baltic paper. Native interface typography. */
 @font-face{
   font-family: Lato;
   src: url("/assets/fonts/Lato-Regular.woff2") format("woff2");
@@ -48,7 +48,7 @@
   unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;
 }
 :root{
-  --font-ui: Lato, Arial, sans-serif;
+  --font-ui: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --ink: #111b2e;
   --muted: #5c6980;
   --green: #006a44;
@@ -6201,3 +6201,5 @@ button.primary:hover, a.button.primary:hover, .success:hover{
   .site-footer .footer-brand-wordmark { display: block; white-space: normal; overflow-wrap: anywhere; }
   .form-row { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 }
+/* Reserve the date label before the live clock initializes. */
+.clock-date{min-height:1.55em}@media(max-width:400px){.clock-date{min-height:3.1em}}

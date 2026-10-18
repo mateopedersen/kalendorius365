@@ -7102,12 +7102,12 @@
     {
       "path": ".github/workflows/horoscope-automation.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "37b802326da069de0306c008633651fdd31911eac39ae2ccae6f374213be39f9"
+      "sha256": "66b393607efd267431a3cbe7bd8d6b432b5476f08a6648a771b3cf9492786019"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "e58beaf894e700cc1b380a05ae4c1b7c86a6d2d8c70945aa41f2aeb41a641a80"
+      "sha256": "b81273a58e5632d86488fc6e108196c130b7877fe36310fef00b067e0b63afeb"
     }
   ],
   "changed_baseline_assets": [],

@@ -1,0 +1,16 @@
+{
+  "method": "Document text and form controls use the device system font. No initial UI font requests. Original fonts, SVG assets and full-resolution print assets are retained.",
+  "native_stack": "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+  "ui_stylesheets": [
+    "site/assets/zodiac.css",
+    "site/assets/contact.css",
+    "site/assets/horoscope.css",
+    "site/assets/monthly-holidays.css",
+    "site/assets/homepage.css",
+    "site/assets/lunar.css",
+    "site/assets/holiday-phase2.css",
+    "site/assets/namedays.css",
+    "site/assets/design-system.css"
+  ],
+  "retained_original_fonts": "See original_sha256 in font-subsets.json; exact complete binaries retained and tested."
+}

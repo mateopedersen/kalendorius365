@@ -18,10 +18,6 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":{{ page.schema_type | default: 'WebPage' | jsonify }},"@id":"{{ site.url }}{{ page.url | replace: 'index.html', '' }}#webpage","url":"{{ site.url }}{{ page.url | replace: 'index.html', '' }}","name":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"inLanguage":"lt-LT","isPartOf":{"@type":"WebSite","name":"Kalendorius365","url":"https://kalendorius365.lt/"}}</script>
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
-{% if page.app %}<link rel="preload" href="/assets/visuals/weather-640.avif?v={{ site.weather_image_version }}" imagesrcset="/assets/visuals/weather-320.avif?v={{ site.weather_image_version }} 320w, /assets/visuals/weather-480.avif?v={{ site.weather_image_version }} 480w, /assets/visuals/weather-640.avif?v={{ site.weather_image_version }} 640w" imagesizes="(max-width: 760px) calc(100vw - 2rem), 360px" as="image" type="image/avif" fetchpriority="high">{% endif %}
-<link rel="preload" href="/assets/fonts/Lato-Regular-latin-lt.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Bold-latin-lt.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v={{ site.css_version }}" as="font" type="font/woff2" crossorigin>
 {% if page.sign_key %}<link rel="preload" href="/assets/horoscope-detail.css?v={{ site.css_version }}" as="style">
 {% elsif page.url == "/horoskopai/" %}<link rel="preload" href="/assets/horoscope-hub.css?v={{ site.css_version }}" as="style">
 {% elsif page.url == "/zodiakas/" %}<link rel="preload" href="/assets/zodiac-guide.css?v={{ site.css_version }}" as="style">

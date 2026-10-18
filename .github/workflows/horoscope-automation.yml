@@ -135,7 +135,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # A data-only update changes the content-addressed asset graph on
           # every page. Commit the complete generated output atomically.
-          git add site/_data/horoscope_current.json site/horoskopai site/assets/data/search.json public docs/horoscopes/validation/horoscope-source-qa.json docs/performance/js-sizes.json
+          git add site/_data/horoscope_current.json site/horoskopai site/assets/data/search.json public docs/horoscopes/validation/horoscope-source-qa.json docs/performance
           git diff --cached --check
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"

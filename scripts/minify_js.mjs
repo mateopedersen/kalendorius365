@@ -2,6 +2,7 @@ import {transformSync} from 'esbuild';
 import {readdir, readFile, writeFile} from 'node:fs/promises';
 import {resolve, relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {validateCSS, minifyCSS} from './minify_css.mjs';
 
 // Each module retains its exports, import boundaries, property names and legal
 // notices. Source files remain readable; only generated browser assets change.
@@ -18,7 +19,7 @@ export function staticImports(source) {
 }
 
 async function preloadInitialModules(directory) {
-  const root = resolve(directory, '..'), imports = new Map();
+  const root = resolve(directory, '..'), imports = new Map(), compiledStyles=new Map();
   async function dependencies(url, seen) {
     if (seen.has(url)) return;
     seen.add(url);
@@ -36,7 +37,13 @@ async function preloadInitialModules(directory) {
       const path = resolve(dir, entry.name);
       if (entry.isDirectory()) { if (entry.name !== 'assets' && entry.name !== 'downloads') await visit(path); }
       else if (entry.name.endsWith('.html')) {
-        const html = await readFile(path, 'utf8');
+        const html = (await readFile(path, 'utf8')).replace(/(<style\b[^>]*>)([\s\S]*?)(<\/style>)/g,(_,open,css,close)=>{
+          if(!compiledStyles.has(css)){
+            validateCSS(css,relative(root,path));
+            compiledStyles.set(css,minifyCSS(css,relative(root,path)));
+          }
+          return open+compiledStyles.get(css)+close;
+        });
         const roots = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js\?v=[^"]+)"[^>]*>/g)].map(match=>match[1]);
         const seen = new Set();
         for (const url of roots) await dependencies(url, seen);
@@ -51,7 +58,7 @@ async function preloadInitialModules(directory) {
           const url = source.match(new RegExp('/assets/data/'+name.replaceAll('.', '\\.')+'\\?v=[a-f0-9]+'))?.[0];
           if (url) hints.push(`<link rel="preload" href="${url}" as="fetch" crossorigin>`);
         }
-        if (hints.length) await writeFile(path, html.replace('</head>', hints.join('\n')+'\n</head>'));
+        await writeFile(path, html.replace('</head>', hints.length?hints.join('\n')+'\n</head>':'</head>'));
       }
     }
   }

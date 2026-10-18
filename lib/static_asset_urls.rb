@@ -7,12 +7,14 @@ require 'pathname'
 module Kalendorius
   module StaticAssetUrls
     IMAGE_EXTENSIONS = %w[.svg .png .webp .jpg .jpeg .avif].freeze
-    FONT_EXTENSIONS = %w[.woff .woff2].freeze
+    FONT_EXTENSIONS = %w[.woff .woff2 .ttf].freeze
     STATIC_ASSET_EXTENSIONS = (IMAGE_EXTENSIONS + FONT_EXTENSIONS).freeze
     DOWNLOAD_EXTENSIONS = (IMAGE_EXTENSIONS + %w[.pdf .csv .json .ics]).freeze
     JSON_DOCUMENTS_WITH_ASSET_REFERENCES = %w[assets/data/zodiac.json].freeze
-    REFERENCE_PATTERN = %r{(?<prefix>^|[\s"'=(])(?<path>/(?:assets|downloads)/[^"'<>\s?#()]+\.(?:svg|png|webp|jpe?g|avif|woff2?|pdf|csv|json|ics))(?<query>\?[^"'<>\s#]*)?(?<fragment>\#[^"'<>\s]*)?}i
-    DYNAMIC_TEMPLATE_PATTERN = %r{`(?<url>/(?:assets|downloads)/[^`\s]*\.(?:svg|png|webp|jpe?g|avif|woff2?|pdf|csv|json|ics))`}
+    # Parentheses terminate unquoted CSS url(...) values. Keeping them out of
+    # query/fragment captures preserves the closing delimiter after minifying.
+    REFERENCE_PATTERN = %r{(?<prefix>^|[\s"'=(])(?<path>/(?:assets|downloads)/[^"'<>\s?#()]+\.(?:svg|png|webp|jpe?g|avif|woff2?|ttf|pdf|csv|json|ics))(?<query>\?[^"'<>\s#()]*)?(?<fragment>\#[^"'<>\s()]*)?}i
+    DYNAMIC_TEMPLATE_PATTERN = %r{`(?<url>/(?:assets|downloads)/[^`\s]*\.(?:svg|png|webp|jpe?g|avif|woff2?|ttf|pdf|csv|json|ics))`}
 
     module_function
 

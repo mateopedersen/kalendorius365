@@ -37,7 +37,9 @@ class Page(HTMLParser):
    if url:self.links.append(url)
   # Responsive image candidates are real requests too; checking only img[src]
   # misses missing files selected by the browser at smaller widths or higher DPR.
-  for candidate in a.get('srcset','').split(','):
+  # A standalone data URI contains a comma inside its URL, not another file.
+  candidates=[] if a.get('srcset','').strip().startswith('data:') else a.get('srcset','').split(',')
+  for candidate in candidates:
    parts=candidate.strip().split()
    if parts:self.links.append(parts[0])
   if tag=='img':assert (a.get('alt') or (a.get('alt') == '' and a.get('aria-hidden') == 'true')) and a.get('width') and a.get('height'),a
