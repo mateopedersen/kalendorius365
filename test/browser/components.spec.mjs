@@ -220,9 +220,11 @@ test('lunar leap-date selection, keyboard movement, ICS and lightbox work',async
 
 test('shift planner generates a real cycle, validates bad JSON and exports ICS',async({page})=>{
  await page.goto('/pamainu-grafikas/');await page.locator('#shift-anchor').fill('2028-02-28');await page.locator('#shift-from').fill('2028-02-28');await page.locator('#shift-to').fill('2028-03-06');
- await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-rows tr')).toHaveCount(4);
+ const cycle=page.locator('#shift-patterns [data-cycle="D,D,P,P,D,D,D,P,P,D,D,P,P,P"]');await cycle.click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,P,P,D,D,D,P,P,D,D,P,P,P');
+ await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-rows tr')).toHaveCount(5);
+ const csv=await downloadBytes(page,()=>page.locator('#shift-csv').click());expect(csv.bytes.toString('utf8')).toContain('Savaitės diena');expect(csv.bytes.toString('utf8')).toContain('2028-02-29');
  const result=await downloadBytes(page,()=>page.locator('#shift-ics').click());expect(ics(result.bytes)).toContain('20280229');
- await page.locator('#shift-definitions').fill('{bad');await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-message')).toHaveAttribute('role','alert');await expect(page.locator('#shift-rows tr')).toHaveCount(0);
+ await page.locator('.shift-advanced summary').click();await page.locator('#shift-definitions').fill('{bad');await page.locator('#shift-planner button[type=submit]').click();await expect(page.locator('#shift-message')).toHaveAttribute('role','alert');await expect(page.locator('#shift-rows tr')).toHaveCount(0);
 });
 
 test('school lesson text edits persist after reload and duplication can be undone',async({page})=>{

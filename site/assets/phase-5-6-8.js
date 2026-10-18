@@ -339,7 +339,7 @@ function setupSchool() {
         td.append(input); tr.append(td);
       }
       const td = make("td"), remove = make("button", "Pašalinti", { type: "button", "aria-label": `${subjects[l.day]} ${l.number} pamoką pašalinti` });
-      remove.onclick = () => { state.lessons.splice(state.lessons.indexOf(l), 1); persist(); renderLessons(); };
+      remove.onclick = () => { state.lessons.splice(state.lessons.indexOf(l), 1); persist(); renderLessons(); put("Pamoka pašalinta."); };
       td.append(remove); tr.append(td); return tr;
     }));
     $("#school-title").value = state.title; $("#school-days").value = String(state.days); $("#school-template").value = state.template;

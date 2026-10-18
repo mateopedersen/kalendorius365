@@ -23,7 +23,7 @@ for(const width of[320,390])for(const route of routes)test(`enlarged text at ${w
  const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,font:parseFloat(getComputedStyle(document.documentElement).fontSize)}));
  expect(layout.font).toBe(32);expect(layout.scroll,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);
  if(route==='/pamainu-grafikas/'){
-  await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+  await page.locator('#shift-patterns [data-cycle="D,D,N,N,P,P,P,P"]').click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
   const [file]=await Promise.all([page.waitForEvent('download'),page.locator('#shift-json-export').click()]);
   expect(await file.failure()).toBeNull();const backup=JSON.parse(await fs.readFile(await file.path(),'utf8'));expect(backup.schema).toBe(1);expect(backup.data['shift-cycle']).toBe('D,D,N,N,P,P,P,P');
  }

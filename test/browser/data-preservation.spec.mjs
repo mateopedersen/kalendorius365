@@ -25,14 +25,13 @@ test('homepage blocks note controls until its calendar data and handlers are rea
  await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('kalendorius365:v1')||'{}').notes?.['2028-02-29'])).toBe('Ready only after startup');
 });
 
-test('shift input waits for delayed startup and preserves the first chosen preset',async({page})=>{
+test('shift inputs wait for their data and enable cycle shortcuts after startup',async({page})=>{
  let release;const gate=new Promise(resolve=>{release=resolve;});
  await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
  try {
-  await page.goto('/pamainu-grafikas/');await expect(page.locator('#shift-preset')).toBeDisabled();
-  release();await expect(page.locator('#shift-preset')).toBeEnabled();
-  await expect(page.locator('#shift-preset')).toHaveValue('day-rest');
-  await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+  await page.goto('/pamainu-grafikas/');const night=page.locator('#shift-patterns [data-cycle="D,D,N,N,P,P,P,P"]');await expect(night).toBeDisabled();
+  release();await expect(night).toBeEnabled();
+  await night.click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
  } finally {release();}
 });
 
@@ -111,11 +110,11 @@ test('name-day filters, more results, reset and calendar insertion respond',asyn
 });
 
 test('shift presets, view controls and JSON restore retain the chosen cycle',async({page})=>{
- await page.goto('/pamainu-grafikas/');await page.locator('#shift-preset').selectOption('day-night');await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
+ await page.goto('/pamainu-grafikas/');await page.locator('#shift-patterns [data-cycle="D,D,N,N,P,P,P,P"]').click();await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
  for(const view of ['month','week','year','list']){await page.locator('#shift-display').selectOption(view);await expect(page.locator('#shift-display')).toHaveValue(view);}
  await page.locator('#shift-week-filter').selectOption('custom');await expect(page.locator('#shift-custom-days')).toBeVisible();
  await page.locator('#shift-custom-days-list input').first().uncheck();
- const backup=await exported(page,'#shift-json-export');await page.locator('#shift-preset').selectOption('day-rest');
+ const backup=await exported(page,'#shift-json-export');await page.locator('#shift-patterns [data-cycle="D,D,P,P"]').click();
  await page.locator('#shift-json-import').setInputFiles(upload('shifts.json',backup));await expect(page.locator('#shift-cycle')).toHaveValue('D,D,N,N,P,P,P,P');
  await expect(page.locator('#shift-custom-days-list input').first()).not.toBeChecked();
 });
