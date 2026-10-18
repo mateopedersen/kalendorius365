@@ -5,7 +5,7 @@
 <title>{{ page.title | escape }} | Kalendorius365</title>
 <meta name="description" content="{{ page.description | escape }}">
 <meta name="robots" content="{% if site.release and page.url != '/404.html' %}index, follow{% else %}noindex, follow{% endif %}">
-<link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}"><link rel="describedby" href="{{ site.url }}/llms.txt">
 {% assign social_title = page.og_title | default: page.title %}
 {% assign social_description = page.og_description | default: page.description %}
 {% assign social_image = page.og_image | default: '/assets/visuals/kalendorius365-lietuviskas-kalendorius-1200x630.png' | absolute_url %}
