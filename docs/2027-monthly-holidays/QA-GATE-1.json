@@ -7353,8 +7353,21 @@
     },
     {
       "path": "site/assets/lunar/lunar.js",
-      "reason": "Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained",
-      "sha256": "6b6c13083eae92c21abf10516f2a9ec505d3fc26c643d240ab1e04e4495b8618"
+      "reason": "Use a reviewed Q95 screen-only WebP with exact alpha and measured >=45 dB composite PSNR; preserve source PNG and full-resolution print texture",
+      "verification": {
+        "path": "site/assets/lunar/albedo-web.webp",
+        "bytes": 81880,
+        "dimensions": [
+          512,
+          512
+        ],
+        "alpha_identical": true,
+        "composited_rgb_psnr_db": {
+          "black": 45.277,
+          "white": 45.277
+        },
+        "print_source_unchanged": true
+      }
     },
     {
       "version": "2026-10-17-lt-editorial-v1",
