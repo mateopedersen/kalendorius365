@@ -100,9 +100,12 @@ assert len(compact)<len(full)*0.5,(len(compact),len(full))
 headers=(PUBLIC/'_headers').read_text()
 header_paths=[line for line in headers.splitlines() if line.startswith('/')]
 assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
+assert not any(p.startswith('/assets/calendar-editor/') and p!='/assets/calendar-editor/*' for p in header_paths),'Overlapping editor cache rules'
+assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
 assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
- assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+ cache_path='/assets/calendar-editor/*' if path.is_relative_to(PUBLIC/'assets/calendar-editor') else f'/{path.relative_to(PUBLIC)}'
+ assert f'{cache_path}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
   specifier=match.group(2)

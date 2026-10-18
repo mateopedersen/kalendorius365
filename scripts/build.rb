@@ -84,9 +84,10 @@ Dir.chdir(ROOT) do
  immutable='Cache-Control: public, max-age=31536000, immutable'
  # Use exact paths for versioned code and data, so _headers never applies
  # multiple Cache-Control values to one response through overlapping globs.
- files.select { |path|path.end_with?('.js','.css') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.start_with?('public/assets/calendar-editor/') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
+ headers+="/assets/calendar-editor/*\n  #{immutable}\n"
  files.grep(%r{public/assets/fonts/[^/]+\.woff2?\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
