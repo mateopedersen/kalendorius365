@@ -27,6 +27,29 @@ class StaticAssetUrlsTest < Minitest::Test
     FileUtils.remove_entry(@root)
   end
 
+  def test_export_font_templates_and_styles_change_version_with_font_bytes
+    FileUtils.mkdir_p(File.join(@root, 'assets/fonts'))
+    font = File.join(@root, 'assets/fonts/Inter-Regular.ttf')
+    File.binwrite(font, 'original complete font')
+    File.binwrite(File.join(@root, 'assets/fonts/Inter-Bold.ttf'), 'original bold font')
+    script = File.join(@root, 'assets/export.js')
+    css = File.join(@root, 'assets/editor.css')
+    File.write(script, 'const font = `/assets/fonts/${family}-${weight}.ttf`;')
+    File.write(css, '@font-face{src:url(/assets/fonts/Inter-Regular.ttf) format("truetype")}')
+    assert_equal %w[assets/fonts/Inter-Bold.ttf assets/fonts/Inter-Regular.ttf], Kalendorius::StaticAssetUrls.referenced_asset_paths(@root, [script])
+    Kalendorius::StaticAssetUrls.rewrite!(@root)
+    before = File.read(script)
+    assert_match %r{\.ttf\?v=[a-f0-9]{12}`}, before
+    hash = Digest::SHA256.file(font).hexdigest[0, 12]
+    assert_includes File.read(css), "/assets/fonts/Inter-Regular.ttf?v=#{hash}) format"
+    assert_equal 0, Kalendorius::StaticAssetUrls.rewrite!(@root)
+    File.binwrite(font, 'updated complete font')
+    # The release builder starts again from the readable, unversioned source.
+    File.write(script, 'const font = `/assets/fonts/${family}-${weight}.ttf`;')
+    Kalendorius::StaticAssetUrls.rewrite!(@root)
+    refute_equal before, File.read(script)
+  end
+
   def test_rewrites_static_asset_urls_with_content_versions
     svg_hash = Digest::SHA256.file(File.join(@root, 'assets/visuals/icon.svg')).hexdigest[0, 12]
     json_hash = Digest::SHA256.file(File.join(@root, 'assets/data/index.json')).hexdigest[0, 12]

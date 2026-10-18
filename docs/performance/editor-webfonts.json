@@ -1,0 +1,25 @@
+{
+  "method": "Full original Inter fonts compressed as WOFF2 for browser preview; original complete TTFs retained for embedded PDF, print and raster exports. Every mapped glyph, advance and hint verified.",
+  "fonts": [
+    {
+      "source": "site/assets/fonts/Inter-Regular.ttf",
+      "target": "site/assets/fonts/Inter-Regular-web.woff2",
+      "original_bytes": 341396,
+      "webfont_bytes": 113476,
+      "original_sha256": "0b59f6b6fc9e8a9ad8032802d1797c4237d9288a3e7b7661517070627b577060",
+      "webfont_sha256": "bcbeebd42959db2525e77e128008ecd36ea2bdf7f53b3324a7d9fac4dac31fe9",
+      "codepoints": 2849,
+      "all_outlines_advances_and_hinting_identical": true
+    },
+    {
+      "source": "site/assets/fonts/Inter-Bold.ttf",
+      "target": "site/assets/fonts/Inter-Bold-web.woff2",
+      "original_bytes": 343076,
+      "webfont_bytes": 117428,
+      "original_sha256": "436f1b41f95171d1e4d8aeed25f693d60dc657ac08036e7b42b08f538cc59a3d",
+      "webfont_sha256": "45aae87d96259379d936bc921a9ab1bd9c9fb8bf24e7dcf99552f18e8e5f88f4",
+      "codepoints": 2849,
+      "all_outlines_advances_and_hinting_identical": true
+    }
+  ]
+}

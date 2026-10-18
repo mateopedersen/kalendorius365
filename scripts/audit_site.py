@@ -102,9 +102,12 @@ assert len(compact)<len(full)*0.5,(len(compact),len(full))
 headers=(PUBLIC/'_headers').read_text()
 header_paths=[line for line in headers.splitlines() if line.startswith('/')]
 assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
+assert not any(p.startswith('/assets/calendar-editor/') and p!='/assets/calendar-editor/*' for p in header_paths),'Overlapping editor cache rules'
+assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
 assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
- assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+ cache_path='/assets/calendar-editor/*' if path.is_relative_to(PUBLIC/'assets/calendar-editor') else f'/{path.relative_to(PUBLIC)}'
+ assert f'{cache_path}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
   specifier=match.group(2)
@@ -146,3 +149,17 @@ if '--release' in __import__('sys').argv:
  assert sitemap==canonical and len(sitemap)==len(pages)-1
  assert len(xml.findall('.//i:loc',ns))==360
  print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 360 monthly image entries, and no global noindex header.')
+
+# Check the generated release, not only the authored editor source.
+editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()
+assert 'id="calendar-editor"' in editor_html,'Release preparation replaced the personal editor'
+assert '/assets/calendar-editor/editor.js?v=' in editor_html,'Editor module missing from built route'
+assert '/assets/calendar-editor/editor.css?v=' in editor_html,'Editor stylesheet missing from built route'
+assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
+print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
+
+for family in ('Lato','Inter'):
+ for weight in ('Regular','Bold'):
+  font=PUBLIC/'assets/fonts'/f'{family}-{weight}.ttf'
+  assert font.exists() and font.stat().st_size>100000,f'PDF/preview font excluded from release: {font}'
+print('PASS: all four embedded PDF/preview fonts are published')
