@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 36691,
-      "generated_bytes": 23930
+      "source_bytes": 36819,
+      "generated_bytes": 23996
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -48,13 +48,13 @@
     },
     {
       "path": "/assets/discovery-core.js",
-      "source_bytes": 3232,
-      "generated_bytes": 1838
+      "source_bytes": 5735,
+      "generated_bytes": 3213
     },
     {
       "path": "/assets/discovery.js",
-      "source_bytes": 15473,
-      "generated_bytes": 9978
+      "source_bytes": 29920,
+      "generated_bytes": 18820
     },
     {
       "path": "/assets/holiday-editorial.js",

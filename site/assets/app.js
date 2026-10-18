@@ -1088,11 +1088,11 @@ async function detectWeatherCity() {
     if (!response.ok) throw Error("Nepavyko nustatyti miesto");
     const result = await response.json();
     if (requestId !== cityRequest) return;
-    applyWeatherCity(
-      WEATHER_CITY_BY_ID.has(result.city) ? result.city : DEFAULT_WEATHER_CITY,
-    );
+    const detectedCity = WEATHER_CITY_BY_ID.has(result.city) ? result.city : DEFAULT_WEATHER_CITY;
+    if (detectedCity !== window.k365WeatherCity) applyWeatherCity(detectedCity);
   } catch {
-    if (requestId === cityRequest) applyWeatherCity(DEFAULT_WEATHER_CITY);
+    if (requestId === cityRequest && window.k365WeatherCity !== DEFAULT_WEATHER_CITY)
+      applyWeatherCity(DEFAULT_WEATHER_CITY);
   }
 }
 weatherCity.onchange = () => {
