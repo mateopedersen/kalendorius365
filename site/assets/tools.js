@@ -149,8 +149,9 @@ if ($("#work-schedule")) {
     }
   }
   $("#work-schedule").onchange = (e) => {
+    const schedule = e.target.value;
     for (const section of document.querySelectorAll("[data-work-table]"))
-      section.hidden = section.dataset.workTable !== e.target.value;
+      section.hidden = section.dataset.workTable !== schedule;
     const total = document.querySelector(
       "[data-work-table]:not([hidden]) tfoot tr",
     );
@@ -159,10 +160,27 @@ if ($("#work-schedule")) {
       const cells = total.children;
       metrics[0].querySelector("strong").textContent = cells[1].textContent;
       metrics[0].querySelector("span").textContent =
-        "Darbo dienos · " + e.target.value + " d. savaitė";
+        "Darbo dienos · " + schedule + " d. savaitė";
       metrics[1].querySelector("strong").textContent = cells[5].textContent;
       metrics[2].querySelector("strong").textContent = cells[4].textContent;
     }
+    for (const month of document.querySelectorAll("[data-work-month]")) {
+      const scheduleKey = schedule === "6" ? "Six" : "Five",
+        days = month.dataset[`days${scheduleKey}`],
+        hours = month.dataset[`hours${scheduleKey}`],
+        workdays = month.querySelector("[data-work-days]"),
+        workhours = month.querySelector("[data-work-hours]"),
+        bar = month.querySelector("[data-work-bar]"),
+        track = month.querySelector(".workyear-month__track");
+      if (!days || !hours || !workdays || !workhours || !bar || !track) continue;
+      workdays.textContent = days;
+      workhours.textContent = `${hours} val.`;
+      bar.style.setProperty("--month-fill", `${Math.round(Number(hours) / 176 * 100)}%`);
+      track.setAttribute("aria-label", `${hours} darbo valandų`);
+    }
+    for (const list of document.querySelectorAll("[data-work-eves]"))
+      list.hidden = list.dataset.workEves !== schedule;
+    updateWorkdayCheck();
   };
   $("#work-csv").onclick = () => {
     const section = document.querySelector("[data-work-table]:not([hidden])");
@@ -181,6 +199,65 @@ if ($("#work-schedule")) {
       "text/csv;charset=utf-8",
     );
   };
+}
+const updateWorkdayCheck = () => {
+  const input = $("#workday-check-date"),
+    result = $("#workday-check-result"),
+    state = result?.querySelector("[data-workday-state]"),
+    detail = result?.querySelector("[data-workday-detail]"),
+    schedule = $("#work-schedule");
+  if (!input || !result || !state || !detail || !schedule) return;
+  const selected = input.value;
+  if (!selected) {
+    result.dataset.state = "ready";
+    state.textContent = "Pasirinkite datą";
+    detail.textContent = "Rezultatas bus apskaičiuotas pagal dabar pasirinktą darbo savaitę.";
+    return;
+  }
+  if (selected.slice(0, 4) !== input.min.slice(0, 4)) {
+    result.dataset.state = "error";
+    state.textContent = "Pasirinkite 2027 m. datą";
+    detail.textContent = "Šis puslapis rodo tik 2027 metų darbo kalendorių.";
+    return;
+  }
+  try {
+    const six = schedule.value === "6",
+      holidayRecords = cal.holidays(Number(selected.slice(0, 4)), data),
+      holiday = holidayRecords.find((item) => item.date === selected),
+      day = cal.formatDate(selected, { weekday: "long" }),
+      daily = cal.workStats(selected, selected, data, six);
+    if (holiday) {
+      let next = cal.addDays(selected, 1);
+      for (let i = 0; i < 15 && !cal.workStats(next, next, data, six).days; i++)
+        next = cal.addDays(next, 1);
+      result.dataset.state = "rest";
+      state.textContent = "Šventinė nedarbo diena";
+      detail.textContent = `${day} · ${holiday.name}. Artimiausia darbo diena pagal pasirinktą grafiką: ${cal.formatDate(next, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}.`;
+    } else if (daily.days) {
+      result.dataset.state = "work";
+      state.textContent = "Darbo diena";
+      detail.textContent = `${day} · ${daily.hours} darbo val. pagal ${six ? "6" : "5"} dienų pavyzdinį grafiką.${daily.shortened.length ? " Prieš šventę diena trumpinama viena valanda." : ""}`;
+    } else {
+      let next = cal.addDays(selected, 1);
+      for (let i = 0; i < 15 && !cal.workStats(next, next, data, six).days; i++)
+        next = cal.addDays(next, 1);
+      result.dataset.state = "rest";
+      state.textContent = "Poilsio diena";
+      detail.textContent = `${day}. Artimiausia darbo diena pagal pasirinktą grafiką: ${cal.formatDate(next, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}.`;
+    }
+  } catch (error) {
+    result.dataset.state = "error";
+    state.textContent = "Nepavyko patikrinti datos";
+    detail.textContent = error.message;
+  }
+};
+if ($("#workday-check-form")) {
+  $("#workday-check-form").onsubmit = (event) => {
+    event.preventDefault();
+    updateWorkdayCheck();
+  };
+  $("#workday-check-date").onchange = updateWorkdayCheck;
+  updateWorkdayCheck();
 }
 if ($("#iso-date")) {
   const input = $("#iso-date"),
