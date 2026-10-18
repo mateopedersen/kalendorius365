@@ -25,6 +25,7 @@ if ($("#design-picker")) {
       webp = downloads.find((link) => /\.webp(?:$|\?)/.test(link.href));
     if (!card || !thumbnail || !previewLink || !pdf || !webp) return;
     const landscape = Number(thumbnail.getAttribute("width")) > Number(thumbnail.getAttribute("height")),
+      paper = card.dataset.paper || "A4",
       name = card.querySelector(".design-info h2")?.textContent.replace(/^\s*\d+\s*/, "").trim() || "Kalendoriaus dizainas";
     const selectedPreview = $("#selected-preview");
     if (selectedPreview) {
@@ -37,16 +38,21 @@ if ($("#design-picker")) {
       previewFormat = $("#preview-format"),
       fullPreviewLink = $("#preview-full");
     if (previewTitle) previewTitle.textContent = name;
-    if (previewFormat) previewFormat.textContent = "A4 · " + (landscape ? "Gulsčias" : "Stačias");
+    if (previewFormat) previewFormat.textContent = paper + " · " + (landscape ? "Gulsčias" : "Stačias");
     if (fullPreviewLink) fullPreviewLink.href = previewLink.href;
     const printSource = $("#selected-print-source");
     if (printSource) printSource.srcset = webp.href;
     const printRoot = selectedPreview?.closest("[data-print-root]");
-    if (printRoot) printRoot.dataset.printPaper = landscape ? "landscape" : "portrait";
+    if (printRoot) {
+      printRoot.dataset.printPaper = landscape ? "landscape" : "portrait";
+      printRoot.dataset.printSize = paper;
+    }
     const printStyle = $("#artwork-print-style");
-    if (printStyle) printStyle.textContent = `@page{size:A4 ${landscape ? "landscape" : "portrait"};margin:0}`;
+    if (printStyle) printStyle.textContent = `@page{size:${paper} ${landscape ? "landscape" : "portrait"};margin:0}`;
     $("#selected-pdf").href = pdf.href;
+    $("#selected-pdf").download = card.dataset.pdfName || "calendar.pdf";
     $("#selected-webp").href = webp.href;
+    $("#selected-webp").download = card.dataset.webpName || "calendar.webp";
     $("#selected-print").href = pdf.href;
     $("#design-picker").value = stem;
     if ($("#print-art")) $("#print-art").open = true;
@@ -74,7 +80,8 @@ if ($("#design-picker")) {
           b.dataset.designFilter === "all" ||
           b.dataset.designFilter === c.dataset.style ||
           b.dataset.designFilter === c.dataset.design ||
-          b.dataset.designFilter === c.dataset.layout
+          b.dataset.designFilter === c.dataset.layout ||
+          (b.dataset.designFilter === "holidays" && c.dataset.holidays === "true")
         );
     };
 }

@@ -5,11 +5,13 @@ require 'digest'
 require 'base64'
 require 'tempfile'
 require 'tmpdir'
+require 'uri'
 require_relative '../lib/calendar'
 require_relative '../lib/asset_release'
 require_relative '../lib/build_policy'
 require_relative '../lib/css_minifier'
 require_relative '../lib/static_asset_urls'
+require_relative '../lib/sitemap'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
@@ -27,7 +29,11 @@ Dir.chdir(ROOT) do
  system('python3','scripts/css_route_split.py',exception:true)
  Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
   config.write(JSON.generate({'release'=>release}));config.flush
-  system('bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
+  # Cloudflare can run builds with the C locale, which makes Ruby expose
+  # filesystem paths as ASCII-8BIT. Jekyll must treat Lithuanian filenames as
+  # UTF-8 when resolving destination URLs, regardless of the host locale.
+  rubyopt=[ENV['RUBYOPT'],'-EUTF-8:UTF-8'].compact.reject(&:empty?).join(' ')
+  system({'RUBYOPT'=>rubyopt},'bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
  end
  homepage=File.read('public/index.html')
  css_version=homepage[%r{/assets/(?:style|homepage-bundle)\.css\?v=([^"' >]+)},1]
@@ -69,7 +75,8 @@ Dir.chdir(ROOT) do
  files=Dir.glob('public/**/*').select { |p|File.file?(p) }
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
  abort 'Cloudflare static asset size limit exceeded' if files.any? { |p|File.size(p)>25*1024*1024 }
- urls=files.select { |p|p.end_with?('/index.html') }.map { |p|'https://kalendorius365.lt/'+p.delete_prefix('public/').delete_suffix('index.html') }
+ page_paths=files.select { |path|path.end_with?('/index.html') }
+ urls=page_paths.map { |path|'https://kalendorius365.lt/'+path.delete_prefix('public/').delete_suffix('index.html') }
  # Preview remains noindex until the release gate has passed. Sitemap is intentionally empty.
  if release
   manifest_check=JSON.parse(File.read('site/assets/data/manifest.json'))
@@ -79,18 +86,27 @@ Dir.chdir(ROOT) do
    report=JSON.parse(File.read(p));abort "Missing or stale preflight: #{p}" unless report['status']=='passed' && report['generator']==digest
   end
  end
- require 'cgi'
- xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+ url_encode=->(path){URI::DEFAULT_PARSER.escape(path, /[^A-Za-z0-9\-._~\/]/)}
  manifest=JSON.parse(File.read('site/assets/data/manifest.json'))['assets']
  abort 'Release requires every print asset to pass preflight' if release && manifest.any? { |e|e.dig('verification','status')!='passed' }
- if release
-  urls.sort.each do |url|
-   xml+="<url><loc>#{CGI.escapeHTML(url)}</loc>"
-   manifest.select { |e|e['kind']=='monthly' && url=="https://kalendorius365.lt/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" }.each { |e|xml+="<image:image><image:loc>https://kalendorius365.lt#{e['webp']}?v=#{e.dig('files','webp','sha256')[0,16]}</image:loc></image:image>" }
-   xml+='</url>'
+ sitemap=Kalendorius::Sitemap.write(
+  public_dir:'public',page_paths:page_paths,release:release,manifest:manifest,months:Kalendorius::DATA['months']
+ )
+ redirects=manifest.flat_map do |asset|
+  legacy=asset['legacyPaths']||{}
+  legacy.map do |kind,source|
+   target_key=kind=='smallPreview' ? 'smallPreview' : kind
+   target=asset[target_key]
+   abort "Legacy redirect has no destination: #{source}" unless target
+   "#{url_encode.call(source)} #{url_encode.call(target)} 301"
   end
  end
- File.write('public/sitemap.xml',xml+'</urlset>')
+ abort 'Cloudflare Pages static redirect limit exceeded' if redirects.length>2000
+ abort 'Duplicate legacy calendar redirect source' unless redirects.map { |line|line.split.first }.uniq.length==redirects.length
+ if release && JSON.parse(File.read('site/assets/data/manifest.json')).key?('packageImport')
+  abort 'Expected 1,560 redirects for the 390 imported calendars' unless redirects.length==1560
+ end
+ File.write('public/_redirects',redirects.empty? ? '' : redirects.join("\n")+"\n")
  File.write('public/robots.txt',"User-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
  headers="/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n"
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
@@ -108,8 +124,13 @@ Dir.chdir(ROOT) do
  revalidate='Cache-Control: public, no-cache, max-age=0, must-revalidate'
  # Trailing-slash page patterns never overlap file assets. Cloudflare Pages
  # accepts at most 100 rules; avoid one rule per each of the 185 HTML routes.
- %w[/ /:section/ /:section/:child/ /:section/:child/:page/ /*.html /404 /robots.txt /sitemap.xml /assets/release-manifest.json].each do |route|
+ %w[/ /:section/ /:section/:child/ /:section/:child/:page/ /*.html /404 /assets/release-manifest.json].each do |route|
   headers+="#{route}\n  #{revalidate}\n"
+ end
+ # Sitemap and robots metadata refresh within an hour; numbered files are
+ # derived from the exact sitemap set written above.
+ (sitemap[:files]+['robots.txt']).each do |path|
+  headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
  end
  headers+="/assets/releases/*\n  #{immutable}\n"
  data_cache=revalidate
@@ -138,5 +159,5 @@ Dir.chdir(ROOT) do
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release
  puts "Asset release #{release_manifest.fetch('revision')}; retained #{release_manifest.fetch('retained_revisions').length} revision(s)"
- puts "Built #{urls.length} canonical HTML pages; #{files.length} static files; release=#{release}"
+ puts "Built #{page_paths.length} HTML pages; #{sitemap[:canonical_urls].length} sitemap URLs and #{sitemap[:image_urls].length} images; #{files.length} static files; release=#{release}"
 end

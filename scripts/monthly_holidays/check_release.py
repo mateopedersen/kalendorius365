@@ -4,8 +4,10 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 from datetime import date,timedelta
 from collections import Counter
-import calendar,json,re,hashlib,copy,xml.etree.ElementTree as ET
+import calendar,json,re,hashlib,copy,sys,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'scripts'))
+from calendar_package import validate_import_evidence
 
 # This exception is deliberately tied to one reviewed editorial release.  It
 # does not permit future content changes or changes to factual/rights fields.
@@ -95,6 +97,45 @@ def reviewed_print_updates(root, baseline):
   if hashlib.sha256(report_bytes).hexdigest()!=run['sha256'] or report['status']!='passed' or len(report['results'])!=416 or report['generator']!=review['after_generator']:raise ValueError('actual full print preflight evidence differs')
  allowed[manifest_path]=review['after_manifest_sha256']
  return allowed
+
+def reviewed_calendar_package_updates(root, baseline, manifest):
+ """Allow only the pinned 390-calendar package replacement and its manifest."""
+ result=validate_import_evidence(root,manifest,check_files=True)
+ raw=(root/PRINT_LEGEND_TRANSITION).read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=PRINT_LEGEND_TRANSITION_SHA256:
+  raise ValueError('print transition evidence hash mismatch')
+ transition=json.loads(raw)
+ if transition.get('version')!='2026-10-17-annual-monochrome-legend-v2':
+  raise ValueError('unexpected reviewed print transition version')
+ if transition.get('preflight_status')!='passed-twice' or transition.get('visual_status')!='all15-reviewed':
+  raise ValueError('reviewed annual correction lacks completed visual and print checks')
+ if transition.get('before_text')!='Šventės pažymėtos raudonai' or transition.get('after_text')!='12 mėnesių apžvalga':
+  raise ValueError('unexpected reviewed annual correction wording')
+ if hashlib.sha256((root/'docs/lunar/qa/existing-downloads-before.json').read_bytes()).hexdigest()!='ec0bec25e7100438f7dc48c804ca4a31893483178c702b7064344d200e40e80d':
+  raise ValueError('frozen download baseline was changed')
+ reviewed={}
+ stems={f'{year}-metinis-{design:02}' for year in (2027,2028,2029) for design in range(1,6)}
+ selected=transition.get('selected_assets',[])
+ if len(selected)!=15 or {item['stem'] for item in selected}!=stems:
+  raise ValueError('reviewed annual correction must cover all 15 reviewed designs')
+ rows=transition.get('changed_files',[])
+ by_path={row['path']:row for row in rows}
+ if len(rows)!=60 or set(by_path)!=PRINT_LEGEND_PATHS:
+  raise ValueError('reviewed annual correction must cover exactly 60 approved artifacts')
+ for path,row in by_path.items():
+  if path not in baseline or baseline[path]!=row['before']['sha256']:
+   raise ValueError('reviewed annual correction does not match the frozen baseline: '+path)
+  reviewed[path]=row['after']['sha256']
+ retired=result['retiredPaths'];allowed={}
+ for path,item in retired.items():
+  if path not in baseline or item['sha256'] not in {baseline[path],reviewed.get(path)}:
+   raise ValueError('retired asset does not match its frozen pre-import hash or reviewed print correction: '+path)
+  if (root/path).exists():
+   raise ValueError('superseded print or preview file remains: '+path)
+  allowed[path]=None
+ manifest_path='site/assets/data/manifest.json'
+ allowed[manifest_path]=hashlib.sha256((root/manifest_path).read_bytes()).hexdigest()
+ return allowed,result['evidenceSha256']
 
 def structural_changes(before, after, path=()):
  """Return changed leaves; reject additions, deletions and type changes."""
@@ -247,16 +288,29 @@ def run():
    check(el.tag.split('}')[-1] not in ['script','foreignObject','image','animate','filter'],a['slug']+' unsafe/heavy SVG element')
    check(all(not k.lower().startswith('on') for k in el.attrib),a['slug']+' event handler in SVG')
  # Preserve the baseline; the later planner repair restores two documented metadata fields only.
- preserved=0;changed=[];intentional_updates=[];print_updates={};screen_updates={}
+ preserved=0;changed=[];intentional_updates=[];print_updates={};screen_updates={};package_updates={};package_paths_seen=set()
+ current_manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())
+ if current_manifest.get('packageImport'):
+  try:
+   package_updates,package_evidence_sha=reviewed_calendar_package_updates(ROOT,base['assets'],current_manifest)
+   intentional_updates.append({'path':'site/assets/data/manifest.json','reason':'Pinned import replaces exactly 390 calendar records and their old PDF/WebP plus responsive previews','evidence':current_manifest['packageImport']['evidence'],'evidence_sha256':package_evidence_sha,'retired_asset_paths':len(package_updates)-1,'imported_records':390})
+  except (OSError,ValueError,KeyError,TypeError)as error:check(False,'calendar package preservation: '+str(error))
  if any(path.startswith('site/assets/lunar/days/') and (ROOT/path).is_file() and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=sha for path,sha in base['assets'].items()):
   try:screen_updates=verified_screen_thumbnail_updates(ROOT,base['assets'])
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'screen thumbnail preservation: '+str(error))
- if any((ROOT/path).is_file()and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=base['assets'].get(path)for path in PRINT_LEGEND_PATHS):
+ if not current_manifest.get('packageImport') and any((ROOT/path).is_file()and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=base['assets'].get(path)for path in PRINT_LEGEND_PATHS):
   try:print_updates=reviewed_print_updates(ROOT,base['assets'])
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'reviewed print preservation: '+str(error))
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
   p=ROOT/path
+  if path in package_updates:
+   expected=package_updates[path];package_paths_seen.add(path)
+   if expected is None:
+    if p.exists():changed.append(path)
+   elif not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest()!=expected:
+    changed.append(path)
+   continue
   if path=='site/assets/lunar/lunar.js':
    current=p.read_bytes();updated=b"'/assets/lunar/albedo-web.webp'";previous=b"'/assets/lunar/albedo-web.png'"
    evidence=(ROOT/'docs/performance/lunar-texture-lossless.json').read_bytes()
@@ -320,8 +374,13 @@ def run():
    if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
    if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
    else:preserved+=1
- check(preserved+len(intentional_updates)+len(changed)==len(base['assets'])-int('site/assets/data/search.json' in base['assets']),'every frozen asset must be accounted for by a byte check or explicit reviewed transition')
+ # Package imports retire many individual legacy download paths while keeping
+ # their exact scope in the pinned package evidence. Count those retired paths
+ # alongside the one manifest record that summarizes the transition.
+ retired_package_assets=sum(int(item.get('retired_asset_paths',0)) for item in intentional_updates)
+ check(preserved+len(intentional_updates)+retired_package_assets+len(changed)==len(base['assets'])-int('site/assets/data/search.json' in base['assets']),'every frozen asset must be accounted for by a byte check or explicit reviewed transition')
  check(not changed,'baseline assets changed: '+str(changed[:20]))
- report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'intentional_metadata_updates':intentional_updates,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':'2026-10-17','limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
+ if current_manifest.get('packageImport'):check(package_paths_seen==set(package_updates),'pinned calendar package transition did not cover every retired file and the manifest')
+ report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'intentional_metadata_updates':intentional_updates,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':date.today().isoformat(),'limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
  out=ROOT/'docs/2027-monthly-holidays/QA-GATE-1.json';out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'status':report['status'],'pages':len(results),'preserved_assets':preserved,'failures':failures},ensure_ascii=False));assert not failures
 if __name__=='__main__':run()

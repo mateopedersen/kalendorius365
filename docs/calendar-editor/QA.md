@@ -1,35 +1,27 @@
 # Site-wide release QA — 2026-10-18
 
-This record covers the current release candidate. It separates checks that ran locally from CI and production checks that have not yet run against the final commit.
+This record covers the integrated source candidate after including the latest `main` calendar-package and sitemap changes. Production deployment and live verification remain pending; nothing below represents a live-site pass.
 
-## Reproduced defect and repair
+## Reproduced defects and repairs
 
-The permanent editor regression reproduced a WebKit/Safari failure when saving a photo as a native `Blob` in IndexedDB: WebKit returned `UnknownError: Error preparing Blob/File data to be stored in object store`, so the project could not be restored after reload. New photo records now store bytes as `ArrayBuffer`; restore accepts both this format and existing `{ blob }` records. The repair leaves localStorage, IndexedDB records, calendar notes, and preferences intact.
+- WebKit failed when saving a photo as a native `Blob` in IndexedDB. New photo records store bytes as `ArrayBuffer`, and restore remains backward-compatible with existing `{ blob }` records. No localStorage, IndexedDB, calendar notes, or preferences were cleared.
+- The homepage holiday action called its editorial article array as a function, preventing the selected holiday from opening in the personal-calendar dialog. It now looks up the article directly; a browser regression checks the populated event dialog.
+- Search recovery failed when the first search-index request failed, and the global index did not reliably rank names, holidays, astronomy, calendar downloads, and tools. The search path now retries, normalizes Lithuanian forms and aliases, and includes page content and direct homepage functions. The 96-query acceptance suite covers desktop Chromium, Android Chrome emulation, and iPhone WebKit emulation.
+- Desktop Safari allowed a long printable-template option to widen the download panel and page. The shared active stylesheet now ellipsizes the selected value; a permanent regression checks viewport width and selector operation.
+- Release asset URLs now use content-addressed paths, previous complete release trees survive Jekyll cleanup, and mutable HTML/data revalidate. The build caps Cloudflare Pages `_headers` rules and avoids clearing any visitor storage.
 
-The full Chromium route run also exposed a broken holiday-to-personal-calendar action: the homepage treated its holiday article array as a function and stopped while opening the selected holiday. The source now looks up the article directly; a browser regression follows a 2028 Easter link from the holiday guide and verifies the populated event dialog.
+## Executed checks on the integrated local build
 
-The full WebKit route run found horizontal overflow on the printable-calendar page. Safari let the long selected design option extend the download panel's scroll area past the viewport. The shared active stylesheet now clips the single-line select value with an ellipsis, and a permanent regression checks both page width and selector operation.
+- Release build completed with the pinned Ruby 3.4.11, Bundler 2.6.9, and Node toolchain. It generated **191 canonical pages, 360 monthly image mappings, 390 calendar image sitemap URLs, and 4,564 public files including hosting metadata**. Release revision: `d5c5f2f231565ef9df1f`; retained immutable revisions: `d5c5f2f231565ef9df1f`, `2912795bde3e828fce38`, and `a21b07daf415b8f493a4`.
+- `scripts/audit_site.py --release`: **192 HTML files including 404, 191 canonical landing pages, 25,716 local targets, zero broken links**. SEO metadata, canonical/sitemap parity, indexability, structured data, editor modules, published fonts, and all sitemap image references passed.
+- `node --test test/*.test.js`: **353 passed, 0 failed**. Python regressions: **17 passed**. Ruby static asset URL tests: **5 tests, 58 assertions, 0 failures**. CSS minifier tests: **2 tests, 14 assertions, 0 failures**. Release preservation gates passed, including pinned lunar downloads and the imported calendar package.
+- Search acceptance: **96 fixtures × 3 browser profiles = 288/288 passed** against the integrated local build (`d5c5f2f231565ef9df1f`).
+- Focused real-browser run on the integrated local build: **16/16 passed** across desktop Chromium, desktop WebKit, Android Chromium emulation, and iPhone WebKit emulation. It covered printable selector overflow, recovery after a failed search-index request, Lithuanian name-day search, mobile open/close/outside-tap/submit, and query preservation.
+- The Cloudflare `_headers` file contains **97 rules** and meets the 100-rule limit. Versioned application assets are immutable; mutable routes and data use revalidation; sitemap and robots metadata refresh within one hour.
 
-## Executed source checks
+## Full browser suites and production gates
 
-- Release build with Ruby 3.4.11, Bundler 2.6.9, and the pinned Node runtime: **191 canonical pages, 4,560 generated static files, release revision `a21b07daf415b8f493a4`**. The retained immutable release paths are `a21b07daf415b8f493a4`, `7dfc976a697cd53a4f44`, and `874ac7e1927f95c417e7`.
-- `scripts/audit_site.py --release`: **192 HTML files including the 404 page; 191 canonical landing pages; 25,718 local targets; zero broken local links**. Canonical and sitemap parity, indexability, metadata, JSON-LD, the editor bundle, fonts, and 360 monthly image entries passed.
-- `node --test test/*.test.js`: **353 passed, 0 failed**.
-- Ruby static asset URL tests: **5 tests, 58 assertions, 0 failures**. CSS minifier tests: **2 tests, 14 assertions, 0 failures**.
-- The generated Cloudflare `_headers` file has **97 rules**; every rule contains at most one wildcard, within the 100-rule limit. Immutable release assets use versioned paths; HTML and mutable data are revalidated.
-
-## Executed browser checks
-
-- Permanent editor regression: **12/12 passed** on desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation. It exercised mobile editor controls, leap-day preview, event/note persistence, preservation of an existing note and 12-hour preference, unrelated localStorage data, photo-byte persistence across reload, ZIP import/export, a real generated PDF download, font loading, and no unexpected external or mutating requests.
-- Candidate search acceptance: **96 fixtures × 3 browser profiles = 288/288 passed** on both releases `7dfc976a697cd53a4f44` and `a21b07daf415b8f493a4`, using desktop Chromium, Android Chrome emulation, and iPhone WebKit emulation.
-- New holiday-link, contact-form lazy-load, and mobile outside-tap regressions: **12/12 passed** across desktop Chromium, desktop WebKit, Android Chrome emulation, and iPhone Safari/WebKit emulation on the current generated candidate.
-- Printable-template selector and affected route: **10/10 passed** in executed local browser checks across Chromium, WebKit, Android Chromium, and iPhone WebKit; two local Firefox checks were interrupted during browser startup and are not counted. The final five-project source CI rerun is pending.
-- Lithuanian name-day “Rytoj” regression: **4/4 passed** across the four editor/browser profiles. It compares the displayed “today” and “tomorrow” cards with consecutive dates in `Europe/Vilnius` rather than only recording rendered text.
-
-## Release gates still pending
-
-The final five-project CI route/component suite is pending for current release `a21b07daf415b8f493a4`. Production deployment, live-page crawl, live mobile search, production cache-header verification, production daily publication verification, and a post-deployment performance sample remain outside this source record. The Cloudflare cache purge is pending. These items are not counted as passed here. Browser profiles are emulations; no physical iPhone or Android handset, paper printer, or outgoing email delivery was tested.
-
-## Known environment limitations
-
-The default system Ruby 2.6.10 and system Node path are too old or incomplete for this repository. The executed release build used the repository's documented project Ruby 3.4.11/Bundler 2.6.9 toolchain and the pinned Node runtime. A direct build with the default system Ruby failed before generating the site; that failed attempt did not change the verified release tree.
+- Browser workflow `39124201962` targets pre-integration commit `49145a9a446226ef6bef4ca4fb37b746a0f7b36d`. At the time of this record, Chromium, Firefox, and Android Chromium had completed successfully; desktop WebKit and iPhone WebKit were still running. This is not counted as a full-suite pass.
+- A full five-profile browser suite against the final integrated commit must complete before release. The workflow enumerates 293 cases per profile (1,465 executions total).
+- Production deployment, live route and cache verification, old-ETag revalidation, live search acceptance, production daily-publishing verification, Cloudflare hostname-scoped purge, and post-release performance sampling remain pending. These are not counted as passed.
+- Browser profiles are emulations. No physical iPhone/Android handset, paper printer, or outgoing email delivery was tested. No broad browser storage clearing was performed.
