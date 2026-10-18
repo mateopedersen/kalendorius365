@@ -1,0 +1,46 @@
+.year-preview-panel{overflow:hidden;padding:clamp(1rem,3vw,2rem);background:radial-gradient(circle at 90% 0%,#e7f3ec 0,transparent 32rem),linear-gradient(145deg,#fff,#f7faf7);border-color:#d3e2d8}
+.year-preview-heading{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;margin-bottom:.65rem}
+.year-preview-heading h2{margin-bottom:.45rem;font-size:clamp(1.3rem,2.5vw,1.8rem)}
+.year-preview-heading p{max-width:48rem;color:#53675d}
+.year-preview-heading label{min-width:11rem}
+.year-preview-panel>.source-note{min-height:1.4rem;margin:.25rem 0 1rem;font-size:.85rem}
+.year-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:stretch}
+.year-directory-card{display:flex;flex-direction:column;gap:.85rem;min-width:0;margin:0;padding:clamp(.9rem,2vw,1.3rem);border:1px solid #d9e4dd;border-radius:18px;background:#fff;box-shadow:0 8px 28px #173b220a}
+.year-card-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.year-card-top h3{margin:0;color:#164e38;font-size:2rem;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.year-tag{display:inline-flex;align-items:center;min-height:27px;padding:.25rem .55rem;border:1px solid #d3e5d9;border-radius:999px;background:#eff7f1;color:#2e6146;font-size:.7rem;font-weight:750}
+.year-tag--leap{background:#f5f2df;border-color:#e5dfbd;color:#746022}
+.year-card-fact{display:grid;gap:.15rem;margin:0;color:#617067;font-size:.78rem}
+.year-card-fact strong{color:#203c2d;font-size:.95rem}
+.year-mini-calendar{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:3px;margin:-.15rem 0 .15rem;font-size:.78rem;text-align:center}
+.year-mini-calendar caption{padding:.35rem 0 .55rem;color:#344f3f;text-align:left;text-transform:capitalize;font-weight:800;font-size:.88rem}
+.year-mini-calendar th{padding:.35rem 0;color:#79867d;font-size:.66rem;text-align:center;font-weight:750}
+.year-mini-calendar th.is-weekend{color:#9b6c2f}
+.year-mini-calendar td{height:31px;padding:0;border:0;border-radius:8px;background:#f5f8f5;color:#33443a}
+.year-mini-calendar td[aria-hidden=true]{background:transparent}
+.year-mini-calendar td.is-weekend{background:#fbf4e7;color:#8a5a20;font-weight:700}
+.year-mini-calendar td time{display:grid;width:100%;height:100%;place-items:center}
+.year-directory-card>.button{width:100%;margin-top:auto;background:#08734d;border-color:#08734d;color:#fff;font-weight:750}
+.year-directory-card>.button:hover{background:#075c3e}
+.year-print-assets{width:100%;margin-top:-.35rem;color:#5b6c61;font-size:.78rem;line-height:1.45}
+.year-print-assets>p{margin:.15rem 0}
+.year-print-details{padding:.65rem .7rem;border:1px solid #d8e5dc;border-radius:11px;background:#f7fbf8}
+.year-print-details summary{cursor:pointer;color:#15583d;font-weight:750}
+.year-print-list{display:grid;gap:.4rem;margin:.65rem 0 0;padding:0;list-style:none}
+.year-print-list li{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.45rem 0;border-top:1px solid #e3ece6}
+.year-print-list__title{min-width:0;color:#44594b;font-size:.74rem;line-height:1.35}
+.year-print-list__actions{display:flex;flex:0 0 auto;gap:.3rem}
+.year-print-list__actions a{display:inline-flex;min-height:34px;align-items:center;padding:.2rem .5rem;border:1px solid #c9ddcf;border-radius:7px;background:#fff;color:#14553b;font-size:.72rem;font-weight:750;text-decoration:none}
+.year-print-list__actions a:hover{background:#e8f3eb}
+.year-secondary-link{display:block;text-align:center;font-size:.8rem;font-weight:700;text-decoration:none}
+.year-comparison{margin-top:1.2rem;padding:clamp(1rem,3vw,1.7rem);border-radius:18px}
+.year-comparison-result{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.year-comparison-result .year-comparison-card{height:100%;margin:0;border-radius:15px}
+.year-comparison-result .year-comparison-card h3{color:#14553b;font-size:1.35rem}
+.year-output-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.year-output-links>a{display:grid;gap:.35rem;padding:1.15rem 1.25rem;border:1px solid #d8e6dc;border-radius:15px;background:#f7fbf8;text-decoration:none}
+.year-output-links strong{color:#15583d}
+.year-output-links span{color:#596c60;font-size:.9rem;line-height:1.5}
+@media(max-width:900px){.year-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.year-directory-card:last-child{grid-column:1/-1}.year-directory-card:last-child .year-mini-calendar{max-width:22rem}}
+@media(max-width:620px){.year-preview-heading{align-items:stretch;flex-direction:column;gap:.45rem}.year-preview-heading label{width:100%}.year-directory-grid,.year-comparison-result,.year-output-links{grid-template-columns:1fr}.year-directory-card:last-child{grid-column:auto}.year-directory-card:last-child .year-mini-calendar{max-width:none}.year-preview-panel{padding:1rem}.year-mini-calendar{font-size:.76rem}.year-mini-calendar td{height:34px}}
+@media(max-width:390px){.year-print-list li{align-items:flex-start;flex-direction:column}.year-print-list__actions{width:100%}.year-print-list__actions a{flex:1;justify-content:center}}

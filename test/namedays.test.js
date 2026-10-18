@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {ALPHABET,buildIndex,searchNames,validOccurrence,nextOccurrence,nameDayEvent,vilniusToday,weekDates} from '../site/assets/namedays-engine.js';
+import {ALPHABET,buildIndex,searchNames,validOccurrence,nextOccurrence,nameDayEvent,vilniusToday,weekDates,sanitizeFavoriteNames,favoriteNameDayEvents} from '../site/assets/namedays-engine.js';
 import {exportICS,importICS} from '../site/assets/ics.js';
 import {Store,empty,validate} from '../site/assets/storage.js';
 import {occursOn,weekday,monthLength,dateFromSearch} from '../site/assets/calendar.js';
@@ -51,6 +51,19 @@ test('cached search normalization follows a changed name without altering date r
  assert.deepEqual(searchNames(items,{query:'jonas'}),[]);
  assert.deepEqual(searchNames(items,{query:'zivile'})[0],row);
  assert.deepEqual(row.dates,['06-24']);
+});
+test('saved name favorites are bounded, exact, local identities and export all chosen recurring dates',()=>{
+ const multiple=index.find(item=>item.dates.length>1);
+ const leap=index.find(item=>item.dates.includes('02-29'));
+ const favorites=sanitizeFavoriteNames([multiple.name,multiple.name,'invented',null,leap.name],index,2);
+ assert.deepEqual(favorites,[multiple.name,leap.name]);
+ assert.deepEqual(sanitizeFavoriteNames(favorites,index,1),[multiple.name]);
+ const events=favoriteNameDayEvents(index,favorites,new Map(records.map(record=>[record.date,record])),2028);
+ assert.equal(events.length,multiple.dates.length+1);
+ assert(events.every(event=>event.repeat==='yearly'&&event.allDay));
+ const parsed=importICS(exportICS(events));assert.deepEqual(parsed.rejected,[]);assert.equal(parsed.imported.length,events.length);
+ assert(parsed.imported.some(event=>event.start==='2028-02-29'));
+ assert(parsed.imported.every(event=>event.title.includes(': vardadienis')));
 });
 test('all name/date occurrences make valid one-off and recurring schema-safe events and round-trip ICS',()=>{
  for(const row of records){const date=validOccurrence(row.date,2028);

@@ -32,6 +32,11 @@
 {% elsif page.app %}<link rel="stylesheet" href="/assets/homepage-bundle.css?v={{ site.css_version }}">
 {% else %}<link rel="stylesheet" href="/assets/style.css?v={{ site.css_version }}"><link rel="stylesheet" href="/assets/design-system.css?v={{ site.css_version }}">{% endif %}<style id="site-copyright-style">.site-copyright{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:.55rem;margin:.45rem 0 0!important;text-align:center;font-size:.78rem!important;line-height:1.6;color:var(--muted)}.site-copyright__flag{display:block;flex:none;width:24px;height:15px;border-radius:3px;box-shadow:0 0 0 1px rgb(31 42 36 / 12%)}.site-copyright__heart{display:inline-block;width:16px;height:16px;margin:0 .08rem;vertical-align:-.2em}@media(max-width:520px){.site-copyright{gap:.45rem;font-size:.74rem!important}}</style>
 {% if page.calendar_editor %}<link rel="stylesheet" href="/assets/calendar-editor/editor.css?v={{ site.css_version }}">{% endif %}
+{% if page.planner_studio %}<link rel="stylesheet" href="/assets/planner-studio.css?v={{ site.css_version }}">{% endif %}
+{% if page.year_directory %}<link rel="stylesheet" href="/assets/year-directory.css?v={{ site.css_version }}">{% endif %}
+{% if page.astronomy_agenda %}<link rel="stylesheet" href="/assets/astronomy-agenda.css?v={{ site.css_version }}">{% endif %}
+{% if page.url contains '/darbo-dienos/' %}<link rel="stylesheet" href="/assets/workdays.css?v={{ site.css_version }}">{% endif %}
+{% if page.phase_module == "shift" %}<link rel="stylesheet" href="/assets/shift-exceptions.css?v={{ site.css_version }}">{% endif %}
 {% if page.contact %}<link rel="stylesheet" href="/assets/contact.css?v={{ site.css_version }}">{% endif %}{% if page.about_us %}<link rel="stylesheet" href="/assets/about-us.css?v={{ site.css_version }}">{% endif %}
 {% if page.horoscope and page.sign_key == nil and page.url != "/horoskopai/" and page.url != "/zodiakas/" %}<link rel="stylesheet" href="/assets/horoscope.css?v={{ site.css_version }}">{% endif %}
 {% if page.zodiac and page.sign_key == nil and page.url != "/horoskopai/" and page.url != "/zodiakas/" %}<link rel="stylesheet" href="/assets/zodiac.css?v={{ site.css_version }}">{% endif %}
@@ -51,7 +56,11 @@
 {% if page.app %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/app.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.discovery %}<link rel="stylesheet" href="/assets/discovery.css?v={{ site.css_version }}">{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/discovery.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.calendar_editor %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/calendar-editor/editor.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
+{% if page.planner_studio %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/planner-studio.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
+{% if page.year_directory %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/year-directory.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
+{% if page.astronomy_agenda %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/astronomy-agenda.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.tool %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/tools.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
+{% if page.tool_directory %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/tool-directory.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.planner %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/leave-planner.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.phase_module == "sun" %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/sunrise.js?v={{ site.script_version }}"></script>{% endcapture %}{% elsif page.phase_module %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/phase-5-6-8.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}
 {% if page.holiday_editorial %}{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/holiday-editorial.js?v={{ site.script_version }}"></script>{% endcapture %}{% endif %}

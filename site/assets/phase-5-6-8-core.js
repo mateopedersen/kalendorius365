@@ -50,8 +50,39 @@ const shiftDate = (date, amount) => new Date(dateParts(date).instant + amount * 
 const daysBetween = (a, b) => Math.round((dateParts(b).instant - dateParts(a).instant) / DAY_MS);
 const validClock = (value) => typeof value === "string" && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value);
 
+/** Validate one lesson field without treating ordinary text as a clock value. */
+export function lessonFieldError(name, value, start = "", end = "") {
+  if (name !== "start" && name !== "end") return "";
+  if (value && !validClock(value)) return "Įrašykite galiojantį laiką.";
+  const nextStart = name === "start" ? value : start;
+  const nextEnd = name === "end" ? value : end;
+  if (nextStart && nextEnd && nextEnd <= nextStart) return "Pamokos pabaiga turi būti vėlesnė už pradžią.";
+  return "";
+}
+
+/** Return same-day lesson pairs whose clock intervals overlap. */
+export function lessonConflicts(lessons) {
+  const conflicts = [];
+  for (const day of new Set(lessons.map((lesson) => lesson.day))) {
+    const ordered = lessons.filter((lesson) => lesson.day === day && validClock(lesson.start) && validClock(lesson.end) && lesson.end > lesson.start)
+      .sort((a, b) => a.start.localeCompare(b.start) || a.end.localeCompare(b.end));
+    for (let i = 0; i < ordered.length; i++) {
+      for (let j = i + 1; j < ordered.length && ordered[j].start < ordered[i].end; j++) {
+        conflicts.push({ day, first: ordered[i], second: ordered[j] });
+      }
+    }
+  }
+  return conflicts;
+}
+
+/** Choose rows for a week or one-day view without altering the saved schedule. */
+export function visibleLessons(lessons, { days = 5, view = "week", day = 0 } = {}) {
+  return lessons.filter((lesson) => lesson.day < days && (view !== "day" || lesson.day === day))
+    .sort((a, b) => a.day - b.day || a.number - b.number);
+}
+
 /** Build a validated, DST-aware local shift cycle. holidayDates is a verified date list. */
-export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldPolicy = "ask", holidayDates = [], zone = ZONE }) {
+export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldPolicy = "ask", holidayDates = [], exceptions = [], zone = ZONE }) {
   dateParts(anchor); dateParts(from); dateParts(to);
   const span = daysBetween(from, to);
   if (span < 0 || span > 369) throw Error("Laikotarpis turi būti nuo 1 iki 370 kalendorinių dienų.");
@@ -73,11 +104,26 @@ export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldP
   const missing = [...new Set(cycle.filter((code) => code !== "P" && !definitions[code]))];
   if (missing.length) throw Error(`Cikle trūksta šių pamainų aprašų: ${missing.join(", ")}.`);
   const holidays = new Set(holidayDates);
+  if (!Array.isArray(exceptions) || exceptions.length > 370) throw Error("Vienam grafikui galima nurodyti iki 370 vienos dienos pakeitimų.");
+  const exceptionByDate = new Map();
+  for (const exception of exceptions) {
+    if (!exception || typeof exception !== "object" || Array.isArray(exception)) throw Error("Vienos dienos pakeitimo formatas netinkamas.");
+    dateParts(exception.date);
+    if (exception.date < from || exception.date > to) throw Error("Vienos dienos pakeitimo data turi būti rodomame laikotarpyje.");
+    if (exceptionByDate.has(exception.date)) throw Error("Kiekvienai datai galima nurodyti tik vieną pakeitimą.");
+    if (!["shift", "rest", "leave", "sick", "other"].includes(exception.reason)) throw Error("Pasirinkite pakeitimo rūšį.");
+    if (exception.reason === "shift") {
+      if (typeof exception.code !== "string" || exception.code === "P" || !definitions[exception.code]) throw Error("Pakeistai pamainai pasirinkite aprašytą pamainos žymą.");
+    } else if (exception.code !== "P") throw Error("Poilsio, atostogų, ligos ar kitos neatvykimo dienos darbo žyma turi būti P.");
+    exceptionByDate.set(exception.date, { date: exception.date, reason: exception.reason, code: exception.code });
+  }
   const buffer = cycle.length + 8;
   const shifts = [];
   for (let date = shiftDate(from, -buffer); date <= shiftDate(to, buffer); date = shiftDate(date, 1)) {
     const offset = daysBetween(anchor, date);
-    const code = cycle[((offset % cycle.length) + cycle.length) % cycle.length];
+    const cycleCode = cycle[((offset % cycle.length) + cycle.length) % cycle.length];
+    const exception = exceptionByDate.get(date);
+    const code = exception ? exception.code : cycleCode;
     if (code === "P") continue;
     const def = definitions[code], endDate = def.end <= def.start ? shiftDate(date, 1) : date;
     const startUtc = resolveWall(`${date}T${def.start}`, foldPolicy, zone);
@@ -92,7 +138,7 @@ export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldP
       if (startUtc < dayEnd && endUtc > dayStart && holidays.has(day)) holidayTouched.push(day);
     }
     shifts.push({ date, code, symbol: code, name: def.name, color: def.color, note: def.note || "", location: def.location || "", startTime: def.start, endTime: def.end, endDate,
-      startUtc, endUtc, elapsed, worked: elapsed - def.break / 60, holidayDates: holidayTouched });
+      startUtc, endUtc, elapsed, worked: elapsed - def.break / 60, holidayDates: holidayTouched, exception: exception?.reason || "" });
   }
   for (let i = 0; i < shifts.length; i++) {
     shifts[i].rest = i + 1 < shifts.length ? (shifts[i + 1].startUtc - shifts[i].endUtc) / 3600000 : null;
@@ -109,7 +155,8 @@ export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldP
     }
     if (!covered) weeklyWarnings.push(date);
   }
-  return { all: shifts, visible: shifts.filter((s) => s.date >= from && s.date <= to), weeklyWarnings };
+  return { all: shifts, visible: shifts.filter((s) => s.date >= from && s.date <= to), weeklyWarnings,
+    exceptions: [...exceptionByDate.values()].sort((a, b) => a.date.localeCompare(b.date)) };
 }
 
 /** RFC 5545 calendar export. Lines stay within 75 UTF-8 octets, including fold-space. */

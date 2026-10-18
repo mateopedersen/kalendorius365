@@ -1,0 +1,89 @@
+<section class="planner-studio panel" data-planner-studio data-kind="{{ include.kind }}" aria-labelledby="planner-studio-title">
+  <div class="planner-studio__intro">
+    <span class="planner-studio__eyebrow">Jūsų planas · saugomas šiame įrenginyje</span>
+    <h2 id="planner-studio-title">{% if include.kind == "weekly" %}Sukurkite savo savaitės lapą{% elsif include.kind == "daily" %}Susidėliokite savo dieną{% else %}Sudarykite bendrą šeimos savaitę{% endif %}</h2>
+    <p>{% if include.kind == "weekly" %}Pasirinkite savaitės pradžią, pridėkite užduotis ir peržiūrėkite visą savaitę prieš spausdindami.{% elsif include.kind == "daily" %}Įrašykite laiką, svarbiausius darbus ir pastabas. Tuščias planas lieka nedatuotas, kol nepasirenkate datos.{% else %}Pritaikykite stulpelius savo šeimai, paskirstykite bendras ir asmenines veiklas, tada spausdinkite.{% endif %}</p>
+  </div>
+  <div class="planner-studio__layout">
+    <form class="planner-studio__controls" data-studio-form>
+      <div class="planner-studio__fields">
+        <label class="planner-studio__wide">Lapo pavadinimas
+          <input data-studio-field="title" maxlength="80" placeholder="{% if include.kind == "family" %}Mūsų savaitė{% elsif include.kind == "daily" %}Mano diena{% else %}Savaitės planas{% endif %}">
+        </label>
+        <label>Data (nebūtina)
+          <input type="date" data-studio-field="date">
+        </label>
+        {% if include.kind != "daily" %}
+        <label>Savaitė prasideda
+          <select data-studio-field="weekStart"><option value="1">Pirmadienį</option><option value="0">Sekmadienį</option></select>
+        </label>
+        <label>Dienos lape
+          <select data-studio-field="dayCount"><option value="5">5 dienos</option><option value="6">6 dienos</option><option value="7" selected>7 dienos</option></select>
+        </label>
+        {% endif %}
+        {% if include.kind == "daily" %}
+        <label>Nuo
+          <input type="time" data-studio-field="start" value="08:00">
+        </label>
+        <label>Iki
+          <input type="time" data-studio-field="end" value="20:00">
+        </label>
+        <label>Laiko žingsnis
+          <select data-studio-field="step"><option value="15">15 min.</option><option value="30" selected>30 min.</option><option value="60">1 val.</option></select>
+        </label>
+        <label class="planner-studio__check"><input type="checkbox" data-studio-field="endNextDay"> Pabaiga kitą dieną</label>
+        {% endif %}
+        {% if include.kind == "family" %}
+        <label>Žmonių skaičius
+          <select data-studio-field="peopleCount">{% for n in (1..8) %}<option value="{{ n }}" {% if n == 4 %}selected{% endif %}>{{ n }} žmonės</option>{% endfor %}</select>
+        </label>
+        {% endif %}
+        <label>Spalvų nuotaika
+          <select data-studio-field="theme"><option value="forest">Miško žalia</option><option value="blue">Rami mėlyna</option><option value="amber">Šilta geltona</option><option value="mono">Nespalvota</option></select>
+        </label>
+        <label>Maketas
+          <select data-studio-field="layout">
+            {% if include.kind == "weekly" %}<option value="time">Dienos ir užduotys</option><option value="priority">Prioritetai ir užduotys</option>{% elsif include.kind == "daily" %}<option value="time">Laiko juosta</option><option value="priority">Svarbiausi darbai</option>{% else %}<option value="people">Kiekvieno žmogaus planas</option><option value="shared">Bendros veiklos pirmiausia</option>{% endif %}
+          </select>
+        </label>
+      </div>
+      {% if include.kind == "family" %}
+      <fieldset class="planner-studio__people"><legend>Stulpelių pavadinimai</legend><div data-studio-people></div></fieldset>
+      <p class="planner-studio__format-tip">Jei pasirinkote daugiau nei 4 žmones, spausdinkite A3 gulsčiai, kad vardams ir veikloms liktų vietos.</p>
+      {% endif %}
+      <fieldset class="planner-studio__priority"><legend>Trys svarbiausi tikslai</legend>
+        <label>1 <input data-studio-field="priority0" maxlength="90" placeholder="Svarbiausia šiandien"></label>
+        <label>2 <input data-studio-field="priority1" maxlength="90" placeholder="Kitas svarbus darbas"></label>
+        <label>3 <input data-studio-field="priority2" maxlength="90" placeholder="Mažas žingsnis į priekį"></label>
+      </fieldset>
+      <div class="planner-studio__task-head"><div><h3>Užduotys ir veiklos</h3><p>{% if include.kind == "daily" %}Laiką galite palikti tuščią. Pabaiga gali būti kitą dieną.{% elsif include.kind == "family" %}Priskirkite vienam žmogui, keliems arba visai šeimai. Bendra kelių žmonių veikla plane rodoma vieną kartą.{% else %}Pasirinkite dieną; laiką galima įrašyti papildomai.{% endif %}</p></div><button type="button" data-studio-add>+ Pridėti</button></div>
+      <div class="planner-studio__items" data-studio-items></div>
+      <label class="planner-studio__notes">Pastabos
+        <textarea data-studio-field="notes" rows="3" maxlength="1200" placeholder="Laisva vieta priminimams, mintims ar pasiruošimui"></textarea>
+      </label>
+      <label class="planner-studio__ink"><input type="checkbox" data-studio-field="lowInk"> Taupus rašalo režimas</label>
+      <div class="planner-studio__paper">
+        <label>Popierius<select data-studio-field="paper"><option>A4</option><option>A3</option><option>A5</option></select></label>
+        <label>Kryptis<select data-studio-field="orientation"><option value="landscape">Gulsčias</option><option value="portrait">Stačias</option></select></label>
+      </div>
+      <div class="planner-studio__actions">
+        <button type="button" class="primary" data-studio-print>Spausdinti / išsaugoti PDF</button>
+        <button type="button" data-studio-sample>Užpildyti pavyzdį</button>
+        <button type="button" data-studio-clear>Išvalyti</button>
+        <button type="button" data-studio-export>Atsisiųsti juodraštį</button>
+        <label class="planner-studio__import">Atkurti juodraštį<input type="file" accept="application/json,.json" data-studio-import></label>
+      </div>
+      <p class="planner-studio__privacy">Juodraštis automatiškai saugomas tik šiame įrenginyje. Nieko neįrašome į nuorodą ir nesiunčiame į serverį.</p>
+    </form>
+    <div class="planner-studio__preview-wrap">
+      <div class="planner-studio__preview-label"><span>Gyva peržiūra</span><span data-studio-save>Juodraštis dar neišsaugotas</span></div>
+      <article class="planner-studio__sheet" data-print-root="planner-studio" data-studio-sheet>
+        <header class="planner-sheet__header"><div><span data-studio-kicker>Kalendorius365 · planuoklis</span><h3 data-studio-title>Jūsų planas</h3></div><p data-studio-dates></p></header>
+        <div data-studio-preview></div>
+        <footer class="planner-sheet__footer">Kalendorius365 · Asmeniniai duomenys lieka šiame įrenginyje</footer>
+      </article>
+      <p class="planner-studio__print-hint">Spausdinimo lange pasirinkite A4 / A3 / A5 ir 100 % mastelį. Norėdami PDF, pasirinkite „Išsaugoti kaip PDF“.</p>
+    </div>
+  </div>
+  <p class="planner-studio__status" data-studio-status role="status" aria-live="polite">Peržiūra atnaujinama rašant.</p>
+</section>

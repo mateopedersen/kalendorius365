@@ -116,9 +116,9 @@ Dir.chdir(ROOT) do
  files.grep(%r{public/assets/fonts/[^/]+\.(?:woff2?|ttf)\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
- files.grep(%r{public/assets/data/.*\.json\z}).sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
- end
+ # All public data files are content-versioned by StaticAssetUrls above; one
+ # non-overlapping splat keeps their immutable policy below Pages' rule limit.
+ headers+="/assets/data/*\n  #{immutable}\n"
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
