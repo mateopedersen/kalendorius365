@@ -1,1 +1,87 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kalendorius365.lt"><defs><linearGradient id="brandGreen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#13a06d"/><stop offset="1" stop-color="#005b3a"/></linearGradient><linearGradient id="brandPaper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e6f5ed"/></linearGradient></defs><rect x="4" y="4" width="56" height="56" rx="18" fill="#e6f4ec"/><rect x="7" y="6" width="50" height="50" rx="16" fill="url(#brandGreen)"/><path d="M18 16v-4m28 4v-4" stroke="#c3f3dc" stroke-width="3.5" stroke-linecap="round"/><rect x="14" y="16" width="36" height="32" rx="9" fill="url(#brandPaper)"/><path d="M14 25h36" stroke="#a7d7bf" stroke-width="2"/><path d="M21 31h5m5 0h5m5 0h3M21 38h5m5 0h5" stroke="#86bca0" stroke-width="2.7" stroke-linecap="round"/><circle cx="43" cy="41" r="9" fill="#0b8459" stroke="#fff" stroke-width="2.2"/><path d="m39 41 2.6 2.6 5.1-5.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 48h15v4.2H44z" fill="#fdb913"/><path d="M44 52.2h15v4.2H44z" fill="#08754e"/><path d="M44 56.4h15V61H44z" fill="#c1272d"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kalendorius365.lt">
+  <defs>
+    <linearGradient id="brand-enamel" x1="8" y1="7" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16986A"/>
+      <stop offset=".48" stop-color="#08734E"/>
+      <stop offset="1" stop-color="#045238"/>
+    </linearGradient>
+    <linearGradient id="brand-rim" x1="10" y1="7" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDF4E7" stop-opacity=".8"/>
+      <stop offset=".55" stop-color="#A8D7BD" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#013E2B" stop-opacity=".5"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="30" y1="13" x2="34" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F0F7F2"/>
+    </linearGradient>
+    <filter id="page-shadow" x="-20%" y="-15%" width="145%" height="145%" color-interpolation-filters="sRGB">
+      <feDropShadow dx=".45" dy=".7" stdDeviation=".65" flood-color="#164C34" flood-opacity=".24"/>
+    </filter>
+    <linearGradient id="calendar-head" x1="15" y1="14" x2="49" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDF7F0"/>
+      <stop offset="1" stop-color="#CFE6D8"/>
+    </linearGradient>
+    <linearGradient id="ring-metal" x1="20" y1="8" x2="24" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF3C8"/>
+      <stop offset=".4" stop-color="#D9B267"/>
+      <stop offset=".72" stop-color="#F8E7B0"/>
+      <stop offset="1" stop-color="#AD8547"/>
+    </linearGradient>
+    <linearGradient id="flag-yellow" x1="36" y1="20" x2="48" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD34F"/><stop offset="1" stop-color="#ECAF08"/>
+    </linearGradient>
+    <linearGradient id="flag-green" x1="36" y1="22" x2="48" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08754E"/><stop offset="1" stop-color="#005638"/>
+    </linearGradient>
+    <linearGradient id="flag-red" x1="36" y1="24" x2="48" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D94349"/><stop offset="1" stop-color="#AD2634"/>
+    </linearGradient>
+    <linearGradient id="date-gold" x1="30" y1="37" x2="36" y2="43" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE68B"/><stop offset="1" stop-color="#E8B647"/>
+    </linearGradient>
+    <clipPath id="tile-clip"><rect x="4" y="4" width="56" height="56" rx="18"/></clipPath>
+    <clipPath id="flag-clip"><rect x="36.3" y="19.8" width="11.8" height="7.1" rx="1.1"/></clipPath>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="#E7F3EB"/>
+  <g clip-path="url(#tile-clip)">
+    <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#brand-enamel)"/>
+    <path d="M7 17C12 9.5 21 6 31 5.5" fill="none" stroke="#FFFFFF" stroke-opacity=".19" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M5 45c12 8 31 11 55 3v13H4z" fill="#003B29" fill-opacity=".1"/>
+  </g>
+  <rect x="4.6" y="4.6" width="54.8" height="54.8" rx="17.5" fill="none" stroke="url(#brand-rim)" stroke-width="1.15"/>
+
+  <rect x="11.8" y="12.2" width="39" height="42" rx="6" fill="url(#paper)" stroke="#DFEBE3" stroke-width=".65" filter="url(#page-shadow)"/>
+  <path d="M17.8 12.5h26.9a6.1 6.1 0 0 1 6.1 6.1v9.4H11.8v-9.4a6.1 6.1 0 0 1 6-6.1Z" fill="url(#calendar-head)"/>
+  <path d="M15 17.3c.5-1.7 2-2.8 4.3-3h23.1c2.1.1 3.7.8 4.5 2" fill="none" stroke="#FFFFFF" stroke-opacity=".4" stroke-width=".65" stroke-linecap="round"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19.7 16.1v-3.5c0-2.1 1-3.3 2.4-3.3s2.4 1.2 2.4 3.3v3.5" stroke="url(#ring-metal)" stroke-width="2.05"/>
+    <path d="M39 16.1v-3.5c0-2.1 1-3.3 2.4-3.3s2.4 1.2 2.4 3.3v3.5" stroke="url(#ring-metal)" stroke-width="2.05"/>
+    <path d="M20.5 12.1c.2-.9.7-1.5 1.4-1.6" stroke="#FFFFFF" stroke-opacity=".65" stroke-width=".55"/>
+    <path d="M39.8 12.1c.2-.9.7-1.5 1.4-1.6" stroke="#FFFFFF" stroke-opacity=".65" stroke-width=".55"/>
+  </g>
+
+  <g clip-path="url(#flag-clip)">
+    <path d="M36.3 19.8c4.1-.7 7.7.8 11.8 0v2.35c-4.1.8-7.7-.8-11.8 0z" fill="url(#flag-yellow)"/>
+    <path d="M36.3 22.15c4.1-.8 7.7.8 11.8 0v2.35c-4.1.8-7.7-.8-11.8 0z" fill="url(#flag-green)"/>
+    <path d="M36.3 24.5c4.1-.8 7.7.8 11.8 0v2.35c-4.1.8-7.7-.8-11.8 0z" fill="url(#flag-red)"/>
+    <path d="M36.7 20.2c3.8-.5 7.4.8 10.9.2" fill="none" stroke="#FFFFFF" stroke-opacity=".2" stroke-width=".42"/>
+  </g>
+
+  <path d="M16.4 29.3h29" stroke="#DFEBE3" stroke-width=".7"/>
+  <g fill="#AAC5B4">
+    <rect x="16.9" y="32" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="24" y="32" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="31.1" y="32" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="38.2" y="32" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="16.9" y="39" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="24" y="39" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="38.2" y="39" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="16.9" y="46" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="24" y="46" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="31.1" y="46" width="4.4" height="4.2" rx="1.15"/>
+    <rect x="38.2" y="46" width="4.4" height="4.2" rx="1.15"/>
+  </g>
+  <rect x="31.1" y="39" width="4.4" height="4.2" rx="1.15" fill="url(#date-gold)"/>
+  <circle cx="33.3" cy="41.1" r=".68" fill="#866422" fill-opacity=".75"/>
+</svg>
