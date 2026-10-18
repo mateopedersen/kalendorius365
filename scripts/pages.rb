@@ -53,8 +53,10 @@ module Pages
  def page(path,title,desc,html,tool=false,robots=nil,planner=false,phase_module=nil)
   target="#{ROOT}/site/#{path.empty? ? 'index' : path}/index.html"
   FileUtils.mkdir_p(File.dirname(target))
-  html=visual_html(path,html)
+  html=print_html(path,visual_html(path,html))
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
+  paper=html[/data-print-root="art" data-print-paper="(portrait|landscape)"/,1]
+  metadata['print_paper']="A4 #{paper}" if paper
   metadata['robots']=robots if robots
   metadata['planner']=true if planner
   metadata['phase_module']=phase_module if phase_module
@@ -354,6 +356,7 @@ module Pages
   page('atostogu-planavimas','Atostogų planavimas 2027–2028 – dienų skaičiuoklė','Planuokite atostogas Lietuvoje pagal darbo savaitę, šventes ir dienų likutį. Palyginkite poilsio bei atostogų dienas ir kelis laikotarpius.',html,true,nil,true)
  end
 end
+require_relative '../lib/print_layout'
 require_relative '../lib/page_designs'
 require_relative '../lib/visual_design'
 Pages.run
