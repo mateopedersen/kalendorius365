@@ -1,4 +1,4 @@
-import {SEASON_IDS,SEASON_NAMES,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts,seasonGuideHref} from './seasons-core.js?v=4d35e0869c52';
+import {SEASON_IDS,SEASON_NAMES,nextSeasonEvent,validatedSelection,durationLabel,chartPath,countdownParts,seasonGuideHref} from './seasons-core.js?v=98ff1d55777c';
 const app=document.querySelector('.sp3');
 if(app)initialize();
 async function initialize(){
