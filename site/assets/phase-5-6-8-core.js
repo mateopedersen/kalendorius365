@@ -189,6 +189,33 @@ export function buildShiftIcs(shifts, definitions, stampNow = Date.now()) {
   return lines.map(fold).join("\r\n") + "\r\n";
 }
 
+/** Excel-friendly semicolon CSV with UTF-8 BOM and formula-safe text cells. */
+export function buildShiftCsv(shifts) {
+  if (!Array.isArray(shifts) || !shifts.length) throw Error("Pirmiausia apskaičiuokite grafiką.");
+  const fields = [
+    ["Data", (shift) => shift.date, true],
+    ["Savaitės diena", (shift) => new Intl.DateTimeFormat("lt-LT", { timeZone: "UTC", weekday: "long" }).format(new Date(`${shift.date}T12:00:00Z`)), true],
+    ["Žyma", (shift) => shift.symbol, true],
+    ["Pamaina", (shift) => shift.name, true],
+    ["Pradžia", (shift) => `${shift.date} ${shift.startTime}`, true],
+    ["Pabaiga", (shift) => `${shift.endDate} ${shift.endTime}`, true],
+    ["Trukmė val.", (shift) => shift.elapsed.toFixed(2), false],
+    ["Apmokamos val.", (shift) => shift.worked.toFixed(2), false],
+    ["Pertrauka min.", (shift) => Math.round((shift.elapsed - shift.worked) * 60), false],
+    ["Poilsis po pamainos val.", (shift) => shift.rest === null ? "" : shift.rest.toFixed(2), false],
+    ["Vieta", (shift) => shift.location || "", true],
+    ["Pastaba", (shift) => shift.note || "", true],
+    ["Šventinės datos", (shift) => (shift.holidayDates || []).join(", "), true],
+  ];
+  const cell = (value, text = true) => {
+    let safe = String(value ?? "");
+    if (text && /^[\t\r =+\-@]/.test(safe)) safe = `'${safe}`;
+    return `"${safe.replace(/"/g, '""')}"`;
+  };
+  const rows = [fields.map(([header]) => cell(header, false)), ...shifts.map((shift) => fields.map(([, value, text]) => cell(value(shift), text)))];
+  return `\uFEFF${rows.map((row) => row.join(";")).join("\r\n")}\r\n`;
+}
+
 function solarElements(instant) {
   // USNO's compact solar-coordinate algorithm: apparent ecliptic longitude,
   // right ascension, declination and equation of time from Julian date.
