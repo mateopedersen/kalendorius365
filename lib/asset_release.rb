@@ -15,8 +15,8 @@ module AssetRelease
   def fingerprint_paths(public_dir)
     Dir.glob(File.join(public_dir, 'assets/**/*')).select do |path|
       File.file?(path) && !path.include?('/assets/releases/') &&
-        (path.end_with?('.js', '.css', '.woff2') ||
-          (path.include?('/assets/data/') && path.end_with?('.json')))
+        path.delete_prefix(public_dir + '/') != RELEASE_MANIFEST &&
+        path.end_with?('.js', '.css', '.woff2', '.ttf', '.json')
     end.sort
   end
 

@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import {openHeaderSearch} from './header-helpers.mjs';
-const routes=['/','/paieska/','/vardadieniai/','/zodiakas/','/pamoku-tvarkarastis/','/pamainu-grafikas/','/menulio-kalendorius/2028/vasaris/','/atostogu-planavimas/','/atmintinos-dienos/','/dienos-ilgumas/','/ilgieji-savaitgaliai/','/apie-mus/'];
+const routes=['/','/paieska/','/vardadieniai/','/zodiakas/','/pamoku-tvarkarastis/','/pamainu-grafikas/','/menulio-kalendorius/2028/vasaris/','/atostogu-planavimas/','/atmintinos-dienos/','/dienos-ilgumas/','/ilgieji-savaitgaliai/','/apie-mus/','/kurti-kalendoriu/'];
 for(const width of[320,390])for(const route of routes)test(`enlarged text at ${width}px: ${route}`,async({page,context})=>{
  await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
  await page.setViewportSize({width,height:844});await page.goto(route);

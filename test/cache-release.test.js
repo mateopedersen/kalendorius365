@@ -110,3 +110,29 @@ test('unchanged clean rebuilds retain two previous revisions and a fourth releas
   assert.equal(fs.existsSync(path.join(dir,'assets/releases',first.revision)),false);
  } finally {fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(stash,{recursive:true,force:true});}
 });
+
+test('nested editor configuration and TrueType fonts share the release graph without fingerprinting its own manifest',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'k365-editor-cache-'));
+ try{
+  fs.mkdirSync(path.join(dir,'assets/calendar-editor'),{recursive:true});fs.mkdirSync(path.join(dir,'assets/fonts'),{recursive:true});
+  const original='fetch("/assets/calendar-editor/data.json");fetch("/assets/fonts/Inter-Regular.ttf");';
+  fs.writeFileSync(path.join(dir,'assets/calendar-editor/editor.js'),original);fs.writeFileSync(path.join(dir,'assets/calendar-editor/data.json'),' {"source":"first"}');fs.writeFileSync(path.join(dir,'assets/fonts/Inter-Regular.ttf'),Buffer.from('synthetic font bytes used only for cache hashing'));
+  const run=()=>{const r=spawnSync(ruby,['-r',path.join(root,'lib/asset_release.rb'),'-e','dir=ARGV.fetch(0); puts AssetRelease.publish(dir,previous:AssetRelease.previous_revisions(dir)).to_json',dir],{encoding:'utf8'});assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};
+  const first=run();for(const key of ['/assets/calendar-editor/data.json','/assets/fonts/Inter-Regular.ttf'])assert.ok(first.assets[key],key);
+  assert.equal(first.assets['/assets/release-manifest.json'],undefined);
+  const module=fs.readFileSync(path.join(dir,first.assets['/assets/calendar-editor/editor.js'].url),'utf8');assert.ok(module.includes(first.assets['/assets/calendar-editor/data.json'].url));assert.ok(module.includes(first.assets['/assets/fonts/Inter-Regular.ttf'].url));
+  fs.writeFileSync(path.join(dir,'assets/calendar-editor/editor.js'),original);assert.equal(run().revision,first.revision,'the generated manifest cannot change its own fingerprint');
+  fs.writeFileSync(path.join(dir,'assets/calendar-editor/editor.js'),original);fs.writeFileSync(path.join(dir,'assets/calendar-editor/data.json'),' {"source":"updated"}');assert.notEqual(run().revision,first.revision,'nested configuration changes invalidate its dependent release');
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('each current root and fingerprinted application asset matches exactly one cache lifetime rule',()=>{
+ const publicDir=path.join(root,'public'),manifest=JSON.parse(fs.readFileSync(path.join(publicDir,'assets/release-manifest.json')));const rules=[];let current;
+ for(const line of fs.readFileSync(path.join(publicDir,'_headers'),'utf8').split('\n')){
+  if(line.startsWith('/')){current={pattern:line,policies:[]};rules.push(current);}else if(line.trim().startsWith('Cache-Control:'))current.policies.push(line.trim());
+ }
+ const compile=pattern=>new RegExp('^'+pattern.replace(/[.+?^${}()|[\]\\]/g,'\\$&').replace(/\*/g,'.*').replace(/:[a-zA-Z][\w-]*/g,'[^/]+')+'$');
+ const policies=rules.filter(r=>r.policies.length).map(r=>({...r,regex:compile(r.pattern)}));
+ const urls=[...Object.keys(manifest.assets),...Object.values(manifest.assets).map(a=>a.url),'/', '/2028/vasaris/','/menulio-kalendorius/2028/vasaris/','/404.html','/assets/release-manifest.json','/sitemap.xml'];
+ for(const url of urls){const matches=policies.filter(r=>r.regex.test(url)).flatMap(r=>r.policies);assert.equal(matches.length,1,url+' matched '+JSON.stringify(matches));}
+});

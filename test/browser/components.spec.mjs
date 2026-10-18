@@ -85,8 +85,8 @@ test('workweek selector changes visible table and CSV exports real content',asyn
 
 test('calendar builder renders leap month and print template picker downloads valid PDF',async({page})=>{
  await page.goto('/kurti-kalendoriu/?metai=2028&menuo=2');
- await page.locator('#generator [name=year]').fill('2028');await page.locator('#generator [name=month]').selectOption('2');
- await page.locator('#generator button[type=submit]').click();await expect(page.locator('#generator-preview svg')).toBeVisible();await expect(page.locator('#generator-preview')).toContainText('29');
+ await expect(page.locator('#calendar-editor [data-path="period.year"]')).toHaveValue('2028');await expect(page.locator('#calendar-editor [data-path="period.month"]')).toHaveValue('2');
+ const previewTab=page.locator('[data-action="tab-preview"]');if(await previewTab.isVisible())await previewTab.click();await expect(page.locator('#ce-paper svg')).toBeVisible();await expect(page.locator('#ce-paper')).toContainText('29');
  await page.goto('/2028/vasaris/');const picker=page.locator('#design-picker');
  const values=await picker.locator('option').evaluateAll(es=>es.map(e=>e.value));await picker.selectOption(values[1]);
  await expect(page.locator('.design-card.selected-design')).toHaveAttribute('id',`dizainas-${values[1]}`);

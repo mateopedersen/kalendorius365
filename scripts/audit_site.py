@@ -100,8 +100,9 @@ assert len(compact)<len(full)*0.5,(len(compact),len(full))
 headers=(PUBLIC/'_headers').read_text()
 header_paths=[line for line in headers.splitlines() if line.startswith('/')]
 assert len(header_paths)==len(set(header_paths)),'Duplicate _headers path rules could combine Cache-Control headers'
-assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
+assert not any(p.startswith('/assets/calendar-editor/') and p!='/assets/calendar-editor/*' for p in header_paths),'Overlapping editor cache rules'
 assert len(header_paths)<=100,'Cloudflare Pages supports at most 100 header rules'
+assert '/assets/*' not in header_paths,'Broad assets rule overlaps specific cache rules'
 release_manifest=json.loads((PUBLIC/'assets/release-manifest.json').read_text())
 release_prefix='/assets/releases/'+release_manifest['revision']+'/'
 assert '/assets/releases/*\n  Cache-Control: public, max-age=31536000, immutable' in headers
@@ -112,7 +113,9 @@ for original,item in release_manifest['assets'].items():
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
  fingerprinted='/assets/releases/' in str(path)
  if not fingerprinted:
-  assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,path
+  cache_path='/assets/calendar-editor/*' if path.is_relative_to(PUBLIC/'assets/calendar-editor') else f'/{path.relative_to(PUBLIC)}'
+  assert f'{cache_path}\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,path
+
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
   specifier=match.group(2)
@@ -123,8 +126,17 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
    parsed=urlsplit(specifier)
    target=PUBLIC/parsed.path.lstrip('/') if specifier.startswith('/') else path.parent/parsed.path
    assert target.is_file(),(path,specifier)
-for path in list((PUBLIC/'assets/fonts').glob('*.woff*'))+[PUBLIC/'assets/lunar/albedo-web.webp']:
- assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+font_files=list((PUBLIC/'assets/fonts').glob('*.woff*'))+list((PUBLIC/'assets/fonts').glob('*.ttf'))
+font_wildcard='/assets/fonts/*\n  Cache-Control: public, max-age=31536000, immutable'
+if font_wildcard in headers:
+ assert '/assets/fonts/*' in header_paths
+ for path in font_files:
+  assert f'/{path.relative_to(PUBLIC)}\n' not in headers,path
+else:
+ for path in font_files:
+  assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
+for path in font_files+[PUBLIC/'assets/lunar/albedo-web.webp']:
+ assert path.is_file(),path
 for path,page in pages.items():
  for url in page.links:
   parsed=urlsplit(url)
@@ -158,3 +170,17 @@ if '--release' in __import__('sys').argv:
  assert sitemap==canonical and len(sitemap)==len(pages)-1
  assert len(xml.findall('.//i:loc',ns))==360
  print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals, 360 monthly image entries, and no global noindex header.')
+
+# Check the generated release, not only the authored editor source.
+editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()
+assert 'id="calendar-editor"' in editor_html,'Release preparation replaced the personal editor'
+assert f'{release_prefix}calendar-editor/editor.js' in editor_html,'Versioned editor module missing from built route'
+assert f'{release_prefix}calendar-editor/editor.css' in editor_html,'Versioned editor stylesheet missing from built route'
+assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
+print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
+
+for family in ('Lato','Inter'):
+ for weight in ('Regular','Bold'):
+  font=PUBLIC/'assets/fonts'/f'{family}-{weight}.ttf'
+  assert font.exists() and font.stat().st_size>100000,f'PDF/preview font excluded from release: {font}'
+print('PASS: all four embedded PDF/preview fonts are published')

@@ -45,7 +45,9 @@ jobs:
       - name: Build the complete static release
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Capture regenerated public output for parity repair
-        run: git diff --binary -- public > public-build.patch
+        run: |
+          git add --intent-to-add -- public
+          git diff --binary -- public > public-build.patch
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: regenerated-public-output
