@@ -39,6 +39,7 @@
 .planner-studio__import{display:inline-flex;align-items:center;min-height:38px;padding:.45rem .7rem;border:1px solid #bfd2c4;border-radius:10px;background:#f7fbf8;color:#1e5639;font-size:.78rem;font-weight:750;cursor:pointer}
 .planner-studio__import input{position:absolute!important;width:1px!important;height:1px!important;min-height:1px!important;clip:rect(0,0,0,0);overflow:hidden}
 .planner-studio__privacy,.planner-studio__print-hint{min-width:0;max-width:100%;margin:0;color:#6a766f;font-size:.7rem;line-height:1.45;white-space:normal;overflow-wrap:anywhere;word-break:normal}
+.planner-studio__print-hint{width:100%;margin-inline:auto;text-align:center}
 .planner-studio__format-tip{margin:0;color:#5d6d62;font-size:.72rem;line-height:1.45}
 .planner-studio__people-picker{min-width:0;border:1px solid #bdcfc2;border-radius:10px;background:#fff;padding:.35rem .45rem}
 .planner-studio__people-picker summary{min-height:30px;color:#173326;font-size:.73rem;font-weight:650;cursor:pointer;overflow-wrap:anywhere}
