@@ -256,8 +256,8 @@ def run():
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'reviewed print preservation: '+str(error))
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
-  if path=='.github/workflows/site-release-qa.yml':
-   intentional_updates.append({'path':path,'reason':'Current release QA adds CSS, URL versioning and complete generator coverage; this is CI configuration, not a public or print asset','sha256':hashlib.sha256((ROOT/path).read_bytes()).hexdigest()})
+  if path in ('.github/workflows/site-release-qa.yml','.github/workflows/horoscope-automation.yml'):
+   intentional_updates.append({'path':path,'reason':'Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset','sha256':hashlib.sha256((ROOT/path).read_bytes()).hexdigest()})
    continue
   p=ROOT/path
   if path=='site/assets/lunar/lunar.js':

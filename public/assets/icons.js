@@ -1,10 +1,1 @@
-export function icon(name, className = "") {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("class", "icon " + className);
-  svg.setAttribute("aria-hidden", "true");
-  svg.setAttribute("focusable", "false");
-  const use = document.createElementNS(svg.namespaceURI, "use");
-  use.setAttribute("href", "/assets/visuals/home-icons.svg?v=ffa2352a4742#" + name);
-  svg.append(use);
-  return svg;
-}
+var c=Object.defineProperty;var a=(t,s)=>c(t,"name",{value:s,configurable:!0});function u(t,s=""){const e=document.createElementNS("http://www.w3.org/2000/svg","svg");e.setAttribute("class","icon "+s),e.setAttribute("aria-hidden","true"),e.setAttribute("focusable","false");const n=document.createElementNS(e.namespaceURI,"use");return n.setAttribute("href","/assets/visuals/home-icons.svg?v=ffa2352a4742#"+t),e.append(n),e}a(u,"icon");export{u as icon};

@@ -19,12 +19,12 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg?v=217add829468" type="image/svg+xml">
 
-<link rel="preload" href="/assets/fonts/Lato-Regular-latin-lt.woff2?v=5b84bb20ac90" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Bold-latin-lt.woff2?v=f7e6dc3e8ccb" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=faad50f124eb" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Regular-latin-lt.woff2?v=130290c9370e" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Bold-latin-lt.woff2?v=9136e9af7d2c" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=397911c5e67b /assets/design-system.css?v=397911c5e67b">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=7ce0c1c9e6dd /assets/design-system.css?v=7ce0c1c9e6dd">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -93,8 +93,6 @@ dialog form{display:grid;gap:.9rem}
 .site-footer{border-top:1px solid var(--border);padding:2rem;background:var(--surface);color:var(--muted);font-size:.8rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .site-footer p{margin:.4rem 0 0}
 .site-footer>p{grid-column:1/-1;font-size:.72rem}
-.tool-preview{background:white;color:#20322a;min-width:0;padding:1.5rem;border:1px solid var(--border);border-radius:8px;overflow:auto}
-.tool-preview svg{display:block;width:100%;height:auto}
 .calculator{max-width:700px}
 .calculator form{display:grid;gap:1rem}
 .result{margin:1rem 0;padding:1.25rem;background:var(--accent);border-left:4px solid var(--green)}
@@ -123,7 +121,6 @@ h1{font-size:1.9rem}
 .page-intro{font-size:.95rem}
 .form-row{gap:.5rem}
 .form-row input{min-width:0;width:100%}
-.tool-preview{padding:.5rem}
 .data-table td,.data-table th{font-size:.75rem;padding:.65rem .5rem}
 .notice{width:90%;font-size:.8rem}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
@@ -132,7 +129,6 @@ h1{font-size:1.9rem}
 body{background:white}
 .content-main{padding:0;max-width:none}
 .panel{box-shadow:none;border-radius:0}
-.tool-preview{border:0;padding:0;overflow:visible}
 a{color:inherit;text-decoration:none}
 @page{size:A4 landscape;margin:12mm}}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
@@ -220,12 +216,12 @@ a{color:inherit;text-decoration:none}
 @media(max-width:900px){.content-main:has(.not-found){max-width:780px}}
 @media(max-width:620px){.content-main:has(.not-found){padding:1rem .7rem 2.5rem}}
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
-@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular.woff2?v=9bd23c13b68e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0100-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
-@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular-latin-lt.woff2?v=5b84bb20ac90") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0020-007E,U+00A0-00FF,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
-@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Bold.woff2?v=94b1e33bd87f") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+0100-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
-@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Bold-latin-lt.woff2?v=f7e6dc3e8ccb") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+0020-007E,U+00A0-00FF,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
-@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Black.woff2?v=6b5486e4bbb6") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+0100-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
-@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Black-latin-lt.woff2?v=faad50f124eb") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+0020-007E,U+00A0-00FF,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
+@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular.woff2?v=9bd23c13b68e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
+@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular-latin-lt.woff2?v=130290c9370e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
+@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Bold.woff2?v=94b1e33bd87f") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
+@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Bold-latin-lt.woff2?v=9136e9af7d2c") format("woff2");font-style: normal;font-weight: 700;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
+@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Black.woff2?v=6b5486e4bbb6") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
+@font-face{font-family: Lato;src: url("/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522") format("woff2");font-style: normal;font-weight: 900;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
 :root{--font-ui: Lato,Arial,sans-serif;--ink: #111b2e;--muted: #5c6980;--green: #006a44;--green-dark: #005235;--red: #c1272d;--yellow: #fdb913;--bg: #f4f7fa;--panel: #fff;--border: #e1e7ee;--soft: #f7f9fc;--tint: #edf7f2;--shadow: 0 2px 10px #182b4804,0 8px 28px #182b4803;--radius: 12px;--blue: #1478db;--purple: #8250c4;font-family: var(--font-ui);font-size: 15px;color: var(--ink);background: var(--bg);}
 body,button,input,select,textarea{font-family: var(--font-ui);}
 body{color: var(--ink);background: var(--bg);line-height: 1.5;}
@@ -326,9 +322,6 @@ details > summary{padding: 13px 0;color: var(--green);font-weight: 700;}
 .data-table time{white-space: nowrap;}
 .source-note{font-size: 0.77rem;line-height: 1.7;border-left: 3px solid var(--yellow);border-radius: 0 8px 8px 0;background: #fffcf2;color: #5d543b;padding: 14px 18px;margin: 20px 0;}
 .source-note a{color: #206247;}
-.tool-preview{border: 1px solid var(--border);border-radius: 12px;background: #eaf0f3;padding: 22px;box-shadow: inset 0 1px 8px #14283b04;align-self: start;}
-.tool-preview:before{content: "Jūsų kalendoriaus peržiūra";display: block;margin-bottom: 22px;font-weight: 700;font-size: 0.8rem;color: #516478;}
-.tool-preview svg{filter: drop-shadow(0 4px 8px #18304820);}
 .calculator{padding: 25px;max-width: none;}
 .calculator label{margin-bottom: 17px;}
 .calculator input{margin-top: 7px;font-size: 1rem;}
@@ -444,8 +437,6 @@ main.content-main{padding: 17px 14px 30px;}
 .data-table td,.data-table th{padding: 12px;}
 .data-table th{font-size: 0.7rem;}
 .source-note{font-size: 0.72rem;padding: 13px 15px;margin: 18px 0;}
-.tool-preview{order: 1;width: 100%;padding: 16px;}
-.tool-preview:before{margin-bottom: 15px;font-size: 0.75rem;}
 .calculator{padding: 20px;}
 .calculator .form-row{gap: 12px;}
 .calculator label{font-size: 0.8rem;}
@@ -464,9 +455,7 @@ main.content-main{padding: 17px 14px 30px;}
 body{color: #111;background: #fff;}
 .source-note{background: #fff;color: #111;}
 .data-table{min-width: 0;}
-#generator-preview svg{filter: none;}
-.tool-preview{background: #fff;border: 0;padding: 0;}
-.tool-preview:before{display: none;}}
+#generator-preview svg{filter: none;}}
 .phase-tool{display:grid;gap:1rem;min-width:0}
 .phase-tool textarea{min-height:118px;line-height:1.5;font-family:ui-monospace,SFMono-Regular,monospace}
 .phase-tool fieldset{min-width:0;border:1px solid var(--border);border-radius:10px;padding:14px}
@@ -846,14 +835,16 @@ button:hover,.button:hover,.resource-card:hover{transform: none;}}
 
 
 
-<script type="module" src="/assets/common.js?v=2f62d0a9fccd"></script>
-<script type="module" src="/assets/cookie-notice.js?v=2f62d0a9fccd"></script>
+<link rel="stylesheet" href="/assets/print.css?v=7ce0c1c9e6dd" media="print">
+
+<script type="module" src="/assets/common.js?v=ff4e6faf7c48"></script>
+<script type="module" src="/assets/cookie-notice.js?v=ff4e6faf7c48"></script>
 
 
 
-<script type="module" src="/assets/tools.js?v=2f62d0a9fccd"></script>
+<script type="module" src="/assets/tools.js?v=ff4e6faf7c48"></script>
 
-<script type="module" src="/assets/phase-5-6-8.js?v=2f62d0a9fccd"></script>
+<script type="module" src="/assets/phase-5-6-8.js?v=ff4e6faf7c48"></script>
 
 
 
@@ -862,9 +853,9 @@ button:hover,.button:hover,.resource-card:hover{transform: none;}}
 </head>
 <body>
 <a class="skip" href="#main">Pereiti prie turinio</a>
-<header class="site-header"><a class="brand" href="/" aria-label="Kalendorius365 pradžia"><img class="brand-logo" src="/assets/visuals/brand-mark.svg?v=217add829468" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="brand-wordmark" aria-hidden="true">Kalendorius<span>365</span></span></a>
+<header class="site-header"><script data-header-boot>document.currentScript.parentElement.classList.add("search-ready");</script><a class="brand" href="/" aria-label="Kalendorius365 pradžia"><img class="brand-logo" src="/assets/visuals/brand-mark.svg?v=217add829468" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="brand-wordmark" aria-hidden="true">Kalendorius<span>365</span></span></a>
 <button id="nav-toggle" class="icon-button" aria-label="Atverti meniu" aria-controls="primary-nav" aria-expanded="false"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#menu"></use></svg></button><nav id="primary-nav" aria-label="Pagrindinis meniu"><a href="/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-calendar"></use></svg><span>Kalendorius</span></a><a href="/2027/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-year"></use></svg><span>2027</span></a><a href="/2028/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-year"></use></svg><span>2028</span></a><a href="/2029/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-year"></use></svg><span>2029</span></a><a href="/horoskopai/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#moon"></use></svg><span>Horoskopai</span></a><a href="/sventes/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-holidays"></use></svg><span>Šventės</span></a><a href="/darbo-dienos/2027/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-work"></use></svg><span>Darbo laikas</span></a><a href="/saule/" ><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-sun"></use></svg><span>Saulė</span></a><a href="/tuscias-kalendorius/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-download"></use></svg><span>Atsisiųsti</span></a><a href="/vardadieniai/" ><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-holidays"></use></svg><span>Vardadieniai</span></a><a href="/irankiai/" ><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#nav-tools"></use></svg><span>Įrankiai</span></a><a href="/menulio-kalendorius/" ><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/navigation-extras.svg?v=3ccaf5066e19#moon-calendar"></use></svg><span>Mėnulio kalendorius</span></a><a href="/metu-laikai/" ><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/navigation-extras.svg?v=3ccaf5066e19#seasons"></use></svg><span>Metų laikai</span></a><a href="/datos-skaiciuokle/" ><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/navigation-extras.svg?v=3ccaf5066e19#date-calculator"></use></svg><span>Datos skaičiuoklė</span></a></nav>
-<form class="header-search" role="search" action="/paieska/" method="get"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#search"></use></svg><label><span class="visually-hidden">Ieškoti visose svetainės skiltyse</span><input type="search" id="site-search" name="q" placeholder="Ieškoti puslapio ar datos…" aria-label="Ieškoti visose svetainės skiltyse"></label><button class="visually-hidden" type="submit">Ieškoti visų rezultatų</button><div class="header-search-results" id="site-search-results" hidden></div></form>
+<a class="header-search-toggle icon-button" href="/paieska/" role="button" aria-label="Atverti paiešką" aria-controls="site-search" aria-expanded="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#search"></use></svg></a><form class="header-search" role="search" action="/paieska/" method="get"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#search"></use></svg><label><span class="visually-hidden">Ieškoti visose svetainės skiltyse</span><input type="search" id="site-search" name="q" placeholder="Ieškoti puslapio ar datos…" aria-label="Ieškoti visose svetainės skiltyse"></label><button class="visually-hidden" type="submit">Ieškoti visų rezultatų</button><div class="header-search-results" id="site-search-results" hidden></div></form>
 </header>
 <main id="main" class="content-main">
 <nav class="breadcrumbs" aria-label="Naršymo kelias"><a href="/">Pradžia</a><span aria-hidden="true">/</span><span>Pamainų grafiko planuoklis – ciklai ir darbo laikas</span></nav>
@@ -877,7 +868,7 @@ button:hover,.button:hover,.resource-card:hover{transform: none;}}
  <div class="form-row"><label>Suvestinės grupavimas<select id="shift-view"><option value="week">Pagal savaites</option><option value="month">Pagal mėnesius</option><option value="year">Pagal metus</option><option value="list">Nerodyti grupuotos lentelės</option></select></label><label>Grafiko vaizdas<select id="shift-display"><option value="list">Išsamus sąrašas</option><option value="month">Mėnesio kalendorius</option><option value="week">Savaitės laiko juosta</option><option value="year">Metų apžvalga</option></select></label><label>Savaitės dienų filtras<select id="shift-week-filter"><option value="all">Visos dienos</option><option value="five">5 dienos · pirm.–penkt.</option><option value="six">6 dienos · pirm.–šešt.</option><option value="custom">Pasirinkti dienas</option></select></label></div><fieldset id="shift-custom-days" class="weekday-filter" hidden><legend>Rodyti šias pamainų pradžios dienas</legend><div id="shift-custom-days-list" class="weekday-options"></div></fieldset><p class="source-note">Savaitės dienų filtras veikia tik pasirinktą vaizdą. Suvestinės ir atsisiunčiamas ICS apima visą sudarytą grafiką.</p><div class="form-actions"><button class="primary" type="submit">Apskaičiuoti grafiką</button><button type="button" id="shift-json-export">Atsisiųsti JSON kopiją</button><label class="button">Atkurti JSON kopiją<input id="shift-json-import" type="file" accept="application/json,.json" hidden></label><button type="button" id="shift-ics">Atsisiųsti ICS</button><button type="button" id="shift-print">Spausdinti grafiką</button></div>
  <p id="shift-message" class="result" role="status" aria-live="polite">Pasirinkite ne ilgesnį kaip 370 dienų laikotarpį.</p>
 </form>
-<section class="panel"><h2>Grafiko suvestinė</h2><div id="shift-summary" class="calculator-results" aria-live="polite"><p>Įveskite ciklą ir apskaičiuokite peržiūrą.</p></div><div id="shift-visualization" class="shift-visualization" aria-live="polite"></div><div class="table-scroll" tabindex="0" role="region" aria-label="Pamainų laikotarpio suvestinė"><table class="data-table"><thead><tr><th>Laikotarpis</th><th>Pamainos</th><th>Dieninės</th><th>Naktinės</th><th>Įvertintos valandos</th><th>Įstatymo švenčių datos</th></tr></thead><tbody id="shift-periods"></tbody></table></div><div id="shift-list-region" class="table-scroll" tabindex="0" role="region" aria-label="Išsamus pamainų sąrašas"><table class="data-table"><thead><tr><th>Data</th><th>Ciklo žyma</th><th>Pamainos laikas</th><th>Praėjęs laikas</th><th>Įvertintos darbo valandos</th><th>Poilsis iki kitos</th></tr></thead><tbody id="shift-rows"></tbody></table></div><p id="shift-warning" class="source-note">Planavimo priminimai nėra teisinė išvada. Nakties, viršvalandžių, suminės apskaitos, sutarčių, profesijos ir taikomų išimčių įrankis netikrina.</p></section>
+<section class="panel" data-print-root="result"><h2>Grafiko suvestinė</h2><div id="shift-summary" class="calculator-results" aria-live="polite"><p>Įveskite ciklą ir apskaičiuokite peržiūrą.</p></div><div id="shift-visualization" class="shift-visualization" aria-live="polite"></div><div class="table-scroll" tabindex="0" role="region" aria-label="Pamainų laikotarpio suvestinė"><table class="data-table"><thead><tr><th>Laikotarpis</th><th>Pamainos</th><th>Dieninės</th><th>Naktinės</th><th>Įvertintos valandos</th><th>Įstatymo švenčių datos</th></tr></thead><tbody id="shift-periods"></tbody></table></div><div id="shift-list-region" class="table-scroll" tabindex="0" role="region" aria-label="Išsamus pamainų sąrašas"><table class="data-table"><thead><tr><th>Data</th><th>Ciklo žyma</th><th>Pamainos laikas</th><th>Praėjęs laikas</th><th>Įvertintos darbo valandos</th><th>Poilsis iki kitos</th></tr></thead><tbody id="shift-rows"></tbody></table></div><p id="shift-warning" class="source-note">Planavimo priminimai nėra teisinė išvada. Nakties, viršvalandžių, suminės apskaitos, sutarčių, profesijos ir taikomų išimčių įrankis netikrina.</p></section>
 <h2>Kaip naudoti pasikartojantį grafiką</h2><p>Įrašykite ciklą, pavyzdžiui, <strong>D,D,P,P</strong> arba <strong>D,D,N,N,P,P,P,P</strong>. Pirma ciklo žyma taikoma pradžios dienai, o paskesnės kartojamos iš eilės. Jei pasirinktame cikle nėra N žymos, nakties laikai nebus naudojami. Per naktį besitęsianti pamaina priskiriama jos pradžios kalendorinei dienai.</p><p>Įvestis gali būti netaisyklinga konkrečiai darbo vietai. <a href="https://vdi.lrv.lt/lt/naujienos/vdi-informuoja-ka-apie-poilsio-laika-butina-zinoti-kiekvienam-darbuotojui/?lang=en" rel="noopener">VDI bendroje informacijoje apie poilsį</a> nurodomi 11 valandų nepertraukiamo paros poilsio, 35 valandų savaitės poilsio ir ilgesnei nei 12 val. pamainai – 24 val. poilsio atskaitos dydžiai; išimtys ir režimai skiriasi. Šis įrankis gali pažymėti trumpą tarpą kaip peržiūros priminimą, bet nesprendžia teisėtumo.</p>
 <nav class="resource-grid" aria-label="Susiję puslapiai"><a class="resource-card resource-card--workdays" href="/darbo-dienos/2027/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#tool-workdays"></use></svg></span><h2>Darbo dienų kalendorius</h2><small>Įstatymo šventės ir standartinės savaitės skaičiavimo metodika.</small></a><a class="resource-card resource-card--shift-template" href="/darbo-grafiko-sablonai/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#tool-shift-template"></use></svg></span><h2>Darbo grafiko šablonai</h2><small>Atsisiunčiami tušti ciklo lapai.</small></a><a class="resource-card resource-card--year" href="/irankiai/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#tool-year"></use></svg></span><h2>Visi įrankiai</h2><small>Kalendoriaus ir darbo laiko skaičiuoklės.</small></a></nav>
 

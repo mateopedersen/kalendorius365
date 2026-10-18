@@ -2,7 +2,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs='; connect-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs=' 'sha256-7XjXEIEi6ZTxkej37JThBvkvOtnvPOveDHVxCHNljFY='; connect-src 'self'; upgrade-insecure-requests
 /assets/app.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/ascendant-calculator.js
@@ -75,6 +75,8 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/phase-5-6-8.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/print.css
+  Cache-Control: public, max-age=31536000, immutable
 /assets/search-engine.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/search-page.js
@@ -103,9 +105,17 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/zodiac.js
   Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Inter-Regular.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Black-latin-lt.woff2
+  Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/Lato-Black.woff2
   Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Bold-latin-lt.woff2
+  Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/Lato-Bold.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/Lato-Regular-latin-lt.woff2
   Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/Lato-Regular.woff2
   Cache-Control: public, max-age=31536000, immutable
@@ -162,6 +172,8 @@
 /assets/lunar/days/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/albedo-web.png
+  Cache-Control: public, max-age=31536000, immutable
+/assets/lunar/albedo-web.webp
   Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/albedo.png
   Cache-Control: public, max-age=31536000, immutable

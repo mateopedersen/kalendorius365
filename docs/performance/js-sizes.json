@@ -1,0 +1,175 @@
+{
+  "method": "esbuild 0.28.2; independent ES2022 modules; no bundling or property mangling; function names and legal comments retained",
+  "modules": [
+    {
+      "path": "/assets/app.js",
+      "source_bytes": 36408,
+      "generated_bytes": 23922
+    },
+    {
+      "path": "/assets/ascendant-calculator.js",
+      "source_bytes": 10963,
+      "generated_bytes": 7440
+    },
+    {
+      "path": "/assets/ascendant-loader.js",
+      "source_bytes": 1423,
+      "generated_bytes": 891
+    },
+    {
+      "path": "/assets/calendar.js",
+      "source_bytes": 6264,
+      "generated_bytes": 4410
+    },
+    {
+      "path": "/assets/common.js",
+      "source_bytes": 15405,
+      "generated_bytes": 9195
+    },
+    {
+      "path": "/assets/contact.js",
+      "source_bytes": 3895,
+      "generated_bytes": 2640
+    },
+    {
+      "path": "/assets/cookie-notice.js",
+      "source_bytes": 1430,
+      "generated_bytes": 728
+    },
+    {
+      "path": "/assets/data/birth-cities.js",
+      "source_bytes": 8075,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/data/weather-cities.js",
+      "source_bytes": 2908,
+      "generated_bytes": 2126
+    },
+    {
+      "path": "/assets/discovery.js",
+      "source_bytes": 2922,
+      "generated_bytes": 2272
+    },
+    {
+      "path": "/assets/holiday-editorial.js",
+      "source_bytes": 2392,
+      "generated_bytes": 1447
+    },
+    {
+      "path": "/assets/holiday-phase2.js",
+      "source_bytes": 1788,
+      "generated_bytes": 1336
+    },
+    {
+      "path": "/assets/icons.js",
+      "source_bytes": 442,
+      "generated_bytes": 455
+    },
+    {
+      "path": "/assets/ics.js",
+      "source_bytes": 6313,
+      "generated_bytes": 4346
+    },
+    {
+      "path": "/assets/leave-planner.js",
+      "source_bytes": 31952,
+      "generated_bytes": 20707
+    },
+    {
+      "path": "/assets/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116487
+    },
+    {
+      "path": "/assets/lunar/lunar-engine.js",
+      "source_bytes": 3529,
+      "generated_bytes": 3026
+    },
+    {
+      "path": "/assets/lunar/lunar-loader.js",
+      "source_bytes": 2806,
+      "generated_bytes": 1808
+    },
+    {
+      "path": "/assets/lunar/lunar.js",
+      "source_bytes": 7850,
+      "generated_bytes": 6038
+    },
+    {
+      "path": "/assets/monthly-holidays.js",
+      "source_bytes": 6097,
+      "generated_bytes": 4474
+    },
+    {
+      "path": "/assets/namedays-engine.js",
+      "source_bytes": 3580,
+      "generated_bytes": 2812
+    },
+    {
+      "path": "/assets/namedays.js",
+      "source_bytes": 12321,
+      "generated_bytes": 9754
+    },
+    {
+      "path": "/assets/phase-5-6-8-core.js",
+      "source_bytes": 14083,
+      "generated_bytes": 8402
+    },
+    {
+      "path": "/assets/phase-5-6-8.js",
+      "source_bytes": 40918,
+      "generated_bytes": 30393
+    },
+    {
+      "path": "/assets/search-engine.js",
+      "source_bytes": 9128,
+      "generated_bytes": 5591
+    },
+    {
+      "path": "/assets/search-page.js",
+      "source_bytes": 5863,
+      "generated_bytes": 3909
+    },
+    {
+      "path": "/assets/seasons-core.js",
+      "source_bytes": 1830,
+      "generated_bytes": 1801
+    },
+    {
+      "path": "/assets/seasons.js",
+      "source_bytes": 8063,
+      "generated_bytes": 6741
+    },
+    {
+      "path": "/assets/storage.js",
+      "source_bytes": 5499,
+      "generated_bytes": 4031
+    },
+    {
+      "path": "/assets/sunrise.js",
+      "source_bytes": 23375,
+      "generated_bytes": 15910
+    },
+    {
+      "path": "/assets/tools.js",
+      "source_bytes": 19723,
+      "generated_bytes": 12391
+    },
+    {
+      "path": "/assets/weather.js",
+      "source_bytes": 5663,
+      "generated_bytes": 4013
+    },
+    {
+      "path": "/assets/zodiac-engine.js",
+      "source_bytes": 2369,
+      "generated_bytes": 1602
+    },
+    {
+      "path": "/assets/zodiac.js",
+      "source_bytes": 7325,
+      "generated_bytes": 5195
+    }
+  ]
+}
