@@ -1,3 +1,4 @@
+import {filterPixels} from "./filters.js";
 import { uid } from "./model.js";
 const originals = /* @__PURE__ */ new Map();
 const decoded = /* @__PURE__ */ new Map();
@@ -55,15 +56,9 @@ async function renderPhoto(p, w, h, ppi = 100) {
   ctx.restore();
   let changed = p.brightness !== 1 || p.contrast !== 1 || p.saturation !== 1 || p.mono || p.warmth || p.opacity !== 1 || p.overlay;
   if (changed) {
-    let im = ctx.getImageData(0, 0, canvas.width, canvas.height), d = im.data;
-    for (let i = 0; i < d.length; i += 4) {
-      let r = d[i], g = d[i + 1], b = d[i + 2], grey = 0.2126 * r + 0.7152 * g + 0.0722 * b, sat = p.mono ? 0 : p.saturation;
-      r = (grey + (r - grey) * sat) * p.brightness;
-      g = (grey + (g - grey) * sat) * p.brightness;
-      b = (grey + (b - grey) * sat) * p.brightness;
-      let rgb = [r + p.warmth * 22, g + p.warmth * 3, b - p.warmth * 22].map((v) => Math.min(255, Math.max(0, (v - 128) * p.contrast + 128)));
-      for (let k = 0; k < 3; k++) d[i + k] = Math.round((rgb[k] * p.opacity + 255 * (1 - p.opacity)) * (1 - p.overlay) + (p.overlayColor === "dark" ? 0 : 255) * p.overlay);
-    }
+    let im = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    try { im = await filterImage(im,p); }
+    catch { im=ctx.getImageData(0,0,canvas.width,canvas.height); for(let start=0;start<im.data.length;start+=1000000){filterPixels(im.data,p,start,Math.min(im.data.length,start+1000000));await new Promise(r=>setTimeout(r,0));} }
     ctx.putImageData(im, 0, 0);
   }
   return canvas;
@@ -119,3 +114,9 @@ export {
   source,
   upload
 };
+
+async function filterImage(im,photo){
+ if(typeof Worker==='undefined') throw Error('worker unavailable');
+ let worker=new Worker(new URL('./photo-worker.js'+new URL(import.meta.url).search,import.meta.url),{type:'module'});
+ return new Promise((resolve,reject)=>{let timer=setTimeout(()=>{worker.terminate();reject(Error('Nuotraukos apdorojimas užtruko per ilgai'));},30000);worker.onmessage=({data})=>{clearTimeout(timer);worker.terminate();resolve(new ImageData(new Uint8ClampedArray(data),im.width,im.height));};worker.onerror=()=>{clearTimeout(timer);worker.terminate();reject(Error('Nuotraukos darbininkas neprieinamas'));};worker.postMessage({buffer:im.data.buffer,photo},[im.data.buffer]);});
+}

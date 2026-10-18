@@ -28,6 +28,7 @@ function history(previous) {
   undo.push(clone(previous));
   if (undo.length > 40) undo.shift();
   redo = [];
+  if(q('[data-action="undo"]')){q('[data-action="undo"]').disabled=false;q('[data-action="redo"]').disabled=true;}
 }
 function change(fn, rerender = true) {
   if (busy) return;
@@ -35,6 +36,7 @@ function change(fn, rerender = true) {
   try {
     fn(state);
     validate(state);
+    scenes(state,data,editorial);
     history(before);
     dirty();
     if (rerender) render();
@@ -224,7 +226,7 @@ async function loadProject(record) {
   clearTimeout(saveTimer);
   state = clone(record.state);
   validate(state);
-  originals.clear();
+  for(let id of originals.keys())forget(id);
   for (let p of record.photos) originals.set(p.id, p.blob);
   undo = [];
   redo = [];
@@ -340,6 +342,7 @@ root.addEventListener("change", async (event) => {
       let file = n.files[0];
       if (!file) return;
       let project = await storage.readPortable(file);
+      scenes(project.state,data,editorial);
       for (let p of project.state.photos) {
         let im = await sourceFrom(project.photos.get(p.id));
         if (im.naturalWidth !== p.width || im.naturalHeight !== p.height) throw Error("Nuotraukos matmenys nesutampa su projektu");
@@ -351,7 +354,7 @@ root.addEventListener("change", async (event) => {
       clearTimeout(saveTimer);
       state = project.state;
       state.id = uid();
-      originals.clear();
+      for(let id of originals.keys())forget(id);
       for (let [id, blob] of project.photos) originals.set(id, blob);
       undo = [];
       redo = [];
@@ -391,6 +394,7 @@ root.addEventListener("change", async (event) => {
         rangeBefore = null;
         try {
           validate(state);
+          scenes(state,data,editorial);
           history(before);
           dirty();
         } catch (error) {
@@ -412,7 +416,9 @@ root.addEventListener("change", async (event) => {
     if (n.dataset.color || n.dataset.hex) {
       let k = n.dataset.color || n.dataset.hex;
       if (!/^#[0-9a-f]{6}$/i.test(n.value)) throw Error("Spalvą įrašykite HEX formatu, pvz., #19594A");
-      change((s) => setPath(s, "theme.colors." + k, n.value));
+      change((s) => setPath(s, "theme.colors." + k, n.value),false);
+      let c=effective(state,scope==='month'?currentKey():'').theme.colors[k];
+      q(`[data-color="${k}"]`).value=c;q(`[data-hex="${k}"]`).value=c;
       return;
     }
     if (n.dataset.photo) {

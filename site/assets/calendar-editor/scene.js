@@ -51,6 +51,7 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
   let key = monthKey(y, m), first = key + "-01", last = key + "-" + monthLength(y, m), all = entries(s, data, editorial, first, last);
   let grid = monthGrid(y, m, s.layout.weekstart);
   let rows = Math.ceil(((weekday(first) - s.layout.weekstart + 7) % 7 + monthLength(y, m)) / 7);
+  if (box.h < (mini ? 35 : rows * (sz + 7) + sz * 2) || box.w < 100 && !mini) throw Error('Šiam lapui per mažai vietos. Sumažinkite paraštes, šriftą ar užrašų eilučių skaičių.');
   let gutter = s.layout.isoWeeks ? mini ? 15 : 25 : 0;
   let cw = (box.w - gutter) / 7, ch = (box.h - sz * 2) / rows;
   for (let k = 0; k < 7; k++) {
@@ -62,7 +63,7 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
     if (s.layout.isoWeeks) {
       let a = isoWeek(grid[r * 7]), b = isoWeek(grid[r * 7 + 6]);
       let lab = a.week === b.week ? `${a.week}` : `${a.week}/${b.week}`;
-      text(p, lab, box.x + gutter - 4, cy + sz + 5, mini ? 5.5 : 7, c.weekday, false, "right");
+      text(p, lab, box.x + gutter - 4, cy + sz + (mini ? 2 : 5), mini ? 5.5 : 7, c.weekday, false, "right");
     }
     for (let k = 0; k < 7; k++) {
       let d = grid[r * 7 + k], inMonth = d.startsWith(key), x = box.x + gutter + k * cw;
@@ -71,11 +72,11 @@ function drawGrid(p, s, data, editorial, y, m, box, mini = false) {
       let es = all.filter((e) => e.from <= d && e.to >= d), holiday = es.some((e) => e.kind === "statutory"), we = weekday(d) >= 5, color = !inMonth ? "#929b97" : holiday ? c.holiday : we && s.layout.weekends ? c.weekend : c.day;
       let isToday = s.layout.printToday && d === today();
       if (isToday) rect(p, x + 2, cy + 2, cw - 4, sz + 8, "#e5eee9");
-      text(p, +d.slice(8), x + 5, cy + sz + 5, sz, color, true, "left", { "date": d });
+      text(p, +d.slice(8), x + 5, cy + sz + (mini ? 2 : 5), sz, color, true, "left", { "date": d });
       if (!inMonth) continue;
       if (es.length) {
         let marker = es.some((e) => e.kind === "personal") ? c.personal : es[0].color;
-        text(p, "•", x + cw - 6, cy + sz + 5, sz, marker, true, "right");
+        text(p, "•", x + cw - 6, cy + sz + (mini ? 2 : 5), sz, marker, true, "right");
       }
       if (!mini && s.layers.display === "cell") {
         let yy = cy + sz * 2.1;
@@ -116,7 +117,8 @@ function scenes(state, data, editorial) {
   let result = [], period = months(state), annual = state.period.mode === "annual";
   if (annual) {
     let s = effective(state, ""), p = empty(s, `${state.period.year} metai`, "annual"), margin = s.layout.margin * MM;
-    text(p, `${state.name} · ${state.period.year}`, margin, margin + 25, s.theme.titleSize, s.theme.colors.title, true);
+    text(p, `${state.period.year} metų kalendorius`, margin, margin + 25, Math.min(s.theme.titleSize,(p.w-2*margin)/12), s.theme.colors.title, true);
+    text(p, wrap(state.name,p.w-2*margin,8,s.theme.font)[0],margin,margin+39,8,s.theme.colors.weekday);
     let cols = p.w > p.h ? 4 : 3, rows = 12 / cols, gap = 14, w = (p.w - 2 * margin - gap * (cols - 1)) / cols, h = (p.h - 2 * margin - 65 - gap * (rows - 1)) / rows, all = [];
     for (let i = 0; i < 12; i++) {
       let [y, m] = period[i], x = margin + i % cols * (w + gap), yy = margin + 55 + Math.floor(i / cols) * (h + gap);
@@ -134,6 +136,8 @@ function scenes(state, data, editorial) {
     let photoH = Math.min(s.layout.photoHeight * MM, p.h * 0.4), gridX = margin, gridW = p.w - 2 * margin;
     let notesH = s.layout.notes * 14 + 20;
     let bottom = p.h - margin - notesH - 20;
+    let monthRows=Math.ceil(((weekday(key+'-01')-s.layout.weekstart+7)%7+monthLength(y,m))/7);
+    if(s.theme.placement==='top') photoH=Math.max(0,Math.min(photoH,bottom-top-(monthRows*(s.theme.bodySize+7)+2*s.theme.bodySize)-15));
     let ph;
     if (photo && photoH > 0 && !s.lowInk) {
       if (s.theme.placement === "side") {
@@ -151,7 +155,7 @@ function scenes(state, data, editorial) {
     }
     text(p, `${y}`, margin, titleY, Math.max(14, s.theme.titleSize * 0.62), c.weekday);
     text(p, MONTHS[m - 1], p.w - margin, titleY, s.theme.titleSize, c.title, true, "right");
-    text(p, s.name, margin, titleY + 15, 8, c.weekday);
+    text(p, wrap(s.name,p.w-2*margin,8,s.theme.font)[0], margin, titleY + 15, 8, c.weekday);
     let all = drawGrid(p, s, data, editorial, y, m, { x: gridX, y: top, w: gridW, h: bottom - top });
     for (let n = 0; n < s.layout.notes; n++) {
       let yy = bottom + 28 + n * 14;
