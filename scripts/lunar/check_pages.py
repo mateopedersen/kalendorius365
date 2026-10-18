@@ -40,7 +40,7 @@ def main():
             dates=[a['data-lunar-date'] for t,a in elements if 'data-lunar-date' in a]
             assert dates==[f'{year}-{month:02}-{day:02}' for day in range(1,days+1)],route
             assert GENITIVE[month-1] in text
-            downloads={urlsplit(a.get('href','')).path for t,a in elements if t=='a' and 'download' in a and a.get('href','').endswith(('.pdf','.webp'))}
+            downloads={urlsplit(a.get('href','')).path for t,a in elements if t=='a' and 'download' in a and urlsplit(a.get('href','')).path.endswith(('.pdf','.webp'))}
             expected_downloads={urlsplit(row[k]).path for k in ('dark_pdf','dark_webp','light_pdf','light_webp')}
             assert downloads==expected_downloads,route
             events=[e for e in data['events'] if e['local_date'].startswith(f'{year}-{month:02}')]

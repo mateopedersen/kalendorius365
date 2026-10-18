@@ -5926,3 +5926,30 @@ button.primary:hover, a.button.primary:hover, .success:hover{
 @media (max-width: 760px){
   .site-header #primary-nav{ overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh - 64px); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
+
+/* Align the calendar mark beside the wordmark, with the tagline beneath it. */
+.site-footer > div:first-child {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
+}
+.site-footer .footer-mark {
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  grid-column: 1;
+  grid-row: 1;
+}
+.site-footer .footer-brand-wordmark {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  margin: 0;
+}
+.site-footer > div:first-child p {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: .88rem;
+  margin: 0;
+}
