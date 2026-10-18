@@ -95,7 +95,7 @@ module Pages
  end
  def generate_blank
   items=MANIFEST.select { |e|e['kind']=='blank' }
-  html=intro('Tušti kalendoriai ir planuokliai spausdinimui','Rinkitės iš 20 nedatuotų maketų pagal paskirtį: mėnesiui, savaitei, dienai, šeimai, mokyklai ar pamainoms. Mėnesio tinklelyje galima pasirinkti 5 arba 6 eilutes; visi lapai paruošti A4 spaudai.')+blank_gallery(items)
+  html=intro('Tušti kalendoriai ir planuokliai spausdinimui','Rinkitės iš 20 nedatuotų maketų pagal paskirtį: mėnesiui, savaitei, dienai, šeimai, mokyklai ar pamainoms. Mėnesio tinklelyje galima pasirinkti 5 arba 6 eilutes; visi lapai paruošti A4 spaudai.')+blank_gallery(items)+'<nav class="adjacent" aria-label="Kiti kalendoriaus planavimo puslapiai"><a href="/seimos-kalendorius/">Šeimos savaitės planuoklis</a><a href="/kurti-kalendoriu/">Sukurti kalendorių su pasirinktomis datomis</a><a href="/metai/">Datuoti metų kalendoriai spausdinimui</a></nav>'
   write_page('tuscias-kalendorius','Tušti kalendoriai spausdinimui: nemokami PDF ir WebP','Atsisiųskite 20 nedatuotų mėnesio, savaitės, dienos, šeimos, mokyklos ir pamainų planuoklių. Pasirinkite 5 ar 6 eilučių kalendorių; gaukite vektorinį PDF arba 600 PPI WebP.',html,true)
  end
 end
