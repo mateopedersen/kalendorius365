@@ -136,6 +136,11 @@
     }
   ],
   "baseline_assets_preserved": 386,
+  "baseline_asset_accounting": {
+    "accounted": 3152,
+    "expected": 3152,
+    "intentional_baseline_assets": 1206
+  },
   "intentional_metadata_updates": [
     {
       "path": "site/assets/data/manifest.json",
@@ -7353,8 +7358,10 @@
     },
     {
       "path": "site/assets/lunar/lunar.js",
-      "reason": "Use a reviewed Q95 screen-only WebP with exact alpha and measured >=45 dB composite PSNR; preserve source PNG and full-resolution print texture",
-      "verification": {
+      "reason": "Preserve the reviewed latest-date selection repair and use the reviewed Q95 screen texture; source PNG and full-resolution print texture remain available",
+      "sha256": "2dc8cc4adce2265285a2b66932c9c4b096401a3998864c08643e1956b8315c6a",
+      "review_manifest": "docs/qa/lunar-selection-race.json",
+      "texture_verification": {
         "path": "site/assets/lunar/albedo-web.webp",
         "bytes": 81880,
         "dimensions": [
@@ -7385,13 +7392,13 @@
     },
     {
       "path": ".github/workflows/horoscope-automation.yml",
-      "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "13d62eaf2e06b4833ebd8b2105f6c46275e5aeeca9ebfa95005ea3b2877dacd2"
+      "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
+      "sha256": "bc694447e199649f3cce5e3838851c80073077823cc7fdeb116c8daca303c5d4"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",
-      "reason": "Release/daily workflows install the pinned module compiler, validate all routes and commit the complete version-coupled build; this is CI configuration, not a public or print asset",
-      "sha256": "eb1fd62af5193c03509f54a1ed9dab98c8640ea4f604ed52cedbe3bd9fdc8fb8"
+      "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
+      "sha256": "cabbc2af3fe8d895728f869d6dcde702e2399410e921e2a53ca4956be068b660"
     }
   ],
   "changed_baseline_assets": [],
