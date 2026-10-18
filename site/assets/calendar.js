@@ -94,6 +94,24 @@ export function shiftMonth(s, n) {
   );
   return iso(d);
 }
+// Calendar-month duration is anchored to the original day, clamping at month end.
+export function calendarDuration(a, b) {
+  parse(a);
+  parse(b);
+  if (a > b) throw Error("Pradžios data turi būti ankstesnė");
+  if (difference(a, b) > 36600)
+    throw Error("Rinkitės ne ilgesnį nei 100 metų laikotarpį");
+  let months =
+    (+b.slice(0, 4) - +a.slice(0, 4)) * 12 +
+    (+b.slice(5, 7) - +a.slice(5, 7));
+  if (shiftMonth(a, months) > b) months--;
+  const anchor = shiftMonth(a, months);
+  return {
+    years: Math.floor(months / 12),
+    months: months % 12,
+    days: difference(anchor, b),
+  };
+}
 // Reuse formatters, never dates: midnight and daylight-saving changes must
 // still use the instant supplied by the caller.
 const todayFormatter = new Intl.DateTimeFormat("en-CA", {
@@ -161,6 +179,27 @@ export function workStats(a, b, data, six = false) {
     }
   }
   return { days, hours, shortened, weekends, publicDays };
+}
+// Add working days after the selected date, skipping weekends and statutory holidays.
+export function addWorkdays(start, amount, data) {
+  parse(start);
+  if (!Number.isInteger(amount) || Math.abs(amount) > 36600)
+    throw Error("Darbo dienų skaičius turi būti sveikas skaičius nuo −36600 iki 36600.");
+  if (amount === 0) return start;
+  const direction = Math.sign(amount), remaining = Math.abs(amount), holidayYears = new Map();
+  const isWorkingDay = (date) => {
+    if (weekday(date) >= 5) return false;
+    const year = Number(date.slice(0, 4));
+    if (!holidayYears.has(year))
+      holidayYears.set(year, new Set(holidays(year, data).map((holiday) => holiday.date)));
+    return !holidayYears.get(year).has(date);
+  };
+  let date = start, added = 0;
+  while (added < remaining) {
+    date = addDays(date, direction);
+    if (isWorkingDay(date)) added++;
+  }
+  return date;
 }
 const wallFormatter = new Intl.DateTimeFormat("sv-SE", {
   timeZone: TZ,

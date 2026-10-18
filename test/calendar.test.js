@@ -42,6 +42,18 @@ test("leap years, 6-row months, navigation and ISO boundaries", () => {
   assert.deepEqual(c.isoWeek("2028-01-01"), { year: 2027, week: 52 });
   assert.throws(() => c.parse("2027-02-29"));
 });
+test("calendar-month durations handle month ends, leap days and full years", () => {
+  assert.deepEqual(c.calendarDuration("2028-01-31", "2028-03-01"), {
+    years: 0, months: 1, days: 1,
+  });
+  assert.deepEqual(c.calendarDuration("2028-02-29", "2029-02-28"), {
+    years: 1, months: 0, days: 0,
+  });
+  assert.deepEqual(c.calendarDuration("2027-12-31", "2028-01-01"), {
+    years: 0, months: 0, days: 1,
+  });
+  assert.throws(() => c.calendarDuration("2028-03-01", "2028-02-29"));
+});
 test("movable and statutory holidays; no substitute Mondays", () => {
   assert.equal(c.easter(2027), "2027-03-28");
   assert.equal(c.easter(2028), "2028-04-16");
@@ -58,6 +70,14 @@ test("movable and statutory holidays; no substitute Mondays", () => {
     assert.equal(c.weekday(hs.find((h) => h.id === "fathers").date), 6);
   }
   assert(!c.holidays(2028, data).some((h) => h.date === "2028-01-03"));
+});
+test("working-day offsets skip weekends and Lithuanian public holidays", () => {
+  assert.equal(c.addWorkdays("2027-02-12", 2, data), "2027-02-17");
+  assert.equal(c.addWorkdays("2027-02-17", -1, data), "2027-02-15");
+  assert.equal(c.addWorkdays("2027-06-23", 1, data), "2027-06-25");
+  assert.equal(c.addWorkdays("2027-06-24", 0, data), "2027-06-24");
+  assert.throws(() => c.addWorkdays("2027-01-01", 1.5, data));
+  assert.throws(() => c.addWorkdays("2027-01-01", 36601, data));
 });
 test("public holiday lookup reuses immutable years and retains classifications", () => {
   const commemorations = [{ id: "example", title: "Atmintina diena", month: 2, day: 16 }];
