@@ -23,6 +23,34 @@ module Pages
  def metric_cards(values)
   '<div class="resource-stats">'+values.each_with_index.map { |(n,label),i|"<div>#{ui_icon(%w[calendar clock briefcase][i%3])}<strong>#{n}</strong><span>#{label}</span></div>" }.join+'</div>'
  end
+ def workyear_hero(y)
+  %(<section class="workyear-hero" aria-labelledby="workyear-hero-title"><div class="workyear-hero__copy"><span class="workyear-eyebrow">Lietuvos darbo laiko apžvalga · #{y}</span><h2 id="workyear-hero-title">Metų ritmas, vienu žvilgsniu</h2><p>Peržiūrėkite mėnesių darbo krūvį, pasirinkite įprastą penkių ar šešių dienų savaitę ir pasitikrinkite konkrečios datos statusą.</p><div class="workyear-hero__notes"><span><i aria-hidden="true"></i>Pagal Lietuvos šventinių dienų kalendorių</span><a href="/sventes/#{y}/">Peržiūrėti visas šventes <span aria-hidden="true">→</span></a></div></div><figure class="workyear-hero__art"><img src="/assets/visuals/workday-year.svg" width="760" height="480" alt="Stilizuotas #{y} metų darbo kalendorius su mėnesių darbo krūvio diagrama" fetchpriority="high"></figure></section>)
+ end
+ def workyear_month_grid(y)
+  five=(1..12).map { |m|Kalendorius.work_month(y,m) }
+  six=(1..12).map { |m|Kalendorius.work_month(y,m,true) }
+  max_hours=(five+six).map { |month|month['hours'] }.max
+  cards=five.each_with_index.map do |stats,index|
+   six_stats=six[index];month=DATA['months'][stats['month']-1][1];percent=(stats['hours'].to_f/max_hours*100).round
+   %(<a class="workyear-month" href="#{month_url(y,stats['month'])}" data-work-month data-days-five="#{stats['days']}" data-days-six="#{six_stats['days']}" data-hours-five="#{stats['hours']}" data-hours-six="#{six_stats['hours']}"><span class="workyear-month__index">#{format('%02d',stats['month'])} · #{y}</span><strong class="workyear-month__name">#{month}</strong><span class="workyear-month__stats"><span><b data-work-days>#{stats['days']}</b> darbo d.</span><b data-work-hours>#{stats['hours']} val.</b></span><span class="workyear-month__track" role="img" aria-label="#{stats['hours']} darbo valandų"><span data-work-bar style="--month-fill:#{percent}%"></span></span><span class="workyear-month__link">Mėnesio kalendorius <span aria-hidden="true">↗</span></span></a>)
+  end.join
+  %(<section class="workyear-section" aria-labelledby="workyear-months-title"><div class="workyear-section__heading"><div><span class="workyear-eyebrow">12 mėnesių · greita navigacija</span><h2 id="workyear-months-title">Kada didžiausias darbo krūvis?</h2><p>Mėnesio kortelės prisitaiko prie pasirinktos darbo savaitės. Atverkite mėnesį, jei norite peržiūrėti konkrečias datas.</p></div><span class="workyear-legend"><i aria-hidden="true"></i>Darbo valandos</span></div><div class="workyear-month-grid">#{cards}</div></section>)
+ end
+ def workyear_eves(y)
+  holidays=Kalendorius.holidays(y).to_h { |holiday|[holiday['date'],holiday['name']] }
+  entries=[5,6].map do |schedule|
+   stats=(1..12).flat_map { |m|Kalendorius.work_month(y,m,schedule==6)['shortened'] }.uniq.sort
+   items=stats.map do |iso|
+    date=Date.iso8601(iso);holiday=holidays[(date+1).iso8601]||'artėjanti šventė';month=DATA['months'][date.month-1][1]
+    %(<li><time datetime="#{iso}">#{date.day} #{month}</time><span>#{WEEKDAY_NAMES[date.cwday-1]}</span><strong>#{holiday}</strong></li>)
+   end.join
+   %(<ul class="workyear-eves__list" data-work-eves="#{schedule}" #{schedule==6 ? 'hidden' : ''}>#{items}</ul>)
+  end.join
+  %(<section class="workyear-eves" aria-labelledby="workyear-eves-title"><div><span class="workyear-eyebrow">Planuokite iš anksto</span><h2 id="workyear-eves-title">Prieššventinės darbo dienos</h2><p>Šios dienos pagal įstatymo taisyklę trumpinamos viena valanda. Sąrašas keičiasi kartu su darbo savaitės pasirinkimu.</p></div><div class="workyear-eves__content">#{entries}</div></section>)
+ end
+ def workday_date_checker(y)
+  %(<section class="workday-checker" aria-labelledby="workday-checker-title"><div class="workday-checker__intro"><span class="workyear-eyebrow">Greitas patikrinimas</span><h2 id="workday-checker-title">Ar šią dieną dirbama?</h2><p>Pasirinkite datą, kad patikrintumėte savaitės dieną, Lietuvos šventes ir pavyzdinį darbo valandų skaičių.</p></div><form id="workday-check-form" class="workday-checker__form"><label for="workday-check-date">Data #{y} m.<input id="workday-check-date" type="date" min="#{y}-01-01" max="#{y}-12-31" value="#{y}-01-04" required></label><button class="primary" type="submit">Patikrinti dieną</button></form><div id="workday-check-result" class="workday-checker__result" data-state="work" role="status" aria-live="polite"><span class="workday-checker__result-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h14A1.5 1.5 0 0 1 20.5 6v13A1.5 1.5 0 0 1 19 20.5H5A1.5 1.5 0 0 1 3.5 19V6A1.5 1.5 0 0 1 5 4.5Z"/><path d="M8 3v3m8-3v3M4 9h16M8 13h2m4 0h2m-8 4h2"/></svg></span><div><strong data-workday-state>Darbo diena</strong><p data-workday-detail>2027 m. sausio 4 d. · pirmadienis · 8 darbo val. pagal 5 dienų grafiką.</p></div></div><p class="workday-checker__note">Įvertis naudoja įprastą grafiką ir neapima individualių pamainų ar darbo sutarties išimčių.</p></section>)
+ end
  def shell(main,aside)
   '<div class="resource-shell"><div class="resource-content">'+main+'</div>'+aside+'</div>'
  end
@@ -40,8 +68,10 @@ module Pages
   when %r{\Adarbo-dienos/202[789]\z}
    y=path.split('/').last.to_i;stats=(1..12).map { |m|Kalendorius.work_month(y,m) }
    controls=html[/<div class="toolbar-group"><label>Darbo savaitė.*?<\/div>/m]||'';html=html.sub(controls,'')
-   html=html.sub('<section data-work-table=',metric_cards([[stats.sum { |s|s['days'] },'Darbo dienos · 5 d. savaitė'],[stats.sum { |s|s['hours'] },'Darbo valandos'],[stats.sum { |s|s['shortened'].length },'Prieššventiniai trumpinimai']])+'<section data-work-table=')
-   aside='<aside class="resource-aside"><section class="panel"><h2>Darbo laiko nustatymai</h2>'+controls+'</section><section class="panel"><h2>Svarbu žinoti</h2><p>40 valandų savaitės pavyzdys. Tikras darbo grafikas priklauso nuo sutarties, darbo laiko režimo ir įstatymo išimčių.</p><a href="/datos-skaiciuokle/">Pasirinkto laikotarpio skaičiavimas →</a></section></aside>'
+   controls=controls.sub('class="toolbar-group"','class="toolbar-group workyear-controls"')
+   insights=workyear_hero(y)+metric_cards([[stats.sum { |s|s['days'] },'Darbo dienos · 5 d. savaitė'],[stats.sum { |s|s['hours'] },'Darbo valandos'],[stats.sum { |s|s['shortened'].length },'Prieššventiniai trumpinimai']])+workyear_month_grid(y)+workday_date_checker(y)+workyear_eves(y)
+   html=html.sub('<section data-work-table=',insights+'<section data-work-table=')
+   aside='<aside class="resource-aside"><section class="panel workyear-controls-panel"><span class="workyear-eyebrow">Pasirinkite grafiką</span><h2>Darbo laiko nustatymai</h2>'+controls+'</section><section class="panel"><h2>Skaičiavimo prielaidos</h2><p>40 valandų savaitės pavyzdys: 5 dienas po 8 valandas arba 6 dienas po 7 valandas darbo dienomis ir 5 valandas šeštadienį.</p><p>Šventinės dienos iš darbo dienų atimamos. Savaitgalio šventės į pirmadienį neperkeliamos.</p><a href="/datos-skaiciuokle/">Apskaičiuoti kitą laikotarpį →</a></section></aside>'
    html=shell(html,aside)
   when 'mokiniu-atostogos'
    items=MANIFEST.select { |e|e['kind']=='blank' && ['03','06','08'].include?(e['design']) }

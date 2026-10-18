@@ -55,6 +55,7 @@ module Pages
   FileUtils.mkdir_p(File.dirname(target))
   html=print_html(path,visual_html(path,html))
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
+  metadata['workdays']=true if path.match?(/\Adarbo-dienos\/20\d{2}\z/)
   print=html[/data-print-root="art" data-print-paper="(portrait|landscape)" data-print-size="(A[34])"/,0]
   if print
    orientation=print[/data-print-paper="(portrait|landscape)"/,1]
@@ -358,7 +359,7 @@ module Pages
    "<section data-work-table=\"#{six ? 6 : 5}\" #{six ? 'hidden' : ''}><div class=\"table-scroll\"><table class=\"data-table\"><caption>#{six ? 'Šešių' : 'Penkių'} dienų savaitė</caption><thead><tr><th>Mėnuo</th><th>Darbo dienos</th><th>Poilsio dienos</th><th>Šventės darbo dienomis</th><th>Trumpinimai (1 val.)</th><th>Darbo valandos</th></tr></thead><tbody>#{rows}</tbody><tfoot><tr><td>Iš viso</td>#{totals.map { |n|"<td>#{n}</td>" }.join}</tr></tfoot></table></div><h2>Prieššventinės darbo dienos</h2><p>#{short.empty? ? 'Nėra.' : short.join(', ')}.</p></section>"
   end.join
   html=intro("#{y} metų darbo dienų kalendorius",'Darbo dienos, poilsio dienos ir darbo valandų įvertis pagal pasirinktą standartinį grafiką.',yearlinks('darbo-dienos/'))+'<div class="toolbar-group"><label>Darbo savaitė<select id="work-schedule"><option value="5">5 dienos · 40 valandų</option><option value="6">6 dienos · 40 valandų</option></select></label><button id="work-csv">Atsisiųsti CSV suvestinę</button><button data-print>Spausdinti lentelę</button></div>'+tables+'<h2>Skaičiavimo metodika</h2><p>Penkių dienų savaitė: pirmadienis–penktadienis, 8 valandos per dieną. Šešių dienų pavyzdys: pirmadienis–penktadienis po 7 valandas, šeštadienis 5 valandas (40 valandų per savaitę). Šventinės dienos iš darbo dienų atimamos. Savaitgalio šventės neperkeliamos.</p><p>Pagal Darbo kodekso 112 straipsnio 6 dalį, švenčių dienos išvakarėse numatyta darbo diena trumpinama viena valanda, išskyrus pagal sutrumpintą darbo laiko normą dirbančius darbuotojus. Nuo 2026-11-01 šios dalies redakcija taip pat nustato, kad darbo užmokestis paliekamas; kai atlygis priklauso nuo darbo normų, už trumpintą valandą mokamas vidutinis darbo užmokestis, o kai dėl darbo organizavimo ypatumų ar nepertraukiamos veiklos trumpinti neįmanoma – kaip už viršvalandinį darbą. Skaičiuoklė pateikia tik 5 arba 6 dienų standartinio grafiko aritmetinį įvertį ir neapskaičiuoja šių individualių darbo užmokesčio išimčių, atostogų, suminės apskaitos ar pamaininio darbo. Tai bendro pobūdžio planavimo įrankis, o ne individuali darbo teisės konsultacija.</p>'+source+"<p><a href=\"/datos-skaiciuokle/\">Apskaičiuoti pasirinktą laikotarpį</a> · <a href=\"/#{y}/\">#{y} metų kalendorius</a></p>"
-  page("darbo-dienos/#{y}","#{y} metų darbo dienų kalendorius","#{y} metų darbo dienos ir darbo valandos pagal mėnesius. Penkių arba šešių dienų savaitė, šventės, prieššventiniai trumpinimai ir metodika.",html,true)
+  page("darbo-dienos/#{y}","#{y} metų darbo dienų kalendorius","#{y} metų darbo dienų, valandų, švenčių ir prieššventinių trumpinimų suvestinė. Palyginkite 5 ir 6 dienų savaitę, atverkite mėnesius ir patikrinkite pasirinktos datos statusą.",html,true)
  end
  def generate_weeks(y)
   total=Date.new(y,12,28).cweek
@@ -599,6 +600,9 @@ search.concat([
  {'title'=>'Kalendoriaus sluoksniai ir kategorijos','url'=>'/#layers','description'=>'Rodykite arba slėpkite šventes, asmeninius ir darbinius įvykius.','keywords'=>'filtrai sluoksniai darbo šeima sveikata mokslai categories filters','category'=>'home','action'=>true},
  {'title'=>'Kalendoriaus atsarginė kopija','url'=>'/#backup','description'=>'Atsisiųskite arba atkurkite savo kalendoriaus duomenų kopiją.','keywords'=>'eksportuoti importuoti atsarginė kopija json duomenys backup export import','category'=>'home','action'=>true},
 ])
+# Keep the generated index stable across filesystems and Ruby runtimes so the
+# source and published copies remain byte-for-byte identical.
+search.sort_by! { |item|[item['category'],item['url']] }
 File.write("#{Pages::ROOT}/site/assets/data/search.json",JSON.generate(search))
 # A crawlable, keyboard-accessible catalogue remains available while the search
 # module is loading and when JavaScript is disabled. It links canonical URLs,

@@ -115,6 +115,18 @@ test('workweek selector changes visible table and CSV exports real content',asyn
  const result=await downloadBytes(page,()=>page.locator('#work-csv').click());expect(result.file.suggestedFilename()).toMatch(/\.csv$/);expect(result.file.suggestedFilename()).toContain('2028');expect(result.bytes.length).toBeGreaterThan(100);
 });
 
+test('2027 workday planner updates Saturday status when the schedule changes',async({page})=>{
+ for(const year of [2027,2028,2029]){
+  await page.goto(`/darbo-dienos/${year}/`);await expect(page.locator('body')).toHaveClass(/tool-workdays/);
+  const layout=await page.evaluate(()=>({viewport:document.documentElement.clientWidth,content:document.documentElement.scrollWidth}));expect(layout.content,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);
+ }
+ await page.goto('/darbo-dienos/2027/');const date=page.locator('#workday-check-date'),result=page.locator('#workday-check-result');
+ await date.fill('2027-01-09');await date.blur();await page.locator('#workday-check-form button[type=submit]').click();
+ await expect(result).toHaveAttribute('data-state','rest');await expect(result).toContainText('Poilsio diena');
+ await page.locator('#work-schedule').selectOption('6');await expect(result).toHaveAttribute('data-state','work');await expect(result).toContainText('5 darbo val.');
+ await expect(page.locator('[data-work-table="6"]')).toBeVisible();await expect(page.locator('[data-work-table="5"]')).toBeHidden();
+});
+
 test('blank-calendar gallery filters on mobile, changes 5/6-row downloads and exports valid PDF',async({page})=>{
  await page.setViewportSize({width:320,height:812});await page.goto('/tuscias-kalendorius/');
  const select=page.locator('#dizainas-tuscias-01-5-eilutes [data-blank-rows]');await expect(select).toBeVisible();
