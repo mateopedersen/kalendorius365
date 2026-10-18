@@ -27,6 +27,29 @@ class StaticAssetUrlsTest < Minitest::Test
     FileUtils.remove_entry(@root)
   end
 
+  def test_export_font_templates_and_styles_change_version_with_font_bytes
+    FileUtils.mkdir_p(File.join(@root, 'assets/fonts'))
+    font = File.join(@root, 'assets/fonts/Inter-Regular.ttf')
+    File.binwrite(font, 'original complete font')
+    File.binwrite(File.join(@root, 'assets/fonts/Inter-Bold.ttf'), 'original bold font')
+    script = File.join(@root, 'assets/export.js')
+    css = File.join(@root, 'assets/editor.css')
+    File.write(script, 'const font = `/assets/fonts/${family}-${weight}.ttf`;')
+    File.write(css, '@font-face{src:url(/assets/fonts/Inter-Regular.ttf) format("truetype")}')
+    assert_equal %w[assets/fonts/Inter-Bold.ttf assets/fonts/Inter-Regular.ttf], Kalendorius::StaticAssetUrls.referenced_asset_paths(@root, [script])
+    Kalendorius::StaticAssetUrls.rewrite!(@root)
+    before = File.read(script)
+    assert_match %r{\.ttf\?v=[a-f0-9]{12}`}, before
+    hash = Digest::SHA256.file(font).hexdigest[0, 12]
+    assert_includes File.read(css), "/assets/fonts/Inter-Regular.ttf?v=#{hash}) format"
+    assert_equal 0, Kalendorius::StaticAssetUrls.rewrite!(@root)
+    File.binwrite(font, 'updated complete font')
+    # The release builder starts again from the readable, unversioned source.
+    File.write(script, 'const font = `/assets/fonts/${family}-${weight}.ttf`;')
+    Kalendorius::StaticAssetUrls.rewrite!(@root)
+    refute_equal before, File.read(script)
+  end
+
   def test_rewrites_static_asset_urls_with_content_versions
     svg_hash = Digest::SHA256.file(File.join(@root, 'assets/visuals/icon.svg')).hexdigest[0, 12]
     json_hash = Digest::SHA256.file(File.join(@root, 'assets/data/index.json')).hexdigest[0, 12]
@@ -84,5 +107,20 @@ class StaticAssetUrlsTest < Minitest::Test
     assert_includes paths, 'assets/data/index.json'
     refute_includes paths, 'assets/previews/unreferenced.webp'
     refute_includes paths, 'assets/data/manifest.json'
+  end
+
+  def test_unquoted_css_urls_keep_closing_parentheses_and_font_formats
+    FileUtils.mkdir_p(File.join(@root, 'assets/fonts'))
+    File.binwrite(File.join(@root, 'assets/fonts/font.woff2'), 'font bytes')
+    font_hash = Digest::SHA256.file(File.join(@root, 'assets/fonts/font.woff2')).hexdigest[0, 12]
+    svg_hash = Digest::SHA256.file(File.join(@root, 'assets/visuals/icon.svg')).hexdigest[0, 12]
+    css = '@font-face{src:url(/assets/fonts/font.woff2?v=old) format("woff2")}.icon{mask:url(/assets/visuals/icon.svg?size=2&v=old#calendar)}'
+    path = File.join(@root, 'assets/unquoted.css')
+    File.write(path, css)
+    Kalendorius::StaticAssetUrls.rewrite!(@root)
+    output = File.read(path)
+    assert_includes output, "url(/assets/fonts/font.woff2?v=#{font_hash}) format(\"woff2\")"
+    assert_includes output, "url(/assets/visuals/icon.svg?size=2&v=#{svg_hash}#calendar)"
+    assert_equal 0, Kalendorius::StaticAssetUrls.rewrite!(@root)
   end
 end

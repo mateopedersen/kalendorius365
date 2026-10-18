@@ -31,6 +31,7 @@ Dir.chdir(ROOT) do
   css.gsub!(%r{(/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2)(?!\?v=)}) { "#{$1}?v=#{css_version}" }
   File.write(path,Kalendorius::CssMinifier.minify(css))
  end
+ system('node','scripts/minify_css.mjs','public/assets',exception:true)
  Dir.glob('public/assets/**/*.js').each do |path|
   javascript=File.read(path)
   javascript.gsub!(/((?:\bfrom\s*|\bimport\s*(?:\(\s*)?)["'])([^"']+\.js)(?:\?[^"']*)?(["'])/) do
@@ -42,6 +43,7 @@ Dir.chdir(ROOT) do
  system('python3','scripts/inline_route_css.py',exception:true)
  versioned_asset_references=Kalendorius::StaticAssetUrls.rewrite!('public')
  puts "Content-versioned #{versioned_asset_references} static image, data and print URLs"
+ system('python3','scripts/inline_lcp_image.py',exception:true)
  # Run after URL rewriting and CSS runtime-class discovery, which operate on
  # readable modules. Hashes include the compiler and its pinned dependency lock.
  system('node','scripts/minify_js.mjs','public/assets',exception:true)

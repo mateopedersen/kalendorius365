@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 36638,
-      "generated_bytes": 24078
+      "source_bytes": 36819,
+      "generated_bytes": 23996
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -17,9 +17,59 @@
       "generated_bytes": 891
     },
     {
+      "path": "/assets/calendar-editor/editor.js",
+      "source_bytes": 49255,
+      "generated_bytes": 36579
+    },
+    {
+      "path": "/assets/calendar-editor/export.js",
+      "source_bytes": 8355,
+      "generated_bytes": 5994
+    },
+    {
+      "path": "/assets/calendar-editor/filters.js",
+      "source_bytes": 717,
+      "generated_bytes": 576
+    },
+    {
+      "path": "/assets/calendar-editor/lt.js",
+      "source_bytes": 21202,
+      "generated_bytes": 19139
+    },
+    {
+      "path": "/assets/calendar-editor/model.js",
+      "source_bytes": 14203,
+      "generated_bytes": 11824
+    },
+    {
+      "path": "/assets/calendar-editor/photo-worker.js",
+      "source_bytes": 233,
+      "generated_bytes": 180
+    },
+    {
+      "path": "/assets/calendar-editor/photos.js",
+      "source_bytes": 6741,
+      "generated_bytes": 4884
+    },
+    {
+      "path": "/assets/calendar-editor/scene.js",
+      "source_bytes": 11985,
+      "generated_bytes": 7726
+    },
+    {
+      "path": "/assets/calendar-editor/storage.js",
+      "source_bytes": 7147,
+      "generated_bytes": 5260
+    },
+    {
+      "path": "/assets/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
+      "source_bytes": 420165,
+      "generated_bytes": 420165
+    },
+    {
       "path": "/assets/calendar.js",
-      "source_bytes": 6264,
-      "generated_bytes": 4410
+      "source_bytes": 7562,
+      "generated_bytes": 4979
     },
     {
       "path": "/assets/common.js",
@@ -28,8 +78,8 @@
     },
     {
       "path": "/assets/contact.js",
-      "source_bytes": 3895,
-      "generated_bytes": 2640
+      "source_bytes": 4613,
+      "generated_bytes": 3002
     },
     {
       "path": "/assets/cookie-notice.js",

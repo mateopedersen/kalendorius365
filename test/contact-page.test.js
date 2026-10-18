@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildContactFormUrl, CONTACT_FORM_URL, CONTACT_TOPICS, safeSourcePage } from "../site/assets/contact.js";
+import { buildContactFormUrl, CONTACT_FORM_URL, CONTACT_TOPICS, safeSourcePage, initializeContactPage } from "../site/assets/contact.js";
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
 
@@ -49,4 +49,27 @@ test("privacy source describes Forms storage, Gmail notifications and restricted
     assert.match(privacy, /Formos atsakymų suvestinė lankytojams neskelbiama/);
     assert.doesNotMatch(privacy, /forma parengia laiško juodraštį/);
   }
+});
+
+test("the external contact application loads once after intent and retains sanitized prefill", () => {
+  const requests=[], frameEvents={}, launchEvents={}, attributes={};
+  const frame={dataset:{},hidden:true,focusCount:0,focus(){this.focusCount++},getAttribute(name){return attributes[name]||null},setAttribute(name,value){attributes[name]=value},addEventListener(name,handler){frameEvents[name]=handler},set src(value){attributes.src=value;requests.push(value)}};
+  const launch={hidden:true,addEventListener(name,handler){launchEvents[name]=handler},setAttribute(name,value){attributes['button-'+name]=value}};
+  const loading={hidden:true}, external={};
+  const doc={querySelector(selector){return {'[data-contact-frame]':frame,'[data-contact-launch]':launch,'[data-contact-loading]':loading}[selector]||null},querySelectorAll(selector){return selector==='[data-open-contact-form]'?[external]:[]}};
+  initializeContactPage(doc,'?tema=date_error&puslapis='+encodeURIComponent('https://kalendorius365.lt/2027/?q=private#note'));
+  assert.deepEqual(requests,[]);assert.equal(frame.hidden,true);assert.equal(launch.hidden,false);
+  assert.doesNotMatch(frame.dataset.src,/private|note/);assert.equal(new URL(frame.dataset.src).searchParams.get('entry.122884581'),CONTACT_TOPICS.date_error);
+  assert.equal(new URL(external.href).searchParams.get('entry.1784264088'),'https://kalendorius365.lt/2027/');
+  launchEvents.click();assert.equal(requests.length,1);assert.equal(frame.hidden,false);assert.equal(frame.focusCount,1);assert.equal(loading.hidden,false);assert.equal(attributes['aria-busy'],'true');
+  frameEvents.load();assert.equal(loading.hidden,true);assert.equal(attributes['aria-busy'],'false');
+  launchEvents.click();assert.equal(requests.length,1);
+});
+
+test("contact HTML keeps a direct fallback and does not start the external frame on page load", () => {
+  const source=read('../site/kontaktai/index.html');
+  assert.doesNotMatch(source,/<iframe\b[^>]*\ssrc=/);
+  assert.match(source,/<iframe\b[^>]*\sdata-src="https:\/\/docs\.google\.com/);
+  assert.match(source,/data-contact-launch[^>]*hidden/);
+  assert.match(source,/data-open-contact-form href="https:\/\/docs\.google\.com/);
 });

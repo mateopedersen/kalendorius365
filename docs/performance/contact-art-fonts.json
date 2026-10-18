@@ -1,0 +1,34 @@
+{
+  "method": "Exact original Lato glyph outlines, advances, hinting and OpenType features for existing SVG text; smaller embedded per-weight subsets avoid three font round trips. Original complete fonts and illustration retained.",
+  "fonttools_version": "4.67.0",
+  "original_svg_sha256": "d23d48888649c4c027df3bf6688e297783b37cd57d5a4210b2836de7b22f0936",
+  "fonts": [
+    {
+      "weight": 400,
+      "characters": " 0123456789ABDEIKMNPRSTVYĖŠŽ",
+      "codepoints": 28,
+      "bytes": 6568,
+      "sha256": "d42069e33b7a765b2e9ede666fec6ab5ed89663dfd0d974762321a2824262602",
+      "original_sha256": "9bd23c13b68e2468193aad4e871cd619b8e3c9add577820035291c4eb3dc76a0",
+      "outlines_advances_hinting_identical": true
+    },
+    {
+      "weight": 700,
+      "characters": " 026AILPS·",
+      "codepoints": 10,
+      "bytes": 3852,
+      "sha256": "ab492253cc7480c7e0eebcd838c5f43601e7b5149822f3f8fb3a32a7837f652e",
+      "original_sha256": "94b1e33bd87f2a6b6549fb50874c3553a6fd5b2954baddc303a980cf961299c4",
+      "outlines_advances_hinting_identical": true
+    },
+    {
+      "weight": 900,
+      "characters": "356",
+      "codepoints": 3,
+      "bytes": 3364,
+      "sha256": "795337b26e94cadee36f90d6d5570d27181ab956a342f4441980c856c99f54e6",
+      "original_sha256": "6b5486e4bbb685b026ec8e7d0c212e2d80fffb6a9baaf18b3802b97e8041f7d4",
+      "outlines_advances_hinting_identical": true
+    }
+  ]
+}

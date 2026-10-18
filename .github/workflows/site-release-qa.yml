@@ -57,7 +57,7 @@ jobs:
       - name: Check CSS minifier whitespace safety
         run: ruby test/css_minifier_test.rb
       - name: Verify route-specific CSS pruning and page bundles
-        run: python3 -m unittest test.css_route_split_test test.inline_route_css_test
+        run: python3 -m unittest test.css_route_split_test test.inline_route_css_test test.inline_lcp_image_test
       - name: Verify immutable static asset URL versioning
         run: ruby test/static_asset_urls_test.rb
       - name: Audit every canonical page and internal link

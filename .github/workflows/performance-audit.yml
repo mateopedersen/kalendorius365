@@ -1,0 +1,49 @@
+name: Independent production performance audit
+on:
+  workflow_dispatch:
+    inputs:
+      expected_script_version:
+        description: Expected 12-character production script fingerprint
+        required: true
+        type: string
+      repetitions:
+        description: Independent cold mobile runs per page family
+        type: choice
+        options: ['1', '2', '3']
+        default: '2'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [mobile, desktop]
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Install the exact audit version used for the saved baseline
+        run: npm install --prefix "$RUNNER_TEMP/k365-lighthouse" --no-audit --no-fund lighthouse@13.5.0
+      - name: Locate the runner's Chrome
+        run: |
+          K365_CHROME_BINARY="$(command -v google-chrome)"
+          test -x "$K365_CHROME_BINARY"
+          printf 'CHROME_PATH=%s\n' "$K365_CHROME_BINARY" >> "$GITHUB_ENV"
+          "$K365_CHROME_BINARY" --version
+      - name: Audit every page family and retain every run
+        env:
+          K365_AUDIT_PROFILE: ${{ matrix.profile }}
+          K365_AUDIT_REPETITIONS: ${{ matrix.profile == 'desktop' && '1' || inputs.repetitions }}
+          K365_EXPECTED_SCRIPT_VERSION: ${{ inputs.expected_script_version }}
+        run: K365_LIGHTHOUSE_CLI="$RUNNER_TEMP/k365-lighthouse/node_modules/lighthouse/cli/index.js" node scripts/performance_audit.mjs
+      - name: Preserve complete reports, traces and network logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: production-performance-${{ matrix.profile }}
+          path: performance-results/
+          retention-days: 7

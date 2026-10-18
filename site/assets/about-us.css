@@ -29,7 +29,7 @@
 .about-hero__art { position: relative; min-height: 350px; isolation: isolate; }
 .about-sheet { position: absolute; padding: 10px 10px 27px; border: 1px solid #e3e8e1; border-radius: 7px; background: #fff; box-shadow: 0 20px 50px #182d2320, 0 3px 8px #182d2310; }
 .about-sheet img,.about-purpose__image img { display: block; width: 100%; height: auto; }
-.about-sheet figcaption { position: absolute; right: 12px; bottom: 5px; color: #718076; font-size: .62rem; font-weight: 700; letter-spacing: .035em; }
+.about-sheet figcaption { position: absolute; right: 12px; bottom: 5px; color: #59685f; font-size: .62rem; font-weight: 700; letter-spacing: .035em; }
 .about-sheet--year { z-index: 1; top: 7%; right: 0; width: 79%; transform: rotate(3deg); }
 .about-sheet--month { z-index: 2; bottom: 1%; left: 0; width: 61%; transform: rotate(-4deg); }
 .about-art-dot { position: absolute; z-index: 0; width: 12px; height: 12px; border: 3px solid #d9ab47; border-radius: 50%; }
@@ -44,7 +44,7 @@
 .about-purpose { display: grid; grid-template-columns: minmax(0, .97fr) minmax(0, 1.03fr); align-items: center; gap: clamp(2rem, 6vw, 5.5rem); margin-top: clamp(2.2rem, 5vw, 3.6rem); padding: 0 clamp(1rem, 3vw, 2rem); }
 .about-purpose__image { position: relative; max-width: 490px; padding: .65rem .65rem 2rem; border: 1px solid #e3e8e1; border-radius: 13px; background: #fff; box-shadow: 0 15px 36px #182d2315; transform: rotate(-1.5deg); }
 .about-purpose__image img { border-radius: 5px; }
-.about-purpose__image figcaption { position: absolute; right: .75rem; bottom: .55rem; left: .75rem; color: #718076; font-size: .67rem; text-align: center; }
+.about-purpose__image figcaption { position: absolute; right: .75rem; bottom: .55rem; left: .75rem; color: #59685f; font-size: .67rem; text-align: center; }
 .about-purpose__copy { max-width: 470px; }
 .about-purpose__copy h2 { margin: 0 0 .55rem; color: var(--about-ink); font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -.04em; }
 .about-purpose__copy > p:last-child { margin: 0; color: var(--about-muted); font-size: .97rem; line-height: 1.8; }

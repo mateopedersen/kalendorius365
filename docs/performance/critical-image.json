@@ -1,0 +1,6 @@
+{
+  "method": "Exact AVIF bytes in the homepage HTML, avoiding a separate critical image round trip. Original WebP fallback and source images retained.",
+  "asset": "/assets/visuals/weather-640.avif",
+  "bytes": 26686,
+  "sha256": "83b5e8a894ab1397450b665764e1f2a9f2f732e237a317ae6b86e15d22ccccc2"
+}
