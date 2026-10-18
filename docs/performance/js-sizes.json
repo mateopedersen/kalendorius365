@@ -1,0 +1,655 @@
+{
+  "method": "esbuild 0.28.2; independent ES2022 modules; no bundling or property mangling; function names and legal comments retained",
+  "modules": [
+    {
+      "path": "/assets/app.js",
+      "source_bytes": 36638,
+      "generated_bytes": 24078
+    },
+    {
+      "path": "/assets/ascendant-calculator.js",
+      "source_bytes": 10963,
+      "generated_bytes": 7440
+    },
+    {
+      "path": "/assets/ascendant-loader.js",
+      "source_bytes": 1423,
+      "generated_bytes": 891
+    },
+    {
+      "path": "/assets/calendar.js",
+      "source_bytes": 6264,
+      "generated_bytes": 4410
+    },
+    {
+      "path": "/assets/common.js",
+      "source_bytes": 16572,
+      "generated_bytes": 9710
+    },
+    {
+      "path": "/assets/contact.js",
+      "source_bytes": 3895,
+      "generated_bytes": 2640
+    },
+    {
+      "path": "/assets/cookie-notice.js",
+      "source_bytes": 1430,
+      "generated_bytes": 728
+    },
+    {
+      "path": "/assets/data/birth-cities.js",
+      "source_bytes": 8075,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/data/weather-cities.js",
+      "source_bytes": 2908,
+      "generated_bytes": 2126
+    },
+    {
+      "path": "/assets/discovery.js",
+      "source_bytes": 2922,
+      "generated_bytes": 2272
+    },
+    {
+      "path": "/assets/holiday-editorial.js",
+      "source_bytes": 2392,
+      "generated_bytes": 1447
+    },
+    {
+      "path": "/assets/holiday-phase2.js",
+      "source_bytes": 1788,
+      "generated_bytes": 1336
+    },
+    {
+      "path": "/assets/icons.js",
+      "source_bytes": 442,
+      "generated_bytes": 455
+    },
+    {
+      "path": "/assets/ics.js",
+      "source_bytes": 6313,
+      "generated_bytes": 4346
+    },
+    {
+      "path": "/assets/leave-planner.js",
+      "source_bytes": 31952,
+      "generated_bytes": 20707
+    },
+    {
+      "path": "/assets/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116487
+    },
+    {
+      "path": "/assets/lunar/lunar-engine.js",
+      "source_bytes": 3529,
+      "generated_bytes": 3026
+    },
+    {
+      "path": "/assets/lunar/lunar-loader.js",
+      "source_bytes": 2806,
+      "generated_bytes": 1808
+    },
+    {
+      "path": "/assets/lunar/lunar.js",
+      "source_bytes": 7850,
+      "generated_bytes": 6038
+    },
+    {
+      "path": "/assets/monthly-holidays.js",
+      "source_bytes": 6097,
+      "generated_bytes": 4474
+    },
+    {
+      "path": "/assets/namedays-engine.js",
+      "source_bytes": 3674,
+      "generated_bytes": 2839
+    },
+    {
+      "path": "/assets/namedays.js",
+      "source_bytes": 12654,
+      "generated_bytes": 9898
+    },
+    {
+      "path": "/assets/phase-5-6-8-core.js",
+      "source_bytes": 14890,
+      "generated_bytes": 8908
+    },
+    {
+      "path": "/assets/phase-5-6-8.js",
+      "source_bytes": 41325,
+      "generated_bytes": 30478
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/app.js",
+      "source_bytes": 36290,
+      "generated_bytes": 23869
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/ascendant-calculator.js",
+      "source_bytes": 10993,
+      "generated_bytes": 7470
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/calendar.js",
+      "source_bytes": 6264,
+      "generated_bytes": 4410
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/common.js",
+      "source_bytes": 15799,
+      "generated_bytes": 9257
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/contact.js",
+      "source_bytes": 3895,
+      "generated_bytes": 2640
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/cookie-notice.js",
+      "source_bytes": 1407,
+      "generated_bytes": 713
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/data/birth-cities.js",
+      "source_bytes": 8075,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/data/weather-cities.js",
+      "source_bytes": 2908,
+      "generated_bytes": 2126
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/discovery.js",
+      "source_bytes": 2952,
+      "generated_bytes": 2302
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/holiday-editorial.js",
+      "source_bytes": 2452,
+      "generated_bytes": 1507
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/holiday-phase2.js",
+      "source_bytes": 1788,
+      "generated_bytes": 1336
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/icons.js",
+      "source_bytes": 442,
+      "generated_bytes": 455
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/ics.js",
+      "source_bytes": 6313,
+      "generated_bytes": 4346
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/leave-planner.js",
+      "source_bytes": 31982,
+      "generated_bytes": 20737
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116087
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/lunar/lunar-engine.js",
+      "source_bytes": 3529,
+      "generated_bytes": 3026
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/lunar/lunar.js",
+      "source_bytes": 7849,
+      "generated_bytes": 6037
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/monthly-holidays.js",
+      "source_bytes": 6097,
+      "generated_bytes": 4474
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/namedays-engine.js",
+      "source_bytes": 3674,
+      "generated_bytes": 2839
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/namedays.js",
+      "source_bytes": 12654,
+      "generated_bytes": 9898
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/phase-5-6-8-core.js",
+      "source_bytes": 14890,
+      "generated_bytes": 8908
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/phase-5-6-8.js",
+      "source_bytes": 41475,
+      "generated_bytes": 30628
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/search-engine.js",
+      "source_bytes": 15194,
+      "generated_bytes": 9017
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/search-page.js",
+      "source_bytes": 7452,
+      "generated_bytes": 4900
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/seasons-core.js",
+      "source_bytes": 1830,
+      "generated_bytes": 1801
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/seasons.js",
+      "source_bytes": 8063,
+      "generated_bytes": 6741
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/storage.js",
+      "source_bytes": 5499,
+      "generated_bytes": 4031
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/sunrise.js",
+      "source_bytes": 23406,
+      "generated_bytes": 15941
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/tools.js",
+      "source_bytes": 19783,
+      "generated_bytes": 12451
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/weather.js",
+      "source_bytes": 5653,
+      "generated_bytes": 3999
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/zodiac-engine.js",
+      "source_bytes": 2369,
+      "generated_bytes": 1602
+    },
+    {
+      "path": "/assets/releases/675aca80be49ea9f1d25/zodiac.js",
+      "source_bytes": 7304,
+      "generated_bytes": 5174
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/app.js",
+      "source_bytes": 36290,
+      "generated_bytes": 23869
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/ascendant-calculator.js",
+      "source_bytes": 10993,
+      "generated_bytes": 7470
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/calendar.js",
+      "source_bytes": 6264,
+      "generated_bytes": 4410
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/common.js",
+      "source_bytes": 15799,
+      "generated_bytes": 9257
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/contact.js",
+      "source_bytes": 3895,
+      "generated_bytes": 2640
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/cookie-notice.js",
+      "source_bytes": 1407,
+      "generated_bytes": 713
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/data/birth-cities.js",
+      "source_bytes": 8075,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/data/weather-cities.js",
+      "source_bytes": 2908,
+      "generated_bytes": 2126
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/discovery.js",
+      "source_bytes": 2952,
+      "generated_bytes": 2302
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/holiday-editorial.js",
+      "source_bytes": 2452,
+      "generated_bytes": 1507
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/holiday-phase2.js",
+      "source_bytes": 1788,
+      "generated_bytes": 1336
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/icons.js",
+      "source_bytes": 442,
+      "generated_bytes": 455
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/ics.js",
+      "source_bytes": 6313,
+      "generated_bytes": 4346
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/leave-planner.js",
+      "source_bytes": 31982,
+      "generated_bytes": 20737
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116087
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/lunar/lunar-engine.js",
+      "source_bytes": 3529,
+      "generated_bytes": 3026
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/lunar/lunar.js",
+      "source_bytes": 7849,
+      "generated_bytes": 6037
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/monthly-holidays.js",
+      "source_bytes": 6097,
+      "generated_bytes": 4474
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/namedays-engine.js",
+      "source_bytes": 3674,
+      "generated_bytes": 2839
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/namedays.js",
+      "source_bytes": 12654,
+      "generated_bytes": 9898
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/phase-5-6-8-core.js",
+      "source_bytes": 14890,
+      "generated_bytes": 8908
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/phase-5-6-8.js",
+      "source_bytes": 41475,
+      "generated_bytes": 30628
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/search-engine.js",
+      "source_bytes": 15194,
+      "generated_bytes": 9017
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/search-page.js",
+      "source_bytes": 7452,
+      "generated_bytes": 4900
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/seasons-core.js",
+      "source_bytes": 1830,
+      "generated_bytes": 1801
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/seasons.js",
+      "source_bytes": 8063,
+      "generated_bytes": 6741
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/storage.js",
+      "source_bytes": 5499,
+      "generated_bytes": 4031
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/sunrise.js",
+      "source_bytes": 23406,
+      "generated_bytes": 15941
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/tools.js",
+      "source_bytes": 19783,
+      "generated_bytes": 12451
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/weather.js",
+      "source_bytes": 5653,
+      "generated_bytes": 3999
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/zodiac-engine.js",
+      "source_bytes": 2369,
+      "generated_bytes": 1602
+    },
+    {
+      "path": "/assets/releases/67c467fe0cd51fe71df2/zodiac.js",
+      "source_bytes": 7304,
+      "generated_bytes": 5174
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/app.js",
+      "source_bytes": 36290,
+      "generated_bytes": 23869
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/ascendant-calculator.js",
+      "source_bytes": 10993,
+      "generated_bytes": 7470
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/calendar.js",
+      "source_bytes": 6264,
+      "generated_bytes": 4410
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/common.js",
+      "source_bytes": 15799,
+      "generated_bytes": 9257
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/contact.js",
+      "source_bytes": 3895,
+      "generated_bytes": 2640
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/cookie-notice.js",
+      "source_bytes": 1407,
+      "generated_bytes": 713
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/data/birth-cities.js",
+      "source_bytes": 8075,
+      "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/data/weather-cities.js",
+      "source_bytes": 2908,
+      "generated_bytes": 2126
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/discovery.js",
+      "source_bytes": 2952,
+      "generated_bytes": 2302
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/holiday-editorial.js",
+      "source_bytes": 2452,
+      "generated_bytes": 1507
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/holiday-phase2.js",
+      "source_bytes": 1788,
+      "generated_bytes": 1336
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/icons.js",
+      "source_bytes": 442,
+      "generated_bytes": 455
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/ics.js",
+      "source_bytes": 6313,
+      "generated_bytes": 4346
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/leave-planner.js",
+      "source_bytes": 31982,
+      "generated_bytes": 20737
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/lunar/astronomy-engine.js",
+      "source_bytes": 116487,
+      "generated_bytes": 116087
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/lunar/lunar-engine.js",
+      "source_bytes": 3529,
+      "generated_bytes": 3026
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/lunar/lunar.js",
+      "source_bytes": 7849,
+      "generated_bytes": 6037
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/monthly-holidays.js",
+      "source_bytes": 6097,
+      "generated_bytes": 4474
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/namedays-engine.js",
+      "source_bytes": 3674,
+      "generated_bytes": 2839
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/namedays.js",
+      "source_bytes": 12654,
+      "generated_bytes": 9898
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/phase-5-6-8-core.js",
+      "source_bytes": 14890,
+      "generated_bytes": 8908
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/phase-5-6-8.js",
+      "source_bytes": 41475,
+      "generated_bytes": 30628
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/search-engine.js",
+      "source_bytes": 15194,
+      "generated_bytes": 9017
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/search-page.js",
+      "source_bytes": 7452,
+      "generated_bytes": 4900
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/seasons-core.js",
+      "source_bytes": 1830,
+      "generated_bytes": 1801
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/seasons.js",
+      "source_bytes": 8063,
+      "generated_bytes": 6741
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/storage.js",
+      "source_bytes": 5499,
+      "generated_bytes": 4031
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/sunrise.js",
+      "source_bytes": 23406,
+      "generated_bytes": 15941
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/tools.js",
+      "source_bytes": 19783,
+      "generated_bytes": 12451
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/weather.js",
+      "source_bytes": 5653,
+      "generated_bytes": 3999
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/zodiac-engine.js",
+      "source_bytes": 2369,
+      "generated_bytes": 1602
+    },
+    {
+      "path": "/assets/releases/9b98741e23c1d9bba6ac/zodiac.js",
+      "source_bytes": 7304,
+      "generated_bytes": 5174
+    },
+    {
+      "path": "/assets/search-engine.js",
+      "source_bytes": 15194,
+      "generated_bytes": 9017
+    },
+    {
+      "path": "/assets/search-page.js",
+      "source_bytes": 7452,
+      "generated_bytes": 4900
+    },
+    {
+      "path": "/assets/seasons-core.js",
+      "source_bytes": 1830,
+      "generated_bytes": 1801
+    },
+    {
+      "path": "/assets/seasons.js",
+      "source_bytes": 8063,
+      "generated_bytes": 6741
+    },
+    {
+      "path": "/assets/storage.js",
+      "source_bytes": 5499,
+      "generated_bytes": 4031
+    },
+    {
+      "path": "/assets/sunrise.js",
+      "source_bytes": 23375,
+      "generated_bytes": 15910
+    },
+    {
+      "path": "/assets/tools.js",
+      "source_bytes": 19723,
+      "generated_bytes": 12391
+    },
+    {
+      "path": "/assets/weather.js",
+      "source_bytes": 5663,
+      "generated_bytes": 4013
+    },
+    {
+      "path": "/assets/zodiac-engine.js",
+      "source_bytes": 2369,
+      "generated_bytes": 1602
+    },
+    {
+      "path": "/assets/zodiac.js",
+      "source_bytes": 7325,
+      "generated_bytes": 5195
+    }
+  ]
+}

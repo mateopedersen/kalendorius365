@@ -1,0 +1,39 @@
+{
+  "method": "Disjoint Unicode ranges: Latin and Lithuanian first; every original extended glyph remains available on demand. Original print fonts unchanged.",
+  "fonttools_version": "4.67.0",
+  "fonts": [
+    {
+      "weight": 400,
+      "original_bytes": 62064,
+      "latin_lithuanian_bytes": 24444,
+      "original_sha256": "9bd23c13b68e2468193aad4e871cd619b8e3c9add577820035291c4eb3dc76a0",
+      "subset_sha256": "130290c9370eb11148bd6ae8609bf41058bcdd9f1f519bbd54a5aff17c3fe0ec",
+      "original_codepoints": 579,
+      "initial_codepoints": 174,
+      "deferred_codepoints": 405,
+      "all_original_characters_preserved": true
+    },
+    {
+      "weight": 700,
+      "original_bytes": 61028,
+      "latin_lithuanian_bytes": 24544,
+      "original_sha256": "94b1e33bd87f2a6b6549fb50874c3553a6fd5b2954baddc303a980cf961299c4",
+      "subset_sha256": "9136e9af7d2cdc9d1e7f5726c07abe4b00aa5ee40c1609533d0d2a5d730fe282",
+      "original_codepoints": 579,
+      "initial_codepoints": 174,
+      "deferred_codepoints": 405,
+      "all_original_characters_preserved": true
+    },
+    {
+      "weight": 900,
+      "original_bytes": 62020,
+      "latin_lithuanian_bytes": 25064,
+      "original_sha256": "6b5486e4bbb685b026ec8e7d0c212e2d80fffb6a9baaf18b3802b97e8041f7d4",
+      "subset_sha256": "7aeb43d2c52268e80a875d1dc07d23e0dc5bb3886e8ddafd8da37a2279cb8f90",
+      "original_codepoints": 579,
+      "initial_codepoints": 174,
+      "deferred_codepoints": 405,
+      "all_original_characters_preserved": true
+    }
+  ]
+}

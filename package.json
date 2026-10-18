@@ -1,1 +1,1 @@
-{"name":"kalendorius365","private":true,"type":"module","scripts":{"test":"node --test test/*.test.js"},"engines":{"node":">=22"}}
+{"name":"kalendorius365","private":true,"type":"module","scripts":{"test":"node --test test/*.test.js"},"engines":{"node":">=22"},"devDependencies":{"esbuild":"0.28.2"}}

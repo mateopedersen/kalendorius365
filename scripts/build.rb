@@ -8,6 +8,8 @@ require 'tmpdir'
 require_relative '../lib/calendar'
 require_relative '../lib/asset_release'
 require_relative '../lib/build_policy'
+require_relative '../lib/css_minifier'
+require_relative '../lib/static_asset_urls'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
@@ -21,19 +23,20 @@ Dir.chdir(ROOT) do
  release=Kalendorius::BuildPolicy.release?(ENV)
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
+ system('python3','scripts/css_route_split.py',exception:true)
  Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
   config.write(JSON.generate({'release'=>release}));config.flush
   system('bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
  end
  homepage=File.read('public/index.html')
- css_version=homepage[%r{/assets/style\.css\?v=([^"' >]+)},1]
+ css_version=homepage[%r{/assets/(?:style|homepage-bundle)\.css\?v=([^"' >]+)},1]
  script_version=homepage[%r{/assets/common\.js\?v=([^"' >]+)},1]
  abort 'Generated CSS version was not found in the homepage' unless css_version
  abort 'Generated JavaScript version was not found in the homepage' unless script_version
  Dir.glob('public/assets/**/*.css').each do |path|
   css=File.read(path)
   css.gsub!(%r{(/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2)(?!\?v=)}) { "#{$1}?v=#{css_version}" }
-  File.write(path,css)
+  File.write(path,Kalendorius::CssMinifier.minify(css))
  end
  Dir.glob('public/assets/**/*.js').each do |path|
   javascript=File.read(path)
@@ -43,6 +46,12 @@ Dir.chdir(ROOT) do
   end
   File.write(path,javascript)
  end
+ system('python3','scripts/inline_route_css.py',exception:true)
+ versioned_asset_references=Kalendorius::StaticAssetUrls.rewrite!('public')
+ puts "Content-versioned #{versioned_asset_references} static image, data and print URLs"
+ # Run after URL rewriting and CSS runtime-class discovery, which operate on
+ # readable modules. Hashes include the compiler and its pinned dependency lock.
+ system('node','scripts/minify_js.mjs','public/assets',exception:true)
   previous_revisions=AssetRelease.restore_previous_releases(File.join(ROOT,'public'),release_backup,previous_revisions)
   release_manifest=AssetRelease.publish(File.join(ROOT,'public'),previous:previous_revisions)
  end
@@ -77,9 +86,11 @@ Dir.chdir(ROOT) do
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
  abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
  theme_hash=Base64.strict_encode64(Digest::SHA256.digest(theme_script))
- headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
+ header_script=File.read('site/_layouts/default.html')[/<script data-header-boot>(.*?)<\/script>/m,1]
+ abort 'Inline header initializer not found; update the CSP hash strategy' unless header_script
+ header_hash=Base64.strict_encode64(Digest::SHA256.digest(header_script))
+ headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}' 'sha256-#{header_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
  headers+="  X-Robots-Tag: noindex\n" unless release
- one_day='Cache-Control: public, max-age=86400'
  immutable='Cache-Control: public, max-age=31536000, immutable'
  revalidate='Cache-Control: public, no-cache, max-age=0, must-revalidate'
  # Trailing-slash page patterns never overlap file assets. Cloudflare Pages
@@ -94,21 +105,20 @@ Dir.chdir(ROOT) do
  files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
- files.grep(%r{public/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2\z}).sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
+ files.grep(%r{public/assets/fonts/[^/]+\.woff2?\z}).sort.each do |path|
+  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  files.grep(%r{public/assets/data/.*\.json\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{data_cache}\n"
  end
- headers+="/assets/fonts/Inter-Regular.woff2\n  #{one_day}\n"
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{one_day}\n"
+  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
- headers+="/assets/visuals/*\n  #{one_day}\n/assets/previews/*\n  #{one_day}\n/assets/previews-small/*\n  #{one_day}\n/assets/holiday-ics/*\n  #{one_day}\n/downloads/*\n  #{one_day}\n"
- headers+="/assets/seasons-ics/*\n  #{one_day}\n  Content-Type: text/calendar; charset=utf-8\n"
- headers+="/assets/namedays-ics/*\n  #{one_day}\n  Content-Type: text/calendar; charset=utf-8\n"
- headers+="/assets/holiday-guides-ics/*\n  #{one_day}\n"
- headers+="/assets/lunar/days/*\n  #{one_day}\n/assets/lunar/albedo-web.png\n  #{one_day}\n/assets/lunar/albedo.png\n  #{one_day}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{one_day}\n"
+ headers+="/assets/visuals/*\n  #{immutable}\n/assets/previews/*\n  #{immutable}\n/assets/previews-small/*\n  #{immutable}\n/assets/holiday-ics/*\n  #{immutable}\n/downloads/*\n  #{immutable}\n"
+ headers+="/assets/seasons-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
+ headers+="/assets/namedays-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
+ headers+="/assets/holiday-guides-ics/*\n  #{immutable}\n"
+ headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo-web.webp\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
  abort 'Cloudflare Pages header rule limit exceeded' if headers.lines.count { |line|line.start_with?('/') }>100
  File.write('public/_headers',headers)
  system('python3','scripts/lunar/check_release.py',exception:true) if release

@@ -27,6 +27,8 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: Install pinned module compiler
+        run: npm ci --ignore-scripts
       - name: Build the current source before browser testing
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Install pinned development-only browser test runner

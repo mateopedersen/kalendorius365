@@ -1,0 +1,18 @@
+{
+  "method": "Lossless WebP; original PNG and full-resolution print texture retained",
+  "dimensions": [
+    512,
+    512
+  ],
+  "rgba_pixels_identical": true,
+  "before": {
+    "path": "site/assets/lunar/albedo-web.png",
+    "bytes": 370707,
+    "sha256": "56652da19d8bbc84809cf98a66d06269b7d84dbc33c8203403269f3fc47c3f22"
+  },
+  "after": {
+    "path": "site/assets/lunar/albedo-web.webp",
+    "bytes": 232384,
+    "sha256": "cfe251e9b0f291f508e5336f0e9fb0f0090173a7c995d7c447191107215ef3e0"
+  }
+}

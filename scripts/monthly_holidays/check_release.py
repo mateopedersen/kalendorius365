@@ -29,6 +29,30 @@ PRINT_LEGEND_TRANSITION = 'docs/language-audit/2026-10-17/annual-monochrome-lege
 PRINT_LEGEND_TRANSITION_SHA256 = 'c9fb55864d9afc0ae1d77b6c70ca893b1c6d3689404599ce6d7d19ceb0bec4d0'
 PRINT_LEGEND_STEMS = {f'{year}-metinis-{design:02}' for year in [2027,2028,2029] for design in range(1,6)}
 PRINT_LEGEND_PATHS = {f'site/downloads/{stem}.{ext}' for stem in PRINT_LEGEND_STEMS for ext in ['pdf','webp']} | {f'site/assets/{folder}/{stem}.webp' for stem in PRINT_LEGEND_STEMS for folder in ['previews','previews-small']}
+SCREEN_THUMBNAIL_TRANSITION = 'docs/performance/lunar-screen-thumbnails-128.json'
+SCREEN_THUMBNAIL_TRANSITION_SHA256 = '7b77d4625abc892464eb73942596ddbba70ba93399783392d6c04d79b4fa0766'
+
+def verified_screen_thumbnail_updates(root, baseline):
+ """Allow only the pinned 192-to-128 screen images; keep print assets frozen."""
+ raw=(root/SCREEN_THUMBNAIL_TRANSITION).read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=SCREEN_THUMBNAIL_TRANSITION_SHA256:
+  raise ValueError('screen thumbnail transition evidence differs')
+ transition=json.loads(raw)
+ dates={row['date_local'] for row in json.loads((root/'data/lunar/calendar.json').read_text())['records']}
+ expected={f'site/assets/lunar/days/{day}.webp' for day in dates}
+ items=transition['files']
+ if len(items)!=1096 or {item['path']for item in items}!=expected:
+  raise ValueError('screen thumbnail scope differs')
+ allowed={}
+ for item in items:
+  path=item['path'];current=(root/path).read_bytes()
+  if (baseline.get(path)!=item['before']['sha256'] or
+      hashlib.sha256(current).hexdigest()!=item['after']['sha256'] or
+      len(current)!=item['after']['bytes'] or
+      item['before']['dimensions']!=[192,192] or item['after']['dimensions']!=[128,128]):
+   raise ValueError('unexpected screen thumbnail change: '+path)
+  allowed[path]=item['after']['sha256']
+ return allowed
 
 def reviewed_print_updates(root, baseline):
  """Allow precisely60 print-file transitions and their metadata; freeze all else."""
@@ -223,13 +247,30 @@ def run():
    check(el.tag.split('}')[-1] not in ['script','foreignObject','image','animate','filter'],a['slug']+' unsafe/heavy SVG element')
    check(all(not k.lower().startswith('on') for k in el.attrib),a['slug']+' event handler in SVG')
  # Preserve the baseline; the later planner repair restores two documented metadata fields only.
- preserved=0;changed=[];intentional_updates=[];print_updates={}
+ preserved=0;changed=[];intentional_updates=[];print_updates={};screen_updates={}
+ if any(path.startswith('site/assets/lunar/days/') and (ROOT/path).is_file() and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=sha for path,sha in base['assets'].items()):
+  try:screen_updates=verified_screen_thumbnail_updates(ROOT,base['assets'])
+  except (OSError,ValueError,KeyError,TypeError)as error:check(False,'screen thumbnail preservation: '+str(error))
  if any((ROOT/path).is_file()and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=base['assets'].get(path)for path in PRINT_LEGEND_PATHS):
   try:print_updates=reviewed_print_updates(ROOT,base['assets'])
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'reviewed print preservation: '+str(error))
  for path,sha in base['assets'].items():
   if path=='site/assets/data/search.json':continue
   p=ROOT/path
+  if path=='site/assets/lunar/lunar.js':
+   current=p.read_bytes();updated=b"'/assets/lunar/albedo-web.webp'";previous=b"'/assets/lunar/albedo-web.png'"
+   evidence=(ROOT/'docs/performance/lunar-texture-lossless.json').read_bytes()
+   texture=json.loads(evidence)
+   check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'lunar runtime changes only the lossless screen texture URL')
+   check(hashlib.sha256(evidence).hexdigest()=='64be7cf140fb4bebddf3697228bb328093724acbc4ab2190648e285abfa90011' and texture['rgba_pixels_identical'] is True,'pinned lossless texture comparison')
+   for item in [texture['before'],texture['after']]:
+    raw=(ROOT/item['path']).read_bytes()
+    check(len(raw)==item['bytes'] and hashlib.sha256(raw).hexdigest()==item['sha256'],'lossless texture asset matches reviewed bytes')
+   intentional_updates.append({'path':path,'reason':'Only the screen texture URL changes to the pinned pixel-identical lossless WebP; original PNG and print texture retained','sha256':hashlib.sha256(current).hexdigest()})
+   continue
+  if path in screen_updates:
+   intentional_updates.append({'path':path,'reason':'Pinned screen-only thumbnail resize from 192px to 128px; print and SVG originals unchanged','sha256':screen_updates[path],'transition_manifest':SCREEN_THUMBNAIL_TRANSITION})
+   continue
   if path in print_updates:
    intentional_updates.append({'path':path,'reason':'Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved','sha256':print_updates[path],'review_manifest':PRINT_LEGEND_TRANSITION})
    continue
@@ -272,11 +313,12 @@ def run():
    check(valid,'reviewed holiday editorial preservation: '+str(evidence))
    if valid:intentional_updates.append(evidence)
    else:changed.append(path)
-  continue
-  allowed={sha}
-  if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
-  if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
-  else:preserved+=1
+  else:
+   allowed={sha}
+   if path in base.get('git_checkout_variants',{}):allowed.add(base['git_checkout_variants'][path]['sha256'])
+   if not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest() not in allowed:changed.append(path)
+   else:preserved+=1
+ check(preserved+len(intentional_updates)+len(changed)==len(base['assets'])-int('site/assets/data/search.json' in base['assets']),'every frozen asset must be accounted for by a byte check or explicit reviewed transition')
  check(not changed,'baseline assets changed: '+str(changed[:20]))
  report={'status':'passed'if not failures else'failed','gate':'implementation-static-independent-calendar','pages':results,'baseline_assets_preserved':preserved,'intentional_metadata_updates':intentional_updates,'changed_baseline_assets':changed,'git_text_checkout_variants':base.get('git_checkout_variants',{}),'failures':failures,'checked_at':'2026-10-17','limits':['No independent native-human language or legal certification is claimed.','Browser interaction, rendered geometry, contrast and live HTTP are a separate gate.']}
  out=ROOT/'docs/2027-monthly-holidays/QA-GATE-1.json';out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'status':report['status'],'pages':len(results),'preserved_assets':preserved,'failures':failures},ensure_ascii=False));assert not failures

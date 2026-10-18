@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-export function headerHarness({mobile = true, loadIndex = async () => [], search = null} = {}) {
+export function headerHarness({mobile = true, serverRendered = false, loadIndex = async () => [], search = null} = {}) {
   const timers = new Map(); let nextTimer = 0; let imports = 0;
   const flush = async () => { const pending = [...timers.values()]; timers.clear(); await Promise.all(pending.map(fn => fn())); };
   const events = target => {
@@ -11,14 +11,16 @@ export function headerHarness({mobile = true, loadIndex = async () => [], search
       handlers.push(handler);
       target.handlers.set(name, handlers);
     };
-    target.emit = (name, detail = {}) => Promise.all(
-      (target.handlers.get(name) || []).map(handler => handler({target, currentTarget: target, ...detail})),
-    );
+    target.emit = (name, detail = {}) => {
+      const event = {target, currentTarget: target, defaultPrevented: false, preventDefault() { this.defaultPrevented = true; }, ...detail};
+      target.lastEvent = event;
+      return Promise.all((target.handlers.get(name) || []).map(handler => handler(event)));
+    };
     return target;
   };
   let document;
   const element = (tag = 'div') => {
-    const node = events({tag, attrs: new Map(), children: [], value: '', dataset: {}, textContent: ''});
+    const node = events({tag, tagName: tag.toUpperCase(), attrs: new Map(), children: [], value: '', dataset: {}, textContent: ''});
     let classes = new Set();
     Object.defineProperty(node, 'className', {
       get: () => [...classes].join(' '),
@@ -96,6 +98,10 @@ export function headerHarness({mobile = true, loadIndex = async () => [], search
   const navLink = element('a'); navLink.href = '/'; nav.append(navLink);
   form.append(icon, input, submit, results);
   header.append(selectors.get('#nav-toggle'), nav, form);
+  if (serverRendered) {
+    const toggle = element('a'); toggle.className = 'header-search-toggle icon-button'; toggle.href = '/paieska/'; toggle.setAttribute('role', 'button');
+    form.before(toggle); selectors.set('.header-search-toggle', toggle); header.classList.add('search-ready');
+  }
   document = events({
     body: element(), documentElement: element(),
     querySelector: selector => selectors.get(selector) || null,

@@ -119,10 +119,12 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
   if specifier.startswith(('./','../','/')):
    # Relative imports are safe within a revision directory. Compatibility
    # modules must import the immutable directory explicitly.
-   assert (fingerprinted and specifier.startswith(('./','../'))) or specifier.startswith('/assets/releases/'),(path,specifier)
+   assert (fingerprinted and specifier.startswith(('./','../'))) or specifier.startswith('/assets/releases/') or '?v=' in specifier,(path,specifier)
    parsed=urlsplit(specifier)
    target=PUBLIC/parsed.path.lstrip('/') if specifier.startswith('/') else path.parent/parsed.path
    assert target.is_file(),(path,specifier)
+for path in list((PUBLIC/'assets/fonts').glob('*.woff*'))+[PUBLIC/'assets/lunar/albedo-web.webp']:
+ assert f'/{path.relative_to(PUBLIC)}\n  Cache-Control: public, max-age=31536000, immutable' in headers,path
 for path,page in pages.items():
  for url in page.links:
   parsed=urlsplit(url)

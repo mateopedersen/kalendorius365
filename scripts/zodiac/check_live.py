@@ -37,7 +37,8 @@ def check(item):
    result.update(canonical=canonical,robots=robots,header_robots=header_robots,h1_count=p.headings.count(1),lithuanian=next(a.get('lang')for t,a in p.tags if t=='html')=='lt')
    assert status==200 and canonical=='https://kalendorius365.lt'+route and robots=='index, follow' and result['h1_count']==1 and result['lithuanian']
    if MODE=='production':assert 'noindex'not in header_robots.lower()
-   assert re.search(r'/assets/releases/[0-9a-f]{20}/zodiac\.css[\"\']',source)
+   expected_css = '/assets/zodiac-guide.css?v=' if route == '/zodiakas/' else ('/assets/horoscope-hub.css?v=' if route == '/horoskopai/' else '/assets/horoscope-detail.css?v=')
+   assert expected_css.split('?')[0].removeprefix('/assets/') in source
    if route=='/zodiakas/':
     assert source.count('data-sign-card=')==12 and source.count('data-wheel-sign=')==12 and 'id="z-finder"'in source and 'id="z-compare-first"'in source
    elif route!='/horoskopai/':

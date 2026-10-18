@@ -3,6 +3,17 @@ import assert from 'node:assert/strict';
 import {headerHarness} from './helpers/header-dom.js';
 import {loadSearchIndex} from '../site/assets/search-engine.js';
 
+test('server-rendered search control is reused and keeps native fallback navigation', async () => {
+  const h = headerHarness({serverRendered: true});
+  assert.equal(h.header.querySelectorAll('.header-search-toggle').length, 1);
+  assert.equal(h.toggle.href, '/paieska/');
+  await h.toggle.click();
+  assert.equal(h.toggle.lastEvent.defaultPrevented, true);
+  assert.equal(h.form.classList.contains('search-open'), true);
+  await h.toggle.emit('keydown', {key: ' '});
+  assert.equal(h.form.classList.contains('search-open'), false);
+});
+
 test('mobile search has an explicit opener, closer, and native submit button', async () => {
   const h = headerHarness();
   await h.toggle.click();
