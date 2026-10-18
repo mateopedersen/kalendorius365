@@ -113,7 +113,7 @@ Dir.chdir(ROOT) do
   abort 'Expected 1,560 redirects for the 390 imported calendars' unless redirects.length==1560
  end
  File.write('public/_redirects',redirects.empty? ? '' : redirects.join("\n")+"\n")
- File.write('public/robots.txt',"User-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
+ File.write('public/robots.txt',"User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
  headers="/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n"
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
  abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
