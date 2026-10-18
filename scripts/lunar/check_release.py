@@ -2,7 +2,10 @@
 from __future__ import annotations
 import csv,hashlib,json
 from pathlib import Path
+import sys
 ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'scripts'))
+from calendar_package import validate_import_evidence
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 LEGEND_TRANSITION_VERSION='2026-10-17-annual-monochrome-legend-v2'
 LEGEND_TRANSITION_PATH='docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json'
@@ -36,9 +39,35 @@ def approved_legacy_replacements(baseline,transition):
     assert len(replacements)==30,'Only 30 legacy download hashes may transition'
     return replacements
 
-def verify_existing_downloads(root,baseline,transition=None):
+def package_legacy_replacements(root,baseline):
+    """Resolve the exact reviewed old annual files superseded by this package."""
+    transition_path=root/LEGEND_TRANSITION_PATH
+    assert sha(transition_path)==LEGEND_TRANSITION_SHA256,'Legacy transition differs from the independently reviewed version'
+    assert sha(root/'docs/lunar/qa/existing-downloads-before.json')==LEGACY_BASELINE_SHA256,'Original 832-asset baseline must never be rewritten'
+    transition=json.loads(transition_path.read_text())
+    assert transition['version']==LEGEND_TRANSITION_VERSION
+    assert transition['preflight_status']=='passed-twice' and transition['visual_status']=='all15-reviewed'
+    assert transition['before_text']=='Šventės pažymėtos raudonai' and transition['after_text']=='12 mėnesių apžvalga'
+    stems,expected=legacy_legend_paths()
+    assert len(transition['selected_assets'])==15 and {row['stem'] for row in transition['selected_assets']}==stems
+    rows={row['path']:row for row in transition['changed_files']}
+    assert len(rows)==60 and set(rows)==expected,'Legacy correction must cover exactly the reviewed 60 annual artifacts'
+    replacements={}
+    for path,row in rows.items():
+        if path.startswith('site/downloads/'):
+            public='public/'+path.removeprefix('site/')
+            assert public in baseline and baseline[public]==row['before']['sha256'],('Legacy correction old hash does not match immutable original baseline',public)
+            replacements[path]=row['after']['sha256']
+    assert len(replacements)==30
+    return replacements
+
+def verify_existing_downloads(root,baseline,transition=None,retired_paths=None):
     replacements=approved_legacy_replacements(baseline,transition) if transition else {}
+    retired_paths=retired_paths or set()
     for path,old_sha in baseline.items():
+        if path in retired_paths:
+            assert not (root/path).exists(),('Superseded calendar download still exists in the built site',path)
+            continue
         expected=replacements.get(path,old_sha)
         assert sha(root/path)==expected,('Preexisting asset changed without the exact reviewed correction',path)
     if transition:
@@ -46,7 +75,7 @@ def verify_existing_downloads(root,baseline,transition=None):
             assert sha(root/row['path'])==row['after']['sha256'],('Reviewed correction source differs from pinned artifact',row['path'])
             built='public/'+row['path'].removeprefix('site/')
             assert sha(root/built)==row['after']['sha256'],('Reviewed correction output differs from pinned artifact',built)
-    return len(baseline)-len(replacements),len(replacements)
+    return len(baseline)-len(replacements)-len(retired_paths),len(replacements)+len(retired_paths)
 
 LEGACY_BASELINE_SHA256='ec0bec25e7100438f7dc48c804ca4a31893483178c702b7064344d200e40e80d'
 
@@ -139,11 +168,30 @@ def main():
             assert built.stat().st_size<25*1024*1024
         assert qb['pdf_sha256']==asset['pdf_sha256']
     baseline=json.loads((ROOT/'docs/lunar/qa/existing-downloads-before.json').read_text())
-    transition=read_approved_legacy_transition(ROOT,baseline)
-    unchanged,reviewed=verify_existing_downloads(ROOT,baseline,transition)
+    manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())
+    retired_public_paths=set();package=None;transition=None
+    if manifest.get('packageImport'):
+        package=validate_import_evidence(ROOT,manifest,check_files=True)
+        package_legacy=package_legacy_replacements(ROOT,baseline)
+        for relative,record in package['retiredPaths'].items():
+            if relative.startswith('site/downloads/'):
+                public='public/'+relative.removeprefix('site/')
+                assert public in baseline and record['sha256'] in {baseline[public],package_legacy.get(relative)},('Imported package does not match the frozen old-download baseline or reviewed annual correction',public)
+                retired_public_paths.add(public)
+        assert len(retired_public_paths)==780,'Imported package must supersede exactly 780 old PDF/WebP downloads'
+        package_files={record['path']:record for item in package['evidence']['records'] for record in item['afterFiles'].values()}
+        for relative in package['newPaths']:
+            source_record=package_files[relative]
+            public='public/'+relative.removeprefix('site/')
+            assert sha(ROOT/public)==source_record['sha256'],('Built package asset differs from the supplied source',public)
+    else:
+        transition=read_approved_legacy_transition(ROOT,baseline)
+        package=None
+        retired_public_paths=set()
+    unchanged,reviewed=verify_existing_downloads(ROOT,baseline,transition if package is None else None,retired_public_paths)
     assert not (ROOT/'public/lunar-responsive-qa.html').exists(),'Local QA harness must not be published'
     assert not (ROOT/'public/lunar-qa-axe.js').exists(),'Local QA library must not be published'
     assert len([r for r in (ROOT/'public/_headers').read_text().splitlines() if r.startswith('/')])<=100
-    print(f'Lunar release gate: all 146 lunar downloads match both preflight passes; {unchanged} original legacy downloads unchanged; {reviewed} annual legend corrections match the pinned reviewed transition.')
+    print(f'Lunar release gate: all 146 lunar downloads match both preflight passes; {unchanged} legacy downloads preserved; {reviewed} superseded download hashes match the pinned transition evidence.')
 
 if __name__=='__main__':main()

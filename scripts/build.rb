@@ -4,6 +4,7 @@ require 'json'
 require 'digest'
 require 'base64'
 require 'tempfile'
+require 'uri'
 require_relative '../lib/calendar'
 require_relative '../lib/build_policy'
 require_relative '../lib/css_minifier'
@@ -65,17 +66,39 @@ Dir.chdir(ROOT) do
   end
  end
  require 'cgi'
+ url_encode=->(path){URI::DEFAULT_PARSER.escape(path, /[^A-Za-z0-9\-._~\/]/)}
  xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
  manifest=JSON.parse(File.read('site/assets/data/manifest.json'))['assets']
  abort 'Release requires every print asset to pass preflight' if release && manifest.any? { |e|e.dig('verification','status')!='passed' }
  if release
   urls.sort.each do |url|
    xml+="<url><loc>#{CGI.escapeHTML(url)}</loc>"
-   manifest.select { |e|e['kind']=='monthly' && url=="https://kalendorius365.lt/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" }.each { |e|xml+="<image:image><image:loc>https://kalendorius365.lt#{e['webp']}?v=#{e.dig('files','webp','sha256')[0,16]}</image:loc></image:image>" }
+   manifest.select do |e|
+    route=e['kind']=='monthly' ? "/#{e['year']}/#{Kalendorius::DATA['months'][e['month']-1][0]}/" : e['kind']=='annual' ? "/#{e['year']}/" : nil
+    route && url=="https://kalendorius365.lt#{route}"
+   end.each do |e|
+    image_path=url_encode.call(e['webp'])
+    xml+="<image:image><image:loc>https://kalendorius365.lt#{CGI.escapeHTML(image_path)}?v=#{e.dig('files','webp','sha256')[0,16]}</image:loc></image:image>"
+   end
    xml+='</url>'
   end
  end
  File.write('public/sitemap.xml',xml+'</urlset>')
+ redirects=manifest.flat_map do |asset|
+  legacy=asset['legacyPaths']||{}
+  legacy.map do |kind,source|
+   target_key=kind=='smallPreview' ? 'smallPreview' : kind
+   target=asset[target_key]
+   abort "Legacy redirect has no destination: #{source}" unless target
+   "#{url_encode.call(source)} #{url_encode.call(target)} 301"
+  end
+ end
+ abort 'Cloudflare Pages static redirect limit exceeded' if redirects.length>2000
+ abort 'Duplicate legacy calendar redirect source' unless redirects.map { |line|line.split.first }.uniq.length==redirects.length
+ if release && JSON.parse(File.read('site/assets/data/manifest.json')).key?('packageImport')
+  abort 'Expected 1,560 redirects for the 390 imported calendars' unless redirects.length==1560
+ end
+ File.write('public/_redirects',redirects.empty? ? '' : redirects.join("\n")+"\n")
  File.write('public/robots.txt',"User-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
  headers="/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n"
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
