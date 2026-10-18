@@ -24,7 +24,7 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=1fcf2129a917 /assets/design-system.css?v=1fcf2129a917 /assets/discovery.css?v=1fcf2129a917">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=330768858b3e /assets/design-system.css?v=330768858b3e /assets/discovery.css?v=330768858b3e">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -651,7 +651,7 @@ button:hover,.button:hover{transform: none;}}
 .discovery-heading--editorial .page-heading{margin: 0;}
 .discovery-heading--editorial h1{max-width: 760px;margin: 0 0 .55rem;font-size: clamp(1.8rem,3vw,2.7rem);}
 .discovery-heading--editorial .page-intro{max-width: 730px;font-size: 1.06rem;line-height: 1.65;}
-.eyebrow{margin: 0 0 .5rem;color: #147653;font-size: .72rem;font-weight: 900;letter-spacing: .13em;line-height: 1.4;}
+.eyebrow,.discovery-kicker{margin: 0 0 .5rem;color: #147653;font-size: .72rem;font-weight: 900;letter-spacing: .13em;line-height: 1.4;}
 .weekend-planner{margin: 1.6rem 0;padding: clamp(1rem,3vw,1.75rem);border: 1px solid #dbe6e0;border-radius: 18px;box-shadow: 0 12px 34px #17372a08;}
 .discovery-tool-heading,.weekend-year-heading{display: flex;align-items: center;justify-content: space-between;gap: 1rem;margin-bottom: 1.1rem;}
 .discovery-tool-heading h2,.weekend-year-heading h2{margin: 0;font-size: clamp(1.2rem,2vw,1.55rem);}
@@ -660,6 +660,7 @@ button:hover,.button:hover{transform: none;}}
 .daylight-form label,.weekend-planner-controls label{display: grid;gap: .4rem;color: #34455a;font-size: .83rem;font-weight: 700;}
 .daylight-form input,.weekend-planner-controls select{width: 100%;min-height: 46px;padding: .65rem .8rem;border: 1px solid #ccd8d2;border-radius: 9px;background: #fff;color: var(--ink);font-size: .95rem;}
 .button--subtle{background: #f9fbfa;}
+.commemoration-tag{width: max-content;padding: .24rem .55rem;border-radius: 99px;background: #edf7f1;color: #246346;font-size: .68rem;font-weight: 800;}
 .daylight-form{display: flex;align-items: end;gap: .8rem;}
 .daylight-form label{flex: 1;max-width: 360px;}
 .daylight-form button{min-height: 46px;}
@@ -678,6 +679,7 @@ button:hover,.button:hover{transform: none;}}
 .daylight-time{position: absolute;top: -1.2rem;color: #756344;font-size: .64rem;font-weight: 700;font-variant-numeric: tabular-nums;white-space: nowrap;}
 .daylight-time--rise{transform: translateX(-10%);}
 .daylight-time--set{transform: translateX(-90%);}
+.discovery-kicker{color: #a27327;font-size: .67rem;}
 .weekend-planner-controls{display: grid;grid-template-columns: minmax(12rem,.7fr) 1.3fr;align-items: end;gap: 1rem;padding: .9rem 1rem;border-radius: 12px;background: #f5faf6;}
 .weekend-planner-controls p{margin: 0;color: var(--muted);font-size: .82rem;}
 .weekend-recommendations{display: grid;grid-template-columns: repeat(2,minmax(0,1fr));gap: .75rem;margin-top: 1rem;}
@@ -702,6 +704,30 @@ button:hover,.button:hover{transform: none;}}
 .weekend-howto h2{margin: .2rem 0;font-size: 1.2rem;}
 .weekend-howto p{margin: 0 0 .65rem;color: var(--muted);font-size: .86rem;}
 .weekend-howto a{font-size: .84rem;font-weight: 800;}
+.commemoration-favorite{position: absolute;top: .8rem;right: .8rem;display: grid;place-items: center;width: 34px;height: 34px;padding: 0;border: 1px solid #e5e9e6;border-radius: 50%;background: #fff;color: #b18035;font-size: 1.25rem;line-height: 1;box-shadow: 0 2px 7px #17372a0a;}
+.commemoration-favorite[aria-pressed="true"]{border-color: #efd7a2;background: #fff8e8;color: #a16d19;}
+.commemoration-favorite:hover{transform: scale(1.06);}
+.daylight-focus-city{display: grid;gap: .3rem;color: #34455a;font-size: .77rem;font-weight: 700;}
+.daylight-focus-city select{min-width: 150px;min-height: 39px;padding: .45rem .65rem;border: 1px solid #ccd8d2;border-radius: 9px;background: white;color: var(--ink);}
+.daylight-year-gridline{fill: none;stroke: #dfe8e2;stroke-width: 1;stroke-dasharray: 2 6;}
+.daylight-year-axis-label{fill: #7b887f;font-size: 11px;font-variant-numeric: tabular-nums;}
+.daylight-year-area{fill: url(#daylight-area);}
+.daylight-year-line{fill: none;stroke: #d99c3d;stroke-width: 4;stroke-linecap: round;stroke-linejoin: round;}
+.daylight-year-month{fill: #617064;font-size: 11px;font-weight: 700;}
+.daylight-year-point{fill: #fff;stroke: #d99c3d;stroke-width: 2.5;cursor: pointer;transition: r .15s ease,fill .15s ease;}
+.daylight-year-point:hover{r: 8;fill: #fff6df;}
+.daylight-year-point:focus{outline: none;stroke: #087653;stroke-width: 4;}
+.daylight-year-point--turn{stroke: #0b805b;stroke-width: 3;}
+.daylight-year-point-core{fill: #f2c365;pointer-events: none;}
+.daylight-year-summary{margin: .55rem 0 0;padding: .65rem .8rem;border-left: 3px solid #d99c3d;border-radius: 0 8px 8px 0;background: #fff8ea;color: #55472e;font-size: .83rem;line-height: 1.5;}
+.weekend-plan-summary{display: flex;align-items: center;justify-content: space-between;gap: 1rem;margin-top: 1rem;padding: .85rem 1rem;border: 1px solid #e7ecde;border-radius: 12px;background: linear-gradient(110deg,#fff8e8,#f5faf6);}
+.weekend-plan-summary .discovery-kicker{display: block;margin-bottom: .15rem;}
+.weekend-plan-summary strong{display: block;color: #0a7553;font-size: 1.13rem;}
+.weekend-plan-summary p{margin: .25rem 0 0;color: var(--muted);font-size: .78rem;}
+.weekend-plan-summary > button{flex: 0 0 auto;min-height: 37px;padding: .45rem .65rem;font-size: .76rem;}
+.weekend-plan-summary > button:disabled{opacity: .5;cursor: not-allowed;}
+.weekend-recommendation > a{display: inline-block;margin-top: .25rem;font-size: .75rem;font-weight: 800;}
+.weekend-plan-empty{grid-column: 1 / -1;margin: 0;padding: .9rem 1rem;border: 1px dashed #d8e4dc;border-radius: 12px;color: var(--muted);font-size: .84rem;}
 @media (max-width: 800px){.discovery-heading--editorial{padding: 1rem;}}
 @media (max-width: 600px){.discovery-heading--editorial{display: block;min-height: 0;padding: 1.05rem;}
 .discovery-heading--editorial > img{display: block;width: min(100%,240px);height: auto;margin: -.3rem auto .4rem;}
@@ -716,6 +742,10 @@ button:hover,.button:hover{transform: none;}}
 .daylight-time{font-size: .6rem;}
 .weekend-planner-controls,.weekend-howto{grid-template-columns: 1fr;}
 .weekend-recommendations{grid-template-columns: 1fr;}
+.daylight-focus-city{width: 100%;}
+.daylight-focus-city select{width: 100%;}
+.weekend-plan-summary{align-items: stretch;flex-direction: column;}
+.weekend-plan-summary > button{width: 100%;}
 .weekend-year-heading{align-items: start;flex-direction: column;}
 .weekend-year-picker{display: grid;grid-template-columns: repeat(3,1fr);}
 .weekend-year-picker button{padding: .5rem;}}</style>
@@ -730,7 +760,7 @@ button:hover,.button:hover{transform: none;}}
 
 
 
-<link rel="stylesheet" href="/assets/print.css?v=1fcf2129a917" media="print">
+<link rel="stylesheet" href="/assets/print.css?v=330768858b3e" media="print">
 
 
 
@@ -745,11 +775,11 @@ button:hover,.button:hover{transform: none;}}
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pradžia","item":"https://kalendorius365.lt/"},{"@type":"ListItem","position":2,"name":"Ilgieji savaitgaliai 2027–2029 be atostogų","item":"https://kalendorius365.lt/ilgieji-savaitgaliai/"}]}</script>
 
-<link rel="modulepreload" href="/assets/common.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/cookie-notice.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/discovery-core.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/discovery.js?v=ec7c1098941b">
-<link rel="modulepreload" href="/assets/phase-5-6-8-core.js?v=ec7c1098941b">
+<link rel="modulepreload" href="/assets/common.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/cookie-notice.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/discovery-core.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/discovery.js?v=3399465e8f23">
+<link rel="modulepreload" href="/assets/phase-5-6-8-core.js?v=3399465e8f23">
 </head>
 <body>
 <a class="skip" href="#main">Pereiti prie turinio</a>
@@ -760,7 +790,7 @@ button:hover,.button:hover{transform: none;}}
 <main id="main" class="content-main">
 <nav class="breadcrumbs" aria-label="Naršymo kelias"><a href="/">Pradžia</a><span aria-hidden="true">/</span><span>Ilgieji savaitgaliai 2027–2029 be atostogų</span></nav>
 <header class="discovery-heading discovery-heading--editorial">
-  <img src="/assets/visuals/discovery-planning.svg?v=361571453fd3" width="300" height="210" alt="" aria-hidden="true">
+  <img src="/assets/visuals/discovery-planning.svg?v=f6d8b17b4a5e" width="300" height="210" alt="" aria-hidden="true">
   <div><p class="eyebrow">PLANUOKITE LAIKĄ SAU</p>
     <div class="page-heading"><div>
       <h1>Ilgieji savaitgaliai 2027–2029</h1>
@@ -778,10 +808,13 @@ button:hover,.button:hover{transform: none;}}
         <option value="1" selected>1 atostogų dieną</option>
         <option value="2">2 atostogų dienas</option>
         <option value="3">3 atostogų dienas</option>
+        <option value="4">4 atostogų dienas</option>
+        <option value="5">5 atostogų dienas</option>
       </select>
     </label>
-    <p>Skaičiuoklė prideda darbo dienas prie jau esančio ilgojo savaitgalio ir įtraukia pakeliui pasitaikančius šeštadienius bei sekmadienius.</p>
+    <p>Įveskite bendrą metinį limitą. Planuoklė paskirstys jį tarp skirtingų progų, kad papildomos atostogų dienos nesikartotų.</p>
   </div>
+  <div class="weekend-plan-summary" aria-live="polite"><div><span class="discovery-kicker">METŲ PLANAS</span><strong id="weekend-plan-total">Ruošiamas planas…</strong><p id="weekend-plan-caption"></p></div><button class="button button--subtle" id="weekend-plan-export" type="button" disabled>Atsisiųsti planą .ics</button></div>
   <div id="weekend-recommendations" class="weekend-recommendations" aria-live="polite"></div>
 </section>
 
@@ -822,7 +855,7 @@ button:hover,.button:hover{transform: none;}}
 </section>
 
 <section class="weekend-howto panel"><div><p class="eyebrow">KAIP SKAIČIUOJAMA</p><h2>Poilsio planas, kuris atitinka jūsų grafiką</h2></div>
-  <div><p>Sąrašas daromas pagal įprastą penkių darbo dienų savaitę nuo pirmadienio iki penktadienio. Įtraukiamos įstatyme nustatytos šventės ir gretimi savaitgaliai; papildomos atostogos prie pradinių datų nepridedamos.</p><p>Atostogų planuoklė parodo, kaip pasirinktos atostogų dienos galėtų pailginti poilsį. Patikrinkite savo darbovietės grafiką ir atostogų tvirtinimo tvarką.</p><a href="/atostogu-planavimas/">Atidaryti išsamų atostogų planuoklį →</a></div>
+  <div><p>Sąrašas daromas pagal įprastą penkių darbo dienų savaitę nuo pirmadienio iki penktadienio. Įtraukiamos įstatyme nustatytos šventės ir gretimi savaitgaliai; papildomos atostogos prie pradinių datų nepridedamos.</p><p>Viršuje esanti metinio plano skaičiuoklė atostogų limitą paskirsto tarp nesikertančių laikotarpių, todėl ta pati darbo diena nepriskiriama dviem poilsio planams. Prieš tvirtindami atostogas patikrinkite savo darbovietės grafiką ir tvarką.</p><a href="/atostogu-planavimas/">Atidaryti išsamų atostogų planuoklį →</a></div>
 </section>
 
 <aside class="source-note">Teisės aktų duomenys sutikrinti 2026-10-16. 2027–2029 m. datos skaičiuotos pagal nuo 2027-01-01 numatytą galioti Darbo kodekso 123 straipsnio redakciją. Savaitgalį pasitaikanti šventė automatiškai neperkeliama į pirmadienį; atmintina diena savaime nėra nedarbo diena. <a href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz" rel="noopener">Darbo kodekso 123 straipsnis</a>.</aside>
@@ -845,5 +878,5 @@ button:hover,.button:hover{transform: none;}}
   </div>
 </aside>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
-<script type="module" async src="/assets/common.js?v=ec7c1098941b"></script><script type="module" async src="/assets/cookie-notice.js?v=ec7c1098941b"></script><script type="module" async src="/assets/discovery.js?v=ec7c1098941b"></script>
+<script type="module" async src="/assets/common.js?v=3399465e8f23"></script><script type="module" async src="/assets/cookie-notice.js?v=3399465e8f23"></script><script type="module" async src="/assets/discovery.js?v=3399465e8f23"></script>
 </body></html>
