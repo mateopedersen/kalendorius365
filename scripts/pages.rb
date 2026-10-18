@@ -55,7 +55,6 @@ module Pages
   FileUtils.mkdir_p(File.dirname(target))
   html=print_html(path,visual_html(path,html))
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
-  metadata['workdays']=true if path.match?(/\Adarbo-dienos\/20\d{2}\z/)
   print=html[/data-print-root="art" data-print-paper="(portrait|landscape)" data-print-size="(A[34])"/,0]
   if print
    orientation=print[/data-print-paper="(portrait|landscape)"/,1]
@@ -64,6 +63,7 @@ module Pages
   end
   metadata['robots']=robots if robots
   metadata['planner']=true if planner
+  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/202[789]\z})
   metadata['phase_module']=phase_module if phase_module
   metadata['holiday_editorial']=true if path=='sventes' || path.start_with?('sventes/')
   File.write(target,"---\n#{metadata.map { |k,v| "#{k}: #{v.to_json}" }.join("\n")}\n---\n#{html}")
