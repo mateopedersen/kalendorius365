@@ -2,7 +2,7 @@
 
 ## Automated checks
 
-- Full Node suite: **199 passed, 0 failed**, including 17 focused editor tests.
+- Full Node suite: **200 passed, 0 failed**, including 17 focused editor tests.
 - Editor suite under `Pacific/Honolulu` and `Pacific/Kiritimati`: **17/17 each**.
 - Independent Python datetime/calendar oracle covers every day of 2027–2029, ISO boundaries and Gregorian century cases. Statutory holiday fixtures are independent known dates.
 - Layout tests cover all supported paper sizes/orientations, modes, compact photos and dense events. Archive tests reject invalid CRC, unsafe paths, oversized/unsupported data; a failed IndexedDB transaction must reject.
@@ -28,3 +28,7 @@ These are desktop browser responsive emulations, not physical iOS/Android device
 ## Sources and maintenance
 
 See IMPLEMENTATION.md and the visible static guide for source links, review dates and validity. School dates are restricted to ministry-published 2026–2027; later school years require published source updates. Historical and future statutory dates are projections of current rules, not historical legal certification. Optional ICS/CSV import, account synchronization and public sharing are outside this release.
+
+## Integrated release verification
+
+The complete generated release includes the editor (not the former generator), scoped CSS/module and all four TrueType fonts. The existing build exclusion for these fonts was removed only for the four required regular/bold Lato/Inter files. The final minified release was opened under its CSP, the 12-photo portable project restored and a real 12-page PDF downloaded. Integrated site audit: 192 HTML files, 191 canonical pages, 25,312 local targets, zero broken links. Cloudflare cache rules remain within its 100-rule limit.
