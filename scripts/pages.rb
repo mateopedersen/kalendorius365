@@ -63,6 +63,7 @@ module Pages
   end
   metadata['robots']=robots if robots
   metadata['planner']=true if planner
+  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/202[789]\z})
   metadata['phase_module']=phase_module if phase_module
   metadata['holiday_editorial']=true if path=='sventes' || path.start_with?('sventes/')
   File.write(target,"---\n#{metadata.map { |k,v| "#{k}: #{v.to_json}" }.join("\n")}\n---\n#{html}")
