@@ -120,14 +120,31 @@
     text-align: center;
   }
   #main #period-title { margin: 0; font-size: 18pt; }
-  #main #calendar { min-height: 0 !important; overflow: visible !important; }
-  #main .calendar-panel .month-table { width: 100%; height: auto !important; table-layout: fixed; border-collapse: collapse; }
-  #main .calendar-panel .month-table :is(td, th) { border: .25mm solid #aaa; }
+  #main #calendar { min-height: 0 !important; overflow: visible !important; border: 0 !important; border-radius: 0 !important; }
+  /* Separate, single-sided borders stay inside each cell's paint area. With
+     collapsed borders, positioned screen cells can cover parts of the grid.
+     Use 1.5pt so separators also survive low-resolution print previews. */
+  #main .calendar-panel .month-table {
+    width: 100%;
+    height: auto !important;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: solid #888 !important;
+    border-width: 1.5pt 0 0 1.5pt !important;
+  }
+  #main .calendar-panel .month-table :is(td, th) {
+    position: static !important;
+    border: solid #888 !important;
+    border-width: 0 1.5pt 1.5pt 0 !important;
+  }
   #main .calendar-panel .month-table tbody td { height: auto !important; padding: 0 !important; }
   #main .calendar-panel .day-cell {
     display: flex !important;
     position: static !important;
     inset: auto !important;
+    transform: none !important;
     overflow: visible !important;
     box-sizing: border-box !important;
     width: 100%;

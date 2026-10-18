@@ -18,13 +18,13 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://kalendorius365.lt/#webpage","url":"https://kalendorius365.lt/","name":"Lietuvos kalendorius: šventės ir horoskopai","description":"Lietuvos kalendorius su šventėmis, horoskopais, saulės laikais, Mėnulio fazėmis, atostogų planavimu ir spausdinamais 2027–2029 m. kalendoriais.","inLanguage":"lt-LT","isPartOf":{"@type":"WebSite","name":"Kalendorius365","url":"https://kalendorius365.lt/"}}</script>
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg?v=217add829468" type="image/svg+xml">
-<link rel="preload" href="/assets/visuals/weather-640.webp?v=7adcf39a2d79" imagesrcset="/assets/visuals/weather-320.webp?v=24cfc14b76d0 320w, /assets/visuals/weather-480.webp?v=06196a5cf732 480w, /assets/visuals/weather-640.webp?v=7adcf39a2d79 640w" imagesizes="(max-width: 760px) calc(100vw - 2rem), 360px" as="image" type="image/webp" fetchpriority="high">
+<link rel="preload" href="/assets/visuals/weather-640.avif?v=83b5e8a894ab" imagesrcset="/assets/visuals/weather-320.avif?v=45a8fddb5f85 320w, /assets/visuals/weather-480.avif?v=d56620d60e4a 480w, /assets/visuals/weather-640.avif?v=83b5e8a894ab 640w" imagesizes="(max-width: 760px) calc(100vw - 2rem), 360px" as="image" type="image/avif" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/Lato-Regular-latin-lt.woff2?v=130290c9370e" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Lato-Bold-latin-lt.woff2?v=9136e9af7d2c" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/homepage-bundle.css?v=7ce0c1c9e6dd">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/homepage-bundle.css?v=bfcfcd6c011b">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -429,6 +429,11 @@ a{color:inherit;text-decoration:none}
 .content-main:has(.not-found){max-width:1320px;padding-top:1.1rem;padding-bottom:3.5rem}
 @media(max-width:900px){.content-main:has(.not-found){max-width:780px}}
 @media(max-width:620px){.content-main:has(.not-found){padding:1rem .7rem 2.5rem}}
+/* Reserve the automatically populated calculator result to prevent content shifts. */
+#calc-result{min-height:19rem}
+@media(max-width:760px){#calc-result{min-height:25rem}}
+@media(max-width:400px){#calc-result{min-height:28rem}}
+@media print{#calc-result{min-height:0}}
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular.woff2?v=9bd23c13b68e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
 @font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular-latin-lt.woff2?v=130290c9370e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
@@ -1585,12 +1590,20 @@ body.homepage-app #primary-nav > a > .icon,body.homepage-app #primary-nav > a:ho
 
 
 
-<link rel="stylesheet" href="/assets/print.css?v=7ce0c1c9e6dd" media="print">
+<link rel="stylesheet" href="/assets/print.css?v=bfcfcd6c011b" media="print">
 
-<script type="module" src="/assets/common.js?v=ff4e6faf7c48"></script>
-<script type="module" src="/assets/cookie-notice.js?v=ff4e6faf7c48"></script>
+<link rel="modulepreload" href="/assets/calendar.js?v=3f6237d9414c">
+<link rel="modulepreload" href="/assets/data/weather-cities.js?v=3f6237d9414c">
+<link rel="modulepreload" href="/assets/icons.js?v=3f6237d9414c">
+<link rel="modulepreload" href="/assets/ics.js?v=3f6237d9414c">
+<link rel="modulepreload" href="/assets/storage.js?v=3f6237d9414c">
+<link rel="modulepreload" href="/assets/weather.js?v=3f6237d9414c">
+<link rel="preload" href="/assets/data/calendar.json?v=d2f3d4db84c0" as="fetch" crossorigin>
+<link rel="preload" href="/assets/data/home-holiday-data.json?v=5584381a8f9a" as="fetch" crossorigin>
+<script type="module" src="/assets/common.js?v=3f6237d9414c"></script>
+<script type="module" src="/assets/cookie-notice.js?v=3f6237d9414c"></script>
 
-<script type="module" src="/assets/app.js?v=ff4e6faf7c48"></script>
+<script type="module" src="/assets/app.js?v=3f6237d9414c"></script>
 
 
 
@@ -1629,7 +1642,7 @@ body.homepage-app #primary-nav > a > .icon,body.homepage-app #primary-nav > a:ho
 <noscript><div class="panel">Asmeniniam kalendoriui reikia JavaScript. <a href="/2027/">2027</a> ir <a href="/2028/">2028 metų kalendorius</a> bei visi spausdinami failai veikia ir be jo.</div></noscript>
 <div class="dashboard">
 <aside class="left-column" aria-label="Laikas, orai ir kalendoriai">
-<div class="climate-card"><img class="climate-card__image" src="/assets/visuals/weather-640.webp?v=7adcf39a2d79" srcset="/assets/visuals/weather-320.webp?v=24cfc14b76d0 320w, /assets/visuals/weather-480.webp?v=06196a5cf732 480w, /assets/visuals/weather-640.webp?v=7adcf39a2d79 640w" sizes="(max-width: 760px) calc(100vw - 2rem), 360px" width="640" height="360" alt="" aria-hidden="true" fetchpriority="high" loading="eager" decoding="async"><section class="clock-card"><div class="eyebrow" id="clock-weekday">Lietuvos laikas</div><div id="clock-date" class="clock-date"></div><div id="clock" aria-label="Dabartinis Lietuvos laikas">--:--:--</div><small class="clock-location"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#pin"></use></svg> <span id="clock-zone">Vilnius · Europe/Vilnius</span></small><div class="settings-small"><label class="check"><input type="checkbox" id="seconds" checked>Sekundės</label><label class="check"><input type="checkbox" id="hour12">12 val.</label></div></section>
+<div class="climate-card"><picture><source type="image/avif" srcset="/assets/visuals/weather-320.avif?v=45a8fddb5f85 320w, /assets/visuals/weather-480.avif?v=d56620d60e4a 480w, /assets/visuals/weather-640.avif?v=83b5e8a894ab 640w" sizes="(max-width: 760px) calc(100vw - 2rem), 360px"><img class="climate-card__image" src="/assets/visuals/weather-640.webp?v=7adcf39a2d79" srcset="/assets/visuals/weather-320.webp?v=24cfc14b76d0 320w, /assets/visuals/weather-480.webp?v=06196a5cf732 480w, /assets/visuals/weather-640.webp?v=7adcf39a2d79 640w" sizes="(max-width: 760px) calc(100vw - 2rem), 360px" width="640" height="360" alt="" aria-hidden="true" fetchpriority="high" loading="eager" decoding="async"></picture><section class="clock-card"><div class="eyebrow" id="clock-weekday">Lietuvos laikas</div><div id="clock-date" class="clock-date"></div><div id="clock" aria-label="Dabartinis Lietuvos laikas">--:--:--</div><small class="clock-location"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#pin"></use></svg> <span id="clock-zone">Vilnius · Europe/Vilnius</span></small><div class="settings-small"><label class="check"><input type="checkbox" id="seconds" checked>Sekundės</label><label class="check"><input type="checkbox" id="hour12">12 val.</label></div></section>
 <section class="weather-panel"><div class="weather-top"><h2><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#weather-cloud-icon"></use></svg> Orai</h2><label><span class="visually-hidden">Orų miestas</span><select id="weather-city" aria-label="Orų miestas"><option value="vilnius">Vilnius</option><option value="kaunas">Kaunas</option><option value="klaipeda">Klaipėda</option><option value="siauliai">Šiauliai</option><option value="panevezys">Panevėžys</option><option value="alytus">Alytus</option><option value="marijampole">Marijampolė</option><option value="mazeikiai">Mažeikiai</option><option value="jonava">Jonava</option><option value="utena">Utena</option><option value="kedainiai">Kėdainiai</option><option value="telsiai">Telšiai</option><option value="ukmerge">Ukmergė</option><option value="taurage">Tauragė</option><option value="visaginas">Visaginas</option></select></label></div><div id="weather-content">Įkeliami orai…</div><p class="weather-credit"><a href="https://api.meteo.lt/" target="_blank" rel="noopener">LHMT · Meteo LT</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a></p><span class="sky-caption">Lietuvos dangus · iliustracija</span></section></div>
 <section class="panel holidays-panel"><div class="panel-title"><h2><svg class="icon home-icon panel-heading-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#holiday-gift"></use></svg>Artimiausios datos</h2><a class="holidays-panel__all" href="/sventes/" aria-label="Visos šventės ir datos"><span id="upcoming-holiday-year">Metai</span><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#arrow"></use></svg></a></div><p class="holidays-panel__intro">Lietuvos šventinės ir atmintinos dienos.</p><ul id="upcoming-holidays" class="holiday-list"></ul></section>
 <section class="panel mini-calendar"><div class="panel-title"><strong id="mini-title"></strong><div class="toolbar-group"><button id="mini-prev" aria-label="Ankstesnis mini kalendoriaus mėnuo"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#chevron-left"></use></svg></button><button id="mini-next" aria-label="Kitas mini kalendoriaus mėnuo"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=ffa2352a4742#chevron-right"></use></svg></button></div></div><div id="mini"></div></section>

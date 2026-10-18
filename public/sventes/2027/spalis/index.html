@@ -24,7 +24,7 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/style.css?v=7ce0c1c9e6dd /assets/design-system.css?v=7ce0c1c9e6dd /assets/monthly-holidays.css?v=7ce0c1c9e6dd">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/style.css?v=bfcfcd6c011b /assets/design-system.css?v=bfcfcd6c011b /assets/monthly-holidays.css?v=bfcfcd6c011b">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -173,6 +173,11 @@ a{color:inherit;text-decoration:none}
 .content-main:has(.not-found){max-width:1320px;padding-top:1.1rem;padding-bottom:3.5rem}
 @media(max-width:900px){.content-main:has(.not-found){max-width:780px}}
 @media(max-width:620px){.content-main:has(.not-found){padding:1rem .7rem 2.5rem}}
+/* Reserve the automatically populated calculator result to prevent content shifts. */
+#calc-result{min-height:19rem}
+@media(max-width:760px){#calc-result{min-height:25rem}}
+@media(max-width:400px){#calc-result{min-height:28rem}}
+@media print{#calc-result{min-height:0}}
 /* Kalendorius365 — Lato / Baltic paper. Native interface system, v2. */
 @font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular.woff2?v=9bd23c13b68e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+00A1-00A8,U+00AA-00AC,U+00AE-00AF,U+00B2-00B6,U+00B8-00D6,U+00D8-00F6,U+00F8-0103,U+0106-010B,U+010E-0115,U+011A-012D,U+0130-0141,U+0143-015F,U+0162-0169,U+016C-0171,U+0174-017C,U+017F-024F;}
 @font-face{font-family: Lato;src: url("/assets/fonts/Lato-Regular-latin-lt.woff2?v=130290c9370e") format("woff2");font-style: normal;font-weight: 400;font-display: swap;unicode-range: U+0020-007E,U+00A0,U+00A9,U+00AD,U+00B0-00B1,U+00B7,U+00D7,U+00F7,U+0104-0105,U+010C-010D,U+0116-0119,U+012E-012F,U+0142,U+0160-0161,U+016A-016B,U+0172-0173,U+017D-017E,U+2000-2010,U+2012-2022,U+2026,U+202F-2030,U+2032-2034,U+2039-203A,U+203C-203E,U+2044,U+205E-205F,U+20AC,U+2190,U+2192,U+2212;}
@@ -911,14 +916,14 @@ button:hover,.button:hover{transform: none;}}
 
 
 
-<script type="module" src="/assets/monthly-holidays.js?v=ff4e6faf7c48"></script>
+<script type="module" src="/assets/monthly-holidays.js?v=3f6237d9414c"></script>
 
 
 
-<link rel="stylesheet" href="/assets/print.css?v=7ce0c1c9e6dd" media="print">
+<link rel="stylesheet" href="/assets/print.css?v=bfcfcd6c011b" media="print">
 
-<script type="module" src="/assets/common.js?v=ff4e6faf7c48"></script>
-<script type="module" src="/assets/cookie-notice.js?v=ff4e6faf7c48"></script>
+<script type="module" src="/assets/common.js?v=3f6237d9414c"></script>
+<script type="module" src="/assets/cookie-notice.js?v=3f6237d9414c"></script>
 
 
 
