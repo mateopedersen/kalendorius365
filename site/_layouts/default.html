@@ -35,6 +35,8 @@
 {% if page.seasons %}<link rel="stylesheet" href="/assets/seasons.css?v={{ site.css_version }}"><script type="module" src="/assets/seasons.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.lunar %}<link rel="stylesheet" href="/assets/lunar.css?v={{ site.css_version }}"><script type="module" src="/assets/lunar/lunar.js?v={{ site.script_version }}"></script>{% endif %}
 {% if page.namedays %}<link rel="stylesheet" href="/assets/namedays.css?v={{ site.css_version }}"><script type="module" src="/assets/namedays.js?v={{ site.script_version }}"></script>{% endif %}
+<link rel="stylesheet" href="/assets/print.css?v={{ site.css_version }}" media="print">
+{% if page.print_paper %}<style id="artwork-print-style" media="print">@page { size: {{ page.print_paper }}; margin: 0; }</style>{% endif %}
 <script type="module" src="/assets/common.js?v={{ site.script_version }}"></script>
 <script type="module" src="/assets/cookie-notice.js?v={{ site.script_version }}"></script>
 {% if page.contact %}<script type="module" src="/assets/contact.js?v={{ site.script_version }}"></script>{% endif %}
