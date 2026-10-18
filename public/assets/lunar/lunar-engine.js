@@ -1,4 +1,4 @@
-import { Astronomy as A } from './astronomy-engine.js?v=d8af0f782f4a';
+import { Astronomy as A } from './astronomy-engine.js?v=ceb98777452d';
 
 export const ZONE = 'Europe/Vilnius';
 export const PHASES = ['Jaunatis','Priešpilnis','Pilnatis','Delčia'];

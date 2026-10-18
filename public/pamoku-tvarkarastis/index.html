@@ -19,11 +19,11 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
 
-<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=1825701f15cf" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=1825701f15cf" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/style.css?v=1825701f15cf" as="style">
-<link rel="preload" href="/assets/design-system.css?v=1825701f15cf" as="style">
-<link rel="stylesheet" href="/assets/style.css?v=1825701f15cf"><link rel="stylesheet" href="/assets/design-system.css?v=1825701f15cf">
+<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=9b9d415294aa" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=9b9d415294aa" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/style.css?v=9b9d415294aa" as="style">
+<link rel="preload" href="/assets/design-system.css?v=9b9d415294aa" as="style">
+<link rel="stylesheet" href="/assets/style.css?v=9b9d415294aa"><link rel="stylesheet" href="/assets/design-system.css?v=9b9d415294aa">
 
 
 
@@ -35,14 +35,16 @@
 
 
 
-<script type="module" src="/assets/common.js?v=d8af0f782f4a"></script>
-<script type="module" src="/assets/cookie-notice.js?v=d8af0f782f4a"></script>
+<link rel="stylesheet" href="/assets/print.css?v=9b9d415294aa" media="print">
+
+<script type="module" src="/assets/common.js?v=ceb98777452d"></script>
+<script type="module" src="/assets/cookie-notice.js?v=ceb98777452d"></script>
 
 
 
-<script type="module" src="/assets/tools.js?v=d8af0f782f4a"></script>
+<script type="module" src="/assets/tools.js?v=ceb98777452d"></script>
 
-<script type="module" src="/assets/phase-5-6-8.js?v=d8af0f782f4a"></script>
+<script type="module" src="/assets/phase-5-6-8.js?v=ceb98777452d"></script>
 
 
 
@@ -59,7 +61,7 @@
 <nav class="breadcrumbs" aria-label="Naršymo kelias"><a href="/">Pradžia</a><span aria-hidden="true">/</span><span>Pamokų tvarkaraštis ir namų darbų planuoklis</span></nav>
 <div class="page-heading"><div><h1>Pamokų tvarkaraštis ir namų darbų planuoklis</h1><p class="page-intro">Redaguojamas savaitės tvarkaraštis, užduotys ir atsiskaitymų datos. Jūsų informacija neiškeliauja iš naršyklės.</p></div><div class="toolbar-group"></div></div><section class="panel"><h2>Tvarkaraštis be privalomų asmens duomenų</h2><p>Pridėkite tiek pamokų, kiek reikia, pasirinkite 5 arba 6 savaitės dienas ir kiekvienai pamokai nustatykite atskirą laiką. Įrankis netaiko universalaus pamokos ilgio ir nenumano nepatvirtintų mokslo metų datų. Vardas, mokinio kodas, klasės ar mokyklos pavadinimas nereikalingi.</p><p>Tvarkaraštis, mokytojo trumpinys ir namų darbų tekstas saugomi tik šioje naršyklėje. Atsisiųskite JSON atsarginę kopiją, atsispausdinkite arba ištrinkite vietinius duomenis.</p></section>
 <form id="school-planner" class="panel phase-tool" novalidate><div class="form-row"><label>Rodomos savaitės dienos<select id="school-days"><option value="5">Pirmadienis–penktadienis</option><option value="6">Pirmadienis–šeštadienis</option></select></label><label>Tvarkaraščio pavadinimas (nebūtinas)<input id="school-title" maxlength="60"></label><label>Šablonas<select id="school-template"><option value="regular">Įprastas</option><option value="large">Didelis šriftas</option><option value="compact">Kompaktiškas</option><option value="mono">Nespalvotas</option></select></label></div><div class="form-actions"><button type="button" id="lesson-add">Pridėti pamoką</button><button type="button" id="school-duplicate-week">Kopijuoti pirmadienį į tuščias vietas</button><button type="button" id="school-clear-week">Išvalyti savaitę</button><button type="button" id="school-undo" disabled>Anuliuoti</button><button type="button" id="school-print">Spausdinti tvarkaraštį</button><button type="button" id="school-json-export">Atsisiųsti JSON kopiją</button><label class="button">Atkurti JSON kopiją<input id="school-json-import" type="file" accept="application/json,.json" hidden></label><button type="button" id="school-reset">Ištrinti šio įrenginio duomenis</button></div><p id="school-message" class="result" role="status" aria-live="polite"></p></form>
-<section class="panel"><h2>Savaitės pamokos</h2><div class="table-scroll" tabindex="0" role="region" aria-label="Redaguojamas pamokų tvarkaraštis"><table class="data-table school-table"><thead><tr><th>Diena</th><th>Nr.</th><th>Pradžia</th><th>Pabaiga</th><th>Dalykas</th><th>Kabinetas</th><th>Mokytojo trumpinys</th><th></th></tr></thead><tbody id="school-lessons"></tbody></table></div></section>
+<section class="panel" data-print-root="school"><h2>Savaitės pamokos</h2><div class="table-scroll" tabindex="0" role="region" aria-label="Redaguojamas pamokų tvarkaraštis"><table class="data-table school-table"><thead><tr><th>Diena</th><th>Nr.</th><th>Pradžia</th><th>Pabaiga</th><th>Dalykas</th><th>Kabinetas</th><th>Mokytojo trumpinys</th><th></th></tr></thead><tbody id="school-lessons"></tbody></table></div></section>
 <section class="panel"><h2>Namų darbai ir artėjantys atsiskaitymai</h2><form id="homework-form" class="form-row"><label>Dalykas<input id="homework-subject" maxlength="50" required></label><label>Užduotis<input id="homework-task" maxlength="180" required></label><label>Terminas<input id="homework-due" type="date" required></label><label>Prioritetas<select id="homework-priority"><option value="normal">Įprastas</option><option value="high">Svarbus</option></select></label><button type="submit">Pridėti užduotį</button></form><ul id="homework-list" class="phase-list"></ul></section>
 <p class="source-note">Mokinio įrašai yra privatūs ir įrenginio vietinėje saugykloje. Svetainė jų nesiunčia į serverį. Išvalius naršyklės duomenis jie gali būti prarasti, todėl atsarginę JSON kopiją saugokite patys. ICS su realiomis pamokų datomis kuriamas tik turint tikslias mokslo metų ribas ir išimtis; šiame pasikartojančiame savaitės šablone datų neišgalvojame.</p>
 <h2>Mokyklos savaitės planavimas Lietuvoje</h2><p>Šis įrankis yra asmeninis tvarkaraščio ir užduočių planuoklis, o ne mokyklos administravimo ar valstybės sertifikuota sistema. Tvarkaraštyje galima turėti nevienodos trukmės pamokas ir skirtingas dienos pertraukas. <a href="https://e-tar.lt/portal/lt/legalAct/TAR.2581A7005CA7/DceqKtHoXM" rel="noopener">HN 21:2017 galiojanti redakcija</a> nustato ugdymo proceso higienos reikalavimus ir numato sąlygas, kurioms esant mokykla gali taikyti pakeitimus; asmeninis šablonas jų atitikties nepatvirtina. 2027–2028 mokslo metų atostogų datos čia nėra iš anksto įrašytos, kol jų nepatvirtina kompetentinga institucija.</p>

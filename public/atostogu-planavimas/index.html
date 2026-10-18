@@ -19,11 +19,11 @@
 <script>try{const p=JSON.parse(localStorage.getItem("kalendorius365:v1")||"{}").preferences||{};document.documentElement.classList.toggle("large-text",p["large-text"]===true);document.documentElement.classList.toggle("high-contrast",p["high-contrast"]===true)}catch{}</script>
 <link rel="icon" href="/assets/favicon-2026.svg" type="image/svg+xml">
 
-<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=1825701f15cf" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=1825701f15cf" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/style.css?v=1825701f15cf" as="style">
-<link rel="preload" href="/assets/design-system.css?v=1825701f15cf" as="style">
-<link rel="stylesheet" href="/assets/style.css?v=1825701f15cf"><link rel="stylesheet" href="/assets/design-system.css?v=1825701f15cf">
+<link rel="preload" href="/assets/fonts/Lato-Regular.woff2?v=9b9d415294aa" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Lato-Black.woff2?v=9b9d415294aa" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/style.css?v=9b9d415294aa" as="style">
+<link rel="preload" href="/assets/design-system.css?v=9b9d415294aa" as="style">
+<link rel="stylesheet" href="/assets/style.css?v=9b9d415294aa"><link rel="stylesheet" href="/assets/design-system.css?v=9b9d415294aa">
 
 
 
@@ -35,13 +35,15 @@
 
 
 
-<script type="module" src="/assets/common.js?v=d8af0f782f4a"></script>
-<script type="module" src="/assets/cookie-notice.js?v=d8af0f782f4a"></script>
+<link rel="stylesheet" href="/assets/print.css?v=9b9d415294aa" media="print">
+
+<script type="module" src="/assets/common.js?v=ceb98777452d"></script>
+<script type="module" src="/assets/cookie-notice.js?v=ceb98777452d"></script>
 
 
 
-<script type="module" src="/assets/tools.js?v=d8af0f782f4a"></script>
-<script type="module" src="/assets/leave-planner.js?v=d8af0f782f4a"></script>
+<script type="module" src="/assets/tools.js?v=ceb98777452d"></script>
+<script type="module" src="/assets/leave-planner.js?v=ceb98777452d"></script>
 
 
 
@@ -91,9 +93,9 @@
  <div class="leave-actions"><button class="primary" type="submit">Apskaičiuoti ir palyginti planus</button><button type="button" id="reset-leave">Atkurti pradinius nustatymus</button><button type="button" id="leave-print">Spausdinti rezultatą</button></div>
 </form>
 <p id="leave-error" class="leave-error" role="alert"></p>
-<section id="leave-summary" class="leave-summary" aria-live="polite" aria-atomic="true"></section>
-<section id="leave-results" class="leave-results" aria-label="Atostogų planų variantai"></section>
-<section id="leave-detail" aria-live="polite"></section>
+<section id="leave-summary" data-print-root="result" class="leave-summary" aria-live="polite" aria-atomic="true"></section>
+<section id="leave-results" data-print-root="result" class="leave-results" aria-label="Atostogų planų variantai"></section>
+<section id="leave-detail" data-print-root="result" aria-live="polite"></section>
 <section class="panel leave-evaluation"><h2>Įvertinti savo pasirinktą laikotarpį</h2><p>Galima rinktis datas ir per 2026–2029 metų sandūrą. Skaičiuojamos abiejų metų šventės; intervalas negali viršyti 90 dienų.</p><div class="leave-input-grid"><label>Pradžia<input type="date" name="evalStart" form="leave-planner"></label><label>Pabaiga<input type="date" name="evalEnd" form="leave-planner"></label></div><div id="custom-evaluation" aria-live="polite"></div><button type="button" id="evaluate-period">Įvertinti šį laikotarpį</button></section>
 <section class="panel leave-faq" aria-labelledby="leave-faq-title"><h2 id="leave-faq-title">Atostogų planavimas Lietuvoje: dažni klausimai</h2>
  <h3>Kiek kasmetinių atostogų dienų skaičiuoti?</h3><p>Daugumai darbuotojų, įprastai dirbančių penkias dienas per savaitę, nustatytas minimumas yra 20 darbo dienų; dirbant šešias dienas – 24. Tam tikroms darbuotojų grupėms priklauso ilgesnės atostogos. Trumpesnei ar kitokiai darbo savaitei taikoma savaitėmis išreikšta taisyklė. Įrašykite savo tikrąjį likutį, nes individualios teisės priklauso nuo aplinkybių. Plačiau: <a href="/darbo-dienos/2027/">2027 m. darbo dienų kalendorius</a>.</p>
