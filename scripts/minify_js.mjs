@@ -7,7 +7,7 @@ import {pathToFileURL} from 'node:url';
 // notices. Source files remain readable; only generated browser assets change.
 export function minifyJavaScript(source, filename = 'module.js') {
   return transformSync(source, {
-    sourcefile: filename, loader: 'js', target: 'es2022', format: 'esm',
+    sourcefile: filename, loader: 'js', target: ['chrome100', 'safari15.4'], format: 'esm',
     minify: true, keepNames: true, treeShaking: false, legalComments: 'inline',
     charset: 'utf8',
   }).code;
@@ -77,7 +77,7 @@ async function build(directory) {
     }
   }
   await visit(directory);
-  await writeFile('docs/performance/js-sizes.json', JSON.stringify({method: 'esbuild 0.28.2; independent ES2022 modules; no bundling or property mangling; function names and legal comments retained', modules: rows}, null, 2) + '\n');
+  await writeFile('docs/performance/js-sizes.json', JSON.stringify({method: 'esbuild 0.28.2; independent modules targeting Chrome 100 / Safari 15.4 syntax; no bundling or property mangling; function names and legal comments retained', modules: rows}, null, 2) + '\n');
   console.log(`Minified ${rows.length} JavaScript modules: ${rows.reduce((n,r)=>n+r.source_bytes,0)} → ${rows.reduce((n,r)=>n+r.generated_bytes,0)} bytes`);
 }
 

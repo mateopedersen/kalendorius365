@@ -17,7 +17,6 @@ async function showPrivacyNotice() {
 
   let showNotice = true;
   try {
-    const region = window.__k365PrivacyRegion ? await window.__k365PrivacyRegion : await (async () => {
     const response = await fetch("/api/privacy-region", {
       cache: "no-store",
       credentials: "same-origin",
@@ -25,9 +24,8 @@ async function showPrivacyNotice() {
       priority: "low",
     });
     if (!response.ok) throw new Error("Region lookup unavailable");
-    return response.json();
-    })();
-    if (region?.showNotice === false) showNotice = false;
+    const region = await response.json();
+    if (region.showNotice === false) showNotice = false;
   } catch {
     // If the region endpoint is unavailable, do not suppress the notice.
   }

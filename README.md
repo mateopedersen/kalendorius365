@@ -30,7 +30,7 @@ Print generation is independent of the static build. `.build-cache/` fingerprint
 
 The release build embeds conservatively pruned CSS for each complete page, including its interactive states and print rules. Local CSS/JS, images, fonts and downloadable assets use content-derived version URLs and one-year immutable browser caches. Public HTML revalidates; private API responses remain non-cacheable. Build-only print manifests and year maps are excluded from `public/`. The homepage loads a compact 1.3 KB holiday index instead of the full editorial dataset, and the print-template picker reads metadata already present in its page instead of downloading a separate catalog. The site's Pages Functions expose only read-only GET endpoints.
 
-Initial module files and their static imports are preloaded in the head, then execute asynchronously after all document controls exist. Dynamic search, birth-city and astronomy imports remain driven by intent. The non-cacheable regional privacy lookup starts in parallel, reuses one promise, and is skipped for an already dismissed notice; personal calendar storage is untouched.
+Initial module files and their static imports are preloaded in the head, then execute asynchronously after all document controls exist. Dynamic search, birth-city and astronomy imports remain driven by intent.
 
 Generated JavaScript modules are minified independently with pinned esbuild, retaining exports, dynamic imports, function names and legal notices. Compiler and dependency-lock changes participate in cache version hashes. The already minified astronomy vendor is retained byte for byte. `docs/performance/js-sizes.json` records raw module sizes.
 

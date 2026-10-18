@@ -1,5 +1,5 @@
 {
-  "method": "esbuild 0.28.2; independent ES2022 modules; no bundling or property mangling; function names and legal comments retained",
+  "method": "esbuild 0.28.2; independent modules targeting Chrome 100 / Safari 15.4 syntax; no bundling or property mangling; function names and legal comments retained",
   "modules": [
     {
       "path": "/assets/app.js",
@@ -33,8 +33,8 @@
     },
     {
       "path": "/assets/cookie-notice.js",
-      "source_bytes": 1531,
-      "generated_bytes": 810
+      "source_bytes": 1430,
+      "generated_bytes": 728
     },
     {
       "path": "/assets/data/birth-cities.js",
@@ -49,7 +49,7 @@
     {
       "path": "/assets/discovery.js",
       "source_bytes": 2922,
-      "generated_bytes": 2272
+      "generated_bytes": 2288
     },
     {
       "path": "/assets/holiday-editorial.js",
@@ -104,7 +104,7 @@
     {
       "path": "/assets/namedays-engine.js",
       "source_bytes": 3580,
-      "generated_bytes": 2812
+      "generated_bytes": 2828
     },
     {
       "path": "/assets/namedays.js",
@@ -144,7 +144,7 @@
     {
       "path": "/assets/storage.js",
       "source_bytes": 5499,
-      "generated_bytes": 4031
+      "generated_bytes": 4038
     },
     {
       "path": "/assets/sunrise.js",
