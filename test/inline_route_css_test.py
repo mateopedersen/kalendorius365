@@ -10,6 +10,18 @@ import inline_route_css as inliner
 
 
 class InlineRouteCssTests(unittest.TestCase):
+    def test_regex_quotes_do_not_hide_later_runtime_classes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            script = root / 'tools.js'
+            script.write_text('''const escape = s => s.replace(/[&<>"']/g, "");
+                metrics.className = "calculator-results";
+                const html = `<div class="state-${kind}">${text}</div>`;
+            ''')
+            with patch.object(inliner, 'PUBLIC', root):
+                actual = inliner.runtime_classes(['/tools.js'], {'calculator-results', 'state-ok', 'unrelated'})
+            self.assertEqual(actual, {'calculator-results', 'state-ok'})
+
     def test_follows_lazy_imports_and_template_class_prefixes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()

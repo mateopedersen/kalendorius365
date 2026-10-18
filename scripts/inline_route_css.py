@@ -31,7 +31,6 @@ class Context(HTMLParser):
   if tag=='script' and a.get('src'):self.scripts.append(a['src'])
 
 IMPORTS=re.compile(r'''(?:\bfrom\s*|\bimport\s*\(?\s*)["']([^"']+\.js(?:\?[^"']*)?)["']''')
-LITERALS=re.compile(r'''"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)'|`((?:\\.|[^`\\])*)`''',re.S)
 
 def local_file(url, relative_to=PUBLIC):
  parsed=urlsplit(url)
@@ -46,11 +45,11 @@ def runtime_classes(scripts,known):
   path=pending.pop()
   if path is None or path in seen:continue
   seen.add(path);source=path.read_text()
-  for match in LITERALS.finditer(source):
-   literal=next(value for value in match.groups()if value is not None)
-   found.update(set(re.findall(r'[A-Za-z_][\w-]*',literal)) & known)
-   for prefix in re.findall(r'([A-Za-z_][\w-]*)\$\{',literal):
-    found.update(name for name in known if name.startswith(prefix))
+  # Scan whole source tokens conservatively. A string-only regex can lose its
+  # place on JS regex literals or nested template literals and omit UI states.
+  found.update(set(re.findall(r'[A-Za-z_][\w-]*',source)) & known)
+  for prefix in re.findall(r'([A-Za-z_][\w-]*)\$\{',source):
+   found.update(name for name in known if name.startswith(prefix))
   # Older UI helpers also concatenate suffixes, e.g. "dot cat" + index.
   for prefix in re.findall(r'''["'][^"'\n]*?([A-Za-z_][\w-]*)["']\s*\+''',source):
    found.update(name for name in known if name.startswith(prefix))
