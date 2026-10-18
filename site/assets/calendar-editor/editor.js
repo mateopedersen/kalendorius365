@@ -43,6 +43,7 @@ function change(fn, rerender = true) {
     else schedulePreview();
   } catch (error) {
     state = before;
+    if(rerender)render();
     status(error.message, true);
   }
 }
@@ -57,7 +58,7 @@ function dirty() {
   saveTimer = setTimeout(async () => {
     try {
       await storage.save(clone(state));
-      if (r === revision) status("Išsaugota šiame įrenginyje · " + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
+      if (r === revision && !statusError) status("Išsaugota šiame įrenginyje · " + (/* @__PURE__ */ new Date()).toLocaleTimeString("lt-LT", { hour: "2-digit", minute: "2-digit" }));
     } catch (error) {
       status("Nepavyko išsaugoti. Atsisiųskite projekto kopiją: " + error.message, true);
     }
@@ -131,7 +132,7 @@ async function preview() {
     let n = Math.round(dpi(i.photo, i.w, i.h));
     return `Nuotraukos efektyvi raiška: ${n} PPI${n < 200 ? " · maža raiška spaudai" : n < 300 ? " · mažiau nei 300 PPI" : ""}`;
   });
-  q("#ce-preview-info").textContent = `${Math.round(page.w / 72 * 25.4)} × ${Math.round(page.h / 72 * 25.4)} mm · 300 PPI: ${Math.round(page.w / 72 * 300)} × ${Math.round(page.h / 72 * 300)} px. ${warnings.join(". ")}`;
+  q("#ce-preview-info").textContent = `${Math.round(page.w / 72 * 25.4)} × ${Math.round(page.h / 72 * 25.4)} mm · 300 PPI: ${Math.round(page.w / 72 * 300)} × ${Math.round(page.h / 72 * 300)} px. ${warnings.join(". ")}${warnings.some(x=>/maža|mažiau/.test(x))?". Įkelkite didesnę nuotrauką arba sumažinkite jos plotą.":""}`;
 }
 function renderEvents() {
   let search = (q("#ce-event-search")?.value || "").toLocaleLowerCase("lt"), filter = q("#ce-event-filter")?.value || "all";

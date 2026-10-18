@@ -96,7 +96,7 @@ function appendices(s, lines, label, key) {
   const fresh = () => {
     p = empty(s, `${label} · Įrašų sąrašas ${out.length + 1}`, key);
     out.push(p);
-    text(p, `${label} · Visi įrašai`, margin, margin + 22, Math.min(20, s.theme.titleSize), s.theme.colors.title, true);
+    text(p, `${label} · Visi įrašai`, margin, margin + 22, Math.min(20, s.theme.titleSize,(p.w-2*margin)/(`${label} · Visi įrašai`.length*.6)), s.theme.colors.title, true);
     y = margin + 45;
   };
   for (let item of lines) {
@@ -182,7 +182,7 @@ function svg(p, photoURLs = {}, fontCSS = "") {
     }
     return `<text x="${i.x}" y="${i.y}" font-size="${i.size}" font-family="${i.font || p.font}" font-weight="${i.bold ? 700 : 400}" fill="${i.color}" text-anchor="${i.align === "center" ? "middle" : i.align === "right" ? "end" : "start"}"${i.date ? ` data-editor-date="${i.date}" tabindex="0" role="button" aria-label="${i.date}: pridėti įvykį"` : ""}>${escape(i.value)}</text>`;
   }).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${p.w}" height="${p.h}" viewBox="0 0 ${p.w} ${p.h}" role="img" aria-label="${escape(p.label)}"><style>${fontCSS}text{white-space:pre}</style>${items}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${p.w}" height="${p.h}" viewBox="0 0 ${p.w} ${p.h}" role="group" aria-label="${escape(p.label)}"><style>${fontCSS}text{white-space:pre}</style>${items}</svg>`;
 }
 export {
   MM,
