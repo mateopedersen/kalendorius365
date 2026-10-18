@@ -1,4 +1,4 @@
-import { formatDate, holidays, today } from "./calendar.js?v=ceb98777452d";
+import { formatDate, holidays, today } from "./calendar.js";
 
 const weekday = new Intl.DateTimeFormat("lt-LT", {
   weekday: "long",
