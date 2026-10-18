@@ -181,14 +181,14 @@ if '--release' in __import__('sys').argv:
     image_urls.append(image.text)
  canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
  assert len(sitemap)==len(set(sitemap)) and set(sitemap)==canonical and len(sitemap)==len(pages)-1
- expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind']=='monthly'}
+ expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind'] in ('monthly','annual')}
  assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
  assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)
  assert 'Sitemap: https://kalendorius365.lt/sitemap.xml' in (PUBLIC/'robots.txt').read_text()
  for path in sitemap_files:
   assert f'/{path.name}\n  Cache-Control: public, max-age=3600' in headers
  assert '/robots.txt\n  Cache-Control: public, max-age=3600' in headers
- print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals across {len(sitemap_files)} XML file(s), {len(image_urls)} clean monthly image URLs, and no global noindex header.')
+ print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals across {len(sitemap_files)} XML file(s), {len(image_urls)} clean calendar image URLs, and no global noindex header.')
 
 # Check the generated release, not only the authored editor source.
 editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()

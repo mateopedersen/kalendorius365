@@ -25,16 +25,22 @@ module Kalendorius
 
       images_by_page = Hash.new { |hash, key| hash[key] = [] }
       if release
-        manifest.select { |asset| asset['kind'] == 'monthly' }.each do |asset|
-          month_slug = months.fetch(Integer(asset.fetch('month')) - 1).fetch(0)
-          page_url = "#{BASE_URL}/#{Integer(asset.fetch('year'))}/#{month_slug}/"
-          abort "Monthly image has no indexable page in the sitemap: #{page_url}" unless canonical_urls.include?(page_url)
+        manifest.select { |asset| %w[monthly annual].include?(asset['kind']) }.each do |asset|
+          year = Integer(asset.fetch('year'))
+          page_path = if asset['kind'] == 'monthly'
+                        month_slug = months.fetch(Integer(asset.fetch('month')) - 1).fetch(0)
+                        "/#{year}/#{month_slug}/"
+                      else
+                        "/#{year}/"
+                      end
+          page_url = "#{BASE_URL}#{page_path}"
+          abort "Calendar image has no indexable page in the sitemap: #{page_url}" unless canonical_urls.include?(page_url)
 
           image_path = asset.fetch('webp')
-          abort "Invalid monthly image URL: #{image_path}" unless image_path.start_with?('/') && !image_path.match?(/[?#]/)
+          abort "Invalid calendar image URL: #{image_path}" unless image_path.start_with?('/') && !image_path.match?(/[?#]/)
 
           image_file = File.expand_path(image_path.delete_prefix('/'), public_dir)
-          abort "Monthly sitemap image is missing: #{image_file}" unless image_file.start_with?("#{public_dir}/") && File.file?(image_file)
+          abort "Calendar sitemap image is missing: #{image_file}" unless image_file.start_with?("#{public_dir}/") && File.file?(image_file)
 
           images_by_page[page_url] << "#{BASE_URL}#{image_path}"
         end
