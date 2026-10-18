@@ -93,10 +93,7 @@ Dir.chdir(ROOT) do
  files.select { |path|path.end_with?('.js','.css') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?(editor_release_prefix) }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
- files.select { |path|path.start_with?(editor_release_prefix) }.sort.each do |path|
-  headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
- end
- headers+="/assets/calendar-editor/*\n  #{immutable}\n"
+ headers+="/assets/calendar-editor/*\n  #{immutable}\n/assets/calendar-editor-release-#{editor_release_version}/*\n  #{immutable}\n"
  files.grep(%r{public/assets/fonts/[^/]+\.(?:woff2?|ttf)\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
