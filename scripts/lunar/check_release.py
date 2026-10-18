@@ -12,6 +12,9 @@ LEGEND_TRANSITION_PATH='docs/language-audit/2026-10-17/annual-monochrome-legend-
 # Deliberately pinned after independent review. Any later permitted correction
 # needs another reviewed version; this is not a path-pattern bypass.
 LEGEND_TRANSITION_SHA256='c9fb55864d9afc0ae1d77b6c70ca893b1c6d3689404599ce6d7d19ceb0bec4d0'
+BLANK_TRANSITION_VERSION='2026-10-18-blank-calendar-redesign-v1'
+BLANK_TRANSITION_PATH='docs/blank-calendar-redesign/asset-transition.json'
+BLANK_TRANSITION_SHA256='13bbd9348cabe8965b7590ad1e8714bd032956441ecc7b894ae26341f2b9c8ae'
 
 def legacy_legend_paths():
     stems={f'{year}-metinis-{design:02d}' for year in (2027,2028,2029) for design in (1,2,3,4,5)}
@@ -61,8 +64,53 @@ def package_legacy_replacements(root,baseline):
     assert len(replacements)==30
     return replacements
 
-def verify_existing_downloads(root,baseline,transition=None,retired_paths=None):
-    replacements=approved_legacy_replacements(baseline,transition) if transition else {}
+def approved_blank_replacements(root,baseline,transition,manifest):
+    """Allow only the 52 exact public download updates for the 26 blank sheets."""
+    assert transition['version']==BLANK_TRANSITION_VERSION,'Unreviewed blank-calendar transition version'
+    assert transition['after_generator']==manifest['generator'],'Blank print manifest generator differs from its reviewed transition'
+    preserved={row['stem']:row for row in transition['preserved_nonblank_assets']}
+    redesigned={row['stem']:row for row in transition['redesigned_blank_assets']}
+    assets={asset['stem']:asset for asset in manifest['assets']}
+    assert len(preserved)==390 and set(preserved)=={stem for stem,asset in assets.items() if asset['kind']!='blank'}
+    assert len(redesigned)==26 and set(redesigned)=={stem for stem,asset in assets.items() if asset['kind']=='blank'}
+    replacements={}
+    for stem,proof in preserved.items():
+        asset=assets[stem]
+        assert proof['files']==asset['files'],'Unchanged dated print asset metadata changed: '+stem
+        for kind,record in proof['files'].items():
+            relative=asset[kind].lstrip('/')
+            for base in ('site','public'):
+                path=root/base/relative
+                assert path.is_file() and path.stat().st_size==record['bytes'] and sha(path)==record['sha256'],('Unchanged dated print asset changed',base,relative)
+    for stem,proof in redesigned.items():
+        asset=assets[stem]
+        assert asset['kind']=='blank' and proof['after_files']==asset['files'],'Blank asset manifest differs from the recorded replacement: '+stem
+        before=proof['before_files'];after=proof['after_files']
+        for kind,record in after.items():
+            relative=asset[kind].lstrip('/')
+            for base in ('site','public'):
+                path=root/base/relative
+                assert path.is_file() and path.stat().st_size==record['bytes'] and sha(path)==record['sha256'],('Blank print asset differs from approved replacement',base,relative)
+            if kind in ('pdf','webp'):
+                public='public/'+relative
+                assert public in baseline and baseline[public]==before[kind]['sha256'],('Blank print transition does not match the frozen old-download baseline',public)
+                assert before[kind]['sha256']!=record['sha256'],'A claimed blank-calendar replacement did not change its file'
+                replacements[public]=record['sha256']
+    assert len(replacements)==52,'Only the 52 existing blank-calendar PDF/WebP downloads may change'
+    return replacements
+
+def read_approved_blank_transition(root,baseline,manifest):
+    path=root/BLANK_TRANSITION_PATH
+    assert sha(path)==BLANK_TRANSITION_SHA256,'Blank-calendar transition differs from the reviewed version'
+    assert sha(root/'docs/lunar/qa/existing-downloads-before.json')==LEGACY_BASELINE_SHA256,'Original 832-asset baseline must never be rewritten'
+    transition=json.loads(path.read_text())
+    approved_blank_replacements(root,baseline,transition,manifest)
+    return transition
+
+def verify_existing_downloads(root,baseline,transition=None,retired_paths=None,manifest=None):
+    if transition and transition.get('version')==BLANK_TRANSITION_VERSION:
+        replacements=approved_blank_replacements(root,baseline,transition,manifest)
+    else:replacements=approved_legacy_replacements(baseline,transition) if transition else {}
     retired_paths=retired_paths or set()
     for path,old_sha in baseline.items():
         if path in retired_paths:
@@ -70,7 +118,7 @@ def verify_existing_downloads(root,baseline,transition=None,retired_paths=None):
             continue
         expected=replacements.get(path,old_sha)
         assert sha(root/path)==expected,('Preexisting asset changed without the exact reviewed correction',path)
-    if transition:
+    if transition and 'changed_files' in transition:
         for row in transition['changed_files']:
             assert sha(root/row['path'])==row['after']['sha256'],('Reviewed correction source differs from pinned artifact',row['path'])
             built='public/'+row['path'].removeprefix('site/')
@@ -184,11 +232,15 @@ def main():
             source_record=package_files[relative]
             public='public/'+relative.removeprefix('site/')
             assert sha(ROOT/public)==source_record['sha256'],('Built package asset differs from the supplied source',public)
+        if manifest.get('blankRedesign'):
+            assert manifest['blankRedesign']==BLANK_TRANSITION_PATH
+            assert sha(ROOT/BLANK_TRANSITION_PATH)==BLANK_TRANSITION_SHA256
+            transition=read_approved_blank_transition(ROOT,baseline,manifest)
     else:
         transition=read_approved_legacy_transition(ROOT,baseline)
         package=None
         retired_public_paths=set()
-    unchanged,reviewed=verify_existing_downloads(ROOT,baseline,transition if package is None else None,retired_public_paths)
+    unchanged,reviewed=verify_existing_downloads(ROOT,baseline,transition,retired_public_paths,manifest)
     assert not (ROOT/'public/lunar-responsive-qa.html').exists(),'Local QA harness must not be published'
     assert not (ROOT/'public/lunar-qa-axe.js').exists(),'Local QA library must not be published'
     assert len([r for r in (ROOT/'public/_headers').read_text().splitlines() if r.startswith('/')])<=100

@@ -64,9 +64,8 @@ module Pages
   write_page(path,title,desc,html,tool,robots,planner,phase_module)
  end
  def generate_blank
-  items=MANIFEST.select { |e|e['kind']=='blank' };first=items.first
-  filters='<div class="design-filters segmented" role="group" aria-label="Tuščių planuoklių grupės">'+[['all','Visi šablonai'],['month','Mėnesio'],['week','Savaitės'],['family','Šeimai'],['office','Biurui'],['school','Mokyklai'],['bw','Juodai balti'],['color','Spalvoti']].map { |v,l|"<button data-design-filter=\"#{v}\" aria-pressed=\"#{v=='all'}\">#{l}</button>" }.join+'</div>'
-  html=intro('Tuščias kalendorius','Nedatuoti mėnesio, savaitės ir mokymosi planai. Rinkitės 5 arba 6 eilučių mėnesio tinklelius, pirmadienio ar sekmadienio pradžią.')+filters+selected_art(first)+"<h2>Kalendoriaus maketų variantai: #{items.length}</h2>"+gallery(items,true)+'<p class="source-note">Tuščiuose lapuose datų nėra. Mėnesio eilučių skaičius nurodytas variante; sekmadienio pradžią turi antrasis dizainas. PDF spausdinkite 100 % dydžiu.</p>'
-  write_page('tuscias-kalendorius','Tuščias kalendorius – nemokami PDF šablonai','Nedatuoti mėnesio ir savaitės planai: juodai balti ir spalvoti, 5 ar 6 eilutės, pirmadienio ar sekmadienio pradžia. Vektoriniai PDF ir 600 PPI WebP failai.',shell(html,collection_box(items)),true)
+  items=MANIFEST.select { |e|e['kind']=='blank' }
+  html=intro('Tušti kalendoriai ir planuokliai spausdinimui','Rinkitės iš 20 nedatuotų maketų pagal paskirtį: mėnesiui, savaitei, dienai, šeimai, mokyklai ar pamainoms. Mėnesio tinklelyje galima pasirinkti 5 arba 6 eilutes; visi lapai paruošti A4 spaudai.')+blank_gallery(items)
+  write_page('tuscias-kalendorius','Tušti kalendoriai spausdinimui: nemokami PDF ir WebP','Atsisiųskite 20 nedatuotų mėnesio, savaitės, dienos, šeimos, mokyklos ir pamainų planuoklių. Pasirinkite 5 ar 6 eilučių kalendorių; gaukite vektorinį PDF arba 600 PPI WebP.',html,true)
  end
 end

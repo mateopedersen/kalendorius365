@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generator": "1323b4a0dacc55b6f1d85229a59c00dac4bdec4a0ffafb6210411423871b005a",
+  "generator": "11b13f15d454e2e0c0f71f7f8738c28f0601ed1376eb2ea929401f2ec07eeea7",
   "status": "passed",
   "samples": false,
   "visualReviewed": false,
@@ -12889,15 +12889,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 41,
+      "textOperators": 17,
+      "vectorPathOperators": 108,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -12911,7 +12912,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -12930,15 +12934,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 48,
+      "textOperators": 17,
+      "vectorPathOperators": 115,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -12952,7 +12957,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -12971,15 +12979,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 41,
+      "textOperators": 17,
+      "vectorPathOperators": 108,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -12993,7 +13002,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13012,15 +13024,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 48,
+      "textOperators": 17,
+      "vectorPathOperators": 115,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13034,7 +13047,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13053,15 +13069,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 12,
-      "vectorPathOperators": 93,
+      "textOperators": 15,
+      "vectorPathOperators": 154,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13075,7 +13092,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -13094,15 +13114,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 41,
+      "textOperators": 17,
+      "vectorPathOperators": 143,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13116,7 +13137,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13135,15 +13159,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 48,
+      "textOperators": 17,
+      "vectorPathOperators": 157,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13157,7 +13182,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13176,15 +13204,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 41,
+      "textOperators": 19,
+      "vectorPathOperators": 301,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13198,7 +13227,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -13217,15 +13249,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 48,
+      "textOperators": 19,
+      "vectorPathOperators": 343,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13239,7 +13272,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -13258,15 +13294,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 10,
-      "vectorPathOperators": 47,
+      "textOperators": 13,
+      "vectorPathOperators": 126,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13280,7 +13317,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -13299,15 +13339,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 10,
-      "vectorPathOperators": 97,
+      "textOperators": 13,
+      "vectorPathOperators": 146,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13321,7 +13362,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -13340,15 +13384,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 10,
-      "vectorPathOperators": 97,
+      "textOperators": 19,
+      "vectorPathOperators": 126,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13362,7 +13407,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -13381,15 +13429,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 41,
+      "textOperators": 17,
+      "vectorPathOperators": 162,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13403,7 +13452,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13422,15 +13474,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 48,
+      "textOperators": 17,
+      "vectorPathOperators": 178,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13444,7 +13497,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13463,15 +13519,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular",
+        "/AAAAAA+Lato-Bold"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 42,
+      "textOperators": 16,
+      "vectorPathOperators": 81,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13485,7 +13542,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -13504,15 +13564,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular",
+        "/AAAAAA+Lato-Bold"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 13,
-      "vectorPathOperators": 49,
+      "textOperators": 16,
+      "vectorPathOperators": 88,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -13526,7 +13587,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -19979,15 +20043,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 40,
-      "vectorPathOperators": 74,
+      "textOperators": 43,
+      "vectorPathOperators": 126,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20001,7 +20066,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20020,15 +20088,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 19,
-      "vectorPathOperators": 89,
+      "textOperators": 22,
+      "vectorPathOperators": 140,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20042,7 +20111,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20061,15 +20133,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 23,
-      "vectorPathOperators": 59,
+      "textOperators": 26,
+      "vectorPathOperators": 111,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20083,7 +20156,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -20102,15 +20178,16 @@
         841.8898
       ],
       "fonts": [
-        "/AAAAAA+Inter-Regular",
-        "/AAAAAA+Inter-Bold"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 8,
-      "vectorPathOperators": 54,
+      "textOperators": 11,
+      "vectorPathOperators": 105,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20124,7 +20201,10 @@
         600.0215230069304
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        240,
+        340
+      ],
       "proof": null
     },
     {
@@ -20143,15 +20223,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 10,
-      "vectorPathOperators": 74,
+      "textOperators": 13,
+      "vectorPathOperators": 126,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20165,7 +20246,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20184,15 +20268,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 9,
-      "vectorPathOperators": 73,
+      "textOperators": 12,
+      "vectorPathOperators": 124,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20206,7 +20291,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20225,15 +20313,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 21,
-      "vectorPathOperators": 80,
+      "textOperators": 24,
+      "vectorPathOperators": 132,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20247,7 +20336,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20266,15 +20358,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Regular",
-        "/AAAAAA+Inter-Bold"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 22,
-      "vectorPathOperators": 101,
+      "textOperators": 25,
+      "vectorPathOperators": 152,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20288,7 +20381,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20307,15 +20403,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 18,
-      "vectorPathOperators": 221,
+      "textOperators": 21,
+      "vectorPathOperators": 273,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20329,7 +20426,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     },
     {
@@ -20348,15 +20448,16 @@
         595.2756
       ],
       "fonts": [
-        "/AAAAAA+Inter-Bold",
-        "/AAAAAA+Inter-Regular"
+        "/AAAAAA+Lato-Bold",
+        "/AAAAAA+Lato-Black",
+        "/AAAAAA+Lato-Regular"
       ],
-      "brandBaselinePt": 17.0,
+      "brandBaselinePt": 15.0,
       "datePlacementsChecked": 0,
       "calendarDayNumbersChecked": 0,
       "monthLabelsChecked": 0,
-      "textOperators": 18,
-      "vectorPathOperators": 54,
+      "textOperators": 21,
+      "vectorPathOperators": 105,
       "rasterPlacements": [],
       "worstEffectiveRasterPPI": null,
       "outputIntent": null,
@@ -20370,7 +20471,10 @@
         600.044752380242
       ],
       "losslessWebP": false,
-      "smallPreviewPixels": null,
+      "smallPreviewPixels": [
+        340,
+        241
+      ],
       "proof": null
     }
   ]

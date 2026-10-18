@@ -33,6 +33,52 @@ PRINT_LEGEND_STEMS = {f'{year}-metinis-{design:02}' for year in [2027,2028,2029]
 PRINT_LEGEND_PATHS = {f'site/downloads/{stem}.{ext}' for stem in PRINT_LEGEND_STEMS for ext in ['pdf','webp']} | {f'site/assets/{folder}/{stem}.webp' for stem in PRINT_LEGEND_STEMS for folder in ['previews','previews-small']}
 SCREEN_THUMBNAIL_TRANSITION = 'docs/performance/lunar-screen-thumbnails-128.json'
 SCREEN_THUMBNAIL_TRANSITION_SHA256 = '7b77d4625abc892464eb73942596ddbba70ba93399783392d6c04d79b4fa0766'
+BLANK_CALENDAR_TRANSITION = 'docs/blank-calendar-redesign/asset-transition.json'
+BLANK_CALENDAR_TRANSITION_SHA256 = '13bbd9348cabe8965b7590ad1e8714bd032956441ecc7b894ae26341f2b9c8ae'
+BLANK_CALENDAR_TRANSITION_VERSION = '2026-10-18-blank-calendar-redesign-v1'
+
+def reviewed_blank_calendar_updates(root, baseline, manifest):
+ """Permit only the exact 26 redesigned blank sets, never other print assets."""
+ if manifest.get('blankRedesign') != BLANK_CALENDAR_TRANSITION:
+  raise ValueError('blank calendar manifest has no pinned selective-redesign transition')
+ raw=(root/BLANK_CALENDAR_TRANSITION).read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=BLANK_CALENDAR_TRANSITION_SHA256:
+  raise ValueError('blank calendar transition evidence differs')
+ transition=json.loads(raw)
+ if transition.get('version')!=BLANK_CALENDAR_TRANSITION_VERSION or transition.get('after_generator')!=manifest.get('generator'):
+  raise ValueError('blank calendar transition does not match the renderer manifest')
+ preserved={row['stem']:row for row in transition['preserved_nonblank_assets']}
+ redesigned={row['stem']:row for row in transition['redesigned_blank_assets']}
+ assets={asset['stem']:asset for asset in manifest['assets']}
+ if len(preserved)!=390 or set(preserved)!={stem for stem,asset in assets.items() if asset['kind']!='blank'}:
+  raise ValueError('selective redesign does not prove all 390 other print assets')
+ if len(redesigned)!=26 or set(redesigned)!={stem for stem,asset in assets.items() if asset['kind']=='blank'}:
+  raise ValueError('selective redesign does not cover exactly the 26 blank print sets')
+ for stem,proof in preserved.items():
+  asset=assets[stem]
+  if proof['files']!=asset['files']:raise ValueError('dated print asset metadata changed: '+stem)
+  for kind,record in proof['files'].items():
+   source=root/'site'/asset[kind].lstrip('/')
+   if not source.is_file() or source.stat().st_size!=record['bytes'] or hashlib.sha256(source.read_bytes()).hexdigest()!=record['sha256']:
+    raise ValueError('dated print asset bytes changed: '+stem+'/'+kind)
+ updates={}
+ for stem,proof in redesigned.items():
+  asset=assets[stem];after=proof['after_files']
+  if asset['kind']!='blank' or after!=asset['files']:raise ValueError('blank print manifest differs from its transition: '+stem)
+  for kind,record in after.items():
+   relative=asset[kind].lstrip('/')
+   path='site/'+relative
+   if path not in baseline:raise ValueError('blank print path is absent from the frozen baseline: '+path)
+   current=root/path
+   if not current.is_file() or current.stat().st_size!=record['bytes'] or hashlib.sha256(current.read_bytes()).hexdigest()!=record['sha256']:
+    raise ValueError('blank print output differs from the reviewed transition: '+path)
+   if kind in ('pdf','webp'):
+    before=proof['before_files'].get(kind)
+    if before is None or baseline[path]!=before['sha256'] or before['sha256']==record['sha256']:
+     raise ValueError('blank download replacement does not match the frozen old bytes: '+path)
+   updates[path]=record['sha256']
+ if len(updates)!=104:raise ValueError('blank calendar transition must authorize exactly 104 print and preview files')
+ return updates
 
 def verified_screen_thumbnail_updates(root, baseline):
  """Allow only the pinned 192-to-128 screen images; keep print assets frozen."""
@@ -288,13 +334,18 @@ def run():
    check(el.tag.split('}')[-1] not in ['script','foreignObject','image','animate','filter'],a['slug']+' unsafe/heavy SVG element')
    check(all(not k.lower().startswith('on') for k in el.attrib),a['slug']+' event handler in SVG')
  # Preserve the baseline; the later planner repair restores two documented metadata fields only.
- preserved=0;changed=[];intentional_updates=[];print_updates={};screen_updates={};package_updates={};package_paths_seen=set()
+ preserved=0;changed=[];intentional_updates=[];print_updates={};screen_updates={};package_updates={};blank_updates={};package_paths_seen=set()
  current_manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())
  if current_manifest.get('packageImport'):
   try:
    package_updates,package_evidence_sha=reviewed_calendar_package_updates(ROOT,base['assets'],current_manifest)
    intentional_updates.append({'path':'site/assets/data/manifest.json','reason':'Pinned import replaces exactly 390 calendar records and their old PDF/WebP plus responsive previews','evidence':current_manifest['packageImport']['evidence'],'evidence_sha256':package_evidence_sha,'retired_asset_paths':len(package_updates)-1,'imported_records':390})
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'calendar package preservation: '+str(error))
+ if current_manifest.get('blankRedesign'):
+  try:
+   blank_updates=reviewed_blank_calendar_updates(ROOT,base['assets'],current_manifest)
+   intentional_updates.append({'path':BLANK_CALENDAR_TRANSITION,'reason':'Pinned selective redesign of exactly 26 blank calendar/planner print sets; 390 dated print assets and the other baseline files remain hash-verified','updated_files':len(blank_updates),'sha256':hashlib.sha256((ROOT/BLANK_CALENDAR_TRANSITION).read_bytes()).hexdigest()})
+  except (OSError,ValueError,KeyError,TypeError)as error:check(False,'blank calendar preservation: '+str(error))
  if any(path.startswith('site/assets/lunar/days/') and (ROOT/path).is_file() and hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=sha for path,sha in base['assets'].items()):
   try:screen_updates=verified_screen_thumbnail_updates(ROOT,base['assets'])
   except (OSError,ValueError,KeyError,TypeError)as error:check(False,'screen thumbnail preservation: '+str(error))
@@ -313,6 +364,10 @@ def run():
     if p.exists():changed.append(path)
    elif not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest()!=expected:
     changed.append(path)
+   continue
+  if path in blank_updates:
+   if not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest()!=blank_updates[path]:changed.append(path)
+   else:intentional_updates.append({'path':path,'reason':'Exact PDF/WebP or matching 340/680px preview included in the pinned blank-calendar redesign','sha256':blank_updates[path],'review_manifest':BLANK_CALENDAR_TRANSITION})
    continue
   if path=='site/assets/lunar/lunar.js':
    current=p.read_bytes();updated=b"'/assets/lunar/albedo-web.webp'";previous=b"'/assets/lunar/albedo-web.png'"

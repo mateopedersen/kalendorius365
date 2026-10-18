@@ -65,7 +65,7 @@ Dir.chdir(ROOT) do
  # Preview remains noindex until the release gate has passed. Sitemap is intentionally empty.
  if release
   manifest_check=JSON.parse(File.read('site/assets/data/manifest.json'))
-  digest=Digest::SHA256.hexdigest(%w[scripts/render_prints.py data/calendar.json site/assets/data/years.json site/assets/fonts/Inter-Regular.ttf site/assets/fonts/Inter-Bold.ttf].map { |p|File.binread(p) }.join)
+  digest=Digest::SHA256.hexdigest(%w[scripts/render_prints.py data/calendar.json site/assets/data/years.json site/assets/fonts/Inter-Regular.ttf site/assets/fonts/Inter-Bold.ttf site/assets/fonts/Lato-Regular.ttf site/assets/fonts/Lato-Bold.ttf site/assets/fonts/Lato-Black.ttf].map { |p|File.binread(p) }.join)
   abort 'Print assets are stale: renderer/data/font fingerprint changed' unless manifest_check['generator']==digest
   %w[docs/sample-preflight.json docs/print-preflight.json].each do |p|
    report=JSON.parse(File.read(p));abort "Missing or stale preflight: #{p}" unless report['status']=='passed' && report['generator']==digest
