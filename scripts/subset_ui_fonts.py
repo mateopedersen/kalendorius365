@@ -7,7 +7,24 @@ from fontTools.ttLib import TTFont
 from fontTools import subset
 from pathlib import Path
 import json,hashlib
-base=set(range(0x20,0x100))|set(map(ord,'ĄąČčĘęĖėĮįŠšŲųŪūŽž'))|set(range(0x2000,0x2070))|{0x20ac,0x2122,0x2190,0x2192,0x2212}
+# Initial UI repertoire: ASCII, Lithuanian, punctuation and symbols. Additional
+# characters found in HTML and UI JavaScript are included. Foreign place names
+# in lazy data modules still use the unchanged full font on demand.
+from html.parser import HTMLParser
+class VisibleText(HTMLParser):
+ def __init__(self):super().__init__();self.skipped=0;self.value=''
+ def handle_starttag(self,tag,attrs):
+  if tag in ('script','style'):self.skipped+=1
+ def handle_endtag(self,tag):
+  if tag in ('script','style'):self.skipped=max(0,self.skipped-1)
+ def handle_data(self,text):
+  if not self.skipped:self.value+=text
+base=set(range(0x20,0x7f))|set(map(ord,'ĄąČčĘęĖėĮįŠšŲųŪūŽž'))|set(range(0x2000,0x2070))|{0xa0,0xa9,0xad,0xb0,0xb1,0xb7,0xd7,0xf7,0x20ac,0x2122,0x2190,0x2192,0x2212}
+for path in Path('site').rglob('*.html'):
+ parser=VisibleText();parser.feed(path.read_text());base.update(map(ord,parser.value))
+for path in Path('site/assets').rglob('*.js'):
+ if 'data' not in path.relative_to('site/assets').parts:base.update(map(ord,path.read_text()))
+
 def ranges(codes):
  parts=[]
  for c in sorted(codes):

@@ -1,15 +1,16 @@
 # Kalendorius365
 
-Lithuanian calendar and local-first planner. Existing Cloudflare Pages native Git integration is preserved: production branch `main`, output directory `public`, no Cloudflare build command. Generated `public/` is versioned so Cloudflare does not need Python/Poppler or expensive print rendering during ordinary deployments. Source changes must be rebuilt before committing; tests check the generated output.
+Lithuanian calendar and local-first planner. Existing Cloudflare Pages native Git integration is preserved: production branch `main`, output directory `public`, release build command `K365_RELEASE=1 bundle exec ruby scripts/build.rb`. Generated `public/` is versioned so Cloudflare does not need Python/Poppler or expensive print rendering during ordinary deployments. Source changes must be rebuilt before committing; tests check the generated output.
 
 ## Reproducible development
 
 - Ruby **3.4.11**; Jekyll **4.4.1**, Bundler lockfile included.
-- Node **22+**, native ES modules, no frontend framework or npm dependencies.
+- Node **24** in release CI (22+ supported), native ES modules, no frontend framework. Pinned esbuild is a build dependency; no compiler is downloaded by visitors.
 - Print tooling: Python 3.12, `requirements-print.txt`, Poppler `pdftoppm` on PATH.
 
 ```sh
 bundle install
+npm ci
 ruby scripts/prepare.rb
 python3 -m venv .venv
 .venv/bin/pip install -r requirements-print.txt
@@ -28,6 +29,8 @@ Print generation is independent of the static build. `.build-cache/` fingerprint
 `site/` contains Jekyll sources and precomputed print assets; `data/calendar.json` is the single holiday/localization source. `lib/calendar.rb` generates date data consumed by static pages and print scripts. Browser modules independently calculate dates from those definitions and are checked against Ruby and Python.
 
 The release build embeds conservatively pruned CSS for each complete page, including its interactive states and print rules. Local CSS/JS, images, fonts and downloadable assets use content-derived version URLs and one-year immutable browser caches. Public HTML revalidates; private API responses remain non-cacheable. Build-only print manifests and year maps are excluded from `public/`. The homepage loads a compact 1.3 KB holiday index instead of the full editorial dataset, and the print-template picker reads metadata already present in its page instead of downloading a separate catalog. The site's Pages Functions expose only read-only GET endpoints.
+
+Generated JavaScript modules are minified independently with pinned esbuild, retaining exports, dynamic imports, function names and legal notices. Compiler and dependency-lock changes participate in cache version hashes. The already minified astronomy vendor is retained byte for byte. `docs/performance/js-sizes.json` records raw module sizes.
 
 UI fonts use disjoint Unicode ranges: Latin and Lithuanian glyphs load first, and all original extended glyphs remain available on demand. The complete original fonts and printable assets are retained. Optional font preparation from the repository root is `python3 scripts/subset_ui_fonts.py` with `fonttools[woff]==4.67.0`; this is not a deployment dependency. `docs/performance/font-subsets.json` records sizes, character coverage and hashes. Search and astronomy modules load when needed; the name-day search caches Unicode normalization without changing search results or stored calendar data. `docs/performance/route-css-sizes.json` records every generated page's CSS size.
 

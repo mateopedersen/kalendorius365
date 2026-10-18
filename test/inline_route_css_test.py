@@ -1,4 +1,7 @@
 import sys
+import base64
+import hashlib
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,6 +13,22 @@ import inline_route_css as inliner
 
 
 class InlineRouteCssTests(unittest.TestCase):
+    def test_every_generated_inline_bootstrap_has_an_exact_csp_hash(self):
+        headers = (ROOT / 'public/_headers').read_text()
+        pages = list((ROOT / 'public').rglob('*.html'))
+        self.assertGreaterEqual(len(pages), 190)
+        for page in pages:
+            scripts = []
+            for attributes, source in re.findall(r'<script\b([^>]*)>(.*?)</script>', page.read_text(), re.S | re.I):
+                script_type = re.search(r'''\btype\s*=\s*["']([^"']+)''', attributes, re.I)
+                data_block = script_type and script_type.group(1).lower() not in {'module', 'text/javascript', 'application/javascript', 'text/ecmascript', 'application/ecmascript'}
+                if re.search(r'\bsrc\s*=', attributes, re.I) or data_block:
+                    continue
+                scripts.append(source)
+                digest = base64.b64encode(hashlib.sha256(source.encode()).digest()).decode()
+                self.assertIn("'sha256-" + digest + "'", headers, str(page))
+            self.assertEqual(len(scripts), 2, str(page))
+
     def test_regex_quotes_do_not_hide_later_runtime_classes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()
@@ -54,6 +73,11 @@ class InlineRouteCssTests(unittest.TestCase):
             self.assertIn('.high-contrast .used', output)
             self.assertNotIn('.unused', output)
             self.assertLess(output.index('color:red'), output.index('color:green'))
+
+    def test_print_only_link_keeps_its_media_and_cascade(self):
+        parser = inliner.Context()
+        parser.feed('<link rel="stylesheet" href="/assets/print.css" media="print"><link rel="stylesheet" href="/assets/style.css">')
+        self.assertEqual(parser.styles, ['/assets/style.css'])
 
     def test_external_styles_are_not_removed(self):
         parser = inliner.Context()

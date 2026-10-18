@@ -42,6 +42,9 @@ Dir.chdir(ROOT) do
  system('python3','scripts/inline_route_css.py',exception:true)
  versioned_asset_references=Kalendorius::StaticAssetUrls.rewrite!('public')
  puts "Content-versioned #{versioned_asset_references} static image, data and print URLs"
+ # Run after URL rewriting and CSS runtime-class discovery, which operate on
+ # readable modules. Hashes include the compiler and its pinned dependency lock.
+ system('node','scripts/minify_js.mjs','public/assets',exception:true)
  # Fail on accidentally exceeding the existing Free static hosting limits.
  files=Dir.glob('public/**/*').select { |p|File.file?(p) }
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
@@ -73,7 +76,10 @@ Dir.chdir(ROOT) do
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
  abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
  theme_hash=Base64.strict_encode64(Digest::SHA256.digest(theme_script))
- headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
+ header_script=File.read('site/_layouts/default.html')[/<script data-header-boot>(.*?)<\/script>/m,1]
+ abort 'Inline header initializer not found; update the CSP hash strategy' unless header_script
+ header_hash=Base64.strict_encode64(Digest::SHA256.digest(header_script))
+ headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}' 'sha256-#{header_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
  headers+="  X-Robots-Tag: noindex\n" unless release
  immutable='Cache-Control: public, max-age=31536000, immutable'
  # Use exact paths for versioned code and data, so _headers never applies
@@ -81,7 +87,7 @@ Dir.chdir(ROOT) do
  files.select { |path|path.end_with?('.js','.css') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
- files.grep(%r{public/assets/fonts/Lato-(?:Regular|Bold|Black)\.woff2\z}).sort.each do |path|
+ files.grep(%r{public/assets/fonts/[^/]+\.woff2?\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  files.grep(%r{public/assets/data/.*\.json\z}).sort.each do |path|
@@ -94,7 +100,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/seasons-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/namedays-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/holiday-guides-ics/*\n  #{immutable}\n"
- headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
+ headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo-web.webp\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
  File.write('public/_headers',headers)
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release

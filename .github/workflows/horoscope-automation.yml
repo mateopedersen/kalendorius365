@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '.github/workflows/horoscope-automation.yml'
+      - 'package.json'
+      - 'package-lock.json'
       - 'Gemfile'
       - 'Gemfile.lock'
       - '.ruby-version'
@@ -61,6 +63,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install the pinned JavaScript compiler
+        run: npm ci
       - name: Build the complete indexable Jekyll release
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Check all generated horoscope routes, metadata, canonicals and sitemap entries
@@ -92,6 +100,14 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        if: steps.generate.outputs.changed == 'true'
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install the pinned JavaScript compiler
+        if: steps.generate.outputs.changed == 'true'
+        run: npm ci
       - name: Build the indexable static release
         if: steps.generate.outputs.changed == 'true'
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
@@ -111,7 +127,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site/_data/horoscope_current.json site/horoskopai public/horoskopai public/sitemap.xml public/index.html public/assets/data/search.json docs/horoscopes/validation/horoscope-source-qa.json
+          git add site/_data/horoscope_current.json site/horoskopai public docs/horoscopes/validation/horoscope-source-qa.json docs/performance/js-sizes.json
           git diff --cached --check
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"

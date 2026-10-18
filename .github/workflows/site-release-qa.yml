@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '.github/workflows/site-release-qa.yml'
+      - 'package.json'
+      - 'package-lock.json'
       - 'Gemfile'
       - 'Gemfile.lock'
       - '.ruby-version'
@@ -33,6 +35,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install the pinned JavaScript compiler
+        run: npm ci
       - name: Build the complete static release
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Capture regenerated public output for parity repair

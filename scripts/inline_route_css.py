@@ -27,7 +27,7 @@ class Context(HTMLParser):
   super().__init__(convert_charrefs=True);self.classes=set();self.styles=[];self.scripts=[]
  def handle_starttag(self,tag,attrs):
   a=dict(attrs);self.classes.update(a.get('class','').split())
-  if tag=='link' and a.get('rel')=='stylesheet':self.styles.append(a.get('href',''))
+  if tag=='link' and a.get('rel')=='stylesheet' and a.get('media','all') in ('all','screen',''):self.styles.append(a.get('href',''))
   if tag=='script' and a.get('src'):self.scripts.append(a['src'])
 
 IMPORTS=re.compile(r'''(?:\bfrom\s*|\bimport\s*\(?\s*)["']([^"']+\.js(?:\?[^"']*)?)["']''')
