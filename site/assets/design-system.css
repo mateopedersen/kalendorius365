@@ -6248,6 +6248,13 @@ button.primary:hover, a.button.primary:hover, .success:hover{
   margin: 0;
 }
 
+/* Keep the footer brand and tagline together instead of stretching across the
+   navigation and copyright rows in the outer footer grid. */
+.site-footer > div:first-child {
+  grid-row: auto;
+  align-self: start;
+}
+
 /* Search stays anchored to its field; only the suggestions scroll. */
 .header-search-toggle,
 .header-search-close,

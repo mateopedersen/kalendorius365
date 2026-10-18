@@ -8,20 +8,10 @@
       <stop stop-color="#40a67d"/>
       <stop offset="1" stop-color="#08764f"/>
     </linearGradient>
-    <filter id="shadow" x="35" y="33" width="696" height="414" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-      <feFlood flood-opacity="0" result="background"/>
-      <feColorMatrix in="SourceAlpha" result="alpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-      <feOffset dy="12"/>
-      <feGaussianBlur stdDeviation="13"/>
-      <feComposite in2="alpha" operator="out"/>
-      <feColorMatrix values="0 0 0 0 .05 0 0 0 0 .16 0 0 0 0 .09 0 0 0 .14 0"/>
-      <feBlend in2="background" result="shadow"/>
-      <feBlend in="SourceGraphic" in2="shadow" result="shape"/>
-    </filter>
   </defs>
   <circle cx="637" cy="100" r="67" fill="#e2f0e7"/>
   <circle cx="101" cy="382" r="45" fill="#f2e9ce"/>
-  <g filter="url(#shadow)">
+  <g>
     <rect x="63" y="58" width="391" height="356" rx="26" fill="url(#surface)" stroke="#d7e6db" stroke-width="2"/>
     <path d="M64 84a26 26 0 0 1 26-26h337a26 26 0 0 1 26 26v60H64V84Z" fill="#087750"/>
     <path d="M124 48v27m270-27v27" stroke="#087750" stroke-linecap="round" stroke-width="10"/>
