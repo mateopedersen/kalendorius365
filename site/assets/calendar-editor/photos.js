@@ -2,6 +2,7 @@ import {filterPixels} from "./filters.js";
 import { uid } from "./model.js";
 const originals = /* @__PURE__ */ new Map();
 const decoded = /* @__PURE__ */ new Map();
+function cacheDecoded(id,img){decoded.delete(id);decoded.set(id,img);while(decoded.size>2)decoded.delete(decoded.keys().next().value);return img;}
 function image(blob) {
   return new Promise((resolve, reject) => {
     let img = new Image(), url = URL.createObjectURL(blob);
@@ -24,14 +25,14 @@ async function upload(file) {
   if (img.naturalWidth * img.naturalHeight > 4e7) throw Error("Nuotrauka gali turėti iki 40 megapikselių");
   let id = uid();
   originals.set(id, blob);
-  decoded.set(id, img);
+  cacheDecoded(id, img);
   return { id, name: file.name.slice(0, 140), type, width: img.naturalWidth, height: img.naturalHeight, x: 0.5, y: 0.5, zoom: 1, rotation: 0, fit: "cover", brightness: 1, contrast: 1, saturation: 1, warmth: 0, opacity: 1, overlay: 0, overlayColor: "light", mono: false };
 }
 async function source(p) {
   if (!decoded.has(p.id)) {
     let blob = originals.get(p.id);
     if (!blob) throw Error("Nerastas nuotraukos originalas. Importuokite projekto failą.");
-    decoded.set(p.id, await image(blob));
+    cacheDecoded(p.id, await image(blob));
   }
   return decoded.get(p.id);
 }

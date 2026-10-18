@@ -47,6 +47,9 @@ function change(fn, rerender = true) {
   }
 }
 function dirty() {
+  let retained=()=>new Set([state,...undo,...redo].flatMap(s=>s.photos.map(p=>p.id)));
+  let ids=retained();while(undo.length>1&&[...ids].reduce((n,id)=>n+(originals.get(id)?.size||0),0)>160*1024*1024){undo.shift();ids=retained();}
+  for(let id of originals.keys())if(!ids.has(id))forget(id);
   revision++;
   status("Yra neišsaugotų pakeitimų…");
   clearTimeout(saveTimer);
@@ -240,12 +243,11 @@ async function exportFiles() {
   if (busy) return;
   let format = q("#ce-format").value;
   sessionStorage.setItem("ce-format", format);
+  let frozen=clone(state),frozenIndex=index,list;
+  try{validate(frozen);list=scenes(frozen,data,editorial);}catch(error){status(error.message,true);return;}
   busy = true;
   cancelled = false;
   clearTimeout(saveTimer);
-  let frozen = clone(state), frozenIndex = index;
-  validate(frozen);
-  let list = scenes(frozen, data, editorial);
   qa("button,input,select,textarea").forEach((n) => n.disabled = true);
   q("#ce-progress-wrap").hidden = false;
   q("[data-action=cancel]").disabled = false;
