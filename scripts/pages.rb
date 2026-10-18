@@ -24,6 +24,17 @@ module Pages
   article ? "/sventes/#{article['slug']}/" : nil
  end
  def esc(s);CGI.escapeHTML(s.to_s);end
+ def preserve_authored_source?(target)
+  return false unless File.file?(target)
+  File.open(target,'r:utf-8') do |file|
+   return false unless file.gets&.strip=='---'
+   file.each_line do |line|
+    break if line.strip=='---'
+    return true if line.match?(/\Apreserve_source:\s*true\s*\z/)
+   end
+  end
+  false
+ end
  def source_citations(article,source_ids)
   ids=Array(source_ids)&Array(article['sources'])
   links=ids.filter_map do |sid|
@@ -52,6 +63,10 @@ module Pages
  end
  def page(path,title,desc,html,tool=false,robots=nil,planner=false,phase_module=nil)
   target="#{ROOT}/site/#{path.empty? ? 'index' : path}/index.html"
+  # Tool pages with preserve_source in front matter are hand-authored. The
+  # generator still creates every other route, but must not replace these
+  # richer interactive pages during a release build.
+  return if preserve_authored_source?(target)
   FileUtils.mkdir_p(File.dirname(target))
   html=print_html(path,visual_html(path,html))
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
