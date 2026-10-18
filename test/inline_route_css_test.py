@@ -36,7 +36,11 @@ class InlineRouteCssTests(unittest.TestCase):
             self.assertGreaterEqual(len(modules), 2, str(page))
             self.assertEqual(len({url for _,url in modules}), len(modules), str(page))
             for attributes,url in modules:
-                self.assertRegex(attributes, r'\basync\b', str(page))
+                if url.split('?', 1)[0].endswith('/app.js'):
+                    self.assertNotRegex(attributes, r'\basync\b', str(page))
+                    self.assertIn('<div class="dashboard" inert aria-busy="true">', source, str(page))
+                else:
+                    self.assertRegex(attributes, r'\basync\b', str(page))
                 self.assertIn('<link rel="modulepreload" href="'+url+'">', source[:source.index('</head>')], str(page))
             self.assertGreater(source.index('<script type="module"'), source.index('<p id="notice"'), str(page))
 
