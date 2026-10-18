@@ -40,7 +40,7 @@ async function preloadInitialModules(directory) {
         const roots = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js\?v=[^"]+)"[^>]*>/g)].map(match=>match[1]);
         const seen = new Set();
         for (const url of roots) await dependencies(url, seen);
-        const hints = [...seen].filter(url=>!roots.includes(url)).sort().map(url=>`<link rel="modulepreload" href="${url}">`);
+        const hints = [...seen].sort().map(url=>`<link rel="modulepreload" href="${url}">`);
         // Only eagerly used public data is preloaded. Lazy search, birth data,
         // astronomy, APIs and personal calendar state are never speculated.
         const data = new Set();
@@ -51,7 +51,7 @@ async function preloadInitialModules(directory) {
           const url = source.match(new RegExp('/assets/data/'+name.replaceAll('.', '\\.')+'\\?v=[a-f0-9]+'))?.[0];
           if (url) hints.push(`<link rel="preload" href="${url}" as="fetch" crossorigin>`);
         }
-        if (hints.length) await writeFile(path, html.replace(/<script type="module"/, hints.join('\n')+'\n<script type="module"'));
+        if (hints.length) await writeFile(path, html.replace('</head>', hints.join('\n')+'\n</head>'));
       }
     }
   }
