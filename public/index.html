@@ -24,7 +24,7 @@
 <link rel="preload" href="/assets/fonts/Lato-Black-latin-lt.woff2?v=7aeb43d2c522" as="font" type="font/woff2" crossorigin>
 
 
-<style data-route-css="/assets/homepage-bundle.css?v=bfcfcd6c011b">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
+<style data-route-css="/assets/homepage-bundle.css?v=c5a6a445718e">:root{--yellow:#fdb913;--green:#006a44;--red:#c1272d;--bg:#f4f6f4;--surface:#fff;--surface2:#f8faf8;--ink:#20322a;--muted:#59685f;--border:#dce4de;--accent:#e8f3ed;--shadow:0 2px 6px #173b2210;color-scheme:light;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--bg);color:var(--ink)}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:var(--green);text-underline-offset:3px}
@@ -505,7 +505,7 @@ main.dashboard-main{max-width: 1800px;padding: 16px 18px;margin: auto;}
 .climate-card{position: relative;isolation: isolate;overflow: hidden;border: 1px solid #dce6ee;border-radius: var(--radius);background: #e7f2fa;box-shadow: var(--shadow);color: #111b2e;}
 .climate-card:before{content: "";position: absolute;inset: 0;z-index: 1;background: linear-gradient( 110deg,#ffffffed 5%,#ffffffb8 45%,#ffffffe6 68%,#ffffff20 100% );pointer-events: none;}
 .climate-card > *{position: relative;z-index: 2;}
-.climate-card > .climate-card__image{position: absolute;inset: 0;z-index: 0;width: 100%;height: 100%;object-fit: cover;object-position: center bottom;pointer-events: none;}
+.climate-card > .climate-card__image,.climate-card > picture,.climate-card > picture > .climate-card__image{position: absolute;inset: 0;z-index: 0;width: 100%;height: 100%;object-fit: cover;object-position: center bottom;pointer-events: none;}
 .climate-card[data-weather="rain"]:before,.climate-card[data-weather="fog"]:before{background: linear-gradient(110deg,#f4f7f8f5,#e3edf6d9 70%,#9eafbf70);}
 .clock-card{padding: 20px 20px 0 !important;background: none;border: 0;box-shadow: none;min-height: 176px !important;}
 .clock-card .eyebrow{font-size: 0.85rem;color: #38475d;font-weight: 400;text-transform: none;letter-spacing: 0;}
@@ -1590,7 +1590,7 @@ body.homepage-app #primary-nav > a > .icon,body.homepage-app #primary-nav > a:ho
 
 
 
-<link rel="stylesheet" href="/assets/print.css?v=bfcfcd6c011b" media="print">
+<link rel="stylesheet" href="/assets/print.css?v=c5a6a445718e" media="print">
 
 <link rel="modulepreload" href="/assets/calendar.js?v=3f6237d9414c">
 <link rel="modulepreload" href="/assets/data/weather-cities.js?v=3f6237d9414c">

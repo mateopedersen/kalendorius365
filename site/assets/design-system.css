@@ -448,7 +448,9 @@ main.dashboard-main{
   position: relative;
   z-index: 2;
 }
-.climate-card > .climate-card__image{
+.climate-card > .climate-card__image,
+.climate-card > picture,
+.climate-card > picture > .climate-card__image{
   position: absolute;
   inset: 0;
   z-index: 0;
