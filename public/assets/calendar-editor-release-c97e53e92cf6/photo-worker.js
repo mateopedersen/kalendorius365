@@ -1,0 +1,1 @@
+import{filterPixels as s}from"/assets/releases/76d5c88b2ce5be9a7996/calendar-editor-release-c97e53e92cf6/filters.js";self.onmessage=({data:f})=>{const e=new Uint8ClampedArray(f.buffer);s(e,f.photo),self.postMessage(e.buffer,[e.buffer])};

@@ -6499,6 +6499,7 @@ button.primary:hover, a.button.primary:hover, .success:hover{
   .homepage-app .layer-name { min-width: 0; }
   .mobile-dock { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .mobile-dock a { min-width: 0; overflow-wrap: anywhere; }
+  .mobile-dock a > span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; text-align: center; }
   .site-footer .footer-brand-wordmark { display: block; white-space: normal; overflow-wrap: anywhere; }
   .form-row { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 }
