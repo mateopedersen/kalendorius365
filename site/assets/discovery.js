@@ -169,9 +169,11 @@ function setupDaylight() {
       const rise = document.createElement("span");
       rise.className = "daylight-time daylight-time--rise";
       rise.textContent = clock(item.result.sunrise);
+      rise.style.left = (minutesOfDay(item.result.sunrise) / 1440 * 100) + "%";
       const set = document.createElement("span");
       set.className = "daylight-time daylight-time--set";
       set.textContent = clock(item.result.sunset);
+      set.style.left = (minutesOfDay(item.result.sunset) / 1440 * 100) + "%";
       track.append(rise, set);
       line.append(name, track);
       chart.append(line);
