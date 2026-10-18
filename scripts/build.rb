@@ -54,6 +54,13 @@ Dir.chdir(ROOT) do
  # Run after URL rewriting and CSS runtime-class discovery, which operate on
  # readable modules. Hashes include the compiler and its pinned dependency lock.
  system('node','scripts/minify_js.mjs','public/assets',exception:true)
+ # Cloudflare cache rules may ignore query strings. Keep the editor bundle on
+ # a content-versioned sibling path so even query-blind caches fetch the build
+ # that the page references. AssetRelease then mirrors this path into its
+ # immutable release directory alongside every other static asset.
+ editor_release_version=Digest::SHA256.hexdigest("#{script_version}\0#{css_version}")[0,12]
+ editor_path_references=Kalendorius::StaticAssetUrls.version_calendar_editor_paths!('public',editor_release_version)
+ puts "Path-versioned #{editor_path_references} calendar-editor references for cache-safe deployment"
   previous_revisions=AssetRelease.restore_previous_releases(File.join(ROOT,'public'),release_backup,previous_revisions)
   release_manifest=AssetRelease.publish(File.join(ROOT,'public'),previous:previous_revisions)
  end
@@ -94,6 +101,9 @@ Dir.chdir(ROOT) do
  headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}' 'sha256-#{header_hash}'; connect-src 'self'; upgrade-insecure-requests\n"
  headers+="  X-Robots-Tag: noindex\n" unless release
  immutable='Cache-Control: public, max-age=31536000, immutable'
+ # The editor's isolated versioned copy is also immutable before the main
+ # release rewrite, so one wildcard rule covers its modules and JSON payload.
+ headers+="/assets/calendar-editor-release-*/*\n  #{immutable}\n"
  revalidate='Cache-Control: public, no-cache, max-age=0, must-revalidate'
  # Trailing-slash page patterns never overlap file assets. Cloudflare Pages
  # accepts at most 100 rules; avoid one rule per each of the 185 HTML routes.
@@ -104,13 +114,13 @@ Dir.chdir(ROOT) do
  data_cache=revalidate
  # Use exact paths for versioned code and data, so _headers never applies
  # multiple Cache-Control values to one response through overlapping globs.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/calendar-editor/') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
 
  end
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n"
  headers+="/assets/fonts/*\n  #{immutable}\n"
- files.select { |path|path.end_with?('.json') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/visuals/') && path!='public/assets/release-manifest.json' }.sort.each do |path|
+ files.select { |path|path.end_with?('.json') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') && !path.start_with?('public/assets/visuals/') && path!='public/assets/release-manifest.json' }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{data_cache}\n"
  end
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|

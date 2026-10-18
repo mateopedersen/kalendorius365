@@ -115,8 +115,18 @@ for original,item in release_manifest['assets'].items():
 for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('*.css')):
  fingerprinted='/assets/releases/' in str(path)
  if not fingerprinted:
-  cache_path='/assets/calendar-editor/*' if path.is_relative_to(PUBLIC/'assets/calendar-editor') else f'/{path.relative_to(PUBLIC)}'
-  assert f'{cache_path}\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,path
+  relative_asset=path.relative_to(PUBLIC/'assets')
+  editor_versioned=relative_asset.parts[0].startswith('calendar-editor-release-')
+  if path.is_relative_to(PUBLIC/'assets/calendar-editor'):
+   cache_path='/assets/calendar-editor/*'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif editor_versioned:
+   cache_path='/assets/calendar-editor-release-*/*'
+   cache_value='Cache-Control: public, max-age=31536000, immutable'
+  else:
+   cache_path=f'/{path.relative_to(PUBLIC)}'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  assert f'{cache_path}\n  {cache_value}' in headers,path
 
  content=path.read_text()
  for match in re.finditer(r'\b(?:from\s*|import\s*(?:\(\s*)?)(["\'])([^"\']+\.js(?:\?[^"\']*)?)\1',content):
@@ -176,8 +186,9 @@ if '--release' in __import__('sys').argv:
 # Check the generated release, not only the authored editor source.
 editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()
 assert 'id="calendar-editor"' in editor_html,'Release preparation replaced the personal editor'
-assert f'{release_prefix}calendar-editor/editor.js' in editor_html,'Versioned editor module missing from built route'
-assert f'{release_prefix}calendar-editor/editor.css' in editor_html,'Versioned editor stylesheet missing from built route'
+editor_release_path=re.escape(release_prefix)+r'calendar-editor-release-[a-f0-9]{12}/'
+assert re.search(editor_release_path+r'editor\.js',editor_html),'Path-versioned editor module missing from built route'
+assert re.search(editor_release_path+r'editor\.css',editor_html),'Path-versioned editor stylesheet missing from built route'
 assert 'id="generator"' not in editor_html,'Legacy calendar generator overwrote the editor'
 print('PASS: personal calendar editor survives full release generation with scoped CSS and module')
 
