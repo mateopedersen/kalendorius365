@@ -22,6 +22,26 @@ MONTHLY = load('holiday_copy_monthly', 'scripts/monthly_holidays/pages.py')
 
 
 class HolidayCopyGenerationTests(unittest.TestCase):
+    def test_all_holiday_image_metadata_has_creator_and_copyright_notice(self):
+        for media_id, media in DETAIL.NEW['media'].items():
+            with self.subTest(media_id=media_id):
+                image = DETAIL.image_object(media)
+                creators = image['creator'] if isinstance(image['creator'], list) else [image['creator']]
+                self.assertEqual(image['contentUrl'], 'https://kalendorius365.lt' + media['src'])
+                self.assertTrue(creators)
+                for creator in creators:
+                    self.assertIn(creator['@type'], ('Person', 'Organization'))
+                    self.assertTrue(creator['name'])
+                    self.assertIn(creator['name'], media['author'])
+                self.assertIn(media['author'], image['copyrightNotice'])
+                self.assertTrue(
+                    media['license'] in image['copyrightNotice']
+                    or 'Viešasis domenas' in image['copyrightNotice']
+                    or 'CC0' in image['copyrightNotice']
+                )
+                self.assertEqual(image['creditText'], media['author'])
+                self.assertEqual(image['license'], media['license_url'])
+
     def test_common_lithuanian_abbreviations_do_not_clip_sentences(self):
         for abbreviation in ('m.', 'd.', 'šv.', 'str.', 'pvz.', 'prof.', 'dr.'):
             with self.subTest(abbreviation=abbreviation):

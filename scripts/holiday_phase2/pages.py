@@ -55,6 +55,29 @@ def media(a):
  if not m:raise ValueError('Verified media missing: '+a['id'])
  image=f'<img src="{E(m["src"])}" srcset="{E(m["srcset"])}" sizes="(max-width: 760px) 92vw, (max-width: 1200px) 42vw, 480px" width="{m["width"]}" height="{m["height"]}" alt="{E(m["caption"])}" fetchpriority="high" decoding="async">'
  return f'<figure class="hd-photo"><a class="hd-original" href="{E(m["commons_url"])}" aria-label="Originalus vaizdas ir licencija: {E(m["caption"])}">{image}<span>{icon("external")} Originalas</span></a><figcaption><p>{E(m["caption"])}</p><p class="hd-credit"><a href="{E(m["commons_url"])}">{E(m["author"])}</a> · <a href="{E(m["license_url"])}">{E(m["license"])}</a>. <span class="hd-media-changes">{E(m["changes"])}</span>'+(f' <a href="{E(m["institution_url"])}">Pirminis šaltinis</a>.' if m.get('institution_url') else '')+'</p></figcaption></figure>'
+def creator_metadata(m):
+ author=m['author'].strip()
+ if author=='Lietuvos Respublikos Aukščiausioji Taryba':
+  return {'@type':'Organization','name':author}
+ if author=='Hugo.arg ir Viktorija O.':
+  return [{'@type':'Person','name':'Hugo.arg'},{'@type':'Person','name':'Viktorija O.'}]
+ # Wikimedia captions sometimes append the holding institution after the
+ # photographer. Keep the human creator distinct from that credit text.
+ name=re.split(r'\s*(?:/|;)\s*',author,maxsplit=1)[0]
+ if name.startswith('Karen Laubenstein, '):name=name.split(', ',1)[0]
+ return {'@type':'Person','name':name}
+def copyright_notice(m):
+ # Use only documented license/attribution facts. The site does not claim
+ # ownership of third-party images or infer a copyright holder from credit.
+ author=m['author'];license=m['license']
+ if license.startswith('Viešo naudojimo'):
+  return f'Viešasis domenas; šaltinio nurodyta autorystė: {author}.'
+ if license=='CC0':
+  return f'CC0; šaltinio nurodyta autorystė: {author}.'
+ return f'Licencija: {license}; šaltinio nurodyta autorystė: {author}.'
+def image_object(m):
+ url='https://kalendorius365.lt'+m['src']
+ return {'@type':'ImageObject','url':url,'contentUrl':url,'caption':m['caption'],'creator':creator_metadata(m),'copyrightNotice':copyright_notice(m),'creditText':m['author'],'license':m['license_url'],'acquireLicensePage':m['commons_url'],'isBasedOn':m['commons_url']}
 def brief(s):
  # A period in "2016 m.", "šv. Jono" or "J. Basanavičius" is not a
  # sentence boundary. Keep the complete sentence instead of clipping a teaser.
@@ -101,7 +124,7 @@ def render(a):
 <section class="hd-sources" id="saltiniai"><h2>Šaltiniai ir rengimo principai</h2><p>Šį gidą parengė Kalendorius365. Datos apskaičiuotos pagal svetainės kalendorių, dienos statusas sutikrintas su nurodytais teisės aktais, o istorinis kontekstas – su muziejų ir kitų institucijų šaltiniais. Konkrečių renginių programas ir vėlesnius teisės aktų pakeitimus tikrinkite pirminiuose šaltiniuose.</p><ul>{''.join(f'<li><a href="{E(SOURCES[s]["url"])}">{E(SOURCES[s]["title"])}</a> <span>{E(SOURCES[s].get("publisher",""))}</span></li>' for s in dict.fromkeys(a['sources']))}</ul><p class="hd-help">Turinys ir kalba peržiūrėti pasitelkiant dirbtinį intelektą. Šaltinių ir vaizdo licencijos patikra: <time datetime="2026-10-17">2026-10-17</time>. Nuotraukos kilmė bei naudojimo sąlygos nurodytos prie vaizdo.</p></section>
 <nav class="hd-related" aria-label="Susijusios dienos"><h2>Pažinkite susijusias datas</h2><div>{''.join(related)}</div></nav></article>'''
  m=NEW['media'][a['id']]
- schema={'@context':'https://schema.org','@type':'Article','headline':a['title'],'description':a['meta_description'],'inLanguage':'lt-LT','mainEntityOfPage':'https://kalendorius365.lt'+route(a),'dateModified':'2026-10-17','author':{'@type':'Organization','name':'Kalendorius365','url':'https://kalendorius365.lt/'},'publisher':{'@type':'Organization','name':'Kalendorius365','url':'https://kalendorius365.lt/'},'image':{'@type':'ImageObject','url':'https://kalendorius365.lt'+m['src'],'caption':m['caption'],'creditText':m['author'],'license':m['license_url'],'acquireLicensePage':m['commons_url'],'isBasedOn':m['commons_url']}}
+ schema={'@context':'https://schema.org','@type':'Article','headline':a['title'],'description':a['meta_description'],'inLanguage':'lt-LT','mainEntityOfPage':'https://kalendorius365.lt'+route(a),'dateModified':'2026-10-17','author':{'@type':'Organization','name':'Kalendorius365','url':'https://kalendorius365.lt/'},'publisher':{'@type':'Organization','name':'Kalendorius365','url':'https://kalendorius365.lt/'},'image':image_object(m)}
  result+='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False).replace('</','<\\/')+'</script>'
  short_titles={'feb16':'Vasario 16-oji – data, reikšmė ir kalendorius','mar11':'Kovo 11-oji – data, reikšmė ir kalendorius','statehood':'Liepos 6-oji – Valstybės ir Tautiškos giesmės diena','assumption':'Žolinė – rugpjūčio 15-oji ir šventės reikšmė','all-souls':'Vėlinės – lapkričio 2-oji, datos ir tradicijos','freedom-defenders':'Laisvės gynėjų diena – Sausio 13-oji'}
  front={'title':short_titles.get(a['id'],a['title']+' – datos ir kalendorius'),'description':a['meta_description'],'holiday_phase2':True,'breadcrumb_label':a['title'],'og_image':m.get('og_image',m['src']),'og_image_alt':m['caption'],'og_image_type':m.get('og_type','image/webp'),'og_image_width':m.get('og_width',m['width']),'og_image_height':m.get('og_height',m['height'])}
