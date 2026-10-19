@@ -215,15 +215,15 @@
 .ascendant-calculator__header h2 { margin: 0; color: var(--horoscope-ink); font-size: clamp(1.12rem, 2.2vw, 1.45rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
 .ascendant-calculator__intro { max-width: 760px; margin: 8px 0 0; color: var(--horoscope-muted); font-size: .88rem; line-height: 1.6; }
 .ascendant-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 12px; }
-.ascendant-form__field { position: relative; display: grid; min-width: 0; gap: 7px; }
+.ascendant-form__field { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 7px; }
 .ascendant-form__field label { color: var(--horoscope-ink); font-size: .8rem; font-weight: 800; letter-spacing: -.01em; }
-.ascendant-form__field input { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--horoscope-border) 82%, var(--sign-accent)); border-radius: 12px; outline: none; color: var(--horoscope-ink); background: color-mix(in srgb, var(--horoscope-panel) 96%, var(--sign-accent)); font: inherit; font-size: .86rem; box-shadow: inset 0 1px 2px #17223608, 0 2px 4px #17223606; transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease; color-scheme: light; }
+.ascendant-form__field input { display: block; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--horoscope-border) 82%, var(--sign-accent)); border-radius: 12px; outline: none; color: var(--horoscope-ink); background: color-mix(in srgb, var(--horoscope-panel) 96%, var(--sign-accent)); font: inherit; font-size: .86rem; box-shadow: inset 0 1px 2px #17223608, 0 2px 4px #17223606; transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease; color-scheme: light; }
 .ascendant-form__field input:hover { border-color: color-mix(in srgb, var(--sign-accent) 42%, var(--horoscope-border)); }
 .ascendant-form__field input:focus-visible { border-color: var(--sign-accent); background: var(--horoscope-panel); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sign-accent) 18%, transparent); }
 .ascendant-form__field small { color: var(--horoscope-muted); font-size: .72rem; line-height: 1.45; }
 .ascendant-form__field--city input { padding-right: 34px; }
 .ascendant-form__field--city::after { position: absolute; top: 39px; right: 15px; width: 7px; height: 7px; border-right: 1.8px solid var(--horoscope-muted); border-bottom: 1.8px solid var(--horoscope-muted); content: ""; pointer-events: none; transform: rotate(45deg); }
-.ascendant-form__submit { display: inline-flex; min-width: 260px; min-height: 49px; grid-column: 1 / -1; align-items: center; justify-content: space-between; gap: 18px; justify-self: start; padding: 9px 15px 9px 18px; border: 1px solid #075c43; border-radius: 13px; color: #fff; background: linear-gradient(115deg, #078257, #006342 76%); box-shadow: inset 0 1px #ffffff55, 0 5px 13px #006a4430; font: inherit; font-size: .84rem; font-weight: 800; cursor: pointer; transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease; }
+.ascendant-form__submit { display: inline-flex; box-sizing: border-box; max-width: 100%; min-width: 260px; min-height: 49px; grid-column: 1 / -1; align-items: center; justify-content: space-between; gap: 18px; justify-self: start; padding: 9px 15px 9px 18px; border: 1px solid #075c43; border-radius: 13px; color: #fff; background: linear-gradient(115deg, #078257, #006342 76%); box-shadow: inset 0 1px #ffffff55, 0 5px 13px #006a4430; font: inherit; font-size: .84rem; font-weight: 800; cursor: pointer; transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease; }
 .ascendant-form__submit span:last-child { font-size: 1.15rem; line-height: 1; transition: transform 150ms ease; }
 .ascendant-form__submit:hover { transform: translateY(-1px); filter: brightness(1.06); box-shadow: inset 0 1px #ffffff5c, 0 7px 15px color-mix(in srgb, var(--sign-accent) 23%, transparent); }
 .ascendant-form__submit:hover span:last-child { transform: translate(2px, -2px); }
@@ -253,6 +253,7 @@
 }
 @media (max-width: 560px) {
   .ascendant-calculator { gap: 13px; padding: 14px; border-radius: 15px; }
+  .ascendant-form,.ascendant-form__field { min-width: 0; max-width: 100%; }
   .ascendant-calculator__header { grid-template-columns: 52px minmax(0, 1fr); gap: 11px; }
   .ascendant-calculator__art { width: 50px; height: 50px; border-radius: 15px; }
   .ascendant-calculator__art svg { width: 48px; height: 48px; }
@@ -264,6 +265,7 @@
   .ascendant-form__field--city::after { top: 39px; }
   .ascendant-form__field label { font-size: .75rem; }
   .ascendant-form__field input { min-height: 44px; font-size: .81rem; }
+  .ascendant-form__field input::-webkit-date-and-time-value { min-width: 0; text-align: left; }
   .ascendant-form__submit { width: 100%; }
   .ascendant-result { grid-template-columns: 46px minmax(0, 1fr); gap: 9px; padding: 10px; }
   .ascendant-result__emblem { width: 44px; height: 44px; }
