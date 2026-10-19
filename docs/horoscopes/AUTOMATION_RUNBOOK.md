@@ -10,7 +10,7 @@
 4. The two independent Python QA gates must pass before `horoscope_current.json` is atomically replaced.
 5. Ruby 3.4.11 and Bundler 2.6.9 build the Jekyll release and check all thirteen routes, canonicals, indexability and sitemap entries.
 6. The action commits only horoscope data/pages and required generated files, then makes a normal fast-forward push to `main`. It never force-pushes.
-7. The existing GitHub-to-Cloudflare Pages integration deploys `main`. The workflow then checks HTTP 200, `lang=lt`, self-canonical, indexability, date, complete copy and provider attribution on all thirteen production routes.
+7. The existing GitHub-to-Cloudflare Pages integration deploys `main`. The workflow allows twenty minutes for Pages propagation, then checks HTTP 200, `lang=lt`, self-canonical, indexability, date, complete copy and provider attribution on all thirteen production routes. IndexNow runs after the live verification and cannot mark a valid publication as failed.
 
 ## Failure behavior
 
