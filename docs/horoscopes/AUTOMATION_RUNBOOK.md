@@ -1,6 +1,6 @@
 # Daily horoscope automation runbook
 
-`.github/workflows/horoscope-automation.yml` runs on the default `main` branch at 06:20, with an 08:20 recovery run in `Europe/Vilnius`. `workflow_dispatch` can manually recover the current date.
+`.github/workflows/horoscope-automation.yml` makes a first attempt at 05:17 and retries every 30 minutes through 10:47 in `Europe/Vilnius`. This starts the build before the requested 06:20 publication time and gives delayed or failed scheduled runs several same-day recovery attempts. `workflow_dispatch` can manually recover the current date. GitHub scheduled events are best-effort and can still be delayed or dropped; check run history and live page dates when investigating a missed publication.
 
 ## Run sequence
 
@@ -15,7 +15,7 @@
 ## Failure behavior
 
 - Any missing sign, failed validation, build or push leaves the existing publication untouched.
-- The 08:20 run retries the same local date. Concurrency prevents simultaneous publishing.
+- Each half-hour recovery run checks the same local date. Concurrency prevents simultaneous publishing, and completed data makes subsequent runs idempotent.
 - If production verification fails, the Actions run fails and records the cause in its summary/log. Email notifications depend on the repository owner's GitHub notification settings.
 - Roll back only the horoscope data/generated pages; do not alter calendar or print assets.
 
