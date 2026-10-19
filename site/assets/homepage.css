@@ -805,15 +805,19 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
     display: none;
   }}
 
-/* Reserve the hydrated home calendar controls and selected-day header. */
+/* Keep all hydrated homepage calendar filters visible at every viewport width. */
 .homepage-app #category-chips{
-  flex-wrap: nowrap;
-  min-height: 32px;
-  overflow-x: auto;
-  scrollbar-width: thin;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  min-height: 0;
+  max-width: 100%;
+  overflow: visible;
+  scrollbar-width: none;
 }
 .homepage-app #category-chips .filter-chip{
-  flex: none;
+  flex: 0 0 auto;
+  max-width: 100%;
+  white-space: nowrap;
 }
 .homepage-app .detail-head{
   min-height: 66px;
@@ -821,10 +825,6 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 .homepage-app #selected-number{
   min-height: 48px;
 }
-@media (max-width: 760px){
-  .homepage-app #category-chips{
-    min-height: 38px;
-  }}
 .homepage-app .holidays-panel .panel-title{ gap: 10px; }
 .homepage-app .holidays-panel .panel-title h2{ display: inline-flex; align-items: center; gap: 8px; }
 .homepage-app .holidays-panel .panel-heading-icon{
@@ -903,15 +903,7 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   .homepage-app .right-column #day-details{ row-gap: 16px; }
   .homepage-app .right-column #day-details > .day-details__content > .panel,
   .homepage-app .right-column > .panel{ margin-block: 0; }}
-@media (max-width: 960px){
-  .homepage-app #category-chips{
-    flex-wrap: wrap;
-    overflow: visible;
-    max-width: 100%;
-    min-height: 0;
-    scrollbar-width: none;
-  }
-  .homepage-app #category-chips .filter-chip{ flex: 0 1 auto; }}/* Kalendorius365 daily horoscope module. Lato and brand tokens come from the shared design system. */
+/* Kalendorius365 daily horoscope module. Lato and brand tokens come from the shared design system. */
 .homepage-app .horoscope-teaser {
   display: grid;
   grid-template-columns: 92px minmax(0, 1fr) auto;

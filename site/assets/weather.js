@@ -1,6 +1,5 @@
 import { icon as uiIcon } from "./icons.js";
 import { TZ, today } from "./calendar.js";
-import { WEATHER_CITY_BY_ID } from "./data/weather-cities.js";
 import { WEATHER_CITY_BACKGROUNDS } from "./data/weather-backgrounds.js";
 const names = {
   clear: "Giedra",
@@ -42,34 +41,6 @@ function originalPictureState(picture, image) {
   return originalWeatherPicture;
 }
 
-function setWeatherPhotoCredit(city, background) {
-  const caption = document.querySelector(".sky-caption");
-  if (!caption) return;
-  caption.replaceChildren();
-  if (!background.source) {
-    caption.textContent = background.caption || `${WEATHER_CITY_BY_ID.get(city)?.name || city} · iliustracija`;
-    return;
-  }
-  const cityName = WEATHER_CITY_BY_ID.get(city)?.name || city;
-  const source = document.createElement("a");
-  source.href = background.source;
-  source.target = "_blank";
-  source.rel = "noopener noreferrer";
-  source.textContent = `${cityName} · nuotr. ${background.author}`;
-  caption.append(source, document.createTextNode(" · "));
-  if (background.licenseUrl) {
-    const license = document.createElement("a");
-    license.href = background.licenseUrl;
-    license.target = "_blank";
-    license.rel = "license noopener noreferrer";
-    license.textContent = background.license;
-    caption.append(license);
-  } else {
-    caption.append(document.createTextNode(background.license));
-  }
-  caption.append(document.createTextNode(" · sumažinta, kadras apkirptas"));
-}
-
 export function updateWeatherBackground(city) {
   const background = WEATHER_CITY_BACKGROUNDS[city];
   const card = document.querySelector(".climate-card");
@@ -87,7 +58,6 @@ export function updateWeatherBackground(city) {
     if (original.imageSrcset) image.setAttribute("srcset", original.imageSrcset);
     image.style.objectPosition = background.focalPoint || "center bottom";
     card.dataset.weatherCity = city;
-    setWeatherPhotoCredit(city, background);
   };
 
   if (city === "vilnius") {
@@ -105,7 +75,6 @@ export function updateWeatherBackground(city) {
     image.src = background.image;
     image.style.objectPosition = background.focalPoint || "center center";
     card.dataset.weatherCity = city;
-    setWeatherPhotoCredit(city, background);
   };
   preloaded.onload = applyBackground;
   preloaded.onerror = () => {
@@ -124,7 +93,6 @@ function showOriginalCityForFailure(card, image, original) {
   if (original.imageSrcset) image.setAttribute("srcset", original.imageSrcset);
   image.style.objectPosition = "center bottom";
   card.dataset.weatherCity = "vilnius";
-  setWeatherPhotoCredit("vilnius", WEATHER_CITY_BACKGROUNDS.vilnius);
 }
 
 export async function loadWeather(city) {

@@ -605,33 +605,77 @@ main.dashboard-main{
   width: 15px;
   height: 15px;
 }
-.weather-credit{
-  font-size: 0.59rem !important;
-  color: #304b5e;
-  margin: 7px 0 0 !important;
+.weather-attribution{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+  margin: 9px 0 0;
+  color: #375064;
+  font-size: 0.66rem;
   line-height: 1.4;
 }
-.weather-credit a{
-  color: #304b5e;
-  text-decoration: underline;
-}
-.sky-caption{
-  display: block;
-  max-width: 100%;
-  font-size: 0.57rem;
-  line-height: 1.45;
-  color: #375064;
-  margin-top: 2px;
-  overflow-wrap: anywhere;
-}
-.sky-caption a{
+.weather-attribution a{
   color: inherit;
   text-decoration: underline;
   text-decoration-color: #37506480;
   text-underline-offset: 2px;
 }
-.sky-caption a:hover{
+.weather-attribution a:hover{
   text-decoration-color: currentColor;
+}
+.weather-sources__data{
+  margin-bottom: 28px;
+}
+.weather-sources__data h2,
+.weather-sources__heading h2{
+  margin-bottom: 8px;
+}
+.weather-sources__data p,
+.weather-sources__heading > p{
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.weather-sources__heading{
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.weather-sources__heading .eyebrow{
+  margin-bottom: 5px;
+}
+.weather-sources__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.weather-sources__item{
+  min-width: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.weather-sources__item h3{
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+.weather-sources__item p{
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.weather-sources__item a{
+  text-underline-offset: 2px;
 }
 .stats{
   display: grid;
@@ -3245,12 +3289,21 @@ details > summary{
     width: 12px;
     height: 12px;
   }
-  .weather-credit{
-    font-size: 0.53rem !important;
-    margin-top: 4px !important;
+  .weather-attribution{
+    gap: 3px 6px;
+    margin-top: 7px;
+    font-size: 0.62rem;
   }
-  .sky-caption{
-    font-size: 0.53rem;
+  .weather-sources__heading{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .weather-sources__grid{
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .weather-sources__item{
+    padding: 15px 16px;
   }
   .center-column{
     order: 1;
