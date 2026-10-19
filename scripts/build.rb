@@ -135,11 +135,12 @@ Dir.chdir(ROOT) do
    "#{url_encode.call(source)} #{url_encode.call(target)} 301"
   end
  end
+ calendar_redirect_count=redirects.length
  redirects.unshift('/apie/ /apie-mus/ 301', '/apie /apie-mus/ 301')
  abort 'Cloudflare Pages static redirect limit exceeded' if redirects.length>2000
  abort 'Duplicate legacy calendar redirect source' unless redirects.map { |line|line.split.first }.uniq.length==redirects.length
  if release && JSON.parse(File.read('site/assets/data/manifest.json')).key?('packageImport')
-  abort 'Expected 1,560 redirects for the 390 imported calendars' unless redirects.length==1560
+  abort 'Expected 1,560 redirects for the 390 imported calendars' unless calendar_redirect_count==1560
  end
  File.write('public/_redirects',redirects.empty? ? '' : redirects.join("\n")+"\n")
  File.write('public/robots.txt',"User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: *\nAllow: /\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
