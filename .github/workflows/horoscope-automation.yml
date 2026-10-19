@@ -73,7 +73,7 @@ jobs:
   publish:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 45
     permissions:
       contents: write
     steps:
@@ -140,11 +140,12 @@ jobs:
             git push origin HEAD:refs/heads/main
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: Verify all 13 live Cloudflare Pages routes and their current indexable date
+        run: python3 scripts/horoscopes/verify_live.py --date "${{ steps.target.outputs.target_date }}" --max-wait-seconds 1200
       - name: Notify IndexNow after the daily Pages release is live
         if: steps.publish_commit.outputs.changed == 'true'
-        run: python3 scripts/indexnow_notify.py --base "$GITHUB_SHA" --head "$(git rev-parse HEAD)" --post
-      - name: Verify all 13 live Cloudflare Pages routes and their current indexable date
-        run: python3 scripts/horoscopes/verify_live.py --date "${{ steps.target.outputs.target_date }}" --max-wait-seconds 300
+        continue-on-error: true
+        run: python3 scripts/indexnow_notify.py --base "$GITHUB_SHA" --head "$(git rev-parse HEAD)" --post --wait-seconds 1200
       - name: Record the failure while retaining the last successful publication date
         if: failure()
         run: |
