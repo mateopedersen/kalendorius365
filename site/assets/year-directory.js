@@ -99,7 +99,7 @@ if (selector) {
   };
   selector.addEventListener("change", update);
   update();
-  fetch("/assets/data/manifest.json").then((response) => {
+  fetch("/assets/data/year-print-assets.json").then((response) => {
     if (!response.ok) throw Error("Metinių failų sąrašas nepasiekiamas.");
     return response.json();
   }).then((manifest) => {
