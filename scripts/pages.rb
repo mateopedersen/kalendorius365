@@ -113,15 +113,15 @@ module Pages
   end
   html+'</tbody></table>'
  end
- def holiday_table(y,month=nil)
+ def holiday_table(y,month=nil,annual_holiday_page=false)
   hs=Kalendorius.holidays(y);hs=hs.select { |h|Date.iso8601(h['date']).month==month } if month
   return '<p>Šį mėnesį įstatyme nustatytų šventinių dienų nėra.</p>' if hs.empty?
-  '<div class="table-scroll"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Šventė</th><th scope="col">Statusas</th></tr></thead><tbody>'+hs.map { |h|d=Date.iso8601(h['date']);url=holiday_page_url(h['id']);name=esc(h['legalName']||h['name']);"<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{h['date']}\">#{h['date']}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td>#{url ? "<a href=\"#{url}\">#{name}</a>" : name}</td><td>Šventinė diena · DK 123 str.</td></tr>" }.join+'</tbody></table></div>'
+  '<div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Šventė</th><th scope="col">Statusas</th></tr></thead><tbody>'+hs.map { |h|d=Date.iso8601(h['date']);url=holiday_page_url(h['id']);name=esc(h['legalName']||h['name']);"<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{h['date']}\">#{h['date']}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td>#{url ? "<a href=\"#{url}\">#{name}</a>" : name}</td><td>Šventinė diena · DK 123 str.</td></tr>" }.join+'</tbody></table></div>'
  end
- def commemoration_table(y,month=nil)
+ def commemoration_table(y,month=nil,annual_holiday_page=false)
   records=EDITORIAL['commemorations'];records=records.select { |a|a['month']==month } if month
   return '' if records.empty?
-  '<h2>Atmintinos dienos</h2><div class="table-scroll"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Atmintina diena</th><th scope="col">Teisinė reikšmė</th></tr></thead><tbody>'+records.map do |a|
+  '<h2>Atmintinos dienos</h2><div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Atmintina diena</th><th scope="col">Teisinė reikšmė</th></tr></thead><tbody>'+records.map do |a|
    d=Date.new(y,a['month'],a['day'],Date::GREGORIAN);"<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{d.iso8601}\">#{d.iso8601}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td><a href=\"/sventes/#{a['slug']}/\">#{esc(a['title'])}</a></td><td>Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos; data gali sutapti su DK 123 str. švente</td></tr>"
   end.join+'</tbody></table></div>'
  end
@@ -365,7 +365,7 @@ module Pages
  end
  def generate_holidays(y)
   annual=MANIFEST.find { |e|e['kind']=='annual' && e['year']==y }
-  html=intro("#{y} metų šventinės dienos Lietuvoje",'Įstatyme nustatytos šventinės dienos ir jų savaitės dienos. Pagal Darbo kodeksą šiomis dienomis paprastai nedirbama, tačiau taikomos įstatyme numatytos išimtys.',yearlinks('sventes/'))+'<p id="next-holiday" class="source-note"></p>'+holiday_table(y)+commemoration_table(y)+source+'<p><a href="/sventes/">Visų švenčių ir atmintinų dienų paaiškinimai</a></p>'
+  html=intro("#{y} metų šventinės dienos Lietuvoje",'Įstatyme nustatytos šventinės dienos ir jų savaitės dienos. Pagal Darbo kodeksą šiomis dienomis paprastai nedirbama, tačiau taikomos įstatyme numatytos išimtys.',yearlinks('sventes/'))+'<p id="next-holiday" class="source-note"></p>'+holiday_table(y,nil,true)+commemoration_table(y,nil,true)+source+'<p><a href="/sventes/">Visų švenčių ir atmintinų dienų paaiškinimai</a></p>'
   html+="<h2>Šventės spausdinamame kalendoriuje</h2><p>Metiniame lape šventinės dienos išskirtos raudonai, o pilnas jų sąrašas pateiktas aukščiau.</p><a class=\"button\" href=\"#{download_href(annual,'pdf')}\" download>Metų PDF su šventėmis</a> <a class=\"button\" href=\"#{download_href(annual,'webp')}\" download>Metų WebP</a>" if annual
   page("sventes/#{y}","#{y} metų šventinės dienos Lietuvoje","Lietuvos šventinės dienos #{y} metais: tikslios datos, savaitės dienos, Velykos, Motinos ir Tėvo diena bei oficialūs teisės šaltiniai.",html,true)
  end

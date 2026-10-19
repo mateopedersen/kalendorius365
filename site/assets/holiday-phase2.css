@@ -16,3 +16,5 @@
 @media(max-width:760px){.hd-facts{grid-template-columns:1fr}}
 .hd2 .hd-my-calendar{display:inline-block;font-size:.82rem;font-weight:700;margin-left:.75rem}.hd-print{margin-top:1rem;cursor:pointer;max-width:100%;overflow-wrap:anywhere}.hd2 button:focus-visible{outline:3px solid #156bbc;outline-offset:5px}
 @media print{.hd-print,.hd-my-calendar{display:none!important}}
+/* Keep weekday names intact in the narrow annual holiday tables. */
+@media(max-width:620px){.holiday-year-table .data-table :is(th,td):nth-child(2){white-space:nowrap;overflow-wrap:normal;word-break:normal;hyphens:none}}
