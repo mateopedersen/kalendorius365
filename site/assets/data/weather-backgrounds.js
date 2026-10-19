@@ -1,0 +1,123 @@
+const sharedAlike3 = "https://creativecommons.org/licenses/by-sa/3.0/";
+const sharedAlike4 = "https://creativecommons.org/licenses/by-sa/4.0/";
+const attribution3 = "https://creativecommons.org/licenses/by/3.0/";
+
+// Local, optimized photographs keep the weather card quick and available
+// without requesting image data from a third party on every visit.
+export const WEATHER_CITY_BACKGROUNDS = Object.freeze({
+  vilnius: {
+    image: "/assets/visuals/weather-640.webp",
+    caption: "Vilnius · iliustracija",
+    focalPoint: "center bottom",
+  },
+  kaunas: {
+    image: "/assets/visuals/weather-city-kaunas.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Kaunas_Castle_-_panorama.JPG",
+    author: "Pudelek (Marcin Szala)",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    focalPoint: "52% 55%",
+  },
+  klaipeda: {
+    image: "/assets/visuals/weather-city-klaipeda.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Quite_summer_evening_in_the_port_city_Klaipeda.jpg",
+    author: "Mantas Volungevicius",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    focalPoint: "54% 55%",
+  },
+  siauliai: {
+    image: "/assets/visuals/weather-city-siauliai.webp",
+    source: "https://commons.wikimedia.org/wiki/File:%C5%A0iauliai_-_panoramio_(8).jpg",
+    author: "Modris Putns",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    focalPoint: "50% 55%",
+  },
+  panevezys: {
+    image: "/assets/visuals/weather-city-panevezys.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Senvag%C4%97_Pond_in_Panev%C4%97%C5%BEys,_Lithuania_in_2019.jpg",
+    author: "Scotch Mist",
+    license: "CC BY-SA 4.0",
+    licenseUrl: sharedAlike4,
+    focalPoint: "52% 55%",
+  },
+  alytus: {
+    image: "/assets/visuals/weather-city-alytus.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Alytus,_Baltosios_ro%C5%BE%C4%97s_tiltas.JPG",
+    author: "Vilensija",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    focalPoint: "58% 52%",
+  },
+  marijampole: {
+    image: "/assets/visuals/weather-city-marijampole.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Marijampol%C4%97_-_panoramio.jpg",
+    author: "Raimundas Budzeika",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    focalPoint: "42% 52%",
+  },
+  mazeikiai: {
+    image: "/assets/visuals/weather-city-mazeikiai.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Mazeikiai_panorama_resize.JPG",
+    author: "Algirdas",
+    license: "Viešasis domenas",
+    focalPoint: "50% 54%",
+  },
+  jonava: {
+    image: "/assets/visuals/weather-city-jonava.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Jonava_Regional_Museum_in_Jonava,_Lithuania_in_2014.jpg",
+    author: "Pagulbi74",
+    license: "CC0 1.0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+    focalPoint: "50% 53%",
+  },
+  utena: {
+    image: "/assets/visuals/weather-city-utena.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Utena_city_-_Real_is_beautiful.jpg",
+    author: "Kalnuerelis",
+    license: "CC BY-SA 4.0",
+    licenseUrl: sharedAlike4,
+    focalPoint: "50% 48%",
+  },
+  kedainiai: {
+    image: "/assets/visuals/weather-city-kedainiai.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Nev%C4%97%C5%BEis_in_K%C4%97dainiai.jpg",
+    author: "Hugo.arg",
+    license: "Viešasis domenas",
+    focalPoint: "50% 52%",
+  },
+  telsiai: {
+    image: "/assets/visuals/weather-city-telsiai.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Tel%C5%A1iai_Cathedral_Exterior,_Tel%C5%A1iai,_Lithuania_-_Diliff.jpg",
+    author: "Diliff",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    focalPoint: "50% 45%",
+  },
+  ukmerge: {
+    image: "/assets/visuals/weather-city-ukmerge.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Ukmerge_city.jpg",
+    author: "Tocekas",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    focalPoint: "48% 52%",
+  },
+  taurage: {
+    image: "/assets/visuals/weather-city-taurage.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Taurag%C4%97_Castle,_Taurag%C4%97,_Lithuania,_June_2019.jpg",
+    author: "MichalPL",
+    license: "CC BY-SA 4.0",
+    licenseUrl: sharedAlike4,
+    focalPoint: "50% 48%",
+  },
+  visaginas: {
+    image: "/assets/visuals/weather-city-visaginas.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Visaginas,_Lithuania_-_panoramio_(197).jpg",
+    author: "VietovesLt",
+    license: "CC BY 3.0",
+    licenseUrl: attribution3,
+    focalPoint: "55% 52%",
+  },
+});

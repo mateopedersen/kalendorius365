@@ -74,3 +74,60 @@ distributed under its existing OFL notice in `site/assets/fonts/`.
 
 Earlier holiday, lunar and zodiac source/license records in `docs/` and
 their distributed notices remain in effect and are unchanged.
+
+## Homepage weather city photographs
+
+Reviewed 19 October 2026. The homepage weather card uses locally hosted,
+city-specific images for every city in the selector. Changing the city also
+changes the image. The existing Vilnius illustration is retained; the other
+fourteen photos are optimized WebP copies of these Wikimedia Commons files.
+The photo author and license link appear below the weather details whenever a
+Commons photo is selected.
+
+* **Kaunas:** Pudelek (Marcin Szala, *Kaunas Castle - panorama*),
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Kaunas_Castle_-_panorama.JPG).
+* **Klaipėda:** Mantas Volungevicius, *Quiet summer evening in the port city
+  Klaipėda*, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Quite_summer_evening_in_the_port_city_Klaipeda.jpg).
+* **Šiauliai:** Modris Putns, *Šiauliai - panoramio (8)*,
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:%C5%A0iauliai_-_panoramio_(8).jpg).
+* **Panevėžys:** Scotch Mist, *Senvagė Pond in Panevėžys*,
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Senvag%C4%97_Pond_in_Panev%C4%97%C5%BEys,_Lithuania_in_2019.jpg).
+* **Alytus:** Vilensija, *White Rose Bridge*,
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Alytus,_Baltosios_ro%C5%BE%C4%97s_tiltas.JPG).
+* **Marijampolė:** Raimundas Budzeika, *Marijampolė - panoramio*,
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Marijampol%C4%97_-_panoramio.jpg).
+* **Mažeikiai:** Algirdas, *Mažeikiai panorama* (public domain),
+  [source](https://commons.wikimedia.org/wiki/File:Mazeikiai_panorama_resize.JPG).
+* **Jonava:** Pagulbi74, *Jonava Regional Museum*,
+  [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Jonava_Regional_Museum_in_Jonava,_Lithuania_in_2014.jpg).
+* **Utena:** Kalnuerelis, *Utena city - Real is beautiful*,
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Utena_city_-_Real_is_beautiful.jpg).
+* **Kėdainiai:** Hugo.arg, *Nevėžis in Kėdainiai* (public domain),
+  [source](https://commons.wikimedia.org/wiki/File:Nev%C4%97%C5%BEis_in_K%C4%97dainiai.jpg).
+* **Telšiai:** Diliff, *Telšiai Cathedral Exterior*,
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Tel%C5%A1iai_Cathedral_Exterior,_Tel%C5%A1iai,_Lithuania_-_Diliff.jpg).
+* **Ukmergė:** Tocekas, *Ukmergė city*,
+  [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Ukmerge_city.jpg).
+* **Tauragė:** MichalPL, *Tauragė Castle*,
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Taurag%C4%97_Castle,_Taurag%C4%97,_Lithuania,_June_2019.jpg).
+* **Visaginas:** VietovesLt, *Visaginas, Lithuania - panoramio (197)*,
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/),
+  [source](https://commons.wikimedia.org/wiki/File:Visaginas,_Lithuania_-_panoramio_(197).jpg).
+
+Each Commons image is resized and encoded as WebP. The card crops the image to
+fit its responsive shape; no source image is requested from Wikimedia while a
+visitor is using the site. The displayed author, source page, license and
+adaptation notice accompany each photo. ShareAlike images retain their
+original license terms; no additional restrictions are imposed on those
+image files.

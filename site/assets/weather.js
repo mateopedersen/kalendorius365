@@ -1,6 +1,7 @@
 import { icon as uiIcon } from "./icons.js";
 import { TZ, today } from "./calendar.js";
 import { WEATHER_CITY_BY_ID } from "./data/weather-cities.js";
+import { WEATHER_CITY_BACKGROUNDS } from "./data/weather-backgrounds.js";
 const names = {
   clear: "Giedra",
   "partly-cloudy": "Mažai debesuota",
@@ -27,6 +28,105 @@ const names = {
 };
 const pending = new Map();
 let latestRender = 0;
+let backgroundRequest = 0;
+let originalWeatherPicture;
+
+function originalPictureState(picture, image) {
+  if (originalWeatherPicture) return originalWeatherPicture;
+  originalWeatherPicture = {
+    source: picture?.querySelector('source[type="image/avif"]') || null,
+    sourceSrcset: picture?.querySelector('source[type="image/avif"]')?.getAttribute("srcset"),
+    imageSrc: image.getAttribute("src"),
+    imageSrcset: image.getAttribute("srcset"),
+  };
+  return originalWeatherPicture;
+}
+
+function setWeatherPhotoCredit(city, background) {
+  const caption = document.querySelector(".sky-caption");
+  if (!caption) return;
+  caption.replaceChildren();
+  if (!background.source) {
+    caption.textContent = background.caption || `${WEATHER_CITY_BY_ID.get(city)?.name || city} · iliustracija`;
+    return;
+  }
+  const cityName = WEATHER_CITY_BY_ID.get(city)?.name || city;
+  const source = document.createElement("a");
+  source.href = background.source;
+  source.target = "_blank";
+  source.rel = "noopener noreferrer";
+  source.textContent = `${cityName} · nuotr. ${background.author}`;
+  caption.append(source, document.createTextNode(" · "));
+  if (background.licenseUrl) {
+    const license = document.createElement("a");
+    license.href = background.licenseUrl;
+    license.target = "_blank";
+    license.rel = "license noopener noreferrer";
+    license.textContent = background.license;
+    caption.append(license);
+  } else {
+    caption.append(document.createTextNode(background.license));
+  }
+  caption.append(document.createTextNode(" · sumažinta, kadras apkirptas"));
+}
+
+export function updateWeatherBackground(city) {
+  const background = WEATHER_CITY_BACKGROUNDS[city];
+  const card = document.querySelector(".climate-card");
+  const picture = card?.querySelector("picture");
+  const image = picture?.querySelector(".climate-card__image");
+  if (!background || !card || !picture || !image) return;
+  if (card.dataset.weatherCity === city) return;
+
+  const original = originalPictureState(picture, image);
+  const request = ++backgroundRequest;
+  const showOriginalCity = () => {
+    if (original.source && original.sourceSrcset)
+      original.source.setAttribute("srcset", original.sourceSrcset);
+    image.setAttribute("src", original.imageSrc);
+    if (original.imageSrcset) image.setAttribute("srcset", original.imageSrcset);
+    image.style.objectPosition = background.focalPoint || "center bottom";
+    card.dataset.weatherCity = city;
+    setWeatherPhotoCredit(city, background);
+  };
+
+  if (city === "vilnius") {
+    showOriginalCity();
+    return;
+  }
+
+  const preloaded = new Image();
+  let applied = false;
+  const applyBackground = () => {
+    if (applied || request !== backgroundRequest) return;
+    applied = true;
+    original.source?.removeAttribute("srcset");
+    image.removeAttribute("srcset");
+    image.src = background.image;
+    image.style.objectPosition = background.focalPoint || "center center";
+    card.dataset.weatherCity = city;
+    setWeatherPhotoCredit(city, background);
+  };
+  preloaded.onload = applyBackground;
+  preloaded.onerror = () => {
+    if (request !== backgroundRequest) return;
+    backgroundRequest += 1;
+    showOriginalCityForFailure(card, image, original);
+  };
+  preloaded.src = background.image;
+  if (preloaded.complete && preloaded.naturalWidth) applyBackground();
+}
+
+function showOriginalCityForFailure(card, image, original) {
+  if (original.source && original.sourceSrcset)
+    original.source.setAttribute("srcset", original.sourceSrcset);
+  image.setAttribute("src", original.imageSrc);
+  if (original.imageSrcset) image.setAttribute("srcset", original.imageSrcset);
+  image.style.objectPosition = "center bottom";
+  card.dataset.weatherCity = "vilnius";
+  setWeatherPhotoCredit("vilnius", WEATHER_CITY_BACKGROUNDS.vilnius);
+}
+
 export async function loadWeather(city) {
   if (pending.has(city)) return pending.get(city);
   const job = (async () => {
@@ -47,6 +147,7 @@ export async function loadWeather(city) {
 }
 export async function renderWeather(city) {
   const renderId = ++latestRender;
+  updateWeatherBackground(city);
   const target = document.querySelector("#weather-content");
   target.textContent = "Įkeliami orai…";
   const data = await loadWeather(city);
@@ -156,6 +257,4 @@ export async function renderWeather(city) {
     p.textContent = `Šiandienos prognozė: ${Math.round(Math.min(...day))}…${Math.round(Math.max(...day))} °C`;
     target.append(p);
   }
-  document.querySelector(".sky-caption").textContent =
-    (WEATHER_CITY_BY_ID.get(city)?.name || city) + " · iliustracija";
 }

@@ -458,6 +458,7 @@ main.dashboard-main{
   height: 100%;
   object-fit: cover;
   object-position: center bottom;
+  transition: object-position 260ms ease, filter 260ms ease;
   pointer-events: none;
 }
 .climate-card[data-weather="rain"]:before,
@@ -616,9 +617,21 @@ main.dashboard-main{
 }
 .sky-caption{
   display: block;
-  font-size: 0.55rem;
+  max-width: 100%;
+  font-size: 0.57rem;
+  line-height: 1.45;
   color: #375064;
   margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+.sky-caption a{
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #37506480;
+  text-underline-offset: 2px;
+}
+.sky-caption a:hover{
+  text-decoration-color: currentColor;
 }
 .stats{
   display: grid;
@@ -3237,7 +3250,7 @@ details > summary{
     margin-top: 4px !important;
   }
   .sky-caption{
-    font-size: 0.48rem;
+    font-size: 0.53rem;
   }
   .center-column{
     order: 1;
