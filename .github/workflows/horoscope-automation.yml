@@ -20,20 +20,10 @@ on:
       - 'site/horoskopai/**'
       - 'docs/horoscopes/**'
   schedule:
-    # Start before the requested 06:20 Vilnius publication time. GitHub may
-    # delay or drop scheduled events during high load, so the later entries
-    # are idempotent recovery attempts; only the first successful run publishes.
-    - cron: '20 5 * * *'
-      timezone: 'Europe/Vilnius'
-    - cron: '20 6 * * *'
-      timezone: 'Europe/Vilnius'
-    - cron: '20 7 * * *'
-      timezone: 'Europe/Vilnius'
-    - cron: '20 8 * * *'
-      timezone: 'Europe/Vilnius'
-    - cron: '20 9 * * *'
-      timezone: 'Europe/Vilnius'
-    - cron: '20 10 * * *'
+    # GitHub has delayed/dropped the single scheduled attempt for hours.
+    # Publish before 06:20 and retry every 30 minutes through late morning.
+    # The publisher is date-idempotent, so only a missing/stale daily set writes.
+    - cron: '17,47 5-10 * * *'
       timezone: 'Europe/Vilnius'
   workflow_dispatch:
 
@@ -140,7 +130,9 @@ jobs:
           # A data-only update changes the content-addressed asset graph on
           # every page. Commit the complete generated output atomically.
           git add site/_data/horoscope_current.json site/horoskopai site/assets/data/search.json public docs/horoscopes/validation/horoscope-source-qa.json docs/performance
-          git diff --cached --check
+          # The pinned jsPDF distribution contains upstream trailing spaces.
+          # Exclude only that immutable third-party payload from whitespace QA.
+          git diff --cached --check -- . ':(exclude,glob)public/assets/releases/**/vendor/jspdf-4.2.1.umd.min.js'
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
