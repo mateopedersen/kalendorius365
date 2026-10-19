@@ -38,6 +38,50 @@ test('shift planner does not accept and discard input before required data loads
  } finally {release();}
 });
 
+test('date calculator keeps browser-filled dates while its calendar data is loading',async({page})=>{
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
+ const navigation=page.goto('/datos-skaiciuokle/',{waitUntil:'domcontentloaded'});
+ try{
+  const form=page.locator('#calculator');await expect(form).toHaveAttribute('aria-busy','true');
+  expect(await form.evaluate(element=>element.inert)).toBe(true);
+  // Simulate date autofill arriving before the async module; initialization must preserve it.
+  await page.evaluate(()=>{document.querySelector('[name=start]').value='2028-02-28';document.querySelector('[name=end]').value='2028-03-01';document.querySelector('#countdown-date').value='2028-03-10';});
+ }finally{release();}
+ await navigation;const form=page.locator('#calculator');await expect(form).toHaveAttribute('aria-busy','false');
+ await expect(form.locator('[name=start]')).toHaveValue('2028-02-28');await expect(form.locator('[name=end]')).toHaveValue('2028-03-01');
+ await expect(page.locator('#countdown-date')).toHaveAttribute('aria-busy','false');await expect(page.locator('#countdown-date')).toHaveValue('2028-03-10');await expect(page.locator('#countdown-result')).toContainText('2028 m. kovo 10 d.');
+ await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('2');
+});
+
+test('ISO date input survives async tool startup without being reset',async({page})=>{
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
+ const navigation=page.goto('/savaites/2027/',{waitUntil:'domcontentloaded'});
+ try{
+  const input=page.locator('#iso-date');await expect(input).toHaveAttribute('aria-busy','true');
+  expect(await input.evaluate(element=>element.inert)).toBe(true);
+  await page.evaluate(()=>{document.querySelector('#iso-date').value='2028-02-29';});
+ }finally{release();}
+ await navigation;await expect(page.locator('#iso-date')).toHaveAttribute('aria-busy','false');
+ await expect(page.locator('#iso-date')).toHaveValue('2028-02-29');await expect(page.locator('#iso-result')).toContainText('2028 metų');
+});
+
+test('workday date control stays inert until its holiday data and calculation are ready',async({page})=>{
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/data/calendar.json',async route=>{await gate;await route.continue();});
+ const navigation=page.goto('/darbo-dienos/2027/',{waitUntil:'domcontentloaded'});
+ try{
+  const form=page.locator('#workday-check-form');await expect(form).toHaveAttribute('aria-busy','true');
+  expect(await form.evaluate(element=>element.inert)).toBe(true);
+  await page.evaluate(()=>{document.querySelector('#workday-check-date').value='2027-01-09';});
+ }finally{release();}
+ await navigation;await expect(page.locator('#workday-check-form')).toHaveAttribute('aria-busy','false');
+ await expect(page.locator('#workday-check-date')).toHaveValue('2027-01-09');
+ await expect(page.locator('#workday-check-result')).toHaveAttribute('data-state','rest');
+ await expect(page.locator('#workday-check-result')).toContainText('Poilsio diena');
+});
+
 test('school startup does not wait for unrelated calendar or astronomy data',async({page})=>{
  const requests=[];await page.route('**/data/**/*.json',route=>{requests.push(route.request().url());return route.abort();});
  await page.goto('/pamoku-tvarkarastis/');await page.locator('#lesson-add').click();
@@ -48,6 +92,7 @@ test('calendar backups round trip, malformed imports preserve data and deletion 
  // Full backup/event journeys include several navigations, dialogs and downloads.
  test.setTimeout(90000);
  await page.goto('/?data=2028-02-29');
+ await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');
  await page.locator('#daily-note').fill('Disposable QA note');await page.locator('#save-note').click();
  await page.locator('#hour12').check();
  const backup=await exported(page,'#backup');
@@ -69,7 +114,7 @@ test('calendar backups round trip, malformed imports preserve data and deletion 
 
 test('task editing, filtering, deletion and appearance preferences update persisted state',async({page,context})=>{
  await context.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window.__sharedURL=value;}}}));
- await page.goto('/?data=2028-02-29');await page.locator('#task-title').fill('Disposable task');await page.locator('#task-form button').click();
+ await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await page.locator('#task-title').fill('Disposable task');await page.locator('#task-form button').click();
  await page.locator('[data-task-edit]').click();await page.locator('#task-edit-form [name=title]').fill('Renamed task');await page.locator('#task-edit-form button[type=submit]').click();
  await expect(page.locator('#tasks')).toContainText('Renamed task');
  await page.locator('[data-task-toggle]').check();await page.locator('#task-filter').selectOption('open');await expect(page.locator('[data-task-edit]')).toHaveCount(0);

@@ -45,12 +45,12 @@ test('weekend budgets, copied plans and the 2029 cross-year break use the select
 
 test('saved commemorations survive reload and their next-date countdown preserves the separate calendar note',async({page})=>{
  await page.clock.setFixedTime(new Date('2028-05-18T12:00:00Z'));
- await page.goto('/?data=2028-02-29');await page.locator('#daily-note').fill('Atskiras laikinas įrašas');await page.locator('#save-note').click();
+ await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await page.locator('#daily-note').fill('Atskiras laikinas įrašas');await page.locator('#save-note').click();
  await page.goto('/atmintinos-dienos/');await page.locator('#commemoration-year').selectOption('2028');await page.locator('#commemoration-search').fill('vaiko');
  const card=page.locator('[data-commemoration]:visible');await expect(card).toHaveCount(1);await expect(page.locator('#commemoration-next-count')).toHaveText('1');await expect(page.locator('#commemoration-next-title')).toContainText('Vaiko');
  await card.locator('.commemoration-favorite').click();await expect(card.locator('.commemoration-favorite')).toHaveAttribute('aria-pressed','true');await page.locator('#commemoration-favorites-only').check();await expect(card).toHaveCount(1);
  await page.reload();const saved=page.locator('.commemoration-favorite[aria-pressed=true]');await expect(saved).toHaveCount(1);await page.locator('#commemoration-favorites-only').check();await expect(card).toHaveCount(1);await card.locator('.commemoration-favorite').click();await expect(card).toHaveCount(0);await expect(page.locator('#commemoration-export')).toBeDisabled();
- await page.goto('/?data=2028-02-29');await expect(page.locator('#daily-note')).toHaveValue('Atskiras laikinas įrašas');
+ await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await expect(page.locator('#daily-note')).toHaveValue('Atskiras laikinas įrašas');
 });
 
 test('daylight date steps, boundaries, focused city, year-curve mouse and keyboard and copied links respond',async({page,context})=>{
