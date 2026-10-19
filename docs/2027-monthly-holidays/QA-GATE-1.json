@@ -7393,7 +7393,7 @@
     {
       "path": ".github/workflows/horoscope-automation.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "bc694447e199649f3cce5e3838851c80073077823cc7fdeb116c8daca303c5d4"
+      "sha256": "bc3409847e8283242d886f4934339478578e9bd9774ee07be1815adfab9b5712"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",
@@ -7409,7 +7409,7 @@
     }
   },
   "failures": [],
-  "checked_at": "2026-10-18",
+  "checked_at": "2026-10-19",
   "limits": [
     "No independent native-human language or legal certification is claimed.",
     "Browser interaction, rendered geometry, contrast and live HTTP are a separate gate."
