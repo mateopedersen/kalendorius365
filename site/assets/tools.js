@@ -262,7 +262,7 @@ if ($("#workday-check-form")) {
 if ($("#iso-date")) {
   const input = $("#iso-date"),
     output = $("#iso-result");
-  input.value = cal.today();
+  if (!input.value) input.value = cal.today();
   const run = () => {
     try {
       const w = cal.isoWeek(input.value),
@@ -346,11 +346,12 @@ if ($("#calculator")) {
     sharedStart = params.get("nuo"),
     sharedEnd = params.get("iki");
   if (isValidDate(sharedStart) && isValidDate(sharedEnd) && sharedStart <= sharedEnd) {
-    startInput.value = sharedStart;
-    endInput.value = sharedEnd;
+    if (!startInput.value) startInput.value = sharedStart;
+    if (!endInput.value) endInput.value = sharedEnd;
   } else {
-    startInput.value = cal.today();
-    endInput.value = cal.addDays(cal.today(), 30);
+    // Preserve values entered before this async module finished loading.
+    if (!startInput.value) startInput.value = cal.today();
+    if (!endInput.value) endInput.value = cal.addDays(cal.today(), 30);
   }
   f.elements.inclusive.checked = params.get("imtinai") === "1";
   const sharedOffset = Number(params.get("poslinkis"));
@@ -559,8 +560,10 @@ if ($("#calculator")) {
       $("#countdown-result").textContent = error.message;
     }
   };
-  $("#countdown-date").value = cal.addDays(cal.today(), 30);
-  $("#countdown-date").onchange = countdown;
+  const countdownDate = $("#countdown-date");
+  if (!countdownDate.value) countdownDate.value = cal.addDays(cal.today(), 30);
+  countdownDate.onchange = countdown;
+  countdown();
   for (const b of document.querySelectorAll("[data-countdown]"))
     b.onclick = () => {
       const now = cal.today(),
@@ -881,4 +884,12 @@ if ($("#generator")) {
     }
   };
   draw();
+}
+
+// Keep controls inert until the async calendar data and every dependent handler
+// are ready, so early input cannot be overwritten by page initialization.
+for (const element of document.querySelectorAll("[data-tools-readiness]")) {
+  element.inert = false;
+  element.setAttribute("aria-busy", "false");
+  element.removeAttribute("data-tools-readiness");
 }

@@ -47,7 +47,7 @@ test('header search recovers from a failed index request without a reload',async
 test('calendar event create, edit, reload, export and delete preserve notes and tasks',async({page})=>{
  // Full backup/event journeys include several navigations, dialogs and downloads.
  test.setTimeout(90000);
- await page.goto('/?data=2028-02-29');await page.locator('#add-event').click();
+ await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await page.locator('#add-event').click();
  const form=page.locator('#event-form');await form.locator('[name=title]').fill('QA leap-day event');
  await form.locator('[name=allDay]').check();await form.locator('button[type=submit]').click();
  await expect(page.locator('#day-agenda')).toContainText('QA leap-day event');
@@ -63,7 +63,7 @@ test('calendar event create, edit, reload, export and delete preserve notes and 
 });
 
 test('calendar views and period navigation update actual state',async({page})=>{
- await page.goto('/?data=2028-02-29');
+ await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');
  for(const view of ['week','day','agenda','year','month']){await page.locator(`[data-view=${view}]`).click();await expect(page.locator(`[data-view=${view}]`)).toHaveAttribute('aria-pressed','true');}
  await expect(page.locator('#period-title')).toContainText('vasaris');await page.locator('#next').click();await expect(page.locator('#period-title')).toContainText('kovas');
  await page.locator('#prev').click();await expect(page.locator('#period-title')).toContainText('vasaris');
@@ -71,10 +71,11 @@ test('calendar views and period navigation update actual state',async({page})=>{
 
 test('date calculator handles leap-day difference, inclusive endpoints and ISO week',async({page})=>{
  await page.goto('/datos-skaiciuokle/');const f=page.locator('#calculator');
+ await expect(f).toHaveAttribute('aria-busy','false');
  await f.locator('[name=start]').fill('2028-02-28');await f.locator('[name=end]').fill('2028-03-01');await f.locator('[name=offset]').fill('1');await f.locator('button[type="submit"]').click();
  await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('2');
  await f.locator('[name=inclusive]').check();await f.locator('button[type="submit"]').click();await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('3');
- await page.locator('#iso-date').fill('2028-01-01');await page.locator('#iso-date').press('Tab');await expect(page.locator('#iso-result')).toContainText('52');
+ await expect(page.locator('#iso-date')).toHaveAttribute('aria-busy','false');await page.locator('#iso-date').fill('2028-01-01');await page.locator('#iso-date').press('Tab');await expect(page.locator('#iso-result')).toContainText('52');
 });
 
 test('date calculator skips Lithuanian holidays for workday offsets and shares a reusable result',async({page})=>{
@@ -119,9 +120,11 @@ test('workweek selector changes visible table and CSV exports real content',asyn
 test('2027 workday planner updates Saturday status when the schedule changes',async({page})=>{
  for(const year of [2027,2028,2029]){
   await page.goto(`/darbo-dienos/${year}/`);await expect(page.locator('body')).toHaveClass(/tool-workdays/);
+  await expect(page.locator('#workday-check-form')).toHaveAttribute('aria-busy','false');
+  await expect(page.locator('.workyear-controls')).toHaveAttribute('aria-busy','false');
   const layout=await page.evaluate(()=>({viewport:document.documentElement.clientWidth,content:document.documentElement.scrollWidth}));expect(layout.content,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);
  }
- await page.goto('/darbo-dienos/2027/');const date=page.locator('#workday-check-date'),result=page.locator('#workday-check-result');
+ await page.goto('/darbo-dienos/2027/');await expect(page.locator('#workday-check-form')).toHaveAttribute('aria-busy','false');await expect(page.locator('.workyear-controls')).toHaveAttribute('aria-busy','false');const date=page.locator('#workday-check-date'),result=page.locator('#workday-check-result');
  await date.fill('2027-01-09');await date.blur();await page.locator('#workday-check-form button[type=submit]').click();
  await expect(result).toHaveAttribute('data-state','rest');await expect(result).toContainText('Poilsio diena');
  await page.locator('#work-schedule').selectOption('6');await expect(result).toHaveAttribute('data-state','work');await expect(result).toContainText('5 darbo val.');
@@ -130,7 +133,7 @@ test('2027 workday planner updates Saturday status when the schedule changes',as
 
 test('blank-calendar gallery filters on mobile, changes 5/6-row downloads and exports valid PDF',async({page})=>{
  await page.setViewportSize({width:320,height:812});await page.goto('/tuscias-kalendorius/');
- const select=page.locator('#dizainas-tuscias-01-5-eilutes [data-blank-rows]');await expect(select).toBeVisible();
+ const select=page.locator('#dizainas-tuscias-01-5-eilutes [data-blank-rows]');await expect(select).toBeVisible();await expect(select).toHaveAttribute('aria-busy','false');
  await expect(select).toHaveValue('tuscias-01-5-eilutes');
  await select.selectOption('tuscias-01-6-eilutes');await expect(select).toHaveValue('tuscias-01-6-eilutes');
  await expect(page.locator('#selected-preview')).toHaveAttribute('src',/tuscias-01-6-eilutes\.webp/);
@@ -147,7 +150,7 @@ test('calendar builder renders leap month and print template picker downloads va
  await page.goto('/kurti-kalendoriu/?metai=2028&menuo=2');
  await expect(page.locator('#calendar-editor [data-path="period.year"]')).toHaveValue('2028');await expect(page.locator('#calendar-editor [data-path="period.month"]')).toHaveValue('2');
  const previewTab=page.locator('[data-action="tab-preview"]');if(await previewTab.isVisible())await previewTab.click();await expect(page.locator('#ce-paper svg')).toBeVisible();await expect(page.locator('#ce-paper')).toContainText('29');
- await page.goto('/2028/vasaris/');const picker=page.locator('#design-picker');
+ await page.goto('/2028/vasaris/');const picker=page.locator('#design-picker');await expect(picker).toHaveAttribute('aria-busy','false');
  const values=await picker.locator('option').evaluateAll(es=>es.map(e=>e.value));await picker.selectOption(values[1]);
  await expect(page.locator('.design-card.selected-design')).toHaveAttribute('id',`dizainas-${values[1]}`);
  const pdf=await downloadBytes(page,()=>page.locator('#selected-pdf').click());expect(pdf.bytes.subarray(0,4).toString()).toBe('%PDF');
