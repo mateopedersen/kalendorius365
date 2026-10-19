@@ -51,7 +51,7 @@ SINGLE_INTENTS = {
     "/menesiai/": ("monthly-directory", "Choose a specific year/month and its ten printable calendar designs; month-level directory."),
     "/irankiai/": ("tools-directory", "Find the site's date, work, school, calendar and astronomy tools by task."),
     "/paieska/": ("site-search", "Search and filter all public pages; navigational search rather than an alternative content article."),
-    "/apie/": ("editorial-about", "Website purpose, real data sources, editorial/AI assistance methodology, limitations and error reporting."),
+    "/apie-mus/": ("editorial-about", "Website purpose, real data sources, editorial/AI assistance methodology, limitations and error reporting."),
     "/privatumas/": ("privacy-policy", "Actual provider, browser storage, network requests and privacy information."),
     "/tuscias-kalendorius/": ("blank-print-library", "Browse/filter the full library of undated PDF/WebP calendar and planner designs."),
     "/kurti-kalendoriu/": ("calendar-builder", "Create a custom dated calendar with selected layout, paper, holidays and optional local events."),

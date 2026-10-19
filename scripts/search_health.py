@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
 DEFAULT_BASE = "https://kalendorius365.lt"
-USER_AGENT = "Kalendorius365SearchHealth/1.0 (+https://kalendorius365.lt/apie/)"
+USER_AGENT = "Kalendorius365SearchHealth/1.0 (+https://kalendorius365.lt/apie-mus/)"
 SITEMAP_LIMIT = 50_000
 PAGE_LIMIT = 2 * 1024 * 1024
 LINK_LIMIT = 5_000
