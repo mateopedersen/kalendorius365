@@ -18,8 +18,16 @@ for (const route of routes) test(`canonical route, runtime, responsive header: $
    await page.locator('#nav-toggle').click();await expect(page.locator('#nav-toggle')).toHaveAttribute('aria-expanded','true');
    await page.keyboard.press('Escape');await expect(page.locator('#nav-toggle')).toHaveAttribute('aria-expanded','false');
  }
- const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
- expect(layout.scroll,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);
+ if(info.project.use.isMobile){
+   for(const width of [320,390,430]){
+     await page.setViewportSize({width,height:844});
+     const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
+     expect(layout.scroll,`${route} at ${width}px: ${JSON.stringify(layout)}`).toBeLessThanOrEqual(layout.viewport+1);
+   }
+ }else{
+   const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
+   expect(layout.scroll,JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport+1);
+ }
  expect(errors).toEqual([]);
 });
 

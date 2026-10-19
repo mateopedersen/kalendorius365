@@ -120,7 +120,7 @@ orphans=sorted(set(public_pages)-reachable)
 assert not orphans,'Public pages are unreachable through crawlable internal links: '+json.dumps([str(public_pages[u].relative_to(PUBLIC)) for u in orphans[:30]])
 print(f'PASS: {len(reachable)} public pages are reachable from the homepage through crawlable internal links; 0 orphans.')
 manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets']
-for unused in ('manifest.json','years.json','catalog.json'):
+for unused in ('manifest.json','years.json','catalog.json','year-print-assets.json'):
  assert not (PUBLIC/'assets/data'/unused).exists(),f'Build-only or obsolete browser payload was published: {unused}'
 compact=(PUBLIC/'assets/data/home-holiday-data.json').read_bytes()
 full=(PUBLIC/'assets/data/holiday-editorial.json').read_bytes()

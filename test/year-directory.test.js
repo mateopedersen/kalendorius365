@@ -51,6 +51,8 @@ test("year cards derive current status, calendar facts and verified PDF/WebP cho
   }
   assert.match(script, /yearFacts\(year\)/);
   assert.match(script, /today\(\)\.slice\(0, 4\)/);
+  assert.match(script, /fetch\("\/assets\/data\/year-print-assets\.json"\)/);
+  assert.doesNotMatch(script, /fetch\("\/assets\/data\/manifest\.json"\)/);
   assert.match(script, /renderYearPrintAssets\(year, yearPrintAssets\(manifest, year\)\)/);
   assert.match(page, /data-year-days/);
 });
