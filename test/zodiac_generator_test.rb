@@ -11,9 +11,9 @@ source_root = File.expand_path('..', __dir__)
 before = Digest::SHA256.file(File.join(source_root, 'site/_data/horoscope_current.json')).hexdigest
 report = []
 Dir.mktmpdir('zodiac-generator-', ENV.fetch('K365_QA_TMP') { Dir.tmpdir }) do |sandbox|
-  %w[site/_data site/assets/data site/assets/visuals].each { |dir| FileUtils.mkdir_p(File.join(sandbox, dir)) }
+  %w[site/_data site/assets/data site/assets/visuals site/assets/visuals/zodiac].each { |dir| FileUtils.mkdir_p(File.join(sandbox, dir)) }
   %w[horoscope_signs.json zodiac_profiles.json horoscope_current.json].each { |name| FileUtils.cp(File.join(source_root, 'site/_data', name), File.join(sandbox, 'site/_data', name)) }
-  FileUtils.cp(File.join(source_root, 'site/assets/visuals/zodiac-signs.svg'), File.join(sandbox, 'site/assets/visuals/zodiac-signs.svg'))
+  FileUtils.cp(Dir.glob(File.join(source_root, 'site/assets/visuals/zodiac/*.svg')), File.join(sandbox, 'site/assets/visuals/zodiac'))
   [ZodiacPages, HoroscopesPages].each { |mod| mod.send(:remove_const, :ROOT); mod.const_set(:ROOT, sandbox) }
   HoroscopesPages.send(:remove_const, :SIGN_PATH)
   HoroscopesPages.const_set(:SIGN_PATH, File.join(sandbox, 'site/_data/horoscope_signs.json'))
@@ -39,6 +39,7 @@ Dir.mktmpdir('zodiac-generator-', ENV.fetch('K365_QA_TMP') { Dir.tmpdir }) do |s
     raise 'Evergreen guide changed with daily forecast' unless Digest::SHA256.file(File.join(sandbox, 'site/zodiakas/index.html')).hexdigest == guide_hash
     profiles.each do |key, profile|
       page = File.read(File.join(sandbox, 'site/horoskopai', key, 'index.html'))
+      raise "Mobile-safe sign artwork lost: #{key}" unless page.include?(%(src="/assets/visuals/zodiac/#{key}.svg?v=)) && !page.include?("zodiac-signs.svg#zodiac-#{key}")
       raise "Evergreen profile lost: #{key}" unless page.include?(profile)
       raise "Daily date lost: #{key}" unless page.include?(%(datetime="#{date}"))
       raise "Source metadata lost: #{key}" unless page.include?(%(content_date: "#{date}"))

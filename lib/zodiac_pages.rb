@@ -35,8 +35,9 @@ module ZodiacPages
     end
   end
   def mark(key)
-    version = Digest::SHA256.file(File.join(ROOT, 'site/assets/visuals/zodiac-signs.svg')).hexdigest[0, 12]
-    %(<svg class="zodiac-mark" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><use href="/assets/visuals/zodiac-signs.svg?v=#{version}#zodiac-#{esc(key)}"></use></svg>)
+    art_path = File.join(ROOT, 'site/assets/visuals/zodiac', "#{key}.svg")
+    version = Digest::SHA256.file(art_path).hexdigest[0, 12]
+    %(<img class="zodiac-mark" src="/assets/visuals/zodiac/#{esc(key)}.svg?v=#{version}" width="96" height="96" alt="" aria-hidden="true" decoding="async">)
   end
   def art(sign, class_name = '', eager = false)
     %(<img class="#{esc(class_name)}" src="#{esc(sign.fetch('art'))}" width="320" height="320" alt="#{esc(sign.fetch('art_alt'))}" loading="#{eager ? 'eager' : 'lazy'}" decoding="async"#{eager ? ' fetchpriority="high"' : ''}>)

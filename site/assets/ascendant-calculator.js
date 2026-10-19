@@ -132,14 +132,15 @@ function normalizeCity(value) {
 }
 
 function addSvgSign(target, signKey) {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("class", "zodiac-mark");
-  svg.setAttribute("viewBox", "0 0 96 96");
-  svg.setAttribute("aria-hidden", "true");
-  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-  use.setAttribute("href", `/assets/visuals/zodiac-signs.svg#zodiac-${signKey}`);
-  svg.append(use);
-  target.append(svg);
+  const image = document.createElement("img");
+  image.setAttribute("class", "zodiac-mark");
+  image.setAttribute("width", "96");
+  image.setAttribute("height", "96");
+  image.setAttribute("alt", "");
+  image.setAttribute("aria-hidden", "true");
+  image.setAttribute("decoding", "async");
+  image.src = `/assets/visuals/zodiac/${signKey}.svg`;
+  target.append(image);
 }
 
 const form = document.querySelector("#ascendant-form");
