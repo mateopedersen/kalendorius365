@@ -218,6 +218,7 @@
 .ascendant-form__field { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 7px; }
 .ascendant-form__field label { color: var(--horoscope-ink); font-size: .8rem; font-weight: 800; letter-spacing: -.01em; }
 .ascendant-form__field input { display: block; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--horoscope-border) 82%, var(--sign-accent)); border-radius: 12px; outline: none; color: var(--horoscope-ink); background: color-mix(in srgb, var(--horoscope-panel) 96%, var(--sign-accent)); font: inherit; font-size: .86rem; box-shadow: inset 0 1px 2px #17223608, 0 2px 4px #17223606; transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease; color-scheme: light; }
+.ascendant-form__field input[type="date"],.ascendant-form__field input[type="time"] { -webkit-appearance: none; appearance: none; }
 .ascendant-form__field input:hover { border-color: color-mix(in srgb, var(--sign-accent) 42%, var(--horoscope-border)); }
 .ascendant-form__field input:focus-visible { border-color: var(--sign-accent); background: var(--horoscope-panel); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sign-accent) 18%, transparent); }
 .ascendant-form__field small { color: var(--horoscope-muted); font-size: .72rem; line-height: 1.45; }
@@ -265,7 +266,7 @@
   .ascendant-form__field--city::after { top: 39px; }
   .ascendant-form__field label { font-size: .75rem; }
   .ascendant-form__field input { min-height: 44px; font-size: .81rem; }
-  .ascendant-form__field input::-webkit-date-and-time-value { min-width: 0; text-align: left; }
+  .ascendant-form__field input::-webkit-date-and-time-value { display: block; box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; margin: 0; text-align: left; }
   .ascendant-form__submit { width: 100%; }
   .ascendant-result { grid-template-columns: 46px minmax(0, 1fr); gap: 9px; padding: 10px; }
   .ascendant-result__emblem { width: 44px; height: 44px; }
