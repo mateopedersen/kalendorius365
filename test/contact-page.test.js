@@ -21,12 +21,12 @@ test("contact URLs always use the published form and allow only the six real top
 
 test("source prefill strips private query data, normalizes the host and rejects unsafe URLs", () => {
   assert.equal(safeSourcePage("http://www.kalendorius365.lt/sventes/?q=private#id"), "https://kalendorius365.lt/sventes/");
-  assert.equal(safeSourcePage("/apie/"), "https://kalendorius365.lt/apie/");
+  assert.equal(safeSourcePage("/apie-mus/"), "https://kalendorius365.lt/apie-mus/");
   for (const value of ["javascript:alert(1)", "https://attacker.example/path", "https://kalendorius365.lt:444/path", "https://user:pass@kalendorius365.lt/", "https://kalendorius365.lt/" + "a".repeat(2050)]) {
     assert.equal(safeSourcePage(value), "");
   }
-  const url = new URL(buildContactFormUrl({ topic: "date_error", pageUrl: "https://kalendorius365.lt/apie/?q=private#id", name: "private", email: "private@example.com", message: "private message" }));
-  assert.equal(url.searchParams.get("entry.1784264088"), "https://kalendorius365.lt/apie/");
+  const url = new URL(buildContactFormUrl({ topic: "date_error", pageUrl: "https://kalendorius365.lt/apie-mus/?q=private#id", name: "private", email: "private@example.com", message: "private message" }));
+  assert.equal(url.searchParams.get("entry.1784264088"), "https://kalendorius365.lt/apie-mus/");
   assert.doesNotMatch(url.href, /private/);
 });
 

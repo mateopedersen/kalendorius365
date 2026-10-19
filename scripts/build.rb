@@ -27,6 +27,9 @@ Dir.chdir(ROOT) do
   FileUtils.rm_rf(File.join(ROOT,'public','assets','releases'))
   FileUtils.rm_f(File.join(ROOT,'public',AssetRelease::RELEASE_MANIFEST))
   Dir.glob(File.join(ROOT,'public','assets','calendar-editor-release-*')).each { |path| FileUtils.rm_rf(path) }
+  # Jekyll leaves pages behind when their source is removed. This legacy page
+  # is now a permanent redirect, so never let an older generated copy ship.
+  FileUtils.rm_rf(File.join(ROOT,'public','apie'))
  # A release request is insufficient on a Cloudflare feature branch. Keep
  # preview HTML and response headers out of search even if its build command
  # uses the same K365_RELEASE flag as production.
@@ -132,6 +135,7 @@ Dir.chdir(ROOT) do
    "#{url_encode.call(source)} #{url_encode.call(target)} 301"
   end
  end
+ redirects.unshift('/apie/ /apie-mus/ 301', '/apie /apie-mus/ 301')
  abort 'Cloudflare Pages static redirect limit exceeded' if redirects.length>2000
  abort 'Duplicate legacy calendar redirect source' unless redirects.map { |line|line.split.first }.uniq.length==redirects.length
  if release && JSON.parse(File.read('site/assets/data/manifest.json')).key?('packageImport')

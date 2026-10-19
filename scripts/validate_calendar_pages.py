@@ -152,9 +152,10 @@ for record in package["evidence"]["records"]:
     for key, old_url in asset["legacyPaths"].items():
         target_key = "smallPreview" if key == "smallPreview" else key
         expected_redirects[quote(old_url, safe="/")] = quote(asset[target_key], safe="/")
-assert redirect_map == expected_redirects and len(redirect_map) == 1560
+expected_redirects.update({"/apie/": "/apie-mus/", "/apie": "/apie-mus/"})
+assert redirect_map == expected_redirects and len(redirect_map) == 1562
 
 tree = ET.parse(ROOT / "public/sitemap.xml")
 image_locations = [element.text for element in tree.iter() if element.tag.endswith("}loc") and element.text and "/downloads/" in element.text]
 assert len(image_locations) == 390
-print("PASS: all 36 monthly and 3 annual pages expose ten A3 designs, localized downloads, responsive alt-text previews, working filters, 1,560 legacy redirects, and 390 sitemap images.")
+print("PASS: all 36 monthly and 3 annual pages expose ten A3 designs, localized downloads, responsive alt-text previews, working filters, 1,560 calendar redirects, two about-page redirects, and 390 sitemap images.")
