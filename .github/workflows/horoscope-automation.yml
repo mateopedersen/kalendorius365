@@ -20,10 +20,10 @@ on:
       - 'site/horoskopai/**'
       - 'docs/horoscopes/**'
   schedule:
-    # GitHub has delayed/dropped the single scheduled attempt for hours.
-    # Publish before 06:20 and retry every 30 minutes through late morning.
+    # Start well before 06:20 in Lithuania; GitHub may delay or drop schedules.
+    # Retry every 30 minutes through the morning, including an earlier recovery window.
     # The publisher is date-idempotent, so only a missing/stale daily set writes.
-    - cron: '17,47 5-10 * * *'
+    - cron: '17,47 3-10 * * *'
       timezone: 'Europe/Vilnius'
   workflow_dispatch:
 

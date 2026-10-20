@@ -1,6 +1,6 @@
 # Daily horoscope automation runbook
 
-`.github/workflows/horoscope-automation.yml` makes a first attempt at 05:17 and retries every 30 minutes through 10:47 in `Europe/Vilnius`. This starts the build before the requested 06:20 publication time and gives delayed or failed scheduled runs several same-day recovery attempts. `workflow_dispatch` can manually recover the current date. GitHub scheduled events are best-effort and can still be delayed or dropped; check run history and live page dates when investigating a missed publication.
+`.github/workflows/horoscope-automation.yml` makes its first attempt at 03:17 and retries every 30 minutes through 10:47 in `Europe/Vilnius`. Starting earlier gives delayed or failed scheduled runs more time to recover before the requested 06:20 publication time. `workflow_dispatch` can manually recover the current date. GitHub scheduled events are best-effort and can still be delayed or dropped; this schedule alone cannot guarantee publication at exactly 06:20. Check run history and live page dates when investigating a missed publication.
 
 ## Run sequence
 
