@@ -6864,3 +6864,22 @@ body.tool-workdays .workyear-hero+.resource-stats{margin-top:14px}
     word-break:normal;
   }
 }
+
+/* Month directory: original seasonal art with year-accurate calendar grids. */
+.month-directory-year{margin-block:2rem 3rem}
+.month-directory-year>h2{font-size:1.6rem;letter-spacing:-.025em;margin-bottom:1.15rem}
+.month-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.month-directory-card{display:flex;align-items:center;gap:1rem;min-width:0;padding:1rem;border:1px solid var(--border);border-radius:22px;background:var(--panel);color:var(--ink);text-decoration:none;box-shadow:0 4px 18px #152b3507;transition:box-shadow .2s ease,border-color .2s ease}
+.month-directory-card:hover{border-color:var(--green);box-shadow:0 8px 24px #152b3510}
+.month-directory-card:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.month-directory-card__art{display:block;flex:0 0 112px;width:112px;height:112px;border-radius:19px}
+.month-directory-card__copy{min-width:0}
+.month-directory-card__season{display:block;color:var(--muted);font-size:.7rem;line-height:1.45;margin-bottom:.3rem}
+.month-directory-card h3{margin:0;font-size:1.2rem;line-height:1.3;font-weight:800;letter-spacing:-.02em}
+.month-directory-card p{margin:.3rem 0 .65rem;color:var(--muted);font-size:.85rem;line-height:1.5}
+.month-directory-card__cta{color:var(--green);font-weight:700;font-size:.72rem;line-height:1.5}
+.month-directory-card__cta>span{display:inline-block;margin-left:.25rem}
+@media(max-width:1150px){.month-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.month-directory-grid{grid-template-columns:minmax(0,1fr);gap:.8rem}.month-directory-card{padding:.85rem;gap:1rem}.month-directory-card__art{flex-basis:108px;width:108px;height:108px}.month-directory-card h3{font-size:1.25rem}.month-directory-card__season{font-size:.75rem}.month-directory-card p{font-size:.9rem}.month-directory-card__cta{font-size:.78rem}}
+@media(max-width:359px){.month-directory-card{gap:.75rem;padding:.7rem}.month-directory-card__art{flex-basis:88px;width:88px;height:88px}.month-directory-card__season{font-size:.68rem}.month-directory-card h3{font-size:1.12rem}.month-directory-card__cta{font-size:.7rem}}
+@media(prefers-reduced-motion:reduce){.month-directory-card{transition:none}}
