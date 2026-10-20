@@ -36,6 +36,7 @@ Dir.chdir(ROOT) do
  release=Kalendorius::BuildPolicy.release?(ENV)
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
+ system('python3','scripts/sharing/prepare.py',exception:true)
  system('python3','scripts/css_route_split.py',exception:true)
  Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
   config.write(JSON.generate({'release'=>release}));config.flush
@@ -160,7 +161,7 @@ Dir.chdir(ROOT) do
  revalidate='Cache-Control: public, no-cache, max-age=0, must-revalidate'
  # Trailing-slash page patterns never overlap file assets. Cloudflare Pages
  # accepts at most 100 rules; avoid one rule per each of the 185 HTML routes.
- %w[/ /:section/ /:section/:child/ /:section/:child/:page/ /*.html /404 /assets/release-manifest.json].each do |route|
+ %w[/ /:section/ /:section/:child/ /:section/:child/:page/ /:section/:child/:page/:version/ /*.html /404 /assets/release-manifest.json].each do |route|
   headers+="#{route}\n  #{revalidate}\n"
  end
  # Sitemap and robots metadata refresh within an hour; numbered files are
@@ -171,10 +172,14 @@ Dir.chdir(ROOT) do
  headers+="/assets/releases/*\n  #{immutable}\n"
  # Compatibility endpoints stay revalidatable because their URLs are stable.
  # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
+ # Runtime modules and records at stable URLs must revalidate. Only the
+ # content-addressed artwork, OG cards and official marks are immutable.
+ headers+="/assets/sharing/*\n  #{revalidate}\n"
+ %w[artwork brands og].each { |kind|headers+="/assets/sharing/#{kind}/*\n  #{immutable}\n" }
  headers+="/assets/fonts/*\n  #{immutable}\n"
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"

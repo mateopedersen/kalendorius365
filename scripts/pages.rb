@@ -296,8 +296,15 @@ module Pages
     %Q!<option value="#{esc(option['stem'])}" data-variant-stem="#{esc(option['stem'])}" data-preview="#{esc(option['preview'])}" data-webp="#{esc(download_href(option,'webp'))}" data-pdf="#{esc(download_href(option,'pdf'))}" data-alt="#{esc(blank_alt(option))}" data-pdf-name="#{esc(File.basename(option['pdf']))}" data-webp-name="#{esc(File.basename(option['webp']))}" data-width="#{option['landscape'] ? 680 : 481}" data-height="#{option['landscape'] ? 481 : 680}">#{option['rows']} eilutės</option>!
    end.join+'</select></label>'
   end
+  # Keep every alternate share landing reachable to crawlers and usable when
+  # scripts are unavailable; the interactive share link still follows the
+  # selected row count when the page is running normally.
+  variant_share_fallback=variants.drop(1).map do |option|
+   %Q!<p><a href="/dalintis/kalendorius/#{esc(option['stem'])}/">#{option['rows']} eilučių kalendoriaus peržiūra ir bendrinimas</a></p>!
+  end.join
+  variant_share_fallback='<noscript>'+variant_share_fallback+'</noscript>' unless variant_share_fallback.empty?
   variants_data=variants.map { |option|%Q!<span data-variant-stem="#{esc(option['stem'])}" data-preview="#{esc(option['preview'])}" data-webp="#{esc(download_href(option,'webp'))}" data-pdf="#{esc(download_href(option,'pdf'))}" data-alt="#{esc(blank_alt(option))}" data-pdf-name="#{esc(File.basename(option['pdf']))}" data-webp-name="#{esc(File.basename(option['webp']))}" data-width="#{option['landscape'] ? 680 : 481}" data-height="#{option['landscape'] ? 481 : 680}"></span>! }.join
-  %Q!<article class="design-card blank-design-card" id="dizainas-#{esc(asset['stem'])}" data-style="#{esc(asset['style'])}" data-layout="#{esc(asset['layout'])}" data-category="#{group}" data-design="#{id}" data-paper="#{paper}" data-pdf-name="#{esc(pdf)}" data-webp-name="#{esc(webp)}"><a class="preview-link" href="#{download_href(asset,'webp')}" target="_blank" rel="noopener" aria-label="Padidinti: #{esc(name)}" title="#{esc(name)}"><img src="#{asset['preview']}" srcset="#{asset['smallPreview']||'/assets/previews-small/'+File.basename(asset['preview'])} 340w, #{asset['preview']} 680w" sizes="(max-width: 600px) 90vw, (max-width: 1050px) 42vw, 30vw" width="#{w}" height="#{h}" loading="lazy" decoding="async" fetchpriority="low" alt="#{esc(alt)}"></a><div class="design-info"><span class="blank-design-card__eyebrow">#{BLANK_GROUPS.fetch(group)[0]}</span><h3><span class="design-number">#{id}</span>#{esc(name)}</h3><p>#{esc(BLANK_COPY.fetch(id))}</p>#{variant_control}<span class="design-style">#{asset['style']=='bw' ? 'Nespalvotas' : 'Spalvotas'} · #{paper} · #{asset['landscape'] ? 'Gulsčias' : 'Stačias'}</span><div class="design-actions"><a class="button select-design" href="#{download_href(asset,'webp')}" data-stem="#{esc(asset['stem'])}">Peržiūrėti</a><a class="button" href="#{download_href(asset,'pdf')}" data-download-kind="pdf" download="#{esc(pdf)}">PDF</a><a class="button" href="#{download_href(asset,'webp')}" data-download-kind="webp" download="#{esc(webp)}">WebP</a></div><div class="blank-card-variants" hidden>#{variants_data}</div></div></article>!
+  %Q!<article class="design-card blank-design-card" id="dizainas-#{esc(asset['stem'])}" data-style="#{esc(asset['style'])}" data-layout="#{esc(asset['layout'])}" data-category="#{group}" data-design="#{id}" data-paper="#{paper}" data-pdf-name="#{esc(pdf)}" data-webp-name="#{esc(webp)}"><a class="preview-link" href="#{download_href(asset,'webp')}" target="_blank" rel="noopener" aria-label="Padidinti: #{esc(name)}" title="#{esc(name)}"><img src="#{asset['preview']}" srcset="#{asset['smallPreview']||'/assets/previews-small/'+File.basename(asset['preview'])} 340w, #{asset['preview']} 680w" sizes="(max-width: 600px) 90vw, (max-width: 1050px) 42vw, 30vw" width="#{w}" height="#{h}" loading="lazy" decoding="async" fetchpriority="low" alt="#{esc(alt)}"></a><div class="design-info"><span class="blank-design-card__eyebrow">#{BLANK_GROUPS.fetch(group)[0]}</span><h3><span class="design-number">#{id}</span>#{esc(name)}</h3><p>#{esc(BLANK_COPY.fetch(id))}</p>#{variant_control}#{variant_share_fallback}<span class="design-style">#{asset['style']=='bw' ? 'Nespalvotas' : 'Spalvotas'} · #{paper} · #{asset['landscape'] ? 'Gulsčias' : 'Stačias'}</span><div class="design-actions"><a class="button select-design" href="#{download_href(asset,'webp')}" data-stem="#{esc(asset['stem'])}">Peržiūrėti</a><a class="button" href="#{download_href(asset,'pdf')}" data-download-kind="pdf" download="#{esc(pdf)}">PDF</a><a class="button" href="#{download_href(asset,'webp')}" data-download-kind="webp" download="#{esc(webp)}">WebP</a></div><div class="blank-card-variants" hidden>#{variants_data}</div></div></article>!
  end
  def blank_gallery(items)
   grouped=items.group_by { |asset|asset['design'] }.sort_by { |design,_|design }
@@ -584,8 +591,11 @@ search_category = lambda do |url|
  end
 end
 search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
- raw=File.read(path); fm=raw[/\A---\s*\n(.*?)\n---\s*\n/m,1]; next unless fm
- require 'yaml'; front=YAML.safe_load(fm); next unless front && front['title']
+raw=File.read(path); fm=raw[/\A---\s*\n(.*?)\n---\s*\n/m,1]; next unless fm
+require 'yaml'; front=YAML.safe_load(fm); next unless front && front['title']
+# Generated share destinations and immutable horoscope snapshots are useful
+# landing pages, but should not outrank canonical calendar/tool pages in site search.
+next if front['share_archive'] || front['robots'].to_s.split(/[^a-z]+/i).include?('noindex')
  url='/'+path.delete_prefix("#{Pages::ROOT}/site/").delete_suffix('index.html')
  url='/' if url.empty?
  path_terms=url.delete_prefix('/').delete_suffix('/').tr('/-','  ')

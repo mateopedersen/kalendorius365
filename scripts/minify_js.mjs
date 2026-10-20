@@ -44,7 +44,7 @@ async function preloadInitialModules(directory) {
           }
           return open+compiledStyles.get(css)+close;
         });
-        const roots = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js\?v=[^"]+)"[^>]*>/g)].map(match=>match[1]);
+        const roots = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js(?:\?v=[^"]+)?)"[^>]*>/g)].map(match=>match[1]);
         const seen = new Set();
         for (const url of roots) await dependencies(url, seen);
         const hints = [...seen].sort().map(url=>`<link rel="modulepreload" href="${url}">`);

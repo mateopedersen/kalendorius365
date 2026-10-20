@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 38384,
-      "generated_bytes": 24708
+      "source_bytes": 38766,
+      "generated_bytes": 25013
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -222,6 +222,41 @@
       "generated_bytes": 6741
     },
     {
+      "path": "/assets/sharing/brand-assets.js",
+      "source_bytes": 10634,
+      "generated_bytes": 10306
+    },
+    {
+      "path": "/assets/sharing/dialog.js",
+      "source_bytes": 12182,
+      "generated_bytes": 9384
+    },
+    {
+      "path": "/assets/sharing/i18n.js",
+      "source_bytes": 3226,
+      "generated_bytes": 3329
+    },
+    {
+      "path": "/assets/sharing/loader.js",
+      "source_bytes": 1912,
+      "generated_bytes": 1483
+    },
+    {
+      "path": "/assets/sharing/model.js",
+      "source_bytes": 4625,
+      "generated_bytes": 4336
+    },
+    {
+      "path": "/assets/sharing/platforms.js",
+      "source_bytes": 3585,
+      "generated_bytes": 3137
+    },
+    {
+      "path": "/assets/sharing/renderer.js",
+      "source_bytes": 5010,
+      "generated_bytes": 4022
+    },
+    {
       "path": "/assets/storage.js",
       "source_bytes": 5499,
       "generated_bytes": 4038
@@ -243,8 +278,8 @@
     },
     {
       "path": "/assets/tools.js",
-      "source_bytes": 40709,
-      "generated_bytes": 26252
+      "source_bytes": 40895,
+      "generated_bytes": 26379
     },
     {
       "path": "/assets/weather.js",

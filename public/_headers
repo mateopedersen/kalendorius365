@@ -3,7 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs=' 'sha256-7XjXEIEi6ZTxkej37JThBvkvOtnvPOveDHVxCHNljFY='; connect-src 'self'; upgrade-insecure-requests
-/assets/calendar-editor-release-54edcda2a0d3/*
+/assets/calendar-editor-release-65c832a8cc66/*
   Cache-Control: public, max-age=31536000, immutable
 /
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -12,6 +12,8 @@
 /:section/:child/
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /:section/:child/:page/
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/:section/:child/:page/:version/
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /*.html
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -157,6 +159,14 @@
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/data/*
   Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/sharing/*
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/sharing/artwork/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/sharing/brands/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/sharing/og/*
+  Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/favicon-2026.svg

@@ -130,6 +130,7 @@ jobs:
           # A data-only update changes the content-addressed asset graph on
           # every page. Commit the complete generated output atomically.
           git add site/_data/horoscope_current.json site/horoskopai site/assets/data/search.json public docs/horoscopes/validation/horoscope-source-qa.json docs/performance
+          git add data/horoscope-snapshots site/_data/sharing.json site/assets/sharing site/dalintis
           # The pinned jsPDF distribution contains upstream trailing spaces.
           # Exclude only that immutable third-party payload from whitespace QA.
           git diff --cached --check -- . ':(exclude,glob)public/assets/releases/**/vendor/jspdf-4.2.1.umd.min.js'

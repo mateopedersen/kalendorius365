@@ -150,6 +150,10 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
   elif relative_asset.parts[0]=='data':
    cache_path='/assets/data/*'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif relative_asset.parts[0]=='sharing':
+   immutable_sharing=len(relative_asset.parts)>2 and relative_asset.parts[1] in {'artwork','brands','og'}
+   cache_path=f'/assets/sharing/{relative_asset.parts[1]}/*' if immutable_sharing else '/assets/sharing/*'
+   cache_value='Cache-Control: public, max-age=31536000, immutable' if immutable_sharing else 'Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif editor_versioned:
    cache_path=f'/assets/{relative_asset.parts[0]}/*'
    cache_value='Cache-Control: public, max-age=31536000, immutable'
@@ -206,7 +210,9 @@ print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical 
 if '--release' in __import__('sys').argv:
  import xml.etree.ElementTree as ET
  for path,p in pages.items():
-  assert p.meta.get('robots')==('noindex, follow' if path.name=='404.html' else 'index, follow'),path
+  relative='/'+str(path.relative_to(PUBLIC)).removesuffix('index.html')
+  share_archive=bool(re.fullmatch(r'/dalintis/kalendorius/[a-z0-9-]+/|/horoskopai/istorija/|/horoskopai/[a-z]+/\d{4}-\d{2}-\d{2}/v-[a-f0-9]{16}/',relative))
+  assert p.meta.get('robots')==('noindex, follow' if path.name=='404.html' or share_archive else 'index, follow'),path
  headers=(PUBLIC/'_headers').read_text();assert 'X-Robots-Tag: noindex' not in headers
  ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
  sitemap_path=PUBLIC/'sitemap.xml';root=ET.parse(sitemap_path).getroot()
@@ -239,8 +245,8 @@ if '--release' in __import__('sys').argv:
     image_url=urlsplit(image.text);assert image_url.scheme=='https' and image_url.netloc=='kalendorius365.lt' and not image_url.query and not image_url.fragment
     image_file=PUBLIC/unquote(image_url.path).lstrip('/');assert image_file.is_file(),image.text
     image_urls.append(image.text)
- canonical={p.canonical for path,p in pages.items() if path.name!='404.html'}
- assert len(sitemap)==len(set(sitemap)) and set(sitemap)==canonical and len(sitemap)==len(pages)-1
+ canonical={p.canonical for path,p in pages.items() if path.name!='404.html' and p.meta.get('robots')=='index, follow'}
+ assert len(sitemap)==len(set(sitemap)) and set(sitemap)==canonical and len(sitemap)==len(canonical)
  expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind'] in ('monthly','annual')}
  assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
  assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)

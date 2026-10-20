@@ -1,0 +1,129 @@
+{
+  "executedAt": "2026-10-20T11:52:25.766Z",
+  "browser": "Playwright Chromium, fresh anonymous context",
+  "postingAttempted": false,
+  "checks": [
+    {
+      "platform": "bluesky",
+      "attemptedUrl": "https://bsky.app/intent/compose?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://bsky.app/intent/compose?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F",
+      "title": "Bluesky",
+      "visibleText": "",
+      "result": "page-opened-no-login-or-post-attempted",
+      "renderedRetry": {
+        "status": 200,
+        "finalUrl": "https://bsky.app/",
+        "title": "Home — Bluesky",
+        "visibleText": "Discover Feeds ✨ Create account Sign in Privacy ∙ Terms ∙ Help English"
+      }
+    },
+    {
+      "platform": "facebook",
+      "attemptedUrl": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkalendorius365.lt%2F",
+      "title": "Facebook",
+      "visibleText": "Facebook E-posta veya telefon Şifre Hesabını mı unuttun? Kaydol Giriş Yapılmadı Giriş Yapılmadı Bağlı değilsin. Lütfen giriş yap ve yeniden dene. Ana sayfaya dön Türkçe Kurdî (Kurmancî) العربية English (UK) Zaza Deutsch ",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "linkedin",
+      "attemptedUrl": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%253A%252F%252Fkalendorius365.lt%252F",
+      "title": "LinkedIn Login, Sign in | LinkedIn",
+      "visibleText": "0 notifications Sign in New to LinkedIn? Join now Sign in with Apple By continuing, you agree to LinkedIn’s User Agreement, Privacy Policy, and Cookie Policy. or Email or phone Password Forgot password? Keep me signed in",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "mastodon",
+      "attemptedUrl": "https://share.joinmastodon.org/?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://share.joinmastodon.org/?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F",
+      "title": "Share to Mastodon",
+      "visibleText": "Where conversations happen. Share to Mastodon The text that will be shared You will have a chance to edit it before posting once you're on your Mastodon server. Kalendorius365 Lietuviški kalendoriai, šventės, horoskopai ",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "pinterest",
+      "attemptedUrl": "https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fkalendorius365.lt%2F&media=https%3A%2F%2Fkalendorius365.lt%2Fassets%2Fvisuals%2Fkalendorius365-lietuviskas-kalendorius-1200x630.png&description=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.",
+      "status": 200,
+      "finalUrl": "https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fkalendorius365.lt%2F&media=https%3A%2F%2Fkalendorius365.lt%2Fassets%2Fvisuals%2Fkalendorius365-lietuviskas-kalendorius-1200x630.png&description=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.",
+      "title": "Pinterest",
+      "visibleText": "",
+      "result": "page-opened-no-login-or-post-attempted",
+      "renderedRetry": {
+        "status": 200,
+        "finalUrl": "https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fkalendorius365.lt%2F&media=https%3A%2F%2Fkalendorius365.lt%2Fassets%2Fvisuals%2Fkalendorius365-lietuviskas-kalendorius-1200x630.png&description=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.",
+        "title": "Pinterest",
+        "visibleText": "Skip to content Explore Log in Sign up Pin Builder"
+      }
+    },
+    {
+      "platform": "reddit",
+      "attemptedUrl": "https://www.reddit.com/submit?url=https%3A%2F%2Fkalendorius365.lt%2F&title=Kalendorius365",
+      "finalUrl": "https://www.reddit.com/submit?url=https%3A%2F%2Fkalendorius365.lt%2F&title=Kalendorius365",
+      "result": "unavailable-in-this-environment",
+      "error": "page.title: Execution context was destroyed, most likely because of a navigation",
+      "renderedRetry": {
+        "status": 200,
+        "finalUrl": "https://www.reddit.com/submit?url=https%3A%2F%2Fkalendorius365.lt%2F&title=Kalendorius365",
+        "title": "",
+        "visibleText": "You've been blocked by network security. If you think you've been blocked by mistake, file a ticket below and we'll look into it. File a ticket",
+        "transientChallengeFieldsRemoved": true
+      }
+    },
+    {
+      "platform": "telegram",
+      "attemptedUrl": "https://t.me/share/url?url=https%3A%2F%2Fkalendorius365.lt%2F&text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.",
+      "status": 200,
+      "finalUrl": "https://t.me/share/url?url=https%3A%2F%2Fkalendorius365.lt%2F&text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.",
+      "title": "Telegram: Share Web Page",
+      "visibleText": "DOWNLOAD FOR MAC https://kalendorius365.lt/ Kalendorius365 Lietuviški kalendoriai, šventės, horoskopai ir kasdienio planavimo įrankiai. SHARE",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "threads",
+      "attemptedUrl": "https://www.threads.com/intent/post?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://www.threads.com/login/",
+      "title": "Threads • Log in",
+      "visibleText": "Choose how you want to create a Threads account Use your Instagram account Use your mobile number Log in © 2026 Threads Terms Privacy Policy Cookies Policy Report a problem",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "tumblr",
+      "attemptedUrl": "https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fkalendorius365.lt%2F&posttype=link&title=Kalendorius365&content=https%3A%2F%2Fkalendorius365.lt%2F&caption=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.",
+      "status": 200,
+      "finalUrl": "https://www.tumblr.com/login?redirect_to=%2Fwidgets%2Fshare%2Ftool%3FcanonicalUrl%3Dhttps%253A%252F%252Fkalendorius365.lt%252F%26posttype%3Dlink%26title%3DKalendorius365%26content%3Dhttps%253A%252F%252Fkalendorius365.lt%252F%26caption%3DKalendorius365%250ALietuvi%25C5%25A1ki%2Bkalendoriai%252C%2B%25C5%25A1vent%25C4%2597s%252C%2Bhoroskopai%2Bir%2Bkasdienio%2Bplanavimo%2B%25C4%25AFrankiai.&source=login_register_required",
+      "title": "Register - Login",
+      "visibleText": "By clicking log in, or continuing with the other options below, you agree to Tumblr’s Terms of Service and have read the Privacy Policy Log in Forgot your password? or Continue with Google Continue with Apple New to Tumb",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "whatsapp",
+      "attemptedUrl": "https://wa.me/?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://api.whatsapp.com/send/?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.%0Ahttps%3A%2F%2Fkalendorius365.lt%2F&type=custom_url&app_absent=0",
+      "title": "Share on WhatsApp",
+      "visibleText": "Features Privacy Blog Apps Help Center For Business Log In Download Share on WhatsApp Kalendorius365 Lietuviški kalendoriai, šventės, horoskopai ir kasdienio planavimo įrankiai. https://kalendorius365.lt/ Open app Contin",
+      "result": "page-opened-no-login-or-post-attempted"
+    },
+    {
+      "platform": "x",
+      "attemptedUrl": "https://x.com/intent/tweet?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.&url=https%3A%2F%2Fkalendorius365.lt%2F",
+      "status": 200,
+      "finalUrl": "https://x.com/intent/tweet?text=Kalendorius365%0ALietuvi%C5%A1ki+kalendoriai%2C+%C5%A1vent%C4%97s%2C+horoskopai+ir+kasdienio+planavimo+%C4%AFrankiai.&url=https%3A%2F%2Fkalendorius365.lt%2F",
+      "title": "",
+      "visibleText": "",
+      "result": "page-opened-no-login-or-post-attempted",
+      "renderedRetry": {
+        "status": 200,
+        "finalUrl": "https://x.com/i/jf/onboarding/web?redirect_after_login=%2Fintent%2Ftweet%3Ftext%3DKalendorius365%250ALietuvi%25C5%25A1ki%2Bkalendoriai%252C%2B%25C5%25A1vent%25C4%2597s%252C%2Bhoroskopai%2Bir%2Bkasdienio%2Bplanavimo%2B%25C4%25AFrankiai.%26url%3Dhttps%253A%252F%252Fkalendorius365.lt%252F&mode=login",
+        "title": "X. It’s what’s happening / X",
+        "visibleText": "Happening now. About · Get App · Grok · Imagine · Help · Terms · Privacy · Cookies · Careers · Ads & Business · Developers · News · Accessibility · Imprint · © 2026 X Corp."
+      }
+    }
+  ]
+}
