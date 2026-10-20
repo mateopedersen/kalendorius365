@@ -1,0 +1,60 @@
+import {lt,FORMATS,FORMAT_LABELS} from './i18n.js';
+import {validateRecord,shareText,combinedText,excerptFor} from './model.js';
+import {PLATFORMS,PRIMARY,intentUrl} from './platforms.js';
+let style,active;
+const el=(tag,attrs={},text)=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')n.className=v;else n.setAttribute(k,v);}if(text!==undefined)n.textContent=text;return n;};
+const button=(label,fn)=>{const b=el('button',{type:'button'},label);b.addEventListener('click',fn);return b;};
+async function css(){if(!style)style=new Promise((resolve,reject)=>{const l=el('link',{rel:'stylesheet',href:new URL('./dialog.css',import.meta.url).href});l.onload=resolve;l.onerror=()=>{l.remove();style=null;reject(new Error('share_style'))};document.head.append(l);});return style;}
+export async function openShareDialog(raw,trigger,{serverNow=null}={}){
+ const p=validateRecord(raw);await css();active?.close();const d=el('dialog',{class:'share-dialog','aria-labelledby':'share-dialog-title'});let mode='link',format='story',theme='light',section='lead',mime='image/png',seq=0,prepared=null,objectUrl=null,busy=false,caption='';
+ const announce=message=>status.textContent=message;
+ const head=el('header',{class:'share-dialog__head'}),heading=el('h2',{id:'share-dialog-title'},lt.share),close=button(lt.close,()=>d.close());const identity=el('div',{class:'share-identity'});identity.append(el('img',{src:'/assets/visuals/brand-mark-2026.svg',width:'36',height:'36',alt:'','aria-hidden':'true'}),el('span',{},'Kalendorius365'));const headerTitle=el('div');headerTitle.append(identity,heading);head.append(headerTitle,close);
+ const title=el('h3',{class:'share-content-title'},p.title),meta=el('p',{class:'share-dialog__meta'},p.displayDate||[p.year,p.templateId?`Dizainas ${p.templateId}`:''].filter(Boolean).join(' · '));
+ const tabs=el('div',{class:'share-dialog__tabs',role:'tablist','aria-label':lt.preview}),tabLink=button(lt.link,()=>setMode('link')),tabImage=button(lt.image,()=>setMode('image'));
+ for(const[t,id,panel]of[[tabLink,'share-link-tab','share-link-panel'],[tabImage,'share-image-tab','share-image-panel']]){t.id=id;t.setAttribute('role','tab');t.setAttribute('aria-controls',panel);}tabs.append(tabLink,tabImage);
+ const linkPanel=el('section',{id:'share-link-panel',role:'tabpanel','aria-labelledby':'share-link-tab'}),imagePanel=el('section',{id:'share-image-panel',role:'tabpanel','aria-labelledby':'share-image-tab'});
+ const linkVisual=el('div',{class:'share-link-visual'}),linkTools=el('div',{class:'share-link-tools'});linkPanel.className='share-link-layout';
+ const imageUrl=new URL(p.imageUrl);if(imageUrl.origin==='https://kalendorius365.lt'&&location.origin!=='https://kalendorius365.lt')imageUrl.host=location.host,imageUrl.protocol=location.protocol;
+ const og=el('img',{class:'share-og',src:imageUrl.href,alt:p.imageAlt,width:'1200',height:'630',decoding:'async'});const previewCard=el('div',{class:'share-link-card'});previewCard.append(og,el('div',{class:'share-preview-domain'},'KALENDORIUS365.LT'),el('h4',{},p.title),el('p',{},p.excerpt));linkVisual.append(previewCard,el('p',{class:'share-help'},lt.linkPreviewHelp));linkTools.append(el('p',{class:'share-action-eyebrow'},lt.linkEyebrow),el('h4',{},lt.chooseDestination));linkPanel.append(linkVisual,linkTools);
+ const linkLabel=el('label',{},lt.link),linkField=el('input',{type:'url',readonly:'',value:p.shareUrl});linkLabel.append(linkField);
+ const textLabel=el('label',{},lt.copyText),textField=el('textarea',{readonly:'',rows:'5'});textLabel.append(textField);const copyDetails=el('details',{class:'share-copy-details'});copyDetails.append(el('summary',{},lt.preparedText),linkLabel,textLabel);
+ const options=()=>({section,caption,now:serverNow});const refreshText=()=>{textField.value=combinedText(p,options());};refreshText();
+ async function copy(value,field,message){try{await navigator.clipboard.writeText(value);announce(message);}catch{setMode('link');copyDetails.open=true;field.value=value;field.focus();field.select();announce(lt.manualCopy);}}
+ const primary=el('div',{class:'share-platforms'}),more=el('details',{class:'share-more'});more.append(el('summary',{},lt.more));const all=el('div',{class:'share-platforms'});more.append(all);
+ for(const platform of PLATFORMS){
+  let item;
+  if(platform.id==='instagram')item=button(lt.instagram,()=>{setMode('image');format='story';formatSelect.value=format;instagramNote.hidden=false;invalidate();});
+  else{item=el('a',{href:intentUrl(platform.id,p,options()),target:platform.id==='email'?'_self':'_blank',rel:'noopener noreferrer','data-share-platform':platform.id},platform.name);item.addEventListener('click',()=>{item.href=intentUrl(platform.id,p,options());announce(lt.opened);});}
+  item.setAttribute('data-share-platform',platform.id);const asset=platform.logo;if(asset){const logo=el('img',{src:asset,width:String(platform.brand.displayWidth||24),height:String(platform.brand.displayHeight||24),alt:'','aria-hidden':'true'});logo.style.width=(platform.brand.displayWidth||24)+'px';logo.style.height=(platform.brand.displayHeight||24)+'px';if((platform.brand.displayWidth||24)>50){item.textContent='';item.append(el('span',{class:'visually-hidden'},platform.name));}item.prepend(logo);}
+  (PRIMARY.includes(platform.id)?primary:all).append(item);
+ }
+
+ const copies=el('div',{class:'share-actions share-link-actions'});copies.append(button(lt.copyLink,()=>copy(p.shareUrl,linkField,lt.copiedLink)));copies.firstChild.classList.add('share-primary-action');copies.append(button(lt.copyText,()=>copy(combinedText(p,options()),textField,lt.copiedText)));
+ const native=button(lt.native,async()=>{if(busy)return;busy=true;native.disabled=true;try{await navigator.share({title:p.title,text:shareText(p,options()),url:p.shareUrl});announce(lt.resolved);}catch(e){announce(e.name==='AbortError'?lt.cancelled:lt.failed);}finally{busy=false;native.disabled=false;}});native.hidden=typeof navigator.share!=='function';copies.append(native);
+ linkTools.append(primary,copies,more,copyDetails);
+ const controls=el('div',{class:'share-controls'});imagePanel.className='share-image-layout';const imageVisual=el('div',{class:'share-image-visual'}),imageTools=el('div',{class:'share-image-tools'});imagePanel.append(imageVisual,imageTools);
+ function select(label,values,initial,change){const l=el('label',{},label),s=el('select');for(const[v,name]of Object.entries(values))s.append(el('option',{value:v},name));s.value=initial;s.addEventListener('change',()=>change(s.value));l.append(s);controls.append(l);return s;}
+ if(p.kind==='horoscope')select(lt.section,{lead:lt.lead,relationships:lt.relationships,work:lt.work},section,v=>{section=v;refreshText();invalidate();});
+ const formatSelect=select(lt.format,FORMAT_LABELS,format,v=>{format=v;invalidate();});
+ const themeField=el('div',{class:'share-theme-field'}),themeGroup=el('div',{class:'share-theme-options',role:'group','aria-label':lt.theme});themeField.append(el('span',{class:'share-control-label'},lt.theme));
+ for(const[value,label]of Object.entries({light:lt.light,dark:lt.dark,accent:lt.accent})){const choice=button('',()=>{theme=value;for(const option of themeGroup.children)option.setAttribute('aria-pressed',String(option.dataset.shareTheme===value));invalidate();});choice.className='share-theme-choice';choice.dataset.shareTheme=value;choice.setAttribute('aria-pressed',String(value===theme));choice.append(el('span',{class:'share-theme-swatch','aria-hidden':'true'}),el('span',{},label));themeGroup.append(choice);}
+ themeField.append(themeGroup);controls.append(themeField);select(lt.filetype,{'image/png':'PNG','image/jpeg':'JPEG'},mime,v=>{mime=v;invalidate();});
+ const captionLabel=el('label',{},lt.caption),captionField=el('textarea',{maxlength:'240',rows:'2'});captionLabel.append(captionField);captionField.addEventListener('input',()=>{caption=captionField.value;refreshText();});
+ const preview=el('img',{class:'share-render-preview',alt:lt.preview,hidden:''});const previewStage=el('div',{class:'share-preview-stage'});previewStage.append(preview);imageVisual.append(previewStage,el('p',{class:'share-help'},lt.filePreviewHelp));const summary=el('p',{class:'share-help'},excerptFor(p,section));
+ const prepare=button(lt.refreshPreview,async()=>{
+  const request=++seq;prepare.disabled=true;announce(lt.preparing);prepared=null;download.hidden=true;fileShare.disabled=true;previewStage.classList.add('is-preparing');
+  try{const{renderCard}=await import('./renderer.js');const result=await renderCard(p,{format,theme,section,mime});if(request!==seq||!d.open)return;if(objectUrl)URL.revokeObjectURL(objectUrl);prepared=result.file;objectUrl=URL.createObjectURL(result.file);preview.src=objectUrl;preview.hidden=false;download.href=objectUrl;download.download=prepared.name;download.hidden=false;let supported=false;try{supported=typeof navigator.share==='function'&&!!navigator.canShare?.({files:[prepared]});}catch{}fileShare.disabled=!supported;fileHint.hidden=supported;announce(`${lt.prepared} · ${result.width} × ${result.height}`);}catch{if(request===seq)announce(lt.renderFailed);}finally{if(request===seq){prepare.disabled=false;previewStage.classList.remove('is-preparing');}}
+ });
+ function invalidate(){seq++;prepared=null;prepare.disabled=false;download.hidden=true;fileShare.disabled=true;preview.hidden=true;summary.textContent=excerptFor(p,section);if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}announce(lt.ready);if(mode==='image')queueMicrotask(()=>{if(d.open&&!prepare.disabled)prepare.click();});}
+ const download=el('a',{class:'button',hidden:'',download:''},lt.download);
+ const fileShare=button(lt.nativeImage,async()=>{if(!prepared||busy)return;busy=true;fileShare.disabled=true;try{await navigator.share({files:[prepared],title:p.title});announce(lt.resolved);}catch(e){announce(e.name==='AbortError'?lt.cancelled:lt.failed);}finally{busy=false;fileShare.disabled=!prepared;}});fileShare.disabled=true;
+ const fileHint=el('p',{class:'share-help'},lt.nativeUnsupported),instagramNote=el('p',{class:'share-help'},lt.instagramHelp);instagramNote.hidden=true;
+ const imageActions=el('div',{class:'share-actions'});imageActions.append(prepare,download,fileShare,button(lt.copyText,()=>copy(combinedText(p,options()),textField,lt.copiedText)),button(lt.copyLink,()=>copy(p.shareUrl,linkField,lt.copiedLink)));
+ imageTools.append(el('p',{class:'share-action-eyebrow'},lt.imageEyebrow),el('h4',{},lt.prepareCard),controls,captionLabel,summary,el('p',{class:'share-help'},lt.imageOnly),instagramNote,imageActions,fileHint);download.classList.add('share-primary-action');
+ const status=el('p',{class:'share-status',role:'status','aria-live':'polite','aria-atomic':'true'},lt.ready);
+ d.append(head,title,meta,p.kind==='horoscope'?el('p',{class:'share-privacy'},lt.entertainment):['calendar','design'].includes(p.kind)?el('p',{class:'share-privacy'},lt.privacy):el('p',{class:'share-privacy'},''),tabs,linkPanel,imagePanel,status);
+ function setMode(value){mode=value;linkPanel.hidden=value!=='link';imagePanel.hidden=value!=='image';tabLink.setAttribute('aria-selected',String(value==='link'));tabImage.setAttribute('aria-selected',String(value==='image'));tabLink.tabIndex=value==='link'?0:-1;tabImage.tabIndex=value==='image'?0:-1;if(value==='image'&&!prepared&&!prepare.disabled)prepare.click();}
+ tabs.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const value=event.key==='Home'?'link':event.key==='End'?'image':mode==='link'?'image':'link';setMode(value);(value==='link'?tabLink:tabImage).focus();}});
+ setMode('link');document.body.append(d);active=d;d.addEventListener('close',()=>{seq++;if(objectUrl)URL.revokeObjectURL(objectUrl);d.remove();trigger?.focus();if(active===d)active=null;},{once:true});d.addEventListener('click',event=>{if(event.target===d){const b=d.getBoundingClientRect();if(event.clientX<b.left||event.clientX>b.right||event.clientY<b.top||event.clientY>b.bottom)d.close();}});
+ d.showModal();close.focus();
+}

@@ -26,7 +26,10 @@ test("global search covers pages and direct homepage functions in the built outp
         if (entry.name.startsWith("_") || entry.name === "assets") continue;
         walk(join(directory, entry.name), relative ? `${relative}/${entry.name}` : entry.name);
       } else if (entry.isFile() && entry.name === "index.html") {
-        pageRoutes.push(relative ? `/${relative}/` : "/");
+        const source = readFileSync(join(directory, entry.name), "utf8");
+        const frontMatter = source.match(/^---\s*\n([\s\S]*?)\n---/m)?.[1] ?? "";
+        const excludedFromIndex = /^robots:\s*["']?noindex\b/im.test(frontMatter) || /^share_archive:\s*true\s*$/im.test(frontMatter);
+        if (!excludedFromIndex) pageRoutes.push(relative ? `/${relative}/` : "/");
       }
     }
   };

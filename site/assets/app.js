@@ -342,6 +342,8 @@ function renderCalendar() {
         ? cal.formatDate(selected)
         : `${y} m. ${data.months[m - 1][1].toLocaleLowerCase("lt-LT")}`;
   $("#jump-year").value = y;
+  const publicShare=document.getElementById('share-public-calendar');
+  if(publicShare){publicShare.hidden=![2027,2028,2029].includes(y);publicShare.dataset.shareKey=`calendar-${y}-${view==='year'?0:m}`;publicShare.href=view==='year'?`/${y}/`:`/${y}/${data.months[m-1][0]}/`;publicShare.textContent=view==='year'?'Pasidalyti metų kalendoriumi':'Pasidalyti mėnesio kalendoriumi';}
   const host = $("#calendar");
   host.replaceChildren();
   if (view === "month") host.append(monthTable(display, false, todayDate));

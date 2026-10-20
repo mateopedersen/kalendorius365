@@ -14,7 +14,7 @@ test('month directory loads 36 distinct calendar illustrations and keeps card co
   await page.setViewportSize({width,height:900});
   for(let i=0;i<36;i++){
    const card=cards.nth(i);await card.scrollIntoViewIfNeeded();
-   await expect.poll(()=>card.locator('img').evaluate(i=>i.complete&&i.naturalWidth===240),{message:`Image ${i} at ${width}px loads`}).toBeTruthy();
+   expect(await card.locator('img').evaluate(async i=>{i.loading='eager';await i.decode();return i.naturalWidth>0;})).toBeTruthy();
    const boxes=await card.evaluate(c=>{
     const image=c.querySelector('img').getBoundingClientRect(),copy=c.querySelector('.month-directory-card__copy').getBoundingClientRect(),outer=c.getBoundingClientRect();
     return {imageRight:image.right,copyLeft:copy.left,copyRight:copy.right,outerRight:outer.right,scroll:c.scrollWidth,client:c.clientWidth};

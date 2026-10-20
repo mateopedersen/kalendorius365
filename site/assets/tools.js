@@ -54,6 +54,10 @@ if ($("#design-picker") || $("#selected-preview")) {
         action.dataset.stem = stem;
     }
     card.dataset.activeStem = stem;
+    for (const share of card.querySelectorAll(".share-design-action")) {
+      share.href = "/dalintis/kalendorius/" + stem + "/";
+      share.dataset.shareKey = "design-" + stem;
+    }
     const selectedPreview = $("#selected-preview");
     if (selectedPreview) {
       selectedPreview.src = imageSrc;

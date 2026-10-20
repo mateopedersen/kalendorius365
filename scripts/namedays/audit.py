@@ -75,7 +75,7 @@ def main():
         assert p.robots==['index, follow'] and 'https://kalendorius365.lt'+route in sitemap
         assert len(set(p.ids))==len(p.ids),(route,'Duplicate IDs')
         assert 'CC BY-SA 4.0'in raw and 'cc-by-sa-4.0.json'in raw and 'bendraautoriai'in raw
-        assert all(re.search(r'/assets/releases/[0-9a-f]{20}/namedays\.'+extension+r'[\"\']',raw) for extension in ['js','css'])
+        assert all(re.search(r'/assets/releases/[0-9a-f]{20}/namedays\.'+extension+r'(?:[\"\']|\s)',raw) for extension in ['js','css'])
         if index:
             rr=[r for r in rows if int(r['date'][:2])==index]
             assert p.days==[r['date']for r in rr]
