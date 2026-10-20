@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require_relative '../lib/calendar'
+require_relative '../lib/month_calendar_art'
 require 'fileutils'
 require 'cgi'
 require 'rexml/document'
@@ -325,7 +326,14 @@ module Pages
   year_intro=intro('Metų kalendoriai','Pasirinkite metus ir palyginkite tikslų dienų skaičių su standartinio penkių darbo dienų grafiko prielaidomis.')
   year_note='<p>Metų puslapiuose rasite mėnesių kalendorius ir tik tuos PDF bei WebP failus, kurie paruošti pasirinktiems metams. Kitų metų datų matematinį kalendorių galite kurti <a href="/kurti-kalendoriu/">kalendoriaus kūrimo įrankyje</a>; nepatvirtintos šventės pažymimos atskirai.</p>'
   page('metai','Metų kalendoriai','2027, 2028 ir 2029 metų lietuviški kalendoriai: visų mėnesių apžvalga, Lietuvos šventės ir metiniai PDF bei WebP failai.',year_intro+year_cards+year_comparison+year_note,true)
-  monthcards=[2027,2028,2029].map { |y|"<h2>#{y} metai</h2>"+cards.call(DATA['months'].each_with_index.map { |m,i|["#{y}/#{m[0]}/",m[1],"#{Kalendorius.month(y,i+1)['length']} d. · 10 dizainų"] }) }.join
+  MonthCalendarArt.generate(ROOT,DATA['months'])
+  monthcards=[2027,2028,2029].map do |year|
+   entries=DATA['months'].each_with_index.map do |month,i|
+    theme=MonthCalendarArt::THEMES.fetch(i)
+    %(<a class="month-directory-card" href="/#{year}/#{month[0]}/"><img class="month-directory-card__art" src="/assets/visuals/month-calendars/#{year}-#{month[0]}.svg" width="240" height="240" alt="" aria-hidden="true" loading="lazy" decoding="async"><div class="month-directory-card__copy"><span class="month-directory-card__season">#{theme[0]}</span><h3>#{month[1]}</h3><p>#{Kalendorius.month(year,i+1)['length']} d. · 10 dizainų</p><span class="month-directory-card__cta">Peržiūrėti kalendorius <span aria-hidden="true">↗</span></span></div></a>)
+   end.join
+   %(<section class="month-directory-year" aria-labelledby="months-#{year}"><h2 id="months-#{year}">#{year} metai</h2><div class="month-directory-grid">#{entries}</div></section>)
+  end.join
   page('menesiai','Mėnesių kalendoriai – 2027–2029','Pasirinkite 2027, 2028 ar 2029 metų mėnesį. Kiekvienam mėnesiui – dešimt skirtingų A4 kalendorių su Lietuvos šventėmis, PDF ir WebP.',intro('Mėnesių kalendoriai','Pasirinkite mėnesį ir peržiūrėkite dešimt jo kalendoriaus maketų.')+monthcards)
   school=DATA['school'];rows=school['periods'].map { |p|"<tr><td>#{p['name']}</td><td>#{p['start']} – #{p['end']}</td><td>#{p['stage']}</td></tr>" }.join
   page('mokiniu-atostogos','Mokinių atostogos 2026–2027','Oficialios 2026–2027 mokslo metų mokinių atostogos Lietuvoje: rudens, Kalėdų, žiemos ir Velykų laikotarpiai pagal ugdymo pakopą.',intro('Mokinių atostogos','2026–2027 mokslo metai. Datos nurodytos imtinai.')+'<div class="table-scroll"><table class="data-table"><thead><tr><th>Atostogos</th><th>Laikotarpis</th><th>Ugdymo pakopa</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+"<div class=\"source-note\">Šaltinis: <a href=\"#{school['source']}\">Švietimo, mokslo ir sporto ministerija</a>. Peržiūrėta #{school['reviewed']}. Velykų atostogos skiriasi pagal ugdymo pakopą. Vasaros pradžia priklauso nuo klasės ir ugdymo plano; vienos datos visiems neteikiame.</div><h2>2027–2028 mokslo metai</h2><p>Šių mokslo metų tvarkaraštis mūsų šaltiniuose dar nepatvirtintas. Spėjamų datų neskelbiame.</p><a href=\"/2027/\">2027 metų kalendorius</a>")
