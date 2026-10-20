@@ -6869,7 +6869,7 @@ body.tool-workdays .workyear-hero+.resource-stats{margin-top:14px}
 .month-directory-year{margin-block:2rem 3rem}
 .month-directory-year>h2{font-size:1.6rem;letter-spacing:-.025em;margin-bottom:1.15rem}
 .month-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-.month-directory-card{display:flex;align-items:center;gap:1rem;min-width:0;padding:1rem;border:1px solid var(--border);border-radius:22px;background:var(--panel);color:var(--text);text-decoration:none;box-shadow:0 4px 18px #152b3507;transition:box-shadow .2s ease,border-color .2s ease}
+.month-directory-card{display:flex;align-items:center;gap:1rem;min-width:0;padding:1rem;border:1px solid var(--border);border-radius:22px;background:var(--panel);color:var(--ink);text-decoration:none;box-shadow:0 4px 18px #152b3507;transition:box-shadow .2s ease,border-color .2s ease}
 .month-directory-card:hover{border-color:var(--green);box-shadow:0 8px 24px #152b3510}
 .month-directory-card:focus-visible{outline:3px solid var(--green);outline-offset:4px}
 .month-directory-card__art{display:block;flex:0 0 112px;width:112px;height:112px;border-radius:19px}
