@@ -8,8 +8,8 @@
     },
     {
       "path": "/assets/ascendant-calculator.js",
-      "source_bytes": 10963,
-      "generated_bytes": 7440
+      "source_bytes": 10938,
+      "generated_bytes": 7394
     },
     {
       "path": "/assets/ascendant-loader.js",
@@ -100,6 +100,11 @@
       "path": "/assets/data/birth-cities.js",
       "source_bytes": 8075,
       "generated_bytes": 6751
+    },
+    {
+      "path": "/assets/data/weather-backgrounds.js",
+      "source_bytes": 4810,
+      "generated_bytes": 3871
     },
     {
       "path": "/assets/data/weather-cities.js",
@@ -243,8 +248,8 @@
     },
     {
       "path": "/assets/weather.js",
-      "source_bytes": 5663,
-      "generated_bytes": 4013
+      "source_bytes": 8132,
+      "generated_bytes": 5408
     },
     {
       "path": "/assets/year-directory-core.js",
