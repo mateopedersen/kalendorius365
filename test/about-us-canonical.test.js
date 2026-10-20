@@ -23,6 +23,23 @@ test("the about-us canonical page preserves the old source, privacy and editoria
   ]) assert.ok(page.includes(required), `missing merged about detail: ${required}`);
 });
 
+test("the about page presents the full product range and all illustrated zodiac links", () => {
+  const page = read("../site/apie-mus/index.html");
+  for (const required of [
+    "kalendoriai, horoskopai ir įrankiai", "about-zodiac-title", "about-calendars-title",
+    "about-tools-title", "/tuscias-kalendorius/", "/kurti-kalendoriu/", "/pamoku-tvarkarastis/",
+    "/pamainu-grafikas/", "/datos-skaiciuokle/", "/ilgieji-savaitgaliai/"
+  ]) assert.ok(page.includes(required), `missing featured product: ${required}`);
+
+  const signs = ["avinas", "jautis", "dvyniai", "vezys", "liutas", "mergele", "svarstykles", "skorpionas", "saulys", "oziaragis", "vandenis", "zuvys"];
+  for (const sign of signs) {
+    assert.ok(page.includes(`href=\"/horoskopai/${sign}/\"`), `missing horoscope route for ${sign}`);
+    assert.ok(page.includes(`src=\"/assets/visuals/zodiac/${sign}.svg\"`), `missing original artwork for ${sign}`);
+    assert.ok(existsSync(new URL(`../site/assets/visuals/zodiac/${sign}.svg`, import.meta.url)), `missing illustration asset for ${sign}`);
+  }
+  assert.ok(page.includes("zodiakas-1200x630.png"), "missing zodiac hero artwork");
+});
+
 test("removed about route redirects permanently and is absent from discovery metadata", () => {
   const redirects = read("../public/_redirects").split(/\r?\n/);
   assert.ok(redirects.includes("/apie/ /apie-mus/ 301"));
