@@ -1,6 +1,7 @@
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -52,6 +53,22 @@ class SearchHealthTests(unittest.TestCase):
 
 
 class IndexNowTests(unittest.TestCase):
+    def test_deployed_pretty_routes_match_their_index_files(self):
+        routes = (
+            ("https://kalendorius365.lt/", "public/index.html"),
+            ("https://kalendorius365.lt/apie-mus/", "public/apie-mus/index.html"),
+            ("https://kalendorius365.lt/2027/vasaris/", "public/2027/vasaris/index.html"),
+        )
+        for url, path in routes:
+            html = (
+                '<html><head><title>Kalendorius</title>'
+                f'<link rel="canonical" href="{url}"></head>'
+                '<body><main><h1>Kalendorius</h1></main></body></html>'
+            ).encode()
+            with patch.object(indexnow_notify, "live_response", return_value=(200, url, {}, html)):
+                with self.subTest(url=url):
+                    self.assertTrue(indexnow_notify.deployed(url, {path: html}))
+
     def test_asset_allowlist_is_public_download_scope_only(self):
         self.assertTrue(indexnow_notify.public_asset("public/downloads/example.pdf"))
         self.assertTrue(indexnow_notify.public_asset("public/assets/previews/example.webp"))

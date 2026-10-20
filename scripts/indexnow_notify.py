@@ -220,7 +220,7 @@ def deployed(url, current_files):
     path = urllib.parse.unquote(urllib.parse.urlsplit(url).path)
     relative = "public" + path
     if relative.endswith("/") or relative == "public":
-        relative += "/index.html"
+        relative = relative.rstrip("/") + "/index.html"
     if relative in current_files:
         expected = current_files[relative]
         status, final_url, headers, body = live_response(url)
@@ -307,7 +307,7 @@ def main():
     parser.add_argument("--base", required=True, help="Prior production commit SHA")
     parser.add_argument("--head", required=True, help="New production commit SHA")
     parser.add_argument("--post", action="store_true", help="Wait for deployment and submit to IndexNow")
-    parser.add_argument("--wait-seconds", type=int, default=480)
+    parser.add_argument("--wait-seconds", type=int, default=1200)
     args = parser.parse_args()
     report = {"base": args.base, "head": args.head, "submitted_urls": [], "status": "no_changes"}
     try:
