@@ -1,6 +1,6 @@
 # Daily horoscope automation runbook
 
-`.github/workflows/horoscope-automation.yml` makes its first attempt at 03:17 and retries every 30 minutes through 10:47 in `Europe/Vilnius`. Starting earlier gives delayed or failed scheduled runs more time to recover before the requested 06:20 publication time. `workflow_dispatch` can manually recover the current date. GitHub scheduled events are best-effort and can still be delayed or dropped; this schedule alone cannot guarantee publication at exactly 06:20. Check run history and live page dates when investigating a missed publication.
+`.github/workflows/horoscope-automation.yml` makes its first attempt at 03:17 and retries every 30 minutes through 23:47 in `Europe/Vilnius`. Starting early gives delayed or failed scheduled runs more time to recover before the requested 06:20 publication time; continuing throughout the day provides later recovery attempts when GitHub misses the morning window. `workflow_dispatch` can manually recover the current date. GitHub scheduled events are best-effort and can still be delayed or dropped; this schedule alone cannot guarantee publication at exactly 06:20. Check run history and live page dates when investigating a missed publication.
 
 ## Run sequence
 
@@ -15,7 +15,7 @@
 ## Failure behavior
 
 - Any missing sign, failed validation, build or push leaves the existing publication untouched.
-- Each half-hour recovery run checks the same local date. Concurrency prevents simultaneous publishing, and completed data makes subsequent runs idempotent.
+- Each half-hour recovery run checks the same local date. Concurrency prevents simultaneous publishing, completed data makes subsequent runs idempotent, and live-route verification runs only after a new release is generated.
 - If production verification fails, the Actions run fails and records the cause in its summary/log. Email notifications depend on the repository owner's GitHub notification settings.
 - Roll back only the horoscope data/generated pages; do not alter calendar or print assets.
 

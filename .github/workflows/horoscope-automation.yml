@@ -21,9 +21,9 @@ on:
       - 'docs/horoscopes/**'
   schedule:
     # Start well before 06:20 in Lithuania; GitHub may delay or drop schedules.
-    # Retry every 30 minutes through the morning, including an earlier recovery window.
+    # Retry every 30 minutes throughout the local day so a missed morning run can recover later.
     # The publisher is date-idempotent, so only a missing/stale daily set writes.
-    - cron: '17,47 3-10 * * *'
+    - cron: '17,47 3-23 * * *'
       timezone: 'Europe/Vilnius'
   workflow_dispatch:
 
@@ -142,6 +142,7 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Verify all 13 live Cloudflare Pages routes and their current indexable date
+        if: steps.generate.outputs.changed == 'true'
         run: python3 scripts/horoscopes/verify_live.py --date "${{ steps.target.outputs.target_date }}" --max-wait-seconds 1200
       - name: Notify IndexNow after the daily Pages release is live
         if: steps.publish_commit.outputs.changed == 'true'
