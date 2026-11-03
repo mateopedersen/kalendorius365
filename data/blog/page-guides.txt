@@ -1,0 +1,146 @@
+@@ astronominis-kalendorius
+## Kaip pasirinkti reikiamą astronomijos įrankį?
+Šis puslapis yra pradžios vieta, kai norite suprasti skirtingus dangaus ir metų ritmo duomenis. Saulės puslapyje pasirinkite miestą bei datą, jei ieškote saulėtekio ar saulėlydžio. Mėnulio fazių lentelę rinkitės konkrečiam pagrindinės fazės momentui. Metų laikų apžvalga skirta lygiadieniams ir saulėgrįžoms. Tai skirtingi skaičiavimai, todėl vienos lentelės rezultatas nepakeičia kitos paskirties.
+
+Prieš lygindami skaičius patikrinkite metus, vietą ir laiko juostą. Tą patį momentą UTC ir Vilniaus laiku galima užrašyti skirtingomis valandomis, o arti vidurnakčio gali pasikeisti ir kalendorinė data. Jei šaltinyje laiko zona nenurodyta, skirtumo nebandykite taisyti spėjimu. Pirmiausia išsiaiškinkite, kokiu laiku duomenys pateikti.
+
+Stebėjimui reikia daugiau nei įvykio datos: debesys, vietinis horizontas ir konkreti stebėjimo vieta veikia matomumą. Skaičiavimo modelis nėra pažadas tą minutę objektą pamatyti iš jūsų lango. Naudodami rezultatus savo plane išsaugokite ir pasirinktą vietą. Išsamesnį paaiškinimą rasite <a href="/blogas/sauletekis-ir-dienos-ilgumas/">gide apie šviesų dienos laiką</a> bei <a href="/blogas/menulio-faziu-kalendoriaus-skaitymas/">Mėnulio kalendoriaus skaitymo gide</a>.
+@@ darbo-grafiko-sablonai
+## Ką užrašyti darbo grafike, kad juo būtų galima naudotis?
+Prieš rinkdamiesi maketą nuspręskite, ar planuojate įprastą savaitę, pasikartojantį pamainų ciklą, ar vieną konkretų mėnesį. Savaitės lentelė patogi pasikartojančiam darbo laikui. Mėnesio lape geriau matyti keičiamas pamainas, savaitgalius ir ilgesnius poilsio intervalus. Jei ciklas nesutampa su septyniomis dienomis, naudokite <a href="/pamainu-grafikas/">pamainų skaičiuoklę</a> ir jos rezultatą palyginkite su patvirtintu grafiku.
+
+Lapo viršuje nurodykite laikotarpį, metus ir grafiko versijos datą. Kiekvienai pamainai įrašykite pradžią bei pabaigą. Kai darbas tęsiasi po vidurnakčio, aiškiai pažymėkite kitą pabaigos datą. Vien žodžio „naktinė“ ne visada pakanka žmogui, kuris turi suderinti transportą ar šeimos planą. Spalvų legendą papildykite trumpiniais, kad lapas liktų suprantamas ir nespalvotai atspausdintas.
+
+Asmeniniame grafike atskirkite darbo laiką nuo kelionės ir kitų susitarimų. Kalendoriaus sugeneruotas ciklas yra planavimo modelis; jis nėra darbdavio patvirtinimas, darbo laiko apskaitos žiniaraštis ar individualus darbo teisės vertinimas. Šventinių dienų ir darbo valandų taisykles tikrinkite atskirai, pagal tikrą darbo režimą. Poilsio langelis viename šablone nebūtinai reiškia laisvą dieną visiems darbuotojams.
+
+Prieš spausdindami visą laikotarpį patikrinkite pirmą ciklo dieną, vieną mėnesio sandūrą ir naktinės pamainos pabaigą. Jei grafikas keičiasi, seną lapą pažymėkite kaip nebegaliojantį. Naują laiką perduokite ir tiems, kuriuos jis liečia, nes perrašymas jūsų lape nėra automatinis pranešimas kitam žmogui. Išsamesnis pavyzdys pateiktas <a href="/blogas/pamainu-ciklo-planavimas/">pamainų ciklo planavimo gide</a>.
+
+Bendroje darbo erdvėje skelbkite tik reikalingą informaciją. Privačių pastabų, sveikatos aplinkybių ir nesusijusių kolegų duomenų į asmeninį spausdinamą lapą neįtraukite. Jei norite dalytis tik savo užimtumu, dažniausiai užtenka datos ir darbo laiko. Visą vidinį darbovietės grafiką persiųsti nereikia, kad šeima suprastų jūsų kitos savaitės planą.
+
+Jei tą patį lapą naudosite keliems mėnesiams, neištrinkite seno laikotarpio antraštės nepasidarę kopijos. Pasilikite ankstesnį planą palyginimui, o naujame aiškiai nurodykite galiojimo pradžią. Spausdintą pakeitimą patikrinkite su kitu žmogumi: ar jam be papildomo paaiškinimo aišku, kuri pamaina prasideda konkrečią dieną ir kada ji iš tikrųjų baigiasi? Tai paprastas būdas pastebėti neaiškų trumpinį arba trūkstamą naktinės pamainos ribą.
+@@ datos-skaiciuokle
+## Kaip patikrinti gautą dienų skaičių?
+Pirmiausia nuspręskite, ar ieškote atstumo tarp dviejų datų, ar norite suskaičiuoti visas laikotarpio datas. Nuo pirmadienio iki trečiadienio praeina dvi paros, tačiau įtraukus abi ribines dienas turime tris kalendorines datas. Jei dviejų skaičiuoklių rezultatai skiriasi vienetu, pirmas tikrinamas dalykas yra būtent šis pasirinkimas, o ne metų ar mėnesio ilgio taisyklė.
+
+Trumpas bandymas padeda suprasti veiksmą: pasirinkite tą pačią pradžios ir pabaigos datą. Įprastas skirtumas yra nulis, o abi ribas įtraukiantis vienos dienos laikotarpis turi vieną datą. Tada išbandykite gretimas datas. Tik supratę šiuos pavyzdžius pereikite prie ilgesnio laikotarpio, kuriame yra keli mėnesiai arba keliamųjų metų vasaris.
+
+Darbo dienų skaičiavimui reikalinga papildoma darbo savaitės ir švenčių taisyklė. Vien datų skirtumas šių dienų neatmeta. Jei jums svarbus sutartinis arba įstaigos nustatytas terminas, perskaitykite jo pradžios, pabaigos ir galimo perkėlimo sąlygas. Šis bendras įrankis pateikia aritmetinį rezultatą pagal pasirinkimą, bet nenustato jūsų konkrečiam dokumentui taikomos teisinės termino skaičiavimo tvarkos.
+
+Prie išsaugoto rezultato užrašykite pradžią, pabaigą ir tai, ar įtrauktos abi ribos. Palygindami su kitu žmogumi perduokite šias prielaidas, o ne vien skaičių. Daugiau pavyzdžių rasite <a href="/blogas/datos-skirtumas-ir-abi-ribos/">paaiškinime apie vienos dienos skirtumą</a>.
+@@ dienos-ilgumas
+## Kaip palyginti miestų šviesų laiką?
+Pasirinkite tą pačią datą visiems lyginamiems miestams ir tik tada vertinkite saulėtekio, saulėlydžio bei bendros dienos trukmės skirtumus. Geografinė padėtis veikia rezultatą net tada, kai naudojama viena bendra laiko juosta. Miesto pavadinimas čia yra skaičiavimo dalis, o ne vien dekoratyvi lentelės antraštė. Jei rezultatą perrašote į savo planą, išsaugokite ir vietą.
+
+Dienos ilgumas neparodo viso konkrečios vietos apšvietimo. Reljefas, namai ir medžiai gali užstoti horizontą, o debesys keičia regimą šviesą. Skaičiuojamas intervalas tarp saulėtekio ir saulėlydžio taip pat nėra tas pats, kas visa prieblanda. Jei norite grįžti dar šviesiai, palikite laiko atsargą ir patikrinkite vietos sąlygas, o ne remkitės viena paskutine lentelės minute.
+
+Palyginkite mėnesio pradžią, vidurį ir pabaigą. Taip lengviau pastebėsite sezoninį pokytį nei žiūrėdami į vienos dienos skaičių. Per laikrodžių persukimą laikrodžio rodoma valanda gali pasikeisti staigiau negu pati astronominė dienos trukmė. Prieš aiškindami tai kaip duomenų klaidą patikrinkite laiko juostą ir pasirinktos datos sezoninio laiko taisyklę.
+
+Praktiniam planui pasirinkite jums realiai tinkantį intervalą: ryte, per pietus ar po darbo. Astronominė lentelė padeda jį surasti, bet nėra orų prognozė ir negarantuoja matomumo. Išsamesnį paaiškinimą pateikiame <a href="/blogas/sauletekis-ir-dienos-ilgumas/">saulėtekio ir dienos ilgumo gide</a>.
+@@ dienos-planuoklis
+## Kaip užpildyti lapą nepaverčiant jo visų norų sąrašu?
+Pirmiausia įrašykite jau sutartus susitikimus ir kitus nekintamus laikus. Greta numatykite pasiruošimą bei kelionę. Tik likusioje erdvėje pasirinkite pagrindinį dienos veiksmą. Jo pavadinimas turėtų pasakyti, ką darysite pradėję: „parengti pasiūlymo lentelę“ aiškiau negu „projektas“. Jei pirmas žingsnis dar neaiškus, užduotį verta sumažinti prieš skiriant jai konkretų laiką.
+
+Smulkiems reikalams naudokite atskirą sąrašą. Taip jie neužgoš svarbiausio veiksmo ir nereikės nuolat skaityti vienodai ryškių eilučių. Ne visas ateinančio mėnesio idėjas būtina perrašyti į šiandienos lapą. Dienos planas skirtas pasirinkti, ką darote dabar, o ilgesnio laikotarpio sąrašas gali likti kitur, kol nuspręsite, kurią idėją iš tiesų imtis įgyvendinti.
+
+Tuščias tarpas nėra plano trūkumas. Jis leidžia priimti vėluojantį skambutį, užbaigti ilgiau trukusį darbą ar tiesiog pereiti nuo vienos veiklos prie kitos. Jei visa diena iš anksto užpildyta, atsiradus pakeitimui sąmoningai atsisakykite arba perkelkite vieną darbą. Nereikia automatiškai pridėti visko prie vakaro vien tam, kad sąrašas liktų nepakeistas.
+
+Ranka pildomam lapui svarbūs aiškūs langeliai ir jums patogus rašto dydis. Vieną maketą išbandykite su tikrais įrašais ir tik tada spausdinkite daugiau. Jei norite skaitmeninių užrašų, juos galite kurti <a href="/">pagrindiniame kalendoriuje</a>. Dienos planavimo pavyzdys aptariamas <a href="/blogas/dienos-planas-trys-svarbus-darbai/">atskirame gide</a>.
+@@ ilgieji-savaitgaliai
+## Pasiūlymas ir patvirtintos atostogos
+Rodomas poilsio intervalas ir jam reikalingų atostogų dienų skaičius atsako į skirtingus klausimus. Pirmasis parodo, kiek kalendorinių dienų galėtumėte nedirbti. Antrasis – kiek jūsų įprastų darbo dienų reikėtų tam skirti. Palygindami pasiūlymus vertinkite abu skaičius, o ne vien ilgiausią nuspalvintą juostą. Jei dirbate pamainomis, įprastos darbo savaitės prielaida gali netikti.
+
+Prieš rezervuodami kelionę suderinkite atostogas pagal savo darbo tvarką ir sutikrinkite bendrakeleivių grafikus. Kalendoriuje pažymėtas preliminarus variantas nėra patvirtinta laisva diena. Įvertinkite kelionę ir grįžimą: keturios kalendorinės datos nebūtinai reiškia keturias pilnas poilsio dienas pasirinktoje vietoje. <a href="/blogas/kaip-planuoti-ilgaji-savaitgali/">Praktinis ilgųjų savaitgalių gidas</a> padeda palyginti šias ribas.
+@@ kurti-kalendoriu
+## Prieš eksportuodami patikrinkite maketą
+Pirmiausia pasirinkite metus, mėnesį ir popieriaus formatą. Tada įvertinkite, kiek vietos liks datoms bei asmeniniams įrašams, jei pridėsite paveikslėlį. Didelė dekoracija gali gražiai atrodyti ekrane, tačiau sumažinti kasdieniams užrašams reikalingą plotą. Bandomajame lape patikrinkite kelis tikro ilgio įrašus, užuot sprendę vien iš tuščio maketo peržiūros.
+
+Pridėdami savo nuotrauką naudokite failą, kurį turite teisę naudoti, ir pažiūrėkite, kaip jis apkerpamas pasirinktame rėmelyje. Svarbi detalė prie krašto gali nepatekti į galutinį vaizdą. Atsisiuntę atverkite patį rezultatą, patikrinkite metų antraštę, dienų išdėstymą ir įrašus. Tik tada spausdinkite visą reikalingą kiekį arba perduokite kalendorių kitam žmogui.
+
+Asmeninės parinktys apdorojamos naršyklėje. Eksportuotas failas gali atskleisti tai, ką į jį įtraukėte, todėl prieš dalydamiesi peržiūrėkite jo turinį. Bendram kalendoriui dažnai pakanka trumpų įvykių pavadinimų; jautrių pastabų viešame makete nereikia. <a href="/blogas/kaip-spausdinti-kalendoriu/">Spausdinimo gide</a> paaiškiname popieriaus dydžio, orientacijos ir mastelio pasirinkimus.
+@@ menesiai
+## Kaip greitai išsirinkti mėnesio kalendorių?
+Pradėkite nuo metų ir konkretaus mėnesio. Skirtingų metų vienodai pavadinti mėnesiai gali turėti kitokį dienų išdėstymą, o keliamųjų metų vasaryje atsiranda papildoma diena. Pasirinkę laikotarpį apžiūrėkite maketą: ar reikia vietos užrašams, švenčių pavadinimų, didesnių skaičių ar tik paprastos datų apžvalgos? Šie poreikiai padeda pasirinkti greičiau negu vien mėgstamiausia peržiūros spalva.
+
+Galerijos paveikslėlis padeda išsirinkti, tačiau spausdinimui naudokite tikrą atsisiunčiamą PDF. WebP failas patogus, kai kalendorių norite įterpti kaip paveikslėlį į kitą dokumentą. Maža peržiūra ir pilnas failas turi skirtingą paskirtį. Išsaugoję patikrinkite, kad dokumento viduje nurodyti metai bei mėnuo sutampa su jūsų pasirinkimu kataloge ir failų aplanke.
+
+Mėnesio vaizdas tinka konkrečioms datoms, o didesniems intervalams palyginti patogesnė <a href="/metai/">metų apžvalga</a>. Jei kiekviename langelyje trūksta vietos, nebūtina rašyti smulkiau: rinkitės savaitės arba dienos planą. <a href="/blogas/menesio-ar-metu-kalendorius/">Formatų pasirinkimo gide</a> palyginame, kokį klausimą geriausiai atsako kiekvienas vaizdas.
+@@ metai
+## Kada metų vaizdas naudingesnis už mėnesio lapą?
+Metų kalendoriuje lengva palyginti ilgesnius laikotarpius: atostogas, projektų etapus, mokymų ciklus ir šeimos išvykas. Jis parodo visumą, kurios nematote viename mėnesio lape. Pažymėkite svarbiausias pradžios bei pabaigos datas ir palikite apžvalgą aiškią. Visų kasdienių susitikimų aprašymams maži metų langeliai dažniausiai nėra patogiausia vieta.
+
+Pasirinkite konkrečius metus ir patikrinkite, ar jie keliamieji. 2028 metai turi 366 dienas ir vasario dvidešimt devintąją. 2027 ir 2029 metai turi po 365 dienas. Ankstesnio kalendoriaus negalima pritaikyti vien pakeitus antraštę: savaitės dienų išdėstymas bei dalis kintamų švenčių datų taip pat turi atitikti pasirinktą laikotarpį. Prieš naudodami visada atverkite patį dokumentą.
+
+Rinkdamiesi spausdinamą metų lapą įvertinkite realų skaitymo atstumą. Ant sienos kabantis maketas turi likti įskaitomas ne tik laikant jį rankose. Jei sumažinate didelio formato dokumentą, sumažės ir skaičiai. Vienas bandomasis atspaudas padės nuspręsti, ar jums patogesnė metų apžvalga, ar dvylika atskirų mėnesio lapų su didesniais langeliais ir vieta užrašams.
+
+Šventinių dienų žymos yra bendras planavimo orientyras. Jos nepakeičia jūsų patvirtinto darbo grafiko, mokyklos informacijos ar asmeninių susitarimų. Metų lape galite rasti tinkamą laikotarpį, o mėnesio vaizde įrašyti tikslų susitikimą ir pasirengimo veiksmus. Taip kiekvienas formatas turi aiškią paskirtį ir nereikia nuolat prižiūrėti kelių pilnai dubliuojamų planų.
+
+Jei dar nesate tikri dėl formato, palyginkite vieną metų lapą ir vieną jums aktualaus mėnesio maketą. Įsivaizduokite juose tris tikrus įrašus. Kur greičiau randate reikiamą datą? Kur telpa užrašas? <a href="/blogas/menesio-ar-metu-kalendorius/">Kalendoriaus formato pasirinkimo gidas</a> padeda apsispręsti pagal naudojimą, o ne vien dekoracijas.
+@@ mokiniu-atostogos
+## Kaip įtraukti atostogas į šeimos planą?
+Pirmiausia patikrinkite mokslo metus, ugdymo programą ir savo mokyklos patvirtintą tvarką. Bendras intervalas yra pradinis orientyras, o ne kiekvieno mokinio individualaus grafiko patvirtinimas. Jei šeimoje keli vaikai, jų laikotarpius pažymėkite atskirai ir tik tada ieškokite bendro laisvo laiko. Prie plano išsaugokite mokyklos pranešimo nuorodą, kad vėliau galėtumėte patikrinti konkrečias ribas.
+
+Vaiko atostogos savaime nesuteikia suaugusiajam atostogų darbe. Prieš užsakydami kelionę suderinkite tikras laisvas dienas ir įvertinkite paskutinę pamokų bei pirmą grįžimo dieną. Atostogų pabaiga nėra pažadas, kad vėlyvas grįžimas nesukels nepatogumų kitą rytą. Kalendoriuje palikite laiko kelionei, poilsiui ir pasiruošimui įprastam ritmui.
+
+Jei liekate namuose, savaitės lape pasidalykite priežiūra ir konkrečiomis atsakomybėmis. Įrašas „pas senelius“ aiškesnis, kai parašyta, kas nuveš ir kada grįš. Nepaverskite preliminarios idėjos patvirtintu planu nepasikalbėję su kitu žmogumi. Bendras kalendorius užrašo susitarimus, tačiau nepadaro jų už visus dalyvius ir automatiškai nepraneša apie pakeistą laiką.
+
+Ne kiekvieną tuščią atostogų langelį reikia užpildyti veikla. Palikite vietos poilsiui ir pasirinkimams pagal tikras oro sąlygas. Bendroje erdvėje laikomame lape nerašykite bilietų kodų, jautrių asmeninių duomenų ar išsamių vaikų maršrutų. Praktinius pasiruošimo žingsnius aptariame <a href="/blogas/mokiniu-atostogu-seimos-planas/">šeimos atostogų planavimo gide</a>.
+
+Prieš atostogas peržvelkite ir pasirengimo darbus: dokumentų patikrą, transporto laikus bei priemones suplanuotoms veikloms. Juos įrašykite anksčiau negu pačią išvyką. Grįžus verta pasilikti tik naudingus pastebėjimus kitam kartui. Konkrečių datų nekopijuokite į kitus mokslo metus nepatikrinę naujos mokyklos informacijos, nes pasikeitęs laikotarpis gali paveikti visų šeimos narių darbo ir poilsio planą.
+@@ pamoku-tvarkarascio-sablonai
+## Kaip pasirinkti patogų pamokų tvarkaraštį?
+Tvarkaraščio lapas turi padėti rasti kitą pamoką, o ne sutalpinti kuo daugiau dekoracijų. Prieš spausdindami patikrinkite, kiek pamokų per dieną jums reikia, ar skirtingomis dienomis jų skaičius skiriasi ir ar norite rašyti kabineto bei mokytojo trumpinį. Jei rašysite ranka, išbandykite kelis tikro ilgio dalykų pavadinimus. Taip matysite, ar langeliai pakankamai dideli jūsų raštui.
+
+Pirmoje eilutėje nurodykite klasę arba tvarkaraščio pavadinimą ir galiojimo laikotarpį. Jei mokykloje taikomos skirtingos savaičių versijos, aiškiai jas atskirkite. Neužtenka dviejų panašiai nuspalvintų lapų be antraštės: po kelių savaičių bus sunku prisiminti, kuri versija dabar galioja. Patvirtintą mokyklos tvarkaraštį naudokite kaip pirminį šaltinį, o šabloną – savo patogiai kopijai.
+
+Pamokų laikus ir pertraukas perrašykite tiksliai. Jei pradžios valandos skirtingos, nenaudokite vieno bendro numanomo laiko visoms dienoms. Atskirai pažymėkite būrelį ar kelionę namo, jei šie įvykiai svarbūs bendram šeimos planui. Mokyklos pamokos ir papildoma veikla gali būti tame pačiame lape, tačiau turi būti lengvai atskiriamos pagal pavadinimą, ne vien pagal spalvą.
+
+Namų darbams geriau turėti atskirą sąrašą arba <a href="/pamoku-tvarkarastis/">interaktyvų planuoklį</a>. Nuolat papildomas užduočių tekstas gali užgožti pastovų tvarkaraštį. Prie užduoties nurodykite dalyką ir terminą, o baigtą pažymėkite, kad nereikėtų iš naujo skaityti viso sąrašo. Prieš terminą numatykite ir pasirengimo laiką, ypač jei darbui reikės priemonių arba kito žmogaus pagalbos.
+
+Jei lapas kabės bendroje vietoje arba jo nuotrauką siųsite grupei, įtraukite tik reikalingą informaciją. Vaiko kontaktų, asmeninių pastabų ar kitų jautrių aplinkybių viešai rodyti nereikia. Pradėkite nuo vieno bandomojo lapo ir patikrinkite, ar pavadinimai aiškūs ir nespalvotai. <a href="/blogas/kaip-spausdinti-kalendoriu/">Spausdinimo gide</a> rasite mastelio ir paraščių patikrinimą.
+
+Pasikeitus tvarkaraščiui seną lapą pašalinkite arba pažymėkite kaip nebegaliojantį. Jei jo nuotrauką jau turi kitas šeimos narys, nusiųskite ir naują versiją. Vien perrašytas langelis namuose nepakeičia anksčiau išsaugoto vaizdo telefone. Ši maža versijų taisyklė padeda išvengti daug paprastų, tačiau nemalonių nesusipratimų dėl pirmos pamokos pradžios arba pasikeitusios dienos sekos.
+@@ pamoku-tvarkarastis
+## Tvarkaraštis ir namų darbų terminas
+Pastovų pamokų tvarkaraštį laikykite atskirai nuo kintančių namų darbų. Tvarkaraštis atsako, kurį dalyką turėsite konkrečiu metu. Užduoties įrašas atsako, ką ir iki kada reikia parengti. Jei visas smulkias užduotis surašysite į pamokų langelius, po kelių dienų bus sunku greitai rasti pačią dienos seką ir iš jos suprasti, kokių priemonių reikia rytoj.
+
+Prie naujos užduoties nurodykite dalyką, trumpą veiksmą ir terminą. „Parengti pristatymo planą“ lengviau pradėti nei vieną miglotą žodį „pristatymas“. Jei darbas didelis, pirmą pasirengimo veiksmą suplanuokite anksčiau už pateikimo datą. Taip kalendoriuje matysite ne tik ribą, bet ir tikrą vietą darbui atlikti.
+
+Planuoklio įrašai saugomi naudojamoje naršyklėje. Jūsų telefonas ir namų kompiuteris jų savaime nesinchronizuoja. Prieš keisdami įrenginį naudokite šio įrankio atsarginės kopijos funkciją; pagrindinio kalendoriaus JSON failas nėra visų svetainės įrankių bendra kopija. Į išsaugotą failą gali patekti jūsų pačių įrašytas tekstas, todėl laikykite jį privačioje vietoje.
+@@ savaitiniai-planuokliai
+## Savaitės lapą pildykite nuo sutartų laikų
+Pirmiausia pažymėkite susitikimus, darbo valandas, keliones ir kitus įvykius, kurie jau turi laiką. Pridėkite pasiruošimą bei perėjimus tarp vietų. Tik po to rinkitės užduotis likusiai dienos erdvei. Jei vieną savaitę turite dvi komandiruotes, ji negali priimti tiek pat papildomų darbų kaip rami savaitė be jokių susitikimų. Lapą pritaikykite tikram užimtumui, o ne norimam sąrašo ilgiui.
+
+Pasirinkite kelis svarbiausius rezultatus ir kiekvienam numatykite pirmą aiškų veiksmą. Užduotį, kuriai dar trūksta kito žmogaus atsakymo, pažymėkite atskirai nuo to, ką galite pradėti dabar. Taip laisva valanda nebus išnaudota bandymui atlikti darbą, kurio iš tiesų dar negalite pajudinti. Smulkiems reikalams palikite mažesnį sąrašą greta pagrindinio plano.
+
+Prieš spausdindami patikrinkite savaitgalio langelius. Jei savaitgaliais dirbate ar daug planuojate, maža bendra skiltis gali netikti. Naudokite aiškius pavadinimus ir pakankamai didelį raštą. Jei šeimos nariai dalijasi lapu, susitarkite dėl ženklų ir pakeitimų tvarkos. Vien nauja spalva ne visada paaiškina, ar įvykis jau patvirtintas, ar tai dar tik idėja.
+
+Savaitės pabaigoje trumpai peržiūrėkite nebaigtus darbus ir sąmoningai nuspręskite, ką perkelti. Nereikia automatiškai užpildyti naujos savaitės visu senu sąrašu. Išsamesnį pavyzdį rasite <a href="/blogas/savaites-planas-be-perkrovos/">savaitės planavimo gide</a>, o konkrečios dienos veiksmams galite rinktis <a href="/dienos-planuoklis/">dienos lapą</a>.
+@@ seimos-kalendorius
+## Vienas bendras lapas turi turėti aiškias taisykles
+Šeimos planas naudingiausias tada, kai greitai atsako, kas, kada ir už ką atsakingas. Prie būrelio datos įrašykite ne tik pradžią, bet ir žmogų, kuris nuveš arba parveš. Prie bendros išvykos pažymėkite, ar susitarimas jau patvirtintas. Klaustukas arba trumpas žodis dažnai aiškesnis už dar vieną panašios spalvos tašką.
+
+Mėnesio lape rodykite didesnius įvykius ir užimtumą, savaitės plane – tikslius laikus bei kasdienes atsakomybes. Nereikia visos informacijos pilnai dubliuoti abiejuose lapuose. Susitarkite, kur ieškoma galutinio laiko, ir pasikeitimus praneškite tiesiogiai tiems, kuriuos jie liečia. Perrašyta data ant virtuvės sienos nėra automatinis pranešimas žmogui, kuris tą rytą jau išėjo iš namų.
+
+Bendroje erdvėje laikykite tik planavimui reikalingą informaciją. Medicininių aplinkybių, bilietų kodų, asmeninių kontaktų ir išsamių vaikų maršrutų lape rašyti nereikia. Prieš siųsdami kalendoriaus nuotrauką pažiūrėkite, kokie įrašai pateks į kadrą. Galbūt gavėjui reikia tik vieno bendro susitikimo datos, o ne viso jūsų šeimos mėnesio plano ir kitų asmeninių aplinkybių.
+
+Kalendorius365 asmeninis planas saugomas vienoje naršyklėje ir savaime nesidalija su kitu telefonu. Jei reikia bendros versijos, aiškiai nuspręskite, kas prižiūri pagrindinę kopiją. <a href="/blogas/seimos-kalendorius-namuose/">Šeimos planavimo gide</a> pateikiame pavyzdžius, kaip išlaikyti aiškumą neperkraunant lapo kasdienėmis smulkmenomis.
+@@ oru-saltiniai
+## Ką reiškia stebėjimas ir prognozė?
+Stebėjimo duomenys aprašo tai, ką matavo meteorologijos stotis, o prognozė pateikia numatomą orų eigą pasirinktai vietovei. Tai nėra viena ir ta pati informacija. Skirtingiems miestams svetainė gali turėti skirtingą prieinamą duomenų rinkinį, todėl skaitydami orų bloką atkreipkite dėmesį į pateiktą šaltinį ir laiką, o ne vien didžiausią temperatūros skaičių.
+
+Orų užklausą svetainės funkcija siunčia į LHMT Meteo LT paslaugą naudodama palaikomo miesto kodą. Lankytojo GPS, asmeniniai kalendoriaus įrašai ar naršyklės užrašai šiai užklausai nesiunčiami. Pradinis miestas gali būti parinktas pagal apytikrius Cloudflare vietos metaduomenis; tokia vieta gali klysti, ypač naudojant VPN ar mobilų ryšį. Miestą visada galite pasirinkti rankiniu būdu.
+
+Duomenų atsakymai laikinai saugomi serverio talpykloje, todėl tai nėra kiekvieną sekundę atnaujinamas tiesioginis matavimo prietaiso ekranas. Jei atnaujinimas nepavyksta, išgalvoti skaičiai nerodomi. Svarbiai kelionei ar nuo oro priklausančiam sprendimui patikrinkite ir patį oficialų šaltinį. Bendras miesto prognozės simbolis negali tiksliai nusakyti kiekvieno kiemo, maršruto ar konkrečios valandos vietinių sąlygų.
+
+Miestų nuotraukos yra vietos iliustracijos, o ne gyvos kameros vaizdas. Saulėta fotografija šalia lietaus prognozės nėra meteorologinių duomenų prieštaravimas. Fotografijos autorystė ir licencija pateikiamos šiame puslapyje atskirai nuo orų šaltinio. Naudodami nuotrauką kitur patikrinkite jos konkrečias licencijos bei autoriaus nurodymo sąlygas; vien vaizdo matomumas svetainėje nereiškia neribotos teisės jį perpublikuoti.
+
+Privatumo politikoje papildomai aprašoma, kokie įprasti tinklo metaduomenys reikalingi puslapiui pateikti ir kaip veikia automatinis numatytojo miesto pasirinkimas. Asmeniniai planai lieka jūsų įrenginyje. Jei pranešate apie klaidingai parodytą miestą, pakanka nurodyti viešą miesto pavadinimą ir matomą rezultatą. Tikslaus namų adreso, GPS koordinačių ar kalendoriaus atsarginės kopijos siųsti nereikia.
+
+Jei pastebite neatitikimą, palyginkite duomenų laiką ir pasirinktą miestą. Prognozės atnaujinimas ir stoties matavimo laikas gali būti skirtingi. Pranešime nurodykite, kokį miestą matėte ir kuri reikšmė atrodė neteisinga. Tai leidžia tikrinti konkretų viešą atsakymą neieškant lankytojo buvimo vietos ar kitos asmeninės informacijos, kurios šiai problemai išspręsti nereikia.
+@@ kontaktai
+## Kokia informacija padeda pranešant apie klaidą?
+Pirmiausia nurodykite viešą puslapio adresą. Jei pastebėjote datos arba skaičiavimo klaidą, pridėkite pasirinktus metus, mėnesį ir rezultatą, kurio tikėjotės. Laikui svarbus miestas bei laiko juosta. Šios detalės padeda atskirti skirtingus to paties įrankio pasirinkimus ir suprasti, kurią konkrečią vietą reikia patikrinti. Papildomų asmeninių aplinkybių aprašyti nebūtina.
+
+Dėl mobiliojo vaizdo pradžiai užtenka įrenginio tipo ir naršyklės pavadinimo. Jei siunčiate ekrano nuotrauką, prieš tai paslėpkite asmeninius įvykius, el. pašto adresus bei nesusijusius atvertus langus. Leidėjas nemato naršyklėje saugomų jūsų įrašų. Viso JSON kopijos failo, gimimo duomenų ar privačių užrašų siųsti nereikia: viešo puslapio veikimą galima paaiškinti neatskleidžiant savo asmeninio plano.
+
+Jei klausimas susijęs su atsisiunčiamu maketu, nurodykite jo pavadinimą ir pasirinktą formatą. PDF spausdinimo nuostatos bei paveikslėlio įterpimas į kitą dokumentą yra skirtingos situacijos. Prieš siųsdami pranešimą patikrinkite, ar naudojate pilną atsisiunčiamą failą, o ne mažą galerijos peržiūrą. Viešo failo adresas padeda tiksliai nustatyti maketą ir nereikalauja siųsti jūsų asmeninio dokumento arba viso ekrano turinio.
