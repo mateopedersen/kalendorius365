@@ -1,6 +1,6 @@
 {
   "reviewed_on": "2026-11-03",
-  "source_count": 38,
+  "source_count": 47,
   "interpretation": "Official rules take precedence. Community experiences are self-reported and do not prove approval causes. No approval guarantee.",
   "sources": [
     {
@@ -230,6 +230,61 @@
       "title": "Owner-supplied article",
       "kind": "secondary",
       "finding": "Useful audit-first emphasis; word thresholds and assumptions about reviewers/reapplication are not official Google rules."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/48182?hl=en",
+      "title": "AdSense Program policies",
+      "kind": "official",
+      "finding": "Invalid clicks, deceptive navigation and misleading ad placement are prohibited."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11112688?hl=en",
+      "title": "Screens without publisher content",
+      "kind": "official",
+      "finding": "No ads on low-value, navigation-only or unfinished screens; automated content needs review or curation."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+      "title": "Ad placement policies",
+      "kind": "official",
+      "finding": "Keep ads separate from download links, navigation and private communications; avoid accidental clicks."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/2381908?hl=en",
+      "title": "Fix AdSense crawler issues",
+      "kind": "official",
+      "finding": "Crawler access can be blocked by robots rules, firewalls, login requirements or broken redirects."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348752?hl=en",
+      "title": "How Google prevents invalid traffic",
+      "kind": "official",
+      "finding": "Do not manufacture ad impressions or clicks; unreliable purchased traffic is risky."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348754?hl=en",
+      "title": "Common questions about invalid traffic",
+      "kind": "official",
+      "finding": "Normal owner inspection is permitted, but do not click ads or reload excessively."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11190248?hl=en",
+      "title": "Replicated content",
+      "kind": "official",
+      "finding": "Attribution or synonym replacement alone does not make copied content valuable."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11169917?hl=en",
+      "title": "More ads than publisher content",
+      "kind": "official",
+      "finding": "Advertising must not outweigh real publisher content; navigation and whitespace are not substantive content."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10436912?hl=en",
+      "title": "Supported languages",
+      "kind": "official",
+      "finding": "Lithuanian is an explicitly supported primary publishing language."
     }
-  ]
+  ],
+  "distinct_host_count": 11
 }

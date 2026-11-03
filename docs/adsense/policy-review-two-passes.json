@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-11-03T10:31:15.725647+00:00",
+  "method": "Two explicit readings of official policy documents, followed by source and rendered-site checks. Not a Google compliance certification.",
+  "passes": [
+    {
+      "pass": 1,
+      "scope": [
+        "AdSense program policies",
+        "Publisher policies",
+        "Low-value inventory",
+        "Replicated content",
+        "Placement",
+        "Crawler access",
+        "Privacy disclosures",
+        "CMP requirements"
+      ],
+      "result": "Rules extracted; no word-count or approval guarantee adopted."
+    },
+    {
+      "pass": 2,
+      "scope": [
+        "Publisher identity",
+        "Original article and artwork inventory",
+        "No-copy/no-padding decisions",
+        "No ad code on the current build",
+        "Navigation/download separation",
+        "Privacy/CMP distinction",
+        "Supported Lithuanian language",
+        "Crawler/indexing configuration"
+      ],
+      "result": "Compared with the final build and test evidence; production crawl remains a separate release check."
+    }
+  ],
+  "findings": [
+    {
+      "rule": "Useful original publisher content",
+      "evidence": [
+        "blog-manifest.json",
+        "enriched-routes.json",
+        "after-local.json"
+      ],
+      "status": "20 original guides and targeted help added; word totals alone are not eligibility proof."
+    },
+    {
+      "rule": "Accurate publisher identity",
+      "evidence": [
+        "/autoriai/julius-vainauskas/",
+        "/privatumas/",
+        "/apie-mus/"
+      ],
+      "status": "Owner name/address confirmed by owner; no invented expertise or human proofread claims."
+    },
+    {
+      "rule": "Automatically generated and replicated content",
+      "evidence": [
+        "/redakcine-politika/"
+      ],
+      "status": "No ads enabled. Daily horoscope automation and archives must not be assumed suitable for blanket monetization without actual review/curation."
+    },
+    {
+      "rule": "Privacy and consent",
+      "evidence": [
+        "/privatumas/"
+      ],
+      "status": "Essential-only informational notice is not a certified advertising CMP. Account-specific CMP/ad rollout remains necessary before personalized advertising."
+    },
+    {
+      "rule": "Ad placement and invalid traffic",
+      "status": "No ad units enabled or clicked; QA used fresh isolated contexts and public HTML. No paid or artificial ad traffic."
+    },
+    {
+      "rule": "Copyright",
+      "status": "New illustrations authored for this site. Existing provenance/attribution records preserved; no legal ownership certification is claimed."
+    }
+  ],
+  "canonical_policy_urls": [
+    "https://support.google.com/adsense/answer/48182?hl=en",
+    "https://support.google.com/publisherpolicies/answer/10502938?hl=en",
+    "https://support.google.com/publisherpolicies/answer/11112688?hl=en",
+    "https://support.google.com/publisherpolicies/answer/11190248?hl=en",
+    "https://support.google.com/adsense/answer/1346295?hl=en",
+    "https://support.google.com/adsense/answer/1348695?hl=en",
+    "https://support.google.com/adsense/answer/13554116?hl=en"
+  ]
+}
