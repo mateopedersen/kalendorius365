@@ -15,6 +15,20 @@ catalogue_spec.loader.exec_module(catalogue)
 
 
 class PreparationStabilityTest(unittest.TestCase):
+    def test_two_editorial_passes_are_stable_together(self):
+        with tempfile.TemporaryDirectory() as directory:
+            site = Path(directory)
+            path = site / 'index.html'
+            path.write_text('---\ntitle: Kalendorius\n---\n<main>Kalendorius</main>\n\n')
+            with patch.object(enrichment, 'SITE', site), patch.object(catalogue, 'SITE', site):
+                for attempt in range(5):
+                    enrichment.append('', '<h2>Gidas</h2><p>Paaiškinimas.</p>')
+                    catalogue.attach('/', '<h2>Pavyzdys</h2><section>Duomenys.</section>')
+                    if attempt:
+                        self.assertEqual(path.read_bytes(), first)
+                    first = path.read_bytes()
+                self.assertLess(path.read_text().index('data-editorial-extension='), path.read_text().index(catalogue.BEGIN))
+
     def test_root_and_nested_guides_survive_repeated_rebuilds(self):
         with tempfile.TemporaryDirectory() as directory:
             site = Path(directory)

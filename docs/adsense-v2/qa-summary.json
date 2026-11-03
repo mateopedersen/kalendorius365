@@ -36,5 +36,21 @@
       "WebKit"
     ],
     "failures": 0
+  },
+  "additional_full_catalogue_round": {
+    "cases": 428,
+    "initial_passed": 425,
+    "pending_image_states": 3,
+    "native_scroll_rechecks": 6,
+    "all_native_images_loaded": true,
+    "evidence": "../adsense-v2-production-verification-20261103/lunar-native-loading-recheck.json",
+    "physical_devices_tested": false
+  },
+  "combined_preparation_stability": {
+    "unit_tests": 3,
+    "python_suite_passed": 21,
+    "full_rebuild_compared_files": 9288,
+    "byte_differences": 0,
+    "release": "4c3f840bf16d909d648a"
   }
 }

@@ -46,7 +46,7 @@ Gerçek işlev/içerik hataları da düzeltildi:
 
 Doğrulama:
 421 Node testi başarılı.3 yeni tarayıcı regresyonu başarılı.
-20 Python, CSS ve önbellek adresi testleri ayrıca kaydedildi.
+21 Python, CSS ve hazırlama/kalıcı bağlantı testi ayrıca kaydedildi.
 416 tek sayfa/gömülü fontlu PDF,390 A 3 takvim,1.096 bağımsız tarih ve dosya
 özetleri doğrulandı. Tam çözünürlüklü baskı dosyaları değiştirilmedi.
 811 sayfa ana sayfadan erişilebilir;64.746 yerel hedefte bozuk bağlantı yok.
@@ -54,10 +54,15 @@ Doğrulama:
 3 durumda testin erken resim çözme zamanlaması saptandı. Etkilenen 3 sayfa
 iki motorda 6 yeni kontrolde geçti. Çözülmemiş hata yok. İkinci bağımsız
 turda 320/390 pikselde 80 durumun tamamı geçti. Fiziksel telefon kullanılmadı.
+Ek tam taramadaki 3 bekleyen Ay resmi, doğal kaydırma ve gerçek yükleme
+tamamlanması beklenerek iki motorda 6 kontrolde doğrulandı: tümü yüklendi.
+İki içerik hazırlama adımının birlikte tekrarlanmasıyla biriken boş satırlar
+da düzeltildi; adımların birlikte kararlılığını sınayan regresyon eklendi.
 Ana takvim çıktısı 1 sayfa; açıklama bölümleri çıktıya girmiyor.
 
-Önbellek: yeni sürüm 37 fe 6 bd 6 db 2588 ed 7 a 13; canlı 0 c 7 e 5 f 7 fbcc 4 e 72 c 647 a ve
-önceki 8 c 2 e 69 aab 7 b 1 c 6 a 7 a 73 c dosya ağaçları korundu. Üçünün bütünlüğü ve
+Önbellek: yeni sürüm 4c3f840bf16d909d648a; mevcut canlı sürüm
+0c7e5f7fbcc4e72c647a ve önceki 8c2e69aab7b1c6a7a73c dosya ağaçları
+korundu. Üçünün bütünlüğü ve
 yerel manifestin yerel yayın biçimi doğrulandı.
 
 Araştırma: önceki 47 belge/11 alanlık kaynak kaydı korundu; Google’ın yararlı

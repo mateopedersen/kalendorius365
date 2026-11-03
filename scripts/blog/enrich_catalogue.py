@@ -26,7 +26,7 @@ def table(caption, heads, rows):
 def attach(route, body):
     path = SITE/route.strip('/')/'index.html'
     text = path.read_text()
-    text = re.sub(r'\n?'+re.escape(BEGIN)+r'.*?'+re.escape(END)+r'\n?', '\n', text, flags=re.S)
+    text = re.sub(r'\s*'+re.escape(BEGIN)+r'.*?'+re.escape(END)+r'\s*', '\n', text, flags=re.S)
     path.write_text(text.rstrip()+'\n\n'+BEGIN+'\n<section class="content-guide" data-editorial-review="20261103-v2">'+body+'</section>\n'+END+'\n')
 
 def prepare():
