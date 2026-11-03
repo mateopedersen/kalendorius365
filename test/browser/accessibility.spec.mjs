@@ -3,12 +3,15 @@ import fs from 'node:fs/promises';
 import {openHeaderSearch} from './header-helpers.mjs';
 const routes=['/','/paieska/','/vardadieniai/','/zodiakas/','/pamoku-tvarkarastis/','/pamainu-grafikas/','/menulio-kalendorius/2028/vasaris/','/atostogu-planavimas/','/atmintinos-dienos/','/dienos-ilgumas/','/ilgieji-savaitgaliai/','/apie-mus/','/kurti-kalendoriu/'];
 test('weather credits and static calendar dates remain usable touch targets',async({page})=>{
+ // Firefox may report an exact24px box as23.9999847 after layout transforms.
+ // A thousandth of a CSS pixel only absorbs floating-point quantization.
+ const minimumTarget=24-.001;
  await page.setViewportSize({width:390,height:844});
  await page.goto('/');
  const credits=page.locator('.weather-attribution a');
  await expect(credits.first()).toBeVisible();
  for(const link of await credits.all()){
-  const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(24);expect(box.height).toBeGreaterThanOrEqual(24);
+  const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(minimumTarget);expect(box.height).toBeGreaterThanOrEqual(minimumTarget);
  }
  await page.goto('/2027/');
  for(const width of [390,800]){
@@ -18,7 +21,7 @@ test('weather credits and static calendar dates remain usable touch targets',asy
  for(const link of await dates.all()){
   const day=(await link.locator('time').textContent()).trim();
   await expect(link).toHaveAccessibleName(new RegExp('^'+day+' d\\.'));
-  const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(24);expect(box.height).toBeGreaterThanOrEqual(24);
+  const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(minimumTarget);expect(box.height).toBeGreaterThanOrEqual(minimumTarget);
   // Center the date away from the sticky navigation and first-visit notice;
   // then test whether neighboring calendar cells obscure its horizontal area.
   await link.evaluate(el=>el.scrollIntoView({block:'center'}));
