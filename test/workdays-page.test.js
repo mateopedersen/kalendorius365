@@ -20,7 +20,7 @@ test("2027 workday page renders the annual planner and accessible date checker",
   assert.match(page, /id="workday-check-date" type="date" min="2027-01-01" max="2027-12-31"/);
   assert.match(page, /id="workday-check-result"[^>]*role="status" aria-live="polite"/);
   assert.equal((page.match(/data-work-eves="[56]"/g) || []).length, 2);
-  assert.match(page, /\/assets\/visuals\/workday-year\.svg/);
+  assert.match(page, /\/assets\/visuals\/workday-year-2027\.svg/);
   assert.match(page, /^workdays: true$/m);
   assert.match(template, /page\.workdays %\} class="tool-workdays"/);
 });

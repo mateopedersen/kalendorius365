@@ -535,7 +535,7 @@ function plannerPage() {
           const inspect = document.createElement("button");
           inspect.type = "button";
           inspect.textContent = "Dienų eiga";
-          inspect.setAttribute("aria-label", `Peržiūrėti dienų eigą: ${formatPeriod(period)}`);
+          inspect.setAttribute("aria-label", `Dienų eiga: ${formatPeriod(period)}`);
           inspect.addEventListener("click", () => showDayTable(detailRoot, period, data, { ...settings, booked: parsed.booked, blackouts: parsed.blackouts, customRest: parsed.customRest }));
           li.append(description, inspect);
           list.append(li);

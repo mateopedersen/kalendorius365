@@ -1,0 +1,24 @@
+{
+  "source": "https://monetizationguy.com/adsense-checker",
+  "observed_at": "2026-11-03T12:36:57.411397+00:00",
+  "tested_public_url": "https://kalendorius365.lt/",
+  "live_asset_revision": "0c7e5f7fbcc4e72c647a",
+  "score": 78,
+  "passed": 20,
+  "warnings": 1,
+  "failed": 3,
+  "skipped": 2,
+  "sampled_words": 494,
+  "homepage_words": 798,
+  "sitemap_urls": 214,
+  "reported_lighthouse_mobile": 100,
+  "reported_lcp_seconds": 1.2,
+  "reported_cls": 0.02,
+  "failed_labels": [
+    "Privacy Policy link",
+    "About page link",
+    "Mobile-friendly design"
+  ],
+  "contradiction": "The same tool separately reports a configured viewport and includes viewport among mobile failures. Actual existing Lithuanian About/privacy links are present; the exact checker implementation was not established. Public client download returned429; no repeated bypass attempts.",
+  "limits": "Third-party report, not a Google decision and not our own Lighthouse raw report; its sampled word count is not comparable with the full214-page prose audit."
+}

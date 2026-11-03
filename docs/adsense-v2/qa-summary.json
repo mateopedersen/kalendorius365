@@ -1,0 +1,96 @@
+{
+  "round1": {
+    "unique_routes": 214,
+    "engine_cases": 428,
+    "initial_passed": 425,
+    "initial_image_completion_timing_failures": 3,
+    "targeted_fresh_rechecks": 6,
+    "unresolved_failures": 0,
+    "explanation": "Immediate decode after switching lazy/srcset images to eager can abort before the selected resource loads. Updated harness waits for real load/error state. All3 affected routes passed fresh Chromium and WebKit rechecks; no product image changes were needed."
+  },
+  "round2": {
+    "cases": 80,
+    "widths": [
+      320,
+      390
+    ],
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "failures": 0
+  },
+  "new_workday_and_photo_regressions": {
+    "cases": 3,
+    "passed": 3,
+    "runner": "Playwright1.56.1 Chromium141"
+  },
+  "physical_devices_tested": false,
+  "private_calendar_data_accessed": false,
+  "checked_at": "2026-11-03T12:38:11.933174+00:00",
+  "final_article_layout_recheck": {
+    "routes": 20,
+    "cases": 40,
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "failures": 0
+  },
+  "additional_full_catalogue_round": {
+    "cases": 428,
+    "initial_passed": 425,
+    "pending_image_states": 3,
+    "native_scroll_rechecks": 6,
+    "all_native_images_loaded": true,
+    "evidence": "../adsense-v2-production-verification-20261103/lunar-native-loading-recheck.json",
+    "physical_devices_tested": false
+  },
+  "combined_preparation_stability": {
+    "unit_tests": 3,
+    "python_suite_passed": 21,
+    "full_rebuild_compared_files": 9288,
+    "byte_differences": 0,
+    "release": "4c3f840bf16d909d648a"
+  },
+  "measured_accessibility_repairs": {
+    "release": "45a8eee75371ab19f337",
+    "axe_version": "4.13.0",
+    "page_families": 33,
+    "profiles": [
+      "mobile390",
+      "desktop1440"
+    ],
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "cases": 132,
+    "violations": 0,
+    "rules": [
+      "color-contrast",
+      "target-size",
+      "label-content-name-mismatch",
+      "aria-required-children"
+    ],
+    "new_functional_regressions_passed": 2,
+    "scope_note": "Four automated rules only; incomplete/manual-review items remain recorded in each raw report. This is not a complete WCAG certification or physical-device test."
+  },
+  "catalogue_accessibility_followup": {
+    "release": "b37623ab798a1ed493af",
+    "initial_all_indexable_scan": {
+      "urls": 214,
+      "engines": 2,
+      "failed_routes_per_engine": 15,
+      "types": [
+        "three contrast templates",
+        "twelve nameday calendar link names"
+      ]
+    },
+    "fixed_shared_sources": true,
+    "targeted_desktop_recheck_cases": 30,
+    "targeted_desktop_violations": 0,
+    "focused_functional_regressions_passed": 2,
+    "complete_mobile_rerun": "External production-verification evidence, pending when this prepublication record was written."
+  }
+}

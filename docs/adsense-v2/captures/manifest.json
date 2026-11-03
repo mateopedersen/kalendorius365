@@ -1,0 +1,402 @@
+{
+  "kaip-susiplanuoti-menesi": {
+    "route": "/2028/kovas/",
+    "source_url": "https://kalendorius365.lt/2028/kovas/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "5b3afb49db1e03a971632da2ce4bc539cca3aacf40588f3dce31ec61b36f5cef",
+    "captured_at": "2026-11-03T12:21:21.243Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "2028 metų kovo kalendoriaus ir PDF pasirinkimo ekrano ištrauka."
+  },
+  "kaip-spausdinti-kalendoriu": {
+    "route": "/2028/vasaris/",
+    "source_url": "https://kalendorius365.lt/2028/vasaris/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "78abdc01b6d8e8167457f9ef4eaeb3449f991683255df454e98518a32e98ed8b",
+    "captured_at": "2026-11-03T12:21:21.987Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "2028 metų vasario A3 maketo ir atsisiuntimo parinkčių ekrano ištrauka."
+  },
+  "iso-savaiciu-numeriai": {
+    "route": "/savaites/2027/",
+    "source_url": "https://kalendorius365.lt/savaites/2027/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "b99a77aca65e9dfc8d591df892ea272a48a15d0f89302a69508941a19a5541b5",
+    "captured_at": "2026-11-03T12:21:22.715Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "2027 metų ISO savaičių lentelės ir datų paieškos ekrano ištrauka."
+  },
+  "keliamieji-metai-2028": {
+    "route": "/2028/vasaris/",
+    "source_url": "https://kalendorius365.lt/2028/vasaris/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "dae85ebc52558f30fb03eaac19c0f54de85b5fcc589e91de6cf81c85db4f431b",
+    "captured_at": "2026-11-03T12:21:23.471Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "2028 metų vasario kalendorius su papildoma vasario 29 diena."
+  },
+  "darbo-ir-kalendorines-dienos": {
+    "route": "/darbo-dienos/2028/",
+    "source_url": "https://kalendorius365.lt/darbo-dienos/2028/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "69428064b7256ba4799324f6ece677b1b192854f3b07a5278b3f7bf7fefaa57e",
+    "captured_at": "2026-11-03T12:21:24.255Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "2028 metų penkių ir šešių dienų darbo savaitės palyginimas su užpildytais rezultatais."
+  },
+  "sventines-ir-atmintinos-dienos": {
+    "route": "/sventes/",
+    "source_url": "https://kalendorius365.lt/sventes/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "ece4ddfdd00d00ede59b2dfae3ec3e0d698342e0244eda8a82e1ff6d13f73787",
+    "captured_at": "2026-11-03T12:21:25.004Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Lietuvos švenčių puslapis su mėnesių ir datų statuso pasirinkimu."
+  },
+  "savaites-planas-be-perkrovos": {
+    "route": "/savaitiniai-planuokliai/",
+    "source_url": "https://kalendorius365.lt/savaitiniai-planuokliai/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "9b868890a416d04b77737dd51117a50eaf8c5b9fc2965c6408805f90ff6c2522",
+    "captured_at": "2026-11-03T12:21:25.776Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Savaitės lapo kūrimo įrankio parinktys ir tuščio plano peržiūra."
+  },
+  "seimos-kalendorius-namuose": {
+    "route": "/seimos-kalendorius/",
+    "source_url": "https://kalendorius365.lt/seimos-kalendorius/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "15623832333cabfc41d852584e5a852978c7a1454dcb304ce7250ecf6d8a14a5",
+    "captured_at": "2026-11-03T12:21:26.547Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Šeimos savaitės lapo žmonių, dienų bei maketo parinktys."
+  },
+  "kalendoriaus-atsargine-kopija": {
+    "route": "/",
+    "source_url": "https://kalendorius365.lt/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 992,
+      "y": 222.03125,
+      "width": 270,
+      "height": 456.46875
+    },
+    "state": "Backup controls only; blank synthetic calendar in an isolated context.",
+    "sha256": "1a28075cfbf548249b6c574aaecbbc1c0e4718a3958e275378b463be2334ef1b",
+    "captured_at": "2026-11-03T12:21:27.362Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Pagrindinio kalendoriaus JSON kopijos ir atkūrimo mygtukai tuščioje testavimo aplinkoje."
+  },
+  "ics-importas-ir-laiko-juostos": {
+    "route": "/sventes/kovo-11-oji/",
+    "source_url": "https://kalendorius365.lt/sventes/kovo-11-oji/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "f64723f43604948089f7997ce0856f30e4361b11bc8dec508983571887df560f",
+    "captured_at": "2026-11-03T12:21:28.166Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Kovo vienuoliktosios gidas su istorinio akto atvaizdu."
+  },
+  "kaip-pasirinkti-tuscia-kalendoriu": {
+    "route": "/tuscias-kalendorius/",
+    "source_url": "https://kalendorius365.lt/tuscias-kalendorius/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "7ce53f0aa2ca28d26667834f71b3f604f534672edeec80463341c37bf6d9df7a",
+    "captured_at": "2026-11-03T12:21:28.944Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Tuščių kalendorių katalogas su pirmu lapu ir atsisiuntimo mygtukais."
+  },
+  "pamainu-ciklo-planavimas": {
+    "route": "/pamainu-grafikas/",
+    "source_url": "https://kalendorius365.lt/pamainu-grafikas/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 28,
+      "y": 0,
+      "width": 1224,
+      "height": 820
+    },
+    "state": "Synthetic cycle D,D,P,P; anchor/from2028-01-30; through2028-02-04. No real worker data.",
+    "sha256": "c3e18810a76c4edad6da88c99b041e6a9f289321a19b9af7f2293e4b31634388",
+    "captured_at": "2026-11-03T12:21:29.780Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Mokomojo D,D,P,P ciklo keturių pamainų ir 48 valandų suvestinė."
+  },
+  "mokiniu-atostogu-seimos-planas": {
+    "route": "/mokiniu-atostogos/",
+    "source_url": "https://kalendorius365.lt/mokiniu-atostogos/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "23a5b435a14c9869f61edefcd947e5506da71b9f499f8fc4a3d03f8ea02a3152",
+    "captured_at": "2026-11-03T12:21:30.527Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Paskelbtų mokinių atostogų lentelė su ugdymo etapų pasirinkimu."
+  },
+  "kaip-planuoti-ilgaji-savaitgali": {
+    "route": "/ilgieji-savaitgaliai/",
+    "source_url": "https://kalendorius365.lt/ilgieji-savaitgaliai/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "364d1102eaf0ee8c79562b23276187384a6bd0a09da46b6fc4d0af03d6870d60",
+    "captured_at": "2026-11-03T12:21:31.329Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Ilgųjų savaitgalių pasiūlymų ir atostogų dienų parinkčių ištrauka."
+  },
+  "datos-skirtumas-ir-abi-ribos": {
+    "route": "/datos-skaiciuokle/",
+    "source_url": "https://kalendorius365.lt/datos-skaiciuokle/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Synthetic date interval2028-02-28 to2028-03-01, exclusive calendar difference.",
+    "sha256": "68d11a2238da1c4793e05d52a26217539588eb96453ff2b8778c2eb38c652030",
+    "captured_at": "2026-11-03T12:21:32.462Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Datų skaičiuoklėje įvestos 2028-02-28 ir 2028-03-01 mokomosios ribos."
+  },
+  "menesio-ar-metu-kalendorius": {
+    "route": "/metai/",
+    "source_url": "https://kalendorius365.lt/metai/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "c1800a0691f9b7014a895b344047503652046252989f252918bb20dd14aa2644",
+    "captured_at": "2026-11-03T12:21:33.256Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Metų kalendorių katalogo 2027, 2028 ir 2029 metų pasirinkimai."
+  },
+  "menulio-faziu-kalendoriaus-skaitymas": {
+    "route": "/menulio-kalendorius/2028/vasaris/",
+    "source_url": "https://kalendorius365.lt/menulio-kalendorius/2028/vasaris/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "65f924797351187bfdb133a1d3347aaf96985b5d81cc01a37e2687293159a5f0",
+    "captured_at": "2026-11-03T12:21:34.111Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "2028 metų vasario Mėnulio diskų tinklelis ir pasirinktos dienos modelis."
+  },
+  "metu-laiku-pradzios": {
+    "route": "/metu-laikai/",
+    "source_url": "https://kalendorius365.lt/metu-laikai/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "6459023c492117d44aeb6026a21ebb61cf19e4c3bf0a768478f047da8cdd9571",
+    "captured_at": "2026-11-03T12:21:34.906Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Astronominių metų laikų puslapio pradžia su sezonų pasirinkimu."
+  },
+  "sauletekis-ir-dienos-ilgumas": {
+    "route": "/dienos-ilgumas/",
+    "source_url": "https://kalendorius365.lt/dienos-ilgumas/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "abdf49fd3a9b98490e7af1718193106d09df139fc9d6f7677c1b4b2af8ca8ba8",
+    "captured_at": "2026-11-03T12:21:35.676Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Dienos ilgumo įrankio datos ir Lietuvos miestų pasirinkimai."
+  },
+  "dienos-planas-trys-svarbus-darbai": {
+    "route": "/dienos-planuoklis/",
+    "source_url": "https://kalendorius365.lt/dienos-planuoklis/",
+    "capture_base": "http://127.0.0.1:8799",
+    "viewport": [
+      1280,
+      900
+    ],
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 820
+    },
+    "state": "Public page, clean storage; no visitor data.",
+    "sha256": "c8692c6210d4c5f54ca973ba2b47f9de205c5971a585daba1ddd922082b8080c",
+    "captured_at": "2026-11-03T12:21:36.444Z",
+    "public_caption": "Kalendorius365 įrankio ekrano ištrauka. Rodomi tik vieši duomenys arba mokomieji pavyzdžiai; lankytojų įrašai nenaudojami.",
+    "reviewed_alt": "Dienos planuoklio laiko, maketo ir prioritetų parinktys."
+  }
+}

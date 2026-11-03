@@ -1,0 +1,848 @@
+{
+  "base": "http://127.0.0.1:8790",
+  "profile": "desktop1440",
+  "checked_at": "2026-11-03T13:26:42.150Z",
+  "axe_version": "4.13.0",
+  "rules": [
+    "color-contrast",
+    "target-size",
+    "label-content-name-mismatch",
+    "aria-required-children"
+  ],
+  "cases": 66,
+  "failures": [],
+  "results": [
+    {
+      "engine": "chromium",
+      "route": "/apie-mus/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 67
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/horoskopai/avinas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 32
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/tuscias-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 16
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/blogas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/blogas/sventines-ir-atmintinos-dienos/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/blogas/kaip-spausdinti-kalendoriu/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/kurti-kalendoriu/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 142
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 2
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/2027/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/2027/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/kontaktai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 43
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/datos-skaiciuokle/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 32
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/atmintinos-dienos/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 32
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/ilgieji-savaitgaliai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 17
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/dienos-ilgumas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 31
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/seimos-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 43
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/sventes/velykos/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 43
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/horoskopai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 15
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/atostogu-planavimas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 9
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/menulio-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 8
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 4
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/sventes/2027/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 6
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 25
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/dienos-planuoklis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 36
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/menesiai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/pamoku-tvarkarastis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 18
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/paieska/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/metu-laikai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/pamainu-grafikas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 79
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 8
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/saule/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 61
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/irankiai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 125
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/darbo-dienos/2027/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 30
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/zodiakas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/apie-mus/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 67
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/horoskopai/avinas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 32
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/tuscias-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 16
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/blogas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/blogas/sventines-ir-atmintinos-dienos/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/blogas/kaip-spausdinti-kalendoriu/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/kurti-kalendoriu/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 142
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 2
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/2027/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/2027/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/kontaktai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 43
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/datos-skaiciuokle/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 32
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/atmintinos-dienos/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 32
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/ilgieji-savaitgaliai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 17
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/dienos-ilgumas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 31
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/seimos-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 43
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/sventes/velykos/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 43
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/horoskopai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 15
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/atostogu-planavimas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 9
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/menulio-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 8
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 4
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/sventes/2027/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 6
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 25
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/dienos-planuoklis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 36
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/menesiai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/pamoku-tvarkarastis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 18
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/paieska/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/metu-laikai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/pamainu-grafikas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 79
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 8
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/saule/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 61
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/irankiai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 125
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/darbo-dienos/2027/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 30
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/zodiakas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 57
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

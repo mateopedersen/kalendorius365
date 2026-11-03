@@ -5,8 +5,13 @@ import re,datetime,json,html,calendar
 ROOT=Path(__file__).resolve().parents[2];SITE=ROOT/'site'
 def append(route,body):
  p=SITE/route/'index.html' if route else SITE/'index.html';s=p.read_text()
- s=re.sub(r'\n<section data-editorial-extension="20261103".*?</section>\n?', '\n',s,flags=re.S)
- s=s.rstrip()+'\n\n<section data-editorial-extension="20261103" class="panel content-guide">'+body+'</section>\n';p.write_text(s)
+ # Both editorial passes run on persistent sources. Keep this section before
+ # the later catalogue note so their replacement cannot accumulate whitespace.
+ prefix,marker,tail=s.partition('<!-- K365_EDITORIAL_V2_START -->')
+ prefix=re.sub(r'\s*<section data-editorial-extension="20261103".*?</section>\s*', '\n',prefix,flags=re.S)
+ s=prefix.rstrip()+'\n\n<section data-editorial-extension="20261103" class="panel content-guide">'+body+'</section>\n'
+ if marker:s+='\n'+marker+tail
+ p.write_text(s)
 def prepare():
  changed=[]
  for b in (ROOT/'data/blog/page-guides.txt').read_text().split('@@ ')[1:]:

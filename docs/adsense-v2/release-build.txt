@@ -1,0 +1,37 @@
+{"reviewed_photo_covers": 20, "responsive_files": 60, "largest_bytes": 169616}
+{"real_tool_screenshots": 20, "delivery_files": 58}
+{"blog_articles": 20, "word_range": [804, 962]}
+Generated 36 month pages, 3 existing year hubs, lunar root and phase reference (41 pages).
+Rendered 12 holiday guides, enhanced 2 existing hubs, wrote 12 ICS calendars.
+Phase 2: 31 detail guides, 93 ICS calendars; links added to 4 hubs and monthly guides
+Seasons: 20 verified instants, 60 city/event contexts; existing sun engine reused.
+Seasons: five Lithuanian pages, nine original vector files, 23 UTC calendar exports; three existing entry points integrated.
+{"enriched_routes": 20}
+Sharing: 811 public page records; 15 immutable horoscope publications; 850 share identities.
+{"enriched_catalogue_routes": 788}
+Generated single-request route CSS bundles:
+  homepage-bundle.css: 154,413 bytes
+  horoscope-detail.css: 95,831 bytes
+  horoscope-hub.css: 84,209 bytes
+  zodiac-guide.css: 86,874 bytes
+`/Users/melihozcan` is not writable.
+Bundler will use `/var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/bundler20261103-5540-zu6cwz5540' as your home directory temporarily.
+Configuration file: /Users/melihozcan/Documents/Codex/2026-10-17/critical-maximum-website-performance-optimization-i-2/kalendorius365-adsense/site/_config.yml
+Configuration file: /var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/kalendorius-build-policy20261103-5462-xxjm4h.yml
+            Source: /Users/melihozcan/Documents/Codex/2026-10-17/critical-maximum-website-performance-optimization-i-2/kalendorius365-adsense/site
+       Destination: /Users/melihozcan/Documents/Codex/2026-10-17/critical-maximum-website-performance-optimization-i-2/kalendorius365-adsense/public
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 6.816 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+Minified 27 stylesheets: 924137 → 877277 bytes
+Inlined route CSS on 812 pages; removed 2567 blocking stylesheet requests
+Content-versioned 34167 static image, data and print URLs
+Embedded the 26686-byte above-fold image without re-encoding
+Minified 61 JavaScript modules: 1183875 → 992799 bytes
+Path-versioned 12 calendar-editor references for cache-safe deployment
+Lunar release gate: all 146 lunar downloads match both preflight passes; 0 legacy downloads preserved; 832 superseded download hashes match the pinned transition evidence.
+Lunar HTML language and semantic checks passed for all 41 pages.
+{"status": "passed", "pages": 12, "preserved_assets": 386, "failures": []}
+Asset release 4c3f840bf16d909d648a; retained 3 revision(s)
+Built 811 HTML pages; 214 sitemap URLs and 390 images; 9285 static files; release=true

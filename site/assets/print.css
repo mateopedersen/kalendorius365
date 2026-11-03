@@ -2,6 +2,7 @@
 @page { size: A4 landscape; margin: 10mm; }
 
 @media print {
+  .static-month .calendar-holiday-date { min-width: 0; min-height: 0; }
   :root, :root.large-text, :root.high-contrast {
     color-scheme: light;
     font-size: 12pt;

@@ -325,6 +325,7 @@ function setupDaylight() {
     for (const item of items) {
       const line = document.createElement("div");
       line.className = "daylight-line";
+      line.setAttribute("role", "listitem");
       const name = document.createElement("span");
       name.className = "daylight-city";
       name.textContent = item.city.name;

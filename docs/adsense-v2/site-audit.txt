@@ -1,0 +1,5 @@
+PASS: 811 public pages are reachable from the homepage through crawlable internal links; 0 orphans.
+PASS: 812 HTML files (including 404), 811 canonical landing pages; 64726 local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 360 monthly mappings.
+PASS: release indexing, 404 noindex, 214 sitemap canonicals across 1 XML file(s), 390 clean calendar image URLs, and no global noindex header.
+PASS: personal calendar editor survives full release generation with scoped CSS and module
+PASS: all four embedded PDF/preview fonts are published

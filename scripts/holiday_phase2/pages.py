@@ -47,14 +47,14 @@ def calendar(a,y,ds):
   for d in mo['grid'][week*7:week*7+7]:
    if not d['inMonth']:cells.append('<td aria-hidden="true"></td>');continue
    picked=d['date'] in selected;dest=f'#datos-{y}' if picked else f'/{y}/{MONTHS[ds[0].month-1][0]}/'
-   cells.append(f'<td'+(' class="hd-picked"' if picked else '')+f'><a href="{dest}" aria-label="{d["date"]}'+(': '+E(a['title']) if picked else ': mėnesio kalendorius')+f'">{d["day"]}</a></td>')
+   cells.append(f'<td'+(' class="hd-picked"' if picked else '')+f'><a href="{dest}" aria-label="{d["day"]} d., {d["date"]}'+(': '+E(a['title']) if picked else ': mėnesio kalendorius')+f'">{d["day"]}</a></td>')
   rows.append('<tr>'+''.join(cells)+'</tr>')
  return f'<table class="hd-calendar"><caption>{E(MONTHS[ds[0].month-1][1])} {y}</caption><thead><tr>'+''.join(f'<th scope="col"><abbr title="{WD[i]}">{s}</abbr></th>' for i,s in enumerate(['Pr','An','Tr','Kt','Pn','Št','Sk']))+'</tr></thead><tbody>'+''.join(rows)+'</tbody></table>'
 def media(a):
  m=NEW['media'].get(a['id'])
  if not m:raise ValueError('Verified media missing: '+a['id'])
  image=f'<img src="{E(m["src"])}" srcset="{E(m["srcset"])}" sizes="(max-width: 760px) 92vw, (max-width: 1200px) 42vw, 480px" width="{m["width"]}" height="{m["height"]}" alt="{E(m["caption"])}" fetchpriority="high" decoding="async">'
- return f'<figure class="hd-photo"><a class="hd-original" href="{E(m["commons_url"])}" aria-label="Originalus vaizdas ir licencija: {E(m["caption"])}">{image}<span>{icon("external")} Originalas</span></a><figcaption><p>{E(m["caption"])}</p><p class="hd-credit"><a href="{E(m["commons_url"])}">{E(m["author"])}</a> · <a href="{E(m["license_url"])}">{E(m["license"])}</a>. <span class="hd-media-changes">{E(m["changes"])}</span>'+(f' <a href="{E(m["institution_url"])}">Pirminis šaltinis</a>.' if m.get('institution_url') else '')+'</p></figcaption></figure>'
+ return f'<figure class="hd-photo"><a class="hd-original" href="{E(m["commons_url"])}">{image}<span>{icon("external")} Originalas</span></a><figcaption><p>{E(m["caption"])}</p><p class="hd-credit"><a href="{E(m["commons_url"])}">{E(m["author"])}</a> · <a href="{E(m["license_url"])}">{E(m["license"])}</a>. <span class="hd-media-changes">{E(m["changes"])}</span>'+(f' <a href="{E(m["institution_url"])}">Pirminis šaltinis</a>.' if m.get('institution_url') else '')+'</p></figcaption></figure>'
 def creator_metadata(m):
  author=m['author'].strip()
  if author=='Lietuvos Respublikos Aukščiausioji Taryba':

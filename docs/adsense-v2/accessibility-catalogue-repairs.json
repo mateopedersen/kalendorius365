@@ -1,0 +1,472 @@
+{
+  "base": "http://127.0.0.1:8790",
+  "profile": "desktop1440",
+  "checked_at": "2026-11-03T13:37:44.694Z",
+  "axe_version": "4.13.0",
+  "rules": [
+    "color-contrast",
+    "target-size",
+    "label-content-name-mismatch",
+    "aria-required-children"
+  ],
+  "cases": 30,
+  "failures": [],
+  "results": [
+    {
+      "engine": "chromium",
+      "route": "/astronominis-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 29
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/metai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/savaitiniai-planuokliai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 37
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/balandis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/birzelis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/geguze/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/gruodis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/kovas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/lapkritis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/liepa/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/rugpjutis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/rugsejis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/spalis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/vardadieniai/vasaris/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/astronominis-kalendorius/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 29
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/metai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/savaitiniai-planuokliai/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 37
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/balandis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/birzelis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/geguze/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/gruodis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/kovas/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/lapkritis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/liepa/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/rugpjutis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/rugsejis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/sausis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/spalis/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/vardadieniai/vasaris/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 21
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": 12
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

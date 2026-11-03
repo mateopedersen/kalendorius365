@@ -18,7 +18,7 @@ BAŞLANGIÇ ENVANTERİ
 788 canlı sayfa tarandı; hepsi HTTP 200. 191 sayfa indexlenebilir, 597 paylaşım
 ve arşiv sayfası zaten noindex idi. OG görsel etiketi eksik sayfa bulunmadı.
 Hakkımızda ve gizlilik bağlantıları da ana sayfada zaten vardı; üçüncü taraf
-denetleyici Litvanca bağlantı adlarını doğru tanımamıştı. Gizlilik bağlantısının
+denetleyicinin bunları neden kaçırdığı kesin olarak doğrulanmadı. Gizlilik bağlantısının
 adı açıkça “Privatumo politika” yapıldı; rel="privacy-policy" eklendi.
 Gizlilik metnindeki önceki kişi adı kullanıcı teyidiyle Julius Vainauskas oldu.
 

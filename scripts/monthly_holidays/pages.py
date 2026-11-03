@@ -43,7 +43,7 @@ def day_calendar(m,events,engine):
             count=f'<span class="mh-daycount" aria-hidden="true">{len(es)}</span>' if es else ''
             dest='#data-'+ds if es else '#mh-day-info'
             label=f'{readable(ds)}, {WD[date.fromisoformat(ds).weekday()]}. '+('; '.join(e['title'] for e in es) if es else 'Patikrintame sąraše minėtinų dienų nėra.')
-            cells.append(f'<td class="{("mh-weekend " if date.fromisoformat(ds).weekday()>4 else "")+("mh-statutory" if is_stat else "")}"><a href="{dest}" class="mh-day" data-day="{ds}" data-full-label="{E(label)}" aria-label="{E(label)}"><span class="mh-day-number">{d["day"]}</span>{count}<span class="mh-marks" aria-hidden="true">{marks}</span></a></td>')
+            cells.append(f'<td class="{("mh-weekend " if date.fromisoformat(ds).weekday()>4 else "")+("mh-statutory" if is_stat else "")}"><a href="{dest}" class="mh-day" data-day="{ds}" data-full-label="{E(label)}" title="{E(label)}"><span class="mh-day-number">{d["day"]}</span>{count}<span class="mh-marks" aria-hidden="true">{marks}</span></a></td>')
         rows.append('<tr>'+''.join(cells)+'</tr>')
     head=''.join(f'<th scope="col"><abbr title="{WD[i].capitalize()}">{x}</abbr></th>' for i,x in enumerate(['Pr','An','Tr','Kt','Pn','Št','Sk']))
     return f'<table class="mh-calendar" id="mh-calendar"><caption>{E(MONTHS[m-1][1])} 2027</caption><thead><tr>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table>'

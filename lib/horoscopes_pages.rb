@@ -136,7 +136,7 @@ module HoroscopesPages
   end
 
   def forecast_card(sign, forecast, date_label)
-    %(<article class="horoscope-card" style="--sign-accent: #{escape(sign['theme'])}"><a class="horoscope-card__link" href="/horoskopai/#{escape(sign['key'])}/" aria-label="#{escape(sign['genitive'])} dienos horoskopas: #{escape(date_label)}"><span class="horoscope-card__mark">#{mark(sign['key'])}</span><div class="horoscope-card__content"><span class="horoscope-card__eyebrow">#{escape(sign['element'])} <span aria-hidden="true">·</span> #{escape(sign['range'])}</span><h3 class="horoscope-card__title">#{escape(sign['name'])}</h3><span class="horoscope-card__heading">#{escape(forecast['editorial_heading'])}</span><span class="horoscope-card__excerpt">#{escape(forecast['lead'])}</span><span class="horoscope-card__cta">#{escape(sign['genitive'])} dienos horoskopas <span aria-hidden="true">↗</span></span></div></a></article>)
+    %(<article class="horoscope-card" style="--sign-accent: #{escape(sign['theme'])}"><a class="horoscope-card__link" href="/horoskopai/#{escape(sign['key'])}/"><span class="horoscope-card__mark">#{mark(sign['key'])}</span><div class="horoscope-card__content"><span class="horoscope-card__eyebrow">#{escape(sign['element'])} <span aria-hidden="true">·</span> #{escape(sign['range'])}</span><h3 class="horoscope-card__title">#{escape(sign['name'])}</h3><span class="horoscope-card__heading">#{escape(forecast['editorial_heading'])}</span><span class="horoscope-card__excerpt">#{escape(forecast['lead'])}</span><span class="horoscope-card__cta">#{escape(sign['genitive'])} dienos horoskopas <span aria-hidden="true">↗</span></span></div></a></article>)
   end
 
   def ascendant_art
