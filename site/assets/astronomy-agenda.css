@@ -29,7 +29,7 @@
 .astro-event-card .astro-event-kind{margin:0 0 .15rem;padding:0;border:0;color:#51705e;text-transform:uppercase;letter-spacing:.04em;font-size:.59rem}
 .astro-event-card .astro-event-copy h3{font-size:.9rem;line-height:1.35;color:#20392c}
 .astro-event-card .astro-event-local{font-size:.76rem;color:#53665c}
-.astro-event-card .astro-event-utc{font-size:.66rem;color:#758279}
+.astro-event-card .astro-event-utc{font-size:.66rem;color:#586b60}
 .astro-agenda-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin-top:1rem;padding-top:1rem;border-top:1px solid #dfe7e1}
 .astro-agenda-actions p{margin:0;color:#53675a;font-size:.82rem}
 .astro-agenda-actions button{min-height:46px}

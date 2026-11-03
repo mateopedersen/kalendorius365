@@ -11,6 +11,8 @@ test('weather credits and static calendar dates remain usable touch targets',asy
   const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(24);expect(box.height).toBeGreaterThanOrEqual(24);
  }
  await page.goto('/2027/');
+ for(const width of [390,800]){
+ await page.setViewportSize({width,height:844});
  const dates=page.locator('.static-month .calendar-holiday-date');
  expect(await dates.count()).toBeGreaterThan(10);
  for(const link of await dates.all()){
@@ -21,6 +23,7 @@ test('weather credits and static calendar dates remain usable touch targets',asy
   // then test whether neighboring calendar cells obscure its horizontal area.
   await link.evaluate(el=>el.scrollIntoView({block:'center'}));
   expect(await link.evaluate(el=>{const r=el.getBoundingClientRect();return [r.left+2,r.right-2].every(x=>el.contains(document.elementFromPoint(x,r.top+r.height/2)))})).toBe(true);
+ }
  }
 });
 test('daylight chart has list items and filtered holiday dates retain their visible name',async({page})=>{
@@ -35,6 +38,10 @@ test('daylight chart has list items and filtered holiday dates retain their visi
  await category.click();
  await expect(first).toHaveAccessibleName('1');
  await expect(first).toHaveAttribute('title',/sausio 1 d\./);
+ await page.goto('/vardadieniai/balandis/');
+ const nameday=page.locator('#nd-calendar a[data-calendar-date]').first();
+ await expect(nameday).toHaveAccessibleName(/^1 \d+ v\.$/);
+ await expect(nameday).toHaveAttribute('title',/balandžio 1 d\./);
 });
 for(const width of[320,390])for(const route of routes)test(`enlarged text at ${width}px: ${route}`,async({page,context})=>{
  await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));

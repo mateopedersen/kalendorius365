@@ -75,5 +75,22 @@
     ],
     "new_functional_regressions_passed": 2,
     "scope_note": "Four automated rules only; incomplete/manual-review items remain recorded in each raw report. This is not a complete WCAG certification or physical-device test."
+  },
+  "catalogue_accessibility_followup": {
+    "release": "b37623ab798a1ed493af",
+    "initial_all_indexable_scan": {
+      "urls": 214,
+      "engines": 2,
+      "failed_routes_per_engine": 15,
+      "types": [
+        "three contrast templates",
+        "twelve nameday calendar link names"
+      ]
+    },
+    "fixed_shared_sources": true,
+    "targeted_desktop_recheck_cases": 30,
+    "targeted_desktop_violations": 0,
+    "focused_functional_regressions_passed": 2,
+    "complete_mobile_rerun": "External production-verification evidence, pending when this prepublication record was written."
   }
 }

@@ -94,7 +94,7 @@ async function init(){
       const key=`${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`,date=`${year}-${key}`,r=records.get(key);
       const a=node('a');a.href='#pasirinkta-data';
       a.dataset.calendarDate=date;
-      a.setAttribute('aria-label',`${dateLabel(date)}. Vardai: ${r.names.join(', ')}.`);
+      a.setAttribute('title',`${dateLabel(date)}. Vardai: ${r.names.join(', ')}.`);
       a.append(node('strong',String(d)),node('small',`${r.names.length} v.`));
       if(date===today())a.setAttribute('aria-current','date');
       if(date===selected)a.classList.add('nd-selected');

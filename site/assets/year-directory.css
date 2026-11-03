@@ -14,7 +14,7 @@
 .year-card-fact strong{color:#203c2d;font-size:.95rem}
 .year-mini-calendar{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:3px;margin:-.15rem 0 .15rem;font-size:.78rem;text-align:center}
 .year-mini-calendar caption{padding:.35rem 0 .55rem;color:#344f3f;text-align:left;text-transform:capitalize;font-weight:800;font-size:.88rem}
-.year-mini-calendar th{padding:.35rem 0;color:#79867d;font-size:.66rem;text-align:center;font-weight:750}
+.year-mini-calendar th{padding:.35rem 0;color:#586b60;font-size:.66rem;text-align:center;font-weight:750}
 .year-mini-calendar th.is-weekend{color:#9b6c2f}
 .year-mini-calendar td{height:31px;padding:0;border:0;border-radius:8px;background:#f5f8f5;color:#33443a}
 .year-mini-calendar td[aria-hidden=true]{background:transparent}

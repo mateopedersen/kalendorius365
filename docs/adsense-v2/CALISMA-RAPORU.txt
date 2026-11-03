@@ -60,7 +60,7 @@ tamamlanması beklenerek iki motorda 6 kontrolde doğrulandı: tümü yüklendi.
 da düzeltildi; adımların birlikte kararlılığını sınayan regresyon eklendi.
 Ana takvim çıktısı 1 sayfa; açıklama bölümleri çıktıya girmiyor.
 
-Önbellek: yeni sürüm 45a8eee75371ab19f337; mevcut canlı sürüm
+Önbellek: yeni sürüm b37623ab798a1ed493af; mevcut canlı sürüm
 0c7e5f7fbcc4e72c647a ve önceki 8c2e69aab7b1c6a7a73c dosya ağaçları
 korundu. Üçünün bütünlüğü ve
 yerel manifestin yerel yayın biçimi doğrulandı.
@@ -76,6 +76,15 @@ belirsiz kontroller ham raporlarda saklandı; tam WCAG sertifikası denmiyor.
 İki yeni işlevsel regresyon da geçti. Aynı anda açılan yerel testlerde eski
 basit sunucunun bağlantı kuyruğu nedeniyle oluşan ağ sıfırlamaları, projenin
 128 bağlantı kuyruklu test sunucusunda yeniden çalıştırılarak ayrıştırıldı.
+
+214 indekslenebilir adresin tamamının iki motorlu ek taraması, 12 isim günü
+ayında görünen tarih/sayıyla uyuşmayan bağlantı adı ve 3 farklı şablonda düşük
+kontrast buldu. İsim günü bağlantıları doğal görünen adlarını koruyor; tam
+tarih ve isimler açıklama olarak sunuluyor. Astronomi UTC metni, yıl dizini
+hafta günü başlıkları ve haftalık planlayıcı tarih metinleri koyulaştırıldı.
+Bu 15 sayfa iki masaüstü motorunda 30 yeni kontrolden geçti; güncellenen
+işlevsel regresyonlar da başarılı. Tam mobil tekrarın sonucu ayrı üretim
+kanıtlarında kaydedilecek. Bu paragraf tarama bitmeden sıfır hata iddia etmiyor.
 
 Araştırma: önceki 47 belge/11 alanlık kaynak kaydı korundu; Google’ın yararlı
 içerik, yayıncı envanteri ve spam belgeleri yeniden okundu. Verdiğiniz
