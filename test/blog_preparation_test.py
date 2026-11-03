@@ -28,4 +28,3 @@ class PreparationStabilityTest(unittest.TestCase):
                         self.assertEqual(path.read_bytes(), first)
                 self.assertTrue(path.read_text().startswith(original.rstrip()))
                 self.assertEqual(path.read_text().count('data-editorial-extension='), 1)
-
