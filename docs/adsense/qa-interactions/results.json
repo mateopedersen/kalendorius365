@@ -1,0 +1,25 @@
+{
+  "base": "http://127.0.0.1:8799",
+  "results": [
+    {
+      "engine": "chromium",
+      "desktopWidth": 1440,
+      "blogCards": 20,
+      "searchResultOpensArticle": true,
+      "articleTocWorks": true,
+      "previousImageFailureRechecked": true,
+      "homeGuideHiddenInPrint": true,
+      "articleReadableWithoutJavaScript": true
+    },
+    {
+      "engine": "webkit",
+      "desktopWidth": 1440,
+      "blogCards": 20,
+      "searchResultOpensArticle": true,
+      "articleTocWorks": true,
+      "previousImageFailureRechecked": true,
+      "homeGuideHiddenInPrint": true,
+      "articleReadableWithoutJavaScript": true
+    }
+  ]
+}

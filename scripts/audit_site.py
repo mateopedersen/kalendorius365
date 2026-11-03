@@ -67,7 +67,8 @@ for path in files:
  for key in ('og:type','og:locale','og:site_name','og:title','og:description','og:url','og:image','og:image:type','og:image:width','og:image:height','og:image:alt'):
   assert len(p.properties.get(key,[]))==1 and p.properties[key][0],(path,key,p.properties.get(key))
  media=DETAIL_MEDIA.get(p.canonical)
- assert p.properties['og:type']==['article' if media else 'website'] and p.properties['og:locale']==['lt_LT'],path
+ is_blog_article=bool(re.fullmatch(r'https://kalendorius365\.lt/blogas/[^/]+/',p.canonical))
+ assert p.properties['og:type']==['article' if media or is_blog_article else 'website'] and p.properties['og:locale']==['lt_LT'],path
  assert p.properties['og:url']==[p.canonical],(path,p.properties['og:url'],p.canonical)
  expected_dimensions=(media['width'],media['height']) if media else (1200,630)
  assert p.properties['og:image:type']==['image/webp' if media else 'image/png'],path

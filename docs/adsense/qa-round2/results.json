@@ -1,0 +1,2307 @@
+{
+  "base": "http://127.0.0.1:8799",
+  "checked": 80,
+  "failures": [],
+  "result": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos kalendorius: šventės ir horoskopai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/fbc3d7529b188d01ecbd9547.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 5788
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/blogas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kalendoriaus užrašai: datos, mėnesiai ir kasdieniai planai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/276d9f3ab858522d63cc5976.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4788
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/blogas/kaip-spausdinti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip atsispausdinti kalendorių be nukirstų kraštų ir smulkaus teksto | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/8c7d27e9d69de966eca1e317.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6502
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/blogas/menulio-faziu-kalendoriaus-skaitymas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip skaityti Mėnulio fazių kalendorių ir nesupainioti laiko juostų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/f0e29cba41110dd1a33256b9.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6646
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/autoriai/julius-vainauskas/",
+      "status": 200,
+      "errors": [],
+      "title": "Julius Vainauskas – Kalendorius365 leidėjas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/587bf543d9b31a8bd4c0ecb2.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3476
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/redakcine-politika/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip rengiame turinį ir taisome klaidas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/2d244bf9e3af0675c9ed6277.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3606
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/apie-mus/",
+      "status": 200,
+      "errors": [],
+      "title": "Apie Kalendorius365 – kalendoriai, horoskopai ir įrankiai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4864
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/privatumas/",
+      "status": 200,
+      "errors": [],
+      "title": "Privatumo politika ir duomenų saugojimas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/3aaeca651db3091b0edd8826.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 21871
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/kontaktai/",
+      "status": 200,
+      "errors": [],
+      "title": "Kontaktai – susisiekite su mumis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/25431fa2bc706a6f3eb4e8d3.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3351
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2027-01-01\tpenktadienis\tNaujųjų metų diena\t",
+          "width": 540,
+          "height": 997
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Šventė",
+          "width": 246,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 121,
+          "height": 40
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/49bb540276770a06042225dd.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6348
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/2028/vasaris/",
+      "status": 200,
+      "errors": [],
+      "title": "2028 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2028-02-16\ttrečiadienis\tLietuvos valstybės ",
+          "width": 540,
+          "height": 99
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Šventė",
+          "width": 193,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 165,
+          "height": 40
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/a1dd54d4c37c224eb8789c85.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3468
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/savaites/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų savaičių numeriai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n1\t2027-01-04\t2027-01-10\n2\t2027-01-",
+          "width": 540,
+          "height": 2246
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Pirmadienis",
+          "width": 185,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 40
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/1d45945d6ecf777bcc043ada.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4889
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/sventes/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos šventės ir atmintinos dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/e709ad771d73780c8ab3f08f.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 8068
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/horoskopai/",
+      "status": 200,
+      "errors": [],
+      "title": "Dienos horoskopai visiems 12 Zodiako ženklų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3735
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/horoskopai/jautis/",
+      "status": 200,
+      "errors": [],
+      "title": "Jaučio dienos horoskopas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/74f5c5da0721f792106e9479.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3422
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/kurti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Asmeninio kalendoriaus kūrėjas – nuotraukos, įvykiai ir PDF | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/89cdad4fafbc808979423480.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 5660
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/datos-skaiciuokle/",
+      "status": 200,
+      "errors": [],
+      "title": "Datos skaičiuoklė – dienų skirtumas ir darbo dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n2026 / 43\t2026-10-19\t2026-10-25\n20",
+          "width": 540,
+          "height": 251
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Pirmadienis",
+          "width": 185,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 40
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/47b7ac24762e8877fa5bd888.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4127
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/pamainu-grafikas/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamainų grafiko planuoklis – ciklai ir darbo laikas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 106
+        },
+        {
+          "tag": "THEAD",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 35
+        },
+        {
+          "tag": "TR",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 35
+        },
+        {
+          "tag": "TH",
+          "text": "Dieninės",
+          "width": 120,
+          "height": 35
+        },
+        {
+          "tag": "TH",
+          "text": "Naktinės",
+          "width": 120,
+          "height": 35
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/d00815329ff00c2631d3d996.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4415
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/pamoku-tvarkarastis/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamokų tvarkaraštis ir namų darbų planuoklis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/ed5e43f335bf1d511e51d2fa.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3720
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 m. sausio Mėnulio kalendorius | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/lunar/menulio-kalendorius-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6601
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos kalendorius: šventės ir horoskopai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/fbc3d7529b188d01ecbd9547.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 5788
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/blogas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kalendoriaus užrašai: datos, mėnesiai ir kasdieniai planai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/276d9f3ab858522d63cc5976.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4788
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/blogas/kaip-spausdinti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip atsispausdinti kalendorių be nukirstų kraštų ir smulkaus teksto | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/8c7d27e9d69de966eca1e317.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6502
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/blogas/menulio-faziu-kalendoriaus-skaitymas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip skaityti Mėnulio fazių kalendorių ir nesupainioti laiko juostų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/f0e29cba41110dd1a33256b9.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6646
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/autoriai/julius-vainauskas/",
+      "status": 200,
+      "errors": [],
+      "title": "Julius Vainauskas – Kalendorius365 leidėjas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/587bf543d9b31a8bd4c0ecb2.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3476
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/redakcine-politika/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip rengiame turinį ir taisome klaidas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/2d244bf9e3af0675c9ed6277.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3606
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/apie-mus/",
+      "status": 200,
+      "errors": [],
+      "title": "Apie Kalendorius365 – kalendoriai, horoskopai ir įrankiai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4864
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/privatumas/",
+      "status": 200,
+      "errors": [],
+      "title": "Privatumo politika ir duomenų saugojimas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/3aaeca651db3091b0edd8826.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 21871
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/kontaktai/",
+      "status": 200,
+      "errors": [],
+      "title": "Kontaktai – susisiekite su mumis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/25431fa2bc706a6f3eb4e8d3.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3351
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2027-01-01\tpenktadienis\tNaujųjų metų diena\t",
+          "width": 540,
+          "height": 997
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Šventė",
+          "width": 246,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 121,
+          "height": 40
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/49bb540276770a06042225dd.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6348
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/2028/vasaris/",
+      "status": 200,
+      "errors": [],
+      "title": "2028 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2028-02-16\ttrečiadienis\tLietuvos valstybės ",
+          "width": 540,
+          "height": 99
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 165,
+          "height": 40
+        },
+        {
+          "tag": "TBODY",
+          "text": "2028-02-16\ttrečiadienis\tLietuvos valstybės atkūrimo diena\tŠventinė die",
+          "width": 540,
+          "height": 59
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/a1dd54d4c37c224eb8789c85.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3468
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/savaites/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų savaičių numeriai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n1\t2027-01-04\t2027-01-10\n2\t2027-01-",
+          "width": 540,
+          "height": 2246
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 40
+        },
+        {
+          "tag": "TBODY",
+          "text": "1\t2027-01-04\t2027-01-10\n2\t2027-01-11\t2027-01-17\n3\t2027-01-18\t2027-01-2",
+          "width": 540,
+          "height": 2206
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/1d45945d6ecf777bcc043ada.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4889
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/sventes/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos šventės ir atmintinos dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/e709ad771d73780c8ab3f08f.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 8068
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/horoskopai/",
+      "status": 200,
+      "errors": [],
+      "title": "Dienos horoskopai visiems 12 Zodiako ženklų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3735
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/horoskopai/jautis/",
+      "status": 200,
+      "errors": [],
+      "title": "Jaučio dienos horoskopas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/74f5c5da0721f792106e9479.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3422
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/kurti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Asmeninio kalendoriaus kūrėjas – nuotraukos, įvykiai ir PDF | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/89cdad4fafbc808979423480.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 5660
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/datos-skaiciuokle/",
+      "status": 200,
+      "errors": [],
+      "title": "Datos skaičiuoklė – dienų skirtumas ir darbo dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n2026 / 43\t2026-10-19\t2026-10-25\n20",
+          "width": 540,
+          "height": 251
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 40
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 40
+        },
+        {
+          "tag": "TBODY",
+          "text": "2026 / 43\t2026-10-19\t2026-10-25\n2026 / 44\t2026-10-26\t2026-11-01\n2026 /",
+          "width": 540,
+          "height": 212
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/47b7ac24762e8877fa5bd888.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4127
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/pamainu-grafikas/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamainų grafiko planuoklis – ciklai ir darbo laikas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 106
+        },
+        {
+          "tag": "THEAD",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 35
+        },
+        {
+          "tag": "TR",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 35
+        },
+        {
+          "tag": "TH",
+          "text": "Naktinės",
+          "width": 120,
+          "height": 35
+        },
+        {
+          "tag": "TH",
+          "text": "Įvertintos valandos",
+          "width": 120,
+          "height": 35
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/d00815329ff00c2631d3d996.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4415
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/pamoku-tvarkarastis/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamokų tvarkaraštis ir namų darbų planuoklis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/ed5e43f335bf1d511e51d2fa.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3720
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 m. sausio Mėnulio kalendorius | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/lunar/menulio-kalendorius-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6601
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos kalendorius: šventės ir horoskopai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/fbc3d7529b188d01ecbd9547.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4435
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/blogas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kalendoriaus užrašai: datos, mėnesiai ir kasdieniai planai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/276d9f3ab858522d63cc5976.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4788
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/blogas/kaip-spausdinti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip atsispausdinti kalendorių be nukirstų kraštų ir smulkaus teksto | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/8c7d27e9d69de966eca1e317.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6502
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/blogas/menulio-faziu-kalendoriaus-skaitymas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip skaityti Mėnulio fazių kalendorių ir nesupainioti laiko juostų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/f0e29cba41110dd1a33256b9.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6646
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/autoriai/julius-vainauskas/",
+      "status": 200,
+      "errors": [],
+      "title": "Julius Vainauskas – Kalendorius365 leidėjas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/587bf543d9b31a8bd4c0ecb2.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3476
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/redakcine-politika/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip rengiame turinį ir taisome klaidas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/2d244bf9e3af0675c9ed6277.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3606
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/apie-mus/",
+      "status": 200,
+      "errors": [],
+      "title": "Apie Kalendorius365 – kalendoriai, horoskopai ir įrankiai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4862
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/privatumas/",
+      "status": 200,
+      "errors": [],
+      "title": "Privatumo politika ir duomenų saugojimas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/3aaeca651db3091b0edd8826.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 21871
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/kontaktai/",
+      "status": 200,
+      "errors": [],
+      "title": "Kontaktai – susisiekite su mumis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/25431fa2bc706a6f3eb4e8d3.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3351
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2027-01-01\tpenktadienis\tNaujųjų metų diena\t",
+          "width": 540,
+          "height": 1154
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Šventė",
+          "width": 277,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 107,
+          "height": 39
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/49bb540276770a06042225dd.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6147
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/2028/vasaris/",
+      "status": 200,
+      "errors": [],
+      "title": "2028 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2028-02-16\ttrečiadienis\tLietuvos valstybės ",
+          "width": 540,
+          "height": 99
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Šventė",
+          "width": 196,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 165,
+          "height": 39
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/a1dd54d4c37c224eb8789c85.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3274
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/savaites/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų savaičių numeriai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n1\t2027-01-04\t2027-01-10\n2\t2027-01-",
+          "width": 540,
+          "height": 2246
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Pirmadienis",
+          "width": 185,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 39
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/1d45945d6ecf777bcc043ada.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4889
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/sventes/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos šventės ir atmintinos dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/e709ad771d73780c8ab3f08f.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 8068
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/horoskopai/",
+      "status": 200,
+      "errors": [],
+      "title": "Dienos horoskopai visiems 12 Zodiako ženklų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3735
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/horoskopai/jautis/",
+      "status": 200,
+      "errors": [],
+      "title": "Jaučio dienos horoskopas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/74f5c5da0721f792106e9479.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3422
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/kurti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Asmeninio kalendoriaus kūrėjas – nuotraukos, įvykiai ir PDF | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/89cdad4fafbc808979423480.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 5107
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/datos-skaiciuokle/",
+      "status": 200,
+      "errors": [],
+      "title": "Datos skaičiuoklė – dienų skirtumas ir darbo dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n2026 / 43\t2026-10-19\t2026-10-25\n20",
+          "width": 540,
+          "height": 251
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Pirmadienis",
+          "width": 185,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 39
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/47b7ac24762e8877fa5bd888.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4096
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/pamainu-grafikas/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamainų grafiko planuoklis – ciklai ir darbo laikas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 106
+        },
+        {
+          "tag": "THEAD",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 34
+        },
+        {
+          "tag": "TR",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 34
+        },
+        {
+          "tag": "TH",
+          "text": "Dieninės",
+          "width": 120,
+          "height": 34
+        },
+        {
+          "tag": "TH",
+          "text": "Naktinės",
+          "width": 120,
+          "height": 34
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/d00815329ff00c2631d3d996.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3920
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/pamoku-tvarkarastis/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamokų tvarkaraštis ir namų darbų planuoklis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/ed5e43f335bf1d511e51d2fa.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3450
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 m. sausio Mėnulio kalendorius | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/lunar/menulio-kalendorius-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6540
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos kalendorius: šventės ir horoskopai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/fbc3d7529b188d01ecbd9547.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4435
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/blogas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kalendoriaus užrašai: datos, mėnesiai ir kasdieniai planai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/276d9f3ab858522d63cc5976.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4788
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/blogas/kaip-spausdinti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip atsispausdinti kalendorių be nukirstų kraštų ir smulkaus teksto | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/8c7d27e9d69de966eca1e317.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6502
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/blogas/menulio-faziu-kalendoriaus-skaitymas/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip skaityti Mėnulio fazių kalendorių ir nesupainioti laiko juostų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/f0e29cba41110dd1a33256b9.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6646
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/autoriai/julius-vainauskas/",
+      "status": 200,
+      "errors": [],
+      "title": "Julius Vainauskas – Kalendorius365 leidėjas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/587bf543d9b31a8bd4c0ecb2.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3476
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/redakcine-politika/",
+      "status": 200,
+      "errors": [],
+      "title": "Kaip rengiame turinį ir taisome klaidas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/2d244bf9e3af0675c9ed6277.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3606
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/apie-mus/",
+      "status": 200,
+      "errors": [],
+      "title": "Apie Kalendorius365 – kalendoriai, horoskopai ir įrankiai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4863
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/privatumas/",
+      "status": 200,
+      "errors": [],
+      "title": "Privatumo politika ir duomenų saugojimas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/3aaeca651db3091b0edd8826.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 21871
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/kontaktai/",
+      "status": 200,
+      "errors": [],
+      "title": "Kontaktai – susisiekite su mumis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/25431fa2bc706a6f3eb4e8d3.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3351
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų kalendorius – atsisiųsti ir spausdinti | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2027-01-01\tpenktadienis\tNaujųjų metų diena\t",
+          "width": 540,
+          "height": 1154
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Šventė",
+          "width": 277,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 107,
+          "height": 39
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/49bb540276770a06042225dd.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6147
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/2028/vasaris/",
+      "status": 200,
+      "errors": [],
+      "title": "2028 m. vasario kalendorius – PDF ir WebP | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Data\tDiena\tŠventė\tStatusas\n2028-02-16\ttrečiadienis\tLietuvos valstybės ",
+          "width": 540,
+          "height": 99
+        },
+        {
+          "tag": "THEAD",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "Data\tDiena\tŠventė\tStatusas",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Statusas",
+          "width": 165,
+          "height": 39
+        },
+        {
+          "tag": "TBODY",
+          "text": "2028-02-16\ttrečiadienis\tLietuvos valstybės atkūrimo diena\tŠventinė die",
+          "width": 540,
+          "height": 60
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/a1dd54d4c37c224eb8789c85.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3274
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/savaites/2027/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 metų savaičių numeriai | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n1\t2027-01-04\t2027-01-10\n2\t2027-01-",
+          "width": 540,
+          "height": 2246
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 39
+        },
+        {
+          "tag": "TBODY",
+          "text": "1\t2027-01-04\t2027-01-10\n2\t2027-01-11\t2027-01-17\n3\t2027-01-18\t2027-01-2",
+          "width": 540,
+          "height": 2207
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/1d45945d6ecf777bcc043ada.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4889
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/sventes/",
+      "status": 200,
+      "errors": [],
+      "title": "Lietuvos šventės ir atmintinos dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/e709ad771d73780c8ab3f08f.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 8068
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/horoskopai/",
+      "status": 200,
+      "errors": [],
+      "title": "Dienos horoskopai visiems 12 Zodiako ženklų | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/visuals/zodiac/zodiakas-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3735
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/horoskopai/jautis/",
+      "status": 200,
+      "errors": [],
+      "title": "Jaučio dienos horoskopas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/74f5c5da0721f792106e9479.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3422
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/kurti-kalendoriu/",
+      "status": 200,
+      "errors": [],
+      "title": "Asmeninio kalendoriaus kūrėjas – nuotraukos, įvykiai ir PDF | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/89cdad4fafbc808979423480.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 5107
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/datos-skaiciuokle/",
+      "status": 200,
+      "errors": [],
+      "title": "Datos skaičiuoklė – dienų skirtumas ir darbo dienos | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis\n2026 / 43\t2026-10-19\t2026-10-25\n20",
+          "width": 540,
+          "height": 251
+        },
+        {
+          "tag": "THEAD",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TR",
+          "text": "ISO savaitė\tPirmadienis\tSekmadienis",
+          "width": 540,
+          "height": 39
+        },
+        {
+          "tag": "TH",
+          "text": "Sekmadienis",
+          "width": 186,
+          "height": 39
+        },
+        {
+          "tag": "TBODY",
+          "text": "2026 / 43\t2026-10-19\t2026-10-25\n2026 / 44\t2026-10-26\t2026-11-01\n2026 /",
+          "width": 540,
+          "height": 212
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/47b7ac24762e8877fa5bd888.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 4096
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/pamainu-grafikas/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamainų grafiko planuoklis – ciklai ir darbo laikas | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [
+        {
+          "tag": "TABLE",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 106
+        },
+        {
+          "tag": "THEAD",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 34
+        },
+        {
+          "tag": "TR",
+          "text": "Laikotarpis\tPamainos\tDieninės\tNaktinės\tĮvertintos valandos\tĮstatymo šv",
+          "width": 720,
+          "height": 34
+        },
+        {
+          "tag": "TH",
+          "text": "Naktinės",
+          "width": 120,
+          "height": 34
+        },
+        {
+          "tag": "TH",
+          "text": "Įvertintos valandos",
+          "width": 120,
+          "height": 34
+        }
+      ],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/d00815329ff00c2631d3d996.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3920
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/pamoku-tvarkarastis/",
+      "status": 200,
+      "errors": [],
+      "title": "Pamokų tvarkaraštis ir namų darbų planuoklis | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/sharing/og/ed5e43f335bf1d511e51d2fa.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 3450
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "route": "/menulio-kalendorius/2027/sausis/",
+      "status": 200,
+      "errors": [],
+      "title": "2027 m. sausio Mėnulio kalendorius | Kalendorius365",
+      "viewport": "width=device-width, initial-scale=1",
+      "overflow": false,
+      "overflowElements": [],
+      "h1": 1,
+      "rootFont": "15.5px",
+      "brokenImages": [],
+      "smallButtons": [],
+      "og": "https://kalendorius365.lt/assets/lunar/menulio-kalendorius-1200x630.png",
+      "legal": {
+        "about": true,
+        "privacy": true
+      },
+      "text": 6540
+    }
+  ]
+}

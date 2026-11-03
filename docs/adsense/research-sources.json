@@ -1,0 +1,290 @@
+{
+  "reviewed_on": "2026-11-03",
+  "source_count": 47,
+  "interpretation": "Official rules take precedence. Community experiences are self-reported and do not prove approval causes. No approval guarantee.",
+  "sources": [
+    {
+      "url": "https://support.google.com/adsense/answer/7299563?hl=en",
+      "title": "Site readiness",
+      "kind": "official",
+      "finding": "Original, useful content and clear navigation; no fixed word count."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/12176698?hl=en",
+      "title": "Not ready to show ads",
+      "kind": "official",
+      "finding": "Reachability, content quality and account review are separate checks."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/9724?hl=en",
+      "title": "Eligibility",
+      "kind": "official",
+      "finding": "Original content, policy compliance and account eligibility."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348695?hl=en",
+      "title": "Required privacy content",
+      "kind": "official",
+      "finding": "Actual Google advertising use must be disclosed accurately."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10502938?hl=en",
+      "title": "Publisher policies",
+      "kind": "official",
+      "finding": "Low-value inventory and misleading publisher identity are prohibited."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/13554116?hl=en",
+      "title": "CMP requirements",
+      "kind": "official",
+      "finding": "Certified CMP requirements apply to personalized ads in EEA/UK/Switzerland."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "title": "Helpful content",
+      "kind": "official",
+      "finding": "People-first value, clear accountability and no preferred word count."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "title": "Spam policies",
+      "kind": "official",
+      "finding": "Scaled content without added value is risky regardless of its production method."
+    },
+    {
+      "url": "https://blog.google/products/adsense/how-to-address-insufficient-content/",
+      "title": "Insufficient content",
+      "kind": "official-historical",
+      "finding": "Readable original text and a complete site; dated 2017, not a modern numerical threshold."
+    },
+    {
+      "url": "https://blog.google/products/adsense/adsense-best-practice-set-yourself-up-for-success/",
+      "title": "AdSense best practice",
+      "kind": "official-historical",
+      "finding": "Mobile usability, content focus and honest ad placement."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/12170222?hl=en",
+      "title": "Site status",
+      "kind": "official",
+      "finding": "Only account status can establish approval; a checker score cannot."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/12131223?hl=en",
+      "title": "Site management",
+      "kind": "official",
+      "finding": "Ready status is required to serve ads."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/7670013?hl=en",
+      "title": "Consent setup",
+      "kind": "official",
+      "finding": "Actual disclosures and consent handling must match deployed ad technology."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "title": "SEO guide",
+      "kind": "official",
+      "finding": "Descriptive titles, discovery and useful content; length alone does not establish quality."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials",
+      "title": "Search essentials",
+      "kind": "official",
+      "finding": "Technical access and people-first content are separate requirements."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing",
+      "title": "Mobile indexing",
+      "kind": "official",
+      "finding": "Mobile content and metadata should remain accessible and equivalent."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/page-experience",
+      "title": "Page experience",
+      "kind": "official",
+      "finding": "Evaluate the whole experience, not one score."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/article",
+      "title": "Article schema",
+      "kind": "official",
+      "finding": "Article metadata should match visible title, image, dates and author information."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/profile-page",
+      "title": "Profile schema",
+      "kind": "official",
+      "finding": "Use truthful person information and a visible profile."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "title": "Canonical URLs",
+      "kind": "official",
+      "finding": "Consistent canonical signals for duplicates; not an AdSense approval guarantee."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "title": "robots.txt",
+      "kind": "official",
+      "finding": "Do not block resources needed for crawling and rendering."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "title": "Sitemaps",
+      "kind": "official",
+      "finding": "List intended canonical indexable URLs; archive exclusions remain consistent."
+    },
+    {
+      "url": "https://web.dev/articles/responsive-web-design-basics",
+      "title": "Responsive design",
+      "kind": "official-technical",
+      "finding": "Viewport, reflow and readable responsive content."
+    },
+    {
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+      "title": "Target sizes",
+      "kind": "standard",
+      "finding": "WCAG AA has 24px/spacing exceptions; 48px is a practical design target, not an AdSense numerical rule."
+    },
+    {
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+      "title": "Text resizing",
+      "kind": "standard",
+      "finding": "Text should remain usable when enlarged."
+    },
+    {
+      "url": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
+      "title": "AI content guidance",
+      "kind": "official",
+      "finding": "Quality matters; automation for ranking manipulation violates spam policy."
+    },
+    {
+      "url": "https://sandeepkumarchaudhary.com/blog/adsense-low-value-content-rejection-what-i-changed",
+      "title": "Duplicate paragraph audit",
+      "kind": "publisher-account",
+      "finding": "Reports removing repeated generated posts from discovery; approval is not established here."
+    },
+    {
+      "url": "https://reapbountifully.com/google-adsense-rejected-my-blog-for-low-value-content-heres-what-i-fixed-and-reapplied/",
+      "title": "Broken category case",
+      "kind": "publisher-account",
+      "finding": "Reports category/navigation fixes and reapplication; page explicitly still awaited a decision."
+    },
+    {
+      "url": "https://adsenseverifier.com/guides/low-value-content-my-story",
+      "title": "Accountability case",
+      "kind": "publisher-account",
+      "finding": "Reports removing a fabricated counter and adding honest publisher details; domain-age claims not treated as Google rules."
+    },
+    {
+      "url": "https://note.com/kind_ruff631/n/n8b3b3f6795c5",
+      "title": "Thin tag archive case",
+      "kind": "self-reported-approval",
+      "finding": "Publisher attributes later approval to resolving thin tag archives; causation independently unverified."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1wts4ur/for_people_who_got_past_low_value_content_what/",
+      "title": "Recovery discussion",
+      "kind": "anecdotal",
+      "finding": "Mixed experiences; no universal numeric threshold established."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1nejw4a/how_i_got_google_adsense_approval_after_months_of/",
+      "title": "Gaming publication recovery",
+      "kind": "self-reported-approval",
+      "finding": "Claims trust-page and original niche-content improvements; no controlled causal test."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1pae9aw/adsense_rejected_my_site_twice_heres_exactly_what/",
+      "title": "Category consolidation case",
+      "kind": "self-reported-approval",
+      "finding": "Reports reducing thin categories and improving navigation."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1ro8wyo/i_got_approved_on_adsesnse_after_2_failed_attempts/",
+      "title": "Web application approval",
+      "kind": "self-reported-approval",
+      "finding": "Shows utility sites are not categorically ineligible; details limited."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1x0rb4a/finally_after_8_rejections_from_adsense_i_was/",
+      "title": "Repeated application discussion",
+      "kind": "self-reported-approval",
+      "finding": "Commenters dispute common age/word-count myths; no guaranteed method."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1uxv67j/finally_got_approved_after_15_rejections_for_the/",
+      "title": "Off-topic utility removal",
+      "kind": "self-reported-approval",
+      "finding": "Reports removing duplicated third-party tools; relevant original site tools should not be removed on this anecdote alone."
+    },
+    {
+      "url": "https://www.reddit.com/r/Adsense/comments/1saw5mj/got_approved_1st_attempt_on_an_almost_empty_site/",
+      "title": "Contrasting site outcomes",
+      "kind": "anecdotal",
+      "finding": "Earlier thin utility approval and later richer-site rejection show uncertainty."
+    },
+    {
+      "url": "https://monetizationguy.com/articles/adsense-low-value-content-the-real-fix-not-just-more-words",
+      "title": "Owner-supplied article",
+      "kind": "secondary",
+      "finding": "Useful audit-first emphasis; word thresholds and assumptions about reviewers/reapplication are not official Google rules."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/48182?hl=en",
+      "title": "AdSense Program policies",
+      "kind": "official",
+      "finding": "Invalid clicks, deceptive navigation and misleading ad placement are prohibited."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11112688?hl=en",
+      "title": "Screens without publisher content",
+      "kind": "official",
+      "finding": "No ads on low-value, navigation-only or unfinished screens; automated content needs review or curation."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+      "title": "Ad placement policies",
+      "kind": "official",
+      "finding": "Keep ads separate from download links, navigation and private communications; avoid accidental clicks."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/2381908?hl=en",
+      "title": "Fix AdSense crawler issues",
+      "kind": "official",
+      "finding": "Crawler access can be blocked by robots rules, firewalls, login requirements or broken redirects."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348752?hl=en",
+      "title": "How Google prevents invalid traffic",
+      "kind": "official",
+      "finding": "Do not manufacture ad impressions or clicks; unreliable purchased traffic is risky."
+    },
+    {
+      "url": "https://support.google.com/adsense/answer/1348754?hl=en",
+      "title": "Common questions about invalid traffic",
+      "kind": "official",
+      "finding": "Normal owner inspection is permitted, but do not click ads or reload excessively."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11190248?hl=en",
+      "title": "Replicated content",
+      "kind": "official",
+      "finding": "Attribution or synonym replacement alone does not make copied content valuable."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11169917?hl=en",
+      "title": "More ads than publisher content",
+      "kind": "official",
+      "finding": "Advertising must not outweigh real publisher content; navigation and whitespace are not substantive content."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/10436912?hl=en",
+      "title": "Supported languages",
+      "kind": "official",
+      "finding": "Lithuanian is an explicitly supported primary publishing language."
+    }
+  ],
+  "distinct_host_count": 11
+}

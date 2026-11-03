@@ -1,0 +1,87 @@
+KALENDORIUS365 — ADSENSE İÇERİK VE KULLANILABİLİRLİK ÇALIŞMASI
+Tarih: 3 Kasım 2026
+Yayın durumu: Yerel testler tamamlandı; canlı yayın doğrulaması bekleniyor.
+
+ARAŞTIRMA
+47 kaynak belgesi incelendi (11 farklı alan adı). Bu sayı 47 ayrı site anlamına gelmez.
+Google'ın güncel AdSense, yayıncı ve Search belgeleri; W3C erişilebilirlik
+belgeleri; yayıncıların kendi anlattıkları kabul/ret deneyimleri ve kullanıcının
+verdiği MonetizationGuy yazısı ayrı ayrı sınıflandırıldı. Tam liste:
+research-sources.json.
+
+Google'ın resmi belgeleri sabit 600/800 kelime, belirli sayıda yazı veya kesin
+bir bekleme süresiyle onay sözü vermiyor. Bağımsız yayıncı deneyimleri neden-sonuç
+kanıtı olarak kullanılmadı. Çalışmanın amacı gerçek kullanıcıya yararlı içerik,
+erişilebilir araçlar, açık yayıncı kimliği ve dürüst kaynak gösterimi.
+
+BAŞLANGIÇ ENVANTERİ
+788 canlı sayfa tarandı; hepsi HTTP 200. 191 sayfa indexlenebilir, 597 paylaşım
+ve arşiv sayfası zaten noindex idi. OG görsel etiketi eksik sayfa bulunmadı.
+Hakkımızda ve gizlilik bağlantıları da ana sayfada zaten vardı; üçüncü taraf
+denetleyici Litvanca bağlantı adlarını doğru tanımamıştı. Gizlilik bağlantısının
+adı açıkça “Privatumo politika” yapıldı; rel="privacy-policy" eklendi.
+Gizlilik metnindeki önceki kişi adı kullanıcı teyidiyle Julius Vainauskas oldu.
+
+UYGULANANLAR
+1. /blogas/ altında 20 ayrı Litvanca rehber: her yazının ana metni 612–763 kelime.
+   Konular takvim yazdırma, ISO haftaları, artık yıl, iş/takvim günü farkı,
+   aile planı, yerel yedekleme, ICS/saat dilimleri, vardiya, okul tatili,
+   Ay evreleri, mevsimler ve gün uzunluğu gibi mevcut araçlarla ilişkili.
+   Her yazıda ilgili araçlar, kaynaklar, içindekiler ve gerçek yayın tarihi var.
+2. 20 farklı özgün SVG illüstrasyon ve bunların 1200×630 PNG sürümleri hazırlandı.
+   Bütün çizimler görsel olarak incelendi; alt metinler görünen ayrıntılarla
+   eşleştirildi. Dekoratif takvim çizimleri gerçek tarih kaynağı diye sunulmadı.
+3. Başlangıçta kısa bulunan 19 sayfaya ve ana sayfaya, ilgili işlevi açıklayan
+   sayfaya özel içerik eklendi. Mevcut uzun açıklamalar ve hukuki metinler korundu.
+   597 paylaşım/arşiv sayfasına tekrar eden SEO paragrafları eklenmedi.
+4. Julius Vainauskas için gerçek site sahipliği ve teyit edilmiş iletişim
+   bilgileriyle profil oluşturuldu. Eğitim, uzmanlık, iş geçmişi veya portre
+   uydurulmadı. Yapay zekâ yardımı ve içerik hazırlama süreci açıklandı.
+5. /redakcine-politika/ sayfasında kaynak, düzeltme ve otomatik veri ilkeleri var.
+6. Sayfa altına blog, profil, yayın ilkeleri ve açık gizlilik bağlantıları eklendi.
+   Kanıtlanmamış “#1” iddiası kaldırıldı. Blog yazıları site aramasına dahil edildi.
+7. Temel yazı boyutu 14 px'den 16 px'e çıkarıldı. Mobil girişler ve düğmeler,
+   araç çubuklarının satıra geçmesi ve alt bağlantıların dokunma alanları düzeltildi.
+8. Genel görseli kullanan uygun sayfalara başlık/açıklama içeren OG kartları
+   oluşturuldu; mevcut özel şenlik fotoğrafları ve doğru oranları korundu.
+   214 indexlenebilir sayfanın tamamında OG etiketi var; 160 farklı OG URL'si var.
+9. BlogPosting ve ProfilePage yapılandırılmış verileri eklendi. Sitemap 214
+   canonical URL içeriyor. Mevcut noindex ve kişisel veri koruma davranışı korundu.
+10. Kaynak dosyalar, üretim adımları ve üretilmiş yayın paketi birlikte değişti;
+    günlük yeniden oluşturma sırasında içerik kaybolmayacak şekilde bağlandı.
+11. Sunucu testiyle görülen tekrar üretimde boş satır birikmesi giderildi.
+    Aynı içerik hazırlama adımı tekrarlanınca 20 gerçek sayfanın birebir aynı
+    kaldığı doğrulandı; kalıcı regresyon testi yayın kontrolüne eklendi.
+
+DOĞRULAMA
+- 811 canonical sayfa; 64.269 yerel hedef kontrol edildi: 0 kırık bağlantı,
+  0 ana sayfadan erişilemeyen sayfa; tek H1, canonical, dil ve JSON-LD kontrolleri geçti.
+- 421 işlev testi geçti; başarısız test yok.
+- 1.096 takvim tarihi, 416 tek sayfalık PDF ve 390 A3 takvim doğrulandı.
+  Dosya kökeni, font gömme, önizleme ve eski dosya hash kontrolleri geçti.
+- 36 aylık ve 3 yıllık sayfadaki tasarımlar, filtreler ve 1.560 eski takvim
+  yönlendirmesi doğrulandı. 146 Ay takvimi indirmesi de yayın kapısından geçti.
+- Mobil tur 1: Chromium ve WebKit, 320/390 px, 20 temsili rota = 80 kontrol.
+  Bir görsel yükleme başarısızlığı görüldü. Tur 2'de 80/80 geçti; aynı görsel
+  ayrıca iki motorda kaydırılarak yüklenip doğrulandı. Ham raporlar saklandı.
+- Masaüstü 1440 px: 20 blog kartı, gerçek aramadan yazıya geçiş, yazı içindekiler,
+  JavaScript kapalı okuma ve ana sayfa yazdırmasında yeni açıklamanın gizlenmesi
+  iki motorda geçti. Ekran görüntüleri qa-round2 ve qa-interactions içinde.
+- Bunlar tarayıcı motoru ve ekran boyutu testleridir; fiziksel iPhone/Android
+  cihazlarında test yapılmış gibi sunulmaz. Bağımsız insan dil editörü kullanılmadı.
+- Kişisel takvim verisi veya gerçek kullanıcı tarayıcı profili okunmadı.
+
+SINIRLAR VE ADSENSE HESABI
+Bu çalışma Google onayı değildir; hesabın gerçek inceleme sonucunu Google belirler.
+Hukuki uygunluk sertifikası veya yüzde 100 kabul garantisi verilmez. Yeni reklam
+kodu açılmadı. Kişiselleştirilmiş Google reklamları açılırken EEA/UK/İsviçre için
+güncel onaylı CMP şartları ayrıca uygulanmalıdır; mevcut bilgilendirme kutusu bir
+reklam onay yönetim platformu olarak sunulmuyor. Hesaptaki yeniden inceleme işlemi
+ve varsa hesap özelindeki diğer gereklilikler bu site testlerinden ayrıdır.
+Otomatik günlük horoskoplar, paylaşım arşivleri, hata/arama ekranları ve kişisel
+planlama görünümlerine topluca reklam açılması önerilmiyor. Otomatik içerikte
+gerekli gerçek editoryal inceleme veya seçki yapılmadan reklam uygunluğu iddia
+edilmez. Sadece kaynak göstermek veya birkaç kelime değiştirmek yeterli değildir.
+
+CANLI KONTROL
+Yayın doğrulaması tamamlanınca URL, commit ve HTTP sonuçları buraya eklenecek.

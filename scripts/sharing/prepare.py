@@ -73,6 +73,9 @@ def prepare():
   ident='site' if route=='/' else 'page-'+hashlib.sha256(route.encode()).hexdigest()[:16]
   p=record('site' if route=='/' else 'page',ident,route,title,desc)
   img=metadata(path,'og_image',DEFAULT);p['imageUrl']=ORIGIN+img if img.startswith('/') else img;p['artwork']=img if img.startswith('/') else DEFAULT;p['imageAlt']=metadata(path,'og_image_alt',title)
+  # Generic-image and blog routes receive their own title/excerpt cards.
+  # The original artwork remains the input; no visitor data is included.
+  if img==DEFAULT or route.startswith('/blogas/'):og_card(p)
   pages[route]=p
  manifest=json.loads((SITE/'assets/data/manifest.json').read_text())['assets']
  years=json.loads((SITE/'assets/data/years.json').read_text())
