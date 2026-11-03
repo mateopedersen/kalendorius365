@@ -1,4 +1,7 @@
 import {test,expect} from '@playwright/test';
+test.beforeEach(async({context})=>{
+ await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
+});
 
 // Regression: the comparison had no matching ID and remained dashes; the hero
 // and date-checker fallback also displayed2027 on the2028/2029 routes.
@@ -39,8 +42,12 @@ test('blog photographs have working responsive sources and visible provenance',a
   await expect(photo).toHaveAttribute('srcset',/480w.*800w.*1200w/);
   await expect(page.locator('.editorial-photograph figcaption')).toContainText('Nuotrauka:');
   await expect(page.locator('.editorial-photograph figcaption a')).toHaveCount(2);
+  await expect(page.locator('main>.breadcrumbs')).toHaveCount(0);
+  expect(await page.locator('.editorial-article header').evaluate(header=>header.querySelector('.editorial-photograph').compareDocumentPosition(header.querySelector('.page-intro'))&Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy();
   await page.locator('.editorial-example img').scrollIntoViewIfNeeded();
   await expect.poll(()=>page.locator('.editorial-example img').evaluate(i=>i.complete&&i.naturalWidth>0)).toBe(true);
   await expect(page.locator('.editorial-example figcaption')).toContainText('lankytojų įrašai nenaudojami');
+  await page.locator('.share-entry>summary').click();
+  await expect(page.getByRole('dialog')).toBeVisible();
  }
 });

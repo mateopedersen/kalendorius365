@@ -15,14 +15,14 @@ Generated single-request route CSS bundles:
   horoscope-hub.css: 84,209 bytes
   zodiac-guide.css: 86,874 bytes
 `/Users/melihozcan` is not writable.
-Bundler will use `/var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/bundler20261103-99969-h5rmt099969' as your home directory temporarily.
+Bundler will use `/var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/bundler20261103-5540-zu6cwz5540' as your home directory temporarily.
 Configuration file: /Users/melihozcan/Documents/Codex/2026-10-17/critical-maximum-website-performance-optimization-i-2/kalendorius365-adsense/site/_config.yml
-Configuration file: /var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/kalendorius-build-policy20261103-99890-yteeu0.yml
+Configuration file: /var/folders/zr/pxh_rp1976x82f94tcxbxg8m0000gn/T/kalendorius-build-policy20261103-5462-xxjm4h.yml
             Source: /Users/melihozcan/Documents/Codex/2026-10-17/critical-maximum-website-performance-optimization-i-2/kalendorius365-adsense/site
        Destination: /Users/melihozcan/Documents/Codex/2026-10-17/critical-maximum-website-performance-optimization-i-2/kalendorius365-adsense/public
  Incremental build: disabled. Enable with --incremental
       Generating...
-                    done in 6.703 seconds.
+                    done in 6.816 seconds.
  Auto-regeneration: disabled. Use --watch to enable.
 Minified 27 stylesheets: 924137 → 877277 bytes
 Inlined route CSS on 812 pages; removed 2567 blocking stylesheet requests
@@ -33,5 +33,5 @@ Path-versioned 12 calendar-editor references for cache-safe deployment
 Lunar release gate: all 146 lunar downloads match both preflight passes; 0 legacy downloads preserved; 832 superseded download hashes match the pinned transition evidence.
 Lunar HTML language and semantic checks passed for all 41 pages.
 {"status": "passed", "pages": 12, "preserved_assets": 386, "failures": []}
-Asset release 37fe6bd6db2588ed7a13; retained 3 revision(s)
-Built 811 HTML pages; 214 sitemap URLs and 390 images; 9305 static files; release=true
+Asset release 4c3f840bf16d909d648a; retained 3 revision(s)
+Built 811 HTML pages; 214 sitemap URLs and 390 images; 9285 static files; release=true

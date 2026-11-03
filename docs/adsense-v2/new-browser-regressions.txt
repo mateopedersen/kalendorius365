@@ -1,15 +1,15 @@
 
 Running 3 tests using 1 worker
 
-(node:1753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:7747) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
-(node:1753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:7747) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
-  ✓  1 [chromium] › test/browser/editorial-quality.spec.mjs:5:1 › workday totals and year-specific examples are correct without JavaScript (640ms)
-  ✓  2 [chromium] › test/browser/editorial-quality.spec.mjs:28:1 › workday comparison initializes and stays consistent when the schedule changes (835ms)
-  ✓  3 [chromium] › test/browser/editorial-quality.spec.mjs:41:1 › blog photographs have working responsive sources and visible provenance (880ms)
+  ✓  1 [chromium] › test/browser/editorial-quality.spec.mjs:10:1 › workday totals and year-specific examples are correct without JavaScript (557ms)
+  ✓  2 [chromium] › test/browser/editorial-quality.spec.mjs:33:1 › workday comparison initializes and stays consistent when the schedule changes (720ms)
+  ✓  3 [chromium] › test/browser/editorial-quality.spec.mjs:46:1 › blog photographs have working responsive sources and visible provenance (1.3s)
 
-  3 passed (3.0s)
+  3 passed (3.6s)
 
 To open last HTML report run:
 [36m[39m

@@ -11,7 +11,10 @@ kayıtları ve içerikten türetilmiş yeni dosya adresleri oluşturuldu.
 20 yazıya ayrı hesaplama/kullanım örnekleri eklendi. Ana yazılar 804–962
 kelime. Boş test ortamlarında gerçek araç ekranları çekildi; 20 ekran
 örneği 58 duyarlı WebP olarak sunuldu. Gerçek ziyaretçi verisi kullanılmadı.
-Dar ekran görüntüleri büyük ekranda büyütülmüyor.
+Dar ekran görüntüleri büyük ekranda büyütülmüyor. Mobil yazılardaki çift
+gezinme yolu ve tekrar kategori kaldırıldı; paylaşma işlevi yazı sonuna
+taşındı, fotoğraf ilk ekranda daha erken görünür. Bu değişiklikten sonra
+20 yazı iki motorda 40 yeni mobil kontrolde hatasız geçti.
 
 811 URL’nin tüm HTML içeriği incelendi:214 indekslenebilir,597 noindex.
 788 URL’ye sayfasına bağlı örnek, veri karşılaştırması veya dosya/versiyon
@@ -26,7 +29,7 @@ boyut/biçim bilgisi,180 eski burç kopyasına tarih/versiyon bağlamı eklendi.
 Eski tahminlerin tarihi değiştirilmedi. Arşiv kapsamı ayrıca açıklandı.
 
 Aynı yöntemle gerçek önce/sonra ölçümü –214 indekslenebilir sayfa:
-Ana içerik ortalaması:702,5→849,8 kelime.
+Ana içerik ortalaması:702,5→848,7 kelime.
 Menü, form, tablo, resim altyazısı ve kaynak alanları ayrılmış açıklama
 metni ortalaması:412,8→541,8 kelime.
 8 veya daha fazla sayfada ortak paragraflar da çıkarıldığında:300,2→385,1.

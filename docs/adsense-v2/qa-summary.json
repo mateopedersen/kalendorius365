@@ -27,5 +27,14 @@
   },
   "physical_devices_tested": false,
   "private_calendar_data_accessed": false,
-  "checked_at": "2026-11-03T12:38:11.933174+00:00"
+  "checked_at": "2026-11-03T12:38:11.933174+00:00",
+  "final_article_layout_recheck": {
+    "routes": 20,
+    "cases": 40,
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "failures": 0
+  }
 }
