@@ -106,7 +106,7 @@
 .daylight-results .discovery-tool-heading { align-items: end; }
 .daylight-summary { margin: 0 0 1.25rem; padding: .9rem 1rem; border-left: 3px solid #d89c40; border-radius: 0 10px 10px 0; background: #fff9eb; color: #54472d; font-size: .9rem; }
 .daylight-chart { overflow-x: auto; padding: 1rem .3rem .6rem; }
-.daylight-axis { display: grid; grid-template-columns: repeat(5, 1fr); margin-left: 7.5rem; padding-bottom: .3rem; border-bottom: 1px solid #dce5df; color: #758277; font-size: .67rem; font-variant-numeric: tabular-nums; }
+.daylight-axis { display: grid; grid-template-columns: repeat(5, 1fr); margin-left: 7.5rem; padding-bottom: .3rem; border-bottom: 1px solid #dce5df; color: #586b60; font-size: .67rem; font-variant-numeric: tabular-nums; }
 .daylight-axis span:not(:first-child) { text-align: center; }
 .daylight-axis span:last-child { text-align: right; }
 .daylight-line { display: grid; grid-template-columns: 7rem minmax(300px, 1fr); align-items: center; gap: .5rem; min-height: 49px; }
@@ -116,7 +116,7 @@
 .daylight-time { position: absolute; top: -1.2rem; color: #756344; font-size: .64rem; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .daylight-time--rise { transform: translateX(-10%); }
 .daylight-time--set { transform: translateX(-90%); }
-.daylight-chart-key { display: flex; justify-content: space-between; gap: .5rem; margin: 0 0 1rem 7.5rem; color: #768174; font-size: .7rem; }
+.daylight-chart-key { display: flex; justify-content: space-between; gap: .5rem; margin: 0 0 1rem 7.5rem; color: #586b60; font-size: .7rem; }
 .daylight-chart-key span:first-child { display: inline-flex; align-items: center; gap: .35rem; }
 .daylight-chart-key i { width: 12px; height: 7px; border-radius: 6px; background: #edae49; }
 .daylight-table { min-width: 720px; }
@@ -125,7 +125,7 @@
 .daylight-explainers .panel { min-height: 190px; border-top: 2px solid #e7b558; }
 .daylight-explainers h2 { margin: .4rem 0; font-size: 1.02rem; }
 .daylight-explainers p { margin: 0; color: var(--muted); font-size: .87rem; }
-.discovery-kicker { color: #a27327; font-size: .67rem; }
+.discovery-kicker { color: #805b1e; font-size: .67rem; }
 
 .weekend-planner-controls { display: grid; grid-template-columns: minmax(12rem, .7fr) 1.3fr; align-items: end; gap: 1rem; padding: .9rem 1rem; border-radius: 12px; background: #f5faf6; }
 .weekend-planner-controls p { margin: 0; color: var(--muted); font-size: .82rem; }

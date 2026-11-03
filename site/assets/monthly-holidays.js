@@ -47,7 +47,9 @@ if (typeof document !== 'undefined') {
         if (count) {count.textContent = String(es.length);count.hidden = es.length === 0;}
         for (const mark of day.querySelectorAll('[data-mark-category]')) mark.hidden = !es.some(r => r.category === mark.dataset.markCategory);
         day.classList.toggle('mh-day--muted', es.length === 0);
-        day.setAttribute('aria-label', `${dateLabel(day.dataset.day)}. ${es.length ? es.map(r=>r.el.querySelector('h4').textContent).join('; ')+'.' : 'Pagal dabartinius filtrus įrašų nėra.'}`);
+        // Keep the visible day as the link name; the native description holds
+        // the full date and filtered records without overriding speech input.
+        day.setAttribute('title', `${dateLabel(day.dataset.day)}. ${es.length ? 'Rodomi įrašai: '+es.length+'. '+es.map(r=>r.el.querySelector('h4').textContent).join('; ')+'.' : 'Pagal dabartinius filtrus įrašų nėra.'}`);
       }
       for (const button of categoryButtons) button.setAttribute('aria-pressed', String(button.dataset.categoryFilter === category));
       const visibleCount = records.filter(r=>!r.el.hidden).length;

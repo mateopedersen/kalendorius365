@@ -121,9 +121,9 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 .homepage-app .holiday-row--flag{ --holiday-accent: #087b58; }
 .homepage-app .holiday-row--easter{ --holiday-accent: #c43b43; }
 .homepage-app .holiday-row--candle{ --holiday-accent: #8050b7; }
-.homepage-app .holiday-row--bloom{ --holiday-accent: #b36a1a; }
+.homepage-app .holiday-row--bloom{ --holiday-accent: #8a5014; }
 .homepage-app .holiday-row--evergreen{ --holiday-accent: #087b58; }
-.homepage-app .holiday-row--spark{ --holiday-accent: #bd8b1b; }
+.homepage-app .holiday-row--spark{ --holiday-accent: #8b650d; }
 .homepage-app .holiday-mark{
   display: grid;
   width: 34px;

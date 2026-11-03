@@ -2,6 +2,40 @@ import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import {openHeaderSearch} from './header-helpers.mjs';
 const routes=['/','/paieska/','/vardadieniai/','/zodiakas/','/pamoku-tvarkarastis/','/pamainu-grafikas/','/menulio-kalendorius/2028/vasaris/','/atostogu-planavimas/','/atmintinos-dienos/','/dienos-ilgumas/','/ilgieji-savaitgaliai/','/apie-mus/','/kurti-kalendoriu/'];
+test('weather credits and static calendar dates remain usable touch targets',async({page})=>{
+ await page.setViewportSize({width:390,height:844});
+ await page.goto('/');
+ const credits=page.locator('.weather-attribution a');
+ await expect(credits.first()).toBeVisible();
+ for(const link of await credits.all()){
+  const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(24);expect(box.height).toBeGreaterThanOrEqual(24);
+ }
+ await page.goto('/2027/');
+ const dates=page.locator('.static-month .calendar-holiday-date');
+ expect(await dates.count()).toBeGreaterThan(10);
+ for(const link of await dates.all()){
+  const day=(await link.locator('time').textContent()).trim();
+  await expect(link).toHaveAccessibleName(new RegExp('^'+day+' d\\.'));
+  const box=await link.boundingBox();expect(box.width).toBeGreaterThanOrEqual(24);expect(box.height).toBeGreaterThanOrEqual(24);
+  // Center the date away from the sticky navigation and first-visit notice;
+  // then test whether neighboring calendar cells obscure its horizontal area.
+  await link.evaluate(el=>el.scrollIntoView({block:'center'}));
+  expect(await link.evaluate(el=>{const r=el.getBoundingClientRect();return [r.left+2,r.right-2].every(x=>el.contains(document.elementFromPoint(x,r.top+r.height/2)))})).toBe(true);
+ }
+});
+test('daylight chart has list items and filtered holiday dates retain their visible name',async({page})=>{
+ await page.goto('/dienos-ilgumas/',{waitUntil:'networkidle'});
+ const chart=page.getByRole('list',{name:'Saulės šviesos laikas nuo vidurnakčio iki vidurnakčio'});
+ await expect(chart.getByRole('listitem').first()).toBeVisible();
+ await page.goto('/sventes/2027/sausis/');
+ const first=page.locator('.mh-day').first();
+ await expect(first).toHaveAccessibleName('1');
+ await expect(first).toHaveAttribute('title',/sausio 1 d\./);
+ const category=page.locator('[data-category-filter]').last();
+ await category.click();
+ await expect(first).toHaveAccessibleName('1');
+ await expect(first).toHaveAttribute('title',/sausio 1 d\./);
+});
 for(const width of[320,390])for(const route of routes)test(`enlarged text at ${width}px: ${route}`,async({page,context})=>{
  await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
  await page.setViewportSize({width,height:844});await page.goto(route);

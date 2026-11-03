@@ -60,10 +60,22 @@ tamamlanması beklenerek iki motorda 6 kontrolde doğrulandı: tümü yüklendi.
 da düzeltildi; adımların birlikte kararlılığını sınayan regresyon eklendi.
 Ana takvim çıktısı 1 sayfa; açıklama bölümleri çıktıya girmiyor.
 
-Önbellek: yeni sürüm 4c3f840bf16d909d648a; mevcut canlı sürüm
+Önbellek: yeni sürüm 45a8eee75371ab19f337; mevcut canlı sürüm
 0c7e5f7fbcc4e72c647a ve önceki 8c2e69aab7b1c6a7a73c dosya ağaçları
 korundu. Üçünün bütünlüğü ve
 yerel manifestin yerel yayın biçimi doğrulandı.
+
+Bağımsız Lighthouse başlangıç kayıtlarında bulunan gerçek mobil/erişilebilirlik
+hataları da düzeltildi: hava durumu kaynak bağlantıları, yıllık takvimde
+çakışan küçük tarih hedefleri, düşük kontrastlı metinler, görünen metinle
+uyuşmayan tarih/kart/izin planı ve takvim oluşturucu etiketleri; gün ışığı
+grafiğinin liste öğeleri. Dar ekranda yıllık takvim tek sütun oldu; basılı
+sayfa düzeni korundu. Son pakette 33 aile × 2 motor × mobil/masaüstü =132
+durumda dört otomatik erişilebilirlik kuralında ihlal yok. İnceleme gerektiren
+belirsiz kontroller ham raporlarda saklandı; tam WCAG sertifikası denmiyor.
+İki yeni işlevsel regresyon da geçti. Aynı anda açılan yerel testlerde eski
+basit sunucunun bağlantı kuyruğu nedeniyle oluşan ağ sıfırlamaları, projenin
+128 bağlantı kuyruklu test sunucusunda yeniden çalıştırılarak ayrıştırıldı.
 
 Araştırma: önceki 47 belge/11 alanlık kaynak kaydı korundu; Google’ın yararlı
 içerik, yayıncı envanteri ve spam belgeleri yeniden okundu. Verdiğiniz

@@ -52,5 +52,28 @@
     "full_rebuild_compared_files": 9288,
     "byte_differences": 0,
     "release": "4c3f840bf16d909d648a"
+  },
+  "measured_accessibility_repairs": {
+    "release": "45a8eee75371ab19f337",
+    "axe_version": "4.13.0",
+    "page_families": 33,
+    "profiles": [
+      "mobile390",
+      "desktop1440"
+    ],
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "cases": 132,
+    "violations": 0,
+    "rules": [
+      "color-contrast",
+      "target-size",
+      "label-content-name-mismatch",
+      "aria-required-children"
+    ],
+    "new_functional_regressions_passed": 2,
+    "scope_note": "Four automated rules only; incomplete/manual-review items remain recorded in each raw report. This is not a complete WCAG certification or physical-device test."
   }
 }

@@ -52,7 +52,7 @@
 .planner-sheet__header h3{margin:.2rem 0 0;color:var(--studio-accent);font-size:1.45rem;line-height:1.12}
 .planner-sheet__header p{margin:.2rem 0 0;color:#53635a;font-size:.8rem;font-weight:700;text-align:right}
 .planner-sheet__header [data-studio-kicker]{color:#65756a;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.planner-sheet__footer{margin-top:1rem;padding-top:.4rem;border-top:1px solid #dbe2dc;color:#7a847d;font-size:.58rem}
+.planner-sheet__footer{margin-top:1rem;padding-top:.4rem;border-top:1px solid #dbe2dc;color:#586b60;font-size:.58rem}
 .planner-sheet__days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.45rem;margin-top:.8rem}
 .planner-sheet__day{min-width:0;min-height:118px;padding:.48rem;border:1px solid #dce5de;border-top:4px solid var(--studio-accent);border-radius:8px;background:var(--studio-soft)}
 .planner-sheet__day h4,.planner-sheet__daily h4,.planner-sheet__priorities h4,.planner-sheet__notes h4{margin:0;color:var(--studio-accent);font-size:.78rem}
