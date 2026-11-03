@@ -1,0 +1,80 @@
+{
+  "base": "http://127.0.0.1:8799",
+  "profile": "390×844 mobile Chromium and WebKit engines; isolated test storage; no physical device claim",
+  "total": 6,
+  "failures": [],
+  "results": [
+    {
+      "engine": "chromium",
+      "route": "/blogas/",
+      "status": 200,
+      "viewport": 390,
+      "document": 390,
+      "h1": 1,
+      "brokenImages": [],
+      "cover": null,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/sventes/2027/balandis/",
+      "status": 200,
+      "viewport": 390,
+      "document": 390,
+      "h1": 1,
+      "brokenImages": [],
+      "cover": null,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/tuscias-kalendorius/",
+      "status": 200,
+      "viewport": 390,
+      "document": 390,
+      "h1": 1,
+      "brokenImages": [],
+      "cover": null,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/blogas/",
+      "status": 200,
+      "viewport": 390,
+      "document": 390,
+      "h1": 1,
+      "brokenImages": [],
+      "cover": null,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/sventes/2027/balandis/",
+      "status": 200,
+      "viewport": 390,
+      "document": 390,
+      "h1": 1,
+      "brokenImages": [],
+      "cover": null,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/tuscias-kalendorius/",
+      "status": 200,
+      "viewport": 390,
+      "document": 390,
+      "h1": 1,
+      "brokenImages": [],
+      "cover": null,
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

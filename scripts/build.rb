@@ -35,11 +35,13 @@ Dir.chdir(ROOT) do
  # uses the same K365_RELEASE flag as production.
  release=Kalendorius::BuildPolicy.release?(ENV)
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
- system('python3','scripts/blog/artwork.py',exception:true)
+ system('python3','scripts/blog/photos.py',exception:true)
+ system('python3','scripts/blog/prepare_examples.py',exception:true)
  system('python3','scripts/blog/prepare.py',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
  system('python3','scripts/blog/enrich_pages.py',exception:true)
  system('python3','scripts/sharing/prepare.py',exception:true)
+ system('python3','scripts/blog/enrich_catalogue.py',exception:true)
  system('python3','scripts/css_route_split.py',exception:true)
  Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
   config.write(JSON.generate({'release'=>release}));config.flush

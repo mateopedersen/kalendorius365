@@ -1,0 +1,78 @@
+KALENDORIUS365 – İÇERİK VE GERÇEK FOTOĞRAF ÇALIŞMASI
+3 Kasım 2026; bu dosya yayın öncesi yerel doğrulama raporudur.
+
+20 blogun şematik kapakları 20 farklı gerçek fotoğrafla değiştirildi.
+17 Pexels fotoğrafı ve sitedeki 3 lisanslı fotoğraf kullanıldı. Fotoğrafçı,
+kaynak, lisans ve kırpma bilgisi her yazıda görünür. Fotoğraflar kişisel
+tecrübe veya Julius’un ailesi/ofisi gibi sunulmadı. Özgün dosya bütünlük
+kayıtları ve içerikten türetilmiş yeni dosya adresleri oluşturuldu.
+60 duyarlı fotoğraf dosyasının en büyüğü 169.616 bayt.
+
+20 yazıya ayrı hesaplama/kullanım örnekleri eklendi. Ana yazılar 804–962
+kelime. Boş test ortamlarında gerçek araç ekranları çekildi; 20 ekran
+örneği 58 duyarlı WebP olarak sunuldu. Gerçek ziyaretçi verisi kullanılmadı.
+Dar ekran görüntüleri büyük ekranda büyütülmüyor.
+
+811 URL’nin tüm HTML içeriği incelendi:214 indekslenebilir,597 noindex.
+788 URL’ye sayfasına bağlı örnek, veri karşılaştırması veya dosya/versiyon
+bilgisi eklendi.20 blog ayrıca genişletildi. Gizlilik ve gerçek sahibin
+kısa profili amaçlarına uygun tutuldu; uydurma biyografi eklenmedi.
+İçerik hazırlama politikası fotoğraf ve ekran örneği süreciyle güncellendi.
+
+36 aylık takvim,3 yıllık takvim, çalışma günü sayfaları,41 Ay takvimi sayfası,
+13 vardadieniai sayfası,47 bayram/anma sayfası,12 güncel burç ve diğer araçlar
+kendi verileri/örnekleriyle ele alındı.416 tekil baskı bağlantısına gerçek
+boyut/biçim bilgisi,180 eski burç kopyasına tarih/versiyon bağlamı eklendi.
+Eski tahminlerin tarihi değiştirilmedi. Arşiv kapsamı ayrıca açıklandı.
+
+Aynı yöntemle gerçek önce/sonra ölçümü –214 indekslenebilir sayfa:
+Ana içerik ortalaması:702,5→849,8 kelime.
+Menü, form, tablo, resim altyazısı ve kaynak alanları ayrılmış açıklama
+metni ortalaması:412,8→541,8 kelime.
+8 veya daha fazla sayfada ortak paragraflar da çıkarıldığında:300,2→385,1.
+Bunlar üçüncü taraf aracın örneklemi veya Google’ın onay eşiği değildir.
+Yöntem ve 811 ayrı kayıt:url-review.json.
+
+Gerçek işlev/içerik hataları da düzeltildi:
+- Çalışma günü karşılaştırmasının eksik bağlantısı nedeniyle boş kalan
+  kutular dolduruldu; sayılar JavaScript kapalıyken de görünür.
+-2028/2029 sayfalarındaki 2027 çizimi kaldırıldı. Ocak günleri ve 12 aylık
+  çalışma saati grafiği seçili yılın gerçek hesaplama verisiyle çiziliyor.
+- Tarih kontrolündeki sabit 2027 varsayılan açıklaması yıl/gün ile eşlendi.
+- Yeni Ay takvimi tablolarının ondalık ayıracı Litvanca virgül biçimine uyarlandı.
+
+Doğrulama:
+421 Node testi başarılı.3 yeni tarayıcı regresyonu başarılı.
+20 Python, CSS ve önbellek adresi testleri ayrıca kaydedildi.
+416 tek sayfa/gömülü fontlu PDF,390 A 3 takvim,1.096 bağımsız tarih ve dosya
+özetleri doğrulandı. Tam çözünürlüklü baskı dosyaları değiştirilmedi.
+811 sayfa ana sayfadan erişilebilir;64.746 yerel hedefte bozuk bağlantı yok.
+214 ana sayfa×2 mobil motor=428 durum incelendi. İlk taramada 425 durum geçti;
+3 durumda testin erken resim çözme zamanlaması saptandı. Etkilenen 3 sayfa
+iki motorda 6 yeni kontrolde geçti. Çözülmemiş hata yok. İkinci bağımsız
+turda 320/390 pikselde 80 durumun tamamı geçti. Fiziksel telefon kullanılmadı.
+Ana takvim çıktısı 1 sayfa; açıklama bölümleri çıktıya girmiyor.
+
+Önbellek: yeni sürüm 37 fe 6 bd 6 db 2588 ed 7 a 13; canlı 0 c 7 e 5 f 7 fbcc 4 e 72 c 647 a ve
+önceki 8 c 2 e 69 aab 7 b 1 c 6 a 7 a 73 c dosya ağaçları korundu. Üçünün bütünlüğü ve
+yerel manifestin yerel yayın biçimi doğrulandı.
+
+Araştırma: önceki 47 belge/11 alanlık kaynak kaydı korundu; Google’ın yararlı
+içerik, yayıncı envanteri ve spam belgeleri yeniden okundu. Verdiğiniz
+MonetizationGuy yazısı da yeniden incelendi. Google tercih ettiği sabit
+kelime sayısı olmadığını açıkça belirtir. Fotoğraf eklemek veya 800 kelimeyi
+geçmek AdSense onayı sağlamaz. İçerik özgünlüğü, araçların işe yaraması ve
+dürüst kimlik/kaynak gösterimi birlikte ele alındı.
+
+Aynı bağımsız araçta yayın ÖNCESİ canlı ölçüm:78/100; örneklem 494 kelime;
+ana sayfa 798 kelime; kendi bildirdiği mobil performans 100, LCP 1,2 s veCLS 0,02.
+Araç mevcut Hakkımızda/Gizlilik bağlantılarını bulamadı; hem viewport doğru
+dedi hem viewport’u hata olarak işaretledi. Sebep kesin kanıtlanmadı.
+font-size denetiminin Lighthouse 13’te kaldırıldığı Google belgesinde yer
+alıyor. Bu, eski isimlere dayanan araçların sonuçlarını dikkatli okumayı
+gerektirir; özel aracın sunucu kodunun böyle çalıştığı kanıtlanmış değildir.
+
+Google onayı garanti edilemez. Özel AdSense hesabına girilmedi, başvuru
+ve hesap ayarı değişikliği yapılmadı. Bağımsız, ana dili Litvanca olan editör
+incelemesi yapılmış gibi gösterilmedi. Yayın ve canlı kontrollerin sonucu
+ayrı üretim doğrulama kaydında raporlanacaktır.

@@ -7398,7 +7398,7 @@
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "6cc7a1e162d42ac8db4d5e027712942df99f751ac8e11f0d0f9d400be8446b64"
+      "sha256": "b350c5791239067c72c31e2475dc43545d2cc3e134fecc14f8cfcbe792ccc7b4"
     }
   ],
   "changed_baseline_assets": [],

@@ -1,0 +1,31 @@
+{
+  "round1": {
+    "unique_routes": 214,
+    "engine_cases": 428,
+    "initial_passed": 425,
+    "initial_image_completion_timing_failures": 3,
+    "targeted_fresh_rechecks": 6,
+    "unresolved_failures": 0,
+    "explanation": "Immediate decode after switching lazy/srcset images to eager can abort before the selected resource loads. Updated harness waits for real load/error state. All3 affected routes passed fresh Chromium and WebKit rechecks; no product image changes were needed."
+  },
+  "round2": {
+    "cases": 80,
+    "widths": [
+      320,
+      390
+    ],
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "failures": 0
+  },
+  "new_workday_and_photo_regressions": {
+    "cases": 3,
+    "passed": 3,
+    "runner": "Playwright1.56.1 Chromium141"
+  },
+  "physical_devices_tested": false,
+  "private_calendar_data_accessed": false,
+  "checked_at": "2026-11-03T12:38:11.933174+00:00"
+}

@@ -1,0 +1,30 @@
+{
+  "reviews": [
+    "Source and purpose review before additions",
+    "Second factual/language and complete generated-output review after additions"
+  ],
+  "official_documents": [
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "application": "Keep publisher identity and AI assistance truthful; supply worked examples and sources; Google states no preferred word count."
+    },
+    {
+      "url": "https://support.google.com/publisherpolicies/answer/11112688?hl=en",
+      "application": "Focus on useful publisher content and functioning tools. Do not infer approval from word count or stock photographs."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "application": "Add route-specific calculation/file context and original reader tasks instead of spinning or mass copying essays."
+    },
+    {
+      "url": "https://developer.chrome.com/blog/lighthouse-13-0",
+      "application": "The font-size audit was removed. This explains why a checker using older audit names could be unreliable, but its server implementation was not verified."
+    }
+  ],
+  "secondary_article": "https://monetizationguy.com/articles/adsense-low-value-content-the-real-fix-not-just-more-words",
+  "secondary_status": "Publisher advice, not official Google requirements. No minimum post/word threshold or approval guarantees accepted as a rule.",
+  "existing_research_registry": "docs/adsense/research-sources.json (47documents,11hosts; official rules and self-reported experiences classified)",
+  "photo_rights": "20 distinct images:17Pexels License sources and3existing rights-documented site photographs; per-photo credits/captions and derivative checksums in data/blog/photographs.json. Original downloads privately retained, not republished as a stock library.",
+  "independent_human_review": "Not performed; no native-editor, professional-credential, first-person-experience or physical-device claim.",
+  "private_adsense_account": "Not accessed; user explicitly declined. No application submitted."
+}
