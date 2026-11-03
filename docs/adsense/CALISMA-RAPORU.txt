@@ -49,6 +49,9 @@ UYGULANANLAR
    canonical URL içeriyor. Mevcut noindex ve kişisel veri koruma davranışı korundu.
 10. Kaynak dosyalar, üretim adımları ve üretilmiş yayın paketi birlikte değişti;
     günlük yeniden oluşturma sırasında içerik kaybolmayacak şekilde bağlandı.
+11. Sunucu testiyle görülen tekrar üretimde boş satır birikmesi giderildi.
+    Aynı içerik hazırlama adımı tekrarlanınca 20 gerçek sayfanın birebir aynı
+    kaldığı doğrulandı; kalıcı regresyon testi yayın kontrolüne eklendi.
 
 DOĞRULAMA
 - 811 canonical sayfa; 64.269 yerel hedef kontrol edildi: 0 kırık bağlantı,

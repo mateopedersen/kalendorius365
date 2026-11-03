@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[2];SITE=ROOT/'site'
 def append(route,body):
  p=SITE/route/'index.html' if route else SITE/'index.html';s=p.read_text()
  s=re.sub(r'\n<section data-editorial-extension="20261103".*?</section>\n?', '\n',s,flags=re.S)
- s+='\n<section data-editorial-extension="20261103" class="panel content-guide">'+body+'</section>\n';p.write_text(s)
+ s=s.rstrip()+'\n\n<section data-editorial-extension="20261103" class="panel content-guide">'+body+'</section>\n';p.write_text(s)
 def prepare():
  changed=[]
  for b in (ROOT/'data/blog/page-guides.txt').read_text().split('@@ ')[1:]:
