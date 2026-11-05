@@ -7,6 +7,7 @@ import hashlib
 import contextlib
 import io
 import json
+import os
 import sys
 import unittest
 from unittest.mock import patch
@@ -283,13 +284,17 @@ class ProductionVerifierTests(unittest.TestCase):
     def test_incomplete_http_read_retries_then_checks_every_route(self):
         args = ['verify_live.py', '--date', '2026-11-06', '--max-wait-seconds', '120']
         expected = {route: ('title', []) for route in verify_live.ROUTES}
-        results = iter([IncompleteRead(b'partial')] + [{'url': route} for route in verify_live.ROUTES])
+        results = iter([IncompleteRead(b'partial')] + [
+            {'url': route, 'http_status': 200, 'content_fields_checked': 1}
+            for route in verify_live.ROUTES
+        ])
         def audit(*args):
             result = next(results)
             if isinstance(result, Exception):
                 raise result
             return result
-        with patch.object(sys, 'argv', args), patch.object(verify_live, 'expected_page_content', return_value=expected), \
+        with patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': ''}), patch.object(sys, 'argv', args), \
+             patch.object(verify_live, 'expected_page_content', return_value=expected), \
              patch.object(verify_live, 'audit_url', side_effect=audit) as mocked, \
              patch.object(verify_live, 'audit_sitemap', return_value={'all_routes_present': True}), \
              patch.object(verify_live.time, 'sleep'), contextlib.redirect_stdout(io.StringIO()):
