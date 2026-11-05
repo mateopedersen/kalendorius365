@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import hashlib
+import contextlib
+import io
 import json
 import sys
 import unittest
@@ -12,6 +14,7 @@ import urllib.error
 import urllib.parse
 from dataclasses import replace
 from datetime import date, datetime
+from http.client import IncompleteRead
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -277,6 +280,22 @@ class EditorialAndPublishTests(unittest.TestCase):
 
 class ProductionVerifierTests(unittest.TestCase):
     """Exercise the real verifier against committed built pages, without HTTP."""
+    def test_incomplete_http_read_retries_then_checks_every_route(self):
+        args = ['verify_live.py', '--date', '2026-11-06', '--max-wait-seconds', '120']
+        expected = {route: ('title', []) for route in verify_live.ROUTES}
+        results = iter([IncompleteRead(b'partial')] + [{'url': route} for route in verify_live.ROUTES])
+        def audit(*args):
+            result = next(results)
+            if isinstance(result, Exception):
+                raise result
+            return result
+        with patch.object(sys, 'argv', args), patch.object(verify_live, 'expected_page_content', return_value=expected), \
+             patch.object(verify_live, 'audit_url', side_effect=audit) as mocked, \
+             patch.object(verify_live, 'audit_sitemap', return_value={'all_routes_present': True}), \
+             patch.object(verify_live.time, 'sleep'), contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(verify_live.main(), 0)
+        self.assertEqual(mocked.call_count, len(verify_live.ROUTES) + 1)
+
     def test_all_rendered_horoscope_pages_match_production_requirements(self):
         target = json.loads(verify_live.DATA_PATH.read_text(encoding="utf-8"))["local_date"]
         expected = verify_live.expected_page_content()

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import html as html_lib
+from http.client import HTTPException
 import json
 import os
 import time
@@ -181,7 +182,7 @@ def main() -> int:
                     for result in results:
                         summary.write(f"| {result['url']} | {result['http_status']} | Taip | Taip | {result['content_fields_checked']} laukai |\n")
             return 0
-        except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+        except (HTTPError, URLError, HTTPException, TimeoutError, OSError, ValueError) as exc:
             last_error = str(exc)
             if time.monotonic() - started + 20 > args.max_wait_seconds:
                 break
