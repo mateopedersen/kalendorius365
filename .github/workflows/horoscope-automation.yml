@@ -47,7 +47,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install the pinned lunar image validator
-        run: python -m pip install --disable-pip-version-check Pillow==12.3.0
+        run: python -m pip install --disable-pip-version-check Pillow==13.0.0
       - name: Run offline source, content and atomic-publication tests
         run: python3 scripts/horoscopes/test_pipeline.py
       - name: Validate published data, workflow syntax and Ruby source
@@ -55,13 +55,13 @@ jobs:
           python3 scripts/validate_horoscopes.py
           ruby -e 'require "yaml"; YAML.load_file(".github/workflows/horoscope-automation.yml", aliases: true)'
           ruby -c lib/horoscopes_pages.rb
-      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1
         with:
           ruby-version: .ruby-version
           bundler-cache: true
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: '24'
+          node-version: '24.22.1'
           cache: npm
       - name: Install the pinned JavaScript compiler
         run: npm ci
@@ -85,7 +85,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install the pinned lunar image validator
-        run: python -m pip install --disable-pip-version-check Pillow==12.3.0
+        run: python -m pip install --disable-pip-version-check Pillow==13.0.0
       - name: Determine whether today's Lithuanian set needs publication
         id: target
         run: python3 scripts/horoscopes/publish.py --check-date
@@ -93,7 +93,7 @@ jobs:
         id: generate
         if: steps.target.outputs.needs_publish == 'true'
         run: python3 scripts/horoscopes/publish.py
-      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1
         if: steps.generate.outputs.changed == 'true'
         with:
           ruby-version: .ruby-version
@@ -101,7 +101,7 @@ jobs:
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         if: steps.generate.outputs.changed == 'true'
         with:
-          node-version: '24'
+          node-version: '24.22.1'
           cache: npm
       - name: Install the pinned JavaScript compiler
         if: steps.generate.outputs.changed == 'true'
