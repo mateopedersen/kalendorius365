@@ -216,9 +216,40 @@ def _branch_matches(branch: str, available: set[str]) -> bool:
     branch = re.sub(r":not\s*\([^)]*\)", "", branch, flags=re.I)
     branch = re.sub(r"/\*.*?\*/", "", branch, flags=re.S)
     branch = re.sub(r"\[[^\]]*\]", "", branch)
-    branch = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", branch)
+    branch = _remove_quoted_strings(branch)
     selector_classes = set(re.findall(r"\.([A-Za-z_][\w-]*)", branch))
     return not selector_classes or selector_classes.issubset(available)
+
+
+def _remove_quoted_strings(value: str) -> str:
+    """Remove CSS strings in one pass; keep malformed input conservative."""
+    output: list[str] = []
+    quote: str | None = None
+    index = 0
+    while index < len(value):
+        char = value[index]
+        if quote:
+            if char == "\\":
+                index += 2
+                continue
+            if char == quote:
+                quote = None
+            index += 1
+            continue
+        if char == "\\":
+            # A quoted delimiter escaped in a selector is not a string start.
+            output.append(value[index : index + 2])
+            index += 2
+            continue
+        if char in "'\"":
+            quote = char
+            index += 1
+            continue
+        output.append(char)
+        index += 1
+    # An unclosed string makes the selector malformed. Preserve it rather than
+    # pruning CSS on partial interpretation of unknown syntax.
+    return value if quote else "".join(output)
 
 
 def filter_css(css: str, available: set[str]) -> str:

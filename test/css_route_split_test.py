@@ -24,6 +24,19 @@ class RouteCssSplitterTests(unittest.TestCase):
         self.assertIn(".used:not(.missing)", result)
         self.assertIn(".unknown:has(.used)", result)
 
+    def test_quoted_selector_text_is_scanned_linearly(self):
+        hidden_class = '.used:lang("' + "\\a" * 100_000 + '.not-live")'
+        stripped = splitter._remove_quoted_strings(hidden_class)
+        self.assertNotIn(".not-live", stripped)
+        self.assertLess(len(stripped), len(hidden_class))
+        self.assertTrue(splitter._branch_matches(hidden_class, {"used"}))
+        escaped = r'.used\"quoted\"'
+        self.assertEqual(splitter._remove_quoted_strings(escaped), escaped)
+
+    def test_unclosed_quoted_selector_is_preserved_conservatively(self):
+        malformed = '.used:lang(".unknown'
+        self.assertEqual(splitter._remove_quoted_strings(malformed), malformed)
+
     def test_filters_nested_media_rules_and_retains_keyframes(self):
         source = "@media(max-width:600px){.used{color:red}.unused{color:blue}}@keyframes pulse{from{opacity:0}to{opacity:1}}"
         result = splitter.filter_css(source, {"used"})
