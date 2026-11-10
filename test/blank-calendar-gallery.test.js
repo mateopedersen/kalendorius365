@@ -27,7 +27,7 @@ test("blank calendar images have distinct descriptive Lithuanian alt text and ca
   assert.ok(new Set(alts).size >= 20);
   for (const category of ["month", "week", "day", "family", "school", "shift"])
     assert.match(html, new RegExp(`data-design-filter="${category}"`));
-  assert.match(html, /title: "Tušti kalendoriai spausdinimui: nemokami PDF ir WebP"/);
+  assert.match(html, /title: "Tušti kalendoriai spausdinimui: nemokami PDF ir vaizdai"/);
   assert.match(html, /description: "Atsisiųskite 20 nedatuotų mėnesio, savaitės, dienos, šeimos, mokyklos ir pamainų planuoklių/);
   assert.match(html, /<h1>Tušti kalendoriai ir planuokliai spausdinimui<\/h1>/);
 });
