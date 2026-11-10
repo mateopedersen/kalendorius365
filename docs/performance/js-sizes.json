@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 38766,
-      "generated_bytes": 25013
+      "source_bytes": 38769,
+      "generated_bytes": 25016
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -43,8 +43,8 @@
     },
     {
       "path": "/assets/calendar-editor/lt.js",
-      "source_bytes": 21202,
-      "generated_bytes": 19139
+      "source_bytes": 21226,
+      "generated_bytes": 19163
     },
     {
       "path": "/assets/calendar-editor/model.js",
@@ -278,8 +278,8 @@
     },
     {
       "path": "/assets/tools.js",
-      "source_bytes": 40895,
-      "generated_bytes": 26379
+      "source_bytes": 40899,
+      "generated_bytes": 26383
     },
     {
       "path": "/assets/weather.js",
@@ -293,8 +293,8 @@
     },
     {
       "path": "/assets/year-directory.js",
-      "source_bytes": 6018,
-      "generated_bytes": 4211
+      "source_bytes": 6024,
+      "generated_bytes": 4217
     },
     {
       "path": "/assets/zodiac-engine.js",
