@@ -35,6 +35,20 @@ ASSET_PREFIXES = (
 MAX_URLS = 10_000
 
 
+def cloudflare_email(value):
+    """Decode only a complete Cloudflare email token, never discard content."""
+    if not re.fullmatch(r"(?:[0-9a-fA-F]{2}){2,321}", value):
+        return None
+    encoded = bytes.fromhex(value)
+    try:
+        address = bytes(byte ^ encoded[0] for byte in encoded[1:]).decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+    if not re.fullmatch(r"[^@\s<>\x00-\x1f\x7f]+@[^@\s<>\x00-\x1f\x7f]+", address):
+        return None
+    return address
+
+
 class MeaningfulPage(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -49,9 +63,13 @@ class MeaningfulPage(HTMLParser):
         self.in_h1 = False
         self.in_main = 0
         self.has_main = False
+        self.email_spans = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == "span":
+            address = cloudflare_email(attrs.get("data-cfemail", "")) if "__cf_email__" in attrs.get("class", "").split() else None
+            self.email_spans.append(address)
         if tag == "title":
             self.in_title = True
         elif tag == "h1":
@@ -69,11 +87,16 @@ class MeaningfulPage(HTMLParser):
             self.canonical = attrs.get("href", "")
         if self.in_main:
             if tag == "a" and attrs.get("href"):
-                self.main_refs.append(("a", attrs["href"]))
+                href = attrs["href"]
+                prefix = "/cdn-cgi/l/email-protection#"
+                address = cloudflare_email(href[len(prefix):]) if href.startswith(prefix) else None
+                self.main_refs.append(("a", "mailto:" + address if address else href))
             elif tag == "img":
                 self.main_refs.append(("img", attrs.get("src", ""), attrs.get("alt", "")))
 
     def handle_endtag(self, tag):
+        if tag == "span" and self.email_spans:
+            self.email_spans.pop()
         if tag == "title":
             self.in_title = False
         elif tag == "h1":
@@ -82,6 +105,11 @@ class MeaningfulPage(HTMLParser):
             self.in_main -= 1
 
     def handle_data(self, data):
+        # Cloudflare changes both the mailto reference and its visible text.
+        # Preserve their decoded values in the signature, rather than omitting
+        # email links/text or trusting an arbitrary protection placeholder.
+        if self.email_spans and self.email_spans[-1] and data in ("[email\xa0protected]", "[email protected]"):
+            data = self.email_spans[-1]
         if self.in_title:
             self.title.append(data)
         if self.in_h1:
