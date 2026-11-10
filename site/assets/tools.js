@@ -880,7 +880,7 @@ if ($("#generator")) {
         output,
         "image/webp",
       );
-      notice("WebP kalendorius paruoštas.");
+      notice("Kalendoriaus vaizdas paruoštas.");
     } catch {
       notice(
         "Naršyklė neleido eksportuoti vaizdo. Naudokite spausdinimą arba kolekcijos failą.",

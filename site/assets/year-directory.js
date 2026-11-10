@@ -70,14 +70,14 @@ if (selector) {
     if (!host || !assets.length) return;
     const details = document.createElement("details"), summary = document.createElement("summary"), list = document.createElement("ul");
     details.className = "year-print-details";
-    summary.textContent = `${countNoun(assets.length, "paruoštas metinis maketas", "paruošti metiniai maketai", "paruoštų metinių maketų")} · PDF ir WebP`;
+    summary.textContent = `${countNoun(assets.length, "paruoštas metinis maketas", "paruošti metiniai maketai", "paruoštų metinių maketų")} · PDF ir vaizdai`;
     list.className = "year-print-list";
     for (const asset of assets) {
       const item = document.createElement("li"), title = document.createElement("span"), actions = document.createElement("span");
       title.className = "year-print-list__title";
       title.textContent = `${asset.name} · ${asset.paper || "A3"} · ${asset.landscape ? "horizontalus" : "vertikalus"}`;
       actions.className = "year-print-list__actions";
-      for (const [label, href] of [["PDF", asset.pdf], ["WebP", asset.webp]]) {
+      for (const [label, href] of [["PDF", asset.pdf], ["Vaizdas", asset.webp]]) {
         const link = document.createElement("a");
         link.href = href;
         link.textContent = label;

@@ -95,11 +95,11 @@ module Phase568Pages
     'Lygiadienių ir saulėgrįžų momentai Lietuvos laiku, penkių miestų saulėtekio skaičiuoklė ir 2027–2029 m. Mėnulio fazių lentelės.',seasons,'sun')
 
   printable_routes=[
-   ['savaitiniai-planuokliai','Savaitinis planuoklis spausdinimui','Savaitės lapai su vieta prioritetams, dienų užduotims ir pastaboms.','Atsisiųskite savaitinį planuoklį PDF arba WebP formatu. A4 šablone rasite vietos savaitės prioritetams, dienų užduotims ir pastaboms.','week'],
-   ['dienos-planuoklis','Dienos planuoklis spausdinimui','Nedatuotas dienos lapas laikui, svarbiausiems darbams ir užrašams.','Atsisiųskite nedatuotą dienos planuoklį PDF arba WebP formatu. A4 lape galėsite susidėlioti dienos laiką, svarbiausius darbus ir pastabas.','day'],
-   ['seimos-kalendorius','Šeimos savaitės planuoklis','Atskiros skiltys šeimos narių planams ir bendroms savaitės veikloms.','Atsisiųskite šeimos savaitės planuoklį PDF arba WebP formatu. A4 šablone rasite atskiras skiltis šeimos narių planams ir bendroms veikloms.','family'],
-   ['pamoku-tvarkarascio-sablonai','Pamokų tvarkaraščio šablonai','Tušti savaitės tvarkaraščiai rašymui ranka ir mokyklos užduotims.','Atsisiųskite spausdinamą pamokų tvarkaraštį PDF arba WebP formatu. Nedatuoti A4 savaitės šablonai skirti pamokoms ir mokyklos užduotims.','school'],
-   ['darbo-grafiko-sablonai','Darbo grafiko šablonai','Nedatuoti darbo ir pamainų lapai. Atspausdinkite ir pildykite ranka.','Atsisiųskite nedatuotą darbo ir pamainų grafiko šabloną PDF arba WebP formatu. Pasirinkite juodai baltą arba spalvotą A4 planuoklį.','shift']
+   ['savaitiniai-planuokliai','Savaitinis planuoklis spausdinimui','Savaitės lapai su vieta prioritetams, dienų užduotims ir pastaboms.','Atsisiųskite savaitinį planuoklį PDF arba vaizdą formatu. A4 šablone rasite vietos savaitės prioritetams, dienų užduotims ir pastaboms.','week'],
+   ['dienos-planuoklis','Dienos planuoklis spausdinimui','Nedatuotas dienos lapas laikui, svarbiausiems darbams ir užrašams.','Atsisiųskite nedatuotą dienos planuoklį PDF arba vaizdą formatu. A4 lape galėsite susidėlioti dienos laiką, svarbiausius darbus ir pastabas.','day'],
+   ['seimos-kalendorius','Šeimos savaitės planuoklis','Atskiros skiltys šeimos narių planams ir bendroms savaitės veikloms.','Atsisiųskite šeimos savaitės planuoklį PDF arba vaizdą formatu. A4 šablone rasite atskiras skiltis šeimos narių planams ir bendroms veikloms.','family'],
+   ['pamoku-tvarkarascio-sablonai','Pamokų tvarkaraščio šablonai','Tušti savaitės tvarkaraščiai rašymui ranka ir mokyklos užduotims.','Atsisiųskite spausdinamą pamokų tvarkaraštį PDF arba vaizdą formatu. Nedatuoti A4 savaitės šablonai skirti pamokoms ir mokyklos užduotims.','school'],
+   ['darbo-grafiko-sablonai','Darbo grafiko šablonai','Nedatuoti darbo ir pamainų lapai. Atspausdinkite ir pildykite ranka.','Atsisiųskite nedatuotą darbo ir pamainų grafiko šabloną PDF arba vaizdą formatu. Pasirinkite juodai baltą arba spalvotą A4 planuoklį.','shift']
   ]
   printable_routes.each do |slug,title,copy,description,category|
    items=Pages::MANIFEST.select { |e|e['kind']=='blank' && e['category']==category }
@@ -110,8 +110,8 @@ module Phase568Pages
     'school'=>['/pamoku-tvarkarastis/','Kurti skaitmeninį pamokų tvarkaraštį'],
     'shift'=>['/pamainu-grafikas/','Apskaičiuoti pamainų grafiką']
    }.fetch(category)
-   body=Pages.intro(title,copy+' Nespalvotas ir spalvotas variantas paruoštas spausdinti A4 lape.')+"<section class=\"panel\"><h2>Pasirinkite spausdinamą variantą</h2><p>PDF yra vektorinis, o WebP sukurtas iš to paties PDF 600 PPI raiška. Peržiūros paveikslėlis yra tik miniatiūra. Spausdindami pasirinkite A4 lapą, tinkamą orientaciją ir 100 % dydį.</p></section>"+(items.empty? ? '<p>Šio rinkinio failai dar neparengti.</p>' : Pages.gallery(items,true))+"<p><a href=\"/tuscias-kalendorius/\">Peržiūrėti visus tuščius kalendorius</a> · <a href=\"#{digital[0]}\">#{digital[1]}</a>#{category=='week' ? %q( · <a href="/seimos-kalendorius/">Šeimos savaitės planuoklis</a>) : ''}</p>"
-   page(slug,title+' – PDF ir WebP',description,body)
+   body=Pages.intro(title,copy+' Nespalvotas ir spalvotas variantas paruoštas spausdinti A4 lape.')+"<section class=\"panel\"><h2>Pasirinkite spausdinamą variantą</h2><p>PDF yra vektorinis, o Vaizdas sukurtas iš to paties PDF 600 PPI raiška. Peržiūros paveikslėlis yra tik miniatiūra. Spausdindami pasirinkite A4 lapą, tinkamą orientaciją ir 100 % dydį.</p></section>"+(items.empty? ? '<p>Šio rinkinio failai dar neparengti.</p>' : Pages.gallery(items,true))+"<p><a href=\"/tuscias-kalendorius/\">Peržiūrėti visus tuščius kalendorius</a> · <a href=\"#{digital[0]}\">#{digital[1]}</a>#{category=='week' ? %q( · <a href="/seimos-kalendorius/">Šeimos savaitės planuoklis</a>) : ''}</p>"
+   page(slug,title+' – PDF ir vaizdai',description,body)
   end
  end
 end
