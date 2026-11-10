@@ -57,7 +57,7 @@ module Pages
    %(<a class="resource-card#{classes}" href="#{url}">#{body}</a>)
   end
   # Consistent semantic icons on real actions; no extra inactive controls.
-  {'Atsisiųsti PDF'=>'download','Atsisiųsti WebP'=>'image','Atidaryti PDF spausdinimui ↗'=>'print','Spausdinti metų apžvalgą'=>'print','Spausdinti lentelę'=>'print','Atsisiųsti CSV suvestinę'=>'download','Spausdinti / Išsaugoti PDF'=>'print','Skaičiuoti'=>'calendar'}.each do |label,icon|
+  {'Atsisiųsti PDF'=>'download','Atsisiųsti vaizdą'=>'image','Atidaryti PDF spausdinimui ↗'=>'print','Spausdinti metų apžvalgą'=>'print','Spausdinti lentelę'=>'print','Atsisiųsti CSV suvestinę'=>'download','Spausdinti / Išsaugoti PDF'=>'print','Skaičiuoti'=>'calendar'}.each do |label,icon|
    html=html.gsub('>'+label+'</','>'+ui_icon(icon)+label+'</')
   end
   html=html.gsub('>▦ ', '>'+ui_icon('calendar'))
@@ -72,7 +72,7 @@ module Pages
   # Selected card is visible before JavaScript, without opening collapsed previews.
   selected=html[/<option value="([^"]+)" selected>/,1]
   html=html.sub('class="design-card" id="dizainas-'+selected+'"','class="design-card selected-design" id="dizainas-'+selected+'"') if selected
-  html=html.gsub('>PDF</a>','>'+ui_icon('pdf')+'PDF</a>').gsub('>WebP</a>','>'+ui_icon('image')+'WebP</a>')
+  html=html.gsub('>PDF</a>','>'+ui_icon('pdf')+'PDF</a>').gsub('>Vaizdas</a>','>'+ui_icon('image')+'Vaizdas</a>')
   if path.match?(%r{\Asventes/202[789]\z})
    html=html.sub('<h2>Kitos datos</h2>',holiday_stories(path.split('/').last.to_i)+'<h2>Kitos datos</h2>')
   elsif path.match?(/\A202[789]\z/)

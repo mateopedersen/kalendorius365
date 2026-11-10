@@ -436,7 +436,7 @@ function renderCalendar() {
   const link = $("#current-download");
   if ([2027, 2028].includes(y)) {
     link.href = `/${y}/${data.months[m - 1][0]}/`;
-    link.textContent = "Šio mėnesio PDF ir WebP →";
+    link.textContent = "Šio mėnesio PDF ir vaizdai →";
   } else {
     link.href = `/kurti-kalendoriu/?metai=${y}&menuo=${m}`;
     link.textContent = "Kurti šio mėnesio kalendorių →";

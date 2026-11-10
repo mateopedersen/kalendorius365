@@ -92,6 +92,8 @@ Dir.chdir(ROOT) do
   File.write(path,javascript)
  end
  system('python3','scripts/inline_route_css.py',exception:true)
+ require_relative '../lib/image_format_labels'
+ ImageFormatLabels.rewrite!('public')
  versioned_asset_references=Kalendorius::StaticAssetUrls.rewrite!('public')
  puts "Content-versioned #{versioned_asset_references} static image, data and print URLs"
  system('python3','scripts/inline_lcp_image.py',exception:true)
