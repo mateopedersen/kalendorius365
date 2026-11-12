@@ -1,4 +1,4 @@
-"""Deployment parity must allow the same protected email and reject changes."""
+"""Production parity accepts delivery transforms and rejects editorial changes."""
 
 import unittest
 
@@ -67,6 +67,25 @@ class IndexNowEmailParityTest(unittest.TestCase):
         actual = page(protected(self.address) + '<span>Important</span>')
         self.assertEqual(page_signature(old)[0], page_signature(actual)[0])
         self.assertNotEqual(page_signature(old)[0], page_signature(page(protected(self.address) + '<span>Changed</span>'))[0])
+
+
+class IndexNowAssetParityTest(unittest.TestCase):
+    def signature(self, url, alt="Mėnulis"):
+        return page_signature(page(f'<a href="{url}">Šaltinis</a><img src="{url}" alt="{alt}">'))[0]
+
+    def test_release_directory_is_not_an_editorial_change(self):
+        for origin in ("", "https://kalendorius365.lt"):
+            a = origin + "/assets/releases/" + "a" * 20 + "/data/source.json?v=3"
+            b = a.replace("a" * 20, "b" * 20)
+            self.assertEqual(self.signature(a), self.signature(b))
+            self.assertNotEqual(self.signature(a), self.signature(b.replace("source", "other")))
+            self.assertNotEqual(self.signature(a), self.signature(b.replace("v=3", "v=4")))
+            self.assertNotEqual(self.signature(a), self.signature(b, alt="Saulė"))
+
+    def test_unrelated_hosts_and_directories_still_matter(self):
+        for root in ("https://other.lt/assets/releases/", "/documents/releases/"):
+            a = root + "a" * 20 + "/source.json"
+            self.assertNotEqual(self.signature(a), self.signature(a.replace("a" * 20, "b" * 20)))
 
 
 if __name__ == "__main__":

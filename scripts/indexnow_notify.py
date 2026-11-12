@@ -33,6 +33,12 @@ ASSET_PREFIXES = (
     "public/assets/holiday-guides-ics/",
 )
 MAX_URLS = 10_000
+RELEASE_DIRECTORY = re.compile(r"^((?:" + re.escape(BASE_URL) + r")?/assets/)releases/[0-9a-f]{20}/")
+
+
+def asset_reference(url):
+    # The release identifier namespaces all assets, including unchanged ones.
+    return RELEASE_DIRECTORY.sub(r"\1", url)
 
 
 def cloudflare_email(value):
@@ -90,9 +96,9 @@ class MeaningfulPage(HTMLParser):
                 href = attrs["href"]
                 prefix = "/cdn-cgi/l/email-protection#"
                 address = cloudflare_email(href[len(prefix):]) if href.startswith(prefix) else None
-                self.main_refs.append(("a", "mailto:" + address if address else href))
+                self.main_refs.append(("a", "mailto:" + address if address else asset_reference(href)))
             elif tag == "img":
-                self.main_refs.append(("img", attrs.get("src", ""), attrs.get("alt", "")))
+                self.main_refs.append(("img", asset_reference(attrs.get("src", "")), attrs.get("alt", "")))
 
     def handle_endtag(self, tag):
         if tag == "span" and self.email_spans:
