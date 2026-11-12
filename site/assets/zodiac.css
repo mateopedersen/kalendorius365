@@ -241,4 +241,12 @@
 .z-filters img { width:30px; height:30px; }
 .zodiac-guide { overflow-wrap:break-word; }
 @media(prefers-reduced-motion:reduce) { .zodiac-guide *, .horoscope-app .zodiac-mark { scroll-behavior:auto; transition:none!important; animation:none!important; } }
+/* Leave room for twelve separate 44px touch targets on narrow screens. */
+@media(max-width:380px) {
+ .z-wheel { width:calc(100% + 28px); margin-inline:-14px; }
+ .z-wheel__button {
+  left:calc(50% + (var(--x) - 50%) * 1.22);
+  top:calc(50% + (var(--y) - 50%) * 1.22);
+ }
+}
 @media print { .z-wheel__button,.z-finder form,.z-filters,.z-compare-controls { display:none; } .z-sign-card,.z-compare-card { break-inside:avoid; } .z-panel,.z-hero,.z-sign-profile { box-shadow:none; } }

@@ -36,7 +36,7 @@ def parse(body, url):
     for s in original.xpath('//script[@type="application/ld+json"]'):
         try: structured.append(json.loads(s.text or ''))
         except Exception as exc: schema_errors.append(str(exc))
-    links = sorted(set(urljoin(url, x) for x in doc.xpath('//a[@href]/@href')))
+    links = sorted(set(urljoin(url, x) for x in original.xpath('//a[@href]/@href')))
     external = [x for x in links if urlsplit(x).scheme in {'http', 'https'} and urlsplit(x).hostname not in {'kalendorius365.lt','www.kalendorius365.lt'}]
     source_links = sorted(set(x for x in external if any(t in x for t in ['vlkk','vle.lt','e-tar.lt','e-seimas','usno.navy.mil','nasa.gov','commons.wikimedia.org','wikipedia.org','meteo.lt','cosinekitty','timeanddate','si.edu','nsa.smm','emokykla','lrv.lt','archyvai.lt','lnm.lt','lki.lt'])))
     images = [{'src':n.get('src'), 'alt':n.get('alt'), 'decorative':n.get('aria-hidden')=='true'} for n in doc.xpath('//img')]
@@ -111,7 +111,10 @@ def diagnose(p, urls, rp):
     headers={k.lower():v.lower() for k,v in p.get('headers',{}).items()}
     robots=','.join(v for k,values in p.get('meta',{}).items() if k in {'robots','googlebot','bingbot','googlebot-news'} for v in values).lower()
     directives=robots+','+headers.get('x-robots-tag','')
-    if re.search(r'\b(?:noindex|none)\b',directives):issues.append('NOINDEX')
+    archive = bool(re.fullmatch(r'/dalintis/kalendorius/[a-z0-9-]+/|/horoskopai/istorija/|/horoskopai/[a-z]+/\d{4}-\d{2}-\d{2}/v-[a-f0-9]{16}/', urlsplit(p['url']).path))
+    noindex = bool(re.search(r'\b(?:noindex|none)\b', directives))
+    if noindex and not archive:issues.append('NOINDEX')
+    if archive and not noindex:issues.append('ARCHIVE_MISSING_NOINDEX')
     if p.get('canonical')!=[p['url']]:issues.append('CANONICAL_MISMATCH')
     if len(p.get('h1',[]))!=1:issues.append('H1_COUNT')
     if len(p.get('title',[]))!=1 or not p['title'][0]:issues.append('TITLE_MISSING')
@@ -122,7 +125,8 @@ def diagnose(p, urls, rp):
     if not p.get('structured_data'):issues.append('STRUCTURED_DATA_MISSING')
     if not p.get('nfc',False):issues.append('NON_NFC_COPY')
     if p.get('lang') not in {'lt','lt-LT'}:issues.append('WRONG_HTML_LANGUAGE')
-    if p['url'] not in urls:issues.append('MISSING_LIVE_SITEMAP')
+    if not archive and p['url'] not in urls:issues.append('MISSING_LIVE_SITEMAP')
+    if archive and p['url'] in urls:issues.append('NOINDEX_IN_SITEMAP')
     p['robots_allowed']={bot:rp.can_fetch(bot,p['url'])for bot in ['Googlebot','Googlebot-Mobile','Bingbot','DuckDuckBot','*']}
     if not all(p['robots_allowed'].values()):issues.append('ROBOTS_DISALLOW')
     for key in ['og:title','og:description','og:url','og:image','og:image:alt','twitter:title','twitter:description','twitter:card','twitter:image','twitter:image:alt']:
@@ -142,6 +146,8 @@ def run(output, variations=False, local=False):
         live_urls=sitemap(sbody)
         for url in live_urls:sources[url].add('live sitemap')
     rp=robotparser.RobotFileParser();rp.parse(robots_body.decode().splitlines())
+    # Bound unexpected discoveries independently of the growing published archive.
+    discovery_limit = len(sources) + 500
     while set(sources)-set(records):
         batch=sorted(set(sources)-set(records))
         def get(url):
@@ -158,7 +164,7 @@ def run(output, variations=False, local=False):
                     candidate=internal_page_url(target)
                     if candidate and candidate not in sources:sources[candidate].add('discovered internal link')
         print(f'Inspected {len(records)} individual HTML routes',flush=True)
-        if len(sources)>500:raise RuntimeError('Unbounded page discovery')
+        if len(sources)>discovery_limit:raise RuntimeError('Unbounded page discovery')
     inbound=defaultdict(set)
     for p in records.values():
         for link in p.get('links',[]):

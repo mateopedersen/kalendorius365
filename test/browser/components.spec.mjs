@@ -179,6 +179,26 @@ test('name search prefill, leap date and recurring ICS export keep real names',a
  await page.locator('#nd-year').selectOption('2027');await expect(page.locator('#nd-date')).toHaveValue('2028-02-29');await expect(page.locator('#nd-feedback')).toContainText('keliamaisiais');
 });
 
+test('the twelve zodiac touch targets remain separate on a narrow phone',async({page})=>{
+ await page.setViewportSize({width:320,height:700});
+ await page.goto('/zodiakas/');
+ const signs=page.locator('[data-wheel-sign]');
+ await expect(signs).toHaveCount(12);
+ const bounds=await signs.evaluateAll(buttons=>buttons.map(button=>{
+  const {left,top,right,bottom,width,height}=button.getBoundingClientRect();
+  return {left,top,right,bottom,width,height};
+ }));
+ for(const [index,sign] of bounds.entries()){
+  expect(sign.width).toBeGreaterThanOrEqual(44);
+  expect(sign.height).toBeGreaterThanOrEqual(44);
+  for(const other of bounds.slice(index+1)){
+   const horizontal=Math.min(sign.right,other.right)-Math.max(sign.left,other.left);
+   const vertical=Math.min(sign.bottom,other.bottom)-Math.max(sign.top,other.top);
+   expect(Math.min(horizontal,vertical)).toBeLessThanOrEqual(0.5);
+  }
+ }
+});
+
 test('zodiac wheel, finder, invalid date, filters and comparison respond',async({page})=>{
  await page.goto('/zodiakas/');await expect(page.locator('.zodiac-guide')).toHaveAttribute('data-ready','true');
  await page.locator('[data-wheel-sign]').first().press('ArrowRight');await expect(page.locator('#z-wheel-name')).toHaveText('Jautis');
