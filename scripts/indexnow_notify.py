@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import re
 import subprocess
@@ -14,6 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -255,9 +257,13 @@ def deployed(url, current_files):
     relative = "public" + path
     if relative.endswith("/") or relative == "public":
         relative = relative.rstrip("/") + "/index.html"
+    try:
+        status, final_url, headers, body = live_response(url)
+    except (urllib.error.URLError, http.client.HTTPException, TimeoutError, ConnectionError):
+        # A transient origin failure proves neither publication nor removal.
+        return False
     if relative in current_files:
         expected = current_files[relative]
-        status, final_url, headers, body = live_response(url)
         if status not in (200, 206) or final_url != url:
             return False
         if relative.lower().endswith((".pdf", ".webp", ".ics")):
@@ -267,7 +273,6 @@ def deployed(url, current_files):
                 return content_range.rsplit("/", 1)[-1].strip() == str(len(expected))
             return content_length.isdigit() and int(content_length) == len(expected)
         return page_signature(body)[0] == page_signature(expected)[0]
-    status, final_url, _, _ = live_response(url)
     return status in (404, 410) or final_url != url
 
 
@@ -281,8 +286,11 @@ def wait_for_deployment(urls, base, head, timeout_seconds):
                     current_files[path] = file_path.read_bytes()
     deadline = time.monotonic() + timeout_seconds
     attempts = 0
+    pending = list(urls)
     while True:
-        pending = [url for url in urls if not deployed(url, current_files)]
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            results = pool.map(lambda url: deployed(url, current_files), pending)
+            pending = [url for url, ready in zip(pending, results) if not ready]
         if not pending:
             return attempts + 1
         if time.monotonic() >= deadline:

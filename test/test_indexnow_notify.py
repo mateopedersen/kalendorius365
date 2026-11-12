@@ -1,6 +1,10 @@
 """Production parity accepts delivery transforms and rejects editorial changes."""
 
 import unittest
+from http.client import RemoteDisconnected
+from unittest.mock import patch
+
+from scripts import indexnow_notify
 
 from scripts.indexnow_notify import cloudflare_email, page_signature
 
@@ -86,6 +90,26 @@ class IndexNowAssetParityTest(unittest.TestCase):
         for root in ("https://other.lt/assets/releases/", "/documents/releases/"):
             a = root + "a" * 20 + "/source.json"
             self.assertNotEqual(self.signature(a), self.signature(a.replace("a" * 20, "b" * 20)))
+
+
+class IndexNowReleaseRetryTest(unittest.TestCase):
+    @patch("scripts.indexnow_notify.live_response", side_effect=RemoteDisconnected())
+    def test_interrupted_get_proves_neither_publication_nor_removal(self, _get):
+        url = "https://kalendorius365.lt/about/"
+        self.assertFalse(indexnow_notify.deployed(url, {"public/about/index.html": b"content"}))
+        self.assertFalse(indexnow_notify.deployed(url, {}))
+
+    @patch("scripts.indexnow_notify.git_changed_paths", return_value=[])
+    @patch("scripts.indexnow_notify.time.sleep")
+    def test_only_unconfirmed_urls_are_polled_again(self, _sleep, _paths):
+        visits = []
+        def ready(url, _files):
+            visits.append(url)
+            return url == "first" or visits.count(url) > 1
+        with patch("scripts.indexnow_notify.deployed", side_effect=ready):
+            self.assertEqual(indexnow_notify.wait_for_deployment(["first", "second"], "base", "head", 60), 2)
+        self.assertEqual(visits.count("first"), 1)
+        self.assertEqual(visits.count("second"), 2)
 
 
 if __name__ == "__main__":
