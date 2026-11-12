@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import http.client
 import json
 import re
@@ -55,6 +56,21 @@ def cloudflare_email(value):
     if not re.fullmatch(r"[^@\s<>\x00-\x1f\x7f]+@[^@\s<>\x00-\x1f\x7f]+", address):
         return None
     return address
+
+
+PLAIN_EMAIL_WRAPPER = re.compile(
+    r"""<a\s+(?=[^>]*\bhref=["']/cdn-cgi/l/email-protection["'])"""
+    r"""(?=[^>]*\bclass=["']__cf_email__["'])(?=[^>]*\bdata-cfemail=["']([0-9a-f]+)["'])"""
+    r"""[^>]*>\[email(?:&#160;|&nbsp;|\xa0| )protected\]</a>""",
+    re.IGNORECASE,
+)
+
+
+def unwrap_plain_email(match):
+    # The edge also wraps bare text addresses, including ones inside a sentence.
+    # Restore the original text node with its punctuation and no invented link.
+    address = cloudflare_email(match[1])
+    return html.escape(address) if address else match[0]
 
 
 class MeaningfulPage(HTMLParser):
@@ -128,7 +144,7 @@ class MeaningfulPage(HTMLParser):
 
 def page_signature(data):
     parser = MeaningfulPage()
-    parser.feed(data.decode("utf-8", errors="replace"))
+    parser.feed(PLAIN_EMAIL_WRAPPER.sub(unwrap_plain_email, data.decode("utf-8", errors="replace")))
     main_text = parser.main_text if parser.has_main else parser.h1
     normalized = {
         "title": " ".join("".join(parser.title).split()),

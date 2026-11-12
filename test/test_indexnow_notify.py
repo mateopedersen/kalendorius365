@@ -42,6 +42,17 @@ class IndexNowEmailParityTest(unittest.TestCase):
         span = protected(self.address).split('>', 1)[1].removesuffix('</a>')
         self.assertEqual(page_signature(old)[0], page_signature(page(f'<p>{span}</p><p>{span}</p>'))[0])
 
+    def test_automatically_linked_plain_address_preserves_sentence(self):
+        original = page(f'<p>Siųsti į {self.address}. Registruotis nereikia.</p>')
+        anchor = (f'<a class="__cf_email__" data-cfemail="{encoded(self.address)}" '
+                  'href="/cdn-cgi/l/email-protection">[email&#160;protected]</a>')
+        actual = page(f'<p>Siųsti į {anchor}. Registruotis nereikia.</p>')
+        expected = page_signature(original)[0]
+        self.assertEqual(expected, page_signature(actual)[0])
+        self.assertNotEqual(expected, page_signature(actual.replace(encoded(self.address).encode(), encoded('other@example.com').encode()))[0])
+        self.assertNotEqual(expected, page_signature(actual.replace(b'/cdn-cgi/l/email-protection', b'/another-link'))[0])
+        self.assertNotEqual(expected, page_signature(actual.replace(b'[email&#160;protected]', b'Something else'))[0])
+
     def test_different_email_href_or_text_is_rejected(self):
         expected = page_signature(self.original())[0]
         for kwargs in ({"href_address": "other@example.com"}, {"span_address": "other@example.com"}):
