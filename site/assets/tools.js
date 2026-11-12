@@ -385,6 +385,12 @@ if ($("#calculator")) {
         duration = cal.calendarDuration(a, b),
         target = $("#calc-result");
       target.replaceChildren();
+      const boundaryNote = f.elements.inclusive.checked
+        ? "Skaičiuojant visas dienas įtrauktos abi datos."
+        : "Kalendorinių dienų skirtumas skaičiuojamas be pabaigos datos. Skaičiuojant darbo dienas, savaitgalius ir šventes įtrauktos abi datos.";
+      const note = document.createElement("p");
+      note.textContent = boundaryNote;
+      target.append(note);
       const metrics = document.createElement("div");
       metrics.className = "calculator-results";
       for (const [number, label] of [
@@ -392,7 +398,7 @@ if ($("#calculator")) {
         [Math.floor(n / 7), cal.countForm(Math.floor(n / 7), "Pilna savaitė", "Pilnos savaitės", "Pilnų savaičių")],
         [work.days, cal.countForm(work.days, "Darbo diena", "Darbo dienos", "Darbo dienų")],
         [work.weekends, cal.countForm(work.weekends, "Savaitgalio diena", "Savaitgalio dienos", "Savaitgalio dienų")],
-        [work.publicDays, cal.countForm(work.publicDays, "Šventinė darbo diena", "Šventinės darbo dienos", "Šventinių darbo dienų")],
+        [work.publicDays, "Šventės darbo savaitės dienomis"],
       ]) {
         const block = document.createElement("div"),
           strong = document.createElement("strong"),
@@ -413,7 +419,7 @@ if ($("#calculator")) {
       const lines = [
         `${cal.countNoun(n, "kalendorinė diena", "kalendorinės dienos", "kalendorinių dienų")} pagal kalendorių${f.elements.inclusive.checked ? " (abi ribinės datos įtrauktos)" : " (pabaigos data neįtraukta)"}. Tai ${cal.countNoun(Math.floor(n / 7), "pilna savaitė", "pilnos savaitės", "pilnų savaičių")} ir ${cal.countNoun(n % 7, "diena", "dienos", "dienų")}.`,
         `${cal.countNoun(work.days, "darbo diena", "darbo dienos", "darbo dienų")} · ${cal.countNoun(work.hours, "darbo valanda", "darbo valandos", "darbo valandų")} pagal standartinį grafiką · ${cal.countNoun(work.shortened.length, "prieššventinis trumpinimas", "prieššventiniai trumpinimai", "prieššventinių trumpinimų")}.`,
-        `${cal.countNoun(work.weekends, "savaitgalio diena", "savaitgalio dienos", "savaitgalio dienų")} ir ${cal.countNoun(work.publicDays, "šventinė darbo diena", "šventinės darbo dienos", "šventinių darbo dienų")}.`,
+        `${cal.countNoun(work.weekends, "savaitgalio diena", "savaitgalio dienos", "savaitgalio dienų")}. Šventės darbo savaitės dienomis: ${work.publicDays}.`,
         `${offsetUnit.value === "workday" ? "Darbo" : "Kalendorinių"} dienų poslinkis: ${offset < 0 ? "−" : "+"}${Math.abs(offset)} nuo pradžios datos → ${cal.formatDate(result, { weekday: "long" })}.`,
       ];
       for (const line of lines) {
@@ -423,6 +429,7 @@ if ($("#calculator")) {
       }
       summary = [
         `Laikotarpis: ${cal.formatDate(a)} – ${cal.formatDate(b)}`,
+        boundaryNote,
         `Tiksli trukmė: ${duration.years} m. ${duration.months} mėn. ${duration.days} d.`,
         `Kalendorinės dienos: ${n}; darbo dienos: ${work.days}; savaitgaliai: ${work.weekends}; šventės darbo dienomis: ${work.publicDays}.`,
         `Standartinės darbo valandos: ${work.hours}; prieššventiniai trumpinimai: ${work.shortened.length}.`,
@@ -438,7 +445,7 @@ if ($("#calculator")) {
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       svg.setAttribute("viewBox", "0 0 720 58");
       svg.setAttribute("role", "img");
-      svg.setAttribute("aria-label", `Laikotarpis apima ${work.days} darbo dienų, ${work.weekends} savaitgalio dienų ir ${work.publicDays} šventinių darbo dienų.`);
+      svg.setAttribute("aria-label", `Laikotarpio dienos įskaitant abi datas. Darbo dienos: ${work.days}. Savaitgalio dienos: ${work.weekends}. Šventės darbo savaitės dienomis: ${work.publicDays}.`);
       const total = work.days + work.weekends + work.publicDays || 1;
       const background = document.createElementNS(svg.namespaceURI, "rect");
       background.setAttribute("x", "4"); background.setAttribute("y", "17");

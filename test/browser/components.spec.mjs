@@ -73,8 +73,14 @@ test('date calculator handles leap-day difference, inclusive endpoints and ISO w
  await page.goto('/datos-skaiciuokle/');const f=page.locator('#calculator');
  await expect(f).toHaveAttribute('aria-busy','false');
  await f.locator('[name=start]').fill('2028-02-28');await f.locator('[name=end]').fill('2028-03-01');await f.locator('[name=offset]').fill('1');await f.locator('button[type="submit"]').click();
- await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('2');
+ const numbers=page.locator('#calc-result .calculator-results strong');
+ await expect(numbers).toHaveText(['2','0','3','0','0']);
+ await expect(page.locator('#calc-result')).toContainText('Skaičiuojant darbo dienas, savaitgalius ir šventes įtrauktos abi datos.');
  await f.locator('[name=inclusive]').check();await f.locator('button[type="submit"]').click();await expect(page.locator('#calc-result .calculator-results strong').first()).toHaveText('3');
+ await expect(page.locator('#calc-result')).toContainText('Skaičiuojant visas dienas įtrauktos abi datos.');
+ await f.locator('[name=inclusive]').uncheck();
+ await f.locator('[name=start]').fill('2029-01-01');await f.locator('[name=end]').fill('2029-01-01');await f.locator('button[type="submit"]').click();
+ await expect(numbers).toHaveText(['0','0','0','0','1']);
  await expect(page.locator('#iso-date')).toHaveAttribute('aria-busy','false');await page.locator('#iso-date').fill('2028-01-01');await page.locator('#iso-date').press('Tab');await expect(page.locator('#iso-result')).toContainText('52');
 });
 
@@ -92,9 +98,9 @@ test('date calculator skips Lithuanian holidays for workday offsets and shares a
  await expect(cards.nth(1)).toContainText('0');await expect(cards.nth(1)).toContainText('Pilnų savaičių');
  await expect(cards.nth(2)).toContainText('2');await expect(cards.nth(2)).toContainText('Darbo dienos');
  await expect(cards.nth(3)).toContainText('0');await expect(cards.nth(3)).toContainText('Savaitgalio dienų');
- await expect(cards.nth(4)).toContainText('1');await expect(cards.nth(4)).toContainText('Šventinė darbo diena');
+ await expect(cards.nth(4)).toContainText('1');await expect(cards.nth(4)).toContainText('Šventės darbo savaitės dienomis');
  await expect(page.locator('#calc-result')).toContainText('penktadienis');
- await expect(page.locator('#calc-chart svg')).toHaveAttribute('aria-label',/2 darbo dienų, 0 savaitgalio dienų ir 1 šventinių darbo dienų/);
+ await expect(page.locator('#calc-chart svg')).toHaveAttribute('aria-label',/Darbo dienos: 2. Savaitgalio dienos: 0. Šventės darbo savaitės dienomis: 1/);
  const geometry=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
  expect(geometry.scroll,JSON.stringify(geometry)).toBeLessThanOrEqual(geometry.viewport+1);
  await page.evaluate(()=>{
