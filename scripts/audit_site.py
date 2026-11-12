@@ -23,12 +23,13 @@ def webp_dimensions(data):
  bits=int.from_bytes(data[21:25],'little');return (1+(bits&0x3fff),1+((bits>>14)&0x3fff))
 
 class Page(HTMLParser):
- def __init__(self):super().__init__();self.links=[];self.anchor_links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
+ def __init__(self):super().__init__();self.links=[];self.anchor_links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_head=False;self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if 'id' in a:self.ids.add(a['id'])
   if tag=='h1':self.h1+=1
-  if tag=='title':self.in_title=True
+  if tag=='head':self.in_head=True
+  if tag=='title':self.in_title=self.in_head
   if tag=='meta' and 'name' in a:self.meta[a['name']]=a.get('content','');self.named_meta.setdefault(a['name'],[]).append(a.get('content',''))
   if tag=='meta' and 'property' in a:self.properties.setdefault(a['property'],[]).append(a.get('content',''))
   if tag=='link' and a.get('rel')=='canonical':self.canonical=a.get('href')
@@ -51,6 +52,7 @@ class Page(HTMLParser):
   if tag=='img':assert (a.get('alt') or (a.get('alt') == '' and a.get('aria-hidden') == 'true')) and a.get('width') and a.get('height'),a
   if tag=='script' and a.get('type')=='application/ld+json':self.inscript=True
  def handle_endtag(self,tag):
+  if tag=='head':self.in_head=False
   if tag=='title':self.in_title=False
   if tag=='script':self.inscript=False
  def handle_data(self,s):
@@ -76,6 +78,9 @@ for path in files:
  if media:assert p.properties['og:image']==['https://kalendorius365.lt'+media['src']] and p.properties['og:image:alt']==[media['caption']],path
  for key in ('twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'):
   assert len(p.named_meta.get(key,[]))==1 and p.named_meta[key][0],(path,key,p.named_meta.get(key))
+ assert p.title.endswith(' | Kalendorius365') and p.title.count('|') == 1, (path, p.title)
+ assert not re.search(r'(?<!\d):|:(?!\d)|\s[-–—]\s|·', p.title), (path, p.title)
+ assert p.title == p.properties['og:title'][0] == p.meta['twitter:title'], path
  assert p.meta.get('twitter:card')=='summary_large_image',path
  assert p.meta.get('twitter:image')==p.properties['og:image'][0],path
  assert p.meta.get('twitter:image:alt')==p.properties['og:image:alt'][0],path
