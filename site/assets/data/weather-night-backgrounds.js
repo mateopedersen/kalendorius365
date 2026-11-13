@@ -97,5 +97,23 @@ export const WEATHER_NIGHT_BACKGROUNDS = Object.freeze({
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
     "alt": "Ukmergė sutemus",
     "focalPoint": "center center"
+  },
+  "kedainiai": {
+    "image": "/assets/visuals/weather-city-kedainiai-night-01902f2c12a1.webp",
+    "source": "https://www.youtube.com/watch?v=8qZvMDH90AI",
+    "author": "Justinas Gužauskas",
+    "license": "CC BY (YouTube)",
+    "licenseUrl": "https://www.youtube.com/t/creative_commons",
+    "alt": "Kėdainių Didžiosios Rinkos aikštė ir apšviesta evangelikų reformatų bažnyčia naktį",
+    "focalPoint": "center center"
+  },
+  "marijampole": {
+    "image": "/assets/visuals/weather-city-marijampole-night-b97f667382aa.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:2018_Suduva_Spartaks.JPG",
+    "author": "user:CD",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "Marijampolės stadionas per naktines futbolo rungtynes",
+    "focalPoint": "center center"
   }
 });

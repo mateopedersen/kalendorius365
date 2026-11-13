@@ -117,6 +117,15 @@
     "sha256": "05565e319d319e2c0f2229d27341344d49e9afbfdafde9fe8745f8f85b79730c"
   },
   {
+    "city": "marijampole",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-marijampole-night-b97f667382aa.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:2018_Suduva_Spartaks.JPG",
+    "author": "user:CD",
+    "license": "CC BY-SA 4.0",
+    "sha256": "b97f667382aa373802e4f1ffd3b0eb2cd731daeb4fa7b3c708a5eb82d08c10ce"
+  },
+  {
     "city": "mazeikiai",
     "period": "day",
     "image": "/assets/visuals/weather-city-mazeikiai.webp",
@@ -178,6 +187,15 @@
     "author": "Hugo.arg",
     "license": "Viešasis domenas",
     "sha256": "f4c29d598a5921f70a404342a4b539efd52fb268188f3d3fa9c695b767a99cd6"
+  },
+  {
+    "city": "kedainiai",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-kedainiai-night-01902f2c12a1.webp",
+    "source": "https://www.youtube.com/watch?v=8qZvMDH90AI",
+    "author": "Justinas Gužauskas",
+    "license": "CC BY (YouTube)",
+    "sha256": "01902f2c12a12f10e280cdbff55287ae728133816114b70de2a50726b373ae99"
   },
   {
     "city": "telsiai",
