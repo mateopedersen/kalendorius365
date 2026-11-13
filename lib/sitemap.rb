@@ -4,6 +4,7 @@ require 'cgi'
 require 'fileutils'
 require 'pathname'
 require 'uri'
+require 'json'
 
 module Kalendorius
   module Sitemap
@@ -25,6 +26,15 @@ module Kalendorius
 
       images_by_page = Hash.new { |hash, key| hash[key] = [] }
       if release
+        photo_index=File.expand_path('../data/weather-photo-index.json',__dir__)
+        if File.file?(photo_index)
+          JSON.parse(File.read(photo_index)).each do |photo|
+            image_path=photo.fetch('image')
+            image_file=File.expand_path(image_path.delete_prefix('/'),public_dir)
+            abort "City photo is missing: #{image_path}" unless image_file.start_with?("#{public_dir}/") && File.file?(image_file)
+            images_by_page[BASE_URL+'/'] << BASE_URL+image_path
+          end
+        end
         manifest.select { |asset| %w[monthly annual].include?(asset['kind']) }.each do |asset|
           year = Integer(asset.fetch('year'))
           page_path = if asset['kind'] == 'monthly'

@@ -7393,12 +7393,12 @@
     {
       "path": ".github/workflows/horoscope-automation.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "06cb6d1ca480bb0802ebb6ee009248aa942c3e9c3405d138a5a2c9d8a7bbc59a"
+      "sha256": "5e501ff01fbbb42915b95f2b97b6cf63e171b5575877ad3deaff6cdb492c6cf7"
     },
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "b350c5791239067c72c31e2475dc43545d2cc3e134fecc14f8cfcbe792ccc7b4"
+      "sha256": "e75b08a03098305a01aaf8ae2c7952b5ee0e7c36365017ca94c5283a72ce000b"
     }
   ],
   "changed_baseline_assets": [],
@@ -7409,7 +7409,7 @@
     }
   },
   "failures": [],
-  "checked_at": "2026-11-03",
+  "checked_at": "2026-11-13",
   "limits": [
     "No independent native-human language or legal certification is claimed.",
     "Browser interaction, rendered geometry, contrast and live HTTP are a separate gate."

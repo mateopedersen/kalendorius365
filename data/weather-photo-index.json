@@ -1,0 +1,236 @@
+[
+  {
+    "city": "vilnius",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-vilnius-day.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_Exterior_2,_Vilnius,_Lithuania_-_Diliff.jpg",
+    "author": "Diliff",
+    "license": "CC BY-SA 3.0",
+    "sha256": "30067c9ab53a32682bbdda0eb37b8e63e886e427ef5a48dd600157169c5e77b6"
+  },
+  {
+    "city": "vilnius",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-vilnius-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_2014.jpg",
+    "author": "Abrget47j",
+    "license": "CC BY-SA 3.0",
+    "sha256": "43aec71e9932bdc9ea1b9f7ff362efc635e401e52f84ed56e03e9371afd8a491"
+  },
+  {
+    "city": "kaunas",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-kaunas.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Kaunas_Castle_-_panorama.JPG",
+    "author": "Pudelek (Marcin Szala)",
+    "license": "CC BY-SA 3.0",
+    "sha256": "adcf0595cc22c667512a5e9663f36d85db8cbf35a4cd1398f1d87f02c91aa58d"
+  },
+  {
+    "city": "kaunas",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-kaunas-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Kauno_pilis,_2006-12-03.jpg",
+    "author": "Original uploader was Algėrds at bat-smg.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "sha256": "b4489aa43fd7a136adc489f03aab9b3b1129021f86fde99c8961ae4e50ec5d8c"
+  },
+  {
+    "city": "klaipeda",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-klaipeda.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Quite_summer_evening_in_the_port_city_Klaipeda.jpg",
+    "author": "Mantas Volungevicius",
+    "license": "CC BY 2.0",
+    "sha256": "f3ef4484d01ee634965e63e1bb61abe9c8d75b75e247eb86009b467eb7c76105"
+  },
+  {
+    "city": "klaipeda",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-klaipeda-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Taikos_pr_at_night.jpg",
+    "author": "Artrix",
+    "license": "CC BY-SA 3.0",
+    "sha256": "42ec958b3949c6b27d078baf9a7d95734d73006a9fbdb49a691a16330a4155f6"
+  },
+  {
+    "city": "siauliai",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-siauliai.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:%C5%A0iauliai_-_panoramio_(8).jpg",
+    "author": "Modris Putns",
+    "license": "CC BY-SA 3.0",
+    "sha256": "6d1025efe880043d082b09f934bbdaa6d6a26985b2c290d238b70401d0addb6a"
+  },
+  {
+    "city": "siauliai",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-siauliai-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:%C5%A0iauliai_-_panoramio.jpg",
+    "author": "Modris Putns",
+    "license": "CC BY-SA 3.0",
+    "sha256": "47b71955409d0a69ce36a6d70e6bb3f841bdd0b6b9362a7a17903ea00b95aed1"
+  },
+  {
+    "city": "panevezys",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-panevezys.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Senvag%C4%97_Pond_in_Panev%C4%97%C5%BEys,_Lithuania_in_2019.jpg",
+    "author": "Scotch Mist",
+    "license": "CC BY-SA 4.0",
+    "sha256": "ba55289a72f3c7ad54e5dacb875b4eb0ad1f47ab16576a0251faa1734189bc09"
+  },
+  {
+    "city": "panevezys",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-panevezys-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Panev%C4%97%C5%BEys_V%C4%97lai.jpg",
+    "author": "Simonxcz",
+    "license": "CC BY-SA 4.0",
+    "sha256": "6063cb7f4152aa664b5bcd889e78b3778f3249de1419ecb5eca92394d86ab190"
+  },
+  {
+    "city": "alytus",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-alytus.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Alytus,_Baltosios_ro%C5%BE%C4%97s_tiltas.JPG",
+    "author": "Vilensija",
+    "license": "CC BY-SA 3.0",
+    "sha256": "f47a7da0b7c105375bda56736714eacaa38a36a8534fd97d32045877aeb12f27"
+  },
+  {
+    "city": "alytus",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-alytus-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Alytus_ziema.jpg",
+    "author": "The original uploader was Qwarc at Lithuanian Wikipedia.",
+    "license": "CC BY-SA 3.0",
+    "sha256": "807a33104a39c1e6f2b9519dbea66b3d02156aec099dff8ca458d5884df7dacf"
+  },
+  {
+    "city": "marijampole",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-marijampole.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Marijampol%C4%97_-_panoramio.jpg",
+    "author": "Raimundas Budzeika",
+    "license": "CC BY-SA 3.0",
+    "sha256": "05565e319d319e2c0f2229d27341344d49e9afbfdafde9fe8745f8f85b79730c"
+  },
+  {
+    "city": "mazeikiai",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-mazeikiai.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Mazeikiai_panorama_resize.JPG",
+    "author": "Algirdas",
+    "license": "Viešasis domenas",
+    "sha256": "7651234b4599f51d23136260f10add1b93c2cd0862df200f67b5674b8e407921"
+  },
+  {
+    "city": "mazeikiai",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-mazeikiai-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:New_church_of_Saint_Francis_of_Assisi_in_Ma%C5%BEeikiai_by_night,_May_2019.jpg",
+    "author": "MichalPL",
+    "license": "CC BY-SA 4.0",
+    "sha256": "3929be983c1a51233dec3e66ee8ce0648004710372e02c9f684aae12ba511ce9"
+  },
+  {
+    "city": "jonava",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-jonava.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Jonava_Regional_Museum_in_Jonava,_Lithuania_in_2014.jpg",
+    "author": "Pagulbi74",
+    "license": "CC0 1.0",
+    "sha256": "dcbda5d45d268642a316ade935f629b47c98db19e45dbb61fb2400ad4f274e65"
+  },
+  {
+    "city": "jonava",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-jonava-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Jonava_Night.JPG",
+    "author": "Pagulbi74",
+    "license": "CC0",
+    "sha256": "62b0ae769fd6f9a59b916e66d15df6ac122fda470658f4a98f37519998be31c4"
+  },
+  {
+    "city": "utena",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-utena.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Utena_city_-_Real_is_beautiful.jpg",
+    "author": "Kalnuerelis",
+    "license": "CC BY-SA 4.0",
+    "sha256": "4e4f160c56c359661521c54047c5db104517b695a62a981a808c9d0e3bb06c40"
+  },
+  {
+    "city": "utena",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-utena-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Utenos_Dievo_Apvaizdos_ba%C5%BEny%C4%8Dia.JPG",
+    "author": "Vilensija",
+    "license": "CC BY-SA 3.0",
+    "sha256": "098a20c084b7923581793fd7077cd9261064afa72b040a328c899463a3ea26d9"
+  },
+  {
+    "city": "kedainiai",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-kedainiai.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Nev%C4%97%C5%BEis_in_K%C4%97dainiai.jpg",
+    "author": "Hugo.arg",
+    "license": "Viešasis domenas",
+    "sha256": "f4c29d598a5921f70a404342a4b539efd52fb268188f3d3fa9c695b767a99cd6"
+  },
+  {
+    "city": "telsiai",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-telsiai.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Tel%C5%A1iai_Cathedral_Exterior,_Tel%C5%A1iai,_Lithuania_-_Diliff.jpg",
+    "author": "Diliff",
+    "license": "CC BY-SA 3.0",
+    "sha256": "48d880c29fec8759b763a6bf1e6ab0af06f70cbf9043843915ab008563cb5380"
+  },
+  {
+    "city": "telsiai",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-telsiai-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Telsiai_nakti.jpg",
+    "author": "Original uploader was AdisX at lt.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "sha256": "abb09a779fd3d25f8309fc178b4b3995fe920e9d06b5f068c5ddbc8f0f7b2bc2"
+  },
+  {
+    "city": "ukmerge",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-ukmerge.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Ukmerge_city.jpg",
+    "author": "Tocekas",
+    "license": "CC BY-SA 3.0",
+    "sha256": "78f2a37c9f5ac95f28cfd87fdf2ebcd20b2ab9f1aa83e0e76f22f7e8b1b140c1"
+  },
+  {
+    "city": "ukmerge",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-ukmerge-night.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Winter_night_-_panoramio_-_mikrimas.jpg",
+    "author": "mikrimas",
+    "license": "CC BY 3.0",
+    "sha256": "e4c2a02bd1fa34d050d680d3528ac87c38df65f896381159ed805ae833035ec6"
+  },
+  {
+    "city": "taurage",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-taurage.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Taurag%C4%97_Castle,_Taurag%C4%97,_Lithuania,_June_2019.jpg",
+    "author": "MichalPL",
+    "license": "CC BY-SA 4.0",
+    "sha256": "333a5fe945b7a4665ad29005f61aa0893e12c8e53c44b1f5caf8e631e1d21044"
+  },
+  {
+    "city": "visaginas",
+    "period": "day",
+    "image": "/assets/visuals/weather-city-visaginas.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Visaginas,_Lithuania_-_panoramio_(197).jpg",
+    "author": "VietovesLt",
+    "license": "CC BY 3.0",
+    "sha256": "b7ffa4955614b6df0632160e6be01c1c631879224a24d39233a24c12956e9ec7"
+  }
+]

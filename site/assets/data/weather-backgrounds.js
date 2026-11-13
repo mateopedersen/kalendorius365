@@ -6,9 +6,13 @@ const attribution3 = "https://creativecommons.org/licenses/by/3.0/";
 // without requesting image data from a third party on every visit.
 export const WEATHER_CITY_BACKGROUNDS = Object.freeze({
   vilnius: {
-    image: "/assets/visuals/weather-640.webp",
-    caption: "Vilnius · iliustracija",
-    focalPoint: "center bottom",
+    "image": "/assets/visuals/weather-city-vilnius-day.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_Exterior_2,_Vilnius,_Lithuania_-_Diliff.jpg",
+    "author": "Diliff",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "alt": "Vilnius dieną",
+    "focalPoint": "center center"
   },
   kaunas: {
     image: "/assets/visuals/weather-city-kaunas.webp",

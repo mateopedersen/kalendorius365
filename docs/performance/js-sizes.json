@@ -102,14 +102,29 @@
       "generated_bytes": 6751
     },
     {
+      "path": "/assets/data/city-photo-controller.js",
+      "source_bytes": 2163,
+      "generated_bytes": 1325
+    },
+    {
       "path": "/assets/data/weather-backgrounds.js",
-      "source_bytes": 4810,
-      "generated_bytes": 3871
+      "source_bytes": 5057,
+      "generated_bytes": 4081
     },
     {
       "path": "/assets/data/weather-cities.js",
       "source_bytes": 2908,
       "generated_bytes": 2126
+    },
+    {
+      "path": "/assets/data/weather-city-photo.js",
+      "source_bytes": 2773,
+      "generated_bytes": 2082
+    },
+    {
+      "path": "/assets/data/weather-night-backgrounds.js",
+      "source_bytes": 4355,
+      "generated_bytes": 3645
     },
     {
       "path": "/assets/discovery-core.js",
@@ -283,8 +298,8 @@
     },
     {
       "path": "/assets/weather.js",
-      "source_bytes": 8132,
-      "generated_bytes": 5408
+      "source_bytes": 5666,
+      "generated_bytes": 4059
     },
     {
       "path": "/assets/year-directory-core.js",

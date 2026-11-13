@@ -1,6 +1,7 @@
 import { icon as uiIcon } from "./icons.js";
 import { TZ, today } from "./calendar.js";
-import { WEATHER_CITY_BACKGROUNDS } from "./data/weather-backgrounds.js";
+import { updateWeatherBackground } from "./data/weather-city-photo.js";
+export { updateWeatherBackground } from "./data/weather-city-photo.js";
 const names = {
   clear: "Giedra",
   "partly-cloudy": "Mažai debesuota",
@@ -27,74 +28,6 @@ const names = {
 };
 const pending = new Map();
 let latestRender = 0;
-let backgroundRequest = 0;
-let originalWeatherPicture;
-
-function originalPictureState(picture, image) {
-  if (originalWeatherPicture) return originalWeatherPicture;
-  originalWeatherPicture = {
-    source: picture?.querySelector('source[type="image/avif"]') || null,
-    sourceSrcset: picture?.querySelector('source[type="image/avif"]')?.getAttribute("srcset"),
-    imageSrc: image.getAttribute("src"),
-    imageSrcset: image.getAttribute("srcset"),
-  };
-  return originalWeatherPicture;
-}
-
-export function updateWeatherBackground(city) {
-  const background = WEATHER_CITY_BACKGROUNDS[city];
-  const card = document.querySelector(".climate-card");
-  const picture = card?.querySelector("picture");
-  const image = picture?.querySelector(".climate-card__image");
-  if (!background || !card || !picture || !image) return;
-  if (card.dataset.weatherCity === city) return;
-
-  const original = originalPictureState(picture, image);
-  const request = ++backgroundRequest;
-  const showOriginalCity = () => {
-    if (original.source && original.sourceSrcset)
-      original.source.setAttribute("srcset", original.sourceSrcset);
-    image.setAttribute("src", original.imageSrc);
-    if (original.imageSrcset) image.setAttribute("srcset", original.imageSrcset);
-    image.style.objectPosition = background.focalPoint || "center bottom";
-    card.dataset.weatherCity = city;
-  };
-
-  if (city === "vilnius") {
-    showOriginalCity();
-    return;
-  }
-
-  const preloaded = new Image();
-  let applied = false;
-  const applyBackground = () => {
-    if (applied || request !== backgroundRequest) return;
-    applied = true;
-    original.source?.removeAttribute("srcset");
-    image.removeAttribute("srcset");
-    image.src = background.image;
-    image.style.objectPosition = background.focalPoint || "center center";
-    card.dataset.weatherCity = city;
-  };
-  preloaded.onload = applyBackground;
-  preloaded.onerror = () => {
-    if (request !== backgroundRequest) return;
-    backgroundRequest += 1;
-    showOriginalCityForFailure(card, image, original);
-  };
-  preloaded.src = background.image;
-  if (preloaded.complete && preloaded.naturalWidth) applyBackground();
-}
-
-function showOriginalCityForFailure(card, image, original) {
-  if (original.source && original.sourceSrcset)
-    original.source.setAttribute("srcset", original.sourceSrcset);
-  image.setAttribute("src", original.imageSrc);
-  if (original.imageSrcset) image.setAttribute("srcset", original.imageSrcset);
-  image.style.objectPosition = "center bottom";
-  card.dataset.weatherCity = "vilnius";
-}
-
 export async function loadWeather(city) {
   if (pending.has(city)) return pending.get(city);
   const job = (async () => {

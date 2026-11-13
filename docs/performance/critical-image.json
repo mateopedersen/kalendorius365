@@ -1,6 +1,6 @@
 {
-  "method": "Exact AVIF bytes in the homepage HTML, avoiding a separate critical image round trip. Original WebP fallback and source images retained.",
-  "asset": "/assets/visuals/weather-640.avif",
-  "bytes": 26686,
-  "sha256": "83b5e8a894ab1397450b665764e1f2a9f2f732e237a317ae6b86e15d22ccccc2"
+  "method": "Exact licensed Vilnius daylight AVIF bytes in the homepage HTML. Separate original night photograph changes after calculated sunset.",
+  "asset": "/assets/visuals/weather-city-vilnius-day-640.avif",
+  "bytes": 11741,
+  "sha256": "79fdc51a2c3a3192f75e002772a0eb1ac07da8a5d611a978c7cb117b70c8de73"
 }

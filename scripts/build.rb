@@ -35,6 +35,7 @@ Dir.chdir(ROOT) do
  # uses the same K365_RELEASE flag as production.
  release=Kalendorius::BuildPolicy.release?(ENV)
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
+ system('node','scripts/city_photo_index.mjs',exception:true)
  system('python3','scripts/blog/photos.py',exception:true)
  system('python3','scripts/blog/prepare_examples.py',exception:true)
  system('python3','scripts/blog/prepare.py',exception:true)
