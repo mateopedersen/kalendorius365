@@ -153,9 +153,12 @@ for record in package["evidence"]["records"]:
         target_key = "smallPreview" if key == "smallPreview" else key
         expected_redirects[quote(old_url, safe="/")] = quote(asset[target_key], safe="/")
 expected_redirects.update({"/apie/": "/apie-mus/", "/apie": "/apie-mus/"})
-assert redirect_map == expected_redirects and len(redirect_map) == 1562
+for revision in "8ec94ea4da1621689bce 8c2e69aab7b1c6a7a73c 631021764703ff033b36 ab21966431fefec02fe4 5520cd349cc456659651 bddd6cbd1ce57125ff89 72a4afff06cb9c60dc98 ff0b1b6660919d460802 4a277dede7eaa135f7e8 20c80f59f7ddc908c685 8d38c024e6458fdeafe1".split():
+    expected_redirects[f"/assets/releases/{revision}/data/namedays/cc-by-sa-4.0.json"] = "/assets/data/namedays/cc-by-sa-4.0.json"
+expected_redirects.update({"/2026/spalis/": "/?data=2026-10-01", "/2026/lapkritis/": "/?data=2026-11-01"})
+assert redirect_map == expected_redirects and len(redirect_map) == 1575
 
 tree = ET.parse(ROOT / "public/sitemap.xml")
 image_locations = [element.text for element in tree.iter() if element.tag.endswith("}loc") and element.text and "/downloads/" in element.text]
 assert len(image_locations) == 390
-print("PASS: all 36 monthly and 3 annual pages expose ten A3 designs, localized downloads, responsive alt-text previews, working filters, 1,560 calendar redirects, two about-page redirects, and 390 sitemap images.")
+print("PASS: all 36 monthly and 3 annual pages expose ten A3 designs, localized downloads, responsive alt-text previews, working filters, 1,560 calendar redirects, two about-page redirects, 13 reviewed GSC recoveries, and 390 sitemap images.")
