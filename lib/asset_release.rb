@@ -126,8 +126,11 @@ module AssetRelease
       File.binwrite(destination, content)
       records[original] = {'url' => urls.fetch(original), 'sha256' => Digest::SHA256.hexdigest(content)}
     end
+    # This is a public dataset download, not a runtime dependency. Keep its
+    # stable, revalidating URL so crawled links outlive the retained JS graphs.
+    html_urls = urls.reject { |original, _| original == '/assets/data/namedays/cc-by-sa-4.0.json' }
     Dir.glob(File.join(public_dir, '**/*.html')).each do |path|
-      File.write(path, rewrite_references(File.read(path), urls))
+      File.write(path, rewrite_references(File.read(path), html_urls))
     end
     # Compatibility endpoints are mutable and revalidate. Give their module
     # imports the same immutable destination as the current HTML.

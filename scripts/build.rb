@@ -145,6 +145,16 @@ Dir.chdir(ROOT) do
  end
  calendar_redirect_count=redirects.length
  redirects.unshift('/apie/ /apie-mus/ 301', '/apie /apie-mus/ 301')
+ # Only these retired dataset revisions were reported as missing by GSC.
+ # Never redirect every release path: existing immutable snapshots must remain
+ # immutable and old module graphs must not be mixed with the current graph.
+ %w[8ec94ea4da1621689bce 8c2e69aab7b1c6a7a73c 631021764703ff033b36 ab21966431fefec02fe4 5520cd349cc456659651 bddd6cbd1ce57125ff89 72a4afff06cb9c60dc98 ff0b1b6660919d460802 4a277dede7eaa135f7e8 20c80f59f7ddc908c685 8d38c024e6458fdeafe1].each do |revision|
+  redirects << "/assets/releases/#{revision}/data/namedays/cc-by-sa-4.0.json /assets/data/namedays/cc-by-sa-4.0.json 301"
+ end
+ # Historical month links open that exact month in the existing calendar;
+ # they must not silently change to a different year's printable gallery.
+ redirects << '/2026/spalis/ /?data=2026-10-01 301'
+ redirects << '/2026/lapkritis/ /?data=2026-11-01 301'
  abort 'Cloudflare Pages static redirect limit exceeded' if redirects.length>2000
  abort 'Duplicate legacy calendar redirect source' unless redirects.map { |line|line.split.first }.uniq.length==redirects.length
  if release && JSON.parse(File.read('site/assets/data/manifest.json')).key?('packageImport')
@@ -191,7 +201,9 @@ Dir.chdir(ROOT) do
  files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
- headers+="/assets/visuals/*\n  #{immutable}\n/assets/previews/*\n  #{immutable}\n/assets/previews-small/*\n  #{immutable}\n/assets/holiday-ics/*\n  #{immutable}\n/downloads/*\n  #{immutable}\n"
+ # PDF/WebP query revisions share their own original file's canonical URL.
+ # This keeps downloads indexable without changing their bytes or cache keys.
+ headers+="/assets/visuals/*\n  #{immutable}\n/assets/previews/*\n  #{immutable}\n/assets/previews-small/*\n  #{immutable}\n/assets/holiday-ics/*\n  #{immutable}\n/downloads/*\n  #{immutable}\n  Link: <https://kalendorius365.lt/downloads/:splat>; rel=\"canonical\"\n"
  headers+="/assets/seasons-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/namedays-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
  headers+="/assets/holiday-guides-ics/*\n  #{immutable}\n"
