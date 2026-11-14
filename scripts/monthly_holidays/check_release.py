@@ -407,7 +407,11 @@ def run():
    runtime_review_path='docs/qa/lunar-selection-race.json'
    try:
     runtime_review_raw=(ROOT/runtime_review_path).read_bytes();runtime_review=json.loads(runtime_review_raw)
-    check(hashlib.sha256(runtime_review_raw).hexdigest()=='9a569fa272b0a1386ac40e620edf2383cd1638d18cc55a3a8d96681d34071b41' and runtime_review['baseline_sha256']==sha and hashlib.sha256(current).hexdigest()==runtime_review['after_sha256'],'lunar runtime retains the reviewed latest-selection race repair')
+    # The selection repair stays byte-identical outside the shared Safari-safe exporter.
+    safari_export=b"  globalThis.Calendar365Downloads.save(phaseICS(events),'menulio-fazes.ics','text/calendar;charset=utf-8');"
+    previous_export=b"  const blob=new Blob([phaseICS(events)],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);\n  const link=document.createElement('a');link.href=url;link.download='menulio-fazes.ics';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);"
+    reviewed_runtime=current.removeprefix(b"import '../calendar-downloads.js';\n").replace(safari_export,previous_export)
+    check(current.count(safari_export)==1 and hashlib.sha256(runtime_review_raw).hexdigest()=='9a569fa272b0a1386ac40e620edf2383cd1638d18cc55a3a8d96681d34071b41' and runtime_review['baseline_sha256']==sha and hashlib.sha256(reviewed_runtime).hexdigest()==runtime_review['after_sha256'],'lunar runtime retains the reviewed latest-selection race repair outside its Safari-safe export')
    except (OSError,ValueError,KeyError,TypeError) as error:
     runtime_review=None;check(False,'lunar selection race evidence: '+str(error))
    try:texture_evidence=verified_lunar_screen_texture(ROOT)

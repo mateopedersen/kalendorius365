@@ -1,3 +1,4 @@
+import './calendar-downloads.js';
 import { parse, zonedInstant } from "./calendar.js";
 import { WEATHER_CITY_IDS } from "./data/weather-cities.js";
 export const KEY = "kalendorius365:v1";
@@ -184,12 +185,5 @@ export class Store {
   }
 }
 export function download(name, content, type) {
-  const blob =
-    content instanceof Blob ? content : new Blob([content], { type });
-  const url = URL.createObjectURL(blob),
-    a = document.createElement("a");
-  a.href = url;
-  a.download = name;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  return globalThis.Calendar365Downloads.save(content,name,type);
 }

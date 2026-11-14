@@ -1,3 +1,4 @@
+import './calendar-downloads.js';
 import { buildAstronomyICS, composeAstronomyEvents, eventLocalParts, VILNIUS_ZONE } from "./astronomy-agenda-core.js";
 import { countNoun } from "./calendar.js";
 
@@ -59,12 +60,7 @@ if (month) {
     message.textContent = `ICS faile bus ${countNoun(filtered.length, "tikslus astronominis momentas", "tikslūs astronominiai momentai", "tikslių astronominių momentų")} pagal pasirinktus filtrus.`;
     downloadButton.onclick = () => {
       try {
-        const blob = new Blob([buildAstronomyICS(filtered)], { type: "text/calendar;charset=utf-8" });
-        const url = URL.createObjectURL(blob), link = document.createElement("a");
-        link.href = url;
-        link.download = `astronominiai-ivykiai-${selectedYear}-${selectedMonth === "all" ? "visi-men" : String(selectedMonth).padStart(2, "0")}.ics`;
-        link.click();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        globalThis.Calendar365Downloads.save(buildAstronomyICS(filtered),`astronominiai-ivykiai-${selectedYear}-${selectedMonth === 'all' ? 'visi-men' : String(selectedMonth).padStart(2, '0')}.ics`,'text/calendar;charset=utf-8');
         message.textContent = `Paruoštas ${filtered.length} įvykių ICS failas; atsisiuntimas pradėtas.`;
       } catch {
         message.textContent = "ICS failo paruošti nepavyko. Filtruoti įvykiai liko matomi šiame puslapyje.";

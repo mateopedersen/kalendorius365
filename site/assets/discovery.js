@@ -1,3 +1,4 @@
+import './calendar-downloads.js';
 import { holidays as statutoryHolidays, today as currentVilniusDate } from "./calendar.js";
 import { solarFor } from "./phase-5-6-8-core.js";
 import { foldIcsLine, recommendAnnualWeekendPlan, shiftIsoDate, thirdFridayOfMay } from "./discovery-core.js";
@@ -21,16 +22,7 @@ const countWord = (count, one, few, many) => {
   return count + " " + form;
 };
 const escapeIcs = (value) => cleanText(value).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-const downloadText = (filename, contents, type) => {
-  const url = URL.createObjectURL(new Blob([contents], { type }));
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-};
+const downloadText = (filename, contents, type) => globalThis.Calendar365Downloads.save(contents,filename,type);
 
 function setupCommemorations() {
   const root = $("#commemoration-list");

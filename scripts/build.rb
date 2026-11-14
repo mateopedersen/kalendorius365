@@ -190,7 +190,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/releases/*\n  #{immutable}\n"
  # Compatibility endpoints stay revalidatable because their URLs are stable.
  # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && path!='public/assets/calendar-downloads.js' && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
@@ -204,9 +204,10 @@ Dir.chdir(ROOT) do
  end
  # PDF/WebP query revisions share their own original file's canonical URL.
  # This keeps downloads indexable without changing their bytes or cache keys.
- headers+="/assets/visuals/*\n  #{immutable}\n/assets/previews/*\n  #{immutable}\n/assets/previews-small/*\n  #{immutable}\n/assets/holiday-ics/*\n  #{immutable}\n/downloads/*\n  #{immutable}\n  Link: <https://kalendorius365.lt/downloads/:splat>; rel=\"canonical\"\n"
- headers+="/assets/seasons-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
- headers+="/assets/namedays-ics/*\n  #{immutable}\n  Content-Type: text/calendar; charset=utf-8\n"
+ headers+="/assets/visuals/*\n  #{immutable}\n/assets/previews*\n  #{immutable}\n/assets/holiday-ics/*\n  #{immutable}\n/downloads/*\n  #{immutable}\n  Link: <https://kalendorius365.lt/downloads/:splat>; rel=\"canonical\"\n"
+ headers+="/*.ics\n  Content-Type: text/calendar; charset=utf-8\n  Content-Disposition: attachment\n"
+ headers+="/assets/seasons-ics/*\n  #{immutable}\n"
+ headers+="/assets/namedays-ics/*\n  #{immutable}\n"
  headers+="/assets/holiday-guides-ics/*\n  #{immutable}\n"
  headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo-web.webp\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
  abort 'Cloudflare Pages header rule limit exceeded' if headers.lines.count { |line|line.start_with?('/') }>100

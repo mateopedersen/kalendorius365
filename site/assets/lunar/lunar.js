@@ -1,3 +1,4 @@
+import '../calendar-downloads.js';
 import {lunarState,noonInVilnius,nextPhase,lunarAge,countdown,localMoment,phaseICS,PHASES} from './lunar-engine.js';
 
 const scope=document.querySelector('.lunar-app');
@@ -62,8 +63,7 @@ function selectDate(value,focus=false){
 }
 const calendarEvents=JSON.parse(scope.querySelector('#lunar-events')?.textContent||'[]');
 function downloadICS(events){
-  const blob=new Blob([phaseICS(events)],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);
-  const link=document.createElement('a');link.href=url;link.download='menulio-fazes.ics';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  globalThis.Calendar365Downloads.save(phaseICS(events),'menulio-fazes.ics','text/calendar;charset=utf-8');
 }
 const dialog=document.createElement('dialog');dialog.className='lunar-lightbox';
 const close=document.createElement('button');close.type='button';close.className='lunar-button';close.textContent='Uždaryti';

@@ -1,3 +1,4 @@
+import './calendar-downloads.js';
 import { addDays, today, formatDate, weekday, monthLength, countNoun } from './calendar.js';
 import { buildIndex, searchNames, validOccurrence, nextOccurrence, nameDayEvent, weekDates, sanitizeFavoriteNames, favoriteNameDayEvents } from './namedays-engine.js';
 import { Store } from './storage.js';
@@ -31,7 +32,7 @@ async function init(){
   } catch { favoriteStorageAvailable=false; }
   const requestedQuery=new URLSearchParams(location.search).get('q');
   if(requestedQuery)$('#nd-query').value=requestedQuery.slice(0,80);
-  function clearPrepared(){if(preparedURL)URL.revokeObjectURL(preparedURL);preparedURL='';$('#nd-file-link').hidden=true;$('#nd-file-link').removeAttribute('href');}
+  function clearPrepared(){if(preparedURL)globalThis.Calendar365Downloads.release(preparedURL);preparedURL='';$('#nd-file-link').hidden=true;$('#nd-file-link').removeAttribute('href');}
   const feedback=(message,error=false)=>{const e=$('#nd-feedback');e.textContent=message;e.setAttribute('role',error?'alert':'status');};
   function updateFavoriteStatus(){
     $('#nd-favorites-status').textContent=favoriteStorageAvailable

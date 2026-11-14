@@ -1057,12 +1057,10 @@ $("#json-file").onchange = async (e) => {
   }
   e.target.value = "";
 };
-$("#export-ics").onclick = () =>
-  download(
-    "kalendorius365-ivykiai.ics",
-    exportICS(store.data.events),
-    "text/calendar;charset=utf-8",
-  );
+$("#export-ics").onclick = () => {
+  try { download("kalendorius365-ivykiai.ics", exportICS(store.data.events), "text/calendar;charset=utf-8"); }
+  catch (error) { notice(error.message); }
+};
 $("#import-ics").onclick = () => $("#ics-file").click();
 $("#ics-file").onchange = async (e) => {
   const f = e.target.files[0];
