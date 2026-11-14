@@ -1,5 +1,5 @@
 {
-  "target_date": "2026-11-13",
+  "target_date": "2026-11-14",
   "source": "https://api.astroway.info/v1/public/horoscope/daily",
   "mode": "calculations-only; fields filter excludes horoscope and sections",
   "requested_fields": [
@@ -15,7 +15,7 @@
   "results": [
     {
       "sign": "aries",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 8,
       "lunar_house": 10,
@@ -24,12 +24,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "b5e165efe8b7efa33132c12a38bf944cc3f0bacb46f84620dccf1946cdc659d5",
+      "response_sha256": "34d5b4993bade179fb72486483d9f97561ce1835a49da02361c27594235af18a",
       "rate_limit_remaining": "29"
     },
     {
       "sign": "taurus",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 7,
       "lunar_house": 9,
@@ -38,12 +38,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "66e3b874d6c3aee11e4cbcfe9c93a9d31e808f95f336eb0d5e2525850b728be7",
+      "response_sha256": "3187e87e91030012d6aa53997de00e5fcbc2fc965da78a079897c5f98f48d2c0",
       "rate_limit_remaining": "28"
     },
     {
       "sign": "gemini",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 6,
       "lunar_house": 8,
@@ -52,12 +52,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "5d4afce1a47ceba9297f0674f2554f30e724054a63203a57aba29899bccf4c23",
+      "response_sha256": "ba41d058607a8839e58588dd0b911dbdc0effdbdc140458dfbf4d6e61f56a9fb",
       "rate_limit_remaining": "27"
     },
     {
       "sign": "cancer",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 5,
       "lunar_house": 7,
@@ -66,12 +66,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "9f5ba07ebf446aaca60639fee73472d66bd73427c82cdb380c9e92c23f29ba1e",
+      "response_sha256": "ceedbf35daca7de26109e0a534594829020b7ca29905167afdb20308066fa557",
       "rate_limit_remaining": "26"
     },
     {
       "sign": "leo",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 4,
       "lunar_house": 6,
@@ -80,12 +80,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "f2eebb4919d136f7c45608b7d532d9b357a24569810a26538ef92b43999dcd4d",
+      "response_sha256": "14f53c6ebfc430992ed46b08c5f7846e8165aabb0830ce461dca924c435d2657",
       "rate_limit_remaining": "25"
     },
     {
       "sign": "virgo",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 3,
       "lunar_house": 5,
@@ -94,12 +94,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "b0868ea063207e49545d3fdef1d4d12bc541bbdb30751c7b52f65198ebfe5e17",
+      "response_sha256": "1c3924d3c03c07440e950c7f858a1e690e5515fa47dee5ef2c291ea965214360",
       "rate_limit_remaining": "24"
     },
     {
       "sign": "libra",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 2,
       "lunar_house": 4,
@@ -108,12 +108,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "28f3a4ce5f9761e11026a1776867bbb0fcc9e81c9354a8aec22b6a5d78a5b893",
+      "response_sha256": "40be33f11221a9b0473d6cff67d6307cae23829ec093435505108e68063493ad",
       "rate_limit_remaining": "23"
     },
     {
       "sign": "scorpio",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 1,
       "lunar_house": 3,
@@ -122,12 +122,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "aab73f106962456bc72736121a3d014a5cb5d5b7c1db087321844b4670776775",
+      "response_sha256": "756a3345e36a3cc95d1dcaf9feea317461ae260fc097f821b93fcd09b30df03a",
       "rate_limit_remaining": "22"
     },
     {
       "sign": "sagittarius",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 12,
       "lunar_house": 2,
@@ -136,12 +136,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "f630916061bc39d2949faba27b117c8bef2deac89565b5fb61c5e8768bdde718",
+      "response_sha256": "4672f01dc40f1d07605de572abd12d4a640f3d8e1c47ff05d79682d54e04abac",
       "rate_limit_remaining": "21"
     },
     {
       "sign": "capricorn",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 11,
       "lunar_house": 1,
@@ -150,12 +150,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "ec7fabb3744bff28ed0f1c9efb956a5450b23e4ad9ca6bf3589ae6caa387d962",
+      "response_sha256": "6e21199c975f5d208ca41cf6ec785a45e8d7e270dc3431870906ac1056f51bb3",
       "rate_limit_remaining": "20"
     },
     {
       "sign": "aquarius",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 10,
       "lunar_house": 12,
@@ -164,12 +164,12 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "5655c43c87f0d618f07b45526356ad28e9f1f2427edb2eb3bf48cdd08bb18319",
+      "response_sha256": "c32f5a86bf7faf1a1bea246b79fd9ac0a5ded1cf2d97e7a8f4f996d8f0c92eb7",
       "rate_limit_remaining": "19"
     },
     {
       "sign": "pisces",
-      "calculation_date": "2026-11-13",
+      "calculation_date": "2026-11-14",
       "http_status": 200,
       "solar_house": 9,
       "lunar_house": 11,
@@ -178,9 +178,9 @@
       "event_count": 1,
       "text_fields_excluded": true,
       "attribution_present": true,
-      "response_sha256": "766b288fab9a995a51d0fd0ccf31b78d819a99b1032a5bf360fad898d36a83d1",
+      "response_sha256": "f4cc063f8d642df8b90e953a3fdbd3cefc777f55fd78fd2245b4e017bb155e6f",
       "rate_limit_remaining": "18"
     }
   ],
-  "checked_at_utc": "2026-11-12T22:44:11Z"
+  "checked_at_utc": "2026-11-14T07:36:02Z"
 }
