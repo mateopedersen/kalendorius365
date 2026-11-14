@@ -243,6 +243,15 @@
     "sha256": "333a5fe945b7a4665ad29005f61aa0893e12c8e53c44b1f5caf8e631e1d21044"
   },
   {
+    "city": "taurage",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-taurage-night.webp",
+    "source": "https://www.efoto.lt/node/144392",
+    "author": "PovisS15",
+    "license": "CC: Autorystė (eFoto)",
+    "sha256": "da641c2a80b7324c7817b7d1bc7ecd9417e03d8484e17a18102bd670022b24ef"
+  },
+  {
     "city": "visaginas",
     "period": "day",
     "image": "/assets/visuals/weather-city-visaginas.webp",

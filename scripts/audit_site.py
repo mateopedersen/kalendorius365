@@ -254,6 +254,8 @@ if '--release' in __import__('sys').argv:
  canonical={p.canonical for path,p in pages.items() if path.name!='404.html' and p.meta.get('robots')=='index, follow'}
  assert len(sitemap)==len(set(sitemap)) and set(sitemap)==canonical and len(sitemap)==len(canonical)
  expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind'] in ('monthly','annual')}
+ city_photos=json.loads((ROOT/'data/weather-photo-index.json').read_text())
+ expected_images.update(f"https://kalendorius365.lt{photo['image']}" for photo in city_photos)
  assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
  assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)
  assert 'Sitemap: https://kalendorius365.lt/sitemap.xml' in (PUBLIC/'robots.txt').read_text()

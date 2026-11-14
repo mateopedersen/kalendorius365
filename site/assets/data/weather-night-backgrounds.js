@@ -115,5 +115,14 @@ export const WEATHER_NIGHT_BACKGROUNDS = Object.freeze({
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "alt": "Marijampolės stadionas per naktines futbolo rungtynes",
     "focalPoint": "center center"
+  },
+  "taurage": {
+    "image": "/assets/visuals/weather-city-taurage-night.webp",
+    "source": "https://www.efoto.lt/node/144392",
+    "author": "PovisS15",
+    "license": "CC: Autorystė (eFoto)",
+    "licenseUrl": "https://www.efoto.lt/info/nemokamos_nuotraukos",
+    "alt": "Tauragės pilies aikštė sutemus, apšviestas bokštas ir suoliukai",
+    "focalPoint": "center center"
   }
 });

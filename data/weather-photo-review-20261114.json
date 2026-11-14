@@ -1,0 +1,25 @@
+[
+  {
+    "cityId": "taurage",
+    "period": "night",
+    "sourceTitle": "Kūčių rytas",
+    "sourceUrl": "https://www.efoto.lt/node/144392",
+    "sourceOriginal": "https://www.efoto.lt/files/images/6331/DSCF2978%5Bredaguota%5D.jpg",
+    "author": "PovisS15",
+    "license": "CC: Autorystė (eFoto)",
+    "licenseUrl": "https://www.efoto.lt/info/nemokamos_nuotraukos",
+    "licenseEvidence": "Individual photo explicitly says CC: Autorystė; eFoto explains attribution-only reuse and requires a source link. No CC license version is stated; none invented.",
+    "sourceSha256": "2a833c278e72276965a4252bc0b69587c0dfbd9f388f7c9fb40398fc5c21c7a1",
+    "assetSha256": "da641c2a80b7324c7817b7d1bc7ecd9417e03d8484e17a18102bd670022b24ef",
+    "image": "/assets/visuals/weather-city-taurage-night.webp",
+    "cropBox": [
+      0,
+      340,
+      1000,
+      903
+    ],
+    "pixelReview": "2026-11-14: inspected actual full 1000x1333 photo and final 1200x675 crop. Real illuminated castle tower, square, benches and dark sky. City tag Tauragė, landmark matches Tauragė castle architecture.",
+    "changes": "Cropped to landscape, resized and WebP encoded. No day-to-night transformation.",
+    "identityReference": "https://tauragesmuziejus.lt/edukacijos/taurages-pilis/"
+  }
+]
