@@ -7359,7 +7359,7 @@
     {
       "path": "site/assets/lunar/lunar.js",
       "reason": "Preserve the reviewed latest-date selection repair and use the reviewed Q95 screen texture; source PNG and full-resolution print texture remain available",
-      "sha256": "2dc8cc4adce2265285a2b66932c9c4b096401a3998864c08643e1956b8315c6a",
+      "sha256": "7e7a608e74ab9c135d680abecd6192a48a905403973ad8cc0016659a043ea914",
       "review_manifest": "docs/qa/lunar-selection-race.json",
       "texture_verification": {
         "path": "site/assets/lunar/albedo-web.webp",

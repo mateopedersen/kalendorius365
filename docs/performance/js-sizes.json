@@ -3,8 +3,8 @@
   "modules": [
     {
       "path": "/assets/app.js",
-      "source_bytes": 38769,
-      "generated_bytes": 25016
+      "source_bytes": 38808,
+      "generated_bytes": 25045
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -23,8 +23,13 @@
     },
     {
       "path": "/assets/astronomy-agenda.js",
-      "source_bytes": 5697,
-      "generated_bytes": 3806
+      "source_bytes": 5535,
+      "generated_bytes": 3736
+    },
+    {
+      "path": "/assets/calendar-downloads.js",
+      "source_bytes": 1784,
+      "generated_bytes": 1079
     },
     {
       "path": "/assets/calendar-editor/editor.js",
@@ -133,8 +138,8 @@
     },
     {
       "path": "/assets/discovery.js",
-      "source_bytes": 31407,
-      "generated_bytes": 19724
+      "source_bytes": 31233,
+      "generated_bytes": 19614
     },
     {
       "path": "/assets/holiday-editorial.js",
@@ -178,8 +183,8 @@
     },
     {
       "path": "/assets/lunar/lunar.js",
-      "source_bytes": 8022,
-      "generated_bytes": 6055
+      "source_bytes": 7915,
+      "generated_bytes": 5986
     },
     {
       "path": "/assets/monthly-holidays.js",
@@ -193,8 +198,8 @@
     },
     {
       "path": "/assets/namedays.js",
-      "source_bytes": 15975,
-      "generated_bytes": 12278
+      "source_bytes": 16044,
+      "generated_bytes": 12345
     },
     {
       "path": "/assets/phase-5-6-8-core.js",
@@ -273,8 +278,8 @@
     },
     {
       "path": "/assets/storage.js",
-      "source_bytes": 5499,
-      "generated_bytes": 4038
+      "source_bytes": 5347,
+      "generated_bytes": 3955
     },
     {
       "path": "/assets/sunrise.js",

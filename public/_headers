@@ -3,7 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-GNE2836+otp9Gqg1OsCMKhpD3ZTD/CDXwKSEJKBYAVs=' 'sha256-7XjXEIEi6ZTxkej37JThBvkvOtnvPOveDHVxCHNljFY='; connect-src 'self'; upgrade-insecure-requests
-/assets/calendar-editor-release-b5f9590019a1/*
+/assets/calendar-editor-release-8ae0087a853a/*
   Cache-Control: public, max-age=31536000, immutable
 /
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -42,6 +42,8 @@
 /assets/astronomy-agenda.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/blog.css
+  Cache-Control: public, no-cache, max-age=0, must-revalidate
+/assets/calendar-downloads.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
 /assets/calendar.js
   Cache-Control: public, no-cache, max-age=0, must-revalidate
@@ -171,27 +173,24 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
-/assets/favicon-2026.svg
-  Cache-Control: public, max-age=31536000, immutable
-/assets/favicon.svg
+/assets/favicon*.svg
   Cache-Control: public, max-age=31536000, immutable
 /assets/visuals/*
   Cache-Control: public, max-age=31536000, immutable
-/assets/previews/*
-  Cache-Control: public, max-age=31536000, immutable
-/assets/previews-small/*
+/assets/previews*
   Cache-Control: public, max-age=31536000, immutable
 /assets/holiday-ics/*
   Cache-Control: public, max-age=31536000, immutable
 /downloads/*
   Cache-Control: public, max-age=31536000, immutable
   Link: <https://kalendorius365.lt/downloads/:splat>; rel="canonical"
+/*.ics
+  Content-Type: text/calendar; charset=utf-8
+  Content-Disposition: attachment
 /assets/seasons-ics/*
   Cache-Control: public, max-age=31536000, immutable
-  Content-Type: text/calendar; charset=utf-8
 /assets/namedays-ics/*
   Cache-Control: public, max-age=31536000, immutable
-  Content-Type: text/calendar; charset=utf-8
 /assets/holiday-guides-ics/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/lunar/days/*

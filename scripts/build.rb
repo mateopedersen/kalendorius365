@@ -190,7 +190,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/releases/*\n  #{immutable}\n"
  # Compatibility endpoints stay revalidatable because their URLs are stable.
  # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && path!='public/assets/calendar-downloads.js' && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
@@ -199,7 +199,8 @@ Dir.chdir(ROOT) do
  headers+="/assets/sharing/*\n  #{revalidate}\n"
  %w[artwork brands og].each { |kind|headers+="/assets/sharing/#{kind}/*\n  #{immutable}\n" }
  headers+="/assets/fonts/*\n  #{immutable}\n"
- files.grep(%r{public/assets/[^/]+\.svg\z}).sort.each do |path|
+ headers+="/assets/favicon*.svg\n  #{immutable}\n"
+ files.grep(%r{public/assets/[^/]+\.svg\z}).reject { |path|File.basename(path).start_with?('favicon') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{immutable}\n"
  end
  # PDF/WebP query revisions share their own original file's canonical URL.
