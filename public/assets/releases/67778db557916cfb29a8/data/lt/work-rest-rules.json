@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "jurisdiction": "Lietuvos Respublika",
+  "legalReference": "Lietuvos Respublikos darbo kodekso 122 straipsnis",
+  "source": "https://vdi.lrv.lt/lt/naujienos/vdi-informuoja-ka-apie-poilsio-laika-butina-zinoti-kiekvienam-darbuotojui/?lang=en",
+  "sourceDate": "2024-01-11",
+  "reviewed": "2026-10-15",
+  "status": "general planning reference; applicability and exceptions depend on work regime, occupation and other legal provisions",
+  "dailyRestHours": 11,
+  "weeklyRestHours": 35,
+  "extendedShiftRestHours": 24,
+  "extendedShiftAboveHours": 12,
+  "warningOnly": true,
+  "notModeled": ["exceptions", "collective agreements", "reference accounting period", "work across multiple employers", "special professions", "pay", "night premiums", "overtime classification", "break placement"]
+}

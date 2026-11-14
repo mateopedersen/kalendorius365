@@ -6890,3 +6890,38 @@ body.tool-workdays .workyear-hero+.resource-stats{margin-top:14px}
 @media(max-width:600px){.month-directory-grid{grid-template-columns:minmax(0,1fr);gap:.8rem}.month-directory-card{padding:.85rem;gap:1rem}.month-directory-card__art{flex-basis:108px;width:108px;height:108px}.month-directory-card h3{font-size:1.25rem}.month-directory-card__season{font-size:.75rem}.month-directory-card p{font-size:.9rem}.month-directory-card__cta{font-size:.78rem}}
 @media(max-width:359px){.month-directory-card{gap:.75rem;padding:.7rem}.month-directory-card__art{flex-basis:88px;width:88px;height:88px}.month-directory-card__season{font-size:.68rem}.month-directory-card h3{font-size:1.12rem}.month-directory-card__cta{font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){.month-directory-card{transition:none}}
+
+/* Keep the accepted city photograph clear, apart from clock and weather text. */
+.climate-card{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  background:#fff;
+}
+.climate-card::before{display:none}
+.climate-card > picture{
+  position:relative;
+  inset:auto;
+  grid-column:1 / -1;
+  grid-row:1;
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.climate-card > picture > .climate-card__image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:none;
+}
+.climate-card > .clock-card{grid-column:1;grid-row:2}
+.climate-card > .weather-panel{grid-column:1;grid-row:3}
+@media(max-width:760px){
+  .climate-card{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .climate-card > .clock-card{grid-column:1;grid-row:2}
+  .climate-card > .weather-panel{grid-column:2;grid-row:2}
+}

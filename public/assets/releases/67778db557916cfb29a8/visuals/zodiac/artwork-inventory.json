@@ -1,0 +1,28 @@
+{
+  "creator": "Kalendorius365; original code-authored SVG paths, no external artwork",
+  "stock_assets": [],
+  "files": [
+    "site/assets/visuals/zodiac/avinas.svg",
+    "site/assets/visuals/zodiac/dvyniai.svg",
+    "site/assets/visuals/zodiac/jautis.svg",
+    "site/assets/visuals/zodiac/liutas.svg",
+    "site/assets/visuals/zodiac/mergele.svg",
+    "site/assets/visuals/zodiac/oziaragis.svg",
+    "site/assets/visuals/zodiac/saulys.svg",
+    "site/assets/visuals/zodiac/skorpionas.svg",
+    "site/assets/visuals/zodiac/stichija-air.svg",
+    "site/assets/visuals/zodiac/stichija-earth.svg",
+    "site/assets/visuals/zodiac/stichija-fire.svg",
+    "site/assets/visuals/zodiac/stichija-water.svg",
+    "site/assets/visuals/zodiac/svarstykles.svg",
+    "site/assets/visuals/zodiac/vandenis.svg",
+    "site/assets/visuals/zodiac/vezys.svg",
+    "site/assets/visuals/zodiac/zodiakas-1200x630.svg",
+    "site/assets/visuals/zodiac/zodiakas-ir-zvaigzdynai.svg",
+    "site/assets/visuals/zodiac/zuvys.svg"
+  ],
+  "symbol_sprite": "site/assets/visuals/zodiac-signs.svg",
+  "decorative_wheel": "site/assets/visuals/zodiac-wheel.svg",
+  "font": "Lato Bold, SIL Open Font License 1.1, existing repository font",
+  "diagram": "Schematic, unequal sectors are illustrative; not measured IAU boundaries"
+}

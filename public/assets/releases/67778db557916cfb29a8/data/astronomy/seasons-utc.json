@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "publisher": "U.S. Naval Observatory Astronomical Applications Department",
+  "apiVersion": "4.0.1",
+  "sourceUrl": "https://aa.usno.navy.mil/api/seasons",
+  "accessed": "2026-10-16",
+  "timeScale": "UTC",
+  "precision": "minute",
+  "reuseBasis": "USNO Privacy and Security Notice section 2 says site information may be copied and distributed unless otherwise specified and requests an appropriate source credit. This is a reuse basis, not a separate SPDX or Creative Commons license.",
+  "attribution": "Season-event instants: U.S. Naval Observatory Astronomical Applications Department API v4.0.1; retrieved 2026-10-16. Lithuanian labels and local-time display: Kalendorius365.",
+  "events": [
+    {"year":2027,"utc":["2027-03-20T20:25:00Z","2027-06-21T14:11:00Z","2027-09-23T06:02:00Z","2027-12-22T02:42:00Z"]},
+    {"year":2028,"utc":["2028-03-20T02:17:00Z","2028-06-20T20:02:00Z","2028-09-22T11:45:00Z","2028-12-21T08:19:00Z"]},
+    {"year":2029,"utc":["2029-03-20T08:02:00Z","2029-06-21T01:48:00Z","2029-09-22T17:38:00Z","2029-12-21T14:14:00Z"]}
+  ]
+}
