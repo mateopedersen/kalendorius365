@@ -110,8 +110,18 @@
 /* The daily reading retains its own purpose and source-driven publication date. */
 .horoscope-app .horoscope-hub { max-width:1280px; gap:28px; }
 .horoscope-app .horoscope-detail { max-width:1160px; gap:26px; }
-.horoscope-app .horoscope-card__link { display:flex; flex-wrap:wrap; align-items:start; padding:22px 18px; gap:16px; }
-.horoscope-app .horoscope-card__content { flex:1 1 10em; min-width:0; }
+.horoscope-app .horoscope-card { display:flex; flex-direction:column; }
+.horoscope-app .horoscope-card__link { display:grid; grid-template-columns:86px minmax(0,1fr); align-items:start; min-height:0; flex:1; padding:22px 18px; gap:16px; }
+.horoscope-app .horoscope-card__content { min-width:0; align-content:start; }
+.horoscope-app .horoscope-card > .share-sign-action { align-self:stretch; min-width:0; white-space:normal; text-align:center; }
+/* Share each text row across neighbouring cards without clipping longer readings. */
+@supports (grid-template-rows:subgrid) {
+ .horoscope-app .horoscope-card { display:grid; grid-template-rows:subgrid; grid-row:span 6; }
+ .horoscope-app .horoscope-card__link { grid-row:span 5; grid-template-rows:subgrid; row-gap:5px; }
+ .horoscope-app .horoscope-card__mark { grid-column:1; grid-row:1 / span 5; }
+ .horoscope-app .horoscope-card__content { grid-column:2; grid-row:1 / span 5; grid-template-rows:subgrid; align-content:normal; row-gap:5px; }
+ .horoscope-app .horoscope-card > .share-sign-action { grid-row:6; align-self:end; }
+}
 .horoscope-app .horoscope-card__mark { width:86px; height:86px; border:0; background:none; box-shadow:none; }
 .horoscope-app .horoscope-card__mark .zodiac-mark { width:86px; height:86px; }
 .horoscope-app .horoscope-card__title { margin:0; font-size:1.3rem; }

@@ -14,13 +14,14 @@ class InlineImageTests(unittest.TestCase):
   source='<source type="image/avif" srcset="/assets/visuals/weather-640.avif">'
   for document in ['',source+source]:
    with self.assertRaises(ValueError):inline_image(document,b'x')
- def test_built_homepage_embeds_the_original_avif_and_keeps_responsive_webp(self):
+ def test_built_homepage_embeds_the_original_vilnius_avif_and_keeps_its_webp_fallback(self):
   document=(ROOT/'public/index.html').read_text()
   encoded=re.search(r'<source type="image/avif" srcset="data:image/avif;base64,([^"]+)"',document)
   self.assertIsNotNone(encoded)
-  self.assertEqual(base64.b64decode(encoded[1]),(ROOT/'site/assets/visuals/weather-640.avif').read_bytes())
-  self.assertIn('/assets/visuals/weather-320.webp?',document)
-  self.assertIn('/assets/visuals/weather-480.webp?',document)
-  self.assertIn('/assets/visuals/weather-640.webp?',document)
+  self.assertEqual(base64.b64decode(encoded[1]),(ROOT/'site/assets/visuals/weather-city-vilnius-day-640.avif').read_bytes())
+  picture=re.search(r'<picture>.*?data:image/avif;base64,.*?</picture>',document,re.S)[0]
+  self.assertIn('/assets/visuals/weather-city-vilnius-day.webp?',picture)
+  self.assertIn('width="1200" height="675"',picture)
+  self.assertIn('alt="Vilniaus katedra ir varpinė dieną"',picture)
   self.assertFalse(re.search(r'<link\b(?=[^>]*\brel="preload")(?=[^>]*\bas="image")(?=[^>]*weather-)[^>]*>',document),'The embedded image must not also trigger an external image preload')
 if __name__=='__main__':unittest.main()
