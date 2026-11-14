@@ -205,8 +205,8 @@ module HoroscopesPages
 
     @signs.each do |sign|
       forecast = forecasts.fetch(sign.fetch('key'))
-      title = "#{sign.fetch('genitive')} dienos horoskopas"
-      description = "#{sign.fetch('genitive')} horoskopas #{month_title} #{forecast.fetch('editorial_heading')}. Dienos įžvalgos ir ascendento skaičiuoklė."
+      title = "#{sign.fetch('genitive')} dienos horoskopas šiandien"
+      description = "#{sign.fetch('genitive')} dienos horoskopas #{month_title} #{forecast.fetch('editorial_heading')}. Dienos įžvalgos ir ascendento skaičiuoklė."
       body = sign_body(sign, forecast, daily, date_label)
       write_page("horoskopai/#{sign.fetch('key')}", title, description, body, 'sign_key' => sign.fetch('key'), 'content_date' => daily.fetch('local_date'))
     end
