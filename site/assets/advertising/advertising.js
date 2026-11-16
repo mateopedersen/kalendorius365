@@ -4,7 +4,7 @@ if(configNode){
  let config;try{config=JSON.parse(configNode.textContent);}catch{}
  if(config&&typeof config.storageKey==='string'&&config.labels){
   const labels=config.labels,slot=document.querySelector('[data-advertising-slot]');
-  let saved=null,loaded=false,loadedWidth=0,near=false,observer=null,opener=null;
+  let saved=null,loaded=false,loadedWidth=0,near=false,observer=null,opener=null,reloadRequested=false;
   try{const value=JSON.parse(localStorage.getItem(config.storageKey));if(validConsent(value))saved=value;}catch{}
   const publicView=location.search==='';
   if(slot&&!publicView)slot.hidden=true;
@@ -24,8 +24,9 @@ if(configNode){
   }
   function open(control){opener=control;if(!dialog.open)dialog.showModal();}
   function close(){dialog.close();if(opener?.isConnected)opener.focus({preventScroll:true});opener=null;}
+  function reloadLoaded(){if(!reloadRequested){reloadRequested=true;location.reload();}}
   function load(){
-   if(loaded||!near||!live||!stage||saved?.advertising!==true||document.visibilityState==='hidden')return;
+   if(reloadRequested||loaded||!near||!live||!stage||saved?.advertising!==true||document.visibilityState==='hidden')return;
    const unit=unitForWidth(stage.clientWidth,config);if(!unit)return;
    // This is the publisher's ordinary Banner tag: one atOptions block and its
    // matching invoke.js. Never fetch the vendor before consent or wrap its tag.
@@ -38,7 +39,7 @@ if(configNode){
   }
   function choose(allowed){
    saved=consentRecord(allowed);try{localStorage.setItem(config.storageKey,JSON.stringify(saved));}catch{}
-   update();close();if(!allowed&&loaded){location.reload();return;}load();
+   update();close();if(!allowed&&loaded){reloadLoaded();return;}load();
   }
   document.addEventListener('click',event=>{
    const button=event.target.closest?.('[data-advertising-open],[data-advertising-choice]');if(!button)return;
@@ -46,8 +47,15 @@ if(configNode){
    else if(button.dataset.advertisingChoice==='close')close();else choose(button.dataset.advertisingChoice==='allow');
   });
   dialog.addEventListener('cancel',()=>{if(opener?.isConnected)opener.focus({preventScroll:true});opener=null;});
-  window.addEventListener('storage',event=>{if(event.key===config.storageKey||event.key===null)location.reload();});
-  window.addEventListener('pageshow',()=>{if(saved&&!validConsent(saved)){saved=null;update();if(loaded)location.reload();}});
+  window.addEventListener('storage',event=>{
+   if(event.key!==config.storageKey&&event.key!==null)return;
+   let next=null;
+   if(event.key!==null){try{const value=JSON.parse(event.newValue);if(validConsent(value))next=value;}catch{}}
+   saved=next;update();
+   if(loaded&&saved?.advertising!==true){reloadLoaded();return;}
+   load();
+  });
+  window.addEventListener('pageshow',()=>{if(saved&&!validConsent(saved)){saved=null;update();if(loaded)reloadLoaded();}});
   document.addEventListener('visibilitychange',load);
   if(slot&&stage){
    if('IntersectionObserver' in window){observer=new IntersectionObserver(entries=>{near=entries.some(entry=>entry.isIntersecting);if(near)load();},{rootMargin:'200px 0px'});observer.observe(slot);}
