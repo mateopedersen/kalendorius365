@@ -66,9 +66,9 @@ test('cross-tab grants still require viewport; loaded ads never refresh and revo
  }
 });
 
-test('production delivery hold blocks SDK even with saved, new or cross-tab permission',()=>{
- assert.equal(productionConfig.enabled,false);
- for(const width of [300,728,1000])assert.equal(unitForWidth(width,productionConfig),null);
- const b=browser({enabled:productionConfig.enabled,choice:consentRecord(true)});b.near();b.click('allow');b.storage(config.storageKey,JSON.stringify(consentRecord(true)));b.resize(1000);b.near();
+test('disabled delivery flag remains a kill switch despite saved, new or cross-tab permission',()=>{
+ const disabledConfig={...productionConfig,enabled:false};
+ for(const width of [300,728,1000])assert.equal(unitForWidth(width,disabledConfig),null);
+ const b=browser({enabled:disabledConfig.enabled,choice:consentRecord(true)});b.near();b.click('allow');b.storage(config.storageKey,JSON.stringify(consentRecord(true)));b.resize(1000);b.near();
  assert.equal(b.scripts.length,0);assert.equal(b.context.reloads,0);assert.equal(b.context.atOptions,undefined);
 });
