@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Shopping calendar//lt-LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kibernetinis-pirmadienis-2027@kalendorius365.lt
+DTSTAMP:20261116T000000Z
+DTSTART;VALUE=DATE:20271129
+DTEND;VALUE=DATE:20271130
+SUMMARY:Kibernetinis pirmadienis 2027
+DESCRIPTION:Prekybos diena\, ne valstybinė nedarbo šventė.\nhttps://kal
+ endorius365.lt/kibernetinis-pirmadienis/
+URL:https://kalendorius365.lt/kibernetinis-pirmadienis/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Kibernetinis pirmadienis
+END:VALARM
+END:VEVENT
+END:VCALENDAR

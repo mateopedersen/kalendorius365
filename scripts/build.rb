@@ -40,6 +40,7 @@ Dir.chdir(ROOT) do
  system('python3','scripts/blog/prepare_examples.py',exception:true)
  system('python3','scripts/blog/prepare.py',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
+ system('node','scripts/prepare-shopping.mjs',exception:true)
  system('python3','scripts/blog/enrich_pages.py',exception:true)
  system('python3','scripts/sharing/prepare.py',exception:true)
  system('python3','scripts/blog/enrich_catalogue.py',exception:true)
@@ -190,10 +191,12 @@ Dir.chdir(ROOT) do
  headers+="/assets/releases/*\n  #{immutable}\n"
  # Compatibility endpoints stay revalidatable because their URLs are stable.
  # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
+ headers+="/assets/shopping/*\n  #{revalidate}\n"
+ headers+="/assets/lunar/*.js\n  #{revalidate}\n"
  # Runtime modules and records at stable URLs must revalidate. Only the
  # content-addressed artwork, OG cards and official marks are immutable.
  headers+="/assets/sharing/*\n  #{revalidate}\n"

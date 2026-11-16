@@ -1,0 +1,315 @@
+{
+  "site": "Kalendorius365",
+  "origin": "https://kalendorius365.lt",
+  "locale": "lt-LT",
+  "zone": "Europe/Vilnius",
+  "country": "LIETUVA",
+  "theme": "lt",
+  "paths": [
+    "/juodasis-penktadienis/",
+    "/kibernetinis-pirmadienis/"
+  ],
+  "hub": "/sventes/",
+  "hubName": "Šventės ir atmintinos dienos",
+  "asset": "/assets/shopping/",
+  "related": [
+    [
+      "/datos-skaiciuokle/",
+      "Apskaičiuokite dienų skirtumą"
+    ],
+    [
+      "/sventes/",
+      "Lietuvos šventės"
+    ],
+    [
+      "/2027/",
+      "2027 metų kalendorius"
+    ]
+  ],
+  "labels": {
+    "edition": "PIRKĖJO GIDAS",
+    "checked": "Patikrinta 2026-11-16",
+    "stores": "Kur ieškoti pasiūlymų Lietuvoje?",
+    "storeIntro": "Pardavėjų paskelbtos kampanijos ir sąlygos, kurias verta perskaityti prieš dedant prekę į krepšelį.",
+    "visit": "Atverti pardavėjo puslapį",
+    "when": "Datos",
+    "offers": "Patikrinti pasiūlymų pavyzdžiai",
+    "offerIntro": "Kainos ir sąlygos patikrintos 2026-11-16. Tai nėra automatiškai atnaujinamas kainoraštis ar mažiausios kainos rinkoje patvirtinimas.",
+    "source": "Pardavėjo informacija",
+    "reference": "Puslapyje rodoma palyginamoji kaina",
+    "member": "Narystė ir pasiūlymo sąlygos",
+    "dates": "Datos 2026–2030 metais",
+    "dateNote": "Juodasis penktadienis yra po ketvirtojo lapkričio ketvirtadienio JAV. Kibernetinis pirmadienis būna po jo, pirmadienį. Akcijų trukmę nustato kiekvienas pardavėjas.",
+    "year": "Metai",
+    "friday": "Juodasis penktadienis",
+    "monday": "Kibernetinis pirmadienis",
+    "calendar": "Įtraukti į kalendorių",
+    "download": "Atsisiųsti ICS",
+    "google": "Google kalendorius",
+    "calendarNote": "ICS failą galima importuoti į Apple, Outlook ir kitas suderinamas kalendoriaus programas. Įrašas neatnaujinamas automatiškai. Priminimą patikrinkite savo programoje.",
+    "legal": "Kaip įvertinti nuolaidą?",
+    "calc": "Kuris krepšelis kainuoja mažiau?",
+    "calcIntro": "Palyginkite tos pačios prekės kainą ir pristatymo bei privalomus mokesčius. Pradiniai skaičiai yra mokomasis pavyzdys, ne parduotuvių pasiūlymai.",
+    "a": "A variantas",
+    "b": "B variantas",
+    "price": "Prekės kaina (€)",
+    "shipping": "Pristatymas ir privalomi mokesčiai (€)",
+    "total": "Galutinė suma",
+    "difference": "Skirtumas",
+    "equal": "Abu variantai kainuoja vienodai.",
+    "winner": "Pigesnis variantas",
+    "invalid": "Kiekviename laukelyje įveskite neneigiamą skaičių.",
+    "faq": "Dažniausi klausimai",
+    "related": "Planuokite toliau",
+    "plan": "Pirkimo planas",
+    "status": "Kampanijos būsena",
+    "confirmed": "Kampanija paskelbta",
+    "announced": "Data paskelbta",
+    "unknown": "Patikrinkite galiojimą",
+    "ended": "Pavyzdžio terminas pasibaigė",
+    "expired": "Pasibaigęs pasiūlymas",
+    "review": "Dabartinę kainą patikrinkite pas pardavėją.",
+    "next": "Taip pat skaitykite",
+    "heroLine": "PREKĖ + PRISTATYMAS",
+    "heroTotal": "PALYGINKITE GALUTINĘ SUMĄ",
+    "heroDate": "LAPKRIČIO",
+    "noHoliday": "Prekybos diena, ne valstybinė nedarbo šventė."
+  },
+  "legal": [
+    [
+      "Žiūrėkite į 30 dienų mažiausią kainą",
+      "Skelbiant prekės kainos sumažinimą ankstesnė kaina paprastai yra mažiausia pardavėjo taikyta kaina per 30 dienų iki sumažinimo. Patikrinkite, su kokia kaina lyginamas pasiūlymas. Vien užrašas apie Juodąjį penktadienį dar nepasako, kiek sutaupysite.",
+      "https://vvtat.lrv.lt/lt/naujienos-ir-pranesimai-ziniasklaidai-377/nuolaidos-baigiasi-o-pasitikejimas-islieka-rekomendacijos-atsakingam-verslui-88b/",
+      "VVTAT apie kainų mažinimą"
+    ],
+    [
+      "Grąžinimas nėra vienodas visiems pirkiniams",
+      "Perkant internetu paprastai galima atsisakyti sutarties per 14 dienų nuo prekės gavimo. Yra išimčių, todėl prieš užsakydami individualizuotą, higienos ar skaitmeninę prekę perskaitykite jos sąlygas. Išsaugokite užsakymą ir susirašinėjimą.",
+      "https://vvtat.lrv.lt/lt/DUK/",
+      "VVTAT atsakymai vartotojams"
+    ]
+  ],
+  "pages": [
+    {
+      "kind": "friday",
+      "slug": "juodasis-penktadienis",
+      "name": "Juodasis penktadienis",
+      "title": "Juodasis penktadienis 2026 Lietuvoje",
+      "description": "Kada Juodasis penktadienis 2026 Lietuvoje? Pigu.lt, Topo centro ir 1a.lt pasiūlymai, narystės sąlygos, kainų palyginimas ir datos iki 2030 m.",
+      "intro": "2026 m. Juodasis penktadienis Lietuvoje bus lapkričio 27 d. Dalis kampanijų jau prasidėjo. Čia rasite konkrečius pardavėjų pasiūlymų pavyzdžius, narystės apribojimus ir būdą palyginti galutinę pirkinio kainą, o ne vien reklamuojamą procentą.",
+      "lead": "Mažiau spėliojimo. Aiškesnis pirkinių planas.",
+      "sections": [
+        [
+          "Kada prasideda Juodojo penktadienio akcijos?",
+          "Kalendorinė data yra lapkričio 27 d., tačiau Lietuvoje išpardavimai dažnai trunka ilgiau. Pigu.lt ir Senukai paskelbė 2026 m. datą, o Topo centras jau pateikia konkrečias kainas. Kiekvieną akciją vertinkite atskirai: pradžia, pabaiga ir dalyvaujančios prekės nebūtinai sutampa."
+        ],
+        [
+          "Kur verta pradėti paiešką?",
+          "Jei ieškote asmens priežiūros prietaiso, pirmiausia tikrinkite modelio kodą ir ar matoma kaina skirta klubo nariui. Baldams svarbiau įvertinti pristatymą iki durų, užnešimą ir surinkimą. Prekyvietėje patikrinkite ne tik platformos pavadinimą, bet ir konkretų pardavėją, jo rekvizitus bei grąžinimo adresą."
+        ],
+        [
+          "Kaip palyginti dvi nuolaidas?",
+          "Susirašykite vienodo modelio ir komplektacijos kainas. Pridėkite pristatymą, o nuolaidos kodą skaičiuokite tik tada, kai jis priimamas krepšelyje. Klubo kaina ar specialaus pasiūlymo ženkliukas savaime nepatvirtina, kad tai mažiausia kaina per mėnesį. Iš anksto nusistatytas biudžetas padeda sustoti pasiekus reikiamą rezultatą."
+        ]
+      ],
+      "stores": [
+        [
+          "Topo centras",
+          "Braun ir Oral-B",
+          "Paskelbti Black Friday pasiūlymai Topo klubo nariams galioja iki 2026-11-30. Yra konkrečių skustuvų ir elektrinių šepetėlių kainų.",
+          "Naudos nesumuojamos, kiekis ribotas. Ne klubo nariui gali būti rodoma kita kaina.",
+          "https://www.topocentras.lt/pasiulymas-black-friday-braun-ir-oral-b-top-kainomis.html",
+          "confirmed"
+        ],
+        [
+          "1a.lt",
+          "Juodojo penktadienio hitai",
+          "Atrinkto sąrašo pasiūlymai nurodyti iki lapkričio 30 d.; SMART NET ženklu pažymėtos kainos taikomos nariams.",
+          "Pardavėjas nurodo, kad šis sąrašas nėra kainų sumažinimo skelbimas. Tikrinkite konkrečios prekės kainą.",
+          "https://www.1a.lt/c/tik-juodojo-penktadienio-hitai/dg3",
+          "confirmed"
+        ],
+        [
+          "Pigu.lt",
+          "Namams, elektronikai ir dovanoms",
+          "2026 m. kampanijos puslapyje paskelbta lapkričio 27 d. data ir skirtingos pirkinių kategorijos.",
+          "Vienodos nuolaidos visam asortimentui nepatvirtintos. Pasirinkite pristatymą ir patikrinkite tikrąjį prekės pardavėją.",
+          "https://pigu.lt/lt/super/black-friday",
+          "announced"
+        ],
+        [
+          "Senukai",
+          "Buitis, įrankiai ir pasiruošimas",
+          "2026 m. pirkimo gidas paaiškina laikotarpį ir nukreipia į pardavėjo pasiūlymus.",
+          "Šiame šaltinyje nėra vieno patvirtinto nuolaidos procento visoms prekėms. Tikrinkite modelį ir akcijos taisykles.",
+          "https://www.senukai.lt/kp/juodasis-penktadienis-2026-kaip-pasiruosti-ir-gauti-gerus-pasiulymus/g0",
+          "announced"
+        ]
+      ],
+      "offers": [
+        [
+          "Topo centras",
+          "Oral-B iO5 Series, baltas",
+          "109,00 €",
+          "189,00 €",
+          "Puslapyje rodoma Topo klubo nario kaina. Pasiūlymo terminas 2026-11-30, kiekis ribotas.",
+          "https://www.topocentras.lt/pasiulymas-black-friday-braun-ir-oral-b-top-kainomis.html",
+          "2026-11-30"
+        ],
+        [
+          "1a.lt",
+          "Juodojo penktadienio hitų sąrašas",
+          "iki 11.30",
+          "",
+          "SMART NET ženklu pažymėtoms kainoms reikia narystės. Pasiūlymo ženkliukas nėra automatinis nuolaidos įrodymas.",
+          "https://www.1a.lt/c/tik-juodojo-penktadienio-hitai/dg3",
+          "2026-11-30"
+        ]
+      ],
+      "plan": [
+        [
+          "Pasirinkite tikslų modelį",
+          "Užsirašykite kodą, dydį ar komplektaciją ir dabartinę kainą."
+        ],
+        [
+          "Patikrinkite narystę",
+          "Atskirai vertinkite viešą kainą, klubo kainą ir krepšelyje priimtą kodą."
+        ],
+        [
+          "Suskaičiuokite visą pirkinį",
+          "Pridėkite pristatymą, užnešimą ar kitus privalomus mokesčius."
+        ]
+      ],
+      "faq": [
+        [
+          "Kada Juodasis penktadienis 2026 Lietuvoje?",
+          "2026 m. lapkričio 27 d., penktadienį. Konkreti parduotuvė savo akciją gali pradėti anksčiau ir baigti vėliau."
+        ],
+        [
+          "Ar Black Friday ir Juodasis penktadienis yra tas pats?",
+          "Taip. Black Friday yra angliškas to paties prekybos renginio pavadinimas. Juodoji savaitė apibūdina ilgesnę, pardavėjo pasirinktą kampaniją."
+        ],
+        [
+          "Ar visoms prekėms taikomas vienodas nuolaidos procentas?",
+          "Ne. Šiame gide pateikti tik patikrinti atskirų prekių ir kampanijų pavyzdžiai. Narystė, prekės modelis ir kitos sąlygos gali pakeisti galutinę kainą."
+        ],
+        [
+          "Ar Juodasis penktadienis Lietuvoje yra nedarbo diena?",
+          "Pats prekybos renginys nedarbo dienos nesuteikia. Darbo grafiką ir parduotuvės darbo laiką tikrinkite atskirai."
+        ]
+      ]
+    },
+    {
+      "kind": "monday",
+      "slug": "kibernetinis-pirmadienis",
+      "name": "Kibernetinis pirmadienis",
+      "title": "Kibernetinis pirmadienis 2026 ir pasiūlymai Lietuvoje",
+      "description": "Kibernetinis pirmadienis 2026 yra lapkričio 30 d. Patikrinkite Lietuvos pardavėjų terminus, klubo kainas, pristatymą ir Cyber Monday datas iki 2030 m.",
+      "intro": "Kibernetinis pirmadienis, dar vadinamas Cyber Monday, 2026 m. bus lapkričio 30 d. Tai laikas patikrinti, kas liko jūsų pirkinių sąraše ir kurios Lietuvos kampanijos iš tiesų tebegalioja. Penktadienio nuolaida nebūtinai tęsis pirmadienį.",
+      "lead": "Paskutinė kampanijos diena? Pirmiausia patikrinkite sąlygas.",
+      "sections": [
+        [
+          "Kas yra Kibernetinis pirmadienis?",
+          "Šis prekybos renginys siejamas su apsipirkimu internetu po Juodojo penktadienio savaitgalio. Lietuvoje dalis pardavėjų tuo metu tęsia jau pradėtą kampaniją, kiti gali pristatyti naujų pasiūlymų. Vien angliškas užrašas Cyber Monday neįrodo, kad prekė atpigo nuo penktadienio."
+        ],
+        [
+          "Ką patvirtina lapkričio 30 d. terminai?",
+          "Topo centro Braun ir Oral-B kampanija nurodyta iki 2026-11-30, o 1a.lt hitų sąraše taip pat minima lapkričio 30 d. Vis dėlto atskira prekė gali būti išpirkta. Pigu.lt ir „Senukų“ informacija padeda patikrinti asortimentą, tačiau šiame gide nėra patvirtinto visoms prekėms skirto pirmadienio kodo."
+        ],
+        [
+          "Paštomatas, kurjeris ar atsiėmimas?",
+          "Lygindami krepšelius pasirinkite realiai tinkamą pristatymo būdą. Sunkios buitinės technikos atveju išsiaiškinkite, ar nurodytas tik pristatymas iki namo, ar ir užnešimas. Dovanai svarbus ne vien pažadas apie išsiuntimą: patikrinkite numatomą gavimo datą ir ar visos prekės siunčiamos kartu."
+        ]
+      ],
+      "stores": [
+        [
+          "Topo centras",
+          "Kampanijos terminas 11.30",
+          "Braun ir Oral-B pasiūlymai Topo klubo nariams pagal paskelbtas sąlygas apima pirmadienį, 2026-11-30.",
+          "Prieš mokėdami patikrinkite narystę ir krepšelyje rodomą sumą. Papildoma Cyber Monday nuolaida nepatvirtinta.",
+          "https://www.topocentras.lt/pasiulymas-black-friday-braun-ir-oral-b-top-kainomis.html",
+          "confirmed"
+        ],
+        [
+          "1a.lt",
+          "Tikrinkite SMART NET kainą",
+          "Atrinktų hitų puslapyje pasiūlymo pabaiga nurodyta lapkričio 30 d.",
+          "Klubo ženkliukas, pristatymo mokestis ir prekės likutis tikrinami atskirai. Nekartokite pasibaigusio BLACK kodo iš seno puslapio.",
+          "https://www.1a.lt/c/tik-juodojo-penktadienio-hitai/dg3",
+          "confirmed"
+        ],
+        [
+          "Pigu.lt",
+          "Pardavėjas ir pristatymas",
+          "Pradėkite nuo Black Friday puslapio, tuomet atverkite pasirinktą modelį ir pristatymo pasirinkimus.",
+          "Mokėkite tik patikrinę, kas yra pardavėjas. Šiame gide nepatvirtinta atskira pirmadienio nuolaida visam asortimentui.",
+          "https://pigu.lt/lt/super/black-friday",
+          "unknown"
+        ],
+        [
+          "Senukai",
+          "Palyginkite savaitgalio krepšelį",
+          "Pardavėjo gidas paaiškina skirtumą tarp Juodosios savaitės ir Kibernetinio pirmadienio.",
+          "Pirmadienis savaime nežada mažesnės kainos. Palyginkite tą patį modelį ir galutinę mokėtiną sumą.",
+          "https://www.senukai.lt/kp/juodasis-penktadienis-kibernetinis-pirmadienis-ir-juodoji-savaite-kuo-jie-skiriasi/1gi/",
+          "unknown"
+        ]
+      ],
+      "offers": [
+        [
+          "Topo centras",
+          "Braun Series 9 PRO+ 9675cc",
+          "379,00 €",
+          "499,00 €",
+          "Patikrinta Topo klubo nario kaina. Kampanija nurodyta iki 2026-11-30, naudos nesumuojamos.",
+          "https://www.topocentras.lt/pasiulymas-black-friday-braun-ir-oral-b-top-kainomis.html",
+          "2026-11-30"
+        ],
+        [
+          "1a.lt",
+          "Atrinkti hitai pirmadienį",
+          "iki lapkričio 30 d.",
+          "",
+          "Sąraše pažymėtoms SMART NET kainoms reikia narystės. Tai nėra naujo pirmadienio nuolaidos procento patvirtinimas.",
+          "https://www.1a.lt/c/tik-juodojo-penktadienio-hitai/dg3",
+          "2026-11-30"
+        ]
+      ],
+      "plan": [
+        [
+          "Grįžkite prie sąrašo",
+          "Patikrinkite tik tai, ko iš tiesų reikia ir kas nebuvo nupirkta penktadienį."
+        ],
+        [
+          "Patikrinkite galiojimą",
+          "Ieškokite konkrečios datos ir sąlygų; pavadinimas nepatvirtina kupono galiojimo."
+        ],
+        [
+          "Palyginkite pristatymą",
+          "Įvertinkite gavimo laiką, siuntų skaičių ir galutinį mokestį."
+        ]
+      ],
+      "faq": [
+        [
+          "Kada Kibernetinis pirmadienis 2026 Lietuvoje?",
+          "2026 m. lapkričio 30 d., pirmadienį. Jis vyksta po lapkričio 27 d. Juodojo penktadienio."
+        ],
+        [
+          "Ar Cyber Monday prekės būtinai pigesnės?",
+          "Ne. Pirmadienio kaina gali būti tokia pati, didesnė ar mažesnė. Lyginkite tikslų modelį, klubo sąlygas ir pristatymą."
+        ],
+        [
+          "Ar pirmadienį galima naudoti penktadienio kuponą?",
+          "Tik jei jo galiojimo terminas ir prekės sąlygos tai leidžia. Patikrinkite, ar kodas priimtas galutinėje krepšelio suvestinėje."
+        ],
+        [
+          "Kada bus Kibernetinis pirmadienis 2030 m.?",
+          "2030 m. gruodžio 2 d. Tais metais Juodasis penktadienis yra lapkričio 29 d., todėl po jo einantis pirmadienis patenka į gruodį."
+        ]
+      ]
+    }
+  ],
+  "checked": "2026-11-16",
+  "css": "/assets/shopping/guides-0358acb123fc.css",
+  "script": "/assets/shopping/guide-d245d9bcf38b.js"
+}

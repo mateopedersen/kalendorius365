@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Shopping calendar//lt-LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:juodasis-penktadienis-2026@kalendorius365.lt
+DTSTAMP:20261116T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Juodasis penktadienis 2026
+DESCRIPTION:Prekybos diena\, ne valstybinė nedarbo šventė.\nhttps://kal
+ endorius365.lt/juodasis-penktadienis/
+URL:https://kalendorius365.lt/juodasis-penktadienis/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Juodasis penktadienis
+END:VALARM
+END:VEVENT
+END:VCALENDAR

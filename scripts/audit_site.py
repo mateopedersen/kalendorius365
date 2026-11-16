@@ -156,6 +156,12 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
   elif relative_asset.parts[0]=='data':
    cache_path='/assets/data/*'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif relative_asset.parts[0]=='shopping':
+   cache_path='/assets/shopping/*'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif relative_asset.parts[0]=='lunar' and len(relative_asset.parts)==2 and path.suffix=='.js':
+   cache_path='/assets/lunar/*.js'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif relative_asset.parts[0]=='sharing':
    immutable_sharing=len(relative_asset.parts)>2 and relative_asset.parts[1] in {'artwork','brands','og'}
    cache_path=f'/assets/sharing/{relative_asset.parts[1]}/*' if immutable_sharing else '/assets/sharing/*'
