@@ -4,8 +4,8 @@ test('regional privacy notice dismisses and stays dismissed without clearing oth
  await context.addInitScript(()=>localStorage.setItem('qa-unrelated-preference','keep'));
  await page.route('**/api/privacy-region',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({showNotice:true})}));
  await page.goto('/2028/');await expect(page.locator('#cookie-notice')).toBeVisible();
- await page.locator('#cookie-notice-dismiss').click();await expect(page.locator('#cookie-notice')).toHaveCount(0);
- await page.reload();await expect(page.locator('#cookie-notice')).toHaveCount(0);
+ await page.locator('#cookie-notice-dismiss').click();await expect(page.locator('#cookie-notice')).toBeHidden();
+ await page.reload();await expect(page.locator('#cookie-notice')).toBeHidden();
  expect(await page.evaluate(()=>localStorage.getItem('qa-unrelated-preference'))).toBe('keep');
  expect(await page.evaluate(()=>localStorage.getItem('kalendorius365:privacy-notice:v1'))).toBe('dismissed');
 });

@@ -674,7 +674,7 @@
   {
     "route": "/horoskopai/istorija/",
     "added_words": 67,
-    "sha256": "4b3f33699dff21cb37bccc51b629e8f289be92d0440ccdaaab4bd1afa897875e",
+    "sha256": "d918a10a16b0a2cd19f37c08f2ee3bb13dd98502e2d995d0e10b8dce2000f3b4",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
@@ -3330,6 +3330,18 @@
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
+    "route": "/horoskopai/avinas/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "67f565a03a7f9cbe1ab00ee3ce306a8bbedfcf310e93dc1ba1520df153503bf5",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/avinas/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "747160ccda3f0b3ea31563126af83970f8d1ab7609bf4db06f0ff745b176e353",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
     "route": "/horoskopai/dvyniai/2026-10-20/v-a7f7b518d5b98431/",
     "added_words": 58,
     "sha256": "e9af9237bb8ad29837705f892bcb2dce2a3276df60e6e03ac9779389a4726231",
@@ -3483,6 +3495,18 @@
     "route": "/horoskopai/dvyniai/2026-11-14/v-36c26192386ff38c/",
     "added_words": 57,
     "sha256": "286fe5b3d488bef17e5918dd2c79520ff739a3e5669ff79df97e66414ae8da55",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/dvyniai/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "02a386fdfcb9b850d44a1534dc6c2698467da6841d9b3cb0e26b62fe3ac21a8e",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/dvyniai/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "6018eeb9f887692758c1ae8dbaf33d21e29bde8cb01301d748152c471d77adaf",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
@@ -3642,6 +3666,18 @@
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
+    "route": "/horoskopai/jautis/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "e9f3c8ab7971297eb964195402b1aa4290e491d581165be96f79a858e59c67d6",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/jautis/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "e7ba72a918bc23e9087b3f9093ae46d36ea02c4ba2285541b83494c29d87de23",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
     "route": "/horoskopai/liutas/2026-10-20/v-a7f7b518d5b98431/",
     "added_words": 58,
     "sha256": "e5703177e09e98d797c87d171e16849734d79f53e512d7b7781f0b837f8e1943",
@@ -3795,6 +3831,18 @@
     "route": "/horoskopai/liutas/2026-11-14/v-36c26192386ff38c/",
     "added_words": 57,
     "sha256": "7a5bb58e69b84efc82be0ec66f3d601376fc5c863d2d1b305ff8288b36fb64b3",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/liutas/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "80a72cbd29701e076270c4f77bea4099097c6452c817bcda5ef741a2b410a079",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/liutas/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "fe83ae143fbb2e90c885ace7fda2ba5706effdbc906bfb86f0a91e33ddf18847",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
@@ -3954,6 +4002,18 @@
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
+    "route": "/horoskopai/mergele/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "d89485386b190047e1edf5e17695f79e37af7aa716b7b153f277f16bbae4b6cc",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/mergele/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "74aae3de4fc89e22e7ec52c65c022815ddccb489ba3f83a144f412717dc21a48",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
     "route": "/horoskopai/oziaragis/2026-10-20/v-a7f7b518d5b98431/",
     "added_words": 58,
     "sha256": "55408817f08e4dd1f9b2d50c37164971b5bd230be80892a5763a076fe6b5d2bd",
@@ -4107,6 +4167,18 @@
     "route": "/horoskopai/oziaragis/2026-11-14/v-36c26192386ff38c/",
     "added_words": 57,
     "sha256": "172b8ef7da100ea14f17749db10b1a4bea576ca33fafb2b6bf44b6aea7ec0c7d",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/oziaragis/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "c17fc6db2510c246bb872be6488d92c7f07e5b17aa548b5148342bafa4d56203",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/oziaragis/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "8cf5fff2f7a3b9bbd8955ab280cec9660aea0df23dcd37131772ae572eea0816",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
@@ -4266,6 +4338,18 @@
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
+    "route": "/horoskopai/saulys/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "e3ca144481583f866cdd689e353f90fb5bc6abcd09396822311b3ea934d650f5",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/saulys/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "0da5c190146891b22a5572a5d88bceeb1f695cc7f5785aabd41e1fa5d36cf2a9",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
     "route": "/horoskopai/skorpionas/2026-10-20/v-a7f7b518d5b98431/",
     "added_words": 58,
     "sha256": "8e1faa1f6ebfe61a0977e448b8edaf868ded4470d645fca1a6880ec68fb4bee7",
@@ -4419,6 +4503,18 @@
     "route": "/horoskopai/skorpionas/2026-11-14/v-36c26192386ff38c/",
     "added_words": 57,
     "sha256": "1d33b22a60a8e6121bc2c210f5b1187a2a6c2530ed23f60aaf4bfdac92d548db",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/skorpionas/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "db078e57b90712e10980b8e805e094eb31555dfd63d70615d0252d107830e2ab",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/skorpionas/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "6451991e64c9de1f9492db331634f6f70dc745cf78ca84a3a0216d0fd74c235b",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
@@ -4578,6 +4674,18 @@
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
+    "route": "/horoskopai/svarstykles/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "76589245b2e84febb7eee0bda5ed21a3ce1c5e05114f47140b63b5efb0897aec",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/svarstykles/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "8c1e1c9599bb9acee8cd92f78ea9b3cfa7e66cba1e23234fa74096c3915194fb",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
     "route": "/horoskopai/vandenis/2026-10-20/v-a7f7b518d5b98431/",
     "added_words": 58,
     "sha256": "531f5d6e613c213f44db815ad92c44aee1b15c1cc079bc96ff3c3b268c0c657c",
@@ -4731,6 +4839,18 @@
     "route": "/horoskopai/vandenis/2026-11-14/v-36c26192386ff38c/",
     "added_words": 57,
     "sha256": "2cb15dfcacfa79e61939a9ce923a2a250131f0bee119e401d4a4cebdda23c559",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/vandenis/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "c23d6c379297d68f049617cbfc1d6e01d7c55b249b8de5a0f557930a632206cb",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/vandenis/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "b26c6b40f6e73dfa227235b8e73463dd5310036e08da0618fbf9483cde9b6f3b",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
@@ -4890,6 +5010,18 @@
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
+    "route": "/horoskopai/vezys/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "5fa4758a0e11d9fdc5cbf0d1e5742ecb0399d67c3c63a8175f73f5d9c9f510b5",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/vezys/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "156d0e42889a05629d5665190171944a76f08fc2571de4de1f64535c62d69670",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
     "route": "/horoskopai/zuvys/2026-10-20/v-a7f7b518d5b98431/",
     "added_words": 58,
     "sha256": "ffb572b827d332d58de87d0033ab3218fe22378fddf421437ade369a1a6aa167",
@@ -5043,6 +5175,18 @@
     "route": "/horoskopai/zuvys/2026-11-14/v-36c26192386ff38c/",
     "added_words": 57,
     "sha256": "afa993864f36c219811a43158e4a9e18221d9e47328527239e68ebfa9f020a10",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/zuvys/2026-11-15/v-ecefd71cd0d5a474/",
+    "added_words": 58,
+    "sha256": "43e6c52bbf826395a542c6a2bfd26a018bbb19d444296a42395140dd92967779",
+    "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
+  },
+  {
+    "route": "/horoskopai/zuvys/2026-11-16/v-ce3ae65ea0bbcdcb/",
+    "added_words": 58,
+    "sha256": "2c5bb433c0c07c936834d7cc5e5f4bd33e6c0e43f3d9e0414f626d8a8768b822",
     "review": "AI-assisted source-bound calculation/example review; no independent human editor claimed"
   },
   {
