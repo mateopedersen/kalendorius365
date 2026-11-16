@@ -6,6 +6,19 @@ import config from '../data/shopping-guides.json' with {type:'json'};
 const moduleFile=new URL('../site/assets/shopping/'+config.script.split('/').at(-1),import.meta.url);
 const {compareCosts}=await import(moduleFile.href);
 
+test('The first build publishes current guide metadata to search and sharing',async()=>{
+ const search=JSON.parse(await fs.readFile(new URL('../site/assets/data/search.json',import.meta.url),'utf8'));
+ const sharing=JSON.parse(await fs.readFile(new URL('../site/_data/sharing.json',import.meta.url),'utf8')).pages;
+ for(const [index,page] of config.pages.entries()){
+  const route=config.paths[index],entry=search.find(row=>row.url===route);
+  assert.ok(entry,route+' is discoverable');
+  assert.equal(entry.title,page.title);
+  assert.equal(entry.description,page.description);
+  assert.equal(sharing[route].title,page.title);
+  assert.equal(sharing[route].excerpt,page.description);
+ }
+});
+
 test('Delivery changes the winner; currency comparison uses cents',()=>{
  assert.deepEqual(compareCosts(199,9,205,0),{a:208,b:205,difference:3,winner:'b'});
  assert.equal(compareCosts(0.1,0.2,0.3,0).winner,'equal');

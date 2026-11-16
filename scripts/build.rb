@@ -39,6 +39,9 @@ Dir.chdir(ROOT) do
  system('python3','scripts/blog/photos.py',exception:true)
  system('python3','scripts/blog/prepare_examples.py',exception:true)
  system('python3','scripts/blog/prepare.py',exception:true)
+ # The search catalogue reads page front matter. Materialize shopping metadata
+ # before that catalogue is generated; restore hub discovery after pages.rb.
+ system('node','scripts/prepare-shopping.mjs',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
  system('node','scripts/prepare-shopping.mjs',exception:true)
  system('python3','scripts/blog/enrich_pages.py',exception:true)
