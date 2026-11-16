@@ -3,15 +3,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {consentRecord,validConsent,validUnit,unitForWidth} from '../site/assets/advertising/ad-policy.js';
-const config=JSON.parse(fs.readFileSync(new URL('../site/_data/advertising.json',import.meta.url),'utf8'));
+const productionConfig=JSON.parse(fs.readFileSync(new URL('../site/_data/advertising.json',import.meta.url),'utf8'));
+const config={...productionConfig,enabled:true};
 const code=fs.readFileSync(new URL('../site/assets/advertising/advertising.js',import.meta.url),'utf8').replace(/^import[^\n]+\n/,'');
-function browser({width=1000,choice=null,query='',host=config.hosts[0],blocked=false,hasSlot=true}={}){
+function browser({width=1000,choice=null,query='',host=config.hosts[0],blocked=false,hasSlot=true,enabled=true}={}){
  const scripts=[],events={},docEvents={},data=new Map(),dialogs=[];let observer;
  if(choice)data.set(config.storageKey,JSON.stringify(choice));
  const node=()=>({dataset:{},style:{},children:[],hidden:false,setAttribute(){},addEventListener(){},append(...children){this.children.push(...children);},showModal(){this.open=true;},close(){this.open=false;}});
  const placeholder=node(),stage={...node(),clientWidth:width,append(n){scripts.push(n);}};
  const slot={...node(),clientWidth:width,querySelector:s=>s==='[data-advertising-stage]'?stage:placeholder,getBoundingClientRect:()=>({top:300,bottom:700})};
- const document={visibilityState:'visible',getElementById:()=>({textContent:JSON.stringify(config)}),querySelector:()=>hasSlot?slot:null,createElement(tag){const n=node();if(tag==='dialog')dialogs.push(n);return n;},body:{append(){}},addEventListener:(k,f)=>docEvents[k]=f};
+ const document={visibilityState:'visible',getElementById:()=>({textContent:JSON.stringify({...config,enabled})}),querySelector:()=>hasSlot?slot:null,createElement(tag){const n=node();if(tag==='dialog')dialogs.push(n);return n;},body:{append(){}},addEventListener:(k,f)=>docEvents[k]=f};
  const context={document,URL,Date,innerHeight:800,location:{hostname:host,search:query,reload(){context.reloads++;}},localStorage:{getItem(k){if(blocked)throw Error('blocked');return data.get(k)||null;},setItem(k,v){if(blocked)throw Error('blocked');data.set(k,v);}},consentRecord,validConsent,unitForWidth,addEventListener:(k,f)=>events[k]=f,reloads:0,IntersectionObserver:function(cb){observer={cb,observe(){},disconnect(){}};return observer;}};context.window=context;
  vm.createContext(context);vm.runInContext(code,context);
  return {context,scripts,data,slot,stage,placeholder,dialogs,near:()=>observer?.cb([{isIntersecting:true}]),storage(key,newValue){if(key===null)data.clear();else if(newValue===null)data.delete(key);else data.set(key,newValue);events.storage({key,newValue});},click(action){docEvents.click({target:{closest:()=>({dataset:{advertisingChoice:action},hasAttribute:()=>false})},preventDefault(){}});},resize(w){slot.clientWidth=w;events.resize();}};
@@ -63,4 +64,11 @@ test('cross-tab grants still require viewport; loaded ads never refresh and revo
   const loaded=browser({choice:consentRecord(true)});loaded.near();assert.equal(loaded.scripts.length,1);loaded.storage(key,value);assert.equal(loaded.context.reloads,1);assert.equal(loaded.scripts.length,1);assert.equal(loaded.slot.dataset.advertisingConsent,'denied');assert.equal(loaded.dialogs[0].children[3].textContent,config.labels.denied);
   loaded.storage(null,null);loaded.storage(config.storageKey,'invalid-json');loaded.storage(config.storageKey,JSON.stringify(consentRecord(true)));assert.equal(loaded.context.reloads,1);assert.equal(loaded.scripts.length,1);
  }
+});
+
+test('production delivery hold blocks SDK even with saved, new or cross-tab permission',()=>{
+ assert.equal(productionConfig.enabled,false);
+ for(const width of [300,728,1000])assert.equal(unitForWidth(width,productionConfig),null);
+ const b=browser({enabled:productionConfig.enabled,choice:consentRecord(true)});b.near();b.click('allow');b.storage(config.storageKey,JSON.stringify(consentRecord(true)));b.resize(1000);b.near();
+ assert.equal(b.scripts.length,0);assert.equal(b.context.reloads,0);assert.equal(b.context.atOptions,undefined);
 });

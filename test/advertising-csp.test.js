@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import productionAdPaths from '../functions/advertising-routes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { advertisingCandidate, advertisingCsp, advertisingResponse } from '../lib/advertising-csp.mjs';
@@ -42,4 +44,13 @@ test('public exception also requires 200 HTML, a real slot, and the base CSP', a
   assert.notEqual(result, response);
   assert.match(result.headers.get('Content-Security-Policy'), /script-src 'self' 'unsafe-inline' https:\/\/bauval\.org/);
   assert.equal(await result.text(), '<section data-advertising-slot>Advertising</section>');
+});
+
+test('production hold leaves no page with advertising CSP permissions',()=>{
+ assert.deepEqual(productionAdPaths,[]);
+ const headers=fs.readFileSync(new URL('../public/_headers',import.meta.url),'utf8');
+ const policy=headers.match(/Content-Security-Policy: ([^\n]+)/)[1];
+ assert.doesNotMatch(policy,/bauval|nresystems|storageimagedisplay/);
+ assert.doesNotMatch(policy.match(/script-src ([^;]+)/)[1],/'unsafe-inline'/);
+ assert.equal(advertisingCandidate(new Request('https://kalendorius365.lt/public/'),new Set(productionAdPaths),hosts),false);
 });

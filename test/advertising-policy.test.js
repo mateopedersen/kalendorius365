@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {consentRecord,validConsent,validUnit,unitForWidth} from '../site/assets/advertising/ad-policy.js';
-const config=JSON.parse(readFileSync(new URL('../site/_data/advertising.json',import.meta.url)));
+const productionConfig=JSON.parse(readFileSync(new URL('../site/_data/advertising.json',import.meta.url)));
+const config={...productionConfig,enabled:true};
 test('Lithuanian real banner units fit one responsive placement and do not use another site unit',()=>{
  assert.equal(config.enabled,true);assert.equal(config.mobile.key,'c6b5a54d0ae733339f2fa22b92f7dfcc');assert.equal(config.desktop.key,'d325a59af4ebe4b4db284f3af4fe2611');
  for(const unit of [config.mobile,config.desktop])assert(validUnit(unit,config.scriptHosts));
