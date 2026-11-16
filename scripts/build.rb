@@ -12,6 +12,7 @@ require_relative '../lib/build_policy'
 require_relative '../lib/css_minifier'
 require_relative '../lib/static_asset_urls'
 require_relative '../lib/sitemap'
+require_relative '../lib/advertising_routes'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
@@ -194,10 +195,11 @@ Dir.chdir(ROOT) do
  headers+="/assets/releases/*\n  #{immutable}\n"
  # Compatibility endpoints stay revalidatable because their URLs are stable.
  # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/advertising/') && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
+ headers+="/assets/advertising/*\n  #{revalidate}\n"
  headers+="/assets/shopping/*\n  #{revalidate}\n"
  headers+="/assets/lunar/*.js\n  #{revalidate}\n"
  # Runtime modules and records at stable URLs must revalidate. Only the
@@ -219,6 +221,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo-web.webp\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
  abort 'Cloudflare Pages header rule limit exceeded' if headers.lines.count { |line|line.start_with?('/') }>100
  File.write('public/_headers',headers)
+ AdvertisingRoutes.generate(root: ROOT, output: File.join(ROOT,'public'), existing_routes: ['/api/*'])
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release

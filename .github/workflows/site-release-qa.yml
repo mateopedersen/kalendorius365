@@ -11,6 +11,7 @@ on:
       - 'Gemfile.lock'
       - '.ruby-version'
       - 'lib/**'
+      - 'functions/**'
       - 'site/_config.yml'
       - 'scripts/**'
       - 'scripts/build.rb'

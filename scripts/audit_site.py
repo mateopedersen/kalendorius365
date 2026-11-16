@@ -156,6 +156,9 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
   elif relative_asset.parts[0]=='data':
    cache_path='/assets/data/*'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif relative_asset.parts[0]=='advertising':
+   cache_path='/assets/advertising/*'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif relative_asset.parts[0]=='shopping':
    cache_path='/assets/shopping/*'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'

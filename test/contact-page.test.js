@@ -38,7 +38,8 @@ test("the rendered integration has a titled Google frame and a direct non-JavaSc
   assert.ok(page.includes(CONTACT_FORM_URL + "?embedded=true&amp;hl=lt"));
   assert.match(page, /mailto:kalendorius365@gmail\.com/);
   assert.doesNotMatch(page, /data-contact-submit|data-contact-form|laiško juodrašt/);
-  assert.match(read("../scripts/build.rb"), /frame-src https:\/\/docs\.google\.com;/);
+  const frames=read("../scripts/build.rb").match(/frame-src ([^;]+);/)[1].trim().split(/\s+/);
+  assert.deepEqual(frames,["https://docs.google.com"]);
 });
 
 test("privacy source describes Forms storage, Gmail notifications and restricted response access", () => {
