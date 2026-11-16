@@ -33,6 +33,6 @@ export function render(c,p){
  <section class="sg-section sg-faq"><div class="sg-section-head"><h2>${h(L.faq)}</h2></div>${p.faq.map(([question,answer])=>`<details><summary>${h(question)}<span aria-hidden="true"></span></summary><p>${h(answer)}</p></details>`).join('')}</section>
  <nav class="sg-section sg-related" aria-label="${h(L.related)}"><p class="sg-eyebrow">${h(L.related)}</p><a class="sg-related-feature" href="${c.paths[sibling]}"><div><span>${h(L.next)}</span><strong>${h(c.pages[sibling].name)} 2026</strong></div>${icon('arrow')}</a><div class="sg-related-grid">${c.related.map(([url,label])=>`<a href="${url}">${h(label)}${icon('arrow')}</a>`).join('')}</div></nav>
  <script type="application/json" data-shopping-config>${JSON.stringify(config).replaceAll('<','\\u003c')}</script><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph}).replaceAll('<','\\u003c')}</script>
- <script type="module" data-static-keep src="${c.script}"></script></article>`;
+ </article>`;
 }
 export async function writeCalendars(c,assetDirectory){await fs.mkdir(assetDirectory,{recursive:true});for(const p of c.pages)for(let y=2026;y<=2030;y++)await fs.writeFile(path.join(assetDirectory,p.slug+'-'+y+'.ics'),ics(c,p,y));}
