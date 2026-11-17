@@ -29,12 +29,12 @@ test("published workday pages activate their scoped responsive styles", () => {
   const designSystem = readFileSync(new URL("../public/assets/design-system.css", import.meta.url), "utf8");
   for (const year of [2027, 2028, 2029]) {
     const built = readFileSync(new URL(`../public/darbo-dienos/${year}/index.html`, import.meta.url), "utf8");
-    assert.match(built, /<body class="tool-workdays">/, `${year} should enable the page-specific style scope`);
+    assert.match(built, /<body\b[^>]*class="tool-workdays"[^>]*>/, `${year} should enable the page-specific style scope`);
   }
   assert.match(designSystem, /body\.tool-workdays \.workyear-month-grid\{display:grid/, "month cards should use the responsive grid layout");
   assert.match(designSystem, /body\.tool-workdays \.workyear-hero__art img\{[^}]*width:min\(100%,410px\)/, "hero illustration should stay within its layout bounds");
 });
 
 test("annual workday pages activate their responsive layout styles", () => {
-  for (const output of publicPages) assert.match(output, /<body class="tool-workdays">/);
+  for (const output of publicPages) assert.match(output, /<body\b[^>]*class="tool-workdays"[^>]*>/);
 });

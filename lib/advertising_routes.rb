@@ -10,7 +10,7 @@ module AdvertisingRoutes
       URI::DEFAULT_PARSER.escape('/' + relative)
     end.uniq.sort
     File.write(File.join(root, 'functions/advertising-routes.js'), "// Generated from public HTML containing an advertising slot.\nexport default " + JSON.generate(paths) + ";\n")
-    includes = (existing_routes + paths.map { |path| '/' + path.split('/')[1].to_s + '*' }).uniq.sort
+    includes = (existing_routes + paths.map { |path| path == '/' ? '/' : '/' + path.split('/')[1].to_s + '*' }).uniq.sort
     raise 'Cloudflare advertising route limit exceeded' if includes.size > 100
     File.write(output.join('_routes.json'), JSON.generate({version: 1, include: includes, exclude: []}) + "\n")
   end

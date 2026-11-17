@@ -1,11 +1,10 @@
 {% if site.data.advertising.enabled %}
-{% unless page.no_ads or page.noindex or page.share_archive or page.url == "/paieska/" or page.url contains "/dalintis/" or page.app or page.tool or page.planner or page.phase_module == "shift" or page.phase_module == "school" or page.calendar_editor or page.planner_studio or page.contact or page.about_us or page.url == "/404.html" or page.url == "/privatumas/" or page.url == "/slapukai/" or page.url == "/redakcine-politika/" or page.url == "/naudojimo-salygos/" or page.url == "/salygos/" or page.url == "/kontaktai/" or page.url == "/apie-mus/" or page.url == "/saltiniai/" %}
-<section class="ad-placement" data-advertising-slot aria-label="Reklama">
+{% unless page.url == "/404.html" or page.share_archive %}
+<section class="ad-placement" data-advertising-slot hidden aria-label="Reklama">
   <span class="ad-placement-label">Reklama</span>
   <div class="ad-placement-stage" data-advertising-stage>
-    <div class="ad-placeholder" data-advertising-placeholder><p>Šioje vietoje reklama rodoma tik gavus jūsų leidimą.</p><button type="button" data-advertising-open>Reklamos pasirinkimai</button></div>
   </div>
-  <button type="button" class="ad-placement-settings" data-advertising-open>Keisti reklamos pasirinkimą</button>
+
 </section>
 {% endunless %}
 {% endif %}
