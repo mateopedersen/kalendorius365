@@ -5,8 +5,8 @@ import productionAdPaths from '../functions/advertising-routes.js';
 import {advertisingCandidate,advertisingCsp,advertisingResponse} from '../lib/advertising-csp.mjs';
 const original="default-src 'self'; script-src 'self' 'sha256-abc' 'nonce-xyz'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://docs.google.com; object-src 'none'; form-action 'self'; frame-ancestors 'none'";
 const host='kalendorius365.lt',hosts=[host],paths=new Set(['/']);
-test('the exact display provider is added without removing nonce/hash protection or enabling eval/inline code',()=>{
- const p=advertisingCsp(original);assert.match(p,/https:\/\/bauval.org/);assert.match(p,/'nonce-xyz'/);assert.match(p,/'sha256-abc'/);assert.doesNotMatch(p,/unsafe-eval|script-src[^;]*unsafe-inline|asiafilm/);assert.match(p,/object-src 'none'/);assert.equal(advertisingCsp(null),null);
+test('official creative permissions retain base hashes, nonces and blocked event handlers',()=>{
+ const p=advertisingCsp(original);assert.match(p,/https:\/\/bauval.org/);assert.match(p,/'nonce-xyz'/);assert.match(p,/'sha256-abc'/);assert.doesNotMatch(p,/(?:^|;)\s*script-src\s[^;]*unsafe-inline|asiafilm/);assert.match(p,/(?:^|;)\s*script-src\s[^;]*'unsafe-eval'/);const elements=p.split(';').find(v=>v.trim().startsWith('script-src-elem '));assert(elements.includes("'unsafe-inline'"));assert(elements.includes('https://bauval.org'));assert.doesNotMatch(elements,/sha256-|nonce-|unsafe-eval/);assert.match(p,/script-src-attr 'none'/);assert.match(p,/object-src 'none'/);assert.equal(advertisingCsp(null),null);
 });
 test('private/query/preview/method/error/download responses never gain a provider exception or require body buffering',async()=>{
  for(const [url,method,status,type]of [[`https://${host}/?q=private`,'GET',200,'text/html'],[`https://${host}/private/`,'GET',200,'text/html'],['https://preview.pages.dev/','GET',200,'text/html'],[`https://${host}/`,'POST',200,'text/html'],[`https://${host}/`,'GET',404,'text/html'],[`https://${host}/`,'GET',200,'application/pdf']]){
