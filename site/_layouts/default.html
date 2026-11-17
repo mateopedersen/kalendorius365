@@ -56,6 +56,7 @@
 <link rel="stylesheet" href="/assets/print.css?v={{ site.css_version }}" media="print">
 <link rel="stylesheet" href="/assets/advertising/advertising.css?v={{ site.css_version }}">
 <script id="advertising-config" type="application/json">{{ site.data.advertising | jsonify }}</script>
+{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/advertising/advertising.js"></script>{% endcapture %}
 {% if page.print_paper %}<style id="artwork-print-style" media="print">@page { size: {{ page.print_paper }}; margin: 0; }</style>{% endif %}
 {% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/common.js?v={{ site.script_version }}"></script>{% endcapture %}
 {% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/cookie-notice.js?v={{ site.script_version }}"></script>{% endcapture %}
@@ -104,7 +105,7 @@
   </div>
   <div class="cookie-notice__actions">
     <a href="/privatumas/#cookies">Privatumo politika</a>
-    <button id="cookie-notice-dismiss" class="primary" type="button" data-analytics-choice="no">Tik būtini</button><button class="primary" type="button" data-analytics-choice="yes">Leisti analitiką</button><button type="button" data-privacy-close>Uždaryti nekeičiant pasirinkimo</button>
+    <button id="cookie-notice-dismiss" class="primary" type="button" data-analytics-choice="no">Be analitikos</button><button class="primary" type="button" data-analytics-choice="yes">Leisti analitiką</button><button type="button" data-privacy-close>Uždaryti nekeičiant pasirinkimo</button>
   </div>
 </aside>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>

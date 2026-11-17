@@ -78,7 +78,7 @@ for(const width of [320,390])test(`analytics choices remain reachable at 200 per
  await page.setViewportSize({width,height:844});await page.goto('/pamainu-grafikas/');await page.addStyleTag({content:'html {font-size:200% !important}'});await page.evaluate(()=>document.fonts.ready);
  const notice=page.locator('#cookie-notice');await expect(notice).toBeVisible();
  for(const selector of ['[data-analytics-choice="no"]','[data-analytics-choice="yes"]','[data-privacy-close]'])await expect(notice.locator(selector)).toBeInViewport({ratio:1});
- await expect(page.locator('[data-sponsored-link]')).toBeVisible();await expect(page.locator('[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);
+ await expect(page.locator('[data-advertising-stage]')).toBeAttached();await expect(page.locator('[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);
  await notice.locator('[data-analytics-choice="no"]').focus();await page.keyboard.press('Enter');await expect(notice).toBeHidden();
  expect(await page.evaluate(()=>window.Calendar365Analytics.choice().analytics)).toBe(false);
 });

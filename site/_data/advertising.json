@@ -21,7 +21,9 @@
     "height": 250
   },
   "privacy": "/privatumas/#reklama",
-  "mode": "sponsored-link",
-  "directLink": "https://asiafilm.org/4/6b6aabe64d2bbfcdadd73b76443164f4",
-  "directLinkUnit": "32322917"
+  "mode": "display-banner",
+  "displayLabels": {
+    "on": "Reklamos įjungtos. Pakeitimas visiškai įsigalios iš naujo atvėrus puslapį.",
+    "off": "Reklamos išjungtos. Išsaugokite nebaigtą darbą ir atnaujinkite puslapį, kad sustabdytumėte jau įkeltą reklamos kodą."
+  }
 }

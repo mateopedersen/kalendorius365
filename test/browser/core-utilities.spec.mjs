@@ -3,12 +3,12 @@ import {test,expect} from '@playwright/test';
 test('analytics refusal persists while the sponsored link stays visible and other stored data is preserved',async({page,context})=>{
  await context.addInitScript(()=>localStorage.setItem('qa-unrelated-preference','keep'));
  await page.goto('/2028/');const banner=page.locator('#cookie-notice');await expect(banner).toBeVisible();
- await expect(page.locator('[data-sponsored-link]')).toBeVisible();await expect(page.locator('[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);await banner.locator('[data-analytics-choice="no"]').click();await expect(banner).toBeHidden();
+ await expect(page.locator('[data-advertising-stage]')).toBeAttached();await expect(page.locator('[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);await banner.locator('[data-analytics-choice="no"]').click();await expect(banner).toBeHidden();
  await page.reload();await expect(banner).toBeHidden();
  expect(await page.evaluate(()=>localStorage.getItem('qa-unrelated-preference'))).toBe('keep');
  const choice=await page.evaluate(()=>{return JSON.parse(localStorage.getItem('kalendorius365:analytics-consent:v1'));});
  expect(choice.version).toBe(1);expect(choice.analytics).toBe(false);expect(choice.expiresAt).toBeGreaterThan(Date.now());
- await expect(page.locator('[data-sponsored-link]')).toBeVisible();await expect(page.locator('script[src*="bauval.org"],script[src*="asiafilm.org"]')).toHaveCount(0);expect(await page.evaluate(()=>localStorage.getItem('kalendorius365:advertising-consent:v1'))).toBeNull();
+ await expect(page.locator('[data-advertising-stage]')).toBeAttached();await expect(page.locator('script[src*="bauval.org"],script[src*="asiafilm.org"]')).toHaveCount(0);expect(await page.evaluate(()=>localStorage.getItem('kalendorius365:advertising-consent:v1'))).toBeNull();
 });
 
 test('calendar ICS import opens the file chooser and malformed follow-up preserves the imported event',async({page,context})=>{

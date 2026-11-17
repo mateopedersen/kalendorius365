@@ -1,1 +1,4 @@
-// The sponsored banner is complete server-rendered HTML. It does not load a third-party client or require a permission choice.
+import {mountDisplayBanner} from './display-runtime.js';
+const node=document.getElementById('advertising-config');
+let bannerConfig;try{bannerConfig=JSON.parse(node?.textContent||'null');}catch{}
+if(bannerConfig)mountDisplayBanner(bannerConfig);

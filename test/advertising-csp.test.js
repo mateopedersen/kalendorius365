@@ -4,7 +4,27 @@ import assert from 'node:assert/strict';
 import productionAdPaths from '../functions/advertising-routes.js';
 import {advertisingCandidate,advertisingCsp,advertisingResponse} from '../lib/advertising-csp.mjs';
 const original="default-src 'self'; script-src 'self' 'sha256-abc' 'nonce-xyz'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://docs.google.com; object-src 'none'; form-action 'self'; frame-ancestors 'none'";
-test('a static sponsored link preserves every strict nonce/hash and grants no vendor permission',()=>{assert.equal(advertisingCsp(original),original);assert.equal(advertisingCsp(null),null);assert.doesNotMatch(advertisingCsp(original),/bauval|asiafilm|storageimagedisplay|script-src[^;]*unsafe-inline/);});
-test('response middleware never reads public, private, query or download bodies and preserves headers/status',async()=>{for(const route of ['/','/kontaktai/','/piskotki/','/upravljanje/','/?q=private','/free/file.pdf'])for(const status of [200,404]){const response=new Response('unchanged',{status,headers:{'Content-Security-Policy':original,'ETag':'stable'}});response.clone=()=>{throw Error('No buffering is necessary');};const result=await advertisingResponse({request:new Request('https://kalendorius365.lt'+route),next:async()=>response});assert.equal(result,response);assert.equal(result.headers.get('Content-Security-Policy'),original);assert.equal(result.headers.get('ETag'),'stable');}});
-test('canonical placement inventory remains exact and excludes private/query methods',()=>{const paths=new Set(productionAdPaths);assert.equal(paths.size,productionAdPaths.length);for(const p of ["/", "/kontaktai/", "/privatumas/", "/slapukai/", "/seimos-kalendorius/"])assert(paths.has(p),p);assert(advertisingCandidate(new Request('https://kalendorius365.lt/kontaktai/'),paths,['kalendorius365.lt']));assert(!advertisingCandidate(new Request('https://kalendorius365.lt/kontaktai/?q=private'),paths,['kalendorius365.lt']));assert(!advertisingCandidate(new Request('https://preview.pages.dev/kontaktai/'),paths,['kalendorius365.lt']));assert(!advertisingCandidate(new Request('https://kalendorius365.lt/kontaktai/',{method:'POST'}),paths,['kalendorius365.lt']));});
-test('every generated canonical slot contains the static link and no automatic vendor inclusion',()=>{for(const p of productionAdPaths){const html=fs.readFileSync(new URL('../public'+p+'index.html',import.meta.url),'utf8');assert.equal((html.match(/data-advertising-slot/g)||[]).length,1,p);assert.match(html,/data-sponsored-link/,p);assert.doesNotMatch(html,/<(?:script|iframe)[^>]*src=["'][^"']*(?:bauval|asiafilm|bellnewyork)/i,p);}});
+const host='kalendorius365.lt',hosts=[host],paths=new Set(['/']);
+test('the exact display provider is added without removing nonce/hash protection or enabling eval/inline code',()=>{
+ const p=advertisingCsp(original);assert.match(p,/https:\/\/bauval.org/);assert.match(p,/'nonce-xyz'/);assert.match(p,/'sha256-abc'/);assert.doesNotMatch(p,/unsafe-eval|script-src[^;]*unsafe-inline|asiafilm/);assert.match(p,/object-src 'none'/);assert.equal(advertisingCsp(null),null);
+});
+test('private/query/preview/method/error/download responses never gain a provider exception or require body buffering',async()=>{
+ for(const [url,method,status,type]of [[`https://${host}/?q=private`,'GET',200,'text/html'],[`https://${host}/private/`,'GET',200,'text/html'],['https://preview.pages.dev/','GET',200,'text/html'],[`https://${host}/`,'POST',200,'text/html'],[`https://${host}/`,'GET',404,'text/html'],[`https://${host}/`,'GET',200,'application/pdf']]){
+  const response=new Response('body',{status,headers:{'Content-Type':type,'Content-Security-Policy':original}});response.clone=()=>{throw Error('Private body must not be buffered');};
+  const result=await advertisingResponse({request:new Request(url,{method}),next:async()=>response},paths,hosts);assert.equal(result,response);assert.equal(result.headers.get('Content-Security-Policy'),original);
+ }
+});
+test('only successful public HTML actually containing the display slot gains the provider exception',async()=>{
+ for(const [body,expected]of [['plain content',false],['<section data-advertising-mode="display-banner" data-advertising-slot></section>',true]]){
+  const response=new Response(body,{headers:{'Content-Type':'text/html','Content-Security-Policy':original,'Cache-Control':'public,max-age=0'}});
+  const result=await advertisingResponse({request:new Request(`https://${host}/`),next:async()=>response},paths,hosts);assert.equal(result.headers.get('Content-Security-Policy').includes('https://bauval.org'),expected);assert.equal(await result.text(),body);assert.equal(result.headers.get('Cache-Control'),'public,max-age=0');
+ }
+});
+test('the generated public placement inventory is unique and excludes queries/preview hosts/writes',()=>{
+ const exact=new Set(productionAdPaths);assert.equal(exact.size,productionAdPaths.length);assert(exact.has('/'));
+ assert(advertisingCandidate(new Request(`https://${host}/`),exact,hosts));
+ assert(!advertisingCandidate(new Request(`https://${host}/?private=note`),exact,hosts));assert(!advertisingCandidate(new Request('https://preview.pages.dev/'),exact,hosts));assert(!advertisingCandidate(new Request(`https://${host}/`,{method:'POST'}),exact,hosts));
+});
+test('every generated eligible page has one actual display stage and no handmade offer panel',()=>{
+ for(const p of productionAdPaths){const html=fs.readFileSync(new URL('../public'+p+'index.html',import.meta.url),'utf8');assert.equal((html.match(/data-advertising-slot/g)||[]).length,1,p);assert.match(html,/data-advertising-mode="display-banner"/,p);assert.match(html,/data-advertising-stage/,p);assert.doesNotMatch(html,/data-sponsored-link|sponsored-banner__cta/,p);}
+});
