@@ -1,13 +1,14 @@
 import {test,expect} from '@playwright/test';
 
-test('regional privacy notice dismisses and stays dismissed without clearing other stored data',async({page,context})=>{
+test('cookie choice dismisses and stays dismissed without clearing other stored data',async({page,context})=>{
  await context.addInitScript(()=>localStorage.setItem('qa-unrelated-preference','keep'));
- await page.route('**/api/privacy-region',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({showNotice:true})}));
- await page.goto('/2028/');await expect(page.locator('#cookie-notice')).toBeVisible();
- await page.locator('#cookie-notice-dismiss').click();await expect(page.locator('#cookie-notice')).toBeHidden();
- await page.reload();await expect(page.locator('#cookie-notice')).toBeHidden();
+ await page.goto('/2028/');const banner=page.locator('.cookie-choice-banner');await expect(banner).toBeVisible();
+ await banner.locator('[data-advertising-choice="deny"]').click();await expect(banner).toBeHidden();
+ await page.reload();await expect(banner).toBeHidden();
  expect(await page.evaluate(()=>localStorage.getItem('qa-unrelated-preference'))).toBe('keep');
- expect(await page.evaluate(()=>localStorage.getItem('kalendorius365:privacy-notice:v1'))).toBe('dismissed');
+ const choice=await page.evaluate(()=>{const config=JSON.parse(document.getElementById('advertising-config').textContent);return JSON.parse(localStorage.getItem(config.storageKey));});
+ expect(choice.version).toBe(1);expect(choice.advertising).toBe(false);expect(choice.expiresAt).toBeGreaterThan(Date.now());
+ await expect(page.locator('[data-advertising-stage] script')).toHaveCount(0);
 });
 
 test('calendar ICS import opens the file chooser and malformed follow-up preserves the imported event',async({page,context})=>{

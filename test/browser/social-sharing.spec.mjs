@@ -1,6 +1,9 @@
 import {test,expect} from '@playwright/test';
 
-async function dismissConsent(page){const b=page.getByRole('button',{name:'Supratau',exact:true});if(await b.isVisible().catch(()=>false))await b.click();}
+async function dismissConsent(page){
+ const banner=page.locator('.cookie-choice-banner');await expect(banner).toBeVisible();
+ await banner.locator('[data-advertising-choice="deny"]').click();await expect(banner).toBeHidden();
+}
 async function openCurrent(page){await page.locator('.share-entry>summary').click();await expect(page.getByRole('dialog')).toBeVisible();await expect(page.locator('link[rel="stylesheet"][href$="/sharing/dialog.css"]')).toHaveCount(1);}
 
 test('mobile share sheet keeps personal calendar entries local and offers real link sharing',async({page},testInfo)=>{
