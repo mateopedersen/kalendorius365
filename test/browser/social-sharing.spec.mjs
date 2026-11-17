@@ -1,8 +1,8 @@
 import {test,expect} from '@playwright/test';
 
 async function dismissConsent(page){
- const banner=page.locator('.cookie-choice-banner');await expect(banner).toBeVisible();
- await banner.locator('[data-advertising-choice="deny"]').click();await expect(banner).toBeHidden();
+ const banner=page.locator('#cookie-notice');await expect(banner).toBeVisible();
+ await banner.locator('[data-analytics-choice="no"]').click();await expect(banner).toBeHidden();
 }
 async function openCurrent(page){await page.locator('.share-entry>summary').click();await expect(page.getByRole('dialog')).toBeVisible();await expect(page.locator('link[rel="stylesheet"][href$="/sharing/dialog.css"]')).toHaveCount(1);}
 
