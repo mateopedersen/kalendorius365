@@ -2,6 +2,16 @@
   "method": "esbuild 0.28.2; independent modules targeting Chrome 100 / Safari 15.4 syntax; no bundling or property mangling; function names and legal comments retained",
   "modules": [
     {
+      "path": "/assets/advertising/ad-policy.js",
+      "source_bytes": 1134,
+      "generated_bytes": 1030
+    },
+    {
+      "path": "/assets/advertising/advertising.js",
+      "source_bytes": 5257,
+      "generated_bytes": 3840
+    },
+    {
       "path": "/assets/app.js",
       "source_bytes": 38808,
       "generated_bytes": 25045
