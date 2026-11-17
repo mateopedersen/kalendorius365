@@ -49,7 +49,7 @@ if(notice){
   let opener=null;
   const update=()=>{notice.hidden=!!analytics.choice();};
   document.addEventListener('click',event=>{
-    const button=event.target.closest('[data-analytics-choice],[data-privacy-open],[data-privacy-close]');if(!button)return;
+    const button=event.target.closest('[data-analytics-choice],[data-privacy-open],[data-cookie-preferences],[data-privacy-close]');if(!button)return;
     event.preventDefault();
     if(button.hasAttribute('data-analytics-choice')){analytics.choose(button.dataset.analyticsChoice==='yes');notice.hidden=true;opener?.focus({preventScroll:true});}
     else if(button.hasAttribute('data-privacy-close')){notice.hidden=true;opener?.focus({preventScroll:true});}

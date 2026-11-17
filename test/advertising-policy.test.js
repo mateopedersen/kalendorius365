@@ -17,4 +17,4 @@ test('analytics choices and invalid marketing records never grant advertising',(
  const denied=consentRecord(false,now);assert(validConsent(denied,now));assert.equal(denied.advertising,false);
 });
 
-test('production is enabled after provider safety confirmation',()=>{assert.equal(productionConfig.enabled,true);});
+test('production sponsored placement is enabled',()=>{assert.equal(productionConfig.enabled,true);});

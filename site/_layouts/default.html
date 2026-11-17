@@ -56,7 +56,6 @@
 <link rel="stylesheet" href="/assets/print.css?v={{ site.css_version }}" media="print">
 <link rel="stylesheet" href="/assets/advertising/advertising.css?v={{ site.css_version }}">
 <script id="advertising-config" type="application/json">{{ site.data.advertising | jsonify }}</script>
-{% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/advertising/advertising.js?v={{ site.script_version }}"></script>{% endcapture %}
 {% if page.print_paper %}<style id="artwork-print-style" media="print">@page { size: {{ page.print_paper }}; margin: 0; }</style>{% endif %}
 {% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/common.js?v={{ site.script_version }}"></script>{% endcapture %}
 {% capture initial_modules %}{{ initial_modules }}<script type="module" async src="/assets/cookie-notice.js?v={{ site.script_version }}"></script>{% endcapture %}
