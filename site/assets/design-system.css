@@ -6945,3 +6945,16 @@ body.tool-workdays .workyear-hero+.resource-stats{margin-top:14px}
 .site-footer .footer-back-top:hover{border-color:var(--green);background:var(--accent)}
 .site-footer :is(a,button):focus-visible{outline:3px solid var(--green);outline-offset:4px}
 @media(max-width:600px){.site-footer .footer-signoff{flex-direction:column;gap:18px}.site-footer .site-copyright{justify-content:center;text-align:center;font-size:15px!important}.site-footer .footer-navigation{justify-content:center}}
+
+/* Keep analytics choices reachable when visitors enlarge page text. */
+.cookie-notice{overflow:hidden;max-height:calc(100dvh - 100px)}
+.cookie-notice__copy-wrap{min-height:0;max-height:inherit;overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:760px){
+ .cookie-notice{display:flex;flex-direction:column;align-items:stretch;bottom:calc(max(80px,4rem) + env(safe-area-inset-bottom));max-height:min(560px,calc(100dvh - max(112px,6rem)));gap:12px}
+ .cookie-notice[hidden]{display:none}
+ .cookie-notice__copy-wrap{flex:1 1 auto;display:block;min-height:0}
+ .cookie-notice__mark{float:right;width:36px;height:36px;margin:0 0 8px 10px}
+ .cookie-notice__mark svg{width:30px;height:30px}
+ .cookie-notice__copy p{clear:both}
+ .cookie-notice__actions{flex:0 0 auto;width:100%;margin:0}
+}

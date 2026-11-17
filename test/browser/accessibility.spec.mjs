@@ -47,8 +47,9 @@ test('daylight chart has list items and filtered holiday dates retain their visi
  await expect(nameday).toHaveAttribute('title',/balandžio 1 d\./);
 });
 for(const width of[320,390])for(const route of routes)test(`enlarged text at ${width}px: ${route}`,async({page,context})=>{
- await context.addInitScript(()=>localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed'));
  await page.setViewportSize({width,height:844});await page.goto(route);
+ // Exercise the actual analytics refusal before testing the main tool at enlarged text.
+ const privacy=page.locator('#cookie-notice');if(await privacy.isVisible()){await privacy.locator('[data-analytics-choice="no"]').click();await expect(privacy).toBeHidden();}
  await page.addStyleTag({content:'html {font-size:200% !important}'});
  // Measure the enlarged layout after its actual font faces have settled.
  await page.evaluate(()=>document.fonts.ready);
@@ -71,4 +72,13 @@ for(const width of[320,390])for(const route of routes)test(`enlarged text at ${w
   const [file]=await Promise.all([page.waitForEvent('download'),page.locator('#shift-json-export').click()]);
   expect(await file.failure()).toBeNull();const backup=JSON.parse(await fs.readFile(await file.path(),'utf8'));expect(backup.schema).toBe(1);expect(backup.data['shift-cycle']).toBe('D,D,N,N,P,P,P,P');
  }
+});
+
+for(const width of [320,390])test(`analytics choices remain reachable at 200 percent text, ${width}px`,async({page})=>{
+ await page.setViewportSize({width,height:844});await page.goto('/pamainu-grafikas/');await page.addStyleTag({content:'html {font-size:200% !important}'});await page.evaluate(()=>document.fonts.ready);
+ const notice=page.locator('#cookie-notice');await expect(notice).toBeVisible();
+ for(const selector of ['[data-analytics-choice="no"]','[data-analytics-choice="yes"]','[data-privacy-close]'])await expect(notice.locator(selector)).toBeInViewport({ratio:1});
+ await expect(page.locator('[data-sponsored-link]')).toBeVisible();await expect(page.locator('[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);
+ await notice.locator('[data-analytics-choice="no"]').focus();await page.keyboard.press('Enter');await expect(notice).toBeHidden();
+ expect(await page.evaluate(()=>window.Calendar365Analytics.choice().analytics)).toBe(false);
 });
