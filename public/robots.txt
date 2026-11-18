@@ -9,4 +9,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/l/email-protection
 Sitemap: https://kalendorius365.lt/sitemap.xml
