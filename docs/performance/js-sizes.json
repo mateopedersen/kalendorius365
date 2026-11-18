@@ -8,8 +8,13 @@
     },
     {
       "path": "/assets/advertising/advertising.js",
-      "source_bytes": 5257,
-      "generated_bytes": 3840
+      "source_bytes": 261,
+      "generated_bytes": 190
+    },
+    {
+      "path": "/assets/advertising/display-runtime.js",
+      "source_bytes": 3783,
+      "generated_bytes": 2938
     },
     {
       "path": "/assets/app.js",
@@ -108,8 +113,8 @@
     },
     {
       "path": "/assets/cookie-notice.js",
-      "source_bytes": 4405,
-      "generated_bytes": 3405
+      "source_bytes": 4431,
+      "generated_bytes": 3431
     },
     {
       "path": "/assets/data/birth-cities.js",
