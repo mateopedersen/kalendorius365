@@ -27,4 +27,3 @@ test('published HTML contains no Adsterra placement or configuration',()=>{
  assert(pages.length>100,'all public HTML is available');
  for(const file of pages)assert.doesNotMatch(fs.readFileSync(new URL(encodeURI(file),site),'utf8'),/data-advertising-slot|id="advertising-config"|data-sponsored-link|data-banner-choice|adsterra\.com|bauval\.org/i,file);
 });
-
