@@ -1,4 +1,9 @@
 # frozen_string_literal: true
+# Cloudflare can start Ruby with a C locale. Use UTF-8 for Lithuanian text and
+# paths in this process, in the content generators and in Jekyll.
+Encoding.default_external = Encoding::UTF_8
+ENV['RUBYOPT'] = [ENV['RUBYOPT'], '-EUTF-8:UTF-8'].compact.reject(&:empty?).join(' ')
+
 require 'fileutils'
 require 'json'
 require 'digest'
@@ -50,11 +55,7 @@ Dir.chdir(ROOT) do
  system('python3','scripts/css_route_split.py',exception:true)
  Tempfile.create(['kalendorius-build-policy','.yml']) do |config|
   config.write(JSON.generate({'release'=>release}));config.flush
-  # Cloudflare can run builds with the C locale, which makes Ruby expose
-  # filesystem paths as ASCII-8BIT. Jekyll must treat Lithuanian filenames as
-  # UTF-8 when resolving destination URLs, regardless of the host locale.
-  rubyopt=[ENV['RUBYOPT'],'-EUTF-8:UTF-8'].compact.reject(&:empty?).join(' ')
-  system({'RUBYOPT'=>rubyopt},'bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
+  system('bundle','exec','jekyll','build','--config',"site/_config.yml,#{config.path}",'--source','site','--destination','public',exception:true)
  end
  # The internal print manifest intentionally stays out of the public root.
  # Publish only the verified annual choices needed by the year directory, then
