@@ -25,7 +25,7 @@ concurrency:
 jobs:
   notify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
@@ -39,7 +39,7 @@ jobs:
         env:
           BASE_SHA: ${{ inputs.base_sha || github.event.before }}
           HEAD_SHA: ${{ github.sha }}
-        run: python3 scripts/indexnow_notify.py --base "$BASE_SHA" --head "$HEAD_SHA" --post --wait-seconds 1200
+        run: python3 scripts/indexnow_notify.py --base "$BASE_SHA" --head "$HEAD_SHA" --post --wait-seconds 3600
       - name: Save the submission outcome in the run summary
         if: always()
         run: echo 'The IndexNow submission JSON is recorded in the preceding step. HTTP 200 means received; HTTP 202 means key validation is still pending.' >> "$GITHUB_STEP_SUMMARY"
