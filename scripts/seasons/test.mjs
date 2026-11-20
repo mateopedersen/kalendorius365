@@ -22,4 +22,4 @@ for(const y of d.years)for(const c of d.cities)test(`Solar context consistency $
 
 test('Guide links retain selected year and city',()=>assert.equal(seasonGuideHref('/vasaros-saulegriza/',2029,'klaipeda'),'/vasaros-saulegriza/?metai=2029&miestas=klaipeda'));
 test('Guide link rejects unknown route',()=>assert.throws(()=>seasonGuideHref('/unsafe/',2027,'vilnius')));
-test('Guide link rejects unsupported year and city',()=>{assert.throws(()=>seasonGuideHref('/metu-laikai/',2030,'vilnius'));assert.throws(()=>seasonGuideHref('/metu-laikai/',2027,'<script>'));});
+test('Guide link rejects unsupported year and city',()=>{assert.throws(()=>seasonGuideHref('/metu-laikai/',2031,'vilnius'));assert.throws(()=>seasonGuideHref('/metu-laikai/',2027,'<script>'));});

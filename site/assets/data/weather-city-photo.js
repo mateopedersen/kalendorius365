@@ -34,19 +34,12 @@ function initialize() {
         shown.replaceWith(frame);shown=frame;
       }
       shown.alt=photo.alt||city.name+' dieną';
+      shown.style.objectPosition=photo.focalPoint||'';
       shown.removeAttribute('aria-hidden');
-      shown.style.objectPosition=photo.focalPoint||'center center';
       card.dataset.weatherCity=city.id;
       card.dataset.weatherPhotoPeriod=period;
     },
   });
-  const picker=document.querySelector('#weather-city');
-  const warm=()=>{
-    const at=WEATHER_CITIES.findIndex(city=>city.id===picker.value);
-    for(const city of WEATHER_CITIES.slice(Math.max(0,at-2),at+3))void controller.preload(city.id);
-  };
-  picker?.addEventListener('focus',warm);
-  picker?.addEventListener('pointerdown',warm,{passive:true});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)void controller.update();});
   window.addEventListener('pageshow',()=>{void controller.update();});
   setInterval(()=>{if(!document.hidden)void controller.update();},30000);

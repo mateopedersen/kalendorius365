@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ivory" x1=".16" y1="0" x2=".9" y2="1"><stop stop-color="#fffdf0"/><stop offset=".56" stop-color="#f0e5c5"/><stop offset="1" stop-color="#ad9871"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2=".87" y2="1"><stop stop-color="#fff1b8"/><stop offset=".31" stop-color="#e6bb65"/><stop offset=".65" stop-color="#ae743a"/><stop offset="1" stop-color="#7f4f2a"/></linearGradient>
+    <linearGradient id="green" x1=".1" y1="0" x2=".84" y2="1"><stop stop-color="#79ab7c"/><stop offset=".42" stop-color="#417d56"/><stop offset="1" stop-color="#184737"/></linearGradient>
+    <linearGradient id="red" x1="0" y1=".06" x2=".86" y2="1"><stop stop-color="#e98f71"/><stop offset=".42" stop-color="#be5d47"/><stop offset="1" stop-color="#7e302b"/></linearGradient>
+    <linearGradient id="ice" x1=".09" y1=".1" x2=".82" y2="1"><stop stop-color="#fffff5"/><stop offset=".43" stop-color="#bdd8d3"/><stop offset="1" stop-color="#5d8b8a"/></linearGradient>
+    <radialGradient id="shadow"><stop stop-color="#153f2b" stop-opacity=".34"/><stop offset="1" stop-color="#153f2b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="amber" cx=".34" cy=".25" r=".8"><stop stop-color="#ffe39a"/><stop offset=".44" stop-color="#e3a64e"/><stop offset="1" stop-color="#a65e34"/></radialGradient>
+    <path id="crystal-ray" d="M0 0v-25m0 10-6-6m6 6 6-6"/>
+    <path id="petal" d="M0 0c-12-7-8-19-1-19 7 0 11 12 1 19Z"/>
+    <path id="grain" d="M0 0C-12-3-12-10-11-14-3-14 1-8 0 0Z"/>
+    <ellipse id="ground" cx="44" cy="62" rx="35" ry="7" fill="url(#shadow)"/>
+  </defs>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M4.5 12h14m-5-5 5 5-5 5"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="M12 4.5v14m-5-5 5 5 5-5"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5"/></symbol>
+
+  <symbol id="sausis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <circle cx="47" cy="34" r="27" fill="url(#green)" stroke="#3b6c52" stroke-width="1.3"/>
+    <circle cx="43" cy="31" r="26" fill="url(#ice)" stroke="#8eaea3" stroke-width="1.4"/>
+    <circle cx="43" cy="31" r="22" fill="#e0efe1" stroke="#fffddb" stroke-width="1.3"/>
+    <g transform="translate(43 31) scale(.77)" fill="none" stroke="#588f80" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <use href="#crystal-ray"/><use href="#crystal-ray" transform="rotate(60)"/><use href="#crystal-ray" transform="rotate(120)"/>
+      <use href="#crystal-ray" transform="rotate(180)"/><use href="#crystal-ray" transform="rotate(240)"/><use href="#crystal-ray" transform="rotate(300)"/>
+    </g>
+    <path d="M25 23a20 20 0 0 1 20-13" fill="none" stroke="#fffef2" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="vasaris" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <ellipse cx="27" cy="60" rx="12" ry="4" fill="url(#gold)"/>
+    <path d="M23 58 27 12" stroke="#7e572f" stroke-width="5" stroke-linecap="round"/><path d="M23 58 27 12" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="28" cy="10" r="4" fill="url(#gold)" stroke="#835b2f" stroke-width=".65"/>
+    <path d="M29 13q11-4 26 1t23-1l-1 10q-13 6-26 1t-23 0Z" fill="url(#gold)"/>
+    <path d="M28 24q11-4 25 0t24-1l-1 10q-13 6-25 2t-24 0Z" fill="url(#green)"/>
+    <path d="M27 35q10-4 24 0t25-2l-1 10q-14 5-26 1t-23 0Z" fill="url(#red)"/>
+    <path d="M29 13q11-4 26 1t23-1" fill="none" stroke="#fff1b7" stroke-width="1.05"/>
+  </symbol>
+  <symbol id="kovas" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M30 57c2-17 11-31 16-42m-6 38c11-14 21-14 27-30" fill="none" stroke="url(#green)" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M32 48c-12-1-14-9-17-16 13 0 20 8 17 16m7-4c8-11 15-11 21-8-6 7-11 10-21 8" fill="url(#green)" stroke="#507f54" stroke-width=".6"/>
+    <g transform="translate(48 20)" fill="url(#ivory)"><use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/><circle r="5.5" fill="url(#gold)"/></g>
+    <g transform="translate(66 27) scale(.58)" fill="url(#red)"><use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/><circle r="5" fill="url(#gold)"/></g>
+  </symbol>
+  <symbol id="balandis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M19 35c2-16 16-28 32-27s28 13 29 27c-6-5-13-5-19 1-6-6-14-7-20 0-7-5-14-6-22-1Z" fill="url(#green)" stroke="#2c5c3e" stroke-width="1.2"/>
+    <path d="M41 36c1-12 3-22 10-28 7 6 10 16 10 28-6-6-14-7-20 0Z" fill="url(#gold)"/>
+    <path d="M21 34c4-14 15-22 26-25" stroke="#d5e3b5" fill="none" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M51 36v17c0 11-12 11-12 2" fill="none" stroke="#503a23" stroke-width="4" stroke-linecap="round"/>
+    <path d="M50 36v16c0 9-8 12-10 3" fill="none" stroke="url(#gold)" stroke-width="2.1" stroke-linecap="round"/>
+    <path d="M22 44l-3 6m45-5-2 5m9-12-2 4" stroke="#659f91" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="geguze" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M28 31h34v27q-18 9-34 0Z" fill="url(#red)" stroke="#8c483a" stroke-width="1"/>
+    <path d="M26 32c0-5 38-5 38 0v5c0 5-38 5-38 0Z" fill="url(#red)" stroke="#ab5947"/>
+    <path d="M27 32c3 4 31 4 36 0" fill="none" stroke="#ffd1a0" stroke-width="1.15"/>
+    <path d="M43 31V9m4 23 14-20m-20 22L25 17" fill="none" stroke="#477455" stroke-width="2.3"/>
+    <path d="M39 27c-16 3-21-5-23-13 11 1 19 4 23 13m7-5C45 8 50 3 56 1c3 10-1 18-10 21m4 6c5-11 13-15 23-13-3 9-10 14-23 13" fill="url(#green)" stroke="#41734f" stroke-width=".6"/>
+    <circle cx="38" cy="9" r="6.5" fill="url(#ivory)" stroke="#d7bd7a" stroke-width="1"/>
+    <circle cx="38" cy="9" r="2.4" fill="url(#gold)"/>
+  </symbol>
+  <symbol id="birzelis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M20 60 62 46q5-1 7 4l-1 5-42 14Z" fill="url(#gold)" stroke="#775130" stroke-width="1.1"/>
+    <path d="m60 66-39-15q-5-3-2-7 2-4 7-2l41 15Z" fill="#805a38"/>
+    <ellipse cx="64" cy="62" rx="4.4" ry="6" transform="rotate(24 64 62)" fill="url(#ivory)" stroke="#965d32"/>
+    <path d="M32 52c-12-9-6-23 0-30 0 9 5 8 5 7 5-5 6-13 9-22 9 9 6 19 8 22 2 3 5-1 6-6 8 12 5 25-3 30-8 6-17 6-25-1Z" fill="url(#red)" stroke="#b86b35" stroke-width="1"/>
+    <path d="M39 54c-6-5-2-12 1-17 1 7 6 5 7 2l4-13c9 15 9 25 2 29q-6 3-14-1Z" fill="url(#gold)"/>
+    <path d="M46 16l2-6m13 5 3-5M28 9l-2-4" stroke="#b67c35" stroke-width="2.1" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="liepa" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M22 59c8-6 38-10 46 0l5 4H17Z" fill="url(#green)" stroke="#315e40" stroke-width="1"/>
+    <path d="M36 54V26h23v28Z" fill="url(#red)" stroke="#823e32" stroke-width="1.15"/>
+    <path d="m59 26 7 5v24l-7-1z" fill="#843d30"/>
+    <path d="m34 26 13-11 14 11z" fill="url(#gold)" stroke="#a6763d" stroke-width=".7"/>
+    <path d="M45 53v-9q2-4 5 0v9M41 34v3m13-3v3" stroke="#643a2b" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M48 16V5m1 0h16l-2 3 2 3H49" stroke="#b38145" fill="url(#gold)" stroke-width="1"/>
+    <path d="m27 58 39-2" stroke="#9dbb7d" stroke-width="1.15" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="rugpjutis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M36 60c4-16 3-36-4-52m10 52 8-54m-1 54C55 36 65 26 72 20" stroke="#907243" fill="none" stroke-width="2" stroke-linecap="round"/>
+    <g fill="url(#gold)" stroke="#b38344" stroke-width=".65">
+      <use href="#grain" x="38" y="28"/><use href="#grain" x="36" y="21"/><use href="#grain" x="40" y="34"/>
+      <use href="#grain" transform="translate(48 28) rotate(16)"/><use href="#grain" transform="translate(49 20) rotate(27)"/><use href="#grain" transform="translate(46 38) scale(-1 1)"/>
+      <use href="#grain" transform="translate(56 37) rotate(-12)"/><use href="#grain" transform="translate(62 30) scale(-1 1)"/><use href="#grain" transform="translate(56 38) scale(-1 1)"/>
+    </g>
+    <path d="M33 47c7 4 14 5 24 0v7q-13 5-24-1Z" fill="url(#red)"/>
+    <path d="M38 54c-8 2-10 7-8 11l10-8m10-1 12 8-3-10" fill="url(#red)" stroke="#973f33" stroke-width=".7"/>
+  </symbol>
+  <symbol id="rugsejis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="m12 25 26-8 9 6 9-6 22 5 3 30-28 9-8-6-10 5-24-4Z" fill="url(#green)" stroke="#2c5a41" stroke-width="1.1"/>
+    <path d="m13 24 25-11 8 5 10-6 20 5 1 32-24 8-8-6-10 4-21-4Z" fill="url(#ivory)" stroke="#bda47c"/>
+    <path d="m17 23 19-8q5 1 10 5l-1 29-8-4-20 5Z" fill="#fff6dc"/>
+    <path d="m46 20 10-6 17 4 1 29-21 7-8-5Z" fill="url(#ivory)"/>
+    <path d="m22 28 14-5m-14 11 14-5m-14 11 11-4m19-10 15-4m-15 11 15-4m-15 11 13-4" stroke="#9b9277" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="m61 16 1 16-3-1-2 3-1-20Z" fill="url(#red)"/>
+  </symbol>
+  <symbol id="spalis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="M26 58c8-14 9-28 13-43" stroke="#7b5f3d" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M31 49c-12-4-15-16-10-19 4 2 7 5 9 3 2-3-8-10-3-15 4-3 7 3 10 2 2-2 0-9 5-13 5 3 6 9 4 13 2 3 8-1 11 2 2 5-7 11-10 12 3 2 8 0 10 4-1 8-17 14-26 11Z" fill="url(#gold)" stroke="#9d733e" stroke-width=".8"/>
+    <path d="M32 48c4-10 7-24 10-34m-5 17-7-7m6 13 11-6" stroke="#9e7340" fill="none" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M58 42c-6 9-5 16 1 21 8 4 14-3 16-9 2-6-2-11-7-14Z" fill="url(#amber)" stroke="#9e6037" stroke-width=".8"/>
+    <path d="M56 45c-2-8 5-12 12-13 6 2 11 5 9 13-6 2-16 3-21 0Z" fill="url(#green)" stroke="#496745"/>
+    <path d="m68 33 2-5" stroke="#735432" stroke-width="2.1" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="lapkritis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <ellipse cx="44" cy="58" rx="24" ry="6" fill="url(#gold)" stroke="#8f6540" stroke-width=".9"/>
+    <path d="M32 33h25v21c0 6-25 7-25 0Z" fill="url(#ivory)" stroke="#b6a176" stroke-width=".8"/>
+    <ellipse cx="44.5" cy="33" rx="12.5" ry="4" fill="#f4dfac"/>
+    <path d="M34 37q4-2 5 1v7m13-9v15" fill="none" stroke="#fffbe6" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M44 32v-6" stroke="#6a452e" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M44 28c-8-3-7-9 1-20 1 6 8 10 6 15-1 4-4 6-7 5Z" fill="url(#amber)"/>
+    <path d="M45 27c-3-2-2-5 0-8 3 3 4 6 0 8Z" fill="#fff1bb"/>
+    <path d="m23 21-2-5m41 3 4-4" stroke="#b48449" stroke-width="1.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="gruodis" viewBox="0 0 88 72">
+    <use href="#ground"/>
+    <path d="m23 32 25-15 24 13-26 15Z" fill="url(#red)" stroke="#a85340"/>
+    <path d="M23 33 45 45v19L23 52Z" fill="url(#red)" stroke="#87382d"/>
+    <path d="m45 45 27-15v20L45 64Z" fill="#87382d" stroke="#6a3129"/>
+    <path d="m33 27 24 13v18l5-3V37L39 24Zm4 13 5 3 23-14-5-3Z" fill="url(#gold)"/>
+    <path d="M48 28c-9 0-20-12-13-16 9-5 14 10 13 16 2-6 5-19 12-16 11 4-5 16-12 16Z" fill="url(#gold)" stroke="#ae793a" stroke-width="1.15"/>
+    <path d="M48 26c-4-6-9-13-12-11s7 10 12 11c5-8 10-13 13-11 1 3-8 12-13 11Z" fill="#b37b3f"/>
+    <path d="m24 35 19 11" stroke="#ffd3a2" stroke-opacity=".8" stroke-width="1"/>
+  </symbol>
+</svg>

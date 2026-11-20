@@ -1,0 +1,23 @@
+<section class="civic-section civic-calculator" id="{{ include.id }}" aria-labelledby="civic-{{ include.calc }}-title">
+  <header class="civic-section__head"><h2 id="civic-{{ include.calc }}-title">{{ include.title }}</h2></header>
+  <div class="civic-workspace">
+    <form class="civic-panel civic-form" data-calc="{{ include.calc }}" autocomplete="off">
+      <fieldset disabled>
+        <legend>{{ include.legend }}</legend>
+        {{ include.fields }}
+        <button type="submit" class="civic-button civic-button--green">Apskaičiuoti</button>
+      </fieldset>
+      <p>{{ include.tip }}</p>
+    </form>
+    <div class="civic-panel civic-result">
+      <div role="status" aria-live="polite" aria-atomic="true">
+        <p class="civic-result__label" data-result-label>Rezultatas</p>
+        <p class="civic-result__value" data-result-value>Įveskite duomenis</p>
+        <dl class="civic-result__details" data-result-rows></dl>
+        <p class="civic-result__note" data-result-note></p>
+      </div>
+      {% if include.calc == 'pension' %}<button type="button" class="civic-button civic-button--plain" data-pension-download hidden>Atsisiųsti priminimą (ICS)</button>{% endif %}
+    </div>
+  </div>
+  <noscript><p>Skaičiuoklei reikia „JavaScript“. Formules ir oficialias nuorodas rasite žemiau.</p></noscript>
+</section>

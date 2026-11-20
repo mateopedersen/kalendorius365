@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:lietuvos-samarieciu-bendrijos-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300125
+DTEND;VALUE=DATE:20300126
+SUMMARY:Lietuvos samariečių bendrijos diena
+DESCRIPTION:Sausio 25 d. Atmintinų dienų įstatyme įrašyta Lietuvos sam
+ ariečių bendrijos diena.
+URL:https://kalendorius365.lt/sventes/lietuvos-samarieciu-bendrijos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

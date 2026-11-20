@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-intelektines-nuosavybes-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280426
+DTEND;VALUE=DATE:20280427
+SUMMARY:Pasaulinė intelektinės nuosavybės diena
+DESCRIPTION:Balandžio 26 d. minima Pasaulinė intelektinės nuosavybės di
+ ena.
+URL:https://kalendorius365.lt/sventes/pasauline-intelektines-nuosavybes-die
+ na/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

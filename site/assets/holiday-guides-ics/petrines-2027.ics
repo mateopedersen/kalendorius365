@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:petrines-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270629
+DTEND;VALUE=DATE:20270630
+SUMMARY:Petrinės
+DESCRIPTION:Birželio 29 d. Petrinės mini apaštalus Petrą ir Paulių. Li
+ etuvoje tai viena iš vasarvidžio kalendoriaus datų.
+URL:https://kalendorius365.lt/sventes/petrines/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

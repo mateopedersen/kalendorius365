@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-vaiko-teisiu-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Pasaulinė vaiko teisių diena
+DESCRIPTION:Lapkričio 20 d. minima Pasaulinė vaiko teisių diena. Lietuvo
+ je gegužės Vaiko diena yra atskira data.
+URL:https://kalendorius365.lt/sventes/pasauline-vaiko-teisiu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

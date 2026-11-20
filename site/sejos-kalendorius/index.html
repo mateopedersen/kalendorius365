@@ -1,0 +1,163 @@
+---
+title: "Lietuvos sėjos, sodinimo ir derliaus kalendorius"
+description: "Lietuvos daržo ir sodo kalendorius. Raskite daržovių, braškių, šilauogių ir obelų sėjos, sodinimo bei derliaus laiką. Susikurkite savo planą ir atsisiųskite ICS."
+breadcrumb_label: "Sėjos kalendorius"
+garden_calendar: true
+preserve_source: true
+og_image: /assets/visuals/garden/darzas-1200x630.png
+og_image_alt: "Sodininkas sodina pomidoro daigą į žemę"
+og_image_type: image/png
+og_image_width: 1200
+og_image_height: 630
+---
+{% assign garden = site.data.garden %}
+{% assign months = site.data.calendar.months %}
+{% assign cover = site.data.garden_photos.darzas %}
+<article class="garden-page" data-garden>
+  <header class="garden-hero">
+    <div class="garden-hero__copy">
+      <p class="garden-kicker"><span class="garden-flag" aria-hidden="true"></span> Daržas ir sodas Lietuvoje</p>
+      <h1>Sėjos kalendorius<span>Nuo sėklos iki derliaus</span></h1>
+      <p>Sužinokite, kada sėti daržoves, sodinti daigus ir skinti vaisius bei uogas. Palyginkite laikotarpius ir susidarykite savo daržo planą.</p>
+      <div class="garden-actions"><a class="garden-button" href="#sejos-apzvalga">Peržiūrėti kalendorių <span aria-hidden="true">↓</span></a><a class="garden-button garden-button--outline" href="#mano-darzas">Sudaryti savo planą</a></div>
+      <dl class="garden-facts"><div><dt>Augalai</dt><dd>{{ garden.plants.size }}</dd></div><div><dt>Sezono apžvalga</dt><dd>12 <small>mėnesių</small></dd></div><div><dt>Savo planas</dt><dd>PDF <small>ir ICS</small></dd></div></dl>
+    </div>
+    <figure class="garden-hero__photo">
+      <img src="{{ cover.src }}" srcset="{{ cover.small }} 560w, {{ cover.src }} 1120w" sizes="(max-width: 720px) 94vw, (max-width: 1400px) 45vw, 620px" width="{{ cover.width }}" height="{{ cover.height }}" alt="{{ cover.caption }}" fetchpriority="high" decoding="async">
+      <figcaption>Pomidorų daigų sodinimas <a href="/nuotrauku-licencijos/#darzas-darzas">Nuotraukos autorius <span aria-hidden="true">↗</span></a></figcaption>
+    </figure>
+  </header>
+
+  <nav class="garden-jump" aria-label="Sėjos kalendoriaus turinys">
+    <a href="#sejos-apzvalga">Sezono apžvalga <span aria-hidden="true">↓</span></a>
+    <a href="#mano-darzas">Mano daržas <span aria-hidden="true">↓</span></a>
+    <a href="#kaip-planuoti">Kaip planuoti <span aria-hidden="true">↓</span></a>
+    <a href="#sejos-saltiniai">Šaltiniai ir klausimai <span aria-hidden="true">↓</span></a>
+  </nav>
+
+  <section class="garden-section" id="sejos-apzvalga" aria-labelledby="garden-overview-title">
+    <div class="garden-section__head">
+      <div><p class="garden-kicker">Sezonas vienoje lentelėje</p><h2 id="garden-overview-title">Ką ir kada auginti?</h2><p>Pasirinkite mėnesį ar darbą. Atverkite augalo eilutę, kad pamatytumėte tikslesnį laikotarpį ir nuotrauką.</p></div>
+      <a href="#sejos-saltiniai">Auginimo duomenų šaltiniai <span aria-hidden="true">↗</span></a>
+    </div>
+    <fieldset class="garden-filters" aria-label="Sėjos kalendoriaus filtrai" data-garden-enable disabled>
+      <label for="garden-search">Augalas<input id="garden-search" type="search" placeholder="Pvz., morkos arba braškės" autocomplete="off" data-garden-search></label>
+      <label for="garden-month">Mėnuo<select id="garden-month" data-garden-month><option value="">Visi mėnesiai</option>{% for month in months %}<option value="{{ forloop.index }}">{{ month[1] }}</option>{% endfor %}</select></label>
+      <label for="garden-stage">Darbas<select id="garden-stage" data-garden-stage><option value="">Visi darbai</option>{% for stage in garden.stages %}<option value="{{ stage[0] }}">{{ stage[1].name }}</option>{% endfor %}</select></label>
+      <label for="garden-place">Auginimo būdas<select id="garden-place" data-garden-place><option value="">Visi būdai</option>{% for place in garden.places %}<option value="{{ place[0] }}">{{ place[1] }}</option>{% endfor %}</select></label>
+    </fieldset>
+    <div class="garden-climate">
+      <label for="garden-climate">Vietovė arba sąlygos<select id="garden-climate" data-garden-climate aria-describedby="garden-climate-note" disabled>
+        {% for option in garden.climates %}<option value="{{ option[0] }}" data-note="{{ option[1].note | escape }}">{{ option[1].name }}</option>{% endfor %}
+      </select></label>
+      <p id="garden-climate-note" aria-live="polite">{{ garden.climates.central.note }}</p>
+    </div>
+    <div class="garden-legend">
+      <ul aria-label="Darbų žymėjimas">{% for stage in garden.stages %}<li><span class="garden-stage garden-stage--{{ stage[0] }}">{{ stage[1].mark }}</span>{{ stage[1].name }}</li>{% endfor %}</ul>
+      <div class="garden-actions"><button type="button" data-garden-current disabled>Šis mėnuo</button><button type="button" data-garden-reset disabled>Išvalyti filtrus</button></div>
+    </div>
+    <p class="garden-count" role="status" data-garden-count>Rodoma {{ garden.plants.size }} iš {{ garden.plants.size }} augalų</p>
+    <p class="garden-mobile-hint">Paslinkite lentelę, kad pamatytumėte likusius mėnesius.</p>
+    <div class="garden-table-scroll" role="region" aria-label="Horizontaliai slenkama sėjos ir derliaus lentelė" tabindex="0">
+      <table class="garden-table">
+        <caption class="visually-hidden">Orientacinė Lietuvos sėjos, sodinimo ir derliaus apžvalga pagal mėnesius</caption>
+        <thead><tr><th scope="col">Augalas</th>{% for month in months %}<th scope="col" data-month="{{ forloop.index }}"><abbr title="{{ month[1] }}">{{ month[1] | truncate: 3, '' }}</abbr></th>{% endfor %}<th scope="col">Planas</th></tr></thead>
+        <tbody>
+        {% for plant in garden.plants %}
+          {% assign photo = site.data.garden_photos[plant.id] %}
+          <tr data-garden-row="{{ plant.id }}" data-keywords="{{ plant.aliases | escape }}">
+            <th scope="row"><button type="button" class="garden-plant" data-garden-details aria-expanded="false" aria-controls="darzas-{{ plant.id }}-isamiai" disabled>
+              <img src="{{ photo.small }}" alt="" aria-hidden="true" width="50" height="44" loading="lazy" decoding="async"><span>{{ plant.name }}</span><span class="garden-plant__toggle" aria-hidden="true"></span>
+            </button></th>
+            {% for month in (1..12) %}<td data-month="{{ month }}">
+              {% for stage in garden.stages %}{% assign variants = plant.periods | where: "stage", stage[0] %}
+              {% capture active %}{% for period in variants %}{% if period.months contains month %} {{ period.stage }}:{{ period.place }}{% endif %}{% endfor %}{% endcapture %}
+              {% capture labels %}{% for period in variants %}{% if period.months contains month %}{{ period.label }}: {{ period.window }} · {% endif %}{% endfor %}{% endcapture %}
+              {% assign active = active | strip %}{% if active != '' %}<span class="garden-stage garden-stage--{{ stage[0] }}" data-periods="{{ active }}" title="{{ labels | strip | remove_last: ' ·' | escape }}">{{ stage[1].mark }}<span class="visually-hidden"> {{ stage[1].name }}</span></span>{% endif %}{% endfor %}
+            </td>{% endfor %}
+            <td><button type="button" class="garden-add" data-garden-pick="{{ plant.id }}" aria-label="Įtraukti į mano daržo planą: {{ plant.name }}" disabled>+</button></td>
+          </tr>
+          <tr class="garden-detail" id="darzas-{{ plant.id }}-isamiai" hidden><td colspan="14">
+            <div class="garden-detail__body">
+              <img src="{{ photo.src }}" alt="{{ photo.caption | escape }}" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy" decoding="async">
+              <div><h3>{{ plant.name }}</h3><p>{{ plant.note }}</p><div class="garden-detail__sources">
+                {% for key in plant.sources %}{% assign source = garden.sources[key] %}<a href="{{ source.url }}"> {{ source.name }} <span aria-hidden="true">↗</span></a>{% endfor %}
+              </div></div>
+              <dl>{% for period in plant.periods %}<div><dt>{{ period.label }}</dt><dd>{{ period.window }}</dd></div>{% endfor %}</dl>
+            </div>
+          </td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="garden-notice" data-garden-empty hidden>Pagal pasirinktus filtrus augalų nerasta. Pasirinkite kitą mėnesį arba išvalykite filtrus.</p>
+    <details class="garden-reference"><summary>Visi laikotarpiai tekstu</summary>
+      <dl>{% for plant in garden.plants %}<div><dt>{{ plant.name }}</dt><dd>{% for period in plant.periods %}{{ period.label }}: {{ period.window }}{% unless forloop.last %} · {% endunless %}{% endfor %}</dd></div>{% endfor %}</dl>
+    </details>
+  </section>
+
+  <section class="garden-prep" aria-labelledby="garden-prep-title">
+    <div><h2 id="garden-prep-title">Prieš pirmąją sėją</h2><p>Sėklų daigumą, daigų vystymąsi ir derliaus laiką lemia jūsų pasirinkta veislė ir sklypo sąlygos.</p>
+      <dl><div><dt>Veislė</dt><dd>Patikrinkite kultūros vegetacijos trukmę ir sėjos gylį ant pakelio.</dd></div><div><dt>Daigai</dt><dd>Paruoškite švarius indus ir vietą, kurioje pakanka šviesos.</dd></div><div><dt>Dirva ir orai</dt><dd>Prieš sėją ar sodinimą patikrinkite dirvos būklę ir vietinę šalnų prognozę.</dd></div></dl>
+    </div>
+    <fieldset class="garden-checklist" data-garden-enable disabled>
+      <legend>Pasiruošimo sąrašas</legend>
+      <p data-garden-prep-status role="status">Atlikta 0 iš 3</p>
+      <label><input type="checkbox" value="variety" data-garden-prep> Pasirinkau augalą ir veislę.</label>
+      <label><input type="checkbox" value="conditions" data-garden-prep> Patikrinau sąlygas savo sklype.</label>
+      <label><input type="checkbox" value="plan" data-garden-prep> Įrašiau datą į savo daržo planą.</label>
+      <button type="button" data-garden-prep-clear>Išvalyti sąrašą</button>
+    </fieldset>
+  </section>
+
+  <section class="garden-section garden-personal" id="mano-darzas" aria-labelledby="garden-plan-title">
+    <div class="garden-section__head"><div><p class="garden-kicker">Asmeninis planas</p><h2 id="garden-plan-title">Mano daržas</h2><p>Įrašykite savo datas ir pastabas. Planas išsaugomas šioje naršyklėje.</p></div><span class="garden-count" data-garden-total>Darbų: 0</span></div>
+    <div class="garden-workspace">
+      <form class="garden-form" data-garden-form>
+        <fieldset data-garden-enable disabled>
+          <legend>Pridėkite daržo darbą</legend>
+          <label for="garden-plan-plant">Augalas<select id="garden-plan-plant" name="plant" required>{% for plant in garden.plants %}<option value="{{ plant.id }}">{{ plant.name }}</option>{% endfor %}<option value="custom">Kitas augalas arba daržas</option></select></label>
+          <label for="garden-plan-stage">Darbas<select id="garden-plan-stage" name="task" required>{% for stage in garden.stages %}<option value="{{ stage[0] }}">{{ stage[1].name }}</option>{% endfor %}<option value="other">Kitas darbas</option></select></label>
+          <label for="garden-plan-date">Jūsų data<input id="garden-plan-date" name="date" type="date" min="1900-01-01" max="2100-12-31" required></label>
+          <label for="garden-plan-note">Pastaba <span>(nebūtina)</span><input id="garden-plan-note" name="note" maxlength="180" placeholder="Pvz., lysvė, veislė ar daigų skaičius"></label>
+          <button class="garden-button" type="submit" data-garden-save>Įtraukti į planą</button>
+          <button type="button" data-garden-cancel hidden>Atšaukti taisymą</button>
+        </fieldset>
+      </form>
+      <div class="garden-sheet">
+        <div class="garden-sheet__head"><h3>Daržo ir sodo darbai</h3><button type="button" data-garden-print disabled>Spausdinti / išsaugoti PDF</button></div>
+        <p class="garden-plan-empty" data-garden-list-empty>Pasirinkite augalą, darbą ir datą. Jūsų įrašai bus rodomi čia.</p>
+        <ul class="garden-list" data-garden-list></ul>
+        <div class="garden-actions garden-file-actions"><button type="button" data-garden-ics disabled>Atsisiųsti ICS</button><button type="button" data-garden-backup disabled>Išsaugoti JSON</button><label class="garden-import" for="garden-import">Atverti JSON planą<input type="file" id="garden-import" class="visually-hidden" accept=".json,application/json" data-garden-import disabled></label></div>
+        <p class="garden-status" role="status" data-garden-status></p>
+      </div>
+    </div>
+    <noscript><p>Interaktyviam planui ir filtrams reikia įjungti „JavaScript“. Visus laikotarpius galite skaityti aukščiau.</p></noscript>
+    <template data-garden-entry>
+      <li class="garden-entry">
+        <input type="checkbox" data-entry-done>
+        <time></time>
+        <div><strong></strong><p></p></div>
+        <div class="garden-entry__actions"><button type="button" data-entry-edit>Redaguoti</button><button type="button" data-entry-delete>Pašalinti</button></div>
+      </li>
+    </template>
+  </section>
+
+  <section class="garden-method" id="kaip-planuoti" aria-labelledby="garden-method-title">
+    <div><p class="garden-kicker">Planavimas pagal sąlygas</p><h2 id="garden-method-title">Pasirinkite savo sklypui tinkamą datą</h2><p>Mėnuo lentelėje yra orientyras. Net tame pačiame rajone dirva įšyla nevienodai, o naktį žemumose šalna gali būti stipresnė. Šiltnamyje atskirai įvertinkite nakties temperatūrą.</p><a href="/menulio-kalendorius/">Astronominis Mėnulio kalendorius <span aria-hidden="true">→</span></a></div>
+    <ol><li><h3>Pasirinkite augalą ir auginimo būdą</h3><p>Daigams skirta sėja gali prasidėti gerokai anksčiau už sėją tiesiai į lysvę.</p></li><li><h3>Patikrinkite orus ir dirvą</h3><p>Sėjos gylį, temperatūrą ir augimo trukmę pasitikrinkite ant konkrečios veislės pakelio.</p></li><li><h3>Užrašykite faktinę datą</h3><p>Veislę, lysvę ir atlikto darbo datą pasižymėkite <a href="#mano-darzas">savo daržo plane</a>. Jei sėją derinate su kitais susitarimais, įtraukite ją į <a href="/mano-diena/">dienos planą</a>. Vėliau galėsite palyginti, kada augalai sudygo ir kada nuėmėte derlių.</p></li></ol>
+  </section>
+
+  <section class="garden-section garden-sources" id="sejos-saltiniai" aria-labelledby="garden-sources-title">
+    <h2 id="garden-sources-title">Šaltiniai ir dažniausi klausimai</h2>
+    <div class="garden-faq">
+      <details><summary>Kodėl nenurodoma viena tiksli sėjos diena?</summary><p>Net tos pačios veislės augimo tempas priklauso nuo dirvos temperatūros, drėgmės ir vietos. Lentelė padeda suplanuoti laikotarpį, o savo darbo datą pasirinkite pagal realias sąlygas.</p></details>
+      <details><summary>Ar pasirinkus vietovę pasikeičia lentelės mėnesiai?</summary><p>Vietovės pasirinkimas rodo jai aktualų patarimą apie šalnas. Lentelėje lieka bendri Lietuvos laikotarpiai, o įrašytos plano datos išlieka jūsų pasirinktos.</p></details>
+      <details><summary>Ar tai Mėnulio sėjos kalendorius?</summary><p>Šis kalendorius skirtas sėjai, sodinimui ir derliui planuoti pagal augalų vegetaciją bei Lietuvos sąlygas. Mėnulio fazes galite peržiūrėti atskirame <a href="/menulio-kalendorius/">Mėnulio kalendoriuje</a>.</p></details>
+      <details><summary>Kaip perkelti savo planą į kitą įrenginį?</summary><p>Norėdami redaguoti planą kitur, išsaugokite JSON ir atverkite jį kitame įrenginyje. ICS skirtas darbams importuoti į kalendoriaus programą. Spausdinimo lange planą taip pat galite išsaugoti kaip PDF.</p></details>
+    </div>
+    <h3>Auginimo laikotarpių pagrindas</h3>
+    <p>Suvedėme Lietuvos agronomų, meteorologų, sėklų tiekėjų ir augintojų informaciją į bendrus mėnesių intervalus. Kai šaltinyje aprašyta viena veislė ar vienas ūkis, intervalą laikykite orientaciniu. <a href="/nuotrauku-licencijos/#sejos-nuotraukos">Visų augalų nuotraukų autoriai ir licencijos</a>.</p>
+    <ul>{% for entry in garden.sources %}<li><a href="{{ entry[1].url }}">{{ entry[1].name }} <span aria-hidden="true">↗</span></a><p>{{ entry[1].summary }}</p></li>{% endfor %}</ul>
+  </section>
+</article>

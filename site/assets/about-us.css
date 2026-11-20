@@ -59,7 +59,7 @@
 .about-highlight small { color: var(--about-muted); font-size: .73rem; line-height: 1.45; }
 .about-highlight__arrow { color: var(--about-green); font-size: 1.08rem; }
 
-.about-zodiac { position: relative; margin-top: clamp(3.6rem, 7vw, 6rem); overflow: hidden; padding: clamp(1.5rem, 4.2vw, 3.3rem); border: 1px solid #294a49; border-radius: 26px; background: radial-gradient(ellipse at 78% 0%, #194946 0, #102f32 39%, #0a2328 100%); color: #f9f5e8; }
+.about-zodiac { position: relative; margin-top: clamp(1.5rem, 3vw, 2.65rem); overflow: hidden; padding: clamp(1.5rem, 4.2vw, 3.3rem); border: 1px solid #294a49; border-radius: 26px; background: radial-gradient(ellipse at 78% 0%, #194946 0, #102f32 39%, #0a2328 100%); color: #f9f5e8; }
 .about-zodiac::before { position: absolute; top: -20%; right: -7%; width: min(45vw, 500px); aspect-ratio: 1; border: 1px solid #dfc77b25; border-radius: 50%; background: radial-gradient(circle, #dfc77b0d, transparent 70%); content: ""; pointer-events: none; }
 .about-zodiac__intro { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.5rem; }
 .about-zodiac__intro > div { max-width: 670px; }
@@ -80,7 +80,7 @@
 .about-zodiac__dot { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #dfc67c; }
 .about-zodiac__foot a { display: inline-flex; align-items: center; gap: .4rem; color: #e8ce8c; font-size: .74rem; font-weight: 800; text-decoration: none; }
 
-.about-calendars, .about-tools { margin-top: clamp(3.8rem, 7vw, 6rem); }
+.about-calendars, .about-tools { margin-top: clamp(1.5rem, 3vw, 2.65rem); }
 .about-section-heading { max-width: 760px; margin: 0 auto 1.5rem; text-align: center; }
 .about-section-heading h2 { color: var(--about-ink); }
 .about-section-heading > p:last-child, .about-section-heading > div > p:last-child { color: var(--about-muted); }
@@ -89,11 +89,11 @@
 .about-section-heading--row > .about-text-link { margin-bottom: .3rem; }
 .about-calendar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .about-calendar-card { overflow: hidden; border: 1px solid var(--about-line); border-radius: 19px; background: #fff; box-shadow: 0 8px 28px #1d30220a; }
-.about-calendar-card__image { position: relative; display: flex; min-height: 240px; align-items: center; justify-content: center; overflow: hidden; padding: 1.25rem; background: #f1f3f0; text-decoration: none; }
-.about-calendar-card__image img { display: block; width: min(100%, 520px); height: auto; transition: transform .25s ease; }
+.about-calendar-card__image { position: relative; display: grid; place-items: center; height: clamp(235px,28vw,365px); overflow: hidden; padding: clamp(12px,2vw,23px); background: #f1f3f0; text-decoration: none; }
+.about-calendar-card__image img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; transition: transform .25s ease; }
 .about-calendar-card__image:hover img { transform: scale(1.025); }
-.about-calendar-card__image--blank { min-height: 240px; background: radial-gradient(ellipse at 50% 38%, #e1efe5, #f4f6f2 71%); }
-.about-calendar-card__image--blank img { width: min(68%, 280px); max-height: 200px; }
+.about-calendar-card__image--blank { background: radial-gradient(ellipse at 50% 38%, #e1efe5, #f4f6f2 71%); }
+.about-calendar-card__image--blank img { width: min(80%, 260px); }
 .about-image-label { position: absolute; right: .85rem; bottom: .85rem; padding: .4rem .65rem; border: 1px solid #e5e9e3; border-radius: 99px; background: #ffffffed; color: #52635a; font-size: .66rem; font-weight: 800; }
 .about-calendar-card__body { padding: 1.25rem 1.35rem 1.4rem; }
 .about-us .about-card-kicker { margin: 0 0 .35rem; color: #8d7139; font-size: .65rem; font-weight: 850; letter-spacing: .13em; line-height: 1.5; text-transform: uppercase; }
@@ -127,7 +127,7 @@
 .about-tool-links a span { flex: 0 0 auto; color: #26704e; }
 .about-tool-links a:hover { color: #006a44; background: #ffffffa6; }
 
-.about-trust { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(1.5rem, 4vw, 3.4rem); margin-top: clamp(3.8rem, 7vw, 6rem); padding: clamp(1.35rem, 4vw, 2.7rem); border: 1px solid #e5e4d9; border-radius: 24px; background: linear-gradient(135deg, #f5f4eb, #fbfaf5 53%, #f4f7f1); }
+.about-trust { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(1.5rem, 4vw, 3.4rem); margin-top: clamp(1.5rem, 3vw, 2.65rem); padding: clamp(1.35rem, 4vw, 2.7rem); border: 1px solid #e5e4d9; border-radius: 24px; background: linear-gradient(135deg, #f5f4eb, #fbfaf5 53%, #f4f7f1); }
 .about-trust__intro { position: sticky; top: 1.5rem; align-self: start; max-width: 320px; }
 .about-trust__intro h2 { color: var(--about-ink); font-size: clamp(1.7rem, 2.8vw, 2.3rem); }
 .about-trust__intro > p:last-child { margin: 0; color: var(--about-muted); font-size: .9rem; line-height: 1.7; }
@@ -166,7 +166,7 @@
   .about-hero__calendar { bottom: 3%; left: 6%; width: 43%; }
   .about-highlights { grid-template-columns: minmax(0, 1fr); gap: .55rem; }
   .about-highlight { min-height: 72px; padding: .7rem .9rem; }
-  .about-zodiac { margin-top: 3rem; padding: 1.15rem; border-radius: 20px; }
+  .about-zodiac { padding: 1.15rem; border-radius: 20px; }
   .about-zodiac__intro { align-items: flex-start; flex-direction: column; gap: .75rem; margin-bottom: 1rem; }
   .about-zodiac__intro p:last-child { font-size: .83rem; }
   .about-text-link--light { margin: 0; }
@@ -177,14 +177,12 @@
   .about-zodiac__foot { align-items: flex-start; flex-wrap: wrap; }
   .about-zodiac__foot p { flex-basis: calc(100% - 16px); }
   .about-zodiac__foot a { margin-left: 15px; }
-  .about-calendars, .about-tools, .about-trust { margin-top: 3.25rem; }
   .about-section-heading { margin-bottom: 1.1rem; text-align: left; }
   .about-section-heading h2 { font-size: clamp(1.6rem, 7vw, 2rem); }
   .about-section-heading > p:last-child, .about-section-heading > div > p:last-child { font-size: .84rem; }
   .about-section-heading--row { align-items: flex-start; flex-direction: column; gap: .75rem; }
   .about-calendar-grid { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
-  .about-calendar-card__image { min-height: clamp(200px, 57vw, 290px); padding: .85rem; }
-  .about-calendar-card__image--blank { min-height: 210px; }
+  .about-calendar-card__image { height: clamp(205px,58vw,275px); padding: .85rem; }
   .about-calendar-card__body { padding: 1rem; }
   .about-calendar-card h3 { font-size: 1.15rem; }
   .about-calendar-card__body > p:not(.about-card-kicker):not(.about-format-note) { font-size: .81rem; }

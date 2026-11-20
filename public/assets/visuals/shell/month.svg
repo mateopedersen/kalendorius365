@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 132">
+  <defs>
+    <linearGradient id="paper" x2=".8" y2="1"><stop stop-color="#fffdf2"/><stop offset="1" stop-color="#d9cbae"/></linearGradient>
+    <linearGradient id="green" x2=".8" y2="1"><stop stop-color="#559778"/><stop offset="1" stop-color="#0d4937"/></linearGradient>
+    <linearGradient id="gold" x2=".8" y2="1"><stop stop-color="#ffdd83"/><stop offset="1" stop-color="#a96524"/></linearGradient>
+    <linearGradient id="wood" x2=".8" y2="1"><stop stop-color="#bd8859"/><stop offset="1" stop-color="#63432e"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="3.5"/></filter>
+  </defs>
+  <ellipse cx="82" cy="120" rx="37" ry="6" fill="#263f2e" opacity=".2" filter="url(#shadow)"/>
+  <path d="M67 38 84 15l19 25" fill="none" stroke="#705334" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="84" cy="15" r="6" fill="url(#gold)" stroke="#987039"/>
+  <path d="M51 38h65l6 6v65l-4 7H48V44z" fill="url(#wood)"/>
+  <rect x="44" y="36" width="71" height="76" rx="7" fill="url(#paper)" stroke="#9c9c84"/>
+  <path d="M50 36h59a6 6 0 0 1 6 6v16H44V42a6 6 0 0 1 6-6Z" fill="url(#green)"/>
+  <path d="M55 65h50m-50 10h50m-50 10h50m-50 10h50m-40-31v38m10-38v38m10-38v38m10-38v38" stroke="#95a48f" stroke-width="1.25"/>
+  <rect x="86" y="76" width="8" height="8" rx="2" fill="#b9504c"/>
+  <rect x="66" y="86" width="8" height="8" rx="2" fill="#d4a34b"/>
+  <path d="M59 46h40" stroke="#b9d6b4" stroke-width="3" stroke-linecap="round"/>
+</svg>

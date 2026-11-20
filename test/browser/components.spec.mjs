@@ -63,10 +63,26 @@ test('calendar event create, edit, reload, export and delete preserve notes and 
 });
 
 test('calendar views and period navigation update actual state',async({page})=>{
+ await page.clock.setFixedTime(new Date('2026-11-20T12:00:00Z'));
  await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');
  for(const view of ['week','day','agenda','year','month']){await page.locator(`[data-view=${view}]`).click();await expect(page.locator(`[data-view=${view}]`)).toHaveAttribute('aria-pressed','true');}
  await expect(page.locator('#period-title')).toContainText('vasaris');await page.locator('#next').click();await expect(page.locator('#period-title')).toContainText('kovas');
  await page.locator('#prev').click();await expect(page.locator('#period-title')).toContainText('vasaris');
+ const month=page.locator('.calendar-toolbar').getByRole('combobox',{name:'Pasirinkti mėnesį'});
+ await expect(month).toHaveValue('2');
+ await page.locator('[data-view=year]').click();
+ await expect(month).toHaveValue('');
+ await month.selectOption('2');
+ await expect(page.locator('#calendar')).toHaveAttribute('data-calendar-view','month');
+ await expect(page.locator('#calendar [data-date="2028-02-29"]')).toHaveAttribute('aria-pressed','true');
+ await month.selectOption('12');
+ await page.locator('#next').click();
+ await expect(page.locator('#period-title')).toHaveText('2029 m. sausis');
+ await expect(page.locator('#month-jump-year')).toHaveText('2029');
+ await expect(month).toHaveValue('1');
+ await page.locator('#today').click();
+ await expect(page.locator('#period-title')).toHaveText('2026 m. lapkritis');
+ await expect(month).toHaveValue('11');
 });
 
 test('date calculator handles leap-day difference, inclusive endpoints and ISO week',async({page})=>{
@@ -162,6 +178,59 @@ test('calendar builder renders leap month and print template picker downloads va
  const pdf=await downloadBytes(page,()=>page.locator('#selected-pdf').click());expect(pdf.bytes.subarray(0,4).toString()).toBe('%PDF');
 });
 
+for(const [path, firstDay] of [
+ ['/savaitiniai-planuokliai/', '.planner-sheet__day h4'],
+ ['/seimos-kalendorius/', '.planner-studio__sheet tbody th'],
+]){
+ test(`planner weekday labels follow the selected week start at ${path}`,async({page})=>{
+  await page.goto(path);
+  const heading=page.locator(firstDay).first();
+  await expect(heading).toHaveText(/^Pirmadienis/);
+  const weekStart=page.locator('[data-studio-field="weekStart"]');
+  if(!await weekStart.isVisible())await weekStart.locator('xpath=ancestor::details[1]/summary').click();
+  await weekStart.selectOption('0');
+  await expect(heading).toHaveText(/^Sekmadienis/);
+  await weekStart.selectOption('1');
+  await expect(heading).toHaveText(/^Pirmadienis/);
+ });
+}
+
+test('occasion cards synchronize dates, download reminders and save a single planner entry', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-12-31T07:00:00Z'));
+  await page.addInitScript(() => localStorage.setItem('kalendorius365:analytics-consent:v1', JSON.stringify({
+    version: 1, analytics: false, expiresAt: Date.now() + 600000,
+  })));
+  await page.goto('/sventes/naujuju-metu-diena/?metai=2027');
+  const card = page.locator('[data-occasion-calendar]');
+  const year = card.getByRole('combobox', { name: 'Metai', exact: true });
+  const date = card.locator('[data-occasion-date]');
+  const google = card.getByRole('link', { name: /Google Calendar/ });
+  const reminder = card.getByRole('combobox', { name: 'Priminimas', exact: true });
+  await expect(date).toHaveAttribute('datetime', '2027-01-01');
+  await expect(google).toHaveAttribute('href', /dates=20270101%2F20270102/);
+  await year.selectOption('2030');
+  await expect(date).toHaveAttribute('datetime', '2030-01-01');
+  await expect(page.locator('[data-hd-select="2030"]')).toHaveAttribute('aria-current', 'true');
+  await year.selectOption('2027');
+  await reminder.selectOption('7');
+  const apple = await downloadBytes(page, () => card.getByRole('link', { name: /Apple Calendar/ }).click());
+  expect(ics(apple.bytes)).toContain('TRIGGER;VALUE=DATE-TIME:20261225T070000Z');
+  await reminder.selectOption('');
+  const outlook = await downloadBytes(page, () => card.getByRole('link', { name: /Microsoft Outlook/ }).click());
+  expect(ics(outlook.bytes)).not.toContain('BEGIN:VALARM');
+  const save = card.getByRole('button', { name: /Kalendorius365/ });
+  await save.click();
+  await reminder.selectOption('1');
+  await save.click();
+  await expect(card.getByRole('status')).toContainText('Priminimas atnaujintas');
+  await card.getByRole('link', { name: 'Atverti mano kalendorių' }).click();
+  await expect(page.locator('[data-active-reminders] li')).toHaveCount(1);
+  await expect(page.locator('[data-active-reminders] li time')).toHaveAttribute('datetime', '2027-01-01');
+  const events = await page.evaluate(() => JSON.parse(localStorage.getItem('kalendorius365:v1')).events);
+  expect(events).toHaveLength(1);
+  expect(events[0].reminder).toBe(1);
+});
+
 test('holiday year switching updates exact Easter dates, ICS and calendar prefill',async({page})=>{
  await page.goto('/sventes/velykos/');await page.locator('[data-hd-select="2028"]').click();
  await expect(page.locator('[data-hd-year="2028"]')).toBeVisible();await expect(page.locator('[data-hd-year="2027"]')).toBeHidden();
@@ -185,8 +254,40 @@ test('name search prefill, leap date and recurring ICS export keep real names',a
  await page.locator('#nd-year').selectOption('2027');await expect(page.locator('#nd-date')).toHaveValue('2028-02-29');await expect(page.locator('#nd-feedback')).toContainText('keliamaisiais');
 });
 
-test('the twelve zodiac touch targets remain separate on a narrow phone',async({page})=>{
- await page.setViewportSize({width:320,height:700});
+test('name-day and lunar month navigation preserve the chosen month across the redesigned pages', async ({ page }) => {
+ await page.setViewportSize({ width:390, height:900 });
+ await page.goto('/vardadieniai/balandis/');
+ const months=page.locator('.nd-month-nav');
+ await expect(months.getByRole('link')).toHaveCount(12);
+ await expect(months.getByRole('link',{name:'Balandis',exact:true})).toHaveAttribute('aria-current','page');
+ await months.getByRole('link',{name:'Vasaris',exact:true}).click();
+ await expect(page.locator('#nd-date')).toHaveValue('2027-02-01');
+ await page.locator('#nd-year').selectOption('2028');
+ await expect(page.locator('#nd-calendar a[data-calendar-date="2028-02-29"]')).toBeVisible();
+
+ await page.goto('/menulio-kalendorius/2027/balandis/');
+ await expect(page.locator('.lunar-heading__art')).toHaveAttribute('src', /lunar-covers\/2027-04\.svg/);
+ await page.locator('.lunar-years').getByRole('link',{name:'2030',exact:true}).click();
+ await expect(page).toHaveURL(/\/menulio-kalendorius\/2030\/balandis\/$/);
+ await expect(page.locator('.lunar-years [aria-current]')).toHaveText('2030');
+ await expect(page.locator('.lunar-heading__art')).toHaveAttribute('src', /lunar-covers\/2030-04\.svg/);
+ await expect(page.locator('[data-lunar-date="2030-04-01"]')).toBeVisible();
+});
+
+test('annual holiday month cards load their presentation and keep the destination year', async ({ page }) => {
+ await page.goto('/sventes/2030/');
+ const links=page.locator('.mh-hub .mh-month-grid a');
+ await expect(links).toHaveCount(12);
+ const april=links.filter({hasText:'Balandis'});
+ await expect(april.locator('svg')).toHaveCSS('width','17px');
+ await expect(april).toHaveAttribute('href','/sventes/2030/balandis/');
+ await april.click();
+ await expect(page.locator('.mh-hero .mh-year-nav [aria-current]')).toHaveText('2030');
+ await expect(page.locator('#mh-calendar [data-day="2030-04-01"]')).toBeVisible();
+});
+
+for(const width of [320,390,800,1440])test(`the twelve zodiac touch targets remain separate at ${width}px`,async({page})=>{
+ await page.setViewportSize({width,height:700});
  await page.goto('/zodiakas/');
  const signs=page.locator('[data-wheel-sign]');
  await expect(signs).toHaveCount(12);
@@ -292,10 +393,19 @@ test('contact Google form prefill, source link and email copy work without sendi
  await context.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async value=>{window.__copiedContact=value;}}}));
  await page.route('https://docs.google.com/forms/**',route=>route.abort());
  await page.goto('/kontaktai/?tema=technical&puslapis=https%3A%2F%2Fkalendorius365.lt%2F2028%2F%3Fq%3Dprivate');
+ await expect(page.locator('.contact-heading h1')).toHaveCSS('color','rgb(255, 250, 240)');
+ await expect(page.locator('.contact-lead')).toHaveCSS('color','rgb(227, 238, 230)');
  const frame=page.locator('[data-contact-frame]');
  await expect(frame).toHaveAttribute('data-src',/entry.122884581=/);
- await expect(page.locator('[data-contact-launch]')).toBeVisible();
- await page.locator('[data-contact-launch]').click();
+ const launch=page.locator('[data-contact-launch]');
+ const technical=page.locator('[data-topic="technical"]');
+ await expect(technical).toHaveAttribute('aria-current','true');
+ await page.locator('[data-topic="namedays"]').click();
+ await expect(frame).not.toHaveAttribute('src',/./);
+ await expect(page.locator('[data-open-contact-form]')).toHaveAttribute('href',/Vardadieniai\+ir/);
+ await technical.press('Enter');
+ await expect(launch).toBeVisible();
+ await launch.click();
  await expect(frame).toHaveAttribute('src',/entry.122884581=/);
  await expect(frame).toBeVisible();
  const source=new URL(await frame.getAttribute('src'));
@@ -304,6 +414,29 @@ test('contact Google form prefill, source link and email copy work without sendi
  await expect(page.locator('[data-contact-source-link]')).toHaveAttribute('href','https://kalendorius365.lt/2028/');
  const topic=new URL(await page.locator('[data-topic="namedays"]').getAttribute('href'));expect(topic.searchParams.get('entry.122884581')).toBe('Vardadieniai ir šventės');
  for(const link of await page.locator('[data-open-contact-form]').all())await expect(link).toHaveAttribute('href',/docs.google.com\/forms\//);
+ await launch.click();await expect(frame).toBeHidden();await expect(launch).toHaveAttribute('aria-expanded','false');
+ await launch.click();await expect(frame).toBeVisible();await expect(frame).toHaveAttribute('src',source.href);
  await page.locator('[data-copy-email]').click();await expect(page.locator('[data-copy-status]')).toHaveText('El. pašto adresas nukopijuotas.');
  expect(await page.evaluate(()=>window.__copiedContact)).toBe('kalendorius365@gmail.com');
+});
+
+test('the holiday directory keeps all month guides and filters dates in the selected year', async ({ page }) => {
+  await page.goto('/sventes/');
+  const directory = page.locator('[data-holiday-directory]');
+  await expect(directory.locator('.lh-month')).toHaveCount(12);
+  const search = directory.getByRole('searchbox', {name:'Paieška'});
+  await search.fill('uzgavenes');
+  const cards = directory.locator('[data-lh-guide]:visible');
+  await expect(cards).toHaveCount(1);
+  await expect(cards.locator('.lh-guide__date')).toHaveText('2027 m. vasario 9 d.');
+  const year = directory.getByRole('combobox', {name:'Metai', exact:true});
+  await year.selectOption('2028');
+  await expect(cards.locator('.lh-guide__date')).toHaveText('2028 m. vasario 29 d.');
+  await directory.getByRole('button', {name:'Šventinės dienos', exact:true}).click();
+  await expect(cards).toHaveCount(0);
+  await expect(directory.locator('[data-lh-empty]')).toBeVisible();
+  await directory.getByRole('button', {name:'Visos dienos', exact:true}).click();
+  await cards.getByRole('link', {name:'Užgavėnės', exact:true}).click();
+  await expect(page).toHaveURL(/\/sventes\/uzgavenes\/\?metai=2028$/);
+  await expect(page.locator("[data-hd-detail]")).toHaveAttribute("data-hd-active-year", "2028");
 });

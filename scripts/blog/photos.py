@@ -18,13 +18,26 @@ def sha(data):
 def signature(row):
     return sha(json.dumps(row, ensure_ascii=False, sort_keys=True).encode())
 
-def prepare(originals):
+def prepare(originals, slugs):
     rows = json.loads(SPEC.read_text())
     media = json.loads((ROOT / 'data/holiday-editorial.json').read_text())['media']
-    receipts = {r['id']: r for r in json.loads((originals / 'download-receipts.json').read_text())}
-    result = {}
+    receipts = ({r['id']: r for r in json.loads((originals / 'download-receipts.json').read_text())}
+                if originals else {})
+    if slugs:
+        unknown = set(slugs) - {row['slug'] for row in rows}
+        if unknown:
+            raise ValueError(f'Unknown photo assignments: {sorted(unknown)}')
+        rows = [row for row in rows if row['slug'] in slugs]
+    result = json.loads(MANIFEST.read_text()) if slugs and MANIFEST.exists() else {}
     for row in rows:
-        if 'id' in row:
+        if 'source_file' in row:
+            source = ROOT / row['source_file']
+            if sha(source.read_bytes()) != row['source_file_sha256']:
+                raise ValueError(f'Reviewed photograph changed: {source}')
+            meta = {**row['attribution'], 'source_name': 'Wikimedia Commons'}
+        elif 'id' in row:
+            if not originals:
+                raise ValueError(f'--prepare-from is required for {row["slug"]}')
             source = originals / f'{row["id"]}.jpg'
             receipt = receipts[row['id']]
             if sha(source.read_bytes()) != receipt['sha256']:
@@ -66,12 +79,17 @@ def prepare(originals):
 def validate():
     rows = json.loads(SPEC.read_text())
     records = json.loads(MANIFEST.read_text())
-    if len(rows) != 20 or len(records) != 20 or len({r['slug'] for r in rows}) != 20:
-        raise ValueError('Expected exactly 20 photograph assignments')
+    slugs = {row['slug'] for row in rows}
+    if len(slugs) != len(rows) or slugs != records.keys():
+        raise ValueError('Photograph assignments and delivery manifest must match')
     for row in rows:
         record = records[row['slug']]
         if record['spec_sha256'] != signature(row) or record['review']['input_sha256'] != record['input_sha256']:
             raise ValueError(f'Photo review invalidated: {row["slug"]}')
+        if 'source_file' in row:
+            source = ROOT / row['source_file']
+            if sha(source.read_bytes()) != record['input_sha256']:
+                raise ValueError(f'Reviewed photograph changed: {source}')
         for variant in record['variants']:
             path = SITE / variant['src'].lstrip('/')
             if sha(path.read_bytes()) != variant['sha256']:
@@ -86,5 +104,6 @@ def validate():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--prepare-from', type=Path)
+    parser.add_argument('--slug', action='append')
     args = parser.parse_args()
-    prepare(args.prepare_from) if args.prepare_from else validate()
+    prepare(args.prepare_from, args.slug) if args.prepare_from or args.slug else validate()

@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:jaunimo-darbuotoju-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290514
+DTEND;VALUE=DATE:20290515
+SUMMARY:Jaunimo darbuotojų diena
+DESCRIPTION:Gegužės 14 d. Lietuvoje minima Jaunimo darbuotojų diena.
+URL:https://kalendorius365.lt/sventes/jaunimo-darbuotoju-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

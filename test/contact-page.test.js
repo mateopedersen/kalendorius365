@@ -35,7 +35,8 @@ test("the rendered integration has a titled Google frame and a direct non-JavaSc
   assert.match(page, /schema_type: ContactPage/);
   assert.match(page, /title="Kalendorius365 kontaktinė forma"/);
   assert.match(page, /referrerpolicy="no-referrer"/);
-  assert.ok(page.includes(CONTACT_FORM_URL + "?embedded=true&amp;hl=lt"));
+  assert.ok(page.includes(`assign contact_form = '${CONTACT_FORM_URL}'`));
+  assert.ok(page.includes('data-src="{{ contact_form }}?embedded=true&amp;hl=lt"'));
   assert.match(page, /mailto:kalendorius365@gmail\.com/);
   assert.doesNotMatch(page, /data-contact-submit|data-contact-form|laiško juodrašt/);
   const frames=read("../scripts/build.rb").match(/frame-src ([^;]+);/)[1].trim().split(/\s+/);
@@ -54,7 +55,7 @@ test("privacy source describes Forms storage, Gmail notifications and restricted
 
 test("the external contact application loads once after intent and retains sanitized prefill", () => {
   const requests=[], frameEvents={}, launchEvents={}, attributes={};
-  const frame={dataset:{},hidden:true,focusCount:0,focus(){this.focusCount++},getAttribute(name){return attributes[name]||null},setAttribute(name,value){attributes[name]=value},addEventListener(name,handler){frameEvents[name]=handler},set src(value){attributes.src=value;requests.push(value)}};
+  const frame={dataset:{},hidden:true,getAttribute(name){return attributes[name]||null},setAttribute(name,value){attributes[name]=value},addEventListener(name,handler){frameEvents[name]=handler},set src(value){attributes.src=value;requests.push(value)}};
   const launch={hidden:true,addEventListener(name,handler){launchEvents[name]=handler},setAttribute(name,value){attributes['button-'+name]=value}};
   const loading={hidden:true}, external={};
   const doc={querySelector(selector){return {'[data-contact-frame]':frame,'[data-contact-launch]':launch,'[data-contact-loading]':loading}[selector]||null},querySelectorAll(selector){return selector==='[data-open-contact-form]'?[external]:[]}};
@@ -62,15 +63,16 @@ test("the external contact application loads once after intent and retains sanit
   assert.deepEqual(requests,[]);assert.equal(frame.hidden,true);assert.equal(launch.hidden,false);
   assert.doesNotMatch(frame.dataset.src,/private|note/);assert.equal(new URL(frame.dataset.src).searchParams.get('entry.122884581'),CONTACT_TOPICS.date_error);
   assert.equal(new URL(external.href).searchParams.get('entry.1784264088'),'https://kalendorius365.lt/2027/');
-  launchEvents.click();assert.equal(requests.length,1);assert.equal(frame.hidden,false);assert.equal(frame.focusCount,1);assert.equal(loading.hidden,false);assert.equal(attributes['aria-busy'],'true');
+  launchEvents.click();assert.equal(requests.length,1);assert.equal(frame.hidden,false);assert.equal(loading.hidden,false);assert.equal(attributes['aria-busy'],'true');
   frameEvents.load();assert.equal(loading.hidden,true);assert.equal(attributes['aria-busy'],'false');
-  launchEvents.click();assert.equal(requests.length,1);
+  launchEvents.click();assert.equal(frame.hidden,true);assert.equal(attributes['button-aria-expanded'],'false');
+  launchEvents.click();assert.equal(frame.hidden,false);assert.equal(attributes['button-aria-expanded'],'true');assert.equal(requests.length,1);
 });
 
 test("contact HTML keeps a direct fallback and does not start the external frame on page load", () => {
   const source=read('../site/kontaktai/index.html');
   assert.doesNotMatch(source,/<iframe\b[^>]*\ssrc=/);
-  assert.match(source,/<iframe\b[^>]*\sdata-src="https:\/\/docs\.google\.com/);
+  assert.match(source,/<iframe\b[^>]*\sdata-src="\{\{ contact_form \}\}/);
   assert.match(source,/data-contact-launch[^>]*hidden/);
-  assert.match(source,/data-open-contact-form href="https:\/\/docs\.google\.com/);
+  assert.match(source,/data-open-contact-form href="\{\{ contact_form \}\}/);
 });

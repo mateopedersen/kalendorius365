@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:krepsinio-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280423
+DTEND;VALUE=DATE:20280424
+SUMMARY:Krepšinio diena
+DESCRIPTION:Balandžio 23-ioji nuo 2027 m. minima kaip Lietuvos Krepšinio 
+ diena. Data siejama su 1922 m. Kaune žaistomis rungtynėmis.
+URL:https://kalendorius365.lt/sventes/krepsinio-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

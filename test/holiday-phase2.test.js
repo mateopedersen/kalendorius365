@@ -5,12 +5,14 @@ import {yearFromLocation} from '../site/assets/holiday-phase2.js';
 const registry=JSON.parse(readFileSync(new URL('../data/holiday-phase2.json',import.meta.url)));
 const old=JSON.parse(readFileSync(new URL('../data/holiday-editorial.json',import.meta.url)));
 const all=[...old.articles,...old.commemorations,...registry.articles];
-const years=['2027','2028','2029'];
-test('all 16 existing planner links receive complete compact title and category metadata',()=>{
+const years=['2026', ...JSON.parse(readFileSync(new URL('../data/holiday-years.json',import.meta.url))).map(String)];
+test('existing and new planner links receive complete compact title and category metadata',()=>{
  const compact=JSON.parse(readFileSync(new URL('../site/assets/data/home-holiday-data.json',import.meta.url)));
  const records=[...compact.articles,...compact.commemorations];
  assert.match(readFileSync(new URL('../site/assets/app.js',import.meta.url),'utf8'),/fetch\("\/assets\/data\/home-holiday-data\.json\?v=2"\)/);
- assert.equal(records.length,16);
+ const additions=JSON.parse(readFileSync(new URL('../site/_data/lithuanian_dates.json',import.meta.url))).commemorations;
+ assert.equal(records.length,old.articles.length+old.commemorations.length+additions.length);
+ assert.equal(new Set(records.map(item=>item.slug)).size,records.length);
  for(const article of [...old.articles,...old.commemorations]){
   const item=records.find(x=>x.slug===article.slug);assert.ok(item,article.slug);
   assert.equal(item.title,article.title);assert.equal(item.category,article.category);
@@ -23,9 +25,9 @@ test('31 manifest guides have unique routes and verified original media records'
 });
 test('deep-link year selection validates input and gives valid hash priority',()=>{
  const location=(search='',hash='')=>({search,hash});
- assert.equal(yearFromLocation(location(),years),'2027');assert.equal(yearFromLocation(location('?metai=2028'),years),'2028');assert.equal(yearFromLocation(location('?metai=2030'),years),'2027');assert.equal(yearFromLocation(location('?metai=2028','#metai-2029'),years),'2029');assert.equal(yearFromLocation(location('?metai=2028','#metai-9999'),years),'2028');
+ assert.equal(yearFromLocation(location(),years,'2027'),'2027');assert.equal(yearFromLocation(location('?metai=2026'),years,'2027'),'2026');assert.equal(yearFromLocation(location('?metai=2028'),years),'2028');assert.equal(yearFromLocation(location('?metai=2030'),years),'2030');assert.equal(yearFromLocation(location('?metai=2028','#metai-2030'),years),'2030');assert.equal(yearFromLocation(location('?metai=2028','#metai-9999'),years),'2028');
 });
-test('all 93 ICS files are folded UTF-8 with stable UID, all-day date and exclusive end',()=>{
+test('every supported year has folded UTF-8 calendars with stable UIDs, all-day dates and exclusive ends',()=>{
  const ids=new Set();let events=0;
  for(const a of all)for(const y of years){
   const raw=readFileSync(new URL(`../site/assets/holiday-phase2-ics/${a.slug}-${y}.ics`,import.meta.url));
@@ -39,11 +41,11 @@ test('all 93 ICS files are folded UTF-8 with stable UID, all-day date and exclus
    const parse=d=>Date.UTC(+d.slice(0,4),+d.slice(4,6)-1,+d.slice(6));assert.equal(parse(end)-parse(start),86400000);assert.equal(start.slice(0,4),y);assert.ok(block.includes('URL:https://kalendorius365.lt/sventes/'+a.slug+'/'));
   }
  }
- assert.equal(events,99);
+ assert.equal(events,33*years.length);
 });
 test('Vaiko day and Shrove Tuesday independently agree for all supported years',()=>{
  const dates=(slug,y)=>readFileSync(new URL(`../site/assets/holiday-phase2-ics/${slug}-${y}.ics`,import.meta.url),'utf8').match(/DTSTART;VALUE=DATE:(\d{8})/)[1];
- for(const [y,child,shrove] of [['2027','20270521','20270209'],['2028','20280519','20280229'],['2029','20290518','20290213']]){assert.equal(dates('vaiko-diena',y),child);assert.equal(dates('uzgavenes',y),shrove);}
+ for(const [y,child,shrove] of [['2027','20270521','20270209'],['2028','20280519','20280229'],['2029','20290518','20290213'],['2030','20300517','20300305']]){assert.equal(dates('vaiko-diena',y),child);assert.equal(dates('uzgavenes',y),shrove);}
 });
 test('new candidates do not claim statutory holiday IDs or nonworking status',()=>{
  assert.ok(registry.articles.every(a=>a.holiday_ids.length===0));

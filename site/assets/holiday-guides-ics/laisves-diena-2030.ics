@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:laisves-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300831
+DTEND;VALUE=DATE:20300901
+SUMMARY:Laisvės diena
+DESCRIPTION:Rugpjūčio 31 d. Lietuva mini Laisvės dieną. Data siejama su
+  paskutinių Rusijos kariuomenės dalinių išvedimu iš Lietuvos 1993 m.
+URL:https://kalendorius365.lt/sventes/laisves-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

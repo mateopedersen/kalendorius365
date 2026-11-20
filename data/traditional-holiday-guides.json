@@ -1,0 +1,502 @@
+{
+  "sources": {
+    "midwinter": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/pusiauziemis--sausio-25-oji.html",
+      "title": "Etninės kultūros globos taryba: Pusiaužiemis",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "candles": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/grabnycios-perkuno-diena--vasario-2-oji--ir-sv-agotos-gabijos-duonos-diena--vasario-5-oji.html",
+      "title": "Etninės kultūros globos taryba: Grabnyčios ir šv. Agotos diena",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "lent": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/gavenia-ir-i-ja-isiterpiancios-sventes.html",
+      "title": "Etninės kultūros globos taryba: gavėnios papročiai",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "birds": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/su-parskrendanciais-pauksciais-susijusios-sventines-dienos.html",
+      "title": "Etninės kultūros globos taryba: su paukščiais susijusios datos",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "spring-proposal": {
+      "url": "https://www.ekgt.lt/media/dokumentai/veikla/Nutarimai/2026-03-13_D%C4%97l%20tradicini%C5%B3%20pavasario%20%C5%A1ven%C4%8Di%C5%B3.pdf",
+      "title": "Etninės kultūros globos taryba: Didžioji savaitė ir pavasario papročiai",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "jurgines": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/jurgines-jore-pergrubrijus--balandzio-23-ioji.html",
+      "title": "Etninės kultūros globos taryba: Jurginės",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "pentecost": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/sekmines.html",
+      "title": "Etninės kultūros globos taryba: Sekminių papročiai",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "pentecost-date": {
+      "url": "https://www.vle.lt/straipsnis/sekmines/",
+      "title": "Visuotinė lietuvių enciklopedija: Sekminės",
+      "publisher": "Visuotinė lietuvių enciklopedija"
+    },
+    "moveable": {
+      "url": "https://lk.katalikai.lt/index.php?id=9",
+      "title": "Lietuvos katalikų liturginis kalendorius: kilnojamos iškilmės",
+      "publisher": "Lietuvos katalikų liturginis kalendorius"
+    },
+    "corpus": {
+      "url": "https://maldynas.katalikai.lt/liturginiai-metai/eilinis-laikas/devintines",
+      "title": "Katalikų maldynas: Devintinės",
+      "publisher": "Katalikų maldynas"
+    },
+    "saints": {
+      "url": "https://lk.katalikai.lt/svent/abc",
+      "title": "Lietuvos katalikų liturginis kalendorius: švenčių sąrašas",
+      "publisher": "Lietuvos katalikų liturginis kalendorius"
+    },
+    "petrines": {
+      "url": "https://www.vle.lt/straipsnis/petrines/",
+      "title": "Visuotinė lietuvių enciklopedija: Petrinės",
+      "publisher": "Visuotinė lietuvių enciklopedija"
+    },
+    "kaunas": {
+      "url": "https://ktkc.lt/kalendorines-sventes/",
+      "title": "Kauno tautinės kultūros centras: kalendorinės šventės",
+      "publisher": "Kauno tautinės kultūros centras"
+    },
+    "harvest": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/page-2",
+      "title": "Etninės kultūros globos taryba: Dagotuvės",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "martynas": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/sv-martynas-lapkricio-11-oji-ir-ozio-diena-lapkricio-12-oji.html",
+      "title": "Etninės kultūros globos taryba: Šv. Martynas ir Ožio diena",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "advent": {
+      "url": "https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/adventas.html",
+      "title": "Etninės kultūros globos taryba: advento papročiai",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "advent-lnkc": {
+      "url": "https://sena.lnkc.lt/go.php/lit/Atvaziuoja-kaledos-adventokaledu-paprociai-ir-tautosaka/135889",
+      "title": "Lietuvos nacionalinis kultūros centras: Advento ir Kalėdų tautosaka",
+      "publisher": "Lietuvos nacionalinis kultūros centras"
+    },
+    "folk-list": {
+      "url": "https://www.ekgt.lt/media/dokumentai/veikla/EKGTrastai/2019%20S-90.pdf",
+      "title": "Etninės kultūros globos taryba: tradicinių kalendorinių švenčių sąrašas",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "jore-kulionys": {
+      "url": "https://ekgt.lt/Veiklos-sritys/Gidai/Pavasaris/",
+      "title": "Etninės kultūros globos taryba: Jorė Kulionyse",
+      "publisher": "Etninės kultūros globos taryba"
+    },
+    "sekmines-meironys": {
+      "url": "https://ignalina.lt/skelbimai/397/sekmines-meironyse%3A3918",
+      "title": "Ignalinos rajono savivaldybė: Sekminės Meironyse",
+      "publisher": "Ignalinos rajono savivaldybė"
+    }
+  },
+  "guides": [
+    {
+      "slug": "pusiauziemis",
+      "title": "Pusiaužiemis",
+      "recurrence": {
+        "type": "fixed",
+        "month": 1,
+        "day": 25
+      },
+      "sources": [
+        "midwinter",
+        "folk-list"
+      ],
+      "summary": "Sausio 25-ąją tradiciniame Lietuvos kalendoriuje žymimas Pusiaužiemis, dar vadintas Kirmėlių diena.",
+      "meaning": "Žiemos vidurys liaudiškame kalendoriuje siejosi su bundančios gyvybės laukimu. Etninės kultūros globos taryba mini senesnį skaičiavimą pagal po Naujųjų metų pasirodantį jauną mėnulį. Ilgainiui įsitvirtino pastovi sausio 25-osios data.",
+      "visit": "Etnografiniuose pasakojimuose tądien stebėdavo, kaip keičiasi žiema, o žalčio ar gyvatės pabudimas buvo aiškinamas kaip gyvybės grįžimo ženklas. Šį pasakojimą verta skaityti kaip liaudies tikėjimą. Pažintinės veiklos ir renginiai priklauso nuo konkretaus muziejaus ar kultūros centro."
+    },
+    {
+      "slug": "grabnycios",
+      "title": "Grabnyčios (Žvakių diena)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 2
+      },
+      "sources": [
+        "candles",
+        "folk-list"
+      ],
+      "summary": "Vasario 2-ąją minimos Grabnyčios. Katalikų kalendoriuje tai Kristaus Paaukojimo šventė.",
+      "meaning": "Lietuvių tradicijoje Grabnyčios dar vadintos Perkūno diena. Bažnyčioje pašventintą žvakę žmonės nešdavo į namus ir laikydavo ypatingoms gyvenimo akimirkoms. Taip bažnytinė šventė susipynė su liaudiška žvakės apsaugos simbolika.",
+      "visit": "Parapijose, kurios tądien rengia liturgiją, žvakės gali būti laiminamos per pamaldas. Seniau tokią žvakę uždegdavo prie sunkiai sergančio žmogaus ar per perkūniją. Vietos pamaldų laiką skelbia parapija."
+    },
+    {
+      "slug": "sv-blaziejaus-diena",
+      "title": "Šv. Blažiejaus diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 3
+      },
+      "sources": [
+        "saints",
+        "folk-list"
+      ],
+      "summary": "Vasario 3-ioji skirta šv. Blažiejui. Tradicinių kalendorinių švenčių sąraše ji siejama ir su linų globėjo Vaižganto vardu.",
+      "meaning": "Lietuvos katalikų liturginiame kalendoriuje Blažiejus įvardijamas kaip vyskupas ir kankinys. Liaudies kalendoriuje tą pačią datą lydėjo atskiras linų auginimo motyvas. Šie du kontekstai padeda suprasti, kodėl prie vienos dienos minimi skirtingi vardai.",
+      "visit": "Sekant šiandienos bažnytinę tradiciją ieškoma vasario 3 d. parapijos programos. Jei renginys skirtas linų tradicijai, jo temą ir laiką verta tikrinti pas rengėją. Vienos nacionalinės programos nėra."
+    },
+    {
+      "slug": "sv-agotos-diena",
+      "title": "Šv. Agotos ir duonos diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 5
+      },
+      "sources": [
+        "candles",
+        "folk-list"
+      ],
+      "summary": "Vasario 5-ąją minimos šv. Agota, duona ir namų židinio tradicijos.",
+      "meaning": "Etnologiniuose šaltiniuose diena siejama su židinio ugnies pagarba ir Gabijos vardu. Katalikiškoje praktikoje išplito juodos ruginės duonos šventinimas. Šventintos duonos gabalėlį laikydavo namuose kaip apsaugos simbolį.",
+      "visit": "Parapijose, kurios rengia šv. Agotos pamaldas, gali būti laiminama duona. Namuose ši diena suteikia progą išsikepti ruginės duonos ar pasikalbėti apie jos vietą lietuvių kasdienybėje. Senieji tikėjimai skirtinguose kraštuose nebuvo vienodi."
+    },
+    {
+      "slug": "pelenai",
+      "title": "Pelenų trečiadienis",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -46
+      },
+      "sources": [
+        "lent",
+        "moveable"
+      ],
+      "summary": "Pelenų trečiadienis yra kita diena po Užgavėnių ir katalikų gavėnios pradžia.",
+      "meaning": "Pelenų ženklas liturgijoje primena žmogaus trapumą ir kvietimą atsinaujinti. Lietuvoje gavėnia taip pat reiškė santūresnių vaišių bei pramogų laiką. Žemaitijoje etnologai yra užrašę Pelenų dienos persirengėlių paprotį su Sene Kūniške.",
+      "visit": "Parapijos skelbia, kada per pamaldas naudojami pelenai. Liaudies paveldo renginiuose gavėnios pradžią galima pažinti per pasakojimus apie pasninką, vakarojimus ir regionines tradicijas. Data priklauso nuo Velykų."
+    },
+    {
+      "slug": "vieversio-diena",
+      "title": "Vieversio diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 2,
+        "day": 24
+      },
+      "sources": [
+        "birds",
+        "folk-list"
+      ],
+      "summary": "Vasario 24-oji lietuvių kalendoriuje vadinta Vieversio diena. Ji siejama su šv. Motiejaus vardu.",
+      "meaning": "Vieversio sugrįžimo laukimas ženklino pavasario pradžią valstiečio kalendoriuje. Etninės kultūros globos taryba nurodo, kad būta ir dienos draudimų. Kai kur vengta sijoti miltus, siejant tai su būsimo derliaus apsauga.",
+      "visit": "Šiandien prasminga stebėti pirmuosius pavasario paukščius ar pasidomėti, kaip jie vadinami skirtingose Lietuvos vietovėse. Tikras jų parskridimas priklauso nuo oro. Vasario 24-oji yra tradicinė kalendoriaus data."
+    },
+    {
+      "slug": "keturiasdesimties-pauksciu-diena",
+      "title": "40 paukščių diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 10
+      },
+      "sources": [
+        "birds",
+        "folk-list"
+      ],
+      "summary": "Kovo 10-oji vadinama 40 paukščių diena. Liaudies kalendoriuje ji ženklino sugrįžtančių giesmininkų metą.",
+      "meaning": "Pavadinimas greta liaudiško pavasario motyvo siejamas su keturiasdešimties kankinių minėjimu. Skaičius priklauso simbolinei dienos tradicijai ir nenurodo, kiek konkrečių rūšių tą dieną jau turi parskristi.",
+      "visit": "Tradiciškai žmonės stebėjo orų ženklus, spręsdami apie likusį pavasarį. Šiandien dieną galima pažymėti gamtos pažinimo veikla arba paukščių stebėjimu, išlaikant atstumą nuo lizdų."
+    },
+    {
+      "slug": "pempes-diena",
+      "title": "Pempės diena (Pempinės)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 19
+      },
+      "sources": [
+        "birds",
+        "kaunas"
+      ],
+      "summary": "Kovo 19-ąją tradicinis kalendorius sieja šv. Juozapo minėjimą ir pavasarį girdimos pempės vardą.",
+      "meaning": "Pempės sugrįžimas buvo vienas iš metų darbų orientyrų. Etnografinėje medžiagoje iki Pempinių siekta užbaigti dalį verpimo ir audimo darbų. Kai kur šv. Juozapo dieną buvo galima tuoktis ir gavėnios metu, išlaikant santūrias vaišes.",
+      "visit": "Naudinga palyginti, kaip paukščio šaukinys išliko tarmėse, ir pavasarį stebėti pempių elgseną atvirose pievose. Tradicinė data fiksuota, o paukščių migracijos eiga kasmet skiriasi."
+    },
+    {
+      "slug": "gandrines",
+      "title": "Gandrinės (Blovieščiai)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 3,
+        "day": 25
+      },
+      "sources": [
+        "birds",
+        "kaunas"
+      ],
+      "summary": "Kovo 25-oji žinoma kaip Gandrinės arba Blovieščiai. Katalikų tradicijoje tą laiką žymi Apreiškimo Marijai iškilmė.",
+      "meaning": "Gandras lietuvių pasakojimuose siejosi su namų gerove. Diena žymėjo perėjimą prie pavasario darbų. Apreiškimo liturginė data kai kuriais metais perkeliama dėl Velykų ciklo, o tradicinės Gandrinės lieka kovo 25 d.",
+      "visit": "Su gandru susiję papročiai kūrė laukimo ir sugrįžimo nuotaiką. Šiandien juos galima pažinti iš etnologijos medžiagos arba stebint lizdus iš tolo. Liturgijos laikui patikrinkite parapijos kalendorių."
+    },
+    {
+      "slug": "didysis-ketvirtadienis",
+      "title": "Didysis ketvirtadienis",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -3
+      },
+      "sources": [
+        "spring-proposal",
+        "kaunas"
+      ],
+      "summary": "Didysis ketvirtadienis minimas likus trims dienoms iki Velykų sekmadienio.",
+      "meaning": "Vakaro liturgija primena Paskutinę vakarienę ir pradeda Velykų tridienį. Lietuvos tradiciniame kalendoriuje diena siejosi ir su ruošimusi Velykoms, tvarkant gyvenamąją aplinką bei ruošiant puošmenas.",
+      "visit": "Parapijose skelbiamos Viešpaties vakarienės Mišios, kuriose gali būti kojų plovimo apeiga. Šeimoje ši diena tinka namų ruošai arba pokalbiui apie pasirengimo Velykoms papročius."
+    },
+    {
+      "slug": "didysis-penktadienis",
+      "title": "Didysis penktadienis",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -2
+      },
+      "sources": [
+        "spring-proposal",
+        "kaunas"
+      ],
+      "summary": "Didysis penktadienis yra penktadienis prieš Velykas, skirtas Kristaus kančios ir mirties atminimui.",
+      "meaning": "Lietuvoje diena tradiciškai siejosi su tyla ir santūrumu. Etninės kultūros globos taryba pažymi, kad tarpukariu diena turėjo nedarbo statusą. Dabartiniame Darbo kodekso švenčių sąraše ši diena atskirai neįrašyta.",
+      "visit": "Bažnyčiose vyksta Kristaus kančios pamaldos ir kryžiaus pagerbimas. Seniau per šią dieną vengta triukšmingų darbų bei pramogų. Dabartinius pamaldų laikus skelbia vietos bendruomenės."
+    },
+    {
+      "slug": "didysis-sestadienis",
+      "title": "Didysis šeštadienis",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": -1
+      },
+      "sources": [
+        "spring-proposal",
+        "kaunas"
+      ],
+      "summary": "Didysis šeštadienis yra Velykų išvakarės, kai po sutemų švenčiama Velyknakčio vigilija.",
+      "meaning": "Dieną prisimenamas Kristaus palaidojimas, o vakaro vigilijoje ugnis, šviesa ir vanduo turi ypatingą reikšmę. Lietuvių papročiuose į namus parsinešta nauja ugnis ar pašventintas vanduo siejosi su šeimos ir namų gerove.",
+      "visit": "Šeimos ruošiantis Velykoms neretai dažo margučius ir ruošia šventinį stalą. Velyknakčio pamaldų pradžia skiriasi pagal parapiją, todėl ieškokite konkrečios programos."
+    },
+    {
+      "slug": "jurgines",
+      "title": "Jurginės (Jorė)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 4,
+        "day": 23
+      },
+      "sources": [
+        "jurgines",
+        "spring-proposal",
+        "jore-kulionys"
+      ],
+      "summary": "Balandžio 23-ąją tradiciniame kalendoriuje minimos Jurginės, dar vadinamos Jore arba Pergrubrijumi.",
+      "meaning": "Diena žymėjo pavasario ganymo pradžią. Šv. Jurgis laikytas gyvulių, ypač arklių, globėju. Etnografijoje aprašomi apeiginiai bandos ir laukų apėjimai bei dainos, kuriomis žmonės šaukėsi pavasario šilumos.",
+      "visit": "Seniau kai kur dalytasi duona, ridenti margučiai ir suptasi. Dabar viena žinomiausių Jorės švenčių rengiama Kulionių kaime, Molėtų krašto muziejaus etnografinėje sodyboje ir Dangaus šviesulių stebykloje. Balandžio 23 d. yra tradicinė data. Tų metų renginio laiką skelbia organizatoriai."
+    },
+    {
+      "slug": "sestines",
+      "title": "Šeštinės",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": 42
+      },
+      "sources": [
+        "moveable",
+        "kaunas"
+      ],
+      "summary": "Šeštinės yra Kristaus Žengimo į dangų iškilmė. Lietuvos katalikų kalendoriuje ji švenčiama šeštą sekmadienį po Velykų.",
+      "meaning": "Visuotiniame kalendoriuje iškilmė siejama su 40-ąja Velykų laikotarpio diena, skaičiuojant Velykų sekmadienį kaip pirmąją. Lietuvoje šventimas iš ketvirtadienio perkeltas į artimiausią sekmadienį. Todėl tradicinės ketvirtadienio datos ir pamaldų datos skiriasi.",
+      "visit": "Dalyvavimui pamaldose rinkitės šiame kalendoriuje nurodytą Lietuvos sekmadienio datą ir pasitikrinkite parapijos laiką. EKGT tautosakos medžiagoje ketvirtadienis gali būti minimas aiškinant senesnę tradiciją."
+    },
+    {
+      "slug": "sekmines",
+      "title": "Sekminės",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": 49
+      },
+      "sources": [
+        "pentecost",
+        "pentecost-date",
+        "moveable",
+        "sekmines-meironys"
+      ],
+      "summary": "Sekminės švenčiamos septintą sekmadienį po Velykų ir katalikų tradicijoje mini Šventosios Dvasios atsiuntimą.",
+      "meaning": "Lietuvos kaimo tradicijoje Sekminės siejosi su žaluma, gyvulių globa ir piemenų švente. Beržo šakelėmis puošti namai ir kiemai. Kai kur piemenys vainikais puošdavo pargenamą bandą.",
+      "visit": "Meironyse, Ignalinos rajone, Sekminių šventė pasakoja apie seną karvių plukdymo į ežero ganyklas paprotį. Vietos programose pristatomi krašto archyviniai pasakojimai bei šventiniai valgiai. Pamaldų laikas ir konkrečių metų renginio programa skelbiami atskirai."
+    },
+    {
+      "slug": "devintines",
+      "title": "Devintinės",
+      "recurrence": {
+        "type": "easter-offset",
+        "offset": 63
+      },
+      "sources": [
+        "moveable",
+        "corpus"
+      ],
+      "summary": "Devintinės yra Kristaus Kūno ir Kraujo iškilmė. Lietuvoje ji švenčiama antrą sekmadienį po Sekminių.",
+      "meaning": "Katalikų maldynas pasakoja, kad visuotinė iškilmė buvo įsteigta XIII amžiuje. Visuotiniame kalendoriuje jos diena yra ketvirtadienis. Lietuvos liturginis kalendorius ją perkelia į sekmadienį.",
+      "visit": "Iškilmę gali lydėti Eucharistijos procesija. Maldyne aprašytas sustojimas prie keturių paruoštų altorėlių. Ar procesija vyks ir kokiu maršrutu, nurodo parapija."
+    },
+    {
+      "slug": "sv-antano-diena",
+      "title": "Šv. Antano diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 13
+      },
+      "sources": [
+        "saints",
+        "folk-list"
+      ],
+      "summary": "Birželio 13-ąją Katalikų Bažnyčia mini šv. Antaną Paduvietį. Šią datą mini ir lietuviškų tradicinių kalendorinių švenčių sąrašas.",
+      "meaning": "Liturginiame kalendoriuje Antanas Paduvietis įvardijamas kaip kunigas ir Bažnyčios mokytojas. Birželio minėjimas skiriasi nuo sausio 17 d. šv. Antano abato dienos, nors abiem atvejais vartojamas tas pats vardas.",
+      "visit": "Šv. Antano vardą turinčiose parapijose galima rasti vietinių šventinių pamaldų ar atlaidų. Parapijos parenka paskelbiamą laiką, todėl birželio 13 d. nereikėtų laikyti kiekvieno renginio pradžia."
+    },
+    {
+      "slug": "petrines",
+      "title": "Petrinės",
+      "recurrence": {
+        "type": "fixed",
+        "month": 6,
+        "day": 29
+      },
+      "sources": [
+        "petrines",
+        "saints"
+      ],
+      "summary": "Birželio 29 d. Petrinės mini apaštalus Petrą ir Paulių. Lietuvoje tai viena iš vasarvidžio kalendoriaus datų.",
+      "meaning": "Visuotinė lietuvių enciklopedija skiria bažnytinę iškilmę ir liaudiškus vasarvidžio papročius. Petrinės netoli Joninių, tačiau turi atskirą religinę prasmę ir nustatytą datą.",
+      "visit": "Pamaldų bei atlaidų laiką skelbia parapijos. Vietos vasaros renginiai gali vykti prie vandens arba kitoje bendruomenei svarbioje erdvėje. Tokia programa ir birželio 29-osios bažnytinė data gali skirtis."
+    },
+    {
+      "slug": "onines",
+      "title": "Oninės (Šv. Onos diena)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 7,
+        "day": 26
+      },
+      "sources": [
+        "kaunas",
+        "folk-list"
+      ],
+      "summary": "Oninės minimos liepos 26-ąją, šv. Onos dieną, tradiciniame kalendoriuje siejamą su javapjūtės laikotarpiu.",
+      "meaning": "Etninės kultūros kalendoriuje šalia šv. Onos minimos ir rugiapjūtės pabaigtuvės. Šis ryšys padeda suprasti, kodėl liepos pabaigos pasakojimuose greta vardadienio atsiranda naujo derliaus ir duonos temos.",
+      "visit": "Diena pažymima vardadienio sveikinimais, kai kur parapijų atlaidais arba bendruomenės renginiais. Jei kvietime nurodytos pabaigtuvės, patikrinkite, ar tai vietos edukacija, ar viešas renginys."
+    },
+    {
+      "slug": "baltramiejaus-diena",
+      "title": "Šv. Baltramiejaus diena (Gandrų išskridimas)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 8,
+        "day": 24
+      },
+      "sources": [
+        "kaunas",
+        "folk-list"
+      ],
+      "summary": "Rugpjūčio 24-oji žinoma kaip šv. Baltramiejaus ir gandrų išskridimo diena.",
+      "meaning": "Tradicinė data simboliškai užbaigia gandro pavasarį ir vasarą. Gandrinės kovo mėnesį žymi laukiamą sugrįžimą, rugpjūčio pabaiga siejama su išskridimu. Etnologinis kalendorius šiuos gamtos ženklus jungia su šventųjų dienomis.",
+      "visit": "Gandrų būrių dairytis galima vasaros pabaigoje, tačiau migracijos laikas priklauso nuo paukščių ir oro. Bažnytiniuose kalendoriuose rugpjūčio 24-ąją atskirai minimas apaštalas Baltramiejus."
+    },
+    {
+      "slug": "dagotuves",
+      "title": "Dagotuvės (Šv. Mykolo diena)",
+      "recurrence": {
+        "type": "fixed",
+        "month": 9,
+        "day": 29
+      },
+      "sources": [
+        "harvest",
+        "folk-list"
+      ],
+      "summary": "Rugsėjo 29 d. tradicinis kalendorius žymi Dagotuves, siejamas su derliumi ir šv. Mykolo diena.",
+      "meaning": "Etninės kultūros globos taryba Dagotuves sieja su rudeninėmis bendruomenės vaišėmis ir senojo žemdirbystės kalendoriaus pabaigtuvėmis. Šaltinių aiškinimai apie seniausias apeigas skiriasi. Dagotuvės ir įstatyme įrašyta Derliaus diena yra atskiros datos.",
+      "visit": "Šiandien derliaus šventėse galima susipažinti su javų, duonos ir rudens vaišių tradicijomis. Konkretus mugės ar derliaus šventės laikas priklauso nuo organizatorių. Tradicinė Dagotuvių data nekinta."
+    },
+    {
+      "slug": "sv-martyno-diena",
+      "title": "Šv. Martyno diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 11
+      },
+      "sources": [
+        "martynas",
+        "kaunas"
+      ],
+      "summary": "Lapkričio 11-oji minima kaip šv. Martyno diena. Lietuvoje ypač žinomos Mažosios Lietuvos tradicijos.",
+      "meaning": "Lietuvininkų kalendoriuje diena žymėjo rudens darbų pabaigą ir atsiskaitymus. Etnologiniuose šaltiniuose minimas šventinis žąsies patiekalas ir artėjančios žiemos ženklai.",
+      "visit": "Šiuolaikiniuose minėjimuose vietos kultūros centrai gali rengti žibintų eitynes, vaišes ar edukacijas. Šios veiklos ir jų laikas priklauso nuo vietos. Lapkričio 12-osios Ožio diena turi kitą liaudišką paprotį."
+    },
+    {
+      "slug": "ozio-diena",
+      "title": "Ožio diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 12
+      },
+      "sources": [
+        "martynas",
+        "kaunas"
+      ],
+      "summary": "Lapkričio 12-oji vadinama Ožio diena. Ji siejosi su piemenų atsisveikinimu su ganymo sezonu.",
+      "meaning": "Etnologų aprašymuose piemenys išsirinkdavo baltą ožį, jį puošdavo ir apeidavo aplink beržą. Baltumo motyvas siejosi su noru prisišaukti sniegą, kuriam iškritus baigdavosi ganiava.",
+      "visit": "Dabar tai krašto pažinimo ir muziejų edukacijų tema. Paprotį galima pristatyti pasakojimu, žaidimu ar piešiniu. Gyvas gyvūnas šiam pažintiniam minėjimui nereikalingas."
+    },
+    {
+      "slug": "sv-andriejaus-diena",
+      "title": "Šv. Andriejaus diena",
+      "recurrence": {
+        "type": "fixed",
+        "month": 11,
+        "day": 30
+      },
+      "sources": [
+        "advent",
+        "advent-lnkc",
+        "saints"
+      ],
+      "summary": "Lapkričio 30 d. minima šv. Andriejaus diena, lietuvių tradicijose susijusi su artėjančiu adventu.",
+      "meaning": "Liaudies kalendoriuje šv. Andriejaus išvakarėms priskirti ateities spėjimai. Vienas užrašytas paprotys buvo pamerkti vaismedžio šakelę ir stebėti, ar ji pražys iki Kūčių. Katalikų pirmasis advento sekmadienis apskaičiuojamas atskirai.",
+      "visit": "Šiandien šią datą galima pažinti kalbantis apie šeimos advento papročius arba dalyvaujant kultūros įstaigos edukacijoje. Lapkričio 30-oji nekinta, o liturginė advento pradžia kasmet slenka."
+    },
+    {
+      "slug": "adventas",
+      "title": "Advento pradžia",
+      "recurrence": {
+        "type": "advent"
+      },
+      "sources": [
+        "advent",
+        "advent-lnkc",
+        "moveable"
+      ],
+      "summary": "Adventas prasideda pirmąjį iš keturių sekmadienių prieš Kalėdas. Data patenka tarp lapkričio 27 ir gruodžio 3 d.",
+      "meaning": "Krikščioniškas adventas yra pasiruošimo Kalėdoms laikotarpis. Lietuvių tradicijose būta ramių susibūrimų, dainų, mįslių ir santūresnių vaišių. Lietuvininkų tradicijoje paplito vainikas su keturiomis žvakėmis.",
+      "visit": "Per pirmą advento sekmadienį vainike paprastai uždegama viena žvakė, paskui po vieną pridedama kiekvieną sekmadienį. Parapijų ir kultūros centrų programos skelbiamos atskirai. Advento kalendorių langeliai dažnai pradedami atverti gruodžio 1 d., o liturginis adventas gali prasidėti kitą dieną."
+    }
+  ]
+}

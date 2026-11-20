@@ -1,0 +1,4 @@
+<option value="1"{% if include.default == '1' %} selected{% endif %}>Išvakarėse 9:00 val.</option>
+<option value="7">Prieš savaitę 9:00 val.</option>
+<option value="0">Tą pačią dieną 9:00 val.</option>
+<option value=""{% unless include.default == '1' %} selected{% endunless %}>Be priminimo</option>

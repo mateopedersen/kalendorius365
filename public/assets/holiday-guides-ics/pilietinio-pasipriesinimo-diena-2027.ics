@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pilietinio-pasipriesinimo-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270514
+DTEND;VALUE=DATE:20270515
+SUMMARY:Pilietinio pasipriešinimo diena
+DESCRIPTION:Gegužės 14 d. minima Pilietinio pasipriešinimo diena\, sieja
+ ma su 1972 m. įvykiais Kaune ir Romo Kalantos atminimu.
+URL:https://kalendorius365.lt/sventes/pilietinio-pasipriesinimo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

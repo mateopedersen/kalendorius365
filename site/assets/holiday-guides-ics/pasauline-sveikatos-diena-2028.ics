@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-sveikatos-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280407
+DTEND;VALUE=DATE:20280408
+SUMMARY:Pasaulinė sveikatos diena
+DESCRIPTION:Balandžio 7 d. minima Pasaulinė sveikatos diena. Jos tarptaut
+ inės kampanijos tema parenkama kiekvieniems metams.
+URL:https://kalendorius365.lt/sventes/pasauline-sveikatos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

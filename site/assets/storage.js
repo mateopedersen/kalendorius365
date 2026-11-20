@@ -1,5 +1,6 @@
 import './calendar-downloads.js';
 import { parse, zonedInstant } from "./calendar.js";
+import { reminderDays } from "./shell/calendar-reminders.js";
 import { WEATHER_CITY_IDS } from "./data/weather-cities.js";
 export const KEY = "kalendorius365:v1";
 export const empty = () => ({
@@ -41,6 +42,7 @@ export function validate(x) {
   const ids = new Set();
   for (const e of x.events) {
     if (
+      !e ||
       !text(e.id, 100) ||
       ids.has(e.id) ||
       !text(e.title, 200) ||
@@ -57,6 +59,8 @@ export function validate(x) {
       e.end < e.start
     )
       throw Error("Neteisingas įvykis");
+    if (e.reminder !== undefined && (!e.allDay || e.repeat !== "none" || !reminderDays.includes(e.reminder)))
+      throw Error("Neteisingas priminimas");
     ids.add(e.id);
     if (e.allDay) {
       if (!date(e.start) || !date(e.end)) throw Error("Neteisinga įvykio data");
@@ -72,12 +76,14 @@ export function validate(x) {
   const tids = new Set();
   for (const t of x.tasks) {
     if (
+      !t ||
       !text(t.id, 100) ||
       tids.has(t.id) ||
       !date(t.date) ||
       !text(t.title, 300) ||
       !t.title.trim() ||
-      typeof t.done !== "boolean"
+      typeof t.done !== "boolean" ||
+      (t.priority !== undefined && !["high", "normal", "low"].includes(t.priority))
     )
       throw Error("Neteisinga užduotis");
     tids.add(t.id);
@@ -134,23 +140,36 @@ export class Store {
   save(next) {
     if (this.locked) throw Error(this.error);
     const clean = validate(next);
+    const raw = JSON.stringify(clean);
     try {
-      this.storage.setItem(KEY, JSON.stringify(clean));
+      this.storage.setItem(KEY, raw);
     } catch {
       throw Error(
         "Naršyklė neleido išsaugoti. Patikrinkite vietos ir privatumo nustatymus; eksportuokite duomenų kopiją.",
       );
     }
     this.data = clean;
+    this.raw = raw;
+  }
+  refresh() {
+    if (this.locked) throw Error(this.error);
+    const raw = this.storage.getItem(KEY);
+    if (raw !== this.raw) {
+      this.data = raw ? validate(JSON.parse(raw)) : empty();
+      this.raw = raw;
+    }
   }
   update(fn) {
-    let next = structuredClone(this.data);
+    this.refresh();
+    const next = structuredClone(this.data);
     fn(next);
     this.save(next);
   }
   restore(raw) {
     const clean = validate(JSON.parse(raw));
-    this.storage.setItem(KEY, JSON.stringify(clean));
+    const serialized = JSON.stringify(clean);
+    this.storage.setItem(KEY, serialized);
+    this.raw = serialized;
     this.data = clean;
     this.locked = false;
     this.error = "";
@@ -164,7 +183,9 @@ export class Store {
       preferences: this.data.preferences,
     });
     try {
-      this.storage.setItem(KEY, JSON.stringify(clean));
+      const raw = JSON.stringify(clean);
+      this.storage.setItem(KEY, raw);
+      this.raw = raw;
       this.data = clean;
       this.locked = false;
       this.error = "";
@@ -178,6 +199,7 @@ export class Store {
         );
       }
       this.data = empty();
+      this.raw = null;
       this.locked = false;
       this.error = "";
       return false;

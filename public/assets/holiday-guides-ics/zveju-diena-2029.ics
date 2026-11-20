@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:zveju-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290729
+DTEND;VALUE=DATE:20290730
+SUMMARY:Žvejų diena
+DESCRIPTION:Paskutinį liepos sekmadienį Lietuvoje minima Žvejų diena. J
+ i kalendoriuje sutampa su Jūros diena.
+URL:https://kalendorius365.lt/sventes/zveju-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

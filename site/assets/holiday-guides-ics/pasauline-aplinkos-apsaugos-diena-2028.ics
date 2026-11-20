@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-aplinkos-apsaugos-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280605
+DTEND;VALUE=DATE:20280606
+SUMMARY:Pasaulinė aplinkos apsaugos diena
+DESCRIPTION:Birželio 5 d. minima Pasaulinė aplinkos apsaugos diena. JT ap
+ linkos programa kasmet skelbia jos temą.
+URL:https://kalendorius365.lt/sventes/pasauline-aplinkos-apsaugos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

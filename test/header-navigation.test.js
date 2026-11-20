@@ -13,41 +13,46 @@ const added = [
   ['/datos-skaiciuokle/', 'Datos skaičiuoklė', 'date-calculator'],
 ];
 
-test('the shared header exposes fourteen unique destinations with named decorative SVGs', () => {
-  const menu = nav(read('public/index.html'));
-  const links = [...menu.matchAll(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];
-  assert.equal(links.length, 14);
-  assert.equal(new Set(links.map(link => link[1])).size, 14);
-  for (const [route, label, symbol] of added) {
-    const link = links.find(link => link[1] === route);
-    assert.ok(link, route);
-    assert.ok(link[2].includes(`<span>${label}</span>`));
-    const sprite = link[2].match(/href="(\/assets\/visuals\/navigation-extras\.svg\?v=([a-f0-9]{12})#[^"]+)"/);
-    assert.ok(sprite, 'navigation sprite uses a content version');
-    assert.ok(sprite[1].endsWith(`#${symbol}`));
-    assert.ok(link[2].includes('aria-hidden="true" focusable="false"'));
+const primary = ['/metai/', '/sventes/', '/mokiniu-atostogos/', '/horoskopai/'];
+const tools = [...read('site/_data/tool_directory.yml').matchAll(/^\s+- route: (\/[^\s]+)$/gm)].map(match => match[1]);
+const routesIn = html => [...html.matchAll(/<a href="([^"]+)"/g)].map(match => match[1]);
+const toolLinks = html => [...html.matchAll(/<a href="([^"]+)" data-menu-tool[^>]*>([\s\S]*?)<\/a>/g)];
+
+test('the two-level shared header and tool menu expose their full inventories', () => {
+  const html = read('public/index.html');
+  assert.deepEqual(routesIn(nav(html)), primary);
+  const calendarBar = html.match(/<nav class="calendar-bar"[\s\S]*?<\/nav>/)?.[0];
+  assert.deepEqual(routesIn(calendarBar), ['/2027/', '/2028/', '/2029/', '/2030/', '/pdf-kalendoriai/', '/darbo-dienos/2027/', '/datos-skaiciuokle/']);
+  assert.ok(calendarBar.includes('id="tools-open"'));
+  const links = toolLinks(html);
+  assert.deepEqual(links.map(link => link[1]), tools);
+  assert.equal(new Set(tools).size, tools.length);
+  for (const [, route, content] of links) {
+    const illustration = content.match(/src="(\/assets\/visuals\/shell\/[^"?]+)(?:\?[^"]*)?" alt=""/);
+    assert.ok(illustration, route);
+    assert.ok(fs.existsSync(path.join(root, 'public', illustration[1])));
     assert.ok(fs.existsSync(path.join(root, 'public', route, 'index.html')));
   }
 });
 
-test('new destinations and their child pages mark the correct navigation card', () => {
-  for (const [route] of added.concat([
-    ['/menulio-kalendorius/2028/vasaris/'], ['/pavasario-lygiadienis/'],
-  ])) {
-    const menu = nav(read(`public${route}index.html`));
-    const current = [...menu.matchAll(/<a href="([^"]+)" aria-current="page"/g)];
-    assert.equal(current.length, 1, route);
-    assert.equal(current[0][1], route.startsWith('/menulio-kalendorius/') ? '/menulio-kalendorius/' : route === '/pavasario-lygiadienis/' ? '/metu-laikai/' : route);
+test('calendar years, holiday details and horoscope details highlight their destinations', () => {
+  for (const [route, expected] of [
+    ['/2030/vasaris/', '/metai/'], ['/sventes/konstitucijos-diena/', '/sventes/'],
+    ['/horoskopai/', '/horoskopai/'], ['/mokiniu-atostogos/', '/mokiniu-atostogos/'],
+  ]) {
+    const html = read(`public${route}index.html`);
+    const current = [...nav(html).matchAll(/<a href="([^"]+)" aria-current="page"/g)];
+    assert.deepEqual(current.map(match => match[1]), [expected], route);
   }
 });
 
-test('every generated public page inherits the same complete navigation', () => {
+test('every generated public page inherits the shared navigation and tools dialog', () => {
   let count = 0;
   for (const file of fs.readdirSync(path.join(root, 'public'), {recursive: true})) {
     if (!file.endsWith('.html')) continue;
-    const menu = nav(read(`public/${file}`));
-    assert.ok(menu, file);
-    assert.equal([...menu.matchAll(/<a href=/g)].length, 14, file);
+    const html = read(`public/${file}`);
+    assert.deepEqual(routesIn(nav(html)), primary, file);
+    assert.deepEqual(toolLinks(html).map(link => link[1]), tools, file);
     count++;
   }
   assert.ok(count >= 185);

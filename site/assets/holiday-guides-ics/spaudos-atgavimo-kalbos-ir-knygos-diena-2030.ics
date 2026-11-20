@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:spaudos-atgavimo-kalbos-ir-knygos-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300507
+DTEND;VALUE=DATE:20300508
+SUMMARY:Spaudos atgavimo\, kalbos ir knygos diena
+DESCRIPTION:Gegužės 7-oji primena lietuviškos spaudos lotyniškais rašm
+ enimis draudimo panaikinimą 1904 m.
+URL:https://kalendorius365.lt/sventes/spaudos-atgavimo-kalbos-ir-knygos-die
+ na/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

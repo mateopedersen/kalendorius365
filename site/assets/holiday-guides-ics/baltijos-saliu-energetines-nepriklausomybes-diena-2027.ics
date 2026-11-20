@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:baltijos-saliu-energetines-nepriklausomybes-diena-2027@kalendorius365.l
+ t
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270210
+SUMMARY:Baltijos šalių energetinės nepriklausomybės diena
+DESCRIPTION:Vasario 9-oji primena 2025 m. Lietuvos\, Latvijos ir Estijos el
+ ektros tinklų sinchronizaciją su kontinentine Europa.
+URL:https://kalendorius365.lt/sventes/baltijos-saliu-energetines-nepriklaus
+ omybes-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

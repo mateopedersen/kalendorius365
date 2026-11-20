@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 148">
+  <defs>
+    <linearGradient id="page" x2="1" y2="1"><stop stop-color="#fffdf0"/><stop offset="1" stop-color="#e1ddbe"/></linearGradient>
+    <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff5ce"/><stop offset=".32" stop-color="#dbbd73"/><stop offset=".6" stop-color="#9b7844"/><stop offset="1" stop-color="#f2dfa1"/></linearGradient>
+    <linearGradient id="grip" x2="1" y2="1"><stop stop-color="#569b7c"/><stop offset=".28" stop-color="#20563f"/><stop offset="1" stop-color="#113529"/></linearGradient>
+    <linearGradient id="lens" x2="1" y2="1"><stop stop-color="#fbfff3" stop-opacity=".83"/><stop offset="1" stop-color="#83c1a7" stop-opacity=".35"/></linearGradient>
+    <radialGradient id="shadow"><stop stop-color="#10261c" stop-opacity=".58"/><stop offset="1" stop-color="#10261c" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="80" cy="128" rx="73" ry="12" fill="url(#shadow)"/>
+  <g transform="rotate(-11 57 75)">
+    <rect x="23" y="23" width="81" height="101" rx="9" fill="#86a86f"/>
+    <rect x="18" y="18" width="81" height="101" rx="9" fill="url(#page)" stroke="#fff8da"/>
+    <path d="M18 38V27a9 9 0 0 1 9-9h63a9 9 0 0 1 9 9v11" fill="url(#grip)"/>
+    <path d="M30 51h54M30 61h37M30 76h53M30 89h32M30 101h46" stroke="#699682" stroke-width="2.5" stroke-linecap="round" opacity=".58"/>
+    <path d="m34 30 8-7 8 7" stroke="#f6ce65" stroke-width="2" fill="none"/>
+  </g>
+  <g transform="rotate(-42 97 73)">
+    <rect x="88" y="91" width="19" height="41" rx="8" fill="url(#metal)" stroke="#816539"/>
+    <rect x="86" y="100" width="24" height="35" rx="9" fill="url(#grip)" stroke="#244b39"/>
+    <path d="M90 107v18" stroke="#8ec8a0" stroke-opacity=".52" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="98" cy="68" r="32" fill="url(#lens)" stroke="#1c513d" stroke-width="10"/>
+    <circle cx="98" cy="68" r="32" fill="none" stroke="url(#metal)" stroke-width="6"/>
+    <path d="M78 65a21 21 0 0 1 22-18" stroke="#ffffe9" stroke-opacity=".83" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

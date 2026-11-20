@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sv-agotos-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300205
+DTEND;VALUE=DATE:20300206
+SUMMARY:Šv. Agotos ir duonos diena
+DESCRIPTION:Vasario 5-ąją minimos šv. Agota\, duona ir namų židinio tr
+ adicijos.
+URL:https://kalendorius365.lt/sventes/sv-agotos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

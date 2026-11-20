@@ -16,6 +16,7 @@ WEEKDAYS = ['Pirmadienis','Antradienis','Trečiadienis','Ketvirtadienis','Penkta
 PRIMARY = {'new':'Jaunatis','first':'Priešpilnis','full':'Pilnatis','last':'Delčia'}
 STAGES = ['Jaunaties laikotarpis','Augantis pjautuvas','Priešpilnio laikotarpis','Augantis išgaubtas Mėnulis','Pilnaties laikotarpis','Dylantis išgaubtas Mėnulis','Delčios laikotarpis','Dylantis pjautuvas']
 VERSION = 'k365-lunar-1.0.0'
+SOCIAL_IMAGE = '/assets/lunar/menulio-kalendorius-2027-2030-1200x630.png'
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()

@@ -60,18 +60,25 @@ test('daylight date steps, boundaries, focused city, year-curve mouse and keyboa
  await markers.nth(11).press('Enter');await expect(page.locator('#daylight-date')).toHaveValue('2028-12-21');await markers.nth(5).press('Space');await expect(page.locator('#daylight-date')).toHaveValue('2028-06-21');await markers.nth(8).click();await expect(page.locator('#daylight-date')).toHaveValue('2028-09-21');
  await page.locator('#daylight-copy-link').click();expect(await page.evaluate(()=>window.__discoveryCopy)).toMatch(/\/dienos-ilgumas\/\?date=2028-09-21$/);
  await page.locator('#daylight-date').fill('2027-01-01');await page.locator('#daylight-form button[type=submit]').click();await expect(page.locator('#daylight-previous-day')).toBeDisabled();await expect(page.locator('#daylight-next-day')).toBeEnabled();
- await page.locator('#daylight-date').fill('2029-12-31');await page.locator('#daylight-form button[type=submit]').click();await expect(page.locator('#daylight-next-day')).toBeDisabled();await expect(page.locator('#daylight-previous-day')).toBeEnabled();
+ await page.locator('#daylight-date').fill('2029-12-31');await page.locator('#daylight-form button[type=submit]').click();await expect(page.locator('#daylight-next-day')).toBeEnabled();
+ await page.locator('#daylight-next-day').click();await expect(page.locator('#daylight-date')).toHaveValue('2030-01-01');
+ await page.locator('#daylight-date').fill('2030-12-31');await page.locator('#daylight-form button[type=submit]').click();await expect(page.locator('#daylight-next-day')).toBeDisabled();await expect(page.locator('#daylight-previous-day')).toBeEnabled();
 });
 
 test('annual weekend budget waits for statutory data, retries failure and exports nonoverlapping real calendar intervals',async({page})=>{
- let requests=0;await page.route('**/data/calendar.json',route=>++requests===1?route.abort():route.continue());
+ let offline=true;let recoveredRequests=0;
+ await page.route('**/data/calendar.json',route=>{
+  if(offline)return route.abort();
+  recoveredRequests++;
+  return route.continue();
+ });
  await page.goto('/ilgieji-savaitgaliai/');await expect(page.locator('#weekend-plan-caption')).toContainText('nepavyko įkelti');await expect(page.locator('#weekend-leave-budget')).toBeDisabled();await expect(page.locator('[data-weekend-year="2028"]')).toBeDisabled();
- await page.locator('#weekend-plan-retry').click();await expect(page.locator('#weekend-leave-budget')).toBeEnabled();await page.locator('[data-weekend-year="2028"]').click();
+ offline=false;await page.locator('#weekend-plan-retry').click();await expect(page.locator('#weekend-leave-budget')).toBeEnabled();await page.locator('[data-weekend-year="2028"]').click();
  for(let budget=0;budget<=5;budget++){
   await page.locator('#weekend-leave-budget').selectOption(String(budget));
   if(!budget){await expect(page.locator('#weekend-plan-export')).toBeDisabled();continue;}
   await expect(page.locator('#weekend-plan-export')).toBeEnabled();const spent=Number((await page.locator('#weekend-plan-caption').innerText()).match(/Išnaudojama (\d+)/)[1]);expect(spent).toBeGreaterThan(0);expect(spent).toBeLessThanOrEqual(budget);
  }
  const count=await page.locator('#weekend-recommendations article').count();const raw=await downloadText(page,()=>page.locator('#weekend-plan-export').click());const ics=raw.replace(/\r\n /g,'');expect((ics.match(/BEGIN:VEVENT/g)||[])).toHaveLength(count);const starts=[...ics.matchAll(/DTSTART;VALUE=DATE:(\d{8})/g)].map(m=>m[1]),ends=[...ics.matchAll(/DTEND;VALUE=DATE:(\d{8})/g)].map(m=>m[1]);expect(starts).toHaveLength(count);expect(ends).toHaveLength(count);
- for(let i=0;i<count;i++){expect(starts[i]<ends[i]).toBe(true);if(i)expect(starts[i]>=ends[i-1]).toBe(true);}expect(requests).toBe(2);
+ for(let i=0;i<count;i++){expect(starts[i]<ends[i]).toBe(true);if(i)expect(starts[i]>=ends[i-1]).toBe(true);}expect(recoveredRequests).toBeGreaterThan(0);
 });

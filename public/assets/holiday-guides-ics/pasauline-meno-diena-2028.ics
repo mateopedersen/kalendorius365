@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-meno-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280415
+DTEND;VALUE=DATE:20280416
+SUMMARY:Pasaulinė meno diena
+DESCRIPTION:Balandžio 15-oji Lietuvoje įvardyta kaip Pasaulinė meno dien
+ a. Ji skirta kūrybai\, meno pažinimui ir kūrėjų darbui.
+URL:https://kalendorius365.lt/sventes/pasauline-meno-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

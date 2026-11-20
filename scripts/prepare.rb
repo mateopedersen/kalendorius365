@@ -6,6 +6,7 @@ FileUtils.mkdir_p("#{ROOT}/site/assets/data")
 FileUtils.mkdir_p("#{ROOT}/site/_data")
 File.write("#{ROOT}/site/assets/data/calendar.json",JSON.generate(Kalendorius::DATA))
 File.write("#{ROOT}/site/_data/calendar.json",JSON.generate(Kalendorius::DATA))
+FileUtils.cp("#{ROOT}/data/holiday-years.json","#{ROOT}/site/_data/calendar_years.json")
 editorial=JSON.parse(File.read("#{ROOT}/data/holiday-editorial.json"))
 articles=editorial.fetch('articles')+editorial.fetch('commemorations')
 source_ids=%w[labour-code labour-code-future labour-code-2027 memoriam-law e-tar-versions flag-law]
@@ -64,6 +65,8 @@ home_editorial = {
  'articles' => editorial.fetch('articles').map { |item|item.select { |key,_|%w[id slug holiday_ids title category].include?(key) } },
  'commemorations' => editorial.fetch('commemorations').map { |item|item.select { |key,_|%w[id slug holiday_ids title category month day].include?(key) } }
 }
+local_dates=JSON.parse(File.read("#{ROOT}/site/_data/lithuanian_dates.json"))
+home_editorial['commemorations'].concat(local_dates.fetch('commemorations').map { |item| item.slice('id','slug','title','category','month','day') })
 File.write("#{ROOT}/site/assets/data/home-holiday-data.json",JSON.generate(home_editorial))
 File.write("#{ROOT}/site/assets/data/years.json",JSON.generate([2027,2028,2029].map { |y| Kalendorius.year(y) }))
 FileUtils.mkdir_p("#{ROOT}/site/assets/data/astronomy")
@@ -71,5 +74,20 @@ FileUtils.cp("#{ROOT}/shared/weather-cities.js", "#{ROOT}/site/assets/data/weath
 %w[moon-phases-utc.json seasons-utc.json cities.json].each do |name|
  FileUtils.cp("#{ROOT}/data/astronomy/#{name}","#{ROOT}/site/assets/data/astronomy/#{name}")
 end
+seasons = JSON.parse(File.read("#{ROOT}/data/astronomy/seasons-utc.json"))
+season_reference = JSON.parse(File.read("#{ROOT}/data/seasons-phase3-instants.json"))
+seasons['events'] = season_reference.fetch('events').filter_map do |row|
+ row.slice('year', 'utc') if season_reference.fetch('comparison_years').include?(row.fetch('year'))
+end
+File.write("#{ROOT}/site/assets/data/astronomy/seasons-extended-utc.json", JSON.generate(seasons))
+phases = JSON.parse(File.read("#{ROOT}/data/astronomy/moon-phases-utc.json"))
+usno = JSON.parse(File.read("#{ROOT}/data/lunar/sources/usno-2030.json")).fetch('phasedata')
+phase_types = {'New Moon'=>'new', 'First Quarter'=>'first', 'Full Moon'=>'full', 'Last Quarter'=>'last'}
+previous_year_phases = phases.fetch('events').reject { |row| row.fetch('utc').start_with?('2030-') }
+phases['events'] = (previous_year_phases + usno.map do |row|
+ utc = format('%04d-%02d-%02dT%s:00Z', row.fetch('year'), row.fetch('month'), row.fetch('day'), row.fetch('time'))
+ {'phase'=>phase_types.fetch(row.fetch('phase')), 'utc'=>utc}
+end).uniq { |row| row.fetch('utc') }.sort_by { |row| row.fetch('utc') }
+File.write("#{ROOT}/site/assets/data/astronomy/moon-phases-extended-utc.json", JSON.generate(phases))
 FileUtils.mkdir_p("#{ROOT}/site/assets/data/lt")
 FileUtils.cp("#{ROOT}/data/lt/work-rest-rules.json","#{ROOT}/site/assets/data/lt/work-rest-rules.json")

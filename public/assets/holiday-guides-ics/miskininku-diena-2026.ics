@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:miskininku-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20260919
+DTEND;VALUE=DATE:20260920
+SUMMARY:Miškininkų diena
+DESCRIPTION:Trečiąjį rugsėjo šeštadienį minima Miškininkų diena. J
+ i skirta žmonėms\, kurie prižiūri Lietuvos miškus\, ugdo medynus ir r
+ ūpinasi jų ištekliais.
+URL:https://kalendorius365.lt/sventes/miskininku-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

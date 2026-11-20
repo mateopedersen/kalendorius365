@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-gimtosios-kalbos-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290221
+DTEND;VALUE=DATE:20290222
+SUMMARY:Tarptautinė gimtosios kalbos diena
+DESCRIPTION:Vasario 21 d. UNESCO gimtosios kalbos dieną skiria daugiakalby
+ stei ir kalbų įvairovei.
+URL:https://kalendorius365.lt/sventes/tarptautine-gimtosios-kalbos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

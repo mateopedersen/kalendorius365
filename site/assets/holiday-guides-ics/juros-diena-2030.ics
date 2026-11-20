@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:juros-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300728
+DTEND;VALUE=DATE:20300729
+SUMMARY:Jūros diena
+DESCRIPTION:Lietuvoje Jūros diena įrašyta paskutinį liepos sekmadienį\
+ , kartu su Žvejų diena.
+URL:https://kalendorius365.lt/sventes/juros-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

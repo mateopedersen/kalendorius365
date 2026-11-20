@@ -89,3 +89,39 @@ test('calendar image renderer creates all requested image ratios and themes',asy
  await d.locator('.share-controls select').last().selectOption('image/jpeg');await expect(d.locator('.share-status')).toContainText('Paveikslėlis paruoštas',{timeout:30000});expect(await preview.evaluate(async i=>(await(await fetch(i.src)).blob()).type)).toBe('image/jpeg');
  const download=d.getByRole('link',{name:'Atsisiųsti paveikslėlį',exact:true});await expect(download).toHaveAttribute('download',/\.jpg$/);const saved=page.waitForEvent('download');await download.click();const file=await saved;expect(file.suggestedFilename()).toMatch(/\.jpg$/);expect(await file.failure()).toBeNull();await file.saveAs(testInfo.outputPath('sharing-render.jpg'));
 });
+
+test('shared calendar previews and horoscope archives use the site theme at narrow and wide widths', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('kalendorius365:analytics-consent:v1', JSON.stringify({
+    version: 1, analytics: false, expiresAt: Date.now() + 600000,
+  })));
+  await page.goto('/dalintis/kalendorius/2027-sausis-01/');
+  const archive = page.locator('main .archive-page');
+  const preview = archive.locator('.share-design-preview');
+  const pdf = archive.getByRole('link', { name: 'Atsisiųsti PDF', exact: true });
+  const webp = archive.getByRole('link', { name: 'Atsisiųsti vaizdą' });
+  expect(await preview.evaluate(img => img.decode().then(() => img.naturalWidth))).toBeGreaterThan(0);
+  for (const [control, magic] of [[pdf, '%PDF'], [webp, 'RIFF']]) {
+    const response = await page.request.get(await control.getAttribute('href'), { headers: { Range: 'bytes=0-15' } });
+    expect(response.ok()).toBe(true);
+    expect((await response.body()).subarray(0, 4).toString()).toBe(magic);
+  }
+  for (const width of [320, 768, 1440]) {
+    await page.setViewportSize({ width, height: 875 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width + 1);
+    await expect(archive.locator('.archive-hero h1')).toHaveCSS('color', 'rgb(255, 253, 242)');
+    await expect(archive.locator('.archive-hero__intro')).toHaveCSS('color', 'rgb(237, 247, 239)');
+    await expect(pdf).toBeVisible();
+  }
+  await page.goto('/horoskopai/istorija/');
+  const latest = archive.locator('.archive-publication[open]');
+  await expect(latest.getByRole('link')).toHaveCount(12);
+  const previous = archive.locator('.archive-publication').nth(1);
+  await previous.locator('summary').click();
+  const entry = previous.getByRole('link', { name: 'Avinas' });
+  const route = await entry.getAttribute('href');
+  await entry.click();
+  await expect(page).toHaveURL(new RegExp(route + '$'));
+  await expect(archive.locator('.archive-hero h1')).toHaveCSS('color', 'rgb(255, 253, 242)');
+  await expect(archive.locator('.archive-reading section')).toHaveCount(5);
+  await expect(archive.getByRole('link', { name: /Šios dienos horoskopas/ })).toHaveAttribute('href', '/horoskopai/avinas/');
+});

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220">
+  <defs>
+    <linearGradient id="board" x1=".06" y1="0" x2=".85" y2="1">
+      <stop stop-color="#47846a"/><stop offset=".46" stop-color="#1f6049"/><stop offset="1" stop-color="#0b2e26"/>
+    </linearGradient>
+    <linearGradient id="paper" x1=".1" y1="0" x2=".88" y2="1">
+      <stop stop-color="#fffdf5"/><stop offset=".57" stop-color="#f5f1e1"/><stop offset="1" stop-color="#d4cab0"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1=".15" x2=".87" y2="1">
+      <stop stop-color="#baaa88"/><stop offset=".32" stop-color="#eee4c9"/><stop offset="1" stop-color="#a4906e"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2=".9" y2="1">
+      <stop stop-color="#fff4bd"/><stop offset=".35" stop-color="#edca76"/><stop offset=".65" stop-color="#b07a37"/><stop offset="1" stop-color="#7d4c2f"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2=".85" y2="1">
+      <stop stop-color="#c55d4d"/><stop offset="1" stop-color="#8c352e"/>
+    </linearGradient>
+    <radialGradient id="shadow">
+      <stop stop-color="#263c2e" stop-opacity=".29"/><stop offset="1" stop-color="#263c2e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lift" x="-16%" y="-20%" width="140%" height="153%">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#1b382c" flood-opacity=".23"/>
+    </filter>
+    <path id="face" d="M13 0h113q9 0 9 9v122q0 10-10 10H13q-10 0-10-10V11Q3 0 13 0Z"/>
+    <path id="cells" d="M17 70h19v15H17zm27 0h19v15H44zm27 0h19v15H71zm27 0h19v15H98zM17 92h19v15H17zm27 0h19v15H44zm27 0h19v15H71zm27 0h19v15H98zM17 114h19v14H17zm27 0h19v14H44zm27 0h19v14H71zm27 0h19v14H98z"/>
+    <g id="binding">
+      <ellipse cx="30" cy="13" rx="7" ry="4.5" fill="#133d30"/>
+      <ellipse cx="102" cy="13" rx="7" ry="4.5" fill="#133d30"/>
+      <path d="M30 13V-4c0-9 12-9 12 0v6m60 11V-4c0-9 12-9 12 0v6" fill="none" stroke="#6e4b2b" stroke-width="7" stroke-linecap="round"/>
+      <path d="M30 12V-4c0-8 12-8 12 0v6m60 10V-4c0-8 12-8 12 0v6" fill="none" stroke="url(#metal)" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <ellipse cx="214" cy="192" rx="189" ry="22" fill="url(#shadow)"/>
+  <g transform="translate(48 43) rotate(-11 69 70)" filter="url(#lift)">
+    <use href="#face" transform="translate(5 8)" fill="url(#board)"/>
+    <use href="#face" transform="translate(3 5)" fill="url(#edge)" stroke="#9e9276" stroke-width=".8"/>
+    <use href="#face" fill="url(#paper)" stroke="#a89e83"/>
+    <path d="M13 0h113q9 0 9 9v30H3V11Q3 0 13 0Z" fill="url(#board)"/>
+    <path d="M6 37h126" stroke="#bce0c0" stroke-opacity=".4"/>
+    <path d="M18 53h55m-55 6h37" stroke="#7a8c75" stroke-width="2.4" stroke-linecap="round"/>
+    <use href="#cells" fill="#c4c9b5" opacity=".56"/>
+    <rect x="71" y="92" width="19" height="15" rx="3" fill="url(#red)"/>
+    <path d="m76 99 3 4 6-7" fill="none" stroke="#fff1d9" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+    <use href="#binding"/>
+  </g>
+  <g transform="translate(232 45) rotate(9 69 70)" filter="url(#lift)">
+    <use href="#face" transform="translate(6 8)" fill="url(#board)"/>
+    <use href="#face" transform="translate(3 5)" fill="url(#edge)" stroke="#9e9276" stroke-width=".8"/>
+    <use href="#face" fill="url(#paper)" stroke="#a89e83"/>
+    <path d="M13 0h113q9 0 9 9v30H3V11Q3 0 13 0Z" fill="url(#board)"/>
+    <path d="M6 37h126" stroke="#bce0c0" stroke-opacity=".4"/>
+    <path d="M18 53h44m-44 6h66" stroke="#7a8c75" stroke-width="2.4" stroke-linecap="round"/>
+    <use href="#cells" fill="#c4c9b5" opacity=".56"/>
+    <rect x="44" y="92" width="19" height="15" rx="3" fill="url(#board)"/>
+    <path d="m49 99 3 4 6-7" fill="none" stroke="#fff1d9" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+    <use href="#binding"/>
+  </g>
+  <g filter="url(#lift)" stroke-linejoin="round">
+    <path d="M145 136c38-13 62-8 101 0l-3-10 19 14-24 11 6-8c-38-8-61-12-96 0Z" fill="#966335"/>
+    <path d="M144 132c38-13 62-8 101 0l-3-10 19 14-24 11 6-8c-38-8-61-12-96 0Z" fill="url(#metal)" stroke="#a07441"/>
+    <path d="M150 133c34-10 58-6 91 0" fill="none" stroke="#ffedb6" stroke-width="1" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -90,7 +90,7 @@ module MonthCalendarArt
  end
  def generate(root,months)
   dir=File.join(root,'site/assets/visuals/month-calendars');FileUtils.mkdir_p(dir)
-  [2027,2028,2029].each do |year|
+  (2027..2030).each do |year|
    months.each_with_index { |month,i|File.write(File.join(dir,"#{year}-#{month[0]}.svg"),svg(year,i+1,month[1])) }
   end
  end

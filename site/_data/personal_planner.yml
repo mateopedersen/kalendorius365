@@ -1,0 +1,39 @@
+admissions:
+  - id: higher
+    label: Aukštosios mokyklos
+    title: Stojimo į aukštąją mokyklą terminas
+    url: https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/priemimo-datos/
+    info: LAMA BPO 2027 m. bendrojo priėmimo datų dar nepatvirtino. Paskelbtą terminą galite įrašyti į savo planą.
+  - id: short
+    label: Trumposios pakopos studijos
+    title: Stojimo į trumposios pakopos studijas terminas
+    url: https://lamabpo.lt/trumposios-pakopos-studijos/priemimo-datos/
+    info: 2027 m. priėmimo datos dar nepatvirtintos. Patikrinkite LAMA BPO skelbiamą tvarkaraštį ir pasirinktos programos reikalavimus.
+  - id: vocational
+    label: Profesinis mokymas
+    title: Stojimo į profesinę mokyklą terminas
+    url: https://www.mokausi.lt/profesinis-mokymas/priemimo-datos/
+    info: Priėmimo etapus ir terminus skelbia „Mokausi Lietuvoje“. Įrašykite savo programai taikomą datą.
+payment_source: https://sodra.lt/naujienos/sodros-kalendorius-12
+payment_latest: https://sodra.lt/naujienos?_sft_category=ismoku-kalendorius&kam=gyventojams
+payments:
+  - id: unemployment
+    label: Nedarbo išmoka
+    date: '2026-11-20'
+    note: Pakeitus mokėjimo būdą, pervedimo data gali skirtis.
+  - id: child-support
+    label: Vaiko išlaikymo išmoka
+    date: '2026-11-24'
+  - id: annuity
+    label: Pensijų anuitetas
+    date: '2026-11-26'
+  - id: early-pension
+    label: Išankstinė senatvės pensija
+    date: '2026-11-20'
+  - id: parental
+    label: Vaiko priežiūros išmoka
+    date: '2026-11-16'
+    note: Papildomų pajamų duomenys gali pakeisti pervedimo datą.
+  - id: social-bank
+    label: Šalpos išmoka per kredito įstaigą
+    date: '2026-11-12'

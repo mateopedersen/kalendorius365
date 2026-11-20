@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-brailio-rasto-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20260104
+DTEND;VALUE=DATE:20260105
+SUMMARY:Pasaulinė Brailio rašto diena
+DESCRIPTION:Sausio 4 d. minima Pasaulinė Brailio rašto diena. Reljefinių
+  taškų raštas padeda žmonėms savarankiškai skaityti ir rašyti.
+URL:https://kalendorius365.lt/sventes/pasauline-brailio-rasto-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

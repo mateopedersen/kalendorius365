@@ -1,0 +1,57 @@
+{% assign civic = site.data.civic %}
+{% assign guide = civic.pages[page.civic] %}
+{% assign action = civic.sources[guide.cta] %}
+<article class="civic-page civic-page--{{ page.civic }}" data-civic>
+  <header class="civic-hero">
+    <div class="civic-hero__copy">
+      <p class="civic-kicker"><span aria-hidden="true"></span>{{ guide.group }}</p>
+      <h1>{{ guide.title | escape }}</h1>
+      <p class="civic-lead">{{ guide.intro | escape }}</p>
+      <div class="civic-actions">
+        {% if page.civic == 'hub' %}<a class="civic-button civic-button--gold" href="#pasirinkite">Rasti išmoką</a>{% else %}<a class="civic-button civic-button--gold" href="#skaiciuoti">Atverti skaičiuoklę</a>{% endif %}
+        <a class="civic-button civic-button--ghost" href="#saltiniai">Oficialūs šaltiniai</a>
+      </div>
+    </div>
+    <div class="civic-ticket">
+      {% include shell-art.html name=guide.art size=112 %}
+      <dl>{% for fact in guide.facts %}<div><dt>{{ fact[1] | escape }}</dt><dd>{{ fact[0] | escape }}</dd></div>{% endfor %}</dl>
+    </div>
+  </header>
+
+  <nav class="civic-nav" aria-label="Šio puslapio skyriai">
+    {% if page.civic != 'hub' %}<a href="/ismokos/">Visos išmokos</a>{% endif %}
+    {% if page.civic == 'hub' %}<a href="#mokejimai">Mokėjimų kalendorius</a><a href="#kita-parama">Kita parama</a><a href="#priminimas">Mano priminimas</a>
+    {% elsif page.civic == 'tax' %}<a href="#skaiciuoti">Atlyginimas ir GPM</a><a href="#pvm">PVM</a>
+    {% elsif page.civic == 'pension' %}<a href="#skaiciuoti">Pensijos data</a><a href="#mokejimai">Pensijų mokėjimas</a>{% endif %}
+    <a href="#prasymas">Kaip kreiptis</a><a href="#klausimai">Dažniausi klausimai</a><a href="#saltiniai">Šaltiniai</a>
+  </nav>
+
+  {% if page.civic == 'hub' %}
+  {% include civic/hub.html %}
+  {% else %}
+  {% include civic/calculators.html %}
+  {% if page.civic == 'pension' %}{% include civic/payments.html %}{% endif %}
+  {% endif %}
+
+  <section class="civic-section" id="prasymas" aria-labelledby="civic-process">
+    <header class="civic-section__head"><h2 id="civic-process">{% if page.civic == 'tax' %}Kaip deklaruoti ir sumokėti?{% else %}Kaip kreiptis?{% endif %}</h2><a class="civic-button civic-button--green" href="{{ action[1] }}">{{ action[0] | escape }}</a></header>
+    <ol class="civic-steps">{% for step in guide.steps %}<li><h3>{{ step[0] | escape }}</h3><p>{{ step[1] | escape }}</p></li>{% endfor %}</ol>
+  </section>
+
+  <section class="civic-section" id="klausimai" aria-labelledby="civic-faq">
+    <header class="civic-section__head"><h2 id="civic-faq">Dažniausi klausimai</h2></header>
+    <div class="civic-faq">{% for section in guide.sections %}<details{% if forloop.first %} open{% endif %}><summary>{{ section[0] | escape }}</summary><p>{{ section[1] | escape }}</p></details>{% endfor %}</div>
+  </section>
+
+  <section class="civic-section civic-section--sources" id="saltiniai" aria-labelledby="civic-sources">
+    <header class="civic-section__head"><h2 id="civic-sources">Oficialūs šaltiniai</h2><p>Patikrinta <time datetime="{{ civic.reviewed }}">{{ civic.reviewed }}</time></p></header>
+    <ul class="civic-sources">{% for key in guide.sources %}{% assign source = civic.sources[key] %}<li><a href="{{ source[1] }}">{{ source[0] | escape }}</a></li>{% endfor %}</ul>
+    <p>Skaičiuoklių rezultatai skirti planuoti. Asmeninį sprendimą, galutinę deklaracijos sumą ar pervedimo dieną patvirtina atsakinga įstaiga.</p>
+  </section>
+
+  <section class="civic-section civic-section--related" aria-labelledby="civic-related">
+    <header class="civic-section__head"><h2 id="civic-related">Susijusios temos</h2></header>
+    <div class="civic-cards">{% for key in guide.related %}{% assign item = civic.pages[key] %}{% include civic/card.html item=item %}{% endfor %}</div>
+  </section>
+  <script type="application/json" data-civic-rules>{{ civic.rules | jsonify }}</script>
+</article>

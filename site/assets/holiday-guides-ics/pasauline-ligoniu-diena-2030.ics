@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-ligoniu-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300211
+DTEND;VALUE=DATE:20300212
+SUMMARY:Pasaulinė ligonių diena
+DESCRIPTION:Vasario 11 d. minima Pasaulinė ligonių diena. Katalikų bendr
+ uomenėse ji susijusi su Lurdo Dievo Motinos minėjimu.
+URL:https://kalendorius365.lt/sventes/pasauline-ligoniu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

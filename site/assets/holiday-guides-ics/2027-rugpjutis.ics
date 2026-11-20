@@ -74,6 +74,18 @@ URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-comm-065
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-baltramiejaus-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270824
+DTEND;VALUE=DATE:20270825
+SUMMARY:Šv. Baltramiejaus diena (Gandrų išskridimas)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Rugpjūčio 24-oji žinoma 
+ kaip šv. Baltramiejaus ir gandrų išskridimo diena.
+URL:https://kalendorius365.lt/sventes/2027/rugpjutis/#ivykis-folk-baltramie
+ jaus-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-066@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270831

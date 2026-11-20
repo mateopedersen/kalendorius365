@@ -1,0 +1,43 @@
+---
+title: "Nuotraukų licencijos ir autoriai"
+description: "Lietuvos renginių, švenčių ir kalendoriaus gidų nuotraukų autoriai, originalūs šaltiniai, licencijos ir atlikti pakeitimai."
+hero_share: true
+---
+{% include tool-page-head.html icon="privacy" title="Nuotraukų licencijos" lead="Renginių, švenčių ir kalendoriaus gidų nuotraukų autoriai, šaltiniai ir naudojimo sąlygos." %}
+<p><a href="/oru-saltiniai/">Orų kortelėse naudojamų miestų nuotraukų licencijos</a></p>
+<section class="photo-credit-list" aria-labelledby="photo-credits-title">
+<h2 id="photo-credits-title">Nuotraukos pagal puslapį</h2>
+{% for photo in site.data.photo_credits %}
+{% include photo-credit.html photo=photo id=photo.id url=photo.page %}
+{% endfor %}
+</section>
+<section id="metu-laiku-nuotraukos" class="photo-credit-list" aria-labelledby="season-credits-title">
+<h2 id="season-credits-title">Metų laikų gidų nuotraukos</h2>
+{% assign season_photo_ids = 'hub,spring,summer,autumn,winter' | split: ',' %}
+{% for id in season_photo_ids %}
+  {% assign photo = site.data.season_photos[id] %}
+  {% include photo-credit.html photo=photo id=photo.id url=photo.page %}
+{% endfor %}
+</section>
+<section id="blogo-nuotraukos" class="photo-credit-list" aria-labelledby="guide-photo-credits-title">
+<h2 id="guide-photo-credits-title">Kalendoriaus tinklaraščio nuotraukos</h2>
+{% for guide in site.data.blog %}
+  {% assign credit_id = guide.slug | prepend: 'gidas-' %}
+  {% include photo-credit.html photo=guide.photo id=credit_id url=guide.url %}
+{% endfor %}
+</section>
+<section class="photo-credit-list" aria-labelledby="holiday-research-credits-title">
+<h2 id="holiday-research-credits-title">Švenčių ir atmintinų dienų gidų nuotraukos</h2>
+{% for photo in site.data.holiday_research_credits %}
+{% include photo-credit.html photo=photo id=photo.id url=photo.page %}
+{% endfor %}
+</section>
+
+<section id="sejos-nuotraukos" class="photo-credit-list" aria-labelledby="garden-credits-title">
+<h2 id="garden-credits-title">Sėjos kalendoriaus nuotraukos</h2>
+{% assign garden_url = '/sejos-kalendorius/' %}
+{% for item in site.data.garden_photos %}
+  {% assign photo = item[1] %}
+  {% include photo-credit.html photo=photo id=photo.id url=garden_url %}
+{% endfor %}
+</section>

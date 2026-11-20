@@ -1,0 +1,68 @@
+{% case page.civic %}
+{% when 'tax' %}
+  {% capture fields %}
+  <label>Skaičiavimo laikotarpis<select name="period"><option value="month">Vienas mėnuo</option><option value="year">Visa 2026 m. bruto suma</option></select></label>
+  <label>Bruto atlyginimas, €<input name="gross" type="number" min="0" max="100000000" step="0.01" required value="1800"></label>
+  <label>Darbo sutartis<select name="contract"><option value="permanent">Neterminuota</option><option value="fixed">Terminuota</option></select></label>
+  <label class="civic-check" data-npd-choice><input name="npd" type="checkbox" checked> Darbdavys taiko standartinį mėnesio NPD</label>
+  <label class="civic-check"><input name="pension" type="checkbox"> Kaupiu II pakopoje (3 %)</label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='pay' title='Atlyginimas į rankas' legend='Darbo užmokesčio duomenys' fields=fields tip='Vieno darbdavio įprasto atlyginimo modelis. Metinis režimas apima standartinį metinį NPD ir progresinį GPM, kai turite tik darbo užmokesčio pajamų. Įmokų grindys ir specialios lengvatos neįtrauktos.' %}
+  {% capture fields %}
+  <label>Suma, €<input name="amount" type="number" min="0" max="100000000" step="0.01" required value="100"></label>
+  <label>Veiksmas<select name="direction"><option value="add">Pridėti PVM</option><option value="extract">Išskirti PVM iš galutinės kainos</option></select></label>
+  <label>2026 m. PVM tarifas<select name="rate">{% for rate in civic.rules.tax.vat %}<option value="{{ rate }}">{{ rate }} %</option>{% endfor %}</select></label>
+  {% endcapture %}
+  {% include civic/form.html id='pvm' calc='vat' title='PVM skaičiuoklė' legend='Kaina ir tarifas' fields=fields tip='Tarifą pasirinkite pagal prekę ar paslaugą. Rezultate atskirai matysite apmokestinamąją vertę, PVM ir galutinę kainą.' %}
+{% when 'pension' %}
+  {% capture fields %}
+  <label>Gimimo data<input name="birth" type="date" min="1900-01-01" required></label>
+  <label data-pension-sex hidden>Lytis pagal pereinamojo laikotarpio lentelę<select name="sex" disabled required><option value="">Pasirinkite</option><option value="female">Moteris</option><option value="male">Vyras</option></select></label>
+  <label>Pensijų draudimo stažas (metais)<input name="insurance" type="number" min="0" max="90" step="any" placeholder="Pvz., 34,5"></label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='pension' title='Kada sukaks pensinis amžius?' legend='Gimimo data ir stažas' fields=fields tip='Gimusiems nuo 1961 m. gegužės taikoma bendra 65 metų riba. Ankstesnėms datoms naudojama „Sodros“ pereinamojo laikotarpio lentelė pagal gimimo datą ir lytį. Ateities datos remiasi dabar galiojančia tvarka.' %}
+{% when 'child' %}
+  {% capture fields %}
+  <label>Vaikai, kuriems skiriama bazinė išmoka<input name="children" type="number" min="1" max="30" value="1" required></label>
+  <label>Iš jų gaunantys papildomą išmoką<input name="eligible" type="number" min="0" max="30" value="0" required></label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='child' title='Vaiko pinigų skaičiuoklė' legend='Išmokos gavėjai' fields=fields tip='Papildomą išmoką pasirinkite tik vaikams, kurie atitinka jos sąlygas. Skaičiuojama vieno mėnesio suma.' %}
+{% when 'birth' %}
+  {% capture fields %}<label>Vaiko gimimo data<input name="birth" type="date" min="2026-01-01" max="2026-12-31" required></label>{% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='birth' title='Išmoka pagal gimimo datą' legend='Vaiko duomenys' fields=fields tip='Skaičiuojama 2026 m. gimusio vaiko išmoka. Rodomas 12 mėnesių orientyras. Galutinį terminą, jei data sutampa su ne darbo diena ar yra kitų aplinkybių, patikrinkite savivaldybėje.' %}
+{% when 'childcare' %}
+  {% capture fields %}<label>Mėnesio kompensuojamasis uždarbis (KU), €<input name="income" type="number" min="0" max="1000000" step="0.01" value="1800" required></label>{% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='childcare' title='Palyginkite 18 ir 24 mėnesių tarifus' legend='Jūsų mėnesio KU' fields=fields tip='Modelis parodo bazinę proporciją prieš mokesčius. Šiame palyginime netaikomi atitinkamo ketvirčio minimalūs ir maksimalūs dydžiai bei išmoką keičiantys atskaitymai. Galutiniam įverčiui naudokite „Sodros“ skaičiuoklę.' %}
+{% when 'parents' %}
+  {% capture fields %}<label>Dienos kompensuojamasis uždarbis (KU), €<input name="income" type="number" min="0" max="1000000" step="0.01" value="85" required></label>{% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='parents' title='Vienos apmokamos dienos įvertis' legend='Jūsų dienos KU' fields=fields tip='Parodome 77,58 % dienos KU prieš mokesčius. Dydžių ribos, laikotarpio dienos ir individualūs atskaitymai vertinami „Sodroje“.' %}
+{% when 'nanny' %}
+  {% capture fields %}<label>Sąlygas atitinkančių vaikų skaičius<input name="children" type="number" min="1" max="30" value="1" required></label>{% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='nanny' title='Mėnesio kompensacijos įvertis' legend='Vaikai, kuriems patvirtinta teisė' fields=fields tip='Parodoma viso mėnesio suma pagal 2026 m. dydį. Teisę į išmoką ir konkretaus laikotarpio sumą vertina savivaldybė.' %}
+{% when 'job' %}
+  {% capture fields %}
+  <label>Vidutinės mėnesio draudžiamosios pajamos, €<input name="income" type="number" min="0" max="1000000" step="0.01" value="1500" required></label>
+  <label>Draudimo stažas per paskutinius 24 mėn. (mėn.)<input name="insurance" type="number" min="0" max="24" value="12" required></label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='job' title='Nedarbo išmokos įvertis' legend='Duomenys bedarbio statusą įgijus 2026 m. liepos–gruodžio mėn.' fields=fields tip='Skaičiuojame viso mokėjimo mėnesio pavyzdį pagal 2026 m. II pusės dydžius. Nepilni mėnesiai, ankstesnės išmokos ir specialūs atvejai gali pakeisti rezultatą.' %}
+{% when 'sick' %}
+  {% capture fields %}
+  <label>Dienos „Sodros“ kompensuojamasis uždarbis (KU), €<input name="income" type="number" min="0" max="1000000" step="0.01" value="85" required></label>
+  <label>„Sodros“ apmokamos darbo dienos nuo 3 ligos dienos<input name="days" type="number" min="1" max="366" value="3" required></label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='sick' title='„Sodros“ mokamos dalies įvertis' legend='Dienos KU ir mokėjimo dienos' fields=fields tip='Įskaičiuokite tik „Sodros“ apmokamas dienas. Skaičiuojamas įprastos ligos 62,06 % tarifas. Darbdavio dalis, slauga, išimtys ir ketvirčio ribos vertinamos atskirai.' %}
+{% when 'social' %}
+  {% capture fields %}
+  <label>Asmenų skaičius<input name="members" type="number" min="1" max="30" value="1" required></label>
+  <label>Vertinamos namų ūkio mėnesio pajamos, €<input name="income" type="number" min="0" max="1000000" step="0.01" value="200" required></label>
+  <label data-social-duration>Pašalpos mokėjimo trukmė gyvenant vienam<select name="duration"><option value="0">Iki 6 mėnesių</option><option value="1">Daugiau kaip 6, iki 12 mėnesių</option><option value="2">Ilgiau nei 12 mėnesių</option></select></label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='social' title='Socialinės pašalpos įvertis' legend='Šeimos dydis ir vertinamos pajamos' fields=fields tip='Įrašykite pajamas, kurios įskaitomos skiriant paramą. Skaičiuojama bendroji taisyklė pagal 2026 m. VRP. Turto, individualių išimčių ir kitų sąlygų skaičiuoklė nevertina.' %}
+{% when 'heating' %}
+  {% capture fields %}
+  <label>Asmenų skaičius<input name="members" type="number" min="1" max="30" value="1" required></label>
+  <label>Vertinamos namų ūkio mėnesio pajamos, €<input name="income" type="number" min="0" max="1000000" step="0.01" value="810" required></label>
+  <label>Šildymo išlaidos pagal normatyvą, €<input name="cost" type="number" min="0" max="1000000" step="0.01" value="80" required></label>
+  {% endcapture %}
+  {% include civic/form.html id='skaiciuoti' calc='heat' title='Šildymo kompensacijos įvertis' legend='Pajamos ir normatyvinės išlaidos' fields=fields tip='Naudokite tik normatyvui priskiriamą sąskaitos dalį ir savivaldybės vertinamas pajamas. Atskira vandens kompensacija neskaičiuojama.' %}
+{% endcase %}

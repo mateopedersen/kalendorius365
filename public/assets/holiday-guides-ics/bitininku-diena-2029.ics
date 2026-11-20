@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:bitininku-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290804
+DTEND;VALUE=DATE:20290805
+SUMMARY:Bitininkų diena
+DESCRIPTION:Lietuvos bitininkų diena minima pirmąjį rugpjūčio šeštad
+ ienį.
+URL:https://kalendorius365.lt/sventes/bitininku-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

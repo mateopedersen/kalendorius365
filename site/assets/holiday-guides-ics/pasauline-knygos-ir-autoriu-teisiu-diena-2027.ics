@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-knygos-ir-autoriu-teisiu-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270423
+DTEND;VALUE=DATE:20270424
+SUMMARY:Pasaulinė knygos ir autorių teisių diena
+DESCRIPTION:Balandžio 23 d. UNESCO skiria skaitymui\, knygoms ir autorių 
+ teisėms.
+URL:https://kalendorius365.lt/sventes/pasauline-knygos-ir-autoriu-teisiu-di
+ ena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

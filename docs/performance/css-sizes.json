@@ -3,8 +3,8 @@
   "styles": [
     {
       "path": "/assets/about-us.css",
-      "source_bytes": 20907,
-      "generated_bytes": 19912
+      "source_bytes": 20767,
+      "generated_bytes": 19778
     },
     {
       "path": "/assets/advertising/advertising.css",
@@ -13,103 +13,158 @@
     },
     {
       "path": "/assets/astronomy-agenda.css",
-      "source_bytes": 5006,
-      "generated_bytes": 5003
+      "source_bytes": 12663,
+      "generated_bytes": 12101
     },
     {
       "path": "/assets/blog.css",
-      "source_bytes": 3156,
-      "generated_bytes": 3157
+      "source_bytes": 4950,
+      "generated_bytes": 4870
     },
     {
       "path": "/assets/calendar-editor/editor.css",
-      "source_bytes": 9066,
-      "generated_bytes": 8931
+      "source_bytes": 9655,
+      "generated_bytes": 9520
     },
     {
       "path": "/assets/contact.css",
-      "source_bytes": 9702,
-      "generated_bytes": 9632
+      "source_bytes": 8445,
+      "generated_bytes": 8054
     },
     {
       "path": "/assets/design-system.css",
-      "source_bytes": 194452,
-      "generated_bytes": 185228
+      "source_bytes": 177238,
+      "generated_bytes": 168405
     },
     {
       "path": "/assets/discovery.css",
-      "source_bytes": 19528,
-      "generated_bytes": 18505
+      "source_bytes": 16120,
+      "generated_bytes": 15291
     },
     {
       "path": "/assets/holiday-phase2.css",
-      "source_bytes": 10907,
-      "generated_bytes": 10811
+      "source_bytes": 12414,
+      "generated_bytes": 12255
     },
     {
       "path": "/assets/homepage-bundle.css",
-      "source_bytes": 145065,
-      "generated_bytes": 135589
+      "source_bytes": 86359,
+      "generated_bytes": 79589
     },
     {
       "path": "/assets/homepage.css",
-      "source_bytes": 60889,
-      "generated_bytes": 57517
+      "source_bytes": 51599,
+      "generated_bytes": 48764
     },
     {
       "path": "/assets/horoscope-detail.css",
-      "source_bytes": 91900,
-      "generated_bytes": 84980
+      "source_bytes": 78246,
+      "generated_bytes": 72289
     },
     {
       "path": "/assets/horoscope-hub.css",
-      "source_bytes": 81657,
-      "generated_bytes": 75097
+      "source_bytes": 65335,
+      "generated_bytes": 59779
     },
     {
       "path": "/assets/horoscope.css",
-      "source_bytes": 32105,
-      "generated_bytes": 30567
+      "source_bytes": 25445,
+      "generated_bytes": 24355
     },
     {
       "path": "/assets/lunar.css",
-      "source_bytes": 14726,
-      "generated_bytes": 14723
+      "source_bytes": 19853,
+      "generated_bytes": 19633
     },
     {
       "path": "/assets/monthly-holidays.css",
-      "source_bytes": 21681,
-      "generated_bytes": 21237
+      "source_bytes": 27554,
+      "generated_bytes": 26746
     },
     {
       "path": "/assets/namedays.css",
-      "source_bytes": 14830,
-      "generated_bytes": 14515
+      "source_bytes": 14323,
+      "generated_bytes": 13603
     },
     {
       "path": "/assets/planner-studio.css",
-      "source_bytes": 12371,
-      "generated_bytes": 12354
+      "source_bytes": 12354,
+      "generated_bytes": 12337
     },
     {
       "path": "/assets/print.css",
-      "source_bytes": 9476,
-      "generated_bytes": 8319
+      "source_bytes": 9708,
+      "generated_bytes": 8533
     },
     {
       "path": "/assets/seasons.css",
-      "source_bytes": 18212,
-      "generated_bytes": 17938
+      "source_bytes": 14613,
+      "generated_bytes": 13862
     },
     {
       "path": "/assets/sharing/base.css",
-      "source_bytes": 3408,
-      "generated_bytes": 3404
+      "source_bytes": 2913,
+      "generated_bytes": 2909
     },
     {
       "path": "/assets/sharing/dialog.css",
-      "source_bytes": 11366,
-      "generated_bytes": 11427
+      "source_bytes": 11402,
+      "generated_bytes": 11463
+    },
+    {
+      "path": "/assets/shell/archive.css",
+      "source_bytes": 5771,
+      "generated_bytes": 5520
+    },
+    {
+      "path": "/assets/shell/civic.css",
+      "source_bytes": 11332,
+      "generated_bytes": 10808
+    },
+    {
+      "path": "/assets/shell/garden.css",
+      "source_bytes": 15440,
+      "generated_bytes": 14755
+    },
+    {
+      "path": "/assets/shell/holiday-hub.css",
+      "source_bytes": 9498,
+      "generated_bytes": 9027
+    },
+    {
+      "path": "/assets/shell/holiday-research.css",
+      "source_bytes": 5706,
+      "generated_bytes": 5434
+    },
+    {
+      "path": "/assets/shell/occasion-calendar.css",
+      "source_bytes": 4816,
+      "generated_bytes": 4628
+    },
+    {
+      "path": "/assets/shell/personal-planner.css",
+      "source_bytes": 14322,
+      "generated_bytes": 13658
+    },
+    {
+      "path": "/assets/shell/shopping-appearance.css",
+      "source_bytes": 1776,
+      "generated_bytes": 1722
+    },
+    {
+      "path": "/assets/shell/site-shell.css",
+      "source_bytes": 118545,
+      "generated_bytes": 113179
+    },
+    {
+      "path": "/assets/shell/sunrise.css",
+      "source_bytes": 8846,
+      "generated_bytes": 8454
+    },
+    {
+      "path": "/assets/shell/weekend-guide.css",
+      "source_bytes": 9775,
+      "generated_bytes": 9279
     },
     {
       "path": "/assets/shift-exceptions.css",
@@ -123,8 +178,8 @@
     },
     {
       "path": "/assets/style.css",
-      "source_bytes": 44621,
-      "generated_bytes": 44115
+      "source_bytes": 44152,
+      "generated_bytes": 43646
     },
     {
       "path": "/assets/workdays.css",
@@ -133,18 +188,18 @@
     },
     {
       "path": "/assets/year-directory.css",
-      "source_bytes": 5098,
-      "generated_bytes": 5099
+      "source_bytes": 5690,
+      "generated_bytes": 5652
     },
     {
       "path": "/assets/zodiac-guide.css",
-      "source_bytes": 83510,
-      "generated_bytes": 77081
+      "source_bytes": 70810,
+      "generated_bytes": 65314
     },
     {
       "path": "/assets/zodiac.css",
-      "source_bytes": 20241,
-      "generated_bytes": 19585
+      "source_bytes": 18409,
+      "generated_bytes": 17885
     }
   ]
 }

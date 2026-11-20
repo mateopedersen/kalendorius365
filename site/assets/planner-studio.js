@@ -8,6 +8,7 @@ const element = (tag, text, className) => {
   if (className) node.className = className;
   return node;
 };
+const weekday = (weekStart, offset) => DAYS[(weekStart + offset + 6) % DAYS.length];
 const localDate = (date) => date ? new Intl.DateTimeFormat("lt-LT", { dateStyle: "medium", timeZone: "UTC" }).format(new Date(date + "T12:00:00Z")) : "";
 function setup(root) {
   const kind = root.dataset.kind;
@@ -71,8 +72,7 @@ function setup(root) {
       const count = Number($(root, '[data-studio-field="dayCount"]').value);
       const weekStart = Number($(root, '[data-studio-field="weekStart"]').value);
       for (let index = 0; index < count; index++) {
-        const dayIndex = (weekStart + index) % 7;
-        const option = element("option", DAYS[dayIndex]); option.value = String(index); option.selected = Number(task.day || 0) === index; day.append(option);
+        const option = element("option", weekday(weekStart, index)); option.value = String(index); option.selected = Number(task.day || 0) === index; day.append(option);
       }
       dayLabel.append(day);
       const timeLabel = element("label", "Laikas (nebūtina)"), time = element("input");
@@ -276,8 +276,8 @@ function setup(root) {
       head.append(headRow); table.append(head);
       const body = element("tbody");
       for (let day = 0; day < state.dayCount; day++) {
-        const row = element("tr"), dayIndex = (state.weekStart + day) % 7;
-        row.append(element("th", DAYS[dayIndex] + (dates[day] ? " · " + localDate(dates[day]) : "")));
+        const row = element("tr");
+        row.append(element("th", weekday(state.weekStart, day) + (dates[day] ? " · " + localDate(dates[day]) : "")));
         columns.forEach(({ person }) => {
           const tasks = state.tasks.filter((task) => task.day === day && (person === "shared" ? task.person === "shared" || Array.isArray(task.person) : !Array.isArray(task.person) && Number(task.person) === person));
           row.append(cell(tasks, (task) => (task.time ? task.time + " · " : "") + task.text + (Array.isArray(task.person) ? " · " + task.person.map((index) => names[index] || ("Žmogus " + (index + 1))).join(", ") : "")));
@@ -289,9 +289,8 @@ function setup(root) {
       const dates = state.date ? weekDates(state.date, state.weekStart, state.dayCount) : [];
       const grid = element("div", undefined, "planner-sheet__days");
       for (let day = 0; day < state.dayCount; day++) {
-        const dayIndex = (state.weekStart + day) % 7;
         const card = element("section", undefined, "planner-sheet__day");
-        card.append(element("h4", DAYS[dayIndex]), element("time", dates[day] ? localDate(dates[day]) : "Data nepasirinkta"));
+        card.append(element("h4", weekday(state.weekStart, day)), element("time", dates[day] ? localDate(dates[day]) : "Data nepasirinkta"));
         const list = element("ul"), tasks = state.tasks.filter((task) => task.day === day);
         for (const task of tasks) list.append(element("li", (task.time ? task.time + " · " : "") + task.text));
         for (let blank = tasks.length; blank < 3; blank++) list.append(element("li", "", "is-blank"));

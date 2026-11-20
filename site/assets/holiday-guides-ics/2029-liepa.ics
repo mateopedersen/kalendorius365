@@ -1,0 +1,119 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2029 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2029 m. liepos datos
+BEGIN:VEVENT
+UID:2029-comm-054@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290701
+DTEND;VALUE=DATE:20290702
+SUMMARY:Globėjų diena
+DESCRIPTION:Atmintina diena · įstatymas. Globėjams skirta kilnojamoji da
+ ta – pirmasis liepos sekmadienis.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-054
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-stat-statehood@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290706
+DTEND;VALUE=DATE:20290707
+SUMMARY:Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos 
+ giesmės diena
+DESCRIPTION:Šventinė diena · DK 123 str. Liepos 6-oji – Valstybės (Li
+ etuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-stat-statehood
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-053@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290707
+DTEND;VALUE=DATE:20290708
+SUMMARY:Giminių diena
+DESCRIPTION:Atmintina diena · įstatymas. Giminystės ryšiams skirta kiln
+ ojamoji data – pirmasis liepos šeštadienis.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-053
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-055@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290713
+DTEND;VALUE=DATE:20290714
+SUMMARY:Durbės mūšio diena
+DESCRIPTION:Atmintina diena · įstatymas. Durbės mūšiui skirtas istorin
+ io atminimo įrašas.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-055
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-056@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290715
+DTEND;VALUE=DATE:20290716
+SUMMARY:Žalgirio mūšio diena
+DESCRIPTION:Atmintina diena · įstatymas. Žalgirio mūšiui skirta Lietuv
+ os atmintina diena.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-056
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-057@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290716
+DTEND;VALUE=DATE:20290717
+SUMMARY:Agronomų diena
+DESCRIPTION:Atmintina diena · įstatymas. Agronomų profesinei veiklai ski
+ rta diena.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-057
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-058@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290717
+DTEND;VALUE=DATE:20290718
+SUMMARY:Pasaulio lietuvių vienybės diena
+DESCRIPTION:Atmintina diena · įstatymas. Pasaulio lietuvių ryšiams ir v
+ ienybei skirta data.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-058
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-folk-onines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290726
+DTEND;VALUE=DATE:20290727
+SUMMARY:Oninės (Šv. Onos diena)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Oninės minimos liepos 26-
+ ąją\, šv. Onos dieną\, tradiciniame kalendoriuje siejamą su javapjūt
+ ės laikotarpiu.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-folk-onines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-059@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290729
+DTEND;VALUE=DATE:20290730
+SUMMARY:Jūros diena\, Žvejų diena
+DESCRIPTION:Atmintina diena · įstatymas. Jūros ir žvejų temos įstatym
+ e siejamos su paskutiniu liepos sekmadieniu.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-059
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2029-comm-060@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20290731
+DTEND;VALUE=DATE:20290801
+SUMMARY:Medininkų žudynių diena
+DESCRIPTION:Atmintina diena · įstatymas. Medininkų žudynių aukų atmin
+ imui skirta diena.
+URL:https://kalendorius365.lt/sventes/2029/liepa/#ivykis-comm-060
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

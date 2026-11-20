@@ -82,6 +82,15 @@ export function holidays(y, data) {
     })
     .sort((a, b) => a.date.localeCompare(b.date));
 }
+// Keep suggestions and workday calculations on the same Lithuanian holiday rules.
+export function upcomingCalendarEntries(fromDate, data, commemorations = []) {
+  const year = parse(fromDate).getUTCFullYear();
+  const entries = createCalendarEntries(data, commemorations);
+  return [...entries(year), ...entries(year + 1)]
+    .filter((entry) => entry.date >= fromDate)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .filter((entry, index, all) => all.findIndex(({ id }) => id === entry.id) === index);
+}
 // Only public holiday records are memoized. Personal events, notes and
 // preferences remain live in Store and never enter this bounded lookup.
 export function createCalendarEntries(data, commemorations = []) {
@@ -221,7 +230,7 @@ export function addWorkdays(start, amount, data) {
   }
   return date;
 }
-const wallFormatter = new Intl.DateTimeFormat("sv-SE", {
+const wallSettings = {
   timeZone: TZ,
   year: "numeric",
   month: "2-digit",
@@ -229,20 +238,24 @@ const wallFormatter = new Intl.DateTimeFormat("sv-SE", {
   hour: "2-digit",
   minute: "2-digit",
   hourCycle: "h23",
-});
+};
+const wallFormatter = new Intl.DateTimeFormat("sv-SE", wallSettings);
+const wallWithSeconds = new Intl.DateTimeFormat("sv-SE", { ...wallSettings, second: "2-digit" });
 export const wallTime = (instant) =>
   wallFormatter.format(new Date(instant)).replace(" ", "T");
 // Enumerate plausible UTC offsets: reject nonexistent spring times; earlier occurrence in autumn.
 export function zonedInstant(local) {
-  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(local))
+  if (!/^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$/.test(local))
     throw Error("Neteisingas laikas");
   parse(local.slice(0, 10));
-  let naive = Date.parse(local + "Z"),
-    matches = [];
-  for (const offset of [120, 180]) {
-    const t = naive - offset * 60000;
-    if (wallTime(t) === local) matches.push(t);
-  }
+  const naive = Date.parse(local + ":00Z");
+  const stamp = (instant) => wallWithSeconds.format(new Date(instant)).replace(" ", "T");
+  const offsets = new Set([naive - DAY, naive, naive + DAY].map(
+    (instant) => Date.parse(stamp(instant) + "Z") - instant,
+  ));
+  const matches = [...offsets]
+    .map((offset) => naive - offset)
+    .filter((instant) => stamp(instant) === local + ":00");
   if (!matches.length)
     throw Error(
       "Šio vietinio laiko nėra dėl vasaros laiko pokyčio. Pasirinkite kitą laiką.",

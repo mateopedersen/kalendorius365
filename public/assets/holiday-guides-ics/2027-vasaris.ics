@@ -5,6 +5,42 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:2027 m. vasario datos
 BEGIN:VEVENT
+UID:2027-folk-grabnycios@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270202
+DTEND;VALUE=DATE:20270203
+SUMMARY:Grabnyčios (Žvakių diena)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 2-ąją minimos Gra
+ bnyčios. Katalikų kalendoriuje tai Kristaus Paaukojimo šventė.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-folk-grabnycios
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-sv-blaziejaus-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270203
+DTEND;VALUE=DATE:20270204
+SUMMARY:Šv. Blažiejaus diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 3-ioji skirta šv. 
+ Blažiejui. Tradicinių kalendorinių švenčių sąraše ji siejama ir su
+  linų globėjo Vaižganto vardu.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-folk-sv-blazieja
+ us-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-sv-agotos-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270205
+DTEND;VALUE=DATE:20270206
+SUMMARY:Šv. Agotos ir duonos diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 5-ąją minimos šv
+ . Agota\, duona ir namų židinio tradicijos.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-folk-sv-agotos-d
+ iena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-007@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270209
@@ -24,6 +60,17 @@ SUMMARY:Užgavėnės
 DESCRIPTION:Kultūrinė ar religinė tradicija. Žiemos palydų tradicija\;
   data skaičiuojama likus 47 dienoms iki vakarietiškųjų Velykų.
 URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-uzgavenes
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-pelenai@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270210
+DTEND;VALUE=DATE:20270211
+SUMMARY:Pelenų trečiadienis
+DESCRIPTION:Kultūrinė ar religinė tradicija. Pelenų trečiadienis yra k
+ ita diena po Užgavėnių ir katalikų gavėnios pradžia.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-folk-pelenai
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -70,6 +117,18 @@ SUMMARY:Tarptautinė gimtosios kalbos diena
 DESCRIPTION:Tarptautinė diena. UNESCO kalendorinė data skirta kalbų įva
  irovei ir daugiakalbystei.
 URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-mother-language
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-vieversio-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270224
+DTEND;VALUE=DATE:20270225
+SUMMARY:Vieversio diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 24-oji lietuvių ka
+ lendoriuje vadinta Vieversio diena. Ji siejama su šv. Motiejaus vardu.
+URL:https://kalendorius365.lt/sventes/2027/vasaris/#ivykis-folk-vieversio-d
+ iena
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:reformacijos-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Reformacijos diena
+DESCRIPTION:Spalio 31 d. minima Reformacijos diena\, siejama su XVI a. krik
+ ščionybės istorijos ir raštijos kaita.
+URL:https://kalendorius365.lt/sventes/reformacijos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

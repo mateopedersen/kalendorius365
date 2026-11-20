@@ -1,0 +1,5 @@
+{% assign week_page = page.url | replace: 'index.html', '' %}
+{% for week_year in (2027..2030) %}
+  {% capture week_route %}/savaites/{{ week_year }}/{% endcapture %}
+  <a class="button" href="{{ week_route }}"{% if week_page == week_route %} aria-current="page"{% endif %}>{{ week_year }}</a>
+{% endfor %}

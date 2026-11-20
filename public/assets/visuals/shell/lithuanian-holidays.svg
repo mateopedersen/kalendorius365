@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2=".6">
+      <stop stop-color="#9a602b"/>
+      <stop offset=".39" stop-color="#fff0ab"/>
+      <stop offset=".71" stop-color="#e6b967"/>
+      <stop offset="1" stop-color="#8d5422"/>
+    </linearGradient>
+    <linearGradient id="fold" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#4f2c1f" stop-opacity=".38"/>
+      <stop offset=".28" stop-color="#fff6cf" stop-opacity=".3"/>
+      <stop offset=".62" stop-color="#322927" stop-opacity=".26"/>
+      <stop offset=".95" stop-color="#fff5d9" stop-opacity=".19"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fffbe0"/>
+      <stop offset=".55" stop-color="#ffd468"/>
+      <stop offset="1" stop-color="#e9a434"/>
+    </linearGradient>
+    <path id="flag" d="M17 13c9-5 15-3.2 23-.2 6 2.2 12 2.8 18-.6v27.5c-6 3.4-12 2.8-18 .6-8-3-14-4.8-23 .2z"/>
+  </defs>
+  <ellipse cx="25" cy="57.6" rx="22" ry="3.3" fill="#0c2a1f" opacity=".24"/>
+  <path d="M5 54c0-2.3 5.6-4 12.5-4S30 51.7 30 54v2c0 2.2-5.6 4-12.5 4S5 58.2 5 56z" fill="#8e592b"/>
+  <ellipse cx="17.5" cy="54" rx="12.2" ry="3.9" fill="url(#brass)" stroke="#f8d28e" stroke-width=".8"/>
+  <use href="#flag" fill="#c1272d" stroke="#f7e2a8" stroke-width="1.1" stroke-linejoin="round"/>
+  <path d="M17 22.1c9-5 15-3.2 23-.2 6 2.2 12 2.8 18-.6v9.2c-6 3.4-12 2.8-18 .6-8-3-14-4.8-23 .2z" fill="#006a44"/>
+  <path d="M17 13c9-5 15-3.2 23-.2 6 2.2 12 2.8 18-.6v9.1c-6 3.4-12 2.8-18 .6-8-3-14-4.8-23 .2z" fill="#fdb913"/>
+  <use href="#flag" fill="url(#fold)"/>
+  <path d="M14.9 10.3a2.5 2.5 0 0 1 5 0V54a2.5 2.5 0 0 1-5 0z" fill="url(#brass)" stroke="#f3d78f" stroke-width=".65"/>
+  <circle cx="17.4" cy="9" r="4" fill="url(#brass)" stroke="#fff2b5" stroke-width=".8"/>
+  <path d="M46 39.5c.9 6.8 3.6 9.5 10.4 10.4-6.8.9-9.5 3.6-10.4 10.4-.9-6.8-3.6-9.5-10.4-10.4 6.8-.9 9.5-3.6 10.4-10.4z" fill="url(#spark)" stroke="#ffe9a3" stroke-width=".9" stroke-linejoin="round"/>
+  <path d="M56 43.5l3-2.9M32.7 45.5l-2.1-2.2M55.3 57.5l2.9 2.1" stroke="#f3ca6c" stroke-width="2" stroke-linecap="round"/>
+</svg>

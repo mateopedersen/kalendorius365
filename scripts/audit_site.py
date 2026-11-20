@@ -4,6 +4,8 @@ from urllib.parse import urlsplit,unquote,urljoin
 import struct
 import re
 import json
+import xml.etree.ElementTree as ET
+from PIL import Image
 ROOT=Path(__file__).resolve().parents[1];PUBLIC=ROOT/'public'
 # Detail guides use verified, uncropped photographic Open Graph images.
 # Every other page retains the existing 1200x630 PNG contract.
@@ -11,6 +13,25 @@ _detail=json.loads((ROOT/'data/holiday-phase2.json').read_text())
 _old=json.loads((ROOT/'data/holiday-editorial.json').read_text())
 DETAIL_MEDIA={'https://kalendorius365.lt/sventes/'+a['slug']+'/':_detail['media'][a['id']] for a in _old['articles']+_old['commemorations']+_detail['articles']}
 assert len(DETAIL_MEDIA)==31
+_local=json.loads((ROOT/'site/_data/lithuanian_dates.json').read_text())
+LOCAL_DETAILS=set()
+for collection, folder in [('festivals', 'renginiai'), ('commemorations', 'sventes')]:
+ for entry in _local[collection]:
+  route=f"https://kalendorius365.lt/{folder}/{entry['slug']}/"
+  LOCAL_DETAILS.add(route)
+  if image := entry.get('image'):
+   DETAIL_MEDIA.setdefault(route, {**image, 'caption':image['alt']})
+
+_research_path=ROOT/'data/holiday-guide-photos.json'
+if _research_path.exists():
+ for slug,photo in json.loads(_research_path.read_text()).items():
+  DETAIL_MEDIA['https://kalendorius365.lt/sventes/'+slug+'/']=photo
+_research_slugs={line.split('\t')[1] for line in (ROOT/'data/holiday-guide-research.tsv').read_text().splitlines()}
+_traditions=json.loads((ROOT/'data/traditional-holiday-guides.json').read_text())
+_research_slugs.update(guide['slug'] for guide in _traditions['guides'])
+_seasons=json.loads((ROOT/'site/_data/season_photos.json').read_text())
+SEASON_MEDIA={'https://kalendorius365.lt'+item['page']: item for item in _seasons.values()}
+
 
 def webp_dimensions(data):
  assert data[:4]==b'RIFF' and data[8:12]==b'WEBP'
@@ -34,6 +55,8 @@ class Page(HTMLParser):
   if tag=='meta' and 'property' in a:self.properties.setdefault(a['property'],[]).append(a.get('content',''))
   if tag=='link' and a.get('rel')=='canonical':self.canonical=a.get('href')
   if tag=='a' and a.get('href'):self.anchor_links.append(a['href'])
+  if tag=='use' and (a.get('href') or a.get('xlink:href')):
+   self.links.append(a.get('href') or a['xlink:href'])
   if tag in ['a','img','script','link']:
    url=a.get('href') if tag in ['a','link'] else a.get('src')
    if url:self.links.append(url)
@@ -69,13 +92,16 @@ for path in files:
  for key in ('og:type','og:locale','og:site_name','og:title','og:description','og:url','og:image','og:image:type','og:image:width','og:image:height','og:image:alt'):
   assert len(p.properties.get(key,[]))==1 and p.properties[key][0],(path,key,p.properties.get(key))
  media=DETAIL_MEDIA.get(p.canonical)
+ season=SEASON_MEDIA.get(p.canonical)
  is_blog_article=bool(re.fullmatch(r'https://kalendorius365\.lt/blogas/[^/]+/',p.canonical))
- assert p.properties['og:type']==['article' if media or is_blog_article else 'website'] and p.properties['og:locale']==['lt_LT'],path
+ is_research_article=p.canonical.removeprefix('https://kalendorius365.lt/sventes/').strip('/') in _research_slugs
+ assert p.properties['og:type']==['article' if media or is_blog_article or is_research_article or p.canonical in LOCAL_DETAILS else 'website'] and p.properties['og:locale']==['lt_LT'],path
  assert p.properties['og:url']==[p.canonical],(path,p.properties['og:url'],p.canonical)
  expected_dimensions=(media['width'],media['height']) if media else (1200,630)
- assert p.properties['og:image:type']==['image/webp' if media else 'image/png'],path
+ assert p.properties['og:image:type']==['image/webp' if media else 'image/jpeg' if season else 'image/png'],path
  assert (int(p.properties['og:image:width'][0]),int(p.properties['og:image:height'][0]))==expected_dimensions,path
  if media:assert p.properties['og:image']==['https://kalendorius365.lt'+media['src']] and p.properties['og:image:alt']==[media['caption']],path
+ if season:assert p.properties['og:image']==['https://kalendorius365.lt'+season['social']] and p.properties['og:image:alt']==[season['alt']],path
  for key in ('twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'):
   assert len(p.named_meta.get(key,[]))==1 and p.named_meta[key][0],(path,key,p.named_meta.get(key))
  assert p.title.endswith(' | Kalendorius365') and p.title.count('|') == 1, (path, p.title)
@@ -90,10 +116,14 @@ for path in files:
  assert image_path.is_file(),(path,p.properties['og:image'][0])
  image_data=image_path.read_bytes()
  if media:assert webp_dimensions(image_data)==expected_dimensions,(path,image_path)
+ elif season:
+  with Image.open(image_path) as image:
+   assert image.format=='JPEG' and image.size==expected_dimensions,(path,image_path)
  else:assert image_data[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',image_data[16:24])==(1200,630),(path,image_path)
  assert image_path.stat().st_size<=300_000,(path,image_path,image_path.stat().st_size)
  assert p.meta.get('twitter:title')==p.properties['og:title'][0] and p.meta.get('twitter:description')==p.properties['og:description'][0],path
  for text in p.jsonld:json.loads(text)
+svg_ids={}
 for path,p in pages.items():
  for url in p.links:
   parsed=urlsplit(url)
@@ -104,6 +134,11 @@ for path,p in pages.items():
   links+=1
   if not target.exists():fail.append((str(path.relative_to(PUBLIC)),url))
   if parsed.fragment and target in pages and parsed.fragment not in pages[target].ids:fail.append((str(path.relative_to(PUBLIC)),url+' (anchor missing)'))
+  if parsed.fragment and target.suffix=='.svg' and target.is_file():
+   if target not in svg_ids:
+    svg_ids[target]={node.get('id') for node in ET.parse(target).iter() if node.get('id')}
+   if unquote(parsed.fragment) not in svg_ids[target]:
+    fail.append((str(path.relative_to(PUBLIC)),url+' (SVG symbol missing)'))
 assert not fail,json.dumps(fail[:30])
 public_pages={p.canonical:path for path,p in pages.items() if path.name!='404.html'}
 route_pages={urlsplit(canonical).path:canonical for canonical in public_pages}
@@ -158,6 +193,9 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif relative_asset.parts[0]=='advertising':
    cache_path='/assets/advertising/*'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
+  elif relative_asset.parts[0]=='shell':
+   cache_path='/assets/shell/*'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   elif relative_asset.parts[0]=='shopping':
    cache_path='/assets/shopping/*'
@@ -223,7 +261,6 @@ for asset in manifest:
   assert expected in all_local_links,('unversioned or missing print download link',asset['stem'],kind,expected)
 print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 360 monthly mappings.')
 if '--release' in __import__('sys').argv:
- import xml.etree.ElementTree as ET
  for path,p in pages.items():
   relative='/'+str(path.relative_to(PUBLIC)).removesuffix('index.html')
   share_archive=bool(re.fullmatch(r'/dalintis/kalendorius/[a-z0-9-]+/|/horoskopai/istorija/|/horoskopai/[a-z]+/\d{4}-\d{2}-\d{2}/v-[a-f0-9]{16}/',relative))
@@ -247,6 +284,8 @@ if '--release' in __import__('sys').argv:
   assert root.tag=='{'+ns['s']+'}urlset'
   docs=[root]
  sitemap=[];image_urls=[]
+ blog_images={f"https://kalendorius365.lt/blogas/{slug}/":f"https://kalendorius365.lt{photo['variants'][-1]['src']}"
+              for slug,photo in json.loads((ROOT/'data/blog/photographs.json').read_text()).items()}
  for doc in docs:
   assert doc.tag=='{'+ns['s']+'}urlset'
   entries=doc.findall('s:url',ns);assert len(entries)<=50_000
@@ -255,6 +294,8 @@ if '--release' in __import__('sys').argv:
    page_url=urlsplit(element.text);assert page_url.scheme=='https' and page_url.netloc=='kalendorius365.lt' and not page_url.query and not page_url.fragment
    sitemap.append(element.text)
    images=entry.findall('i:image/i:loc',ns);assert len(images)<=1_000
+   if element.text in blog_images:
+    assert [image.text for image in images] == [blog_images[element.text]], element.text
    for image in images:
     assert image.text
     image_url=urlsplit(image.text);assert image_url.scheme=='https' and image_url.netloc=='kalendorius365.lt' and not image_url.query and not image_url.fragment
@@ -265,13 +306,16 @@ if '--release' in __import__('sys').argv:
  expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind'] in ('monthly','annual')}
  city_photos=json.loads((ROOT/'data/weather-photo-index.json').read_text())
  expected_images.update(f"https://kalendorius365.lt{photo['image']}" for photo in city_photos)
+ research=json.loads(_research_path.read_text()) if _research_path.exists() else {}
+ expected_images.update(f"https://kalendorius365.lt{photo['src']}" for photo in research.values())
+ expected_images.update(blog_images.values())
  assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
  assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)
  assert 'Sitemap: https://kalendorius365.lt/sitemap.xml' in (PUBLIC/'robots.txt').read_text()
  for path in sitemap_files:
   assert f'/{path.name}\n  Cache-Control: public, max-age=3600' in headers
  assert '/robots.txt\n  Cache-Control: public, max-age=3600' in headers
- print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals across {len(sitemap_files)} XML file(s), {len(image_urls)} clean calendar image URLs, and no global noindex header.')
+ print(f'PASS: release indexing, 404 noindex, {len(sitemap)} sitemap canonicals across {len(sitemap_files)} XML file(s), {len(image_urls)} clean calendar and guide image URLs, and no global noindex header.')
 
 # Check the generated release, not only the authored editor source.
 editor_html=(PUBLIC/'kurti-kalendoriu/index.html').read_text()

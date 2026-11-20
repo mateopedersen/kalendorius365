@@ -1,0 +1,35 @@
+---
+title: "Kelinta šiandien metų diena?"
+description: "Pasirinkite datą ir raskite jos eilės numerį metuose, likusias dienas ir ISO savaitę."
+date_guide: true
+hero_share: true
+---
+{% include tool-page-head.html icon="day-counter" title="Kelinta metų diena?" lead="Raskite pasirinktos datos eilės numerį, likusias metų dienas ir jos ISO savaitę." %}
+<form class="panel date-guide-form date-guide-calculator" data-year-day aria-labelledby="year-day-form-title">
+  <div class="date-guide-calculator__fields">
+    <h2 id="year-day-form-title">Pasirinkite datą</h2>
+    <label for="year-day-date">Data
+      <input id="year-day-date" name="date" type="date" min="1900-01-01" max="2100-12-31" required>
+    </label>
+    <button type="submit" class="primary">Skaičiuoti</button>
+    <div class="date-guide-calculator__examples" role="group" aria-label="Greitas datos pasirinkimas">
+      <button type="button" data-day-date="today">Šiandien</button>
+      <button type="button" data-day-date="01-01">Sausio 1 d.</button>
+      <button type="button" data-day-date="12-31">Gruodžio 31 d.</button>
+    </div>
+  </div>
+  <output class="date-guide-calculator__result" for="year-day-date" role="status">
+    <span class="date-guide-calculator__status" data-result-title>Pasirinkta data</span>
+    <strong data-result-value>Pasirinkite datą</strong>
+    <span class="date-guide-calculator__progress" aria-hidden="true"><span data-year-progress></span></span>
+    <span class="date-guide-calculator__facts">
+      <span><span>Liko dienų</span><b data-year-days-left>…</b></span>
+      <span><span>ISO savaitė</span><b data-year-week>…</b></span>
+    </span>
+  </output>
+</form>
+<section class="panel content-guide"><h2>Kaip skaičiuojama?</h2><p>Sausio 1-oji yra pirmoji metų diena. Gruodžio 31-oji yra 365-oji arba 366-oji, jei metai <a href="/keliamieji-metai/">keliamieji</a>. Kalendorinės datos ir metų dienos numerio užrašymo pavyzdžiai pateikti <a href="https://www.gnu.org/software/emacs/manual/html_node/calc/ISO-8601.html">ISO datos formato paaiškinime</a>. Pasirinkta data įskaičiuojama į dienos eilės numerį, o likusios dienos pradedamos skaičiuoti nuo kitos dienos.</p><p>ISO savaitės metai kartais skiriasi nuo datos metų. Pavyzdžiui, 2027 m. sausio 1 d. priklauso 2026 m. 53 savaitei.</p></section>
+<nav class="date-guide-next calendar-catalog" aria-label="Susijusios skaičiuoklės">
+  {% include calendar-catalog-card.html url="/savaites/" icon="week" title="ISO savaičių skaičiuoklė" description="Raskite savaitės pirmadienį ir sekmadienį." %}
+  {% include calendar-catalog-card.html url="/keliamieji-metai/" icon="leap-day" title="Keliamųjų metų skaičiuoklė" description="Patikrinkite, kiek dienų turi pasirinkti metai." %}
+</nav>

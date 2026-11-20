@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-zmogaus-teisiu-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20281210
+DTEND;VALUE=DATE:20281211
+SUMMARY:Tarptautinė žmogaus teisių diena
+DESCRIPTION:Gruodžio 10 d. minima Tarptautinė žmogaus teisių diena\, si
+ ejama su 1948 m. priimta Visuotine žmogaus teisių deklaracija.
+URL:https://kalendorius365.lt/sventes/tarptautine-zmogaus-teisiu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

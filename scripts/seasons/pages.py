@@ -2,15 +2,15 @@
 from pathlib import Path
 from html import escape as esc
 from datetime import datetime
-import json,hashlib
+import json,hashlib,re
 import artwork
 ROOT=Path(__file__).resolve().parents[2]
 D=json.loads((ROOT/'site/assets/data/seasons.json').read_text())
+PHOTOS=json.loads((ROOT/'site/_data/season_photos.json').read_text())
 IDS=['spring','summer','autumn','winter']
 SLUGS=['pavasario-lygiadienis','vasaros-saulegriza','rudens-lygiadienis','ziemos-saulegriza']
 NAMES=['Pavasario lygiadienis','Vasaros saulėgrįža','Rudens lygiadienis','Žiemos saulėgrįža']
 SEASONS=['Pavasaris','Vasara','Ruduo','Žiema']
-SHORT=['Daugiau šviesos','Ilgiausios dienos','Trumpėjančios dienos','Šviesos sugrįžimas']
 INTRO=[
  'Saulė kerta dangaus pusiaują į šiaurę. Šiaurės pusrutulyje prasideda astronominis pavasaris, o dienos sparčiai ilgėja.',
  'Saulė pasiekia šiauriausią padėtį dangaus pusiaujo atžvilgiu. Šiaurės pusrutulyje prasideda astronominė vasara ir stoja ilgiausių dienų metas.',
@@ -47,51 +47,118 @@ def comparison(id=None):
   es=[event(s,y)for s in IDS]if id is None else [event(id,y)]
   cells=''.join(f'<td><time datetime="{e["utc"]}">{e["label"]}<br><strong>{e["clock"]}</strong> <small>{e["offset"]}</small></time></td>'for e in es)if id is None else f'<td>{es[0]["label"]}</td><td><time datetime="{es[0]["utc"]}">{es[0]["clock"]}</time></td><td>{es[0]["offset"]}</td>'
   rows.append(f'<tr><th scope="row">{y}</th>{cells}</tr>')
- return '<section class="sp3-section" id="datos"><div class="sp3-heading"><div><span class="sp3-eyebrow">Vienas momentas visai Žemei</span><h2>2027–2029 m. datų palyginimas</h2></div></div><p class="sp3-note sp3-table-hint">Siaurame ekrane lentelę galite slinkti į šoną.</p><div class="sp3-table-wrap" tabindex="0" role="region" aria-label="Astronominių datų palyginimas"><table><caption>Lygiadieniai ir saulėgrįžos Lietuvos vietos laiku; USNO, minučių tikslumu.</caption><thead><tr>'+header+'</tr></thead><tbody>'+''.join(rows)+'</tbody></table></div><p class="sp3-note">'+('2028 m. vasaros saulėgrįža Lietuvoje įvyks birželio 20 d. '+''if id is None or id=='summer'else '')+'Datos perskaičiuotos į Europe/Vilnius laiko juostą, įvertinus vasaros laiką. <a href="#saltiniai">Šaltiniai ir metodika</a>.</p></section>'
+ return '<section class="sp3-section" id="datos"><div class="sp3-heading"><div><h2>2027–2030 m. datų palyginimas</h2></div></div><p class="sp3-note sp3-table-hint">Siaurame ekrane lentelę galite slinkti į šoną.</p><div class="sp3-table-wrap" tabindex="0" role="region" aria-label="Astronominių datų palyginimas"><table><caption>Lygiadieniai ir saulėgrįžos Lietuvos vietos laiku; USNO, minučių tikslumu.</caption><thead><tr>'+header+'</tr></thead><tbody>'+''.join(rows)+'</tbody></table></div><p class="sp3-note">'+('2028 m. vasaros saulėgrįža Lietuvoje įvyks birželio 20 d. '+''if id is None or id=='summer'else '')+'Datos perskaičiuotos į Europe/Vilnius laiko juostą, įvertinus vasaros laiką. <a href="#saltiniai">Šaltiniai ir metodika</a>.</p></section>'
 def diagram(id='spring'):
  i=IDS.index(id);e=event(id)
- buttons=''.join(f'<button type="button" data-step="{j}" aria-pressed="{"true"if i==j else "false"}" disabled><span class="sp3-step-number">0{j+1}</span><span>{SEASONS[j]}</span></button>'for j in range(4))
- return f'''<section class="sp3-section" id="zemes-asies-pasvirimas"><div class="sp3-heading"><div><span class="sp3-eyebrow">Šviesos geometrija</span><h2>Kaip Žemės ašies pasvirimas keičia metų laikus?</h2><p>Metų laikus lemia apie 23,4° pasvirusi Žemės ašis, ne atstumas iki Saulės.</p></div></div><div class="sp3-science"><figure class="sp3-orbit-figure">{artwork.orbit(i)}<figcaption>Žemės ašys išlieka lygiagrečios. Orbita parodyta perspektyvoje; dydžiai ir atstumai nėra vienodo mastelio.</figcaption></figure><div class="sp3-earth-panel"><figure><img id="sp3-earth" src="/assets/visuals/seasons/{id}-earth.svg" width="500" height="460" alt="{esc(NAMES[i])}: Žemės apšvietimo schema" loading="lazy"><figcaption>Saulės šviesa – iš kairės. Vaizdo kryptis kinta pagal metų laiką; tikrasis ašies pasvirimas nekinta. Žemynai apibendrinti.</figcaption></figure><p class="sp3-eyebrow" id="sp3-diagram-name">{NAMES[i]}</p><p id="sp3-diagram-time">{e['label']} · {e['clock']} · {e['offset']}</p></div></div><div class="sp3-steps" role="group" aria-label="Pasirinkti astronominį metų laiką">{buttons}</div><div class="sp3-play-row"><button type="button" id="sp3-play" aria-pressed="false" disabled>{icon('play')}<span>Paleisti metų ciklą</span></button><p class="sp3-note">Schema keičia tik paaiškinimo vaizdą. Pasirinkto gido datos ir miesto duomenys lieka savo vietose.</p></div><p id="sp3-diagram-status" class="visually-hidden" role="status"></p></section>'''
+ buttons=''.join(f'<button type="button" data-step="{j}" aria-pressed="{"true"if i==j else "false"}" disabled><span>{SEASONS[j]}</span></button>'for j in range(4))
+ return f'''<section class="sp3-section" id="zemes-asies-pasvirimas"><div class="sp3-heading"><div><h2>Kaip Žemės ašies pasvirimas keičia metų laikus?</h2><p>Metų laikus lemia apie 23,4° pasvirusi Žemės ašis, ne atstumas iki Saulės.</p></div></div><div class="sp3-science"><figure class="sp3-orbit-figure">{artwork.orbit(i)}<figcaption>Žemės ašys išlieka lygiagrečios. Orbita parodyta perspektyvoje; dydžiai ir atstumai nėra vienodo mastelio.</figcaption></figure><div class="sp3-earth-panel"><figure><img id="sp3-earth" src="/assets/visuals/seasons/{id}-earth.svg" width="500" height="460" alt="{esc(NAMES[i])}: Žemės apšvietimo schema" loading="lazy"><figcaption>Saulės šviesa – iš kairės. Vaizdo kryptis kinta pagal metų laiką; tikrasis ašies pasvirimas nekinta. Žemynai apibendrinti.</figcaption></figure><p class="sp3-eyebrow" id="sp3-diagram-name">{NAMES[i]}</p><p id="sp3-diagram-time">{e['label']} · {e['clock']} · {e['offset']}</p></div></div><div class="sp3-steps" role="group" aria-label="Pasirinkti astronominį metų laiką">{buttons}</div><div class="sp3-play-row"><button type="button" id="sp3-play" aria-pressed="false" disabled>{icon('play')}<span>Paleisti metų ciklą</span></button><p class="sp3-note">Schema keičia tik paaiškinimo vaizdą. Pasirinkto gido datos ir miesto duomenys lieka savo vietose.</p></div><p id="sp3-diagram-status" class="visually-hidden" role="status"></p></section>'''
 def annual(id=None):
  v=D['annual']['2027']['vilnius'];marker=None if id is None else (datetime.fromisoformat(event(id)['date']).timetuple().tm_yday-1)/(len(v['curve'])-1)*1000
  monthrows=''.join(f'<tr><th scope="row">{n+1:02d}-15</th><td>{duration(v["curve"][(datetime(2027,n+1,15)-datetime(2027,1,1)).days])}</td></tr>'for n in range(12))
- return f'''<section class="sp3-section" id="dienos-sviesa"><div class="sp3-heading"><div><span class="sp3-eyebrow">Nuo žiemos iki vasaros ir atgal</span><h2>Kaip per metus kinta dienos ilgumas?</h2><p data-annual-caption>2027 m. · Vilnius · laikas nuo saulėtekio iki saulėlydžio</p></div><div class="sp3-range"><span>Trumpiausia trukmė <strong data-min>{duration(v['min'])}</strong></span><span>Ilgiausia trukmė <strong data-max>{duration(v['max'])}</strong></span></div></div>{chart(v['curve'],'annual','Dienos šviesos trukmė per visus metus. Vertikali skalė nuo 0 iki 24 valandų.',marker)}<div class="sp3-xlabels"><span>Sausis</span><span>Balandis</span><span>Liepa</span><span>Spalis</span><span>Gruodis</span></div><p class="sp3-note">Vienoda 0–24 val. skalė leidžia palyginti miestus ir metus.{" Punktyrinė žyma – pasirinkto įvykio diena."if id else ""} Apytikslis skaičiavimas miesto centrui; atmosfera ir reljefas gali pakeisti stebimą laiką.</p><details><summary>Dienos šviesos lentelė: kiekvieno mėnesio 15 diena</summary><table><caption data-annual-table-caption>2027 m., Vilnius – mėnesių palyginimas</caption><thead><tr><th scope="col">Data (mėnuo–diena)</th><th scope="col">Dienos šviesa</th></tr></thead><tbody data-annual-rows>{monthrows}</tbody></table></details></section>'''
+ return f'''<section class="sp3-section" id="dienos-sviesa"><div class="sp3-heading"><div><h2>Kaip per metus kinta dienos ilgumas?</h2><p data-annual-caption>2027 m. · Vilnius · laikas nuo saulėtekio iki saulėlydžio</p></div><div class="sp3-range"><span>Trumpiausia trukmė <strong data-min>{duration(v['min'])}</strong></span><span>Ilgiausia trukmė <strong data-max>{duration(v['max'])}</strong></span></div></div>{chart(v['curve'],'annual','Dienos šviesos trukmė per visus metus. Vertikali skalė nuo 0 iki 24 valandų.',marker)}<div class="sp3-xlabels"><span>Sausis</span><span>Balandis</span><span>Liepa</span><span>Spalis</span><span>Gruodis</span></div><p class="sp3-note">Vienoda 0–24 val. skalė leidžia palyginti miestus ir metus.{" Punktyrinė žyma – pasirinkto įvykio diena."if id else ""} Apytikslis skaičiavimas miesto centrui; atmosfera ir reljefas gali pakeisti stebimą laiką.</p><details><summary>Dienos šviesos lentelė: kiekvieno mėnesio 15 diena</summary><table><caption data-annual-table-caption>2027 m., Vilnius – mėnesių palyginimas</caption><thead><tr><th scope="col">Data (mėnuo–diena)</th><th scope="col">Dienos šviesa</th></tr></thead><tbody data-annual-rows>{monthrows}</tbody></table></details></section>'''
 def city_context(id):
  c=D['contexts'][id+'-2027']['vilnius'];today=c['days'][7]
  metrics=''.join(f'<div class="sp3-metric">{icon(ic)}<span>{label}</span><strong data-metric="{key}">{value}</strong></div>'for ic,label,key,value in [('sunrise','Saulėtekis','rise',today[1]),('daylight','Dienos šviesa','length',duration(today[3])),('sunset','Saulėlydis','set',today[2])])
  rows=''.join(f'<tr><th scope="row">{row[0]}</th><td>{row[1]}</td><td>{row[2]}</td><td>{duration(row[3])}</td></tr>'for row in c['days'])
  delta=(f'Laikotarpio pabaigoje – {abs(c["delta"])} min. '+('daugiau'if c['delta']>0 else 'mažiau')+' dienos šviesos nei pradžioje.')if c['delta'] else 'Laikotarpio pradžioje ir pabaigoje dienos šviesos trukmė sutampa, suapvalinus iki minutės.'
- return f'''<section class="sp3-section" id="miesto-laikai"><div class="sp3-heading"><div><span class="sp3-eyebrow">Vietos šviesa</span><h2>Kiek trunka diena jūsų mieste?</h2><p data-context-caption>2027 m. · Vilnius · {event(id)['label']}</p></div><a href="/saule/" class="sp3-text-link">Kitų datų Saulės skaičiuoklė {icon('arrow')}</a></div><div class="sp3-metrics">{metrics}</div><div class="sp3-chart-heading"><h3>Dienos ilgumas prieš reiškinį ir po jo</h3><p data-delta>{delta}</p></div>{chart([row[3]for row in c['days']],'around','Dienos šviesos trukmė septynias dienas prieš įvykį ir septynias po jo.',500)}<div class="sp3-xlabels"><span data-around-start>{c['days'][0][0]}</span><span>Įvykio diena</span><span data-around-end>{c['days'][-1][0]}</span></div><p class="sp3-note">Saulėtekio ir saulėlydžio laikai nėra lygiadienio ar saulėgrįžos momentas. Jie priklauso nuo miesto. Ties saulėgrįža minučių apvalinimas gali paslėpti labai mažą dienos ilgumo pokytį.</p><details><summary>Atverti visų 15 dienų Saulės laikus</summary><div class="sp3-table-wrap" tabindex="0" role="region" aria-label="Penkiolikos dienų Saulės laikų lentelė"><table><caption data-around-table-caption>2027 m., Vilnius – septynios dienos prieš įvykį ir po jo</caption><thead><tr><th scope="col">Data</th><th scope="col">Saulėtekis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos šviesa</th></tr></thead><tbody data-around-rows>{rows}</tbody></table></div></details></section>'''
+ return f'''<section class="sp3-section" id="miesto-laikai"><div class="sp3-heading"><div><h2>Kiek trunka diena jūsų mieste?</h2><p data-context-caption>2027 m. · Vilnius · {event(id)['label']}</p></div><a href="/saule/" class="sp3-text-link">Kitų datų Saulės skaičiuoklė {icon('arrow')}</a></div><div class="sp3-metrics">{metrics}</div><div class="sp3-chart-heading"><h3>Dienos ilgumas prieš reiškinį ir po jo</h3><p data-delta>{delta}</p></div>{chart([row[3]for row in c['days']],'around','Dienos šviesos trukmė septynias dienas prieš įvykį ir septynias po jo.',500)}<div class="sp3-xlabels"><span data-around-start>{c['days'][0][0]}</span><span>Įvykio diena</span><span data-around-end>{c['days'][-1][0]}</span></div><p class="sp3-note">Saulėtekio ir saulėlydžio laikai nėra lygiadienio ar saulėgrįžos momentas. Jie priklauso nuo miesto. Ties saulėgrįža minučių apvalinimas gali paslėpti labai mažą dienos ilgumo pokytį.</p><details><summary>Atverti visų 15 dienų Saulės laikus</summary><div class="sp3-table-wrap" tabindex="0" role="region" aria-label="Penkiolikos dienų Saulės laikų lentelė"><table><caption data-around-table-caption>2027 m., Vilnius – septynios dienos prieš įvykį ir po jo</caption><thead><tr><th scope="col">Data</th><th scope="col">Saulėtekis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos šviesa</th></tr></thead><tbody data-around-rows>{rows}</tbody></table></div></details></section>'''
 def sources(id=None):
  culture=''if id is None else f'<li><a href="{CULTURE[IDS.index(id)][4]}">Etninės kultūros globos taryba: {CULTURE[IDS.index(id)][0].lower()}</a> – kultūrinis kontekstas.</li>'
- return f'''<section class="sp3-section sp3-sources" id="saltiniai"><span class="sp3-eyebrow">Patikrinama kilmė</span><h2>Šaltiniai ir skaičiavimo ribos</h2><p>Parengė Kalendorius365. Astronominės datos patikrintos 2026-10-17; laikas pateiktas minučių tikslumu. Pirminiai USNO duomenys palyginti su nepriklausoma Fredo Espenako lentele: skirtumai neviršija vienos minutės.</p><ul><li><a href="https://aa.usno.navy.mil/data/Earth_Seasons">JAV karinio jūrų laivyno observatorija (USNO)</a> – astronominių metų laikų momentai UTC; perskaičiuota į Europe/Vilnius.</li><li><a href="https://www.astropixels.com/ephemeris/soleq2001.html">Fredas Espenakas, AstroPixels: lygiadienių ir saulėgrįžų lentelė</a> – nepriklausoma patikra. Lygiadienių ir saulėgrįžų lentelė: Fredas Espenakas, www.Astropixels.com.</li><li><a href="https://spaceplace.nasa.gov/seasons/en/">NASA: kodėl keičiasi metų laikai</a> – ašies pasvirimo paaiškinimas.</li><li><a href="https://www.ncei.noaa.gov/news/meteorological-versus-astronomical-seasons">NOAA: astronominiai ir meteorologiniai metų laikai</a>; <a href="https://www.meteo.lt/app/uploads/2024/10/Klimato-Atlasas.pdf">LHMT: Lietuvos klimato atlasas</a> – kalendorinių ir terminių ribų skirtumas.</li>{culture}</ul><p class="sp3-note">Saulės laikams naudojama ta pati skaičiavimo sistema kaip <a href="/saule/">Saulės įrankyje</a>: standartinis −0,833° horizonto kampas ir miesto centro koordinatės. Reljefas, pastatai ir faktiniai orai neįvertinami. Koordinatės – <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; penkių miestų centrai. Iliustracijos – originalūs Kalendorius365 vektoriniai kūriniai, ne vietovės nuotraukos.</p></section>'''
+ return f'''<section class="sp3-section sp3-sources" id="saltiniai"><h2>Šaltiniai ir skaičiavimo ribos</h2><p>Parengė Kalendorius365. Astronominės datos patikrintos 2026-10-17; laikas pateiktas minučių tikslumu. Pirminiai USNO duomenys palyginti su nepriklausoma Fredo Espenako lentele: skirtumai neviršija vienos minutės.</p><ul><li><a href="https://aa.usno.navy.mil/data/Earth_Seasons">JAV karinio jūrų laivyno observatorija (USNO)</a> – astronominių metų laikų momentai UTC; perskaičiuota į Europe/Vilnius.</li><li><a href="https://www.astropixels.com/ephemeris/soleq2001.html">Fredas Espenakas, AstroPixels: lygiadienių ir saulėgrįžų lentelė</a> – nepriklausoma patikra. Lygiadienių ir saulėgrįžų lentelė: Fredas Espenakas, www.Astropixels.com.</li><li><a href="https://spaceplace.nasa.gov/seasons/en/">NASA: kodėl keičiasi metų laikai</a> – ašies pasvirimo paaiškinimas.</li><li><a href="https://www.ncei.noaa.gov/news/meteorological-versus-astronomical-seasons">NOAA: astronominiai ir meteorologiniai metų laikai</a>; <a href="https://www.meteo.lt/app/uploads/2024/10/Klimato-Atlasas.pdf">LHMT: Lietuvos klimato atlasas</a> – kalendorinių ir terminių ribų skirtumas.</li>{culture}</ul><p class="sp3-note">Saulės laikams naudojama ta pati skaičiavimo sistema kaip <a href="/saule/">Saulės įrankyje</a>: standartinis −0,833° horizonto kampas ir miesto centro koordinatės. Reljefas, pastatai ir faktiniai orai neįvertinami. Koordinatės – <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; penkių miestų centrai. Žemės ir orbitos schemos parengtos Kalendorius365. Lietuvos vietovių nuotraukų autoriai ir licencijos pateikti <a href="/nuotrauku-licencijos/#metu-laiku-nuotraukos">nuotraukų licencijų puslapyje</a>.</p></section>'''
 def related(id=None):
  links=[('/saule/','Saulėtekis ir saulėlydis','Data, miestas ir Saulės kelias.'),('/menulio-kalendorius/','Mėnulio kalendorius','Kasdieniai vaizdai ir spaudiniai.'),('/menulio-fazes/','Mėnulio fazės','Jaunatis, ketvirčiai ir pilnatis.'),('/astronominis-kalendorius/','Astronominis kalendorius','Saulės ir Mėnulio datos kartu.')]
  return '<section class="sp3-section"><h2>Toliau tyrinėkite kalendorių</h2><div class="sp3-related">'+''.join(f'<a href="{u}"><strong>{t}</strong><span>{s}</span>{icon("arrow")}</a>'for u,t,s in links)+'</div></section>'
+def photo_image(id, hero=False):
+ photo=PHOTOS[id]
+ sizes='(max-width: 760px) 92vw, (max-width: 1250px) 52vw, 690px' if hero else '(max-width: 520px) 88vw, (max-width: 950px) 44vw, 320px'
+ loading='fetchpriority="high"' if hero else 'loading="lazy"'
+ return (f'<img src="{photo["src"]}" srcset="{photo["small"]} 576w, {photo["src"]} 1440w" '
+         f'sizes="{sizes}" width="1440" height="900" alt="{esc(photo["alt"])}" {loading} decoding="async">')
+
+def hero_photo(id):
+ photo=PHOTOS[id]
+ return f'''<figure class="sp3-hero-art">
+  {photo_image(id, hero=True)}
+  <figcaption><span>{esc(photo["caption"])}</span><a href="/nuotrauku-licencijos/#{photo["id"]}">Nuotraukos šaltinis {icon('arrow')}</a></figcaption>
+ </figure>'''
+
+def local_nav(id=None):
+ links=[('#datos','Datų lentelė'),('#dienos-sviesa','Dienos ilgumas'),('#zemes-asies-pasvirimas','Žemės schema')]
+ if id:
+  links=[('/metu-laikai/','Visi metų laikai'),('#miesto-laikai','Miesto Saulės laikai')]+links
+ else:
+  links=[('#metu-juosta','Keturi metų laikai')]+links
+ return '<nav class="sp3-jump" aria-label="Šio gido skyriai">'+''.join(f'<a href="{href}">{label}</a>' for href,label in links)+'</nav>'
+
 def front(slug,title,description,body,id=None):
  out=ROOT/'site'/slug/'index.html';out.parent.mkdir(parents=True,exist_ok=True)
  url='https://kalendorius365.lt/'+slug+'/'
- ld={'@context':'https://schema.org','@type':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'inLanguage':'lt-LT','dateModified':'2026-10-17','publisher':{'@type':'Organization','name':'Kalendorius365','url':'https://kalendorius365.lt/'},'citation':['https://aa.usno.navy.mil/data/Earth_Seasons','https://spaceplace.nasa.gov/seasons/en/']}
- fm={'layout':'default','title':title,'description':description,'seasons':True,'season_event':id or False,'breadcrumb_label':NAMES[IDS.index(id)]if id else 'Metų laikai','og_image':f'/assets/visuals/seasons/{id or "hub"}-1200x630.png','og_image_alt':title+' – originali metų laikų iliustracija'}
+ ld={'@context':'https://schema.org','@type':'WebPage','@id':url+'#webpage','url':url,'name':title,'description':description,'inLanguage':'lt-LT','dateModified':'2026-11-20','publisher':{'@type':'Organization','name':'Kalendorius365','url':'https://kalendorius365.lt/'},'citation':['https://aa.usno.navy.mil/data/Earth_Seasons','https://spaceplace.nasa.gov/seasons/en/']}
+ photo=PHOTOS[id or 'hub']
+ ld['primaryImageOfPage']={'@type':'ImageObject','contentUrl':'https://kalendorius365.lt'+photo['src'],
+  'caption':photo['caption'],'creditText':photo['credit'],'license':photo['license']}
+ fm={'layout':'default','title':title,'description':description,'seasons':True,'season_event':id or False,
+     'breadcrumb_label':NAMES[IDS.index(id)] if id else 'Metų laikai','og_image':photo['social'],
+     'og_image_type':'image/jpeg','og_image_width':1200,'og_image_height':630,'og_image_alt':photo['alt']}
  header='---\n'+''.join(k+': '+json.dumps(v,ensure_ascii=False)+'\n'for k,v in fm.items())+'---\n'
  stamp=hashlib.sha256((ROOT/'site/assets/data/seasons.json').read_bytes()).hexdigest()[:12]
  out.write_text(header+f'<div class="sp3 sp3--{id or "hub"}" data-season="{id or "hub"}" data-source="/assets/data/seasons.json?v={stamp}">'+body+'</div>\n<script type="application/ld+json">'+json.dumps(ld,ensure_ascii=False)+'</script>\n')
 def build_event(id):
  i=IDS.index(id);e=event(id);prev=(i-1)%4;nxt=(i+1)%4;cult=CULTURE[i]
- hero=f'''<header class="sp3-hero"><div class="sp3-hero-copy"><span class="sp3-eyebrow">Astronominiai metų laikai · Lietuva</span><h1>{NAMES[i]}</h1><p class="sp3-lead">{INTRO[i]}</p><div class="sp3-answer"><span>Astronominis momentas Lietuvoje</span><strong data-event-date>{e['label']}</strong><div><time data-event-clock datetime="{e['utc']}">{e['clock']}</time><span data-event-offset>{e['offset']} · Europe/Vilnius</span></div></div>{icslink(id)}<a class="sp3-text-link" href="#datos">Palyginti 2027–2029 metus {icon('arrow')}</a></div><figure class="sp3-hero-art"><img src="/assets/visuals/seasons/{id}-landscape.svg" width="1200" height="800" alt="{artwork.PALETTES[id]['name']} Lietuvoje: stilizuotas ežeras ir sezoninė šviesa" fetchpriority="high"><figcaption><span>0{i+1} / 04</span>{SEASONS[i]} · {SHORT[i]}</figcaption></figure></header>'''
+ hero=f'''<header class="sp3-hero">
+  <div class="sp3-hero-copy">
+   <p class="sp3-eyebrow">{SEASONS[i]} Lietuvoje</p>
+   <h1>{NAMES[i]}</h1>
+   <p class="sp3-lead">{INTRO[i]}</p>
+   <div class="sp3-answer">
+    <span>Astronominis momentas · <span data-year>2027</span> m.</span>
+    <strong data-event-date>{e['label']}</strong>
+    <div><time data-event-clock datetime="{e['utc']}">{e['clock']}</time><span data-event-offset>{e['offset']} · Europe/Vilnius</span></div>
+   </div>
+   {icslink(id)}
+  </div>
+  {hero_photo(id)}
+ </header>'''
  nextblock=f'''<section class="sp3-next" aria-labelledby="sp3-next-title">{icon('clock')}<div><h2 id="sp3-next-title">Kitas šio reiškinio momentas</h2><p id="sp3-next-date">Įjunkite JavaScript, kad matytumėte artimiausią datą pagal savo įrenginio laiką.</p></div><p id="sp3-countdown" class="sp3-countdown" aria-live="off">Patikrintos datos: 2026–2030 m.</p><a id="sp3-next-ics" hidden download>Į kalendorių · ICS</a></section>'''
  meaning=f'<section class="sp3-explainer"><span>{icon("daylight")}</span><div><h2>{MEANING[i][0]}</h2><p>{MEANING[i][1]}</p></div></section>'
- culture=f'''<section class="sp3-culture sp3-section"><div><span class="sp3-eyebrow">Lietuvos tradicijų kalendorius</span><h2>{cult[0]}</h2><p>{cult[1]}</p><a class="sp3-text-link" href="{cult[2]}">{cult[3]} {icon('arrow')}</a></div><div class="sp3-culture-aside">{icon('tradition')}<strong>Astronomija ir tradicija</strong><p>Astronominis momentas skaičiuojamas. Šventės data ir papročiai priklauso kultūros kalendoriui.</p><a data-month-link href="/sventes/2027/{MONTH_SLUGS[int(e['date'][5:7])-1]}/">2027 m. šio mėnesio šventės</a></div></section>'''
+ culture=f'''<section class="sp3-culture sp3-section"><div><h2>{cult[0]}</h2><p>{cult[1]}</p><a class="sp3-text-link" href="{cult[2]}">{cult[3]} {icon('arrow')}</a></div><div class="sp3-culture-aside">{icon('tradition')}<strong>Astronomija ir tradicija</strong><p>Astronominis momentas skaičiuojamas. Šventės data ir papročiai priklauso kultūros kalendoriui.</p><a data-month-link href="/sventes/2027/{MONTH_SLUGS[int(e['date'][5:7])-1]}/">2027 m. šio mėnesio šventės</a></div></section>'''
  nav=f'<nav class="sp3-prevnext" aria-label="Kiti metų ciklo reiškiniai"><a href="/{SLUGS[prev]}/">{icon("previous")}<span><small>Ankstesnis ciklo reiškinys</small><strong>{NAMES[prev]}</strong></span></a><a href="/{SLUGS[nxt]}/"><span><small>Kitas ciklo reiškinys</small><strong>{NAMES[nxt]}</strong></span>{icon("arrow")}</a></nav>'
- body=hero+nextblock+meaning+controls()+city_context(id)+comparison(id)+diagram(id)+annual(id)+culture+nav+related(id)+sources(id)
- front(SLUGS[i],NAMES[i]+' 2027–2029 m. – datos ir laikas Lietuvoje',f'{NAMES[i]}: patikrintos 2027–2029 m. datos Lietuvos laiku, dienos šviesos palyginimas penkiuose miestuose, Žemės schema ir ICS kalendoriui.',body,id)
+ filters='<div class="sp3-filter-panel" id="pasirinkimas">'+controls()+'</div>'
+ body=hero+local_nav(id)+filters+nextblock+city_context(id)+comparison(id)+meaning+diagram(id)+annual(id)+culture+nav+related(id)+sources(id)
+ front(SLUGS[i],NAMES[i]+' 2027–2030 m. – datos ir laikas Lietuvoje',f'{NAMES[i]}: patikrintos 2027–2030 m. datos Lietuvos laiku, dienos šviesos palyginimas penkiuose miestuose, Žemės schema ir ICS kalendoriui.',body,id)
 def build_hub():
- hero='''<header class="sp3-hero sp3-hero--hub"><div class="sp3-hero-copy"><span class="sp3-eyebrow">Lietuvos metų ritmas</span><h1>Metų laikai Lietuvoje: <br>datos ir dienos ilgumas.</h1><p class="sp3-lead">Sužinokite, kada prasideda astronominiai metų laikai, kaip kinta dienos ilgumas ir kuo šis skirstymas skiriasi nuo meteorologinių metų laikų.</p><div class="sp3-hub-facts"><span><strong>4</strong> metų laikų pradžios</span><span><strong>3</strong> palyginami metai</span><span><strong>5</strong> Lietuvos miestai</span></div><a class="sp3-button" href="#metu-juosta">Metų datos ir šviesa '''+icon('arrow')+'''</a></div><figure class="sp3-hero-art sp3-mosaic">'''+''.join(f'<img src="/assets/visuals/seasons/{s}-landscape.svg" width="1200" height="800" alt="{SEASONS[i]}: originali Lietuvos gamtos iliustracija">'for i,s in enumerate(IDS))+'''<figcaption>Pavasaris · vasara · ruduo · žiema</figcaption></figure></header>'''
- cards='<section class="sp3-section"><div class="sp3-heading"><div><span class="sp3-eyebrow">Pasirinkite metų laiką</span><h2>Kada prasideda astronominiai metų laikai?</h2></div><a href="#datos">Visos datos vienoje lentelėje</a></div><div class="sp3-season-cards">'+''.join(f'<a class="sp3-season-card sp3--{s}" href="/{SLUGS[i]}/"><img src="/assets/visuals/seasons/{s}-landscape.svg" width="1200" height="800" alt="{SEASONS[i]}: ežero ir gamtos vaizdas" loading="lazy"><div><span class="sp3-eyebrow">0{i+1} · {SHORT[i]}</span><h3>{NAMES[i]}</h3><p data-card-time="{s}">{event(s)["label"]} · {event(s)["clock"]}</p><span class="sp3-text-link">{SEASONS[i]} iš arčiau {icon("arrow")}</span></div></a>'for i,s in enumerate(IDS))+'</div></section>'
- timeline='<section class="sp3-section" id="metu-juosta"><div class="sp3-heading"><div><span class="sp3-eyebrow">Astronominiai metų laikai</span><h2><span data-year>2027</span> m. šviesos kalendorius</h2></div>'+icslink()+'</div>'+controls()+'<ol class="sp3-timeline">'+''.join(f'<li class="sp3--{s}"><span class="sp3-timeline-dot" aria-hidden="true"></span><h3><a href="/{SLUGS[i]}/">{SEASONS[i]}</a></h3><p data-timeline="{s}">{event(s)["label"]}<br><strong>{event(s)["clock"]}</strong> · {event(s)["offset"]}</p></li>'for i,s in enumerate(IDS))+'</ol></section>'
- system='''<section class="sp3-section" id="dvi-sistemos"><span class="sp3-eyebrow">Skirtingos ribos, skirtinga paskirtis</span><h2>Kada iš tiesų prasideda metų laikas?</h2><div class="sp3-systems"><article><span>01 · Dangaus momentas</span><h3>Astronominiai metų laikai</h3><p>Prasideda lygiadieniais ir saulėgrįžomis. Datos bei valandos kasmet truputį kinta. Čia pateikiami Šiaurės pusrutulio metų laikai; Pietų pusrutulyje jie priešingi.</p></article><article><span>02 · Kalendorinė tvarka</span><h3>Meteorologinis trijų mėnesių skirstymas</h3><dl><dt>Pavasaris</dt><dd>Kovas–gegužė</dd><dt>Vasara</dt><dd>Birželis–rugpjūtis</dd><dt>Ruduo</dt><dd>Rugsėjis–lapkritis</dd><dt>Žiema</dt><dd>Gruodis–vasaris</dd></dl></article></div><p class="sp3-note">Trijų mėnesių skirstymas patogus klimato duomenims lyginti. Lietuvos klimato aprašymuose taip pat vartojami <strong>terminiai metų laikai</strong>, kurių ribos nustatomos pagal temperatūrą, todėl jos kasmet kinta. Kalendorinė birželio 1-oji nebūtinai reiškia terminės vasaros pradžią. <a href="#saltiniai">NOAA ir LHMT šaltiniai</a>.</p></section>'''
+ hero=f'''<header class="sp3-hero sp3-hero--hub">
+  <div class="sp3-hero-copy">
+   <p class="sp3-eyebrow">Astronominis kalendorius</p>
+   <h1>Metų laikai Lietuvoje</h1>
+   <p class="sp3-lead">2027–2030 m. lygiadienių ir saulėgrįžų datos Lietuvos laiku. Pasirinkite metus ir palyginkite, kaip penkiuose Lietuvos miestuose kinta dienos ilgumas.</p>
+   <a class="sp3-button" href="#metu-juosta">Pasirinkti metus ir miestą {icon('arrow')}</a>
+  </div>
+  {hero_photo('hub')}
+ </header>'''
+ cards=[]
+ for i,id in enumerate(IDS):
+  e=event(id)
+  photo=PHOTOS[id]
+  cards.append(f'''<article class="sp3-season-card sp3--{id}">
+   <a href="/{SLUGS[i]}/" class="sp3-season-link">
+    {photo_image(id)}
+    <div class="sp3-card-copy">
+     <p class="sp3-card-place">{esc(photo['caption'])}</p>
+     <h3>{NAMES[i]}</h3>
+     <time data-card-time="{id}" datetime="{e['utc']}"><span>{e['label']}</span><strong>{e['clock']}</strong></time>
+     <span class="sp3-card-action">Atverti gidą {icon('arrow')}</span>
+    </div>
+   </a>
+  </article>''')
+ seasons=f'''<section class="sp3-section sp3-season-directory" id="metu-juosta" aria-labelledby="sp3-seasons-title">
+  <div class="sp3-heading"><div><h2 id="sp3-seasons-title">Kada prasideda metų laikai?</h2><p>Astronominiai momentai pagal pasirinktus metus.</p></div>{icslink()}</div>
+  <div class="sp3-filter-panel">{controls()}</div>
+  <div class="sp3-season-cards">{''.join(cards)}</div>
+ </section>'''
+ system='''<section class="sp3-section" id="dvi-sistemos"><h2>Kada iš tiesų prasideda metų laikas?</h2><div class="sp3-systems"><article><h3>Astronominiai metų laikai</h3><p>Prasideda lygiadieniais ir saulėgrįžomis. Datos bei valandos kasmet truputį kinta. Čia pateikiami Šiaurės pusrutulio metų laikai; Pietų pusrutulyje jie priešingi.</p></article><article><span>02 · Kalendorinė tvarka</span><h3>Meteorologinis trijų mėnesių skirstymas</h3><dl><dt>Pavasaris</dt><dd>Kovas–gegužė</dd><dt>Vasara</dt><dd>Birželis–rugpjūtis</dd><dt>Ruduo</dt><dd>Rugsėjis–lapkritis</dd><dt>Žiema</dt><dd>Gruodis–vasaris</dd></dl></article></div><p class="sp3-note">Trijų mėnesių skirstymas patogus klimato duomenims lyginti. Lietuvos klimato aprašymuose taip pat vartojami <strong>terminiai metų laikai</strong>, kurių ribos nustatomos pagal temperatūrą, todėl jos kasmet kinta. Kalendorinė birželio 1-oji nebūtinai reiškia terminės vasaros pradžią. <a href="#saltiniai">NOAA ir LHMT šaltiniai</a>.</p></section>'''
  culture='<section class="sp3-section"><h2>Metų laikai Lietuvos švenčių kalendoriuje</h2><div class="sp3-related">'+''.join(f'<a href="{c[2]}"><strong>{c[0]}</strong><span>Tradicijos ir kalendorinė data</span>{icon("arrow")}</a>'for c in CULTURE)+'</div></section>'
- front('metu-laikai','Metų laikai Lietuvoje: datos 2027–2029 m.','Astronominiai ir meteorologiniai metų laikai Lietuvoje. 2027–2029 m. lygiadienių ir saulėgrįžų datos, dienos šviesos grafikai, miestai ir ICS.',hero+cards+timeline+comparison()+system+diagram()+annual()+culture+related()+sources())
+ front('metu-laikai','Metų laikai Lietuvoje: datos 2027–2030 m.','Astronominiai ir meteorologiniai metų laikai Lietuvoje. 2027–2030 m. lygiadienių ir saulėgrįžų datos, dienos šviesos grafikai, miestai ir ICS.',hero+local_nav()+seasons+comparison()+annual()+system+diagram()+culture+related()+sources())
 def ics():
  def val(v):return v.replace('\\','\\\\').replace('\n','\\n').replace(';','\\;').replace(',','\\,')
  def fold(line):
@@ -119,11 +186,13 @@ def integrations(root=ROOT):
    text=before.rstrip('\n')+'\n'+after.lstrip('\n')
   if route=='astronominis-kalendorius':
    rows=''.join('<tr><th scope="row">'+str(y)+'</th>'+''.join(f'<td>{event(s,y)["label"]} {event(s,y)["clock"]}</td>'for s in IDS)+'</tr>'for y in D['years'])
-   text=text.replace('<tbody id="season-rows"></tbody>','<tbody id="season-rows">'+rows+'</tbody>')
-  block=f'{start}<section class="panel"><h2>Metų laikai ir dienos ilgumas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2029 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section>{end}'
+   text=re.sub(r'<tbody id="season-rows">.*?</tbody>', lambda _: '<tbody id="season-rows">'+rows+'</tbody>', text, flags=re.S)
+   p.write_text(text.rstrip('\n')+'\n')
+   continue
+  block=f'{start}<section class="panel"><h2>Metų laikai ir dienos ilgumas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2030 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section>{end}'
   p.write_text(text.rstrip('\n')+'\n'+block+'\n')
 if __name__=='__main__':
  artwork.run();ics();build_hub()
  for s in IDS:build_event(s)
  integrations()
- print('Seasons: five Lithuanian pages, nine original vector files, 23 UTC calendar exports; three existing entry points integrated.')
+ print('Seasons: five Lithuanian guides with credited photographs, orbital diagrams and UTC calendar exports.')

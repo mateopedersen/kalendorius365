@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:partizanu-pagerbimo-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280521
+DTEND;VALUE=DATE:20280522
+SUMMARY:Partizanų pagerbimo\, kariuomenės ir visuomenės vienybės diena
+DESCRIPTION:Trečiąjį gegužės sekmadienį minimas partizanų atminimas 
+ ir kariuomenės ryšys su visuomene.
+URL:https://kalendorius365.lt/sventes/partizanu-pagerbimo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

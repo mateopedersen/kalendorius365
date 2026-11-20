@@ -1,5 +1,6 @@
 categories:
   - id: dates
+    art: date-tabs
     title: Kalendoriai ir datos
     tools:
       - route: /vardadieniai/
@@ -10,15 +11,17 @@ categories:
         outputs: [ICS]
         keywords: vardai vardadienis vardu diena vardas paieska kalendorius
         icon: tool-year
+        art: names
         card_class: resource-card--year
       - route: /metai/
         title: Metų kalendoriai
-        description: 2027–2029 metų kalendorių, mėnesių ir metinių spaudinių apžvalga.
+        description: 2027–2030 m. kalendoriai, mėnesių palyginimas ir spausdinimo parinktys.
         example: Palyginkite 2028 keliamuosius metus su 2027 metais.
         kind: Metų kalendorių apžvalga
         outputs: [PDF, WebP]
         keywords: metu metai metinis kalendorius keliamieji vasaris spausdinamas
         icon: tool-year
+        art: year-overview
         card_class: resource-card--year
       - route: /datos-skaiciuokle/
         title: Datos skaičiuoklė
@@ -28,8 +31,9 @@ categories:
         outputs: [Ekrane]
         keywords: datos dienos skirtumas kiek dienu darbo dienos prideti atimti liko savaites terminas
         icon: tool-date
+        art: calculator
         card_class: resource-card--date
-      - route: /savaites/2027/
+      - route: /savaites/
         title: ISO savaitės
         description: Savaičių numeriai ir tikslūs pirmadienio–sekmadienio intervalai.
         example: 2027 m. sausio 1 d. priklauso 2026-W53 savaitei.
@@ -37,8 +41,40 @@ categories:
         outputs: [Ekrane]
         keywords: savaite savaites numeris iso 2027 savaitgaliai pirmadienis sekmadienis
         icon: tool-iso
+        art: week
         card_class: resource-card--iso
+      - route: /atgalinis-skaiciavimas/
+        title: "Atgalinis skaičiavimas"
+        description: "Dienos, valandos, minutės ir sekundės iki jūsų pasirinktos datos."
+        example: "Sužinokite, kiek laiko liko iki kelionės."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: data diena laikas atgalinis skaiciavimas
+        icon: tool-year
+        art: hourglass
+        card_class: resource-card--year
+      - route: /metu-diena/
+        title: "Metų dienos numeris"
+        description: "Datos eilės numeris, likusios metų dienos ir ISO savaitė."
+        example: "Patikrinkite keliamųjų metų vasario 29-ąją."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: metu diena kelinta diena savaite
+        icon: tool-year
+        art: day-counter
+        card_class: resource-card--year
+      - route: /keliamieji-metai/
+        title: "Keliamųjų metų skaičiuoklė"
+        description: "Patikrinkite, kiek dienų turi pasirinkti metai ir jų vasaris."
+        example: "Palyginkite 1900 ir 2000 metus."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: keliamieji metai vasaris 29
+        icon: tool-year
+        art: leap-day
+        card_class: resource-card--year
   - id: work
+    art: briefcase
     title: Darbas ir atostogos
     tools:
       - route: /atostogu-planavimas/
@@ -49,6 +85,7 @@ categories:
         outputs: [Ekrane, spausdinti]
         keywords: atostogos poilsis laisvadieniai ilgas savaitgalis atostogu planavimas
         icon: tool-vacation
+        art: vacation
         card_class: resource-card--vacation
       - route: /pamainu-grafikas/
         title: Pamainų grafiko planuoklis
@@ -58,6 +95,7 @@ categories:
         outputs: [JSON, ICS, spausdinti]
         keywords: pamaina pamainos darbas naktine dienine grafikas ciklas valandos
         icon: tool-shift
+        art: shift
         card_class: resource-card--shift
       - route: /darbo-dienos/2027/
         title: Darbo dienų kalendorius
@@ -67,6 +105,7 @@ categories:
         outputs: [CSV, spausdinti]
         keywords: darbas darbo laikas darbo valandos darbo dienos savaites grafikas kalendorius
         icon: tool-workdays
+        art: work-log
         card_class: resource-card--workdays
       - route: /darbo-grafiko-sablonai/
         title: Darbo grafiko šablonai
@@ -76,8 +115,10 @@ categories:
         outputs: [PDF, WebP]
         keywords: pamaina grafikas sablonas tuscias spausdinamas darbo grafiko sablonai
         icon: tool-shift-template
+        art: shift-templates
         card_class: resource-card--shift-template
   - id: school
+    art: school
     title: Mokslai ir šeima
     tools:
       - route: /pamoku-tvarkarastis/
@@ -88,6 +129,7 @@ categories:
         outputs: [JSON, spausdinti]
         keywords: pamokos mokykla dalykai namu darbai pamoku tvarkarastis mokinio planas
         icon: tool-school
+        art: classroom-board
         card_class: resource-card--school
       - route: /mokiniu-atostogos/
         title: Mokinių atostogos
@@ -97,6 +139,7 @@ categories:
         outputs: [PDF, WebP, spausdinti]
         keywords: mokykla mokiniu atostogos velykos mokiniu poilsis ugdymo pakopa
         icon: tool-school-break
+        art: school-break
         card_class: resource-card--school-break
       - route: /pamoku-tvarkarascio-sablonai/
         title: Pamokų tvarkaraščio šablonai
@@ -106,6 +149,7 @@ categories:
         outputs: [PDF, WebP]
         keywords: mokykla pamoku tvarkarastis tuscias sablonas dalykai klase
         icon: tool-school-template
+        art: lesson-templates
         card_class: resource-card--school-template
       - route: /seimos-kalendorius/
         title: Šeimos savaitės planas
@@ -115,8 +159,10 @@ categories:
         outputs: [PDF, WebP]
         keywords: seima seimos planas vaikai bendras kalendorius savaitinis
         icon: tool-family
+        art: family
         card_class: resource-card--family
   - id: astronomy
+    art: telescope
     title: Saulė, Mėnulis ir astronomija
     tools:
       - route: /saule/
@@ -127,6 +173,7 @@ categories:
         outputs: [Ekrane]
         keywords: saule saulėtekis sauletekis saulelydis dienos ilgumas prieblanda miestas
         icon: tool-sun
+        art: sunrise
         card_class: resource-card--sun
       - route: /menulio-fazes/
         title: Mėnulio fazės
@@ -136,6 +183,7 @@ categories:
         outputs: [Ekrane, CSV]
         keywords: menulis menulio faze jaunatis pilnatis ketvirtis menulio fazes
         icon: tool-moon
+        art: phases
         card_class: resource-card--moon
       - route: /menulio-kalendorius/
         title: Mėnulio kalendorius
@@ -145,6 +193,7 @@ categories:
         outputs: [PDF, WebP, CSV]
         keywords: menulis menulio kalendorius menulio fazes dienos plakatas
         icon: tool-moon
+        art: lunar-calendar
         card_class: resource-card--moon
       - route: /astronominis-kalendorius/
         title: Astronominis kalendorius
@@ -154,8 +203,10 @@ categories:
         outputs: [Ekrane]
         keywords: astronomija lygiadienis saulegraza menulis saule kosmosas
         icon: tool-orbit
+        art: astronomy
         card_class: resource-card--orbit
   - id: templates
+    art: stack
     title: Spausdinami kalendoriai ir planuokliai
     tools:
       - route: /kurti-kalendoriu/
@@ -166,6 +217,7 @@ categories:
         outputs: [PDF, WebP, spausdinti]
         keywords: kalendorius sukurti kurti nuotrauka asmeninis ivykiai pdf
         icon: tool-builder
+        art: create
         card_class: resource-card--builder
       - route: /savaitiniai-planuokliai/
         title: Savaitės planuokliai
@@ -175,6 +227,7 @@ categories:
         outputs: [PDF, WebP]
         keywords: savaite savaitinis planuoklis planas tuscias spausdinamas
         icon: tool-week
+        art: weekly-planner
         card_class: resource-card--week
       - route: /dienos-planuoklis/
         title: Dienos planuoklis
@@ -184,6 +237,7 @@ categories:
         outputs: [PDF, WebP]
         keywords: diena dienos planas prioritetai laikas planuoklis tuscias
         icon: tool-day
+        art: day-planner
         card_class: resource-card--day
       - route: /tuscias-kalendorius/
         title: Tušti planuokliai
@@ -193,4 +247,237 @@ categories:
         outputs: [PDF, WebP]
         keywords: tuscias kalendorius sablonai spausdinami be datu menesio savaites lapas
         icon: tool-blank
+        art: blank-planners
         card_class: resource-card--blank
+      - route: /pdf-kalendoriai/
+        title: "PDF kalendoriai"
+        description: "Metų ir mėnesių spaudiniai, tušti lapai ir kalendoriaus kūrėjas."
+        example: "Pasirinkite 2028 metų PDF maketą."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: spausdinti pdf vaizdai metai menesiai
+        icon: tool-year
+        art: pdf
+        card_class: resource-card--year
+      - route: /menesiai/
+        title: "Mėnesių kalendoriai"
+        description: "Pasirinkite 2027–2029 m. mėnesį ir paruoštą kalendoriaus dizainą."
+        example: "Raskite spausdinamą rugpjūčio kalendorių."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: menesiai menesio kalendorius spausdinti pdf
+        icon: tool-year
+        art: month
+        card_class: resource-card--year
+  - id: holidays
+    art: celebrations
+    title: Šventės ir renginiai
+    tools:
+      - route: /sventes/
+        title: "Lietuvos šventės"
+        description: "Šventinės dienos, jų datos ir paaiškinimai."
+        example: "Patikrinkite Kalėdų ir Kūčių datas."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: sventes laisvadieniai kaledos velykos
+        icon: tool-year
+        art: lithuanian-holidays
+        card_class: resource-card--year
+      - route: /atmintinos-dienos/
+        title: "Atmintinos dienos"
+        description: "Atmintinų dienų kalendorius ir istoriniai šaltiniai."
+        example: "Sužinokite, kada minima Konstitucijos diena."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: atmintinos datos konstitucija baltijos kelias
+        icon: tool-year
+        art: commemorative-candle
+        card_class: resource-card--year
+      - route: /renginiai/
+        title: "Renginių kalendorius"
+        description: "Lietuvos festivaliai ir mugės, paskelbtos datos ir lankytojų gidai."
+        example: "Raskite paskelbtą Jūros šventės savaitgalį."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: festivaliai renginiai kaziukas juros svente
+        icon: tool-year
+        art: festival-stage
+        card_class: resource-card--year
+      - route: /ilgieji-savaitgaliai/
+        title: "Ilgieji savaitgaliai"
+        description: "Lietuvos kalendoriaus datos ilgesniam poilsiui."
+        example: "Palyginkite 2027 m. ilguosius savaitgalius."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: poilsis laisvadieniai ilgieji savaitgaliai
+        icon: tool-year
+        art: long-weekend
+        card_class: resource-card--year
+  - id: finances
+    art: civic-directory
+    title: Išmokos ir mokesčiai
+    tools:
+      - route: /ismokos/
+        title: "Socialinės išmokos"
+        description: "Išmokų gidas, „Sodros“ mokėjimų skelbimai ir asmeniniai priminimai."
+        example: "Raskite, kuri įstaiga skiria išmoką, ir išsisaugokite mokėjimo priminimą."
+        kind: Mokėjimų kalendorius
+        outputs: [ICS]
+        keywords: parama ismoka ismokos spis sodra pabalpa pagalba valstybines ismokos
+        icon: tool-date
+        art: civic-support
+        card_class: resource-card--date
+      - route: /pensijos/
+        title: "Pensijos amžius ir mokėjimas"
+        description: "Pensinis amžius, stažas, prašymo data ir pensijų mokėjimo tvarka."
+        example: "Sužinokite, kada sukaks 65 metai ir nuo kada planuoti prašymą."
+        kind: Skaičiuoklė ir gidas
+        outputs: [ICS]
+        keywords: pensija pensijos ismokos kada iseisiu i pensija stažas sodra pensinis amzius
+        icon: tool-date
+        art: civic-pension
+        card_class: resource-card--date
+      - route: /mokesciu-skaiciuokle/
+        title: "Atlyginimo ir mokesčių skaičiuoklė"
+        description: "Bruto, neto, GPM, NPD, VSD, PSD, darbo vietos kaina ir PVM."
+        example: "Apskaičiuokite neto atlyginimą nuo 1 800 Eur bruto."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: mokestis mokesciai mokesciu skaiciuokle alga atlyginimas bruto neto gpm npd pvm sodra
+        icon: tool-date
+        art: civic-tax
+        card_class: resource-card--date
+      - route: /ismokos/vaiko-pinigai/
+        title: "Vaiko pinigai"
+        description: "Baziniai ir papildomi vaiko pinigai per mėnesį."
+        example: "Sudėkite bazinius vaiko pinigus ir patvirtintą papildomą išmoką."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: vaiko pinigai ismoka seima daugiavaike
+        icon: tool-date
+        art: civic-child
+        card_class: resource-card--date
+      - route: /ismokos/vienkartine-ismoka-vaikui/
+        title: "Vienkartinė išmoka vaikui"
+        description: "Vienkartinės išmokos suma pagal vaiko gimimo datą."
+        example: "Palyginkite gegužės 31 ir birželio 1 dienas."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: gime vaikas gimimo ismoka naujagimis gimdymas
+        icon: tool-date
+        art: civic-birth
+        card_class: resource-card--date
+      - route: /ismokos/vaiko-prieziuros-ismoka/
+        title: "Vaiko priežiūros išmoka"
+        description: "18 ir 24 mėnesių išmokos bei neperleidžiami mėnesiai."
+        example: "Palyginkite 18 ir 24 mėnesių planus pagal savo KU."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: vaiko prieziuros ismoka motinystes draudimas menesiai
+        icon: tool-date
+        art: civic-care
+        card_class: resource-card--date
+      - route: /ismokos/motinystes-ir-tevystes-ismokos/
+        title: "Motinystės ir tėvystės išmokos"
+        description: "Nėštumo ir gimdymo bei tėvystės išmokų tarifai ir prašymai."
+        example: "Įvertinkite vienos apmokamos dienos sumą prieš mokesčius."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: motinystes ismoka tevystes nestumas atostogos
+        icon: tool-date
+        art: civic-parents
+        card_class: resource-card--date
+      - route: /ismokos/aukles-kompensacija/
+        title: "Auklės kompensacija"
+        description: "Vaiko priežiūros kompensacinė išmoka už auklę."
+        example: "Sužinokite sumą už kelis sąlygas atitinkančius vaikus."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: aukle aukles kompensacija vaiko prieziura darzelis
+        icon: tool-date
+        art: civic-nanny
+        card_class: resource-card--date
+      - route: /ismokos/nedarbo-ismoka/
+        title: "Nedarbo išmoka"
+        description: "Draudimo stažas ir trijų mokėjimo etapų sumos."
+        example: "Palyginkite pirmų ir paskutinių trijų mėnesių išmokas."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: nedarbas nedarbo ismoka bedarbio uzt stazas
+        icon: tool-date
+        art: civic-work
+        card_class: resource-card--date
+      - route: /ismokos/ligos-ismoka/
+        title: "Ligos išmoka"
+        description: "Darbdavio ir „Sodros“ dalys susirgus."
+        example: "Apskaičiuokite kelių „Sodros“ apmokamų dienų įvertį."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: liga ligos ismoka biuletenis slauga nedarbingumas
+        icon: tool-date
+        art: civic-health
+        card_class: resource-card--date
+      - route: /ismokos/socialine-pasalpa/
+        title: "Socialinė pašalpa"
+        description: "Vertinamos pajamos ir preliminari mėnesio pašalpa."
+        example: "Palyginkite vieno gyventojo ir šeimos pašalpą pagal pajamas."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: socialine pasalpa parama nepasiturintiems pajamos spis
+        icon: tool-date
+        art: civic-budget
+        card_class: resource-card--date
+      - route: /ismokos/sildymo-kompensacija/
+        title: "Šildymo kompensacija"
+        description: "Šildymo išlaidų ir šeimos pajamų palyginimas."
+        example: "Patikrinkite, kurią normatyvinės sąskaitos dalį galėtų kompensuoti."
+        kind: Skaičiuoklė ir gidas
+        outputs: [Ekrane]
+        keywords: sildymas sildymo kompensacija bustas vanduo parama
+        icon: tool-date
+        art: civic-house
+        card_class: resource-card--date
+  - id: personal
+    art: journal
+    title: Mano diena
+    tools:
+      - route: /mano-diena/
+        title: "Mano diena"
+        description: "Savaitės įvykiai, užduočių prioritetai ir dienos užrašai vienoje naršyklėje."
+        example: "Susidėliokite savaitę ir atsisiųskite jos įvykius."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: asmeninis diena dienos planas uzrasai uzduotys
+        icon: tool-year
+        art: personal
+        card_class: resource-card--year
+      - route: /sejos-kalendorius/
+        title: Sėjos kalendorius
+        description: Lietuvos daržovių ir vaisių sėjos, sodinimo ir derliaus laikotarpiai bei asmeninis daržo planas.
+        example: Pasirinkite balandį ir pažiūrėkite, ką galima sėti lauke.
+        kind: Interaktyvus daržo planuoklis
+        outputs: [ICS, JSON, spausdinti]
+        keywords: seja sejos darzas sodas sodinimas darzoves vaisiai uogos derlius siltnamis braskes bulves
+        icon: tool-year
+        art: garden-seedlings
+        card_class: resource-card--year
+      - route: /horoskopai/
+        title: "Dienos horoskopai"
+        description: "Dienos apžvalgos visiems dvylikai zodiako ženklų."
+        example: "Pasirinkite savo zodiako ženklą."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: horoskopai horoskopas zodiakas dienos
+        icon: tool-year
+        art: daily-horoscope
+        card_class: resource-card--year
+      - route: /zodiakas/
+        title: "Zodiako ženklai"
+        description: "Gimimo datos ir Vakarų zodiako ženklų gidas."
+        example: "Patikrinkite zodiako ženklą pagal gimimo datą."
+        kind: Kalendoriaus įrankis
+        outputs: [Ekrane]
+        keywords: horoskopas zodiako zenklas gimimo data
+        icon: tool-year
+        art: zodiac-dial
+        card_class: resource-card--year

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 426" fill="none">
+  <defs>
+    <radialGradient id="halo"><stop stop-color="#6caa82" stop-opacity=".32"/><stop offset="1" stop-color="#6caa82" stop-opacity="0"/></radialGradient>
+    <radialGradient id="sunHalo"><stop stop-color="#fdb913" stop-opacity=".52"/><stop offset=".45" stop-color="#f6a323" stop-opacity=".16"/><stop offset="1" stop-color="#f6a323" stop-opacity="0"/></radialGradient>
+    <radialGradient id="sun" cx=".33" cy=".29" r=".75"><stop stop-color="#fff7cc"/><stop offset=".55" stop-color="#ffdc76"/><stop offset="1" stop-color="#d98d24"/></radialGradient>
+    <radialGradient id="earth" cx=".68" cy=".35" r=".78"><stop stop-color="#599887"/><stop offset=".66" stop-color="#286855"/><stop offset="1" stop-color="#10362e"/></radialGradient>
+    <linearGradient id="earthShadow" x1="204" y1="293" x2="389" y2="167" gradientUnits="userSpaceOnUse"><stop stop-color="#081f24" stop-opacity=".95"/><stop offset=".47" stop-color="#11382b" stop-opacity=".42"/><stop offset=".8" stop-color="#f7e5a5" stop-opacity=".02"/><stop offset="1" stop-color="#fff0a7" stop-opacity=".28"/></linearGradient>
+    <radialGradient id="moon" cx=".69" cy=".28" r=".86"><stop stop-color="#fff6d8"/><stop offset=".56" stop-color="#d5c8a9"/><stop offset="1" stop-color="#827b64"/></radialGradient>
+    <linearGradient id="orbit" x1="76" y1="298" x2="578" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#c2b86f" stop-opacity=".12"/><stop offset=".55" stop-color="#ffdb82" stop-opacity=".75"/><stop offset="1" stop-color="#ffdb82" stop-opacity=".08"/></linearGradient>
+    <clipPath id="globe"><circle cx="310" cy="219" r="109"/></clipPath>
+    <clipPath id="disk"><circle cx="469" cy="254" r="43"/></clipPath>
+  </defs>
+  <ellipse cx="327" cy="217" rx="260" ry="204" fill="url(#halo)"/>
+  <g stroke="#b5d2ba" stroke-opacity=".10">
+    <circle cx="310" cy="219" r="142"/><circle cx="310" cy="219" r="176"/><circle cx="310" cy="219" r="208"/>
+    <path d="M100 219h420M310 19v400M172 81l275 276M171 358 448 81" stroke-dasharray="2 7"/>
+  </g>
+  <g fill="#ffe2a0">
+    <circle cx="114" cy="106" r="2" opacity=".65"/><circle cx="457" cy="110" r="1.5" opacity=".5"/>
+    <circle cx="561" cy="236" r="1.4"/><circle cx="531" cy="343" r="1.7" opacity=".5"/>
+    <circle cx="162" cy="324" r="1.7" opacity=".4"/><circle cx="127" cy="248" r="1.2"/>
+    <path d="M178 53c0 5 2 7 7 7-5 0-7 2-7 7 0-5-2-7-7-7 5 0 7-2 7-7Zm355 109c0 5 2 7 7 7-5 0-7 2-7 7 0-5-2-7-7-7 5 0 7-2 7-7ZM85 283c0 4 2 6 6 6-4 0-6 2-6 6 0-4-2-6-6-6 4 0 6-2 6-6Z" opacity=".74"/>
+  </g>
+  <ellipse cx="313" cy="224" rx="251" ry="78" transform="rotate(-22 313 224)" stroke="url(#orbit)" stroke-width="1.5" stroke-dasharray="4 7"/>
+  <circle cx="543" cy="89" r="111" fill="url(#sunHalo)"/>
+  <circle cx="543" cy="89" r="53" fill="url(#sun)" stroke="#fff0a8" stroke-width="1.5"/>
+  <path d="M509 69c10-13 32-18 48-13m-56 28c16 0 32-8 43-4 9 4 19 7 34 3m-71 18c16-6 26-6 42 2 10 5 19 4 33 2m-60 15c14 1 23 9 43 1" stroke="#c4862f" stroke-opacity=".24" stroke-linecap="round"/>
+  <circle cx="310" cy="219" r="114" fill="#6db78b" fill-opacity=".17" stroke="#91c5a2" stroke-opacity=".18"/>
+  <circle cx="310" cy="219" r="109" fill="url(#earth)"/>
+  <g clip-path="url(#globe)">
+    <path d="m187 168 26-17 19 3 18-18 19 1 5 18-12 14-5 17-18 8-4 13 15 16 4 18-14 2-12-22-18-13-32-4Zm77 66 17 3 13 13 20 8-3 21-17 14-7 21-18 10 1-22-11-12 4-19-10-11Zm51-90 21-19 23 7 18 18 22 7 18 22 15 10-7 23-21-5-16 8-8-13-22 2-11 16 11 23-9 26-19 17-16-16-4-28-15-14 5-24 11-16-9-21Zm62 90 12 3 7 12-10 10-10-12Zm15 38 13-9 15 6 13 14-6 11-24 2Z" fill="#9cba81"/>
+    <path d="M220 142c20 15 30 9 51 2 21-7 42-8 68 4 18 8 39 14 65 4M188 204c33-2 52-20 84-22 40-3 62 16 99 16 19 0 42-5 66-16m-224 100c27-11 49-7 72 3 30 12 52 13 85 3m-104-64c23-1 33 9 47 17 18 10 48 10 79-2" stroke="#dae9bd" stroke-opacity=".36" stroke-width="4" stroke-linecap="round"/>
+    <g stroke="#deebcf" stroke-opacity=".24" stroke-width="1">
+      <ellipse cx="310" cy="219" rx="51" ry="109" transform="rotate(21 310 219)"/>
+      <ellipse cx="310" cy="219" rx="85" ry="109" transform="rotate(21 310 219)"/>
+      <ellipse cx="310" cy="219" rx="109" ry="36" transform="rotate(21 310 219)"/>
+      <ellipse cx="310" cy="219" rx="109" ry="77" transform="rotate(21 310 219)"/>
+    </g>
+    <circle cx="310" cy="219" r="109" fill="url(#earthShadow)"/>
+    <path d="M251 117a109 109 0 0 1 163 130" stroke="#f1e6aa" stroke-opacity=".64" stroke-width="3"/>
+  </g>
+  <path d="M101 309c69 29 175 19 279-23 94-38 146-85 169-120" stroke="url(#orbit)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="469" cy="254" r="46" stroke="#f3d898" stroke-opacity=".34"/>
+  <circle cx="469" cy="254" r="43" fill="url(#moon)"/>
+  <g clip-path="url(#disk)">
+    <path d="M481 211c-23 11-34 36-30 59 2 11 8 21 16 29l-44-13 1-69Z" fill="#314539" fill-opacity=".79"/>
+    <g fill="#89816c" fill-opacity=".43">
+      <ellipse cx="485" cy="241" rx="10" ry="7"/><ellipse cx="473" cy="259" rx="7" ry="5"/><ellipse cx="496" cy="265" rx="6" ry="4"/><circle cx="467" cy="231" r="5"/><circle cx="479" cy="280" r="4"/>
+    </g>
+    <path d="M479 215a42 42 0 0 1 32 52" stroke="#fff7da" stroke-opacity=".64" stroke-width="2"/>
+  </g>
+  <circle cx="160" cy="280" r="5" fill="#ffdb82"/><circle cx="160" cy="280" r="10" stroke="#ffdb82" stroke-opacity=".25"/>
+</svg>

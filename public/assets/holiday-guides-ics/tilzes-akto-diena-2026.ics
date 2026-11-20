@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tilzes-akto-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:Mažosios Lietuvos prisijungimo prie Didžiosios Lietuvos akto dien
+ a
+DESCRIPTION:Lapkričio 30 d. minima 1918 m. Tilžės akto pasirašymo data.
+URL:https://kalendorius365.lt/sventes/tilzes-akto-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

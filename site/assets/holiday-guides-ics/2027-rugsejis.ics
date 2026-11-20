@@ -62,6 +62,18 @@ URL:https://kalendorius365.lt/sventes/2027/rugsejis/#ivykis-comm-070
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-comm-un-membership@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270917
+DTEND;VALUE=DATE:20270918
+SUMMARY:Lietuvos įstojimo į Jungtines Tautas diena
+DESCRIPTION:Atmintina diena · įstatymas. Primena Lietuvos priėmimą į J
+ ungtines Tautas 1991 m. rugsėjo 17 d.
+URL:https://kalendorius365.lt/sventes/2027/rugsejis/#ivykis-comm-un-members
+ hip
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-072@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270918
@@ -115,6 +127,17 @@ SUMMARY:Tuskulėnų aukų atminimo diena
 DESCRIPTION:Atmintina diena · įstatymas. Tuskulėnų aukoms skirtas atmin
  ties įrašas.
 URL:https://kalendorius365.lt/sventes/2027/rugsejis/#ivykis-comm-076
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-dagotuves@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270929
+DTEND;VALUE=DATE:20270930
+SUMMARY:Dagotuvės (Šv. Mykolo diena)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Rugsėjo 29 d. tradicinis k
+ alendorius žymi Dagotuves\, siejamas su derliumi ir šv. Mykolo diena.
+URL:https://kalendorius365.lt/sventes/2027/rugsejis/#ivykis-folk-dagotuves
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

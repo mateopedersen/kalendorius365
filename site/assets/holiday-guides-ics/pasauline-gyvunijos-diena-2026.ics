@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-gyvunijos-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Pasaulinė gyvūnijos diena
+DESCRIPTION:Spalio 4 d. minima gyvūnų gerovė ir apsauga. Lietuvos įstat
+ yme diena siejama su šv. Pranciškaus Asyžiečio\, gyvūnų globėjo\, m
+ inėjimu.
+URL:https://kalendorius365.lt/sventes/pasauline-gyvunijos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

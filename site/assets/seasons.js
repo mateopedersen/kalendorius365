@@ -42,10 +42,16 @@ async function initialize(){
     line('around',context.days.map(r=>r[3]),500);text('[data-around-start]',context.days[0][0]);text('[data-around-end]',context.days[14][0]);
     table('[data-around-rows]',context.days.map(r=>[r[0],r[1],r[2],durationLabel(r[3])]));text('[data-around-table-caption]',`${y} m., ${c.name} – septynios dienos prieš įvykį ir po jo`);
     const month=monthSlugs[Number(e.date.slice(5,7))-1],link=$('[data-month-link]');
-    // Monthly editorial guides currently exist only for 2027. Later years link to the real year hub.
-    link.href=y===2027?`/sventes/2027/${month}/`:`/sventes/${y}/`;link.textContent=`${y} m. ${y===2027?'šio mėnesio':'Lietuvos'} šventės`;
+    link.href=`/sventes/${y}/${month}/`;
+    link.textContent=`${y} m. šio mėnesio šventės`;
    }else{
-    SEASON_IDS.forEach(s=>{const e=find(s);text(`[data-card-time="${s}"]`,`${e.label} · ${e.clock}`);const cell=$(`[data-timeline="${s}"]`);cell.replaceChildren(document.createTextNode(e.label),document.createElement('br'));const strong=document.createElement('strong');strong.textContent=e.clock;cell.append(strong,document.createTextNode(` · ${e.offset}`));});
+    for (const season of SEASON_IDS) {
+     const event = find(season);
+     const time = $(`[data-card-time="${season}"]`);
+     time.dateTime = event.utc;
+     time.querySelector('span').textContent = event.label;
+     time.querySelector('strong').textContent = event.clock;
+    }
    }
    for(const a of all('a')){
     const href=a.getAttribute('href')||'',route=href.split(/[?#]/)[0];
@@ -56,7 +62,7 @@ async function initialize(){
   function plural(n,one,few,many){return n%10===1&&n%100!==11?one:n%10>=2&&n%10<=9&&(n%100<10||n%100>=20)?few:many;}
   function countdown(){
    if(id==='hub')return;const e=nextSeasonEvent(d.events,id),link=$('#sp3-next-ics');
-   if(!e){text('#sp3-next-date','Patikrintų būsimų momentų sąrašas baigėsi. Palyginimo lentelėje išlieka 2027–2029 m. datos.');text('#sp3-countdown','Naujos datos dar nepateiktos');link.hidden=true;return;}
+   if(!e){text('#sp3-next-date','Patikrintų būsimų momentų sąrašas baigėsi. Palyginimo lentelėje išlieka 2027–2030 m. datos.');text('#sp3-countdown','Naujos datos dar nepateiktos');link.hidden=true;return;}
    const now=Date.now(),p=countdownParts(e.utc,now);text('#sp3-next-date',`${e.label} · ${e.clock} · ${e.offset}`);
    text('#sp3-countdown',`Liko ${p.days} ${plural(p.days,'para','paros','parų')}, ${p.hours} val. ${p.minutes} min.`);link.href=`/assets/seasons-ics/${e.year}-${slugs[SEASON_IDS.indexOf(id)]}.ics`;link.hidden=false;
   }
@@ -72,5 +78,5 @@ async function initialize(){
   for(const input of [yearInput,cityInput])input.addEventListener('change',()=>{selection={year:Number(yearInput.value),city:cityInput.value};update();const url=new URL(location.href);url.searchParams.set('metai',String(selection.year));url.searchParams.set('miestas',selection.city);history.replaceState(null,'',url);});
   update();countdown();setInterval(countdown,60000);addEventListener('pagehide',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else countdown();});
   all('button,select').forEach(el=>el.disabled=false);app.dataset.ready='true';
- }catch{const status=$('#sp3-status');if(status)status.textContent='Interaktyvių duomenų įkelti nepavyko. Žemiau pateiktos patikrintos 2027 m. Vilniaus datos; 2027–2029 m. astronominių momentų lentelė ir ICS nuorodos veikia be JavaScript.';app.dataset.ready='error';}
+ }catch{const status=$('#sp3-status');if(status)status.textContent='Interaktyvių duomenų įkelti nepavyko. Žemiau pateiktos patikrintos 2027 m. Vilniaus datos; 2027–2030 m. astronominių momentų lentelė ir ICS nuorodos veikia be JavaScript.';app.dataset.ready='error';}
 }

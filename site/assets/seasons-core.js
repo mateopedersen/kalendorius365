@@ -17,6 +17,6 @@ export function countdownParts(utc,now){const delta=Math.max(0,Date.parse(utc)-n
 
 export function seasonGuideHref(path,year,city){
  const allowed=['/metu-laikai/','/pavasario-lygiadienis/','/vasaros-saulegriza/','/rudens-lygiadienis/','/ziemos-saulegriza/'];
- if(!allowed.includes(path)||![2027,2028,2029].includes(year)||!['vilnius','kaunas','klaipeda','siauliai','panevezys'].includes(city))throw Error('Neteisinga metų laikų nuoroda.');
+ if(!allowed.includes(path)||![2027,2028,2029,2030].includes(year)||!['vilnius','kaunas','klaipeda','siauliai','panevezys'].includes(city))throw Error('Neteisinga metų laikų nuoroda.');
  return `${path}?${new URLSearchParams({metai:String(year),miestas:city})}`;
 }

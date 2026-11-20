@@ -30,7 +30,12 @@ class SeasonsBuildTests(unittest.TestCase):
             for route, expected in first_build.items():
                 page = root / "site" / route / "index.html"
                 self.assertEqual(page.read_bytes(), expected, route)
-                self.assertEqual(page.read_text().count("<!-- phase3-related -->"), 1, route)
+                text = page.read_text()
+                if route == "astronominis-kalendorius":
+                    self.assertNotIn("<!-- phase3-related -->", text)
+                    self.assertIn('<th scope="row">2030</th>', text)
+                else:
+                    self.assertEqual(text.count("<!-- phase3-related -->"), 1, route)
 
 
 if __name__ == "__main__":

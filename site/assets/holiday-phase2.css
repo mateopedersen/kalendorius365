@@ -18,3 +18,51 @@
 @media print{.hd-print,.hd-my-calendar{display:none!important}}
 /* Keep weekday names intact in the narrow annual holiday tables. */
 @media(max-width:620px){.holiday-year-table .data-table :is(th,td):nth-child(2){white-space:nowrap;overflow-wrap:normal;word-break:normal;hyphens:none}}
+
+.hd2 {
+  max-width: none;
+  color: var(--shell-ink);
+  font-family: var(--shell-font);
+}
+.hd2 .hd-hero {
+  gap: clamp(12px,2.8vw,36px);
+  padding: clamp(16px,2.8vw,34px);
+  border: 1px solid #28503d;
+  border-radius: 16px;
+  background: var(--shell-heading-backdrop);
+}
+.hd2 .hd-hero h1 {
+  max-width: 21ch;
+  margin: 7px 0 9px;
+  color: var(--shell-on-dark);
+  font-size: clamp(1.85rem,4vw,3.42rem);
+  line-height: 1.1;
+  letter-spacing: -.04em;
+}
+.hd2 .hd-hero .eyebrow { color: var(--shell-accent-on-dark); }
+.hd2 .hd-hero :is(.hd-intro,.hd-status,.hd-hero-date) { color: var(--shell-copy-on-dark); }
+.hd2 .hd-hero :is(.hd-category,.hd-jump) { color: #f8dd86; }
+.hd2 .hd-hero .hd-category { border-color: #a3bb96; }
+.hd2 .hd-jump:hover { color: #fff4bf; }
+.hd2 .hd-photo { padding: 6px; border: 1px solid #9bb39b; border-radius: 10px; background: #edf3e6; }
+.hd2 .hd-photo figcaption { padding: 5px 4px 1px; color: #354c3c; }
+.hd2 .hd-photo .hd-credit { color: #3b5342; }
+.hd2 .hd-original img { max-height: 345px; }
+.hd2 .hd-facts {
+  gap: 0;
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid var(--shell-border);
+  border-radius: 12px;
+  background: #fcfbf5;
+}
+.hd2 .hd-facts > div { padding: 5px 9px; }
+.hd2 :is(.hd-tool,.hd-meaning,.hd-plan,.hd-sources) { border-color: var(--shell-border); border-radius: 13px; }
+.high-contrast .hd2 .hd-hero :is(.hd-intro,.hd-status,.hd-hero-date) { color: var(--shell-copy-on-dark); }
+@media (max-width: 760px) {
+  .hd2 .hd-hero h1 { max-width: none; }
+}
+@media print {
+  .hd2 .hd-hero { background: #fff; }
+  .hd2 .hd-hero :is(h1,.eyebrow,.hd-intro,.hd-status,.hd-hero-date,.hd-category) { color: #111; }
+}

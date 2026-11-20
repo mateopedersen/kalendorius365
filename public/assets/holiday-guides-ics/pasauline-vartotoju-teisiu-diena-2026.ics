@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-vartotoju-teisiu-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20260315
+DTEND;VALUE=DATE:20260316
+SUMMARY:Pasaulinė vartotojų teisių diena
+DESCRIPTION:Kovo 15 d. minima Pasaulinė vartotojų teisių diena\, skirta 
+ saugiam\, informuotam pirkimui ir ginčų sprendimui.
+URL:https://kalendorius365.lt/sventes/pasauline-vartotoju-teisiu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

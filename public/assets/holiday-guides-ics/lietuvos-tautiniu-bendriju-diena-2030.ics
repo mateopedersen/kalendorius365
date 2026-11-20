@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:lietuvos-tautiniu-bendriju-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300521
+DTEND;VALUE=DATE:20300522
+SUMMARY:Lietuvos tautinių bendrijų diena
+DESCRIPTION:Gegužės 21 d. Lietuvoje minima tautinių bendrijų įvairovė
+ \, jų kalbos ir kultūrinis gyvenimas.
+URL:https://kalendorius365.lt/sventes/lietuvos-tautiniu-bendriju-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

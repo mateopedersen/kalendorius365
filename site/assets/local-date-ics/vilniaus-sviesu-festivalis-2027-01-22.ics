@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-vilniaus-sviesu-festivalis-2027-01-22@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270125
+SUMMARY:Vilniaus šviesų festivalis
+DESCRIPTION:Trys žiemos vakarai\, kai Vilniaus senamiestyje galima apžiū
+ rėti šviesos\, projekcijų ir skaitmeninio meno instaliacijas.
+URL:https://kalendorius365.lt/renginiai/vilniaus-sviesu-festivalis/
+TRANSP:TRANSPARENT
+LOCATION:Vilniaus senamiestis
+END:VEVENT
+END:VCALENDAR

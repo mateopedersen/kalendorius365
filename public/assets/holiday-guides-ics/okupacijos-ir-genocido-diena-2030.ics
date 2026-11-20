@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:okupacijos-ir-genocido-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300615
+DTEND;VALUE=DATE:20300616
+SUMMARY:Okupacijos ir genocido diena
+DESCRIPTION:Birželio 15 d. minima Okupacijos ir genocido diena\, siejama s
+ u 1940 m. prasidėjusia sovietine Lietuvos okupacija.
+URL:https://kalendorius365.lt/sventes/okupacijos-ir-genocido-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

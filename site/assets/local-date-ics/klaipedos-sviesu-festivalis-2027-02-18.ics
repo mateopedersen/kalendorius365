@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-klaipedos-sviesu-festivalis-2027-02-18@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270218
+DTEND;VALUE=DATE:20270221
+SUMMARY:Klaipėdos šviesų festivalis
+DESCRIPTION:Žiemos festivalis pristato šviesos meną ir apšvietimo darbu
+ s uostamiesčio erdvėse.
+URL:https://kalendorius365.lt/renginiai/klaipedos-sviesu-festivalis/
+TRANSP:TRANSPARENT
+LOCATION:Klaipėda. Instaliacijų adresai skelbiami programoje.
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sv-huberto-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20271103
+DTEND;VALUE=DATE:20271104
+SUMMARY:Šv. Huberto\, medžiotojų globėjo\, diena
+DESCRIPTION:Lapkričio 3 d. Lietuvoje minima šv. Huberto\, medžiotojų gl
+ obėjo\, diena.
+URL:https://kalendorius365.lt/sventes/sv-huberto-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

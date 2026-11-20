@@ -1,0 +1,8 @@
+<a class="calendar-catalog-card" href="{{ include.url }}">
+  {% include shell-art.html name=include.icon size=82 %}
+  <span class="calendar-catalog-card__copy">
+    <strong>{{ include.title }}</strong>
+    <span>{{ include.description }}</span>
+  </span>
+  {% include calendar-catalog-arrow.html %}
+</a>

@@ -1,0 +1,201 @@
+---
+title: "Mano diena ir savaitės planuoklis"
+description: "Planuokite savaitę Lietuvos laiku. Tvarkykite įvykius, užduotis ir dienos užrašus, pridėkite mokinių atostogas ir patvirtintas išmokų datas."
+personal_planner: true
+hero_share: true
+preserve_source: true
+---
+{% assign published = site.data.personal_planner %}
+{% include planner-reminders.html %}
+<div class="personal-planner" data-personal-planner>
+  <header class="personal-hero">
+    <div class="personal-hero__copy">
+      <h1>Mano diena</h1>
+      <p>Susidėliokite savaitės įvykius, užduotis ir užrašus. Svarbias Lietuvos datas įtraukite į savo kalendorių.</p>
+    </div>
+    <div class="personal-hero__art">{% include shell-art.html name="personal" size=136 %}</div>
+    <div class="personal-hero__actions" inert data-personal-hero-actions>
+      <button class="personal-button personal-button--gold" type="button" data-personal-action="add-event">Pridėti įvykį</button>
+      <a class="personal-button personal-button--light" href="/">Visas kalendorius {% include calendar-catalog-arrow.html %}</a>
+    </div>
+  </header>
+
+  <p class="personal-startup" role="status" data-personal-startup>Ruošiamas savaitės planas…</p>
+  <noscript><p>Planuokliui reikia „JavaScript“. <a href="/metai/">Spauzdinamus kalendorius</a> galite atverti ir be jo.</p></noscript>
+
+  <div class="personal-workspace" data-personal-workspace inert aria-busy="true">
+    <dl class="personal-metrics" aria-label="Savaitės suvestinė">
+      <div><dt>{% include shell-art.html name="calendar-add" size=54 %}<span>Įvykiai</span></dt><dd data-personal-count="events">0</dd></div>
+      <div><dt>{% include shell-art.html name="tasks" size=54 %}<span>Neatliktos užduotys</span></dt><dd data-personal-count="open">0</dd></div>
+      <div><dt>{% include shell-art.html name="work-log" size=54 %}<span>Atliktos užduotys</span></dt><dd data-personal-count="done">0</dd></div>
+    </dl>
+
+    <div class="personal-columns">
+      <div class="personal-stack">
+        <section class="personal-card personal-week" aria-labelledby="personal-week-title">
+          <header class="personal-card__heading">
+            <div>
+              <p class="personal-week-number" data-personal-week-number></p>
+              <h2 id="personal-week-title">Savaitės planas</h2>
+              <p data-personal-week-range></p>
+            </div>
+            <button class="personal-button" type="button" data-personal-action="today">Šiandien</button>
+          </header>
+          <div class="personal-week-controls">
+            <button type="button" class="personal-icon-button" data-personal-action="previous-week" aria-label="Ankstesnė savaitė"><svg class="icon" aria-hidden="true"><use href="/assets/visuals/home-icons.svg#chevron-left"></use></svg></button>
+            <label for="personal-date">Pasirinkite datą<input type="date" id="personal-date" min="1900-01-01" max="2100-12-31" required></label>
+            <button type="button" class="personal-icon-button" data-personal-action="next-week" aria-label="Kita savaitė"><svg class="icon" aria-hidden="true"><use href="/assets/visuals/home-icons.svg#chevron-right"></use></svg></button>
+          </div>
+          <div class="personal-week-days" data-personal-days role="group" aria-label="Savaitės dienos"></div>
+          <div class="personal-agenda__heading">
+            <h3 data-personal-agenda-heading>Dienos įvykiai</h3>
+            <button class="personal-button" type="button" data-personal-action="add-event">Pridėti šiai dienai</button>
+          </div>
+          <ul class="personal-agenda" data-personal-agenda></ul>
+          <p role="status" data-personal-agenda-status></p>
+          <p class="personal-caption">Laikas nurodytas Lietuvos laiku. Norėdami redaguoti įvykį, pasirinkite jo pavadinimą.</p>
+        </section>
+
+        <section class="personal-card personal-tasks" id="uzduotys" aria-labelledby="personal-tasks-title">
+          <header class="personal-card__heading">
+            <div><h2 id="personal-tasks-title">Užduotys</h2><p>Pasirinkite datą ir prioritetą.</p></div>
+            {% include shell-art.html name="tasks" size=52 %}
+          </header>
+          <form class="personal-task-form" data-personal-task-form>
+            <label>Užduotis<input name="title" required maxlength="300" placeholder="Pavyzdžiui, užsiregistruoti pas gydytoją"></label>
+            <label>Data<input name="date" type="date" required min="1900-01-01" max="2100-12-31"></label>
+            <label>Prioritetas<select name="priority"><option value="normal">Įprastas</option><option value="high">Aukštas</option><option value="low">Žemas</option></select></label>
+            <button class="personal-button personal-button--primary" type="submit" data-personal-task-submit>Pridėti užduotį</button>
+            <button class="personal-button" type="button" data-personal-action="cancel-task" hidden>Atšaukti redagavimą</button>
+          </form>
+          <div class="personal-task-filters" role="group" aria-label="Užduočių rodymas">
+            <button class="personal-button" type="button" data-personal-filter="open" aria-pressed="true">Neatliktos</button>
+            <button class="personal-button" type="button" data-personal-filter="week" aria-pressed="false">Ši savaitė</button>
+            <button class="personal-button" type="button" data-personal-filter="done" aria-pressed="false">Atliktos</button>
+          </div>
+          <ul class="personal-task-list" data-personal-tasks></ul>
+          <div class="personal-task-feedback">
+            <p role="status" data-personal-task-status></p>
+            <button type="button" class="personal-button" data-personal-action="undo-task" hidden>Atšaukti pašalinimą</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="personal-stack">
+        <section class="personal-card personal-notes" aria-labelledby="personal-note-title">
+          <header class="personal-card__heading"><div><h2 id="personal-note-title">Dienos užrašai</h2><p data-personal-note-date></p></div>{% include shell-art.html name="note" size=52 %}</header>
+          <label class="visually-hidden" for="daily-note">Pasirinktos dienos užrašai</label>
+          <textarea id="daily-note" rows="6" maxlength="10000" placeholder="Ką norite prisiminti?"></textarea>
+          <div class="personal-note-footer">
+            <p class="personal-caption" data-personal-note-status role="status">Išsaugoma automatiškai šioje naršyklėje.</p>
+            <button class="personal-button" id="save-note" type="button" data-personal-action="save-note">Išsaugoti</button>
+          </div>
+        </section>
+        <section class="personal-card personal-transfer" aria-labelledby="personal-transfer-title">
+          <header class="personal-card__heading"><div><h2 id="personal-transfer-title">Savaitės kopija</h2><p>Pasidalykite planais pasirinktu formatu.</p></div>{% include shell-art.html name="pdf" size=48 %}</header>
+          <div class="personal-transfer__actions">
+            <button type="button" class="personal-button personal-button--primary" data-personal-action="week-ics">Atsisiųsti savaitės įvykius (ICS)</button>
+            <button type="button" class="personal-button" data-personal-action="print">Spausdinti savaitės planą</button>
+            <button type="button" class="personal-button" data-personal-action="backup">Atsisiųsti visų įrašų kopiją (JSON)</button>
+          </div>
+          <p class="personal-caption">ICS failą galite importuoti į „Google“, „Apple“ ar „Outlook“ kalendorių. JSON kopijoje išlieka ir užduotys bei užrašai.</p>
+          <details class="personal-transfer__details">
+            <summary>Importavimas ir duomenų tvarkymas</summary>
+            <div class="personal-transfer__actions">
+              <button type="button" class="personal-button" data-personal-action="import-ics">Importuoti įvykius (ICS)</button>
+              <button type="button" class="personal-button" data-personal-action="restore">Atkurti kopiją (JSON)</button>
+              <button type="button" class="personal-button personal-button--caution" data-personal-action="delete-data">Ištrinti asmeninius įrašus</button>
+            </div>
+          </details>
+          <p role="status" data-personal-transfer-status></p>
+        </section>
+        <nav class="personal-card personal-shortcuts" aria-labelledby="personal-shortcuts-title">
+          <h2 id="personal-shortcuts-title">Tęskite planavimą</h2>
+          <a href="/seimos-kalendorius/">{% include shell-art.html name="family" size=38 %}<span>Šeimos kalendorius</span>{% include calendar-catalog-arrow.html %}</a>
+          <a href="/pamainu-grafikas/">{% include shell-art.html name="shift" size=38 %}<span>Pamainų grafikas</span>{% include calendar-catalog-arrow.html %}</a>
+          <a id="current-download" href="/menesiai/">{% include shell-art.html name="month" size=38 %}<span>Mėnesio kalendorius</span>{% include calendar-catalog-arrow.html %}</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="personal-card personal-context" aria-labelledby="personal-context-title">
+      <header class="personal-card__heading">
+        <div><h2 id="personal-context-title">Svarbios datos Lietuvoje</h2><p>Pasirinkite temas ir į kalendorių įtraukite jums aktualias datas.</p></div>
+      </header>
+      <fieldset class="personal-topics">
+        <legend class="visually-hidden">Rodomos temos</legend>
+        <label><input type="checkbox" value="school" data-personal-topic checked> Mokinių atostogos</label>
+        <label><input type="checkbox" value="admissions" data-personal-topic checked> Stojimas</label>
+        <label><input type="checkbox" value="payments" data-personal-topic checked> Išmokų datos</label>
+      </fieldset>
+      <div class="personal-context__grid">
+        <section class="personal-context__topic" data-personal-topic-panel="school">
+          <h3>{% include shell-art.html name="school-break" size=38 %} Mokinių atostogos</h3>
+          <p>{{ site.data.calendar.school.year }} mokslo metai. Tikslų savo mokyklos grafiką pasitikrinkite atskirai.</p>
+          <label>Ugdymo programa<select data-personal-preference="grade">
+            <option value="basic">Pradinis ir pagrindinis ugdymas</option>
+            <option value="secondary">Vidurinis ugdymas</option>
+          </select></label>
+          <ul class="personal-context__dates" data-personal-school-dates></ul>
+          <button class="personal-button personal-button--primary" type="button" data-personal-action="add-school">Pridėti atostogas į kalendorių</button>
+          <div class="personal-source-links"><a href="/mokiniu-atostogos/">Atostogų lentelė</a><a href="{{ site.data.calendar.school.source }}">ŠMSM datos</a></div>
+          <p class="personal-caption" role="status" data-personal-school-status></p>
+        </section>
+        <section class="personal-context__topic" data-personal-topic-panel="admissions">
+          <h3>{% include shell-art.html name="school" size=38 %} Stojimo terminai</h3>
+          <label>Priėmimo tipas<select data-personal-preference="admissions">
+            {% for item in published.admissions %}<option value="{{ item.id }}">{{ item.label }}</option>{% endfor %}
+          </select></label>
+          <p data-personal-admissions-info></p>
+          <a class="personal-button" data-personal-admissions-link href="{{ published.admissions.first.url }}">Patikrinti oficialias datas {% include calendar-catalog-arrow.html %}</a>
+          <button class="personal-button personal-button--primary" type="button" data-personal-action="admissions-event">Įrašyti pasirinktą terminą</button>
+        </section>
+        <section class="personal-context__topic" data-personal-topic-panel="payments">
+          <h3>{% include shell-art.html name="briefcase" size=38 %} „Sodros“ išmokos</h3>
+          <label>Išmoka<select data-personal-preference="payment">
+            {% for item in published.payments %}<option value="{{ item.id }}">{{ item.label }}</option>{% endfor %}
+          </select></label>
+          <p data-personal-payment-date></p>
+          <button class="personal-button personal-button--primary" type="button" data-personal-action="add-payment">Pridėti išmokos datą</button>
+          <button class="personal-button" type="button" data-personal-action="payment-event">Įrašyti kitą mokėjimo datą</button>
+          <p class="personal-caption">Rodomas paskelbto mėnesio grafikas. Savo išmokos datą pasitikrinkite paskyroje.</p>
+          <div class="personal-source-links"><a href="{{ published.payment_source }}">2026 m. lapkričio grafikas</a><a href="{{ published.payment_latest | escape }}">Nauji grafikai</a><a href="https://gyventojai.sodra.lt/">„Sodros“ paskyra</a></div>
+          <p class="personal-caption" role="status" data-personal-payment-status></p>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <footer class="personal-local">
+    {% include shell-art.html name="shield" size=39 %}
+    <p>Įrašai lieka šioje naršyklėje. Prieš keisdami įrenginį <a href="/blogas/kalendoriaus-atsargine-kopija/">išsaugokite pilną kopiją</a>. Vien įvykių perkėlimą paaiškiname <a href="/duk/">ICS ir JSON klausimuose</a>.</p>
+    <a href="/privatumas/">Privatumo politika</a>
+    {% include sharing.html %}
+  </footer>
+  <section class="personal-print" data-personal-print aria-label="Spausdinamas savaitės planas"></section>
+</div>
+
+{% include event-editor.html %}
+<dialog id="restore-dialog" aria-labelledby="restore-title">
+  <h2 id="restore-title">Atkurti atsarginę kopiją?</h2>
+  <p>Pasirinktas JSON failas pakeis dabartinius įvykius, užduotis ir užrašus šioje naršyklėje.</p>
+  <form method="dialog" class="form-actions"><button value="cancel">Atšaukti</button><button class="primary" value="restore">Pasirinkti JSON failą</button></form>
+</dialog>
+<dialog id="delete-data-dialog" aria-labelledby="delete-data-title">
+  <h2 id="delete-data-title">Ištrinti asmeninius įrašus?</h2>
+  <p>Iš šios naršyklės bus pašalinti visi įvykiai, užduotys ir užrašai. Jei reikės juos atkurti, prieš trindami atsisiųskite kopiją.</p>
+  <form method="dialog" class="form-actions"><button value="cancel">Atšaukti</button><button class="primary" value="delete">Ištrinti įrašus</button></form>
+</dialog>
+<input id="ics-file" type="file" accept=".ics,text/calendar" hidden>
+<input id="json-file" type="file" accept=".json,application/json" hidden>
+
+<script type="application/json" id="personal-planner-data">
+  { "months": {{ site.data.calendar.months | jsonify }},
+    "weekdays": {{ site.data.calendar.weekdays | jsonify }},
+    "categories": {{ site.data.calendar.categories | jsonify }},
+    "holidays": {{ site.data.calendar.holidays | jsonify }},
+    "commemorations": {{ site.data.lithuanian_dates.commemorations | jsonify }},
+    "school": {{ site.data.calendar.school | jsonify }},
+    "published": {{ published | jsonify }}
+  }
+</script>

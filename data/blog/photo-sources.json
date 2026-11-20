@@ -352,5 +352,131 @@
       "observation": "Tuščia užrašinė, geltoni lipnūs lapeliai, pieštukas, rašiklis ir skriestuvas ant šviesaus paviršiaus.",
       "scope": "Visible subject and topic suitability; no depicted person endorsement or site ownership inferred."
     }
+  },
+  {
+    "slug": "baltijos-kelias-rugpjucio-23",
+    "source_file": "site/assets/visuals/local-events/baltijos-kelio-diena.webp",
+    "source_file_sha256": "e0457800b3d8c54ddcab3c0e0ea20a3afa78fc52056dcfc593b49e97d4e359dc",
+    "attribution": {
+      "author": "Gasparas Genzbigelis",
+      "source": "https://commons.wikimedia.org/wiki/File:Nuotrauka_Baltijos_kelyje.jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "original_sha256": "ef8bfd14c9697b7a39bdd0f692e2fe8afad2ba2facf7f8216220e38d8cf73516",
+      "input_kind": "existing_site_web_derivative"
+    },
+    "alt": "Nespalvotame Baltijos kelio kadre žmonės laukia žolėtame šlaite prie automobilių pilno kelio netoli Maišiagalos.",
+    "caption": "Baltijos kelio dalyviai netoli Maišiagalos 1989 m. Archyvinė Gasparo Genzbigelio nuotrauka.",
+    "crop_center": [
+      0.5,
+      0.53
+    ],
+    "review": {
+      "method": "Direct inspection of source pixels and blog crops",
+      "reviewed_at": "2026-11-21",
+      "observation": "Nespalvotame Baltijos kelio kadre žmonės laukia žolėtame šlaite prie automobilių pilno kelio netoli Maišiagalos.",
+      "scope": "Visible subject, primary attribution and documentary context"
+    }
+  },
+  {
+    "slug": "kaziuko-muges-kalendorius",
+    "source_file": "site/assets/visuals/local-events/kaziuko-muge.webp",
+    "source_file_sha256": "ccef2cac724d16ab79ff8cf2b0bb16d7bc4f3c4a66d3781f054268db7a762f07",
+    "attribution": {
+      "author": "Evaldas Liutkus",
+      "source": "https://commons.wikimedia.org/wiki/File:Kaziuko_muge_2010.jpg",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "original_sha256": "b1a593253b734ec72c42c9ea68e3767df922916d915c445b83a09b20723a0d55",
+      "input_kind": "existing_site_web_derivative"
+    },
+    "alt": "Vilniaus gatvėje prie Kaziuko mugės prekystalių ir burės formos dekoracijos susirinko lankytojai.",
+    "caption": "Vilniaus Kaziuko mugės lankytojai 2010 m. kovo 6 d.",
+    "crop_center": [
+      0.5,
+      0.5
+    ],
+    "review": {
+      "method": "Direct inspection of source pixels and blog crops",
+      "reviewed_at": "2026-11-21",
+      "observation": "Vilniaus gatvėje prie Kaziuko mugės prekystalių ir burės formos dekoracijos susirinko lankytojai.",
+      "scope": "Visible subject, primary attribution and documentary context"
+    }
+  },
+  {
+    "slug": "gandrines-ir-pavasario-stebejimai",
+    "source_file": "data/blog/source-media/white-stork-mindaugas-urbonas.jpg",
+    "source_file_sha256": "170c359d72a12da9b66eb44c797696932bd3db22873eb891b0db9f8bd16eee30",
+    "attribution": {
+      "author": "Mindaugas Urbonas",
+      "source": "https://commons.wikimedia.org/wiki/File:White_Stork-Mindaugas_Urbonas-1.jpg",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "original_sha256": "170c359d72a12da9b66eb44c797696932bd3db22873eb891b0db9f8bd16eee30",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/White_Stork-Mindaugas_Urbonas-1.jpg",
+      "input_kind": "downloaded_original"
+    },
+    "alt": "Du baltieji gandrai stovi iš šakelių sukrautame lizde, už jų matyti medžiai.",
+    "caption": "Du baltieji gandrai Kužių apylinkėse 2007 m. liepą.",
+    "crop_center": [
+      0.5,
+      0.19
+    ],
+    "review": {
+      "method": "Direct inspection of source pixels and blog crops",
+      "reviewed_at": "2026-11-21",
+      "observation": "Du baltieji gandrai stovi iš šakelių sukrautame lizde, už jų matyti medžiai.",
+      "scope": "Visible subject, primary attribution and documentary context"
+    }
+  },
+  {
+    "slug": "juros-sventes-savaitgalio-planas",
+    "source_file": "site/assets/visuals/local-events/juros-svente.webp",
+    "source_file_sha256": "7a8f13ca414160e08bf054d50ae90bc5e69f77d93e7553b054ff2a226ea441cc",
+    "attribution": {
+      "author": "Zivvviliuks",
+      "source": "https://commons.wikimedia.org/wiki/File:%C5%A0okan%C4%8Di%C5%B3_fontan%C5%B3_%C5%A1ou_Jono_kalnelyje_%28J%C5%ABros_%C5%A1vent%C4%97%29.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original_sha256": "96a09920453d5228859e3d67b58527e7536bbd13b2be6d97258c6d0940968fff",
+      "input_kind": "existing_site_web_derivative"
+    },
+    "alt": "Ant šlaito susirinkę žiūrovai stebi apšviestus šokančius fontanus prie Jono kalnelio Klaipėdoje.",
+    "caption": "Šokančių fontanų pasirodymas Klaipėdos Jūros šventėje 2017 m. liepos 28 d.",
+    "crop_center": [
+      0.5,
+      0.65
+    ],
+    "review": {
+      "method": "Direct inspection of source pixels and blog crops",
+      "reviewed_at": "2026-11-21",
+      "observation": "Ant šlaito susirinkę žiūrovai stebi apšviestus šokančius fontanus prie Jono kalnelio Klaipėdoje.",
+      "scope": "Visible subject, primary attribution and documentary context"
+    }
+  },
+  {
+    "slug": "veliniu-lapkricio-kalendorius",
+    "source_file": "site/assets/visuals/holiday-velines-lithuania-1024.webp",
+    "source_file_sha256": "6c27e615f42948bafa60d7a92ab09fe9e5337867c99895e0ab068f34b384b5ef",
+    "attribution": {
+      "author": "Jaunius",
+      "source": "https://commons.wikimedia.org/wiki/File:Velines.jpg",
+      "license": "Viešasis domenas",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Velines.jpg#Licensing",
+      "original_sha256": "86b8f1e335c736c40d5168a3d932ee2ca2c6f2b42c286c0adf3a0023cbf246d4",
+      "input_kind": "existing_site_web_derivative"
+    },
+    "alt": "Tamsiose kapinėse tarp medžių ir kapų tvorelių šviečia Vėlinių žvakės.",
+    "caption": "Vėlinių žvakės kapinėse Lietuvoje. Nuotrauka iš Wikimedia Commons.",
+    "crop_center": [
+      0.5,
+      0.76
+    ],
+    "review": {
+      "method": "Direct inspection of source pixels and blog crops",
+      "reviewed_at": "2026-11-21",
+      "observation": "Tamsiose kapinėse tarp medžių ir kapų tvorelių šviečia Vėlinių žvakės.",
+      "scope": "Visible subject, primary attribution and documentary context"
+    }
   }
 ]

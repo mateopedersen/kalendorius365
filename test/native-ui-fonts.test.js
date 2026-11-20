@@ -17,3 +17,21 @@ test('font preloads are limited to the calendar editor and retain complete docum
   assert.equal(createHash('sha256').update(bytes).digest('hex'),proof.fonts[i].original_sha256);
  }
 });
+
+test('browser interface uses the exact Finnish Regular and Bold files plus Lithuanian extension',()=>{
+ const stylesheet=readFileSync(new URL('../site/assets/shell/site-shell.css',import.meta.url),'utf8');
+ const hashes={
+  400:'918b7dc3e2e2d015c16ce08b57bcb64d2253bafc1707658f361e72865498e537',
+  700:'c447dd7677b419db7b21dbdfc6277c7816a913ffda76fd2e52702df538de0e49',
+ };
+ for(const [weight,hash] of Object.entries(hashes)){
+  const regular=readFileSync(new URL(`../site/assets/fonts/lato-latin-${weight}-normal.woff2`,import.meta.url));
+  const extended=readFileSync(new URL(`../site/assets/fonts/lato-latin-ext-${weight}-normal.woff2`,import.meta.url));
+  assert.equal(createHash('sha256').update(regular).digest('hex'),hash);
+  assert.equal(extended.subarray(0,4).toString(),'wOF2');
+  assert.ok(stylesheet.includes(`lato-latin-ext-${weight}-normal.woff2`));
+ }
+ assert.match(stylesheet,/--font-ui: var\(--shell-font\)/);
+ assert.match(stylesheet,/Lato-Regular-latin-lt\.woff2[^}]*unicode-range:[^}]*U\+012E-012F/);
+ assert.match(stylesheet,/Lato-Bold-latin-lt\.woff2[^}]*unicode-range:[^}]*U\+012E-012F/);
+});

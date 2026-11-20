@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:1863-metu-sukilimo-pradzios-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280122
+DTEND;VALUE=DATE:20280123
+SUMMARY:1863–1864 m. sukilimo pradžios diena
+DESCRIPTION:Sausio 22-ąją prisimenama 1863–1864 m. sukilimo prieš Rusi
+ jos imperijos valdžią pradžia.
+URL:https://kalendorius365.lt/sventes/1863-metu-sukilimo-pradzios-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

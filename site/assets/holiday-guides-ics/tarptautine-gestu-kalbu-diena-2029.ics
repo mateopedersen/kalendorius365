@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-gestu-kalbu-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290923
+DTEND;VALUE=DATE:20290924
+SUMMARY:Tarptautinė gestų kalbų diena
+DESCRIPTION:Rugsėjo 23 d. Tarptautinė gestų kalbų diena skirta gestų k
+ albų įvairovei ir kurčiųjų kalbinėms teisėms.
+URL:https://kalendorius365.lt/sventes/tarptautine-gestu-kalbu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

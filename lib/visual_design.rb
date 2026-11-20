@@ -58,7 +58,13 @@ module Pages
   end
   # Consistent semantic icons on real actions; no extra inactive controls.
   {'Atsisiųsti PDF'=>'download','Atsisiųsti vaizdą'=>'image','Atidaryti PDF spausdinimui ↗'=>'print','Spausdinti metų apžvalgą'=>'print','Spausdinti lentelę'=>'print','Atsisiųsti CSV suvestinę'=>'download','Spausdinti / Išsaugoti PDF'=>'print','Skaičiuoti'=>'calendar'}.each do |label,icon|
-   html=html.gsub('>'+label+'</','>'+ui_icon(icon)+label+'</')
+   content=case label
+   when 'Atsisiųsti PDF', 'Atsisiųsti vaizdą' then "<span>#{label}</span>"
+   when 'Atidaryti PDF spausdinimui ↗'
+    '<span>Atidaryti PDF spausdinimui <svg class="download-action-external" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+   else label
+   end
+   html=html.gsub('>'+label+'</','>'+ui_icon(icon)+content+'</')
   end
   html=html.gsub('>▦ ', '>'+ui_icon('calendar'))
   html=html.gsub(/<div class="resource-stats">(.*?)<\/div><\/div>/m) do |block|
@@ -75,9 +81,6 @@ module Pages
   html=html.gsub('>PDF</a>','>'+ui_icon('pdf')+'PDF</a>').gsub('>Vaizdas</a>','>'+ui_icon('image')+'Vaizdas</a>')
   if path.match?(%r{\Asventes/202[789]\z})
    html=html.sub('<h2>Kitos datos</h2>',holiday_stories(path.split('/').last.to_i)+'<h2>Kitos datos</h2>')
-  elsif path.match?(/\A202[789]\z/)
-   html=html.sub('<h2>Metinė šablonų kolekcija</h2>','<div class="annual-accent"><span><img src="/assets/visuals/brand-mark.svg" width="30" height="34" alt="" aria-hidden="true">Dvylika mėnesių. Vieta visiems jūsų planams.</span></div><h2>Metinė šablonų kolekcija</h2>')
-   html=html.sub('<div class="year-grid annual-sheet">',metric_cards([[Date.gregorian_leap?(path.to_i) ? 366 : 365,'Dienos šiais metais'],[12,'Mėnesių kolekcijų'],[10,'Metinių dizainų']])+'<div class="year-grid annual-sheet">')
   elsif path=='tuscias-kalendorius'
    intro='<section class="library-highlights" aria-labelledby="library-highlights-title"><h2 id="library-highlights-title">Planuokite pagal poreikį</h2><div class="library-intro">'+[['calendar','Laisva pradžia','Nedatuoti mėnesio lapai – pradėkite tada, kada patogu.'],['briefcase','Aiški savaitė','Darbai, susitikimai ir prioritetai viename lape.'],['book','Šeimai ir mokyklai','Bendri planai, pamokos ir vieta kiekvieno užrašams.']].map { |i,t,p|'<div>'+ui_icon(i)+'<h3>'+t+'</h3><p>'+p+'</p></div>' }.join+'</div></section>'
    html=html.sub('<div class="design-filters',intro+'<div class="design-filters')

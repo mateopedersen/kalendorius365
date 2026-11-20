@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-gatves-muzikos-diena-2027-05-15@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+SUMMARY:Gatvės muzikos diena
+DESCRIPTION:Vilniuje vienai dienai pasirodymų vietomis tampa aikštės\, s
+ kverai ir gatvės.
+URL:https://kalendorius365.lt/renginiai/gatves-muzikos-diena/
+TRANSP:TRANSPARENT
+LOCATION:Vilniaus viešosios erdvės
+END:VEVENT
+END:VCALENDAR

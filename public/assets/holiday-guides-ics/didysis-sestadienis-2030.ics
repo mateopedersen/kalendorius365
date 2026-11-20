@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:didysis-sestadienis-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300420
+DTEND;VALUE=DATE:20300421
+SUMMARY:Didysis šeštadienis
+DESCRIPTION:Didysis šeštadienis yra Velykų išvakarės\, kai po sutemų 
+ švenčiama Velyknakčio vigilija.
+URL:https://kalendorius365.lt/sventes/didysis-sestadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

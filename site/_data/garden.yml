@@ -1,0 +1,304 @@
+stages:
+  sow: {name: Sėja, mark: S}
+  plant: {name: Sodinimas ir persodinimas, mark: P}
+  harvest: {name: Derliaus nuėmimas, mark: D}
+places:
+  seedlings: Daigų auginimas
+  outdoor: Lauke
+  greenhouse: Nešildomame šiltnamyje
+climates:
+  central:
+    name: Vidurio Lietuva
+    note: Lentelė skirta įprastoms Lietuvos sąlygoms. Net ir Vidurio Lietuvoje šalnos dirvos paviršiuje gali grįžti gegužės pabaigoje. Prieš sėdami įvertinkite sklypo orus, dirvos drėgmę ir temperatūrą.
+  coast:
+    name: Pajūris
+    note: Pagal LHMT stebėjimus, pajūryje dirvos paviršiaus šalnos vidutiniškai baigiasi anksčiau, o rudenį prasideda vėliau. Pavasarį dirvos būklę ir vėjo poveikį vertinkite savo sklype.
+  southeast:
+    name: Pietryčių Lietuva
+    note: Varėnos apylinkėse pavasario šalnos dirvos paviršiuje vidutiniškai gali užsitęsti iki gegužės pabaigos. Žemumose daigus sodinkite tik praėjus šalnų rizikai arba pasiruoškite priedangas.
+  north:
+    name: Šiaurės Lietuva
+    note: Rudeninės dirvos paviršiaus šalnos Šiaurės Lietuvoje paprastai prasideda anksčiau negu pajūryje. Sekite artimiausių naktų prognozę ir laiku nuimkite šalčiui jautrų derlių.
+  greenhouse:
+    name: Nešildomas šiltnamis
+    note: Saulėtą dieną šiltnamis įšyla, tačiau naktį jo viduje vis tiek gali pašalti. Stebėkite nakties temperatūrą prie daigų, matuokite dirvos šilumą ir prireikus naudokite priedangą.
+sources:
+  lammc:
+    name: "LAMMC mokslininkės: daržovių sėja ir daigų auginimas"
+    url: https://manoukis.lt/naujienos/ukis/mokslininkes-pataria-kada-pradeti-darzoviu-seja
+    summary: Babtų instituto tyrėjos nurodo sėjos laiką pagal kultūrą, augimo vietą ir daigų vystymąsi.
+  frost:
+    name: "LHMT: šalnos Lietuvoje"
+    url: https://www.meteo.lt/meteorologija/atmosferos-reiskiniai/
+    summary: Pavasario ir rudens šalnų skirtumai pajūryje, šalies viduryje, šiaurėje ir pietryčiuose.
+  growers:
+    name: "Lietuvos ūkio praktika: pavasario sėja ir darbai pagal gamtos ženklus"
+    url: https://manoukis.lt/naujienos/ukis/kaip-sekasi-auginti-darzoves-ekologiskai
+    summary: Ūkininkų patirtis auginant ankstyvas, šilumamėges ir pakartotinai sėjamas daržoves.
+  seeds:
+    name: "Darzoviuseklos.lt: daržovių sėjimo terminai"
+    url: https://www.darzoviuseklos.lt/profesionalams/sejimo-normos/
+    summary: Lietuvoje tiekiamų sėklų sėjos terminai pagal auginimo vietą. Konkrečios veislės instrukcijos gali skirtis.
+  seedlings:
+    name: "Lietuvos sodininkystės ir daržininkystės instituto rekomendacijos daigams"
+    url: https://manoukis.lt/mano-ukis-zurnalas/2006/02/darzoviu-daigu-auginimas/
+    summary: Kopūstinių, porų, salierų ir moliūginių daržovių daigų terminai ir tinkama sodinimo stadija.
+  tomato-greenhouse:
+    name: "Pomidorų augintojos patarimai apie nešildomą šiltnamį"
+    url: https://www.manoukis.lt/naujienos/ukis/patyrusi-augintoja-pataria-kaip-sulaukti-gausaus-pomidoru-derliaus
+    summary: Pomidorų daigų sodinimo gegužę pavyzdžiai, dirvos temperatūra ir daigų apsauga nuo šalnų.
+  pepper-greenhouse:
+    name: "Paprikų augintojos apie sėją ir vaisių sunokimą"
+    url: https://manoukis.lt/naujienos/ukis/augintojos-pataria-kaip-seti-papriku-daigus
+    summary: Veislių auginimo trukmė, daigų priežiūra ir liepą sunokstančių vaisių pavyzdžiai.
+  cucumber-greenhouse:
+    name: "Julė Jankauskienė apie agurkus nešildomame šiltnamyje"
+    url: https://www.manoukis.lt/mano-ukis-zurnalas/2013/06/agurku-prieziura-siltnamyje/
+    summary: Gegužės vidurio ar pabaigos sodinimas ir sąlygos, svarbios agurkų augimui.
+  cucumbers:
+    name: "Kėdainių rajono augintojo patirtis auginant lauko agurkus"
+    url: https://www.manoukis.lt/naujienos/ukis/kaip-si-sezona-sekasi-lauko-agurku-augintojams
+    summary: Lauko agurkų sėjos ir skynimo priklausomybė nuo šiltos dirvos ir naktinių šalnų.
+  roots:
+    name: "Zakų ūkis: šakniavaisių ir svogūnų derliaus nuėmimas"
+    url: https://manoukis.lt/naujienos/ukis/ukio-stiprybe-darzoviu-ivairove-ir-ju-perdirbimas
+    summary: Šviežių morkų ir burokėlių kasimas nuo liepos bei svogūnų derliaus nuėmimas rugpjūtį.
+  potatoes:
+    name: "Zakų ūkis: ankstyvos ir vėlyvesnės bulvės bei moliūgai"
+    url: https://www.manoukis.lt/naujienos/ukis/svarbu-moketi-ne-tik-isauginti-darzoves-bet-ir-parduoti
+    summary: Ankstyvųjų ir vidutinio ankstyvumo bulvių kasimo bei moliūgų derliaus pavyzdžiai.
+  garlic:
+    name: "Rasa Karklelienė: žieminių česnakų sodinimas ir kasimas"
+    url: https://www.manoukis.lt/mano-ukis-zurnalas/2011/10/zieminiai-cesnakai-darzove-su-kaprizais/
+    summary: Žieminių česnakų įsišaknijimas rudenį ir subrendimo požymiai liepą.
+  onions:
+    name: "Janušaičių ūkis: svogūnų sėjinukų sodinimas"
+    url: https://manoukis.lt/naujienos/ukis/janusaiciai-darzoviu-ukyje-nuolat-iesko-ka-galima-padaryti-geriau
+    summary: Balandžio pabaigoje ir gegužės pradžioje sodinamų sėjinukų pavyzdys.
+  fall:
+    name: "Radžiūnų ūkis: žalumynai rudens derliui"
+    url: https://manoukis.lt/naujienos/ukis/darzoviu-augintojams-si-sezona-isbandymu-netruko
+    summary: Špinatų, krapų ir šiltnamio salotų auginimas antram derliui Suvalkijoje.
+  brassicas:
+    name: "Mažeikių ir Kauno rajonų augintojai: kopūstinės daržovės rudeniui"
+    url: https://manoukis.lt/naujienos/ukis/kopustiniu-darzoviu-konvejeris-rudens-derliui
+    summary: Rudens derliaus planavimas pagal kopūstinių daržovių vegetacijos trukmę.
+  peas:
+    name: "Aseja: cukrinių žirnių sėja ir vegetacijos trukmė"
+    url: https://www.aseja.lt/product/darzoves/zirniai/cukriniai-zirniai-grijze-roodbloeiende/
+    summary: Vietinio sėklų tiekėjo veislės pavyzdys, pagal kurį galima pasitikrinti sėjos laikotarpį.
+  beans:
+    name: "Šparaginės pupelės ir šilta dirva"
+    url: https://derlingas.lt/darzoves/kada-seti-pupeles-2026-m-tinkama-laika-nustatykite-pagal-alyvas
+    summary: Šilumos poreikis, subrendimo požymiai ir ankščių skynimas. Atskirų Mėnulio kalendoriaus datų čia nenaudojame.
+  strawberries:
+    name: "Noberto Uselio patarimai braškių augintojams"
+    url: https://www.manoukis.lt/mano-ukis-zurnalas/2008/12/svarbus-patarimai-braskiu-augintojams/
+    summary: Lietuvos instituto tyrimai dėl šviežiai iškastų braškių daigų sodinimo pavasarį ir vasaros pabaigoje.
+  strawberry-harvest:
+    name: "Lietuvos instituto braškių derėjimo bandymai"
+    url: https://www.manoukis.lt/mano-ukis-zurnalas/2007/09/naujos-braskiu-auginimo-technologijos/
+    summary: Priedangų poveikis braškių sunokimui ir birželio derliaus pavyzdys.
+  blueberries:
+    name: "Lietuvos šilauogių ūkių veislių derėjimo laikas"
+    url: https://www.manoukis.lt/naujienos/ukis/silauogiu-ukyje-gausus-derliai-ir-uogu-turizmas
+    summary: Ankstyvų ir vėlyvų šilauogių derėjimas nuo liepos iki rugsėjo.
+  blueberry-planting:
+    name: "Šilauogyno įrengimas ir sodinukų sodinimo laikas"
+    url: https://manoukis.lt/naujienos/ukis/silauogyno-irengimui-taupyti-neverta
+    summary: Augintojo ir botanikos sodo mokslininkės įžvalgos apie sodinimą ir veislių pasirinkimą.
+  apple-planting:
+    name: "Obelų sodinimas ir pasiruošimas žiemai"
+    url: https://www.manoukis.lt/mano-ukis-zurnalas/2009/10/pirmoji-spalio-puse-obelu-sodinimo-metas/
+    summary: Rudeninis obelų sodinimas, vietos parinkimas ir šaknų apsauga.
+  apples:
+    name: "Lietuvos sodininkystės instituto obelų veislių tyrimai"
+    url: https://www.manoukis.lt/mano-ukis-zurnalas/2009/09/obelu-veisles-ekologiniam-sodui/
+    summary: Lietuvoje tirtų obelų veislių skynimo laikas ir vaisių laikymosi skirtumai.
+plants:
+  - id: pomidorai
+    aliases: pomidoras pomidorų
+    name: Pomidorai
+    note: Nešildomam šiltnamiui sėkite kovo viduryje, o lauko pomidorams tinka kovo pabaiga. Prieš perkeldami daigus į lauką juos palaipsniui pratinkite prie lauko sąlygų.
+    sources: [lammc, tomato-greenhouse, frost]
+    periods:
+      - {stage: sow, place: seedlings, months: [3], label: Sėja daigams, window: Kovo vidurys–pabaiga}
+      - {stage: plant, place: greenhouse, months: [5], label: Perkėlimas į šiltnamį, window: "Gegužė, kai naktys pakankamai šiltos"}
+      - {stage: plant, place: outdoor, months: [5, 6], label: Sodinimas į lysvę, window: "Gegužės pabaiga–birželio pradžia po šalnų"}
+      - {stage: harvest, place: greenhouse, months: [7, 8, 9], label: Skynimas šiltnamyje, window: "Liepa–rugsėjis, priklausomai nuo veislės"}
+      - {stage: harvest, place: outdoor, months: [7, 8, 9], label: Skynimas lauke, window: "Liepos pabaiga–rugsėjis, iki šalnų"}
+  - id: paprikos
+    aliases: paprika saldžioji paprika
+    name: Saldžiosios paprikos
+    note: Paprikų daigai vystosi lėčiau už pomidorų. Lietuvos sąlygomis patikimiau sodinti į saulėtą nešildomą šiltnamį ir stebėti nakties temperatūrą.
+    sources: [lammc, pepper-greenhouse, seeds]
+    periods:
+      - {stage: sow, place: seedlings, months: [3], label: Sėja daigams, window: Kovo vidurys nešildomam šiltnamiui}
+      - {stage: plant, place: greenhouse, months: [5, 6], label: Daigų sodinimas šiltnamyje, window: Gegužė arba birželio pradžia atšilus}
+      - {stage: harvest, place: greenhouse, months: [7, 8, 9], label: Vaisių skynimas, window: Nuo liepos pabaigos iki rugsėjo pagal veislę ir šilumą}
+  - id: agurkai
+    aliases: agurkas agurkų
+    name: Agurkai
+    note: Lauko agurkų sėklos šaltoje ir drėgnoje dirvoje dygsta prastai. Į nešildomą šiltnamį daigus perkelkite tik įšilusiai žemei, o į lauką neskubėkite iki šalnų pabaigos.
+    sources: [lammc, cucumbers, cucumber-greenhouse]
+    periods:
+      - {stage: sow, place: seedlings, months: [4], label: Sėja daigams, window: Balandžio pabaiga}
+      - {stage: sow, place: outdoor, months: [5, 6], label: Sėja į lysvę, window: Gegužės pabaiga–birželio pradžia}
+      - {stage: plant, place: greenhouse, months: [5], label: Sodinimas šiltnamyje, window: Gegužė įšilus dirvai}
+      - {stage: harvest, place: greenhouse, months: [6, 7, 8, 9], label: Skynimas šiltnamyje, window: Birželis–rugsėjis pagal sodinimo laiką}
+      - {stage: harvest, place: outdoor, months: [7, 8, 9], label: Skynimas lauke, window: Liepa–rugsėjo pradžia iki šaltų naktų}
+  - id: kopustai
+    aliases: kopūstas baltagūžis kopūstas
+    name: Baltagūžiai kopūstai
+    note: Ankstyvos veislės tinka vasaros stalui. Sandėliavimui skirti vėlyvi kopūstai sėjami vėliau ir nuimami rudenį, galvoms sutvirtėjus.
+    sources: [lammc, seedlings, brassicas]
+    periods:
+      - {stage: sow, place: seedlings, months: [3], label: Ankstyvųjų sėja daigams, window: Kovo pradžia}
+      - {stage: sow, place: outdoor, months: [4, 5], label: Vėlyvųjų sėja į daigyną, window: Balandžio pabaiga–gegužės pradžia}
+      - {stage: plant, place: outdoor, months: [4, 5, 6], label: Daigų sodinimas, window: Balandžio pabaiga–birželis pagal grupę}
+      - {stage: harvest, place: outdoor, months: [6, 7, 9, 10], label: Gūžių pjovimas, window: Ankstyvieji birželį–liepą; vėlyvieji rugsėjį–spalį}
+  - id: salotos
+    aliases: salotų gūžinė salota
+    name: Gūžinės salotos
+    note: Vėsi žemė salotoms tinkamesnė nei vasaros karštis. Sėkite nedidelėmis dalimis, kad gūžės nesubręstų visos iš karto.
+    sources: [lammc, seeds, fall]
+    periods:
+      - {stage: sow, place: seedlings, months: [2, 3], label: Ankstyva sėja daigams, window: Vasario vidurys–kovas}
+      - {stage: sow, place: outdoor, months: [4, 5], label: Pavasario sėja į lysvę, window: Balandžio vidurys–gegužės pradžia}
+      - {stage: sow, place: greenhouse, months: [4, 5], label: Sėja į šiltnamio lysvę, window: Balandis–gegužė}
+      - {stage: harvest, place: outdoor, months: [5, 6, 7], label: Pavasarinės sėjos derlius, window: Gegužės pabaiga–liepa}
+  - id: morkos
+    aliases: morka morkų
+    name: Morkos
+    note: Sėkite tiesiai į purią dirvą be stambių grumstų. Ankstyvąsias galima rauti vasarą, o sandėliavimui skirtas palikite iki rudens.
+    sources: [lammc, roots]
+    periods:
+      - {stage: sow, place: outdoor, months: [4, 5], label: Sėja į lysvę, window: Balandžio antroji pusė–gegužės pradžia}
+      - {stage: harvest, place: outdoor, months: [7, 8, 9, 10], label: Šakniavaisių rovimas, window: Nuo liepos; sandėliavimui rugsėjį–spalį}
+  - id: burokeliai
+    aliases: burokėlis burokėlių
+    name: Burokėliai
+    note: Sėkite, kai žemė pradžiūvusi ir įdirbama. Ankstyvam vartojimui šakniavaisius galite rinkti po truputį, o likusius nukaskite iki stipresnių šalnų.
+    sources: [lammc, growers, roots]
+    periods:
+      - {stage: sow, place: outdoor, months: [4, 5], label: Sėja į lysvę, window: Balandžio pabaiga–gegužė}
+      - {stage: harvest, place: outdoor, months: [7, 8, 9, 10], label: Šakniavaisių nuėmimas, window: Liepa–spalis pagal veislę ir šalnas}
+  - id: ridikeliai
+    aliases: ridikėlis ridikėlių
+    name: Ridikėliai
+    note: Ankstyvą sėją pradėkite šiltnamyje. Jeigu oras įkaista ir dienos išilgėja, dalis veislių greitai išleidžia žiedynkočius.
+    sources: [lammc, seeds]
+    periods:
+      - {stage: sow, place: greenhouse, months: [3, 4], label: Ankstyva sėja po danga, window: Kovas–balandis}
+      - {stage: sow, place: outdoor, months: [3, 4, 5], label: Sėja į lysvę, window: Kovo pabaiga–gegužės pradžia}
+      - {stage: harvest, place: greenhouse, months: [4, 5], label: Rovimas šiltnamyje, window: Balandis–gegužė}
+      - {stage: harvest, place: outdoor, months: [4, 5, 6], label: Rovimas lauke, window: Balandžio pabaiga–birželis pagal sėją}
+  - id: salierai
+    aliases: salieras salierų šakninis salieras
+    name: Šakniavaisiniai salierai
+    note: Ilgam vegetacijos laikotarpiui pradėkite nuo daigų. Sodindami neužberkite jų augimo taško ir neleiskite žemei ilgai išdžiūti.
+    sources: [lammc, seedlings, frost]
+    periods:
+      - {stage: sow, place: seedlings, months: [3], label: Sėja daigams, window: Kovo vidurys}
+      - {stage: plant, place: outdoor, months: [5, 6], label: Daigų sodinimas į lysvę, window: Gegužės antroji pusė–birželio pradžia}
+      - {stage: harvest, place: outdoor, months: [9, 10], label: Gumbų kasimas, window: Rugsėjo pabaiga–spalis iki stiprių šalnų}
+  - id: svogunai
+    aliases: svogūnas svogūnų ropelės
+    name: Svogūnai
+    note: Ropeles galima užauginti iš sėklų arba sėjinukų. Rinkite, kai dauguma laiškų nulinksta, o sandėliavimui skirtas ropeles gerai išdžiovinkite.
+    sources: [lammc, onions, roots]
+    periods:
+      - {stage: sow, place: outdoor, months: [4, 5], label: Sėja iš sėklų, window: Balandžio pabaiga–gegužės pradžia}
+      - {stage: plant, place: outdoor, months: [4, 5], label: Sėjinukų sodinimas, window: Balandžio pabaiga–gegužės pradžia}
+      - {stage: harvest, place: outdoor, months: [8], label: Ropelių nuėmimas, window: Rugpjūtis pagal subrendimą}
+  - id: cesnakai
+    aliases: česnakas česnakų žieminis česnakas
+    name: Žieminiai česnakai
+    note: Skiltelės turi įsišaknyti iki žiemos. Liepą stebėkite, kada gelsta lapai arba trūkinėja paliktų žiedynų apvalkalai.
+    sources: [garlic]
+    periods:
+      - {stage: plant, place: outdoor, months: [9, 10], label: Skiltelių sodinimas, window: Rugsėjo pabaiga–spalio pirmoji pusė}
+      - {stage: harvest, place: outdoor, months: [7], label: Galvučių kasimas, window: Liepos antroji pusė}
+  - id: porai
+    aliases: poras porų
+    name: Porai
+    note: Storam baltam stiebui daigus sodinkite į gilesnį griovelį. Sezonui įsibėgėjus purią žemę prie stiebų galima pamažu pristumti.
+    sources: [lammc, seedlings]
+    periods:
+      - {stage: sow, place: seedlings, months: [3], label: Sėja daigams, window: Kovo vidurys}
+      - {stage: plant, place: outdoor, months: [5, 6], label: Daigų sodinimas, window: Gegužė–birželio pradžia}
+      - {stage: harvest, place: outdoor, months: [8, 9, 10], label: Stiebų rovimas, window: Rugpjūtis–spalis pagal veislę}
+  - id: zirniai
+    aliases: žirnis žirnių žirneliai
+    name: Žirniai
+    note: Sėkite tiesiai į lysvę, kai pavasarinė dirva pradžiūva. Aukštoms veislėms atramas pastatykite iki tol, kol ūgliai ims gultis.
+    sources: [peas, growers]
+    periods:
+      - {stage: sow, place: outdoor, months: [4, 5], label: Sėja į lysvę, window: Balandžio vidurys–gegužės vidurys}
+      - {stage: harvest, place: outdoor, months: [6, 7, 8], label: Minkštų ankščių skynimas, window: Birželio pabaiga–rugpjūtis pagal veislę ir sėją}
+  - id: pupeles
+    aliases: pupelė šparaginė pupelė pupelių
+    name: Šparaginės pupelės
+    note: Pradėkite įšilus dirvai ir praėjus pavasario šalnoms. Ankštis skinkite dar minkštas ir reguliariai, kad nesukietėtų.
+    sources: [beans, frost]
+    periods:
+      - {stage: sow, place: outdoor, months: [5, 6], label: Sėja į lysvę, window: Gegužės pabaiga–birželio pradžia}
+      - {stage: harvest, place: outdoor, months: [7, 8, 9], label: Jaunų ankščių skynimas, window: Liepos pabaiga–rugsėjis iki šalnų}
+  - id: krapai
+    aliases: krapų krapas
+    name: Krapai
+    note: Švelnių lapelių derliui sėkite keliais mažais etapais. Jei reikia sėklų ar skėčių konservams, dalį augalų palikite subręsti.
+    sources: [seeds, fall]
+    periods:
+      - {stage: sow, place: outdoor, months: [4, 5, 6, 7, 8], label: Pakartotinė sėja į lysvę, window: Balandžio vidurys–rugpjūčio pradžia}
+      - {stage: harvest, place: outdoor, months: [5, 6, 7, 8, 9], label: Lapelių skynimas, window: Gegužės pabaiga–rugsėjis pagal sėją}
+  - id: spinatai
+    aliases: špinatas špinatų
+    name: Špinatai
+    note: Špinatams tinka vėsesnės pavasario ir vasaros pabaigos dienos. Pavasarinį derlių nuimkite prieš augalams pradėjus leisti žiedynkočius.
+    sources: [growers, fall]
+    periods:
+      - {stage: sow, place: outdoor, months: [4, 5, 8], label: Sėja į lysvę, window: Balandis–gegužės pradžia ir rugpjūtis}
+      - {stage: harvest, place: outdoor, months: [5, 6, 9, 10], label: Lapų pjovimas, window: Gegužė–birželis ir rugsėjis–spalis}
+  - id: bulves
+    aliases: bulvė bulvių
+    name: Bulvės
+    note: Ankstyvąsias bulves galima daiginti prieš sodinimą. Pagrindinį laikymui skirtą derlių kaskite, kai bulvienojai nunykę ir lupena sutvirtėjusi.
+    sources: [growers, potatoes, frost]
+    periods:
+      - {stage: plant, place: outdoor, months: [4, 5], label: Sėklinių gumbų sodinimas, window: Balandžio pabaiga–gegužė įšilus dirvai}
+      - {stage: harvest, place: outdoor, months: [6, 7, 8, 9, 10], label: Gumbų kasimas, window: Ankstyvosios nuo birželio pabaigos; pagrindinis derlius rugpjūtį–spalio pradžioje}
+  - id: moliugai
+    aliases: moliūgas moliūgų
+    name: Moliūgai
+    note: Moliūgai nepakelia šalnos. Pasirinkite saulėtą vietą, kur ūgliai galės laisvai driektis. Laikymui vaisius nupjaukite su koteliu.
+    sources: [growers, seedlings, potatoes, frost]
+    periods:
+      - {stage: sow, place: seedlings, months: [4, 5], label: Sėja daigams, window: Balandžio pabaiga–gegužės pradžia}
+      - {stage: sow, place: outdoor, months: [5, 6], label: Sėja į lysvę, window: Gegužės pabaiga–birželio pradžia}
+      - {stage: plant, place: outdoor, months: [5, 6], label: Daigų sodinimas, window: Gegužės pabaiga–birželis po šalnų}
+      - {stage: harvest, place: outdoor, months: [8, 9, 10], label: Subrendusių vaisių nuėmimas, window: Rugpjūtis–spalis iki šalnų}
+  - id: braskes
+    aliases: braškė braškių
+    name: Braškės
+    note: Įprastos, vieną kartą derančios braškės daugiausia skinamos vasaros pradžioje. Vėliau sodinti šaldyti daigai ir remontantinės veislės gali derėti kitu metu.
+    sources: [strawberries, strawberry-harvest]
+    periods:
+      - {stage: plant, place: outdoor, months: [4, 8, 9], label: Šviežių daigų sodinimas, window: Balandžio antroji pusė arba rugpjūčio pabaiga–rugsėjo pradžia}
+      - {stage: harvest, place: outdoor, months: [6, 7], label: Uogų skynimas, window: Birželis–liepa pagal veislę ir priedangas}
+  - id: silauoges
+    aliases: šilauogė šilauogių
+    name: Šilauogės
+    note: Paruoškite rūgštų, orui laidų substratą ir pasirūpinkite drėgme. Jei norite uogų ilgesnį laiką, sodinkite kelių skirtingo ankstyvumo veislių krūmus.
+    sources: [blueberry-planting, blueberries]
+    periods:
+      - {stage: plant, place: outdoor, months: [8, 9], label: Krūmelių sodinimas, window: Rugpjūčio pabaiga–rugsėjo pradžia}
+      - {stage: harvest, place: outdoor, months: [7, 8, 9], label: Uogų skynimas, window: Liepa–rugsėjis pagal veislę}
+  - id: obelys
+    aliases: obelis obuoliai obuolys obuolių
+    name: Obelys
+    note: Skynimo laikas priklauso nuo veislės. Vėlyvų veislių obuolius sandėliavimui skinkite atsargiai ir atskirkite pažeistus vaisius.
+    sources: [apple-planting, apples]
+    periods:
+      - {stage: plant, place: outdoor, months: [10], label: Rudeninis sodinukų sodinimas, window: Spalio pirmoji pusė esant tinkamai dirvai}
+      - {stage: harvest, place: outdoor, months: [9, 10], label: Rudeninių ir žieminių obuolių skynimas, window: Rugsėjis–spalio pirmoji pusė}

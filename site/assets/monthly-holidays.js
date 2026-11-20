@@ -35,8 +35,10 @@ if (typeof document !== 'undefined') {
     function describeDate(iso) {
       const visible = records.filter(r => r.date === iso && !r.el.hidden);
       const total = records.filter(r => r.date === iso).length;
+      const day = days.find(item => item.dataset.day === iso);
+      const announced = day?.dataset.festival ? ' Paskelbta renginių.' : '';
       const suffix = visible.length ? ` Rodomi įrašai: ${visible.length}. ${visible.map(r=>r.el.querySelector('h4').textContent).join('; ')}.` : total ? ' Pagal pasirinktus filtrus šios dienos įrašai nerodomi. Galite atkurti viską.' : ' Patikrintame sąraše šiai dienai įrašų nėra. Tai savaime nenustato jūsų darbo grafiko.';
-      dayInfo.textContent = dateLabel(iso) + '.' + suffix;
+      dayInfo.textContent = dateLabel(iso) + '.' + suffix + announced;
     }
     function applyFilters() {
       for (const r of records) r.el.hidden = !matchesRecord(r, category, query.value);
@@ -46,10 +48,10 @@ if (typeof document !== 'undefined') {
         const count = day.querySelector('.mh-daycount');
         if (count) {count.textContent = String(es.length);count.hidden = es.length === 0;}
         for (const mark of day.querySelectorAll('[data-mark-category]')) mark.hidden = !es.some(r => r.category === mark.dataset.markCategory);
-        day.classList.toggle('mh-day--muted', es.length === 0);
+        day.classList.toggle('mh-day--muted', es.length === 0 && !day.dataset.festival);
         // Keep the visible day as the link name; the native description holds
         // the full date and filtered records without overriding speech input.
-        day.setAttribute('title', `${dateLabel(day.dataset.day)}. ${es.length ? 'Rodomi įrašai: '+es.length+'. '+es.map(r=>r.el.querySelector('h4').textContent).join('; ')+'.' : 'Pagal dabartinius filtrus įrašų nėra.'}`);
+        day.setAttribute('title', `${dateLabel(day.dataset.day)}. ${es.length ? 'Rodomi įrašai: '+es.length+'. '+es.map(r=>r.el.querySelector('h4').textContent).join('; ')+'.' : 'Pagal dabartinius filtrus atmintinų datų nėra.'}${day.dataset.festival ? ' Paskelbta renginių.' : ''}`);
       }
       for (const button of categoryButtons) button.setAttribute('aria-pressed', String(button.dataset.categoryFilter === category));
       const visibleCount = records.filter(r=>!r.el.hidden).length;
@@ -67,7 +69,9 @@ if (typeof document !== 'undefined') {
       for (const group of groups) group.classList.toggle('is-selected', group.dataset.dateGroup===iso);
       describeDate(iso);
       const group = groups.find(g=>g.dataset.dateGroup===iso && !g.hidden);
-      const target = group || dayInfo;
+      const day = days.find(item => item.dataset.day === iso);
+      const festival = day?.dataset.festival && document.getElementById(day.dataset.festival);
+      const target = group || festival || dayInfo;
       if(scroll){target.scrollIntoView({block:'start',behavior:'auto'});target.focus({preventScroll:true});}
     }
     for (const day of days) {
@@ -89,7 +93,7 @@ if (typeof document !== 'undefined') {
       const upcoming=nextWithinMonth(dates,vilniusDate());
       const ds=upcoming||dates[0];
       next.href='#data-'+ds;
-      next.querySelector('span').textContent=upcoming ? 'Artimiausia pagal filtrus: '+dateLabel(ds) : '2027 m. archyvas · '+dateLabel(ds);
+      next.querySelector('span').textContent=upcoming ? 'Artimiausia pagal filtrus: '+dateLabel(ds) : root.dataset.year+' m. archyvas · '+dateLabel(ds);
     }
     next.addEventListener('click',event=>{event.preventDefault();const ds=next.getAttribute('href').slice(6);selectDay(ds);});
     root.querySelectorAll('[data-enhance] button,[data-enhance] input').forEach(el=>el.disabled=false);

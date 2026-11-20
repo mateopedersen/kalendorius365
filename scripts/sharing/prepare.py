@@ -63,6 +63,92 @@ def page(route,title,description,body,**extra):
  meta={'title':title,'description':description,'robots':'noindex, follow','share_archive':True,**extra}
  out.write_text('---\n'+'\n'.join(f'{k}: {json.dumps(v,ensure_ascii=False)}' for k,v in meta.items())+'\n---\n'+body+'\n')
 
+def action_icon(name):
+ return f'<svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24"><use href="/assets/visuals/home-icons.svg#{name}"></use></svg>'
+
+def design_landing(asset, title, excerpt, eyebrow, parent, parent_label):
+ orientation='Gulsčias' if asset['landscape'] else 'Stačias'
+ width,height=(680,481) if asset['landscape'] else (481,680)
+ return f"""<article class="share-landing archive-page">
+ <header class="archive-hero">
+  <p class="eyebrow">{e(eyebrow)}</p>
+  <h1>{e(title)}</h1>
+  <p class="archive-hero__intro">{e(excerpt)}</p>
+ </header>
+ <div class="share-design-layout">
+  <figure class="share-design-sheet">
+   <img class="share-design-preview" src="{e(asset['preview'])}" width="{width}" height="{height}" alt="{e(asset.get('alt',title))}" decoding="async">
+  </figure>
+  <section class="archive-panel share-design-actions" aria-labelledby="share-design-actions-title">
+   <h2 id="share-design-actions-title">Atsisiųsti kalendorių</h2>
+   <p class="archive-tag">{e(asset['paper'])} · {orientation}</p>
+   <div class="toolbar-group">
+    <a class="button primary" href="{e(asset['pdf'])}" download>{action_icon('download')}<span>Atsisiųsti PDF</span></a>
+    <a class="button" href="{e(asset['webp'])}" download>{action_icon('image')}<span>Atsisiųsti vaizdą</span></a>
+    <a class="button" href="{e(asset['pdf'])}" target="_blank" rel="noopener noreferrer">{action_icon('print')}<span>Spausdinti PDF <span aria-hidden="true">↗</span></span></a>
+   </div>
+   <a class="archive-back" href="{e(parent)}">{e(parent_label)} <span aria-hidden="true">→</span></a>
+   <p class="archive-note">Dalijamasi tik viešu kalendoriumi. Asmeniniai įrašai neįtraukiami.</p>
+  </section>
+ </div>
+</article>"""
+
+def saved_horoscope(forecast, snapshot, sign):
+ date=snapshot['contentDate']
+ slug=forecast['sign_key']
+ subjects=[('overview','Bendra dienos nuotaika'),('relationships','Santykiai'),('work','Veikla ir darbai'),
+           ('reflection','Apmąstymui'),('tip','Mažas dienos žingsnis')]
+ paragraphs=''.join(f'<section class="archive-panel"><h2>{label}</h2><p>{e(forecast[key])}</p></section>' for key,label in subjects)
+ return f"""<article class="share-snapshot archive-page">
+ <header class="archive-hero archive-hero--illustrated">
+  <div>
+   <p class="eyebrow">Išsaugota turinio versija</p>
+   <h1>{e(sign['name'])} · <time datetime="{date}">{e(local_date(date))}</time></h1>
+   <p class="archive-hero__intro">{e(forecast['lead'])}</p>
+   <nav class="archive-hero__actions" aria-label="Horoskopų navigacija">
+    <a class="button" href="/horoskopai/{slug}/">Šios dienos horoskopas <span aria-hidden="true">→</span></a>
+    <a class="button" href="/horoskopai/">Rasti savo ženklą</a>
+    <a class="button" href="/horoskopai/istorija/">Visos išsaugotos datos</a>
+   </nav>
+  </div>
+  <img src="{e(snapshot['artwork'][slug])}" width="240" height="240" alt="Originali {e(sign['genitive'])} iliustracija" decoding="async">
+ </header>
+ <div class="archive-reading">
+  <header class="archive-reading__heading">
+   <h2>{e(forecast['editorial_heading'])}</h2>
+  </header>
+  <div class="archive-reading__grid">{paragraphs}</div>
+  <footer class="archive-note">
+   <p>{e(snapshot['attribution'])} {e(snapshot['provider_footer'])}</p>
+   <p>Pramogai ir apmąstymui. Tai nėra mokslinė prognozė ar profesionali konsultacija.</p>
+   <details><summary>Turinio versija</summary><code>{e(snapshot['contentVersion'])}</code></details>
+  </footer>
+ </div>
+</article>"""
+
+def history_landing(pages):
+ publications={}
+ for route,entry in pages.items():
+  if entry['kind']=='horoscope' and '/v-' in route:
+   key=entry['contentDate'],entry['contentVersion']
+   publications.setdefault(key,[]).append(entry)
+ sections=[]
+ for index,((date,version),entries) in enumerate(sorted(publications.items(),reverse=True)):
+  links=''.join(f'<li><a href="{e(entry["canonicalUrl"].removeprefix(ORIGIN))}">{e(entry["signName"])} <span aria-hidden="true">→</span></a></li>' for entry in entries)
+  sections.append(f'<details class="archive-panel archive-publication"{" open" if index==0 else ""}><summary><time datetime="{date}">{e(local_date(date))}</time><code>{e(version[:8])}</code></summary><ul>{links}</ul></details>')
+ return f"""<article class="archive-page">
+ <header class="archive-hero archive-hero--illustrated">
+  <div>
+   <p class="eyebrow">Horoskopų archyvas</p>
+   <h1>Išsaugotos horoskopų versijos</h1>
+   <p class="archive-hero__intro">Pasirinkite paskelbimo datą ir Zodiako ženklą. Čia saugomi anksčiau paskelbti tekstai.</p>
+   <nav class="archive-hero__actions" aria-label="Horoskopų navigacija"><a class="button" href="/horoskopai/">Šios dienos horoskopai <span aria-hidden="true">→</span></a></nav>
+  </div>
+  <img src="/assets/visuals/shell/zodiac-dial.svg" width="160" height="160" alt="" aria-hidden="true" decoding="async">
+ </header>
+ <div class="archive-publications">{''.join(sections)}</div>
+</article>"""
+
 def prepare():
  ASSETS.mkdir(parents=True,exist_ok=True);pages={};keys={}
  for path in sorted(SITE.rglob('index.html')):
@@ -86,7 +172,7 @@ def prepare():
    stem=a['stem'];route=f'/dalintis/kalendorius/{stem}/';title=a['name']+' · nedatuotas spausdinamas kalendorius'
    p=record('design','design-'+stem,route,title,a.get('description') or 'Nedatuotas kalendoriaus maketas spausdinimui.',templateId=stem,designType='blank',pdf=ORIGIN+a['pdf'],webp=ORIGIN+a['webp']);p['artwork']=a['preview']
    p['imageAlt']=a.get('alt',title);og_card(p);pages[route]=p;keys[p['contentId']]=p
-   body=f'<section class="share-landing"><p class="eyebrow">Nedatuotas kalendoriaus maketas · {e(a["name"])}</p><h1>{e(title)}</h1><p>{e(p["excerpt"])}</p><img class="share-design-preview" src="{e(a["preview"])}" width="{680 if a["landscape"] else 481}" height="{481 if a["landscape"] else 680}" alt="{e(a.get("alt",title))}" decoding="async"><div class="toolbar-group"><a class="button primary" href="{e(a["pdf"])}" download>Atsisiųsti PDF</a><a class="button" href="{e(a["webp"])}" download>Atsisiųsti vaizdą</a><a class="button" href="{e(a["pdf"])}" target="_blank" rel="noopener noreferrer">Spausdinti PDF ↗</a></div><p><a href="/tuscias-kalendorius/#perziura">Visi šio tipo planuokliai</a></p><p>Dalijamasi tik viešu kalendoriumi. Asmeniniai įrašai neįtraukiami.</p></section>'
+   body=design_landing(a,title,p['excerpt'],'Nedatuotas kalendoriaus maketas','/tuscias-kalendorius/#perziura','Visi šio tipo planuokliai')
    page(route,title+' · '+stem,p['excerpt']+' · '+stem,body);continue
   if a['kind'] not in ('annual','monthly'):continue
   y=a['year'];m=a.get('month');stem=a['stem'];parent=f'/{y}/{MONTHS[m-1]}/' if m else f'/{y}/'
@@ -94,13 +180,24 @@ def prepare():
   p=record('design','design-'+stem,route,title,a.get('description') or 'Pasirinktas lietuviško kalendoriaus maketas spausdinimui.',year=y,templateId=stem,designType='dated',pdf=ORIGIN+a['pdf'],webp=ORIGIN+a['webp'])
   if m:p['month']=m
   p['artwork']=a['preview'];og_card(p);pages[route]=p;keys[p['contentId']]=p
-  body=f'<section class="share-landing"><p class="eyebrow">Pasirinktas kalendoriaus dizainas · {e(a["design"])}</p><h1>{e(title)}</h1><p>{e(p["excerpt"])}</p><img class="share-design-preview" src="{e(a["preview"])}" width="{680 if a["landscape"] else 481}" height="{481 if a["landscape"] else 680}" alt="{e(a.get("alt",title))}" decoding="async"><div class="toolbar-group"><a class="button primary" href="{e(a["pdf"])}" download>Atsisiųsti PDF</a><a class="button" href="{e(a["webp"])}" download>Atsisiųsti vaizdą</a><a class="button" href="{e(a["pdf"])}" target="_blank" rel="noopener noreferrer">Spausdinti PDF ↗</a></div><p><a href="{parent}#dizainas-{e(stem)}">Visi šio laikotarpio dizainai</a></p><p>Dalijamasi tik viešu kalendoriumi. Asmeniniai įrašai neįtraukiami.</p></section>'
+  body=design_landing(a,title,p['excerpt'],f'Pasirinktas kalendoriaus dizainas · {a["design"]}',f'{parent}#dizainas-{stem}','Visi šio laikotarpio dizainai')
   page(route,title+' · dizainas '+str(a['design']),p['excerpt']+' · Dizainas '+str(a['design'])+' · '+stem,body)
   # Replace the generic year/month link preview with a representative real design.
   if a['design']=='01' and parent in pages:
    base=pages[parent];base.update(kind='calendar',year=y,artwork=a['preview'])
    if m:base.update(month=m,calendar=calendar[(y,m)])
    og_card(base)
+ # Screen-only calendar pages already have public cards. Give them the same
+ # stable calendar keys without inventing downloadable designs or files.
+ print_years={asset['year'] for asset in manifest if asset['kind']=='annual'}
+ screen_years=set(json.loads((ROOT/'data/holiday-years.json').read_text())) - print_years
+ for year in sorted(screen_years):
+  for month in range(13):
+   route=f'/{year}/{MONTHS[month-1]}/' if month else f'/{year}/'
+   item=pages[route]
+   item.update(kind='calendar', year=year)
+   if month:item['month']=month
+   og_card(item)
  current=json.loads((SITE/'_data/horoscope_current.json').read_text());signs={s['key']:s for s in json.loads((SITE/'_data/horoscope_signs.json').read_text())}
  date=current['local_date'];version=current['content_checksum'][:16]
  history=ROOT/'data/horoscope-snapshots';history.mkdir(parents=True,exist_ok=True);saved=history/date/(version+'.json')
@@ -127,8 +224,7 @@ def prepare():
    if not raster.is_file():raise ValueError('immutable snapshot artwork missing')
    p=record('horoscope',f'horoscope-{slug}-{date}-{version}',route,title,forecast['lead'],contentDate=date,contentVersion=version,signSlug=slug,signName=sign['name'],displayDate=local_date(date),sections={k:forecast[k] for k in ('lead','relationships','work')})
    p['artwork']='/'+str(raster.relative_to(SITE));og_card(p);pages[route]=p;keys[p['contentId']]=p
-   paragraphs=''.join(f'<section><h2>{label}</h2><p>{e(forecast[k])}</p></section>' for k,label in [('overview','Bendra dienos nuotaika'),('relationships','Santykiai'),('work','Veikla ir darbai'),('reflection','Apmąstymui'),('tip','Mažas dienos žingsnis')])
-   body=f'<article class="share-snapshot"><p class="eyebrow">Išsaugota turinio versija · {version}</p><h1>{e(title)}</h1><time datetime="{date}">{e(local_date(date))}</time><img src="{e(snapshot["artwork"][slug])}" width="240" height="240" alt="Originali {e(sign["genitive"])} iliustracija" decoding="async"><h2>{e(forecast["editorial_heading"])}</h2><p class="page-intro">{e(forecast["lead"])}</p>{paragraphs}<p class="source-note">{e(snapshot["attribution"])} {e(snapshot["provider_footer"])}</p><p>Pramogai ir apmąstymui. Tai nėra mokslinė prognozė ar profesionali konsultacija.</p><nav class="adjacent"><a href="/horoskopai/{slug}/">Šios dienos horoskopas</a><a href="/horoskopai/">Rasti savo ženklą</a></nav></article>'
+   body=saved_horoscope(forecast,snapshot,sign)
    page(route,title+' · versija '+version[:8],'Išsaugotas horoskopas: '+forecast['lead']+' · '+date+' · '+version[:8],body)
    if date==current['local_date'] and version==current['content_checksum'][:16]:
     pages[f'/horoskopai/{slug}/']={**p,'canonicalUrl':ORIGIN+f'/horoskopai/{slug}/'};keys['horoscope-'+slug]=p
@@ -149,9 +245,12 @@ def prepare():
     if slug:
      p=keys.get('horoscope-'+slug[1])
      if p:
-      action=f'<a class="share-sign-action" href="{p["shareUrl"]}" data-share-key="{p["contentId"]}">Pasidalyti mano horoskopu</a>'
+      sign=signs[slug[1]]
+      label=e(f'Pasidalyti {sign["genitive"]} horoskopu')
+      icon='<svg width="18" height="18" aria-hidden="true" focusable="false"><use href="/assets/visuals/horoscope-icons.svg#share"></use></svg>'
+      action=f'<a class="share-sign-action" href="{e(p["shareUrl"])}" data-share-key="{e(p["contentId"])}" aria-label="{label}">{icon}<span>Pasidalyti</span></a>'
       if 'share-sign-action' in block:block=re.sub(r'<a class="share-sign-action"[^>]*>.*?</a>',action,block,flags=re.S)
-      else:block=block.replace('</article>',action+'</article>')
+      else:block=block.replace('<!-- horoscope-share-action -->',action)
     return block
    text=re.sub(r'<article class="horoscope-card".*?</article>',sign_button,text,flags=re.S)
   match=re.fullmatch(r'horoskopai/([a-z]+)/index.html',str(path.relative_to(SITE)))
@@ -164,8 +263,7 @@ def prepare():
    text+='<p data-share-history><a href="/horoskopai/istorija/">Išsaugotos horoskopų versijos</a></p>'
   if text!=path.read_text():path.write_text(text)
  history_route='/horoskopai/istorija/'
- history_items=''.join(f'<li><a href="{r}">{e(p["title"])} · versija {p["contentVersion"]}</a></li>' for r,p in pages.items() if p['kind']=='horoscope' and '/v-' in r)
- page(history_route,'Išsaugotos horoskopų versijos','Anksčiau paskelbtų horoskopų datos ir nekintančios turinio versijos.','<h1>Išsaugotos horoskopų versijos</h1><p>Tik išsaugoti, anksčiau paskelbti tekstai. Praeities horoskopų nekuriame atgaline data.</p><ul>'+history_items+'</ul><p><a href="/horoskopai/">Šios dienos horoskopai</a></p>')
+ page(history_route,'Išsaugotos horoskopų versijos','Anksčiau paskelbtų horoskopų datos ir nekintančios turinio versijos.',history_landing(pages))
  pages[history_route]=record('page','horoscope-history',history_route,'Išsaugotos horoskopų versijos','Paskelbtų datų ir turinio versijų archyvas.')
  for p in pages.values():
   if p['kind']=='calendar':keys[f'calendar-{p["year"]}-{p.get("month",0)}']=p

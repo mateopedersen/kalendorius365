@@ -7,18 +7,43 @@ module Pages
   digest=asset.fetch('files').fetch(kind).fetch('sha256')
   "#{asset.fetch(kind)}?v=#{digest[0,16]}"
  end
- def collection_box(items,first=items.first)
+ def annual_downloads(items,first)
   return '' unless first
-  paper=first['paper']||'A4';pdf_name=File.basename(first['pdf']);webp_name=File.basename(first['webp'])
-  preview_alt=first['alt']||"#{first['year']} #{first['name']} – spausdinamo kalendoriaus peržiūra"
-  quality=paper=='A3' ? '<ul class="quality-list"><li>A3 PDF su 3 mm užlaidomis</li><li>Įterpti šriftai</li><li>600 PPI raiškos vaizdai</li><li>Lietuviškos datos ir šventės</li></ul><small>PDF spausdinkite pasirinkę A3 formatą ir 100 % dydį.</small>' : '<ul class="quality-list"><li>Tikras vektorinis tekstas ir tinkleliai</li><li>Įterpti lietuviški Inter šriftai</li><li>600 PPI raiškos vaizdai iš to paties PDF</li><li>Svetainės ženklas lapo apačioje</li></ul><small>Vektoriams DPI netaikomas. Šiose kompozicijose įdėtų rastrinių vaizdų nėra. CMYK spaustuvinės atitikties neteigiame.</small>'
-  "<aside class=\"resource-aside\"><section class=\"panel download-panel\"><h2>Atsisiųsti kalendorių</h2><label>Dizainas<select id=\"design-picker\" data-tools-readiness inert aria-busy=\"true\">#{items.map { |e|"<option value=\"#{e['stem']}\" #{e==first ? 'selected' : ''}>#{e['design']}. #{esc(e['name'])}#{e['rows'] ? " · #{e['rows']} eilutės" : ''}</option>" }.join}</select></label><p id=\"preview-title\">#{esc(first['name'])}</p><span id=\"preview-format\" class=\"badge\">#{paper} · #{first['landscape'] ? 'Gulsčias' : 'Stačias'}</span><a class=\"button primary full-width\" id=\"selected-pdf\" href=\"#{download_href(first,'pdf')}\" download=\"#{esc(pdf_name)}\">Atsisiųsti PDF</a><a class=\"button full-width\" id=\"selected-webp\" href=\"#{download_href(first,'webp')}\" download=\"#{esc(webp_name)}\">Atsisiųsti vaizdą</a><a class=\"button full-width\" id=\"selected-print\" href=\"#{download_href(first,'pdf')}\" target=\"_blank\" rel=\"noopener\">Atidaryti PDF spausdinimui ↗</a><small>PDF peržiūros lange pasirinkite spausdinimą, 100 % dydį ir #{paper} formatą.</small></section><section class=\"panel\"><h2>Spaudos kokybė</h2>#{quality}</section></aside>"
+  paper=first.fetch('paper','A4')
+  options=items.map do |item|
+   %(<option value="#{esc(item['stem'])}"#{item==first ? ' selected' : ''}>#{item['design']}. #{esc(item['name'])}</option>)
+  end.join
+  <<~HTML
+  <section class="panel download-panel annual-downloads">
+    <h2>Atsisiųsti kalendorių</h2>
+    <label>Dizainas<select id="design-picker" data-tools-readiness inert aria-busy="true">#{options}</select></label>
+    <div class="annual-downloads__selection">
+      <p id="preview-title">#{esc(first['name'])}</p>
+      <span id="preview-format" class="badge">#{paper} · #{first['landscape'] ? 'Gulsčias' : 'Stačias'}</span>
+    </div>
+    <div class="download-actions">
+      <a class="button primary full-width" id="selected-pdf" href="#{download_href(first,'pdf')}" download="#{esc(File.basename(first['pdf']))}">Atsisiųsti PDF</a>
+      <a class="button full-width" id="selected-webp" href="#{download_href(first,'webp')}" download="#{esc(File.basename(first['webp']))}">Atsisiųsti vaizdą</a>
+      <a class="button full-width" id="selected-print" href="#{download_href(first,'pdf')}" target="_blank" rel="noopener">Atidaryti PDF spausdinimui ↗</a>
+    </div>
+    <small>PDF peržiūros lange pasirinkite spausdinimą, 100 % dydį ir #{paper} formatą.</small>
+  </section>
+  HTML
  end
- def selected_art(first,collapsed=false)
+ def annual_print_quality(first)
   return '' unless first
-  paper=first['paper']||'A4';alt=first['alt']||"#{first['name']} – tikro spausdinamo kalendoriaus peržiūra"
-  body="<section class=\"panel large-preview\" id=\"perziura\"><a id=\"preview-full\" href=\"#{download_href(first,'webp')}\" target=\"_blank\" rel=\"noopener\"><img id=\"selected-preview\" src=\"#{first['preview']}\" width=\"#{first['landscape'] ? 680 : 481}\" height=\"#{first['landscape'] ? 481 : 680}\" alt=\"#{esc(alt)}\" #{collapsed ? 'loading="lazy"' : 'fetchpriority="high"'}></a></section>"
-  collapsed ? '<details id="print-art"><summary>Pasirinkto spausdinamo dizaino peržiūra</summary>'+body+'</details>' : body
+  if first['paper']=='A3'
+   features=['A3 PDF su 3 mm užlaidomis','Įterpti šriftai','600 PPI raiškos vaizdai','Lietuviškos datos ir šventės']
+  else
+   features=['Tikras vektorinis tekstas ir tinkleliai','Įterpti lietuviški Inter šriftai','600 PPI raiškos vaizdai iš to paties PDF','Svetainės ženklas lapo apačioje']
+  end
+  %(<section class="panel annual-print-quality"><h2>Spaudos kokybė</h2><ul class="quality-list" role="list">#{features.map { |feature| "<li>#{esc(feature)}</li>" }.join}</ul></section>)
+ end
+ def annual_preview(first)
+  return '' unless first
+  alt=first['alt']||"#{first['name']} – tikro spausdinamo kalendoriaus peržiūra"
+  width,height=first['landscape'] ? [680,481] : [481,680]
+  %(<section class="panel annual-preview" id="perziura"><a id="preview-full" href="#{download_href(first,'webp')}" target="_blank" rel="noopener"><img id="selected-preview" src="#{first['preview']}" width="#{width}" height="#{height}" alt="#{esc(alt)}" fetchpriority="high"></a></section>)
  end
  def metric_cards(values)
   '<div class="resource-stats">'+values.each_with_index.map { |(n,label),i|"<div>#{ui_icon(%w[calendar clock briefcase][i%3])}<strong>#{n}</strong><span>#{label}</span></div>" }.join+'</div>'
@@ -78,16 +103,13 @@ module Pages
  end
  def page(path,title,desc,html,tool=false,robots=nil,planner=false,phase_module=nil)
   case path
-  when /\A202[789]\z/
-   y=path.to_i;items=MANIFEST.select { |e|e['kind']=='annual' && e['year']==y };first=items.find { |e|e['design']==(y==2027 ? '06' : '01') }||items.first
-   html=html.sub('<div class="year-grid">','<div class="year-grid annual-sheet">').sub('<h2>Metiniai kalendoriai spausdinimui</h2>',selected_art(first,true)+'<h2>Metinė šablonų kolekcija</h2>').gsub('class="gallery"','class="gallery compact-gallery"')
-   html=shell(html,collection_box(items,first));tool=true
-  when %r{\Asventes/202[789]\z}
+  when %r{\Asventes/(?:202[789]|2030)\z}
    y=path.split('/').last.to_i;hs=Kalendorius.holidays(y);work=hs.count { |h|Date.iso8601(h['date']).cwday<=5 }
    html=html.sub('<p id="next-holiday"',metric_cards([[Date.gregorian_leap?(y) ? 366 : 365,'Kalendorinės dienos'],[hs.length,'Šventinės datos'],[work,'Šventės darbo dienomis']])+'<p id="next-holiday"')
-   aside="<aside class=\"resource-aside\"><section class=\"panel\"><h2>Artimiausia šventė</h2><p id=\"next-holiday-aside\" class=\"result\"></p><a class=\"button primary full-width\" href=\"/#{y}/\">Metų kalendorius su šventėmis</a></section><section class=\"panel\"><h2>Duomenų patikimumas</h2><p>Teisinė klasifikacija atskirta nuo atmintinų ir kultūrinių datų. Šventė savaitgalį automatiškai neperkeliama.</p><a href=\"/darbo-dienos/#{y}/\">Darbo dienos ir valandos →</a></section></aside>"
+   planning_link=%(<a href="/darbo-dienos/#{y}/">Darbo dienos ir valandos →</a>)
+   aside="<aside class=\"resource-aside\"><section class=\"panel\"><h2>Metų kalendorius</h2><p id=\"next-holiday-aside\" class=\"result\" hidden></p><a class=\"button primary full-width\" href=\"/#{y}/\">Metų kalendorius su šventėmis</a></section><section class=\"panel\"><h2>Duomenų patikimumas</h2><p>Teisinė klasifikacija atskirta nuo atmintinų ir kultūrinių datų. Šventė savaitgalį automatiškai neperkeliama.</p>#{planning_link}</section></aside>"
    html=shell(html,aside)
-  when %r{\Adarbo-dienos/202[789]\z}
+  when %r{\Adarbo-dienos/(?:202[789]|2030)\z}
    y=path.split('/').last.to_i;stats=(1..12).map { |m|Kalendorius.work_month(y,m) }
    controls=html[/<div class="toolbar-group"><label>Darbo savaitė.*?<\/div>/m]||'';html=html.sub(controls,'')
    controls=controls.sub('class="toolbar-group"','class="toolbar-group workyear-controls" data-tools-readiness inert aria-busy="true"')
@@ -97,9 +119,13 @@ module Pages
    html=shell(html,aside)
   when 'mokiniu-atostogos'
    items=MANIFEST.select { |e|e['kind']=='blank' && ['03','06','08'].include?(e['design']) }
-   html=html.sub('<div class="table-scroll">','<section id="2026-2027"><div class="table-scroll">').sub('<h2>2027–2028 mokslo metai</h2>','</section><section id="2027-2028"><h2>2027–2028 mokslo metai</h2>')+'</section><h2>Spausdinami mokymosi planuokliai</h2>'+gallery(items,true)
+   html=html.sub('<div class="table-scroll">','<section id="2026-2027"><div class="table-scroll">').sub('<h2>2027–2028 mokslo metai</h2>','</section><section id="2027-2028"><h2>2027–2028 mokslo metai</h2>')+'</section>'
+   HOLIDAY_YEARS.drop(1).each do |year|
+    html+=%(<section class="panel" id="#{year}-#{year+1}"><h2>#{year}–#{year+1} mokslo metai</h2><p>Oficialios atostogų datos dar nepaskelbtos. Naujausių bendrųjų ugdymo planų ieškokite Švietimo, mokslo ir sporto ministerijos svetainėje.</p><a href="https://smsm.lrv.lt/lt/veiklos-sritys-1/smm-svietimas/svietimas-pagrindinis-ugdymas/ugdymo-planai-1/">Peržiūrėti ministerijos ugdymo planus</a></section>)
+   end
+   html+='<h2>Spausdinami mokymosi planuokliai</h2>'+gallery(items,true)
    html=html.sub('<section id="2026-2027">',metric_cards([['2026–27','Patikrinti mokslo metai'],[DATA['school']['periods'].length,'Atostogų laikotarpiai pagal programas'],['2027–28','Laukiama patvirtintų duomenų']])+'<section id="2026-2027">')
-   aside='<aside class="resource-aside"><section class="panel"><h2>Mokslo metų pasirinkimas</h2><a class="button full-width" href="#2026-2027">2026–2027 · patikrintos datos</a><a class="button full-width" href="#2027-2028">2027–2028 · nepatvirtinta</a></section><section class="panel"><h2>Mokyklos šablonai</h2><p>Tušti savaitės planai padeda žymėti pamokas ir atsiskaitymus neįrašant nepatvirtintų atostogų.</p><a href="/tuscias-kalendorius/">Rinktis planuoklį →</a></section></aside>'
+   aside='<aside class="resource-aside"><section class="panel"><h2>Mokslo metų pasirinkimas</h2><a class="button full-width" href="#2026-2027">2026–2027 · patikrintos datos</a>'+HOLIDAY_YEARS.map { |year| %(<a class="button full-width" href="##{year}-#{year+1}">#{year}–#{year+1} · datos dar nepaskelbtos</a>) }.join+'</section><section class="panel"><h2>Mokyklos šablonai</h2><p>Tušti savaitės planai padeda žymėti pamokas ir atsiskaitymus neįrašant nepatvirtintų atostogų.</p><a href="/tuscias-kalendorius/">Rinktis planuoklį →</a></section></aside>'
    html=shell(html,aside)
   when 'kurti-kalendoriu'
    paper=html[/<label>Popierius<select name="paper">.*?<\/label>/m]||''

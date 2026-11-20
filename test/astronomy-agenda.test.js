@@ -4,8 +4,8 @@ import { readFileSync } from "node:fs";
 import { buildAstronomyICS, composeAstronomyEvents, eventLocalParts } from "../site/assets/astronomy-agenda-core.js";
 import { importICS } from "../site/assets/ics.js";
 
-const seasons = JSON.parse(readFileSync(new URL("../site/assets/data/astronomy/seasons-utc.json", import.meta.url), "utf8"));
-const phases = JSON.parse(readFileSync(new URL("../site/assets/data/astronomy/moon-phases-utc.json", import.meta.url), "utf8"));
+const seasons = JSON.parse(readFileSync(new URL("../site/assets/data/astronomy/seasons-extended-utc.json", import.meta.url), "utf8"));
+const phases = JSON.parse(readFileSync(new URL("../site/assets/data/astronomy/moon-phases-extended-utc.json", import.meta.url), "utf8"));
 const page = readFileSync(new URL("../site/astronominis-kalendorius/index.html", import.meta.url), "utf8");
 const ui = readFileSync(new URL("../site/assets/astronomy-agenda.js", import.meta.url), "utf8");
 const core = readFileSync(new URL("../site/assets/astronomy-agenda-core.js", import.meta.url), "utf8");
@@ -14,12 +14,18 @@ test("agenda combines only sourced seasonal moments and main phases in the selec
   const events = composeAstronomyEvents(seasons, phases);
   assert(events.length > 150);
   assert.deepEqual(events, [...events].sort((a, b) => a.instant - b.instant));
-  for (const year of [2027, 2028, 2029]) {
+  for (const year of [2027, 2028, 2029, 2030]) {
     const current = events.filter((event) => Number(eventLocalParts(event.instant).year) === year);
     assert.equal(current.filter((event) => event.kind === "season").length, 4);
     assert(current.some((event) => event.kind === "moon" && event.phase === "full"));
   }
-  assert.equal(events.some((event) => Number(eventLocalParts(event.instant).year) === 2030), false);
+  assert.equal(events.some((event) => Number(eventLocalParts(event.instant).year) === 2031), false);
+  const lunar2030 = JSON.parse(readFileSync(new URL("../data/lunar/calendar.json", import.meta.url), "utf8")).events
+    .filter((event) => event.local_date.startsWith("2030-"));
+  assert.deepEqual(
+    events.filter((event) => event.kind === "moon" && eventLocalParts(event.instant).year === "2030").map((event) => event.instant),
+    lunar2030.map((event) => Date.parse(event.utc))
+  );
 });
 
 test("month filtering follows Europe/Vilnius local date across a UTC month boundary", () => {
@@ -53,8 +59,8 @@ test("long Lithuanian ICS labels fold on UTF-8 character boundaries", () => {
 test("astronomy page provides scoped filters, exact-source time and a filtered calendar export", () => {
   assert.match(page, /astronomy_agenda: true/);
   for (const id of ["astro-year", "astro-month", "astro-kind", "astro-event-list", "astro-download-ics"]) assert.match(page, new RegExp(`id="${id}"`));
-  assert.match(ui, /seasons-utc\.json/);
-  assert.match(ui, /moon-phases-utc\.json/);
+  assert.match(ui, /seasons-extended-utc\.json/);
+  assert.match(ui, /moon-phases-extended-utc\.json/);
   assert.match(core, /Europe\/Vilnius/);
   assert.match(ui, /buildAstronomyICS\(filtered\)/);
 });

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pusiauziemis-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300125
+DTEND;VALUE=DATE:20300126
+SUMMARY:Pusiaužiemis
+DESCRIPTION:Sausio 25-ąją tradiciniame Lietuvos kalendoriuje žymimas Pus
+ iaužiemis\, dar vadintas Kirmėlių diena.
+URL:https://kalendorius365.lt/sventes/pusiauziemis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

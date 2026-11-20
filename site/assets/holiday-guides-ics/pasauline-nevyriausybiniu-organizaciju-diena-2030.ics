@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-nevyriausybiniu-organizaciju-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300227
+DTEND;VALUE=DATE:20300228
+SUMMARY:Pasaulinė nevyriausybinių organizacijų diena
+DESCRIPTION:Vasario 27-oji padeda susipažinti su asociacijų\, fondų ir k
+ itų pilietinių organizacijų veikla Lietuvoje.
+URL:https://kalendorius365.lt/sventes/pasauline-nevyriausybiniu-organizacij
+ u-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

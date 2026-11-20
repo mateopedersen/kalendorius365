@@ -1,0 +1,1164 @@
+{
+  "reviewed": "2026-11-21",
+  "year": 2026,
+  "rules": {
+    "tax": {
+      "minimumWage": 1153,
+      "maxNpd": 747,
+      "npdSlope": 0.49,
+      "bracket1": 83237.4,
+      "bracket2": 138729,
+      "vsdRate": 0.1252,
+      "psdRate": 0.0698,
+      "pensionRate": 0.03,
+      "employerVsd": {
+        "permanent": 0.0145,
+        "fixed": 0.0217
+      },
+      "employerFunds": 0.0032,
+      "vat": [
+        21,
+        12,
+        5,
+        0
+      ]
+    },
+    "pension": {
+      "age": 65,
+      "earlyYears": 5,
+      "applyMonths": 3,
+      "minimumInsurance": 15,
+      "necessary2026": 34.5,
+      "necessaryLater": 35,
+      "uniformFrom": "1961-05-01",
+      "historical": {
+        "male": [
+          [
+            "1949-07-01",
+            "1950-04-30",
+            752
+          ],
+          [
+            "1950-05-01",
+            "1951-02-28",
+            754
+          ],
+          [
+            "1951-03-01",
+            "1951-12-31",
+            756
+          ],
+          [
+            "1952-01-01",
+            "1952-10-31",
+            758
+          ],
+          [
+            "1952-11-01",
+            "1953-08-31",
+            760
+          ],
+          [
+            "1953-09-01",
+            "1954-06-30",
+            762
+          ],
+          [
+            "1954-07-01",
+            "1955-04-30",
+            764
+          ],
+          [
+            "1955-05-01",
+            "1956-02-28",
+            766
+          ],
+          [
+            "1956-03-01",
+            "1956-12-31",
+            768
+          ],
+          [
+            "1957-01-01",
+            "1957-10-31",
+            770
+          ],
+          [
+            "1957-11-01",
+            "1958-08-31",
+            772
+          ],
+          [
+            "1958-09-01",
+            "1959-06-30",
+            774
+          ],
+          [
+            "1959-07-01",
+            "1960-04-30",
+            776
+          ],
+          [
+            "1960-05-01",
+            "1961-02-28",
+            778
+          ],
+          [
+            "1961-03-01",
+            "1961-04-30",
+            780
+          ]
+        ],
+        "female": [
+          [
+            "1952-01-01",
+            "1952-08-31",
+            724
+          ],
+          [
+            "1952-09-01",
+            "1953-04-30",
+            728
+          ],
+          [
+            "1953-05-01",
+            "1953-12-31",
+            732
+          ],
+          [
+            "1954-01-01",
+            "1954-08-31",
+            736
+          ],
+          [
+            "1954-09-01",
+            "1955-04-30",
+            740
+          ],
+          [
+            "1955-05-01",
+            "1955-12-31",
+            744
+          ],
+          [
+            "1956-01-01",
+            "1956-08-31",
+            748
+          ],
+          [
+            "1956-09-01",
+            "1957-04-30",
+            752
+          ],
+          [
+            "1957-05-01",
+            "1957-12-31",
+            756
+          ],
+          [
+            "1958-01-01",
+            "1958-08-31",
+            760
+          ],
+          [
+            "1958-09-01",
+            "1959-04-30",
+            764
+          ],
+          [
+            "1959-05-01",
+            "1959-12-31",
+            768
+          ],
+          [
+            "1960-01-01",
+            "1960-08-31",
+            772
+          ],
+          [
+            "1960-09-01",
+            "1961-04-30",
+            776
+          ]
+        ]
+      }
+    },
+    "child": {
+      "base": 129.5,
+      "supplement": 76.22,
+      "birthBefore": 814,
+      "birthFromJune": 1036,
+      "birthChange": "2026-06-01",
+      "nanny": 384.8
+    },
+    "support": {
+      "vrp": 233,
+      "singleFactors": [
+        1.4,
+        1.2,
+        1.1
+      ],
+      "incomeFactor": 1.1,
+      "familyWeights": [
+        1,
+        0.9,
+        0.7
+      ],
+      "heatRate": 0.1,
+      "heatSingle": 3,
+      "heatPerson": 2
+    },
+    "job": {
+      "fixed": 172.95,
+      "min": 370,
+      "max": 1618.51,
+      "rates": [
+        0.45,
+        0.35,
+        0.25
+      ]
+    },
+    "insurance": {
+      "childcare": [
+        0.78,
+        0.6,
+        0.45,
+        0.3
+      ],
+      "parent": 0.7758,
+      "illness": 0.6206,
+      "illnessGpm": 0.15,
+      "illnessPsd": 0.06
+    }
+  },
+  "benefits": [
+    "child",
+    "birth",
+    "childcare",
+    "parents",
+    "nanny",
+    "job",
+    "sick",
+    "social",
+    "heating"
+  ],
+  "payments": {
+    "period": "2026 m. lapkritis",
+    "source": "november",
+    "items": [
+      [
+        "Vaiko priežiūros išmoka",
+        "16 d.",
+        "Pranešime numatyta mėnesio mokėjimo diena."
+      ],
+      [
+        "Nedarbo išmoka",
+        "20 d.",
+        "Per mėnesį mokama už ankstesnį mėnesį."
+      ],
+      [
+        "Vaiko išlaikymo išmoka",
+        "24 d.",
+        "Tai atskira „Sodros“ išmoka."
+      ],
+      [
+        "Išankstinė senatvės pensija",
+        "20 d.",
+        "Socialinio draudimo senatvės pensijos dienos skiriasi."
+      ],
+      [
+        "Pensijų anuitetas",
+        "26 d.",
+        "Data skirta anuitetui iš pensijų kaupimo."
+      ],
+      [
+        "Socialinio draudimo pensija į namus arba paštu",
+        "10–26 d.",
+        "Pervedimų į bankus lentelę žiūrėkite „Sodros“ pranešime."
+      ]
+    ]
+  },
+  "sources": {
+    "sodra": [
+      "Asmeninė „Sodros“ paskyra",
+      "https://gyventojai.sodra.lt/"
+    ],
+    "calendar": [
+      "„Sodros“ išmokų kalendorių archyvas",
+      "https://sodra.lt/naujienos/ismoku-kalendorius"
+    ],
+    "november": [
+      "„Sodros“ 2026 m. lapkričio išmokų kalendorius",
+      "https://sodra.lt/naujienos/sodros-kalendorius-12"
+    ],
+    "family": [
+      "SADM: išmokų vaikams sąlygos ir dydžiai",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/seima-ir-vaikai/socialine-parama-seimoms-ir-vaikams/ismokos-vaikams-ismokos-kudikio-besilaukiancioms-moterims-vaikus-auginantiems-tevams/"
+    ],
+    "changes": [
+      "SADM: šeimų išmokų pakeitimai nuo 2026 m. birželio",
+      "https://socmin.lrv.lt/lt/naujienos/nuo-birzelio-naujoves-seimu-gerovei-60e/"
+    ],
+    "support": [
+      "SADM: piniginė socialinė parama",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/socialine-parama-kas-man-priklauso/patiriu-finansiniu-sunkumu-pinigine-socialine-parama/"
+    ],
+    "supportRules": [
+      "SADM: išsamios socialinės pašalpos ir kompensacijų sąlygos",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/seima-ir-vaikai/socialine-parama-seimoms-ir-vaikams/pinigine-socialine-parama-nepasiturintiems-gyventojams-socialine-pasalpa-busto-sildymo-geriamojo-ir-karsto-vandens-islaidu-kompensacijos/"
+    ],
+    "spis": [
+      "SPIS elektroninės paslaugos",
+      "https://www.spis.lt/"
+    ],
+    "spisCalc": [
+      "Oficialios SPIS skaičiuoklės",
+      "https://www.spis.lt/skaiciuokles"
+    ],
+    "childcare": [
+      "„Sodra“: vaiko priežiūros išmoka",
+      "https://sodra.lt/ismokos/seimos-ismokos/vaiko-prieziuros-ismoka-nuo-2023-m"
+    ],
+    "childcareCalc": [
+      "„Sodros“ vaiko priežiūros išmokos skaičiuoklė",
+      "https://sodra.lt/skaiciuokles/vaiko-prieziuros-ismokos-skaiciuokle"
+    ],
+    "birth": [
+      "SADM: vienkartinė išmoka vaikui",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/socialine-parama-kas-man-priklauso/auginu-vaika-naujas/ismokos/vienkartine-ismoka-vaikui/"
+    ],
+    "nanny": [
+      "SADM: vaiko priežiūros kompensacinė išmoka",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/socialine-parama-kas-man-priklauso/auginu-vaika-naujas/ismokos/vaiko-prieziuros-kompensacine-ismoka/"
+    ],
+    "job": [
+      "„Sodra“: nedarbo išmoka nuo 2026 m. liepos 1 d.",
+      "https://sodra.lt/ismokos/darbo-ismokos/gauti-nedarbo-ismoka-bedarbio-statusas-suteiktas-2026-m-liepos-1-d-ir-veliau"
+    ],
+    "uzt": [
+      "Užimtumo tarnyba",
+      "https://uzt.lt/"
+    ],
+    "sick": [
+      "„Sodra“: ligos išmoka susirgus",
+      "https://sodra.lt/ismokos/sveikatos-ir-neigalumo-ismokos/susirgau"
+    ],
+    "care": [
+      "„Sodra“: slaugau šeimos narį",
+      "https://sodra.lt/ismokos/sveikatos-ir-neigalumo-ismokos/slaugau-seimos-nari"
+    ],
+    "mother": [
+      "„Sodra“: motinystės išmoka",
+      "https://sodra.lt/ismokos/seimos-ismokos/laukiuosi"
+    ],
+    "father": [
+      "„Sodra“: tėvystės išmoka",
+      "https://sodra.lt/ismokos/seimos-ismokos/tevystes-ismoka"
+    ],
+    "retire": [
+      "„Sodra“: senatvės pensija ir prašymo tvarka",
+      "https://sodra.lt/pensijos/senatves-pensija"
+    ],
+    "early": [
+      "„Sodra“: išankstinė senatvės pensija",
+      "https://sodra.lt/pensijos/isankstine-senatves-pensija"
+    ],
+    "retireAge": [
+      "Oficiali pensinio amžiaus skaičiuoklė",
+      "https://sodra.lt/skaiciuokles/senatves-pensijos-amziaus-skaiciuokle"
+    ],
+    "retireAmount": [
+      "„Sodros“ prognozuojamos pensijos skaičiuoklė",
+      "https://sodra.lt/skaiciuokles/prognozuojamos-senatves-pensijos-skaiciuokle"
+    ],
+    "npd": [
+      "VMI: 2026 m. mėnesio ir metinio NPD formulės",
+      "https://www.vmi.lt/evmi/npd-pnpd-taikymas-20-str.-1"
+    ],
+    "gpm": [
+      "VMI: darbo užmokesčio apmokestinimas",
+      "https://www.vmi.lt/evmi/kaip-apmokestinamas-darbo-uzmokestis-"
+    ],
+    "contributions": [
+      "„Sodra“: 2026 m. darbuotojų ir darbdavių įmokų tarifai",
+      "https://sodra.lt/nuo-2026-m-sausio-1-d-taikomi-sodros-imoku-tarifai-turintiems-samdomu-darbuotoju"
+    ],
+    "vat": [
+      "VMI: PVM tarifai ir jų taikymas",
+      "https://www.vmi.lt/evmi/pvm-tarifai"
+    ],
+    "eds": [
+      "VMI elektroninio deklaravimo sistema (EDS)",
+      "https://deklaravimas.vmi.lt/"
+    ],
+    "declaration": [
+      "VMI: gyventojų pajamų deklaravimas",
+      "https://www.vmi.lt/evmi/deklaruoti-pajamas?lang=lt"
+    ],
+    "school": [
+      "SADM: socialinė parama mokiniams",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/seima-ir-vaikai/socialine-parama-seimoms-ir-vaikams/socialine-parama-mokiniams/"
+    ],
+    "death": [
+      "SADM: laidojimo pašalpa ir kita parama",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/socialine-parama-kas-man-priklauso/netekau-artimo-zmogaus/"
+    ],
+    "disability": [
+      "„Sodra“: socialinio draudimo negalios pensija",
+      "https://sodra.lt/pensijos/negalios-pensija"
+    ],
+    "maintenance": [
+      "„Sodra“: vaiko išlaikymo išmoka",
+      "https://sodra.lt/ismokos/seimos-ismokos/vaiko-islaikymo-ismoka-2/vaiko-islaikymo-ismoka"
+    ],
+    "insuranceRules": [
+      "„Sodra“: VSD lubos ir PSD įmokos",
+      "https://sodra.lt/imokos/idarbinimas-pranesimai-imokos-ir-tarifai"
+    ],
+    "secondPillar": [
+      "„Sodra“: II pakopos įmokos",
+      "https://sodra.lt/pensijos/papildomai-kaupiama-pensija/pagrindine-informacija?kam=draudejams"
+    ],
+    "pensionTable": [
+      "„Sodros“ senatvės pensijos amžiaus lentelė",
+      "https://sodra.lt/senatves-pensijos-amziaus-lentele"
+    ],
+    "childLaw": [
+      "Išmokų vaikams įstatymas: išmokų mokėjimo tvarka",
+      "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.5981/asr"
+    ]
+  },
+  "pages": {
+    "hub": {
+      "route": "/ismokos/",
+      "title": "Socialinės išmokos ir parama Lietuvoje",
+      "label": "Socialinės išmokos",
+      "intro": "Raskite pagalbą gimus vaikui, susirgus, netekus darbo ar prireikus paramos būstui. Pasitikrinkite dydžius, mokėjimo tvarką ir kur pateikti prašymą.",
+      "group": "Išmokų gidas",
+      "art": "civic-support",
+      "facts": [
+        [
+          "SPIS",
+          "Savivaldybių parama"
+        ],
+        [
+          "„Sodra“",
+          "Socialinis draudimas"
+        ]
+      ],
+      "sources": [
+        "family",
+        "support",
+        "november",
+        "calendar",
+        "spis",
+        "sodra",
+        "school",
+        "death",
+        "disability",
+        "maintenance"
+      ],
+      "steps": [
+        [
+          "Pasirinkite savo situaciją",
+          "Išmokų gide atverkite jums aktualią temą."
+        ],
+        [
+          "Patikrinkite sąlygas",
+          "Savivaldybė vertina šeimos ir turto aplinkybes, o „Sodra“ tikrina socialinio draudimo duomenis."
+        ],
+        [
+          "Pateikite prašymą",
+          "Naudokite prie išmokos nurodytą oficialią sistemą. Sprendimą ir mokėjimo informaciją tikrinkite joje."
+        ]
+      ],
+      "sections": [
+        [
+          "Ar visos išmokos mokamos tą pačią dieną?",
+          "Mokėjimo tvarka priklauso nuo išmokos. „Sodra“ skelbia mėnesio kalendorių. Savivaldybės išmokų datas svarbu tikrinti SPIS, savivaldybėje arba savo sprendime. Pirmas mokėjimas gali būti už nepilną laikotarpį."
+        ],
+        [
+          "Kur ieškoti kitos pagalbos?",
+          "Mokinių paramos, negalios, vaiko išlaikymo ir laidojimo pašalpos nuorodas rasite kitų paramos situacijų skiltyje. Bendrą informaciją ir sprendimo eigą tikrinkite atitinkamoje oficialioje sistemoje."
+        ]
+      ],
+      "related": [
+        "pension",
+        "tax"
+      ],
+      "cta": "spis"
+    },
+    "pension": {
+      "route": "/pensijos/",
+      "title": "Kada išeisiu į pensiją Lietuvoje?",
+      "label": "Pensijos amžius ir mokėjimas",
+      "intro": "Pagal gimimo datą raskite pensinio amžiaus dieną ir pasirengimo prašymui laikotarpį. Sužinokite, kaip patikrinti stažą ir mokėjimo datą.",
+      "group": "Senatvės pensija",
+      "art": "civic-pension",
+      "facts": [
+        [
+          "65 m.",
+          "Bendras pensinis amžius"
+        ],
+        [
+          "15 m.",
+          "Minimalus draudimo stažas"
+        ]
+      ],
+      "sources": [
+        "retire",
+        "pensionTable",
+        "early",
+        "retireAge",
+        "retireAmount",
+        "november",
+        "calendar",
+        "sodra",
+        "disability"
+      ],
+      "steps": [
+        [
+          "Patikrinkite REP.02",
+          "„Sodros“ paskyroje suformuokite pensijų draudimo stažo suvestinę. Jei joje trūksta iki 1994 m. sukaupto stažo, pasiruoškite jį pagrindžiančius dokumentus."
+        ],
+        [
+          "Pasitikrinkite apskaitos vienetus",
+          "Pensijos dydžiui svarbu ir sukaupti apskaitos vienetai. Sumai įvertinti naudokite „Sodros“ prognozės skaičiuoklę."
+        ],
+        [
+          "Pateikite prašymą",
+          "Dėl senatvės pensijos galima kreiptis likus iki trijų mėnesių iki pensinio amžiaus arba vėliau. Įvertinkite, kad pavėlavus išmoka už praeitį paprastai apribota 12 mėnesių."
+        ]
+      ],
+      "sections": [
+        [
+          "Koks stažas reikalingas?",
+          "2026 m. būtinasis stažas – 34 metai ir 6 mėnesiai, nuo 2027 m. – 35 metai pagal dabar galiojančias taisykles. Minimalus 15 metų ir būtinasis stažas reiškia skirtingus dalykus. Jei dirbote užsienyje, „Sodra“ patikrins, kurie laikotarpiai gali būti sumuojami."
+        ],
+        [
+          "Ar galiu išeiti anksčiau?",
+          "Išankstinė pensija gali būti skiriama likus ne daugiau kaip penkeriems metams. Paprastai reikia būsimiems pensinio amžiaus metams taikomo būtinojo stažo ir negauti darbinių ar tam tikrų kitų pajamų. Svarbios išimtys ir galimas išmokos mažinimas aprašyti „Sodros“ puslapyje."
+        ],
+        [
+          "Ar pensija pradedama mokėti automatiškai?",
+          "Pateikite prašymą ir sprendime pasitikrinkite mokėjimo būdą. Pervedimo diena priklauso nuo paskyrimo laikotarpio, kredito įstaigos ir gyvenamosios vietos. Pristatymas į namus arba atsiėmimas pašte gali turėti atskirą intervalą."
+        ],
+        [
+          "Kaip sužinoti pensijos dydį?",
+          "Skaičiuojamos bendroji ir individualioji dalys. Abi priklauso nuo asmeninės draudimo istorijos ir galiojančių dydžių. II pakopos kaupimas ir anuitetai vertinami atskirai."
+        ]
+      ],
+      "related": [
+        "hub",
+        "tax"
+      ],
+      "cta": "sodra"
+    },
+    "tax": {
+      "route": "/mokesciu-skaiciuokle/",
+      "title": "Atlyginimo ir mokesčių skaičiuoklė 2026",
+      "label": "Atlyginimo ir mokesčių skaičiuoklė",
+      "intro": "Apskaičiuokite atlyginimą į rankas, darbuotojo įmokas, GPM, darbo vietos kainą ir PVM. Rezultate matysite atskirus skaičiavimo žingsnius.",
+      "group": "Darbo užmokestis ir PVM",
+      "art": "civic-tax",
+      "facts": [
+        [
+          "19,5 %",
+          "Darbuotojo VSD ir PSD"
+        ],
+        [
+          "21 %",
+          "Standartinis PVM"
+        ]
+      ],
+      "sources": [
+        "npd",
+        "gpm",
+        "contributions",
+        "vat",
+        "declaration",
+        "eds",
+        "insuranceRules",
+        "secondPillar"
+      ],
+      "steps": [
+        [
+          "Pasitikrinkite atlyginimo lapelį",
+          "Palyginkite bruto, NPD, GPM, VSD, PSD ir II pakopos įmoką. Pasitikrinkite, ar darbdavys taiko NPD."
+        ],
+        [
+          "Peržiūrėkite deklaraciją",
+          "VMI EDS vedlyje patikrinkite darbdavių pateiktas pajamas ir galimą metinę GPM nepriemoką arba permoką."
+        ],
+        [
+          "Sumokėkite pagal EDS duomenis",
+          "Mokėtiną sumą, įmokos kodą ir galutinį terminą nuskaitykite iš VMI. Patikrinkite, už kuriuos metus deklaruojate."
+        ]
+      ],
+      "sections": [
+        [
+          "Kuo skiriasi mėnesio ir metinis GPM?",
+          "Mėnesio atlyginimo režimas parodo įprastą vieno darbdavio skaičiavimą su 20 % GPM ir pasirenkamu NPD. Metinis modelis skirtas tik darbo užmokesčiui, be kitų pajamų ir papildomų lengvatų. 2026 m. tarifai 20 %, 25 % ir 32 % taikomi pajamų dalims, o slenksčiai – 83 237,40 ir 138 729 Eur."
+        ],
+        [
+          "Kas yra NPD?",
+          "NPD mažina GPM bazę. 2026 m. standartinis mėnesio NPD iki 1 153 Eur bruto siekia iki 747 Eur, vėliau mažėja 0,49 Eur už kiekvieną papildomą bruto eurą. Metinis NPD priklauso nuo metinių pajamų. Asmenims su ribotu dalyvumu taikomos specialios taisyklės."
+        ],
+        [
+          "Ką apima darbo vietos kaina?",
+          "Parodome bruto ir įprastas privačios įmonės I nelaimingų atsitikimų grupės įmokas. Neterminuotos sutarties tarifas iki VSD lubų 1,77 %, terminuotos – 2,49 %. Į grupę, fondų išimtis, įmokų grindis ir kitas darbo vietos sąnaudas modelis neatsižvelgia."
+        ],
+        [
+          "Kaip apskaičiuoti PVM nuo kainos su mokesčiu?",
+          "Sumą su PVM dalykite iš 1 ir tarifo sumos. Pavyzdžiui, 121 Eur su 21 % PVM sudaro 100 Eur be PVM ir 21 Eur PVM. 0 % tarifas ir PVM neapmokestinamas sandoris yra skirtingi atvejai. Tarifą konkrečiai prekei ar paslaugai patikrinkite VMI."
+        ]
+      ],
+      "related": [
+        "pension",
+        "hub",
+        "job"
+      ],
+      "cta": "eds"
+    },
+    "child": {
+      "route": "/ismokos/vaiko-pinigai/",
+      "title": "Vaiko pinigai 2026 Lietuvoje",
+      "label": "Vaiko pinigai",
+      "intro": "Patikrinkite 2026 m. mėnesio išmoką vaikui ir papildomą išmoką gausioms ar nepasiturinčioms šeimoms ir vaikams su negalia.",
+      "group": "Šeima ir vaikai",
+      "art": "civic-child",
+      "facts": [
+        [
+          "129,50 €",
+          "Bazinė išmoka per mėnesį"
+        ],
+        [
+          "76,22 €",
+          "Papildoma išmoka per mėnesį"
+        ]
+      ],
+      "sources": [
+        "family",
+        "spis",
+        "maintenance",
+        "childLaw"
+      ],
+      "steps": [
+        [
+          "Susiraskite išmoką SPIS",
+          "Rinkitės „Išmoka vaikui“. Jei vaikui priklauso papildoma išmoka, paraiškoje nurodykite atitinkamą pagrindą."
+        ],
+        [
+          "Pridėkite trūkstamą informaciją",
+          "Savivaldybė gali paprašyti duomenų apie mokymąsi, negalią, šeimos narius ar pajamas."
+        ],
+        [
+          "Sekite sprendimą",
+          "Vaiko pinigai paprastai mokami už praėjusį mėnesį iki einamojo mėnesio 25 d. Pirmo mokėjimo laikotarpį ir faktinę datą tikrinkite SPIS, savivaldybėje arba gautame sprendime."
+        ]
+      ],
+      "sections": [
+        [
+          "Iki kada mokama?",
+          "Įprastai mokama iki 18 metų. Toliau mokantis pagal bendrojo ugdymo programą taikomos pratęsimo sąlygos iki programos pabaigos, bet ne ilgiau kaip iki 23 metų."
+        ],
+        [
+          "Kada gali priklausyti papildoma suma?",
+          "Ji skiriama vaikams su negalia ir gausioms šeimoms pagal nustatytas sąlygas. Vieną ar du vaikus auginančiai šeimai taikomas pajamų vertinimas. 2026 m. orientyras – mažiau nei 466 Eur vertinamų mėnesio pajamų vienam asmeniui."
+        ],
+        [
+          "Ar tai ta pati išmoka kaip vaiko išlaikymo išmoka?",
+          "Vaiko pinigus skiria savivaldybė. „Sodros“ vaiko išlaikymo išmoka susijusi su negautu nustatytu išlaikymu ir taikoma pagal kitas sąlygas."
+        ]
+      ],
+      "related": [
+        "birth",
+        "childcare",
+        "nanny"
+      ],
+      "cta": "spis"
+    },
+    "birth": {
+      "route": "/ismokos/vienkartine-ismoka-vaikui/",
+      "title": "Vienkartinė išmoka gimus vaikui 2026",
+      "label": "Vienkartinė išmoka vaikui",
+      "intro": "Gimus vaikui patikrinkite mokėtiną vienkartinę sumą pagal gimimo datą ir 12 mėnesių prašymo laikotarpį.",
+      "group": "Šeima ir vaikai",
+      "art": "civic-birth",
+      "facts": [
+        [
+          "1 036 €",
+          "Gimus nuo birželio 1 d."
+        ],
+        [
+          "12 mėn.",
+          "Kreipimosi laikotarpis"
+        ]
+      ],
+      "sources": [
+        "birth",
+        "changes",
+        "family",
+        "spis",
+        "childLaw"
+      ],
+      "steps": [
+        [
+          "Įregistruokite gimimą",
+          "Prašymą gimus vaikui teikite, kai gimimo duomenys yra įregistruoti."
+        ],
+        [
+          "Kreipkitės per 12 mėnesių",
+          "Pateikite prašymą SPIS arba savivaldybėje. Jeigu vaikas gimė užsienyje, pasiruoškite savivaldybės prašomus gimimą patvirtinančius duomenis."
+        ],
+        [
+          "Patikrinkite sprendimą",
+          "Pagal Išmokų vaikams įstatymo 17 straipsnį, sprendimas ir pervedimas numatomi per 10 darbo dienų nuo visų reikiamų dokumentų gavimo savivaldybėje."
+        ]
+      ],
+      "sections": [
+        [
+          "Kuri data lemia 814 ar 1 036 Eur?",
+          "Skaičiuoklė taikoma 2026 m. gimusiems vaikams. Iki gegužės 31 d. 2026 m. dydis buvo 814 Eur. Nuo birželio 1 d. gimusiems vaikams taikomas 1 036 Eur dydis."
+        ],
+        [
+          "O jeigu vaikas įvaikintas arba globojamas?",
+          "Įvaikinimui ir globai taikomos atskiros sąlygos bei kreipimosi pradžios datos. Savivaldybėje arba SADM išmokų gide patikrinkite taisyklę pagal savo dokumentus."
+        ]
+      ],
+      "related": [
+        "child",
+        "childcare",
+        "parents"
+      ],
+      "cta": "spis"
+    },
+    "childcare": {
+      "route": "/ismokos/vaiko-prieziuros-ismoka/",
+      "title": "Vaiko priežiūros išmoka 18 ar 24 mėnesiams",
+      "label": "Vaiko priežiūros išmoka",
+      "intro": "Palyginkite „Sodros“ 18 ir 24 mėnesių išmokos tarifus, neperleidžiamus mėnesius ir savivaldybės išmoką neturint teisės į draudimo išmoką.",
+      "group": "Šeima ir vaikai",
+      "art": "civic-care",
+      "facts": [
+        [
+          "18 / 24",
+          "Išmokos laikotarpio pasirinkimas"
+        ],
+        [
+          "78 %",
+          "Neperleidžiamų mėnesių tarifas"
+        ]
+      ],
+      "sources": [
+        "childcare",
+        "childcareCalc",
+        "family",
+        "changes",
+        "november",
+        "sodra"
+      ],
+      "steps": [
+        [
+          "Patikrinkite savo stažą",
+          "Standartiniu atveju iki teisės atsiradimo reikia 12 mėnesių motinystės draudimo stažo per paskutinius 24 mėnesius."
+        ],
+        [
+          "Susitarkite dėl atostogų",
+          "Jei dirbate pagal darbo sutartį, atostogų laikotarpį derinkite su darbdaviu. Susiplanuokite abiejų tėvų neperleidžiamus mėnesius."
+        ],
+        [
+          "Pasirinkite laikotarpį „Sodroje“",
+          "Prašyme pasirinkite 18 arba 24 mėnesių variantą. Jeigu teisės į draudimo išmoką neturite, dėl savivaldybės išmokos kreipkitės per SPIS."
+        ]
+      ],
+      "sections": [
+        [
+          "Kaip skiriasi 18 ir 24 mėnesių variantai?",
+          "18 mėnesių variante perleidžiamu laikotarpiu taikoma 60 % KU. 24 mėnesių variante iki vaikui sukanka 12 mėnesių taikoma 45 %, vėliau iki 24 mėnesių – 30 %. Neperleidžiamiems mėnesiams taikoma 78 %. Galutinį dydį veikia išmokos ribos, gautos pajamos ir dienų skaičius."
+        ],
+        [
+          "O jeigu „Sodros“ išmoka nepriklauso?",
+          "Nuo 2026 m. birželio 1 d. neturint teisės į socialinio draudimo vaiko priežiūros išmoką, pagal atskiras sąlygas gali būti skiriama 444 Eur per mėnesį iki vaikui sueis dveji. Savivaldybė vertina teisę ir laikotarpį."
+        ],
+        [
+          "Kada pervedama?",
+          "Mėnesio data nurodoma „Sodros“ kalendoriuje. Dirbant ar gaunant papildomų pajamų „Sodra“ gali palaukti darbdavio duomenų ir tą mėnesį pervesti vėliau."
+        ]
+      ],
+      "related": [
+        "parents",
+        "nanny",
+        "child"
+      ],
+      "cta": "sodra"
+    },
+    "parents": {
+      "route": "/ismokos/motinystes-ir-tevystes-ismokos/",
+      "title": "Motinystės ir tėvystės išmokos Lietuvoje",
+      "label": "Motinystės ir tėvystės išmokos",
+      "intro": "Sužinokite, kuo skiriasi nėštumo ir gimdymo, tėvystės ir vaiko priežiūros išmokos. Palyginkite tarifą prieš mokesčius ir pasitikrinkite prašymo žingsnius.",
+      "group": "Šeima ir vaikai",
+      "art": "civic-parents",
+      "facts": [
+        [
+          "77,58 %",
+          "KU tarifas abiem išmokoms"
+        ],
+        [
+          "30 d.",
+          "Tėvystės atostogų trukmė"
+        ]
+      ],
+      "sources": [
+        "mother",
+        "father",
+        "childcare",
+        "november",
+        "sodra"
+      ],
+      "steps": [
+        [
+          "Pasitikrinkite dokumentus",
+          "Motinystės atveju svarbus nėštumo ir gimdymo atostogų pažymėjimas. Tėvystės atveju laikotarpį suderinkite su darbdaviu pagal „Sodros“ sąlygas."
+        ],
+        [
+          "Pateikite atitinkamą prašymą",
+          "„Sodros“ paskyroje pasirinkite motinystės arba tėvystės išmokos prašymą."
+        ],
+        [
+          "Patikrinkite kitą laikotarpį",
+          "Pasibaigus vienai išmokai, atskirai planuokite vaiko priežiūros atostogas ir prašymą skirti vaiko priežiūros išmoką."
+        ]
+      ],
+      "sections": [
+        [
+          "Ar 77,58 % skaičiuojama nuo paskutinės algos?",
+          "Tarifas taikomas kompensuojamajam uždarbiui (KU). „Sodra“ jį nustato iš draudžiamųjų pajamų per nustatytą laikotarpį. Galutinė suma priklauso nuo išmokos trukmės, taikomų dydžių ribų ir mokesčių."
+        ],
+        [
+          "Kada galima pasinaudoti tėvystės atostogomis?",
+          "Įprastu atveju 30 kalendorinių dienų galima panaudoti iki vaikui sukanka vieneri metai. Atostogas galima skaidyti į ne daugiau kaip dvi dalis. Įvaikinimo atveju patikrinkite atskiras „Sodros“ taisykles."
+        ],
+        [
+          "Kada išmokama už patvirtintą laikotarpį?",
+          "Motinystės ir tėvystės išmokos turi skirtingus dokumentų ir mokėjimo terminus. Patikrinkite savo sprendimą ir oficialų „Sodros“ išmokų kalendorių."
+        ]
+      ],
+      "related": [
+        "childcare",
+        "birth",
+        "nanny"
+      ],
+      "cta": "sodra"
+    },
+    "nanny": {
+      "route": "/ismokos/aukles-kompensacija/",
+      "title": "Auklės kompensacija Lietuvoje 2026",
+      "label": "Auklės kompensacija",
+      "intro": "Patikrinkite 384,80 Eur dydžio vaiko priežiūros kompensacinę išmoką už atlygintinai prižiūrimą, darželio nelankantį vaiką.",
+      "group": "Šeima ir vaikai",
+      "art": "civic-nanny",
+      "facts": [
+        [
+          "384,80 €",
+          "2026 m. per vaiką per mėnesį"
+        ],
+        [
+          "SPIS",
+          "Prašymas savivaldybei"
+        ]
+      ],
+      "sources": [
+        "nanny",
+        "family",
+        "changes",
+        "spis"
+      ],
+      "steps": [
+        [
+          "Patikrinkite vaiką ir priežiūros būdą",
+          "Vaikas turi būti ikimokyklinio amžiaus, nelankyti ikimokyklinio ugdymo ir už atlygį būti prižiūrimas fizinio asmens."
+        ],
+        [
+          "Pasiruoškite susitarimą su aukle",
+          "Savivaldybei gali reikėti auklės darbo ar paslaugų ir teisės į išmoką įrodymų."
+        ],
+        [
+          "Pateikite prašymą",
+          "Kreipkitės į savo savivaldybę arba per SPIS. Pasikeitus priežiūros būdui, atnaujinkite duomenis."
+        ]
+      ],
+      "sections": [
+        [
+          "Kokios sąlygos taikomos tėvams?",
+          "SADM gide patikrinkite abiejų tėvų arba vienintelio iš tėvų darbo, savarankiškos veiklos ar kitas taikytinas sąlygas. Nuo 2026 m. birželio įtraukti papildomi darbo, mokymosi ir dalyvumo atvejai."
+        ],
+        [
+          "Ar giminaitis gali būti auklė?",
+          "Vertinami konkretūs priežiūros ir bendro gyvenimo santykiai. Pavyzdžiui, auklei prižiūrint savo ar kartu gyvenančio partnerio vaiką kompensacija neskiriama. Dėl konkrečios situacijos kreipkitės į savivaldybę."
+        ]
+      ],
+      "related": [
+        "childcare",
+        "child",
+        "parents"
+      ],
+      "cta": "spis"
+    },
+    "job": {
+      "route": "/ismokos/nedarbo-ismoka/",
+      "title": "Nedarbo išmoka ir jos skaičiuoklė 2026 m.",
+      "label": "Nedarbo išmoka",
+      "intro": "Apskaičiuokite trijų mokėjimo etapų dydžius pagal taisykles, taikomas bedarbio statusą įgijus nuo 2026 m. liepos 1 d.",
+      "group": "Darbas ir sveikata",
+      "art": "civic-work",
+      "facts": [
+        [
+          "12 / 24",
+          "Įprastas stažas nuo liepos 1 d."
+        ],
+        [
+          "9 mėn.",
+          "Įprasta mokėjimo trukmė"
+        ]
+      ],
+      "sources": [
+        "job",
+        "uzt",
+        "november",
+        "sodra"
+      ],
+      "steps": [
+        [
+          "Registruokitės Užimtumo tarnyboje",
+          "Bedarbio statuso data lemia, kokias taisykles taikyti."
+        ],
+        [
+          "Suformuokite REP.04",
+          "Savo nedarbo draudimo stažą patikrinkite „Sodros“ paskyroje. Nuo 2026 m. liepos 1 d. įprastai reikia bent 12 mėnesių per 24, iki tol buvo vertinami 30 mėnesių."
+        ],
+        [
+          "Pateikite prašymą",
+          "Kreipkitės į Užimtumo tarnybą arba pateikite GPS18 prašymą „Sodrai“. Pagal nuo liepos galiojančią tvarką kreipimosi laikotarpis – 12 mėnesių nuo statuso įgijimo."
+        ]
+      ],
+      "sections": [
+        [
+          "Kada skiriama ir kada pervedama?",
+          "Įprastai skiriama nuo aštuntos dienos po statuso įgijimo. Atleidimas dėl darbuotojo kaltės arba anksčiau paskirta kita išmoka pradžią gali atidėti. Pervedama už praėjusį mėnesį, įprastai tarp 20 ir paskutinės mėnesio dienos."
+        ],
+        [
+          "Ką reiškia pastovi ir kintama dalys?",
+          "Pagal 2026 m. dydžius pastovi dalis yra 172,95 Eur. Kintamai daliai taikoma 45 %, 35 % ir 25 % draudžiamųjų pajamų vidurkio. 2026 m. antrosios pusės modelyje už visą mėnesį taikome 370 Eur apatinę ir 1 618,51 Eur viršutinę ribas. Vėliau dydžiai gali keistis."
+        ],
+        [
+          "Dirbau savarankiškai arba užsienyje. Ką daryti?",
+          "Vien darbas pagal individualios veiklos pažymą paprastai nesukuria nedarbo draudimo stažo. Užsienyje sukauptus laikotarpius vertina institucijos, kurios gali prašyti U1 ar kitų duomenų."
+        ]
+      ],
+      "related": [
+        "social",
+        "tax",
+        "sick"
+      ],
+      "cta": "sodra"
+    },
+    "sick": {
+      "route": "/ismokos/ligos-ismoka/",
+      "title": "Ligos išmoka susirgus Lietuvoje 2026 m.",
+      "label": "Ligos išmoka",
+      "intro": "Sužinokite, už kurias dienas paprastai moka darbdavys ir kada išmoką perima „Sodra“. Atskirai pasitikrinkite slaugos tvarką.",
+      "group": "Darbas ir sveikata",
+      "art": "civic-health",
+      "facts": [
+        [
+          "1–2",
+          "Darbdavio dienos pagal darbo grafiką"
+        ],
+        [
+          "62,06 %",
+          "„Sodros“ įprastas tarifas nuo 3 dienos"
+        ]
+      ],
+      "sources": [
+        "sick",
+        "care",
+        "november",
+        "sodra"
+      ],
+      "steps": [
+        [
+          "Gaukite nedarbingumo pažymėjimą",
+          "Vadovaukitės gydytojo nurodymais ir praneškite darbdaviui apie nedarbingumą."
+        ],
+        [
+          "Pateikite prašymą „Sodroje“",
+          "Pasitikrinkite, ar turite galiojantį neterminuotą prašymą skirti ligos išmoką."
+        ],
+        [
+          "Patikrinkite duomenis",
+          "Jei išmoka vėluoja, „Sodroje“ patikrinkite, ar gydytojo ir darbdavio dokumentai gauti."
+        ]
+      ],
+      "sections": [
+        [
+          "Kiek moka darbdavys ir „Sodra“?",
+          "Už pirmąsias dvi kalendorines ligos dienas, sutampančias su darbo grafiku, darbdavys paprastai moka 62,06–100 % jo skaičiuojamo vidutinio darbo užmokesčio. Nuo trečios kalendorinės dienos „Sodra“ paprastai moka 62,06 % KU už darbo dienas pagal kalendorių."
+        ],
+        [
+          "Koks stažas reikalingas ir kada perves?",
+          "Paprastai reikia 3 ligos draudimo mėnesių per 12 arba 6 per 24. „Sodros“ kalendoriuje ligos išmokai nurodoma iki 17 darbo dienų nuo visų duomenų pateikimo. Iš „Sodros“ mokamos ligos išmokos įprastai atskaitoma 15 % GPM ir 6 % PSD."
+        ],
+        [
+          "Ar slaugos tvarka tokia pati?",
+          "Slaugant šeimos narį, „Sodros“ mokėjimo pradžia, tarifas ir trukmė nustatomi pagal atskiras taisykles. Patikrinkite oficialų puslapį apie šeimos nario slaugą."
+        ]
+      ],
+      "related": [
+        "job",
+        "parents",
+        "hub"
+      ],
+      "cta": "sodra"
+    },
+    "social": {
+      "route": "/ismokos/socialine-pasalpa/",
+      "title": "Socialinės pašalpos sąlygos ir skaičiuoklė 2026 m.",
+      "label": "Socialinė pašalpa",
+      "intro": "Pasitikrinkite 2026 m. pajamų ribą ir palyginkite vieno žmogaus ar šeimos teorinę mėnesio pašalpą prieš savivaldybės vertinimą.",
+      "group": "Pajamos ir būstas",
+      "art": "civic-budget",
+      "facts": [
+        [
+          "256,30 €",
+          "Bendroji pajamų riba asmeniui"
+        ],
+        [
+          "233 €",
+          "2026 m. VRP dydis"
+        ]
+      ],
+      "sources": [
+        "support",
+        "supportRules",
+        "spisCalc",
+        "spis"
+      ],
+      "steps": [
+        [
+          "Pasiruoškite pajamų duomenis",
+          "Savivaldybė dažniausiai vertina paskutinių trijų mėnesių pajamas. Pasikeitus pajamų šaltiniui, vertinamas laikotarpis gali keistis."
+        ],
+        [
+          "Patikrinkite turto ir užimtumo sąlygas",
+          "Savivaldybė vertins turtą, šeimos sudėtį, darbą ar registraciją Užimtumo tarnyboje ir kitas aplinkybes."
+        ],
+        [
+          "Kreipkitės per SPIS arba savivaldybėje",
+          "Jei viršijate bendrąją ribą arba turite ypatingų išlaidų, paklauskite apie savivaldybės išimtinę ar vienkartinę paramą."
+        ]
+      ],
+      "sections": [
+        [
+          "Kokias pajamas įvesti?",
+          "Įrašykite vertinamas mėnesio pajamas po neįskaitomų sumų atėmimo. Vaiko pinigai ir nustatyta dalis darbo bei kai kurių draudimo išmokų paprastai neįskaitomi. Jūsų atvejui tinkamą apskaičiavimą patikrinkite SPIS."
+        ],
+        [
+          "Kaip kinta pašalpa vienam žmogui?",
+          "Pagal įprastą modelį taikomos 1,4, 1,2 ir 1,1 VRP bazės, atsižvelgiant į mokėjimo trukmę. Pirmiausia tikrinama bendra pajamų riba. Šeimai pirmo, antro ir paskesnių asmenų dalims taikomi skirtingi koeficientai."
+        ],
+        [
+          "Kuo skiriasi šildymo kompensacija?",
+          "Šildymo kompensacijai naudojami kiti VRP dydžiai ir normatyvinės šildymo išlaidos. Ją galima vertinti atskirai."
+        ]
+      ],
+      "related": [
+        "heating",
+        "job",
+        "child"
+      ],
+      "cta": "spis"
+    },
+    "heating": {
+      "route": "/ismokos/sildymo-kompensacija/",
+      "title": "Būsto šildymo kompensacija 2026",
+      "label": "Šildymo kompensacija",
+      "intro": "Apskaičiuokite preliminarią šildymo išlaidų dalį pagal vertinamas pajamas, šeimos dydį ir normatyvines išlaidas.",
+      "group": "Pajamos ir būstas",
+      "art": "civic-house",
+      "facts": [
+        [
+          "699 €",
+          "3 VRP žmogui, gyvenančiam vienam"
+        ],
+        [
+          "466 €",
+          "2 VRP vienam šeimos nariui"
+        ]
+      ],
+      "sources": [
+        "support",
+        "supportRules",
+        "spisCalc",
+        "spis"
+      ],
+      "steps": [
+        [
+          "Raskite normatyvines išlaidas",
+          "Pasitikrinkite šildymo sąskaitą bei normatyvinį plotą. Jei šildymo išlaidų dalis viršija normatyvą, jos nepridėkite prie įvedamos sumos."
+        ],
+        [
+          "Pasiruoškite būsto duomenis",
+          "Nuomojamam būstui reikia rašytinės, viešame registre įregistruotos nuomos sutarties. Turint skolų gali būti svarbi apmokėjimo sutartis su tiekėju."
+        ],
+        [
+          "Pateikite prašymą",
+          "Dėl šildymo bei geriamojo ir karšto vandens kompensacijų kreipkitės savivaldybėje arba per SPIS."
+        ]
+      ],
+      "sections": [
+        [
+          "Kaip nustatoma sąskaitos dalis?",
+          "Pajamoms, viršijančioms 3 VRP vienam gyvenančiam asmeniui arba 2 VRP kiekvienam šeimos nariui, taikoma 10 % dalis. Kompensacija padengia normatyvinę išlaidų dalį, viršijančią šią sumą."
+        ],
+        [
+          "Koks plotas vertinamas?",
+          "Vienam gyvenančiam žmogui taikoma 50 m². Šeimai skiriama 38 m² pirmajam, 12 m² antrajam ir po 10 m² kiekvienam kitam asmeniui. Vandens kompensacijoms taikomos atskiros pajamų ir sunaudojimo taisyklės."
+        ],
+        [
+          "Ar kompensuojama kūrenant malkomis?",
+          "Vertinamas ir centralizuotas šildymas, ir kitas kuras, įskaitant elektrą, dujas bei malkas. Pasitikslinkite, kokių išlaidų įrodymų prašo savivaldybė."
+        ]
+      ],
+      "related": [
+        "social",
+        "hub",
+        "tax"
+      ],
+      "cta": "spis"
+    }
+  },
+  "otherHelp": [
+    [
+      "school",
+      "Parama mokiniams",
+      "Nemokami pietūs priešmokyklinukams, pirmokams ir antrokams skiriami nevertinant šeimos pajamų. Pagal pajamų sąlygą galima gauti 148 Eur mokinio reikmenims (2026 m.)."
+    ],
+    [
+      "disability",
+      "Negalios pensija",
+      "Netekus 45 % ar daugiau dalyvumo, socialinio draudimo negalios pensijai dar vertinamas pagal amžių reikalingas stažas. Dėl asmeninio įvertinimo kreipkitės į „Sodrą“."
+    ],
+    [
+      "maintenance",
+      "Negautas vaiko išlaikymas",
+      "Jei negaunate viso nustatyto vaiko išlaikymo, patikrinkite „Sodros“ sąlygas. Nuo 2026 m. liepos 1 d. taikoma iki 185 Eur mėnesio suma vienam vaikui."
+    ],
+    [
+      "death",
+      "Laidojimo pašalpa",
+      "2026 m. vienkartinė išmoka – 592 Eur. Pagal taikomas sąlygas į savivaldybę kreipiamasi per 12 mėnesių."
+    ]
+  ]
+}

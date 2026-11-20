@@ -47,7 +47,7 @@
 .planner-studio__people-picker input{width:18px!important;height:18px!important;min-height:18px!important;accent-color:#08714c}
 .planner-studio__preview-label{display:flex;justify-content:space-between;gap:.7rem;margin:0 0 .6rem;color:#40584a;font-size:.74rem;font-weight:800}
 .planner-studio__preview-label [data-studio-save]{color:#6a766f;text-align:right;font-weight:600}
-.planner-studio__sheet{--studio-accent:#08714c;--studio-soft:#e7f4ec;min-height:520px;padding:clamp(1rem,2.2vw,1.65rem);border:1px solid #d6dfd8;border-radius:12px;background:#fff;color:#193226;box-shadow:0 10px 30px #18352612}
+.planner-studio__sheet{--studio-accent:#08714c;--studio-soft:#e7f4ec;padding:clamp(1rem,2.2vw,1.65rem);border:1px solid #d6dfd8;border-radius:12px;background:#fff;color:#193226;box-shadow:0 10px 30px #18352612}
 .planner-sheet__header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;border-bottom:3px solid var(--studio-accent);padding-bottom:.75rem}
 .planner-sheet__header h3{margin:.2rem 0 0;color:var(--studio-accent);font-size:1.45rem;line-height:1.12}
 .planner-sheet__header p{margin:.2rem 0 0;color:#53635a;font-size:.8rem;font-weight:700;text-align:right}

@@ -4,7 +4,7 @@ import { exportICS } from "./ics.js";
 
 const DAY_MS = 86400000;
 const MIN_YEAR = 2026;
-const MAX_YEAR = 2029;
+const MAX_YEAR = 2031;
 const STORAGE_KEY = "k365:leave-planner:v1";
 const $ = (selector, root = document) => root.querySelector(selector);
 
@@ -231,7 +231,7 @@ export function evaluateRange(start, end, data, options = {}) {
 
 function settingsFromForm(form) {
   const year = Number(form.elements.year.value);
-  if (![2027, 2028].includes(year)) throw Error("Pasirinkite 2027 arba 2028 metus.");
+  if (!Number.isInteger(year) || year < 2027 || year >= MAX_YEAR) throw Error("Pasirinkite metus nuo 2027 iki 2030.");
   const budget = Number(form.elements.budget.value);
   if (!Number.isInteger(budget) || budget < 0 || budget > 60) throw Error("Atostogų dienų likutis turi būti sveikas skaičius nuo 0 iki 60.");
   let workdays;

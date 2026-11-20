@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 150">
+  <defs>
+    <linearGradient id="paper" x2=".65" y2="1"><stop stop-color="#fffdf5"/><stop offset="1" stop-color="#e1cc9e"/></linearGradient>
+    <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#f4cf78"/><stop offset="1" stop-color="#ae7728"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-45%" width="140%" height="190%"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <ellipse cx="90" cy="131" rx="78" ry="9" fill="#533e1e" opacity=".22" filter="url(#shadow)"/>
+  <path d="M17 33l68 9 70-21 12 8 6 86-79 21-77-9-8-9z" fill="#775324"/>
+  <path d="M12 28l72 10 72-21 12 95-73 20-82-10z" fill="url(#gold)"/>
+  <path d="M20 29l64 13 12 82-73-12-8 4z" fill="url(#paper)"/>
+  <path d="M84 42l67-21 12 83-67 20z" fill="#f9f0d8"/>
+  <path d="M85 45l12 75" stroke="#d0ab6c" stroke-width="3"/>
+  <g fill="none" stroke="#a18044" stroke-width="1.5" opacity=".63">
+    <path d="M27 65l51 10M28 78l52 10M29 91l53 11M30 103l54 11M39 67l4 39m11-36 4 39m11-36 4 38"/>
+    <path d="M100 82l51-15m-49 27 51-15m-49 27 51-15"/>
+  </g>
+  <text x="95" y="68" transform="rotate(-16 95 68)" font-family="Lato,Arial,sans-serif" font-size="22" font-weight="900" fill="#225039">2028</text>
+  <rect x="126" y="75" width="23" height="24" rx="4" transform="rotate(-16 126 75)" fill="#b82936"/>
+  <text x="141" y="89" transform="rotate(-16 141 89)" font-family="Lato,Arial,sans-serif" text-anchor="middle" font-size="13" font-weight="900" fill="#fff7df">29</text>
+  <g fill="none" stroke-linecap="round">
+    <path d="M77 48c-3-13 3-13 13-6m-10 25c-3-13 3-13 13-6m-10 24c-3-13 3-13 13-6m-10 24c-3-13 3-13 13-6" stroke="#634c2a" stroke-width="4"/>
+    <path d="M77 45c-1-8 4-9 10-5m-7 24c-1-8 4-9 10-5m-7 23c-1-8 4-9 10-5m-7 23c-1-8 4-9 10-5" stroke="#f2dba4" stroke-width="1.5"/>
+  </g>
+</svg>

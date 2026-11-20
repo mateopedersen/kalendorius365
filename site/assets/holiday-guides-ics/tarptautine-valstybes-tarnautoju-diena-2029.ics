@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-valstybes-tarnautoju-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290623
+DTEND;VALUE=DATE:20290624
+SUMMARY:Tarptautinė valstybės tarnautojų diena
+DESCRIPTION:Birželio 23 d. atmintinų dienų sąraše įvardyta Tarptautin
+ ė valstybės tarnautojų diena.
+URL:https://kalendorius365.lt/sventes/tarptautine-valstybes-tarnautoju-dien
+ a/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

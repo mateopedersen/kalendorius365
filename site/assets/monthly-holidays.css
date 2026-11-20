@@ -61,3 +61,112 @@
  .monthly-holidays-app .mobile-dock>a{min-width:0;padding-inline:3px}
  .monthly-holidays-app .mobile-dock span{max-width:100%;overflow-wrap:anywhere;text-align:center}
 }
+
+.mh-year-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.mh .mh-year-nav a { display: inline-flex; align-items: center; min-height: 42px; padding: 7px 13px; border: 1px solid #b6ccbd; border-radius: 8px; background: #f8fbf5; color: #174935; font-weight: 800; text-decoration: none; }
+.mh .mh-year-nav a:hover { background: #e2eddf; color: #174935; }
+.mh .mh-year-nav a[aria-current="page"] { background: #173e2d; color: #fff; border-color: #173e2d; }
+.mh .mh-event-title { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; color: #154d36; text-decoration: none; }
+.mh .mh-event-title:hover { color: #0a3423; text-decoration: underline; text-underline-offset: .15em; }
+.mh .mh-event-title .mh-icon { flex: none; align-self: center; }
+.mh .mh-event-links { display: grid; gap: 4px; margin: 8px 0; padding: 0; list-style: none; }
+.mh .mh-event-links a { display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 5px 7px; border: 1px solid #d0dfd1; border-radius: 7px; color: #135039; background: #f0f6ec; text-decoration: none; line-height: 1.22; }
+.mh .mh-event-links a:hover { text-decoration: underline; background: #e4f0e1; }
+.mh .mh-event a:focus-visible, .mh .mh-year-nav a:focus-visible { outline: 2px solid #146344; outline-offset: 3px; }
+.mh .mh-mark--festival { background: #a64c31; }
+.mh .mh-spotlight[id] { scroll-margin-top: 100px; }
+.mh[data-month-guide] .mh-year-nav { margin: 14px 0 0; }
+@media (max-width: 720px) {
+  .mh[data-month-guide] .mh-calendar { min-width: 0; }
+}
+@media (max-width: 380px) {
+  .mh[data-month-guide] .mh-day { grid-template-columns: minmax(0, 1fr); padding: 3px; }
+  .mh[data-month-guide] .mh-daycount { position: absolute; right: 1px; top: 1px; padding: 0 1px; }
+  .mh[data-month-guide] .mh-day-number { justify-self: center; }
+  .mh[data-month-guide] .mh-marks { gap: 2px; justify-content: center; }
+  .mh[data-month-guide] .mh-marks .mh-mark { width: 5px; height: 5px; }
+  .mh[data-month-guide] .mh-year-nav a { padding-inline: 9px; }
+}
+
+/* The monthly article and the year sidebar share the full themed header and navigation. */
+.mh { color: var(--shell-ink); font-family: var(--shell-font); }
+.mh[data-month-guide] {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: clamp(13px,2vw,22px);
+}
+.mh[data-month-guide] > .mh-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1.25fr) minmax(190px,.65fr);
+  grid-column: 1;
+  align-items: center;
+  gap: clamp(13px,3vw,42px);
+  padding: clamp(16px,2.8vw,32px);
+  border: 1px solid #25503c;
+  border-radius: 16px;
+  background: var(--shell-heading-backdrop);
+}
+.mh[data-month-guide] > .mh-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(16px,3vw,32px);
+  width: 73px;
+  height: 3px;
+  background: linear-gradient(90deg,#fdb913 33.33%,#55a381 33.33% 66.66%,#da6a64 66.66%);
+}
+.mh[data-month-guide] .mh-hero h1 {
+  color: #fffdf3;
+  font-size: clamp(1.75rem,3.8vw,3.16rem);
+  line-height: 1.08;
+  letter-spacing: -.037em;
+}
+.mh[data-month-guide] .mh-hero :is(.eyebrow,.mh-text-link) { color: #f6db82; }
+.mh[data-month-guide] .mh-intro { max-width: 75ch; color: #e1eee1; }
+.mh[data-month-guide] .mh-hero .mh-text-link .mh-icon { color: inherit; }
+.mh[data-month-guide] .mh-hero-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 7px 13px; }
+.mh[data-month-guide] .mh-hero-actions > .button { min-height: 43px; border-color: #f4da8b; background: #f6da7c; color: #2f3716; }
+.mh[data-month-guide] .mh-hero-actions > .button:hover { background: #ffe9a3; color: #2f3716; }
+.mh[data-month-guide] .mh-hero .mh-year-nav { margin: 9px 0 0; }
+.mh[data-month-guide] .mh-hero .mh-year-nav a { min-width: 53px; justify-content: center; border-color: #87b098; background: #ffffff15; color: #fff; }
+.mh[data-month-guide] .mh-hero .mh-year-nav a:hover { background: #ffffff2b; color: #fff; }
+.mh[data-month-guide] .mh-hero .mh-year-nav a[aria-current="page"] { border-color: #f5db83; background: #f4da84; color: #2d381a; }
+.mh[data-month-guide] .mh-art { display: grid; grid-template-columns: 1fr; gap: 4px; margin: 0; }
+.mh[data-month-guide] .mh-art img { width: 100%; height: auto; max-height: 220px; object-fit: cover; border: 1px solid #a8bca1; border-radius: 10px; }
+.mh[data-month-guide] .mh-art figcaption { max-width: none; color: #dfebe0; }
+
+.mh[data-month-guide] > .mh-workspace {
+  display: grid;
+  grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr);
+  gap: clamp(10px,1.4vw,17px);
+  align-items: start;
+}
+.mh[data-month-guide] :is(.mh-list-head,.mh-controls) { grid-column: 1/-1; grid-row: auto; }
+.mh[data-month-guide] .mh-calendar-column { grid-column: 1; grid-row: auto; position: sticky; top: 104px; }
+.mh[data-month-guide] .mh-events-list { grid-column: 2; grid-row: auto; grid-template-columns: minmax(0,1fr); gap: 9px; margin: 0; }
+.mh[data-month-guide] .mh-months { margin-top: 10px; }
+.mh-hub { padding: 12px; border: 1px solid var(--shell-border); border-radius: 13px; background: #fcfbf5; }
+.mh-hub .mh-months { margin-top: 9px; }
+.mh-hub .mh-section-head { margin-bottom: 8px; }
+.mh-hub .mh-section-head h2 { margin-top: 4px; font-size: 1.22rem; }
+.mh-hub .mh-section-head > p { margin-top: 2px; }
+.mh-hub .mh-month-grid { gap: 4px; }
+.mh-hub .mh-month-grid a { min-height: 49px; padding: 4px 6px; }
+.mh-hub .mh-month-grid a > img { width: 44px; height: 33px; }
+.mh-hub .mh-month-grid .mh-icon { width: 17px; height: 17px; flex: none; }
+@media (max-width: 880px) {
+  .mh[data-month-guide] > .mh-workspace { grid-template-columns: minmax(0,1fr); }
+  .mh[data-month-guide] :is(.mh-calendar-column,.mh-events-list) { grid-column: 1; position: static; }
+}
+@media (max-width: 640px) {
+  .mh[data-month-guide] > .mh-hero { grid-template-columns: minmax(0,1fr); }
+  .mh[data-month-guide] .mh-art { display: grid; grid-template-columns: minmax(75px,29%) minmax(0,1fr); align-items: center; }
+  .mh[data-month-guide] .mh-hero .mh-year-nav a { min-width: 45px; }
+}
+@media print {
+  .mh[data-month-guide] > .mh-hero { display: block; background: #fff; }
+  .mh[data-month-guide] .mh-hero :is(h1,.eyebrow,.mh-intro) { color: #111; }
+  .mh[data-month-guide] > .mh-workspace,.mh[data-month-guide] .mh-events-list { display: block; }
+  .mh[data-month-guide] .mh-calendar-column { position: static; }
+}

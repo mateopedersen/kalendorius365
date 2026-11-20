@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-juros-svente-2027-07-23@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270723
+DTEND;VALUE=DATE:20270726
+SUMMARY:Jūros šventė Klaipėdoje
+DESCRIPTION:Klaipėdos vasaros savaitgalis\, skirtas jūrinei miesto tradic
+ ijai\, uosto istorijai ir kultūriniams renginiams.
+URL:https://kalendorius365.lt/renginiai/juros-svente/
+TRANSP:TRANSPARENT
+LOCATION:Uostamiesčio viešosios erdvės
+END:VEVENT
+END:VCALENDAR

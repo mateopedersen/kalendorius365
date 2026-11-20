@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sv-antano-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290613
+DTEND;VALUE=DATE:20290614
+SUMMARY:Šv. Antano diena
+DESCRIPTION:Birželio 13-ąją Katalikų Bažnyčia mini šv. Antaną Paduv
+ ietį. Šią datą mini ir lietuviškų tradicinių kalendorinių švenči
+ ų sąrašas.
+URL:https://kalendorius365.lt/sventes/sv-antano-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

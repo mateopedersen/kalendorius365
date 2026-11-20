@@ -27,3 +27,53 @@ test('failed IndexedDB transaction rejects instead of reporting a saved draft',a
 test('same-day holiday, birthday and vacation stay separate; person colours and anniversaries validate',()=>{let s=initial();s.events=[event({id:'birthday',start:'2028-02-16',end:'2028-02-16',repeat:'none',personColor:'#3a5566'}),event({id:'vacation',title:'Atostogos',category:'vacation',start:'2028-02-15',end:'2028-02-20',repeat:'none'})];let list=entries(s,data,editorial,'2028-02-16','2028-02-16');assert.equal(list.length,3);assert.deepEqual(new Set(list.map(e=>e.kind)),new Set(['statutory','personal']));validateEvent(event({category:'anniversary',personColor:'#112233'}));assert.throws(()=>validateEvent(event({personColor:'red'})));});
 test('central Lithuanian month labels are complete and match authoritative site localization',async()=>{assert.deepEqual(MONTHS,data.months.map(m=>m[1]));let {MONTH_FILES,DAYS}=await import('../site/assets/calendar-editor/model.js');assert.equal(DAYS.join(' '),'Pr An Tr Kt Pn Št Sk');assert.deepEqual(MONTH_FILES,data.months.map(m=>m[2].normalize('NFD').replace(/[\u0300-\u036f]/g,'')));});
 test('statutory fixtures include independently known Easter and Sunday holidays',()=>{let expected={2027:'2027-03-28',2028:'2028-04-16',2029:'2029-04-01'};for(let[y,d]of Object.entries(expected)){let hs=JSON.parse(JSON.stringify(data));let list=(awaitableHolidays(+y,hs));assert.equal(list.find(h=>h.id==='easter').date,d);}let dates=awaitableHolidays(2028,data).map(h=>h.date);assert.deepEqual(dates,['2028-01-01','2028-02-16','2028-03-11','2028-04-16','2028-04-17','2028-05-01','2028-05-07','2028-06-04','2028-06-24','2028-07-06','2028-08-15','2028-11-01','2028-11-02','2028-12-24','2028-12-25','2028-12-26']);});
+
+test('November holiday labels and marks occupy separate centered bands and preserve full titles', () => {
+  const s = initial();
+  Object.assign(s.period, { year: 2026, month: 11 });
+  const [page] = scenes(s, data, editorial);
+  for (const date of ['2026-11-01', '2026-11-02']) {
+    const cell = page.cells.find(item => item.date === date);
+    const x = cell.x + cell.w / 2;
+    const day = page.items.find(item => item.date === date);
+    const marks = page.items.filter(item => item.type === 'circle' && item.x === x && item.y > cell.y && item.y < cell.y + cell.h);
+    const labels = page.items.filter(item => item.type === 'text' && !item.date && item.x === x && item.y > cell.y && item.y < cell.y + cell.h);
+    assert.equal(day.align, 'center');
+    assert.equal(day.x, x);
+    assert.equal(marks.length, 1);
+    assert(labels.length > 0);
+    assert(day.y < marks[0].y - marks[0].r);
+    labels.forEach(label => {
+      assert.equal(label.align, 'center');
+      assert(label.y - label.size > marks[0].y + marks[0].r);
+      assert(label.y + label.size * .25 < cell.y + cell.h);
+    });
+    assert(labels[0].y - cell.y > cell.h / 2, 'bottom placement leaves a writing area above');
+  }
+  const footer = page.items.filter(i => i.type === 'text' && i.align === 'center' && i.x === page.w / 2).map(i => i.value).join(' ');
+  assert.match(footer, /Visų Šventųjų diena/);
+  assert.match(footer, /Mirusiųjų atminimo/);
+  assert.doesNotMatch(svg(page), /data-editor-date/);
+  assert.match(svg(page, {}, '', {interactive:true}), /<rect data-editor-date="2026-11-02"/);
+});
+
+test('compact date editing preserves legacy projects and keeps all overflow entries in the appendix', () => {
+  const s = initial();
+  Object.assign(s.period, {year: 2026, month: 11});
+  assert.equal(effective(validate(s), '2026-11').layout.eventPlacement, 'bottom');
+  s.layout = {...s.layout, paper:'a5', orientation:'landscape', notes:0, eventPlacement:'top', cellLines:2, weekendTint:true};
+  const date = '2026-11-02';
+  s.events = Array.from({length:12}, (_, i) => event({
+    id: 'dense-' + i, title: `Sudėtingas ilgas įrašas ${i} šeimos kalendoriuje`, start:date, end:date, repeat:'none'
+  }));
+  const [page, ...appendix] = scenes(validate(s), data, editorial);
+  const cell = page.cells.find(item => item.date === date);
+  const short = page.items.find(item => item.type === 'text' && /^\+\d+$/.test(item.value));
+  assert(short && (short.y <= cell.y + cell.h));
+  const text = appendix.flatMap(item => item.items.map(entry => entry.value)).join(' ');
+  for (let i = 0; i < 12; i++) assert(text.includes(`įrašas ${i} šeimos`));
+  s.lowInk = true;
+  assert.equal(effective(s, '2026-11').layout.weekendTint, false);
+  s.layout.eventPlacement = 'invalid';
+  assert.throws(() => validate(s));
+});

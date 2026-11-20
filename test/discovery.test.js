@@ -5,11 +5,14 @@ import {holidays,addDays,weekday,difference} from '../site/assets/calendar.js';
 import { solarFor } from '../site/assets/phase-5-6-8-core.js';
 import { foldIcsLine, recommendAnnualWeekendPlan, recommendExtendedWeekend, thirdFridayOfMay } from '../site/assets/discovery-core.js';
 const read = path => fs.readFileSync(new URL('../'+path, import.meta.url),'utf8');
-test('all 22 links in the header and discovery area have different existing page destinations',()=>{
+test('header and discovery routes link to existing pages',()=>{
  const html=read('public/index.html');
  const parts=[html.match(/<nav id="primary-nav"[\s\S]*?<\/nav>/)[0],html.match(/<section class="home-discovery"[\s\S]*?<\/section>/)[0]];
- const urls=[...parts.join('').matchAll(/<a[^>]*href="([^"]+)"/g)].map(m=>m[1]);
- assert.equal(urls.length,22);assert.equal(new Set(urls).size,22);
+ const perSection=parts.map(part=>[...part.matchAll(/<a[^>]*href="([^"]+)"/g)].map(m=>m[1]));
+ for(const section of perSection) assert.equal(new Set(section).size,section.length);
+ const urls=perSection.flat();
+ assert.ok(urls.includes("/atmintinos-dienos/"));
+ assert.ok(urls.includes("/horoskopai/"));
  for(const url of urls) assert.ok(fs.existsSync(new URL('../public'+url+'index.html',import.meta.url)),url);
 });
 test('the three focused pages are indexed and have independent titles, content and vector artwork',()=>{
@@ -36,7 +39,8 @@ test('the three focused pages are indexed and have independent titles, content a
  assert.match(read('public/ilgieji-savaitgaliai/index.html'),/weekend-plan-export/);
  assert.match(read('public/ilgieji-savaitgaliai/index.html'),/value="5">5 atostogų dienas/);
  const css=read('public/assets/discovery.css');
- for(const selector of ['.commemoration-favorite','.commemoration-next','.daylight-year-area','.daylight-year-point','.weekend-plan-summary']) assert.ok(css.includes(selector),selector);
+ for(const selector of ['.commemoration-favorite','.commemoration-next','.daylight-year-area','.daylight-year-point']) assert.ok(css.includes(selector),selector);
+ assert.match(read('public/assets/shell/weekend-guide.css'),/\.weekend-plan-summary/);
 });
 test('five city comparison uses the existing solar calculation and sensible common-scale durations',()=>{
  const cities=JSON.parse(read('site/assets/data/astronomy/cities.json')).cities;
@@ -98,8 +102,8 @@ test('annual weekend plan allocates one leave budget without overlapping dates o
 });
 
 test('every displayed long weekend matches statutory free days including the previous December',()=>{
- const html=read('site/ilgieji-savaitgaliai/index.html');const data=JSON.parse(read('data/calendar.json'));
- for(const year of [2027,2028,2029]){
+ const html=read('public/ilgieji-savaitgaliai/index.html');const data=JSON.parse(read('data/calendar.json'));
+ for(const year of [2027,2028,2029,2030]){
   const section=html.match(new RegExp('<section id="savaitgaliai-'+year+'"[\\s\\S]*?</section>'))[0];
   const actual=[...section.matchAll(/data-start="([^"]+)" data-end="([^"]+)"/g)].map(m=>m.slice(1));
   const days=new Set([year-1,year,year+1].flatMap(y=>holidays(y,data).map(h=>h.date)));

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 132">
+  <defs>
+    <linearGradient id="paper" x2=".8" y2="1"><stop stop-color="#fffdf2"/><stop offset="1" stop-color="#d9cbae"/></linearGradient>
+    <linearGradient id="green" x2=".8" y2="1"><stop stop-color="#559778"/><stop offset="1" stop-color="#0d4937"/></linearGradient>
+    <linearGradient id="red" x2=".8" y2="1"><stop stop-color="#e08477"/><stop offset="1" stop-color="#8e263b"/></linearGradient>
+    <linearGradient id="gold" x2=".8" y2="1"><stop stop-color="#ffdd83"/><stop offset="1" stop-color="#a96524"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="3.5"/></filter>
+  </defs>
+  <ellipse cx="81" cy="117" rx="54" ry="6" fill="#263f2e" opacity=".2" filter="url(#shadow)"/>
+  <g transform="rotate(-10 80 69)">
+    <path d="M23 44h117v53l-12 11H32l-9-10z" fill="url(#red)"/>
+    <path d="M26 41h108v54H26z" fill="url(#paper)" stroke="#b2a382"/>
+    <path d="M26 95h108v6H26z" fill="#c7b99a"/>
+    <path d="M32 49h95v38H32zM33 59h94m-94 10h94m-94 10h94m-77-30v38m18-38v38m18-38v38m19-38v38" fill="none" stroke="#8aa393" stroke-width="1.2"/>
+    <path d="M33 100h92" stroke="#e9d8b3" stroke-width="2"/>
+  </g>
+  <path d="M119 20h8v74l-4 11-4-11z" fill="url(#green)" transform="rotate(26 123 60)"/>
+  <path d="m105 92 8 4-7 9z" fill="url(#gold)"/>
+</svg>

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-psichikos-sveikatos-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20301010
+DTEND;VALUE=DATE:20301011
+SUMMARY:Pasaulinė psichikos sveikatos diena
+DESCRIPTION:Spalio 10 d. minima Pasaulinė psichikos sveikatos diena. Lietu
+ voje tą pačią datą kalendoriuje rasite ir Vietos savivaldos dieną.
+URL:https://kalendorius365.lt/sventes/pasauline-psichikos-sveikatos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,42 @@
+---
+title: "Svetainės žemėlapis"
+description: "Kalendorius365 puslapiai pagal temą: metų ir mėnesių kalendoriai, Lietuvos datos, planavimo įrankiai ir informacija apie svetainę."
+hero_share: true
+---
+{% include tool-page-head.html icon="calendar" title="Svetainės žemėlapis" lead="Pagrindinės temos ir visi metų mėnesiai vienoje vietoje." %}
+<div class="sitemap-directory">
+<section class="panel sitemap-editorial" aria-labelledby="sitemap-editorial-title">
+  <h2 id="sitemap-editorial-title"><a href="/blogas/">Kalendoriaus užrašai ir gidai</a></h2>
+  {% assign guide_groups = site.data.blog | group_by: "category" | sort: "name" %}
+  <div class="sitemap-guide-groups">
+    {% for group in guide_groups %}
+    <details>
+      <summary>{{ group.name | escape }}</summary>
+      <ul>
+        {% for guide in group.items %}<li><a href="{{ guide.url }}">{{ guide.title | escape }}</a></li>{% endfor %}
+      </ul>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+<section class="panel sitemap-events" aria-labelledby="sitemap-events-title">
+  <h2 id="sitemap-events-title"><a href="/renginiai/">Lietuvos renginiai</a></h2>
+  {% assign cities = site.data.lithuanian_dates.festivals | group_by: "city" | sort: "name" %}
+  <div class="sitemap-guide-groups">
+    {% for group in cities %}
+    <details>
+      <summary>{{ group.name | escape }}</summary>
+      <ul>
+        {% for event in group.items %}<li><a href="/renginiai/{{ event.slug }}/">{{ event.title | escape }}</a></li>{% endfor %}
+      </ul>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+{% assign years = '2027,2028,2029,2030' | split: ',' %}
+{% for year in years %}
+<section class="panel"><h2><a href="/{{ year }}/">{{ year }} metų kalendorius</a></h2><ul class="sitemap-months">{% for month in site.data.calendar.months %}<li><a href="/{{ year }}/{{ month[0] }}/">{{ month[1] }}</a></li>{% endfor %}</ul></section>
+{% endfor %}
+{% for group in site.data.tool_directory.categories %}<section class="panel"><h2>{{ group.title }}</h2><ul class="sitemap-months">{% for tool in group.tools %}<li><a href="{{ tool.route }}">{{ tool.title }}</a></li>{% endfor %}</ul></section>{% endfor %}
+<section class="panel"><h2>Svetainės informacija</h2><ul class="sitemap-months"><li><a href="/apie-mus/">Apie mus</a></li><li><a href="/duk/">Klausimai ir atsakymai</a></li><li><a href="/blogas/">Kalendoriaus užrašai</a></li><li><a href="/privatumas/">Privatumas</a></li><li><a href="/kontaktai/">Kontaktai</a></li></ul></section>
+</div>

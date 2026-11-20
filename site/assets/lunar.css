@@ -10,3 +10,173 @@
 .lunar-app .lunar-adjacent a{display:grid;grid-template-columns:minmax(0,1fr) auto;flex:1 1 320px}.lunar-adjacent-phases{display:flex;gap:5px;padding:6px;background:#192c38;border-radius:30px}.lunar-adjacent-phases img{width:32px;height:32px}
 
 @media(max-width:760px){.lunar-cycle>div{grid-template-columns:repeat(auto-fit,minmax(min(100%,max(4.5rem,calc((100% - 30px)/4))),1fr))}.lunar-cycle article{grid-template-columns:minmax(0,1fr)}}
+
+.lunar-phase-picker {
+  display: grid;
+  justify-items: start;
+  gap: 17px;
+  padding: clamp(16px, 3.2vw, 32px);
+  border-color: #cad8c9;
+  color: #17372b;
+  background: linear-gradient(145deg, #f3f5e9, #fcfbf5 62%);
+  font-family: var(--shell-font, system-ui, sans-serif);
+}
+.lunar-phase-picker > * { min-width: 0; }
+.lunar-years a[aria-current="true"] { border-color: #477b73; background: #eaf4f0; box-shadow: inset 0 -3px #337464; }
+.lunar-phase-picker .lunar-phase-picker__header p { margin-top: 5px; color: #405a4c; }
+.lunar-phase-picker__controls {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(140px, 200px);
+  align-items: end;
+  gap: 12px 20px;
+  width: 100%;
+}
+.lunar-phase-years { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+.lunar-phase-years a {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  padding: 5px 3px;
+  border: 1px solid #bfcfc2;
+  border-radius: 9px;
+  color: #194737;
+  background: #f9faf4;
+  font-size: .89rem;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+.lunar-phase-years a:hover { border-color: #4f806d; color: #103c2e; background: #e6f0e7; }
+.lunar-phase-years a[aria-current] { border-color: #99701d; color: #253a28; background: #f8d875; }
+.lunar-phase-years a[aria-current]:hover { background: #ffdf84; }
+.lunar-phase-picker :is(a,button,select):focus-visible { outline: 2px solid #855c14; outline-offset: 2px; }
+.lunar-phase-picker__controls label {
+  display: grid;
+  gap: 4px;
+  color: #284438;
+  font-size: .89rem;
+  font-weight: 700;
+}
+.lunar-phase-picker__controls select {
+  width: 100%;
+  min-height: 46px;
+  padding: 5px 11px;
+  border: 1px solid #bfcfc2;
+  border-radius: 9px;
+  color: #17372b;
+  background-color: #fcfbf5;
+  font: inherit;
+}
+.lunar-phase-picker__month {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 15px;
+  width: 100%;
+}
+.lunar-phase-picker__month svg {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lunar-phase-picker ul { width: 100%; gap: 0 24px; }
+.lunar-phase-picker li { border-color: #d4dfd2; }
+.lunar-phase-picker li time { color: #435a51; }
+.lunar-phase-picker .lunar-button--quiet:hover,.lunar-phase-picker .lunar-icon-button:hover {
+  border-color: #659282;
+  background: #e1eee4;
+}
+@media (max-width: 540px) {
+  .lunar-phase-picker__controls { grid-template-columns: minmax(0, 1fr); }
+  .lunar-phase-years a { font-size: .82rem; }
+  .lunar-phase-picker__month .lunar-button { padding-inline: 9px; }
+}
+@media print {
+  .lunar-phase-picker__controls,.lunar-phase-picker__month a { display: none; }
+}
+
+.lunar-app {
+  --lunar-ink: #193d2e;
+  --lunar-muted: #496052;
+  --lunar-border: #cad9ce;
+  gap: clamp(14px,2.2vw,27px);
+  font-family: var(--shell-font);
+}
+.lunar-app .lunar-heading {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: center;
+  gap: clamp(10px,3vw,34px);
+  padding: clamp(16px,3vw,35px);
+  border: 1px solid #224f3b;
+  border-radius: 17px;
+  background: var(--shell-heading-backdrop);
+}
+.lunar-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(16px,3vw,35px);
+  width: 73px;
+  height: 3px;
+  background: linear-gradient(90deg,#fdb913 33.33%,#55a381 33.33% 66.66%,#da6a64 66.66%);
+}
+.lunar-app .lunar-heading h1 {
+  color: #fffdf2;
+  font-size: clamp(1.8rem,3.8vw,3.26rem);
+  line-height: 1.09;
+  letter-spacing: -.04em;
+}
+.lunar-heading__copy p { max-width: 68ch; margin-top: 8px; color: #e6f0e6; font-size: clamp(.95rem,1.6vw,1.1rem); }
+.lunar-heading .lunar-heading__art {
+  width: clamp(92px,17vw,176px);
+  height: auto;
+  filter: drop-shadow(0 5px 9px #071f18a0);
+}
+.lunar-heading .lunar-years { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; max-width: 370px; margin-top: 12px; }
+.lunar-heading .lunar-years a {
+  display: grid;
+  min-width: 0;
+  min-height: 43px;
+  place-items: center;
+  padding: 4px 6px;
+  border-color: #91ae9a;
+  border-radius: 7px;
+  background: #ffffff17;
+  color: #fcfff5;
+  font-size: .95rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.lunar-heading .lunar-years a:hover { background: #ffffff29; }
+.lunar-heading .lunar-years a[aria-current] { border-color: #f2d67e; background: #f3d778; color: #303719; box-shadow: none; }
+.lunar-heading .lunar-years a:focus-visible { outline: 2px solid #f6db82; outline-offset: 3px; }
+@media (max-width: 520px) {
+  .lunar-heading__copy { display: contents; }
+  .lunar-heading__copy h1 { grid-column: 1; grid-row: 1; }
+  .lunar-heading__copy p,.lunar-heading .lunar-years { grid-column: 1/-1; margin-top: 0; }
+  .lunar-heading .lunar-heading__art { grid-column: 2; grid-row: 1; width: clamp(64px,20vw,84px); }
+}
+@media print {
+  .lunar-app .lunar-heading { background: #fff; }
+  .lunar-heading__copy p,.lunar-app .lunar-heading h1 { color: #111; }
+  .lunar-heading__art { display: none; }
+}
+
+#stebejimai { scroll-margin-top: 9rem; }
+.lunar-observation-method { margin-top: 12px; }
+.lunar-observation-method summary { min-height: 44px; padding-block: 10px; cursor: pointer; font-weight: 750; }
+#stebejimai .data-table th, #stebejimai .data-table td { overflow-wrap: anywhere; }
+#stebejimai .data-table caption { text-align: left; padding-block: 6px; color: var(--shell-ink); }
+@media (max-width: 540px) {
+  #stebejimai .data-table th, #stebejimai .data-table td { padding: 8px 5px; font-size: .79rem; }
+}
+.lunar-live-art canvas[aria-label="Mėnulio paviršiaus iliustracija"] {
+  background: url("/assets/lunar/albedo-web.webp") center / contain no-repeat;
+}

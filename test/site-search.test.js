@@ -5,8 +5,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { normalizeSearchText, searchPages } from "../site/assets/search-engine.js";
 
-const html = readFileSync(new URL("../site/_layouts/default.html", import.meta.url), "utf8");
-const homepage = readFileSync(new URL("../site/index.html", import.meta.url), "utf8");
+const html = readFileSync(new URL("../site/_includes/site-header.html", import.meta.url), "utf8");
+const homepage = readFileSync(new URL("../site/_includes/planner-workspace.html", import.meta.url), "utf8");
 const searchPage = readFileSync(new URL("../site/paieska/index.html", import.meta.url), "utf8");
 const sourceIndex = JSON.parse(
   readFileSync(new URL("../site/assets/data/search.json", import.meta.url), "utf8"),

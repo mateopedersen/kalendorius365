@@ -4,6 +4,7 @@ import path from 'node:path';
 import test from 'node:test';
 
 const roots = ['site', 'public'];
+const additionalPhotos = JSON.parse(await readFile(new URL('../data/holiday-guide-photos.json', import.meta.url), 'utf8'));
 
 async function holidayImageObjects(root) {
   const pages = [];
@@ -30,7 +31,8 @@ async function holidayImageObjects(root) {
 test('holiday image metadata is complete in source and generated public pages', async () => {
   for (const root of roots) {
     const pages = await holidayImageObjects(root);
-    assert.equal(pages.length, 31, `${root}: expected all 31 holiday guide images`);
+    const additions = new Set(Object.keys(additionalPhotos));
+    assert.equal(pages.length, 31 + additions.size, `${root}: expected the original and additional guide images`);
     for (const {route, image} of pages) {
       const label = `${root}${route}`;
       assert.ok(image.contentUrl, `${label}: contentUrl`);
@@ -39,6 +41,18 @@ test('holiday image metadata is complete in source and generated public pages', 
       assert.ok(image.acquireLicensePage, `${label}: acquireLicensePage`);
       assert.ok(image.creditText, `${label}: visible source credit`);
       assert.ok(image.copyrightNotice?.includes(image.creditText), `${label}: source-based copyright notice`);
+      const slug = route.split('/')[2];
+      const photo = additionalPhotos[slug];
+      if (photo) {
+        assert.ok(additions.delete(slug), `${label}: unique additional guide image`);
+        assert.equal(image.contentUrl, 'https://kalendorius365.lt' + photo.src, label);
+        assert.equal(image.creditText, photo.author, label);
+        assert.equal(image.caption, photo.caption, label);
+        assert.equal(image.license, photo.license_url, label);
+        assert.equal(image.acquireLicensePage, photo.commons_url, label);
+        assert.deepEqual([image.width, image.height], [photo.width, photo.height], label);
+        continue;
+      }
       const creators = Array.isArray(image.creator) ? image.creator : [image.creator];
       assert.ok(creators.length, `${label}: creator`);
       for (const creator of creators) {
@@ -46,5 +60,6 @@ test('holiday image metadata is complete in source and generated public pages', 
         assert.ok(creator.name && image.creditText.includes(creator.name), `${label}: creator matches visible attribution`);
       }
     }
+    assert.equal(additions.size, 0, `${root}: missing image metadata for ${[...additions].join(', ')}`);
   }
 });

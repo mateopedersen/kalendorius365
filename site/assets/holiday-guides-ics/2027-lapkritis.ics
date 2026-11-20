@@ -41,6 +41,19 @@ URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-089
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-sv-martyno-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271111
+DTEND;VALUE=DATE:20271112
+SUMMARY:Šv. Martyno diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lapkričio 11-oji minima ka
+ ip šv. Martyno diena. Lietuvoje ypač žinomos Mažosios Lietuvos tradici
+ jos.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-folk-sv-martyn
+ o-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-090@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20271112
@@ -49,6 +62,18 @@ SUMMARY:Karjeros specialistų diena
 DESCRIPTION:Atmintina diena · įstatymas. Karjeros specialistų veiklai sk
  irta diena.
 URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-090
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-ozio-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271112
+DTEND;VALUE=DATE:20271113
+SUMMARY:Ožio diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lapkričio 12-oji vadinama 
+ Ožio diena. Ji siejosi su piemenų atsisveikinimu su ganymo sezonu.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-folk-ozio-dien
+ a
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -108,6 +133,18 @@ URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-095
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-adventas@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271128
+DTEND;VALUE=DATE:20271129
+SUMMARY:Advento pradžia
+DESCRIPTION:Kultūrinė ar religinė tradicija. Adventas prasideda pirmąj
+ į iš keturių sekmadienių prieš Kalėdas. Data patenka tarp lapkričio
+  27 ir gruodžio 3 d.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-folk-adventas
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-096@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20271130
@@ -117,6 +154,19 @@ SUMMARY:Mažosios Lietuvos prisijungimo prie Didžiosios Lietuvos akto dien
 DESCRIPTION:Atmintina diena · įstatymas. Mažosios Lietuvos ir Didžiosio
  s Lietuvos jungimosi aktui skirtas atminimo įrašas.
 URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-comm-096
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-sv-andriejaus-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20271130
+DTEND;VALUE=DATE:20271201
+SUMMARY:Šv. Andriejaus diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lapkričio 30 d. minima šv
+ . Andriejaus diena\, lietuvių tradicijose susijusi su artėjančiu advent
+ u.
+URL:https://kalendorius365.lt/sventes/2027/lapkritis/#ivykis-folk-sv-andrie
+ jaus-diena
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

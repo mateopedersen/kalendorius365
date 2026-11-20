@@ -1,0 +1,64 @@
+{% assign records = include.occurrences %}
+{% assign initial = records | first %}
+{% if include.default_year and records.size > 1 %}
+  {% for occurrence in records %}
+    {% assign occurrence_year = occurrence.start | slice: 0,4 | plus: 0 %}
+    {% if occurrence_year == include.default_year %}{% assign initial = occurrence %}{% break %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% assign source = page.url | absolute_url %}
+{% assign location = include.location | default: "Lietuva" %}
+<aside class="occasion-calendar" id="prideti-i-kalendoriu" aria-labelledby="occasion-calendar-title" data-occasion-calendar{% if initial %} data-title="{{ include.event_title | escape }}" data-source="{{ source | escape }}" data-location="{{ location | escape }}"{% endif %}>
+  <header class="occasion-calendar__header">
+    <span class="occasion-calendar__illustration">{% include shell-art.html name="calendar-add" size=64 %}</span>
+    <div><p>Jūsų kalendorius</p><h2 id="occasion-calendar-title">Prisiminkite svarbią dieną</h2></div>
+  </header>
+  {% if initial %}
+  {% assign google_start = initial.start | remove: '-' %}
+  {% assign google_end = initial.end_exclusive | remove: '-' %}
+  {% assign month_index = initial.start | slice: 5,2 | minus: 1 %}
+  {% assign weekday_index = initial.start | date: "%w" | plus: 0 %}
+  {% assign weekdays = "Sekmadienis,Pirmadienis,Antradienis,Trečiadienis,Ketvirtadienis,Penktadienis,Šeštadienis" | split: "," %}
+  <div class="occasion-calendar__preview" aria-live="polite" aria-atomic="true">
+    <div class="occasion-calendar__leaf" aria-hidden="true"><span data-occasion-month>{{ site.data.calendar.months[month_index][1] }}</span><b data-occasion-day>{{ initial.start | slice: 8,2 | plus: 0 }}</b><small data-occasion-weekday>{{ weekdays[weekday_index] }}</small></div>
+    <div><h3>{{ include.event_title | escape }}</h3><time datetime="{{ initial.start }}" data-occasion-date>{{ initial.start }}</time><p data-occasion-duration>Visos dienos įvykis</p></div>
+  </div>
+  <div class="occasion-calendar__fields" hidden data-occasion-fields>
+    <label for="occasion-year">Metai<select id="occasion-year" data-occasion-year>
+      {% for occurrence in records %}
+      {% assign year = occurrence.start | slice: 0,4 %}
+      <option value="{{ year }}" data-start="{{ occurrence.start }}" data-end="{{ occurrence.end_exclusive }}" data-ics="{{ occurrence.ics }}"{% if occurrence.start == initial.start %} selected{% endif %}>{{ year }}</option>
+      {% endfor %}
+    </select></label>
+    <label for="occasion-reminder">Priminimas<select id="occasion-reminder" data-occasion-reminder>{% include calendar-reminder-options.html default="1" %}</select></label>
+  </div>
+  <div class="occasion-calendar__services" role="group" aria-label="Pridėti į kalendorių">
+    <a class="occasion-calendar__service occasion-calendar__service--primary" href="https://calendar.google.com/calendar/r/eventedit?action=TEMPLATE&amp;text={{ include.event_title | url_encode }}&amp;dates={{ google_start }}%2F{{ google_end }}&amp;ctz=Europe%2FVilnius&amp;location={{ location | url_encode }}&amp;details={{ source | url_encode }}" target="_blank" rel="noopener noreferrer" data-occasion-google>
+      <span class="occasion-calendar__logo"><img src="/assets/visuals/calendar-services/google-calendar.svg" width="44" height="44" alt="" aria-hidden="true" loading="lazy" decoding="async"></span>
+      <span><strong>Google Calendar</strong><small>Atverti paruoštą įvykį</small></span>{% include calendar-catalog-arrow.html %}
+    </a>
+    <a class="occasion-calendar__service" href="{{ initial.ics }}" download data-occasion-download>
+      <span class="occasion-calendar__logo"><img src="/assets/visuals/calendar-services/apple.svg" width="44" height="44" alt="" aria-hidden="true" loading="lazy" decoding="async"></span>
+      <span><strong>Apple Calendar</strong><small>Atsisiųsti įvykį (.ics)</small></span>
+      <svg class="occasion-calendar__action" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><use href="/assets/visuals/home-icons.svg#download"></use></svg>
+    </a>
+    <a class="occasion-calendar__service" href="{{ initial.ics }}" download data-occasion-download>
+      <span class="occasion-calendar__logo"><img src="/assets/visuals/calendar-services/outlook.svg" width="44" height="44" alt="" aria-hidden="true" loading="lazy" decoding="async"></span>
+      <span><strong>Microsoft Outlook</strong><small>Atsisiųsti įvykį (.ics)</small></span>
+      <svg class="occasion-calendar__action" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><use href="/assets/visuals/home-icons.svg#download"></use></svg>
+    </a>
+    <button class="occasion-calendar__service" type="button" hidden data-occasion-save>
+      <span class="occasion-calendar__logo">{% include shell-art.html name="brand" size=44 %}</span>
+      <span><strong>Kalendorius365</strong><small>Pridėti prie savo įvykių</small></span>
+      <svg class="occasion-calendar__action" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+  <p class="occasion-calendar__help" hidden data-occasion-help>ICS faile įrašomas pasirinktas priminimas. „Google Calendar“ pranešimą nustatykite išsaugodami įvykį. Kalendorius365 priminimą rodo atvertame asmeniniame kalendoriuje šioje naršyklėje.</p>
+  <p class="occasion-calendar__status" role="status" data-occasion-status></p>
+  <a class="occasion-calendar__open" href="/" hidden data-occasion-open>Atverti mano kalendorių {% include calendar-catalog-arrow.html %}</a>
+  <noscript><p>Kalendoriaus failai pagal metus: {% for occurrence in records %}<a href="{{ occurrence.ics }}" download>{{ occurrence.start | slice: 0,4 }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}. Priminimui pasirinkti įjunkite „JavaScript“.</p></noscript>
+  {% else %}
+  <p>Tiksli renginio data dar nepaskelbta. Kalendoriaus įrašą galėsite pridėti paskelbus datą.</p>
+  {% if include.organizer %}<a class="occasion-calendar__open" href="{{ include.organizer }}">Tikrinti organizatoriaus informaciją {% include calendar-catalog-arrow.html %}</a>{% endif %}
+  {% endif %}
+</aside>

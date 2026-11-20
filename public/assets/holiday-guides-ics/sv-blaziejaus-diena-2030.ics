@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sv-blaziejaus-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300203
+DTEND;VALUE=DATE:20300204
+SUMMARY:Šv. Blažiejaus diena
+DESCRIPTION:Vasario 3-ioji skirta šv. Blažiejui. Tradicinių kalendorini
+ ų švenčių sąraše ji siejama ir su linų globėjo Vaižganto vardu.
+URL:https://kalendorius365.lt/sventes/sv-blaziejaus-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-kulturos-naktis-2027-06-12@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270612
+DTEND;VALUE=DATE:20270613
+SUMMARY:Kultūros naktis Vilniuje
+DESCRIPTION:Vieno vakaro Vilniaus festivalis\, apimantis muziką\, parodas\
+ , kiną\, teatrą ir performansus.
+URL:https://kalendorius365.lt/renginiai/kulturos-naktis/
+TRANSP:TRANSPARENT
+LOCATION:Kultūros erdvės ir aikštės Vilniuje
+END:VEVENT
+END:VCALENDAR

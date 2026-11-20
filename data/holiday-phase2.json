@@ -16,10 +16,10 @@
       "license": "Teisės akto tekstas."
     },
     "jan13-history": {
-      "title": "Sausio 13-oji – Laisvės gynėjų diena",
-      "url": "https://www.genocid.lt/centras/lt/3280/a/print_version/",
-      "publisher": "Lietuvos gyventojų genocido ir rezistencijos tyrimo centras",
-      "access_note": "Atverto oficialios institucijos teksto paieškos išrašas pateikė 1991 m. sausio įvykių ir aukų skaičių.",
+      "title": "Sausio 13-oji: kaip apgynėme laisvę?",
+      "url": "https://www.lrs.lt/sip/portal.show?p_k=1&p_r=39493",
+      "publisher": "Lietuvos Respublikos Seimas",
+      "access_note": "Seimo parengtoje apžvalgoje pateikti 1991 m. sausio įvykių dokumentai, liudijimai ir fotografijos.",
       "license": "Nuoroda ir originalus apibendrinimas; teksto nekopijuojame."
     },
     "feb16": {
@@ -100,10 +100,10 @@
       "license": "Teisės akto tekstas."
     },
     "labour-history": {
-      "title": "May Day: International Workers’ Day",
-      "url": "https://www.ilo.org/resource/statement/may-day-international-day-labour-day-labour-and-solidarity",
-      "publisher": "International Labour Organization",
-      "access_note": "ILO paaiškinime Tarptautinė darbo diena siejama su darbo judėjimo ir darbo laiko istorija; šis kontekstas atskirtas nuo Lietuvos teisinio statuso.",
+      "title": "Visuotinė lietuvių enciklopedija: Gegužės pirmoji",
+      "url": "https://www.vle.lt/straipsnis/geguzes-pirmoji/",
+      "publisher": "Visuotinė lietuvių enciklopedija",
+      "access_note": "Enciklopedijoje aprašyta Tarptautinės darbo dienos kilmė ir jos reikšmė darbininkų judėjime. Lietuvos teisinis statusas tikrinamas atskirai.",
       "license": "Nuoroda ir originalus apibendrinimas."
     },
     "labour-code-future": {
@@ -194,24 +194,24 @@
       "publisher": "Lietuvos Respublikos Seimas"
     },
     "mother-language": {
-      "title": "UNESCO: vasario 21-oji – gimtosios kalbos diena",
-      "url": "https://www.unesco.org/en/days/mother-language",
-      "publisher": "UNESCO"
+      "title": "Tarptautinė gimtosios kalbos diena",
+      "url": "https://unesco.lt/apie/unesco-minimos-dienos/",
+      "publisher": "Lietuvos nacionalinė UNESCO komisija"
     },
     "world-book": {
-      "title": "UNESCO: balandžio 23-oji – knygos ir autorių teisių diena",
-      "url": "https://www.unesco.org/en/days/world-book-and-copyright",
-      "publisher": "UNESCO"
+      "title": "Knygos diena ir Nacionalinė bibliotekų savaitė",
+      "url": "https://www.lnb.lt/specialistams-naujienos/14423-skaityk-tarp-eiluciu-nacionaline-lietuvos-biblioteku-savaite-2026",
+      "publisher": "Lietuvos nacionalinė Martyno Mažvydo biblioteka"
     },
     "earth": {
-      "title": "Jungtinės Tautos: balandžio 22-oji – Motinos Žemės diena",
-      "url": "https://www.un.org/en/observances/earth-day/background",
-      "publisher": "Jungtinės Tautos"
+      "title": "Tarptautinė Motinos Žemės diena",
+      "url": "https://am.lrv.lt/lt/naujienos/motinos-zemes-diena/",
+      "publisher": "Aplinkos ministerija"
     },
     "environment": {
-      "title": "UNESCO: birželio 5-oji – aplinkos apsaugos diena",
-      "url": "https://www.unesco.org/en/days/environment",
-      "publisher": "UNESCO"
+      "title": "Pasaulinė aplinkos apsaugos diena",
+      "url": "https://vstt.lrv.lt/lt/naujienos/aplinkosaugos-diena-zaliuju-ideju-festivalis/",
+      "publisher": "Valstybinė saugomų teritorijų tarnyba"
     },
     "child": {
       "title": "Vaiko diena – trečiasis gegužės penktadienis",
@@ -259,9 +259,9 @@
       "publisher": "Lietuvos nacionalinis muziejus"
     },
     "baltic": {
-      "title": "Baltijos kelias – UNESCO Pasaulio atminties registras",
-      "url": "https://www.unesco.org/en/memory-world/baltic-way-human-chain-linking-three-states-their-drive-freedom",
-      "publisher": "UNESCO"
+      "title": "Baltijos kelio dokumentai",
+      "url": "https://unesco.lt/pasaulio-atminties-registras/29-vaizdo-ir-garso-dokumentai-liudijantys-1989-m-rugpjucio-23-d-akcija-baltijos-kelias-zmoniu-grandine-sujungusi-tris-valstybes-laisves-vardan/",
+      "publisher": "Lietuvos nacionalinė UNESCO komisija"
     },
     "constitution": {
       "title": "Lietuvos Respublikos Konstitucija",
@@ -279,9 +279,9 @@
       "publisher": "Go Vilnius"
     },
     "teachers": {
-      "title": "Pasaulinė mokytojų diena",
-      "url": "https://www.unesco.org/en/days/teachers",
-      "publisher": "UNESCO"
+      "title": "Tarptautinė mokytojų diena Lietuvoje",
+      "url": "https://smsm.lrv.lt/lt/naujienos-1/pranesimai-ziniasklaidai-1/tarptautine-mokytoju-diena-pagerbti-iskilus-lietuvos-pedagogai-iteiktos-nacionalines-premijos-lx0X/",
+      "publisher": "Švietimo, mokslo ir sporto ministerija"
     },
     "shrove": {
       "title": "Užgavėnės",
@@ -1096,7 +1096,7 @@
       "license_url": "https://commons.wikimedia.org/wiki/File:Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg#Licensing",
       "commons_url": "https://commons.wikimedia.org/wiki/File:Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg",
       "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Purchasing_bread_in_a_Lithuanian_bakery.8d19617v.jpg",
-      "institution_url": "https://www.loc.gov/resource/fsa.8d19617/",
+      "institution_url": "https://www.loc.gov/item/2017856156/",
       "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
       "original_sha256": "ad8c0fe741ba86cb1acda2191b4abb3a8b6e9f00a0f661aa26d330b351a0d602",
       "commons_revision": 1010449905,
@@ -1213,22 +1213,21 @@
       "restrictions": ""
     },
     "baltijos-kelio-diena": {
-      "src": "/assets/visuals/holiday-phase2/baltijos-kelio-diena-1200.webp",
-      "srcset": "/assets/visuals/holiday-phase2/baltijos-kelio-diena-480.webp 480w, /assets/visuals/holiday-phase2/baltijos-kelio-diena-800.webp 800w, /assets/visuals/holiday-phase2/baltijos-kelio-diena-1200.webp 1200w",
-      "width": 1200,
-      "height": 793,
-      "caption": "Baltijos kelio dalyviai Vilniaus–Ukmergės kelyje, Molėtų rajone, 1989 m. rugpjūčio 23 d.",
-      "author": "Saulius Gruodis / Lietuvos centrinis valstybės archyvas",
-      "license": "CC BY 4.0",
-      "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "commons_url": "https://commons.wikimedia.org/wiki/File:Baltic_Way_(Mol%C4%97tai_Region,_Lithuania).jpg",
-      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Baltic_Way_%28Mol%C4%97tai_Region%2C_Lithuania%29.jpg",
-      "institution_url": "https://ltmkm.lt/revoliucija/exhibitions/1989/",
-      "changes": "Sumažinta ir konvertuota į WebP; proporcijos išlaikytos, vaizdas neapkarpytas. Kopijoms taikomos tos pačios naudojimo sąlygos.",
-      "original_sha256": "ba65b5a9236128a7152efd010877d196d092369d1b7ba658ecb07ed98183c018",
-      "commons_revision": 1099933091,
-      "license_rationale": "",
-      "restrictions": ""
+      "src": "/assets/visuals/local-events/baltijos-kelio-diena.webp",
+      "srcset": "/assets/visuals/local-events/baltijos-kelio-diena-640.webp 640w, /assets/visuals/local-events/baltijos-kelio-diena.webp 1280w",
+      "width": 1280,
+      "height": 801,
+      "caption": "Baltijos kelio dalyviai netoli Maišiagalos",
+      "author": "Gasparas Genzbigelis",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Nuotrauka_Baltijos_kelyje.jpg",
+      "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+      "original_sha256": "ef8bfd14c9697b7a39bdd0f692e2fe8afad2ba2facf7f8216220e38d8cf73516",
+      "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Nuotrauka_Baltijos_kelyje.jpg",
+      "commons_revision": 1171225578,
+      "license_rationale": "Rinkmenos puslapyje nurodyta CC BY-SA 3.0 licencija ir autorystė. Fotografiją skaitmenino „Europeana 1989“.",
+      "restrictions": []
     },
     "mokslo-ir-ziniu-diena": {
       "src": "/assets/visuals/holiday-phase2/mokslo-ir-ziniu-diena-800.webp",

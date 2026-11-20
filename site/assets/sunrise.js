@@ -1,4 +1,5 @@
 import { solarFor, solarPositionAt } from "./phase-5-6-8-core.js";
+import { buildSolarScene, svg } from "./shell/sunrise-scene.js";
 import { today, TZ } from "./calendar.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -11,208 +12,198 @@ const addDays = (date, amount) => {
 };
 const dayLabel = new Intl.DateTimeFormat("lt-LT", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" });
 const displayDate = (date) => dayLabel.format(new Date(`${date}T12:00:00Z`));
-const clock = (instant) => new Intl.DateTimeFormat("lt-LT", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(instant));
-const minutesLabel = (minutes) => `${Math.floor(minutes / 60)} val. ${pad(minutes % 60)} min.`;
-const svgNS = "http://www.w3.org/2000/svg";
-const svg = (tag, attrs = {}, parent) => {
-  const node = document.createElementNS(svgNS, tag);
-  for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, String(value));
-  parent?.append(node);
-  return node;
-};
+const timeFormatter = new Intl.DateTimeFormat("lt-LT", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+const clock = instant => timeFormatter.format(new Date(instant));
+const degrees = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 1 });
+const angleLabel = value => degrees.format(Math.abs(value) < .05 ? 0 : value) + "°";
+const directions = ["šiaurė", "šiaurės rytai", "rytai", "pietryčiai", "pietūs", "pietvakariai", "vakarai", "šiaurės vakarai"];
+const compass = value => directions[Math.round(value / 45) % 8];
+const minutesLabel = minutes => `${Math.floor(minutes / 60)} val. ${pad(minutes % 60)} min.`;
 const html = (tag, content, attrs = {}) => {
   const node = document.createElement(tag);
   if (content !== undefined) node.textContent = content;
   for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
   return node;
 };
-const solarCities = fetch("/assets/data/astronomy/cities.json").then((response) => {
-  if (!response.ok) throw Error("Miestų koordinačių nepavyko įkelti.");
-  return response.json();
-}).catch(() => ({ cities: [] }));
+const moments = {
+  civilStart: "Aušra", sunrise: "Saulėtekis", noon: "Saulės vidurdienis",
+  sunset: "Saulėlydis", civilEnd: "Civilinės prieblandos pabaiga",
+};
+const phaseLabel = { dawn: "Aušros prieblanda", morning: "Rytas", day: "Dienos šviesa", golden: "Prieš saulėlydį", dusk: "Vakaro prieblanda" };
+
+function phaseFor(instant, times) {
+  if (instant < times.sunrise) return phaseLabel.dawn;
+  if (instant < times.sunrise + 3600000) return phaseLabel.morning;
+  if (instant < times.sunset - 3600000) return phaseLabel.day;
+  return instant < times.sunset ? phaseLabel.golden : phaseLabel.dusk;
+}
 
 function setupSun() {
   const root = $("#sun-tool");
   if (!root) return;
-  const dateInput = $("#sun-date"), cityInput = $("#sun-city"), slider = $("#sun-scrubber"), play = $("#sun-play");
-  if (!dateInput.value) dateInput.value = today();
-  let cancelPlayback = () => {};
-  let renderSequence = 0;
-  const palettes = {
-    dawn: { top: "#263b60", bottom: "#e3a889", glow: "#ffcf96" },
-    morning: { top: "#5293b8", bottom: "#f4d8a3", glow: "#fff0af" },
-    day: { top: "#398dbb", bottom: "#d8f0e4", glow: "#fff6bd" },
-    golden: { top: "#4f638d", bottom: "#efaa72", glow: "#ffde91" },
-    dusk: { top: "#302c55", bottom: "#d97970", glow: "#ffbf83" },
+  const dateInput = $("#sun-date"), cityInput = $("#sun-city"), slider = $("#sun-scrubber");
+  const play = $("#sun-play"), trajectory = $("#sun-trajectory"), host = $("#sun-scene");
+  const errorBox = $("#sun-error"), eventButtons = [...root.querySelectorAll("[data-sun-moment]")];
+  const display = {
+    time: $("#sun-sim-time"), output: $("#sun-sim-output"), phase: $("#sun-sim-phase"),
+    altitude: $("#sun-altitude"), azimuth: $("#sun-azimuth"), caption: $("#sun-scene-caption"),
   };
-  const phaseLabel = { dawn: "Aušros prieblanda", morning: "Rytas", day: "Dienos šviesa", golden: "Prieš saulėlydį", dusk: "Vakaro prieblanda" };
-  const compass = (degrees) => ["šiaurės", "šiaurės rytų", "rytų", "pietryčių", "pietų", "pietvakarių", "vakarų", "šiaurės vakarų"][Math.round(degrees / 45) % 8];
-  const yearIsLeap = (year) => year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const query = new URLSearchParams(location.search);
+  if ([...cityInput.options].some(option => option.value === query.get("miestas"))) cityInput.value = query.get("miestas");
+  dateInput.value = query.get("data") || today();
+  if (!dateInput.value || !dateInput.validity.valid) dateInput.value = today();
+  let frame = null;
+  let yearCache;
+  let scene;
 
-  const buildScene = (date, city, times) => {
-    const host = $("#sun-scene");
-    host.replaceChildren();
-    const drawing = svg("svg", { viewBox: "0 0 960 330", role: "presentation", "aria-hidden": "true", focusable: "false" });
-    host.append(drawing);
-    const defs = svg("defs", {}, drawing);
-    const sky = svg("linearGradient", { id: "sun-sky", x1: "0", y1: "0", x2: "0", y2: "1" }, defs);
-    const skyTop = svg("stop", { id: "sun-sky-top", offset: "0%", "stop-color": palettes.dawn.top }, sky);
-    const skyBottom = svg("stop", { id: "sun-sky-bottom", offset: "80%", "stop-color": palettes.dawn.bottom }, sky);
-    const haze = svg("linearGradient", { id: "sun-horizon", x1: "0", y1: "0", x2: "0", y2: "1" }, defs);
-    svg("stop", { offset: "0%", "stop-color": "#fff5d5", "stop-opacity": .6 }, haze);
-    svg("stop", { offset: "100%", "stop-color": "#fff5d5", "stop-opacity": 0 }, haze);
-    const glow = svg("radialGradient", { id: "sun-glow", gradientUnits: "userSpaceOnUse", cx: 480, cy: 200, r: 160 }, defs);
-    const glowCore = svg("stop", { id: "sun-glow-core", offset: "0%", "stop-color": palettes.dawn.glow, "stop-opacity": .78 }, glow);
-    svg("stop", { offset: "100%", "stop-color": palettes.dawn.glow, "stop-opacity": 0 }, glow);
-    const sunFill = svg("radialGradient", { id: "sun-disc", cx: "38%", cy: "32%", r: "75%" }, defs);
-    svg("stop", { offset: "0%", "stop-color": "#fffbe0" }, sunFill);
-    svg("stop", { offset: "58%", "stop-color": "#ffe089" }, sunFill);
-    svg("stop", { offset: "100%", "stop-color": "#f5a932" }, sunFill);
-    svg("rect", { x: 0, y: 0, width: 960, height: 330, fill: "url(#sun-sky)" }, drawing);
-    const horizonGlow = svg("ellipse", { cx: 480, cy: 258, rx: 475, ry: 75, fill: "url(#sun-horizon)" }, drawing);
-    for (let i = 0; i < 8; i++) {
-      const x = 77 + i * 113, y = 28 + (i % 3) * 18;
-      svg("circle", { cx: x, cy: y, r: i % 2 ? 1.2 : 1.8, fill: "#fff4ca", opacity: .55 }, drawing);
-    }
+  function stopPlayback() {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    play.setAttribute("aria-pressed", "false");
+    play.querySelector("span").textContent = "Paleisti animaciją";
+    play.querySelector("path").setAttribute("d", "M8 5.5v13l10-6.5z");
+  }
 
-    const position = (instant) => {
-      const { altitude, azimuth } = solarPositionAt(date, instant, city);
-      return { x: Math.max(48, Math.min(912, 480 + (azimuth - 180) * 2.5)), y: 258 - altitude * 2.55, altitude, azimuth };
-    };
-    const sample = (from, to, steps) => Array.from({ length: steps + 1 }, (_, index) => position(from + (to - from) * index / steps));
-    const line = (points) => points.map((point, index) => `${index ? "L" : "M"}${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(" ");
-    svg("path", { d: line(sample(times.civilStart, times.civilEnd, 72)), fill: "none", stroke: "#fff9de", "stroke-width": 2.2, "stroke-dasharray": "5 8", "stroke-linecap": "round", opacity: .7 }, drawing);
-    svg("path", { d: line(sample(times.sunrise, times.sunset, 58)), fill: "none", stroke: "#fff4b2", "stroke-width": 4, "stroke-linecap": "round", opacity: .95 }, drawing);
-
-    svg("path", { d: "M0 253 C125 238 195 260 300 250 S485 242 590 253 S830 240 960 250 L960 330 L0 330 Z", fill: "#496b63", opacity: .72 }, drawing);
-    svg("path", { d: "M0 263 C95 251 203 271 318 261 S520 253 647 264 S833 254 960 263 L960 330 L0 330 Z", fill: "#294e42" }, drawing);
-    for (let i = 0; i < 25; i++) {
-      const x = 12 + i * 40, y = 260 + (i % 3) * 3, height = 14 + (i * 13 % 24), width = 7 + (i * 7 % 7);
-      svg("path", { d: `M${x} ${y} l${-width} ${height * .48} h${width * .55} l${-width * .35} ${height * .34} h${width * 1.5} l${-width * .35} ${-height * .34} h${width * .55} Z`, fill: i % 2 ? "#173e36" : "#1e473c", opacity: .95 }, drawing);
-    }
-    svg("path", { d: "M0 285 C156 274 263 295 412 282 S674 279 790 289 S907 282 960 286 L960 330 L0 330 Z", fill: "#153b40", opacity: .95 }, drawing);
-    for (let i = 0; i < 24; i++) {
-      const x = i * 43 + 8, y = 290 + (i % 4) * 6;
-      svg("path", { d: `M${x} ${y} q16 2 32 0`, fill: "none", stroke: i % 2 ? "#84b8ac" : "#d9bd7e", "stroke-width": 1, opacity: .24 }, drawing);
-    }
-    svg("path", { d: "M0 258 Q480 253 960 258", fill: "none", stroke: "#d9e5d4", "stroke-width": 1.4, opacity: .76 }, drawing);
-
-    const marker = (instant, label, color, anchor) => {
-      const point = position(instant), group = svg("g", {}, drawing), labelY = Math.max(32, point.y - 35), labelX = point.x + (anchor === "start" ? 8 : anchor === "end" ? -8 : 0);
-      svg("line", { x1: point.x, y1: point.y - 7, x2: point.x, y2: labelY + 8, stroke: color, "stroke-width": 1.3, opacity: .78 }, group);
-      svg("circle", { cx: point.x, cy: point.y, r: 4.2, fill: color, stroke: "#fff", "stroke-width": 2 }, group);
-      svg("text", { x: labelX, y: labelY, "text-anchor": anchor, "font-size": 13, "font-weight": 800, fill: "#fffdf0", stroke: "#24445a", "stroke-width": 3, "paint-order": "stroke" }, group).textContent = `${label} · ${clock(instant)}`;
-    };
-    marker(times.sunrise, "Saulėtekis", "#ffd278", "start");
-    marker(times.noon, "Vidurdienis", "#fff3b1", "middle");
-    marker(times.sunset, "Saulėlydis", "#ffb17d", "end");
-    const liveGlow = svg("circle", { cx: 480, cy: 200, r: 82, fill: "url(#sun-glow)" }, drawing);
-    const disk = svg("circle", { cx: 480, cy: 200, r: 17, fill: "url(#sun-disc)", stroke: "#fff5c4", "stroke-width": 1.5 }, drawing);
-    svg("circle", { cx: 475, cy: 195, r: 4, fill: "#fff", "fill-opacity": .7 }, drawing);
-    svg("path", { d: "M20 310 Q480 301 940 310", fill: "none", stroke: "#8fc2b3", "stroke-width": 1, opacity: .22 }, drawing);
-
-    const getPhase = (instant) => instant < times.sunrise ? "dawn" : instant < times.sunrise + 3600000 ? "morning" : instant < times.sunset - 3600000 ? "day" : instant < times.sunset ? "golden" : "dusk";
-    return (instant) => {
-      const point = position(instant), phase = getPhase(instant), colors = palettes[phase];
-      disk.setAttribute("cx", point.x.toFixed(2)); disk.setAttribute("cy", point.y.toFixed(2));
-      liveGlow.setAttribute("cx", point.x.toFixed(2)); liveGlow.setAttribute("cy", point.y.toFixed(2));
-      horizonGlow.setAttribute("cx", point.x.toFixed(2));
-      skyTop.setAttribute("stop-color", colors.top); skyBottom.setAttribute("stop-color", colors.bottom); glowCore.setAttribute("stop-color", colors.glow);
-      glow.setAttribute("cx", point.x.toFixed(2)); glow.setAttribute("cy", point.y.toFixed(2));
-      host.dataset.phase = phase;
-      const altitude = point.altitude.toFixed(1).replace(".", ",");
-      host.setAttribute("aria-label", `${city.name}, ${displayDate(date)}. ${phaseLabel[phase]}, ${clock(instant)} Lietuvos laiku. Saulės aukštis ${altitude} laipsnio, kryptis ${compass(point.azimuth)}.`);
-      $("#sun-sim-time").textContent = clock(instant); $("#sun-sim-output").textContent = clock(instant); $("#sun-sim-phase").textContent = phaseLabel[phase];
-      $("#sun-sim-detail").textContent = `Saulės aukštis ${altitude}° · kryptis ${compass(point.azimuth)} · ${displayDate(date)}.`;
-      $("#sun-scene-caption").textContent = `${city.name} · ${displayDate(date)} · vaizdas keičiasi slenkant nuo aušros iki vakaro.`;
-      slider.setAttribute("aria-valuetext", `${clock(instant)} Lietuvos laiku · ${phaseLabel[phase]} · Saulės aukštis ${altitude} laipsnio`);
-    };
-  };
-
-  const render = async () => {
-    cancelPlayback();
-    const sequence = ++renderSequence;
+  function render(updateUrl = false) {
+    stopPlayback();
     try {
-      const date = dateInput.value, { year, month, day } = parts(date), cityData = await solarCities;
-      if (sequence !== renderSequence) return;
-      if (!/^\d{4}-\d\d-\d\d$/.test(date) || year < 2000 || year > 2100) throw Error("Pasirinkite datą nuo 2000 iki 2100 metų.");
-      if (new Date(Date.UTC(year, month - 1, day)).toISOString().slice(0, 10) !== date) throw Error("Pasirinkite galiojančią kalendorinę datą.");
-      const cityRecord = cityData.cities.find((item) => item.id === cityInput.value);
-      if (!cityRecord) throw Error("Pasirinkite vieną iš palaikomų Lietuvos miestų.");
-      const city = { name: cityRecord.name, lat: cityRecord.latitude, lon: cityRecord.longitude };
+      const date = dateInput.value, { year, month } = parts(date);
+      if (!dateInput.validity.valid || !date) throw Error("Pasirinkite galiojančią datą nuo 2000 iki 2100 metų.");
+      const option = cityInput.selectedOptions[0];
+      const city = { id: option.value, name: option.textContent, lat: Number(option.dataset.lat), lon: Number(option.dataset.lon) };
       const times = solarFor(date, city);
-      if ([times.sunrise, times.sunset, times.noon, times.civilStart, times.civilEnd].some((instant) => !Number.isFinite(instant))) throw Error("Pasirinktos dienos Saulės laikų apskaičiuoti nepavyko.");
-      const yesterday = solarFor(addDays(date, -1), city), tomorrow = solarFor(addDays(date, 1), city);
-      const todayDelta = times.dayMinutes - yesterday.dayMinutes, tomorrowDelta = tomorrow.dayMinutes - times.dayMinutes;
-      const todayChange = todayDelta === 0 ? "beveik nepasikeitė" : `${Math.abs(todayDelta)} min. ${todayDelta > 0 ? "ilgesnis" : "trumpesnis"}`;
+      if (Object.keys(moments).some(key => !Number.isFinite(times[key]))) throw Error("Nurodytai vietai ir datai Saulės laikų apskaičiuoti nepavyko.");
+      const priorDelta = times.dayMinutes - solarFor(addDays(date, -1), city).dayMinutes;
+      const tomorrowDelta = solarFor(addDays(date, 1), city).dayMinutes - times.dayMinutes;
+      const todayChange = priorDelta === 0 ? "beveik nepasikeitė" : `${Math.abs(priorDelta)} min. ${priorDelta > 0 ? "ilgesnis" : "trumpesnis"}`;
       const tomorrowChange = tomorrowDelta === 0 ? "beveik nepasikeis" : `${Math.abs(tomorrowDelta)} min. ${tomorrowDelta > 0 ? "ilgės" : "trumpės"}`;
-      $("#sun-day-change").textContent = todayDelta === 0 ? "Beveik tiek pat šviesos kaip ankstesnę dieną" : `Palyginti su ankstesne diena: ${Math.abs(todayDelta)} min. ${todayDelta > 0 ? "daugiau" : "mažiau"} šviesos`;
-      $("#sun-summary").textContent = `${displayDate(date)} · ${city.name}, Lietuvos laiku (${TZ}). Saulėtekis ${clock(times.sunrise)}, Saulės vidurdienis ${clock(times.noon)}, saulėlydis ${clock(times.sunset)}. Dienos šviesa ${minutesLabel(times.dayMinutes)}.`;
-      $("#sunrise-time").textContent = clock(times.sunrise); $("#sunset-time").textContent = clock(times.sunset); $("#sun-noon").textContent = clock(times.noon); $("#sun-day-length").textContent = minutesLabel(times.dayMinutes);
-      $("#sunrise-date").textContent = `${city.name} · ${displayDate(date)}`; $("#sunset-date").textContent = `${city.name} · ${displayDate(date)}`;
-      $("#sun-delta-copy").textContent = `Palyginti su ankstesne diena, šviesus paros metas ${todayChange}; kitą dieną jis ${tomorrowChange}.`;
-      const momentLabels = { civilStart: "Aušra", sunrise: "Saulėtekis", noon: "Vidurdienis", sunset: "Saulėlydis", civilEnd: "Vakaras" };
-      for (const [key, id] of [["civilStart", "#sun-civil-start"], ["sunrise", "#sun-rise-time"], ["noon", "#sun-noon-time"], ["sunset", "#sun-set-time"], ["civilEnd", "#sun-civil-end"]]) {
-        const node = $(id); node.textContent = clock(times[key]);
-        const button = root.querySelector(`[data-sun-moment="${key}"]`); button.setAttribute("aria-label", `${momentLabels[key]} ${clock(times[key])} Lietuvos laiku`); button.querySelector("time").dateTime = new Date(times[key]).toISOString();
-        button.onclick = () => { slider.value = String(Math.round((times[key] - times.civilStart) / (times.civilEnd - times.civilStart) * 1000)); slider.dispatchEvent(new Event("input")); };
+      $("#sun-day-change").textContent = `Palyginti su ankstesne diena, šviesus paros metas ${todayChange}; kitą dieną jis ${tomorrowChange}.`;
+      $("#sun-summary").textContent = `${city.name}, ${displayDate(date)}. Saulėtekis ${clock(times.sunrise)}, saulėlydis ${clock(times.sunset)}. Dienos trukmė ${minutesLabel(times.dayMinutes)}.`;
+      $("#sunrise-time").textContent = clock(times.sunrise);
+      $("#sunset-time").textContent = clock(times.sunset);
+      $("#sun-noon").textContent = clock(times.noon);
+      $("#sun-day-length").textContent = minutesLabel(times.dayMinutes);
+      display.caption.textContent = `${city.name} · ${displayDate(date)} · Lietuvos laiku`;
+
+      const rise = solarPositionAt(date, times.sunrise, city), set = solarPositionAt(date, times.sunset, city);
+      $("#sunrise-date").textContent = `${angleLabel(rise.azimuth)} · ${compass(rise.azimuth)}`;
+      $("#sunset-date").textContent = `${angleLabel(set.azimuth)} · ${compass(set.azimuth)}`;
+      $("#sun-noon-alt").textContent = angleLabel(solarPositionAt(date, times.noon, city).altitude) + " virš horizonto";
+
+      scene = buildSolarScene(host, date, city, times);
+      scene.trajectory(trajectory.getAttribute("aria-pressed") === "true");
+      const span = times.civilEnd - times.civilStart;
+      const sliderValue = instant => Math.round((instant - times.civilStart) / span * 1000);
+      function setInstant(instant, marker) {
+        const point = scene.update(instant);
+        const time = clock(instant);
+        const phase = moments[marker] || phaseFor(instant, times);
+        display.time.textContent = time;
+        display.output.textContent = time;
+        display.phase.textContent = phase;
+        display.altitude.textContent = angleLabel(point.altitude);
+        display.azimuth.textContent = `${angleLabel(point.azimuth)} · ${compass(point.azimuth)}`;
+        host.dataset.phase = marker || phase;
+        host.setAttribute("aria-label", `${city.name}, ${time}. ${phase}. Saulės aukštis ${angleLabel(point.altitude)}, kryptis ${compass(point.azimuth)}.`);
+        slider.setAttribute("aria-valuetext", `${time} Lietuvos laiku, ${phase}, Saulės aukštis ${angleLabel(point.altitude)}`);
+        for (const button of eventButtons) button.setAttribute("aria-pressed", String(button.dataset.sunMoment === marker));
       }
-      const setInstant = buildScene(date, city, times), updateFromSlider = () => setInstant(times.civilStart + (times.civilEnd - times.civilStart) * Number(slider.value) / 1000);
-      slider.value = "0"; slider.oninput = updateFromSlider; updateFromSlider();
-      play.onclick = () => {
-        if (play.getAttribute("aria-pressed") === "true") { cancelPlayback(); return; }
-        if (Number(slider.value) >= 1000) slider.value = "0";
-        const start = performance.now(), initial = Number(slider.value), fullTripMs = 16000;
-        play.setAttribute("aria-pressed", "true"); play.querySelector("span").textContent = "Sustabdyti animaciją";
-        play.querySelector("svg path").setAttribute("d", "M7 5h4v14H7zm7 0h4v14h-4z");
-        let frame = 0;
-        const finish = () => {
-          cancelAnimationFrame(frame); play.setAttribute("aria-pressed", "false");
-          play.querySelector("span").textContent = "Paleisti animaciją"; play.querySelector("svg path").setAttribute("d", "M8 5.5v13l10-6.5z");
-          cancelPlayback = () => {};
+      const renderSlider = () => setInstant(times.civilStart + span * Number(slider.value) / 1000);
+      slider.oninput = () => { stopPlayback(); renderSlider(); };
+      for (const button of eventButtons) {
+        const event = button.dataset.sunMoment;
+        const eventTime = button.querySelector("time");
+        eventTime.textContent = clock(times[event]);
+        eventTime.dateTime = new Date(times[event]).toISOString();
+        button.onclick = () => {
+          stopPlayback();
+          slider.value = String(sliderValue(times[event]));
+          setInstant(times[event], event);
         };
-        cancelPlayback = finish;
-        const animate = (now) => {
-          const progress = Math.min(1, (now - start) / fullTripMs);
-          slider.value = String(Math.round(initial + (1000 - initial) * progress)); updateFromSlider();
-          if (progress >= 1) finish(); else frame = requestAnimationFrame(animate);
+      }
+      const initialTime = Math.min(times.sunrise + 32 * 60000, times.noon);
+      slider.value = String(sliderValue(initialTime));
+      setInstant(initialTime);
+
+      play.onclick = () => {
+        if (frame !== null) { stopPlayback(); return; }
+        if (Number(slider.value) >= 1000) slider.value = "0";
+        const initial = Number(slider.value), start = performance.now();
+        play.setAttribute("aria-pressed", "true");
+        play.querySelector("span").textContent = "Sustabdyti animaciją";
+        play.querySelector("path").setAttribute("d", "M7 5h4v14H7zm7 0h4v14h-4z");
+        const animate = now => {
+          const progress = Math.min(1, (now - start) / 14500);
+          slider.value = String(Math.round(initial + (1000 - initial) * progress));
+          renderSlider();
+          if (progress === 1) stopPlayback();
+          else frame = requestAnimationFrame(animate);
         };
         frame = requestAnimationFrame(animate);
       };
-      $("#sun-table-caption").textContent = `${city.name} · ${new Intl.DateTimeFormat("lt-LT", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`))} · vietos laikas`;
-      const monthLength = new Date(Date.UTC(year, month, 0)).getUTCDate(), monthData = [], rows = [];
-      for (let number = 1; number <= monthLength; number++) {
-        const stamp = `${year}-${pad(month)}-${pad(number)}`, result = solarFor(stamp, city), row = html("tr"); monthData.push({ date: stamp, ...result });
-        for (const text of [displayDate(stamp), clock(result.sunrise), clock(result.noon), clock(result.sunset), minutesLabel(result.dayMinutes), `${clock(result.civilStart)} – ${clock(result.civilEnd)}`]) row.append(html("td", text));
-        rows.push(row);
+
+      const key = `${city.id}/${year}`;
+      if (yearCache?.key !== key) {
+        const yearLength = Date.UTC(year + 1, 0, 1) - Date.UTC(year, 0, 1);
+        const entries = Array.from({ length: yearLength / DAY }, (_, index) => {
+          const stamp = new Date(Date.UTC(year, 0, index + 1)).toISOString().slice(0, 10);
+          return { date: stamp, ...solarFor(stamp, city) };
+        });
+        yearCache = { key, entries };
       }
-      $("#sun-rows").replaceChildren(...rows);
+      const monthData = yearCache.entries.filter(item => Number(item.date.slice(5, 7)) === month);
+      const monthName = new Intl.DateTimeFormat("lt-LT", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
+      $("#sun-table-caption").textContent = `${city.name} · ${monthName} · Lietuvos laiku`;
+      const monthRows = monthData.map(item => {
+        const row = html("tr");
+        if (item.date === date) row.className = "sun-selected-day";
+        row.append(html("th", displayDate(item.date), { scope: "row" }));
+        for (const value of [clock(item.sunrise), clock(item.noon), clock(item.sunset), minutesLabel(item.dayMinutes), `${clock(item.civilStart)}–${clock(item.civilEnd)}`]) {
+          row.append(html("td", value));
+        }
+        return row;
+      });
+      $("#sun-rows").replaceChildren(...monthRows);
       drawMonthChart(date, city, monthData);
-
-      const yearLength = yearIsLeap(year) ? 366 : 365, yearData = [];
-      for (let number = 1; number <= yearLength; number++) {
-        const stamp = new Date(Date.UTC(year, 0, number)).toISOString().slice(0, 10); yearData.push({ date: stamp, ...solarFor(stamp, city) });
-      }
-      drawYearChart(year, date, city, yearData);
-      const yearRows = [];
-      for (let number = 1; number <= 12; number++) {
-        const days = yearData.filter((entry) => Number(entry.date.slice(5, 7)) === number);
-        const shortest = days.reduce((a, b) => a.dayMinutes <= b.dayMinutes ? a : b), longest = days.reduce((a, b) => a.dayMinutes >= b.dayMinutes ? a : b);
-        const average = Math.round(days.reduce((sum, entry) => sum + entry.dayMinutes, 0) / days.length), row = html("tr");
-        row.append(html("th", new Intl.DateTimeFormat("lt-LT", { month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(year, number - 1, 1))), { scope: "row" }));
-        row.append(html("td", minutesLabel(average)), html("td", `${displayDate(shortest.date)} · ${minutesLabel(shortest.dayMinutes)}`), html("td", `${displayDate(longest.date)} · ${minutesLabel(longest.dayMinutes)}`)); yearRows.push(row);
-      }
-      $("#sun-year-caption").textContent = `${city.name} · ${year} m. · dienos šviesos mėnesio vidurkis, trumpiausia ir ilgiausia diena`;
+      drawYearChart(year, date, city, yearCache.entries);
+      const yearRows = Array.from({ length: 12 }, (_, index) => {
+        const days = yearCache.entries.filter(item => Number(item.date.slice(5, 7)) === index + 1);
+        const shortest = days.reduce((a, b) => a.dayMinutes <= b.dayMinutes ? a : b);
+        const longest = days.reduce((a, b) => a.dayMinutes >= b.dayMinutes ? a : b);
+        const mean = Math.round(days.reduce((sum, item) => sum + item.dayMinutes, 0) / days.length);
+        const row = html("tr");
+        const monthLabel = new Intl.DateTimeFormat("lt-LT", { month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(year, index, 1)));
+        row.append(html("th", monthLabel, { scope: "row" }), html("td", minutesLabel(mean)),
+          html("td", `${displayDate(shortest.date)} · ${minutesLabel(shortest.dayMinutes)}`),
+          html("td", `${displayDate(longest.date)} · ${minutesLabel(longest.dayMinutes)}`));
+        return row;
+      });
+      $("#sun-year-caption").textContent = `${city.name} · ${year} m. · dienos trukmės suvestinė`;
       $("#sun-year-rows").replaceChildren(...yearRows);
-    } catch (error) {
-      if (sequence !== renderSequence) return;
-      $("#sun-summary").textContent = error.message; $("#sun-scene").setAttribute("aria-label", error.message);
-    }
-  };
+      for (const control of [play, slider, trajectory, ...eventButtons]) control.disabled = false;
+      errorBox.hidden = true;
 
-  dateInput.addEventListener("change", render); cityInput.addEventListener("change", render);
-  $("#sun-today").addEventListener("click", () => { dateInput.value = today(); render(); });
-  document.addEventListener("visibilitychange", () => { if (document.hidden) cancelPlayback(); });
+      if (updateUrl) {
+        const url = new URL(location.href);
+        url.searchParams.set("miestas", city.id);
+        url.searchParams.set("data", date);
+        history.replaceState(history.state, "", url);
+      }
+    } catch (error) {
+      errorBox.textContent = error.message;
+      errorBox.hidden = false;
+      for (const control of [play, slider, trajectory, ...eventButtons]) control.disabled = true;
+    }
+  }
+
+  for (const field of [dateInput, cityInput]) field.addEventListener("change", () => render(true));
+  $("#sun-today").addEventListener("click", () => { dateInput.value = today(); render(true); });
+  trajectory.addEventListener("click", () => {
+    const visible = trajectory.getAttribute("aria-pressed") !== "true";
+    trajectory.setAttribute("aria-pressed", String(visible));
+    scene?.trajectory(visible);
+  });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) stopPlayback(); });
   render();
 }
 
@@ -264,4 +255,4 @@ function drawYearChart(year, date, city, entries) {
   $("#sun-year-chart-caption").textContent = `${city.name} · ${year} m. · sezoninė dienos šviesos kaita; vertikalioji skalė nuo 0 iki 24 val.`;
 }
 
-solarCities.then(setupSun);
+setupSun();

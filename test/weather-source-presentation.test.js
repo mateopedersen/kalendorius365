@@ -7,7 +7,7 @@ import {
 } from "../site/assets/data/weather-cities.js";
 import { WEATHER_CITY_BACKGROUNDS } from "../site/assets/data/weather-backgrounds.js";
 
-const homepage = readFileSync(new URL("../site/index.html", import.meta.url), "utf8");
+const homepage = readFileSync(new URL("../site/_includes/planner-workspace.html", import.meta.url), "utf8");
 const sourcesPage = readFileSync(
   new URL("../site/oru-saltiniai/index.html", import.meta.url),
   "utf8",

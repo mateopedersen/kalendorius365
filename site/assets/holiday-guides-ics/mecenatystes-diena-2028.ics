@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:mecenatystes-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20281115
+DTEND;VALUE=DATE:20281116
+SUMMARY:Mecenatystės diena
+DESCRIPTION:Lapkričio 15 d. Lietuvoje minima Mecenatystės diena\, skirta 
+ visuomenės labui skirtos privačios paramos indėliui.
+URL:https://kalendorius365.lt/sventes/mecenatystes-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

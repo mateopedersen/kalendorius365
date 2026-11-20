@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-vilniaus-knygu-muge-2027-09-16@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270916
+DTEND;VALUE=DATE:20270920
+SUMMARY:Vilniaus knygų mugė
+DESCRIPTION:27-oji tarptautinė Vilniaus knygų mugė 2027 metais vyks rude
+ nį. Numatyta rugsėjo 16–19 d. Lietuvos parodų ir kongresų centre LIT
+ EXPO.
+URL:https://kalendorius365.lt/renginiai/vilniaus-knygu-muge/
+TRANSP:TRANSPARENT
+LOCATION:LITEXPO\, Laisvės pr. 5\, Vilnius
+END:VEVENT
+END:VCALENDAR

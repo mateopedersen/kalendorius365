@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:adventas-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20281203
+DTEND;VALUE=DATE:20281204
+SUMMARY:Advento pradžia
+DESCRIPTION:Adventas prasideda pirmąjį iš keturių sekmadienių prieš K
+ alėdas. Data patenka tarp lapkričio 27 ir gruodžio 3 d.
+URL:https://kalendorius365.lt/sventes/adventas/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

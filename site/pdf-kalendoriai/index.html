@@ -1,0 +1,85 @@
+---
+title: "PDF kalendoriai spausdinti ir metų kalendoriai 2027–2030"
+description: "Lietuviškų PDF kalendorių katalogas: metų ir mėnesių maketai, tušti planuokliai ir kalendoriaus kūrėjas."
+hero_share: true
+catalog_finder: true
+---
+{% include tool-page-head.html icon="pdf" title="PDF kalendoriai spausdinti" lead="Atsisiųskite 2027–2029 m. PDF maketus arba susikurkite 2030 m. kalendorių spausdinti." %}
+
+<section class="calendar-catalog-section" aria-labelledby="pdf-years">
+  <header class="calendar-catalog-section__heading">
+    <h2 id="pdf-years">Kalendoriai pagal metus</h2>
+    <p>Atverkite metų kolekciją arba iškart pasirinkite mėnesį.</p>
+  </header>
+  <div class="calendar-catalog">
+    {% for year in (2027..2030) %}
+    {% assign art = year | prepend: 'year-' %}
+    <article class="calendar-year-card" data-catalog-year="{{ year }}">
+      <header class="calendar-year-card__heading">
+        {% include shell-art.html name=art size=100 %}
+        <div>
+          <h3>{{ year }} Metai</h3>
+          {% if year == 2030 %}
+          <p>12 mėnesių ir kalendoriaus kūrėjas</p>
+          {% else %}
+          <p>12 mėnesių ir 10 metinių maketų</p>
+          {% endif %}
+        </div>
+      </header>
+      <div class="calendar-year-card__actions">
+        <a class="button primary" href="/{{ year }}/{% if year < 2030 %}#metiniai-sablonai{% endif %}" aria-label="Atverti metų kalendorių ({{ year }})">
+          Atverti metų kalendorių {% include calendar-catalog-arrow.html %}
+        </a>
+      </div>
+      <details class="calendar-year-card__months">
+        <summary>Pasirinkti mėnesį
+          <svg viewBox="0 0 20 20" fill="none" width="16" height="16" aria-hidden="true" focusable="false"><path d="m5 8 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <nav aria-label="{{ year }} m. mėnesių kalendoriai">
+          {% for month in site.data.calendar.months %}
+          <a href="/{{ year }}/{{ month[0] }}/">{{ month[1] }}</a>
+          {% endfor %}
+        </nav>
+      </details>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="calendar-catalog-section" aria-labelledby="pdf-types">
+  <header class="calendar-catalog-section__heading"><h2 id="pdf-types">Kalendoriai pagal paskirtį</h2></header>
+  <div class="calendar-catalog">
+    {% include calendar-catalog-card.html url="/menesiai/" icon="month" title="Mėnesių kalendoriai" description="Pasirinkite mėnesį ir dizainą." %}
+    {% include calendar-catalog-card.html url="/savaitiniai-planuokliai/" icon="week" title="Savaitės planuokliai" description="Vieta savaitės darbams ir užrašams." %}
+    {% include calendar-catalog-card.html url="/tuscias-kalendorius/" icon="download" title="Tušti planuokliai" description="Lapus užpildykite savo datomis." %}
+    {% include calendar-catalog-card.html url="/kurti-kalendoriu/" icon="create" title="Kurti savo kalendorių" description="Pridėkite nuotraukų ir svarbias datas." %}
+  </div>
+</section>
+
+<section class="panel catalog-finder" data-print-finder id="maketu-paieska" aria-labelledby="print-finder-title" hidden>
+  <h2 id="print-finder-title">Raskite kalendorių spausdinti</h2>
+  <div class="catalog-finder__fields">
+    <label>Metai <select data-print-year>{% for year in (2027..2030) %}<option value="{{ year }}">{{ year }}</option>{% endfor %}</select></label>
+    <label>Laikotarpis <select data-print-period><option value="0">Visi metai</option>{% for month in site.data.calendar.months %}<option value="{{ forloop.index }}" data-month-slug="{{ month[0] }}">{{ month[1] }}</option>{% endfor %}</select></label>
+    <label data-print-design-field hidden>Dizainas <select data-print-design></select></label>
+  </div>
+  <p class="catalog-finder__status" data-print-status role="status"></p>
+  <div class="print-finder__result" data-print-result hidden>
+    <a class="print-finder__preview" data-print-preview target="_blank" rel="noopener" aria-label="Atverti viso dydžio kalendoriaus vaizdą"><img data-print-image src="/assets/visuals/shell/pdf.svg" width="340" height="240" alt="Kalendoriaus maketo peržiūra"></a>
+    <div class="print-finder__files">
+      <h3 data-print-name></h3>
+      <p class="badge" data-print-paper></p>
+      <div class="download-actions">
+        <a class="button primary" data-print-pdf download>Atsisiųsti PDF</a>
+        <a class="button" data-print-webp download>Atsisiųsti vaizdą</a>
+        <a class="button" data-print-open target="_blank" rel="noopener">Atidaryti PDF spausdinimui</a>
+      </div>
+    </div>
+  </div>
+  <div class="guide-actions catalog-finder__actions">
+    <a class="button" data-print-collection href="/2027/#metiniai-sablonai">Peržiūrėti visus maketus</a>
+    <a class="button primary" data-print-editor hidden>Kurti spausdinamą kalendorių</a>
+  </div>
+</section>
+
+<section class="panel content-guide"><h2>Spausdinimo dydis</h2><p>Prie kiekvieno failo nurodytas jo popieriaus formatas. Kad išlaikytumėte pasirinktą dydį, spausdintuvo lange pasirinkite faktinį mastelį ir tą patį popieriaus formatą. <a href="/2030/">2030 m. kalendorių</a> galite atverti ekrane ir susikurti atskirą spausdinamą variantą.</p></section>

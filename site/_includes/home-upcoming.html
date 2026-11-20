@@ -1,0 +1,30 @@
+{% assign vilnius_date = site.time | date: '%Y-%m-%d' %}
+{% assign upcoming = site.data.home_upcoming | where_exp: 'entry', 'entry.end >= vilnius_date' %}
+<section class="home-upcoming" id="artimiausios-datos" aria-labelledby="home-upcoming-title" data-feeds="{{ site.data.home_upcoming_feeds | jsonify | escape }}">
+  <header class="home-upcoming__heading">
+    <h2 id="home-upcoming-title">{% include shell-art.html name="celebrations" size=34 %} Artimiausios šventės ir renginiai</h2>
+    <a href="/sventes/">Visos datos {% include calendar-catalog-arrow.html %}</a>
+  </header>
+  <div class="home-upcoming__filters" role="group" aria-label="Filtruoti artimiausias datas" hidden>
+    <button type="button" aria-pressed="true" data-upcoming-kind="all">Visos datos</button>
+    <button type="button" aria-pressed="false" data-upcoming-kind="holiday">Šventinės dienos</button>
+    <button type="button" aria-pressed="false" data-upcoming-kind="commemoration">Atmintinos dienos</button>
+    <button type="button" aria-pressed="false" data-upcoming-kind="tradition">Tradicijos</button>
+    <button type="button" aria-pressed="false" data-upcoming-kind="festival">Renginiai</button>
+  </div>
+  <ul class="home-upcoming__list" aria-live="polite" aria-atomic="true">
+    {% for entry in upcoming limit: 4 %}
+      {% assign day = entry.date | slice: 8,2 %}
+      {% assign month_index = entry.date | slice: 5,2 | minus: 1 %}
+      <li data-kind="{{ entry.kind }}">
+        <a href="{{ entry.href }}">
+          <time datetime="{{ entry.date }}"><b>{{ day | plus: 0 }}</b><span>{{ site.data.calendar.months[month_index][2] }}</span></time>
+          <span class="home-upcoming__copy"><strong>{{ entry.title | escape }}</strong><small>{% if entry.place %}{{ entry.place | escape }}{% else %}{% case entry.kind %}{% when 'holiday' %}Šventinė diena{% when 'commemoration' %}Atmintina diena{% when 'tradition' %}Tradicija{% else %}Tarptautinė diena{% endcase %}{% endif %}</small></span>
+          {% include calendar-catalog-arrow.html %}
+        </a>
+      </li>
+    {% else %}
+      <li><p>Artimiausių švenčių datas peržiūrėkite <a href="/sventes/">Lietuvos švenčių kalendoriuje</a>.</p></li>
+    {% endfor %}
+  </ul>
+</section>

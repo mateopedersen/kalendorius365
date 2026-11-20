@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:kulturos-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280922
+DTEND;VALUE=DATE:20280923
+SUMMARY:Kultūros diena
+DESCRIPTION:Kultūros diena atmintinų dienų sąraše minima rugsėjo 22 d
+ . Tą pačią dieną įrašyta Baltų vienybės diena.
+URL:https://kalendorius365.lt/sventes/kulturos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

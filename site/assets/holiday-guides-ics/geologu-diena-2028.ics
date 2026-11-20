@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:geologu-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280430
+DTEND;VALUE=DATE:20280501
+SUMMARY:Geologų diena
+DESCRIPTION:Geologų diena Lietuvoje minima paskutinį balandžio sekmadien
+ į. Ji skirta Žemės gelmių\, uolienų ir kraštovaizdžio tyrėjams.
+URL:https://kalendorius365.lt/sventes/geologu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

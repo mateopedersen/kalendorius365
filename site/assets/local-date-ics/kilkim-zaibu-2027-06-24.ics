@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-kilkim-zaibu-2027-06-24@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270624
+DTEND;VALUE=DATE:20270627
+SUMMARY:Kilkim Žaibu
+DESCRIPTION:Trijų dienų baltų kultūros ir ekstremalios muzikos festival
+ is prie Lėno ežero. 2027 m. birželio 24–26 d. jį rengia Antano Smeto
+ nos dvaro teritorijoje.
+URL:https://kalendorius365.lt/renginiai/kilkim-zaibu/
+TRANSP:TRANSPARENT
+LOCATION:Prezidento Antano Smetonos dvaro muziejus\, Dvaro g. 3\, Užulėni
+ s
+END:VEVENT
+END:VCALENDAR

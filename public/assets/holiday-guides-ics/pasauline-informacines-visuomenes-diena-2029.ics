@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-informacines-visuomenes-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290517
+DTEND;VALUE=DATE:20290518
+SUMMARY:Pasaulinė informacinės visuomenės diena
+DESCRIPTION:Gegužės 17-ąją minima Pasaulinė informacinės visuomenės 
+ diena. Ji primena\, kad ryšio technologijų nauda priklauso ir nuo jų pr
+ ieinamumo.
+URL:https://kalendorius365.lt/sventes/pasauline-informacines-visuomenes-die
+ na/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

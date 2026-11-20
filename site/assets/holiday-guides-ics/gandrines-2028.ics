@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:gandrines-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280325
+DTEND;VALUE=DATE:20280326
+SUMMARY:Gandrinės (Blovieščiai)
+DESCRIPTION:Kovo 25-oji žinoma kaip Gandrinės arba Blovieščiai. Katalik
+ ų tradicijoje tą laiką žymi Apreiškimo Marijai iškilmė.
+URL:https://kalendorius365.lt/sventes/gandrines/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

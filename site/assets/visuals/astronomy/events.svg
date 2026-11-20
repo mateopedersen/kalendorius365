@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="moon-base" cx=".67" cy=".27" r=".81"><stop stop-color="#718273"/><stop offset="1" stop-color="#2b4b3d"/></radialGradient>
+    <radialGradient id="moon-lit" cx=".59" cy=".32" r=".75"><stop stop-color="#fff7d7"/><stop offset=".66" stop-color="#e4ca8b"/><stop offset="1" stop-color="#b99a59"/></radialGradient>
+    <radialGradient id="gold-sun" cx=".34" cy=".28" r=".75"><stop stop-color="#fff3ad"/><stop offset="1" stop-color="#dc971e"/></radialGradient>
+    <g id="craters" fill="#52624a" opacity=".30">
+      <ellipse cx="22" cy="24" rx="5" ry="3.5"/><ellipse cx="42" cy="34" rx="4.2" ry="2.8"/><ellipse cx="28" cy="43" rx="6" ry="4"/><circle cx="36" cy="19" r="2.7"/>
+    </g>
+    <g id="moon-face">
+      <circle cx="32" cy="32" r="23" fill="url(#moon-base)" stroke="#a9ba91" stroke-width="1.5"/>
+      <use href="#craters" opacity=".6"/>
+    </g>
+    <g id="horizon" stroke-linecap="round">
+      <path d="M9 45h46" stroke="#867e55" stroke-width="2"/><path d="M16 51h32" stroke="#b5a675" stroke-width="1.5" stroke-dasharray="3 4"/>
+    </g>
+  </defs>
+  <symbol id="new" viewBox="0 0 64 64"><use href="#moon-face"/><path d="M17 16a22 22 0 0 1 27-4" fill="none" stroke="#f5df9e" stroke-opacity=".5" stroke-linecap="round"/></symbol>
+  <symbol id="first" viewBox="0 0 64 64"><use href="#moon-face"/><path d="M32 9a23 23 0 0 1 0 46Z" fill="url(#moon-lit)"/><ellipse cx="42" cy="34" rx="4.2" ry="2.8" fill="#aa8c53" opacity=".5"/><circle cx="36" cy="19" r="2.7" fill="#aa8c53" opacity=".53"/></symbol>
+  <symbol id="full" viewBox="0 0 64 64"><circle cx="32" cy="32" r="23" fill="url(#moon-lit)" stroke="#e3c475" stroke-width="1.2"/><use href="#craters"/><path d="M15 23a19 19 0 0 1 19-10" fill="none" stroke="#fff7d9" stroke-opacity=".75" stroke-linecap="round"/></symbol>
+  <symbol id="last" viewBox="0 0 64 64"><use href="#moon-face"/><path d="M32 55a23 23 0 0 1 0-46Z" fill="url(#moon-lit)"/><ellipse cx="22" cy="24" rx="5" ry="3.5" fill="#aa8c53" opacity=".52"/><ellipse cx="27" cy="43" rx="5" ry="3.4" fill="#aa8c53" opacity=".50"/></symbol>
+  <symbol id="spring-equinox" viewBox="0 0 64 64">
+    <use href="#horizon"/><path d="M11 45Q32 4 53 45" stroke="#447a58" stroke-width="2" stroke-dasharray="3 4" fill="none"/>
+    <circle cx="27" cy="25" r="8" fill="url(#gold-sun)"/><path d="M42 27V15m-4 4 4-4 4 4" stroke="#326945" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="summer-solstice" viewBox="0 0 64 64">
+    <use href="#horizon"/><path d="M11 45Q32-7 53 45" stroke="#9b6e13" stroke-width="2" stroke-dasharray="3 4" fill="none"/>
+    <circle cx="32" cy="18" r="8" fill="url(#gold-sun)"/><path d="M32 4v3m0 23v3M18 18h3m22 0h3m-24-10 2 2m16 16 2 2m0-20-2 2M24 26l-2 2" stroke="#c58a22" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="autumn-equinox" viewBox="0 0 64 64">
+    <use href="#horizon"/><path d="M11 45Q32 4 53 45" stroke="#9e5c2c" stroke-width="2" stroke-dasharray="3 4" fill="none"/>
+    <circle cx="27" cy="25" r="8" fill="url(#gold-sun)"/><path d="M42 15v12m-4-4 4 4 4-4" stroke="#934e2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="winter-solstice" viewBox="0 0 64 64">
+    <use href="#horizon"/><path d="M11 45Q32 17 53 45" stroke="#557263" stroke-width="2" stroke-dasharray="3 4" fill="none"/>
+    <circle cx="32" cy="30" r="8" fill="url(#gold-sun)"/><path d="M32 9v7m-3-5 6 3m-6 0 6-3" stroke="#587262" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+</svg>

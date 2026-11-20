@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
+  <symbol id="arrow" viewBox="0 0 24 24">
+    <path d="M4.5 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="chevron" viewBox="0 0 24 24">
+    <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="share" viewBox="0 0 24 24">
+    <path d="m8.6 10.5 6.8-3.8m-6.8 6.8 6.8 3.8M9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm0 14a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="avinas" viewBox="0 0 48 48">
+    <path d="M24 39V26C24 15 19 8 12.8 8 8.5 8 6 10.8 6 14.2c0 3.5 2.5 6.1 5.7 6.1 2.7 0 4.6-1.7 4.6-4m7.7 10.7C24 15 29 8 35.2 8 39.5 8 42 10.8 42 14.2c0 3.5-2.5 6.1-5.7 6.1-2.7 0-4.6-1.7-4.6-4" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="jautis" viewBox="0 0 48 48">
+    <path d="M7 9c5 0 7.5 2.3 9.9 4.8C19 16 21.1 17 24 17s5-1 7.1-3.2C33.5 11.3 36 9 41 9m-5.2 20.6a11.8 11.8 0 1 1-23.6 0 11.8 11.8 0 0 1 23.6 0Z" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="dvyniai" viewBox="0 0 48 48">
+    <path d="M8 9q16 8 32 0M8 39q16-8 32 0M17 13v22m14-22v22" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="vezys" viewBox="0 0 48 48">
+    <path d="M7 15c5-5.5 18.4-7.4 26.2-4.9M41 33c-5 5.5-18.4 7.4-26.2 4.9M19.5 18.9a6.4 6.4 0 1 1-12.8 0 6.4 6.4 0 0 1 12.8 0Zm21.8 10.2a6.4 6.4 0 1 1-12.8 0 6.4 6.4 0 0 1 12.8 0Z" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="liutas" viewBox="0 0 48 48">
+    <path d="M22.5 29.5c3.6-4.5.4-9.5-1.5-12.6C18.2 12.1 21.3 6 27.4 6c5 0 8.2 3.7 8.2 8.3 0 5.1-2.8 10.1-4.9 15-2.6 6-.9 11 4.3 11 2.9 0 5.1-1.4 6-3.8m-18.5-7a7.1 7.1 0 1 1-14.2 0 7.1 7.1 0 0 1 14.2 0Z" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="mergele" viewBox="0 0 48 48">
+    <path d="M6 11c4 0 5.8 2.5 5.8 6.8V34m0-15c0-7.5 10.6-7.7 10.6 0v15m0-15c0-7.5 10.5-7.7 10.5 0v8.1c0 6 3.3 10 8.2 12.4M23.5 40c7.9-2 17.5-10.7 17.5-19.2 0-6.4-8.1-5.8-8.1.3" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="svarstykles" viewBox="0 0 48 48">
+    <path d="M7 36h34M7 28h11a8.6 8.6 0 1 1 12 0h11" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="skorpionas" viewBox="0 0 48 48">
+    <path d="M6 11c4.1 0 6.3 2.4 6.3 6.6V34m0-15c0-7.5 10.5-7.5 10.5 0v15m0-15c0-7.5 10.6-7.5 10.6 0v10.8c0 5.8 3.4 8.2 8.6 8.2m-4.7-4.6L42 38l-4.7 4.6" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="saulys" viewBox="0 0 48 48">
+    <path d="m9 39 29-29M24.5 10H38v13.5M13 22l13 13" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="oziaragis" viewBox="0 0 48 48">
+    <path d="M6 11c3.7-.6 5.9 1.8 7.4 6.5l4.5 13.7 5.2-16.7C24.9 8.7 32 9 32 15.7c0 5.5-4.8 10-4.8 15.7 0 4.6 2.6 7.7 7.2 7.7 4 0 7-2.7 7-6.4 0-3.8-2.9-6.5-6.3-6.5-5.9 0-10 6.2-14.5 10.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="vandenis" viewBox="0 0 48 48">
+    <path d="m6 20 8-5 6 5 8-5 6 5 8-5M6 33l8-5 6 5 8-5 6 5 8-5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="zuvys" viewBox="0 0 48 48">
+    <path d="M9 8c10 7.5 10 24.5 0 32M39 8c-10 7.5-10 24.5 0 32M6 24h36" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/>
+  </symbol>
+
+  <g id="dial">
+    <defs>
+      <linearGradient id="dial-brass" x2="1" y2="1">
+        <stop stop-color="#fff1bd"/>
+        <stop offset=".48" stop-color="#d3a74f"/>
+        <stop offset=".77" stop-color="#edcc78"/>
+        <stop offset="1" stop-color="#8f6328"/>
+      </linearGradient>
+      <radialGradient id="dial-face" cx=".34" cy=".22" r=".78">
+        <stop stop-color="#356753"/>
+        <stop offset=".7" stop-color="#123e34"/>
+        <stop offset="1" stop-color="#092b26"/>
+      </radialGradient>
+    </defs>
+    <circle cx="130" cy="135" r="115" fill="#051e18" opacity=".6"/>
+    <circle cx="130" cy="130" r="117" fill="url(#dial-brass)"/>
+    <circle cx="130" cy="130" r="113" fill="url(#dial-face)"/>
+    <g fill="none" stroke="#edcf87">
+      <circle cx="130" cy="130" r="107" opacity=".73"/>
+      <circle cx="130" cy="130" r="101" stroke-dasharray="1 5" opacity=".53"/>
+      <circle cx="130" cy="130" r="69" opacity=".64"/>
+      <circle cx="130" cy="130" r="61" stroke-dasharray="1 4" opacity=".53"/>
+      <path d="M76 36l17 30M36 76l30 17m-45 37h34m-19 54 30-17m10 57 17-30m37 45v-34m54 19-17-30m57-10-30-17m45-37h-34m19-54-30 17m-10-57-17 30M130 21v34" opacity=".35"/>
+    </g>
+    <g color="#f8df9b">
+      <use href="#avinas" x="140" y="37" width="23" height="23"/>
+      <use href="#jautis" x="177" y="58" width="23" height="23"/>
+      <use href="#dvyniai" x="199" y="96" width="23" height="23"/>
+      <use href="#vezys" x="199" y="141" width="23" height="23"/>
+      <use href="#liutas" x="177" y="179" width="23" height="23"/>
+      <use href="#mergele" x="140" y="201" width="23" height="23"/>
+      <use href="#svarstykles" x="97" y="201" width="23" height="23"/>
+      <use href="#skorpionas" x="58" y="179" width="23" height="23"/>
+      <use href="#saulys" x="37" y="141" width="23" height="23"/>
+      <use href="#oziaragis" x="37" y="96" width="23" height="23"/>
+      <use href="#vandenis" x="58" y="58" width="23" height="23"/>
+      <use href="#zuvys" x="97" y="37" width="23" height="23"/>
+    </g>
+    <path d="M141 94a38 38 0 1 0 25 55 37 37 0 0 1-25-55Z" fill="url(#dial-brass)"/>
+    <path d="M134 96a35 35 0 0 0-13 67" fill="none" stroke="#fff1bd" stroke-linecap="round"/>
+    <path d="m153 103 2.5 7.5 7.5 2.5-7.5 2.5-2.5 7.5-2.5-7.5-7.5-2.5 7.5-2.5Zm15 22 1.25 3.75L173 130l-3.75 1.25L168 135l-1.25-3.75L163 130l3.75-1.25Z" fill="#f8df9b"/>
+    <circle cx="155" cy="139" r="1.5" fill="#e8c475"/>
+  </g>
+</svg>

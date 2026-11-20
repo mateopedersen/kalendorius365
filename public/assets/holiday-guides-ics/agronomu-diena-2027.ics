@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:agronomu-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270716
+DTEND;VALUE=DATE:20270717
+SUMMARY:Agronomų diena
+DESCRIPTION:Liepos 16 d. Lietuvoje minima Agronomų diena\, skirta augalini
+ nkystės\, dirvožemio ir ūkių specialistams.
+URL:https://kalendorius365.lt/sventes/agronomu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

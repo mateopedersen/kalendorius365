@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:romu-genocido-atminimo-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290802
+DTEND;VALUE=DATE:20290803
+SUMMARY:Romų genocido atminimo diena
+DESCRIPTION:Rugpjūčio 2 d. pagerbiami nacistinės okupacijos metais perse
+ kioti ir nužudyti romai.
+URL:https://kalendorius365.lt/sventes/romu-genocido-atminimo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

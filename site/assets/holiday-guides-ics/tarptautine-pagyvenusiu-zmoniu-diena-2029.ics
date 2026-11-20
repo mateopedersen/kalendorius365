@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-pagyvenusiu-zmoniu-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20291001
+DTEND;VALUE=DATE:20291002
+SUMMARY:Tarptautinė pagyvenusių žmonių diena
+DESCRIPTION:Spalio 1 d. minima Tarptautinė pagyvenusių žmonių diena. Li
+ etuvoje tą pačią dieną pažymima ir Besimokančių senjorų diena.
+URL:https://kalendorius365.lt/sventes/tarptautine-pagyvenusiu-zmoniu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

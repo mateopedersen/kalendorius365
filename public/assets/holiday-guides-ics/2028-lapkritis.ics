@@ -1,0 +1,160 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2028 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2028 m. lapkričio datos
+BEGIN:VEVENT
+UID:2028-stat-all-saints@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281101
+DTEND;VALUE=DATE:20281102
+SUMMARY:Visų Šventųjų diena
+DESCRIPTION:Šventinė diena · DK 123 str. Lapkričio 1-oji – Visų Šve
+ ntųjų diena. Ji skirta šventiesiems\; lapkričio 2-oji yra atskira Miru
+ siųjų atminimo (Vėlinių) diena.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-stat-all-saint
+ s
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-stat-all-souls@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281102
+DTEND;VALUE=DATE:20281103
+SUMMARY:Mirusiųjų atminimo (Vėlinių) diena
+DESCRIPTION:Šventinė diena · DK 123 str. Vėlinės – lapkričio 2 d. m
+ inima Mirusiųjų atminimo diena\; ji atskira nuo lapkričio 1-osios Visų
+  Šventųjų dienos.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-stat-all-souls
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-089@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281103
+DTEND;VALUE=DATE:20281104
+SUMMARY:Šv. Huberto\, medžiotojų globėjo\, diena
+DESCRIPTION:Atmintina diena · įstatymas. Šv. Hubertui ir medžiotojams s
+ kirtas įstatymo įrašas.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-089
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-sv-martyno-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281111
+DTEND;VALUE=DATE:20281112
+SUMMARY:Šv. Martyno diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lapkričio 11-oji minima ka
+ ip šv. Martyno diena. Lietuvoje ypač žinomos Mažosios Lietuvos tradici
+ jos.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-folk-sv-martyn
+ o-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-090@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281112
+DTEND;VALUE=DATE:20281113
+SUMMARY:Karjeros specialistų diena
+DESCRIPTION:Atmintina diena · įstatymas. Karjeros specialistų veiklai sk
+ irta diena.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-090
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-ozio-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281112
+DTEND;VALUE=DATE:20281113
+SUMMARY:Ožio diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lapkričio 12-oji vadinama 
+ Ožio diena. Ji siejosi su piemenų atsisveikinimu su ganymo sezonu.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-folk-ozio-dien
+ a
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-091@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281114
+DTEND;VALUE=DATE:20281115
+SUMMARY:Pasaulinė diabeto diena
+DESCRIPTION:Atmintina diena · įstatymas. Diabetui ir visuomenės informav
+ imui apie jį skirta diena.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-091
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-092@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281115
+DTEND;VALUE=DATE:20281116
+SUMMARY:Mecenatystės diena
+DESCRIPTION:Atmintina diena · įstatymas. Mecenatystei ir kultūros rėmim
+ ui skirta atmintina diena.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-092
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-093@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281116
+DTEND;VALUE=DATE:20281117
+SUMMARY:Tarptautinė tolerancijos diena\, Lietuvių polifoninių dainų –
+  sutartinių diena
+DESCRIPTION:Atmintina diena · įstatymas. Šiai dienai įstatymas priskiri
+ a tolerancijos ir lietuvių sutartinių minėjimus.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-093
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-094@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281120
+DTEND;VALUE=DATE:20281121
+SUMMARY:Pasaulinė vaiko teisių diena
+DESCRIPTION:Atmintina diena · įstatymas. Vaiko teisėms skirta atmintina 
+ diena\, atskira nuo gegužės Vaiko dienos.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-094
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-095@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281123
+DTEND;VALUE=DATE:20281124
+SUMMARY:Lietuvos kariuomenės diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos kariuomenei skirta atmi
+ ntina diena.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-095
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-096@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281130
+DTEND;VALUE=DATE:20281201
+SUMMARY:Mažosios Lietuvos prisijungimo prie Didžiosios Lietuvos akto dien
+ a
+DESCRIPTION:Atmintina diena · įstatymas. Mažosios Lietuvos ir Didžiosio
+ s Lietuvos jungimosi aktui skirtas atminimo įrašas.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-comm-096
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-sv-andriejaus-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20281130
+DTEND;VALUE=DATE:20281201
+SUMMARY:Šv. Andriejaus diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lapkričio 30 d. minima šv
+ . Andriejaus diena\, lietuvių tradicijose susijusi su artėjančiu advent
+ u.
+URL:https://kalendorius365.lt/sventes/2028/lapkritis/#ivykis-folk-sv-andrie
+ jaus-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,134 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2028 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2028 m. vasario datos
+BEGIN:VEVENT
+UID:2028-folk-grabnycios@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280202
+DTEND;VALUE=DATE:20280203
+SUMMARY:Grabnyčios (Žvakių diena)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 2-ąją minimos Gra
+ bnyčios. Katalikų kalendoriuje tai Kristaus Paaukojimo šventė.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-folk-grabnycios
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-sv-blaziejaus-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280203
+DTEND;VALUE=DATE:20280204
+SUMMARY:Šv. Blažiejaus diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 3-ioji skirta šv. 
+ Blažiejui. Tradicinių kalendorinių švenčių sąraše ji siejama ir su
+  linų globėjo Vaižganto vardu.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-folk-sv-blazieja
+ us-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-sv-agotos-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280205
+DTEND;VALUE=DATE:20280206
+SUMMARY:Šv. Agotos ir duonos diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 5-ąją minimos šv
+ . Agota\, duona ir namų židinio tradicijos.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-folk-sv-agotos-d
+ iena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-007@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280209
+DTEND;VALUE=DATE:20280210
+SUMMARY:Baltijos šalių energetinės nepriklausomybės diena
+DESCRIPTION:Atmintina diena · įstatymas. Baltijos šalių energetinei nep
+ riklausomybei skirtas įstatymo įrašas.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-comm-007
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-008@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280211
+DTEND;VALUE=DATE:20280212
+SUMMARY:Pasaulinė ligonių diena\, Bausmių vykdymo sistemos pareigūnų d
+ iena
+DESCRIPTION:Atmintina diena · įstatymas. Įstatyme ši diena skirta ligon
+ iams ir bausmių vykdymo sistemos pareigūnams.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-comm-008
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-stat-restoration@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280216
+DTEND;VALUE=DATE:20280217
+SUMMARY:Lietuvos valstybės atkūrimo diena
+DESCRIPTION:Šventinė diena · DK 123 str. Vasario 16-ąją minima Lietuvo
+ s valstybės atkūrimo diena ir 1918 m. Lietuvos Tarybos paskelbtas neprik
+ lausomos valstybės atkūrimo aktas.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-stat-restoration
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-009@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280217
+DTEND;VALUE=DATE:20280218
+SUMMARY:Nacionalinė emancipacijos diena
+DESCRIPTION:Atmintina diena · įstatymas. Emancipacijai ir lygiateisiškum
+ ui skirtas Lietuvos kalendoriaus įrašas.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-comm-009
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-mother-language@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280221
+DTEND;VALUE=DATE:20280222
+SUMMARY:Tarptautinė gimtosios kalbos diena
+DESCRIPTION:Tarptautinė diena. UNESCO kalendorinė data skirta kalbų įva
+ irovei ir daugiakalbystei.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-mother-language
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-vieversio-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280224
+DTEND;VALUE=DATE:20280225
+SUMMARY:Vieversio diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 24-oji lietuvių ka
+ lendoriuje vadinta Vieversio diena. Ji siejama su šv. Motiejaus vardu.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-folk-vieversio-d
+ iena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-010@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280227
+DTEND;VALUE=DATE:20280228
+SUMMARY:Pasaulinė nevyriausybinių organizacijų diena
+DESCRIPTION:Atmintina diena · įstatymas. Nevyriausybinių organizacijų v
+ aidmeniui visuomenėje skirta diena.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-comm-010
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-uzgavenes@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280229
+DTEND;VALUE=DATE:20280301
+SUMMARY:Užgavėnės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Žiemos palydų tradicija\;
+  data skaičiuojama likus 47 dienoms iki vakarietiškųjų Velykų.
+URL:https://kalendorius365.lt/sventes/2028/vasaris/#ivykis-uzgavenes
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

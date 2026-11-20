@@ -124,5 +124,13 @@ export const WEATHER_NIGHT_BACKGROUNDS = Object.freeze({
     "licenseUrl": "https://www.efoto.lt/info/nemokamos_nuotraukos",
     "alt": "Tauragės pilies aikštė sutemus, apšviestas bokštas ir suoliukai",
     "focalPoint": "center center"
+  },
+  "visaginas": {
+    "image": "/assets/visuals/weather-city-visaginas-sunset.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Visaginas_lake_e%C5%BEeras.jpg",
+    "author": "7elteven",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "alt": "Saulėlydis virš Visagino ežero"
   }
 });

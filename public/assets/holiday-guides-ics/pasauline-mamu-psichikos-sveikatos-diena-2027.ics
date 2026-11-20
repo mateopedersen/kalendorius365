@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-mamu-psichikos-sveikatos-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270505
+DTEND;VALUE=DATE:20270506
+SUMMARY:Pasaulinė mamų psichikos sveikatos diena
+DESCRIPTION:Pirmąjį gegužės trečiadienį Lietuva mini Pasaulinę mamų
+  psichikos sveikatos dieną.
+URL:https://kalendorius365.lt/sventes/pasauline-mamu-psichikos-sveikatos-di
+ ena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

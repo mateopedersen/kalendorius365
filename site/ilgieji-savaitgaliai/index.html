@@ -1,23 +1,68 @@
 ---
 discovery: true
-title: "Ilgieji savaitgaliai 2027–2029 be atostogų"
+weekend_guide: true
+title: "Ilgieji savaitgaliai 2027–2030 be atostogų"
 description: "Peržiūrėkite Lietuvos ilguosius savaitgalius ir apskaičiuokite, kaip viena ar kelios atostogų dienos gali pratęsti poilsį."
 tool: false
 ---
-<header class="discovery-heading discovery-heading--editorial">
-  <img src="/assets/visuals/discovery-planning.svg?v={{ site.visual_version }}" width="300" height="210" alt="" aria-hidden="true">
-  <div><p class="eyebrow">PLANUOKITE LAIKĄ SAU</p>
-    <div class="page-heading"><div>
-      <h1>Ilgieji savaitgaliai 2027–2029</h1>
-      <p class="page-intro">Pamatykite, kada kalendorius dovanoja kelias laisvas dienas iš eilės, ir susikurkite poilsio planą pagal turimas atostogas.</p>
-    </div></div>
-  </div>
-</header>
+  <header class="lw-hero">
+    <div class="lw-hero__body">
+      <p class="lw-kicker">Lietuva · 2027–2030 m.</p>
+      <h1>Ilgieji savaitgaliai</h1>
+      <p class="lw-hero__intro">Raskite tris ar daugiau laisvų dienų iš eilės arba suplanuokite ilgesnį poilsį pridėję atostogų dienų.</p>
+      <div class="lw-hero__actions">
+        <a class="lw-action lw-action--primary" href="#savaitgaliai">Peržiūrėti datas <svg class="lw-arrow lw-arrow--down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+        <a class="lw-action" href="#weekend-planner">Sudaryti poilsio planą <svg class="lw-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <img class="lw-hero__art" src="/assets/visuals/weekend-break.svg" width="560" height="345" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
+  </header>
 
-<section class="weekend-planner panel" id="weekend-planner" aria-labelledby="weekend-planner-title">
-  <div class="discovery-tool-heading"><div><p class="eyebrow">MAŽAS PLANAS · ILGESNIS POILSIS</p><h2 id="weekend-planner-title">Kiek poilsio telpa į atostogų dienas?</h2></div><span class="discovery-tool-mark" aria-hidden="true">03</span></div>
-  <div class="weekend-planner-controls">
-    <label>Per metus galite skirti
+  <div id="savaitgaliai" class="lw-breaks">
+    <div class="lw-breaks__switch">
+      <span>Pasirinkite metus</span>
+      <div class="weekend-year-picker" role="group" aria-label="Pasirinkite savaitgalių metus">
+        {% for year in site.data.calendar_years %}
+        <button type="button" data-weekend-year="{{ year }}" aria-pressed="{{ forloop.first }}">{{ year }} m.</button>
+        {% endfor %}
+      </div>
+    </div>
+{% capture weekend_arrow %}<svg class="lw-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>{% endcapture %}
+{% for year in site.data.long_weekends %}
+<section id="savaitgaliai-{{ year.year }}" data-weekend-section="{{ year.year }}" class="weekend-year-section">
+  <div class="lw-year-heading">
+    <h2>{{ year.year }} m. ilgieji savaitgaliai be atostogų</h2>
+    <a href="/{{ year.year }}/">Metų kalendorius {{ weekend_arrow }}</a>
+  </div>
+  <div class="lw-break-grid">
+    {% for period in year.periods %}
+    <article class="lw-break" data-weekend data-start="{{ period.start }}" data-end="{{ period.end }}">
+      <h3>{{ period.name | escape }}</h3>
+      <div class="lw-break__meta">
+        <span class="lw-break__dates"><time datetime="{{ period.start }}">{{ period.start_label }}</time> &ndash; <time datetime="{{ period.end }}">{{ period.end_label }}</time></span>
+        <span class="lw-break__count" title="{{ period.days }} poilsio dienos">{{ period.days }} d.</span>
+      </div>
+      <div class="lw-date-strip" aria-hidden="true">{% for day in period.strip %}<span><small>{{ day.weekday }}</small><b>{{ day.day }}</b></span>{% endfor %}</div>
+      <p>{{ period.reason | escape }}</p>
+      <a href="{{ period.month_path }}">{{ period.month_label }} {{ weekend_arrow }}</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+  </div>
+
+<section class="lw-planner" id="weekend-planner" aria-labelledby="weekend-planner-title">
+  <header class="lw-planner__head">
+    <div>
+      <h2 id="weekend-planner-title">Pratęskite poilsį atostogų dienomis</h2>
+      <p>Pasirinkite bendrą atostogų limitą. Planuoklė parinks laikotarpius, kurie suteiktų daugiau poilsio ir tarpusavyje nesidubliuotų.</p>
+    </div>
+    <p class="lw-planner__year"><span>Pasirinkti metai</span> <strong data-weekend-plan-year>2027</strong></p>
+  </header>
+  <div class="lw-planner__inputs">
+    <div class="lw-planner__budget">
+      <label for="weekend-leave-budget">Atostogų dienų limitas</label>
       <select id="weekend-leave-budget">
         <option value="0">0 atostogų dienų</option>
         <option value="1" selected>1 atostogų dieną</option>
@@ -26,55 +71,24 @@ tool: false
         <option value="4">4 atostogų dienas</option>
         <option value="5">5 atostogų dienas</option>
       </select>
-    </label>
-    <p>Įveskite bendrą metinį limitą. Planuoklė paskirstys jį tarp skirtingų progų, kad papildomos atostogų dienos nesikartotų.</p>
+    </div>
+    <div class="weekend-plan-summary">
+      <div aria-live="polite">
+        <span class="lw-kicker">Metų planas</span>
+        <strong id="weekend-plan-total">Ruošiamas planas…</strong>
+        <p id="weekend-plan-caption"></p>
+      </div>
+      <button class="button button--subtle" id="weekend-plan-export" type="button" disabled>Atsisiųsti planą (.ics)</button>
+    </div>
   </div>
-  <div class="weekend-plan-summary" aria-live="polite"><div><span class="discovery-kicker">METŲ PLANAS</span><strong id="weekend-plan-total">Ruošiamas planas…</strong><p id="weekend-plan-caption"></p></div><button class="button button--subtle" id="weekend-plan-export" type="button" disabled>Atsisiųsti planą .ics</button></div>
   <div id="weekend-recommendations" class="weekend-recommendations" aria-live="polite"></div>
-</section>
-
-<div class="weekend-year-picker" role="group" aria-label="Pasirinkite savaitgalių metus">
-  <button class="button" type="button" data-weekend-year="2027" aria-pressed="true">2027 m.</button>
-  <button class="button button--subtle" type="button" data-weekend-year="2028" aria-pressed="false">2028 m.</button>
-  <button class="button button--subtle" type="button" data-weekend-year="2029" aria-pressed="false">2029 m.</button>
-</div>
-<section id="savaitgaliai-2027" data-weekend-section="2027" class="weekend-year-section">
-  <div class="weekend-year-heading"><div><p class="eyebrow">KALENDORIAUS PROGOS</p><h2>2027 m. poilsio laikotarpiai</h2></div><a href="/2027/">Visas 2027 m. kalendorius →</a></div>
-  <div class="resource-grid">
-    <article class="panel weekend-card" data-weekend data-start="2027-01-01" data-end="2027-01-03"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2027-01-01">2027-01-01</time> – <time datetime="2027-01-03">2027-01-03</time></h3><p>Naujųjų metų šventė sutampa su penktadieniu.</p><a href="/2027/sausis/">Sausio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2027-03-27" data-end="2027-03-29"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2027-03-27">2027-03-27</time> – <time datetime="2027-03-29">2027-03-29</time></h3><p>Velykos ir antroji Velykų diena.</p><a href="/2027/kovas/">Kovo kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2027-10-30" data-end="2027-11-02"><p class="muted">4 poilsio dienos · be atostogų</p><h3><time datetime="2027-10-30">2027-10-30</time> – <time datetime="2027-11-02">2027-11-02</time></h3><p>Visų Šventųjų diena ir Vėlinės.</p><a href="/2027/spalis/">Spalio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2027-12-24" data-end="2027-12-26"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2027-12-24">2027-12-24</time> – <time datetime="2027-12-26">2027-12-26</time></h3><p>Kūčios, Kalėdos ir antroji Kalėdų diena.</p><a href="/2027/gruodis/">Gruodžio kalendorius →</a></article>
-  </div>
-</section>
-
-<section id="savaitgaliai-2028" data-weekend-section="2028" class="weekend-year-section">
-  <div class="weekend-year-heading"><div><p class="eyebrow">KALENDORIAUS PROGOS</p><h2>2028 m. poilsio laikotarpiai</h2></div><a href="/2028/">Visas 2028 m. kalendorius →</a></div>
-  <div class="resource-grid">
-    <article class="panel weekend-card" data-weekend data-start="2028-04-15" data-end="2028-04-17"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2028-04-15">2028-04-15</time> – <time datetime="2028-04-17">2028-04-17</time></h3><p>Velykos ir antroji Velykų diena.</p><a href="/2028/balandis/">Balandžio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2028-04-29" data-end="2028-05-01"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2028-04-29">2028-04-29</time> – <time datetime="2028-05-01">2028-05-01</time></h3><p>Tarptautinė darbo diena pratęsia savaitgalį iki pirmadienio.</p><a href="/2028/balandis/">Balandžio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2028-12-23" data-end="2028-12-26"><p class="muted">4 poilsio dienos · be atostogų</p><h3><time datetime="2028-12-23">2028-12-23</time> – <time datetime="2028-12-26">2028-12-26</time></h3><p>Kūčios, Kalėdos ir antroji Kalėdų diena.</p><a href="/2028/gruodis/">Gruodžio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2028-12-30" data-end="2029-01-01"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2028-12-30">2028-12-30</time> – <time datetime="2029-01-01">2029-01-01</time></h3><p>Naujųjų metų išvakarės ir Naujųjų metų diena.</p><a href="/2028/gruodis/">Gruodžio kalendorius →</a></article>
-  </div>
-</section>
-
-<section id="savaitgaliai-2029" data-weekend-section="2029" class="weekend-year-section">
-  <div class="weekend-year-heading"><div><p class="eyebrow">KALENDORIAUS PROGOS</p><h2>2029 m. poilsio laikotarpiai</h2></div><a href="/2029/">Visas 2029 m. kalendorius →</a></div>
-  <div class="resource-grid">
-    <article class="panel weekend-card" data-weekend data-start="2028-12-30" data-end="2029-01-01"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2028-12-30">2028-12-30</time> – <time datetime="2029-01-01">2029-01-01</time></h3><p>Naujųjų metų šventė pratęsia gruodžio pabaigos savaitgalį iki pirmadienio.</p><a href="/2029/sausis/">Sausio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2029-02-16" data-end="2029-02-18"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2029-02-16">2029-02-16</time> – <time datetime="2029-02-18">2029-02-18</time></h3><p>Lietuvos valstybės atkūrimo diena penktadienį.</p><a href="/2029/vasaris/">Vasario kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2029-03-31" data-end="2029-04-02"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2029-03-31">2029-03-31</time> – <time datetime="2029-04-02">2029-04-02</time></h3><p>Velykos ir antroji Velykų diena.</p><a href="/2029/kovas/">Kovo kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2029-07-06" data-end="2029-07-08"><p class="muted">3 poilsio dienos · be atostogų</p><h3><time datetime="2029-07-06">2029-07-06</time> – <time datetime="2029-07-08">2029-07-08</time></h3><p>Valstybės diena ir Tautiška giesmė penktadienį.</p><a href="/2029/liepa/">Liepos kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2029-11-01" data-end="2029-11-04"><p class="muted">4 poilsio dienos · be atostogų</p><h3><time datetime="2029-11-01">2029-11-01</time> – <time datetime="2029-11-04">2029-11-04</time></h3><p>Visų Šventųjų diena ketvirtadienį, po jos – savaitgalis.</p><a href="/2029/lapkritis/">Lapkričio kalendorius →</a></article>
-    <article class="panel weekend-card" data-weekend data-start="2029-12-22" data-end="2029-12-26"><p class="muted">5 poilsio dienos · be atostogų</p><h3><time datetime="2029-12-22">2029-12-22</time> – <time datetime="2029-12-26">2029-12-26</time></h3><p>Kūčios, Kalėdos ir antroji Kalėdų diena.</p><a href="/2029/gruodis/">Gruodžio kalendorius →</a></article>
-  </div>
 </section>
 
 <section class="weekend-howto panel"><div><p class="eyebrow">KAIP SKAIČIUOJAMA</p><h2>Poilsio planas, kuris atitinka jūsų grafiką</h2></div>
   <div><p>Sąrašas daromas pagal įprastą penkių darbo dienų savaitę nuo pirmadienio iki penktadienio. Įtraukiamos įstatyme nustatytos šventės ir gretimi savaitgaliai; papildomos atostogos prie pradinių datų nepridedamos.</p><p>Viršuje esanti metinio plano skaičiuoklė atostogų limitą paskirsto tarp nesikertančių laikotarpių, todėl ta pati darbo diena nepriskiriama dviem poilsio planams. Prieš tvirtindami atostogas patikrinkite savo darbovietės grafiką ir tvarką.</p><a href="/atostogu-planavimas/">Atidaryti išsamų atostogų planuoklį →</a></div>
 </section>
 
-<aside class="source-note">Teisės aktų duomenys sutikrinti 2026-10-16. 2027–2029 m. datos skaičiuotos pagal nuo 2027-01-01 numatytą galioti Darbo kodekso 123 straipsnio redakciją. Savaitgalį pasitaikanti šventė automatiškai neperkeliama į pirmadienį; atmintina diena savaime nėra nedarbo diena. <a href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz" rel="noopener">Darbo kodekso 123 straipsnis</a>.</aside>
+<aside class="source-note">Teisės aktų duomenys sutikrinti 2026-10-16. 2027–2030 m. datos skaičiuotos pagal nuo 2027-01-01 numatytą galioti Darbo kodekso 123 straipsnio redakciją. Savaitgalį pasitaikanti šventė automatiškai neperkeliama į pirmadienį; atmintina diena savaime nėra nedarbo diena. <a href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/PtuRjBFBEz" rel="noopener">Darbo kodekso 123 straipsnis</a>.</aside>
 
 <section data-editorial-extension="20261103" class="panel content-guide"><h2>Pasiūlymas ir patvirtintos atostogos</h2><p>Rodomas poilsio intervalas ir jam reikalingų atostogų dienų skaičius atsako į skirtingus klausimus. Pirmasis parodo, kiek kalendorinių dienų galėtumėte nedirbti. Antrasis – kiek jūsų įprastų darbo dienų reikėtų tam skirti. Palygindami pasiūlymus vertinkite abu skaičius, o ne vien ilgiausią nuspalvintą juostą. Jei dirbate pamainomis, įprastos darbo savaitės prielaida gali netikti.</p><p>Prieš rezervuodami kelionę suderinkite atostogas pagal savo darbo tvarką ir sutikrinkite bendrakeleivių grafikus. Kalendoriuje pažymėtas preliminarus variantas nėra patvirtinta laisva diena. Įvertinkite kelionę ir grįžimą: keturios kalendorinės datos nebūtinai reiškia keturias pilnas poilsio dienas pasirinktoje vietoje. <a href="/blogas/kaip-planuoti-ilgaji-savaitgali/">Praktinis ilgųjų savaitgalių gidas</a> padeda palyginti šias ribas.</p></section>
 

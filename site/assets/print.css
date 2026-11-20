@@ -63,6 +63,14 @@
     border-radius: 0 !important;
     break-inside: auto;
   }
+  #main .content-guide {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  #main .content-guide > * + * { margin-top: 3mm; }
+  #main .content-guide > h2:first-child::before { display: none; }
   #main :is(table, img, svg, canvas) { max-width: 100%; }
   #main .data-table { min-width: 0 !important; width: 100%; }
   #main :is(th, td) { overflow-wrap: anywhere; }
@@ -120,7 +128,7 @@
     padding: 0 !important;
     text-align: center;
   }
-  #main #period-title { margin: 0; font-size: 18pt; }
+  #main #period-title { max-width: none; margin: 0; color: #111; font-size: 18pt; }
   #main #calendar { min-height: 0 !important; overflow: visible !important; border: 0 !important; border-radius: 0 !important; }
   /* Separate, single-sided borders stay inside each cell's paint area. With
      collapsed borders, positioned screen cells can cover parts of the grid.
@@ -184,7 +192,7 @@
     font-weight: 700;
   }
   #main :is(.year-month, .year-app-grid .mini-calendar) { padding: 1mm !important; margin: 0 !important; }
-  #main :is(.year-month h2, .year-app-grid h3) { font-size: 10pt !important; margin: 0 0 2mm !important; }
+  #main :is(.year-month h3, .year-month h2, .year-app-grid h3) { font-size: 10pt !important; margin: 0 0 2mm !important; }
   #main :is(.year-month .static-month, .year-app-grid .month-table) :is(td, th) {
     height: auto !important;
     padding: 1mm .3mm !important;

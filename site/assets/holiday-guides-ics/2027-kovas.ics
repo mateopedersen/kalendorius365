@@ -49,6 +49,19 @@ URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-comm-014
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-keturiasdesimties-pauksciu-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270311
+SUMMARY:40 paukščių diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Kovo 10-oji vadinama 40 pau
+ kščių diena. Liaudies kalendoriuje ji ženklino sugrįžtančių giesmi
+ ninkų metą.
+URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-folk-keturiasdesim
+ ties-pauksciu-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-stat-independence@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270311
@@ -96,6 +109,18 @@ URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-book-carriers
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-pempes-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270320
+SUMMARY:Pempės diena (Pempinės)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Kovo 19-ąją tradicinis ka
+ lendorius sieja šv. Juozapo minėjimą ir pavasarį girdimos pempės vard
+ ą.
+URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-folk-pempes-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-017@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270320
@@ -130,6 +155,43 @@ URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-comm-018
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-didysis-ketvirtadienis@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270325
+DTEND;VALUE=DATE:20270326
+SUMMARY:Didysis ketvirtadienis
+DESCRIPTION:Kultūrinė ar religinė tradicija. Didysis ketvirtadienis mini
+ mas likus trims dienoms iki Velykų sekmadienio.
+URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-folk-didysis-ketvi
+ rtadienis
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-gandrines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270325
+DTEND;VALUE=DATE:20270326
+SUMMARY:Gandrinės (Blovieščiai)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Kovo 25-oji žinoma kaip Ga
+ ndrinės arba Blovieščiai. Katalikų tradicijoje tą laiką žymi Aprei
+ škimo Marijai iškilmė.
+URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-folk-gandrines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-didysis-penktadienis@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+SUMMARY:Didysis penktadienis
+DESCRIPTION:Kultūrinė ar religinė tradicija. Didysis penktadienis yra pe
+ nktadienis prieš Velykas\, skirtas Kristaus kančios ir mirties atminimui
+ .
+URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-folk-didysis-penkt
+ adienis
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-019@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270327
@@ -138,6 +200,18 @@ SUMMARY:Tarptautinė teatro diena
 DESCRIPTION:Atmintina diena · įstatymas. Teatrui ir jo kūrėjams skirta 
  atmintina diena.
 URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-comm-019
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-didysis-sestadienis@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270327
+DTEND;VALUE=DATE:20270328
+SUMMARY:Didysis šeštadienis
+DESCRIPTION:Kultūrinė ar religinė tradicija. Didysis šeštadienis yra V
+ elykų išvakarės\, kai po sutemų švenčiama Velyknakčio vigilija.
+URL:https://kalendorius365.lt/sventes/2027/kovas/#ivykis-folk-didysis-sesta
+ dienis
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

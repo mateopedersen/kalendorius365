@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:zemes-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280320
+DTEND;VALUE=DATE:20280321
+SUMMARY:Žemės diena Lietuvoje
+DESCRIPTION:Kovo 20 d. minima Lietuvos atmintinų dienų sąrašo Žemės d
+ iena. Tarptautinė Motinos Žemės diena JT kalendoriuje yra balandžio 22
+  d.
+URL:https://kalendorius365.lt/sventes/zemes-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -18,8 +18,8 @@
     },
     {
       "path": "/assets/app.js",
-      "source_bytes": 38808,
-      "generated_bytes": 25045
+      "source_bytes": 35602,
+      "generated_bytes": 22645
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -33,13 +33,13 @@
     },
     {
       "path": "/assets/astronomy-agenda-core.js",
-      "source_bytes": 3562,
-      "generated_bytes": 2625
+      "source_bytes": 3584,
+      "generated_bytes": 2640
     },
     {
       "path": "/assets/astronomy-agenda.js",
-      "source_bytes": 5535,
-      "generated_bytes": 3736
+      "source_bytes": 9521,
+      "generated_bytes": 6503
     },
     {
       "path": "/assets/calendar-downloads.js",
@@ -48,13 +48,13 @@
     },
     {
       "path": "/assets/calendar-editor/editor.js",
-      "source_bytes": 49451,
-      "generated_bytes": 36656
+      "source_bytes": 50824,
+      "generated_bytes": 37605
     },
     {
       "path": "/assets/calendar-editor/export.js",
-      "source_bytes": 8594,
-      "generated_bytes": 6190
+      "source_bytes": 8709,
+      "generated_bytes": 6266
     },
     {
       "path": "/assets/calendar-editor/filters.js",
@@ -63,13 +63,13 @@
     },
     {
       "path": "/assets/calendar-editor/lt.js",
-      "source_bytes": 21226,
-      "generated_bytes": 19163
+      "source_bytes": 22240,
+      "generated_bytes": 20113
     },
     {
       "path": "/assets/calendar-editor/model.js",
-      "source_bytes": 14203,
-      "generated_bytes": 11824
+      "source_bytes": 14644,
+      "generated_bytes": 12132
     },
     {
       "path": "/assets/calendar-editor/photo-worker.js",
@@ -83,8 +83,8 @@
     },
     {
       "path": "/assets/calendar-editor/scene.js",
-      "source_bytes": 12070,
-      "generated_bytes": 7789
+      "source_bytes": 19561,
+      "generated_bytes": 11038
     },
     {
       "path": "/assets/calendar-editor/storage.js",
@@ -98,8 +98,8 @@
     },
     {
       "path": "/assets/calendar.js",
-      "source_bytes": 10187,
-      "generated_bytes": 6458
+      "source_bytes": 11057,
+      "generated_bytes": 6896
     },
     {
       "path": "/assets/common.js",
@@ -108,8 +108,8 @@
     },
     {
       "path": "/assets/contact.js",
-      "source_bytes": 4613,
-      "generated_bytes": 3002
+      "source_bytes": 6125,
+      "generated_bytes": 3826
     },
     {
       "path": "/assets/cookie-notice.js",
@@ -128,8 +128,8 @@
     },
     {
       "path": "/assets/data/weather-backgrounds.js",
-      "source_bytes": 5057,
-      "generated_bytes": 4081
+      "source_bytes": 5033,
+      "generated_bytes": 4077
     },
     {
       "path": "/assets/data/weather-cities.js",
@@ -138,13 +138,13 @@
     },
     {
       "path": "/assets/data/weather-city-photo.js",
-      "source_bytes": 2773,
-      "generated_bytes": 2082
+      "source_bytes": 2406,
+      "generated_bytes": 1823
     },
     {
       "path": "/assets/data/weather-night-backgrounds.js",
-      "source_bytes": 5640,
-      "generated_bytes": 4735
+      "source_bytes": 6003,
+      "generated_bytes": 5041
     },
     {
       "path": "/assets/discovery-core.js",
@@ -153,18 +153,18 @@
     },
     {
       "path": "/assets/discovery.js",
-      "source_bytes": 31233,
-      "generated_bytes": 19614
+      "source_bytes": 31347,
+      "generated_bytes": 19679
     },
     {
       "path": "/assets/holiday-editorial.js",
-      "source_bytes": 2392,
-      "generated_bytes": 1447
+      "source_bytes": 2410,
+      "generated_bytes": 1465
     },
     {
       "path": "/assets/holiday-phase2.js",
-      "source_bytes": 1788,
-      "generated_bytes": 1336
+      "source_bytes": 1932,
+      "generated_bytes": 1445
     },
     {
       "path": "/assets/icons.js",
@@ -173,13 +173,13 @@
     },
     {
       "path": "/assets/ics.js",
-      "source_bytes": 6313,
-      "generated_bytes": 4346
+      "source_bytes": 7663,
+      "generated_bytes": 5201
     },
     {
       "path": "/assets/leave-planner.js",
-      "source_bytes": 31937,
-      "generated_bytes": 20692
+      "source_bytes": 31970,
+      "generated_bytes": 20705
     },
     {
       "path": "/assets/lunar/astronomy-engine.js",
@@ -202,9 +202,14 @@
       "generated_bytes": 5986
     },
     {
+      "path": "/assets/lunar/phase-picker.js",
+      "source_bytes": 3287,
+      "generated_bytes": 2247
+    },
+    {
       "path": "/assets/monthly-holidays.js",
-      "source_bytes": 6285,
-      "generated_bytes": 4503
+      "source_bytes": 6709,
+      "generated_bytes": 4774
     },
     {
       "path": "/assets/namedays-engine.js",
@@ -223,8 +228,8 @@
     },
     {
       "path": "/assets/phase-5-6-8.js",
-      "source_bytes": 66350,
-      "generated_bytes": 46869
+      "source_bytes": 66373,
+      "generated_bytes": 46892
     },
     {
       "path": "/assets/planner-studio-core.js",
@@ -233,8 +238,8 @@
     },
     {
       "path": "/assets/planner-studio.js",
-      "source_bytes": 29921,
-      "generated_bytes": 19106
+      "source_bytes": 29903,
+      "generated_bytes": 19127
     },
     {
       "path": "/assets/search-engine.js",
@@ -248,13 +253,13 @@
     },
     {
       "path": "/assets/seasons-core.js",
-      "source_bytes": 1830,
-      "generated_bytes": 1801
+      "source_bytes": 1835,
+      "generated_bytes": 1806
     },
     {
       "path": "/assets/seasons.js",
-      "source_bytes": 8063,
-      "generated_bytes": 6741
+      "source_bytes": 7833,
+      "generated_bytes": 6539
     },
     {
       "path": "/assets/sharing/brand-assets.js",
@@ -278,8 +283,8 @@
     },
     {
       "path": "/assets/sharing/model.js",
-      "source_bytes": 4625,
-      "generated_bytes": 4336
+      "source_bytes": 4630,
+      "generated_bytes": 4341
     },
     {
       "path": "/assets/sharing/platforms.js",
@@ -292,19 +297,89 @@
       "generated_bytes": 4022
     },
     {
+      "path": "/assets/shell/calendar-reminders.js",
+      "source_bytes": 736,
+      "generated_bytes": 661
+    },
+    {
+      "path": "/assets/shell/catalog-finders.js",
+      "source_bytes": 5204,
+      "generated_bytes": 3208
+    },
+    {
+      "path": "/assets/shell/civic.js",
+      "source_bytes": 19230,
+      "generated_bytes": 12878
+    },
+    {
+      "path": "/assets/shell/date-guides.js",
+      "source_bytes": 9972,
+      "generated_bytes": 6229
+    },
+    {
+      "path": "/assets/shell/event-editor.js",
+      "source_bytes": 3836,
+      "generated_bytes": 2515
+    },
+    {
+      "path": "/assets/shell/garden.js",
+      "source_bytes": 13736,
+      "generated_bytes": 8811
+    },
+    {
+      "path": "/assets/shell/holiday-hub.js",
+      "source_bytes": 2431,
+      "generated_bytes": 1568
+    },
+    {
+      "path": "/assets/shell/holiday-research.js",
+      "source_bytes": 1526,
+      "generated_bytes": 1087
+    },
+    {
+      "path": "/assets/shell/home-upcoming.js",
+      "source_bytes": 3614,
+      "generated_bytes": 2225
+    },
+    {
+      "path": "/assets/shell/occasion-calendar.js",
+      "source_bytes": 5271,
+      "generated_bytes": 3617
+    },
+    {
+      "path": "/assets/shell/personal-planner.js",
+      "source_bytes": 27388,
+      "generated_bytes": 17412
+    },
+    {
+      "path": "/assets/shell/planner-reminders.js",
+      "source_bytes": 1577,
+      "generated_bytes": 1160
+    },
+    {
+      "path": "/assets/shell/site-shell.js",
+      "source_bytes": 2709,
+      "generated_bytes": 1788
+    },
+    {
+      "path": "/assets/shell/sunrise-scene.js",
+      "source_bytes": 12767,
+      "generated_bytes": 8058
+    },
+    {
       "path": "/assets/shopping/guide-d245d9bcf38b.js",
       "source_bytes": 2616,
       "generated_bytes": 2251
     },
     {
       "path": "/assets/storage.js",
-      "source_bytes": 5347,
-      "generated_bytes": 3955
+      "source_bytes": 6107,
+      "generated_bytes": 4448
     },
     {
       "path": "/assets/sunrise.js",
-      "source_bytes": 23375,
-      "generated_bytes": 15910
+      "source_bytes": 17869,
+      "generated_bytes": 11602
     },
     {
       "path": "/assets/tool-directory-core.js",
@@ -318,13 +393,13 @@
     },
     {
       "path": "/assets/tools.js",
-      "source_bytes": 41200,
-      "generated_bytes": 26584
+      "source_bytes": 41282,
+      "generated_bytes": 26587
     },
     {
       "path": "/assets/weather.js",
-      "source_bytes": 5666,
-      "generated_bytes": 4059
+      "source_bytes": 14880,
+      "generated_bytes": 9485
     },
     {
       "path": "/assets/year-directory-core.js",
@@ -333,8 +408,8 @@
     },
     {
       "path": "/assets/year-directory.js",
-      "source_bytes": 6024,
-      "generated_bytes": 4217
+      "source_bytes": 6120,
+      "generated_bytes": 4280
     },
     {
       "path": "/assets/zodiac-engine.js",

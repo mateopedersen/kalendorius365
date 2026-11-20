@@ -1,8 +1,9 @@
 import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
 import { notice } from "./common.js?v=3b631dd";
-const $ = (s) => document.querySelector(s),
-  data = await fetch("/assets/data/calendar.json").then((r) => r.json());
+const $ = (s) => document.querySelector(s);
+const needsCalendar = $("#workday-check-form, #iso-date, #next-holiday, #calculator, #year-comparison-form, #generator");
+const data = needsCalendar ? await fetch("/assets/data/calendar.json").then((response) => response.json()) : null;
 const escape = (s) =>
   String(s).replace(
     /[&<>"']/g,
@@ -220,8 +221,8 @@ const updateWorkdayCheck = () => {
   }
   if (selected.slice(0, 4) !== input.min.slice(0, 4)) {
     result.dataset.state = "error";
-    state.textContent = "Pasirinkite 2027 m. datą";
-    detail.textContent = "Šis puslapis rodo tik 2027 metų darbo kalendorių.";
+    state.textContent = `Pasirinkite ${input.min.slice(0, 4)} m. datą`;
+    detail.textContent = `Šis puslapis rodo ${input.min.slice(0, 4)} metų darbo kalendorių.`;
     return;
   }
   try {
@@ -318,18 +319,23 @@ if ($("#iso-week-range")) {
   };
   showRange();
 }
-if ($("#next-holiday")) {
-  const now = cal.today(),
-    y = +now.slice(0, 4),
-    next = [...cal.holidays(y, data), ...cal.holidays(y + 1, data)].find(
-      (h) => h.date >= now,
-    );
-  $("#next-holiday").textContent = next
+const nextHoliday = $("#next-holiday");
+if (nextHoliday) {
+  const now = cal.today();
+  const year = Number(nextHoliday.dataset.holidayYear);
+  const next = year
+    ? cal.holidays(year, data).find(({ date }) => date >= now)
+    : cal.upcomingCalendarEntries(now, data)[0];
+  nextHoliday.hidden = !next;
+  nextHoliday.textContent = next
     ? `Artimiausia šventė: ${next.name}, ${cal.formatDate(next.date)}. ${cal.difference(now, next.date) === 0 ? "Šiandien!" : "Liko " + cal.difference(now, next.date) + " d."}`
     : "";
+  const aside = $("#next-holiday-aside");
+  if (aside) {
+    aside.textContent = nextHoliday.textContent;
+    aside.hidden = nextHoliday.hidden;
+  }
 }
-if ($("#next-holiday-aside"))
-  $("#next-holiday-aside").textContent = $("#next-holiday").textContent;
 if ($("#calculator")) {
   const f = $("#calculator");
   const startInput = f.elements.start,
@@ -575,24 +581,15 @@ if ($("#calculator")) {
   if (!countdownDate.value) countdownDate.value = cal.addDays(cal.today(), 30);
   countdownDate.onchange = countdown;
   countdown();
-  for (const b of document.querySelectorAll("[data-countdown]"))
-    b.onclick = () => {
-      const now = cal.today(),
-        y = +now.slice(0, 4);
-      let target =
-        b.dataset.countdown === "new-year"
-          ? `${y + 1}-01-01`
-          : b.dataset.countdown === "easter"
-            ? cal.easter(y)
-            : `${y}-${b.dataset.countdown === "jonines" ? "06-24" : "12-25"}`;
-      if (target < now)
-        target =
-          b.dataset.countdown === "easter"
-            ? cal.easter(y + 1)
-            : `${y + 1}` + target.slice(4);
-      $("#countdown-date").value = target;
+  for (const button of document.querySelectorAll("button[data-countdown]")) {
+    button.addEventListener("click", () => {
+      const target = cal.upcomingCalendarEntries(cal.today(), data)
+        .find(({ id }) => id === button.dataset.countdown);
+      if (!target) return;
+      countdownDate.value = target.date;
       countdown();
-    };
+    });
+  }
   countdown();
 }
 if ($("#year-comparison-form")) {

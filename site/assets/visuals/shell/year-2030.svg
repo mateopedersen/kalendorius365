@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 150">
+  <defs>
+    <linearGradient id="case" x2=".9" y2="1"><stop stop-color="#628578"/><stop offset=".44" stop-color="#295247"/><stop offset="1" stop-color="#112c26"/></linearGradient>
+    <linearGradient id="screen" x2="1" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e6eee6"/></linearGradient>
+    <filter id="shadow" x="-25%" y="-60%" width="150%" height="220%"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <ellipse cx="92" cy="134" rx="64" ry="7" fill="#244336" opacity=".22" filter="url(#shadow)"/>
+  <g transform="rotate(12 90 72)">
+    <rect x="51" y="7" width="89" height="132" rx="14" fill="#132c25"/>
+    <rect x="45" y="7" width="89" height="132" rx="14" fill="url(#case)" stroke="#142c26" stroke-width="1.5"/>
+    <rect x="51" y="13" width="77" height="120" rx="10" fill="#132e25"/>
+    <rect x="54" y="16" width="71" height="112" rx="8" fill="url(#screen)"/>
+    <path d="M62 16h55a8 8 0 0 1 8 8v28H54V24a8 8 0 0 1 8-8Z" fill="#23624d"/>
+    <path d="M82 21h15" stroke="#b0c7b7" stroke-width="2" stroke-linecap="round"/>
+    <text x="89.5" y="45" text-anchor="middle" font-family="Lato,Arial,sans-serif" font-size="23" font-weight="900" fill="#fffbee">2030</text>
+    <path d="M61 64h57m-57 13h57m-57 13h57m-57 13h57m-47-39v39m13-39v39m13-39v39m13-39v39" fill="none" stroke="#90a797" stroke-width="1.2"/>
+    <rect x="84" y="78" width="12" height="11" rx="3" fill="#e3ae3d"/><rect x="97" y="91" width="12" height="11" rx="3" fill="#bd3444"/>
+    <path d="M78 122h23" stroke="#436a54" stroke-width="2" stroke-linecap="round"/>
+    <path d="M134 34v18" stroke="#88a99b" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

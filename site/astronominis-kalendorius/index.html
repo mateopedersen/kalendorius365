@@ -1,22 +1,155 @@
 ---
-title: "Astronominių įvykių kalendorius: Saulė ir Mėnulis"
-description: "2027–2029 m. lygiadieniai, saulėgrįžos ir pagrindinės Mėnulio fazės. Filtruokite Lietuvos laiku ir atsisiųskite pasirinktus astronominius momentus ICS failu."
-tool: true
-phase_module: "sun"
+title: "Astronominių įvykių kalendorius 2027–2030 | Saulė ir Mėnulis"
+description: "Raskite 2027–2030 m. pilnaties, jaunaties, lygiadienių ir saulėgrįžų laikus Lietuvoje. Pasirinkite metus, mėnesį ir įvykį arba išsaugokite datas ICS formatu."
 astronomy_agenda: true
 preserve_source: true
 ---
-<div class="page-heading"><div><p class="eyebrow">Patikrinti astronominiai momentai · 2027–2029</p><h1>Astronominių įvykių kalendorius</h1><p class="page-intro">Vienoje vietoje raskite lygiadienius, saulėgrįžas ir pagrindines Mėnulio fazes. Įvykio momentas pateikiamas Lietuvos laiku, o UTC laikas lieka patikrinamas.</p></div></div>
-<section class="panel astro-agenda" id="astro-agenda" aria-labelledby="astro-agenda-title"><div class="astro-agenda-heading"><div><span class="astro-kicker">Vienas astronominis momentas visai Žemei</span><h2 id="astro-agenda-title">Raskite įvykį pagal datą</h2><p>Pasirinkite metus, mėnesį ir įvykio rūšį. Duomenų laikotarpis yra 2027–2029; visos fazės ir sezonų ribos nurodytos kaip tikslios akimirkos, ne stebimumo prognozė.</p></div><div class="astro-moon-orbit" aria-hidden="true"><span></span></div></div><div class="astro-controls"><label>Metai<select id="astro-year"><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></label><label>Mėnuo<select id="astro-month"><option value="all">Visi mėnesiai</option><option value="1">Sausis</option><option value="2">Vasaris</option><option value="3">Kovas</option><option value="4">Balandis</option><option value="5">Gegužė</option><option value="6">Birželis</option><option value="7">Liepa</option><option value="8">Rugpjūtis</option><option value="9">Rugsėjis</option><option value="10">Spalis</option><option value="11">Lapkritis</option><option value="12">Gruodis</option></select></label><label>Įvykio rūšis<select id="astro-kind"><option value="all">Visi astronominiai momentai</option><option value="season">Lygiadieniai ir saulėgrįžos</option><option value="moon">Pagrindinės Mėnulio fazės</option></select></label></div><p class="astro-agenda-count" id="astro-agenda-count" role="status" aria-live="polite">Įvykiai įkeliami…</p><article id="astro-featured" class="astro-featured" aria-live="polite"></article><ol id="astro-event-list" class="astro-event-list" aria-label="Pasirinkto laikotarpio astronominiai įvykiai"></ol><div class="astro-agenda-actions"><button type="button" id="astro-download-ics" class="primary" disabled>Atsisiųsti rodomus įvykius (.ics)</button><p id="astro-agenda-message" role="status" aria-live="polite">Failas apims tik dabartiniais filtrais rodomus momentus.</p></div><p class="astro-source-note">Sezonų ribos ir Mėnulio fazių UTC momentai: <a href="https://aa.usno.navy.mil/data/Earth_Seasons" rel="noopener">JAV karinio jūrų laivyno observatorija (USNO)</a>. Lietuvos laikas apskaičiuojamas pagal Europe/Vilnius laiko juostą. Šie momentai savaime nepasako, ar Mėnulis arba Saulė bus matomi iš konkrečios vietos.</p></section>
-<section class="panel"><h2>Metų laikų astronominiai momentai</h2><p>Saulėgrįža ir lygiadienis yra konkretūs momentai, o ne fiksuotos vietos kalendoriaus dienos. Lentelėje laikas konvertuojamas iš UTC į Europe/Vilnius. UTC minutės paimtos iš <a href="https://aa.usno.navy.mil/data/Earth_Seasons" rel="noopener">USNO sezonų skaičiuoklės</a>.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Slenkama duomenų lentelė"><table class="data-table"><thead><tr><th>Metai</th><th>Pavasario lygiadienis</th><th>Vasaros saulėgrįža</th><th>Rudens lygiadienis</th><th>Žiemos saulėgrįža</th></tr></thead><tbody id="season-rows"><tr><th scope="row">2027</th><td>2027 m. kovo 20 d. 22:25</td><td>2027 m. birželio 21 d. 17:11</td><td>2027 m. rugsėjo 23 d. 09:02</td><td>2027 m. gruodžio 22 d. 04:42</td></tr><tr><th scope="row">2028</th><td>2028 m. kovo 20 d. 04:17</td><td>2028 m. birželio 20 d. 23:02</td><td>2028 m. rugsėjo 22 d. 14:45</td><td>2028 m. gruodžio 21 d. 10:19</td></tr><tr><th scope="row">2029</th><td>2029 m. kovo 20 d. 10:02</td><td>2029 m. birželio 21 d. 04:48</td><td>2029 m. rugsėjo 22 d. 20:38</td><td>2029 m. gruodžio 21 d. 16:14</td></tr></tbody></table></div><p>USNO oficialiame <a href="https://aa.usno.navy.mil/about/PrivacyNotice" rel="noopener">informacijos naudojimo pranešime</a> leidžiama platinti ir kopijuoti svetainės informaciją, jei atskirai nenurodyta kitaip, prašant tinkamos atribucijos. Saulėtekio ir dienos šviesos skaičiuoklė veikia penkiems Lietuvos miestams. Fazės pateikiamos visuotiniais astronominiais momentais.</p></section>
-<nav class="resource-grid" aria-label="Susiję puslapiai"><a class="resource-card resource-card--sun" href="/saule/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-sun"></use></svg></span><h2>Saulėtekis ir saulėlydis</h2><small>Miestas, data, civilinė prieblanda ir dienos trukmė.</small></a><a class="resource-card resource-card--moon" href="/menulio-fazes/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-moon"></use></svg></span><h2>Mėnulio fazės</h2><small>Tikros fazių akimirkos Lietuvos laiku.</small></a><a class="resource-card resource-card--moon" href="/menulio-kalendorius/2027/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-moon"></use></svg></span><h2>2027 metų Mėnulio kalendorius</h2><small>Metų mėnesių lentelės.</small></a></nav>
+<div class="astro-page">
+  <header class="astro-hero astro-dark">
+    <div class="astro-hero__copy">
+      <p class="astro-kicker">Saulė ir Mėnulis <span aria-hidden="true">·</span> 2027–2030 m.</p>
+      <h1>Astronominių įvykių kalendorius</h1>
+      <p>Sužinokite, kada Lietuvoje bus jaunatis, pilnatis, lygiadieniai ir saulėgrįžos. Pasirinkite laikotarpį ir išsaugokite norimus įvykius savo kalendoriuje.</p>
+      <div class="astro-hero__actions">
+        <a class="astro-action astro-action--gold" href="#astro-agenda">Atverti kalendorių <span aria-hidden="true">↓</span></a>
+        <a class="astro-action astro-action--outline" href="#kaip-skaityti">Kaip skaityti datas</a>
+      </div>
+    </div>
+    <img class="astro-hero__image" src="/assets/visuals/astronomy/solar-lunar.svg" width="660" height="426" alt="" aria-hidden="true" decoding="async">
+  </header>
 
-<section data-editorial-extension="20261103" class="panel content-guide"><h2>Kaip pasirinkti reikiamą astronomijos įrankį?</h2><p>Šis puslapis yra pradžios vieta, kai norite suprasti skirtingus dangaus ir metų ritmo duomenis. Saulės puslapyje pasirinkite miestą bei datą, jei ieškote saulėtekio ar saulėlydžio. Mėnulio fazių lentelę rinkitės konkrečiam pagrindinės fazės momentui. Metų laikų apžvalga skirta lygiadieniams ir saulėgrįžoms. Tai skirtingi skaičiavimai, todėl vienos lentelės rezultatas nepakeičia kitos paskirties.</p><p>Prieš lygindami skaičius patikrinkite metus, vietą ir laiko juostą. Tą patį momentą UTC ir Vilniaus laiku galima užrašyti skirtingomis valandomis, o arti vidurnakčio gali pasikeisti ir kalendorinė data. Jei šaltinyje laiko zona nenurodyta, skirtumo nebandykite taisyti spėjimu. Pirmiausia išsiaiškinkite, kokiu laiku duomenys pateikti.</p><p>Stebėjimui reikia daugiau nei įvykio datos: debesys, vietinis horizontas ir konkreti stebėjimo vieta veikia matomumą. Skaičiavimo modelis nėra pažadas tą minutę objektą pamatyti iš jūsų lango. Naudodami rezultatus savo plane išsaugokite ir pasirinktą vietą. Išsamesnį paaiškinimą rasite <a href="/blogas/sauletekis-ir-dienos-ilgumas/">gide apie šviesų dienos laiką</a> bei <a href="/blogas/menulio-faziu-kalendoriaus-skaitymas/">Mėnulio kalendoriaus skaitymo gide</a>.</p></section>
-<!-- phase3-related --><section class="panel"><h2>Metų laikai ir dienos ilgumas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2029 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section><!-- /phase3-related -->
+  <section class="astro-section astro-agenda" id="astro-agenda" aria-labelledby="astro-agenda-title">
+    <div class="astro-section__head">
+      <h2 id="astro-agenda-title">Įvykių kalendorius</h2>
+      <p>Įvykiai rikiuojami pagal Lietuvos datą. Atverkite mėnesį, kad pamatytumėte vietos laiką ir UTC.</p>
+    </div>
+    <div class="astro-workspace">
+      <div class="astro-filters">
+        <div class="astro-controls">
+          <label for="astro-year">Metai
+            <select id="astro-year" disabled>{% for year in site.data.calendar_years %}<option value="{{ year }}">{{ year }}</option>{% endfor %}</select>
+          </label>
+          <label for="astro-month">Mėnuo
+            <select id="astro-month" disabled>
+              <option value="all">Visi mėnesiai</option>
+              {% for month in site.data.calendar.months %}<option value="{{ forloop.index }}" data-slug="{{ month[0] }}">{{ month[1] }}</option>{% endfor %}
+            </select>
+          </label>
+          <label for="astro-kind">Įvykio rūšis
+            <select id="astro-kind" disabled>
+              <option value="all">Visos įvykių rūšys</option>
+              <option value="moon">Mėnulio fazės</option>
+              <option value="season">Lygiadieniai ir saulėgrįžos</option>
+            </select>
+          </label>
+        </div>
+        <div class="astro-filters__foot">
+          <p class="astro-agenda-count" id="astro-agenda-count" role="status">Įvykiai įkeliami…</p>
+          <button type="button" id="astro-reset" class="astro-text-button" hidden>Išvalyti filtrus</button>
+        </div>
+        <div class="astro-download">
+          <button type="button" id="astro-download-ics" class="astro-action astro-action--green" disabled>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#download"></use></svg>
+            Atsisiųsti įvykius (.ics)
+          </button>
+          <p id="astro-agenda-message" role="status">Į failą įtraukiami visi filtrus atitinkantys įvykiai.</p>
+        </div>
+      </div>
+      <div id="astro-featured" class="astro-featured astro-dark">
+        <p class="astro-feature-label">Pasirinkto laikotarpio įvykis</p>
+        <p class="astro-feature-message">Datos ir laikai įkeliami…</p>
+      </div>
+    </div>
+    <ol id="astro-event-list" class="astro-event-list" aria-label="Pasirinkto laikotarpio astronominiai įvykiai"></ol>
+    <noscript>
+      <p>Interaktyviems filtrams įjunkite „JavaScript“. Žemiau rasite <a href="#metu-laiku-datos">metų laikų lentelę</a> ir <a href="/menulio-fazes/">Mėnulio fazių kalendorių</a>.</p>
+    </noscript>
+  </section>
 
-<!-- K365_EDITORIAL_V2_START -->
-<section class="content-guide" data-editorial-review="20261103-v2"><h2>Pasirinkite tą duomenį, kuris atsako į jūsų klausimą</h2>
-<p>„Kada bus pilnatis?“ yra klausimas apie astronominį momentą. „Kada Vilniuje leidžiasi Saulė?“ papildomai reikalauja vietos ir datos. „Ką matysiu pro langą?“ jau priklauso ir nuo debesų bei vietinio horizonto. Viena bendra astronomijos lentelė negali vienodai tiksliai atsakyti į visus šiuos klausimus.</p>
-<p><a href="/menulio-kalendorius/2028/vasaris/">2028 metų vasario Mėnulio pavyzdyje</a> pilnaties momentas yra vasario 10 d. 17:04 Lietuvos laiku, o dienos diskas modeliuojamas vidurdieniui. <a href="/dienos-ilgumas/">Saulės palyginime</a> pasirinkite tą pačią datą dviem miestams. <a href="/metu-laikai/">Metų laikų lentelėje</a> palyginkite astronominę akimirką su meteorologiniu trijų mėnesių skirstymu. Kiekviena nuoroda turi savo metodikos ribas ir šaltinius.</p>
-<p>Užrašydami rezultatą palikite metus, laiko juostą ir miestą, kai jis reikalingas. Skaičiavimo tikslumas nepaverčia astronominio modelio orų, sveikatos ar asmeninės sėkmės prognoze.</p></section>
-<!-- K365_EDITORIAL_V2_END -->
+  <section class="astro-section astro-learn" id="kaip-skaityti" aria-labelledby="astro-learn-title">
+    <div class="astro-section__head">
+      <h2 id="astro-learn-title">Kaip skaityti astronomines datas</h2>
+      <p>Atskirkite fazės akimirką nuo to, ką tą dieną matysite iš savo vietos.</p>
+    </div>
+    <div class="astro-learn__grid">
+      <article class="astro-note astro-note--time">
+        <h3>Vienas įvykis, du laiko užrašai</h3>
+        <p>2027 m. sausio 7 d. jaunatis įvyks 20:24 UTC. Tą pačią akimirką Lietuvoje bus 22:24.</p>
+        <dl class="astro-time-example">
+          <div><dt>Lietuvoje</dt><dd><time datetime="2027-01-07T22:24:00+02:00">22:24</time></dd></div>
+          <div><dt>UTC</dt><dd><time datetime="2027-01-07T20:24:00Z">20:24</time></dd></div>
+        </dl>
+        <p>Suvestinėje taikoma <code>Europe/Vilnius</code> laiko juosta. Vasarą prie UTC pridedamos trys valandos, žiemą dvi. Netoli vidurnakčio gali pasikeisti ir data.</p>
+      </article>
+      <article class="astro-note">
+        <h3>Kada įvykį galima stebėti?</h3>
+        <p>Pilnaties akimirka visur ta pati, tačiau Mėnulio padėtis virš horizonto priklauso nuo vietos. Apie pilnatį Mėnulis dažniausiai teka apie saulėlydį. Per jaunatį jo apšviestoji pusė beveik nematoma iš Žemės.</p>
+        <p>Stebėjimui pirmiausia pasirinkite miestą ir datą, pasitikrinkite saulėlydį, debesuotumą ir ar neužstotas horizontas.</p>
+        <a class="astro-inline-link" href="/saule/">Rasti savo miesto saulėtekį ir saulėlydį <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="astro-section astro-moon" id="menulio-ciklas" aria-labelledby="astro-phases-title">
+    <div class="astro-section__head">
+      <h2 id="astro-phases-title">Keturios pagrindinės Mėnulio fazės</h2>
+      <p>Keičiantis Mėnulio padėčiai matome skirtingą jo Saulės apšviestos pusės dalį. Nuo vienos jaunaties iki kitos vidutiniškai praeina apie 29,5 paros.</p>
+    </div>
+    <ol class="astro-phase-grid">
+      <li>
+        <svg class="astro-phase-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="/assets/visuals/astronomy/events.svg#new"></use></svg>
+        <h3>Jaunatis</h3><p>Į Žemę atsukta pusė beveik neapšviesta. Danguje Mėnulis būna arti Saulės krypties.</p>
+      </li>
+      <li>
+        <svg class="astro-phase-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="/assets/visuals/astronomy/events.svg#first"></use></svg>
+        <h3>Priešpilnis</h3><p>Per pirmąjį ketvirtį matoma pusė disko yra apšviesta. Tolesnėmis dienomis šviesioji dalis didėja.</p>
+      </li>
+      <li>
+        <svg class="astro-phase-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="/assets/visuals/astronomy/events.svg#full"></use></svg>
+        <h3>Pilnatis</h3><p>Mėnulis danguje yra priešingoje pusėje nei Saulė. Iš Žemės matome beveik visą apšviestą diską.</p>
+      </li>
+      <li>
+        <svg class="astro-phase-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="/assets/visuals/astronomy/events.svg#last"></use></svg>
+        <h3>Delčia</h3><p>Per paskutinį ketvirtį vėl apšviesta pusė matomo disko, bet šviesioji dalis toliau mažėja.</p>
+      </li>
+    </ol>
+    <p class="astro-caption">Piešiniai scheminiai. Šviesiosios disko dalies padėtis stebėtojui gali pasisukti.</p>
+    <a class="astro-inline-link" href="/menulio-fazes/">Žiūrėti Mėnulio fazių paaiškinimus <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="astro-section astro-seasons" id="metu-laiku-datos" aria-labelledby="astro-seasons-title">
+    <div class="astro-seasons__intro">
+      <div class="astro-section__head">
+        <h2 id="astro-seasons-title">Lygiadieniai ir saulėgrįžos Lietuvoje</h2>
+        <p>Per lygiadienį Saulė kerta dangaus pusiaują. Šiaurės pusrutulyje vasaros saulėgrįža žymi ilgiausios, o žiemos saulėgrįža trumpiausios dienos laikotarpį.</p>
+        <p>Lygiadienį dienos ir nakties trukmė yra artima. Matomą saulėtekį ir saulėlydį veikia atmosferos refrakcija ir vietinis horizontas.</p>
+        <a class="astro-inline-link" href="/metu-laikai/">Astronominiai metų laikai ir dienos šviesa <span aria-hidden="true">→</span></a>
+      </div>
+      <figure class="astro-horizon">
+        <img src="/assets/visuals/astronomy/horizon.svg" width="640" height="288" loading="lazy" decoding="async" alt="Virš horizonto vasaros Saulės kelias aukščiausias, žiemos žemiausias, lygiadienio viduryje">
+        <figcaption>
+          <ul class="astro-legend" aria-label="Saulės kelių reikšmės">
+            <li><span></span>Vasaros saulėgrįža</li><li><span></span>Lygiadienis</li><li><span></span>Žiemos saulėgrįža</li>
+          </ul>
+          <span>Saulės kelių schema Lietuvos platumose. Be matavimo skalės.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="table-scroll astro-table-scroll" tabindex="0" role="region" aria-label="Lygiadienių ir saulėgrįžų datos">
+      <table class="data-table astro-table">
+        <caption>2027–2030 m. sezonų ribos Lietuvos laiku</caption>
+        <thead><tr><th scope="col">Metai</th><th scope="col">Pavasario lygiadienis</th><th scope="col">Vasaros saulėgrįža</th><th scope="col">Rudens lygiadienis</th><th scope="col">Žiemos saulėgrįža</th></tr></thead>
+        <tbody id="season-rows"><tr><th scope="row">2027</th><td>2027 m. kovo 20 d. 22:25</td><td>2027 m. birželio 21 d. 17:11</td><td>2027 m. rugsėjo 23 d. 09:02</td><td>2027 m. gruodžio 22 d. 04:42</td></tr><tr><th scope="row">2028</th><td>2028 m. kovo 20 d. 04:17</td><td>2028 m. birželio 20 d. 23:02</td><td>2028 m. rugsėjo 22 d. 14:45</td><td>2028 m. gruodžio 21 d. 10:19</td></tr><tr><th scope="row">2029</th><td>2029 m. kovo 20 d. 10:02</td><td>2029 m. birželio 21 d. 04:48</td><td>2029 m. rugsėjo 22 d. 20:38</td><td>2029 m. gruodžio 21 d. 16:14</td></tr><tr><th scope="row">2030</th><td>2030 m. kovo 20 d. 15:52</td><td>2030 m. birželio 21 d. 10:31</td><td>2030 m. rugsėjo 23 d. 02:27</td><td>2030 m. gruodžio 21 d. 22:09</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="astro-next" aria-labelledby="astro-next-title">
+    <h2 id="astro-next-title">Tęskite pagal tai, ką stebite</h2>
+    <div class="astro-next__grid">
+      <a href="/menulio-kalendorius/"><svg class="astro-phase-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="/assets/visuals/astronomy/events.svg#full"></use></svg><span><strong>Mėnulio kalendorius</strong><small>Dienos diskas, apšviesta dalis ir mėnesių kalendoriai.</small></span><span class="astro-next__arrow" aria-hidden="true">→</span></a>
+      <a href="/dienos-ilgumas/"><svg class="astro-phase-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="/assets/visuals/astronomy/events.svg#summer-solstice"></use></svg><span><strong>Dienos ilgumo palyginimas</strong><small>Palyginkite tos pačios datos dienos šviesą Lietuvos miestuose.</small></span><span class="astro-next__arrow" aria-hidden="true">→</span></a>
+    </div>
+    <p class="astro-sources">Šaltiniai – <a href="https://aa.usno.navy.mil/data/MoonPhases" rel="noopener">USNO Mėnulio fazių datos</a>, <a href="https://aa.usno.navy.mil/data/Earth_Seasons" rel="noopener">USNO sezonų momentai</a> ir <a href="https://science.nasa.gov/moon/moon-phases/" rel="noopener">NASA Mėnulio fazių paaiškinimas</a>.</p>
+  </section>
+</div>

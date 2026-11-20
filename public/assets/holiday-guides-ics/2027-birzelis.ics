@@ -49,6 +49,19 @@ URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-comm-049
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-folk-sv-antano-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270613
+DTEND;VALUE=DATE:20270614
+SUMMARY:Šv. Antano diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Birželio 13-ąją Katalik
+ ų Bažnyčia mini šv. Antaną Paduvietį. Šią datą mini ir lietuvišk
+ ų tradicinių kalendorinių švenčių sąrašas.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-folk-sv-antano-
+ diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-comm-050@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270614
@@ -93,6 +106,18 @@ DESCRIPTION:Šventinė diena · DK 123 str. Birželio 24-ąją minima Rasos
   ir Joninių diena. Su šia vasaros švente siejami Rasų\, Kupolinių ir 
  Joninių pavadinimai bei skirtingi papročiai.
 URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-stat-jonines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-petrines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270629
+DTEND;VALUE=DATE:20270630
+SUMMARY:Petrinės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Birželio 29 d. Petrinės m
+ ini apaštalus Petrą ir Paulių. Lietuvoje tai viena iš vasarvidžio kal
+ endoriaus datų.
+URL:https://kalendorius365.lt/sventes/2027/birzelis/#ivykis-folk-petrines
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

@@ -8,9 +8,13 @@ module Pages
  extend self
  ROOT=File.expand_path('..',__dir__)
  DATA=Kalendorius::DATA
+ HOLIDAY_YEARS=JSON.parse(File.read("#{ROOT}/data/holiday-years.json")).freeze
  WEEKDAY_NAMES=%w[pirmadienis antradienis trečiadienis ketvirtadienis penktadienis šeštadienis sekmadienis].freeze
  MANIFEST=JSON.parse(File.read("#{ROOT}/site/assets/data/manifest.json"))['assets']
  EDITORIAL=JSON.parse(File.read("#{ROOT}/data/holiday-editorial.json"))
+ LITHUANIAN_DATES=JSON.parse(File.read("#{ROOT}/site/_data/lithuanian_dates.json"))
+ LOCAL_DATES=LITHUANIAN_DATES.fetch('commemorations')
+ COMMEMORATIVE_DATES=EDITORIAL.fetch('commemorations')+LOCAL_DATES
  ARTICLE_SEO_TITLES={
   'feb16'=>'Vasario 16-oji: Lietuvos valstybės atkūrimas',
   'mar11'=>'Kovo 11-oji: Lietuvos nepriklausomybės atkūrimas',
@@ -71,16 +75,17 @@ module Pages
   FileUtils.mkdir_p(File.dirname(target))
   html=print_html(path,visual_html(path,html))
   metadata={'title'=>title,'description'=>desc,'tool'=>tool}
-  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/202[789]\z})
+  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/(?:202[789]|2030)\z})
   print=html[/data-print-root="art" data-print-paper="(portrait|landscape)" data-print-size="(A[34])"/,0]
   if print
    orientation=print[/data-print-paper="(portrait|landscape)"/,1]
    size=print[/data-print-size="(A[34])"/,1]
    metadata['print_paper']="#{size} #{orientation}"
   end
+  metadata['hero_share']=true if path.match?(/\A(?:202[789]|2030)\z/)
   metadata['robots']=robots if robots
   metadata['planner']=true if planner
-  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/202[789]\z})
+  metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/(?:202[789]|2030)\z})
   metadata['phase_module']=phase_module if phase_module
   metadata['holiday_editorial']=true if path=='sventes' || path.start_with?('sventes/')
   File.write(target,"---\n#{metadata.map { |k,v| "#{k}: #{v.to_json}" }.join("\n")}\n---\n#{html}")
@@ -88,22 +93,29 @@ module Pages
  def title(y,m);"#{y} m. #{DATA['months'][m-1][2]} kalendorius";end
  def month_url(y,m);"/#{y}/#{DATA['months'][m-1][0]}/";end
  def source
-  "<div class=\"source-note\">Teisės aktų duomenys sutikrinti 2026-10-16. 2026 m. iki spalio 31 d. taikytas tuo metu galiojęs DK 123 str.; 2027–2029 m. datos sutikrintos su nuo 2027-01-01 numatyta galioti suvestine redakcija. <a href=\"#{esc(EDITORIAL['sources']['labour-code-2027']['url'])}\" rel=\"noopener\">Darbo kodekso 123 straipsnis nuo 2027-01-01</a>. Savaitgalį pasitaikanti šventė automatiškai neperkeliama į pirmadienį. Atmintinos dienos pateikiamos atskirai ir savaime nesuteikia nedarbo dienos statuso.</div>"
+  "<div class=\"source-note\">Teisės aktų duomenys sutikrinti 2026-10-16. 2026 m. iki spalio 31 d. taikytas tuo metu galiojęs DK 123 str.; 2027–2030 m. datos apskaičiuotos su nuo 2027-01-01 numatyta galioti suvestine redakcija. <a href=\"#{esc(EDITORIAL['sources']['labour-code-2027']['url'])}\" rel=\"noopener\">Darbo kodekso 123 straipsnis nuo 2027-01-01</a>. Savaitgalį pasitaikanti šventė automatiškai neperkeliama į pirmadienį. Atmintinos dienos pateikiamos atskirai ir savaime nesuteikia nedarbo dienos statuso.</div>"
  end
- def static_month(y,m)
+ def static_month(y,m,day_plans: false)
   month=Kalendorius.month(y,m);html='<table class="static-month"><caption class="visually-hidden">'+title(y,m)+'</caption><thead><tr><th scope="col">Sav.</th>'+DATA['weekdays'].map { |d|"<th scope=\"col\">#{d}</th>" }.join+'</tr></thead><tbody>'
   month['grid'].each_slice(7).take(month['weeks']).each do |week|
    html+="<tr><th scope=\"row\">#{week.first['isoWeek']}</th>"
    week.each do |d|
     hs=d['inMonth'] ? month['days'][d['day']-1]['holidays'] : []
-    cs=d['inMonth'] ? EDITORIAL['commemorations'].select { |a|a['month']==m && a['day']==d['day'] } : []
+    cs=d['inMonth'] ? COMMEMORATIVE_DATES.select { |a|a['month']==m && a['day']==d['day'] } : []
     if d['inMonth']
      holiday_links=hs.filter_map { |h|url=holiday_page_url(h['id']);url && [h['name'],url] }
      commemoration_links=cs.map { |a|[a['title'],"/sventes/#{a['slug']}/"] }
      labels=(holiday_links+commemoration_links).map(&:first)
      date_target=holiday_links.first||commemoration_links.first
      spoken_label=(["#{d['day']} d.",d['date']]+labels).join(': ')
-     date=date_target ? "<a class=\"calendar-holiday-date\" href=\"#{date_target[1]}\" aria-label=\"#{esc(spoken_label)}\" title=\"#{esc(labels.join(' · '))}\"><time datetime=\"#{d['date']}\">#{d['day']}</time><span class=\"calendar-day-marker\" aria-hidden=\"true\"></span></a>" : "<time datetime=\"#{d['date']}\">#{d['day']}</time>"
+     day_markup=%(<time datetime="#{d['date']}">#{d['day']}</time>)
+     date=if date_target
+      %(<a class="calendar-holiday-date" href="#{date_target[1]}" aria-label="#{esc(spoken_label)}" title="#{esc(labels.join(' · '))}">#{day_markup}<span class="calendar-day-marker" aria-hidden="true"></span></a>)
+     elsif day_plans
+      %(<a class="calendar-plan-date" href="/mano-diena/?data=#{d['date']}" aria-label="#{d['date']}: dienos planas">#{day_markup}</a>)
+     else
+      day_markup
+     end
      classes=[];classes<<'holiday' if hs.any?;classes<<'commemoration-day' if cs.any?
      html+="<td class=\"#{classes.join(' ')}\">#{date}</td>"
     else
@@ -117,13 +129,20 @@ module Pages
  def holiday_table(y,month=nil,annual_holiday_page=false)
   hs=Kalendorius.holidays(y);hs=hs.select { |h|Date.iso8601(h['date']).month==month } if month
   return '<p>Šį mėnesį įstatyme nustatytų šventinių dienų nėra.</p>' if hs.empty?
-  '<div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Šventė</th><th scope="col">Statusas</th></tr></thead><tbody>'+hs.map { |h|d=Date.iso8601(h['date']);url=holiday_page_url(h['id']);name=esc(h['legalName']||h['name']);"<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{h['date']}\">#{h['date']}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td>#{url ? "<a href=\"#{url}\">#{name}</a>" : name}</td><td>Šventinė diena · DK 123 str.</td></tr>" }.join+'</tbody></table></div>'
+  '<div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Šventė</th><th scope="col">Statusas</th></tr></thead><tbody>'+hs.map do |h|
+   d=Date.iso8601(h['date']);url=holiday_page_url(h['id']);name=esc(h['legalName']||h['name'])
+   url+="?metai=#{y}" if url && annual_holiday_page
+   "<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{h['date']}\">#{h['date']}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td>#{url ? "<a href=\"#{url}\">#{name}</a>" : name}</td><td>Šventinė diena · DK 123 str.</td></tr>"
+  end.join+'</tbody></table></div>'
  end
  def commemoration_table(y,month=nil,annual_holiday_page=false)
-  records=EDITORIAL['commemorations'];records=records.select { |a|a['month']==month } if month
+  records=COMMEMORATIVE_DATES;records=records.select { |a|a['month']==month } if month
   return '' if records.empty?
   '<h2>Atmintinos dienos</h2><div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Atmintina diena</th><th scope="col">Teisinė reikšmė</th></tr></thead><tbody>'+records.map do |a|
-   d=Date.new(y,a['month'],a['day'],Date::GREGORIAN);"<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{d.iso8601}\">#{d.iso8601}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td><a href=\"/sventes/#{a['slug']}/\">#{esc(a['title'])}</a></td><td>Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos; data gali sutapti su DK 123 str. švente</td></tr>"
+   d=Date.new(y,a['month'],a['day'],Date::GREGORIAN)
+   url="/sventes/#{a['slug']}/"
+   url+="?metai=#{y}" if annual_holiday_page && EDITORIAL.fetch('commemorations').include?(a)
+   "<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{d.iso8601}\">#{d.iso8601}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td><a href=\"#{url}\">#{esc(a['title'])}</a></td><td>Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos; data gali sutapti su DK 123 str. švente</td></tr>"
   end.join+'</tbody></table></div>'
  end
  def occurrence_dates(article,year)
@@ -134,17 +153,6 @@ module Pages
  def next_occurrence(article)
   previous=ENV['TZ'];ENV['TZ']='Europe/Vilnius';today=Date.today;ENV['TZ']=previous
   (today.year..today.year+10).flat_map { |y|occurrence_dates(article,y) }.sort.find { |d|d>=today }
- end
- def generate_holiday_hub
-  articles=editorial_articles
-  cards=articles.map do |a|
-   date=next_occurrence(a)
-   "<article class=\"holiday-card\" data-holiday-id=\"#{esc(a['id'])}\"><span class=\"holiday-card__category\">#{esc(a['category'])}</span><h2><a href=\"/sventes/#{a['slug']}/\">#{esc(a['title'])}</a></h2><p>#{esc(a['summary'])}</p><p class=\"holiday-card__date\">Kita data: <time data-next-occurrence datetime=\"#{date.iso8601}\">#{date.iso8601}</time></p><a class=\"text-link\" href=\"/sventes/#{a['slug']}/\">Skaityti apie dieną <span aria-hidden=\"true\">→</span></a></article>"
-  end.join
-  introhtml=intro('Lietuvos šventės ir atmintinos dienos','Švenčių datos, savaitės dienos, teisinis statusas ir kultūros bei istorijos šaltiniai. Atskirai pažymėtos šventinės ir atmintinos dienos.',yearlinks('sventes/'))
-  legal="<section class=\"panel holiday-legal-summary\"><h2>Kaip skaityti statusą</h2><p><strong>Šventinė diena</strong> reiškia, kad pagal Darbo kodekso 123 straipsnį paprastai nedirbama; kodekse numatytos išimtys. <strong>Atmintina diena</strong> įrašyta į Atmintinų dienų įstatymą, tačiau šis statusas savaime nesuteikia nedarbo dienos. Darbo grafikas ir taikoma teisės akto redakcija turi reikšmės.</p><p>Teisės aktų duomenys sutikrinti 2026-10-16. 2027–2029 m. švenčių sąrašas sutikrintas su DK 123 straipsnio suvestine redakcija, numatyta nuo 2027-01-01; jos 123 straipsnio sąrašas sutampa su 2026 m. galiojančia redakcija. Šaltiniai: <a href=\"#{esc(EDITORIAL['sources']['labour-code']['url'])}\">DK 123 straipsnis (2026 m. redakcija)</a>, <a href=\"#{esc(EDITORIAL['sources']['labour-code-2027']['url'])}\">DK 123 straipsnis (nuo 2027-01-01)</a> ir <a href=\"#{esc(EDITORIAL['sources']['memoriam-law']['url'])}\">Atmintinų dienų įstatymas</a>.</p></section>"
-  years=yearlinks('sventes/')
-  page('sventes','Lietuvos šventės ir atmintinos dienos','Lietuvos šventės ir atmintinos dienos: 2027–2029 m. datos, savaitės dienos, nedarbo dienų statusas, tradicijos ir istoriniai šaltiniai.',introhtml+legal+"<section class=\"holiday-hub\"><h2>Švenčių reikšmė ir tradicijos</h2><div class=\"holiday-card-grid\">#{cards}</div></section><section class=\"panel\"><h2>Metų sąrašai</h2><p>Pasirinkite metus ir peržiūrėkite švenčių datas, savaitės dienas bei jų teisinį statusą.</p>#{years}</section><nav class=\"adjacent\" aria-label=\"Susiję įrankiai\"><a href=\"/atostogu-planavimas/\">Atostogų planavimas</a><a href=\"/darbo-dienos/2027/\">Darbo dienų skaičiavimas</a><a href=\"/menesiai/\">Mėnesių kalendoriai</a></nav>")
  end
  def generate_holiday_articles
   editorial_articles.each do |article|
@@ -227,8 +235,9 @@ module Pages
  def intro(title,desc,links='')
   "<div class=\"page-heading\"><div><h1>#{title}</h1><p class=\"page-intro\">#{desc}</p></div><div class=\"toolbar-group\">#{links}</div></div>"
  end
- def yearlinks(path='')
-  [2027,2028,2029].map { |y|"<a class=\"button\" href=\"/#{path}#{y}/\">#{y}</a>" }.join
+ def yearlinks(path='', current: nil)
+  years=HOLIDAY_YEARS
+  years.map { |y|%(<a class="button" href="/#{path}#{y}/"#{' aria-current="page"' if y==current}>#{y}</a>) }.join
  end
  def gallery(items,compact=false)
   '<div class="gallery'+(compact ? ' compact-gallery' : '')+'">'+items.map do |e|
@@ -322,26 +331,27 @@ module Pages
  end
  def run
   generate_months
-  [2027,2028,2029].each { |y|generate_year(y);generate_holidays(y);generate_work(y);generate_weeks(y) }
-  generate_holiday_hub
+  generate_screen_calendar(2030)
+  [2027,2028,2029].each { |y|generate_year(y) }
+  HOLIDAY_YEARS.each { |y|generate_holidays(y);generate_work(y);generate_weeks(y) }
   generate_holiday_articles
   links=[['2027/','2027 metų kalendorius','Visi mėnesiai, šventės ir metiniai failai.'],['2028/','2028 metų kalendorius','Keliamieji metai ir 29 dienų vasaris.'],['2029/','2029 metų kalendorius','Įprastiniai metai: 365 dienos ir 10 metinių kalendoriaus maketų.']]
   cards=->(arr){'<div class="resource-grid">'+arr.map { |url,name,desc|resource_card(url,name,desc) }.join+'</div>'}
-  year_facts=[[2027,365,'nekeliamieji metai','penktadienį','penktadienį'],[2028,366,'keliamieji metai, vasaris turi 29 dienas','šeštadienį','sekmadienį'],[2029,365,'nekeliamieji metai','pirmadienį','pirmadienį']]
+  year_facts=[[2027,365,'nekeliamieji metai','penktadienį','penktadienį'],[2028,366,'keliamieji metai, vasaris turi 29 dienas','šeštadienį','sekmadienį'],[2029,365,'nekeliamieji metai','pirmadienį','pirmadienį'],[2030,365,'nekeliamieji metai','antradienį','antradienį']]
   year_cards='<section class="resource-grid year-directory-grid" aria-label="Pasirinkti metų kalendorių">'+year_facts.map { |y,days,kind,start_day,end_day|"<article class=\"panel year-directory-card\"><h2>#{y}</h2><p><strong>#{days} dienos</strong> · #{kind}</p><p>Prasideda #{start_day} ir baigiasi #{end_day}.</p><a class=\"button\" href=\"/#{y}/\">Peržiūrėti #{y} metų kalendorių</a></article>" }.join+'</section>'
-  year_comparison='<section class="panel year-comparison"><h2>Palyginti dvejus metus</h2><p>Kalendorinių dienų skaičius yra tikslus; darbo dienų ir valandų suma čia remiasi standartine penkių darbo dienų, 8 valandų grafiko prielaida ir parodytu švenčių rinkiniu.</p><form id="year-comparison-form" class="form-row"><label>Pirmi metai<select id="year-compare-a"><option>2027</option><option>2028</option><option>2029</option></select></label><label>Antri metai<select id="year-compare-b"><option>2028</option><option>2027</option><option>2029</option></select></label><button type="submit">Palyginti metus</button></form><div id="year-comparison-result" class="year-comparison-result" role="status" aria-live="polite"></div></section>'
+  year_comparison='<section class="panel year-comparison"><h2>Palyginti dvejus metus</h2><p>Kalendorinių dienų skaičius yra tikslus; darbo dienų ir valandų suma čia remiasi standartine penkių darbo dienų, 8 valandų grafiko prielaida ir parodytu švenčių rinkiniu.</p><form id="year-comparison-form" class="form-row"><label>Pirmi metai<select id="year-compare-a"><option>2027</option><option>2028</option><option>2029</option><option>2030</option></select></label><label>Antri metai<select id="year-compare-b"><option>2028</option><option>2027</option><option>2029</option><option>2030</option></select></label><button type="submit">Palyginti metus</button></form><div id="year-comparison-result" class="year-comparison-result" role="status" aria-live="polite"></div></section>'
   year_intro=intro('Metų kalendoriai','Pasirinkite metus ir palyginkite tikslų dienų skaičių su standartinio penkių darbo dienų grafiko prielaidomis.')
   year_note='<p>Metų puslapiuose rasite mėnesių kalendorius ir tik tuos PDF bei vaizdo failus, kurie paruošti pasirinktiems metams. Kitų metų datų matematinį kalendorių galite kurti <a href="/kurti-kalendoriu/">kalendoriaus kūrimo įrankyje</a>; nepatvirtintos šventės pažymimos atskirai.</p>'
-  page('metai','Metų kalendoriai','2027, 2028 ir 2029 metų lietuviški kalendoriai: visų mėnesių apžvalga, Lietuvos šventės ir metiniai PDF bei vaizdo failai.',year_intro+year_cards+year_comparison+year_note,true)
+  page('metai','Metų kalendoriai','2027–2030 m. lietuviški kalendoriai: palyginkite metus ir peržiūrėkite mėnesius, Lietuvos šventes bei spausdinimo parinktis.',year_intro+year_cards+year_comparison+year_note,true)
   MonthCalendarArt.generate(ROOT,DATA['months'])
-  monthcards=[2027,2028,2029].map do |year|
+  monthcards=HOLIDAY_YEARS.map do |year|
    entries=DATA['months'].each_with_index.map do |month,i|
     theme=MonthCalendarArt::THEMES.fetch(i)
-    %(<a class="month-directory-card" href="/#{year}/#{month[0]}/"><img class="month-directory-card__art" src="/assets/visuals/month-calendars/#{year}-#{month[0]}.svg" width="240" height="240" alt="" aria-hidden="true" loading="lazy" decoding="async"><div class="month-directory-card__copy"><span class="month-directory-card__season">#{theme[0]}</span><h3>#{month[1]}</h3><p>#{Kalendorius.month(year,i+1)['length']} d. · 10 dizainų</p><span class="month-directory-card__cta">Peržiūrėti kalendorius <span aria-hidden="true">↗</span></span></div></a>)
+    %(<a class="month-directory-card" href="/#{year}/#{month[0]}/"><img class="month-directory-card__art" src="/assets/visuals/month-calendars/#{year}-#{month[0]}.svg" width="240" height="240" alt="" aria-hidden="true" loading="lazy" decoding="async"><div class="month-directory-card__copy"><span class="month-directory-card__season">#{theme[0]}</span><h3>#{month[1]}</h3><p>#{Kalendorius.month(year,i+1)['length']} d. · #{year == 2030 ? 'Spausdinti naršyklėje' : '10 dizainų'}</p><span class="month-directory-card__cta">Peržiūrėti kalendorius <span aria-hidden="true">↗</span></span></div></a>)
    end.join
    %(<section class="month-directory-year" aria-labelledby="months-#{year}"><h2 id="months-#{year}">#{year} metai</h2><div class="month-directory-grid">#{entries}</div></section>)
   end.join
-  page('menesiai','Mėnesių kalendoriai – 2027–2029','Pasirinkite 2027, 2028 ar 2029 metų mėnesį. Kiekvienam mėnesiui – dešimt skirtingų A4 kalendorių su Lietuvos šventėmis, PDF ir vaizdai.',intro('Mėnesių kalendoriai','Pasirinkite mėnesį ir peržiūrėkite dešimt jo kalendoriaus maketų.')+monthcards)
+  page('menesiai','Mėnesių kalendoriai 2027–2030','Pasirinkite 2027–2030 m. mėnesio kalendorių su Lietuvos šventėmis. Atsisiųskite parengtą maketą arba spausdinkite kalendorių naršyklėje.',intro('Mėnesių kalendoriai','Pasirinkite mėnesį, peržiūrėkite šventes, spausdinkite kalendorių arba pasirinkite atsisiunčiamą maketą.')+monthcards)
   school=DATA['school'];rows=school['periods'].map { |p|"<tr><td>#{p['name']}</td><td>#{p['start']} – #{p['end']}</td><td>#{p['stage']}</td></tr>" }.join
   page('mokiniu-atostogos','Mokinių atostogos 2026–2027','Oficialios 2026–2027 mokslo metų mokinių atostogos Lietuvoje: rudens, Kalėdų, žiemos ir Velykų laikotarpiai pagal ugdymo pakopą.',intro('Mokinių atostogos','2026–2027 mokslo metai. Datos nurodytos imtinai.')+'<div class="table-scroll"><table class="data-table"><thead><tr><th>Atostogos</th><th>Laikotarpis</th><th>Ugdymo pakopa</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+"<div class=\"source-note\">Šaltinis: <a href=\"#{school['source']}\">Švietimo, mokslo ir sporto ministerija</a>. Peržiūrėta #{school['reviewed']}. Velykų atostogos skiriasi pagal ugdymo pakopą. Vasaros pradžia priklauso nuo klasės ir ugdymo plano; vienos datos visiems neteikiame.</div><h2>2027–2028 mokslo metai</h2><p>Šių mokslo metų tvarkaraštis mūsų šaltiniuose dar nepatvirtintas. Spėjamų datų neskelbiame.</p><a href=\"/2027/\">2027 metų kalendorius</a>")
   generate_tools
@@ -356,31 +366,170 @@ module Pages
     items=MANIFEST.select { |e|e['kind']=='monthly' && e['year']==y && e['month']==m };next if items.empty?
     mo=Kalendorius.month(y,m);work=Kalendorius.work_month(y,m);first=items.find { |e|e['design']==(y==2027 && m==1 ? '06' : y==2028 && m==2 ? '02' : '01') }||items.first
     prev=Date.new(y,m,1)<<1;nxt=Date.new(y,m,1)>>1
-    link=->(d,label){[2027,2028,2029].include?(d.year) ? "<a class=\"button\" href=\"#{month_url(d.year,d.month)}\">#{label}</a>" : '' }
-    monthnav='<aside class="month-sidebar panel" aria-label="Mėnesio navigacija"><p class="month-sidebar__title">'+DATA['months'][m-1][1]+" #{y}</p>"+static_month(y,m)+'<nav aria-label="Metų mėnesiai">'+DATA['months'].each_with_index.map { |mm,i|"<a #{i+1==m ? 'aria-current="page"' : ''} href=\"#{month_url(y,i+1)}\">▦ #{mm[1]}</a>" }.join+"</nav><hr><a href=\"/#{y}/\">#{y} metų kalendorius</a><a href=\"/sventes/#{y}/\">Šventės #{y}</a><a href=\"/darbo-dienos/#{y}/\">Darbo laikas</a><a href=\"/kurti-kalendoriu/\">Kurti savo</a></aside>"
+    link=method(:month_navigation_link)
+    monthnav=calendar_sidebar(y,m)
     stats='<div class="month-stats">'+[[mo['length'],'Kalendorinės dienos'],[work['days'],'Darbo dienos'],[work['weekends'],'Savaitgalio dienos'],[mo['days'].count { |d|d['holidays'].any? },'Šventinės dienos'],[mo['weeks'],'ISO savaičių eilutės']].map { |n,l|"<span class=\"badge\">#{l}: <strong>#{n}</strong></span>" }.join+'</div>'
     preview="<section class=\"large-preview panel\" id=\"perziura\"><div class=\"panel-title\"><h2 id=\"preview-title\">#{first['name']}</h2><span id=\"preview-format\">#{first['paper']} · #{first['landscape'] ? 'Gulsčias' : 'Stačias'}</span></div><a id=\"preview-full\" href=\"#{download_href(first,'webp')}\" target=\"_blank\" rel=\"noopener\"><img id=\"selected-preview\" src=\"#{first['preview']}\" width=\"#{first['landscape'] ? 680 : 481}\" height=\"#{first['landscape'] ? 481 : 680}\" alt=\"#{esc(first['alt'])}\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\"></a></section>"
     first_weekday=WEEKDAY_NAMES[mo['days'].first['weekday']-1]
     last_weekday=WEEKDAY_NAMES[mo['days'].last['weekday']-1]
     iso_weeks=mo['days'].map { |d|d['isoWeek'] }.uniq.join(', ')
     options=items.map { |e| "<option value=\"#{e['stem']}\" #{e['stem']==first['stem'] ? 'selected' : ''}>#{e['design']}. #{e['name']}</option>" }.join
-    actions="<aside class=\"download-panel panel\"><h2>Atsisiuntimo parinktys</h2><label>Dizainas<select id=\"design-picker\" data-tools-readiness inert aria-busy=\"true\">#{options}</select></label><p>Lietuviškos datos · A3 · PDF ir 600 PPI raiškos vaizdai.</p><a class=\"button primary full-width\" id=\"selected-pdf\" href=\"#{download_href(first,'pdf')}\" download=\"#{esc(File.basename(first['pdf']))}\">Atsisiųsti PDF</a><a class=\"button full-width\" id=\"selected-webp\" href=\"#{download_href(first,'webp')}\" download=\"#{esc(File.basename(first['webp']))}\">Atsisiųsti vaizdą</a><a class=\"button full-width\" id=\"selected-print\" href=\"#{download_href(first,'pdf')}\" target=\"_blank\" rel=\"noopener\">Atidaryti PDF spausdinimui ↗</a><small>PDF spausdinkite pasirinkę A3 formatą ir 100 % dydį. Individualias datas kurkite <a href=\"/kurti-kalendoriu/\">kalendoriaus kūrimo įrankyje</a>.</small><h2>#{DATA['months'][m-1][1]}: datos</h2><p>Mėnesio trukmė – #{mo['length']} d. Pirmoji mėnesio diena – #{first_weekday}; paskutinė – #{last_weekday}. ISO savaitės: #{iso_weeks}.</p></aside>"
+    actions="<aside class=\"download-panel panel\"><h2>Atsisiuntimo parinktys</h2><label>Dizainas<select id=\"design-picker\" data-tools-readiness inert aria-busy=\"true\">#{options}</select></label><p>Lietuviškos datos · A3 · PDF ir 600 PPI raiškos vaizdai.</p><div class=\"download-actions\"><a class=\"button primary full-width\" id=\"selected-pdf\" href=\"#{download_href(first,'pdf')}\" download=\"#{esc(File.basename(first['pdf']))}\">Atsisiųsti PDF</a><a class=\"button full-width\" id=\"selected-webp\" href=\"#{download_href(first,'webp')}\" download=\"#{esc(File.basename(first['webp']))}\">Atsisiųsti vaizdą</a><a class=\"button full-width\" id=\"selected-print\" href=\"#{download_href(first,'pdf')}\" target=\"_blank\" rel=\"noopener\">Atidaryti PDF spausdinimui ↗</a></div><small>PDF spausdinkite pasirinkę A3 formatą ir 100 % dydį. Individualias datas kurkite <a href=\"/kurti-kalendoriu/\">kalendoriaus kūrimo įrankyje</a>.</small><h2>#{DATA['months'][m-1][1]}: datos</h2><p>Mėnesio trukmė – #{mo['length']} d. Pirmoji mėnesio diena – #{first_weekday}; paskutinė – #{last_weekday}. ISO savaitės: #{iso_weeks}.</p></aside>"
     filters='<div class="design-filters segmented" role="group" aria-label="Kalendoriaus išdėstymas">'+[['all','Visi dizainai'],['portrait','Vertikalūs'],['landscape','Horizontalūs'],['holidays','Su pažymėtomis šventėmis']].map { |v,l|"<button data-design-filter=\"#{v}\" aria-pressed=\"#{v=='all'}\">#{l}</button>" }.join+'</div>'
     guidance="Mėnesio trukmė – #{mo['length']} d.; kalendoriaus tinklelyje – #{mo['weeks']} eilutės. Pirmoji mėnesio diena – #{first_weekday}; paskutinė – #{last_weekday}. Pagal įprastą penkių darbo dienų savaitę: darbo dienų – #{work['days']}, apskaičiuota darbo trukmė – #{work['hours']} val.#{work['shortened'].any? ? ' Sutrumpintos darbo dienos: '+work['shortened'].join(', ')+'.' : ' Prieššventinių darbo dienų trumpinimų nėra.'}"
-    content='<div class="print-layout">'+monthnav+'<div class="month-heading">'+intro(title(y,m),'Lietuviški mėnesio kalendoriai su Lietuvos šventėmis. Rinkitės iš dešimties A3 dizainų ir atsisiųskite PDF arba 600 PPI raiškos vaizdą.',link.call(prev,'‹ Ankstesnis')+link.call(nxt,'Kitas ›'))+stats+'</div>'+preview+actions+'<section class="monthly-collection"><h2>10 kalendoriaus dizainų</h2>'+filters+gallery(items,true)+"<h2>Mėnesio planavimas</h2><p>#{guidance}</p><p>Rinkitės vertikalų arba horizontalų maketą. Kiekvieno dizaino kortelėje nurodyta, ar jame pažymėtos šventinės dienos.</p><div class=\"month-overview\">#{static_month(y,m)}</div><h2>Šventinės dienos</h2>"+holiday_table(y,m)+commemoration_table(y,m)+source+"<nav class=\"adjacent\" aria-label=\"Susiję kalendoriai\">#{link.call(prev,'‹ Ankstesnis mėnuo')}<a href=\"/#{y}/\">#{y} metų kalendorius</a><a href=\"#{month_url(y==2027 ? 2028 : 2027,m)}\">Tas pats mėnuo #{y==2027 ? 2028 : 2027} metais</a>#{link.call(nxt,'Kitas mėnuo ›')}<a href=\"/sventes/\">Lietuvos šventės ir atmintinos dienos</a><a href=\"/tuscias-kalendorius/\">Tušti kalendoriai</a><a href=\"/darbo-dienos/#{y}/\">Darbo dienos</a></nav></section></div>"
+    content='<div class="print-layout">'+monthnav+'<div class="month-heading">'+calendar_period_intro(title(y,m),'Lietuviški mėnesio kalendoriai su Lietuvos šventėmis. Rinkitės iš dešimties A3 dizainų ir atsisiųskite PDF arba 600 PPI raiškos vaizdą.',link.call(prev,'‹ Ankstesnis')+link.call(nxt,'Kitas ›')+'<a class="button" href="#menesio-datos">Peržiūrėti mėnesio datas</a>',"month-calendars/#{y}-#{DATA['months'][m-1][0]}")+stats+'</div>'+preview+actions+'<section class="monthly-collection"><h2>10 kalendoriaus dizainų</h2>'+filters+gallery(items,true)+"<h2>Mėnesio planavimas</h2><p>#{guidance}</p><p>Rinkitės vertikalų arba horizontalų maketą. Kiekvieno dizaino kortelėje nurodyta, ar jame pažymėtos šventinės dienos.</p>#{month_context(y,m)}<section class=\"month-overview\" id=\"menesio-datos\"><h2>Mėnesio datos</h2>#{calendar_date_help}#{static_month(y,m,day_plans: true)}</section><h2>Šventinės dienos</h2>"+holiday_table(y,m)+commemoration_table(y,m)+source+"<nav class=\"adjacent\" aria-label=\"Susiję kalendoriai\">#{link.call(prev,'‹ Ankstesnis mėnuo')}<a href=\"/#{y}/\">#{y} metų kalendorius</a><a href=\"#{month_url(y==2027 ? 2028 : 2027,m)}\">Tas pats mėnuo #{y==2027 ? 2028 : 2027} metais</a>#{link.call(nxt,'Kitas mėnuo ›')}<a href=\"/sventes/\">Lietuvos šventės ir atmintinos dienos</a><a href=\"/tuscias-kalendorius/\">Tušti kalendoriai</a></nav></section></div>"
     page("#{y}/#{DATA['months'][m-1][0]}",title(y,m)+' – PDF ir vaizdai',"#{title(y,m)} su Lietuvos šventėmis. Mėnesio trukmė – #{mo['length']} d., darbo dienų – #{work['days']}. Dešimt A3 dizainų, PDF ir 600 PPI raiškos vaizdai.",content,true)
    end
   end
  end
+ def month_context(year, month)
+  slug=DATA['months'][month-1][0]
+  genitive=DATA['months'][month-1][2]
+  %(<p>Prieš planuodami datas pasitikrinkite <a href="/sventes/#{year}/#{slug}/">#{genitive} švenčių ir minėjimų gide</a>. Sveikinimams pravers <a href="/vardadieniai/#{slug}/">#{genitive} vardadieniai</a>, o dangaus stebėjimams – <a href="/menulio-kalendorius/#{year}/#{slug}/">#{genitive} Mėnulio kalendorius</a>. Darbo dienų ir valandų įverčius rasite <a href="/darbo-dienos/#{year}/">#{year} m. darbo kalendoriuje</a>.</p>)
+ end
+ def calendar_period_intro(title, description, links, image)
+  art=%(<img class="calendar-period-art" src="/assets/visuals/#{image}.svg" width="86" height="86" decoding="async" alt="" aria-hidden="true">)
+  %(<div class="page-heading calendar-period-heading"><div class="calendar-period-heading__copy">#{art}<div><h1>#{title}</h1><p class="page-intro">#{description}</p></div></div><div class="toolbar-group">#{links}</div></div>)
+ end
+ def month_navigation_link(date,label)
+  return '' unless (2027..2030).cover?(date.year)
+  %(<a class="button" href="#{month_url(date.year,date.month)}">#{label}</a>)
+ end
+ def calendar_date_help
+  '<p class="calendar-date-help">Paspauskite datą ir atverkite dienos planą. Pažymėtos datos atveria šventės arba atmintinos dienos aprašą.</p>'
+ end
+ def calendar_sidebar(year, month = nil)
+  years=[2027,2028,2029,2030].map do |candidate|
+   route=month ? month_url(candidate,month) : "/#{candidate}/"
+   %(<a href="#{route}"#{candidate==year ? ' aria-current="true"' : ''}>#{candidate}</a>)
+  end.join
+  months=DATA['months'].each_with_index.map do |entry,i|
+   number=i+1
+   %(<a href="#{month_url(year,number)}"#{number==month ? ' aria-current="page"' : ''}><span class="month-sidebar__number">#{format('%02d',number)}</span><strong>#{entry[1]}</strong><span aria-hidden="true">›</span></a>)
+  end.join
+  preview=month ? %(<details><summary>#{DATA['months'][month-1][1]} #{year}</summary>#{static_month(year,month)}</details>) : ''
+  %(<aside class="month-sidebar panel" aria-label="Mėnesio navigacija"><p class="month-sidebar__title">Pasirinkite metus</p><nav class="month-sidebar__years" aria-label="Metų kalendoriai">#{years}</nav><nav class="month-sidebar__months" aria-label="Metų mėnesiai">#{months}</nav>#{preview}<hr><a href="/#{year}/">#{year} metų kalendorius</a><a href="/sventes/">Lietuvos šventės</a><a href="/darbo-dienos/#{year}/">#{year} m. darbo dienos</a><a href="/kurti-kalendoriu/">Kurti savo</a></aside>)
+ end
+ def screen_month_planning(facts, work)
+  year, month = facts.values_at('year', 'month')
+  month_name = DATA.fetch('months').fetch(month - 1).fetch(2)
+  days = facts.fetch('days')
+  holidays = days.select { |day| day.fetch('holidays').any? }
+  long_breaks = days.chunk { |day| day.fetch('weekday') >= 6 || day.fetch('holidays').any? }
+    .filter_map { |off, dates| dates if off && dates.length >= 3 }
+  breakdown = [
+   ['Darbo dienos', work.fetch('days')],
+   ['Šeštadieniai ir sekmadieniai', work.fetch('weekends')],
+   ['Šventinės dienos pirmadieniais–penktadieniais', work.fetch('holidays')],
+   ['Darbo laikas, val.', work.fetch('hours')]
+  ].map { |label, value| "<div><dt>#{label}</dt><dd>#{value}</dd></div>" }.join
+  day_label = ->(day) { "<time datetime=\"#{day['date']}\">#{month_name} #{day['day']} d.</time>" }
+  break_list = long_breaks.map do |dates|
+   "<li>#{day_label.call(dates.first)} – #{day_label.call(dates.last)} (#{dates.length} d.)</li>"
+  end.join
+  break_description = if break_list.empty?
+   '<p>Šio mėnesio ribose nėra trijų ar daugiau iš eilės einančių poilsio dienų pagal penkių dienų grafiką.</p>'
+  else
+   "<p>Trys ar daugiau poilsio dienų iš eilės šio mėnesio ribose:</p><ul>#{break_list}</ul>"
+  end
+  short_days = work.fetch('shortened').map do |key|
+   day = days.find { |item| item.fetch('date') == key }
+   day_label.call(day)
+  end
+  shortened = short_days.empty? ? 'Šio mėnesio modelyje prieššventinių darbo dienų trumpinimų nėra.' :
+   "Šiame grafike viena valanda trumpinama šiomis datomis: #{short_days.join(', ')}."
+  <<~HTML
+    <section class="panel content-guide screen-calendar-plan" aria-labelledby="screen-month-plan">
+      <h2 id="screen-month-plan">#{year} m. #{month_name} darbo ir poilsio dienos</h2>
+      <p>Skaičiuojama pagal penkių dienų, 40 valandų darbo savaitę. Savaitgalį sutapusios šventės dar kartą neatimamos.</p>
+      <dl class="screen-calendar-plan__metrics">#{breakdown}</dl>
+      #{break_description}
+      <p>#{shortened} Jei dirbate šeštadieniais, palyginkite <a href="/darbo-dienos/#{year}/">penkių ir šešių dienų savaitės modelius</a>.</p>
+      #{holidays.empty? ? '<p>Šį mėnesį šventinių dienų pagal Darbo kodeksą nėra.</p>' : "<h3>Šio mėnesio šventinės dienos</h3>#{holiday_table(year, month)}"}
+    </section>
+  HTML
+ end
+ def screen_year_planning(year)
+  work = (1..12).map { |month| Kalendorius.work_month(year, month) }
+  rows = work.map do |item|
+   month = item.fetch('month')
+   "<tr><th scope=\"row\"><a href=\"#{month_url(year, month)}#screen-month-plan\">#{DATA['months'][month - 1][1]}</a></th><td>#{item['days']}</td><td>#{item['holidays']}</td><td>#{item['hours']}</td></tr>"
+  end.join
+  <<~HTML
+    <section class="panel content-guide screen-calendar-plan">
+      <h2>#{year} m. planavimas pagal darbo dienas</h2>
+      <p>Per metus pagal įprastą penkių dienų grafiką skaičiuojamos #{work.sum { |item| item['days'] }} darbo dienos ir #{work.sum { |item| item['hours'] }} darbo valandos. Pasirinkus mėnesį matyti ir švenčių datos bei ilgesni poilsio tarpai.</p>
+      <div class="table-scroll"><table class="data-table">
+        <caption>Penkių dienų darbo savaitė ir prieššventiniai trumpinimai</caption>
+        <thead><tr><th scope="col">Mėnuo</th><th scope="col">Darbo dienos</th><th scope="col">Šventės darbo dienomis</th><th scope="col">Darbo valandos</th></tr></thead><tbody>#{rows}</tbody>
+      </table></div>
+      <p>Kitokiam grafikui tinka <a href="/darbo-dienos/#{year}/">darbo dienų kalendorius su dviem savaitės modeliais</a>. Mėnesių tinklelius galite spausdinti naršyklėje, o individualų maketą susikurti <a href="/kurti-kalendoriu/?metai=#{year}&amp;menuo=0">kalendoriaus kūrimo įrankyje</a>.</p>
+    </section>
+  HTML
+ end
+ def generate_screen_calendar(year)
+  months=DATA['months'].each_with_index.map do |entry,i|
+   month=i+1
+   facts=Kalendorius.month(year,month)
+   title_text=title(year,month)
+   first_day=Date.new(year,month,1)
+   links=month_navigation_link(first_day<<1,'‹ Ankstesnis')+month_navigation_link(first_day>>1,'Kitas ›')
+   links+=%(<a class="button primary" href="/kurti-kalendoriu/?metai=#{year}&amp;menuo=#{month}">Kurti šio mėnesio kalendorių</a><button type="button" data-print>Spausdinti mėnesį</button>)
+   description="#{title_text}: #{facts['length']} kalendorinės dienos, savaitės, Lietuvos šventės ir nuoroda į kalendoriaus kūrėją."
+   overview=calendar_period_intro(title_text,description,links,"month-calendars/#{year}-#{entry[0]}")
+   overview+=calendar_date_help+%(<section class="panel screen-month" data-print-root="calendar">#{static_month(year,month,day_plans: true)}</section>)
+   overview+=screen_month_planning(facts,Kalendorius.work_month(year,month))
+   overview+=%(<section class="panel content-guide"><h2>Susijusios #{entry[2]} datos</h2>#{month_context(year,month)}#{source}</section>)
+   page("#{year}/#{entry[0]}",title_text,description,%(<div class="year-workspace">#{calendar_sidebar(year,month)}<div>#{overview}</div></div>))
+   %(<section class="year-month"><h3><a href="#{month_url(year,month)}">#{entry[1]} <span aria-hidden="true">›</span></a></h3>#{static_month(year,month,day_plans: true)}</section>)
+  end.join
+  overview=calendar_year_header(year, 'Lietuvos šventės, dvylika mėnesių ir ISO savaitės.')
+  overview+=%(<section class="panel annual-templates annual-templates--editor"><header class="annual-templates__header"><img src="/assets/visuals/shell/create.svg" class="shell-art" alt="" aria-hidden="true" width="78" height="78"><div><h2>#{year} m. šablonai kalendoriaus kūrimo įrankyje</h2><p>Pasirinkite maketą ir atsisiųskite sukurtą kalendorių.</p></div></header><a class="button primary" href="/kurti-kalendoriu/?metai=#{year}&amp;menuo=0">Pasirinkti šabloną</a></section>)
+  overview+=calendar_year_overview(year,months)+screen_year_planning(year)+%(<h2>Lietuvos šventinės dienos</h2>#{holiday_table(year)}#{source}#{year_context(year)})
+  page(year.to_s,"#{year} metų kalendorius","#{year} m. Lietuvos kalendorius su visais mėnesiais, ISO savaitėmis, švenčių sąrašu ir galimybe sukurti spausdinamą kalendorių.",%(<div class="year-workspace annual-workspace">#{calendar_sidebar(year)}<div>#{overview}</div></div>))
+ end
+ def calendar_year_header(year, lead)
+  %({% include tool-page-head.html icon="year-#{year}" title="#{year} metų kalendorius" lead="#{lead}" action="#metu-apzvalga" action_label="Peržiūrėti metų datas" %})
+ end
+ def calendar_year_overview(year,months)
+  %(<section class="annual-overview" id="metu-apzvalga" aria-labelledby="annual-overview-title"><header><h2 id="annual-overview-title">#{year} m. kalendorius pagal mėnesius</h2><button type="button" data-print>Spausdinti metų apžvalgą</button></header>#{calendar_date_help}<div class="year-grid annual-sheet">#{months}</div></section>)
+ end
+ def year_context(year)
+  %(<p>Poilsio planą palyginkite su <a href="/sventes/#{year}/">#{year} m. šventinių dienų sąrašu</a>. Darbo grafiko savaites patikrinkite <a href="/savaites/#{year}/">#{year} m. ISO savaičių lentelėje</a>. Jei planuojate stebėjimus, atverkite <a href="/menulio-kalendorius/#{year}/">#{year} m. Mėnulio fazių kalendorių</a>.</p>)
+ end
  def generate_year(y)
-  months='<div class="year-grid">'+(1..12).map { |m|"<section class=\"year-month\"><h2><a href=\"#{month_url(y,m)}\">#{DATA['months'][m-1][1]} ↗</a></h2>#{static_month(y,m)}</section>" }.join+'</div>'
-  items=MANIFEST.select { |e|e['kind']=='annual' && e['year']==y }
-  html=intro("#{y} metų kalendorius","#{Date.gregorian_leap?(y) ? 'Keliamieji metai: 366 dienos ir vasario 29-oji.' : '365 dienos ir 12 mėnesių.'} Spustelėję mėnesio pavadinimą rasite dešimt mėnesio dizainų.",yearlinks)+"<button data-print>Spausdinti metų apžvalgą</button>"+months+'<h2>Metiniai kalendoriai spausdinimui</h2><p>Pasirinkite vieną iš dešimties A3 metinių dizainų. Galimos vertikalios ir horizontalios kompozicijos.</p>'+gallery(items)+'<h2>Lietuvos šventinės dienos</h2>'+holiday_table(y)+commemoration_table(y)+source+"<p><a href=\"/savaites/#{y}/\">ISO savaitės</a> · <a href=\"/darbo-dienos/#{y}/\">Darbo dienos ir valandos</a> · <a href=\"/sventes/\">Švenčių ir atmintinų dienų paaiškinimai</a></p>"
-  page(y.to_s,"#{y} metų kalendorius – atsisiųsti ir spausdinti","#{y} metų kalendorius su visais 12 mėnesių, Lietuvos šventėmis ir ISO savaitėmis. Mėnesių kolekcijos ir metiniai A3 PDF bei vaizdo failai.",html)
+  months=(1..12).map do |month|
+   label=DATA['months'][month-1][1]
+   %(<section class="year-month"><h3><a href="#{month_url(y,month)}">#{label} <span aria-hidden="true">→</span></a></h3>#{static_month(y,month,day_plans: true)}</section>)
+  end.join
+  items=MANIFEST.select { |entry|entry['kind']=='annual' && entry['year']==y }
+  first=items.find { |entry|entry['design']==(y==2027 ? '06' : '01') }||items.first
+  days=Date.gregorian_leap?(y) ? '366 dienos, vasaris turi 29 dienas' : '365 dienos'
+  heading=calendar_year_header(y, "#{days}. Atsisiųskite metinį šabloną arba peržiūrėkite mėnesius ir Lietuvos šventines dienas.")
+  featured=<<~HTML
+   <section class="annual-templates" id="metiniai-sablonai" aria-labelledby="annual-templates-title">
+     <header class="annual-templates__header">
+       <img src="/assets/visuals/shell/pdf.svg" class="shell-art" alt="" aria-hidden="true" width="78" height="78">
+       <div><h2 id="annual-templates-title">#{y} m. kalendoriaus šablonai</h2><p>Pasirinkite vieną iš dešimties A3 maketų. Atsisiųskite PDF spausdinimui arba vaizdą.</p></div>
+     </header>
+     <div class="annual-templates__feature">#{annual_preview(first)}#{annual_downloads(items,first)}</div>
+     #{annual_print_quality(first)}
+     #{gallery(items,true)}
+   </section>
+  HTML
+  overview=calendar_year_overview(y,months)
+  dates=%(<h2>Lietuvos šventinės dienos</h2>#{holiday_table(y)}#{commemoration_table(y)}#{source}#{year_context(y)}<nav class="guide-actions" aria-label="#{y} m. datos"><a href="/darbo-dienos/#{y}/">Darbo dienos ir valandos</a><a href="/sventes/">Lietuvos šventės</a></nav>)
+  html=%(<div class="year-workspace annual-workspace">#{calendar_sidebar(y)}<div>#{heading}#{featured}#{overview}#{dates}</div></div>)
+  page(y.to_s,"#{y} metų kalendorius – atsisiųsti ir spausdinti","#{y} metų kalendorius su visais 12 mėnesių, Lietuvos šventėmis ir ISO savaitėmis. Mėnesių kolekcijos ir metiniai A3 PDF bei vaizdo failai.",html,true)
  end
  def generate_holidays(y)
   annual=MANIFEST.find { |e|e['kind']=='annual' && e['year']==y }
-  html=intro("#{y} metų šventinės dienos Lietuvoje",'Įstatyme nustatytos šventinės dienos ir jų savaitės dienos. Pagal Darbo kodeksą šiomis dienomis paprastai nedirbama, tačiau taikomos įstatyme numatytos išimtys.',yearlinks('sventes/'))+'<p id="next-holiday" class="source-note"></p>'+holiday_table(y,nil,true)+commemoration_table(y,nil,true)+source+'<p><a href="/sventes/">Visų švenčių ir atmintinų dienų paaiškinimai</a></p>'
+  intro='Įstatyme nustatytos šventinės dienos ir jų savaitės dienos. Pagal Darbo kodeksą šiomis dienomis paprastai nedirbama, tačiau taikomos įstatyme numatytos išimtys.'
+  html=calendar_period_intro("#{y} metų šventinės dienos Lietuvoje",intro,yearlinks('sventes/', current: y),"shell/year-#{y}")
+  html+=%(<p id="next-holiday" class="source-note" data-holiday-year="#{y}" hidden></p>)+holiday_table(y,nil,true)+commemoration_table(y,nil,true)+source
+  html+=%(<p class="source-note">2030 m. datos apskaičiuotos pagal paskelbtą švenčių tvarką. Iki 2030 m. ji gali pasikeisti.</p>) if y==2030
+  html+=%(<p>Darbo ir poilsio laiką palyginkite <a href="/darbo-dienos/#{y}/">#{y} m. darbo dienų lentelėje</a>, o mėnesių tinklelius rasite <a href="/#{y}/">#{y} metų kalendoriuje</a>.</p>)
+  html+='<p><a href="/sventes/">Visų švenčių ir atmintinų dienų paaiškinimai</a></p>'
   html+="<h2>Šventės spausdinamame kalendoriuje</h2><p>Metiniame lape šventinės dienos išskirtos raudonai, o pilnas jų sąrašas pateiktas aukščiau.</p><a class=\"button\" href=\"#{download_href(annual,'pdf')}\" download>Metų PDF su šventėmis</a> <a class=\"button\" href=\"#{download_href(annual,'webp')}\" download>Metų kalendoriaus vaizdas</a>" if annual
   page("sventes/#{y}","#{y} metų šventinės dienos Lietuvoje","Lietuvos šventinės dienos #{y} metais: tikslios datos, savaitės dienos, Velykos, Motinos ir Tėvo diena bei oficialūs teisės šaltiniai.",html,true)
  end
@@ -403,24 +552,24 @@ module Pages
    comparison=comparison.sub(%r{<article data-work-compare="#{schedule}">.*?</article>}m) { |block|block.sub('<strong data-work-days>—',"<strong data-work-days>#{total_days}").sub('<strong data-work-hours>—',"<strong data-work-hours>#{total_hours}") }
   end
   comparison=comparison.sub('Skaičiai įkeliami iš mėnesio lentelių.',"Šešių ir penkių dienų savaitės modelių skirtumas: darbo dienų – #{comparison_totals[6][0]-comparison_totals[5][0]}, valandų – #{comparison_totals[6][1]-comparison_totals[5][1]}.")
-  html=intro("#{y} metų darbo dienų kalendorius",'Darbo dienos, poilsio dienos ir darbo valandų įvertis pagal pasirinktą standartinį grafiką.',yearlinks('darbo-dienos/'))+comparison+'<div class="toolbar-group"><label>Darbo savaitė<select id="work-schedule"><option value="5">5 dienos · 40 valandų</option><option value="6">6 dienos · 40 valandų</option></select></label><button id="work-csv">Atsisiųsti CSV suvestinę</button><button data-print>Spausdinti lentelę</button></div>'+tables+'<h2>Skaičiavimo metodika</h2><p>Penkių dienų savaitė: pirmadienis–penktadienis, 8 valandos per dieną. Šešių dienų pavyzdys: pirmadienis–penktadienis po 7 valandas, šeštadienis 5 valandas (40 valandų per savaitę). Šventinės dienos iš darbo dienų atimamos. Savaitgalio šventės neperkeliamos.</p><p>Pagal Darbo kodekso 112 straipsnio 6 dalį, švenčių dienos išvakarėse numatyta darbo diena trumpinama viena valanda, išskyrus pagal sutrumpintą darbo laiko normą dirbančius darbuotojus. Nuo 2026-11-01 šios dalies redakcija taip pat nustato, kad darbo užmokestis paliekamas; kai atlygis priklauso nuo darbo normų, už trumpintą valandą mokamas vidutinis darbo užmokestis, o kai dėl darbo organizavimo ypatumų ar nepertraukiamos veiklos trumpinti neįmanoma – kaip už viršvalandinį darbą. Skaičiuoklė pateikia tik 5 arba 6 dienų standartinio grafiko aritmetinį įvertį ir neapskaičiuoja šių individualių darbo užmokesčio išimčių, atostogų, suminės apskaitos ar pamaininio darbo. Tai bendro pobūdžio planavimo įrankis, o ne individuali darbo teisės konsultacija.</p>'+source+"<p><a href=\"/datos-skaiciuokle/\">Apskaičiuoti pasirinktą laikotarpį</a> · <a href=\"/#{y}/\">#{y} metų kalendorius</a></p>"
+  html=calendar_period_intro("#{y} metų darbo dienų kalendorius",'Darbo dienos, poilsio dienos ir darbo valandų įvertis pagal pasirinktą standartinį grafiką.',yearlinks('darbo-dienos/', current: y),"shell/year-#{y}")+comparison+'<div class="toolbar-group"><label>Darbo savaitė<select id="work-schedule"><option value="5">5 dienos · 40 valandų</option><option value="6">6 dienos · 40 valandų</option></select></label><button id="work-csv">Atsisiųsti CSV suvestinę</button><button data-print>Spausdinti lentelę</button></div>'+tables+'<h2>Skaičiavimo metodika</h2><p>Penkių dienų savaitė: pirmadienis–penktadienis, 8 valandos per dieną. Šešių dienų pavyzdys: pirmadienis–penktadienis po 7 valandas, šeštadienis 5 valandas (40 valandų per savaitę). Šventinės dienos iš darbo dienų atimamos. Savaitgalio šventės neperkeliamos.</p><p>Pagal Darbo kodekso 112 straipsnio 6 dalį, švenčių dienos išvakarėse numatyta darbo diena trumpinama viena valanda, išskyrus pagal sutrumpintą darbo laiko normą dirbančius darbuotojus. Nuo 2026-11-01 šios dalies redakcija taip pat nustato, kad darbo užmokestis paliekamas; kai atlygis priklauso nuo darbo normų, už trumpintą valandą mokamas vidutinis darbo užmokestis, o kai dėl darbo organizavimo ypatumų ar nepertraukiamos veiklos trumpinti neįmanoma – kaip už viršvalandinį darbą. Skaičiuoklė pateikia tik 5 arba 6 dienų standartinio grafiko aritmetinį įvertį ir neapskaičiuoja šių individualių darbo užmokesčio išimčių, atostogų, suminės apskaitos ar pamaininio darbo. Tai bendro pobūdžio planavimo įrankis, o ne individuali darbo teisės konsultacija.</p>'+source+"<p><a href=\"/datos-skaiciuokle/\">Apskaičiuoti pasirinktą laikotarpį</a> · <a href=\"/#{y}/\">#{y} metų kalendorius</a></p>"
   page("darbo-dienos/#{y}","#{y} metų darbo dienų kalendorius","#{y} metų darbo dienų, valandų, švenčių ir prieššventinių trumpinimų suvestinė. Palyginkite 5 ir 6 dienų savaitę, atverkite mėnesius ir patikrinkite pasirinktos datos statusą.",html,true)
  end
  def generate_weeks(y)
   total=Date.new(y,12,28).cweek
-  rows=(1..total).map { |w|a=Date.commercial(y,w,1);b=a+6;"<tr><td>#{w}</td><td><time datetime=\"#{a}\">#{a}</time></td><td><time datetime=\"#{b}\">#{b}</time></td></tr>" }.join
-  finder='<section class="panel calculator"><h2>Rasti datų intervalą pagal ISO savaitę</h2><form id="iso-week-range" class="form-row"><label>ISO savaitės metai<input id="iso-week-year" type="number" min="1900" max="9999" value="2027" required></label><label>Savaitės numeris<input id="iso-week-number" type="number" min="1" max="53" value="1" required></label><button type="submit">Rodyti savaitės datas</button></form><p id="iso-week-range-result" class="result" role="status" aria-live="polite">Pasirinkite ISO metus ir savaitę.</p><button type="button" id="iso-week-copy" disabled>Kopijuoti datų intervalą</button></section>'.sub('value="2027"',"value=\"#{y}\"")
-  content=intro("#{y} metų savaičių numeriai",'ISO savaitė prasideda pirmadienį. Pirmoji ISO metų savaitė apima sausio 4-ąją; metų sandūroje savaitės metai gali skirtis nuo kalendorinių metų.',yearlinks('savaites/'))+'<div class="panel calculator"><label>Pasirinkite datą<input type="date" id="iso-date" data-tools-readiness inert aria-busy="true"></label><p id="iso-result" class="result" aria-live="polite"></p></div>'+finder+"<div class=\"table-scroll\"><table class=\"data-table\"><thead><tr><th>ISO savaitė</th><th>Pirmadienis</th><th>Sekmadienis</th></tr></thead><tbody>#{rows}</tbody></table></div><a href=\"/#{y}/\">#{y} metų kalendorius</a>"
+  rows=(1..total).map { |w|a=Date.commercial(y,w,1);b=a+6;"<tr><th scope=\"row\">#{w}</th><td><time datetime=\"#{a}\">#{a}</time></td><td><time datetime=\"#{b}\">#{b}</time></td></tr>" }.join
+  content=calendar_period_intro("#{y} metų savaičių numeriai",'ISO savaitė prasideda pirmadienį. Pirmoji ISO metų savaitė apima sausio 4-ąją; metų sandūroje savaitės metai gali skirtis nuo kalendorinių metų.','{% include week-year-links.html %}',"shell/year-#{y}")+%({% include week-year-tools.html year=#{y} %})+"<div class=\"table-scroll week-year-table\"><table class=\"data-table\"><caption>#{y} m. ISO savaičių datos</caption><thead><tr><th>ISO savaitė</th><th>Pirmadienis</th><th>Sekmadienis</th></tr></thead><tbody>#{rows}</tbody></table></div><a href=\"/#{y}/\">#{y} metų kalendorius</a>"
+  content+=%(<p class="source-note">Patikrinkite, kaip taikoma <a href="https://www.gnu.org/software/emacs/manual/html_node/calc/ISO-8601.html">ISO savaitės taisyklė</a>. Jei reikia suskaičiuoti ne savaites, o pasirinkto laikotarpio darbo dienas, atverkite <a href="/datos-skaiciuokle/">datų skaičiuoklę</a>.</p>)
   page("savaites/#{y}","#{y} metų savaičių numeriai","Visos #{y} metų ISO savaitės: tikslūs pirmadienio–sekmadienio intervalai ir dabartinės savaitės numerio įrankis. Metų sandūros paaiškinimas.",content,true)
  end
  def generate_tools
   page('datos-skaiciuokle','Datos skaičiuoklė – dienų skirtumas ir darbo dienos','Skaičiuokite tikslią laikotarpio trukmę, darbo dienas su Lietuvos šventėmis ir pridėkite kalendorinių arba darbo dienų prie datos.',intro('Datos skaičiuoklė','Skaičiuokite tikslius intervalus, darbo dienas su Lietuvos šventėmis ir datas po kalendorinių ar darbo dienų.')+<<~HTML,true)
    <section class="date-hero" aria-label="Datos planavimo įrankio pristatymas">
     <div class="date-hero__copy"><span class="date-hero__eyebrow">Lietuvos kalendorius · tikslus planavimas</span><h2>Nuo datos iki aiškaus plano</h2><p>Apskaičiuokite laikotarpį, darbo dienas ir datą po pasirinkto dienų skaičiaus. Rezultatą galite išsisaugoti arba pasidalyti nuoroda.</p><div class="date-hero__features"><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3.5h12a1.5 1.5 0 0 1 1.5 1.5v11a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 16V5A1.5 1.5 0 0 1 4 3.5Z"/><path d="M6 2v3m8-3v3M3 7h14m-9 4 2 2 4-4"/></svg>Valstybinės šventės</span><span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.3"/><path d="M10 5.5V10l3 2"/></svg>Darbo dienų skaičiuoklė</span></div></div>
-    <div class="date-hero__art"><svg viewBox="0 0 440 230" role="img" aria-labelledby="date-illustration-title date-illustration-desc"><title id="date-illustration-title">Datos ir kalendoriaus intervalas</title><desc id="date-illustration-desc">Dvi pažymėtos kalendoriaus datos sujungtos planavimo laiko juosta.</desc><defs><linearGradient id="date-card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#edf7f1"/></linearGradient><linearGradient id="date-line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f5bd42"/><stop offset="1" stop-color="#05835b"/></linearGradient><filter id="date-shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#245741" flood-opacity=".12"/></filter></defs><circle cx="221" cy="114" r="99" fill="#e8f4ed"/><circle cx="221" cy="114" r="75" fill="#f5faf6"/><path d="M81 139h278" stroke="url(#date-line)" stroke-width="5" stroke-linecap="round"/><path d="M109 139h222" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 10" opacity=".9"/><g filter="url(#date-shadow)" transform="rotate(-7 122 104)"><rect x="48" y="39" width="133" height="124" rx="18" fill="url(#date-card)" stroke="#c9dfd2" stroke-width="2"/><path d="M48 61a22 22 0 0 1 22-22h89a22 22 0 0 1 22 22v15H48Z" fill="#0a7954"/><path d="M78 32v16m72-16v16" stroke="#0a7954" stroke-width="7" stroke-linecap="round"/><text x="114" y="59" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" letter-spacing="1.6">PRADŽIA</text><text x="114" y="104" text-anchor="middle" fill="#17382c" font-size="30" font-weight="750">12</text><text x="114" y="125" text-anchor="middle" fill="#597267" font-size="11" font-weight="650">GEGUŽĖ</text><circle cx="114" cy="139" r="4" fill="#f4b83e"/></g><g filter="url(#date-shadow)" transform="rotate(6 318 104)"><rect x="259" y="53" width="133" height="124" rx="18" fill="url(#date-card)" stroke="#c9dfd2" stroke-width="2"/><path d="M259 75a22 22 0 0 1 22-22h89a22 22 0 0 1 22 22v15H259Z" fill="#f0b638"/><path d="M289 46v16m72-16v16" stroke="#c18b16" stroke-width="7" stroke-linecap="round"/><text x="325" y="73" text-anchor="middle" fill="#4c3912" font-size="10" font-weight="700" letter-spacing="1.6">PABAIGA</text><text x="325" y="118" text-anchor="middle" fill="#17382c" font-size="30" font-weight="750">28</text><text x="325" y="139" text-anchor="middle" fill="#597267" font-size="11" font-weight="650">GEGUŽĖ</text><circle cx="325" cy="153" r="4" fill="#07845c"/></g><g fill="#07845c"><circle cx="221" cy="139" r="5"/><circle cx="213" cy="139" r="2" fill="#f3bb45"/></g><path d="M209 184c7 8 17 12 29 12" fill="none" stroke="#a7c7b4" stroke-width="2" stroke-linecap="round"/><circle cx="238" cy="196" r="3" fill="#f3bb45"/></svg></div>
+    <div class="date-hero__art"><img src="/assets/visuals/shell/date-range.svg" width="420" height="220" alt="Du kalendoriaus lapai su pažymėtomis datomis, sujungti rodykle" decoding="async"></div>
    </section>
    <section class="panel calculator date-calculator" aria-labelledby="date-calculator-title"><div class="date-calculator__heading"><div><span class="date-calculator__step">1 · Pasirinkite laikotarpį</span><h2 id="date-calculator-title">Datos intervalo skaičiuoklė</h2><p>Pasirinkite, ar įtraukti pabaigos datą į kalendorinių dienų skaičių. Skaičiuojant darbo dienas visada įtraukiamos abi datos ir atmetamos Lietuvos švenčių dienos.</p></div><span class="date-calculator__badge"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3.5h12A1.5 1.5 0 0 1 17.5 5v11a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 16V5A1.5 1.5 0 0 1 4 3.5Z"/><path d="M6 2v3m8-3v3M3 7h14M6.5 10h2m3 0h2m-7 3h2m3 0h2"/></svg>Data lieka jūsų įrenginyje</span></div><form id="calculator" data-tools-readiness inert aria-busy="true"><div class="date-inputs"><label>Pradžios data<input name="start" type="date" min="1900-01-01" max="2100-12-31" required></label><button class="date-swap" type="button" id="date-swap" aria-label="Sukeisti pradžios ir pabaigos datas" title="Sukeisti datas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h11m0 0-3-3m3 3-3 3M16 14H5m0 0 3 3m-3-3 3-3"/></svg></button><label>Pabaigos data<input name="end" type="date" min="1900-01-01" max="2100-12-31" required></label></div><div class="date-presets" role="group" aria-label="Greitai pasirinkti laikotarpį"><span>Greitai pasirinkti</span><button type="button" data-range="week">Ši savaitė</button><button type="button" data-range="month">Šis mėnuo</button><button type="button" data-range="year">Šie metai</button><button type="button" data-range="30">30 dienų</button></div><label class="check date-inclusive"><input name="inclusive" type="checkbox">Įtraukti abi ribines datas į kalendorinių dienų skaičių</label><div class="date-adjust"><label for="date-offset">Nuo pradžios datos apskaičiuoti</label><div class="date-adjust__fields"><input id="date-offset" name="offset" type="number" min="-36600" max="36600" value="0"><select name="offset-unit" aria-label="Dienų rūšis"><option value="calendar">kalendorinių dienų</option><option value="workday">darbo dienų</option></select><span>(neigiamas skaičius atima)</span></div></div><div class="date-form-actions"><button class="primary" type="submit"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#calendar"></use></svg>Apskaičiuoti</button><button type="button" id="copy-date-result"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="10" height="11" rx="2"/><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>Kopijuoti rezultatą</button><button type="button" id="share-date-result"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="15" cy="4" r="2.2"/><circle cx="5" cy="10" r="2.2"/><circle cx="15" cy="16" r="2.2"/><path d="m7 9 6-4m-6 6 6 4"/></svg>Dalytis nuoroda</button></div><p id="date-calculator-status" class="date-calculator__status" role="status" aria-live="polite"></p></form><div id="calc-result" class="result date-result" aria-live="polite" aria-atomic="true">Pasirinkite datas, kad pamatytumėte dienų ir darbo laiko suvestinę.</div><div id="calc-chart" class="date-chart" aria-live="polite"></div><div class="date-method"><span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.3"/><path d="M10 5.5V10l3 2"/></svg></span><p>Kalendorinė trukmė pateikiama metais, mėnesiais ir dienomis. Darbo dienos skaičiuojamos imtinai, pirmadieniais–penktadieniais, atmetant Lietuvos šventes. Valandos remiasi standartine 5 dienų savaite ir gali neapimti jūsų darbo grafiko išimčių.</p></div></section>
-   <section class="date-method-panel"><div><span class="date-calculator__step">Skaičiavimo metodika</span><h2>Aiškios prielaidos, patikimi planai</h2><p>Dienų skirtumas skaičiuojamas pagal kalendorines datas, todėl vasaros laiko pokyčiai rezultato nekeičia. Įtraukus abi ribines datas prie kalendorinių dienų pridedama viena diena. Darbo dienų skaičius visada įtraukia pradžios ir pabaigos datas, neįtraukia savaitgalių bei Lietuvos švenčių. Standartinių darbo valandų skaičiavime atsižvelgiama į prieššventinės dienos trumpinimą.</p><a href="/darbo-dienos/2027/">Peržiūrėti darbo dienų kalendorių <span aria-hidden="true">→</span></a></div><div class="date-method-panel__mark" aria-hidden="true"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="43" fill="#e9f4ed"/><circle cx="48" cy="48" r="28" fill="#fff" stroke="#b7d5c5" stroke-width="2"/><path d="M48 29v20l14 8" fill="none" stroke="#087b55" stroke-linecap="round" stroke-width="4"/><path d="M38 13h20M76 48h8M12 48h8" stroke="#e7ae31" stroke-linecap="round" stroke-width="3"/></svg></div></section>
+   <section class="date-method-panel"><div><span class="date-calculator__step">Skaičiavimo metodika</span><h2>Aiškios prielaidos, patikimi planai</h2><p>Dienų skirtumas skaičiuojamas pagal kalendorines datas, todėl vasaros laiko pokyčiai rezultato nekeičia. Įtraukus abi ribines datas prie kalendorinių dienų pridedama viena diena. Darbo dienų skaičius visada įtraukia pradžios ir pabaigos datas, neįtraukia savaitgalių bei Lietuvos švenčių. Standartinių darbo valandų skaičiavime atsižvelgiama į prieššventinės dienos trumpinimą.</p><a href="/darbo-dienos/2027/">Peržiūrėti darbo dienų kalendorių <span aria-hidden="true">→</span></a></div><div class="date-method-panel__mark" aria-hidden="true"><img src="/assets/visuals/shell/date-stopwatch.svg" width="112" height="112" alt="" aria-hidden="true" loading="lazy" decoding="async"></div></section>
    <section class="panel calculator"><h2>Kiek liko laiko?</h2><label>Pasirinkta data<input type="date" id="countdown-date" data-tools-readiness inert aria-busy="true"></label><p id="countdown-result" class="result" aria-live="polite"></p><p id="countdown-standard"></p></section>
   HTML
   # The personal editor is an authored source page with its own scoped modules.
@@ -429,7 +578,7 @@ module Pages
   abort 'Personal calendar editor source is missing' unless editor_source.include?('calendar_editor: true') && editor_source.include?('id="calendar-editor"')
  end
  def generate_phase4
-  html=intro('Atostogų planuoklis','Palyginkite ilgiausią vientisą poilsį, atostogų dienų efektyvumą ir kelis atskirus laikotarpius 2027 arba 2028 metais.')+<<~HTML
+  html=intro('Atostogų planuoklis','Palyginkite ilgiausią vientisą poilsį, atostogų dienų efektyvumą ir kelis atskirus laikotarpius 2027–2030 metais.')+<<~HTML
    <section class="panel leave-legal-note" aria-labelledby="leave-legal-title">
     <h2 id="leave-legal-title">Ką šis skaičiavimas parodo</h2>
     <p>Pasirinkite darbo savaitę, atostogų dienų likutį ir tinkamą laiką. Skaičiuoklė remiasi Lietuvos įstatyme nustatytomis švenčių dienomis; šventės į atostogų dienų skaičių neįtraukiamos. Rezultatus derinkite su savo darbo grafiku ir darbdaviu.</p>
@@ -442,7 +591,7 @@ module Pages
    <form id="leave-planner" class="panel leave-form" novalidate>
     <fieldset class="leave-fieldset"><legend>1. Pasirinkite planą</legend>
      <div class="leave-input-grid">
-      <label>Planavimo metai<select name="year"><option value="2027">2027</option><option value="2028">2028</option></select></label>
+      <label>Planavimo metai<select name="year">#{HOLIDAY_YEARS.map { |year| %(<option value="#{year}">#{year}</option>) }.join}</select></label>
       <label>Turimas atostogų dienų likutis<input name="budget" type="number" min="0" max="60" step="1" value="20" inputmode="numeric"><small>Įrašykite savo likutį; 20 ar 24 dienos yra tik dažnos minimalios normos, ne jūsų asmeninis likutis.</small></label>
       <label>Darbo savaitė<select name="schedule"><option value="5">5 dienos · pirmadienis–penktadienis</option><option value="6">6 dienos · pirmadienis–šeštadienis</option><option value="custom">Pasirinkti savaitės dienas</option></select></label>
       <label>Pageidaujamas metų laikas<select name="season"><option value="all">Visi mėnesiai</option><option value="spring">Pavasaris · kovas–gegužė</option><option value="summer">Vasara · birželis–rugpjūtis</option><option value="autumn">Ruduo · rugsėjis–lapkritis</option><option value="winter">Žiema · gruodis–vasaris</option></select></label>
@@ -467,16 +616,16 @@ module Pages
    <section id="leave-summary" class="leave-summary" aria-live="polite" aria-atomic="true"></section>
    <section id="leave-results" class="leave-results" aria-label="Atostogų planų variantai"></section>
    <section id="leave-detail" aria-live="polite"></section>
-   <section class="panel leave-evaluation"><h2>Įvertinti savo pasirinktą laikotarpį</h2><p>Galima rinktis datas ir per 2026–2029 metų sandūrą. Skaičiuojamos abiejų metų šventės; intervalas negali viršyti 90 dienų.</p><div class="leave-input-grid"><label>Pradžia<input type="date" name="evalStart" form="leave-planner"></label><label>Pabaiga<input type="date" name="evalEnd" form="leave-planner"></label></div><div id="custom-evaluation" aria-live="polite"></div><button type="button" id="evaluate-period">Įvertinti šį laikotarpį</button></section>
+   <section class="panel leave-evaluation"><h2>Įvertinti savo pasirinktą laikotarpį</h2><p>Galima rinktis datas ir 2026–2031 metų intervale, taip pat per metų sandūrą. Skaičiuojamos abiejų metų šventės; intervalas negali viršyti 90 dienų.</p><div class="leave-input-grid"><label>Pradžia<input type="date" name="evalStart" form="leave-planner"></label><label>Pabaiga<input type="date" name="evalEnd" form="leave-planner"></label></div><div id="custom-evaluation" aria-live="polite"></div><button type="button" id="evaluate-period">Įvertinti šį laikotarpį</button></section>
    <section class="panel leave-faq" aria-labelledby="leave-faq-title"><h2 id="leave-faq-title">Atostogų planavimas Lietuvoje: dažni klausimai</h2>
     <h3>Kiek kasmetinių atostogų dienų skaičiuoti?</h3><p>Daugumai darbuotojų, įprastai dirbančių penkias dienas per savaitę, nustatytas minimumas yra 20 darbo dienų; dirbant šešias dienas – 24. Tam tikroms darbuotojų grupėms priklauso ilgesnės atostogos. Trumpesnei ar kitokiai darbo savaitei taikoma savaitėmis išreikšta taisyklė. Įrašykite savo tikrąjį likutį, nes individualios teisės priklauso nuo aplinkybių. Plačiau: <a href="/darbo-dienos/2027/">2027 m. darbo dienų kalendorius</a>.</p>
     <h3>Ar šventinė diena sumažina atostogų likutį?</h3><p>Pagal Darbo kodekso 126 straipsnį į kasmetinių atostogų trukmę neįskaitomos įstatyme nurodytos švenčių dienos. Skaičiuoklė jas rodo atskirai ir neįtraukia į reikalingų atostogų darbo dienų skaičių; savaitgalio šventės į pirmadienį neperkeliamos. Peržiūrėkite <a href="/sventes/2027/">2027 m. Lietuvos švenčių sąrašą</a>.</p>
-    <h3>Kada geriausia atostogauti 2027 ar 2028 metais?</h3><p>Pasirinkite darbo savaitę, atostogų likutį ir jums tinkamus mėnesius. Palyginimas parodo ilgiausią vientisą pertrauką, poilsio dienų ir atostogų dienų santykį bei kelis tarpusavyje atskirtus laikotarpius. Rezultate atverkite „Dienų eiga“, kad patikrintumėte kiekvieną datą.</p>
+    <h3>Kada geriausia atostogauti 2027–2030 metais?</h3><p>Pasirinkite darbo savaitę, atostogų likutį ir jums tinkamus mėnesius. Palyginimas parodo ilgiausią vientisą pertrauką, poilsio dienų ir atostogų dienų santykį bei kelis tarpusavyje atskirtus laikotarpius. Rezultate atverkite „Dienų eiga“, kad patikrintumėte kiekvieną datą.</p>
     <h3>Ar mano įvesti duomenys siunčiami į serverį?</h3><p>Ne. Įvestos datos ir planavimo parinktys išsaugomos tik šiame įrenginyje esančioje naršyklėje. Statinis Lietuvos švenčių kalendorius įkeliamas skaičiavimui; įvestas asmeninis planas svetainėje neįrašomas ir bendrinimo nuoroda nekuriama. <a href="/privatumas/">Privatumo paaiškinimas</a>.</p>
    </section>
    <section class="panel leave-source-note"><h2>Metodika ir ribos</h2><p>Optimizatorius generuoja galimus nepertraukiamus intervalus iki pasirinktos maksimalios trukmės. Vieno laikotarpio reitinge pirmiausia vertinamas bendras laisvų kalendorinių dienų skaičius; efektyvumo reitinge lyginamas laisvų dienų ir papildomų atostogų darbo dienų santykis. Kelių laikotarpių parinkimas dinaminiu programavimu didina bendrą intervalų dienų skaičių pagal jūsų turimą atostogų dienų skaičių; lygiųjų atveju renkamasi mažiau atostogų dienų, tada mažiau atskirų intervalų, paskui ankstesnės datos. Tarp dviejų atskirų pasiūlymų paliekama bent viena pagal grafiką dirbama diena.</p><p>Šventinė diena į atostogų dienų skaičių neįtraukiama, o savaitgalio šventė automatiškai neperkeliama. Jau suplanuotos datos atimamos iš nurodyto dienų likučio ir sąmoningai laikomos atskirai; darbo dienų apribojimai išjungia per juos einantį kandidatą. Įvesti nustatymai saugomi tik šioje naršyklėje; į serverį, nuorodas ar analitiką nesiunčiami. Dalijimosi nuorodos nekuriamos.</p><p>Algoritmo aprėptis: skaičiuojant daugiausia 60 dienų trukmės intervalus, intervalų sudarymas yra O(N·L), o kelių pertraukų paieška – O(N·B·K·L), kur N – metų dienų skaičius, L – maksimali atkarpa, B – likęs atostogų dienų skaičius, K – pasirinktų laikotarpių riba. Rezultatas apskaičiuojamas deterministiškai.</p></section>
   HTML
-  page('atostogu-planavimas','Atostogų planavimas 2027–2028 – dienų skaičiuoklė','Planuokite atostogas Lietuvoje pagal darbo savaitę, šventes ir dienų likutį. Palyginkite poilsio bei atostogų dienas ir kelis laikotarpius.',html,true,nil,true)
+  page('atostogu-planavimas','Atostogų planavimas 2027–2030 – dienų skaičiuoklė','Planuokite atostogas Lietuvoje pagal darbo savaitę, šventes ir dienų likutį. Palyginkite poilsio bei atostogų dienas ir kelis laikotarpius.',html,true,nil,true)
  end
 end
 require_relative '../lib/print_layout'
@@ -501,17 +650,21 @@ require_relative '../lib/namedays_pages'
 NamedaysPages.run
 search_page=<<~HTML
  <section class="search-page" aria-labelledby="search-page-title">
+  <header class="search-page__heading">
+   <div>
+    <h1 id="search-page-title">Raskite reikalingą datą ar įrankį</h1>
+    <p>Ieškokite visuose Kalendorius365 puslapiuose: švenčių, 2027–2030 m. kalendorių, darbo ir mokinių atostogų, planuoklių, Saulės bei Mėnulio duomenų ir horoskopų.</p>
+   </div>
+   {% include shell-art.html name="search-glass" size=136 %}
+  </header>
   <div class="search-page__hero">
-   <span class="eyebrow">Visos svetainės paieška</span>
-   <h1 id="search-page-title">Raskite reikalingą datą ar įrankį</h1>
-   <p>Ieškokite visuose Kalendorius365 puslapiuose: švenčių, 2027–2029 m. kalendorių, darbo ir mokinių atostogų, planuoklių, Saulės bei Mėnulio duomenų ir horoskopų.</p>
    <noscript>
     <style>#site-search-page-form,.search-page__quick,.search-page__results{display:none}</style>
     <section class="panel" aria-labelledby="search-no-js-title">
      <h2 id="search-no-js-title">Pasirinkite svetainės skiltį</h2>
      <p>Interaktyviai paieškai reikia įjungto JavaScript. Visą svetainės turinį galite pasiekti šiomis nuorodomis.</p>
      <nav id="search-no-js-nav" aria-label="Svetainės skiltys"><ul>
-      <li><a href="/2027/">2027 m. kalendorius</a> · <a href="/2028/">2028 m. kalendorius</a> · <a href="/2029/">2029 m. kalendorius</a></li>
+      <li><a href="/2027/">2027 m. kalendorius</a> · <a href="/2028/">2028 m. kalendorius</a> · <a href="/2029/">2029 m. kalendorius</a> · <a href="/2030/">2030 m. kalendorius</a></li>
       <li><a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a></li>
       <li><a href="/vardadieniai/">Vardadieniai pagal datą</a></li>
       <li><a href="/horoskopai/">Horoskopai</a> · <a href="/zodiakas/">Zodiako ženklai</a></li>
@@ -600,6 +753,10 @@ search_category = lambda do |url|
  else 'tools'
  end
 end
+date_guides = Pages::LITHUANIAN_DATES.transform_values do |entries|
+  entries.to_h { |entry| [entry.fetch('slug'), entry] }
+end
+civic_guides = nil
 search=Dir.glob("#{Pages::ROOT}/site/**/index.html").filter_map do |path|
 raw=File.read(path); fm=raw[/\A---\s*\n(.*?)\n---\s*\n/m,1]; next unless fm
 require 'yaml'; front=YAML.safe_load(fm); next unless front && front['title']
@@ -621,6 +778,18 @@ next if front['share_archive'] || front['robots'].to_s.split(/[^a-z]+/i).include
  aliases+=' metinis kalendorius metų spausdinamas mėnesio pdf webp' if url.match?(%r{^/20\d\d/})
  body=raw.sub(/\A---\s*\n.*?\n---\s*\n/m,'')
  headings=body.scan(%r{<h[1-4]\b[^>]*>(.*?)</h[1-4]>}im).flatten.map { |chunk|search_plain_text.call(chunk) }.reject(&:empty?).uniq.join(' ')
+ headings=front.fetch('title').to_s if headings.empty?
+ if front['local_date_type']
+  entry = date_guides.fetch(front.fetch('local_date_type')).fetch(front.fetch('local_date_slug'))
+  headings = entry.fetch('title')
+  body = entry.values_at('title', 'city', 'location', 'date', 'summary', 'context', 'visit').compact.join(' ')
+ elsif front['civic']
+  civic_guides ||= JSON.parse(File.read("#{Pages::ROOT}/site/_data/civic.json")).fetch('pages')
+  entry = civic_guides.fetch(front.fetch('civic'))
+  sections = entry.fetch('sections')
+  headings = [entry.fetch('title'), *sections.map(&:first)].join(' ')
+  body = [entry.fetch('intro'), *entry.fetch('facts').flatten, *entry.fetch('steps').flatten, *sections.flatten].join(' ')
+ end
  # Search only needs each page's searchable vocabulary, not repeated copies of
  # its full prose. The client turns this field into a Set of words for ranking,
  # so keep each normalized term once and avoid downloading redundant text.

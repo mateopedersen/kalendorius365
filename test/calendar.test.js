@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import * as c from "../site/assets/calendar.js";
 import { Store, validate, empty } from "../site/assets/storage.js";
 import { exportICS, importICS } from "../site/assets/ics.js";
+import { activeReminders } from "../site/assets/shell/calendar-reminders.js";
 const data = JSON.parse(
     readFileSync(new URL("../data/calendar.json", import.meta.url)),
   ),
@@ -11,6 +12,7 @@ const data = JSON.parse(
     readFileSync(new URL("../site/assets/data/years.json", import.meta.url)),
   );
 const isoWeekPages = [2027, 2028, 2029].map((year) => readFileSync(new URL(`../site/savaites/${year}/index.html`, import.meta.url), "utf8"));
+const isoWeekTools = readFileSync(new URL("../site/_includes/week-year-tools.html", import.meta.url), "utf8");
 const pageGenerator = readFileSync(new URL("../scripts/pages.rb", import.meta.url), "utf8");
 const toolsScript = readFileSync(new URL("../site/assets/tools.js", import.meta.url), "utf8");
 const yearDirectoryPage = readFileSync(new URL("../site/metai/index.html", import.meta.url), "utf8");
@@ -72,11 +74,12 @@ test("ISO week identifiers resolve to validated Monday–Sunday date ranges", ()
   assert.throws(() => c.isoWeekRange(2027, 53), /savaitės nėra/);
   assert.throws(() => c.isoWeekRange(2027, 0), /ISO metus/);
   for (const [index, year] of [2027, 2028, 2029].entries()) {
-    assert.match(isoWeekPages[index], /id="iso-week-range"/);
-    assert.match(isoWeekPages[index], /id="iso-week-copy"/);
-    assert.match(isoWeekPages[index], new RegExp(`id="iso-week-year"[^>]+value="${year}"`));
+    assert.ok(isoWeekPages[index].includes(`{% include week-year-tools.html year=${year} %}`));
   }
-  assert.match(pageGenerator, /id="iso-week-range"/);
+  assert.ok(pageGenerator.includes("{% include week-year-tools.html year=#{y} %}"));
+  assert.match(isoWeekTools, /id="iso-week-range"/);
+  assert.match(isoWeekTools, /id="iso-week-copy"/);
+  assert.match(isoWeekTools, /id="iso-week-year"[^>]+value="\{\{ include\.year \}\}"/);
   assert.match(toolsScript, /cal\.isoWeekRange\(Number\(\$\("#iso-week-year"\)\.value\), Number\(\$\("#iso-week-number"\)\.value\)\)/);
 });
 test("year directory facts and two-year comparison use the shared calendar engine", () => {
@@ -266,6 +269,18 @@ test("storage CRUD, corruption/quota protection and validation", () => {
   assert.throws(() => full.update((d) => (d.notes.x = "x")));
   assert.equal(full.data.events.length, 0);
 });
+test("independent calendar views merge changes while preserving older tasks", () => {
+  let raw;
+  const memory = { getItem: () => raw, setItem: (_key, next) => { raw = next; } };
+  const calendar = new Store(memory);
+  const planner = new Store(memory);
+  calendar.update((state) => state.tasks.push({ id: "old", date: "2027-02-16", title: "Sena užduotis", done: false }));
+  planner.update((state) => state.tasks.push({ id: "priority", date: "2027-02-16", title: "Svarbus darbas", done: false, priority: "high" }));
+  calendar.update((state) => { state.notes["2027-02-16"] = "Užrašas"; });
+  planner.refresh();
+  assert.deepEqual(planner.data.tasks.map(({ id, priority }) => [id, priority]), [["old", undefined], ["priority", "high"]]);
+  assert.equal(planner.data.notes["2027-02-16"], "Užrašas");
+});
 test("ICS UTF-8 folding, escaping and round trip with timezone recurrence", () => {
   let e = event();
   e.title += "ą".repeat(100);
@@ -287,6 +302,31 @@ test("ICS UTF-8 folding, escaping and round trip with timezone recurrence", () =
   assert.equal(importICS(exportICS([a])).imported[0].end, "2028-02-29");
   const bad = raw.replace("FREQ=WEEKLY", "FREQ=WEEKLY;BYDAY=MO,TU");
   assert.equal(importICS(bad).rejected.length, 1);
+});
+test("all-day reminders use Vilnius time across the DST transition", () => {
+  const entry = {
+    ...event(),
+    allDay: true,
+    start: "2028-03-27",
+    end: "2028-03-28",
+    repeat: "none",
+    until: "",
+    reminder: 1,
+  };
+  const raw = exportICS([entry]);
+  assert.match(raw, /DTSTART;VALUE=DATE:20280327/);
+  assert.match(raw, /DTEND;VALUE=DATE:20280329/);
+  assert.match(raw, /TRIGGER;VALUE=DATE-TIME:20280326T060000Z/);
+  assert.match(exportICS([{ ...entry, reminder: 7 }]), /TRIGGER;VALUE=DATE-TIME:20280320T070000Z/);
+  assert.doesNotMatch(exportICS([{ ...entry, reminder: undefined }]), /BEGIN:VALARM/);
+  const imported = importICS(raw);
+  assert.deepEqual(imported.rejected, []);
+  assert.deepEqual({ ...imported.imported[0], id: entry.id }, entry);
+  assert.equal(importICS(raw.replace("ACTION:DISPLAY", "ACTION:EMAIL")).rejected.length, 1);
+  assert.deepEqual(activeReminders([entry], new Date("2028-03-26T05:59:00Z")), []);
+  assert.deepEqual(activeReminders([entry], new Date("2028-03-26T06:00:00Z")), [entry]);
+  assert.deepEqual(activeReminders([entry], new Date("2028-03-28T20:59:00Z")), [entry]);
+  assert.deepEqual(activeReminders([entry], new Date("2028-03-28T21:00:00Z")), []);
 });
 test("recurrence handles nonexistent month days and leap days", () => {
   const e = {

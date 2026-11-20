@@ -21,7 +21,7 @@ export function eventLocalParts(instant, timeZone = VILNIUS_ZONE) {
   }).formatToParts(date).filter((part) => part.type !== "literal").map((part) => [part.type, part.value]));
 }
 
-export function composeAstronomyEvents(seasons, moonPhases, allowedYears = [2027, 2028, 2029]) {
+export function composeAstronomyEvents(seasons, moonPhases, allowedYears = [2027, 2028, 2029, 2030]) {
   const years = new Set(allowedYears);
   const events = [];
   for (const yearData of seasons.events || []) {
@@ -29,7 +29,7 @@ export function composeAstronomyEvents(seasons, moonPhases, allowedYears = [2027
     for (const [index, utc] of (yearData.utc || []).entries()) {
       const instant = Date.parse(utc), label = seasonLabels[index];
       if (!Number.isFinite(instant) || !label) continue;
-      events.push({ id: `season-${yearData.year}-${label.id}`, kind: "season", title: label.name, utc, instant });
+      events.push({ id: `season-${yearData.year}-${label.id}`, kind: "season", type: label.id, title: label.name, utc, instant });
     }
   }
   for (const event of moonPhases.events || []) {

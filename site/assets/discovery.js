@@ -450,6 +450,7 @@ function setupWeekendPlanner() {
   const planner = $("#weekend-planner");
   if (!planner) return;
   const budget = $("#weekend-leave-budget");
+  const planYear = $("[data-weekend-plan-year]", planner);
   const output = $("#weekend-recommendations");
   const total = $("#weekend-plan-total");
   const caption = $("#weekend-plan-caption");
@@ -526,6 +527,7 @@ function setupWeekendPlanner() {
   for (const section of sections) section.hidden = section.dataset.weekendSection !== selectedYear;
   for (const button of yearButtons) button.addEventListener("click", () => {
     selectedYear = button.dataset.weekendYear;
+    if (planYear) planYear.textContent = selectedYear;
     for (const item of yearButtons) item.setAttribute("aria-pressed", String(item === button));
     for (const section of sections) section.hidden = section.dataset.weekendSection !== selectedYear;
     render();

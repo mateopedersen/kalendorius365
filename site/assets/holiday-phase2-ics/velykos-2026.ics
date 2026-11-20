@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos dienos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:velykos-2026-04-05@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20260405
+DTEND;VALUE=DATE:20260406
+SUMMARY:Krikščionių Velykų (pagal vakarietiškąją tradiciją) dienos
+DESCRIPTION:Šventinė diena · paprastai nedirbama. Velykų sekmadienis ir
+  pirmadienis pagal vakarietiškąją krikščionišką tradiciją kasmet n
+ ustatomi pagal Grigaliaus kalendorių.
+URL:https://kalendorius365.lt/sventes/velykos/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:velykos-2026-04-06@kalendorius365.lt
+DTSTAMP:20261017T120000Z
+DTSTART;VALUE=DATE:20260406
+DTEND;VALUE=DATE:20260407
+SUMMARY:Krikščionių Velykų (pagal vakarietiškąją tradiciją) dienos
+DESCRIPTION:Šventinė diena · paprastai nedirbama. Velykų sekmadienis ir
+  pirmadienis pagal vakarietiškąją krikščionišką tradiciją kasmet n
+ ustatomi pagal Grigaliaus kalendorių.
+URL:https://kalendorius365.lt/sventes/velykos/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,1 +1,452 @@
-[{"slug": "kaip-susiplanuoti-menesi", "title": "Kaip susiplanuoti mėnesį, kad kalendoriuje liktų vietos gyvenimui"}, {"slug": "kaip-spausdinti-kalendoriu", "title": "Kaip atsispausdinti kalendorių be nukirstų kraštų ir smulkaus teksto"}, {"slug": "iso-savaiciu-numeriai", "title": "Kodėl sausio 1-oji kartais priklauso praėjusių metų savaitei?"}, {"slug": "keliamieji-metai-2028", "title": "2028-ieji turi 366 dienas: ką pakeičia vasario 29-oji?"}, {"slug": "darbo-ir-kalendorines-dienos", "title": "Darbo ar kalendorinės dienos: kodėl gaunate skirtingą rezultatą?"}, {"slug": "sventines-ir-atmintinos-dienos", "title": "Šventinė ir atmintina diena: ką reiškia kalendoriaus žymos?"}, {"slug": "savaites-planas-be-perkrovos", "title": "Savaitės planas: kaip atskirti susitikimą nuo užduoties"}, {"slug": "seimos-kalendorius-namuose", "title": "Šeimos kalendorius: vienas bendras lapas, mažiau nesusipratimų"}, {"slug": "kalendoriaus-atsargine-kopija", "title": "Kaip išsaugoti kalendoriaus atsarginę kopiją prieš keičiant telefoną"}, {"slug": "ics-importas-ir-laiko-juostos", "title": "Kodėl importuotas kalendoriaus įvykis rodomas kita valanda?"}, {"slug": "kaip-pasirinkti-tuscia-kalendoriu", "title": "Tuščias kalendorius: kurį maketą rinktis savo užrašams?"}, {"slug": "pamainu-ciklo-planavimas", "title": "Kaip sudėlioti pamainų ciklą ir nepamesti pirmos dienos"}, {"slug": "mokiniu-atostogu-seimos-planas", "title": "Mokinių atostogos: ką šeimai susiplanuoti dar prieš perkant bilietus"}, {"slug": "kaip-planuoti-ilgaji-savaitgali", "title": "Ilgasis savaitgalis: suskaičiuokite poilsį prieš imdami atostogų dieną"}, {"slug": "datos-skirtumas-ir-abi-ribos", "title": "Kodėl datos skaičiuoklė kartais skiriasi viena diena?"}, {"slug": "menesio-ar-metu-kalendorius", "title": "Mėnesio ar metų kalendorius: kuris vaizdas padės greičiau susiplanuoti?"}, {"slug": "menulio-faziu-kalendoriaus-skaitymas", "title": "Kaip skaityti Mėnulio fazių kalendorių ir nesupainioti laiko juostų"}, {"slug": "metu-laiku-pradzios", "title": "Kada prasideda pavasaris: kodėl kalendoriuje matote dvi pradžias?"}, {"slug": "sauletekis-ir-dienos-ilgumas", "title": "Saulėtekis, saulėlydis ir dienos ilgumas: kaip planuoti šviesų laiką"}, {"slug": "dienos-planas-trys-svarbus-darbai", "title": "Dienos planas, kurį norisi atsiversti: nuo vieno svarbaus darbo"}]
+[
+  {
+    "slug": "baltijos-kelias-rugpjucio-23",
+    "url": "/blogas/baltijos-kelias-rugpjucio-23/",
+    "title": "Baltijos kelias rugpjūčio 23 dieną ir jo vieta Lietuvos kalendoriuje",
+    "description": "Ką Lietuva mini rugpjūčio 23-iąją, kodėl 1989 m. susikibo trijų šalių žmonės ir kaip suplanuoti prasmingą minėjimą.",
+    "category": "Lietuvos kalendorius",
+    "minutes": 5,
+    "alt": "Nespalvotame Baltijos kelio kadre žmonės laukia žolėtame šlaite prie automobilių pilno kelio netoli Maišiagalos.",
+    "photo": {
+      "small": "/assets/blog/photos/baltijos-kelias-rugpjucio-23-4aacc97051a415d7-480.webp",
+      "srcset": "/assets/blog/photos/baltijos-kelias-rugpjucio-23-4aacc97051a415d7-480.webp 480w, /assets/blog/photos/baltijos-kelias-rugpjucio-23-47a51f224e37280d-800.webp 800w, /assets/blog/photos/baltijos-kelias-rugpjucio-23-db42d55c1c11c704-1200.webp 1200w",
+      "caption": "Baltijos kelio dalyviai netoli Maišiagalos 1989 m. Archyvinė Gasparo Genzbigelio nuotrauka.",
+      "credit": "Gasparas Genzbigelis / Wikimedia Commons / CC BY-SA 3.0",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:Nuotrauka_Baltijos_kelyje.jpg",
+      "license": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "slug": "kaziuko-muges-kalendorius",
+    "url": "/blogas/kaziuko-muges-kalendorius/",
+    "title": "Kaziuko mugė Vilniuje ir kaip suplanuoti kovo savaitgalį",
+    "description": "Šv. Kazimiero diena, patvirtintos 2027 m. mugės datos, vilnietiškos verbos ir praktiškas maršrutas šeimai.",
+    "category": "Lietuvos kalendorius",
+    "minutes": 4,
+    "alt": "Vilniaus gatvėje prie Kaziuko mugės prekystalių ir burės formos dekoracijos susirinko lankytojai.",
+    "photo": {
+      "small": "/assets/blog/photos/kaziuko-muges-kalendorius-baa1e548f77fc10f-480.webp",
+      "srcset": "/assets/blog/photos/kaziuko-muges-kalendorius-baa1e548f77fc10f-480.webp 480w, /assets/blog/photos/kaziuko-muges-kalendorius-789e4d8716ffc728-800.webp 800w, /assets/blog/photos/kaziuko-muges-kalendorius-dab3d9c0fd364505-1200.webp 1200w",
+      "caption": "Vilniaus Kaziuko mugės lankytojai 2010 m. kovo 6 d.",
+      "credit": "Evaldas Liutkus / Wikimedia Commons / CC BY 2.0",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:Kaziuko_muge_2010.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "slug": "gandrines-ir-pavasario-stebejimai",
+    "url": "/blogas/gandrines-ir-pavasario-stebejimai/",
+    "title": "Gandrinės kovo 25 dieną ir pavasario stebėjimų kalendorius",
+    "description": "Kodėl Gandrinės minimos kovo 25 d., kada iš tiesų pastebimi baltieji gandrai ir kaip vesti vietos stebėjimų kalendorių.",
+    "category": "Lietuvos kalendorius",
+    "minutes": 5,
+    "alt": "Du baltieji gandrai stovi iš šakelių sukrautame lizde, už jų matyti medžiai.",
+    "photo": {
+      "small": "/assets/blog/photos/gandrines-ir-pavasario-stebejimai-6b2dcd9db0e42b67-480.webp",
+      "srcset": "/assets/blog/photos/gandrines-ir-pavasario-stebejimai-6b2dcd9db0e42b67-480.webp 480w, /assets/blog/photos/gandrines-ir-pavasario-stebejimai-60145246d41db0b5-800.webp 800w, /assets/blog/photos/gandrines-ir-pavasario-stebejimai-93f08d927b8cc20f-1200.webp 1200w",
+      "caption": "Du baltieji gandrai Kužių apylinkėse 2007 m. liepą.",
+      "credit": "Mindaugas Urbonas / Wikimedia Commons / CC BY-SA 2.5",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:White_Stork-Mindaugas_Urbonas-1.jpg",
+      "license": "https://creativecommons.org/licenses/by-sa/2.5/"
+    }
+  },
+  {
+    "slug": "juros-sventes-savaitgalio-planas",
+    "url": "/blogas/juros-sventes-savaitgalio-planas/",
+    "title": "Jūros šventė Klaipėdoje ir savaitgalio planas liepos kalendoriuje",
+    "description": "Patvirtintos 2027 m. Jūros šventės datos, uostamiesčio tradicijos ir lankstus planas apsilankyti Klaipėdoje.",
+    "category": "Lietuvos kalendorius",
+    "minutes": 5,
+    "alt": "Ant šlaito susirinkę žiūrovai stebi apšviestus šokančius fontanus prie Jono kalnelio Klaipėdoje.",
+    "photo": {
+      "small": "/assets/blog/photos/juros-sventes-savaitgalio-planas-a29028219e5163da-480.webp",
+      "srcset": "/assets/blog/photos/juros-sventes-savaitgalio-planas-a29028219e5163da-480.webp 480w, /assets/blog/photos/juros-sventes-savaitgalio-planas-4cf7d1f712d2b68c-800.webp 800w, /assets/blog/photos/juros-sventes-savaitgalio-planas-1cda3d9e8a5141a6-1200.webp 1200w",
+      "caption": "Šokančių fontanų pasirodymas Klaipėdos Jūros šventėje 2017 m. liepos 28 d.",
+      "credit": "Zivvviliuks / Wikimedia Commons / CC BY-SA 4.0",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:%C5%A0okan%C4%8Di%C5%B3_fontan%C5%B3_%C5%A1ou_Jono_kalnelyje_%28J%C5%ABros_%C5%A1vent%C4%97%29.jpg",
+      "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "slug": "veliniu-lapkricio-kalendorius",
+    "url": "/blogas/veliniu-lapkricio-kalendorius/",
+    "title": "Visų Šventųjų diena ir Vėlinės Lietuvos lapkričio kalendoriuje",
+    "description": "Kuo skiriasi lapkričio 1-oji ir 2-oji, ką apie Vėlines pasakoja tradicijos ir kaip suplanuoti šeimos kelionę.",
+    "category": "Lietuvos kalendorius",
+    "minutes": 4,
+    "alt": "Tamsiose kapinėse tarp medžių ir kapų tvorelių šviečia Vėlinių žvakės.",
+    "photo": {
+      "small": "/assets/blog/photos/veliniu-lapkricio-kalendorius-87c83e81574d34c1-480.webp",
+      "srcset": "/assets/blog/photos/veliniu-lapkricio-kalendorius-87c83e81574d34c1-480.webp 480w, /assets/blog/photos/veliniu-lapkricio-kalendorius-a3ec8309ea66c2c9-800.webp 800w, /assets/blog/photos/veliniu-lapkricio-kalendorius-977d8b7abcecbd7e-1200.webp 1200w",
+      "caption": "Vėlinių žvakės kapinėse Lietuvoje. Nuotrauka iš Wikimedia Commons.",
+      "credit": "Jaunius / Wikimedia Commons / Viešasis domenas",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:Velines.jpg",
+      "license": "https://commons.wikimedia.org/wiki/File:Velines.jpg#Licensing"
+    }
+  },
+  {
+    "slug": "kaip-susiplanuoti-menesi",
+    "url": "/blogas/kaip-susiplanuoti-menesi/",
+    "title": "Kaip susiplanuoti mėnesį, kad kalendoriuje liktų vietos gyvenimui",
+    "description": "Nuo nekintamų datų iki laisvų vakarų: praktiškai susidėliokite mėnesį ir neperkraukite jo pažadais.",
+    "category": "Kasdieniai planai",
+    "minutes": 5,
+    "alt": "Ranka žymi sausio datas ant popierinio kalendoriaus; greta – užrašinė, puodelis ir nešiojamasis kompiuteris.",
+    "photo": {
+      "small": "/assets/blog/photos/kaip-susiplanuoti-menesi-ba850d2b74a92581-480.webp",
+      "srcset": "/assets/blog/photos/kaip-susiplanuoti-menesi-ba850d2b74a92581-480.webp 480w, /assets/blog/photos/kaip-susiplanuoti-menesi-63909e251fd86944-800.webp 800w, /assets/blog/photos/kaip-susiplanuoti-menesi-47804fd5e06a555c-1200.webp 1200w",
+      "caption": "Iliustracinė mėnesio planavimo nuotrauka. Joje matomas 2024 metų lapas nėra šio puslapio aktualių datų šaltinis.",
+      "credit": "Ahmed / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/planning-new-year-on-paper-19905193/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "kaip-spausdinti-kalendoriu",
+    "url": "/blogas/kaip-spausdinti-kalendoriu/",
+    "title": "Kaip atsispausdinti kalendorių be nukirstų kraštų ir smulkaus teksto",
+    "description": "Pasirinkite PDF, patikrinkite popieriaus dydį bei mastelį ir prieš spausdindami visus mėnesius išbandykite vieną lapą.",
+    "category": "Spausdinimas ir šablonai",
+    "minutes": 5,
+    "alt": "Rankos deda popieriaus lapus į spausdintuvo stalčių.",
+    "photo": {
+      "small": "/assets/blog/photos/kaip-spausdinti-kalendoriu-8eb99b80bbdf6340-480.webp",
+      "srcset": "/assets/blog/photos/kaip-spausdinti-kalendoriu-8eb99b80bbdf6340-480.webp 480w, /assets/blog/photos/kaip-spausdinti-kalendoriu-a74bee6f2a486b0c-800.webp 800w, /assets/blog/photos/kaip-spausdinti-kalendoriu-2db6334f9f12a969-1200.webp 1200w",
+      "caption": "Iliustracinė spausdintuvo paruošimo nuotrauka; joje nespausdinamas konkretus Kalendorius365 failas.",
+      "credit": "George Milton / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/woman-printing-photos-on-paper-at-home-7014413/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "iso-savaiciu-numeriai",
+    "url": "/blogas/iso-savaiciu-numeriai/",
+    "title": "Kodėl sausio 1-oji kartais priklauso praėjusių metų savaitei?",
+    "description": "Supraskite ISO savaičių numerius ir metų sandūrą pagal konkretų 2026–2027 metų pavyzdį.",
+    "category": "Datos ir kalendorius",
+    "minutes": 5,
+    "alt": "Sausio kalendorius ant segtuvo, akiniai, pieštukas ir skaitmeninis laikrodis ant šviesaus stalo.",
+    "photo": {
+      "small": "/assets/blog/photos/iso-savaiciu-numeriai-60f8db77db146d6b-480.webp",
+      "srcset": "/assets/blog/photos/iso-savaiciu-numeriai-60f8db77db146d6b-480.webp 480w, /assets/blog/photos/iso-savaiciu-numeriai-abc9d2de3f9f2162-800.webp 800w, /assets/blog/photos/iso-savaiciu-numeriai-714059172af7753d-1200.webp 1200w",
+      "caption": "Iliustracinis planavimo stalas. Nuotraukos kalendorius nerodo šiame straipsnyje aiškinamos ISO savaičių numeracijos.",
+      "credit": "Marko Klaric / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/clipboard-with-calendar-placed-on-desk-amidst-stationery-6408282/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "keliamieji-metai-2028",
+    "url": "/blogas/keliamieji-metai-2028/",
+    "title": "2028-ieji turi 366 dienas: ką pakeičia vasario 29-oji?",
+    "description": "Pasitikrinkite keliamųjų metų taisyklę ir sužinokite, ką papildoma vasario diena reiškia jūsų kalendoriui.",
+    "category": "Datos ir kalendorius",
+    "minutes": 5,
+    "alt": "Ant medinio stalo stovi kalendorius, juodas puodelis ir geltona užrašinė.",
+    "photo": {
+      "small": "/assets/blog/photos/keliamieji-metai-2028-e4c6cd0574c17ff8-480.webp",
+      "srcset": "/assets/blog/photos/keliamieji-metai-2028-e4c6cd0574c17ff8-480.webp 480w, /assets/blog/photos/keliamieji-metai-2028-196466a13c886979-800.webp 800w, /assets/blog/photos/keliamieji-metai-2028-4482badc67788196-1200.webp 1200w",
+      "caption": "Iliustracinė kalendoriaus nuotrauka. 2028 metų vasario datas tikrinkite straipsnio pavyzdyje ir susietame kalendoriuje.",
+      "credit": "Anna Tarazevich / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/notebook-calendar-and-a-black-mug-on-a-wooden-table-4985338/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "darbo-ir-kalendorines-dienos",
+    "url": "/blogas/darbo-ir-kalendorines-dienos/",
+    "title": "Darbo ar kalendorinės dienos: kodėl gaunate skirtingą rezultatą?",
+    "description": "Prieš skaičiuodami terminą pasirinkite dienų rūšį, ribines datas ir darbo savaitę. Palyginkime paprastą savaitės pavyzdį.",
+    "category": "Datos ir kalendorius",
+    "minutes": 5,
+    "alt": "Juodas mechaninis žadintuvas prie kompiuterio ir pieštukinės.",
+    "photo": {
+      "small": "/assets/blog/photos/darbo-ir-kalendorines-dienos-78e4e436650eaaa5-480.webp",
+      "srcset": "/assets/blog/photos/darbo-ir-kalendorines-dienos-78e4e436650eaaa5-480.webp 480w, /assets/blog/photos/darbo-ir-kalendorines-dienos-09f9c4ba774f657f-800.webp 800w, /assets/blog/photos/darbo-ir-kalendorines-dienos-b0a12dfe282293cd-1200.webp 1200w",
+      "caption": "Darbo laiką iliustruojantis stalas; nuotrauka nevaizduoja konkretaus darbuotojo grafiko.",
+      "credit": "JESHOOTS.com / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/black-twin-bell-alarm-desk-clock-on-table-714701/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "sventines-ir-atmintinos-dienos",
+    "url": "/blogas/sventines-ir-atmintinos-dienos/",
+    "title": "Šventinė ir atmintina diena: ką reiškia kalendoriaus žymos?",
+    "description": "Atskirkite nedarbo dienas, kultūrines progas ir savo asmeninį grafiką, kad spalvota data nesuklaidintų planuojant.",
+    "category": "Šventės ir poilsis",
+    "minutes": 5,
+    "alt": "Lietuvos trispalvė plevėsuoja debesuotame danguje.",
+    "photo": {
+      "small": "/assets/blog/photos/sventines-ir-atmintinos-dienos-82fad8fae1983953-480.webp",
+      "srcset": "/assets/blog/photos/sventines-ir-atmintinos-dienos-82fad8fae1983953-480.webp 480w, /assets/blog/photos/sventines-ir-atmintinos-dienos-5f6ef102d51630a7-800.webp 800w, /assets/blog/photos/sventines-ir-atmintinos-dienos-bfc2ef406e14a452-1200.webp 1200w",
+      "caption": "Lietuvos trispalvė. Šventinės ir atmintinos dienos straipsnyje skiriamos pagal jų teisinį statusą.",
+      "credit": "Ypsilon from Finland / Wikimedia Commons / CC0 1.0 (viešasis domenas)",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "slug": "savaites-planas-be-perkrovos",
+    "url": "/blogas/savaites-planas-be-perkrovos/",
+    "title": "Savaitės planas: kaip atskirti susitikimą nuo užduoties",
+    "description": "Viename lape suderinkite nustatytus laikus, svarbiausius darbus ir vietą netikėtumams. Pradėkite nuo realaus užimtumo.",
+    "category": "Kasdieniai planai",
+    "minutes": 5,
+    "alt": "Šviesus savaitės planuoklis su tuščiais laukais ir ant jo padėtu rašikliu.",
+    "photo": {
+      "small": "/assets/blog/photos/savaites-planas-be-perkrovos-0373f8a109c546e3-480.webp",
+      "srcset": "/assets/blog/photos/savaites-planas-be-perkrovos-0373f8a109c546e3-480.webp 480w, /assets/blog/photos/savaites-planas-be-perkrovos-5ca785ce49ec10a0-800.webp 800w, /assets/blog/photos/savaites-planas-be-perkrovos-b71d3b69a5890841-1200.webp 1200w",
+      "caption": "Iliustracinis savaitės planuoklis; tai nėra atsisiunčiamas svetainės šablonas.",
+      "credit": "cottonbro studio / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/pen-on-top-of-a-planner-7439132/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "seimos-kalendorius-namuose",
+    "url": "/blogas/seimos-kalendorius-namuose/",
+    "title": "Šeimos kalendorius: vienas bendras lapas, mažiau nesusipratimų",
+    "description": "Susitarkite dėl ženklų, atsakomybių ir pakeitimų, kad bendras namų kalendorius padėtų visiems šeimos nariams.",
+    "category": "Kasdieniai planai",
+    "minutes": 5,
+    "alt": "Suaugęs žmogus ir vaikas sėdi prie ežero, už kurio matyti kalnai.",
+    "photo": {
+      "small": "/assets/blog/photos/seimos-kalendorius-namuose-c79c7c636f6a7d10-480.webp",
+      "srcset": "/assets/blog/photos/seimos-kalendorius-namuose-c79c7c636f6a7d10-480.webp 480w, /assets/blog/photos/seimos-kalendorius-namuose-25a032189b6ae5e2-800.webp 800w, /assets/blog/photos/seimos-kalendorius-namuose-d17ce59b11c89884-1200.webp 1200w",
+      "caption": "Tėvas su vaiku prie ežero. Teminė šeimos laiko nuotrauka; tai nėra svetainės leidėjo šeima ar patvirtinta Lietuvos vietovė.",
+      "credit": "Karen Laubenstein, U.S. Fish and Wildlife Service / Wikimedia Commons / Viešasis domenas (PD-author)",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:Fathers_day_father_with_kid_on_lake.jpg",
+      "license": "https://commons.wikimedia.org/wiki/File:Fathers_day_father_with_kid_on_lake.jpg"
+    }
+  },
+  {
+    "slug": "kalendoriaus-atsargine-kopija",
+    "url": "/blogas/kalendoriaus-atsargine-kopija/",
+    "title": "Kaip išsaugoti kalendoriaus atsarginę kopiją prieš keičiant telefoną",
+    "description": "Sužinokite, kuo skiriasi JSON kopija ir ICS eksportas, kur laikyti failus ir ką patikrinti prieš atkuriant įrašus.",
+    "category": "Įrankiai ir duomenys",
+    "minutes": 5,
+    "alt": "Atviras kietasis diskas su matomomis metalinėmis plokštelėmis ir skaitymo svirtele.",
+    "photo": {
+      "small": "/assets/blog/photos/kalendoriaus-atsargine-kopija-780656585317dc4b-480.webp",
+      "srcset": "/assets/blog/photos/kalendoriaus-atsargine-kopija-780656585317dc4b-480.webp 480w, /assets/blog/photos/kalendoriaus-atsargine-kopija-5d3553e8f4e61b4c-800.webp 800w, /assets/blog/photos/kalendoriaus-atsargine-kopija-0fe21a1edf4400e8-1200.webp 1200w",
+      "caption": "Duomenų saugojimo temos nuotrauka. Atsarginei kalendoriaus kopijai disko ardyti nereikia.",
+      "credit": "Azamat Esenaliev / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/black-internal-hdd-on-black-surface-117729/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "ics-importas-ir-laiko-juostos",
+    "url": "/blogas/ics-importas-ir-laiko-juostos/",
+    "title": "Kodėl importuotas kalendoriaus įvykis rodomas kita valanda?",
+    "description": "ICS failuose atskirkite vietinį laiką, UTC ir visos dienos įvykius. Po importo patikrinkite laiką bei pasikartojimą.",
+    "category": "Įrankiai ir duomenys",
+    "minutes": 5,
+    "alt": "Keturi sieniniai laikrodžiai su Londono, Niujorko, Tokijo ir Maskvos užrašais.",
+    "photo": {
+      "small": "/assets/blog/photos/ics-importas-ir-laiko-juostos-85fdf6bc8add3a93-480.webp",
+      "srcset": "/assets/blog/photos/ics-importas-ir-laiko-juostos-85fdf6bc8add3a93-480.webp 480w, /assets/blog/photos/ics-importas-ir-laiko-juostos-850e42123b2cfc26-800.webp 800w, /assets/blog/photos/ics-importas-ir-laiko-juostos-87b9facc540ae034-1200.webp 1200w",
+      "caption": "Laiko juostų iliustracija. Nuotraukoje rodomi laikrodžiai nėra dabartinio laiko ar vasaros laiko taisyklių šaltinis.",
+      "credit": "Pixabay / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/london-new-york-tokyo-and-moscow-clocks-48770/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "kaip-pasirinkti-tuscia-kalendoriu",
+    "url": "/blogas/kaip-pasirinkti-tuscia-kalendoriu/",
+    "title": "Tuščias kalendorius: kurį maketą rinktis savo užrašams?",
+    "description": "Mėnesio tinklelis, savaitės lapas ar dienos planas? Palyginkite vietą užrašams ir tai, kaip pildysite kalendorių.",
+    "category": "Spausdinimas ir šablonai",
+    "minutes": 5,
+    "alt": "Atversta spiralinė užrašinė su darbų sąrašu, vokai ir rašiklis ant stalo.",
+    "photo": {
+      "small": "/assets/blog/photos/kaip-pasirinkti-tuscia-kalendoriu-7fc019c36e08a1ed-480.webp",
+      "srcset": "/assets/blog/photos/kaip-pasirinkti-tuscia-kalendoriu-7fc019c36e08a1ed-480.webp 480w, /assets/blog/photos/kaip-pasirinkti-tuscia-kalendoriu-1a6691d7eea083ca-800.webp 800w, /assets/blog/photos/kaip-pasirinkti-tuscia-kalendoriu-6f6f2abc8f3e621b-1200.webp 1200w",
+      "caption": "Iliustracinė užrašinės nuotrauka. Svetainės tuščius kalendorius rasite prie straipsnio pateiktoje nuorodoje.",
+      "credit": "Polina / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/white-notebook-on-the-table-5717416/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "pamainu-ciklo-planavimas",
+    "url": "/blogas/pamainu-ciklo-planavimas/",
+    "title": "Kaip sudėlioti pamainų ciklą ir nepamesti pirmos dienos",
+    "description": "Pasirinkite tikrą ciklo pradžią, aprašykite darbo bei poilsio seką ir atskirai patikrinkite naktines pamainas.",
+    "category": "Įrankiai ir duomenys",
+    "minutes": 5,
+    "alt": "Atverstas planuoklis, rašikliai ir spalvoti lapeliai ant darbo stalo.",
+    "photo": {
+      "small": "/assets/blog/photos/pamainu-ciklo-planavimas-c2bdf186bf05d8f5-480.webp",
+      "srcset": "/assets/blog/photos/pamainu-ciklo-planavimas-c2bdf186bf05d8f5-480.webp 480w, /assets/blog/photos/pamainu-ciklo-planavimas-31c0ae0631b95c0a-800.webp 800w, /assets/blog/photos/pamainu-ciklo-planavimas-b1fcd7dfae0be6f7-1200.webp 1200w",
+      "caption": "Iliustracinė planavimo nuotrauka; ji nevaizduoja patvirtinto pamainų grafiko.",
+      "credit": "Mizuno K / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/pens-and-a-planner-on-a-desk-12911169/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "mokiniu-atostogu-seimos-planas",
+    "url": "/blogas/mokiniu-atostogu-seimos-planas/",
+    "title": "Mokinių atostogos: ką šeimai susiplanuoti dar prieš perkant bilietus",
+    "description": "Atostogų datą papildykite mokyklos patvirtinimu, priežiūros planu ir kelionės laiku. Vien spalvoto intervalo neužtenka.",
+    "category": "Šventės ir poilsis",
+    "minutes": 5,
+    "alt": "Sąsiuviniai ir knygos ant mokyklinio stalo, kuprinės ant kėdžių.",
+    "photo": {
+      "small": "/assets/blog/photos/mokiniu-atostogu-seimos-planas-ce0479838728b0db-480.webp",
+      "srcset": "/assets/blog/photos/mokiniu-atostogu-seimos-planas-ce0479838728b0db-480.webp 480w, /assets/blog/photos/mokiniu-atostogu-seimos-planas-95a27ef3f54b9972-800.webp 800w, /assets/blog/photos/mokiniu-atostogu-seimos-planas-3d8cdc5641f662b1-1200.webp 1200w",
+      "caption": "Iliustracinė mokyklos aplinkos nuotrauka; ji nėra konkrečios Lietuvos mokyklos atostogų dokumentas.",
+      "credit": "Katerina Holmes / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/school-desk-with-stationery-and-backpacks-on-chairs-5905436/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "kaip-planuoti-ilgaji-savaitgali",
+    "url": "/blogas/kaip-planuoti-ilgaji-savaitgali/",
+    "title": "Ilgasis savaitgalis: suskaičiuokite poilsį prieš imdami atostogų dieną",
+    "description": "Palyginkite dvi skirtingas vertes: kiek dienų nedirbsite ir kiek atostogų dienų tam panaudosite.",
+    "category": "Šventės ir poilsis",
+    "minutes": 5,
+    "alt": "Joninių renginio Nidoje dalyviai scenoje po medžiu ir šventinėmis dekoracijomis.",
+    "photo": {
+      "small": "/assets/blog/photos/kaip-planuoti-ilgaji-savaitgali-fdc8067ced94ab17-480.webp",
+      "srcset": "/assets/blog/photos/kaip-planuoti-ilgaji-savaitgali-fdc8067ced94ab17-480.webp 480w, /assets/blog/photos/kaip-planuoti-ilgaji-savaitgali-d861f846991ecaf9-800.webp 800w, /assets/blog/photos/kaip-planuoti-ilgaji-savaitgali-caa41e7ce3914405-1200.webp 1200w",
+      "caption": "Joninių renginys Nidoje. Tai dokumentinė šventės nuotrauka, o ne būsimo renginio programos ar datos patvirtinimas.",
+      "credit": "Derbrauni / Wikimedia Commons / CC BY 4.0",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://commons.wikimedia.org/wiki/File:Midsummer_in_Nida_08.jpg",
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  {
+    "slug": "datos-skirtumas-ir-abi-ribos",
+    "url": "/blogas/datos-skirtumas-ir-abi-ribos/",
+    "title": "Kodėl datos skaičiuoklė kartais skiriasi viena diena?",
+    "description": "Skirtumas tarp datų ir visų laikotarpio dienų skaičius yra skirtingi veiksmai. Patikrinkime, kada reikia pridėti vieną dieną.",
+    "category": "Datos ir kalendorius",
+    "minutes": 5,
+    "alt": "Atverstas gegužės dienos planuoklis su ranka įrašytais užrašais.",
+    "photo": {
+      "small": "/assets/blog/photos/datos-skirtumas-ir-abi-ribos-8ae646e04c6c45a1-480.webp",
+      "srcset": "/assets/blog/photos/datos-skirtumas-ir-abi-ribos-8ae646e04c6c45a1-480.webp 480w, /assets/blog/photos/datos-skirtumas-ir-abi-ribos-c74c53c54ce51e81-800.webp 800w, /assets/blog/photos/datos-skirtumas-ir-abi-ribos-3e63be6594380395-1200.webp 1200w",
+      "caption": "Iliustracinė datų planavimo nuotrauka. Dienų skirtumo skaičiai pateikiami atskirame straipsnio pavyzdyje.",
+      "credit": "Walls.io / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/notes-in-a-calendar-15635240/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "menesio-ar-metu-kalendorius",
+    "url": "/blogas/menesio-ar-metu-kalendorius/",
+    "title": "Mėnesio ar metų kalendorius: kuris vaizdas padės greičiau susiplanuoti?",
+    "description": "Metų apžvalgą naudokite dideliems laikotarpiams, mėnesio lapą – konkrečioms datoms. Pasirinkite pagal savo klausimą.",
+    "category": "Spausdinimas ir šablonai",
+    "minutes": 5,
+    "alt": "Baltas stalinis laikrodis, telefonas, rašiklis ir atversta užrašinė ant balto stalo.",
+    "photo": {
+      "small": "/assets/blog/photos/menesio-ar-metu-kalendorius-2a46e6c7cb6e7966-480.webp",
+      "srcset": "/assets/blog/photos/menesio-ar-metu-kalendorius-2a46e6c7cb6e7966-480.webp 480w, /assets/blog/photos/menesio-ar-metu-kalendorius-1d1b2c2c24a76307-800.webp 800w, /assets/blog/photos/menesio-ar-metu-kalendorius-340aff51a212e16b-1200.webp 1200w",
+      "caption": "Iliustracinė planavimo darbo vieta; svetainės kalendorių peržiūros pateikiamos susietuose kataloguose.",
+      "credit": "freestocks.org / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/square-white-analog-desk-c-lock-364671/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "menulio-faziu-kalendoriaus-skaitymas",
+    "url": "/blogas/menulio-faziu-kalendoriaus-skaitymas/",
+    "title": "Kaip skaityti Mėnulio fazių kalendorių ir nesupainioti laiko juostų",
+    "description": "Fazės pavadinimas, tikslus momentas ir apšviesta disko dalis rodo skirtingus dalykus. Sužinokite, ką tikrinti kalendoriuje.",
+    "category": "Dangus ir metų ritmas",
+    "minutes": 5,
+    "alt": "Šviesi didžioji Mėnulio disko dalis su matomais krateriais juodame danguje.",
+    "photo": {
+      "small": "/assets/blog/photos/menulio-faziu-kalendoriaus-skaitymas-6cc35f37a81730a6-480.webp",
+      "srcset": "/assets/blog/photos/menulio-faziu-kalendoriaus-skaitymas-6cc35f37a81730a6-480.webp 480w, /assets/blog/photos/menulio-faziu-kalendoriaus-skaitymas-0cc3f7a4100a81be-800.webp 800w, /assets/blog/photos/menulio-faziu-kalendoriaus-skaitymas-781f4238f20de6ef-1200.webp 1200w",
+      "caption": "Teminė Mėnulio fotografija. Tai nėra konkrečios šiame puslapyje pasirinktos datos fazės vaizdas.",
+      "credit": "Rino Adamo / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/detailed-full-moon-against-night-sky-35115055/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "metu-laiku-pradzios",
+    "url": "/blogas/metu-laiku-pradzios/",
+    "title": "Kada prasideda pavasaris: kodėl kalendoriuje matote dvi pradžias?",
+    "description": "Meteorologinis sezonas prasideda mėnesio pirmąją, astronominis – konkrečiu momentu. Abu užrašai turi savo paskirtį.",
+    "category": "Dangus ir metų ritmas",
+    "minutes": 5,
+    "alt": "Saulės spinduliai krinta pro medžius į rūku padengtą pievą.",
+    "photo": {
+      "small": "/assets/blog/photos/metu-laiku-pradzios-e3e0990dc17b1e1b-480.webp",
+      "srcset": "/assets/blog/photos/metu-laiku-pradzios-e3e0990dc17b1e1b-480.webp 480w, /assets/blog/photos/metu-laiku-pradzios-d55d0d0d9be05af7-800.webp 800w, /assets/blog/photos/metu-laiku-pradzios-e1923cc33aff5e79-1200.webp 1200w",
+      "caption": "Rytinis peizažas Dwingelo apylinkėse, Nyderlanduose. Teminė nuotrauka nevaizduoja tikslaus lygiadienio momento.",
+      "credit": "Matthias Groeneveld / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/scenic-landscape-at-sunrise-5933631/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "sauletekis-ir-dienos-ilgumas",
+    "url": "/blogas/sauletekis-ir-dienos-ilgumas/",
+    "title": "Saulėtekis, saulėlydis ir dienos ilgumas: kaip planuoti šviesų laiką",
+    "description": "Pasirinkite miestą ir datą, atskirkite prieblandą nuo dienos ilgumo ir palikite atsargą realioms vietos sąlygoms.",
+    "category": "Dangus ir metų ritmas",
+    "minutes": 5,
+    "alt": "Saulėtekio spalvos virš jūros bangų ir paplūdimio.",
+    "photo": {
+      "small": "/assets/blog/photos/sauletekis-ir-dienos-ilgumas-74a99ed2d2b4e17b-480.webp",
+      "srcset": "/assets/blog/photos/sauletekis-ir-dienos-ilgumas-74a99ed2d2b4e17b-480.webp 480w, /assets/blog/photos/sauletekis-ir-dienos-ilgumas-f59734f5e0e6b22a-800.webp 800w, /assets/blog/photos/sauletekis-ir-dienos-ilgumas-7ad10f70fdcd4d2f-1200.webp 1200w",
+      "caption": "Saulėtekis Durbane, Pietų Afrikoje. Lietuvos saulėtekio valandas tikrinkite pasirinkto miesto skaičiavime.",
+      "credit": "Andrew Harvard / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/beach-during-sunrise-11311701/",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  {
+    "slug": "dienos-planas-trys-svarbus-darbai",
+    "url": "/blogas/dienos-planas-trys-svarbus-darbai/",
+    "title": "Dienos planas, kurį norisi atsiversti: nuo vieno svarbaus darbo",
+    "description": "Sudėkite susitikimus, pasirinkite pagrindinį veiksmą ir atskirkite dienos planą nuo nesibaigiančio visų norų sąrašo.",
+    "category": "Kasdieniai planai",
+    "minutes": 5,
+    "alt": "Tuščia užrašinė, geltoni lipnūs lapeliai, pieštukas, rašiklis ir skriestuvas ant šviesaus paviršiaus.",
+    "photo": {
+      "small": "/assets/blog/photos/dienos-planas-trys-svarbus-darbai-e69184b765389719-480.webp",
+      "srcset": "/assets/blog/photos/dienos-planas-trys-svarbus-darbai-e69184b765389719-480.webp 480w, /assets/blog/photos/dienos-planas-trys-svarbus-darbai-336ac0d4317cf1e9-800.webp 800w, /assets/blog/photos/dienos-planas-trys-svarbus-darbai-15cdd44e7081835c-1200.webp 1200w",
+      "caption": "Iliustracinės planavimo priemonės. Toliau pateiktas dienos planas yra mokomasis, ne tikro vartotojo duomenys.",
+      "credit": "Metis Photographer / Pexels / Pexels License",
+      "changes": "Apkirpta santykiu 1200:630, sumažinta ir paruošta WebP formatu; pašalinti EXIF metaduomenys.",
+      "source": "https://www.pexels.com/photo/notebook-and-pen-on-marble-surface-6651605/",
+      "license": "https://www.pexels.com/license/"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:medininku-zudyniu-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280731
+DTEND;VALUE=DATE:20280801
+SUMMARY:Medininkų žudynių diena
+DESCRIPTION:Liepos 31-ąją prisimenami 1991 m. Medininkų pasienio poste u
+ žpulti Lietuvos pareigūnai.
+URL:https://kalendorius365.lt/sventes/medininku-zudyniu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -8,13 +8,14 @@ require 'fileutils'
 module NamedaysPages
   extend self
   ROOT = File.expand_path('..', __dir__)
+  YEARS = JSON.parse(File.read(File.join(ROOT, 'data/holiday-years.json'))).freeze
   MONTHS = [%w[sausis Sausis Sausio], %w[vasaris Vasaris Vasario], %w[kovas Kovas Kovo],
             %w[balandis Balandis Balandžio], %w[geguze Gegužė Gegužės], %w[birzelis Birželis Birželio],
             %w[liepa Liepa Liepos], %w[rugpjutis Rugpjūtis Rugpjūčio], %w[rugsejis Rugsėjis Rugsėjo],
             %w[spalis Spalis Spalio], %w[lapkritis Lapkritis Lapkričio], %w[gruodis Gruodis Gruodžio]].freeze
   NOTES = [
     ['Metų pradžios planai', 'Sausis turi 31 dieną. Metų pradžioje patogu pasižymėti artimųjų vardadienius ir pasirinkti, kurias datas įtraukti į asmeninį kalendorių.'],
-    ['Ypatinga vasario 29-oji', 'Vasario sąraše yra ir 29-oji: ji kalendoriuje pasirodo tik keliamaisiais metais. 2027 ir 2029 m. ši data neperkeliama, o 2028 m. rodoma savo vietoje.'],
+    ['Ypatinga vasario 29-oji', 'Vasario sąraše yra ir 29-oji: ji kalendoriuje pasirodo tik keliamaisiais metais. 2027, 2029 ir 2030 m. ši data neperkeliama, o 2028 m. rodoma savo vietoje.'],
     ['Pavasario pradžios datos', 'Kovas turi 31 dieną. Vardadieniai lieka susieti su mėnesio diena, nors savaitės diena ir Lietuvos vasaros laiko pradžia kasmet gali skirtis.'],
     ['Balandžio susitikimai', 'Balandžio sąraše – 30 dienų. Vardadienių datos šiame kalendoriuje nekinta, o Velykų sekmadienio data kasmet apskaičiuojama atskirai.'],
     ['Gegužė artimiesiems', 'Gegužė turi 31 dieną. Motinos diena minima pirmąjį gegužės sekmadienį; ji nėra tas pats, kas konkretaus vardo vardadienis.'],
@@ -37,11 +38,13 @@ module NamedaysPages
       'calendar'=>'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v5m10-5v5M3 11h18M8 15h2m4 0h2m-8 3h2"/>',
       'download'=>'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
       'source'=>'<path d="M9 15 15 9m-6-3 2-2a5 5 0 0 1 7 7l-2 2m-7-2-2 2a5 5 0 0 0 7 7l2-2"/>',
-      'plus'=>'<path d="M12 4v16M4 12h16"/>', 'arrow'=>'<path d="M5 19 19 5M7 5h12v12"/>'}
+      'plus'=>'<path d="M12 4v16M4 12h16"/>', 'arrow'=>'<path d="M4 12h15m-6-6 6 6-6 6"/>',
+      'back'=>'<path d="M20 12H5m6-6-6 6 6 6"/>'}
     %(<svg class="nd-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">#{paths.fetch(type)}</svg>)
   end
   def write_page(path, title, description, body, month = nil)
-    meta = {'title'=>title,'description'=>description,'namedays'=>true,'namedays_month'=>month,
+    meta = {'title'=>title,'description'=>description,'namedays'=>true,'namedays_month'=>month,'hero_share'=>true,
+      'breadcrumb_label'=>month ? "#{MONTHS[month-1][2]} vardadieniai" : 'Vardadieniai',
       'og_image'=>'/assets/visuals/namedays/vardadieniai-1200x630.png',
       'og_image_alt'=>'Vardadienių kalendoriaus lapas, botaninės šakelės ir subtili dovana.'}
     target = File.join(ROOT, 'site', path, 'index.html')
@@ -55,7 +58,7 @@ module NamedaysPages
       <p>Vardų sąrašų šaltinis – <strong>lietuviškos Vikipedijos bendraautoriai</strong>. Iš nurodytų straipsnių skyrelių „Vardadieniai“ Kalendorius365 išskyrė vardus, suvienodino tarpus ir Unicode rašmenų formą. Prie kiekvienos dienos rasite konkrečią straipsnio redakciją ir straipsnio keitimų istoriją.</p>
       <p>Vardadienių sąrašai, jų ištraukos ir susistemintas duomenų rinkinys platinami pagal <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>: nurodykite autorius ir šaltinį, pažymėkite pakeitimus, o pritaikytą medžiagą platinkite tomis pačiomis sąlygomis. <a href="/assets/data/namedays/cc-by-sa-4.0.json" download>Atsisiųsti visą rinkinį su šaltiniais (JSON)</a> · <a href="/assets/data/namedays/LICENCIJA.txt">Licencijos ir pakeitimų paaiškinimas</a>.</p>
       <p>Tai bendruomenės redaguojamas kalendorius, <strong>ne valstybės vardadienių registras</strong>. Skirtingų kalendorių datos ir vardų variantai gali skirtis. Vardadienis savaime nėra įstatyminė nedarbo diena.</p>
-      <details><summary>Metodika, rašyba ir atnaujinimas</summary><ul><li>Rinkinyje – 366 kalendorinės datos, įskaitant vasario 29-ąją. Pirminio šaltinio vardų rašyba išsaugota; paieška be diakritinių ženklų nekeičia rodomų vardų.</li><li>Vardų formoms pasitikrinti: <a href="https://data.gov.lt/datasets/2664/">VLKK vardų lingvistiniai duomenys</a>. Tai rašybos pagalbinis šaltinis, o ne vardadienių datų registras; jo duomenų į šį rinkinį neimportavome.</li><li>Abėcėlė: <a href="https://emokykla.lt/upload/files/2024/07/08/rasyba-2022-1.pdf">„Lietuvių kalbos rašyba“</a>. Paieška rikiuojama pagal lietuvių kalbos taisykles.</li><li>Šaltinių atnaujinimai tikrinami prieš paskelbiant naują duomenų redakciją. „Šiandien“ ir „Rytoj“ apskaičiuojami jūsų įrenginyje pagal Europe/Vilnius laiko juostą; kasdien siųsti užklausų Vikipedijai nereikia.</li><li><a href="https://www.mediawiki.org/wiki/Wikimedia_APIs/Content_reuse">Wikimedia turinio pakartotinio naudojimo gairės</a> · <a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content">Wikimedia turinio licencijavimas</a>. Wikimedia šio produkto neremia ir nepatvirtina.</li></ul></details></section>
+      <details><summary>Metodika, rašyba ir atnaujinimas</summary><ul><li>Rinkinyje – 366 kalendorinės datos, įskaitant vasario 29-ąją. Pirminio šaltinio vardų rašyba išsaugota; paieška be diakritinių ženklų nekeičia rodomų vardų.</li><li>Vardų formoms pasitikrinti: <a href="https://data.europa.eu/data/datasets/https-data-gov-lt-datasets-2664-~~1?locale=lt">VLKK vardų lingvistiniai duomenys</a>. Tai rašybos pagalbinis šaltinis, o ne vardadienių datų registras; jo duomenų į šį rinkinį neimportavome.</li><li>Abėcėlė: <a href="https://emokykla.lt/upload/files/2024/07/08/rasyba-2022-1.pdf">„Lietuvių kalbos rašyba“</a>. Paieška rikiuojama pagal lietuvių kalbos taisykles.</li><li>Šaltinių atnaujinimai tikrinami prieš paskelbiant naują duomenų redakciją. „Šiandien“ ir „Rytoj“ apskaičiuojami jūsų įrenginyje pagal Europe/Vilnius laiko juostą; kasdien siųsti užklausų Vikipedijai nereikia.</li><li><a href="https://www.mediawiki.org/wiki/Wikimedia_APIs/Content_reuse">Wikimedia turinio pakartotinio naudojimo gairės</a> · <a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content">Wikimedia turinio licencijavimas</a>. Wikimedia šio produkto neremia ir nepatvirtina.</li></ul></details></section>
     HTML
   end
   def source_link(r)
@@ -80,8 +83,8 @@ module NamedaysPages
     r = month_rows(month || 1).first
     date = "2027-#{r['date']}"
     <<~HTML
-      <section class="nd-panel" id="pasirinkta-data" aria-labelledby="nd-date-title"><p class="nd-eyebrow">Vardadieniai pasirinktą dieną</p><h2 id="nd-date-title">Pasirinkite datą</h2>
-      <div class="nd-date-fields"><div><label for="nd-date">Kalendorinė data</label><input type="date" id="nd-date" min="1900-01-01" max="2100-12-31" value="#{date}"></div><div><label for="nd-year">Kalendoriaus metai</label><select id="nd-year">#{[2027,2028,2029].map { |y| "<option value=\"#{y}\">#{y}</option>" }.join}</select></div></div>
+      <section class="nd-panel" id="pasirinkta-data" aria-labelledby="nd-date-title"><p class="nd-eyebrow">Kalendorius</p><h2 id="nd-date-title">Pasirinkite dieną</h2>
+      <div class="nd-date-fields"><div><label for="nd-date">Kalendorinė data</label><input type="date" id="nd-date" min="1900-01-01" max="2100-12-31" value="#{date}"></div><div><label for="nd-year">Metai</label><select id="nd-year">#{YEARS.map { |y| "<option value=\"#{y}\">#{y}</option>" }.join}</select></div></div>
       <div class="nd-date-actions"><button class="nd-button nd-button--light" type="button" id="nd-today">Šiandien</button><button class="nd-button nd-button--light" type="button" id="nd-tomorrow">Rytoj</button></div>
       #{month ? '<h3 id="nd-calendar-title" class="nd-calendar-title">Pasirinkto mėnesio dienos</h3><nav id="nd-calendar" class="nd-calendar" aria-labelledby="nd-calendar-title"></nav><p class="nd-muted" id="nd-calendar-note"></p>' : ''}
       <div class="nd-selection" aria-live="polite" aria-atomic="true"><h3 id="nd-selected-title">#{MONTHS[(month||1)-1][2]} 1 d.</h3><p id="nd-selected-names">#{esc(r['names'].join(', '))}</p><p class="nd-source-link" id="nd-selected-source">#{source_link(r)}</p></div>
@@ -95,7 +98,7 @@ module NamedaysPages
   def static_days(month)
     '<ol class="nd-days">' + month_rows(month).map do |r|
       day = r['date'][-2,2].to_i
-      %(<li id="diena-#{format('%02d',day)}" data-day="#{r['date']}"><span class="nd-day-num" aria-hidden="true">#{format('%02d',day)}</span><div><h3>#{MONTHS[month-1][2]} #{day} d.</h3><div class="nd-static-names">#{r['names'].map { |n| "<span>#{esc(n)}</span>" }.join}</div><a class="nd-day-select" href="#pasirinkta-data" data-select-day="#{r['date']}">Pasirinkti datą #{icon('arrow')}</a><span class="nd-source-link">#{source_link(r)}</span><a class="nd-source-link" href="/assets/namedays-ics/#{r['date']}.ics" download>Kasmetinis dienos ICS</a></div></li>)
+      %(<li id="diena-#{format('%02d',day)}" data-day="#{r['date']}"><span class="nd-day-num" aria-hidden="true">#{format('%02d',day)}</span><div><h3>#{MONTHS[month-1][2]} #{day} d.</h3><div class="nd-static-names">#{r['names'].map { |n| "<span>#{esc(n)}</span>" }.join}</div><a class="nd-day-select" href="#pasirinkta-data" data-select-day="#{r['date']}">Pasirinkti datą #{icon('arrow')}</a><a class="nd-source-link nd-static-export" href="/assets/namedays-ics/#{r['date']}.ics" download>#{icon('download')} ICS</a><details class="nd-day-source"><summary>Šaltiniai</summary><p class="nd-source-link">#{source_link(r)}</p></details></div></li>)
     end.join + '</ol>'
   end
   def write_data
@@ -128,8 +131,8 @@ module NamedaysPages
       %(<details><summary>#{m[2]} vardadieniai · visas sąrašas</summary><ul>#{month_rows(i+1).map { |r| "<li><a href=\"/vardadieniai/#{m[0]}/#diena-#{r['date'][-2,2]}\">#{m[2]} #{r['date'][-2,2].to_i} d.</a> – #{esc(r['names'].join(', '))}</li>" }.join}</ul></details>)
     end.join
     body=<<~HTML
-      <header class="nd-hero"><div><p class="nd-eyebrow">Vardai, datos ir maži dėmesio ženklai</p><h1>Vardadieniai: prisiminkite, ką pasveikinti</h1><p class="nd-hero__lead">Raskite savo ar artimo žmogaus vardą, patikrinkite visas jo datas ir vienu pasirinkimu įtraukite vardadienį į kalendorių.</p><div class="nd-hero__links"><a class="nd-button" href="#nd-search-title">#{icon('search')} Rasti vardadienį</a><a class="nd-button nd-button--light" href="#menesiai">Visi mėnesiai ↓</a></div></div><img class="nd-hero__image" src="/assets/visuals/namedays/hero.svg" width="560" height="440" alt="Vardadienių kalendoriaus lapas, subtili dovana, žiedai ir žalios šakelės." fetchpriority="high" decoding="async"></header>
-      <section class="nd-panel" id="siandien" aria-labelledby="nd-today-title"><div class="nd-toolbar"><div><p class="nd-eyebrow">Lietuvos data · Europe/Vilnius</p><h2 id="nd-today-title">Vardadieniai šiandien</h2></div><a href="#saltiniai">Duomenų šaltiniai</a></div><div id="nd-live-day"><p>Šiandienos ir rytojaus vardai parodomi pagal Lietuvos datą. Žemiau galite naršyti visą metų sąrašą.</p></div><nav id="nd-week" class="nd-week" aria-label="Artimiausių septynių dienų vardadieniai"></nav></section>
+      <header class="nd-hero nd-hero--greeting"><div><p class="nd-eyebrow">Lietuvos vardadienių kalendorius</p><h1>Vardadieniai: prisiminkite, ką pasveikinti</h1><p class="nd-hero__lead">Raskite savo ar artimo žmogaus vardą, patikrinkite visas jo datas ir vienu pasirinkimu įtraukite vardadienį į kalendorių.</p><div class="nd-hero__links"><a class="nd-button" href="#nd-search-title">#{icon('search')} Rasti vardadienį</a><a class="nd-button nd-button--light" href="#menesiai">Visi mėnesiai ↓</a>{% include sharing.html %}</div></div><div class="nd-greeting" aria-hidden="true"><div class="nd-greeting__envelope"></div><div class="nd-greeting__card"><span class="nd-greeting__flag"></span><span>Su vardadieniu!</span><img class="shell-art" src="/assets/visuals/shell/names.svg" alt="" aria-hidden="true" width="176" height="176" decoding="async"></div></div></header>
+      <section class="nd-panel" id="siandien" aria-labelledby="nd-today-title"><div class="nd-toolbar"><div><p class="nd-eyebrow">Lietuvos laiku</p><h2 id="nd-today-title">Vardadieniai šiandien</h2></div><a href="#saltiniai">Duomenų šaltiniai</a></div><div id="nd-live-day"><p>Šiandienos ir rytojaus vardai parodomi pagal Lietuvos datą. Žemiau galite naršyti visą metų sąrašą.</p></div><nav id="nd-week" class="nd-week" aria-label="Artimiausių septynių dienų vardadieniai"></nav></section>
       <div class="nd-tools">#{search}#{controls}</div>
       <section id="menesiai" aria-labelledby="nd-months-title"><p class="nd-eyebrow">Visų metų vardadienių kalendorius</p><h2 id="nd-months-title">Dvylika mėnesių pasveikinimams</h2>#{month_cards}</section>
       <section class="nd-context" aria-label="Kaip naudotis vardadienių kalendoriumi"><div><h2>Vienas vardas, kelios datos?</h2><p>Taip pasitaiko. Paieška parodo visus šio rinkinio pasikartojimus. Pasirinkite jūsų šeimoje ar aplinkoje minimą datą.</p></div><div><h2>Vardadienis nėra gimtadienis</h2><p>Vardadienis siejamas su vardui kalendoriuje priskirta diena. Jis nepriklauso nuo žmogaus gimimo metų.</p></div><div><h2>Jūsų kalendoriuje</h2><p>Atsisiųskite vienkartinį ar kasmetinį ICS įrašą arba pridėkite vardadienį į <a href="/">asmeninį kalendorių</a>. <a href="/sventes/">Šventes</a> planuokite atskirai.</p></div></section>
@@ -141,15 +144,49 @@ module NamedaysPages
   def month_page(month)
     m=MONTHS[month-1];previous=MONTHS[(month+10)%12];following=MONTHS[month%12]
     note=NOTES[month-1]
+    day_count=month_rows(month).length
+    heading=<<~HTML
+      <header class="nd-hero nd-hero--month">
+        <div class="nd-hero__copy">
+          <h1>#{m[2]} vardadieniai</h1>
+          <p class="nd-hero__lead">#{note[1]}</p>
+          <div class="nd-hero__links">
+            <a class="nd-button" href="#pasirinkta-data">#{icon('calendar')} Pasirinkti dieną</a>
+            <a class="nd-button nd-button--light" href="#dienu-sarasas">Visos mėnesio dienos</a>
+            {% include sharing.html %}
+          </div>
+        </div>
+        <div class="nd-month-art" aria-hidden="true">
+          <img src="/assets/visuals/namedays/month-#{format('%02d',month)}.svg" width="288" height="288" alt="" aria-hidden="true" decoding="async">
+          <span><strong>#{m[1]}</strong><small>#{day_count} d.</small></span>
+        </div>
+      </header>
+    HTML
+    months=MONTHS.each_with_index.map do |entry,index|
+      current=index+1==month ? ' aria-current="page"' : ''
+      %(<a href="/vardadieniai/#{entry[0]}/"#{current}>#{entry[1]}</a>)
+    end.join
     body=<<~HTML
-      <header class="nd-hero nd-hero--month"><div><p class="nd-eyebrow">Vardadieniai pagal nurodytą kalendorių</p><h1>#{m[2]} vardadieniai</h1><p class="nd-hero__lead">#{note[1]}</p><div class="nd-hero__links"><a class="nd-button" href="#dienu-sarasas">#{icon('calendar')} Visos dienos</a><a href="/vardadieniai/#siandien">Kas švenčia šiandien? →</a></div></div><img class="nd-hero__image" src="/assets/visuals/namedays/month-#{format('%02d',month)}.svg" width="288" height="288" alt="" aria-hidden="true" decoding="async"></header>
-      <nav class="nd-month-nav" aria-label="Ankstesnio ir kito mėnesio vardadieniai"><a href="/vardadieniai/#{previous[0]}/">←&nbsp;#{previous[2]} vardadieniai</a><a href="/vardadieniai/">Visi mėnesiai</a><a href="/vardadieniai/#{following[0]}/">#{following[2]} vardadieniai&nbsp;→</a></nav>
-      <div class="nd-tools">#{search}#{controls(month)}</div>
-      <section id="dienu-sarasas" aria-labelledby="nd-days-title"><p class="nd-eyebrow">Dienų: #{month_rows(month).length} · vardai su pirminio šaltinio rašyba</p><h2 id="nd-days-title">#{m[2]} vardadieniai pagal dieną</h2><p class="nd-muted">Vardų sąrašas nepriklauso nuo pasirinktų metų. Metai keičia savaitės dienas ir vasario 29-osios buvimą kalendoriuje.</p>#{static_days(month)}</section>
+      #{heading}
+      <section class="nd-month-switcher" aria-labelledby="nd-month-switcher-title">
+        <div class="nd-section-heading">
+          <h2 id="nd-month-switcher-title">Vardadieniai pagal mėnesį</h2>
+          <div class="nd-month-step">
+            <a href="/vardadieniai/#{previous[0]}/" aria-label="#{previous[2]} vardadieniai">#{icon('back')}</a>
+            <a href="/vardadieniai/#{following[0]}/" aria-label="#{following[2]} vardadieniai">#{icon('arrow')}</a>
+          </div>
+        </div>
+        <nav class="nd-month-nav" aria-labelledby="nd-month-switcher-title">#{months}</nav>
+      </section>
+      <div class="nd-tools nd-tools--month">#{controls(month)}#{search}</div>
+      <section class="nd-day-directory" id="dienu-sarasas" aria-labelledby="nd-days-title">
+        <div class="nd-section-heading"><div><h2 id="nd-days-title">#{m[2]} vardadieniai pagal dieną</h2><p class="nd-muted">Vardų sąrašas nepriklauso nuo pasirinktų metų. Metai keičia savaitės dienas ir vasario 29-osios buvimą kalendoriuje.</p></div></div>
+        #{static_days(month)}
+      </section>
       <aside class="nd-panel"><h2>#{note[0]}</h2><p>Planuojate susitikimus ar pasveikinimus? <a href="/2027/#{m[0]}/">2027 m. #{m[2].downcase} kalendorius spausdinimui</a> padės matyti mėnesį viename lape. Atskirai peržiūrėkite <a href="/sventes/2027/#{m[0]}/">#{m[2].downcase} šventes ir atmintinas dienas</a>.</p></aside>
       #{attribution}
     HTML
-    write_page("vardadieniai/#{m[0]}","#{m[2]} vardadieniai – vardų sąrašas pagal dieną","Visi #{m[2].downcase} vardadieniai pagal dieną. Ieškokite vardo, rinkitės 2027–2029 m. kalendorių ir atsisiųskite ICS. Prie sąrašų – šaltiniai ir redakcijos.",wrapper(body,month),month)
+    write_page("vardadieniai/#{m[0]}","#{m[2]} vardadieniai – vardų sąrašas pagal dieną","Visi #{m[2].downcase} vardadieniai pagal dieną. Ieškokite vardo, rinkitės 2027–2030 m. kalendorių ir atsisiųskite ICS. Prie sąrašų – šaltiniai ir redakcijos.",wrapper(body,month),month)
   end
   def run
     write_data

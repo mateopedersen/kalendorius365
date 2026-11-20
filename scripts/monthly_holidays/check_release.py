@@ -9,6 +9,7 @@ from PIL import Image,ImageChops,ImageStat
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'scripts'))
 from calendar_package import validate_import_evidence
+from monthly_holidays.holiday_catalog import EVENTS, REGISTRY, YEARS, calendar_years, events_in_year, guide_links, guides, path as month_path
 
 # This exception is deliberately tied to one reviewed editorial release.  It
 # does not permit future content changes or changes to factual/rights fields.
@@ -297,15 +298,15 @@ class Page(HTMLParser):
    self.current=None
  def attrs(self,t,**kw):return [a for tag,a in self.tags if tag==t and all(a.get(k)==v for k,v in kw.items())]
 def run():
- data=json.loads((ROOT/'data/monthly-holidays-2027.json').read_text());media=json.loads((ROOT/'data/monthly-holiday-media.json').read_text());base=json.loads((ROOT/'docs/2027-monthly-holidays/baseline.json').read_text())
- months=json.loads((ROOT/'data/calendar.json').read_text())['months'];events=data['events'];results=[];failures=[]
+ previous=json.loads((ROOT/'data/monthly-holidays-2027.json').read_text());data=REGISTRY;media=json.loads((ROOT/'data/monthly-holiday-media.json').read_text());base=json.loads((ROOT/'docs/2027-monthly-holidays/baseline.json').read_text())
+ months=json.loads((ROOT/'data/calendar.json').read_text())['months'];results=[];failures=[]
  def check(test,message):
   if not test:failures.append(message)
  # Each legal title is checked against the independently saved official text.
  raw=(ROOT/'docs/2027-monthly-holidays/source-evidence/atmintinos-2026-07-04.txt').read_text().split('Skelbiu šį')[0]
  legal={int(m[1]):' '.join(re.split(r' [–‒] ',m[2],maxsplit=1)[1].strip().rstrip(';.').split()) for m in re.finditer(r'(?m)^\s*(\d+)\)\s*([^\n]+)',raw)}
  check(len(legal)==101,'official law extraction not complete')
- for e in events:
+ for e in previous['events']:
   d=date.fromisoformat(e['date']);check(d.year==2027 and d.isoweekday()==e['weekday'],e['id']+' weekday')
   check(e['statutory_nonworking']==(e['category']=='statutory_holiday'),e['id']+' legal status')
   if e.get('law_point'):check(e['title']==legal[e['law_point']],e['id']+' official legal name')
@@ -314,7 +315,7 @@ def run():
   if r['type']=='nth-weekday':
    weeks=calendar.Calendar(firstweekday=0).monthdatescalendar(2027,r['month']);valid=[w[r['weekday']-1] for w in weeks if w[r['weekday']-1].month==r['month']];expected=valid[-1] if r['ordinal']==-1 else valid[r['ordinal']-1];check(d==expected,e['id']+' independent nth-weekday')
   if r['type']=='easter-offset':check(d==date(2027,3,28)+timedelta(days=r['offset']),e['id']+' Easter offset')
- years=json.loads((ROOT/'site/assets/data/years.json').read_text());engine=next(y for y in years if y['year']==2027)
+ engines=calendar_years();engine=engines[2027];events=list(events_in_year(2027, engine, guide_links(list(guides()))))
  check({e['date'] for e in events if e['statutory_nonworking']}=={h['date'] for h in engine['holidays']},'statutory dates differ from preserved engine')
  sitemap=ET.parse(ROOT/'public/sitemap.xml');locs={e.text for e in sitemap.iter() if e.tag.endswith('}loc')}
  titles=set();descriptions=set();routes=[]
@@ -361,6 +362,41 @@ def run():
  for relative in ['sventes/index.html','sventes/2027/index.html']:
   p=Page((ROOT/'public'/relative).read_text());hrefs=[a.get('href') for a in p.attrs('a')];check(all(r in hrefs for r in routes),relative+' all monthly links')
  check(len([x for x in locs if re.fullmatch(r'https://kalendorius365.lt/sventes/2027/[^/]+/',x)])==12,'exactly twelve new month guides')
+ # Verify every named calendar record and its crawlable destinations in every year.
+ coverage = list(guides())
+ links = guide_links(coverage)
+ for year in YEARS:
+  records = list(events_in_year(year, engines[year], links))
+  for month in range(1, 13):
+   route = month_path(month, year)
+   output = ROOT/'public'/route.strip('/')/'index.html'
+   page = Page(output.read_text())
+   check('https://kalendorius365.lt'+route in locs, route+' sitemap')
+   expected = [e for e in records if date.fromisoformat(e['date']).month == month]
+   actual = {a['data-event']: a['data-date'] for a in page.attrs('article') if 'data-event' in a}
+   check(actual == {e['id']: e['date'] for e in expected}, route+' dated entries')
+   check(len(page.days) == calendar.monthrange(year, month)[1], route+' all calendar days')
+   check(all(date.fromisoformat(day).isoweekday() == column for day, column in page.days), route+' weekday columns')
+   hrefs = {tag.get('href') for tag in page.attrs('a')}
+   check(all(f'{href}?metai={year}' in hrefs for event in expected for _, href in event['links']), route+' all detail links')
+   check(all(month_path(month, other) in hrefs for other in YEARS), route+' year navigation')
+ photos = json.loads((ROOT/'data/holiday-guide-photos.json').read_text())
+ photo_guides = {item['slug'] for item in coverage if not item['event'].startswith('folk-')}
+ check(set(photos) == photo_guides, 'retain every previously licensed image')
+ for item in coverage:
+  if item['slug'] not in photo_guides:
+   check(urlsplit(item['source']).hostname.endswith('.lt'), item['slug']+' Lithuanian primary source')
+ for item in coverage:
+  slug = item['slug']
+  route = f'/sventes/{slug}/'
+  page = Page((ROOT/'public'/route.strip('/')/'index.html').read_text())
+  check('https://kalendorius365.lt' + route in locs, route+' sitemap')
+  event = EVENTS[item['event']]
+  expected_years = {str(year) for year in (2026, *YEARS) if year >= event.get('first_year', year)}
+  check({a['data-hg-year'] for a in page.attrs('section') if 'data-hg-year' in a} == expected_years, route+' date panels')
+  check(bool(page.attrs('a',href=item['source'])), route+' primary subject link')
+  if slug in photos:
+   check(bool(page.attrs('a',href='/nuotrauku-licencijos/#'+slug)), route+' photo rights link')
  for a in media:
   path=ROOT/'site'/a['src'].lstrip('/');sv=ET.parse(path);check(sv.getroot().attrib.get('viewBox')=='0 0 1200 800',a['slug']+' SVG dimensions')
   check(path.stat().st_size<50000,a['slug']+' SVG byte budget')
@@ -426,6 +462,11 @@ def run():
   if path in print_updates:
    intentional_updates.append({'path':path,'reason':'Exact reviewed monochrome annual legend correction; original dates/vector operators/painting preserved','sha256':print_updates[path],'review_manifest':PRINT_LEGEND_TRANSITION})
    continue
+  if path=='functions/api/weather.js' and p.is_file() and sha=='0982831746dc85dc65a2f47609a0109addd30d52a31ef2e8ff4edc1f167b8588':
+   current_hash=hashlib.sha256(p.read_bytes()).hexdigest()
+   if current_hash=='b0146fe880d227b4ba7111d4ff45c67042e883fdbf0585208b2c66c397c4c0b9':
+    intentional_updates.append({'path':path,'reason':'Return usable LHMT readings when a second source stalls; validate city identifiers and retain source attribution','before_sha256':sha,'sha256':current_hash})
+    continue
   if path=='site/assets/app.js':
    current=p.read_bytes();updated=b'fetch("/assets/data/home-holiday-data.json?v=2")';previous=b'fetch("/assets/data/home-holiday-data.json")'
    check(current.count(updated)==1 and hashlib.sha256(current.replace(updated,previous)).hexdigest()==sha,'home app changes only the compact metadata schema version to avoid a cached incomplete payload')
@@ -437,7 +478,10 @@ def run():
    before={kind:[{k:v for k,v in a.items() if k in fields}for a in original[kind]]for kind,fields in field_sets.items()}
    wanted={kind:[{k:v for k,v in a.items() if k in fields|{'title','category'}}for a in original[kind]]for kind,fields in field_sets.items()}
    check(hashlib.sha256(json.dumps(before,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()==sha,'planner pre-repair metadata matches the saved baseline')
-   check(json.loads(p.read_text())==wanted,'planner metadata changes only restore original titles/categories')
+   additions=json.loads((ROOT/'site/_data/lithuanian_dates.json').read_text())['commemorations']
+   extra=field_sets['commemorations']|{'title','category'}
+   wanted['commemorations'].extend({k:v for k,v in entry.items() if k in extra} for entry in additions)
+   check(json.loads(p.read_text())==wanted,'planner metadata retains original dates and includes the reviewed Lithuanian commemorations')
    intentional_updates.append({'path':path,'reason':'Complete the existing holiday event prefill; original ids, slugs and date rules preserved','sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
    continue
   if path in {'.github/workflows/horoscope-automation.yml','.github/workflows/site-release-qa.yml'}:

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:didysis-ketvirtadienis-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300418
+DTEND;VALUE=DATE:20300419
+SUMMARY:Didysis ketvirtadienis
+DESCRIPTION:Didysis ketvirtadienis minimas likus trims dienoms iki Velykų 
+ sekmadienio.
+URL:https://kalendorius365.lt/sventes/didysis-ketvirtadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

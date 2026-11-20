@@ -95,20 +95,43 @@ function section(title, body, open = false) {
   return `<details${open ? " open" : ""}><summary>${title}</summary><div class="ce-fields">${body}</div></details>`;
 }
 function templateGlyph(t){let photo=t.photoHeight?Math.min(32,t.photoHeight/2):0;return `<svg viewBox="0 0 76 98" aria-hidden="true" focusable="false"><rect x="1" y="1" width="74" height="96" rx="3" fill="${t.background}" stroke="#cbd8d3"/><rect x="8" y="9" width="38" height="4" fill="${t.accent}"/>${photo?`<rect x="8" y="20" width="${t.placement==='side'?18:60}" height="${t.placement==='side'?51:photo}" fill="${t.accent}" opacity=".3"/>`:''}<path d="M${t.placement==='side'?30:8} ${photo&&t.placement!=='side'?photo+27:23}h${t.placement==='side'?38:60}v37H${t.placement==='side'?30:8}z" fill="none" stroke="${t.accent}" stroke-width=".6"/>${[0,1,2,3].map(i=>`<path d="M8 ${79+i*4}h60" stroke="${t.accent}" stroke-width=".4" opacity="${i<t.notes?'.6':'0'}"/>`).join('')}</svg>`;}
+function cellControls(layout, mode, display) {
+  const small = mode === "annual";
+  const position = !small && display === "cell"
+    ? select(LT.calendar_event_placement, "layout.eventPlacement", layout.eventPlacement, [
+      ["bottom", LT.calendar_event_bottom], ["top", LT.calendar_event_top],
+    ]) : "";
+  const rows = small ? "" : select(LT.calendar_cell_lines, "layout.cellLines", layout.cellLines, [
+    [0, LT.calendar_no_lines], [1, LT.calendar_one_line], [2, LT.calendar_two_lines],
+  ]);
+  return `<fieldset class="ce-cell-options"><legend>${LT.calendar_cell_settings}</legend>
+    ${position}${rows}${check(LT.calendar_weekend_tint, "layout.weekendTint", layout.weekendTint)}
+    <small>${small ? LT.calendar_mini_hint : LT.calendar_extra_hint}</small>
+  </fieldset>`;
+}
+async function loadLayoutFonts(s) {
+  const families = new Set(["Inter", s.theme.font, ...Object.values(s.overrides).map(item => item.theme?.font).filter(Boolean)]);
+  await Promise.all([...families].flatMap(font => [400, 700].map(weight =>
+    document.fonts.load(`${weight} 11px "${font}"`, "ĄČĘĖĮŠŲŪŽ 123 ♥★…")
+  )));
+}
 function render() {
   pages = scenes(state, data, editorial);
   index = Math.min(index, pages.length - 1);
   let opened = qa(".ce-controls details[open]").map((d) => d.querySelector("summary").textContent), focused = document.activeElement?.getAttribute("data-path");
-  let k = currentKey(), s = effective(state, scope === "month" ? k : ""), p = state.period;
+  const p = state.period;
+  const annual = p.mode === "annual";
+  if (annual) scope = "all";
+  const k = currentKey(), s = effective(state, scope === "month" ? k : "");
   root.dataset.tab = tab;
   root.setAttribute("aria-busy", String(busy));
   root.innerHTML = `<div class="ce-topbar"><label><span class="visually-hidden">${LT.projekto_pavadinimas}</span><input class="ce-project-name" data-path="name" value="${e(state.name)}" maxlength="100" aria-label="${LT.projekto_pavadinimas}"></label><div class="ce-actions"><button data-action="undo" ${!undo.length ? "disabled" : ""} aria-label="${LT.atsaukti_pakeitima}">${LT.atsaukti}</button><button data-action="redo" ${!redo.length ? "disabled" : ""} aria-label="${LT.pakartoti_pakeitima}">↷ Pakartoti</button><button data-action="projects">${LT.juodrasciai}</button><button data-action="project">${LT.issaugoti_projekta}</button><button data-action="import">${LT.atverti_projekta}</button><button data-action="reset">${LT.is_naujo}</button></div></div>
 <div class="ce-mobile-tabs" role="tablist" aria-label="${LT.kurejo_rodinys}"><button data-action="tab-settings" role="tab" aria-selected="${tab === "settings"}">Nustatymai</button><button data-action="tab-preview" role="tab" aria-selected="${tab === "preview"}">${LT.perziura}</button></div>
 <div class="ce-workspace"><aside class="ce-controls" aria-label="${LT.kalendoriaus_nustatymai}">
 ${section("01 · Laikotarpis ir lapas", `${select(LT.kalendoriaus_tipas, "period.mode", p.mode, [["month", LT.vienas_menuo], ["annual", LT.tekstas_12_menesiu_viename_lape], ["year", LT.metai_12_menesio_lapu], ["rolling", LT.tekstas_12_menesiu_nuo_pasirinktos_datos], ["selection", LT.pasirinkti_menesiai]])}<div class="ce-row">${field(LT.metai, "period.year", p.year, "number", 'min="1900" max="2100"')}${select(p.mode === "rolling" ? LT.pradzios_menuo : LT.menuo, p.mode === "rolling" ? "period.startMonth" : "period.month", p.mode === "rolling" ? p.startMonth : p.month, MONTHS.map((n, i) => [i + 1, n]))}</div>${p.mode === "selection" ? `<fieldset><legend>${LT.itraukti_menesius}</legend><div class="ce-months">${MONTHS.map((n, i) => `<label class="check"><input type="checkbox" data-month="${i + 1}"${p.selected.includes(i + 1) ? " checked" : ""}>${n}</label>`).join("")}</div></fieldset>` : ""}<div class="ce-row">${select(LT.popierius, "layout.paper", s.layout.paper, [["a4", "A4 · 210 × 297 mm"], ["a3", "A3 · 297 × 420 mm"], ["a5", "A5 · 148 × 210 mm"], ["letter", "Letter · 216 × 279 mm"]])}${select(LT.kryptis, "layout.orientation", s.layout.orientation, [["portrait", LT.stacias], ["landscape", LT.gulscias]])}</div>${range(LT.parastes_mm, "layout.margin", s.layout.margin, 5, 25)}${select(LT.savaites_pradzia, "layout.weekstart", s.layout.weekstart, [[0, "Pirmadienis"], [6, "Sekmadienis"]])}${check(LT.iso_savaiciu_numeriai, "layout.isoWeeks", s.layout.isoWeeks)}${check(LT.gretimu_menesiu_dienos, "layout.neighbors", s.layout.neighbors)}${check(LT.isskirti_savaitgalius, "layout.weekends", s.layout.weekends)}${check(LT.zymeti_siandiena_spaudinyje, "layout.printToday", s.layout.printToday)}`, true)}
-${section(LT.tekstas_02_sablonai_ir_spalvos, `<label>${LT.keisti_dizaina}<select id="ce-scope">${options([["all", LT.visiems_menesiams], ["month", LT.tik_siam_menesiui + k]], scope)}</select></label><small>${LT.menesio_isimtis_islaiko_savo_dizaina_pakeitus_bendrus_nustatymus_sablo}</small><div class="ce-template-grid">${Object.entries(TEMPLATES).map(([id, t]) => `<button data-template="${id}" aria-pressed="${s.theme.template === id}">${templateGlyph(t)}<span>${t.name}</span></button>`).join("")}</div><div class="ce-palette">${PALETTES.map(([name, c, b, h], i) => `<button data-palette="${i}">${name}</button>`).join("")}<button data-action="random">${LT.kitos_spalvos}</button></div>${Object.entries(colorNames).map(([k2, label]) => `<div class="ce-color"><span>${label}</span><input type="color" aria-label="${label}: spalvos parinkiklis" data-color="${k2}" value="${s.theme.colors[k2]}"><input type="text" aria-label="${label}: HEX" data-hex="${k2}" value="${s.theme.colors[k2]}" pattern="#[0-9a-fA-F]{6}" maxlength="7"></div>`).join("")}${select(LT.sriftas, "theme.font", s.theme.font, [["Lato", LT.lato_siltas_ir_aiskus], ["Inter", LT.inter_siuolaikinis]])}<small>${LT.lato_ir_inter_sriftai_naudojami_pagal_sil_open_font_license}</small>${range(LT.antrastes_dydis_pt, "theme.titleSize", s.theme.titleSize, 16, 40)}${range(LT.dienu_dydis_pt, "theme.bodySize", s.theme.bodySize, 7, 16)}${range(LT.linijos_storis_pt, "theme.lineWidth", s.theme.lineWidth, 0.1, 2, 0.1)}${check(LT.taupus_spausdinimas_griztamasis_rezimas, "lowInk", state.lowInk)}<button data-action="apply-style-all">${LT.apply_current_all}</button><button data-action="clear-override">${LT.panaikinti_sio_menesio_dizaino_isimti}</button>`, true)}
+${section(LT.tekstas_02_sablonai_ir_spalvos, `${annual ? "" : `<label>${LT.keisti_dizaina}<select id="ce-scope">${options([["all", LT.visiems_menesiams], ["month", LT.tik_siam_menesiui + k]], scope)}</select></label><small>${LT.menesio_isimtis_islaiko_savo_dizaina_pakeitus_bendrus_nustatymus_sablo}</small>`}<div class="ce-template-grid">${Object.entries(TEMPLATES).map(([id, t]) => `<button data-template="${id}" aria-pressed="${s.theme.template === id}">${templateGlyph(t)}<span>${t.name}</span></button>`).join("")}</div><div class="ce-palette">${PALETTES.map(([name, c, b, h], i) => `<button data-palette="${i}">${name}</button>`).join("")}<button data-action="random">${LT.kitos_spalvos}</button></div>${Object.entries(colorNames).map(([k2, label]) => `<div class="ce-color"><span>${label}</span><input type="color" aria-label="${label}: spalvos parinkiklis" data-color="${k2}" value="${s.theme.colors[k2]}"><input type="text" aria-label="${label}: HEX" data-hex="${k2}" value="${s.theme.colors[k2]}" pattern="#[0-9a-fA-F]{6}" maxlength="7"></div>`).join("")}${select(LT.sriftas, "theme.font", s.theme.font, [["Lato", LT.lato_siltas_ir_aiskus], ["Inter", LT.inter_siuolaikinis]])}<small>${LT.lato_ir_inter_sriftai_naudojami_pagal_sil_open_font_license}</small>${range(LT.antrastes_dydis_pt, "theme.titleSize", s.theme.titleSize, 16, 40)}${range(LT.dienu_dydis_pt, "theme.bodySize", s.theme.bodySize, 7, 16)}${range(LT.linijos_storis_pt, "theme.lineWidth", s.theme.lineWidth, 0.1, 2, 0.1)}${check(LT.taupus_spausdinimas_griztamasis_rezimas, "lowInk", state.lowInk)}${annual ? "" : `<button data-action="apply-style-all">${LT.apply_current_all}</button><button data-action="clear-override">${LT.panaikinti_sio_menesio_dizaino_isimti}</button>`}`, true)}
 ${section("03 · Nuotraukos", `<div class="ce-photo-drop" id="ce-drop"><label>${LT.ikelti_nuotraukas}<input id="ce-photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><small>${LT.arba_nutempkite_failus_cia_iki_24_nuotrauku_jpeg_png_webp}</small></div><div id="ce-photo-list" class="ce-photo-list"></div><button data-action="auto-photos">${LT.paskirstyti_nuotraukas_menesiams_is_eiles}</button>${select(LT.nuotraukos_vieta, "theme.placement", s.theme.placement, [["top", LT.virs_kalendoriaus], ["side", LT.salia_kalendoriaus], ["background", LT.kalendoriaus_fone]])}${range(LT.nuotraukos_aukstis_plotis_mm, "layout.photoHeight", s.layout.photoHeight, 0, 110)}<div id="ce-photo-settings"></div><p class="muted">${LT.kirpimo_padetis_saugoma_originalo_santykiu_eksportui_visuomet_naudojam}</p>`)}
-${section(LT.tekstas_04_datos_ir_asmeniniai_ivykiai, `${check(LT.lietuvos_sventines_dienos, "layers.statutory", state.layers.statutory)}${check(LT.atmintinos_dienos_atskiras_sluoksnis, "layers.commemorative", state.layers.commemorative)}${check(LT.paskelbtos_mokiniu_atostogos, "layers.school", state.layers.school)}${select(LT.ugdymo_pakopa, "layers.schoolStage", state.layers.schoolStage, [["basic", LT.pradinis_ir_pagrindinis], ["secondary", "Vidurinis"]])}<p class="ce-inline-message">${LT.mokiniu_atostogos_tik_oficialus_2026_2027_m_laikotarpiai_velesniu_metu}</p>${check(LT.asmeniniai_ivykiai, "layers.personal", state.layers.personal)}${select(LT.ivykiu_rodymas, "layers.display", state.layers.display, [["cell", LT.tekstas_langeliuose_ir_visas_priedas], ["marks", LT.zenklai_langeliuose_ir_visas_priedas], ["legend", LT.datos_ir_visas_irasu_priedas]])}<button data-action="event-new" class="primary">${LT.prideti_ivyki_2}</button><small>${LT.taip_pat_galite_paspausti_dienos_skaiciu_perziuroje}</small><label>${LT.ieskoti_ivykio}<input id="ce-event-search" type="search" placeholder="${LT.pavadinimas_zmogus_pastaba}"></label><label>${LT.kategorija}<select id="ce-event-filter">${options([["all", LT.visos_kategorijos], ...Object.entries(categoryNames)], "all")}</select></label><div id="ce-event-list" class="ce-event-list"></div>`)}
+${section(LT.tekstas_04_datos_ir_asmeniniai_ivykiai, `${check(LT.lietuvos_sventines_dienos, "layers.statutory", state.layers.statutory)}${check(LT.atmintinos_dienos_atskiras_sluoksnis, "layers.commemorative", state.layers.commemorative)}${check(LT.paskelbtos_mokiniu_atostogos, "layers.school", state.layers.school)}${select(LT.ugdymo_pakopa, "layers.schoolStage", state.layers.schoolStage, [["basic", LT.pradinis_ir_pagrindinis], ["secondary", "Vidurinis"]])}<p class="ce-inline-message">${LT.mokiniu_atostogos_tik_oficialus_2026_2027_m_laikotarpiai_velesniu_metu}</p>${check(LT.asmeniniai_ivykiai, "layers.personal", state.layers.personal)}${select(LT.ivykiu_rodymas, "layers.display", state.layers.display, [["cell", LT.tekstas_langeliuose_ir_visas_priedas], ["marks", LT.zenklai_langeliuose_ir_visas_priedas], ["legend", LT.datos_ir_visas_irasu_priedas]])}${cellControls(s.layout, p.mode, state.layers.display)}<button data-action="event-new" class="primary">${LT.prideti_ivyki_2}</button><small>${LT.calendar_day_hint}</small><label>${LT.ieskoti_ivykio}<input id="ce-event-search" type="search" placeholder="${LT.pavadinimas_zmogus_pastaba}"></label><label>${LT.kategorija}<select id="ce-event-filter">${options([["all", LT.visos_kategorijos], ...Object.entries(categoryNames)], "all")}</select></label><div id="ce-event-list" class="ce-event-list"></div>`)}
 ${section(LT.tekstas_05_uzrasai_ir_atostogu_planas, `${range(LT.uzrasu_darbu_eilutes, "layout.notes", s.layout.notes, 0, 10)}<label>${LT.sio_menesio_uzrasai}<textarea id="ce-notes" maxlength="2000">${e(state.notes[k] || "")}</textarea></label><small>${LT.visas_tekstas_bus_pateiktas_menesio_priede}</small><fieldset><legend>${LT.jusu_darbo_savaite}</legend><div class="ce-months">${DAYS.map((n, i) => `<label class="check"><input type="checkbox" data-workday="${i}"${state.workdays.includes(i) ? " checked" : ""}>${n}</label>`).join("")}</div></fieldset><div class="ce-row"><label>Nuo<input id="ce-leave-start" type="date" min="1900-01-01" max="2100-12-31" value="${state.period.year}-01-01"></label><label>Iki (imtinai)<input id="ce-leave-end" type="date" min="1900-01-01" max="2100-12-31" value="${state.period.year}-01-07"></label></div><button data-action="calculate">${LT.skaiciuoti_atostogu_dienas}</button><p id="ce-leave-result" class="ce-inline-message">${LT.savaites_poilsis_sventes_ir_atostogu_dienos_skaiciuojami_be_dubliavimo}</p><button data-action="suggest">${LT.rodyti_ilguju_savaitgaliu_idejas}</button><div id="ce-suggestions" class="ce-suggestions"></div>`)}
 </aside><section class="ce-preview-area" aria-label="${LT.tiesiogine_kalendoriaus_perziura}"><div class="ce-preview-toolbar"><p id="ce-page-label">Kalendorius</p><div class="ce-actions"><button data-action="zoom-out" aria-label="${LT.sumazinti_perziura}">−</button><button data-action="fit">Sutalpinti</button><button data-action="zoom-in" aria-label="${LT.padidinti_perziura}">+</button></div></div><div class="ce-preview-shell"><div class="ce-paper" id="ce-paper"></div></div><p class="muted" id="ce-preview-info">${LT.perziura_islaiko_tikras_lapo_proporcijas}</p><nav class="ce-thumbs" id="ce-thumbs" aria-label="${LT.kalendoriaus_puslapiai}"></nav></section></div>
 <div class="ce-exportbar"><div><strong>${LT.paruosta_jusu_planams}</strong><p class="ce-status" id="ce-status" data-error="${statusError}" role="status" aria-live="polite">${e(statusText)}</p></div><div class="ce-actions"><label><span class="visually-hidden">${LT.atsisiuntimo_formatas}</span><select id="ce-format" aria-label="${LT.atsisiuntimo_formatas}">${options([["pdf", LT.pdf_visi_puslapiai], ["webp", LT.webp_sis_puslapis], ["png", LT.png_sis_puslapis], ["webp-zip", LT.webp_visi_zip_faile], ["paired", LT.pdf_ir_webp_menesiu_zip], ["print", LT.spausdinti_visus_puslapius]], sessionStorage.getItem("ce-format") || "pdf")}</select></label><button data-action="export" class="primary">${LT.atsisiusti}</button></div><div id="ce-progress-wrap" hidden><progress class="ce-progress" id="ce-progress" value="0" max="1"></progress><button data-action="cancel">${LT.atsaukti_ruosima}</button></div></div>
@@ -126,7 +149,8 @@ function schedulePreview() {
 }
 async function preview() {
   let version = ++previewVersion;
-  await document.fonts.ready;
+  await loadLayoutFonts(state);
+  if (version !== previewVersion) return;
   pages = scenes(state, data, editorial);
   index = Math.min(index, pages.length - 1);
   let page = pages[index];
@@ -140,11 +164,12 @@ async function preview() {
     if (photoCache.size > 18) photoCache.delete(photoCache.keys().next().value);
   }
   if (version !== previewVersion) return;
-  q("#ce-paper").innerHTML = svg(page, urls);
-  q("#ce-paper").style.width = `${600 * zoom}px`;
-  q("#ce-paper").style.maxWidth = zoom > 1 ? "none" : "100%";
+  const paper = q("#ce-paper");
+  paper.innerHTML = svg(page, urls, "", { interactive: true });
+  paper.style.setProperty("--ce-page-ratio", String(page.w / page.h));
+  paper.style.setProperty("--ce-zoom", String(zoom));
   q("#ce-page-label").textContent = `${page.label} · ${index + 1} / ${pages.length}`;
-  q("#ce-thumbs").innerHTML = pages.map((p, i) => `<button data-page="${i}" aria-current="${i === index}"><span aria-hidden="true">${svg(p, p === page ? urls : {}).replace(/ data-editor-date="[^"<>]+" tabindex="0" role="button" aria-label="[^"<>]+"/g, "")}</span>${e(p.label)}</button>`).join("");
+  q("#ce-thumbs").innerHTML = pages.map((p, i) => `<button data-page="${i}" aria-current="${i === index}"><span aria-hidden="true">${svg(p, p === page ? urls : {})}</span>${e(p.label)}</button>`).join("");
   let warnings = page.items.filter((i) => i.type === "photo").map((i) => {
     let n = Math.round(dpi(i.photo, i.w, i.h));
     return `${LT.nuotraukos_efektyvi_raiska}${n} PPI${n < 200 ? LT.maza_raiska_spaudai : n < 300 ? LT.maziau_nei_300_ppi : ""}`;
@@ -273,7 +298,6 @@ async function exportFiles() {
   let frozen = clone(state), frozenIndex = index, list;
   try {
     validate(frozen);
-    list = scenes(frozen, data, editorial);
   } catch (error) {
     status(readableError(error), true);
     return;
@@ -293,8 +317,10 @@ async function exportFiles() {
     status(`${LT.ruosiama}${n} / ${total}`);
   };
   try {
-    await document.fonts.ready;
+    await loadLayoutFonts(frozen);
     check2();
+    list = scenes(frozen, data, editorial);
+    frozenIndex = Math.min(frozenIndex, list.length - 1);
     let blob, name;
     if (format === "print") {
       await output.printPages(list, check2, progress);
@@ -450,7 +476,7 @@ root.addEventListener("change", async (event) => {
       return;
     }
     if (n.dataset.path) {
-      let value = n.type === "checkbox" ? n.checked : n.type === "number" || n.dataset.path === "layout.weekstart" || n.dataset.path.endsWith("month") || n.dataset.path.endsWith("Month") ? +n.value : n.value;
+      let value = n.type === "checkbox" ? n.checked : n.type === "number" || ["layout.weekstart", "layout.cellLines"].includes(n.dataset.path) || n.dataset.path.endsWith("month") || n.dataset.path.endsWith("Month") ? +n.value : n.value;
       change((s) => {
         setPath(s, n.dataset.path, value);
         if (n.dataset.path.startsWith("period.")) index = 0;
@@ -765,7 +791,7 @@ root.addEventListener("click", async (event) => {
   }
 });
 root.addEventListener("keydown", (event) => {
-  if (event.target.dataset.editorDate && ["Enter", " "].includes(event.key)) {
+  if (!busy && event.target.dataset.editorDate && ["Enter", " "].includes(event.key)) {
     event.preventDefault();
     eventDialog(null, event.target.dataset.editorDate);
   }

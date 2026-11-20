@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-vilniaus-maratonas-2027-09-12@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270912
+DTEND;VALUE=DATE:20270913
+SUMMARY:Vilniaus maratonas
+DESCRIPTION:Vilniaus maratonas vyks 2027 m. rugsėjo 12 d. Organizatoriaus 
+ nuostatuose skelbiama registracijos\, distancijų ir dalyvių aptarnavimo 
+ informacija.
+URL:https://kalendorius365.lt/renginiai/vilniaus-maratonas/
+TRANSP:TRANSPARENT
+LOCATION:Katedros aikštė ir trasos Vilniuje
+END:VEVENT
+END:VCALENDAR

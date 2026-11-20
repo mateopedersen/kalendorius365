@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-diabeto-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20271114
+DTEND;VALUE=DATE:20271115
+SUMMARY:Pasaulinė diabeto diena
+DESCRIPTION:Lapkričio 14-ąją minima Pasaulinė diabeto diena. Ji skirta 
+ visuomenės informavimui\, supratimui ir žmonių\, gyvenančių su diabet
+ u\, patirtims.
+URL:https://kalendorius365.lt/sventes/pasauline-diabeto-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

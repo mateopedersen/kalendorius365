@@ -6,9 +6,9 @@
       "route": "/sventes/2027/sausis/",
       "status": "passed",
       "h1": "2027 m. sausio šventės ir atmintinos dienos",
-      "event_records": 8,
+      "event_records": 9,
       "statutory_dates": 1,
-      "source_count": 3,
+      "source_count": 5,
       "calendar_days": 31,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/sausis/"
@@ -17,9 +17,9 @@
       "route": "/sventes/2027/vasaris/",
       "status": "passed",
       "h1": "2027 m. vasario šventės ir atmintinos dienos",
-      "event_records": 7,
+      "event_records": 12,
       "statutory_dates": 1,
-      "source_count": 4,
+      "source_count": 10,
       "calendar_days": 28,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/vasaris/"
@@ -28,9 +28,9 @@
       "route": "/sventes/2027/kovas/",
       "status": "passed",
       "h1": "2027 m. kovo šventės ir atmintinos dienos",
-      "event_records": 16,
+      "event_records": 22,
       "statutory_dates": 3,
-      "source_count": 5,
+      "source_count": 9,
       "calendar_days": 31,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/kovas/"
@@ -39,9 +39,9 @@
       "route": "/sventes/2027/balandis/",
       "status": "passed",
       "h1": "2027 m. balandžio šventės ir atmintinos dienos",
-      "event_records": 13,
+      "event_records": 15,
       "statutory_dates": 0,
-      "source_count": 5,
+      "source_count": 9,
       "calendar_days": 30,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/balandis/"
@@ -50,9 +50,9 @@
       "route": "/sventes/2027/geguze/",
       "status": "passed",
       "h1": "2027 m. gegužės šventės ir atmintinos dienos",
-      "event_records": 18,
+      "event_records": 21,
       "statutory_dates": 2,
-      "source_count": 3,
+      "source_count": 9,
       "calendar_days": 31,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/geguze/"
@@ -61,9 +61,9 @@
       "route": "/sventes/2027/birzelis/",
       "status": "passed",
       "h1": "2027 m. birželio šventės ir atmintinos dienos",
-      "event_records": 8,
+      "event_records": 10,
       "statutory_dates": 2,
-      "source_count": 4,
+      "source_count": 7,
       "calendar_days": 30,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/birzelis/"
@@ -72,9 +72,9 @@
       "route": "/sventes/2027/liepa/",
       "status": "passed",
       "h1": "2027 m. liepos šventės ir atmintinos dienos",
-      "event_records": 9,
+      "event_records": 10,
       "statutory_dates": 1,
-      "source_count": 2,
+      "source_count": 4,
       "calendar_days": 31,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/liepa/"
@@ -83,9 +83,9 @@
       "route": "/sventes/2027/rugpjutis/",
       "status": "passed",
       "h1": "2027 m. rugpjūčio šventės ir atmintinos dienos",
-      "event_records": 7,
+      "event_records": 8,
       "statutory_dates": 1,
-      "source_count": 3,
+      "source_count": 5,
       "calendar_days": 31,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/rugpjutis/"
@@ -94,9 +94,9 @@
       "route": "/sventes/2027/rugsejis/",
       "status": "passed",
       "h1": "2027 m. rugsėjo šventės ir atmintinos dienos",
-      "event_records": 10,
+      "event_records": 12,
       "statutory_dates": 0,
-      "source_count": 1,
+      "source_count": 4,
       "calendar_days": 30,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/rugsejis/"
@@ -116,9 +116,9 @@
       "route": "/sventes/2027/lapkritis/",
       "status": "passed",
       "h1": "2027 m. lapkričio šventės ir atmintinos dienos",
-      "event_records": 10,
+      "event_records": 14,
       "statutory_dates": 2,
-      "source_count": 3,
+      "source_count": 9,
       "calendar_days": 30,
       "visible_html": true,
       "canonical": "https://kalendorius365.lt/sventes/2027/lapkritis/"
@@ -135,11 +135,11 @@
       "canonical": "https://kalendorius365.lt/sventes/2027/gruodis/"
     }
   ],
-  "baseline_assets_preserved": 386,
+  "baseline_assets_preserved": 385,
   "baseline_asset_accounting": {
     "accounted": 3152,
     "expected": 3152,
-    "intentional_baseline_assets": 1206
+    "intentional_baseline_assets": 1207
   },
   "intentional_metadata_updates": [
     {
@@ -7388,7 +7388,13 @@
     {
       "path": "site/assets/data/home-holiday-data.json",
       "reason": "Complete the existing holiday event prefill; original ids, slugs and date rules preserved",
-      "sha256": "5584381a8f9ac36294bdab4a3cffa62814fdb796505be7eeceb104f52d109aae"
+      "sha256": "233e7ce861c2f9e1523a89a399157b880645224ecb8bf8995035d8746aabd005"
+    },
+    {
+      "path": "functions/api/weather.js",
+      "reason": "Return usable LHMT readings when a second source stalls; validate city identifiers and retain source attribution",
+      "before_sha256": "0982831746dc85dc65a2f47609a0109addd30d52a31ef2e8ff4edc1f167b8588",
+      "sha256": "b0146fe880d227b4ba7111d4ff45c67042e883fdbf0585208b2c66c397c4c0b9"
     },
     {
       "path": ".github/workflows/horoscope-automation.yml",
@@ -7398,7 +7404,7 @@
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "e75b08a03098305a01aaf8ae2c7952b5ee0e7c36365017ca94c5283a72ce000b"
+      "sha256": "2ec455fc6f8af080afdc9d9ba2f236c19d16f518bfbdedac0ea3854f6cbb1dab"
     }
   ],
   "changed_baseline_assets": [],
@@ -7409,7 +7415,7 @@
     }
   },
   "failures": [],
-  "checked_at": "2026-11-16",
+  "checked_at": "2026-11-21",
   "limits": [
     "No independent native-human language or legal certification is claimed.",
     "Browser interaction, rendered geometry, contrast and live HTTP are a separate gate."

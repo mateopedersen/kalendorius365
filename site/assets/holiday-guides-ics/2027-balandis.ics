@@ -82,6 +82,29 @@ URL:https://kalendorius365.lt/sventes/2027/balandis/#ivykis-earth
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:2027-comm-basketball@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270423
+DTEND;VALUE=DATE:20270424
+SUMMARY:Krepšinio diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos krepšinio istorijai sk
+ irta atmintina diena\, įstatyme įrašyta nuo 2027 m.
+URL:https://kalendorius365.lt/sventes/2027/balandis/#ivykis-comm-basketball
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-jurgines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270423
+DTEND;VALUE=DATE:20270424
+SUMMARY:Jurginės (Jorė)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Balandžio 23-ąją tradici
+ niame kalendoriuje minimos Jurginės\, dar vadinamos Jore arba Pergrubriju
+ mi.
+URL:https://kalendorius365.lt/sventes/2027/balandis/#ivykis-folk-jurgines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:2027-world-book@kalendorius365.lt
 DTSTAMP:20261017T100000Z
 DTSTART;VALUE=DATE:20270423

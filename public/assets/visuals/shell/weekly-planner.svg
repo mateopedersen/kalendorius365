@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 132">
+  <defs>
+    <linearGradient id="paper" x2=".8" y2="1"><stop stop-color="#fffdf2"/><stop offset="1" stop-color="#d9cbae"/></linearGradient>
+    <linearGradient id="green" x2=".8" y2="1"><stop stop-color="#559778"/><stop offset="1" stop-color="#0d4937"/></linearGradient>
+    <linearGradient id="dark" x2=".8" y2="1"><stop stop-color="#305b4e"/><stop offset="1" stop-color="#082b24"/></linearGradient>
+    <linearGradient id="red" x2=".8" y2="1"><stop stop-color="#e08477"/><stop offset="1" stop-color="#8e263b"/></linearGradient>
+    <linearGradient id="gold" x2=".8" y2="1"><stop stop-color="#ffdd83"/><stop offset="1" stop-color="#a96524"/></linearGradient>
+    <linearGradient id="metal" x2=".8" y2="1"><stop stop-color="#fffbe2"/><stop offset="1" stop-color="#a3926c"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="3.5"/></filter>
+  </defs>
+  <ellipse cx="81" cy="117" rx="54" ry="6" fill="#263f2e" opacity=".2" filter="url(#shadow)"/>
+  <path d="M23 51l85-25 36 69-96 20-30-50z" fill="url(#dark)"/>
+  <path d="M22 48l85-25 33 67-95 21z" fill="url(#paper)" stroke="#a8ab8e"/>
+  <path d="m24 49 82-24 6 13-82 24z" fill="url(#green)"/>
+  <path d="m36 70 79-23m-74 34 80-23m-74 34 80-23m-75 32 80-23M48 68l13 33m3-37 15 33m0-39 16 34m0-39 17 34" stroke="#9eb39f" stroke-width="1.4"/>
+  <g fill="none" stroke="url(#metal)" stroke-width="4" stroke-linecap="round"><path d="M37 51c-13-8-10-17-1-14m23 7c-13-8-10-17-1-14m23 7c-13-8-10-17-1-14m23 7c-13-8-10-17-1-14"/></g>
+  <path d="m72 66 14-4 4 10-13 4z" fill="url(#red)"/><path d="m99 72 14-4 5 10-14 4z" fill="url(#gold)"/>
+  <path d="M95 104 139 94" stroke="#9b7d4d" stroke-width="2" stroke-linecap="round"/>
+</svg>

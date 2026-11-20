@@ -1,0 +1,101 @@
+.content-main .occasion-calendar {
+  --occasion-ink: #194534;
+  --occasion-muted: #465f54;
+  --occasion-border: #bed4c5;
+  display: grid;
+  gap: clamp(12px, 2vw, 19px);
+  width: 100%;
+  max-width: 48rem;
+  min-width: 0;
+  margin: 0 auto;
+  padding: clamp(15px, 3vw, 28px);
+  border: 1px solid var(--occasion-border);
+  border-radius: 19px;
+  background: linear-gradient(140deg, #eef5eb, #fffdf6 68%);
+  color: var(--occasion-ink);
+  font: 400 1rem/1.45 var(--shell-font);
+  scroll-margin-top: 105px;
+}
+.content-main :is(.hd2,.local-date-guide,.shop-guide) > .occasion-calendar { margin-block: clamp(15px, 2vw, 26px); }
+.content-main .occasion-calendar [hidden] { display: none; }
+.content-main .occasion-calendar :is(h2,h3,p) { margin: 0; }
+.content-main .occasion-calendar :is(h2,h3) { color: var(--occasion-ink); line-height: 1.16; }
+.occasion-calendar__header,.occasion-calendar__preview { display: flex; align-items: center; gap: clamp(10px, 2vw, 17px); }
+.content-main .occasion-calendar__header h2 { font-size: clamp(1.23rem, 3vw, 1.75rem); letter-spacing: -.025em; }
+.content-main .occasion-calendar__header p { margin-bottom: 3px; color: var(--occasion-muted); font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.occasion-calendar__illustration {
+  display: grid;
+  flex: none;
+  width: 59px;
+  height: 59px;
+  place-items: center;
+  border: 1px solid var(--occasion-border);
+  border-radius: 13px;
+  background: #fff;
+}
+.occasion-calendar__illustration img { width: 51px; height: auto; }
+.occasion-calendar__preview { padding-bottom: clamp(12px, 2vw, 18px); border-bottom: 1px solid var(--occasion-border); }
+.occasion-calendar__preview > div:last-child { min-width: 0; overflow-wrap: anywhere; }
+.content-main .occasion-calendar__preview h3 { font-size: clamp(1.14rem, 2.9vw, 1.6rem); }
+.occasion-calendar__preview time { display: block; padding: 5px 0 3px; font-weight: 900; }
+.content-main .occasion-calendar__preview p,.content-main .occasion-calendar__help { color: var(--occasion-muted); font-size: .88rem; }
+.occasion-calendar__leaf {
+  display: grid;
+  flex: 0 0 clamp(80px, 15vw, 102px);
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--occasion-border);
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 3px #1d57351c;
+}
+.occasion-calendar__leaf span { padding: 4px 3px; background: #256049; color: #fff; font: 800 .75rem/1.3 var(--shell-font); }
+.occasion-calendar__leaf b { margin-top: 5px; font-size: 2.05rem; line-height: 1.06; font-variant-numeric: tabular-nums; }
+.occasion-calendar__leaf small { padding: 4px 3px 6px; color: var(--occasion-muted); font-size: .67rem; }
+.occasion-calendar__fields { display: grid; grid-template-columns: minmax(90px, .38fr) minmax(0, 1fr); gap: 8px; align-items: end; }
+.occasion-calendar__fields label { display: grid; gap: 5px; color: var(--occasion-ink); font-weight: 800; }
+.content-main .occasion-calendar__fields select {
+  width: 100%;
+  min-width: 0;
+  min-height: 45px;
+  margin: 0;
+  border: 1px solid #a5beae;
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--occasion-ink);
+  font: 700 max(.92rem,16px)/1.35 var(--shell-font);
+}
+.occasion-calendar__services { display: grid; gap: 7px; }
+.content-main .occasion-calendar__service {
+  display: grid;
+  grid-template-columns: 43px minmax(0,1fr) 20px;
+  align-items: center;
+  gap: 10px;
+  min-height: 66px;
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--occasion-border);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--occasion-ink);
+  font: 800 1rem/1.2 var(--shell-font);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.content-main .occasion-calendar__service:hover { border-color: #719b86; background: #e9f3e9; color: var(--occasion-ink); }
+.content-main .occasion-calendar__service--primary { border-color: #174633; background: var(--shell-heading-backdrop); color: #fffdf3; }
+.content-main .occasion-calendar__service--primary:hover { border-color: #20533f; background: #20533f; color: #fffdf3; }
+.occasion-calendar__service strong,.occasion-calendar__service small { display: block; overflow-wrap: anywhere; }
+.occasion-calendar__service small { margin-top: 4px; color: var(--occasion-muted); font-size: .8rem; font-weight: 500; }
+.occasion-calendar__service--primary small { color: #def4e9; }
+.occasion-calendar__logo { display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid #d5e1d7; border-radius: 9px; background: #fff; }
+.occasion-calendar__logo img { width: 31px; height: 31px; object-fit: contain; }
+.occasion-calendar__action { width: 19px; height: 19px; }
+.content-main .occasion-calendar :is(a,button,select):focus-visible { outline: 2px solid #2d7560; outline-offset: 3px; }
+.occasion-calendar__status:empty { display: none; }
+.content-main .occasion-calendar__status { font-size: .88rem; font-weight: 800; }
+.occasion-calendar__open { display: inline-flex; align-items: center; width: fit-content; gap: 8px; color: #116543; font-weight: 800; }
+@media (max-width: 350px) { .occasion-calendar__fields { grid-template-columns: minmax(0,1fr); } }
+@media print { .content-main .occasion-calendar { display: none; } }

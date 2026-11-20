@@ -1,0 +1,49 @@
+---
+title: "ISO savaičių skaičiuoklė Lietuvoje"
+description: "Raskite šios ar pasirinktos datos ISO savaitės numerį ir pirmadienio bei sekmadienio datas. Savaičių kalendoriai pagal metus."
+date_guide: true
+hero_share: true
+---
+{% include tool-page-head.html icon="week" title="ISO savaičių numeriai" lead="Raskite pasirinktos datos savaitę arba sužinokite, kuriomis datomis prasideda ir baigiasi konkreti savaitė." %}
+<section class="week-tool panel" data-week-guide aria-labelledby="week-tool-title">
+  <h2 id="week-tool-title">Savaitės numeris ir datos</h2>
+  <div class="week-tool__layout">
+    <div class="week-tool__forms">
+      <form data-week-date class="date-guide-form">
+        <label>Pasirinkite datą<input name="date" type="date" min="1900-01-01" max="2100-12-31" required></label>
+        <div class="guide-actions"><button type="submit" class="primary">Rasti savaitę</button><button type="button" data-current-week>Šiandien</button></div>
+      </form>
+      <form data-week-number class="date-guide-form">
+        <h3>Rasti datas pagal savaitę</h3>
+        <div class="form-row">
+          <label>ISO metai<input name="year" type="number" min="1900" max="2100" required></label>
+          <label>Savaitės numeris<input name="week" type="number" min="1" max="53" required></label>
+        </div>
+        <button type="submit" class="primary">Rodyti savaitės datas</button>
+      </form>
+    </div>
+    <div class="week-tool__result">
+      <div class="week-tool__period">
+        <div><p data-week-caption>Pasirinktos savaitės datos</p><strong data-week-range></strong></div>
+        <div class="week-tool__navigation"><button type="button" data-week-step="-1" aria-label="Ankstesnė savaitė" disabled>‹</button><button type="button" data-week-step="1" aria-label="Kita savaitė" disabled>›</button></div>
+      </div>
+      <ol data-week-days></ol>
+      <p data-week-status role="status">Pasirinkite datą arba ISO savaitę.</p>
+    </div>
+  </div>
+</section>
+<section class="week-brief panel" aria-labelledby="week-brief-title">
+  <div><h2 id="week-brief-title">Kaip skaičiuojamos savaitės?</h2><p>Savaitė prasideda pirmadienį ir baigiasi sekmadienį. Pirmoji ISO metų savaitė visada apima sausio 4-ąją. <a href="https://www.gnu.org/software/emacs/manual/html_node/calc/ISO-8601.html">ISO taisyklės pavyzdžiai</a> ir <a href="/blogas/iso-savaiciu-numeriai/">sausio 1-osios paaiškinimas</a> padės patikrinti metų sandūrą.</p></div>
+  <div class="week-brief__example"><span>Pavyzdys</span><strong>2027 m. sausio 1 d. priklauso 2026 m. 53 savaitei</strong><span>Nuo 2026-12-28 iki 2027-01-03</span></div>
+</section>
+<section class="calendar-catalog-section" aria-labelledby="week-tables-title">
+  <header class="calendar-catalog-section__heading"><h2 id="week-tables-title">Savaičių lentelės pagal metus</h2></header>
+  <div class="calendar-catalog">
+    {% for year in (2027..2030) %}
+      {% assign url = year | prepend: '/savaites/' | append: '/' %}
+      {% assign art = year | prepend: 'year-' %}
+      {% assign title = year | append: ' m. savaitės' %}
+      {% include calendar-catalog-card.html url=url icon=art title=title description="Pirmadienio ir sekmadienio datos" %}
+    {% endfor %}
+  </div>
+</section>

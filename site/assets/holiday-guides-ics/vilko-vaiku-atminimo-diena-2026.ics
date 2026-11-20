@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vilko-vaiku-atminimo-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20260914
+DTEND;VALUE=DATE:20260915
+SUMMARY:Vilko vaikų atminimo diena
+DESCRIPTION:Rugsėjo 14-ąją prisimenami po Antrojo pasaulinio karo iš Ry
+ tų Prūsijos į Lietuvą ieškoti maisto ir prieglobsčio atvykę vaikai.
+URL:https://kalendorius365.lt/sventes/vilko-vaiku-atminimo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:onines-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270726
+DTEND;VALUE=DATE:20270727
+SUMMARY:Oninės (Šv. Onos diena)
+DESCRIPTION:Oninės minimos liepos 26-ąją\, šv. Onos dieną\, tradicinia
+ me kalendoriuje siejamą su javapjūtės laikotarpiu.
+URL:https://kalendorius365.lt/sventes/onines/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

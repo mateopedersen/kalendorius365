@@ -1,0 +1,159 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2030 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2030 m. birželio datos
+BEGIN:VEVENT
+UID:2030-stat-fathers@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300602
+DTEND;VALUE=DATE:20300603
+SUMMARY:Tėvo diena
+DESCRIPTION:Šventinė diena · DK 123 str. Tėvo diena Lietuvoje minima pi
+ rmąjį birželio sekmadienį\, todėl tiksli data kasmet keičiasi.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-stat-fathers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-sestines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300602
+DTEND;VALUE=DATE:20300603
+SUMMARY:Šeštinės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Šeštinės yra Kristaus Ž
+ engimo į dangų iškilmė. Lietuvos katalikų kalendoriuje ji švenčiama
+  šeštą sekmadienį po Velykų.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-folk-sestines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-048@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300603
+DTEND;VALUE=DATE:20300604
+SUMMARY:Sąjūdžio diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos Sąjūdžiui skirtas is
+ torinio atminimo įrašas.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-comm-048
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-environment@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300605
+DTEND;VALUE=DATE:20300606
+SUMMARY:Pasaulinė aplinkos apsaugos diena
+DESCRIPTION:Tarptautinė diena. Jungtinių Tautų kalendoriaus aplinkosaugo
+ s data\; Lietuvoje papildomos nedarbo dienos nesuteikia.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-environment
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-sekmines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300609
+DTEND;VALUE=DATE:20300610
+SUMMARY:Sekminės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Sekminės švenčiamos sept
+ intą sekmadienį po Velykų ir katalikų tradicijoje mini Šventosios Dva
+ sios atsiuntimą.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-folk-sekmines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-049@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300611
+DTEND;VALUE=DATE:20300612
+SUMMARY:Lietuvos oreivių diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos oreiviams skirta atmint
+ ina diena.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-comm-049
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-sv-antano-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300613
+DTEND;VALUE=DATE:20300614
+SUMMARY:Šv. Antano diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Birželio 13-ąją Katalik
+ ų Bažnyčia mini šv. Antaną Paduvietį. Šią datą mini ir lietuvišk
+ ų tradicinių kalendorinių švenčių sąrašas.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-folk-sv-antano-
+ diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-050@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300614
+DTEND;VALUE=DATE:20300615
+SUMMARY:Gedulo ir vilties diena\, Palaimintojo arkivyskupo Teofiliaus Matul
+ ionio diena\, Pasaulinė kraujo donorų diena
+DESCRIPTION:Atmintina diena · įstatymas. Vieną datą dalijasi istorinio 
+ atminimo\, religinio minėjimo ir kraujo donorystės temos.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-comm-050
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-051@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300615
+DTEND;VALUE=DATE:20300616
+SUMMARY:Okupacijos ir genocido diena
+DESCRIPTION:Atmintina diena · įstatymas. Okupacijos ir genocido aukų atm
+ inimui skirta diena.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-comm-051
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-052@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300623
+DTEND;VALUE=DATE:20300624
+SUMMARY:Birželio sukilimo diena\, Tarptautinė valstybės tarnautojų dien
+ a
+DESCRIPTION:Atmintina diena · įstatymas. Tą pačią datą minimas Birže
+ lio sukilimas ir valstybės tarnautojų veikla.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-comm-052
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-devintines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300623
+DTEND;VALUE=DATE:20300624
+SUMMARY:Devintinės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Devintinės yra Kristaus K
+ ūno ir Kraujo iškilmė. Lietuvoje ji švenčiama antrą sekmadienį po S
+ ekminių.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-folk-devintines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-stat-jonines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300624
+DTEND;VALUE=DATE:20300625
+SUMMARY:Rasos ir Joninių diena
+DESCRIPTION:Šventinė diena · DK 123 str. Birželio 24-ąją minima Rasos
+  ir Joninių diena. Su šia vasaros švente siejami Rasų\, Kupolinių ir 
+ Joninių pavadinimai bei skirtingi papročiai.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-stat-jonines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-petrines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300629
+DTEND;VALUE=DATE:20300630
+SUMMARY:Petrinės
+DESCRIPTION:Kultūrinė ar religinė tradicija. Birželio 29 d. Petrinės m
+ ini apaštalus Petrą ir Paulių. Lietuvoje tai viena iš vasarvidžio kal
+ endoriaus datų.
+URL:https://kalendorius365.lt/sventes/2030/birzelis/#ivykis-folk-petrines
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

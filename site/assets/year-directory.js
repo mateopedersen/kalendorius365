@@ -8,6 +8,7 @@ const fullWeekdayNames = ["sekmadienį", "pirmadienį", "antradienį", "trečiad
 const selector = document.querySelector("#year-preview-month");
 if (selector) {
   const status = document.querySelector("#year-preview-status");
+  const years = [...document.querySelectorAll("[data-year-card]")].map(card => Number(card.dataset.yearCard));
   const formatMonth = (year, month) => new Intl.DateTimeFormat("lt-LT", { month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, 1)));
 
   function render(year, month) {
@@ -94,8 +95,8 @@ if (selector) {
 
   const update = () => {
     const month = Number(selector.value);
-    for (const year of [2027, 2028, 2029]) { render(year, month); renderYearFacts(year); }
-    status.textContent = `${monthNames[month - 1][0].toLocaleUpperCase("lt-LT")}${monthNames[month - 1].slice(1)} peržiūra: palyginami 2027, 2028 ir 2029 metai. Spustelėkite kortelės mygtuką, kad atvertumėte tą mėnesį.`;
+    for (const year of years) { render(year, month); renderYearFacts(year); }
+    status.textContent = `${monthNames[month - 1][0].toLocaleUpperCase("lt-LT")}${monthNames[month - 1].slice(1)} peržiūra: palyginami ${years[0]}–${years.at(-1)} metai. Spustelėkite kortelės mygtuką, kad atvertumėte tą mėnesį.`;
   };
   selector.addEventListener("change", update);
   update();
@@ -103,6 +104,6 @@ if (selector) {
     if (!response.ok) throw Error("Metinių failų sąrašas nepasiekiamas.");
     return response.json();
   }).then((manifest) => {
-    for (const year of [2027, 2028, 2029]) renderYearPrintAssets(year, yearPrintAssets(manifest, year));
+    for (const year of years) renderYearPrintAssets(year, yearPrintAssets(manifest, year));
   }).catch(() => { /* Server-rendered year links remain available if inventory loading fails. */ });
 }

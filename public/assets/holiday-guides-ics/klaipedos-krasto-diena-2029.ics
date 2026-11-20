@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:klaipedos-krasto-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290115
+DTEND;VALUE=DATE:20290116
+SUMMARY:Klaipėdos krašto diena
+DESCRIPTION:Sausio 15 d. Lietuvoje minima Klaipėdos krašto diena\, siejam
+ a su 1923 m. įvykiais Klaipėdoje ir krašto prijungimu prie Lietuvos.
+URL:https://kalendorius365.lt/sventes/klaipedos-krasto-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

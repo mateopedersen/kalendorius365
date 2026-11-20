@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:mazosios-lietuvos-gyventoju-genocido-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20271016
+DTEND;VALUE=DATE:20271017
+SUMMARY:Mažosios Lietuvos gyventojų genocido diena
+DESCRIPTION:Spalio 16 d. Lietuva mini Mažosios Lietuvos gyventojų genocid
+ o dieną.
+URL:https://kalendorius365.lt/sventes/mazosios-lietuvos-gyventoju-genocido-
+ diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

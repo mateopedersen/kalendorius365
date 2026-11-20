@@ -1,0 +1,14 @@
+{% assign payments = civic.payments %}
+{% assign official = civic.sources[payments.source] %}
+<section class="civic-section" id="mokejimai" aria-labelledby="civic-payment-title">
+  <header class="civic-section__head"><h2 id="civic-payment-title">{% if page.civic == 'pension' %}Pensijų mokėjimas{% else %}Išmokų mokėjimo kalendorius{% endif %}</h2><p class="civic-period">{{ payments.period | escape }}</p></header>
+  <ul class="civic-payments">
+    {% for payment in payments.items %}
+    {% if page.civic != 'pension' or forloop.index > 3 %}
+    <li><span class="civic-payment-day">{{ payment[1] | escape }}</span><div><h3>{{ payment[0] | escape }}</h3><p>{{ payment[2] | escape }}</p></div></li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <p>Čia rodomos skelbimo mėnesio datos. Savo mokėjimo būdą ir naujo mėnesio kalendorių tikrinkite „Sodroje“.</p>
+  <div class="civic-actions"><a class="civic-button civic-button--plain" href="{{ official[1] }}">Peržiūrėti oficialų skelbimą</a><a class="civic-button civic-button--plain" href="{{ civic.sources.calendar[1] }}">Kitų mėnesių skelbimai</a></div>
+</section>

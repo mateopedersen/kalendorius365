@@ -3,6 +3,7 @@ import { parse, iso, addDays, difference, weekday, monthLength, monthGrid, isoWe
 const MONTHS = CALENDAR_LT.months;
 const MONTH_FILES = CALENDAR_LT.monthFiles;
 const DAYS = CALENDAR_LT.weekdays;
+const CELL_DEFAULTS = Object.freeze({ eventPlacement: "bottom", cellLines: 0, weekendTint: false });
 const TEMPLATES = {
   minimal: { name: LT.svarus_minimalizmas, accent: "#19594a", background: "#ffffff", placement: "top", photoHeight: 0, notes: 3 },
   photo: { name: LT.didele_nuotrauka, accent: "#264b64", background: "#ffffff", placement: "top", photoHeight: 82, notes: 2 },
@@ -31,6 +32,7 @@ function months(s) {
 const monthKey = (y, m) => `${y}-${String(m).padStart(2, "0")}`;
 function effective(s, key) {
   let q = clone(s);
+  q.layout = { ...CELL_DEFAULTS, ...q.layout };
   if (s.overrides[key]) {
     let o = s.overrides[key];
     q.theme = { ...q.theme, ...o.theme, colors: { ...q.theme.colors, ...o.theme?.colors } };
@@ -39,6 +41,7 @@ function effective(s, key) {
   if (s.lowInk) {
     q.theme.colors = { background: "#ffffff", title: "#111111", day: "#111111", weekday: "#333333", weekend: "#444444", holiday: "#111111", personal: "#222222", grid: "#bcbcbc" };
     q.layout.photoHeight = 0;
+    q.layout.weekendTint = false;
     q.theme.placement = "top";
   }
   return q;
@@ -142,6 +145,8 @@ function validate(s) {
     let v = s.layout?.[k];
     if (typeof v !== typeof f.layout[k]) throw Error(LT.neteisingi_puslapio_nustatymai);
   }
+  const cellLayout = { ...CELL_DEFAULTS, ...s.layout };
+  if (!["top", "bottom"].includes(cellLayout.eventPlacement) || ![0, 1, 2].includes(cellLayout.cellLines) || typeof cellLayout.weekendTint !== "boolean") throw Error(LT.neteisingi_puslapio_nustatymai);
   if (!["a3", "a4", "a5", "letter"].includes(s.layout.paper) || !["portrait", "landscape"].includes(s.layout.orientation) || ![0, 6].includes(s.layout.weekstart)) throw Error(LT.neteisingas_lapo_formatas);
   for (let [k, min, max] of [["margin", 5, 25], ["photoHeight", 0, 110], ["notes", 0, 10]]) if (!Number.isFinite(s.layout[k]) || s.layout[k] < min || s.layout[k] > max) throw Error(LT.nustatymas_neatitinka_leidziamu_ribu);
   if (!TEMPLATES[s.theme?.template] || !["Lato", "Inter"].includes(s.theme.font) || !["top", "side", "background"].includes(s.theme.placement)) throw Error(LT.neteisingas_dizainas);

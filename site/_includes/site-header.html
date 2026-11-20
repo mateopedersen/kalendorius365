@@ -1,0 +1,67 @@
+<header class="site-header">
+  <script data-header-boot>document.currentScript.parentElement.classList.add("search-ready");</script>
+  <div class="masthead">
+    <div class="shell-width masthead__inner">
+      <a class="brand" href="/" aria-label="Kalendorius365 pradžia">
+        <span class="brand-tile">{% include shell-art.html name="brand" size=48 %}</span><span class="brand-wordmark">Kalendorius365</span>
+      </a>
+      <nav id="primary-nav" aria-label="Pagrindinis meniu">
+        {% assign route_parts = page.url | split: "/" %}{% assign route_family = route_parts[1] %}
+        <a href="/metai/" {% if route_family == 'metai' or route_family == '2027' or route_family == '2028' or route_family == '2029' or route_family == '2030' %}aria-current="page"{% endif %}>{% include shell-art.html name="year-overview" size=22 %}<span>Kalendoriai</span></a>
+        <a href="/sventes/" {% if page.url contains '/sventes/' %}aria-current="page"{% endif %}>{% include shell-art.html name="lithuanian-holidays" size=22 %}<span>Šventės</span></a>
+        <a href="/mokiniu-atostogos/" {% if page.url contains '/mokiniu-atostogos/' %}aria-current="page"{% endif %}>{% include shell-art.html name="school-break" size=22 %}<span>Mokinių atostogos</span></a>
+        <a href="/horoskopai/" {% if page.url contains '/horoskopai/' %}aria-current="page"{% endif %}>{% include shell-art.html name="daily-horoscope" size=22 %}<span>Horoskopai</span></a>
+      </nav>
+      <a class="masthead-personal" href="/mano-diena/" {% if page.url == '/mano-diena/' %}aria-current="page"{% endif %}>{% include shell-art.html name="personal" size=28 %}<span>Mano diena</span></a>
+      <a class="header-search-toggle icon-button" href="/paieska/" role="button" aria-label="Atverti paiešką" aria-controls="site-search" aria-expanded="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#search"></use></svg></a><form class="header-search" role="search" action="/paieska/" method="get"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#search"></use></svg><label><span class="visually-hidden">Ieškoti visose svetainės skiltyse</span><input type="search" id="site-search" name="q" placeholder="Ieškoti…" aria-label="Ieškoti visose svetainės skiltyse"></label><button class="visually-hidden" type="submit">Ieškoti visų rezultatų</button><div class="header-search-results" id="site-search-results" hidden></div></form>
+      <span class="masthead-country"><span class="lt-flag" aria-hidden="true"></span>Lietuva</span>
+      <button type="button" id="nav-toggle" class="icon-button" aria-label="Atverti meniu" aria-controls="primary-nav" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <nav class="calendar-bar" aria-label="Kalendoriai ir įrankiai">
+    <div class="shell-width calendar-bar__inner">
+      <div class="calendar-bar__years" aria-label="Metų kalendoriai">
+        {% assign calendar_years = '2027,2028,2029,2030' | split: ',' %}
+        {% for year in calendar_years %}{% capture year_path %}/{{ year }}/{% endcapture %}
+        <a href="{{ year_path }}" {% if route_family == year %}aria-current="page"{% endif %}>{{ year }}</a>
+        {% endfor %}
+      </div>
+      <div class="calendar-bar__actions">
+        <a href="/pdf-kalendoriai/">{% include shell-art.html name="pdf" size=29 %}<span>PDF kalendoriai</span></a>
+        <a href="/darbo-dienos/2027/">{% include shell-art.html name="work-log" size=29 %}<span>Darbo dienos</span></a>
+        <a href="/datos-skaiciuokle/">{% include shell-art.html name="calculator" size=29 %}<span>Datos skaičiuoklė</span></a>
+      </div>
+      <a id="tools-open" class="calendar-bar__more" href="/irankiai/" aria-haspopup="dialog" aria-controls="tools-dialog" aria-expanded="false">{% include shell-art.html name="tools" size=29 %}<span>Daugiau įrankių</span><svg viewBox="0 0 16 16" class="shell-chevron" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></a>
+    </div>
+  </nav>
+</header>
+<dialog id="tools-dialog" class="tools-dialog" aria-labelledby="tools-dialog-title">
+  <div class="tools-dialog__inner">
+    <header class="tools-dialog__head">
+      <h2 id="tools-dialog-title">Ką norite suplanuoti?</h2>
+      <button id="tools-close" type="button" aria-label="Užverti įrankių meniu"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button>
+      <label class="tools-dialog__search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span class="visually-hidden">Ieškoti įrankio</span><input id="tools-query" type="search" placeholder="Ieškoti kalendoriaus, atostogų ar skaičiuoklės…" autocomplete="off"></label>
+    </header>
+    <div class="tools-dialog__body">
+      <div class="tools-dialog__categories" role="group" aria-label="Įrankių temos">
+        {% for group in site.data.tool_directory.categories %}
+        <button type="button" data-menu-group="{{ group.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{% include shell-art.html name=group.art size=26 lazy=true %}<span>{{ group.title }}</span><small>{{ group.tools.size }}</small></button>
+        {% endfor %}
+      </div>
+      <div class="tools-dialog__results" id="tools-results">
+        {% for group in site.data.tool_directory.categories %}
+        <section data-menu-section="{{ group.id }}" aria-labelledby="tools-{{ group.id }}"{% unless forloop.first %} hidden{% endunless %}>
+          <h3 id="tools-{{ group.id }}">{{ group.title }}</h3>
+          <div class="tools-dialog__grid">
+            {% for item in group.tools %}
+            <a href="{{ item.route }}" data-menu-tool data-keywords="{{ item.keywords | escape }}">{% include shell-art.html name=item.art size=46 lazy=true %}<span><strong>{{ item.title }}</strong><small>{{ item.description }}</small></span><svg viewBox="0 0 16 16" class="shell-chevron" aria-hidden="true"><path d="m6 4 4 4-4 4"/></svg></a>
+            {% endfor %}
+          </div>
+        </section>
+        {% endfor %}
+        <p id="tools-empty" hidden>Pagal šią užklausą įrankių nerasta.</p>
+      </div>
+    </div>
+    <footer class="tools-dialog__foot"><span id="tools-status" role="status"></span><a href="/irankiai/">Visi įrankiai</a></footer>
+  </div>
+</dialog>

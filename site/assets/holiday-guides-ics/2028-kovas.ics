@@ -1,0 +1,201 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2028 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2028 m. kovo datos
+BEGIN:VEVENT
+UID:2028-comm-011@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280301
+DTEND;VALUE=DATE:20280302
+SUMMARY:Tarptautinė žmonių su negalia vežimėlio diena
+DESCRIPTION:Atmintina diena · įstatymas. Atkreipia dėmesį į žmonių\,
+  naudojančių vežimėlį\, teises ir prieinamumą.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-011
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-pelenai@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280301
+DTEND;VALUE=DATE:20280302
+SUMMARY:Pelenų trečiadienis
+DESCRIPTION:Kultūrinė ar religinė tradicija. Pelenų trečiadienis yra k
+ ita diena po Užgavėnių ir katalikų gavėnios pradžia.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-folk-pelenai
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-012@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280304
+DTEND;VALUE=DATE:20280305
+SUMMARY:Lietuvos globėjo šv. Kazimiero diena
+DESCRIPTION:Atmintina diena · įstatymas. Šv. Kazimierui skirta data\; ko
+ nkrečios Kaziuko mugės programos čia nenustatome.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-012
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-013@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280308
+DTEND;VALUE=DATE:20280309
+SUMMARY:Tarptautinė moterų solidarumo diena
+DESCRIPTION:Atmintina diena · įstatymas. Moterų solidarumui skirta įsta
+ tyme nustatyta atmintina diena.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-013
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-014@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280309
+DTEND;VALUE=DATE:20280310
+SUMMARY:Lietuvos vardo diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos vardo paminėjimui skir
+ ta data\, atskira nuo Kovo 11-osios šventės.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-014
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-keturiasdesimties-pauksciu-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280310
+DTEND;VALUE=DATE:20280311
+SUMMARY:40 paukščių diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Kovo 10-oji vadinama 40 pau
+ kščių diena. Liaudies kalendoriuje ji ženklino sugrįžtančių giesmi
+ ninkų metą.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-folk-keturiasdesim
+ ties-pauksciu-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-stat-independence@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280311
+DTEND;VALUE=DATE:20280312
+SUMMARY:Lietuvos nepriklausomybės atkūrimo diena
+DESCRIPTION:Šventinė diena · DK 123 str. Kovo 11-ąją minima 1990 m. Li
+ etuvos Respublikos Aukščiausiosios Tarybos priimto nepriklausomybės atk
+ ūrimo akto sukaktis.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-stat-independence
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-015@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280312
+DTEND;VALUE=DATE:20280313
+SUMMARY:Europos kovos su smurtu prieš gydytojus ir asmens sveikatos priež
+ iūros specialistus diena
+DESCRIPTION:Atmintina diena · įstatymas. Skirta smurto prieš gydytojus i
+ r kitus sveikatos priežiūros specialistus prevencijai.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-015
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-016@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280315
+DTEND;VALUE=DATE:20280316
+SUMMARY:Lietuvos žydų gelbėtojų diena\, Pasaulinė vartotojų teisių d
+ iena
+DESCRIPTION:Atmintina diena · įstatymas. Įstatymas šią datą skiria ž
+ ydų gelbėtojams ir vartotojų teisėms.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-016
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-book-carriers@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280316
+DTEND;VALUE=DATE:20280317
+SUMMARY:Knygnešio diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Lietuvoje minima knygnešys
+ tės atminimo diena\; jos nelaikome įstatymo nustatyta nedarbo diena.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-book-carriers
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-pempes-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280319
+DTEND;VALUE=DATE:20280320
+SUMMARY:Pempės diena (Pempinės)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Kovo 19-ąją tradicinis ka
+ lendorius sieja šv. Juozapo minėjimą ir pavasarį girdimos pempės vard
+ ą.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-folk-pempes-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-017@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280320
+DTEND;VALUE=DATE:20280321
+SUMMARY:Žemės diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos atmintinų dienų sąra
+ šo Žemės diena\; balandžio 22-oji yra kita tarptautinė data.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-017
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-018@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280323
+DTEND;VALUE=DATE:20280324
+SUMMARY:Socialinio draudimo diena
+DESCRIPTION:Atmintina diena · įstatymas. Socialiniam draudimui skirta atm
+ intina diena\, įtraukta į 2026 m. redakciją.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-018
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-folk-gandrines@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280325
+DTEND;VALUE=DATE:20280326
+SUMMARY:Gandrinės (Blovieščiai)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Kovo 25-oji žinoma kaip Ga
+ ndrinės arba Blovieščiai. Katalikų tradicijoje tą laiką žymi Aprei
+ škimo Marijai iškilmė.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-folk-gandrines
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-019@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280327
+DTEND;VALUE=DATE:20280328
+SUMMARY:Tarptautinė teatro diena
+DESCRIPTION:Atmintina diena · įstatymas. Teatrui ir jo kūrėjams skirta 
+ atmintina diena.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-019
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-020@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280329
+DTEND;VALUE=DATE:20280330
+SUMMARY:Lietuvos įstojimo į NATO diena
+DESCRIPTION:Atmintina diena · įstatymas. Lietuvos narystei NATO skirta da
+ ta\; ji gali sutapti su Velykų pirmadieniu.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-020
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2028-comm-021@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20280330
+DTEND;VALUE=DATE:20280331
+SUMMARY:Prokuratūros diena
+DESCRIPTION:Atmintina diena · įstatymas. Prokuratūrai skirta profesinė 
+ atmintina diena.
+URL:https://kalendorius365.lt/sventes/2028/kovas/#ivykis-comm-021
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

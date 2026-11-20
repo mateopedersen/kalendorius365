@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 215">
+  <defs>
+    <linearGradient id="atlas-sky" x2="0" y2="1">
+      <stop stop-color="#294b68"/><stop offset=".6" stop-color="#a97775"/><stop offset="1" stop-color="#ffc878"/>
+    </linearGradient>
+    <linearGradient id="atlas-water" x2="0" y2="1">
+      <stop stop-color="#78685f"/><stop offset="1" stop-color="#132d30"/>
+    </linearGradient>
+    <radialGradient id="atlas-glow">
+      <stop stop-color="#ffdd96" stop-opacity=".8"/><stop offset="1" stop-color="#ffb45f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="atlas-sun" x2="0" y2="1"><stop stop-color="#fff6cf"/><stop offset="1" stop-color="#ffb94c"/></linearGradient>
+    <clipPath id="atlas-frame"><rect x="40" y="14" width="340" height="182" rx="78"/></clipPath>
+  </defs>
+  <symbol id="rise" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 36h40M12 36a12 12 0 0 1 24 0M8 42h32M24 17V6m-5 5 5-5 5 5M8 22l4 4m28-4-4 4"/>
+    </g>
+  </symbol>
+  <symbol id="noon" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round">
+      <circle cx="24" cy="24" r="9"/><path d="M24 5v5m0 28v5M5 24h5m28 0h5M10.6 10.6l3.6 3.6m19.6 19.6 3.6 3.6m0-26.8-3.6 3.6M14.2 33.8l-3.6 3.6"/>
+    </g>
+  </symbol>
+  <symbol id="set" viewBox="0 0 48 48">
+    <path d="M4 36h40M12 36a12 12 0 0 1 24 0M8 42h32M24 6v11m-5-5 5 5 5-5M8 22l4 4m28-4-4 4" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="length" viewBox="0 0 48 48">
+    <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="25" r="15"/><path d="M24 16v9l6 4m-10-24h8m8 7 3-3M24 40v3"/>
+    </g>
+  </symbol>
+  <symbol id="today" viewBox="0 0 24 24">
+    <path d="M4 6h16v14H4zM8 3v6m8-6v6M4 10h16m-10 5 2 2 3-3" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <g clip-path="url(#atlas-frame)">
+    <path fill="url(#atlas-sky)" d="M40 14h340v142H40z"/>
+    <ellipse cx="216" cy="126" rx="121" ry="71" fill="url(#atlas-glow)"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M76 78q74-13 143-8m41-12q53-4 79 4M96 96q29-6 58-4m101 1q50-9 94-3" stroke="#fcd2ae" opacity=".36" stroke-width="2.8"/>
+      <path d="M114 53q35-7 66-7m57 32 25-3M296 104l56-3" stroke="#fff3c3" opacity=".4" stroke-width="1.4"/>
+    </g>
+    <circle cx="210" cy="120" r="25" fill="url(#atlas-sun)"/>
+    <path d="M40 148q39-9 68-6 35 2 64 5 46 2 83-1 67-10 125 0v55H40z" fill="url(#atlas-water)"/>
+    <path d="M40 146q48-8 74-4t50 5q-58 2-78 18 57 6 77 24l-45 13H35Zm340 0q-47-7-89-2l-41 5q63 4 74 10-37 6-51 14t-32 26h139Z" fill="#253d3a"/>
+    <g fill="none" stroke="#ffd394" stroke-linecap="round">
+      <path d="m182 151 42-1m-29 7 38 1m-63 7 77 1m-68 7 47 1m-68 9 82-1" opacity=".62"/><path d="M147 176q61-3 109 1m-75 12 34 1" opacity=".27"/>
+    </g>
+    <path d="M40 169q46-8 79-5 33 4 53 20-39 7-60 18H35Zm340-12q-20 0-37 2-44 11-59 23l-21 18h117Z" fill="#142b2d"/>
+    <path d="M62 170l8-13 7 11-3-7 7-15 8 14-4 8 10-11 12 11m228-1 10-19 8 12 5-17 9 15 9-9 5 16" fill="#142b2d"/>
+  </g>
+  <rect x="40.5" y="14.5" width="339" height="181" rx="77.5" fill="none" stroke="#f2c57d" stroke-opacity=".8"/>
+  <path d="M15 105h25m340 0h25M210 0v14m0 182v17" stroke="#d8b46d" stroke-opacity=".55"/>
+  <path d="m18 79 2 5 5 2-5 2-2 5-2-5-5-2 5-2Zm384 41 1.5 4.5 4.5 1.5-4.5 1.5-1.5 4.5-1.5-4.5-4.5-1.5 4.5-1.5Z" fill="#f4cf86"/>
+</svg>

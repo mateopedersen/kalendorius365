@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 132">
+  <defs>
+    <linearGradient id="dark" x2=".8" y2="1"><stop stop-color="#305b4e"/><stop offset="1" stop-color="#082b24"/></linearGradient>
+    <linearGradient id="red" x2=".8" y2="1"><stop stop-color="#e08477"/><stop offset="1" stop-color="#8e263b"/></linearGradient>
+    <linearGradient id="gold" x2=".8" y2="1"><stop stop-color="#ffdd83"/><stop offset="1" stop-color="#a96524"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="3.5"/></filter>
+  </defs>
+  <ellipse cx="80" cy="117" rx="48" ry="6" fill="#263f2e" opacity=".2" filter="url(#shadow)"/>
+  <circle cx="84" cy="66" r="50" fill="#6e4e2a"/>
+  <circle cx="80" cy="63" r="49" fill="url(#gold)" stroke="#967345" stroke-width="2"/>
+  <circle cx="80" cy="63" r="43" fill="url(#dark)" stroke="#e4c887" stroke-width="2"/>
+  <circle cx="80" cy="63" r="32" fill="none" stroke="#ac965a" stroke-width="1.5"/>
+  <g fill="none" stroke="#f1d590" stroke-width="2" stroke-linecap="round">
+    <path d="M80 20v6" transform="rotate(0 80 64)"/>
+    <path d="M80 20v6" transform="rotate(30 80 64)"/>
+    <path d="M80 20v6" transform="rotate(60 80 64)"/>
+    <path d="M80 20v6" transform="rotate(90 80 64)"/>
+    <path d="M80 20v6" transform="rotate(120 80 64)"/>
+    <path d="M80 20v6" transform="rotate(150 80 64)"/>
+    <path d="M80 20v6" transform="rotate(180 80 64)"/>
+    <path d="M80 20v6" transform="rotate(210 80 64)"/>
+    <path d="M80 20v6" transform="rotate(240 80 64)"/>
+    <path d="M80 20v6" transform="rotate(270 80 64)"/>
+    <path d="M80 20v6" transform="rotate(300 80 64)"/>
+    <path d="M80 20v6" transform="rotate(330 80 64)"/>
+  </g>
+  <path d="M80 28l5 27 20-17-16 23 24 4-25 5 17 20-23-12-2 20-5-24-21 16 16-21-25-4 26-5-17-21 22 14z" fill="url(#gold)" stroke="#a67d46" stroke-width="1.2"/>
+  <circle cx="80" cy="64" r="9" fill="url(#red)" stroke="#e0b867" stroke-width="2"/>
+  <path d="M54 30q23-19 46-6" stroke="#ffedb3" stroke-width="2" fill="none" opacity=".7" stroke-linecap="round"/>
+</svg>

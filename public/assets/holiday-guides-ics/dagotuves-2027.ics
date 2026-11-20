@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:dagotuves-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270929
+DTEND;VALUE=DATE:20270930
+SUMMARY:Dagotuvės (Šv. Mykolo diena)
+DESCRIPTION:Rugsėjo 29 d. tradicinis kalendorius žymi Dagotuves\, siejama
+ s su derliumi ir šv. Mykolo diena.
+URL:https://kalendorius365.lt/sventes/dagotuves/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

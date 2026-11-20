@@ -1,0 +1,17 @@
+<div class="week-year-tools">
+  <section class="panel calculator week-year-date">
+    <h2>Rasti savaitės numerį</h2>
+    <label>Pasirinkite datą<input type="date" id="iso-date" data-tools-readiness inert aria-busy="true"></label>
+    <p id="iso-result" class="result" aria-live="polite"></p>
+  </section>
+  <section class="panel calculator">
+    <h2>Rasti datų intervalą pagal ISO savaitę</h2>
+    <form id="iso-week-range" class="form-row">
+      <label>ISO savaitės metai<input id="iso-week-year" type="number" min="1900" max="9999" value="{{ include.year }}" required></label>
+      <label>Savaitės numeris<input id="iso-week-number" type="number" min="1" max="53" value="1" required></label>
+      <button type="submit">Rodyti savaitės datas</button>
+    </form>
+    <p id="iso-week-range-result" class="result" role="status" aria-live="polite">Pasirinkite ISO metus ir savaitę.</p>
+    <button type="button" id="iso-week-copy" disabled>Kopijuoti datų intervalą</button>
+  </section>
+</div>

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pagarbos-mokesciu-moketojams-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280511
+DTEND;VALUE=DATE:20280512
+SUMMARY:Pagarbos mokesčių mokėtojams diena
+DESCRIPTION:Gegužės 11-oji Lietuvoje skirta padėkai mokesčių mokėtoja
+ ms ir visuomenės supratimui apie mokesčius.
+URL:https://kalendorius365.lt/sventes/pagarbos-mokesciu-moketojams-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

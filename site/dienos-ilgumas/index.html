@@ -1,7 +1,7 @@
 ---
 discovery: true
 title: "Dienos ilgumo palyginimas Lietuvos miestuose"
-description: "Pasirinkite 2027–2029 m. datą ir palyginkite penkių Lietuvos miestų saulėtekį, saulės vidurdienį, saulėlydį bei dienos šviesą."
+description: "Pasirinkite 2027–2030 m. datą ir palyginkite penkių Lietuvos miestų saulėtekį, saulės vidurdienį, saulėlydį bei dienos šviesą."
 tool: false
 ---
 <header class="discovery-heading discovery-heading--editorial">
@@ -24,7 +24,7 @@ tool: false
   </div>
   <form id="daylight-form" class="daylight-form">
     <label>Palyginimo data
-      <input id="daylight-date" type="date" min="2027-01-01" max="2029-12-31" value="2027-06-21" required>
+      <input id="daylight-date" type="date" min="2027-01-01" max="2030-12-31" value="2027-06-21" required>
     </label>
     <button class="button primary" type="submit">Palyginti pasirinktą datą</button>
   </form>
@@ -62,7 +62,8 @@ tool: false
       <select id="daylight-focus-city" aria-label="Pasirinkite miestą metinei dienos šviesos kreivei"></select>
     </label>
   </div>
-  <div class="daylight-year-chart-wrap"><svg id="daylight-year-chart" viewBox="0 0 800 300" role="group" aria-labelledby="daylight-year-svg-title daylight-year-svg-desc"></svg></div>
+  <div class="daylight-year-chart-wrap" tabindex="0" role="region" aria-label="Slenkama metinės dienos šviesos kreivė"><svg id="daylight-year-chart" viewBox="0 0 800 300" role="group" aria-labelledby="daylight-year-svg-title daylight-year-svg-desc"></svg></div>
+  <p class="daylight-scroll-hint">Paslinkite grafiką horizontaliai, kad pamatytumėte visus mėnesius.</p>
   <p id="daylight-year-summary" class="daylight-year-summary" aria-live="polite"></p>
   <p class="daylight-chart-hint">Kreivė rodo kiekvieno mėnesio 21 dienos apytikslę šviesaus laiko trukmę. Pasirinkite tašką pele arba klaviatūra, kad atvertumėte tos dienos palyginimą.</p>
 </section>

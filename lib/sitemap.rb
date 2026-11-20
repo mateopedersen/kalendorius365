@@ -35,6 +35,30 @@ module Kalendorius
             images_by_page[BASE_URL+'/'] << BASE_URL+image_path
           end
         end
+        photo_registry = File.expand_path('../data/holiday-guide-photos.json', __dir__)
+        if File.file?(photo_registry)
+          JSON.parse(File.read(photo_registry)).each do |slug, photo|
+            page_url = "#{BASE_URL}/sventes/#{slug}/"
+            image_path = photo.fetch('src')
+            image_file = File.expand_path(image_path.delete_prefix('/'), public_dir)
+            abort "Holiday photo must belong to an indexable guide: #{page_url}" unless canonical_urls.include?(page_url)
+            abort "Holiday sitemap photo is missing: #{image_path}" unless image_path.start_with?('/assets/visuals/holiday-research/') &&
+              image_file.start_with?("#{public_dir}/") && File.file?(image_file)
+
+            images_by_page[page_url] << BASE_URL + image_path
+          end
+        end
+        blog_photos = File.expand_path('../data/blog/photographs.json', __dir__)
+        JSON.parse(File.read(blog_photos)).each do |slug, photo|
+          page_url = "#{BASE_URL}/blogas/#{slug}/"
+          image_path = photo.fetch('variants').last.fetch('src')
+          image_file = File.expand_path(image_path.delete_prefix('/'), public_dir)
+          abort "Blog photograph has no indexable article: #{page_url}" unless canonical_urls.include?(page_url)
+          abort "Blog sitemap photograph is missing: #{image_path}" unless image_path.start_with?('/assets/blog/photos/') &&
+            image_file.start_with?("#{public_dir}/") && File.file?(image_file)
+
+          images_by_page[page_url] << BASE_URL + image_path
+        end
         manifest.select { |asset| %w[monthly annual].include?(asset['kind']) }.each do |asset|
           year = Integer(asset.fetch('year'))
           page_path = if asset['kind'] == 'monthly'

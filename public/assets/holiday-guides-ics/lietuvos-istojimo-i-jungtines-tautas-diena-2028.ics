@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:lietuvos-istojimo-i-jungtines-tautas-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280917
+DTEND;VALUE=DATE:20280918
+SUMMARY:Lietuvos įstojimo į Jungtines Tautas diena
+DESCRIPTION:Rugsėjo 17-oji primena Lietuvos priėmimą į Jungtines Tautas
+  1991 m. Nuo 2027 m. ji įrašyta į Lietuvos atmintinų dienų sąrašą.
+URL:https://kalendorius365.lt/sventes/lietuvos-istojimo-i-jungtines-tautas-
+ diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

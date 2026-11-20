@@ -1,9 +1,10 @@
 import { addDays, wallTime, zonedInstant } from "./calendar.js";
 import { validate, empty } from "./storage.js";
+import { reminderDays, triggerValue } from "./shell/calendar-reminders.js";
 const escape = (s) =>
   String(s)
     .replace(/\\/g, "\\\\")
-    .replace(/\n/g, "\\n")
+    .replace(/\r\n?|\n/g, "\\n")
     .replace(/;/g, "\\;")
     .replace(/,/g, "\\,");
 const unescape = (s) =>
@@ -86,6 +87,11 @@ export function exportICS(events) {
                 .replace(/\.\d{3}/, ""));
       lines.push(r);
     }
+    if (e.location) lines.push("LOCATION:" + escape(e.location));
+    if (e.allDay && e.repeat === "none" && reminderDays.includes(e.reminder)) {
+      lines.push("BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + escape(e.title),
+        "TRIGGER;VALUE=DATE-TIME:" + triggerValue(e.start, e.reminder), "END:VALARM");
+    }
     lines.push("END:VEVENT");
   }
   lines.push("END:VCALENDAR");
@@ -130,7 +136,12 @@ export function importICS(raw) {
     rejected = [];
   for (const block of blocks) {
     try {
-      const props = block
+      const alarmPattern = /^BEGIN:VALARM\r?\n[\s\S]*?^END:VALARM(?=\r?$)\r?\n?/gm;
+      const alarms = block.match(alarmPattern) || [];
+      const eventBlock = block.replace(alarmPattern, "");
+      if (alarms.length > 1 || /^(?:BEGIN|END):VALARM/m.test(eventBlock))
+        throw Error("Palaikomas tik vienas paprastas priminimas");
+      const props = eventBlock
         .split(/\r?\n/)
         .slice(1, -1)
         .map((line) => {
@@ -142,10 +153,9 @@ export function importICS(raw) {
           /^(EXDATE|RDATE|RECURRENCE-ID|DURATION|ATTENDEE|ORGANIZER|STATUS)/.test(
             k,
           ),
-        ) ||
-        block.includes("BEGIN:VALARM")
+        )
       )
-        throw Error("Sudėtingos išimtys, kvietimai ir priminimai nepalaikomi");
+        throw Error("Sudėtingos išimtys ir kvietimai nepalaikomi");
       const get = (name) => props.find(([k]) => k.split(";")[0] === name);
       for (const name of ["DTSTART", "DTEND", "RRULE", "SUMMARY"])
         if (props.filter(([k]) => k.split(";")[0] === name).length > 1)
@@ -187,6 +197,15 @@ export function importICS(raw) {
             ? valueDate("UNTIL;VALUE=DATE", u).value
             : valueDate("UNTIL", u).value.slice(0, 10);
         }
+      }
+      if (alarms.length) {
+        const content = alarms[0].trimEnd().split(/\r?\n/).slice(1, -1);
+        const trigger = content.find(line => line.startsWith("TRIGGER;VALUE=DATE-TIME:"))?.split(":")[1];
+        const supported = content.length === 3 && content.includes("ACTION:DISPLAY") &&
+          content.some(line => line.startsWith("DESCRIPTION:")) && e.allDay && e.repeat === "none";
+        const reminder = supported ? reminderDays.find(days => triggerValue(e.start, days) === trigger) : undefined;
+        if (reminder === undefined) throw Error("Šis ICS priminimo laikas nepalaikomas");
+        e.reminder = reminder;
       }
       const x = empty();
       x.events = [e];

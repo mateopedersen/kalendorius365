@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-kino-pavasaris-2027-03-05@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270319
+SUMMARY:Kino pavasaris
+DESCRIPTION:Tarptautinio kino festivalio „Kino pavasaris“ rengėjai pas
+ kelbė 2027 m. kovo 5–18 d. datas.
+URL:https://kalendorius365.lt/renginiai/kino-pavasaris/
+TRANSP:TRANSPARENT
+LOCATION:Vilniaus kino teatrai ir Lietuvos nacionalinis dramos teatras
+END:VEVENT
+END:VCALENDAR

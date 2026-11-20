@@ -624,7 +624,7 @@ function setupSun() {
   const render=()=>{
     try {
       const date=dateInput.value, city=CITIES[cityInput.value]; if (!date || !city) throw Error("Pasirinkite datą ir miestą.");
-      const year=Number(date.slice(0,4)); if (year<2027||year>2029) throw Error("Ši lentelė skirta 2027–2029 metams.");
+      const year=Number(date.slice(0,4)); if (year<2027||year>2030) throw Error("Ši lentelė skirta 2027–2030 metams.");
       const {sunrise,sunset,noon,dayMinutes,civilStart,civilEnd}=solarFor(date,city);
       const delta=solarFor(dateAt(date,-1),city).dayMinutes, tomorrowDelta=solarFor(dateAt(date,1),city).dayMinutes-dayMinutes, change=dayMinutes-delta;
       $("#sun-summary").textContent=`${displayDate(date)} · ${city.name} · Europe/Vilnius. Saulėtekis ${clock(sunrise)}, Saulės vidurdienis ${clock(noon)}, saulėlydis ${clock(sunset)}. Dienos šviesa ${Math.floor(dayMinutes/60)} val. ${pad(dayMinutes%60)} min.; palyginti su ankstesne diena ${change>=0?"+":"−"}${Math.abs(change)} min., kitą dieną ${tomorrowDelta>=0?"+":"−"}${Math.abs(tomorrowDelta)} min.`;
@@ -661,8 +661,8 @@ async function setupMoon() {
   if (!$("#moon-tool") && !$("#moon-year-tool") && !$("#season-rows")) return;
   try {
     const [data, seasons] = await Promise.all([
-      fetch("/assets/data/astronomy/moon-phases-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
-      fetch("/assets/data/astronomy/seasons-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/data/astronomy/moon-phases-extended-utc.json").then((r)=>{if(!r.ok)throw Error("Mėnulio duomenų nepavyko įkelti.");return r.json();}),
+      fetch("/assets/data/astronomy/seasons-extended-utc.json").then((r)=>{if(!r.ok)throw Error("Metų laikų duomenų nepavyko įkelti.");return r.json();}),
     ]);
     const instants=data.events.map(e=>({ ...e, instant:Date.parse(e.utc) }));
     const newMoons=instants.filter(e=>e.phase==="new").map(e=>e.instant);
@@ -679,7 +679,7 @@ async function setupMoon() {
       $("#moon-show").onclick=draw;year.onchange=draw;month.onchange=draw;draw();
     }
     for(const node of document.querySelectorAll("#moon-year-tool")){const year=+node.dataset.year,grid=$("#moon-year-grid",node);for(let m=1;m<=12;m++){const section=make("section",undefined,{class:"panel moon-month"});section.append(make("h3",new Intl.DateTimeFormat("lt-LT",{month:"long",timeZone:"UTC"}).format(new Date(Date.UTC(year,m-1,1)))));const table=make("table"),head=make("thead"),headRow=make("tr"),body=make("tbody");for(const label of ["Fazė","Momentas Lietuvoje","Apšviesto disko įvertis"])headRow.append(make("th",label,{scope:"col"}));head.append(headRow);table.append(head,body);renderMoon(year,m,body);section.append(table);grid.append(section);}}
-    const seasonsBody=$("#season-rows");if(seasonsBody){replace(seasonsBody,seasons.events.filter(e=>[2027,2028,2029].includes(e.year)).map(e=>{const tr=make("tr");tr.append(make("td",String(e.year)),...e.utc.map(value=>make("td",localFmt.format(new Date(value)))));return tr;}));}
+    const seasonsBody=$("#season-rows");if(seasonsBody){replace(seasonsBody,seasons.events.filter(e=>[2027,2028,2029,2030].includes(e.year)).map(e=>{const tr=make("tr");tr.append(make("td",String(e.year)),...e.utc.map(value=>make("td",localFmt.format(new Date(value)))));return tr;}));}
   } catch(error) { for(const id of ["moon-next","moon-rows","season-rows"]){const node=$("#"+id);if(node)node.textContent=error.message;} }
 }
 

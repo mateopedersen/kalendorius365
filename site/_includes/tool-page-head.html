@@ -1,0 +1,11 @@
+<header class="tool-page-head">
+  {% include shell-art.html name=include.icon size=86 %}
+  <div class="tool-page-head__copy">
+    <h1>{{ include.title }}</h1>
+    <p>{{ include.lead }}</p>
+  </div>
+  <div class="tool-page-head__actions">
+    {% if include.action %}<a class="button" href="{{ include.action }}">{{ include.action_label }}</a>{% endif %}
+    {% include sharing.html %}
+  </div>
+</header>

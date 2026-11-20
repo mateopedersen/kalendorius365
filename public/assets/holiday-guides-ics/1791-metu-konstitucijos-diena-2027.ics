@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:1791-metu-konstitucijos-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270503
+DTEND;VALUE=DATE:20270504
+SUMMARY:1791 m. gegužės 3-iosios Konstitucijos diena
+DESCRIPTION:Gegužės 3 d. Lietuva mini 1791 m. Abiejų Tautų Respublikos 
+ Konstituciją.
+URL:https://kalendorius365.lt/sventes/1791-metu-konstitucijos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

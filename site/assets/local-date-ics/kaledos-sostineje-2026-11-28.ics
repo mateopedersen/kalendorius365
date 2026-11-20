@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-kaledos-sostineje-2026-11-28@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20270107
+SUMMARY:Kalėdos sostinėje
+DESCRIPTION:Vilniaus žiemos renginių laikotarpis apima adventą\, Kalėda
+ s ir pirmąją sausio savaitę.
+URL:https://kalendorius365.lt/renginiai/kaledos-sostineje/
+TRANSP:TRANSPARENT
+LOCATION:Vilniaus centras ir renginių erdvės
+END:VEVENT
+END:VCALENDAR

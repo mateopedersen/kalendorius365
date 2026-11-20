@@ -1,0 +1,869 @@
+{
+  "festivals": [
+    {
+      "slug": "kaledos-sostineje",
+      "title": "Kalėdos sostinėje",
+      "city": "Vilnius",
+      "location": "Vilniaus centras ir renginių erdvės",
+      "date": "2026 m. lapkričio 28 d. – 2027 m. sausio 6 d.",
+      "start": "2026-11-28",
+      "end": "2027-01-06",
+      "year": 2026,
+      "summary": "Vilniaus žiemos renginių laikotarpis apima adventą, Kalėdas ir pirmąją sausio savaitę.",
+      "context": "2026 m. lapkričio 28 d. prasideda „Kalėdos sostinėje“. Katedros aikštėje 19.30 val. numatyta eglės įžiebimo šventė. Kalėdų miestelis čia veiks iki gruodžio 27 d., o eglę planuojama palikti iki 2027 m. sausio 6 d. Vilniaus kalėdinės veiklos vyksta ir kitose miesto erdvėse, todėl jų datos skirtingos.",
+      "visit": "Pradėkite nuo Katedros aikštės, jei norite pamatyti eglę ir pagrindinę mugę. Atskirų seniūnijų renginių, koncertų, karuselės ar traukinuko laikus tikrinkite programoje. Įžiebimo vakarą pasidomėkite savivaldybės skelbiamais susisiekimo pakeitimais.",
+      "image": {
+        "src": "/assets/visuals/holiday-christmas-tree-vilnius-1200.webp",
+        "alt": "Kalėdų eglė Vilniuje",
+        "source": "https://commons.wikimedia.org/wiki/File:Christmas_tree_in_the_Vilnius_Cathedral_Square_in_2022_(2).jpg",
+        "credit": "Pofka · CC BY-SA 4.0",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "width": 1200,
+        "height": 1520
+      },
+      "sources": [
+        {
+          "title": "„Kalėdos sostinėje“ programa",
+          "url": "https://kaledossostineje.lt/programa/"
+        },
+        {
+          "title": "Vilniaus miesto savivaldybė: 2026 m. šventinio sezono programa",
+          "url": "https://vilnius.lt/naujienos/vilnius-pristato-kaledinio-sezono-renginiu-programa-kviecia-drauge-kurti-stebuklus"
+        },
+        {
+          "title": "Katedros aikštės eglė ir įžiebimo laikas",
+          "url": "https://kaledossostineje.lt/programa/kaledu-egle-katedros-aiksteje/"
+        }
+      ],
+      "related": "/sventes/kaledos/",
+      "planning": {
+        "heading": "Trys skirtingos kelionės datos",
+        "notes": [
+          "Jei svarbiausia įžiebimas, kalendoriuje pasižymėkite lapkričio 28 d. 19.30 val. Katedros aikštėje. Jei rūpi Kalėdų miestelis, rinkitės jo darbo dieną iki gruodžio 27 d. Eglę iki sausio 6 d. galima aplankyti ir pasibaigus miesteliui.",
+          "Išvykai su vaikais susitarkite, ar vyksite į patį koncertą, ar tik apžiūrėti eglės. Organizatorių programoje šie apsilankymai turi skirtingą trukmę. Jei tuo pat metu vyksta kitas renginys centre, palikite laiko pasiekti pasirinktą aikštės pusę."
+        ]
+      }
+    },
+    {
+      "slug": "vilniaus-sviesu-festivalis",
+      "title": "Vilniaus šviesų festivalis",
+      "city": "Vilnius",
+      "location": "Vilniaus senamiestis",
+      "date": "2027 m. sausio 22–24 d.",
+      "start": "2027-01-22",
+      "end": "2027-01-24",
+      "year": 2027,
+      "summary": "Trys žiemos vakarai, kai Vilniaus senamiestyje galima apžiūrėti šviesos, projekcijų ir skaitmeninio meno instaliacijas.",
+      "context": "Festivalį patogiausia lankyti pėsčiomis. Skirtingos instaliacijos išdėstomos keliose erdvėse, tad tikslaus maršruto reikia ieškoti konkrečių metų programoje.",
+      "visit": "Pasirinkite vieną vakaro maršrutą, o antram vakarui palikite toliau esančius objektus. Prieš išeidami patikrinkite atidarymo valandas ir ar atskiroms instaliacijoms reikia registracijos.",
+      "image": {
+        "src": "/assets/visuals/weather-city-vilnius-night.webp",
+        "alt": "Vilniaus katedra sutemus",
+        "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_2014.jpg",
+        "credit": "Abrget47j · CC BY-SA 3.0",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "width": 1200,
+        "height": 675
+      },
+      "sources": [
+        {
+          "title": "Festivalio rengėjų svetainė",
+          "url": "https://lightfestival.lt/"
+        },
+        {
+          "title": "„Go Vilnius“ renginių kalendorius",
+          "url": "https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai"
+        }
+      ],
+      "related": "/sventes/vilniaus-gimtadienis/",
+      "planning": {
+        "heading": "Maršrutą verta pradėti nuo žemėlapio",
+        "notes": [
+          "Vilniuje instaliacijos gali būti kiemuose, skveruose ar ant fasadų. Išsirinkite vieną svarbiausią kūrinį ir kelias gretimas stoteles. Taip galėsite trumpinti maršrutą neprarasdami pagrindinio apsilankymo tikslo.",
+          "Sausio 22–24 d. jau galima pasižymėti, o kiekvieno kūrinio uždegimo ir išjungimo laikai nurodomi rengėjų programoje. Išvykai su vežimėliu arba judėjimo priemone pasitikrinkite kiemų įėjimus ir dangą. Pavienio kūrinio laikas gali būti trumpesnis už visą festivalio vakarą."
+        ]
+      }
+    },
+    {
+      "slug": "klaipedos-sviesu-festivalis",
+      "title": "Klaipėdos šviesų festivalis",
+      "city": "Klaipėda",
+      "location": "Klaipėda. Instaliacijų adresai skelbiami programoje.",
+      "date": "2027 m. vasario 18–20 d.",
+      "start": "2027-02-18",
+      "end": "2027-02-20",
+      "year": 2027,
+      "summary": "Žiemos festivalis pristato šviesos meną ir apšvietimo darbus uostamiesčio erdvėse.",
+      "context": "Rengėjai į programą kviečia menininkus, dizainerius ir apšvietimo kūrėjus iš Lietuvos bei užsienio. Datą paskelbė „Klaipėdos šventės“.",
+      "visit": "Vakare pasilikite laiko persikelti iš vienos erdvės į kitą. Navigacijai ir galimiems pakeitimams naudokite aktualų organizatorių žemėlapį.",
+      "image": {
+        "src": "/assets/visuals/weather-city-klaipeda-night.webp",
+        "alt": "Taikos prospektas Klaipėdoje naktį",
+        "source": "https://commons.wikimedia.org/wiki/File:Taikos_pr_at_night.jpg",
+        "credit": "Artrix · CC BY-SA 3.0",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "width": 1200,
+        "height": 675
+      },
+      "sources": [
+        {
+          "title": "„Klaipėdos šventės“ renginiai",
+          "url": "https://klaipedossventes.lt/renginiai/"
+        }
+      ],
+      "planning": {
+        "heading": "Vilniaus ir Klaipėdos festivaliai vyksta skirtingu metu",
+        "notes": [
+          "Klaipėdos festivalis skelbiamas vasario 18–20 d., o Vilniaus – sausio 22–24 d. Jei planuojate abi išvykas, įrašykite miestą kartu su data. Klaipėdoje programos žemėlapis padės nuspręsti, kuriuos kūrinius lankyti tuo pačiu vakaru.",
+          "Skelbimas apie menininkų paraiškas patvirtina festivalio dienas, tačiau iš jo negalima sudaryti lankytojo maršruto. Kai paskelbs žemėlapį ir laikus, susidėliokite vieną pėsčiomis įveikiamą maršrutą ir pasirinkite vietą sustoti tarp instaliacijų."
+        ]
+      }
+    },
+    {
+      "slug": "kaziuko-muge",
+      "title": "Kaziuko mugė",
+      "city": "Vilnius",
+      "location": "Vilniaus centro ir senamiesčio gatvės",
+      "date": "2027 m. kovo 5–7 d.",
+      "start": "2027-03-05",
+      "end": "2027-03-07",
+      "year": 2027,
+      "summary": "Kaziuko mugė Vilniuje suveda amatininkus, maisto gamintojus ir tautodailės kūrėjus.",
+      "context": "Mugė susijusi su Šv. Kazimiero minėjimu. Prekybos, eisenos ir koncertų zonos gali kisti: ankstesnio leidimo planas nėra būsimos mugės žemėlapis.",
+      "visit": "Norėdami ramiau apžiūrėti verbas, keramiką ar kitus amatus, atvykite anksčiau. Tikslias gatves ir privažiavimo ribojimus prieš kelionę tikrinkite savivaldybės pranešimuose.",
+      "image": {
+        "src": "/assets/visuals/local-events/kaziuko-muge.webp",
+        "small": "/assets/visuals/local-events/kaziuko-muge-640.webp",
+        "width": 1280,
+        "height": 853,
+        "alt": "Kaziuko mugė Vilniuje 2010 metais",
+        "credit": "Evaldas Liutkus · CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Kaziuko_muge_2010.jpg",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "b1a593253b734ec72c42c9ea68e3767df922916d915c445b83a09b20723a0d55",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "„Go Vilnius“ renginių kalendorius",
+          "url": "https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai"
+        },
+        {
+          "title": "Vilniaus savivaldybė apie 2026 m. mugės maršrutą",
+          "url": "https://vilnius.lt/naujienos/ir-sirdys-prazysta-kai-kaziukas-i-sostine-sugrizta"
+        }
+      ],
+      "related": "/sventes/sv-kazimiero-diena/",
+      "planning": {
+        "heading": "Kovo 4-oji ir mugės savaitgalis",
+        "notes": [
+          "Kovo 4 d. minima Šv. Kazimiero diena, o 2027 m. prekyba mugėje skelbiama kovo 5–7 d. Jei norite dalyvauti abiejose progose, kalendoriuje turėkite atskirus įrašus. Mugės rengėjų programoje ieškokite prekybos ir kultūrinių veiklų zonų.",
+          "Prieš kelionę nuspręskite, ar labiau domina verbos ir tautodailė, ar koncertai. Pirmu atveju planą dėliokite pagal amatininkų vietas, antru – pagal sceną ir pasirodymo laiką. Jei susitinkate su grupe, rinkitės vietą už pagrindinio prekybos srauto."
+        ]
+      }
+    },
+    {
+      "slug": "gatves-muzikos-diena",
+      "title": "Gatvės muzikos diena",
+      "city": "Vilnius",
+      "location": "Vilniaus viešosios erdvės",
+      "date": "2027 m. gegužės 15 d.",
+      "start": "2027-05-15",
+      "end": "2027-05-15",
+      "year": 2027,
+      "summary": "Vilniuje vienai dienai pasirodymų vietomis tampa aikštės, skverai ir gatvės.",
+      "context": "Renginyje galima sutikti skirtingų žanrų muzikantų. Vietos ir laikai nurodomi programoje, todėl patogiausia planuoti maršrutą pagal konkrečius pasirodymus.",
+      "visit": "Tą pačią dieną Vilniuje skelbiama Muziejų naktis. Dienos koncertus ir vakaro apsilankymus planuokite atskirai, ypač jei muziejus reikalauja registracijos.",
+      "image": {
+        "src": "/assets/visuals/weather-city-vilnius-day.webp",
+        "alt": "Vilniaus katedra ir jos varpinė dieną",
+        "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_Exterior_2,_Vilnius,_Lithuania_-_Diliff.jpg",
+        "credit": "Diliff · CC BY-SA 3.0",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "width": 1200,
+        "height": 675
+      },
+      "sources": [
+        {
+          "title": "„Go Vilnius“ renginių kalendorius",
+          "url": "https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai"
+        },
+        {
+          "title": "Gatvės muzikos dienos organizatoriai",
+          "url": "https://gmd.lt/"
+        }
+      ],
+      "planning": {
+        "heading": "Dienos koncertai ir vakaro muziejai",
+        "notes": [
+          "Gegužės 15 d. galima derinti dvi išvykas Vilniuje. Gatvės muzikos dienai iš anksto pasirinkite vieną ar du pasirodymus, o Muziejų nakčiai palikite atskirą laiką. Jei muziejuje suplanuotas konkretus įleidimas, koncertus dėliokite aplink jį.",
+          "Jei patys grosite, pagal rengėjų skelbiamą tvarką atskirai susiderinkite pasirodymo vietą ir trukmę. Lankytojams patogiau įsiminti sceną arba sankryžą nei atlikėjo vardą be adreso."
+        ]
+      }
+    },
+    {
+      "slug": "muzieju-naktis",
+      "title": "Muziejų naktis Vilniuje",
+      "city": "Vilnius",
+      "location": "Dalyvaujantys Vilniaus muziejai",
+      "date": "2027 m. gegužės 15 d.",
+      "start": "2027-05-15",
+      "end": "2027-05-15",
+      "year": 2027,
+      "summary": "Muziejų nakties vakarą dalyvaujantys Vilniaus muziejai kviečia į ekspozicijas, ekskursijas ir dirbtuves.",
+      "context": "Paskelbta Vilniaus renginio data. Kiekvienas muziejus nustato savo programą, o kai kurių edukacijų vietų skaičius ribotas. Kitų miestų tvarkaraščius skelbia jų muziejai.",
+      "visit": "Susidarykite dviejų arba trijų netolimų muziejų maršrutą. Atskirai patikrinkite registraciją ir paskutinį įleidimo laiką.",
+      "image": {
+        "src": "/assets/visuals/weather-city-vilnius-day.webp",
+        "alt": "Vilniaus katedra ir jos varpinė dieną",
+        "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_Exterior_2,_Vilnius,_Lithuania_-_Diliff.jpg",
+        "credit": "Diliff · CC BY-SA 3.0",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "width": 1200,
+        "height": 675
+      },
+      "sources": [
+        {
+          "title": "„Go Vilnius“ renginių kalendorius",
+          "url": "https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai"
+        }
+      ],
+      "planning": {
+        "heading": "Ką patikrinti muziejaus programoje?",
+        "notes": [
+          "Muziejų nakčiai rezervuokite laiką pagal pasirinktos įstaigos programą. Parodos lankymas, ekskursija ir dirbtuvės tame pačiame muziejuje gali turėti skirtingas įleidimo ar registracijos sąlygas. Jei norite patekti į konkrečią veiklą, pirmiausia pasirinkite ją.",
+          "Tą pačią gegužės 15-ąją Vilniuje numatyta Gatvės muzikos diena. Norėdami derinti renginius, iš pradžių pasirūpinkite ekskursijos registracija, tada pasižiūrėkite, kur pakeliui būtų patogu sustoti prie muzikantų."
+        ]
+      }
+    },
+    {
+      "slug": "saltibarsciu-festivalis",
+      "title": "Vilniaus šaltibarščių festivalis",
+      "city": "Vilnius",
+      "location": "Įvairios renginio erdvės Vilniuje",
+      "date": "2027 m. gegužės 28–30 d.",
+      "start": "2027-05-28",
+      "end": "2027-05-30",
+      "year": 2027,
+      "summary": "Vilniaus šaltibarščių festivalis, oficialiai „Vilnius Pink Soup Fest“, skirtas vasaros sriubai ir miesto gastronomijai.",
+      "context": "Miesto kalendoriuje paskelbtas trijų dienų laikotarpis. Konkrečių degustacijų, eisenos ir pramogų vietas organizatoriai nurodo festivalio programoje.",
+      "visit": "Jei norite paragauti kelių versijų, susiplanuokite vietas pagal rajoną. Dalyvaujančios kavinės ir atskirų porcijų kainos skelbiamos arčiau renginio.",
+      "image": {
+        "src": "/assets/visuals/local-events/saltibarsciu-festivalis.webp",
+        "small": "/assets/visuals/local-events/saltibarsciu-festivalis-640.webp",
+        "width": 1280,
+        "height": 960,
+        "alt": "Rausvi šaltibarščiai dubenyje",
+        "credit": "Bryan Pocius · CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%C5%A0altibar%C5%A1%C4%8Diai_Lithuanian_Cold_Beet_Soup.jpg",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "fdc134ccbc10a84dea4ee5eda294dc4116372d6a2c106161578a21f642398ee8",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "„Go Vilnius“ renginių kalendorius",
+          "url": "https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai"
+        },
+        {
+          "title": "„Go Vilnius“ šaltibarščių festivalio puslapis",
+          "url": "https://www.govilnius.lt/pink-soup-fest"
+        },
+        {
+          "title": "„Go Vilnius“ apie 2027 m. festivalį",
+          "url": "https://www.govilnius.lt/media-news/vilnius-pink-soup-fest-confirms-2027-anniversary-edition"
+        }
+      ],
+      "planning": {
+        "heading": "Degustacija ir programa vienu savaitgaliu",
+        "notes": [
+          "Gegužės 28–30 d. pažymėkite kaip bendrą festivalio laikotarpį. Jei svarbiausia paragauti šaltibarščių, rinkitės dalyvaujančią kavinę arba degustaciją. Jei domina miesto renginiai, pirmiausia žiūrėkite tos dienos vietas ir laikus.",
+          "Grupės planui pravers du atskiri įrašai: rezervuotas maitinimo laikas ir nemokama veikla, į kurią galima atvykti laisviau. Jei žmogui svarbios sudedamosios dalys, dėl jų pasitikslinkite konkrečioje vietoje."
+        ]
+      }
+    },
+    {
+      "slug": "kulturos-naktis",
+      "title": "Kultūros naktis Vilniuje",
+      "city": "Vilnius",
+      "location": "Kultūros erdvės ir aikštės Vilniuje",
+      "date": "2027 m. birželio 12 d.",
+      "start": "2027-06-12",
+      "end": "2027-06-12",
+      "year": 2027,
+      "summary": "Vieno vakaro Vilniaus festivalis, apimantis muziką, parodas, kiną, teatrą ir performansus.",
+      "context": "Dalis renginių vyksta po atviru dangumi, kiti – salėse ir kultūros įstaigose. Skirtingų programos dalių pradžia ir trukmė nesutampa.",
+      "visit": "Išsirinkite kelias vieno rajono erdves. Jeigu domina pasirodymas mažoje salėje, iš anksto patikrinkite įleidimo tvarką.",
+      "image": {
+        "src": "/assets/visuals/weather-city-vilnius-night.webp",
+        "alt": "Vilniaus katedra sutemus",
+        "source": "https://commons.wikimedia.org/wiki/File:Vilnius_Cathedral_2014.jpg",
+        "credit": "Abrget47j · CC BY-SA 3.0",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "width": 1200,
+        "height": 675
+      },
+      "sources": [
+        {
+          "title": "„Go Vilnius“ renginių kalendorius",
+          "url": "https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai"
+        },
+        {
+          "title": "Kultūros nakties organizatorių svetainė",
+          "url": "https://kulturosnaktis.lt/"
+        }
+      ],
+      "planning": {
+        "heading": "Renginį rinkitės pagal pradžios laiką",
+        "notes": [
+          "Birželio 12-osios planą pradėkite nuo vieno pasirodymo, kurį tikrai norite išvysti. Trumpos instaliacijos ir parodos gali tikti tarp koncertų. Spektakliui mažoje salėje palikite laiko atvykti anksčiau, net jei renginys nemokamas.",
+          "Jei pasirodymas prasideda po vidurnakčio, į asmeninį kalendorių įrašykite jau birželio 13 d. laiką. Festivalio vakaro pavadinimas gali likti birželio 12-osios, o priminimas turi sekti tikrą pradžią."
+        ]
+      }
+    },
+    {
+      "slug": "kilkim-zaibu",
+      "title": "Kilkim Žaibu",
+      "city": "Užulėnis, Ukmergės r.",
+      "location": "Prezidento Antano Smetonos dvaro muziejus, Dvaro g. 3, Užulėnis",
+      "date": "2027 m. birželio 24–26 d.",
+      "year": 2027,
+      "summary": "Trijų dienų baltų kultūros ir ekstremalios muzikos festivalis prie Lėno ežero. 2027 m. birželio 24–26 d. jį rengia Antano Smetonos dvaro teritorijoje.",
+      "context": "Festivalio programoje metalo koncertai derinami su senųjų amatų demonstracijomis, folkloru ir vasaros saulėgrįžos tradicijomis. Skirtingos erdvės prie Lėno ežero skirtos koncertams ir poilsiui.",
+      "visit": "Bilietų ir konkrečių pasirodymų laikų ieškokite organizatoriaus svetainėje. Jeigu planuojate atvykti automobiliu ar apsistoti su palapine, prieš išvykdami patikrinkite būtent 2027 m. galiojančias sąlygas.",
+      "image": {
+        "src": "/assets/visuals/local-events/kilkim-zaibu.webp",
+        "small": "/assets/visuals/local-events/kilkim-zaibu-640.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Grupė „Saltus“ festivalyje „Kilkim Žaibu“ 2009 metais",
+        "credit": "Bbberzhas · CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Saltus_black_metal_live_kilkim_zaibu_lithuania.JPG",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "bb3149847ce20250bbe45323431482118f26357efdb1987727e15761c0e75a7e",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "„Kilkim Žaibu“ organizatorių 2027 m. svetainė",
+          "url": "https://kilkimzaibu.com/lt"
+        },
+        {
+          "title": "Ukmergės savivaldybės pranešimas apie birželio 24 d. pasirodymą",
+          "url": "https://www.ukmerge.lt/renginiai/juodojo-metalo-titanai-watain-skelbia-karjeros-pabaiga-vienintelis-atsisveikinimo-sou-baltijos-salyse-drebins-kilkim-zaibu-27/"
+        },
+        {
+          "title": "Festivalio atvykimo ir stovyklavimo informacija",
+          "url": "https://kilkimzaibu.com/lt/info"
+        }
+      ],
+      "start": "2027-06-24",
+      "end": "2027-06-26",
+      "related": "/sventes/jonines/",
+      "planning": {
+        "heading": "2027 m. datos ir ankstesnių metų taisyklės",
+        "notes": [
+          "Birželio 24–26 d. paskelbtos oficialioje festivalio svetainėje. Programą planuokite atsižvelgdami tiek į koncertus, tiek į Rasų veiklas prie Lėno ežero. Jei atvykstate dėl vienos grupės, pasižymėkite ir jos dieną, kai paskelbs išsamų laiką.",
+          "Rengėjų atvykimo puslapyje dar pateikiama 2026 m. informacija. Ankstesnių metų įvažiavimo laiko ir stovyklavimo kainų neperkelkite į 2027 m. kelionės planą. Naujo leidimo taisykles ir bilietų apimtį pasitikrinkite prieš išvykdami."
+        ]
+      }
+    },
+    {
+      "slug": "juros-svente",
+      "title": "Jūros šventė Klaipėdoje",
+      "city": "Klaipėda",
+      "location": "Uostamiesčio viešosios erdvės",
+      "date": "2027 m. liepos 23–25 d.",
+      "start": "2027-07-23",
+      "end": "2027-07-25",
+      "year": 2027,
+      "summary": "Klaipėdos vasaros savaitgalis, skirtas jūrinei miesto tradicijai, uosto istorijai ir kultūriniams renginiams.",
+      "context": "Organizatoriai paskelbė liepos savaitgalį. Rugpjūčio 1-ąją numatytas Klaipėdos 775 metų jubiliejus yra atskiras įvykis.",
+      "visit": "Vietas nakvynei patogu rinktis pagal susisiekimą su centru. Atskirų koncertų, eisenų ar veiklų ant vandens laikus tikrinkite paskelbtoje programoje.",
+      "image": {
+        "src": "/assets/visuals/local-events/juros-svente.webp",
+        "small": "/assets/visuals/local-events/juros-svente-640.webp",
+        "width": 1280,
+        "height": 852,
+        "alt": "Fontanų šou Jūros šventėje Klaipėdoje 2017 metais",
+        "credit": "Zivvviliuks · CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%C5%A0okan%C4%8Di%C5%B3_fontan%C5%B3_%C5%A1ou_Jono_kalnelyje_%28J%C5%ABros_%C5%A1vent%C4%97%29.jpg",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "96a09920453d5228859e3d67b58527e7536bbd13b2be6d97258c6d0940968fff",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "Rengėjų pranešimas apie 2027 m. datas",
+          "url": "https://klaipedossventes.lt/2026/10/05/2027-m-juros-sventes-liepos-23-25-d/"
+        },
+        {
+          "title": "„Klaipėdos šventės“ renginiai",
+          "url": "https://klaipedossventes.lt/renginiai/"
+        }
+      ],
+      "planning": {
+        "heading": "Liepos šventė ir rugpjūčio jubiliejus",
+        "notes": [
+          "Jūros šventės savaitgalis yra liepos 23–25 d., o Klaipėdos 775 metų jubiliejaus renginiai numatyti rugpjūčio 1 d. Jei nakvynę renkatės dėl vieno iš jų, palyginkite ne tik miesto pavadinimą, bet ir datą.",
+          "Išsamiai programai pasirodžius, pasižymėkite krantinę arba įėjimą, prie kurio susitiksite. Jei veikla kitoje marių pusėje, patikrinkite persikėlimo laiką atskirai nuo paties renginio. Kalendoriaus įrašas čia žymi šventės dienas, todėl konkrečios veiklos pradžią įrašykite atskirai."
+        ]
+      }
+    },
+    {
+      "slug": "vilniaus-maratonas",
+      "title": "Vilniaus maratonas",
+      "city": "Vilnius",
+      "location": "Katedros aikštė ir trasos Vilniuje",
+      "date": "2027 m. rugsėjo 12 d.",
+      "year": 2027,
+      "summary": "Vilniaus maratonas vyks 2027 m. rugsėjo 12 d. Organizatoriaus nuostatuose skelbiama registracijos, distancijų ir dalyvių aptarnavimo informacija.",
+      "context": "Skirtingos distancijos turi savo starto laikus ir sąlygas. Renginio miestelis, daiktų saugykla ir finišo paslaugos planuojamos Katedros aikštės apylinkėse.",
+      "visit": "Bėgikai turėtų iš anksto pasirinkti distanciją ir pasitikrinti numerių atsiėmimą. Žiūrovams pravers trasos žemėlapis, o vykstant per centrą verta sekti savivaldybės pranešimus apie eismo ribojimus.",
+      "image": {
+        "src": "/assets/visuals/local-events/vilniaus-maratonas.webp",
+        "small": "/assets/visuals/local-events/vilniaus-maratonas-640.webp",
+        "width": 1280,
+        "height": 847,
+        "alt": "Neris ir Karaliaus Mindaugo tiltas Vilniuje",
+        "credit": "Bahnfrend · CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Neris_in_Vilnius%2C_2006_%2801%29.jpg",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "b34e9fa62ae5b8d970baf8289cf2dfc670d48c91cdf6ab54ddbd4f5d817cd47b",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "2027 m. maratono nuostatai",
+          "url": "https://www.vilniausmaratonas.lt/informacija/nuostatai/"
+        },
+        {
+          "title": "Vilniaus maratono registracija ir naujienos",
+          "url": "https://www.vilniausmaratonas.lt/"
+        }
+      ],
+      "start": "2027-09-12",
+      "end": "2027-09-12",
+      "related": "/2027/rugsejis/",
+      "planning": {
+        "heading": "Skirtingos distancijos turi atskirus planus",
+        "notes": [
+          "Rengėjų nuostatuose numatyti 42,195 km maratonas, pusmaratonis, 10 ir 5 km bėgimai, vaikų bėgimas bei ėjimo distancijos. Iš anksto nuspręskite, kurią distanciją rinksitės ir ar norėsite atsiimti numerį iki renginio dienos.",
+          "Rugsėjo 12 d. ir Katedros aikštė jau nurodytos. Galutinė programa ir trasa tikslinamos atskirai. Bėgikui pravers trys kalendoriaus įrašai: registracija, numerio atsiėmimas ir tikras pasirinktos distancijos startas."
+        ]
+      }
+    },
+    {
+      "slug": "kauno-gimtadienis",
+      "title": "Kauno miesto gimtadienis",
+      "city": "Kaunas",
+      "location": "Santakos parkas, senamiestis ir kitos erdvės ankstesnėse programose",
+      "date": "2027 m. datos dar nepaskelbtos",
+      "year": 2027,
+      "summary": "Kauno gimtadienį miestas švenčia pavasarį. 2026 m. programa vyko gegužės 22–24 d., o 2027 m. datas paskelbs savivaldybė.",
+      "context": "2026 m. renginių vietos apėmė Santakos parką, Rotušės aikštę ir Kauno senamiestį. Programoje buvo meno mugė, koncertai, šeimų veiklos ir pasirodymai prie upės.",
+      "visit": "Sekite aktualų Kauno miesto renginių kalendorių. Rinkdamiesi pasirodymą atkreipkite dėmesį į skirtingus adresus ir laikus. Prieš vykdami automobiliu patikrinkite naujausią eismo informaciją.",
+      "image": {
+        "src": "/assets/visuals/local-events/kauno-gimtadienis.webp",
+        "small": "/assets/visuals/local-events/kauno-gimtadienis-640.webp",
+        "width": 1160,
+        "height": 1000,
+        "alt": "Kauno pilis prie Santakos parko 2023 metais",
+        "credit": "dave massie · CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Kaunas_Castle_in_2023.jpg",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "c0f78a3411649f4a5ab445fc9a4e745d95dd36be761f2854e45838d13ee173aa",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "Kauno savivaldybės renginiai",
+          "url": "https://www.kaunas.lt/renginiai/"
+        },
+        {
+          "title": "2026 m. miesto gimtadienio programa",
+          "url": "https://www.kaunas.lt/renginiai/kauno-miesto-gimtadienis-2026-618-metu/"
+        }
+      ],
+      "related": "/renginiai/pazaislio-muzikos-festivalis/",
+      "planning": {
+        "heading": "Kaip naudotis ankstesne programa?",
+        "notes": [
+          "2026 m. Santakos parko ir senamiesčio programa padeda įsivaizduoti šventės pobūdį. Iš jos galima išsirinkti, kokių veiklų ieškoti: koncerto, pasivaikščiojimo ar šeimos užsiėmimo. 2027 m. datą ir konkrečias vietas pasirinkite iš naujo pranešimo.",
+          "Pasirodžius programai, skirtingas vietas suveskite atskirai. Kauno rotušė ir Santakos pievos yra skirtingi susitikimo taškai. Jei derinate koncertą su kelione namo, patikrinkite viešojo transporto grįžimo laiką."
+        ]
+      }
+    },
+    {
+      "slug": "lietuvos-dainu-svente",
+      "title": "Lietuvos dainų šventė",
+      "city": "Lietuva",
+      "location": "Renginių vietos tikslinamos programoje",
+      "date": "2028 m. · dienos tikslinamos",
+      "start": null,
+      "end": null,
+      "year": 2028,
+      "summary": "Lietuvos nacionalinis kultūros centras ruošia 2028 m. Lietuvos dainų šventę. Paskelbta koncepcija „Mūsų gyvasties paslaptis“.",
+      "context": "Rengiamos skirtingos programos, tarp jų folkloro, teatro ir kanklių koncertai. Skirtingų programų vietos ir bilietai gali skirtis.",
+      "visit": "Planuodami kelionę stebėkite rengėjų pranešimus. Tikslias datas, miestus bei žiūrovų patekimo tvarką įsidėmėkite paskelbus programą.",
+      "image": {
+        "src": "/assets/visuals/local-events/lietuvos-dainu-svente.webp",
+        "small": "/assets/visuals/local-events/lietuvos-dainu-svente-640.webp",
+        "width": 1280,
+        "height": 850,
+        "alt": "2014 m. Lietuvos dainų šventė Vilniaus Vingio parke",
+        "credit": "Szczureq · CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dainu_svente_2014-07-06.jpg",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Rodomas visas kadras.",
+        "originalSha256": "1436733b98454c6c785c56992c0dfad4aaa0fee7dcad8c385b250067638e278a",
+        "contain": true,
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "Lietuvos nacionalinis kultūros centras apie pasirengimą",
+          "url": "https://www.dainusvente.lnkc.lt/naujienos/kvieciame-i-2028-m-lietuvos-dainu-sventes-dainu-dienos-upes-giesme-repertuaro-pristatyma/"
+        },
+        {
+          "title": "LNKC apie 2028 m. Dainų dieną",
+          "url": "https://www.dainusvente9.lnkc.lt/naujienos/n2027-m-lietuvos-suaugusiuju-choru-konkurse-varzysis-rekordinis-dalyviu-skaicius/"
+        },
+        {
+          "title": "Lietuvos dainų švenčių istorija",
+          "url": "https://www.dainusvente.lt/history/"
+        }
+      ],
+      "planning": {
+        "heading": "Pasirengimas šventei ir datos žiūrovams",
+        "notes": [
+          "Lietuvos nacionalinis kultūros centras paskelbė rengiamą 2028 m. Dainų dienos programą „Upės giesmė“. Repertuaro pristatymai ir 2027 m. chorų konkursas yra pasirengimo dalis. Žiūrovams reikia atskirai paskelbtos 2028 m. programos.",
+          "Rinkdamiesi išvyką iš pradžių nuspręskite, ar norite pamatyti chorų koncertą, šokius ar folkloro renginį. Tai skirtingos programos dalys. Prie rezervuojamos datos vėliau pridėkite renginio erdvę ir žiūrovų įleidimo sąlygas."
+        ]
+      }
+    },
+    {
+      "slug": "pazaislio-muzikos-festivalis",
+      "title": "Pažaislio muzikos festivalis",
+      "city": "Kaunas",
+      "location": "Pažaislio vienuolynas ir kitos koncertų erdvės",
+      "date": "2027 m. gegužės 29 d. – pradžios koncertas",
+      "year": 2027,
+      "summary": "Pažaislio muzikos festivalio pradžios koncertas paskelbtas 2027 m. gegužės 29 d. 19.30 val. Pažaislio vienuolyne. Vasaros programa pildoma.",
+      "context": "Pažaislio vienuolyno ansamblis yra viena iš festivalio vietų. Ankstesnėse programose koncertai vyko ir Kauno filharmonijoje, bažnyčiose bei kitose miesto ir regiono erdvėse.",
+      "visit": "Rinkdamiesi koncertą patikrinkite adresą, pradžios laiką ir ar reikalingas bilietas. Vasaros renginių po atviru dangumi informacijoje patikrinkite, kaip organizatoriai elgiasi pasikeitus orams.",
+      "image": {
+        "src": "/assets/visuals/local-events/pazaislio-muzikos-festivalis.webp",
+        "small": "/assets/visuals/local-events/pazaislio-muzikos-festivalis-640.webp",
+        "width": 1280,
+        "height": 960,
+        "alt": "Pažaislio vienuolynas, viena iš festivalio vietų",
+        "credit": "Ymblanter · CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Pa%C5%BEaislis_monastery_from_the_east.jpg",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "97cdefca7637cd09c5e87ee578fe8ea851b60cb48fccf90371a9d40c27b17610",
+        "small_width": 640
+      },
+      "sources": [
+        {
+          "title": "2027 m. pradžios koncerto programa",
+          "url": "https://pazaislis.lt/pradzios-koncertas-d-augustan-k-smoriginas-m-stakionis-ir-lnso/"
+        },
+        {
+          "title": "Pažaislio muzikos festivalio programa",
+          "url": "https://pazaislis.lt/programa/"
+        },
+        {
+          "title": "Apie renginį ir organizatorius",
+          "url": "https://pazaislis.lt/festivalis/apie-mus/"
+        }
+      ],
+      "related": "/sventes/zoline/",
+      "planning": {
+        "heading": "Pradžios koncertas ir vasaros programa",
+        "notes": [
+          "Gegužės 29 d. 19.30 val. Pažaislio vienuolyne numatytas festivalio pradžios koncertas. Koncerte gros Lietuvos nacionalinis simfoninis orkestras, dainuos solistai. Šis laikas skirtas atidarymui; kitus vasaros koncertus rinkitės iš programos.",
+          "Jei atvykstate dėl konkretaus atlikėjo, biliete ir asmeniniame kalendoriuje sutikrinkite ne tik datą, bet ir vietą. Programa apima ir Kauno filharmoniją. Atidarymo koncerto pranešime taip pat pateiktos atskiros stovėjimo sąlygos."
+        ]
+      }
+    },
+    {
+      "slug": "vilniaus-knygu-muge",
+      "art": "book-fair",
+      "title": "Vilniaus knygų mugė",
+      "city": "Vilnius",
+      "location": "LITEXPO, Laisvės pr. 5, Vilnius",
+      "date": "2027 m. rugsėjo 16–19 d.",
+      "start": "2027-09-16",
+      "end": "2027-09-19",
+      "year": 2027,
+      "summary": "27-oji tarptautinė Vilniaus knygų mugė 2027 metais vyks rudenį. Numatyta rugsėjo 16–19 d. Lietuvos parodų ir kongresų centre LITEXPO.",
+      "context": "Nuo 2000 metų rengiama mugė išaugo į literatūros ir kultūros susitikimą, kuriame dalyvauja leidyklos, autoriai, bibliotekos ir skaitytojai. Anksčiau mugė paprastai vykdavo žiemos pabaigoje. Rengėjai 2027 m. numatė rugsėjo datas.",
+      "visit": "Jei domina viena knyga, autorius ar diskusija, programoje tikrinkite konkrečią salę ir valandą. Prieš planuodami kelionę peržiūrėkite aktualų darbo laiką ir bilietų informaciją. Renginio dienos paskelbtos, o atskirų susitikimų laikai skelbiami programoje.",
+      "sources": [
+        {
+          "title": "Organizatorių pranešimai apie Vilniaus knygų mugę",
+          "url": "https://vilniausknygumuge.lt/naujienos/"
+        },
+        {
+          "title": "Oficiali dalyvių informacija ir 2027 m. datos",
+          "url": "https://vilniausknygumuge.lt/dalyviams/"
+        },
+        {
+          "title": "Ankstesnių mugių archyvas",
+          "url": "https://vilniausknygumuge.lt/archyvas/"
+        },
+        {
+          "title": "Organizatorių paskelbtas mugės darbo laikas",
+          "url": "https://vilniausknygumuge.lt/kontaktai/"
+        }
+      ],
+      "related": "/sventes/pasauline-knygos-ir-autoriu-teisiu-diena/",
+      "planning": {
+        "heading": "Kaip išsirinkti mugės dieną?",
+        "notes": [
+          "Organizatoriai LITEXPO lankymo laiką paskelbė keturioms rugsėjo dienoms. Penktadienį ir šeštadienį mugė atvira iki 21 val., o sekmadienį uždaroma 17 val. Jei tikslas apžiūrėti leidyklas po darbo, palyginkite darbo laiką dar prieš rinkdamiesi bilietą.",
+          "Autoriaus susitikimą arba diskusiją planuokite pagal salę ir konkrečią pradžią. Lentelėje pateiktos mugės atidarymo valandos; vienos salės renginių tvarkaraštis skelbiamas atskirai."
+        ],
+        "schedule": [
+          {
+            "date": "2027-09-16",
+            "label": "Rugsėjo 16 d.",
+            "opens": "10.00",
+            "closes": "19.00"
+          },
+          {
+            "date": "2027-09-17",
+            "label": "Rugsėjo 17 d.",
+            "opens": "10.00",
+            "closes": "21.00"
+          },
+          {
+            "date": "2027-09-18",
+            "label": "Rugsėjo 18 d.",
+            "opens": "10.00",
+            "closes": "21.00"
+          },
+          {
+            "date": "2027-09-19",
+            "label": "Rugsėjo 19 d.",
+            "opens": "10.00",
+            "closes": "17.00"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "kino-pavasaris",
+      "art": "cinema",
+      "title": "Kino pavasaris",
+      "city": "Vilnius",
+      "location": "Vilniaus kino teatrai ir Lietuvos nacionalinis dramos teatras",
+      "date": "2027 m. kovo 5–18 d.",
+      "start": "2027-03-05",
+      "end": "2027-03-18",
+      "year": 2027,
+      "summary": "Tarptautinio kino festivalio „Kino pavasaris“ rengėjai paskelbė 2027 m. kovo 5–18 d. datas.",
+      "context": "„Kino pavasaris“ pristato filmus ir su kinu susijusius susitikimus. Ankstesnių programų archyvas rodo seansus bei renginius skirtingose erdvėse ir miestuose. Organizatoriai pranešė, kad 2027 m. dalis festivalio vyks ir Lietuvos nacionaliniame dramos teatre.",
+      "visit": "Peržiūrėkite konkretaus filmo ar renginio miesto, salės, subtitrų ir seanso laiką, kai skelbiama programa. Festivalio datos reiškia bendrą renginio laikotarpį. Atskiri seansai turi savo laiką ir bilietų sąlygas.",
+      "sources": [
+        {
+          "title": "Organizatoriai: 2027 m. festivalio datos ir erdvės",
+          "url": "https://kinopavasaris.lt/partnerystes-pasiulymai-verslui/"
+        },
+        {
+          "title": "Ankstesni festivalio renginiai",
+          "url": "https://kinopavasaris.lt/praeje-renginiai/"
+        }
+      ],
+      "planning": {
+        "heading": "Bendros datos ir vieno seanso laikas",
+        "notes": [
+          "Kovo 5–18 d. žymi festivalio laikotarpį. Tą patį filmą patogu lyginti pagal seanso vietą, kalbą ir subtitrus. Perskaitykite, ar po parodymo numatytas pokalbis ir ar jis įskaičiuotas į skelbiamą trukmę.",
+          "Jei renkatės du seansus tą pačią dieną, palikite laiko nueiti tarp skirtingų erdvių. Savo kalendoriuje užrašykite kino teatro pavadinimą ir salę. Pasirodžius programai, šias detales tikrinkite konkretaus filmo puslapyje."
+        ]
+      }
+    }
+  ],
+  "commemorations": [
+    {
+      "id": "gedulo-ir-vilties-diena",
+      "slug": "gedulo-ir-vilties-diena",
+      "title": "Gedulo ir vilties diena",
+      "month": 6,
+      "day": 14,
+      "date": "Birželio 14 d.",
+      "summary": "Birželio 14-ąją Lietuvoje prisimenami tremtiniai, politiniai kaliniai ir sovietinių represijų aukos.",
+      "context": "1941 m. birželio 14 d. pradėti masiniai Lietuvos gyventojų trėmimai. Minėjimai, parodos ir atminimo iniciatyvos padeda suprasti žmonių ir šeimų patirtį.",
+      "visit": "Valstybės institucijos ir savivaldybės atskirai skelbia minėjimų laikus. Mokymuisi naudokite muziejų dokumentus ir liudijimus, atskirdami istorinio įvykio datą nuo šių metų programos.",
+      "image": {
+        "src": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+        "alt": "Lietuvos trispalvė",
+        "source": "https://commons.wikimedia.org/wiki/File:Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+        "credit": "Ypsilon from Finland · CC0 1.0",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "width": 1200,
+        "height": 900
+      },
+      "related": "/sventes/sausio-13-oji/",
+      "sources": [
+        {
+          "title": "Atmintinų dienų įstatymas, Seimas",
+          "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.41597"
+        },
+        {
+          "title": "Kultūros ministerijos informacija apie minėjimą",
+          "url": "https://lrkm.lrv.lt/lt/naujienos/lietuva-minejo-85-asias-gedulo-ir-vilties-dienos-metines-prisiminti-tremtiniai-ir-politiniai-kaliniai-Smxy/"
+        }
+      ],
+      "category": "Atmintina diena"
+    },
+    {
+      "id": "baltijos-kelio-diena",
+      "slug": "baltijos-kelio-diena",
+      "title": "Baltijos kelio diena",
+      "month": 8,
+      "day": 23,
+      "date": "Rugpjūčio 23 d.",
+      "summary": "Rugpjūčio 23-iąją minima 1989 m. Baltijos kelio akcija. Gyvoji žmonių grandinė sujungė Vilnių, Rygą ir Taliną.",
+      "context": "Taikus susikibimas rankomis parodė Lietuvos, Latvijos ir Estijos siekį atkurti nepriklausomybę. Tą pačią dieną prisimenamos ir stalinizmo bei nacizmo aukos.",
+      "visit": "Pažintį su akcija pradėkite nuo Seimo istorinių dokumentų. Vietinių sukakties renginių laikus skelbia savivaldybės ir kultūros įstaigos.",
+      "image": {
+        "src": "/assets/visuals/local-events/baltijos-kelio-diena.webp",
+        "small": "/assets/visuals/local-events/baltijos-kelio-diena-640.webp",
+        "width": 1280,
+        "height": 801,
+        "alt": "Baltijos kelio dalyviai netoli Maišiagalos",
+        "credit": "Gasparas Genzbigelis (skaitmenino „Europeana 1989“) · CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Nuotrauka_Baltijos_kelyje.jpg",
+        "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "ef8bfd14c9697b7a39bdd0f692e2fe8afad2ba2facf7f8216220e38d8cf73516",
+        "small_width": 640
+      },
+      "related": "/sventes/kovo-11-oji/",
+      "sources": [
+        {
+          "title": "Atmintinų dienų įstatymas, Seimas",
+          "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.41597"
+        },
+        {
+          "title": "Lietuvos Respublikos Seimas apie Baltijos kelią",
+          "url": "https://www.lrs.lt/sip/portal.show?p_a=1710&p_k=1&p_kade_id=10&p_r=38090"
+        }
+      ],
+      "category": "Atmintina diena"
+    },
+    {
+      "id": "konstitucijos-diena",
+      "slug": "konstitucijos-diena",
+      "title": "Konstitucijos diena",
+      "month": 10,
+      "day": 25,
+      "date": "Spalio 25 d.",
+      "summary": "Spalio 25-ąją minima Lietuvos Respublikos Konstitucijos priėmimo diena.",
+      "context": "1992 m. spalio 25 d. Lietuvos piliečiai Konstituciją priėmė referendume. Priėmimo diena skiriasi nuo dokumento įsigaliojimo datos.",
+      "visit": "Norėdami pasitikrinti Konstitucijos nuostatas, atsiverskite galiojančią suvestinę redakciją. Metinių iniciatyvų datos ir dalyvavimo sąlygos skelbiamos atskirai.",
+      "image": {
+        "src": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+        "alt": "Lietuvos trispalvė",
+        "source": "https://commons.wikimedia.org/wiki/File:Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+        "credit": "Ypsilon from Finland · CC0 1.0",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "width": 1200,
+        "height": 900
+      },
+      "related": "/sventes/vasario-16-oji/",
+      "sources": [
+        {
+          "title": "Atmintinų dienų įstatymas, Seimas",
+          "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.41597"
+        },
+        {
+          "title": "Konstitucijos dokumento kortelė",
+          "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.1890"
+        }
+      ],
+      "category": "Atmintina diena"
+    },
+    {
+      "id": "lietuvos-kariuomenes-diena",
+      "slug": "lietuvos-kariuomenes-diena",
+      "title": "Lietuvos kariuomenės diena",
+      "month": 11,
+      "day": 23,
+      "date": "Lapkričio 23 d.",
+      "summary": "Lapkričio 23-ąją minima Lietuvos kariuomenės diena, siejama su reguliariųjų pajėgų atkūrimu 1918 metais.",
+      "context": "1918 m. lapkričio 23 d. pasirašytas pirmasis įsakymas, kuriuo pradėtos formuoti reguliariosios šalies pajėgos. Minėjimų programos gali būti rengiamos ir artimiausiomis dienomis.",
+      "visit": "Parado, rikiuotės ar viešos parodos galimybes tikrinkite Lietuvos kariuomenės naujienose ir savo savivaldybės kalendoriuje.",
+      "image": {
+        "src": "/assets/visuals/holiday-lithuanian-flag-1200.webp",
+        "alt": "Lietuvos trispalvė",
+        "source": "https://commons.wikimedia.org/wiki/File:Lithuanian_flag_flying_over_the_Gediminas_tower.jpg",
+        "credit": "Ypsilon from Finland · CC0 1.0",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "width": 1200,
+        "height": 900
+      },
+      "related": "/sventes/valstybes-diena/",
+      "sources": [
+        {
+          "title": "Atmintinų dienų įstatymas, Seimas",
+          "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.41597"
+        },
+        {
+          "title": "Lietuvos kariuomenė apie lapkričio 23-iąją",
+          "url": "https://www.kariuomene.lt/kas-mes-esame/naujienos/lapkricio-23-oji-lietuvos-kariuomenes-diena/3001"
+        }
+      ],
+      "category": "Atmintina diena"
+    },
+    {
+      "id": "lietuvos-zydu-genocido-atminimo-diena",
+      "slug": "lietuvos-zydu-genocido-atminimo-diena",
+      "title": "Lietuvos žydų genocido atminimo diena",
+      "category": "Atmintina diena",
+      "month": 9,
+      "day": 23,
+      "date": "Rugsėjo 23 d.",
+      "summary": "Rugsėjo 23-iąją Lietuvoje pagerbiamos Holokausto aukos. Ši data žymi Vilniaus geto likvidavimą 1943 metais.",
+      "context": "Nacistinės okupacijos metais sunaikinta didžioji dalis Lietuvos žydų bendruomenės. Paneriuose prie Vilniaus vyko masinės žudynės. Memorialas yra viena svarbiausių vietų aukoms pagerbti ir istorijai pažinti.",
+      "visit": "Minėjimo laikus ir vietas skelbia Kultūros ministerija, muziejai ir savivaldybės. Norėdami aplankyti Panerius, pirmiausia patikrinkite memorialo lankymo informaciją ir susisiekimą.",
+      "image": {
+        "src": "/assets/visuals/local-events/lietuvos-zydu-genocido-atminimo-diena.webp",
+        "small": "/assets/visuals/local-events/lietuvos-zydu-genocido-atminimo-diena-640.webp",
+        "width": 750,
+        "height": 1000,
+        "alt": "Paminklas Holokausto aukoms Panerių memoriale",
+        "credit": "upyernoz · CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Paneriai_monument_3.jpg",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "changes": "Sumažinta raiška ir pakeistas failo formatas į „WebP“. Kortelėse vaizdas gali būti apkarpytas.",
+        "originalSha256": "5a63a740bbf1fded1b14cb86d5d222bb3ffe052c97cc4d3fb41da522d9f38345",
+        "small_width": 420
+      },
+      "related": "/atmintinos-dienos/",
+      "sources": [
+        {
+          "title": "Vilniaus Gaono žydų istorijos muziejus apie minėjimą",
+          "url": "https://www.jmuseum.lt/naujienos/paneriu-memoriale-pamineta-lietuvos-zydu-genocido-auku-atminimo-diena/"
+        },
+        {
+          "title": "Atmintinų dienų įstatymas",
+          "url": "https://www.e-tar.lt/portal/lt/legalActEditions/TAR.D570962773F8"
+        },
+        {
+          "title": "Panerių memorialas",
+          "url": "https://www.jmuseum.lt/lt/paneriu-memorialas/"
+        }
+      ]
+    }
+  ]
+}

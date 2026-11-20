@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-muzieju-naktis-2027-05-15@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+SUMMARY:Muziejų naktis Vilniuje
+DESCRIPTION:Muziejų nakties vakarą dalyvaujantys Vilniaus muziejai kvieč
+ ia į ekspozicijas\, ekskursijas ir dirbtuves.
+URL:https://kalendorius365.lt/renginiai/muzieju-naktis/
+TRANSP:TRANSPARENT
+LOCATION:Dalyvaujantys Vilniaus muziejai
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,6 @@
+<article id="{{ include.id }}" class="panel photo-credit">
+  <img src="{{ include.photo.small | default: include.photo.src }}" alt="" aria-hidden="true" width="144" height="100" loading="lazy" decoding="async">
+  <div><h3>{{ include.photo.caption | escape }}</h3><p>{{ include.photo.credit | escape }}</p>
+  {% if include.photo.changes %}<small>{{ include.photo.changes | escape }}</small>{% endif %}
+  <div class="guide-actions"><a href="{{ include.photo.source }}" rel="noopener">Originalas <span aria-hidden="true">↗</span></a><a href="{{ include.photo.license }}" rel="noopener">Licencija <span aria-hidden="true">↗</span></a><a href="{{ include.url }}">Puslapis <span aria-hidden="true">→</span></a></div></div>
+</article>

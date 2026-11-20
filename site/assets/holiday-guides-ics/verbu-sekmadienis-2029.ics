@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:verbu-sekmadienis-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290325
+DTEND;VALUE=DATE:20290326
+SUMMARY:Verbų sekmadienis
+DESCRIPTION:Verbų sekmadienis Lietuvoje minimas likus savaitei iki Velykų
+ . Jo data kasmet kinta kartu su Velykomis.
+URL:https://kalendorius365.lt/sventes/verbu-sekmadienis/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

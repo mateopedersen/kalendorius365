@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:kuno-kulturos-ir-sporto-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Kūno kultūros ir sporto diena
+DESCRIPTION:Lietuvoje Kūno kultūros ir sporto diena minima pirmąjį spal
+ io šeštadienį.
+URL:https://kalendorius365.lt/sventes/kuno-kulturos-ir-sporto-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

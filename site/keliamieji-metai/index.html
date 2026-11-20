@@ -1,0 +1,42 @@
+---
+title: "Keliamųjų metų skaičiuoklė ir vasario dienų skaičius"
+description: "Patikrinkite, ar pasirinkti metai yra keliamieji, kiek dienų turi vasaris ir kada bus kiti keliamieji metai."
+date_guide: true
+hero_share: true
+---
+{% include tool-page-head.html icon="leap-day" title="Keliamųjų metų skaičiuoklė" lead="Patikrinkite, kiek dienų turi pasirinkti metai, ar yra vasario 29-oji ir kada bus kiti keliamieji metai." %}
+<form class="panel date-guide-form date-guide-calculator" data-leap-year aria-labelledby="leap-form-title">
+  <div class="date-guide-calculator__fields">
+    <h2 id="leap-form-title">Patikrinkite metus</h2>
+    <label for="leap-year">Metai
+      <input id="leap-year" name="year" type="number" min="1" max="9999" step="1" required inputmode="numeric" aria-describedby="leap-range">
+    </label>
+    <p class="date-guide-calculator__hint" id="leap-range">Įveskite metus nuo 1 iki 9999.</p>
+    <button type="submit" class="primary">Patikrinti metus</button>
+    <div class="date-guide-calculator__examples" role="group" aria-label="Metų pavyzdžiai">
+      <button type="button" data-use-year="2028">2028</button>
+      <button type="button" data-use-year="2100">2100</button>
+      <button type="button" data-use-year="2400">2400</button>
+    </div>
+  </div>
+  <output class="date-guide-calculator__result" for="leap-year" role="status">
+    <span class="date-guide-calculator__status" data-result-title>Pasirinktų metų rezultatas</span>
+    <strong data-result-value>Įveskite metus</strong>
+    <span class="date-guide-calculator__facts">
+      <span><span>Dienų vasarį</span><b data-february-days>…</b></span>
+      <span><span>Kiti keliamieji metai</span><b data-next-leap>…</b></span>
+    </span>
+  </output>
+</form>
+<section class="leap-year-rules" aria-labelledby="leap-rules-title">
+  <header><h2 id="leap-rules-title">Keliamųjų metų taisyklė</h2><p>Pagal <a href="https://aa.usno.navy.mil/faq/leap_years">Grigaliaus kalendoriaus taisyklę</a> keliamaisiais metais prie vasario pridedama viena diena. <a href="/blogas/keliamieji-metai-2028/">2028 m. pavyzdyje</a> matyti, ką papildoma data pakeičia mėnesio ir asmeninių priminimų planuose.</p></header>
+  <ol>
+    <li><strong>Dalyba iš 4</strong><p>Jei metai dalijasi iš 4, jie paprastai keliamieji. 2028 m. vasaris turi 29 dienas.</p></li>
+    <li><strong>Šimtmečio išimtis</strong><p>Jei metai dalijasi iš 100, jų vasaris paprastai turi 28 dienas. Taip buvo 1900 m.</p></li>
+    <li><strong>Dalyba iš 400</strong><p>Šimtmečio metai, kurie dalijasi iš 400, yra keliamieji. Pavyzdžiui, 2000 m. turėjo 366 dienas.</p></li>
+  </ol>
+</section>
+<nav class="date-guide-next calendar-catalog" aria-label="Susiję kalendoriai ir skaičiuoklės">
+  {% include calendar-catalog-card.html url="/2028/vasaris/" icon="year-2028" title="2028 m. vasario kalendorius" description="Peržiūrėkite visas 29 vasario dienas." %}
+  {% include calendar-catalog-card.html url="/metu-diena/" icon="day-counter" title="Metų dienos numeris" description="Raskite pasirinktos datos eilės numerį ir ISO savaitę." %}
+</nav>

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-teatro-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290327
+DTEND;VALUE=DATE:20290328
+SUMMARY:Tarptautinė teatro diena
+DESCRIPTION:Kovo 27 d. minima Tarptautinė teatro diena. Ji atkreipia dėme
+ sį į scenos meną ir žmones\, kurie kuria spektaklius.
+URL:https://kalendorius365.lt/sventes/tarptautine-teatro-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

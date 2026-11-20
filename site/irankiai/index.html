@@ -24,7 +24,7 @@ preserve_source: true
       <div class="resource-grid">
 {% for item in group.tools %}
         <a class="resource-card {{ item.card_class }} tool-directory-card" href="{{ item.route }}" data-tool-card data-tool-category="{{ group.id }}" data-tool-search="{{ item.title | escape }} {{ item.description | escape }} {{ item.example | escape }} {{ item.kind | escape }} {{ item.keywords | escape }}">
-          <span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#{{ item.icon }}"></use></svg></span>
+          <span class="resource-card__icon" aria-hidden="true">{% include shell-art.html name=item.art size=45 lazy=true %}</span>
           <span class="tool-directory-card__heading">{{ item.title }}</span>
           <span class="tool-directory-card__kind">{{ item.kind }}</span>
           <span class="tool-directory-card__description">{{ item.description }}</span>
@@ -37,11 +37,11 @@ preserve_source: true
 {% endfor %}
   </div>
 </section>
-<!-- phase3-related --><section class="panel"><h2>Metų laikai ir dienos ilgumas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2029 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section><!-- /phase3-related -->
+<!-- phase3-related --><section class="panel"><h2>Metų laikai ir dienos ilgumas</h2><p><a href="/metu-laikai/">Lygiadieniai, saulėgrįžos ir metų laikai Lietuvoje</a>: patikrintos 2027–2030 m. datos, interaktyvios Žemės schemos, penkių miestų dienos šviesa ir kalendoriaus failai.</p></section><!-- /phase3-related -->
 
 <!-- K365_EDITORIAL_V2_START -->
 <section class="content-guide" data-editorial-review="20261103-v2"><h2>Rinkitės pagal norimą rezultatą</h2>
 <p>Jeigu reikia atsakymo skaičiumi, pradėkite nuo <a href="/datos-skaiciuokle/">datų skaičiuoklės</a>: joje matomos ribos ir darbo dienų prielaidos. Jei reikia metų ar mėnesio lapo, rinkitės <a href="/metai/">kalendorių katalogą</a>. Savo nuotraukai ir asmeninėms datoms pritaikytas <a href="/kurti-kalendoriu/">kalendoriaus kūrėjas</a>. Šių priemonių rezultatai skirtingi, todėl miniatiūra, skaičiavimo nuoroda ir projekto kopija nėra pakeičiami failai.</p>
 <p>Pasikartojančias D bei P žymas skaičiuoja <a href="/pamainu-grafikas/">pamainų planuoklis</a>, o paprastą ranka pildomą savaitę galima atsispausdinti iš <a href="/savaitiniai-planuokliai/">savaitės šablonų</a>. Vaiko pastovias pamokas ir kintančius namų darbus skiria <a href="/pamoku-tvarkarastis/">pamokų tvarkaraštis</a>. Pasirinkimas pagal užduotį sumažina poreikį tą patį planą neaiškiai dubliuoti keliose vietose.</p>
-<p>Asmeninius įrašus laikykite privačiai. Prieš atkurdami kopiją įsitikinkite, kuriam įrankiui skirtas failas ir ar atkūrimas papildo, ar pakeičia duomenis.</p></section>
+<p><a href="/mano-diena/">Asmeniniame dienos plane</a> išsaugotus įrašus tvarkykite privačiai. Prieš atkurdami kopiją įsitikinkite, kuriam įrankiui skirtas failas ir ar atkūrimas papildo, ar pakeičia duomenis.</p></section>
 <!-- K365_EDITORIAL_V2_END -->

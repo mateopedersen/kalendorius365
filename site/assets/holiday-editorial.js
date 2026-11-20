@@ -50,7 +50,7 @@ async function refresh() {
       const time = target.querySelector("[data-next-occurrence]");
       if (!date || !time) continue;
       time.dateTime = date;
-      time.textContent = target.classList.contains("holiday-card")
+      time.textContent = target.matches(".holiday-card, [data-holiday-hub-feature]")
         ? cardDate.format(new Date(`${date}T12:00:00Z`))
         : `${weekday.format(new Date(`${date}T12:00:00Z`))}, ${formatDate(date)}`;
     }

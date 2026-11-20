@@ -50,6 +50,28 @@ test("weather total failure returns unavailable, never invented data", async () 
     globalThis.fetch = original;
   }
 });
+test("a quick forecast is served before a stalled observation", async () => {
+  const original = globalThis.fetch;
+  let cancelled = false;
+  try {
+    globalThis.fetch = async (url, { signal }) =>
+      url.includes("/stations/")
+        ? new Promise((_, reject) => signal.addEventListener("abort", () => {
+            cancelled = true;
+            reject(signal.reason);
+          }, { once: true }))
+        : Response.json({ forecastTimestamps: [{ airTemperature: 0, forecastTimeUtc: "2026-11-20 12:00:00" }] });
+    const response = await onRequestGet(request("kaunas"));
+    const data = await response.json();
+    assert.equal(data.observation, null);
+    assert.equal(data.forecast.forecastTimestamps[0].airTemperature, 0);
+    assert.equal(data.partial, true);
+    assert.equal(response.headers.get("cache-control"), "public, max-age=60");
+    assert.equal(cancelled, true);
+  } finally {
+    globalThis.fetch = original;
+  }
+});
 test("unexpected cache failures also return non-cacheable errors", async () => {
   const originalCaches = globalThis.caches;
   globalThis.caches = {

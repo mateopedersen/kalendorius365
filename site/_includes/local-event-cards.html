@@ -1,0 +1,14 @@
+<div class="local-date-grid">
+{% for event in include.entries %}
+  <article class="local-date-card" data-event-city="{{ event.city | escape }}">
+    <a href="/renginiai/{{ event.slug }}/">
+      {% if event.image %}<div class="local-date-card__photo{% if event.image.contain %} local-date-photo--full{% endif %}"><img src="{{ event.image.small | default: event.image.src }}" width="640" height="360" alt="{{ event.image.alt | escape }}" loading="lazy" decoding="async"></div>{% else %}<div class="local-date-card__photo local-date-card__photo--empty" aria-hidden="true">{% assign event_art = event.art | default: 'festival-stage' %}{% include shell-art.html name=event_art size=124 %}</div>{% endif %}
+      <div class="local-date-card__body">
+        <div class="local-date-card__meta"><span>{{ event.city }}</span>{% if event.start %}<time datetime="{{ event.start }}">{{ event.date }}</time>{% else %}<span>{{ event.date }}</span>{% endif %}</div>
+        <h3>{{ event.title }}</h3><p>{{ event.summary }}</p>
+        <span class="local-date-card__link">Renginio gidas <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+  </article>
+{% endfor %}
+</div>

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-lietuvos-zydu-genocido-atminimo-diena-2030-09-23@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20300923
+DTEND;VALUE=DATE:20300924
+SUMMARY:Lietuvos žydų genocido atminimo diena
+DESCRIPTION:Rugsėjo 23-iąją Lietuvoje pagerbiamos Holokausto aukos. Ši 
+ data žymi Vilniaus geto likvidavimą 1943 metais.
+URL:https://kalendorius365.lt/sventes/lietuvos-zydu-genocido-atminimo-diena
+ /
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,42 @@
+<section class="civic-section" id="pasirinkite" aria-labelledby="civic-topics">
+  <header class="civic-section__head"><h2 id="civic-topics">Kokios pagalbos ieškote?</h2></header>
+  <div class="civic-filters" data-civic-filters hidden role="group" aria-label="Filtruoti išmokas">
+    <button type="button" aria-pressed="true" data-filter="">Visos išmokos</button>
+    <button type="button" aria-pressed="false" data-filter="Šeima ir vaikai">Šeima ir vaikai</button>
+    <button type="button" aria-pressed="false" data-filter="Darbas ir sveikata">Darbas ir sveikata</button>
+    <button type="button" aria-pressed="false" data-filter="Pajamos ir būstas">Pajamos ir būstas</button>
+  </div>
+  <div class="civic-cards" data-benefit-cards>{% for key in civic.benefits %}{% assign item = civic.pages[key] %}{% include civic/card.html item=item %}{% endfor %}</div>
+  <p class="visually-hidden" data-filter-count role="status"></p>
+</section>
+<section class="civic-section" id="kita-parama" aria-labelledby="civic-other-title">
+  <header class="civic-section__head"><h2 id="civic-other-title">Kitos paramos situacijos</h2></header>
+  <div class="civic-other-help">
+    {% for item in civic.otherHelp %}{% assign source_key = item[0] %}{% assign source = civic.sources[source_key] %}
+    <div class="civic-panel"><h3>{{ item[1] | escape }}</h3><p>{{ item[2] | escape }}</p><a href="{{ source[1] }}">{{ source[0] | escape }}</a></div>
+    {% endfor %}
+  </div>
+</section>
+{% include civic/payments.html %}
+<section class="civic-section" id="priminimas" aria-labelledby="civic-reminder-name">
+  <header class="civic-section__head"><h2 id="civic-reminder-name">Pridėkite asmeninį priminimą</h2></header>
+  <div class="civic-workspace">
+    <form class="civic-form civic-panel" data-civic-reminders>
+      <fieldset disabled>
+        <legend>Data iš jūsų sprendimo ar pranešimo</legend>
+        <label>Priminimo pavadinimas<input name="label" maxlength="72" autocomplete="off" placeholder="Pvz., patikrinti išmoką" required></label>
+        <label>Priminimo diena<input name="date" type="date" min="1900-01-01" max="2200-12-31" required></label>
+        <button class="civic-button civic-button--green" type="submit">Išsaugoti priminimą</button>
+      </fieldset>
+      <p>ICS faile priminimas nustatomas pasirinktą dieną 9 val. Lietuvos laiku. Įrašai saugomi šioje naršyklėje. Jų pavadinimai ir datos nesiunčiami į serverį.</p>
+    </form>
+    <div class="civic-panel civic-reminders">
+      <h3>Mano priminimai</h3>
+      <p data-reminder-empty>Priminimų dar nėra.</p>
+      <ul data-reminder-list></ul>
+      <button class="civic-button civic-button--plain" type="button" data-reminder-download disabled>Atsisiųsti ICS</button>
+      <p role="status" data-reminder-status></p>
+    </div>
+  </div>
+  <noscript><p>Norėdami išsaugoti priminimą ir atsisiųsti ICS, įjunkite „JavaScript“.</p></noscript>
+</section>

@@ -77,8 +77,25 @@ for(const width of[320,390])for(const route of routes)test(`enlarged text at ${w
 for(const width of [320,390])test(`analytics choices remain reachable at 200 percent text, ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:844});await page.goto('/pamainu-grafikas/');await page.addStyleTag({content:'html {font-size:200% !important}'});await page.evaluate(()=>document.fonts.ready);
  const notice=page.locator('#cookie-notice');await expect(notice).toBeVisible();
- for(const selector of ['[data-analytics-choice="no"]','[data-analytics-choice="yes"]','[data-privacy-close]'])await expect(notice.locator(selector)).toBeInViewport({ratio:1});
- await expect(page.locator('[data-advertising-stage]')).toBeAttached();await expect(page.locator('[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);
+ // WebKit can round a fully visible CSS box to a fraction of a pixel.
+ for(const selector of ['[data-analytics-choice="no"]','[data-analytics-choice="yes"]','[data-privacy-close]']){
+  const action=notice.locator(selector);
+  await expect(action).toBeInViewport({ratio:.995});
+  await action.click({trial:true});
+ }
+ await expect(page.locator('[data-advertising-stage],[data-cookie-advertising],[data-cookie-age]')).toHaveCount(0);
  await notice.locator('[data-analytics-choice="no"]').focus();await page.keyboard.press('Enter');await expect(notice).toBeHidden();
  expect(await page.evaluate(()=>window.Calendar365Analytics.choice().analytics)).toBe(false);
+});
+
+test('directory search keeps a single-line field on a narrow screen', async ({ page }) => {
+ await page.setViewportSize({ width: 320, height: 844 });
+ await page.goto('/irankiai/');
+ const search = page.getByRole('searchbox', { name: 'Ko norite ieškoti?' });
+ await expect(search).toBeVisible();
+ const bounds = await search.boundingBox();
+ expect(bounds.height).toBeGreaterThanOrEqual(40);
+ expect(bounds.height).toBeLessThan(64);
+ await search.fill('mėnulio');
+ await expect(page.locator('#tool-directory-count')).toContainText(/\d/);
 });

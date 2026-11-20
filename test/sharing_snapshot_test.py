@@ -29,6 +29,8 @@ class SharingSnapshotTest(unittest.TestCase):
             (root / 'scripts').symlink_to(SOURCE / 'scripts', target_is_directory=True)
             (site / 'assets/data/manifest.json').write_text('{"assets":[]}')
             (site / 'assets/data/years.json').write_text('[]')
+            (root / 'data').mkdir()
+            (root / 'data/holiday-years.json').write_text('[]')
             (site / 'index.html').write_text('---\ntitle: "Kalendorius365"\ndescription: "Viešas kalendorius"\n---\n<h1>Kalendorius365</h1>\n')
             signs = json.loads((SOURCE / 'site/_data/horoscope_signs.json').read_text())
             (site / '_data/horoscope_signs.json').write_text(json.dumps(signs))

@@ -94,4 +94,16 @@ DESCRIPTION:Atmintina diena · įstatymas. Tą pačią datą įstatymas ski
 URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-comm-006
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:2027-folk-pusiauziemis@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20270125
+DTEND;VALUE=DATE:20270126
+SUMMARY:Pusiaužiemis
+DESCRIPTION:Kultūrinė ar religinė tradicija. Sausio 25-ąją tradiciniam
+ e Lietuvos kalendoriuje žymimas Pusiaužiemis\, dar vadintas Kirmėlių d
+ iena.
+URL:https://kalendorius365.lt/sventes/2027/sausis/#ivykis-folk-pusiauziemis
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

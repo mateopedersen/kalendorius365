@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:tarptautine-motinos-zemes-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280422
+DTEND;VALUE=DATE:20280423
+SUMMARY:Tarptautinė Motinos Žemės diena
+DESCRIPTION:Balandžio 22 d. JT minima Tarptautinė Motinos Žemės diena\,
+  skirta žmonių ir planetos ryšiui.
+URL:https://kalendorius365.lt/sventes/tarptautine-motinos-zemes-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

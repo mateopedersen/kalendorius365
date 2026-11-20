@@ -30,19 +30,31 @@ class InlineRouteCssTests(unittest.TestCase):
             self.assertEqual(len(scripts), 2, str(page))
 
     def test_initial_modules_are_preloaded_and_evaluate_after_the_dom_exists(self):
+        head_modules = {'catalog-finders.js', 'date-guides.js'}
+        deferred = head_modules | {'app.js', 'personal-planner.js'}
         for page in (ROOT / 'public').rglob('*.html'):
             source = page.read_text()
-            modules = re.findall(r'<script\b([^>]*)\bsrc="([^"]+\.js(?:\?v=[^"]+)?)"[^>]*>', source)
+            modules = list(re.finditer(r'<script\b([^>]*)\bsrc="([^"]+\.js(?:\?v=[^"]+)?)"[^>]*>', source))
+            head_end = source.index('</head>')
+            notice = source.index('<p id="notice"')
             self.assertGreaterEqual(len(modules), 2, str(page))
-            self.assertEqual(len({url for _,url in modules}), len(modules), str(page))
-            for attributes,url in modules:
-                if url.split('?', 1)[0].endswith('/app.js'):
+            self.assertEqual(len({match[2] for match in modules}), len(modules), str(page))
+            for match in modules:
+                attributes, url = match.groups()
+                module = url.split('?', 1)[0].rsplit('/', 1)[-1]
+                if module in deferred:
                     self.assertNotRegex(attributes, r'\basync\b', str(page))
-                    self.assertIn('<div class="dashboard" inert aria-busy="true">', source, str(page))
                 else:
                     self.assertRegex(attributes, r'\basync\b', str(page))
-                self.assertIn('<link rel="modulepreload" href="'+url+'">', source[:source.index('</head>')], str(page))
-            self.assertGreater(source.index('<script type="module"'), source.index('<p id="notice"'), str(page))
+                if module == 'app.js':
+                    self.assertIn('<div class="dashboard" inert aria-busy="true">', source, str(page))
+                if module == 'personal-planner.js':
+                    self.assertIn('data-personal-workspace inert aria-busy="true"', source, str(page))
+                if module in head_modules:
+                    self.assertLess(match.start(), head_end, str(page))
+                else:
+                    self.assertGreater(match.start(), notice, str(page))
+                self.assertIn('<link rel="modulepreload" href="'+url+'">', source[:head_end], str(page))
 
     def test_regex_quotes_do_not_hide_later_runtime_classes(self):
         with tempfile.TemporaryDirectory() as directory:

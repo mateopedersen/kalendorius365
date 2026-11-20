@@ -1,0 +1,35 @@
+---
+title: "Lietuvos renginių ir festivalių kalendorius"
+description: "Lietuvos renginių datos, programos ir lankymo informacija. Kaziuko mugė, Jūros šventė, „Kilkim Žaibu“, Vilniaus maratonas, Pažaislio muzikos festivalis ir kiti renginiai."
+hero_share: true
+catalog_finder: true
+---
+{% include tool-page-head.html icon="celebrations" title="Lietuvos renginių kalendorius" lead="Festivalių, mugių ir miesto švenčių datos, programos bei praktinė informacija lankytojams." %}
+{% assign confirmed = site.data.lithuanian_dates.festivals | where_exp: "event", "event.start" | sort: "start" %}
+{% assign upcoming_programmes = site.data.lithuanian_dates.festivals | where_exp: "event", "event.start == nil" %}
+{% assign cities = site.data.lithuanian_dates.festivals | map: "city" | uniq | sort_natural %}
+<section class="panel catalog-finder" data-event-finder aria-labelledby="event-finder-title" hidden>
+  <h2 id="event-finder-title">Raskite renginį</h2>
+  <form class="catalog-finder__fields">
+    <label>Pavadinimas <input type="search" name="query" placeholder="Pavyzdžiui, Kaziuko mugė" maxlength="80"></label>
+    <label>Vieta <select name="city"><option value="">Visos vietos</option>{% for city in cities %}<option value="{{ city | escape }}">{{ city | escape }}</option>{% endfor %}</select></label>
+    <label>Datos būsena <select name="status"><option value="">Visi renginiai</option><option value="confirmed">Data paskelbta</option><option value="waiting">Laukiama visų datų</option></select></label>
+  </form>
+  <div class="guide-actions catalog-finder__actions">
+    <p class="catalog-finder__status" data-event-status role="status"></p>
+    <button type="button" data-event-reset hidden>Valyti filtrus</button>
+  </div>
+</section>
+<nav class="guide-actions local-event-nav" aria-label="Renginių grupės">
+  <a href="#paskelbtos-datos">Paskelbtos datos</a>
+  <a href="#laukiamos-datos">Laukiama visų datų</a>
+  <a href="/sventes/">Šventės ir atmintinos dienos <span aria-hidden="true">→</span></a>
+</nav>
+<section class="local-event-section" id="paskelbtos-datos" data-event-group="confirmed" aria-labelledby="confirmed-event-heading">
+  <header><h2 id="confirmed-event-heading">Renginiai su paskelbtomis datomis</h2><p>Atverkite renginį ir pridėkite datą į savo kalendorių.</p></header>
+  {% include local-event-cards.html entries=confirmed %}
+</section>
+<section class="local-event-section" id="laukiamos-datos" data-event-group="waiting" aria-labelledby="upcoming-event-heading">
+  <header><h2 id="upcoming-event-heading">Renginiai, kurių visa programa dar nepaskelbta</h2><p>Giduose rasite jau patvirtintus programos renginius, ankstesnių leidimų informaciją ir organizatorių nuorodas.</p></header>
+  {% include local-event-cards.html entries=upcoming_programmes %}
+</section>

@@ -1,9 +1,11 @@
+import { connectPlannerReminders } from "./shell/planner-reminders.js";
 import { icon } from "./icons.js";
+import { connectEventEditor } from "./shell/event-editor.js";
 import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
 import { exportICS, importICS } from "./ics.js";
 import { notice } from "./common.js?v=3b631dd";
-import { renderWeather } from "./weather.js?v=city-auto-20261016";
+import { enhanceWeatherCityPicker, loadWeather, renderWeather } from "./weather.js?v=city-auto-20261016";
 import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js";
 const $ = (s) => document.querySelector(s),
   el = (tag, text, cls) => {
@@ -20,6 +22,12 @@ const homeIcon = (name, className = "") => {
   );
   return svg;
 };
+const compactDate = { year: undefined, month: "2-digit", day: "2-digit" };
+const store = new Store();
+const renderReminders = connectPlannerReminders(store);
+const savedCity = store.data.preferences.city || "";
+const hasSavedCity = WEATHER_CITY_BY_ID.has(savedCity);
+void loadWeather(hasSavedCity ? savedCity : DEFAULT_WEATHER_CITY);
 const [data, editorial] = await Promise.all([
   fetch("/assets/data/calendar.json")
     .then((r) => {
@@ -37,7 +45,6 @@ const [data, editorial] = await Promise.all([
     .then((r) => (r.ok ? r.json() : { articles: [], commemorations: [] }))
     .catch(() => ({ articles: [], commemorations: [] })),
 ]);
-const store = new Store();
 if (store.error) notice(store.error);
 let selected = cal.dateFromSearch(location.search) || cal.today(),
   display = selected,
@@ -123,14 +130,16 @@ function saveNote(silent = false) {
   if (!silent) notice("Užrašas išsaugotas.");
   return true;
 }
-function selectDate(s) {
-  if (!saveNote(true)) return;
+function selectDate(s, nextView = view) {
+  if (!saveNote(true)) return false;
   cal.parse(s);
   selected = s;
   display = s;
   mini = s;
+  view = nextView;
   $("#day-details").open = true;
   render();
+  return true;
 }
 function monthTable(date, isMini = false, todayDate = cal.today()) {
   const y = +date.slice(0, 4),
@@ -335,6 +344,7 @@ function renderCalendar() {
   const y = +display.slice(0, 4),
     m = +display.slice(5, 7),
     todayDate = cal.today();
+  $(".calendar-toolbar").dataset.periodView = view;
   $("#period-title").textContent =
     view === "year"
       ? `${y} metai`
@@ -342,9 +352,12 @@ function renderCalendar() {
         ? cal.formatDate(selected)
         : `${y} m. ${data.months[m - 1][1].toLocaleLowerCase("lt-LT")}`;
   $("#jump-year").value = y;
+  $("#month-jump-year").textContent = y;
+  $("#jump-month").value = view === "month" ? m : "";
   const publicShare=document.getElementById('share-public-calendar');
-  if(publicShare){publicShare.hidden=![2027,2028,2029].includes(y);publicShare.dataset.shareKey=`calendar-${y}-${view==='year'?0:m}`;publicShare.href=view==='year'?`/${y}/`:`/${y}/${data.months[m-1][0]}/`;publicShare.textContent=view==='year'?'Pasidalyti metų kalendoriumi':'Pasidalyti mėnesio kalendoriumi';}
+  if(publicShare){publicShare.hidden=![2027,2028,2029,2030].includes(y);publicShare.dataset.shareKey=`calendar-${y}-${view==='year'?0:m}`;publicShare.href=view==='year'?`/${y}/`:`/${y}/${data.months[m-1][0]}/`;publicShare.textContent=view==='year'?'Pasidalyti metų kalendoriumi':'Pasidalyti mėnesio kalendoriumi';}
   const host = $("#calendar");
+  host.dataset.calendarView = view;
   host.replaceChildren();
   if (view === "month") host.append(monthTable(display, false, todayDate));
   else if (view === "week")
@@ -396,31 +409,38 @@ function renderCalendar() {
     ].map(([n, label], index) => {
       const e = el("div", undefined, "stat");
       const art = el("span", undefined, "stat-art stat-art-" + index);
-      art.append(
-        homeIcon(
-          ["stat-calendar", "stat-briefcase", "stat-gift", "stat-clock"][index],
-          "home-icon",
-        ),
-      );
+      const image = el("img", undefined, "shell-art");
+      image.src = [
+        "/assets/visuals/shell/calendar.svg",
+        "/assets/visuals/shell/briefcase.svg",
+        "/assets/visuals/shell/celebrations.svg",
+        "/assets/visuals/shell/clock.svg",
+      ][index];
+      image.alt = "";
+      image.width = 50;
+      image.height = 50;
+      image.decoding = "async";
+      art.append(image);
       e.append(art, el("b", n), el("span", label));
       return e;
     }),
   );
   const list = el("ul");
   for (const h of monthH) {
-    const li = el("li"),
-      a = el("a", `${cal.formatDate(h.date)} — ${h.name}`),
-      article = editorialForHoliday(h.id);
-    if (article) a.href = `/sventes/${article.slug}/`;
-    li.append(
-      a,
-      el(
-        "small",
-        h.classification === "commemoration"
-          ? "Atmintina diena"
-          : "Šventinė diena · paprastai nedirbama",
-      ),
+    const li = el("li");
+    const date = el("time", cal.formatDate(h.date, compactDate));
+    date.dateTime = h.date;
+    const article = editorialForHoliday(h.id);
+    const name = el(article ? "a" : "strong", h.name);
+    if (article) name.href = `/sventes/${article.slug}/`;
+    const copy = el("div");
+    copy.append(
+      name,
+      el("small", h.classification === "commemoration"
+        ? "Atmintina diena"
+        : "Šventinė diena"),
     );
+    li.append(date, copy);
     list.append(li);
   }
   $("#month-holidays").replaceChildren(
@@ -428,15 +448,24 @@ function renderCalendar() {
       ? list
       : el("p", "Šį mėnesį šventinių ar atmintinų dienų nėra.", "muted"),
   );
-  const current = todayDate,
-    currentYear = +current.slice(0, 4),
-    dayNumber = cal.difference(`${currentYear}-01-01`, current) + 1;
-  $("#today-facts").textContent =
-    `Šiandien: ${dayNumber}-oji metų diena. Po šiandienos iki mėnesio pabaigos liko ${cal.monthLength(currentYear, +current.slice(5, 7)) - Number(current.slice(8))} d.; iki metų pabaigos – ${cal.difference(current, `${currentYear}-12-31`)} d.`;
+  const currentYear = +todayDate.slice(0, 4);
+  const facts = [
+    ["Metų diena", cal.difference(`${currentYear}-01-01`, todayDate) + 1],
+    ["Iki mėnesio pabaigos", cal.monthLength(currentYear, +todayDate.slice(5, 7)) - Number(todayDate.slice(8)) + " d."],
+    ["Iki metų pabaigos", cal.difference(todayDate, `${currentYear}-12-31`) + " d."],
+  ];
+  $("#today-facts").replaceChildren(...facts.map(([label, value]) => {
+    const fact = el("div");
+    fact.append(el("dt", label), el("dd", value));
+    return fact;
+  }));
   const link = $("#current-download");
-  if ([2027, 2028].includes(y)) {
+  if ([2027, 2028, 2029].includes(y)) {
     link.href = `/${y}/${data.months[m - 1][0]}/`;
     link.textContent = "Šio mėnesio PDF ir vaizdai →";
+  } else if (y === 2030) {
+    link.href = `/${y}/${data.months[m - 1][0]}/`;
+    link.textContent = "Atverti ir spausdinti mėnesį →";
   } else {
     link.href = `/kurti-kalendoriu/?metai=${y}&menuo=${m}`;
     link.textContent = "Kurti šio mėnesio kalendorių →";
@@ -493,15 +522,17 @@ function renderDetails() {
     const s = cal.addDays(cal.today(), n);
     for (const e of events(s))
       if (upcoming.length < 5) {
-        const row = el("div");
-        row.append(el("small", cal.formatDate(s)), item(e, s));
+        const row = el("div", undefined, "upcoming-event");
+        const date = el("time", cal.formatDate(s));
+        date.dateTime = s;
+        row.append(date, item(e, s));
         upcoming.push(row);
       }
   }
   $("#upcoming-events").replaceChildren(
     ...(upcoming.length
       ? upcoming
-      : [el("p", "Per artimiausias 90 dienų įvykių nėra.", "empty-state")]),
+      : [el("p", "Per artimiausias 90 dienų įvykių nėra.", "upcoming-events-empty")]),
   );
 }
 function renderTasks() {
@@ -552,32 +583,13 @@ function renderTasks() {
   );
 }
 function render() {
+  renderReminders();
   renderCalendar();
   renderDetails();
 }
+const eventEditor = connectEventEditor(store, { onChange: render, announce: notice });
 function showEvent(id) {
-  const e = store.data.events.find((e) => e.id === id),
-    f = $("#event-form");
-  f.reset();
-  f.elements.id.value = e?.id || "";
-  f.elements.title.value = e?.title || "";
-  f.elements.startDate.value = e?.start.slice(0, 10) || selected;
-  f.elements.endDate.value = e?.end.slice(0, 10) || selected;
-  f.elements.allDay.checked = e?.allDay || false;
-  f.elements.startTime.value = e && !e.allDay ? e.start.slice(11) : "09:00";
-  f.elements.endTime.value = e && !e.allDay ? e.end.slice(11) : "10:00";
-  f.elements.category.value = e?.category || 0;
-  f.elements.description.value = e?.description || "";
-  f.elements.repeat.value = e?.repeat || "none";
-  f.elements.until.value = e?.until || "";
-  f.elements.important.checked = e?.important || false;
-  $("#event-dialog-title").textContent = e
-    ? "Redaguoti įvykį"
-    : "Naujas įvykis";
-  $("#delete-event").hidden = !e;
-  $("#event-error").hidden = true;
-  updateEventTimeFields();
-  $("#event-dialog").showModal();
+  eventEditor.open({ id, date: selected });
 }
 function composeHolidayFromLink() {
   const params = new URLSearchParams(location.search),
@@ -587,7 +599,7 @@ function composeHolidayFromLink() {
   const article = editorialArticles.find((item) => item.slug === slug),
     dateShape = /^20\d{2}-\d{2}-\d{2}$/.test(date),
     dateYear = dateShape ? Number(date.slice(0, 4)) : 0,
-    mapped = article && dateShape && [2027, 2028, 2029].includes(dateYear)
+    mapped = article && dateShape && [2027, 2028, 2029, 2030].includes(dateYear)
       ? calendarEntries(dateYear).some(
           (item) =>
             item.date === date &&
@@ -612,70 +624,16 @@ function composeHolidayFromLink() {
     notice("Toks įvykis šiai datai jau yra. Atvėriau jį redaguoti.");
     return;
   }
-  showEvent();
-  const form = $("#event-form");
-  form.elements.title.value = article.title;
-  form.elements.description.value =
-    article.category + ". Daugiau: https://kalendorius365.lt/sventes/" + slug + "/";
-  form.elements.startDate.value = date;
-  form.elements.endDate.value = date;
-  form.elements.allDay.checked = true;
-  form.elements.repeat.value = "none";
-  updateEventTimeFields();
+  eventEditor.open({
+    date,
+    title: article.title,
+    description: article.category + ". Daugiau: https://kalendorius365.lt/sventes/" + slug + "/",
+    allDay: true,
+  });
 }
-$("#event-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const f = event.currentTarget,
-    a = f.elements;
-  const e = {
-    id: a.id.value || crypto.randomUUID(),
-    title: a.title.value.trim(),
-    description: a.description.value,
-    allDay: a.allDay.checked,
-    start:
-      a.startDate.value + (a.allDay.checked ? "" : "T" + a.startTime.value),
-    end: a.endDate.value + (a.allDay.checked ? "" : "T" + a.endTime.value),
-    category: +a.category.value,
-    repeat: a.repeat.value,
-    until: a.until.value,
-    important: a.important.checked,
-  };
-  try {
-    store.update((d) => {
-      const i = d.events.findIndex((x) => x.id === e.id);
-      if (i < 0) d.events.push(e);
-      else d.events[i] = e;
-    });
-    $("#event-dialog").close();
-    render();
-    notice("Įvykis išsaugotas.");
-  } catch (error) {
-    $("#event-error").textContent = error.message;
-    $("#event-error").hidden = false;
-  }
-});
-function updateEventTimeFields() {
-  const fields = $("#event-form").elements;
-  $("#event-times").hidden = fields.allDay.checked;
-  for (const input of [fields.startTime, fields.endTime]) {
-    input.disabled = fields.allDay.checked;
-    input.required = !fields.allDay.checked;
-  }
+for (const button of document.querySelectorAll("#add-event, [data-add-event]")) {
+  button.addEventListener("click", () => showEvent());
 }
-$("#event-form").elements.allDay.addEventListener(
-  "change",
-  updateEventTimeFields,
-);
-$("#close-event").onclick = () => $("#event-dialog").close();
-$("#delete-event").onclick = () => {
-  const id = $("#event-form").elements.id.value;
-  if (transact((d) => (d.events = d.events.filter((e) => e.id !== id)))) {
-    $("#event-dialog").close();
-    render();
-    notice("Įvykis ištrintas.");
-  }
-};
-$("#add-event").onclick = () => showEvent();
 if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
@@ -784,6 +742,12 @@ $("#jump-year").onchange = (e) => {
   const y = +e.target.value;
   if (y >= 1900 && y <= 2100)
     selectDate(cal.shiftMonth(selected, (y - +selected.slice(0, 4)) * 12));
+};
+$("#jump-month").onchange = (event) => {
+  const month = Number(selected.slice(5, 7));
+  const target = event.target;
+  if (!selectDate(cal.shiftMonth(selected, Number(target.value) - month), "month"))
+    target.value = view === "month" ? month : "";
 };
 $("#calendar").addEventListener("keydown", (e) => {
   const b = e.target.closest("[data-date]");
@@ -897,6 +861,7 @@ function tick() {
     second: seconds ? "2-digit" : undefined, hour12,
   }));
   clockElement.textContent = clockFormatters.get(clockKey).format(now);
+  clockElement.dataset.hour12 = hour12;
   const cityId = window.k365WeatherCity || DEFAULT_WEATHER_CITY;
   const minuteKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}`;
   const updateMinute = minuteKey !== lastClockMinute,
@@ -907,6 +872,7 @@ function tick() {
     lastClockDate = currentDate;
     lastClockCity = cityId;
     clockDateElement.textContent = cal.formatDate(currentDate);
+    clockDateElement.dateTime = currentDate;
     clockWeekdayElement.textContent = clockWeekdayFormatter.format(now);
     const cityName = WEATHER_CITY_BY_ID.get(cityId)?.name || "Vilnius";
     clockElement.setAttribute("aria-label", `Dabartinis ${cityName} laikas`);
@@ -921,7 +887,6 @@ function tick() {
   if (lastToday !== currentDate) {
     lastToday = currentDate;
     renderCalendar();
-    renderHolidayList();
   }
 }
 for (const id of ["seconds", "hour12", "large-text", "high-contrast"]) {
@@ -939,66 +904,6 @@ for (const id of ["seconds", "hour12", "large-text", "high-contrast"]) {
     apply();
     tick();
   };
-}
-function renderHolidayList() {
-  const now = cal.today(),
-    year = +now.slice(0, 4),
-    items = [...calendarEntries(year), ...calendarEntries(year + 1)]
-      .filter((h) => h.date >= now)
-      .sort((a, b) => a.date.localeCompare(b.date))
-      .slice(0, 4);
-  const yearLink = $("#upcoming-holiday-year");
-  if (yearLink) {
-    const upcomingYear = (items[0]?.date || now).slice(0, 4);
-    yearLink.textContent = upcomingYear;
-    yearLink.closest("a").setAttribute("aria-label", `${upcomingYear} m. – visos šventės ir datos`);
-  }
-  $("#upcoming-holidays").replaceChildren(
-    ...items.map((h) => {
-      const li = el("li"),
-        iconType = ["restoration", "independence", "statehood"].includes(h.id)
-          ? "flag"
-          : ["easter", "easter-monday"].includes(h.id)
-            ? "easter"
-            : ["all-saints", "all-souls"].includes(h.id)
-              ? "candle"
-              : ["jonines", "mothers", "fathers", "assumption", "labour"].includes(h.id)
-                ? "bloom"
-                : ["christmas-eve", "christmas", "christmas-second"].includes(h.id)
-                  ? "evergreen"
-                  : "spark",
-        date = el("button", h.date.slice(5).replace("-", "."), "holiday-date holiday-date--button"),
-        mark = el("span", undefined, `holiday-mark holiday-mark--${iconType}`),
-        text = el("div"),
-        title = el("div", undefined, "holiday-title"),
-        a = el("a", h.name),
-        article = editorialForHoliday(h.id);
-      mark.append(homeIcon(`holiday-${iconType}`, "holiday-mark__icon"));
-      mark.setAttribute("aria-hidden", "true");
-      date.type = "button";
-      date.dataset.date = h.date;
-      date.setAttribute("aria-label", `${date.textContent} – rodyti ${cal.formatDate(h.date)} kalendoriuje`);
-      a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
-      a.className = "holiday-select holiday-article-link";
-      title.append(mark, a);
-      text.append(
-        title,
-        el(
-          "small",
-          (cal.difference(now, h.date) === 0
-            ? "Šiandien"
-            : `Liko ${cal.difference(now, h.date)} d.`) +
-            " · " +
-            (h.classification === "commemoration"
-              ? "Atmintina diena"
-              : "Šventinė diena"),
-        ),
-      );
-      li.classList.add(`holiday-row--${iconType}`);
-      li.append(date, text);
-      return li;
-    }),
-  );
 }
 $("#backup").onclick = () => {
   if (store.locked && store.raw) {
@@ -1091,14 +996,14 @@ $("#share").onclick = async () => {
 };
 const weatherCity = $("#weather-city");
 let cityRequest = 0;
-const savedCity = store.data.preferences.city || "";
-const hasSavedCity = WEATHER_CITY_BY_ID.has(savedCity);
 weatherCity.value = hasSavedCity ? savedCity : DEFAULT_WEATHER_CITY;
+const syncWeatherCityPicker = enhanceWeatherCityPicker(weatherCity);
 function applyWeatherCity(city) {
   window.k365WeatherCity = WEATHER_CITY_BY_ID.has(city)
     ? city
     : DEFAULT_WEATHER_CITY;
   weatherCity.value = window.k365WeatherCity;
+  syncWeatherCityPicker?.();
   renderWeather(window.k365WeatherCity);
   tick();
 }
@@ -1140,7 +1045,6 @@ setInterval(() => {
     renderWeather(window.k365WeatherCity || DEFAULT_WEATHER_CITY);
 }, 1200000);
 render();
-renderHolidayList();
 composeHolidayFromLink();
 tick();
 const dashboard = $(".dashboard");

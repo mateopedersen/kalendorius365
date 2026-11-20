@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vietos-savivaldos-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+SUMMARY:Vietos savivaldos diena
+DESCRIPTION:Spalio 10-ąją Lietuvoje minima Vietos savivaldos diena. Tai p
+ roga susipažinti su savivaldybės darbu ir vietos sprendimais.
+URL:https://kalendorius365.lt/sventes/vietos-savivaldos-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

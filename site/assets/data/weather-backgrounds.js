@@ -1,6 +1,5 @@
 const sharedAlike3 = "https://creativecommons.org/licenses/by-sa/3.0/";
 const sharedAlike4 = "https://creativecommons.org/licenses/by-sa/4.0/";
-const attribution3 = "https://creativecommons.org/licenses/by/3.0/";
 
 // Local, optimized photographs keep the weather card quick and available
 // without requesting image data from a third party on every visit.
@@ -93,12 +92,12 @@ export const WEATHER_CITY_BACKGROUNDS = Object.freeze({
     focalPoint: "50% 52%",
   },
   telsiai: {
-    image: "/assets/visuals/weather-city-telsiai.webp",
-    source: "https://commons.wikimedia.org/wiki/File:Tel%C5%A1iai_Cathedral_Exterior,_Tel%C5%A1iai,_Lithuania_-_Diliff.jpg",
-    author: "Diliff",
+    image: "/assets/visuals/weather-city-telsiai-centre.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Panorama_of_Tel%C5%A1iai_centre.jpg",
+    author: "Zidikai1",
     license: "CC BY-SA 3.0",
     licenseUrl: sharedAlike3,
-    focalPoint: "50% 45%",
+    alt: "Telšių centro panorama ir katedra tolumoje",
   },
   ukmerge: {
     image: "/assets/visuals/weather-city-ukmerge.webp",
@@ -117,11 +116,11 @@ export const WEATHER_CITY_BACKGROUNDS = Object.freeze({
     focalPoint: "50% 48%",
   },
   visaginas: {
-    image: "/assets/visuals/weather-city-visaginas.webp",
-    source: "https://commons.wikimedia.org/wiki/File:Visaginas,_Lithuania_-_panoramio_(197).jpg",
-    author: "VietovesLt",
-    license: "CC BY 3.0",
-    licenseUrl: attribution3,
-    focalPoint: "55% 52%",
+    image: "/assets/visuals/weather-city-visaginas-lake.webp",
+    source: "https://commons.wikimedia.org/wiki/File:Visaginas,_e%C5%BEeras.JPG",
+    author: "Vilensija",
+    license: "CC BY-SA 3.0",
+    licenseUrl: sharedAlike3,
+    alt: "Visagino ežero paplūdimys ir medžiais apaugęs kitas krantas",
   },
 });

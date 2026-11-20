@@ -79,6 +79,9 @@ async function pdf(pages, check, progress) {
         doc.setLineWidth(i.line || 0.4);
         let fill = i.fill && i.fill !== "none", stroke = i.stroke && i.stroke !== "none";
         if (fill || stroke) doc.rect(i.x, i.y, i.w, i.h, fill && stroke ? "FD" : fill ? "F" : "S");
+      } else if (i.type === "circle") {
+        doc.setFillColor(i.color);
+        doc.circle(i.x, i.y, i.r, "F");
       } else if (i.type === "line") {
         doc.setDrawColor(i.color);
         doc.setLineWidth(i.width);

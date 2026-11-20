@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:trys-karaliai-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270106
+DTEND;VALUE=DATE:20270107
+SUMMARY:Trys Karaliai
+DESCRIPTION:Sausio 6 d. minima Trijų Karalių šventė\, užbaigianti kal
+ ėdinį laikotarpį lietuvių kalendoriniuose papročiuose.
+URL:https://kalendorius365.lt/sventes/trys-karaliai/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

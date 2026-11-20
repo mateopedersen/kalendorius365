@@ -206,6 +206,26 @@ test("solar illustration coordinates follow the calculated seasonal path over Li
   assert.throws(() => solarPositionAt("2028-06-20", summer.noon, vilnius), /datos UTC momento/);
 });
 
+test("the solar tool renders all 103 city choices with ordered twilight and horizon crossings", () => {
+  const { cities } = JSON.parse(readFileSync(new URL("../data/astronomy/sun-cities.json", import.meta.url)));
+  const page = readFileSync(new URL("../site/saule/index.html", import.meta.url), "utf8");
+  const options = [...page.matchAll(/<option value="([a-z]+)" data-lat=/g)].map(([, id]) => id);
+  assert.equal(new Set(cities.map(city => city.registryId)).size, 103);
+  assert.deepEqual(options.toSorted(), cities.map(city => city.id).toSorted());
+
+  for (const { id, latitude: lat, longitude: lon } of cities) {
+    for (const date of ["2000-02-29", "2028-03-26", "2028-06-21", "2028-10-29", "2030-12-21", "2100-12-31"]) {
+      const city = { lat, lon };
+      const result = solarFor(date, city);
+      const path = [result.civilStart, result.sunrise, result.noon, result.sunset, result.civilEnd];
+      assert(path.every((instant, i) => Number.isFinite(instant) && (i === 0 || instant > path[i - 1])), `${id} ${date}`);
+      const positions = path.map(instant => solarPositionAt(date, instant, city));
+      assert(positions.every((point, i) => i === 0 || point.azimuth > positions[i - 1].azimuth), `${id} ${date}`);
+      assert(Math.abs(positions[1].altitude + .833) < .001 && Math.abs(positions[3].altitude + .833) < .001, `${id} ${date}`);
+    }
+  }
+});
+
 test("lunar illumination approximation stays bounded and reaches phase extrema", () => {
   const newMoon = Date.UTC(2028, 0, 1), nextMoon = newMoon + 29.53059 * 86400000;
   assert.equal(lunarIllumination(newMoon, [newMoon, nextMoon]), 0);

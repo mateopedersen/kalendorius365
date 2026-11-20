@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-kraujo-donoru-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270614
+DTEND;VALUE=DATE:20270615
+SUMMARY:Pasaulinė kraujo donorų diena
+DESCRIPTION:Birželio 14 d. minima Pasaulinė kraujo donorų diena. Ji skir
+ ta padėkai kraujo donorams ir savanoriškos donorystės pažinimui.
+URL:https://kalendorius365.lt/sventes/pasauline-kraujo-donoru-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

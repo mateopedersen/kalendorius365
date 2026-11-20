@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:lietuvos-istojimo-i-nato-diena-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300329
+DTEND;VALUE=DATE:20300330
+SUMMARY:Lietuvos įstojimo į NATO diena
+DESCRIPTION:Kovo 29 d. minima Lietuvos narystė NATO\, prasidėjusi 2004 m.
+URL:https://kalendorius365.lt/sventes/lietuvos-istojimo-i-nato-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

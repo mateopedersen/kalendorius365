@@ -200,11 +200,11 @@
   {
     "city": "telsiai",
     "period": "day",
-    "image": "/assets/visuals/weather-city-telsiai.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Tel%C5%A1iai_Cathedral_Exterior,_Tel%C5%A1iai,_Lithuania_-_Diliff.jpg",
-    "author": "Diliff",
+    "image": "/assets/visuals/weather-city-telsiai-centre.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Panorama_of_Tel%C5%A1iai_centre.jpg",
+    "author": "Zidikai1",
     "license": "CC BY-SA 3.0",
-    "sha256": "48d880c29fec8759b763a6bf1e6ab0af06f70cbf9043843915ab008563cb5380"
+    "sha256": "dce347f50952108a16fca7a68d017545e112ea1a01dee366693b0e3a2665b712"
   },
   {
     "city": "telsiai",
@@ -254,10 +254,19 @@
   {
     "city": "visaginas",
     "period": "day",
-    "image": "/assets/visuals/weather-city-visaginas.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Visaginas,_Lithuania_-_panoramio_(197).jpg",
-    "author": "VietovesLt",
-    "license": "CC BY 3.0",
-    "sha256": "b7ffa4955614b6df0632160e6be01c1c631879224a24d39233a24c12956e9ec7"
+    "image": "/assets/visuals/weather-city-visaginas-lake.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Visaginas,_e%C5%BEeras.JPG",
+    "author": "Vilensija",
+    "license": "CC BY-SA 3.0",
+    "sha256": "33462e2602a2624126bddee14888c0a6a107a953ae767aeb52a57f1ddf1efb59"
+  },
+  {
+    "city": "visaginas",
+    "period": "night",
+    "image": "/assets/visuals/weather-city-visaginas-sunset.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Visaginas_lake_e%C5%BEeras.jpg",
+    "author": "7elteven",
+    "license": "CC0 1.0",
+    "sha256": "7bac3f1f3c512102e17916ebf84ae73dd2b05b5ff271f0d8a5728b562d6a8d4d"
   }
 ]

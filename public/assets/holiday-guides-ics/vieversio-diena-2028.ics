@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:vieversio-diena-2028@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20280224
+DTEND;VALUE=DATE:20280225
+SUMMARY:Vieversio diena
+DESCRIPTION:Vasario 24-oji lietuvių kalendoriuje vadinta Vieversio diena. 
+ Ji siejama su šv. Motiejaus vardu.
+URL:https://kalendorius365.lt/sventes/vieversio-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

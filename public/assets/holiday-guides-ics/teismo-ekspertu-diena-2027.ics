@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:teismo-ekspertu-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20271029
+DTEND;VALUE=DATE:20271030
+SUMMARY:Teismo ekspertų diena
+DESCRIPTION:Spalio 29 d. minima Teismo ekspertų diena. Data siejama su pir
+ muoju Lietuvos teismo ekspertizės įstatymu.
+URL:https://kalendorius365.lt/sventes/teismo-ekspertu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:europos-zmoniu-su-negalia-savarankisko-gyvenimo-diena-2027@kalendorius3
+ 65.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270505
+DTEND;VALUE=DATE:20270506
+SUMMARY:Europos žmonių su negalia savarankiško gyvenimo diena
+DESCRIPTION:Gegužės 5 d. dėmesys skiriamas žmonių su negalia teisei ri
+ nktis\, kur ir kaip gyventi.
+URL:https://kalendorius365.lt/sventes/europos-zmoniu-su-negalia-savarankisk
+ o-gyvenimo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

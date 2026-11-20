@@ -1,0 +1,38 @@
+---
+title: "Atgalinis skaičiavimas iki datos ir Lietuvos švenčių"
+description: "Skaičiuokite dienas, valandas, minutes ir sekundes iki Vasario 16-osios, Kovo 11-osios, Joninių arba savo datos Lietuvos laiku."
+date_guide: true
+hero_share: true
+---
+{% include tool-page-head.html icon="hourglass" title="Atgalinis skaičiavimas iki datos" lead="Pasirinkite Lietuvos šventę, renginį arba savo datą. Laikas skaičiuojamas pagal Vilniaus laiko juostą." %}
+<section class="countdown-guide" data-countdown>
+  <div class="countdown-guide__display">
+    <p class="countdown-guide__zone"><span></span>Lietuvos laiku</p>
+    <h2 data-countdown-name>Kiek laiko liko?</h2>
+    <p data-countdown-result role="status">Pasirinkite įvykį arba įveskite savo datą.</p>
+    <dl>
+      <div><dt>Dienos</dt><dd data-countdown-unit>00</dd></div><div><dt>Valandos</dt><dd data-countdown-unit>00</dd></div><div><dt>Minutės</dt><dd data-countdown-unit>00</dd></div><div><dt>Sekundės</dt><dd data-countdown-unit>00</dd></div>
+    </dl>
+    <a class="countdown-guide__link" data-countdown-link hidden>Informacija apie įvykį <span aria-hidden="true">→</span></a>
+  </div>
+  <form class="panel date-guide-form">
+    <h2>Pasirinkite įvykį</h2>
+    <label>Šventė, atmintina diena arba renginys
+      <select name="preset" aria-describedby="countdown-presets-help">
+        <option value="">Nurodyti savo įvykį</option>
+      </select>
+    </label>
+    <p class="field-note" id="countdown-presets-help">Parinkus įvykį, skaičiuojama iki jo datos pradžios. Laiką galite pakeisti.</p>
+    <label>Įvykio pavadinimas <input name="event" maxlength="100" placeholder="Pavyzdžiui, atostogų pradžia"></label>
+    <div class="form-row"><label>Data <input name="date" type="date" min="1900-01-01" max="2100-12-31" required></label><label>Laikas <input name="time" type="time" value="00:00" required></label></div>
+    <button type="submit" class="primary">Pradėti skaičiuoti</button>
+  </form>
+  <template data-countdown-commemorations>
+    <span data-id="sausio-13-oji" data-month="1" data-day="13">Laisvės gynėjų diena</span>
+    {% for day in site.data.lithuanian_dates.commemorations %}<span data-id="{{ day.slug }}" data-month="{{ day.month }}" data-day="{{ day.day }}">{{ day.title | escape }}</span>{% endfor %}
+  </template>
+  <template data-countdown-festivals>
+    {% for festival in site.data.lithuanian_dates.festivals %}{% if festival.start %}<span data-id="{{ festival.slug }}" data-date="{{ festival.start }}">{{ festival.title | escape }}{% if festival.city %} · {{ festival.city | escape }}{% endif %}</span>{% endif %}{% endfor %}
+  </template>
+</section>
+<section class="panel content-guide"><h2>Kaip skaičiuojamas laikas?</h2><p>Skaičiuoklė lygina pasirinktą akimirką su įrenginio laikrodžiu. Pavasarį peršoktai valandai pasirinkite galiojantį laiką. Laiko keitimo sekmadienius pasitikrinkite <a href="https://eur-lex.europa.eu/eli/C/2026/1660/oj/lit">Europos Komisijos 2027–2031 m. vasaros laiko grafike</a>. Rudenį pasikartojančiai valandai naudojama ankstesnė akimirka.</p><p>Kalendorinių arba darbo dienų skirtumui naudokite <a href="/datos-skaiciuokle/">datos skaičiuoklę</a>. Renginių programas ir vietas rasite <a href="/renginiai/">renginių kalendoriuje</a>.</p></section>

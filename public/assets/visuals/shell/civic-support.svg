@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs>
+<linearGradient id="paper" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#fffbe8"/><stop offset="1" stop-color="#d9ca9d"/></linearGradient>
+<linearGradient id="green" x2=".34" y2="1"><stop stop-color="#468d70"/><stop offset="1" stop-color="#133b30"/></linearGradient>
+<linearGradient id="gold" x2=".42" y2="1"><stop stop-color="#fff0b3"/><stop offset="1" stop-color="#c48b36"/></linearGradient>
+<linearGradient id="red" x2=".42" y2="1"><stop stop-color="#d0856a"/><stop offset="1" stop-color="#874341"/></linearGradient>
+</defs><ellipse cx="48" cy="80" rx="35" ry="5" fill="#15332a" opacity=".29"/><path d="m24 62 13-39 29 10-12 37z" fill="url(#green)"/><path d="m41 27 23 8-2 6-23-8zm-3 10 17 6-1 4-18-6z" fill="#e0f1d5"/><path d="M24 70h52v14H24z" fill="#093c30"/><path d="M19 63h62l-6 18H25z" fill="url(#gold)"/><path d="M31 69h38" stroke="#654a28" stroke-width="2" stroke-linecap="round"/></svg>

@@ -40,11 +40,10 @@ Dir.chdir(ROOT) do
  system('python3','scripts/blog/photos.py',exception:true)
  system('python3','scripts/blog/prepare_examples.py',exception:true)
  system('python3','scripts/blog/prepare.py',exception:true)
- # The search catalogue reads page front matter. Materialize shopping metadata
- # before that catalogue is generated; restore hub discovery after pages.rb.
+ # Materialize shopping guide metadata before generating the search catalogue.
  system('node','scripts/prepare-shopping.mjs',exception:true)
+ system(RbConfig.ruby,'scripts/local_dates.rb',exception:true)
  system(RbConfig.ruby,'scripts/pages.rb',exception:true)
- system('node','scripts/prepare-shopping.mjs',exception:true)
  system('python3','scripts/blog/enrich_pages.py',exception:true)
  system('python3','scripts/sharing/prepare.py',exception:true)
  system('python3','scripts/blog/enrich_catalogue.py',exception:true)
@@ -78,6 +77,17 @@ Dir.chdir(ROOT) do
  end
  FileUtils.mkdir_p(File.dirname(annual_manifest_path))
  File.write(annual_manifest_path,JSON.generate({'assets'=>public_annual_assets})+"\n")
+ # The PDF catalogue only needs the verified designs, preview paths and downloads.
+ print_catalog = internal_manifest.fetch('assets')
+   .select { |asset| %w[annual monthly].include?(asset['kind']) && asset.dig('verification','status') == 'passed' }
+   .group_by { |asset| "#{asset.fetch('year')}/#{asset.fetch('month',0) || 0}" }
+   .transform_values do |assets|
+     assets.sort_by { |asset| asset.fetch('design') }.map do |asset|
+       asset.slice('design','name','paper','landscape','pdf','webp').merge(
+         'preview'=>asset.fetch('preview').sub('/assets/previews/','/assets/previews-small/'))
+     end
+   end
+ File.write('public/assets/data/print-catalog.json', JSON.generate(print_catalog) + "\n")
  homepage=File.read('public/index.html')
  css_version=homepage[%r{/assets/(?:style|homepage-bundle)\.css\?v=([^"' >]+)},1]
  script_version=homepage[%r{/assets/common\.js\?v=([^"' >]+)},1]
@@ -172,7 +182,7 @@ Dir.chdir(ROOT) do
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
  abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
  theme_hash=Base64.strict_encode64(Digest::SHA256.digest(theme_script))
- header_script=File.read('site/_layouts/default.html')[/<script data-header-boot>(.*?)<\/script>/m,1]
+ header_script=File.read('site/_includes/site-header.html')[/<script data-header-boot>(.*?)<\/script>/m,1]
  abort 'Inline header initializer not found; update the CSP hash strategy' unless header_script
  header_hash=Base64.strict_encode64(Digest::SHA256.digest(header_script))
  headers+="  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; frame-src https://docs.google.com; form-action 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-#{theme_hash}' 'sha256-#{header_hash}' https://www.googletagmanager.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; upgrade-insecure-requests\n"
@@ -195,9 +205,10 @@ Dir.chdir(ROOT) do
  headers+="/assets/releases/*\n  #{immutable}\n"
  # Compatibility endpoints stay revalidatable because their URLs are stable.
  # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/advertising/') && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-') }.sort.each do |path|
+ files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/advertising/') && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-', 'public/assets/shell/') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
+ headers+="/assets/shell/*\n  #{revalidate}\n"
  headers+="/assets/calendar-editor/*\n  #{revalidate}\n/assets/data/*\n  #{revalidate}\n"
  headers+="/assets/advertising/*\n  #{revalidate}\n"
  headers+="/assets/shopping/*\n  #{revalidate}\n"

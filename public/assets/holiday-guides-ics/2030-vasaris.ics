@@ -1,0 +1,123 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//2030 Lietuvos datos//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:2030 m. vasario datos
+BEGIN:VEVENT
+UID:2030-folk-grabnycios@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300202
+DTEND;VALUE=DATE:20300203
+SUMMARY:Grabnyčios (Žvakių diena)
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 2-ąją minimos Gra
+ bnyčios. Katalikų kalendoriuje tai Kristaus Paaukojimo šventė.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-folk-grabnycios
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-sv-blaziejaus-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300203
+DTEND;VALUE=DATE:20300204
+SUMMARY:Šv. Blažiejaus diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 3-ioji skirta šv. 
+ Blažiejui. Tradicinių kalendorinių švenčių sąraše ji siejama ir su
+  linų globėjo Vaižganto vardu.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-folk-sv-blazieja
+ us-diena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-sv-agotos-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300205
+DTEND;VALUE=DATE:20300206
+SUMMARY:Šv. Agotos ir duonos diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 5-ąją minimos šv
+ . Agota\, duona ir namų židinio tradicijos.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-folk-sv-agotos-d
+ iena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-007@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300209
+DTEND;VALUE=DATE:20300210
+SUMMARY:Baltijos šalių energetinės nepriklausomybės diena
+DESCRIPTION:Atmintina diena · įstatymas. Baltijos šalių energetinei nep
+ riklausomybei skirtas įstatymo įrašas.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-comm-007
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-008@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300211
+DTEND;VALUE=DATE:20300212
+SUMMARY:Pasaulinė ligonių diena\, Bausmių vykdymo sistemos pareigūnų d
+ iena
+DESCRIPTION:Atmintina diena · įstatymas. Įstatyme ši diena skirta ligon
+ iams ir bausmių vykdymo sistemos pareigūnams.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-comm-008
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-stat-restoration@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300216
+DTEND;VALUE=DATE:20300217
+SUMMARY:Lietuvos valstybės atkūrimo diena
+DESCRIPTION:Šventinė diena · DK 123 str. Vasario 16-ąją minima Lietuvo
+ s valstybės atkūrimo diena ir 1918 m. Lietuvos Tarybos paskelbtas neprik
+ lausomos valstybės atkūrimo aktas.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-stat-restoration
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-009@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300217
+DTEND;VALUE=DATE:20300218
+SUMMARY:Nacionalinė emancipacijos diena
+DESCRIPTION:Atmintina diena · įstatymas. Emancipacijai ir lygiateisiškum
+ ui skirtas Lietuvos kalendoriaus įrašas.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-comm-009
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-mother-language@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300221
+DTEND;VALUE=DATE:20300222
+SUMMARY:Tarptautinė gimtosios kalbos diena
+DESCRIPTION:Tarptautinė diena. UNESCO kalendorinė data skirta kalbų įva
+ irovei ir daugiakalbystei.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-mother-language
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-folk-vieversio-diena@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300224
+DTEND;VALUE=DATE:20300225
+SUMMARY:Vieversio diena
+DESCRIPTION:Kultūrinė ar religinė tradicija. Vasario 24-oji lietuvių ka
+ lendoriuje vadinta Vieversio diena. Ji siejama su šv. Motiejaus vardu.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-folk-vieversio-d
+ iena
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2030-comm-010@kalendorius365.lt
+DTSTAMP:20261017T100000Z
+DTSTART;VALUE=DATE:20300227
+DTEND;VALUE=DATE:20300228
+SUMMARY:Pasaulinė nevyriausybinių organizacijų diena
+DESCRIPTION:Atmintina diena · įstatymas. Nevyriausybinių organizacijų v
+ aidmeniui visuomenėje skirta diena.
+URL:https://kalendorius365.lt/sventes/2030/vasaris/#ivykis-comm-010
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -26,10 +26,10 @@ test('the lunar phase reference has its own cited educational explanation', () =
   assert.match(source, /Kodėl per priešpilnį matyti pusė disko\?/);
   assert.match(source, /Kuo fazė skiriasi nuo užtemimo\?/);
   assert.match(source, /https:\/\/spaceplace\.nasa\.gov\/moon-phases\/en\//);
-  const phasePage = source.split('\n').find(line => line.includes("page('menulio-fazes'"));
-  const calendarPage = source.split('\n').find(line => line.includes("page('menulio-kalendorius'"));
-  assert.ok(phasePage.includes('phase_explanation()'));
-  assert.ok(!calendarPage.includes('phase_explanation()'));
+  const phasePage = read('site/menulio-fazes/index.html');
+  const calendarPage = read('site/menulio-kalendorius/index.html');
+  assert.match(phasePage, /id="lunar-phase-cause"/);
+  assert.doesNotMatch(calendarPage, /id="lunar-phase-cause"/);
 });
 
 test('lunar export buttons state that an ICS file will be downloaded', () => {

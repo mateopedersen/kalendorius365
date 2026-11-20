@@ -40,37 +40,70 @@ export function initializeContactPage(doc = document, search = window.location.s
   const frame = doc.querySelector("[data-contact-frame]");
   if (!frame) return;
   const params = new URLSearchParams(search);
-  const topic = params.get("tema") || "";
   const pageUrl = safeSourcePage(params.get("puslapis"));
-  // Load the external application only when a visitor chooses to use it.
-  // Source-page sanitization and the direct no-JavaScript links stay available.
-  frame.dataset.src = buildContactFormUrl({ topic, pageUrl, embedded: true });
   const launch = doc.querySelector("[data-contact-launch]");
+  const launchLabel = doc.querySelector("[data-contact-launch-label]");
   const loading = doc.querySelector("[data-contact-loading]");
+  const topics = doc.querySelector("[data-contact-topics]");
+  const topicStatus = doc.querySelector("[data-contact-topic-status]");
+  const topicLinks = [...doc.querySelectorAll("[data-topic]")];
+  const externalLinks = doc.querySelectorAll("[data-open-contact-form]");
+  let waiting = false;
+  let slowLoadTimer;
+
+  function selectTopic(topic) {
+    const label = Object.hasOwn(CONTACT_TOPICS, topic) ? CONTACT_TOPICS[topic] : "";
+    frame.dataset.src = buildContactFormUrl({ topic, pageUrl, embedded: true });
+    const externalUrl = buildContactFormUrl({ topic, pageUrl });
+    externalLinks.forEach(link => { link.href = externalUrl; });
+    topicLinks.forEach(link => {
+      if (link.dataset.topic === topic) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+    if (topicStatus) {
+      topicStatus.hidden = !label;
+      topicStatus.textContent = label ? `Pasirinkta tema – ${label}` : "";
+    }
+  }
+
+  topicLinks.forEach(link => {
+    link.href = buildContactFormUrl({ topic: link.dataset.topic, pageUrl });
+    link.addEventListener("click", event => {
+      if (!launch || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      selectTopic(link.dataset.topic);
+    });
+  });
+  selectTopic(params.get("tema") || "");
+
+  // Keep the frame alive when it is collapsed so a partly written message survives.
   if (launch) {
     launch.hidden = false;
     launch.addEventListener("click", () => {
-      if (!frame.getAttribute("src")) {
-        if (loading) loading.hidden = false;
+      const opening = frame.hidden;
+      frame.hidden = !opening;
+      launch.setAttribute("aria-expanded", String(opening));
+      if (launchLabel) launchLabel.textContent = opening ? "Suskleisti formą" : "Atverti kontaktų formą";
+      if (opening && !frame.getAttribute("src")) {
+        if (topics) topics.hidden = true;
+        waiting = true;
         frame.setAttribute("aria-busy", "true");
         frame.addEventListener("load", () => {
+          clearTimeout(slowLoadTimer);
+          waiting = false;
           if (loading) loading.hidden = true;
           frame.setAttribute("aria-busy", "false");
-        }, {once:true});
+        }, { once: true });
         frame.src = frame.dataset.src;
+        if (loading) {
+          slowLoadTimer = setTimeout(() => {
+            loading.textContent = "Forma atveriama ilgiau nei įprastai. Galite ją atidaryti naujame skirtuke arba rašyti el. paštu.";
+          }, 8000);
+        }
       }
-      frame.hidden = false;
-      launch.setAttribute("aria-expanded", "true");
-      launch.hidden = true;
-      frame.focus();
+      if (loading) loading.hidden = !opening || !waiting;
     });
   }
-  doc.querySelectorAll("[data-open-contact-form]").forEach((link) => {
-    link.href = buildContactFormUrl({ topic, pageUrl });
-  });
-  doc.querySelectorAll("[data-topic]").forEach((link) => {
-    link.href = buildContactFormUrl({ topic: link.dataset.topic, pageUrl });
-  });
   const sourceNote = doc.querySelector("[data-contact-source]");
   const sourceLink = doc.querySelector("[data-contact-source-link]");
   if (pageUrl && sourceNote && sourceLink) {
@@ -80,6 +113,7 @@ export function initializeContactPage(doc = document, search = window.location.s
   }
   const copyButton = doc.querySelector("[data-copy-email]");
   const copyStatus = doc.querySelector("[data-copy-status]");
+  if (copyButton) copyButton.hidden = false;
   copyButton?.addEventListener("click", async () => {
     let copied = false;
     try {

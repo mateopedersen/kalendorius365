@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs>
+<linearGradient id="paper" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#fffbe8"/><stop offset="1" stop-color="#d9ca9d"/></linearGradient>
+<linearGradient id="green" x2=".34" y2="1"><stop stop-color="#468d70"/><stop offset="1" stop-color="#133b30"/></linearGradient>
+<linearGradient id="gold" x2=".42" y2="1"><stop stop-color="#fff0b3"/><stop offset="1" stop-color="#c48b36"/></linearGradient>
+<linearGradient id="red" x2=".42" y2="1"><stop stop-color="#d0856a"/><stop offset="1" stop-color="#874341"/></linearGradient>
+</defs><ellipse cx="48" cy="80" rx="35" ry="5" fill="#15332a" opacity=".29"/><path d="M26 21h45v54H26z" fill="#785b32"/><rect x="22" y="18" width="48" height="54" rx="5" fill="url(#paper)"/><path d="M22 25c0-4 2-7 5-7h38c3 0 5 3 5 7v8H22z" fill="url(#green)"/><path d="M35 14v11m22-11v11" stroke="#e5c578" stroke-width="3" stroke-linecap="round"/><path d="M31 43h28M31 50h28M31 57h14" stroke="#7e9f82" stroke-width="2" stroke-linecap="round"/><circle cx="69" cy="61" r="13" fill="url(#red)"/><path d="M69 68c-10-6-9-12-5-12 2 0 3 1 5 3 2-2 3-3 5-3 4 0 5 6-5 12" fill="#ffecb8"/></svg>

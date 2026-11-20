@@ -7,12 +7,13 @@ const base=process.env.K365_QA_URL||'http://127.0.0.1:8799';
 const out=`docs/adsense/qa-${process.env.K365_QA_LABEL||'interactions'}`;
 await fs.mkdir(out,{recursive:true});
 const results=[];
+const blog=JSON.parse(await fs.readFile(new URL('../../site/_data/blog.json',import.meta.url)));
 for(const [engine,type] of Object.entries({chromium,webkit})){
  const browser=await type.launch({headless:true});
  const context=await browser.newContext({viewport:{width:1440,height:1000}});
  const page=await context.newPage();
  await page.goto(base+'/blogas/',{waitUntil:'networkidle'});
- assert.equal(await page.locator('.editorial-card').count(),20);
+ assert.equal(await page.locator('.editorial-card').count(),blog.length);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  const dismiss=page.locator('#cookie-notice-dismiss');
  if(await dismiss.isVisible())await dismiss.click();
@@ -33,7 +34,7 @@ for(const [engine,type] of Object.entries({chromium,webkit})){
  await page.emulateMedia({media:'print'});
  const printGuide=await page.locator('[data-editorial-extension]').isVisible();
  assert.equal(printGuide,false,'Editorial help must not print with the personal calendar');
- results.push({engine,desktopWidth:1440,blogCards:20,searchResultOpensArticle:true,articleTocWorks:!!before,previousImageFailureRechecked:true,homeGuideHiddenInPrint:!printGuide});
+ results.push({engine,desktopWidth:1440,blogCards:blog.length,searchResultOpensArticle:true,articleTocWorks:!!before,previousImageFailureRechecked:true,homeGuideHiddenInPrint:!printGuide});
  await context.close();
  const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
  const plain=await nojs.newPage();await plain.goto(base+'/blogas/kaip-spausdinti-kalendoriu/');

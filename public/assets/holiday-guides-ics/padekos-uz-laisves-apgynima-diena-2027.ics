@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:padekos-uz-laisves-apgynima-diena-2027@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20270908
+DTEND;VALUE=DATE:20270909
+SUMMARY:Padėkos už Lietuvos nepriklausomybės ir laisvės apgynimą diena
+DESCRIPTION:Rugsėjo 8 d. Lietuvoje minima padėka žmonėms\, prisidėjusi
+ ems prie valstybės nepriklausomybės ir laisvės gynimo.
+URL:https://kalendorius365.lt/sventes/padekos-uz-laisves-apgynima-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

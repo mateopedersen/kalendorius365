@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sekmines-2030@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20300609
+DTEND;VALUE=DATE:20300610
+SUMMARY:Sekminės
+DESCRIPTION:Sekminės švenčiamos septintą sekmadienį po Velykų ir kata
+ likų tradicijoje mini Šventosios Dvasios atsiuntimą.
+URL:https://kalendorius365.lt/sventes/sekmines/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

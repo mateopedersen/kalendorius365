@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:lietuvos-socialiniu-darbuotoju-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20290927
+DTEND;VALUE=DATE:20290928
+SUMMARY:Lietuvos socialinių darbuotojų diena
+DESCRIPTION:Rugsėjo 27-ąją pagerbiami socialiniai darbuotojai. Jų darba
+ s padeda žmonėms rasti pagalbą\, naudotis paslaugomis ir išlaikyti sav
+ arankiškumą.
+URL:https://kalendorius365.lt/sventes/lietuvos-socialiniu-darbuotoju-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

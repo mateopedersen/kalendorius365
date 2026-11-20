@@ -63,10 +63,10 @@
       <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-taurage.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-telsiai-night.webp</image:loc>
+      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-telsiai-centre.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-telsiai.webp</image:loc>
+      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-telsiai-night.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-ukmerge-night.webp</image:loc>
@@ -87,7 +87,10 @@
       <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-vilnius-night.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-visaginas.webp</image:loc>
+      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-visaginas-lake.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/weather-city-visaginas-sunset.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -1378,10 +1381,52 @@
     </image:image>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/2030/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/balandis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/birzelis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/geguze/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/gruodis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/kovas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/lapkritis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/liepa/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/rugpjutis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/rugsejis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/sausis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/spalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/2030/vasaris/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/apie-mus/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/astronominis-kalendorius/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/atgalinis-skaiciavimas/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/atmintinos-dienos/</loc>
@@ -1396,64 +1441,154 @@
     <loc>https://kalendorius365.lt/blogas/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/blogas/baltijos-kelias-rugpjucio-23/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/baltijos-kelias-rugpjucio-23-db42d55c1c11c704-1200.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/blogas/darbo-ir-kalendorines-dienos/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/darbo-ir-kalendorines-dienos-b0a12dfe282293cd-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/datos-skirtumas-ir-abi-ribos/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/datos-skirtumas-ir-abi-ribos-3e63be6594380395-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/dienos-planas-trys-svarbus-darbai/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/dienos-planas-trys-svarbus-darbai-15cdd44e7081835c-1200.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/blogas/gandrines-ir-pavasario-stebejimai/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/gandrines-ir-pavasario-stebejimai-93f08d927b8cc20f-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/ics-importas-ir-laiko-juostos/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/ics-importas-ir-laiko-juostos-87b9facc540ae034-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/iso-savaiciu-numeriai/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/iso-savaiciu-numeriai-714059172af7753d-1200.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/blogas/juros-sventes-savaitgalio-planas/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/juros-sventes-savaitgalio-planas-1cda3d9e8a5141a6-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/kaip-pasirinkti-tuscia-kalendoriu/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/kaip-pasirinkti-tuscia-kalendoriu-6f6f2abc8f3e621b-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/kaip-planuoti-ilgaji-savaitgali/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/kaip-planuoti-ilgaji-savaitgali-caa41e7ce3914405-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/kaip-spausdinti-kalendoriu/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/kaip-spausdinti-kalendoriu-2db6334f9f12a969-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/kaip-susiplanuoti-menesi/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/kaip-susiplanuoti-menesi-47804fd5e06a555c-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/kalendoriaus-atsargine-kopija/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/kalendoriaus-atsargine-kopija-0fe21a1edf4400e8-1200.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/blogas/kaziuko-muges-kalendorius/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/kaziuko-muges-kalendorius-dab3d9c0fd364505-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/keliamieji-metai-2028/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/keliamieji-metai-2028-4482badc67788196-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/menesio-ar-metu-kalendorius/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/menesio-ar-metu-kalendorius-340aff51a212e16b-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/menulio-faziu-kalendoriaus-skaitymas/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/menulio-faziu-kalendoriaus-skaitymas-781f4238f20de6ef-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/metu-laiku-pradzios/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/metu-laiku-pradzios-e1923cc33aff5e79-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/mokiniu-atostogu-seimos-planas/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/mokiniu-atostogu-seimos-planas-3d8cdc5641f662b1-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/pamainu-ciklo-planavimas/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/pamainu-ciklo-planavimas-b1fcd7dfae0be6f7-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/sauletekis-ir-dienos-ilgumas/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/sauletekis-ir-dienos-ilgumas-7ad10f70fdcd4d2f-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/savaites-planas-be-perkrovos/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/savaites-planas-be-perkrovos-b71d3b69a5890841-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/seimos-kalendorius-namuose/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/seimos-kalendorius-namuose-d17ce59b11c89884-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/blogas/sventines-ir-atmintinos-dienos/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/sventines-ir-atmintinos-dienos-bfc2ef406e14a452-1200.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/blogas/veliniu-lapkricio-kalendorius/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/blog/photos/veliniu-lapkricio-kalendorius-977d8b7abcecbd7e-1200.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/darbo-dienos/2027/</loc>
@@ -1463,6 +1598,9 @@
   </url>
   <url>
     <loc>https://kalendorius365.lt/darbo-dienos/2029/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/darbo-dienos/2030/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/darbo-grafiko-sablonai/</loc>
@@ -1475,6 +1613,9 @@
   </url>
   <url>
     <loc>https://kalendorius365.lt/dienos-planuoklis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/duk/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/horoskopai/</loc>
@@ -1522,7 +1663,40 @@
     <loc>https://kalendorius365.lt/irankiai/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/ismokos/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/aukles-kompensacija/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/ligos-ismoka/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/motinystes-ir-tevystes-ismokos/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/nedarbo-ismoka/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/sildymo-kompensacija/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/socialine-pasalpa/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/vaiko-pinigai/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/vaiko-prieziuros-ismoka/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/ismokos/vienkartine-ismoka-vaikui/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/juodasis-penktadienis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/keliamieji-metai/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/kibernetinis-pirmadienis/</loc>
@@ -1532,6 +1706,9 @@
   </url>
   <url>
     <loc>https://kalendorius365.lt/kurti-kalendoriu/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/mano-diena/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/menesiai/</loc>
@@ -1660,13 +1837,61 @@
     <loc>https://kalendorius365.lt/menulio-kalendorius/2029/vasaris/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/balandis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/birzelis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/geguze/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/gruodis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/kovas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/lapkritis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/liepa/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/rugpjutis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/rugsejis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/sausis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/spalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/menulio-kalendorius/2030/vasaris/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/metai/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/metu-diena/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/metu-laikai/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/mokesciu-skaiciuokle/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/mokiniu-atostogos/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/nuotrauku-licencijos/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/oru-saltiniai/</loc>
@@ -1687,16 +1912,76 @@
     <loc>https://kalendorius365.lt/pavasario-lygiadienis/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/pdf-kalendoriai/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/pensijos/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/privatumas/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/redakcine-politika/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/renginiai/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/gatves-muzikos-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/juros-svente/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/kaledos-sostineje/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/kauno-gimtadienis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/kaziuko-muge/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/kilkim-zaibu/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/kino-pavasaris/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/klaipedos-sviesu-festivalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/kulturos-naktis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/lietuvos-dainu-svente/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/muzieju-naktis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/pazaislio-muzikos-festivalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/saltibarsciu-festivalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/vilniaus-knygu-muge/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/vilniaus-maratonas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/renginiai/vilniaus-sviesu-festivalis/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/rudens-lygiadienis/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/saule/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/savaites/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/savaites/2027/</loc>
@@ -1708,16 +1993,34 @@
     <loc>https://kalendorius365.lt/savaites/2029/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/savaites/2030/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/savaitiniai-planuokliai/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/seimos-kalendorius/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sejos-kalendorius/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/slapukai/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/1791-metu-konstitucijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/1791-metu-konstitucijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/1863-metu-sukilimo-pradzios-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/1863-metu-sukilimo-pradzios-diena.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/2027/</loc>
@@ -1762,22 +2065,298 @@
     <loc>https://kalendorius365.lt/sventes/2028/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/2028/balandis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/birzelis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/geguze/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/gruodis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/kovas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/lapkritis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/liepa/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/rugpjutis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/rugsejis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/sausis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/spalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2028/vasaris/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/2029/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/balandis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/birzelis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/geguze/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/gruodis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/kovas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/lapkritis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/liepa/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/rugpjutis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/rugsejis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/sausis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/spalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2029/vasaris/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/balandis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/birzelis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/geguze/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/gruodis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/kovas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/lapkritis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/liepa/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/rugpjutis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/rugsejis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/sausis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/spalis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/2030/vasaris/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/abieju-tautu-tarpusavio-izado-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/abieju-tautu-tarpusavio-izado-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/adventas/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/agronomu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/agronomu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/antrojo-pasaulinio-karo-auku-atminimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/antrojo-pasaulinio-karo-auku-atminimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/atvelykis/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/atvelykis.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/baltijos-kelio-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/baltijos-saliu-energetines-nepriklausomybes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/baltijos-saliu-energetines-nepriklausomybes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/baltramiejaus-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/baltu-vienybes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/baltu-vienybes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/bausmiu-vykdymo-sistemos-pareigunu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/bausmiu-vykdymo-sistemos-pareigunu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/besimokanciu-senjoru-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/besimokanciu-senjoru-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/birzelio-sukilimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/birzelio-sukilimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/bitininku-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/bitininku-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/boso-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/dagotuves/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/derliaus-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/derliaus-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/devintines/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/didysis-ketvirtadienis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/didysis-penktadienis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/didysis-sestadienis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/durbe-musio-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/durbe-musio-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/ekologijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/ekologijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/europos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/europos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/europos-zmoniu-su-negalia-savarankisko-gyvenimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/europos-zmoniu-su-negalia-savarankisko-gyvenimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/gandrines/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/gedulo-ir-vilties-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/geologu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/geologu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/giminiu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/giminiu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/globeju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/globeju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/grabnycios/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/jaunimo-darbuotoju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/jaunimo-darbuotoju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/jonines/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/jurgines/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/juros-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/juros-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/kaledos/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/karjeros-specialistu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/karjeros-specialistu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/keturiasdesimties-pauksciu-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/klaipedos-krasto-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/klaipedos-krasto-diena.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/kliento-diena/</loc>
@@ -1792,10 +2371,100 @@
     <loc>https://kalendorius365.lt/sventes/kovo-11-oji/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/kovos-su-smurtu-pries-medikus-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/kovos-su-smurtu-pries-medikus-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/krepsinio-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/krepsinio-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/kucios/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/kulturos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/kulturos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/kuno-kulturos-ir-sporto-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/kuno-kulturos-ir-sporto-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/laisves-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/laisves-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-advokaturos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-advokaturos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-energetiku-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-energetiku-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-istojimo-i-europos-sajunga-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-istojimo-i-europos-sajunga-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-istojimo-i-jungtines-tautas-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-istojimo-i-jungtines-tautas-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-istojimo-i-nato-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-istojimo-i-nato-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/lietuvos-kariuomenes-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-oreiviu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-oreiviu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-samarieciu-bendrijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-samarieciu-bendrijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-socialiniu-darbuotoju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-socialiniu-darbuotoju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-tautiniu-bendriju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-tautiniu-bendriju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-teismu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-teismu-diena.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/lietuvos-vardo-diena/</loc>
@@ -1804,22 +2473,394 @@
     <loc>https://kalendorius365.lt/sventes/lietuvos-veliavos-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-zydu-gelbetoju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lietuvos-zydu-gelbetoju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lietuvos-zydu-genocido-atminimo-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/lituanistines-mokyklos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/lituanistines-mokyklos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/mazosios-lietuvos-gyventoju-genocido-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/mazosios-lietuvos-gyventoju-genocido-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/mecenatystes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/mecenatystes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/medicinos-darbuotoju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/medicinos-darbuotoju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/medininku-zudyniu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/medininku-zudyniu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/miskininku-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/miskininku-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/mokslo-ir-ziniu-diena/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/motinos-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/nacionaline-emancipacijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/nacionaline-emancipacijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/nacionaline-vyno-kulturos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/nacionaline-vyno-kulturos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/naujuju-metu-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/okupacijos-ir-genocido-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/okupacijos-ir-genocido-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/onines/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/ozio-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/padekos-savanoriams-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/padekos-savanoriams-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/padekos-uz-laisves-apgynima-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/padekos-uz-laisves-apgynima-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pagarbos-mokesciu-moketojams-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pagarbos-mokesciu-moketojams-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/palaimintojo-teofiliaus-matulionio-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/palaimintojo-teofiliaus-matulionio-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/partizanu-pagerbimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/partizanu-pagerbimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-aplinkos-apsaugos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-aplinkos-apsaugos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-autizmo-supratimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-autizmo-supratimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-baltosios-lazdeles-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-baltosios-lazdeles-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-brailio-rasto-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-brailio-rasto-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-darbuotoju-saugos-ir-sveikatos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-darbuotoju-saugos-ir-sveikatos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-diabeto-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-diabeto-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-gyvunijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-gyvunijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-gyvybes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-gyvybes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-informacines-visuomenes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-informacines-visuomenes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-intelektines-nuosavybes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-intelektines-nuosavybes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-knygos-ir-autoriu-teisiu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-knygos-ir-autoriu-teisiu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-kraujo-donoru-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-kraujo-donoru-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-ligoniu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-ligoniu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-mamu-psichikos-sveikatos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-mamu-psichikos-sveikatos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-meno-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-meno-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-nevyriausybiniu-organizaciju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-nevyriausybiniu-organizaciju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-psichikos-sveikatos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-psichikos-sveikatos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-sveikatos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-sveikatos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-vaiko-teisiu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-vaiko-teisiu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasauline-vartotoju-teisiu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasauline-vartotoju-teisiu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pasaulio-lietuviu-vienybes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pasaulio-lietuviu-vienybes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pelenai/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pempes-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/petrines/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pilietinio-pasipriesinimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/pilietinio-pasipriesinimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/prokuraturos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/prokuraturos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/pusiauziemis/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/reformacijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/reformacijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/romu-genocido-atminimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/romu-genocido-atminimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sajudzio-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/sajudzio-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/saugaus-eismo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/saugaus-eismo-diena.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/sausio-13-oji/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/sekmines/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/seneliu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/seneliu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sestines/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/siline/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/siline.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/socialinio-draudimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/socialinio-draudimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/spaudos-atgavimo-kalbos-ir-knygos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/spaudos-atgavimo-kalbos-ir-knygos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/statybininku-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/statybininku-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/steigiamojo-seimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/steigiamojo-seimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sutartiniu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/sutartiniu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sv-agotos-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sv-andriejaus-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sv-antano-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sv-blaziejaus-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sv-florijono-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/sv-florijono-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/sv-huberto-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/sv-huberto-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/sv-kazimiero-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/sv-martyno-diena/</loc>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/tarptautine-darbo-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-dingusiu-vaiku-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-dingusiu-vaiku-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-gestu-kalbu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-gestu-kalbu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-gimtosios-kalbos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-gimtosios-kalbos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-jaunimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-jaunimo-diena.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/tarptautine-mokytoju-diena/</loc>
@@ -1828,7 +2869,91 @@
     <loc>https://kalendorius365.lt/sventes/tarptautine-moters-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-motinos-zemes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-motinos-zemes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-pagyvenusiu-zmoniu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-pagyvenusiu-zmoniu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-seimos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-seimos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-teatro-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-teatro-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-tolerancijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-tolerancijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-valstybes-tarnautoju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-valstybes-tarnautoju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-veterinarijos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-veterinarijos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-vezimelio-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-vezimelio-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-zmogaus-teisiu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-zmogaus-teisiu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tarptautine-zmoniu-su-negalia-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tarptautine-zmoniu-su-negalia-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/teismo-ekspertu-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/teismo-ekspertu-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/tevo-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tilzes-akto-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tilzes-akto-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/trys-karaliai/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/trys-karaliai.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/tuskulenu-auku-atminimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/tuskulenu-auku-atminimo-diena.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/uzgavenes/</loc>
@@ -1849,13 +2974,61 @@
     <loc>https://kalendorius365.lt/sventes/velykos/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/verbu-sekmadienis/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/verbu-sekmadienis.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/vietos-savivaldos-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/vietos-savivaldos-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/vieversio-diena/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/vilko-vaiku-atminimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/vilko-vaiku-atminimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/vilniaus-gimtadienis/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/sventes/visu-sventuju-diena/</loc>
   </url>
   <url>
+    <loc>https://kalendorius365.lt/sventes/vytauto-didziojo-karunavimo-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/vytauto-didziojo-karunavimo-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/zalgirio-musio-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/zalgirio-musio-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/zemes-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/zemes-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://kalendorius365.lt/sventes/zoline/</loc>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/sventes/zveju-diena/</loc>
+    <image:image>
+      <image:loc>https://kalendorius365.lt/assets/visuals/holiday-research/zveju-diena.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kalendorius365.lt/svetaines-zemelapis/</loc>
   </url>
   <url>
     <loc>https://kalendorius365.lt/tuscias-kalendorius/</loc>

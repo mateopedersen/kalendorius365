@@ -12,7 +12,7 @@ export function validateRecord(raw){
   if(!/^\d{4}-\d{2}-\d{2}$/.test(p.contentDate)||Number.isNaN(Date.parse(`${p.contentDate}T00:00:00Z`))||new Date(`${p.contentDate}T00:00:00Z`).toISOString().slice(0,10)!==p.contentDate||!['avinas','jautis','dvyniai','vezys','liutas','mergele','svarstykles','skorpionas','saulys','oziaragis','vandenis','zuvys'].includes(p.signSlug)||!/^[0-9a-f]{16}$/.test(p.contentVersion)||p.shareUrl!==new URL(route,ORIGIN).href||![p.shareUrl,currentAlias].includes(p.canonicalUrl)||p.contentId!==`horoscope-${p.signSlug}-${p.contentDate}-${p.contentVersion}`)throw new Error('invalid_snapshot');
  }
  const monthSlugs=['sausis','vasaris','kovas','balandis','geguze','birzelis','liepa','rugpjutis','rugsejis','spalis','lapkritis','gruodis'];
- if(p.kind==='calendar'&&(![2027,2028,2029].includes(p.year)||(p.month!==undefined&&(!Number.isInteger(p.month)||p.month<1||p.month>12))))throw new Error('invalid_calendar');
+ if(p.kind==='calendar'&&(![2027,2028,2029,2030].includes(p.year)||(p.month!==undefined&&(!Number.isInteger(p.month)||p.month<1||p.month>12))))throw new Error('invalid_calendar');
  if(p.kind==='calendar'){const route=`/${p.year}/${p.month?monthSlugs[p.month-1]+'/':''}`;if(p.canonicalUrl!==new URL(route,ORIGIN).href||p.shareUrl!==p.canonicalUrl)throw new Error('invalid_calendar_route');}
  if(p.kind==='horoscope'){
   if(!p.sections||typeof p.sections!=='object')throw new Error('invalid_sections');

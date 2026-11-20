@@ -4,7 +4,7 @@
 .year-preview-heading p{max-width:48rem;color:#53675d}
 .year-preview-heading label{min-width:11rem}
 .year-preview-panel>.source-note{min-height:1.4rem;margin:.25rem 0 1rem;font-size:.85rem}
-.year-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:stretch}
+.year-directory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;align-items:stretch}
 .year-directory-card{display:flex;flex-direction:column;gap:.85rem;min-width:0;margin:0;padding:clamp(.9rem,2vw,1.3rem);border:1px solid #d9e4dd;border-radius:18px;background:#fff;box-shadow:0 8px 28px #173b220a}
 .year-card-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
 .year-card-top h3{margin:0;color:#164e38;font-size:2rem;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
@@ -41,6 +41,44 @@
 .year-output-links>a{display:grid;gap:.35rem;padding:1.15rem 1.25rem;border:1px solid #d8e6dc;border-radius:15px;background:#f7fbf8;text-decoration:none}
 .year-output-links strong{color:#15583d}
 .year-output-links span{color:#596c60;font-size:.9rem;line-height:1.5}
-@media(max-width:900px){.year-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.year-directory-card:last-child{grid-column:1/-1}.year-directory-card:last-child .year-mini-calendar{max-width:22rem}}
-@media(max-width:620px){.year-preview-heading{align-items:stretch;flex-direction:column;gap:.45rem}.year-preview-heading label{width:100%}.year-directory-grid,.year-comparison-result,.year-output-links{grid-template-columns:1fr}.year-directory-card:last-child{grid-column:auto}.year-directory-card:last-child .year-mini-calendar{max-width:none}.year-preview-panel{padding:1rem}.year-mini-calendar{font-size:.76rem}.year-mini-calendar td{height:34px}}
+@media(max-width:900px){.year-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.year-preview-heading{align-items:stretch;flex-direction:column;gap:.45rem}.year-preview-heading label{width:100%}.year-directory-grid,.year-comparison-result,.year-output-links{grid-template-columns:1fr}.year-preview-panel{padding:1rem}.year-mini-calendar{font-size:.76rem}.year-mini-calendar td{height:34px}}
 @media(max-width:390px){.year-print-list li{align-items:flex-start;flex-direction:column}.year-print-list__actions{width:100%}.year-print-list__actions a{flex:1;justify-content:center}}
+
+.year-directory-jump {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(.3rem, 1.4vw, .75rem);
+  max-width: 36rem;
+  margin: 0 0 1rem;
+}
+.year-directory-jump a,
+.year-print-create > a {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding: .35rem;
+  border: 1px solid #9cb8a8;
+  border-radius: 10px;
+  background: #f2f7f1;
+  color: #15583d;
+  font-weight: 750;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+}
+.year-directory-jump a:hover,
+.year-print-create > a:hover {
+  border-color: #15583d;
+  background: #15583d;
+  color: #fff;
+}
+.year-directory-jump a:focus-visible,
+.year-print-create > a:focus-visible,
+.year-directory-card:focus-visible {
+  outline: 2px solid #15583d;
+  outline-offset: 3px;
+}
+.year-directory-jump a { white-space: nowrap; }
+.year-directory-card { scroll-margin-top: 7rem; }
+.year-print-create { display: grid; gap: .35rem; }

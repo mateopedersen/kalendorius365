@@ -1,10 +1,3 @@
-@@ astronominis-kalendorius
-## Kaip pasirinkti reikiamą astronomijos įrankį?
-Šis puslapis yra pradžios vieta, kai norite suprasti skirtingus dangaus ir metų ritmo duomenis. Saulės puslapyje pasirinkite miestą bei datą, jei ieškote saulėtekio ar saulėlydžio. Mėnulio fazių lentelę rinkitės konkrečiam pagrindinės fazės momentui. Metų laikų apžvalga skirta lygiadieniams ir saulėgrįžoms. Tai skirtingi skaičiavimai, todėl vienos lentelės rezultatas nepakeičia kitos paskirties.
-
-Prieš lygindami skaičius patikrinkite metus, vietą ir laiko juostą. Tą patį momentą UTC ir Vilniaus laiku galima užrašyti skirtingomis valandomis, o arti vidurnakčio gali pasikeisti ir kalendorinė data. Jei šaltinyje laiko zona nenurodyta, skirtumo nebandykite taisyti spėjimu. Pirmiausia išsiaiškinkite, kokiu laiku duomenys pateikti.
-
-Stebėjimui reikia daugiau nei įvykio datos: debesys, vietinis horizontas ir konkreti stebėjimo vieta veikia matomumą. Skaičiavimo modelis nėra pažadas tą minutę objektą pamatyti iš jūsų lango. Naudodami rezultatus savo plane išsaugokite ir pasirinktą vietą. Išsamesnį paaiškinimą rasite <a href="/blogas/sauletekis-ir-dienos-ilgumas/">gide apie šviesų dienos laiką</a> bei <a href="/blogas/menulio-faziu-kalendoriaus-skaitymas/">Mėnulio kalendoriaus skaitymo gide</a>.
 @@ darbo-grafiko-sablonai
 ## Ką užrašyti darbo grafike, kad juo būtų galima naudotis?
 Prieš rinkdamiesi maketą nuspręskite, ar planuojate įprastą savaitę, pasikartojantį pamainų ciklą, ar vieną konkretų mėnesį. Savaitės lentelė patogi pasikartojančiam darbo laikui. Mėnesio lape geriau matyti keičiamas pamainas, savaitgalius ir ilgesnius poilsio intervalus. Jei ciklas nesutampa su septyniomis dienomis, naudokite <a href="/pamainu-grafikas/">pamainų skaičiuoklę</a> ir jos rezultatą palyginkite su patvirtintu grafiku.
@@ -137,10 +130,3 @@ Miestų nuotraukos yra vietos iliustracijos, o ne gyvos kameros vaizdas. Saulėt
 Privatumo politikoje papildomai aprašoma, kokie įprasti tinklo metaduomenys reikalingi puslapiui pateikti ir kaip veikia automatinis numatytojo miesto pasirinkimas. Asmeniniai planai lieka jūsų įrenginyje. Jei pranešate apie klaidingai parodytą miestą, pakanka nurodyti viešą miesto pavadinimą ir matomą rezultatą. Tikslaus namų adreso, GPS koordinačių ar kalendoriaus atsarginės kopijos siųsti nereikia.
 
 Jei pastebite neatitikimą, palyginkite duomenų laiką ir pasirinktą miestą. Prognozės atnaujinimas ir stoties matavimo laikas gali būti skirtingi. Pranešime nurodykite, kokį miestą matėte ir kuri reikšmė atrodė neteisinga. Tai leidžia tikrinti konkretų viešą atsakymą neieškant lankytojo buvimo vietos ar kitos asmeninės informacijos, kurios šiai problemai išspręsti nereikia.
-@@ kontaktai
-## Kokia informacija padeda pranešant apie klaidą?
-Pirmiausia nurodykite viešą puslapio adresą. Jei pastebėjote datos arba skaičiavimo klaidą, pridėkite pasirinktus metus, mėnesį ir rezultatą, kurio tikėjotės. Laikui svarbus miestas bei laiko juosta. Šios detalės padeda atskirti skirtingus to paties įrankio pasirinkimus ir suprasti, kurią konkrečią vietą reikia patikrinti. Papildomų asmeninių aplinkybių aprašyti nebūtina.
-
-Dėl mobiliojo vaizdo pradžiai užtenka įrenginio tipo ir naršyklės pavadinimo. Jei siunčiate ekrano nuotrauką, prieš tai paslėpkite asmeninius įvykius, el. pašto adresus bei nesusijusius atvertus langus. Leidėjas nemato naršyklėje saugomų jūsų įrašų. Viso JSON kopijos failo, gimimo duomenų ar privačių užrašų siųsti nereikia: viešo puslapio veikimą galima paaiškinti neatskleidžiant savo asmeninio plano.
-
-Jei klausimas susijęs su atsisiunčiamu maketu, nurodykite jo pavadinimą ir pasirinktą formatą. PDF spausdinimo nuostatos bei paveikslėlio įterpimas į kitą dokumentą yra skirtingos situacijos. Prieš siųsdami pranešimą patikrinkite, ar naudojate pilną atsisiunčiamą failą, o ne mažą galerijos peržiūrą. Viešo failo adresas padeda tiksliai nustatyti maketą ir nereikalauja siųsti jūsų asmeninio dokumento arba viso ekrano turinio.

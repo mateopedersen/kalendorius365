@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:besimokanciu-senjoru-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:Besimokančių senjorų diena
+DESCRIPTION:Spalio 1 d. Lietuvoje minima Besimokančių senjorų diena\, sk
+ irta mokymuisi vyresniame amžiuje.
+URL:https://kalendorius365.lt/sventes/besimokanciu-senjoru-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

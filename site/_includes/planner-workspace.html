@@ -1,0 +1,174 @@
+<noscript><div class="panel">Asmeniniam kalendoriui reikia JavaScript. <a href="/2027/">2027</a> ir <a href="/2028/">2028 metų kalendorius</a> bei visi spausdinami failai veikia ir be jo.</div></noscript>
+<p id="calendar-app-status" class="app-startup" role="status">Kraunamas asmeninis kalendorius…</p>
+<div class="dashboard" inert aria-busy="true">
+<aside class="left-column" aria-label="Laikas, orai ir kalendoriai">
+<div class="climate-card" data-weather-city="vilnius">
+<div class="clock-photo">
+  <picture class="clock-photo__frame">
+    <source type="image/avif" srcset="/assets/visuals/weather-city-vilnius-day-640.avif">
+    <img class="climate-card__image" src="/assets/visuals/weather-city-vilnius-day.webp" width="1200" height="675" alt="Vilniaus katedra ir varpinė dieną" fetchpriority="high" loading="eager" decoding="async">
+  </picture>
+  <section class="clock-card">
+    <div class="clock-card__top">
+      <div id="clock-weekday">Lietuvos laikas</div>
+      <small class="clock-location"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#pin"></use></svg> <span id="clock-zone">Vilnius · Europe/Vilnius</span></small>
+    </div>
+    <div id="clock" aria-label="Dabartinis Lietuvos laikas">--:--:--</div>
+    <time id="clock-date" class="clock-date"></time>
+  </section>
+</div>
+<div class="settings-small"><label class="check"><input type="checkbox" id="seconds" checked>Sekundės</label><label class="check"><input type="checkbox" id="hour12">12 val.</label></div>
+<section class="weather-panel">
+  <div class="weather-top">
+    <h2>{% include shell-art.html name="cloud" size=24 %} Orai šiandien</h2>
+    <div class="weather-city-picker">
+      <span id="weather-city-label" class="visually-hidden">Orų miestas</span>
+      <svg class="weather-city-picker__location" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#pin"></use></svg>
+      <select id="weather-city" aria-labelledby="weather-city-label">
+        <option value="vilnius">Vilnius</option>
+        <option value="kaunas">Kaunas</option>
+        <option value="klaipeda">Klaipėda</option>
+        <option value="siauliai">Šiauliai</option>
+        <option value="panevezys">Panevėžys</option>
+        <option value="alytus">Alytus</option>
+        <option value="marijampole">Marijampolė</option>
+        <option value="mazeikiai">Mažeikiai</option>
+        <option value="jonava">Jonava</option>
+        <option value="utena">Utena</option>
+        <option value="kedainiai">Kėdainiai</option>
+        <option value="telsiai">Telšiai</option>
+        <option value="ukmerge">Ukmergė</option>
+        <option value="taurage">Tauragė</option>
+        <option value="visaginas">Visaginas</option>
+      </select>
+      <button type="button" class="weather-city-picker__button" role="combobox" aria-expanded="false"
+        aria-labelledby="weather-city-label weather-city-value" aria-controls="weather-city-options" hidden>
+        <span id="weather-city-value"></span>
+      </button>
+      <svg class="weather-city-picker__chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"></path></svg>
+      <div class="weather-city-popup" popover="manual" hidden>
+        <p class="weather-city-popup__title">Pasirinkite miestą</p>
+        <ul id="weather-city-options" role="listbox" aria-labelledby="weather-city-label"></ul>
+      </div>
+    </div>
+  </div>
+  <div id="weather-content" aria-busy="true">
+    <div id="weather-temp" data-state="loading">
+      <div class="weather-scene" aria-hidden="true">
+        <span class="weather-scene__light"></span>
+        <span class="weather-scene__rear"></span>
+        <span class="weather-scene__precipitation"></span>
+        <span class="weather-scene__cloud"></span>
+      </div>
+      <strong class="weather-temperature" hidden><span class="weather-temperature__value"></span> <span class="weather-temperature__unit">°C</span></strong>
+      <p class="weather-loading" role="status">Įkeliami orai…</p>
+    </div>
+    <div class="weather-readings"></div>
+  </div>
+  <nav class="weather-attribution" aria-label="Orų ir nuotraukų šaltiniai">
+    <a href="https://api.meteo.lt/" target="_blank" rel="noopener">LHMT / Meteo LT</a>
+    <a href="/oru-saltiniai/">Nuotraukų šaltiniai</a>
+  </nav>
+</section>
+<nav class="climate-links" aria-label="Saulė ir Mėnulis">
+  <a href="/saule/">
+    {% include shell-art.html name="sunrise" size=26 %}
+    <span class="climate-link__label">Saulėtekis ir saulėlydis</span>
+    <svg class="climate-link__arrow" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#arrow"></use></svg>
+  </a>
+  <a href="/menulio-kalendorius/">
+    {% include shell-art.html name="moon" size=26 %}
+    <span class="climate-link__label">Mėnulio kalendorius</span>
+    <svg class="climate-link__arrow" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#arrow"></use></svg>
+  </a>
+</nav>
+</div>
+  <section class="panel filter-panel"><h2 class="dashboard-panel-heading">{% include shell-art.html name="stack" size=29 %}Kalendoriaus sluoksniai</h2><div id="layers" class="filter-list"></div></section>
+    <nav class="dashboard-year-links" aria-label="Metų kalendoriai">
+      {% for year in (2027..2030) %}
+      {% assign art = year | prepend: 'year-' %}
+      <a href="/{{ year }}/">
+        {% include shell-art.html name=art size=44 lazy=true %}
+        <span><strong>{{ year }} Metai</strong><small>{% if year == 2030 %}Kalendorius internete{% else %}PDF ir vaizdai{% endif %}</small></span>
+        {% include calendar-catalog-arrow.html %}
+      </a>
+      {% endfor %}
+    </nav>
+</aside>
+<section class="center-column" aria-label="Pagrindinis kalendorius">
+<div class="stats" id="stats"></div>
+<section class="panel calendar-panel" data-print-root="calendar">
+<div class="calendar-toolbar">
+  <div class="calendar-toolbar__heading">
+    <h2 class="calendar-toolbar__title">Mano kalendorius</h2>
+    <p id="period-title">Kalendorius</p>
+  </div>
+  <div class="calendar-toolbar__quick">
+    <button type="button" id="today">Šiandien</button>
+    <button type="button" class="calendar-add" data-add-event aria-label="Pridėti įvykį"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#plus"></use></svg><span>Pridėti įvykį</span></button>
+  </div>
+  <div class="calendar-toolbar__actions">
+    <div class="toolbar-group calendar-nav" role="group" aria-label="Naršyti kalendoriuje">
+      <button type="button" id="prev" aria-label="Ankstesnis laikotarpis"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-left"></use></svg></button>
+      <div class="month-jump">
+        <span class="month-jump__year" id="month-jump-year" aria-hidden="true"></span>
+        <select id="jump-month" aria-label="Pasirinkti mėnesį">
+          <option value="" disabled selected>Mėnuo</option>
+          {% for month in site.data.calendar.months %}<option value="{{ forloop.index }}">{{ month[1] }}</option>{% endfor %}
+        </select>
+        <svg class="shell-chevron" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m4 6 4 4 4-4"/></svg>
+      </div>
+      <button type="button" id="next" aria-label="Kitas laikotarpis"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-right"></use></svg></button>
+    </div>
+  </div>
+</div>
+<div class="calendar-options"><div class="segmented" role="group" aria-label="Kalendoriaus vaizdas"><button data-view="month" aria-pressed="true">Mėnuo</button><button data-view="week" aria-pressed="false">Savaitė</button><button data-view="day" aria-pressed="false">Diena</button><button data-view="agenda" aria-pressed="false">Darbotvarkė</button><button data-view="year" aria-pressed="false">Metai</button></div><label><span class="visually-hidden">Ieškoti datos arba įvykio</span><input id="search" type="search" placeholder="Data arba įvykis…" aria-label="Ieškoti datos arba įvykio"></label><label class="year-jump">Metai <input id="jump-year" type="number" min="1900" max="2100" value="2027" aria-label="Rodyti metus"></label></div>
+<div id="category-chips" class="category-chips" role="group" aria-label="Greitieji kalendoriaus filtrai"></div><div id="search-results" class="search-results" hidden></div><div id="calendar"></div><div class="calendar-legend"><span>● Šiandien</span><span>◆ Šventinė diena</span><span>ISO savaitės · Pradžia pirmadienį</span><span class="calendar-legend__actions"><a class="share-public-calendar" id="share-public-calendar" href="/menesiai/" hidden>Pasidalyti kalendoriumi</a><button type="button" data-print><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-print"></use></svg>Spausdinti</button></span></div></section>
+<div class="dashboard-extras">
+  <div class="dashboard-extras__stack">
+    <section class="panel upcoming-events-panel" aria-labelledby="upcoming-events-title">
+      <h2 class="dashboard-panel-heading" id="upcoming-events-title">{% include shell-art.html name="calendar" size=26 %}Artimiausi jūsų įvykiai</h2>
+      <div id="upcoming-events"></div>
+    </section>
+    <section class="panel month-facts" aria-labelledby="month-facts-title">
+      <h2 class="dashboard-panel-heading" id="month-facts-title">{% include shell-art.html name="celebrations" size=26 %}Šio mėnesio šventės</h2>
+      <div id="month-holidays"></div>
+      <dl id="today-facts" aria-label="Šiandienos duomenys"></dl>
+      <nav class="dashboard-quick-links" aria-label="Kalendoriai ir planavimo įrankiai">
+        <a href="/menesiai/">Mėnesių kolekcijos</a>
+        <a href="/kurti-kalendoriu/">Kurti kalendorių</a>
+        <a href="/datos-skaiciuokle/">Skaičiuoti dienas</a>
+        <a href="/metai/">Visų metų kalendoriai</a>
+        <a href="/seimos-kalendorius/">Šeimos savaitės planas</a>
+      </nav>
+    </section>
+  </div>
+  <div class="dashboard-extras__stack">
+    <section class="panel mini-calendar" aria-labelledby="mini-title">
+      <div class="panel-title">
+        <h2 id="mini-title">Mėnesio apžvalga</h2>
+        <div class="toolbar-group">
+          <button type="button" id="mini-prev" aria-label="Ankstesnis mini kalendoriaus mėnuo"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-left"></use></svg></button>
+          <button type="button" id="mini-next" aria-label="Kitas mini kalendoriaus mėnuo"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-right"></use></svg></button>
+        </div>
+      </div>
+      <div id="mini"></div>
+    </section>
+  </div>
+</div>
+</section>
+<aside class="right-column" aria-label="Dienos planai">
+<details id="day-details" open><summary>Dienos planai, užrašai ir užduotys</summary><div class="day-details__content">
+<section class="panel detail-panel"><div class="detail-head"><strong id="selected-number" class="date-big"></strong><div><h2 class="day-panel-heading">{% include shell-art.html name="personal" size=28 %}Mano diena</h2><p id="selected-title">Pasirinkite dieną</p><small id="selected-week"></small></div><div class="toolbar-group"><button id="day-prev" aria-label="Ankstesnė diena"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-left"></use></svg></button><button id="day-next" aria-label="Kita diena"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-right"></use></svg></button></div></div><button class="primary full-width" id="add-event"><svg class="icon " aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#plus"></use></svg> Pridėti įvykį</button><div id="day-holidays"></div><div id="day-agenda"></div><small>Įvykių laikas: Europe/Vilnius.</small></section>
+<section class="panel notes-panel"><div class="panel-title"><h2>{% include shell-art.html name="note" size=30 %}Užrašai šiai dienai</h2><button id="save-note"><svg class="icon home-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#note-save"></use></svg><span>Išsaugoti</span></button></div><label for="daily-note" class="visually-hidden">Dienos užrašai</label><textarea id="daily-note" rows="4" maxlength="10000" placeholder="Kas šiandien svarbu?"></textarea><small id="note-status" data-state="local">Saugoma tik šioje naršyklėje.</small></section>
+<section class="panel tasks-panel"><h2>{% include shell-art.html name="tasks" size=30 %}Užduotys</h2><label class="task-filter-wrap"><span class="visually-hidden">Filtruoti užduotis</span><select id="task-filter" aria-label="Filtruoti užduotis"><option value="all">Visos šios dienos užduotys</option><option value="open">Neatliktos</option><option value="done">Atliktos</option></select><svg class="icon home-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#task-chevron"></use></svg></label><div id="tasks"></div><form id="task-form"><input id="task-title" aria-label="Nauja užduotis" placeholder="Nauja užduotis…" required maxlength="300"><button type="submit" aria-label="Pridėti užduotį"><svg class="icon home-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#task-plus"></use></svg></button></form></section>
+</div></details>
+<section class="panel"><h2>{% include shell-art.html name="shield" size=28 %}Jūsų kalendorius</h2><p class="muted">Įrašai lieka šiame įrenginyje. Reguliariai atsisiųskite atsarginę kopiją.</p><div class="utility-actions"><button data-print class="utility-action utility-action--print"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-print"></use></svg>Spausdinti</button><button id="export-ics" class="utility-action utility-action--export"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-export"></use></svg>Eksportuoti ICS</button><button id="import-ics" class="utility-action utility-action--import"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-import"></use></svg>Importuoti ICS</button><button id="backup" class="utility-action utility-action--backup"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-backup"></use></svg>JSON kopija</button><button id="restore" class="utility-action utility-action--restore"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-restore"></use></svg>Atkurti kopiją</button><button id="share" class="utility-action utility-action--share"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-share"></use></svg>Bendrinti puslapį</button><button id="delete-personal-data" class="danger utility-action utility-action--delete"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-delete"></use></svg>Ištrinti asmeninius įrašus</button></div><label class="check"><input type="checkbox" id="large-text">Didesnis tekstas</label><label class="check"><input type="checkbox" id="high-contrast">Didesnis kontrastas</label><p><a id="current-download" href="/menesiai/">Mėnesio PDF ir vaizdai →</a></p></section>
+</aside>
+</div>
+{% include event-editor.html %}
+<dialog id="task-dialog" aria-labelledby="task-dialog-title"><form id="task-edit-form"><h2 id="task-dialog-title">Redaguoti užduotį</h2><input type="hidden" name="id"><label>Užduotis<input name="title" required maxlength="300"></label><div class="form-actions"><button type="button" id="task-cancel">Atšaukti</button><button class="primary" type="submit">Išsaugoti</button></div></form></dialog>
+<dialog id="restore-dialog" aria-labelledby="restore-title"><h2 id="restore-title">Atkurti atsarginę kopiją</h2><p>Patikrinta JSON kopija pakeis šioje naršyklėje esančius įvykius, užduotis ir užrašus. Pirmiausia atsisiųskite dabartinių duomenų kopiją.</p><div class="form-actions"><button id="restore-cancel">Atšaukti</button><button id="restore-confirm" class="primary">Pasirinkti JSON kopiją</button></div></dialog>
+<dialog id="delete-data-dialog" aria-labelledby="delete-data-title"><h2 id="delete-data-title">Ištrinti asmeninius įrašus?</h2><p>Bus pašalinti šiame įrenginyje saugomi įvykiai, užduotys ir užrašai. Šio veiksmo anuliuoti negalima. Nuostatos, pavyzdžiui, pasirinktas miestas ir išvaizda, liks išsaugotos.</p><div class="form-actions"><button id="delete-data-cancel">Atšaukti</button><button id="delete-data-confirm" class="danger">Ištrinti įrašus</button></div></dialog>
+<input id="ics-file" type="file" accept=".ics,text/calendar" hidden><input id="json-file" type="file" accept=".json,application/json" hidden>
+

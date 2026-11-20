@@ -16,10 +16,12 @@ class InlineImageTests(unittest.TestCase):
    with self.assertRaises(ValueError):inline_image(document,b'x')
  def test_built_homepage_embeds_the_original_vilnius_avif_and_keeps_its_webp_fallback(self):
   document=(ROOT/'public/index.html').read_text()
-  encoded=re.search(r'<source type="image/avif" srcset="data:image/avif;base64,([^"]+)"',document)
+  picture=re.search(r'<picture class="clock-photo__frame">.*?</picture>',document,re.S)
+  self.assertIsNotNone(picture)
+  picture=picture[0]
+  encoded=re.search(r'<source type="image/avif" srcset="data:image/avif;base64,([^"]+)"',picture)
   self.assertIsNotNone(encoded)
   self.assertEqual(base64.b64decode(encoded[1]),(ROOT/'site/assets/visuals/weather-city-vilnius-day-640.avif').read_bytes())
-  picture=re.search(r'<picture>.*?data:image/avif;base64,.*?</picture>',document,re.S)[0]
   self.assertIn('/assets/visuals/weather-city-vilnius-day.webp?',picture)
   self.assertIn('width="1200" height="675"',picture)
   self.assertIn('alt="Vilniaus katedra ir varpinė dieną"',picture)

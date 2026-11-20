@@ -135,17 +135,39 @@ module HoroscopesPages
     %(<p class="#{escape(class_name)}"><time datetime="#{escape(daily['local_date'])}" data-horoscope-updated>Atnaujinta: #{escape(daily['display_date_lt'])}</time></p>)
   end
 
-  def forecast_card(sign, forecast, date_label)
-    %(<article class="horoscope-card" style="--sign-accent: #{escape(sign['theme'])}"><a class="horoscope-card__link" href="/horoskopai/#{escape(sign['key'])}/"><span class="horoscope-card__mark">#{mark(sign['key'])}</span><div class="horoscope-card__content"><span class="horoscope-card__eyebrow">#{escape(sign['element'])} <span aria-hidden="true">·</span> #{escape(sign['range'])}</span><h3 class="horoscope-card__title">#{escape(sign['name'])}</h3><span class="horoscope-card__heading">#{escape(forecast['editorial_heading'])}</span><span class="horoscope-card__excerpt">#{escape(forecast['lead'])}</span><span class="horoscope-card__cta">#{escape(sign['genitive'])} dienos horoskopas <span aria-hidden="true">↗</span></span></div></a></article>)
+  def hub_icon(name, size = 20)
+    %(<svg width="#{size}" height="#{size}" aria-hidden="true" focusable="false"><use href="/assets/visuals/horoscope-icons.svg##{escape(name)}"></use></svg>)
   end
 
-  def ascendant_art
-    %(<svg viewBox="0 0 72 72" focusable="false"><defs><linearGradient id="ascendant-sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f8ff"/><stop offset="1" stop-color="#fff0d4"/></linearGradient><radialGradient id="ascendant-sun" cx=".35" cy=".25"><stop stop-color="#ffe17b"/><stop offset="1" stop-color="#eea72f"/></radialGradient></defs><circle cx="36" cy="36" r="33" fill="url(#ascendant-sky)" stroke="#ffffff" stroke-width="2"/><circle cx="36" cy="36" r="28" fill="none" stroke="#8ba0b5" stroke-opacity=".32"/><path d="M17 44a19 19 0 0 1 38 0" fill="none" stroke="#8ba0b5" stroke-opacity=".34" stroke-width="1.2"/><path d="M36 12v4m17 7-3 3M19 23l3 3M12 36h4m44 0h-4" stroke="#7590a8" stroke-width="1.4" stroke-linecap="round"/><path d="m36 8 1.6 3.3L41 13l-3.4 1.6L36 18l-1.6-3.4L31 13l3.4-1.7L36 8Z" fill="#d9a63c"/><path d="M24 44a12 12 0 0 1 24 0v2H24Z" fill="url(#ascendant-sun)"/><path d="M19 44h34" stroke="#087854" stroke-width="2.3" stroke-linecap="round"/><path d="M13 49c7-3 13-3 20 0s13 3 26-1M19 54c6-2 11-2 17 0s11 2 17 0" fill="none" stroke="#5f9c8b" stroke-opacity=".82" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="19" r="1.3" fill="#d9a63c"/><circle cx="57" cy="20" r="1.2" fill="#d9a63c"/></svg>)
+  def forecast_card(sign, forecast)
+    key = escape(sign['key'])
+    <<~HTML
+      <article class="horoscope-card" aria-labelledby="horoscope-#{key}">
+        <header class="horoscope-card__identity">
+          <span class="horoscope-card__mark">#{mark(key)}</span>
+          <div class="horoscope-card__name">
+            <p class="horoscope-card__element">#{escape(sign['element'])}</p>
+            <h3 class="horoscope-card__title" id="horoscope-#{key}">#{escape(sign['name'])}</h3>
+            <p class="horoscope-card__range">#{escape(sign['range'])}</p>
+          </div>
+        </header>
+        <div class="horoscope-card__content">
+          <p class="horoscope-card__heading">#{escape(forecast['editorial_heading'])}</p>
+          <p class="horoscope-card__excerpt">#{escape(forecast['lead'])}</p>
+        </div>
+        <div class="horoscope-card__actions">
+          <a class="horoscope-card__link" href="/horoskopai/#{key}/" aria-label="Skaityti #{escape(sign['genitive'])} horoskopą">
+            <span>Skaityti</span>#{hub_icon('arrow')}
+          </a>
+          <!-- horoscope-share-action -->
+        </div>
+      </article>
+    HTML
   end
 
   def ascendant_calculator(sign)
     %(<section class="ascendant-calculator" aria-labelledby="ascendant-title" style="--sign-accent: #{escape(sign['theme'])}">
-      <header class="ascendant-calculator__header"><span class="ascendant-calculator__art" aria-hidden="true">#{ascendant_art}</span><div><p class="horoscope-kicker">Saulės ženklas: #{escape(sign['name'])}</p><h2 id="ascendant-title">Norite sužinoti savo ascendentą?</h2><p class="ascendant-calculator__intro">Ascendentui apskaičiuoti reikia gimimo datos, tikslaus vietos laiko ir gimimo vietos. Skaičiuojama šiame įrenginyje.</p></div></header>
+      <header class="ascendant-calculator__header"><span class="ascendant-calculator__art" aria-hidden="true"><img src="/assets/visuals/shell/ascendant-dial.svg" width="112" height="112" alt="" aria-hidden="true" loading="lazy" decoding="async"></span><div><p class="horoscope-kicker">Saulės ženklas: #{escape(sign['name'])}</p><h2 id="ascendant-title">Norite sužinoti savo ascendentą?</h2><p class="ascendant-calculator__intro">Ascendentui apskaičiuoti reikia gimimo datos, tikslaus vietos laiko ir gimimo vietos. Skaičiuojama šiame įrenginyje.</p></div></header>
       <form class="ascendant-form" id="ascendant-form">
         <div class="ascendant-form__field"><label for="birth-date">Gimimo data</label><input id="birth-date" name="birth-date" type="date" min="1900-01-01" required autocomplete="bday"></div>
         <div class="ascendant-form__field"><label for="birth-time">Gimimo laikas</label><input id="birth-time" name="birth-time" type="time" step="60" required autocomplete="off"><small>Įveskite laiką, nurodytą gimimo dokumentuose.</small></div>
@@ -166,7 +188,7 @@ module HoroscopesPages
       </header>
       <div class="horoscope-body-grid">
         <section class="horoscope-lead" aria-labelledby="horoscope-lead-title"><p class="horoscope-kicker">Dienos kryptis</p><h2 id="horoscope-lead-title">#{escape(forecast['lead'])}</h2></section>
-        <section class="horoscope-reading" aria-labelledby="horoscope-overview-title"><h2 id="horoscope-overview-title">Bendra dienos nuotaika</h2><p>#{escape(forecast['overview'])}</p></section>
+        <section class="horoscope-reading horoscope-reading--overview" aria-labelledby="horoscope-overview-title"><h2 id="horoscope-overview-title">Bendra dienos nuotaika</h2><p>#{escape(forecast['overview'])}</p></section>
         <section class="horoscope-reading horoscope-reading--relationship" aria-labelledby="horoscope-relationships-title"><span class="horoscope-reading__index" aria-hidden="true">01</span><h2 id="horoscope-relationships-title">Santykiai</h2><p>#{escape(forecast['relationships'])}</p></section>
         <section class="horoscope-reading horoscope-reading--work" aria-labelledby="horoscope-work-title"><span class="horoscope-reading__index" aria-hidden="true">02</span><h2 id="horoscope-work-title">Veikla ir darbai</h2><p>#{escape(forecast['work'])}</p></section>
         <section class="horoscope-reading horoscope-reading--reflection" aria-labelledby="horoscope-reflection-title"><span class="horoscope-reading__index" aria-hidden="true">03</span><h2 id="horoscope-reflection-title">Apmąstymui</h2><p>#{escape(forecast['reflection'])}</p></section>
@@ -194,13 +216,37 @@ module HoroscopesPages
     date_label = local_date_label(daily.fetch('local_date'))
     month_title = "#{date.year} m. #{MONTHS[date.month - 1]} #{date.day} d."
     hub_description = "Dienos horoskopai #{month_title} visiems 12 Zodiako ženklų. Santykių ir darbų temos, klausimai apmąstymui bei nuorodos į ascendento skaičiuoklę."
-    cards = @signs.map { |sign| forecast_card(sign, forecasts.fetch(sign.fetch('key')), date_label) }.join
-    hub = %(<div class="horoscope-hub"><section class="horoscope-hub-hero"><div class="horoscope-hub-hero__copy"><p class="horoscope-kicker">Dienos horoskopai <span aria-hidden="true">/</span> 12 Vakarų zodiako ženklų</p><h1>Dienos horoskopai</h1><p class="horoscope-hub-hero__intro">Pasirinkite Zodiako ženklą ir skaitykite dienos tekstą apie santykius, darbus bei kasdienius pasirinkimus. Turinio data nurodoma Lietuvos laiku.</p>#{update_status(daily, 'horoscope-hub-hero__date')}</div><div class="horoscope-hub-hero__art"><img src="/assets/visuals/zodiac-wheel.svg" width="180" height="180" alt="" aria-hidden="true" decoding="async"><div><strong>12 ženklų</strong><span>Po atskirą dienos tekstą kiekvienam</span></div></div></section>
-      #{ZodiacPages.hub_cta}
-      <section class="horoscope-directory" aria-labelledby="horoscope-directory-title"><div class="horoscope-section-heading"><div><p class="horoscope-kicker">Pasirinkite ženklą</p><h2 id="horoscope-directory-title">Šios dienos horoskopai</h2></div><span class="horoscope-directory__count">12 ženklų</span></div><div class="horoscope-card-grid">#{cards}</div></section>
-      <section class="horoscope-about" aria-labelledby="horoscope-about-title"><p class="horoscope-kicker">Apie šį puslapį</p><h2 id="horoscope-about-title">Dienos tekstai pramogai ir apmąstymui</h2><p>Vakarų tropinio zodiako ženklai šiame puslapyje pateikti kaip kultūrinė astrologijos sistema. Horoskopai nėra mokslu pagrįstos asmeninės prognozės. Tekstuose nerasite sveikatos diagnozių, finansinių rekomendacijų ar garantuotų baigčių.</p><details><summary>Kaip parengiami dienos tekstai?</summary><p>Kalendorius365 tekstai automatiškai sudaromi lietuvių kalba pagal dienos astrologinių skaičiavimų duomenis. Tikrinama jų data, struktūra ir pasikartojimai. Nepriklausomas gimtakalbis redaktorius jų neperžiūri. Skaičiavimų šaltinis – <a href="https://api.astroway.info/en/terms/">AstroWay</a>; jo horoskopų tekstų neperpublikuojame. Apie astrologijos ir mokslinės prognozės skirtumą skaitykite <a href="https://www.vle.lt/straipsnis/astrologija/">Visuotinėje lietuvių enciklopedijoje</a>.</p></details></section>
-      <nav class="horoscope-related" aria-label="Kiti kalendoriaus įrankiai"><a href="/sventes/">Lietuvos šventės</a><a href="/menulio-fazes/">Mėnulio fazės</a><a href="/saule/">Saulėtekis ir saulėlydis</a><a href="/atostogu-planavimas/">Atostogų planavimas</a></nav>
-      <p class="horoscope-disclaimer">Horoskopai skirti pramogai ir apmąstymui. Tai nėra mokslinės prognozės ar profesionalios konsultacijos; svarbius sprendimus grįskite patikrinta informacija.</p></div>)
+    cards = @signs.map { |sign| forecast_card(sign, forecasts.fetch(sign.fetch('key'))) }.join
+    hub = <<~HTML
+      <div class="horoscope-hub">
+        <header class="horoscope-hub-hero">
+          <div class="horoscope-hub-hero__copy">
+            #{update_status(daily, 'horoscope-hub-hero__date')}
+            <h1>Dienos horoskopai</h1>
+            <p class="horoscope-hub-hero__intro">Pasirinkite savo Zodiako ženklą. Skaitykite dienos įžvalgas apie santykius, darbus ir kasdienius pasirinkimus.</p>
+            <a class="horoscope-hub-hero__guide" href="/zodiakas/#mano-zenklas">Rasti savo Zodiako ženklą #{hub_icon('arrow')}</a>
+          </div>
+          <div class="horoscope-hub-hero__art"><img src="/assets/visuals/horoscope-icons.svg" width="250" height="250" alt="" aria-hidden="true" decoding="async"></div>
+        </header>
+        <section class="horoscope-directory" aria-labelledby="horoscope-directory-title">
+          <div class="horoscope-section-heading"><h2 id="horoscope-directory-title">Pasirinkite Zodiako ženklą</h2></div>
+          <div class="horoscope-card-grid">#{cards}</div>
+        </section>
+        <section class="horoscope-about" aria-labelledby="horoscope-about-title">
+          <h2 id="horoscope-about-title">Apie dienos horoskopus</h2>
+          <p>Horoskopai skirti pramogai ir apmąstymui. Jie remiasi Vakarų tropinio zodiako tradicija ir nėra mokslinės prognozės ar profesionalios konsultacijos. Datos pateikiamos Lietuvos laiku.</p>
+          <details>
+            <summary>Kaip parengiami dienos tekstai? #{hub_icon('chevron')}</summary>
+            <p>Tekstai lietuvių kalba sudaromi automatiškai pagal <a href="https://api.astroway.info/en/terms/">„AstroWay“ astrologinių skaičiavimų duomenis</a>. Tikriname tekstų datą, struktūrą ir pasikartojimus. Nepriklausomas gimtakalbis redaktorius jų neperžiūri. Apie astrologiją skaitykite <a href="https://www.vle.lt/straipsnis/astrologija/">Visuotinėje lietuvių enciklopedijoje</a>.</p>
+          </details>
+        </section>
+        <nav class="horoscope-related" aria-label="Susiję puslapiai">
+          <a href="/horoskopai/istorija/" data-share-history>Horoskopų archyvas</a>
+          <a href="/sventes/">Lietuvos šventės</a><a href="/menulio-fazes/">Mėnulio fazės</a>
+          <a href="/saule/">Saulėtekis ir saulėlydis</a><a href="/atostogu-planavimas/">Atostogų planavimas</a>
+        </nav>
+      </div>
+    HTML
     write_page('horoskopai', "Dienos horoskopai visiems 12 Zodiako ženklų", hub_description, hub)
 
     @signs.each do |sign|

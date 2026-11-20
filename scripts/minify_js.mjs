@@ -51,10 +51,15 @@ async function preloadInitialModules(directory) {
         // Only eagerly used public data is preloaded. Lazy search, birth data,
         // astronomy, APIs and personal calendar state are never speculated.
         const data = new Set();
-        if (roots.some(url=>/^\/assets\/(?:app|tools)\.js\?/.test(url))) data.add('calendar.json');
-        if (roots.some(url=>/^\/assets\/app\.js\?/.test(url))) data.add('home-holiday-data.json');
+        const isHomepage = roots.some(url => url.startsWith('/assets/app.js?'));
+        // The tools module also handles pages without calendar data. Match its
+        // calculator and planner entry points before preloading the data file.
+        const usesCalendarTool = roots.some(url => url.startsWith('/assets/tools.js?')) &&
+          /\sid="(?:workday-check-form|iso-date|next-holiday|calculator|year-comparison-form|generator)"/.test(html);
+        if (isHomepage || usesCalendarTool) data.add('calendar.json');
+        if (isHomepage) data.add('home-holiday-data.json');
         for (const name of data) {
-          const source = await readFile(resolve(directory, roots.some(url=>url.startsWith('/assets/app.js?'))?'app.js':'tools.js'), 'utf8');
+          const source = await readFile(resolve(directory, isHomepage ? 'app.js' : 'tools.js'), 'utf8');
           const url = source.match(new RegExp('/assets/data/'+name.replaceAll('.', '\\.')+'\\?v=[a-f0-9]+'))?.[0];
           if (url) hints.push(`<link rel="preload" href="${url}" as="fetch" crossorigin>`);
         }

@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sutartiniu-diena-2029@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20291116
+DTEND;VALUE=DATE:20291117
+SUMMARY:Lietuvių sutartinių diena
+DESCRIPTION:Lapkričio 16 d. Lietuvoje minima sutartinių diena. Tą dieną
+  2010 m. sutartinės įtrauktos į UNESCO nematerialaus kultūros paveldo 
+ sąrašą.
+URL:https://kalendorius365.lt/sventes/sutartiniu-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

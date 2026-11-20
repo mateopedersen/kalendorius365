@@ -51,7 +51,7 @@ Dir.mktmpdir('zodiac-generator-', ENV.fetch('K365_QA_TMP') { Dir.tmpdir }) do |s
       raise "Source-methodology link lost: #{key}" unless page.include?('href="/horoskopai/#horoscope-about-title"')
     end
     hub = File.read(File.join(sandbox, 'site/horoskopai/index.html'))
-    raise 'Daily hub lost guide CTA' unless hub.include?('href="/zodiakas/"')
+    raise 'Daily hub lost guide CTA' unless hub.include?('href="/zodiakas/#mano-zenklas"')
     raise 'Honest automation-method disclosure lost' unless hub.include?('Kaip parengiami dienos tekstai?') && hub.include?('Nepriklausomas gimtakalbis redaktorius jų neperžiūri.')
     report << { date: date, detail_pages: profiles.length, hub: true, guide_sha256: guide_hash,
                 unchanged_profiles: profiles.length, real_daily_dataset_modified: false }

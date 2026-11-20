@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:pasauline-autizmo-supratimo-diena-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20260402
+DTEND;VALUE=DATE:20260403
+SUMMARY:Pasaulinė autizmo supratimo diena
+DESCRIPTION:Balandžio 2 d. minima Pasaulinė autizmo supratimo diena. Liet
+ uvoje tai kartu ir įstatyme minima atmintina data.
+URL:https://kalendorius365.lt/sventes/pasauline-autizmo-supratimo-diena/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -26,8 +26,8 @@ test("year summary distinguishes Gregorian leap-century rules", () => {
   assert.throws(() => monthGrid(2027, 13), /galiojančius/);
 });
 
-test("year directory connects all three date-correct month previews to their month pages", () => {
-  for (const year of [2027, 2028, 2029]) {
+test("year directory connects all four date-correct month previews to their month pages", () => {
+  for (const year of [2027, 2028, 2029, 2030]) {
     assert.match(page, new RegExp(`data-year-card="${year}"`));
     assert.match(page, new RegExp(`data-year-preview="${year}"`));
   }

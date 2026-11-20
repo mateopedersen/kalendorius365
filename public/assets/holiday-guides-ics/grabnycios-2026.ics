@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//Lietuvos datos//LT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:grabnycios-2026@kalendorius365.lt
+DTSTAMP:20261120T090000Z
+DTSTART;VALUE=DATE:20260202
+DTEND;VALUE=DATE:20260203
+SUMMARY:Grabnyčios (Žvakių diena)
+DESCRIPTION:Vasario 2-ąją minimos Grabnyčios. Katalikų kalendoriuje tai
+  Kristaus Paaukojimo šventė.
+URL:https://kalendorius365.lt/sventes/grabnycios/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

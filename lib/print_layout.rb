@@ -5,11 +5,11 @@ module Pages
  # share a layout without cloning or moving personal data.
  def print_html(path, html)
   case path
-  when /\A202[789]\z/
+  when /\A(?:202[789]|2030)\z/
    html=html.sub('<div class="year-grid annual-sheet">',"<div class=\"year-grid annual-sheet\" data-print-root=\"annual\" data-print-title=\"#{path} metų kalendorius\">")
   when 'kurti-kalendoriu'
    html=html.sub('<div id="generator-preview">','<div id="generator-preview" data-print-root="generator">')
-  when %r{\Adarbo-dienos/202[789]\z}
+  when %r{\Adarbo-dienos/(?:202[789]|2030)\z}
    html=html.gsub('<section data-work-table=','<section data-print-root="table" data-work-table=')
   when 'atostogu-planavimas'
    html=html.gsub(/<section id="leave-(summary|results|detail)"/) { |tag|tag+' data-print-root="result"' }

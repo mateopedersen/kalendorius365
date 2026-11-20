@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 const months=['sausis','vasaris','kovas','balandis','geguze','birzelis','liepa','rugpjutis','rugsejis','spalis','lapkritis','gruodis'];
-test('all 36 seasonal illustrations contain the actual Monday-first calendar for their destination',()=>{
+test('all 48 seasonal illustrations contain the actual Monday-first calendar for their destination',()=>{
  const themes=new Set();
- for(const year of [2027,2028,2029]) for(const [index,slug] of months.entries()){
+ for(const year of [2027,2028,2029,2030]) for(const [index,slug] of months.entries()){
   const svg=readFileSync(new URL(`../site/assets/visuals/month-calendars/${year}-${slug}.svg`,import.meta.url),'utf8');
   const days=[...svg.matchAll(/<text data-day="(\d+)" x="(\d+)" y="(\d+)"/g)];
   const expectedCount=new Date(Date.UTC(year,index+1,0)).getUTCDate();

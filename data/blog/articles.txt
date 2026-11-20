@@ -6,6 +6,7 @@ description: Nuo nekintamų datų iki laisvų vakarų: praktiškai susidėliokit
 source: / | Asmeninis Kalendorius365 kalendorius
 source: /menesiai/ | Spausdinami mėnesių kalendoriai
 source: /privatumas/ | Kaip saugomi jūsų planavimo duomenys
+related: menesio-ar-metu-kalendorius, savaites-planas-be-perkrovos
 ## Pirmiausia pažiūrėkite, kiek vietos iš tikrųjų turite
 Atverčiate naują mėnesį, o galvoje jau sukasi darbai, gimtadieniai ir pažadas pagaliau susitvarkyti spintą? Pradėkite nuo tuščio kalendoriaus, tačiau neskubėkite užpildyti kiekvieno langelio. Mėnesio planas naudingas tada, kai parodo realias galimybes. Jis neprivalo sutalpinti visų norų.
 
@@ -14,6 +15,8 @@ Pasirinkite vieną pagrindinę vietą: popierinį lapą ant stalo arba naršykl�
 Pirmu sluoksniu pažymėkite susitikimus, darbo pamainas, gydytojo vizitus, keliones ir kitus įvykius, kurių data jau nustatyta. Prie kiekvieno pridėkite pradžios laiką. Jei susitikimas vyksta kitame mieste, pažymėkite ir kelionę: valandos susitikimas nebūtinai užima tik vieną valandą jūsų dienoje.
 
 Pažvelkite į Lietuvos šventines dienas ir savo darbovietės grafiką. Raudona data kalendoriuje dar nepasako, ar asmeniškai jums tą dieną reikės dirbti. Atskirai pasižymėkite mokyklos patvirtintas atostogas ir kitus šeimai svarbius laikotarpius. Viešas kalendorius suteikia atspirties tašką, o galutinį planą lemia jūsų tikrieji susitarimai.
+
+Kartu su šeima planuojamoms datoms galite naudoti [šeimos kalendoriaus šablonus](/seimos-kalendorius/). Jei planą pildote vieni, užduotis ir susitikimus galima atskirti [asmeniniame „Mano dienos“ planuoklyje](/mano-diena/).
 ## Pasirinkite tris mėnesio rezultatus
 Vietoj ilgo užduočių sąrašo paklauskite savęs: ką būtų malonu ir prasminga užbaigti iki mėnesio pabaigos? Gal norite pateikti paraišką, sutvarkyti dviračio stabdžius ir aplankyti artimą žmogų. Tai trys skirtingi rezultatai, kuriems reikės skirtingo laiko.
 
@@ -47,6 +50,7 @@ description: Pasirinkite PDF, patikrinkite popieriaus dydį bei mastelį ir prie
 source: /menesiai/ | Mėnesių kalendorių PDF ir WebP failai
 source: /kurti-kalendoriu/ | Kalendoriaus kūrėjas
 source: /tuscias-kalendorius/ | Tušti kalendorių šablonai
+related: kaip-pasirinkti-tuscia-kalendoriu, menesio-ar-metu-kalendorius
 ## Spausdinkite failą, o ne ekrano nuotrauką
 Kalendorius ekrane atrodo ryškus, bet ant popieriaus dienų skaičiai staiga tampa neryškūs? Dažna priežastis yra pasirinktas šaltinis. Maža peržiūros nuotrauka skirta greitai išsirinkti maketą. Ji nėra pats spausdinimo failas. Atsisiųskite prie pasirinkto dizaino pateiktą PDF ir atverkite jį PDF skaitytuvėje arba naršyklėje.
 
@@ -59,6 +63,8 @@ Spausdintuvo lange pasirinkite tikrą įdėto popieriaus dydį. Gulsčiam kalend
 Parinktis „Actual size“ arba „100 %“ išlaiko dokumente nustatytą mastelį. Ji naudinga, kai svarbūs tikslūs matmenys ir visas maketas telpa spausdinamoje srityje. Tačiau dauguma buitinių spausdintuvų negali spausdinti iki pat lapo krašto. Jei dokumento turinys patenka į šią zoną, dalis jo gali būti nukirsta.
 
 Parinktis „Fit“ pritaiko puslapį prie spausdinamos srities. Kalendoriui tai dažnai saugesnis pradinis pasirinkimas. Vis dėlto peržiūrėkite rezultatą: didelės programos paraštės gali palikti per mažą kalendorių lapo viduryje. Nenaudokite kelių mastelio keitimų vienu metu, pavyzdžiui, dokumente ir dar kartą spausdintuvo tvarkyklėje.
+
+Jei spausdinate iš „Acrobat“, [„Adobe“ mastelio instrukcijoje](https://helpx.adobe.com/acrobat/desktop/print-documents/set-up-and-print-pdfs/page-size.html) parodyta, kuo skiriasi faktinis dydis ir pritaikymas popieriui. Jei nurodyto popieriaus neturite, rinkitės kitą [kalendoriaus maketą](/pdf-kalendoriai/).
 ## Išjunkite tai, ko lape nereikia
 Spausdinant interneto puslapį naršyklė gali pridėti adresą, datą, puslapio numerį arba antraštę. Jei norite švaraus kalendoriaus, spausdinimo lange išjunkite antraštes ir poraštes. Tikslūs parinkčių pavadinimai priklauso nuo naršyklės bei operacinės sistemos, todėl vadovaukitės matoma peržiūra, o ne vien mygtuko pavadinimu.
 
@@ -87,6 +93,7 @@ category: Datos ir kalendorius
 description: Supraskite ISO savaičių numerius ir metų sandūrą pagal konkretų 2026–2027 metų pavyzdį.
 source: /savaites/2027/ | 2027 metų savaičių numeriai
 source: https://www.gnu.org/software/emacs/manual/html_node/calc/ISO-8601.html | GNU dokumentacija: ISO 8601 savaitės
+related: keliamieji-metai-2028, datos-skirtumas-ir-abi-ribos
 ## Data ir savaitės metai atsako į skirtingus klausimus
 Pažvelgiate į sausio 1-ąją ir greta matote 53 savaitę. Atrodo, kad kalendorius suklydo: juk prasidėjo nauji metai. Tačiau savaitės numeris ir kalendorinės datos metai skaičiuojami pagal skirtingas ribas. Data pasikeičia vidurnaktį iš gruodžio 31-osios į sausio 1-ąją. Visa pirmadienį prasidėjusi savaitė vien dėl to nėra padalijama į dvi numeruotas savaites.
 
@@ -95,6 +102,8 @@ ISO sistemoje savaitė prasideda pirmadienį ir baigiasi sekmadienį. Kiekviena 
 Pirmoji ISO metų savaitė yra ta, kurioje yra pirmasis tų metų ketvirtadienis. Galite taikyti ir lygiavertį patikrinimą: pirmoji savaitė yra ta, kurioje yra sausio 4-oji. Abu būdai veda prie tos pačios septynių dienų grupės. Pasirinkite tą taisyklę, kurią lengviau atsiminti.
 
 Jei sausio 1-oji yra penktadienis, tos savaitės ketvirtadienis dar buvo gruodį. Vadinasi, savaitė priklauso ankstesniems savaitės metams. Naujoji pirma savaitė prasidės artimiausią pirmadienį. Tai ypač svarbu dokumentuose, kuriuose nurodoma tik „1 savaitė“, bet nepaaiškinama, kuriomis datomis ji prasideda ir baigiasi.
+
+Atsivertę [ISO savaičių skaičiuoklę](/savaites/) galite patikrinti, kuriam pirmadienio–sekmadienio intervalui priskiriama jūsų data. [Taisyklės pavyzdžiuose](https://www.gnu.org/software/emacs/manual/html_node/calc/ISO-8601.html) paaiškinama, kaip pirmoji savaitė siejama su sausio 4-ąja.
 ## Patikrinkime 2027 metų pradžią
 2027 m. sausio 1-oji yra penktadienis. Pirmadienis toje pačioje savaitėje buvo 2026 m. gruodžio 28-oji, o sekmadienis bus 2027 m. sausio 3-ioji. Visa ši savaitė žymima 2026-W53. Nors trys jos dienos kalendoriuje jau yra 2027 metais, savaitės metai išlieka 2026.
 
@@ -127,6 +136,7 @@ category: Datos ir kalendorius
 description: Pasitikrinkite keliamųjų metų taisyklę ir sužinokite, ką papildoma vasario diena reiškia jūsų kalendoriui.
 source: /2028/ | 2028 metų kalendorius
 source: https://aa.usno.navy.mil/faq/leap_years | USNO: keliamųjų metų taisyklė
+related: iso-savaiciu-numeriai, datos-skirtumas-ir-abi-ribos
 ## Papildoma diena atsiranda ne atsitiktinai
 Jei planuojate 2028 metų vasarį, palikite vietos dar vienai datai. Šie metai yra keliamieji, todėl vasaris turi 29 dienas, o visi metai – 366. Įprastais metais vasaris baigiasi 28-ąją. Skirtumas mažas, tačiau jis svarbus tada, kai skaičiuojate laikotarpius, sudarote grafikus ar kartojate kasmetinius įvykius.
 
@@ -139,6 +149,8 @@ Todėl 2000 metai buvo keliamieji, o 2100 metai tokie nebus. Skaičius 2028 dali
 Papildoma vasario diena pakeičia visų vėlesnių to paties metų datų savaitės dieną, palyginti su metais, kuriuose vasaris turėtų tik 28 dienas. Todėl senas kalendorius, kuriame sutampa sausio pradžia, nebūtinai tiks visiems metams. Prieš pakartotinai naudodami maketą tikrinkite ir metų tipą.
 
 2028 m. vasario 29-oji yra antradienis. Kovo 1-oji bus trečiadienis. Jei lentelėje po vasario 28-osios iš karto įrašėte kovo 1-ąją, nuo tos vietos jūsų grafikas pasislinks viena diena. Vieną kartą patikrinę perėjimą tarp šių mėnesių galite išvengti klaidų daugelyje vėlesnių įrašų.
+
+Skaičiuodami [2028 m. vasario dienas](/2028/vasaris/) matysite ir vasario 29-ąją. Kitus metus palyginsite [keliamųjų metų skaičiuoklėje](/keliamieji-metai/).
 ## Gimtadieniui reikia susitarimo, o ne spėjimo
 Jei žmogus gimė vasario 29-ąją, paprastais metais jo gimimo datos kalendoriuje nėra. Kada jis pasirenka švęsti – vasario 28-ąją ar kovo 1-ąją – geriausia paklausti paties žmogaus. Šventimo pasirinkimo nereikėtų painioti su teisiniu amžiaus ar termino nustatymu, kuriam gali būti taikomos atskiros taisyklės.
 
@@ -168,6 +180,7 @@ description: Prieš skaičiuodami terminą pasirinkite dienų rūšį, ribines d
 source: /datos-skaiciuokle/ | Datos skaičiuoklė
 source: /darbo-dienos/2027/ | Darbo dienų skaičiavimo prielaidos
 source: https://vdi.lrv.lt/lt/dazniausiai-uzduodami-klausimai/ | Valstybinės darbo inspekcijos paaiškinimai
+related: datos-skirtumas-ir-abi-ribos, kaip-planuoti-ilgaji-savaitgali
 ## Pradėkite nuo paties susitarimo
 „Atsakysime per penkias dienas“ skamba aiškiai, kol tarp jų neatsiranda savaitgalis. Jei dienos kalendorinės, šeštadienis ir sekmadienis paprastai patenka į laikotarpį. Jei darbo, reikia žinoti, kokia darbo savaitė taikoma ir ar laikotarpyje yra šventinių dienų. Vienas skaičius be šių sąlygų gali suklaidinti.
 
@@ -176,6 +189,8 @@ Todėl prieš įvesdami datas į skaičiuoklę perskaitykite dokumento ar prane�
 Skaičiuojant kalendorines dienas nereikia praleisti savaitgalių. Nuo pirmadienio iki kito pirmadienio praeina septynios paros. Tačiau jei užduotis yra suskaičiuoti visas pažymėtas datas ir įtraukiate abu pirmadienius, gausite aštuonias datas. Abu rezultatai gali būti teisingi, tik jie atsako į skirtingus klausimus.
 
 Šis skirtumas svarbus kelionėms, renginiams ir asmeniniams planams. Keturių dienų išvyka nuo penktadienio iki pirmadienio apima keturias kalendorines datas, nors tarp pradžios ir pabaigos datų yra trijų dienų skirtumas. Užrašykite, ką skaičiuojate: praėjusį laiką, nakvynes ar dienas su abiem ribomis.
+
+Jei reikia Lietuvos darbo dienų pagal mėnesį, visų metų modelį rasite [darbo dienų kalendoriuje](/darbo-dienos/2027/). Individualią pradžios ir pabaigos datą įveskite [datų skaičiuoklėje](/datos-skaiciuokle/).
 ## Darbo dienoms reikia apibrėžto grafiko
 Įprastas skaičiuoklės pavyzdys remiasi pirmadienio–penktadienio darbo savaite ir Lietuvos šventinėmis dienomis. Tačiau žmogus, dirbantis pamainomis, gali dirbti ir sekmadienį, o pirmadienį ilsėtis. Viešos darbo dienų lentelės negalima automatiškai prilyginti jo asmeniniam darbo grafikui.
 
@@ -208,6 +223,7 @@ description: Atskirkite nedarbo dienas, kultūrines progas ir savo asmeninį gra
 source: /sventes/ | Lietuvos švenčių paaiškinimai ir šaltiniai
 source: /atmintinos-dienos/ | Atmintinos dienos
 source: https://vdi.lrv.lt/lt/naujienos/vdi-darbas-lapkricio-12-dienomis-turi-buti-apmokamas-bent-dvigubai-mrB/ | VDI paaiškinimas apie šventines dienas
+related: baltijos-kelias-rugpjucio-23, veliniu-lapkricio-kalendorius
 ## Viena spalva gali slėpti kelias reikšmes
 Kalendoriuje išskirta data pirmiausia atkreipia dėmesį. Tačiau vien raudonas skaičius dar nepaaiškina, ar tai įstatyme numatyta šventinė diena, sekmadienis, istorinė sukaktis ar jūsų pačių pažymėtas įvykis. Prieš planuodami ilgesnį poilsį perskaitykite datos pavadinimą ir kalendoriaus legendą.
 
@@ -220,6 +236,8 @@ Prieš užsakydami kelionę patikrinkite savo patvirtintą grafiką ir atostogų
 Atmintinos dienos skirtos istoriniams įvykiams, kultūrai, žmonėms ar kitoms visuomenei svarbioms temoms prisiminti. Jų buvimas kalendoriuje nereiškia, kad tą dieną visoje šalyje nedirbama. Pavyzdžiui, renginio ar minėjimo datą verta pasižymėti, bet darbo grafiką tikrinti atskirai.
 
 Kalendorius365 šias grupes pateikia atskirai, kad matytumėte ir kultūrinį kontekstą, ir planavimui reikšmingą statusą. Atsidarę konkrečios šventės puslapį ieškokite paaiškinimo, kokiai grupei ji priklauso. Jei dalijatės data su kitu žmogumi, naudokite jos pavadinimą. Vien pasakyti „raudona diena“ per mažai, nes jo kalendoriuje spalvos gali reikšti ką kita.
+
+Tų pačių metų [nedarbo švenčių sąrašas](/sventes/2027/) ir [atmintinų datų gidas](/atmintinos-dienos/) pateikia skirtingų tipų įrašus. Palyginkite juos, jei nuo datos statuso priklauso jūsų darbo savaitės planas.
 ## Savaitgalis automatiškai nesukuria papildomo pirmadienio
 Jei šventė sutampa su šeštadieniu ar sekmadieniu, gali kilti mintis, kad poilsis bus perkeltas į pirmadienį. Lietuvoje bendros automatinio perkėlimo taisyklės dėl tokio sutapimo nėra. Tai primena ir Valstybinės darbo inspekcijos paaiškinimai. Todėl kitos šalies praktikos neperkelkite į savo kalendorių nepatikrinę.
 
@@ -248,6 +266,7 @@ description: Viename lape suderinkite nustatytus laikus, svarbiausius darbus ir 
 source: /savaitiniai-planuokliai/ | Savaitiniai planuokliai
 source: /dienos-planuoklis/ | Dienos planuoklis
 source: / | Asmeninis kalendorius ir užduotys
+related: dienos-planas-trys-svarbus-darbai, kaip-susiplanuoti-menesi
 ## Du sąrašai, kuriems reikia skirtingos vietos
 Antradienį vienuoliktą turite susitikimą, o iki savaitės pabaigos norite sutvarkyti tris dokumentus. Susitikimas jau turi tikslų laiką. Dokumentai kol kas turi tik norimą rezultatą. Jei abu įrašus surašysite į vieną ilgą stulpelį, gali atrodyti, kad viskam pakaks vietos, nors laiko tam dar nepaskyrėte.
 
@@ -256,6 +275,8 @@ Savaitės lape atskirkite kalendorių ir užduočių sąrašą. Kalendoriuje lai
 Pradėkite nuo darbo valandų, pamainų, paskaitų ir jau patvirtintų susitikimų. Pridėkite keliones bei pasiruošimą. Jei susitikimas baigiasi trečią, o iki kitos vietos važiuosite pusvalandį, trečia valanda nėra laisva kito įvykio pradžia. Šios mažos detalės lemia, ar planu galėsite realiai naudotis.
 
 Pažiūrėkite ir į bendrus šeimos įsipareigojimus. Vaiko paėmimas iš būrelio arba apsipirkimas prieš svečių atvykimą taip pat užima laiką. Jų nebūtina aprašyti išsamiai, tačiau verta matyti, kuri dienos dalis jau užimta. Kitaip užduotims netyčia paskirsite laiką, kurį iš tiesų naudojate kitkam.
+
+Jei norite atskiros vietos susitikimo laikui ir darbų sąrašui, išbandykite [savaitės lapą su užduočių skiltimi](/savaitiniai-planuokliai/).
 ## Užduotį užrašykite taip, kad galėtumėte pradėti
 „Projektas“ yra tema, bet ne pirmas veiksmas. „Sudėti tris pasiūlymus į palyginimo lentelę“ jau leidžia suprasti, ką daryti atsisėdus prie stalo. Jei užduotis vis atrodo per didelė, padalykite ją iki tokio žingsnio, kurio pradžiai nereikėtų papildomo planavimo.
 
@@ -288,6 +309,7 @@ description: Susitarkite dėl ženklų, atsakomybių ir pakeitimų, kad bendras 
 source: /seimos-kalendorius/ | Šeimos kalendoriaus šablonai
 source: / | Asmeninis kalendorius
 source: /privatumas/ | Vietinės saugyklos ir bendro įrenginio ribos
+related: mokiniu-atostogu-seimos-planas, savaites-planas-be-perkrovos
 ## Bendras planas prasideda nuo vieno susitarimo
 Kas trečiadienį paims vaiką iš treniruotės? Ar šeštadienio išvyka jau patvirtinta? Šeimos kalendorius naudingas tada, kai greitai atsako į tokius klausimus. Jis nebūtinai turi rodyti kiekvieną visų žmonių veiksmą. Pradžiai pakanka bendrų datų ir įvykių, kurie veikia kitų dieną.
 
@@ -296,6 +318,8 @@ Susitarkite, kur ieškosite galutinio plano. Tai gali būti lapas virtuvėje, be
 Atskira spalva kiekvienam šeimos nariui gali padėti, bet vien jos nepakanka. Prie įvykio užrašykite vardą arba sutartą trumpinį. Bendrą veiklą pažymėkite atskirai. Taip planas liks suprantamas ir nespalvotai atsispausdinus, ir žmogui, kuriam panašūs atspalviai sunkiai atskiriami.
 
 Dar svarbiau įrašyti, kas ką padarys. „Būrelis penktą“ nepasako, kas nuveš ir kas parveš. Trumpa pastaba apie atsakomybę išvengia situacijos, kai visi manė, jog tuo pasirūpins kažkas kitas. Jei susitarimas dar nepatvirtintas, pažymėkite tai žodžiu, o ne palikite kitam žmogui atspėti iš simbolio.
+
+Jei planą kabinsite namuose, pasirinkite [šeimos kalendoriaus šabloną](/seimos-kalendorius/), kuriame skirtingų žmonių susitarimus galima matyti viename lape. Savo pavedimus galite laikyti [asmeniniame dienos plane](/mano-diena/).
 ## Neužpildykite bendro lapo visa asmenine informacija
 Virtuvėje kabantį kalendorių gali pamatyti svečiai. Jame dažnai užtenka įrašo „vizitas“ ir laiko. Išsamių medicininių, finansinių ar kitų jautrių aplinkybių viešame namų lape rašyti nereikia. Išsamesnę informaciją žmogus gali laikyti savo asmeninėje vietoje, kuri nepasiekiama kiekvienam lankytojui.
 
@@ -328,6 +352,7 @@ description: Sužinokite, kuo skiriasi JSON kopija ir ICS eksportas, kur laikyti
 source: /privatumas/ | Kalendorius365 duomenų saugojimo paaiškinimas
 source: / | Kalendoriaus JSON kopija ir ICS eksportas
 source: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage | MDN: naršyklės vietinė saugykla
+related: ics-importas-ir-laiko-juostos, seimos-kalendorius-namuose
 ## Naršyklėje išsaugota nereiškia išsaugota visur
 Jei įvykį matote telefone, lengva manyti, kad jis saugiai laukia ir kažkur serveryje. Kalendorius365 veikia kitaip: asmeninis kalendorius, užrašai bei užduotys lieka jūsų naudojamos naršyklės vietinėje saugykloje. Svetainė neturi paskyros, prie kurios prisijungę automatiškai atgautumėte šiuos įrašus naujame įrenginyje.
 
@@ -336,6 +361,8 @@ Tai suteikia aiškią duomenų ribą, bet kartu reiškia, kad kopija turite pasi
 Pagrindinio kalendoriaus JSON kopija skirta jo įvykiams, užduotims, užrašams ir nuostatoms atkurti. Ji naudingiausia, kai norite išlaikyti tos pačios programos būseną arba persikelti į kitą naršyklę. Atsisiuntę patikrinkite, kad failas iš tiesų atsirado įrenginio failų aplanke, o ne liko vien atsisiuntimo pranešimas.
 
 Failo pavadinime galite pasižymėti kopijos datą. Jei kopijas darote reguliariai, išsaugokite bent ankstesnę veikiančią versiją, kol patikrinsite naują. Pamokų planuoklis turi atskirą kopijos funkciją. Pagrindinio kalendoriaus failas neturėtų būti laikomas visų skirtingų svetainės įrankių bendra atsargine kopija nepatikrinus jų paskirties.
+
+[Asmeniniame planuoklyje](/mano-diena/) „JSON kopija“ skirta užrašams, užduotims ir įvykiams perkelti. Jei kitai programai reikia vien įvykių, peržiūrėkite [ICS importo ir eksporto paaiškinimą](/blogas/ics-importas-ir-laiko-juostos/).
 ## ICS skirtas įvykiams perduoti
 ICS failas patogus, kai kalendoriaus įvykius norite perkelti į kitą programą. Tačiau tai nėra tas pats, kas visos programos atsarginė kopija. Užduočių būsena, dienos užrašai ir išvaizdos nuostatos nebūtinai yra kalendoriaus įvykių mainų formato dalis. Šiam tikslui naudokite programos JSON kopiją.
 
@@ -368,6 +395,7 @@ description: ICS failuose atskirkite vietinį laiką, UTC ir visos dienos įvyki
 source: / | ICS importas ir eksportas
 source: /privatumas/ | Įvykių importo ribos ir vietinis duomenų saugojimas
 source: https://datatracker.ietf.org/doc/html/rfc5545 | IETF iCalendar formato aprašas
+related: kalendoriaus-atsargine-kopija, menulio-faziu-kalendoriaus-skaitymas
 ## Tas pats susitikimas gali turėti kelis laiko užrašus
 Gavote ICS failą, jį importavote, o susitikimas pasirodė dviem valandomis anksčiau. Prieš keisdami patį įvykį patikrinkite laiko juostą. Pusė dešimtos Vilniuje ir pusė dešimtos UTC nėra tas pats momentas. Programai reikia žinoti, kurią laiko sistemą turėjo omenyje failo autorius.
 
@@ -380,6 +408,8 @@ Vietinis įvykis su laiko juostos identifikatoriumi leidžia programai taikyti k
 Gimtadieniui arba šventei dažnai reikia tik datos. Toks įvykis turi būti suprantamas kaip visos dienos įrašas, o ne konkretus susitikimo momentas. Jei datą pakeisite vidurnakčio laiku ir vėliau konvertuosite į kitą zoną, įrašas gali atsirasti ankstesnėje arba kitoje kalendorinėje dienoje.
 
 Todėl po importo patikrinkite bent vieną visos dienos įvykį atskirai nuo susitikimų su valandomis. Ar jis liko toje pačioje datoje? Ar programa neparodė nereikalingo pradžios laiko? Šis mažas patikrinimas ypač naudingas tada, kai viename faile yra ir šventės, ir tikslų laiką turintys jūsų asmeniniai susitikimai.
+
+Lietuvos vasaros laiko datas galite palyginti su [ES paskelbtu 2027–2031 m. grafiku](https://eur-lex.europa.eu/eli/C/2026/1660/oj/lit). Jei perkeliami ir užrašai bei užduotys, naudokite [visos naršyklėje saugomos kopijos gidą](/blogas/kalendoriaus-atsargine-kopija/).
 ## Pabaigos data gali būti neįtraukiama
 iCalendar formato visos dienos įvykio pabaiga aprašo ribą, kuri į patį įvykį neįtraukiama. Vienos dienos įrašui failas gali turėti pradžios datą ir kitos dienos pabaigos ribą. Perskaičius failą kaip paprastą lentelę gali pasirodyti, kad įvykis trunka dvi dienas, nors tai nėra klaida.
 
@@ -408,6 +438,7 @@ description: Mėnesio tinklelis, savaitės lapas ar dienos planas? Palyginkite v
 source: /tuscias-kalendorius/ | Nedatuoti kalendorių šablonai
 source: /savaitiniai-planuokliai/ | Savaitės planuokliai
 source: /dienos-planuoklis/ | Dienos plano šablonai
+related: kaip-spausdinti-kalendoriu, savaites-planas-be-perkrovos
 ## Pirma nuspręskite, ką norite matyti vienu žvilgsniu
 Tuščias kalendorius gali atrodyti labai paprastai: keli langeliai, pavadinimas ir vieta užrašams. Tačiau pasirinktas išdėstymas lemia, ar jame matysite visą mėnesį, ar galėsite patogiai surašyti vienos dienos darbus. Prieš rinkdamiesi spalvą pagalvokite, kokio klausimo atsakymo ieškosite dažniausiai.
 
@@ -416,6 +447,8 @@ Jei norite žinoti, kurie savaitgaliai dar laisvi, pradėkite nuo mėnesio tinkl
 Mėnesio lape greitai pastebėsite keliones, gimtadienius, projektų terminus ir kitus didesnius įvykius. Tačiau vieno langelio plotas ribotas. Į jį geriau rašyti trumpą pavadinimą arba nuorodą į išsamesnį sąrašą. Jei kiekvieną dieną turite daug susitikimų, mėnesio lapas neturėtų tapti vienintele jų aprašymo vieta.
 
 Nedatuotame tinklelyje patys įrašote skaičius. Prieš pradėdami patikrinkite, kuria savaitės diena prasideda pasirinktas mėnuo ir kiek jame dienų. Nepamirškite metų antraštės. Vien pavadinimo „vasaris“ nepakanka, kai tą patį lapą išsaugote ilgesniam laikui arba vėliau norite palyginti ankstesnių metų įrašus.
+
+Palyginkite [nedatuotus mėnesio lapus](/tuscias-kalendorius/) su [dienos planuoklio šablonais](/dienos-planuoklis/) pagal tai, kiek vietos jums reikia vienai datai.
 ## Savaitės lapas suteikia daugiau vietos judantiems darbams
 Savaitės planuoklyje patogu suderinti kelis konkrečius laikus ir atskirą užduočių sąrašą. Jei jūsų dienos nevienodos, rinkitės pakankamai erdvų kiekvienos dienos plotą. Kartais dekoratyvūs labai siauri stulpeliai gražiai atrodo peržiūroje, bet juose sunku perskaityti ranka parašytą susitikimo pavadinimą ir jo laiką.
 
@@ -448,6 +481,7 @@ description: Pasirinkite tikrą ciklo pradžią, aprašykite darbo bei poilsio s
 source: /pamainu-grafikas/ | Pamainų grafiko įrankis
 source: /darbo-grafiko-sablonai/ | Spausdinami darbo grafiko šablonai
 source: /privatumas/ | Pamainų parinkčių saugojimas naršyklėje
+related: darbo-ir-kalendorines-dienos, ics-importas-ir-laiko-juostos
 ## Pirmoji ciklo diena nėra būtinai mėnesio pradžia
 Jei dirbate pagal pasikartojantį grafiką, svarbiausias pradinis duomuo yra žinoma ciklo pradžia. Mėnuo gali prasidėti viduryje darbo ar poilsio sekos. Vien nustatę sausio pirmąją kaip pirmą darbo dieną galite gauti tvarkingai atrodantį, bet su tikru grafiku nesutampantį visų metų planą.
 
@@ -456,6 +490,8 @@ Raskite datą, dėl kurios esate tikri: konkrečią pirmą ciklo darbo dieną i�
 Pavyzdžiui, seka gali būti dvi darbo dienos ir dvi poilsio dienos. Kitu atveju joje gali būti skirtingos dieninės bei naktinės pamainos. Užrašykite visą kartojamą vienetą, o ne vien darbo dienų skaičių. Tik visa seka leidžia suprasti, kas turi eiti po paskutinės parodytos dienos.
 
 Prieš generuodami ilgą laikotarpį pasitikrinkite vieną ciklą rankomis. Ar po paskutinės poilsio dienos vėl prasideda būtent ta pamaina, kurios tikitės? Ar dvi panašiai pavadintos pamainos neturi skirtingų laikų? Trumpas patikrinimas padeda pastebėti sekos klaidą anksčiau, nei ji pasikartoja kiekviename mėnesio kalendoriaus langelyje.
+
+Jei ciklo pradžia ir trukmė jau žinomos, jas įveskite [pamainų grafiko įrankyje](/pamainu-grafikas/). Ranka pildomai iškabai pravers [darbo grafiko šablonai](/darbo-grafiko-sablonai/).
 ## Patikrinkime paprastą keturių dienų seką
 Tarkime, pirmą ciklo dieną pasirinkote pirmadienį. Jei seka yra darbas, darbas, poilsis, poilsis, kitą darbo porą matysite penktadienį ir šeštadienį. Ciklas tęsiasi nepriklausomai nuo įprasto savaitgalio. Vadinasi, toks grafikas nėra tas pats, kas pirmadienio–penktadienio darbo savaitė.
 
@@ -488,10 +524,13 @@ description: Atostogų datą papildykite mokyklos patvirtinimu, priežiūros pla
 source: /mokiniu-atostogos/ | Mokinių atostogų kalendorius ir oficialūs šaltiniai
 source: /seimos-kalendorius/ | Šeimos planuoklis
 source: /atostogu-planavimas/ | Asmeninių atostogų planavimas
+related: seimos-kalendorius-namuose, kaip-planuoti-ilgaji-savaitgali
 ## Pirma patikrinkite, kam taikoma data
 Mokinių atostogų intervalas dažnai tampa pirmu orientyru šeimos kelionei. Tačiau prieš pirkdami bilietus patikrinkite mokslo metus, ugdymo programą ir savo mokyklos paskelbtą informaciją. Vien iš bendros kalendoriaus spalvos negalima spręsti, kad visiems vaikams tuo pačiu metu baigiasi pamokos arba užsiėmimai.
 
 Atverkite mokyklos pranešimą ir išsaugokite jo nuorodą prie savo plano. Jei šeimoje keli skirtingo amžiaus vaikai, palyginkite kiekvieno grafiką. Patogu turėti bendrą mėnesio vaizdą, tačiau jame turi būti užrašyta, kuriam vaikui ar programai laikotarpis priklauso. Taip išvengsite netyčinio vieno grafiko pritaikymo visai šeimai.
+
+Konkrečią ugdymo pakopą ir atostogų ribas patikrinkite [Lietuvos mokinių atostogų lentelėje](/mokiniu-atostogos/), prie kurios pateikta nuoroda į oficialius ugdymo planus.
 ## Paskutinė pamokų diena ir pirmoji atostogų diena skiriasi
 Planuodami išvykimą atkreipkite dėmesį į abi ribas. Jei atostogos prasideda pirmadienį, ankstesnis savaitgalis gali būti laisvas, bet penktadienį dar gali vykti pamokos ar renginiai. Nepridėkite papildomos kelionės dienos vien iš prielaidos, kad prieš atostogas mokykloje nieko svarbaus nebebus.
 
@@ -528,6 +567,7 @@ description: Palyginkite dvi skirtingas vertes: kiek dienų nedirbsite ir kiek a
 source: /ilgieji-savaitgaliai/ | Ilgųjų savaitgalių paieška
 source: /atostogu-planavimas/ | Atostogų planuoklis
 source: /sventes/ | Lietuvos šventinės dienos
+related: darbo-ir-kalendorines-dienos, veliniu-lapkricio-kalendorius
 ## Išskirkite du skirtingus skaičius
 Planuojant poilsį lengva apsidžiaugti ilga kalendoriaus juosta ir nepastebėti, kiek atostogų dienų ji kainuos. Visas nedarbo intervalas ir panaudotos kasmetinių atostogų dienos nėra tas pats skaičius. Patogiame plane abu turi būti matomi atskirai, kad galėtumėte sąžiningai palyginti kelis variantus.
 
@@ -536,6 +576,8 @@ Tarkime, laisva diena tarp šventės ir savaitgalio sujungia kelias poilsio dien
 Atverkite konkrečių metų švenčių kalendorių ir pasižiūrėkite, kuriomis savaitės dienomis jos bus. Ypač atkreipkite dėmesį į antradienį ar ketvirtadienį: greta gali atsirasti tarpas, kurį sujungtų viena atostogų diena. Tačiau pati šventė nebūtinai reiškia, kad jums pagal asmeninį grafiką nereikės dirbti.
 
 Atskirai patikrinkite, ar žiūrite oficialią šventinę, ar tik atmintiną dieną. Kultūrinė proga savaime nesukuria bendro laisvadienio. Šventei sutapus su savaitgaliu Lietuvoje taip pat nereikėtų automatiškai pridėti pirmadienio. Tokia prielaida gali padaryti gražų, bet neteisingą kelių dienų poilsio pasiūlymą ir suklaidinti derinant kelionę.
+
+Paiešką pradėkite [ilgųjų savaitgalių kalendoriuje](/ilgieji-savaitgaliai/). Jei į laisvą laiką įterpiate papildomą atostogų dieną, pažymėkite ją [atostogų planuoklyje](/atostogu-planavimas/) kaip atskirą pasirinkimą.
 ## Palyginkite tikrus intervalus
 Užrašykite kiekvieno varianto pradžią, pabaigą ir abi ribas įtraukiančių poilsio datų skaičių. Šalia pažymėkite, kiek įprastų darbo dienų reikėtų imti atostogų. Vienas pasiūlymas gali duoti keturias poilsio dienas už vieną atostogų dieną, kitas – devynias už penkias. Tai skirtingi pasirinkimai, kuriuos verta vertinti pagal savo tikslą.
 
@@ -568,10 +610,13 @@ description: Skirtumas tarp datų ir visų laikotarpio dienų skaičius yra skir
 source: /datos-skaiciuokle/ | Datos skaičiuoklė
 source: / | Kalendoriaus dienų vaizdas
 source: /blogas/darbo-ir-kalendorines-dienos/ | Darbo ir kalendorinių dienų skirtumas
+related: darbo-ir-kalendorines-dienos, keliamieji-metai-2028
 ## Pirmiausia suformuluokite klausimą
 Nuo pirmadienio iki trečiadienio yra dvi dienos ar trys? Abu atsakymai gali būti logiški. Nuo pirmadienio pradžios iki trečiadienio pradžios praeina dvi paros. Tačiau jei skaičiuojate pačias kalendorines datas ir įtraukiate pirmadienį, antradienį bei trečiadienį, turite tris dienas. Skirtumas atsiranda dėl ribų, o ne dėl sudėtingos matematikos.
 
 Todėl prieš įvesdami skaičius pasakykite sau, ką norite gauti. Kiek laiko praėjo? Kiek dienų pažymėti plane? Kiek naktų užsakėte? Kiek kartų reikės atvykti? Šie klausimai dažnai naudoja tas pačias dvi datas, bet jiems gali reikėti skirtingo skaičiavimo ir skirtingai interpretuojamo galutinio rezultato.
+
+[Datų skaičiuoklėje](/datos-skaiciuokle/) galite įvesti abi datas ir palyginti rezultatą prieš įjungdami ir įjungę abiejų ribų įtraukimą.
 ## Dienų skirtumas matuoja atstumą tarp datų
 Paprasčiausias datų skirtumas parodo, kiek dienų pereinate nuo pradžios datos iki pabaigos datos. Nuo sausio pirmosios iki sausio antrosios skirtumas yra viena diena. Jei abi datos vienodos, skirtumas lygus nuliui. Tai naudinga, kai reikia palyginti laikotarpius arba patikrinti, kiek dienų liko iki pasirinktos dienos pradžios.
 
@@ -608,10 +653,13 @@ description: Metų apžvalgą naudokite dideliems laikotarpiams, mėnesio lapą 
 source: /metai/ | Metų kalendorių katalogas
 source: /menesiai/ | Mėnesių kalendorių katalogas
 source: /2028/ | Keliamųjų metų kalendoriaus pavyzdys
+related: kaip-susiplanuoti-menesi, kaip-spausdinti-kalendoriu
 ## Rinkitės pagal tai, ko ieškote dažniausiai
 Jei norite nuspręsti, kurį mėnesį planuoti ilgesnę kelionę, metų kalendorius patogiai parodo visumą. Jei reikia surašyti kitos savaitės susitikimus, tame pačiame lape gali pritrūkti vietos. Kalendoriaus formatas nėra vien išvaizdos pasirinkimas. Jis nulemia, kokio mastelio sprendimą lengviausia priimti žiūrint į lapą arba ekraną.
 
 Prieš atsisiųsdami paklauskite savęs: ar ieškau laisvo laikotarpio, ar tikslaus kito susitikimo? Pirmu atveju pradėkite nuo metų vaizdo, antru – nuo mėnesio arba savaitės. Jei reikia abiejų, nebūtina visko spausti į vieną lapą. Aiškiai susietos dvi apžvalgos gali būti praktiškesnės už vieną perpildytą universalią lentelę.
+
+Kelionės laikotarpį pasirinkite [metų kalendoriuje](/metai/), o užrašus konkrečioms dienoms susidėliokite [to mėnesio lape](/menesiai/).
 ## Metų lape matykite ilgesnius intervalus
 Metų kalendorius naudingas atostogoms, mokymų ciklams, projektų etapams ir svarbioms sukaktims palyginti. Galite pastebėti, kad du intensyvūs laikotarpiai sutampa, nors atskiruose mėnesių lapuose to iškart nesimatė. Pažymėkite tik svarbiausias ribas, kad apžvalga ir toliau liktų suprantama iš pirmo žvilgsnio, neieškant tarp daugybės mažų kasdienių įrašų.
 
@@ -649,10 +697,13 @@ source: /menulio-fazes/ | Mėnulio fazės vietos laiku
 source: /menulio-kalendorius/ | Mėnulio kalendorius
 source: https://aa.usno.navy.mil/faq/moon_phases | USNO: fazės ir apšviesta Mėnulio dalis
 source: https://science.nasa.gov/moon/moon-phases/ | NASA Mėnulio fazių paaiškinimas
+related: sauletekis-ir-dienos-ilgumas, ics-importas-ir-laiko-juostos
 ## Pradėkite nuo to, kokios informacijos ieškote
 Norite sužinoti, kada bus pilnatis, ar kaip Mėnulis galėtų atrodyti pasirinktos dienos vakare? Tai susiję, bet ne vienodi klausimai. Pagrindinių fazių lentelė parodo tikslų astronominį momentą. Dienos iliustracija pateikia pasirinktam skaičiavimo laikui atitinkančią disko išvaizdos apžvalgą. Prieš lygindami skirtingus kalendorius pasitikrinkite, kuris iš šių dalykų juose iš tikrųjų rodomas.
 
 Kalendorius365 Mėnulio puslapiuose ieškokite pasirinkto laikotarpio, laiko juostos ir duomenų paaiškinimo. Jei žiūrite tik mažą simbolį, dar nematote viso skaičiavimo konteksto. Atverkite susijusį fazės įrašą ir perskaitykite laiką. Toks patikrinimas padeda išvengti įspūdžio, kad du šaltiniai nesutaria, nors vienas rodo dienos vaizdą, o kitas – tikslų įvykį.
+
+[Mėnulio fazių lentelėje](/menulio-fazes/) pažiūrėkite tikslų fazės laiką. [Mėnesio Mėnulio kalendoriuje](/menulio-kalendorius/) rasite ir atskirus vidurdienio langelius pasirinktoms datoms.
 ## Pagrindinės fazės yra konkretūs momentai
 Jaunatis, priešpilnis, pilnatis ir delčia apibrėžiami pagal Mėnulio bei Saulės regimųjų padėčių santykį. Tai nėra keturios vienodai ilgos kalendorinės savaitės. Tarp jų Mėnulio išvaizda keičiasi palaipsniui. Todėl vieno mėnesio tinklelyje fazių simboliai nepasiskirsto taip pat kaip savaitės dienos ar įprastas septynių dienų darbo ir poilsio ciklas.
 
@@ -668,7 +719,7 @@ Taip pat atskirkite matematinę iliustraciją nuo nuotraukos. Tvarkingas disko p
 ## Fazė nepasako, kada Mėnulis bus virš horizonto
 Net žinodami pilnaties datą dar nežinote viso konkretaus vakaro vaizdo. Stebėjimui reikia vietos, laiko ir neužstoto dangaus. Miesto pastatai, medžiai bei debesuotumas gali uždengti objektą. Pagrindinių fazių lentelė nėra pažadas, kad būtent pasirinktu metu Mėnulis bus patogiai matomas iš jūsų lango arba fotografavimo vietos.
 
-Jei planuojate išvyką, papildomai patikrinkite vietos orų prognozę ir pasirinktos vietos matomumą. Atvykite su laiko atsarga, kad spėtumėte saugiai įsikurti. Kalendoriaus informacija padeda pasirinkti laikotarpį, tačiau pats stebėjimas visada vyksta realioje aplinkoje. Jo nereikėtų planuoti vien iš vieno gražaus fazės simbolio mažoje mėnesio lentelėje, nepažiūrėjus į kitus reikalingus duomenis.
+Palyginkite [2030 m. gruodžio stebėjimų lentelę](/menulio-kalendorius/2030/gruodis/#stebejimai). Kai 23 val. Saulė yra bent 18° žemiau horizonto, o Mėnulis bent 2° žemiau, Vilniuje tinka gruodžio 17–29 d., Klaipėdoje – 16–28 d. Abiem miestams gaunama po 13 vakarų, bet skiriasi pirmas ir paskutinis vakaras. Jei laisvas tik gruodžio 16-osios vakaras, ši lentelė duoda konkretesnį atsakymą už fazės paveikslėlį. Prieš išvykdami patikrinkite debesuotumą ir pasirinktos vietos horizontą.
 ## Mėnulio mėnuo nėra kalendorinis mėnuo
 Mėnulio fazių ciklas nesutampa su įprastų mėnesių ribomis. Dėl to naujas kalendoriaus lapas nepradeda naujo Mėnulio ciklo. Sausio pabaigoje pradėta seka toliau tęsiasi vasarį. Lygindami du mėnesių lapus pažiūrėkite į jų sandūrą, o ne tikėkitės kiekvieno pirmąją dieną matyti tą patį fazės ženklą ar vienodą apšvietimą.
 
@@ -685,10 +736,13 @@ description: Meteorologinis sezonas prasideda mėnesio pirmąją, astronominis �
 source: /metu-laikai/ | Metų laikų datos ir skaičiavimo metodas
 source: /pavasario-lygiadienis/ | Pavasario lygiadienio paaiškinimas
 source: https://aa.usno.navy.mil/faq/equinoxes | USNO: dienos ir nakties trukmė per lygiadienį
+related: sauletekis-ir-dienos-ilgumas, gandrines-ir-pavasario-stebejimai
 ## Vienas klausimas turi dvi įprastas taisykles
 Vienur skaitote, kad pavasaris prasideda kovo pirmąją, kitur matote vėlesnę kovo datą ir tikslią valandą. Tai nebūtinai prieštaravimas. Meteorologinis ir astronominis sezonų skirstymas remiasi skirtingais principais. Pirmas patogus nuosekliai mėnesių statistikai, antras susijęs su Žemės ir Saulės geometrija. Prieš pasirinkdami datą pasižiūrėkite, apie kurį skirstymą kalbama.
 
 Lietuvai skirti kalendoriai aprašo Šiaurės pusrutulio metų laikus. Kito pusrutulio puslapyje tuo pačiu metu sezonų pavadinimai gali būti priešingi. Todėl dalijantis tarptautine iliustracija verta nurodyti vietą arba pusrutulį. Vien gražus keturių spalvų ratas nepasako, kokiai pasaulio daliai ir kokiai sezonų taisyklei jo užrašai yra pritaikyti.
+
+[Metų laikų gide](/metu-laikai/) galima palyginti abu skirstymus, o [pavasario lygiadienio lentelėje](/pavasario-lygiadienis/) pasirinkti konkrečius metus ir matyti laiką Lietuvoje.
 ## Meteorologinį sezoną sudaro trys mėnesiai
 Šiaurės pusrutulio meteorologinis pavasaris apima kovą, balandį ir gegužę. Vasara – birželį, liepą ir rugpjūtį. Ruduo apima rugsėjį, spalį ir lapkritį, o žiema pereina metų ribą per gruodį, sausį bei vasarį. Šios mėnesių grupės padeda palyginti vienodus laikotarpius, nes jų pradžios nereikia kasmet nustatyti pagal konkretų astronominį momentą.
 
@@ -721,10 +775,13 @@ description: Pasirinkite miestą ir datą, atskirkite prieblandą nuo dienos ilg
 source: /saule/ | Saulėtekio ir saulėlydžio skaičiavimas
 source: /dienos-ilgumas/ | Dienos ilgumo palyginimas
 source: https://aa.usno.navy.mil/faq/RST_defs | USNO: saulėtekio, saulėlydžio ir prieblandos apibrėžimai
+related: metu-laiku-pradzios, gandrines-ir-pavasario-stebejimai
 ## Pirmas pasirinkimas yra miestas
 Jei norite suspėti pasivaikščioti dar šviesiu metu, pasirinkite ne tik datą, bet ir vietą. Vilniaus bei Klaipėdos Saulės laikai nebūtinai sutampa, nors abu miestai naudoja tą pačią laiko juostą. Skirtinga geografinė padėtis keičia rezultatą. Bendras šalies laikrodžio laikas nereiškia vienodo saulėtekio visuose miestuose ir visais metų laikais.
 
 Kalendorius365 Saulės įrankyje pradėkite nuo pasirinkto miesto ir datos, tada žiūrėkite į laikus. Jei palikote numatytąjį miestą, rezultatas gali būti tik apytikris orientyras jūsų išvykai į kitą vietą. Prie išsaugoto įrašo pasižymėkite miestą. Po kelių savaičių vien dvi valandos jūsų užrašuose gali nebepriminti, kokiai vietai iš tikrųjų buvo atliktas konkretus skaičiavimas.
+
+Jei reikia vieno miesto ir datos, naudokite [saulėtekio bei saulėlydžio skaičiuoklę](/saule/). Lygindami Vilnių ir Klaipėdą patogiau atverti [dienos ilgumo palyginimą](/dienos-ilgumas/).
 ## Dienos ilgumas yra intervalas tarp dviejų ribų
 Įprastas šviesios dienos ilgumas skaičiuojamas nuo saulėtekio iki saulėlydžio. Tai patogus būdas palyginti sezonus arba skirtingas pasirinkto mėnesio dienas. Tačiau jis nepasako, kad visas šis intervalas bus vienodai šviesus. Rytas, vidurdienis ir paskutinės dienos minutės skiriasi, o debesys gali labai pakeisti kasdienį šviesos įspūdį.
 
@@ -757,6 +814,7 @@ description: Sudėkite susitikimus, pasirinkite pagrindinį veiksmą ir atskirki
 source: /dienos-planuoklis/ | Dienos planuoklio šablonai
 source: / | Kalendoriaus užrašai ir užduotys
 source: /blogas/savaites-planas-be-perkrovos/ | Kaip sudėlioti savaitės planą
+related: savaites-planas-be-perkrovos, kaip-susiplanuoti-menesi
 ## Pradėkite nuo tikros dienos, ne nuo idealaus sąrašo
 Ryte atsiverčiate užrašinę, o joje jau laukia dvidešimt darbų. Prieš pridėdami dar vieną pažvelkite į kalendorių. Kiek laiko šiandien jau užima susitikimai, kelionės ir įprasti įsipareigojimai? Dienos planas turi prasidėti nuo šio realaus užimtumo. Tik likusioje erdvėje galite sąžiningai pasirinkti, ką dar norite atlikti ir kur reikės vietos netikėtumams.
 
@@ -765,6 +823,8 @@ Tai nėra pažadas, kad mažesnis sąrašas visada padidins produktyvumą. Tai p
 Išsirinkite darbą, kurio pažanga šiandien būtų prasmingiausia. Pavadinkite jį konkrečiai. „Sutvarkyti projektą“ sunku pradėti, o „parengti pirmą pasiūlymo lentelę“ jau nurodo veiksmą. Jei užduotis vis dar atrodo neaprėpiama, sumažinkite pirmą žingsnį iki to, ką galite padaryti vienu aiškiu prisėdimu ir kam jau turite reikalingą informaciją.
 
 Svarbiu laikykite ne vien didžiausią darbą. Kartais tai trumpas skambutis, nuo kurio priklauso keli vėlesni sprendimai. Pažiūrėkite, ką tas veiksmas atvers ir iki kada jį verta atlikti. Tokiu būdu dienos centre atsiranda pasirinkta priežastis, o ne vien ilgiausiai sąraše laukusi eilutė arba triukšmingiausiai apie save priminęs pranešimas, kurį pamatėte telefone vos pabudę.
+
+Trumpam ryto planui pravers [dienos planavimo lapas](/dienos-planuoklis/). Jei norite išsaugoti užduotis naršyklėje ir vakare jas peržiūrėti, atverkite [„Mano dieną“](/mano-diena/).
 ## Smulkius reikalus laikykite atskirai
 Kelias trumpas užduotis galite surašyti mažesniame sąraše. Jos padeda išnaudoti trumpus tarpus, tačiau neturėtų vizualiai užgožti pagrindinio darbo. Jei kiekviena eilutė atrodo vienodai svarbi, lengva visą laisvą laiką praleisti pasirenkant lengviausią smulkmeną. Vakare sąrašas bus apibrauktas, bet svarbiausiam veiksmui galbūt nė karto neprisilietėte ir jis vėl nukeliaus į kitą dieną.
 
@@ -785,3 +845,209 @@ Jei naudojate Kalendorius365 dienos užrašus, prisiminkite, kad jie lieka konkr
 Trumpai peržiūrėkite, kas užbaigta, kas dar reikalinga ir kas tapo nebeaktualu. Nebaigtą darbą perkelkite tik pasirinkę naują realią vietą arba mažesnį pirmą žingsnį. Vien automatiškai perrašyti visą sąrašą rytojui ne visada naudinga. Jei užduotis taip keliauja kelias dienas, verta suprasti, ar trukdo jos dydis, neaiški pradžia, laukiamas atsakymas, ar tiesiog pasikeitęs jūsų prioritetas.
 
 Rytojaus plane palikite vieną aiškų pradžios veiksmą ir patikrinkite artimiausius susitikimus. Daugiau nebūtinai reikia. Naudingas dienos lapas turėtų leisti greitai grįžti prie to, kas svarbu, o ne reikalauti ilgos priežiūros prieš kiekvieną darbą. Pritaikykite jį savo ritmui, pasilikite veikiančias dalis ir keiskite tik tai, kas realiai apsunkina jūsų įprastą dieną bei susitarimus su kitais žmonėmis.
+
+@@ baltijos-kelias-rugpjucio-23
+title: Baltijos kelias rugpjūčio 23 dieną ir jo vieta Lietuvos kalendoriuje
+category: Lietuvos kalendorius
+published: 2026-11-21
+description: Ką Lietuva mini rugpjūčio 23-iąją, kodėl 1989 m. susikibo trijų šalių žmonės ir kaip suplanuoti prasmingą minėjimą.
+source: https://unesco.lt/pasaulio-atminties-registras/29-vaizdo-ir-garso-dokumentai-liudijantys-1989-m-rugpjucio-23-d-akcija-baltijos-kelias-zmoniu-grandine-sujungusi-tris-valstybes-laisves-vardan/ | UNESCO nacionalinė komisija apie Baltijos kelio dokumentus
+source: https://kaunas.archyvai.lrv.lt/lt/naujienos/minint-europos-diena-stalinizmo-ir-nacizmo-aukoms-atminti-ir-baltijos-kelio-diena-tMY/ | Kauno regioninis valstybės archyvas apie rugpjūčio 23-iosios minėjimą
+source: https://e-seimas.lrs.lt/portal/legalActEditions/lt/TAD/TAIS.41597 | Lietuvos Respublikos atmintinų dienų įstatymo redakcijos
+source: /sventes/baltijos-kelio-diena/ | Baltijos kelio dienos data ir priminimas
+related: sventines-ir-atmintinos-dienos
+## Ką Lietuva mini rugpjūčio 23-iąją
+1989 m. rugpjūčio 23 d. žmonės Lietuvoje, Latvijoje ir Estijoje susikibo rankomis į gyvą grandinę. Ji tęsėsi apie 600 kilometrų ir sujungė Vilnių, Rygą bei Taliną. Akcija vadinama Baltijos keliu. Susibūrimas parodė, kad trijų šalių žmonės kartu ir taikiai reiškė laisvės siekį. Kelyje dalyvavo žmonės iš daugelio vietovių, tad prisiminimai apie tą dieną skiriasi net vienoje šeimoje.
+
+Data pasirinkta sąmoningai. 1939 m. rugpjūčio 23 d. nacistinė Vokietija ir Sovietų Sąjunga pasirašė nepuolimo sutartį, vadinamą Molotovo–Ribentropo paktu, bei slaptą protokolą dėl įtakos sferų. Penkiasdešimtosios pakto metinės suteikė progą atkreipti dėmesį į šių susitarimų padarinius Baltijos šalims. Tai paaiškina, kodėl šiandien kalendoriuje greta Baltijos kelio minima ir Europos diena stalinizmo bei nacizmo aukoms atminti.
+## Archyvo kadras ir tai, ką jis pasakoja
+Šio straipsnio nuotraukoje matomas kelkraštis netoli Maišiagalos. Prie kelio laukia žmonės, o tolumoje rikiuojasi automobiliai. Tai vienos vietos akimirka. Palyginus ją su kitų vietovių kadrais, galima pamatyti, kaip ilgos grandinės ruožai atrodė skirtinguose keliuose, miestuose ar užmiesčiuose. Šeimos prisiminimuose verta užrašyti net smulkias detales, pavyzdžiui, iš kur dalyviai atvažiavo ir kur tiksliai stovėjo.
+
+[UNESCO nacionalinės komisijos aprašytas dokumentų rinkinys](https://unesco.lt/pasaulio-atminties-registras/29-vaizdo-ir-garso-dokumentai-liudijantys-1989-m-rugpjucio-23-d-akcija-baltijos-kelias-zmoniu-grandine-sujungusi-tris-valstybes-laisves-vardan/) apima trijų valstybių saugomą vaizdo ir garso medžiagą. 2009 m. dokumentai įrašyti į UNESCO tarptautinį registrą „Pasaulio atmintis“. Žiūrint archyvinę medžiagą naudinga pasižymėti dokumento datą, vietą ir saugotoją. Jeigu fotografijos apraše vieta nurodyta apytiksliai, taip ją įrašykite ir savo užrašuose.
+## Kaip atmintina diena atrodo kalendoriuje
+[Baltijos kelio diena](/sventes/baltijos-kelio-diena/) kasmet minima rugpjūčio 23 d. Savaitės diena keičiasi. Lietuvos atmintinų dienų sąraše ši data turi istorinę reikšmę, o darbo grafiką lemia jūsų darbo santykiai ir susitarimai. Jei minėjimas vyksta darbo dieną, prie renginio datos pasižymėkite pradžios laiką bei maršrutą ir iš anksto numatykite, kada galėsite išvykti.
+
+Rugpjūčio pabaigoje [Lietuvos atmintinų dienų sąraše](/atmintinos-dienos/) yra ir Laisvės diena. Ji minima rugpjūčio 31 d. ir siejama su 1993 m. iš Lietuvos išvestos Rusijos kariuomenės istorija. Jei abu minėjimus planuojate viename mėnesio lape, prie kiekvienos datos užrašykite metus ir esminį įvykį. Trumpi įrašai „1989 m. Baltijos kelias“ ir „1993 m. kariuomenės išvedimas“ padeda atskirti dvi susijusias, bet skirtingas istorijas.
+## Minėjimą pradėkite nuo vienos vietos
+Jei šeimoje yra akcijos dalyvių, paklauskite, kaip jie sužinojo apie susibūrimą, su kuo važiavo ir ką prisimena iš kelionės namo. Užrašykite atsakymus jų žodžiais. Pasakojimo pabaigoje pažymėkite, kada pokalbis įvyko. Norėdami įrašyti balsą arba dalytis šeimos nuotrauka viešai, atsiklauskite žmonių, kurių pasakojimus ir atvaizdus norite paskelbti.
+
+Mokantis su klase padeda užduotis su trimis skirtingais šaltiniais. Viena grupė žemėlapyje seka kelią tarp sostinių, kita susipažįsta su archyvine medžiaga, trečia užrašo vieno dalyvio prisiminimą. Vėliau palyginkite, kokius klausimus išsprendė kiekvienas šaltinis. [Kauno regioninio valstybės archyvo medžiaga](https://kaunas.archyvai.lrv.lt/lt/naujienos/minint-europos-diena-stalinizmo-ir-nacizmo-aukoms-atminti-ir-baltijos-kelio-diena-tMY/) gali padėti susieti vietinį pasakojimą su platesniu datos kontekstu.
+## Kaip įtraukti minėjimą į asmeninį planą
+[Rugpjūčio kalendoriuje](/2027/rugpjutis/) pirmiausia pažymėkite pačią atmintiną datą. Renginio laiką ir adresą atskiru įrašu pridėkite savivaldybei, muziejui arba bibliotekai paskelbus programą. Lauko susibūrimo vietą tikrinkite pagal organizatoriaus žemėlapį. Istorinė akcijos atkarpa ir šiandieninio minėjimo vieta gali skirtis, tad į navigaciją įveskite paskelbtą susitikimo tašką.
+
+Priminimas gali padėti atlikti konkretų veiksmą dar prieš minėjimą. Savaitę prieš verta paprašyti šeimos narių paieškoti nuotraukų. Išvakarėse galima pasitikrinti susisiekimą ir renginio pradžią. [Datos puslapyje](/sventes/baltijos-kelio-diena/) pasirinkę metus matysite tos dienos vietą kalendoriuje. Jeigu rengiate savo išvyką, išsaugokite ir atskirą priminimą su susitikimo laiku bei grįžimo planu.
+## Pasirinkite, ką rodyti žemėlapyje
+Žemėlapyje pirmiausia pažymėkite tris sostines. Tada pasirinkite vieną Lietuvos ruožą, apie kurį turite nuotrauką arba dalyvio pasakojimą. Maišiagala yra gera pradžia šiam straipsniui, nes čia galima susieti nuotraukoje matomą kraštovaizdį su šaltinyje nurodyta vietove. Išsaugokite ir šaltinį, kuriuo rėmėtės žymėdami vietą. Jei žmogus prisimena tik kryptį ar kelio kilometrą, žemėlapyje naudokite apytikslę atkarpą.
+
+Šeimoje galite pasidalyti užduotimis pagal turimus šaltinius. Vienas žmogus įrašo datą ir vietą, kitas randa nuotrauką arba archyvinį pasakojimą, trečias parengia trumpą klausimą pokalbiui. Visus tris darbus galima atlikti prieš susitikimą. Prie bendro kalendoriaus įrašo pridėkite vieną nuorodą, kurią įmanoma atverti telefonu. Susitikimo metu galėsite daugiau laiko skirti pokalbiui ir mažiau jo sugaišti ieškodami vaizdų.
+
+Jei grįšite į vietą šiandien, palyginkite, kas matoma kadre ir kas likę kraštovaizdyje: kelio kryptis, atviras laukas ar miško pakraštys. Važiuokite į pasirinktą viešą sustojimo vietą. Kelių infrastruktūra nuo 1989 m. galėjo pasikeisti, todėl planuokite pagal dabartinius kelius ir aikšteles.
+## Kaip tęsti susitikimą po rugpjūčio
+Po minėjimo užrašykite vieną dalyką, kurį sužinojote iš žmogaus, ir vieną, kurį patvirtino archyvinis šaltinis. Jei datos ar atkarpos nesutampa, išsaugokite abiejų šaltinių formuluotes bei nuorodas ir palikite klausimą atvirą. Kitą kartą bus aišku, ką dar verta patikrinti. Nuotrauką prie užrašo pridėkite su jos autoriumi ir naudojimo sąlygomis.
+
+Kito rugpjūčio pradžioje peržiūrėkite savo užrašą ir pasirinkite naują vietą, atkarpą ar prisiminimą. Pažymėti datą kasmet paprasta. Daugiau sužinoti padeda palyginimas, pavyzdžiui, kaip tą pačią akciją prisimena keli skirtingi žmonės arba kaip vienas kelio ruožas matomas archyviniame kadre ir šeimos albume. Laikui bėgant iš tokių užrašų susidaro vietos istorija.
+
+@@ kaziuko-muges-kalendorius
+title: Kaziuko mugė Vilniuje ir kaip suplanuoti kovo savaitgalį
+category: Lietuvos kalendorius
+published: 2026-11-21
+description: Šv. Kazimiero diena, patvirtintos 2027 m. mugės datos, vilnietiškos verbos ir praktiškas maršrutas šeimai.
+source: https://www.kaziukomuge.lt/ | Kaziuko mugės organizatorių skelbiamos datos
+source: https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai | „Go Vilnius“ renginių kalendorius
+source: https://vilnius.lt/naujienos/ir-sirdys-prazysta-kai-kaziukas-i-sostine-sugrizta | Vilniaus savivaldybės 2026 m. mugės archyvas
+source: https://ekgt.lt/Veiklos-sritys/Gidai/Pavasaris/ | Etninės kultūros globos tarybos pavasario papročių gidas
+source: /renginiai/kaziuko-muge/ | Kaziuko mugė Kalendorius365 renginių kalendoriuje
+related: gandrines-ir-pavasario-stebejimai, juros-sventes-savaitgalio-planas
+## Kovo ketvirtoji ir mugės savaitgalis
+Šv. Kazimiero diena yra kovo 4-oji. Vilniaus Kaziuko mugė tradiciškai rengiama netoli šios datos, o jos konkrečias dienas skelbia organizatoriai. [2027 m. oficialiame pranešime](https://www.kaziukomuge.lt/) nurodytos kovo 5–7 d., nuo penktadienio iki sekmadienio. Tų pačių metų kovo 4 d. yra ketvirtadienis. Ruošiant šeimos kalendorių verta pasižymėti abi datas skirtingai, kad tradicijos atminimas ir išvyka į mugę liktų aiškūs.
+
+Ankstesni metai gerai parodo, kodėl renginio datos neverta kopijuoti automatiškai. [Vilniaus savivaldybės pranešime apie 2026 m. mugę](https://vilnius.lt/naujienos/ir-sirdys-prazysta-kai-kaziukas-i-sostine-sugrizta) nurodytos kovo 6–8 d. Jei puslapyje matote skirtingus metus antraštėje ir programoje, pirmiausia perskaitykite pranešimo datą. Kelionės bilietus ir apsilankymo laiką planuokite pagal pasirinkto sezono informaciją.
+## Kokias tradicijas galima atpažinti mugėje
+Mugės ryšys su Šv. Kazimiero minėjimu atsispindi jos pavadinime. Istoriškai bažnytinė šventė ir prie jos vykęs kermošius sutraukdavo prekiautojus bei lankytojus. Dabar Vilniaus centre susitinka įvairūs amatininkai, tautodailininkai ir maisto gamintojai. Eidami pro prekystalius galite pasidairyti dirbinių, kurių gamybą ar kilmę kūrėjas gali paaiškinti, ir pastebėti, kaip senesnės formos atrodo šiuolaikiniame darbe.
+
+[Etninės kultūros globos tarybos pavasario gide](https://ekgt.lt/Veiklos-sritys/Gidai/Pavasaris/) išskiriamos vilnietiškos verbos. Jų raštą kuria skirtingų spalvų džiovinti augalai. Stebėdami dirbinį pažiūrėkite, kaip spalvos išdėliotos aplink šerdį ir kaip užbaigta viršūnė. Tarp kitų tradicinių mugės pirkinių rasite riestainių ir meduolinių širdžių. Paklausti amatininko, iš kur atkeliavo jo šeimos receptas ar darbo būdas, dažnai įdomiau nei vien peržiūrėti prekystalius.
+## Maršrutą pradėkite nuo dviejų sustojimų
+Pasirinkite, ką iš tiesų norite aplankyti. Pirmam sustojimui tinka amatų dalis, antram – pasirodymas ar dirbtuvės, jei paskelbtoje programoje yra jums tinkamas laikas. Užsirašykite kiekvienos vietos adresą. Toje pačioje gatvėje gali būti kelios scenos arba skirtingų temų prekybos atkarpos, o ilgos minios viduryje vien gatvės pavadinimas ne visada padeda rasti susitikimo vietą.
+
+[„Go Vilnius“ renginių kalendoriuje](https://www.govilnius.lt/aplankykite/rekomenduojame/vilniaus-renginiai) ir mugės svetainėje patikrinkite, kuriame plane pažymėtos jums svarbios veiklos. Žemėlapį verta išsisaugoti telefone ar užsirašyti dvi artimiausias sankryžas. Prieš išvykdami perskaitykite tos dienos savivaldybės informaciją apie eismą. Įprastas autobuso maršrutas arba sustojimo vieta renginio metu gali būti pakeisti.
+## Viena diena, trys atskiri laiko blokai
+Kalendoriuje atskirai pažymėkite kelionę į centrą, laiką mugėje ir grįžimą. Važiuojant su vaikais arba su žmogumi, kuriam reikia daugiau poilsio, pridėkite sustojimą prisėsti. Prie pasirinktos veiklos pažymėkite, kada reikia ateiti į vietą, o ne vien jos pradžios valandą. Jei veiklai reikalinga registracija, užsirašykite ir paskutinę registracijos datą.
+
+Jeigu žmonės atvyksta iš skirtingų miesto vietų, susitarkite dėl susitikimo ten, kur lengva atpažinti aplinką ir nereikia stovėti pagrindiniame minios sraute. Pridėkite antrą susitikimo laiką tam atvejui, jei kas pasiliktų prie dirbtuvės ar prekystalio. Renginio pavadinimą ir adresą įrašykite į bendrą planą, kad kiekvienas dalyvis galėtų savarankiškai pasitikrinti kelią.
+## Kaip užsirašyti, ką atradote
+Pasiimkite vieną užrašą trims dalykams: kūrėjo vardui, dirbinio kilmės vietai ir žodžiui, kurio anksčiau nežinojote. Jei domitės verbomis, užrašykite augalų ar rišimo būdo pavadinimą. Jei paragavote kepinio, paklauskite, kada šeimoje jis paprastai kepamas. Savaitgalį liks lengviau prisiminti susiejus sutiktą žmogų su tradicija.
+
+Po mugės savo kalendoriuje galite pridėti kitą žingsnį – apsilankymą amatų centre, išvyką į meistro gimtinę arba pokalbį su šeimos nariu apie jo paties mugės prisiminimus. [Lietuvos renginių kalendoriuje](/renginiai/) peržiūrėkite kitus sezono renginius. Atskirai išsisaugokite vieną dirbtuvių ar centro nuorodą, kuri padės tęsti pasirinktą temą ir pasibaigus kovo savaitgaliui.
+## Įvertinkite, kam reikia registracijos
+Atvira mugės dalis ir veikla uždaroje patalpoje gali turėti skirtingas lankymo sąlygas. Tą gerai iliustruoja 2026 m. savivaldybės programa, kurioje greta renginio gatvėse buvo ir vaikams skirtų veiklų patalpose. Skaitydami 2027 m. programą patikrinkite, ar į norimas dirbtuves reikia registruotis, ar yra amžiaus apribojimų ir ar pradžios laikas sutampa su jūsų maršrutu.
+
+Jeigu renginys uždaras, prie adreso įrašykite tikslų įėjimą, o prie registracijos – kiek šeimos narių dalyvauja. Svarbiausius darbus patogu atlikti atskirai: vieną dieną patikrinti programą, kitą rezervuoti reikalingas vietas. Atsarginėje veikloje gerai turėti laisvai lankomą amatų atkarpą, kurią pasieksite pėsčiomis net ir tada, kai viena iš dalyvių veiklų užtruks.
+
+Atvykę iš kito miesto, palikite vieną kelionės tarpą daiktams susidėti ir iki stoties ar sustojimo nueiti. Dalis lankytojų grįžta iš mugės ne tuščiomis. Jei parsivešite ilgą verbą ar trapų molinį indą, susiplanuokite, kaip jį saugiai nešitės iki transporto. Tokia smulkmena gali nulemti, ar grįžę dar suspėsite į kitą veiklą.
+## Pasitikrinkite datas prieš išvykdami
+Savo [kovo kalendoriuje](/2027/kovas/) mugės savaitgalį pažymėkite kaip trijų dienų intervalą. Apsilankymo laiką pridėkite kaip atskirą įrašą. Jei renginio organizatorius pakeis vienos veiklos pradžią, pakaks perkelti šį vieną įrašą. Visos mugės intervalas liks matomas ir prireikus leis susiplanuoti kitą dieną.
+
+Pasitikrinkite, kurią dieną susitariate atvykti. Penktadienio popietė, šeštadienio rytas ir sekmadienio pabaiga palieka skirtingai laiko kelionei ir susitikimams. Atverkite [Kaziuko mugės įrašą](/renginiai/kaziuko-muge/) ir dar kartą patikrinkite oficialią programą, kai iki renginio liks kelios dienos. Senesnių metų pranešimus laikykite atskirai, jei juos naudojate tradicijos istorijai palyginti.
+
+@@ gandrines-ir-pavasario-stebejimai
+title: Gandrinės kovo 25 dieną ir pavasario stebėjimų kalendorius
+category: Lietuvos kalendorius
+published: 2026-11-21
+description: Kodėl Gandrinės minimos kovo 25 d., kada iš tiesų pastebimi baltieji gandrai ir kaip vesti vietos stebėjimų kalendorių.
+source: https://zemaitijosstd.lrv.lt/lt/naujienos/kovo-25-oji-gandru-sugrizimo-diena-8gq/ | Žemaitijos saugomų teritorijų direkcija apie Gandrines
+source: https://www.vle.lt/straipsnis/gandrines/ | Visuotinė lietuvių enciklopedija apie Gandrinių papročius
+source: https://birdlife.lt/kovo-25-oji-gandrines-bloviesciai-2019/ | Lietuvos ornitologų draugijos 2015 m. pavasario apžvalga
+source: https://birdlife.lt/lietuvoje-ziemojantys-baltieji-gandrai/ | Lietuvos ornitologų draugija apie žiemojančius baltuosius gandrus
+source: /sventes/gandrines/ | Gandrinių data Kalendorius365
+related: metu-laiku-pradzios, sauletekis-ir-dienos-ilgumas
+## Ką žymi kovo 25-oji
+Gandrinės yra tradicinė pavasario kalendoriaus diena, minima kovo 25-ąją. Jos pavadinimas siejamas su iš žiemaviečių grįžtančiais gandrais. Ta pati diena žinoma kaip Blovieščiai ir siejama su Apreiškimo Švč. Mergelei Marijai švente. Žmonės šiuo metų laiku stebėdavo, kada paukščiai pasirodo prie namų, ir apie tai kalbėdavo kaip apie vieną iš sezoninės kaitos ženklų.
+
+[Žemaitijos saugomų teritorijų direkcija](https://zemaitijosstd.lrv.lt/lt/naujienos/kovo-25-oji-gandru-sugrizimo-diena-8gq/) aprašo tradiciją, pagal kurią per Gandrines žmonės laukdavo sugrįžtančio paukščio. [Visuotinėje lietuvių enciklopedijoje](https://www.vle.lt/straipsnis/gandrines/) galima rasti ir su šia diena siejamų papročių bei tikėjimų. Jie parodo, kokią vietą gandras užėmė kasdienėje vaizduotėje. Stebėdami gamtą šiandien galime pažymėti ir paprotinę datą, ir savo vietovėje matytą įvykį.
+## Ką sako pirmieji stebėjimai
+Paukščių sugrįžimas vyksta palaipsniui. Viename Lietuvos rajone gandrą galima pastebėti anksčiau, kitame lizdas tuo metu dar tuščias. [Lietuvos ornitologų draugija 2015 m. kovo 24 d.](https://birdlife.lt/kovo-25-oji-gandrines-bloviesciai-2019/) pranešė, kad atskiri sugrįžę paukščiai jau stebėti visuose Lietuvos regionuose, o aktyvesnės migracijos dar laukta. Senesnių metų įrašai ypač naudingi palyginimui su to paties regiono stebėjimais.
+
+Pirmas jūsų matytas gandras ir pirmas pavasarį į vietovę atskridęs gandras yra du skirtingi įvykiai. Žmogus retai stebi lizdą kasdien ir visą dieną. Kai kuriais atvejais Lietuvoje matomi ir per žiemą pasilikę baltieji gandrai, apie kuriuos [atskirai rašo ornitologai](https://birdlife.lt/lietuvoje-ziemojantys-baltieji-gandrai/). Užrašas „pirmas mano stebėjimas šiemet“ tiksliai pasako, ką pats matėte, ir nesuponuoja paukščio kelionės datos.
+## Susikurkite stebėjimų vietą ir įprotį
+Rinkitės viešą taką, aikštelę arba kitą saugų tašką, iš kurio matomas lizdas ar atviras laukas. Svarbiau galėti ramiai stebėti ir grįžti į tą pačią vietą nei pamatyti paukštį iš arti. Žiūronai padeda įžiūrėti požymius arba elgesį nuo tako. Venkite eiti į privačią teritoriją, artintis prie lizdo ar stovėti važiuojamoje kelio dalyje dėl nuotraukos.
+
+Užrašykite vietovę, laiką, paukščių skaičių ir ką jie veikė. „Vienas baltasis gandras stovėjo lizde“ yra aiškesnis įrašas nei „gandrai grįžo“. Jei matėte paukštį tik skrendantį toli ir negalėjote atpažinti, pridėkite pastabą apie neaiškų atpažinimą. Pravers ir trumpas įrašas, kai stebėjote, bet paukščio nematėte. Jis pasako, kurią dieną ir kur žvalgėtės.
+## Susiekite tradiciją su keliomis skirtingomis datomis
+[Kovo kalendoriuje](/2027/kovas/) pažymėkite [Gandrines](/sventes/gandrines/) kaip pasikartojančią datą. Atskiru įrašu pridėkite pirmą užfiksuotą stebėjimą ir dar vieną vėlesnį apsilankymą. Jei po savaitės lizde pamatysite du paukščius, palikite pirmąjį įrašą tokį, koks jis buvo. Vėlesnis pastebėjimas papildo ankstesnį ir parodo, kaip kito situacija.
+
+Artima, bet kitos paskirties data yra [pavasario lygiadienis](/pavasario-lygiadienis/). Jį nustato astronomija, o gandrų pasirodymą vietovėje fiksuoja žmonių lauko stebėjimai. Pasirinkto miesto šviesų paros laiką galite pažiūrėti [saulėtekio ir saulėlydžio įrankyje](/saule/). Patogų žygio laiką rinkitės pagal maršrutą ir orus. Astronomijos lentelę naudokite kelionei planuoti, o pastebėjimus vertinkite pagal tai, ką matėte.
+## Ką galima palyginti po sezono
+Mokykloje ar šeimoje naudinga palyginti du vienodai surinktus užrašų rinkinius. Pasirinkite tą pačią stebėjimo vietą, panašią trukmę ir kuo panašesnę savaitės dieną. Tada aptarkite, ką pastebėjo kiekvienas. Keli tvarkingi įrašai geriau parodo stebėjimo aplinkybes nei ilgas sąrašas be datų ir vietų. Savaitės pabaigoje galite parengti mažą lentelę su matytais paukščiais, vieta ir laiku.
+
+Straipsnio nuotraukoje du baltieji gandrai lizde Kužių apylinkėse nufotografuoti liepą. Ji parodo lizdą ir paukščius, kuriuos verta išmokti atpažinti. Savo albumuose lygiai taip pat aiškiai rašykite, kada padaryta nuotrauka ir kur matėte paukščius. Rudenį peržiūrėję užrašus galėsite atskirti pavasarinį pasirodymą, vasaros stebėjimus ir tas savaites, kai į vietą nė karto neužsukote.
+## Pastebėkite daugiau nei pirmą paukštį
+Vieno pavasario užrašuose gali atsirasti keli aiškiai skirtingi pastebėjimai. Pirmą kartą galite matyti paukštį stovintį, kitą kartą – atnešantį šakelę, dar vėliau – jau du gandrus. Toks aprašymas padeda prisiminti, kaip pasikeitė vaizdas. Jeigu paukščiai yra toli, žymėkite tai, ką aiškiai pastebėjote, o tikslesnį elgesio pavadinimą pasitikrinkite po apsilankymo.
+
+Į stebėjimo planą galite įtraukti ir dvi vietas. Jeigu viena vieta yra atviras laukas, o kita – iš tako matomas lizdas, kiekvienai skirkite atskirą kalendoriaus eilutę. Stebėjimuose iš skirtingų vietų lengva supainioti paukščių skaičių, nes tas pats paukštis gali judėti tarp jų. Įrašykite, ar abu gandrus matėte vienu metu, ar dviejuose atskiruose apsilankymuose.
+
+Mokykliniam darbui gretimame stulpelyje užrašykite, kas yra tiesiogiai matytas faktas, o kas – spėjimas. Pavyzdžiui, stebėta atnešta ilga šakelė, o apie viso lizdo būklę dar sunku spręsti. Tokie konkretūs užrašai padės kitą kartą sugalvoti klausimą ir sutarti, ką iš tiesų norite patikrinti.
+## Pasiruoškite kitų metų palyginimui
+Pasibaigus stebėjimams užsirašykite, kuriomis dienomis tikrinote vietą ir kokios sąlygos trukdė daugiau pastebėti. Vieną savaitę galėjote užsukti triskart, kitą kartą vietovėje visai nebuvote. Perkeldami duomenis į kitų metų kalendorių išsaugokite ir apsilankymų sąrašą. Jis padės suprasti, ar naujas įrašas iš tiesų ankstesnis, ar tik šiemet pradėjote stebėti anksčiau.
+
+Jei stebėjote iš viešos vietos, pažymėkite ir patogų priėjimą. Toks užrašas palengvina kitą išėjimą, ypač kai su jumis eina šeima arba klasė. Prie kalendoriaus įrašo pridėkite savo klausimą kitam sezonui, pavyzdžiui, ar paukščiai per pirmuosius apsilankymus dažniau matomi lizde, ar lauke prie kelio.
+
+@@ juros-sventes-savaitgalio-planas
+title: Jūros šventė Klaipėdoje ir savaitgalio planas liepos kalendoriuje
+category: Lietuvos kalendorius
+published: 2026-11-21
+description: Patvirtintos 2027 m. Jūros šventės datos, uostamiesčio tradicijos ir lankstus planas apsilankyti Klaipėdoje.
+source: https://klaipedossventes.lt/2026/10/05/2027-m-juros-sventes-liepos-23-25-d/ | Organizatorių pranešimas apie 2027 m. Jūros šventės datas
+source: https://klaipedossventes.lt/renginiai/juros-svente-2026/ | 2026 m. Jūros šventės archyvas ir šventės istorija
+source: https://klaipedossventes.lt/juros-sventes-2026-programa/ | 2026 m. Jūros šventės programa
+source: /renginiai/juros-svente/ | Jūros šventė Kalendorius365 renginių kalendoriuje
+related: kaziuko-muges-kalendorius, menesio-ar-metu-kalendorius
+## Kada Klaipėdoje vyks 2027 m. Jūros šventė
+2027 m. Jūros šventė vyks liepos 23–25 d., nuo penktadienio iki sekmadienio. Šią datą paskelbė [organizatoriai „Klaipėdos šventės“](https://klaipedossventes.lt/2026/10/05/2027-m-juros-sventes-liepos-23-25-d/). Kelionei planuoti jau galima naudoti visą trijų dienų intervalą. Konkrečios eisenos, koncerto ar ekskursijos laiką įrašykite tada, kai jis bus paskelbtas pasirinkto sezono programoje.
+
+2026 m. pagrindinės šventės dienos buvo liepos 24–26 d. Abi datos primena, kad panašus liepos savaitgalis kasmet turi kitus skaičius. 2027 m. Klaipėda taip pat minės 775 metų jubiliejų, o miesto gimtadienio renginiams paskirta rugpjūčio 1-oji. Tai dar vienas atskiras įrašas vasaros kalendoriuje. Jei norite dalyvauti abiejuose renginiuose, suskaičiuokite, kiek laiko prireiks dviem išvykoms arba ilgesnei viešnagei.
+## Kaip šventė susijusi su uostamiesčiu
+[Jūros šventės istorijos apžvalgoje](https://klaipedossventes.lt/renginiai/juros-svente-2026/) jos ištakos siejamos su 1934 m. Klaipėdoje surengta Jūros diena. Šventė atkreipė dėmesį į Lietuvos pajūrį ir jūrinę kultūrą. Šiandien jos programose miesto gyventojai ir svečiai susipažįsta su uostu, jūrine istorija bei tradicijomis. Šalia jų vyksta koncertai, eisenos ir kiti miesto kultūros renginiai.
+
+Pačių rengėjų skelbiamuose [1934 m. šventės dalyvio Juozo Jurginio prisiminimuose](https://klaipedossventes.lt/2024/07/09/pirmoji-juros-svente-1934-m/) aprašoma, kaip į pajūrį buvo vykstama specialiais traukiniais, o svečiams nakvynės vietos buvo ruošiamos ir mokyklose. Šis liudijimas paaiškina, kodėl kelionė į Klaipėdą anuomet buvo svarbi šventės dalis.
+
+Jei lankotės pirmą kartą, verta išsirinkti veiklą, kuri padėtų geriau pažinti Klaipėdą. Vienam tai gali būti pažintis su laivu, kitam – paroda ar pasivaikščiojimas palei Dangę. Nuotraukoje matomas šokančių fontanų pasirodymas prie Jono kalnelio 2017 metais. Šis kadras rodo vienų metų programos dalį. Naujo apsilankymo planą susidarykite pagal einamųjų metų skelbimus.
+## Planuokite atvykimą atskirai nuo renginių
+[Liepos kalendoriuje](/2027/liepa/) pažymėkite visas tris šventės dienas, tada atskirai įrašykite savo kelionės pradžią ir grįžimą. Jeigu atvykstate penktadienį, pasilikite laiko nueiti iki nakvynės vietos ir atsinešti tai, ko prireiks vakare. Jei vykstate tik vienai dienai, pirmiau patikrinkite, kada galėsite grįžti. Vėlyvas pasirodymas patogus tik turint realų grįžimo maršrutą.
+
+Renginio įraše prie adreso pridėkite tikslią vietą, pavyzdžiui, įėjimą ar krantinę. Uostamiestyje taškai žemėlapyje gali atrodyti arti, tačiau pėsčiųjų kelias gali vesti aplink vandens telkinį arba per tiltą. Jei pasirinkta veikla vyksta kitoje marių pusėje, atskirai skirkite laiko persikėlimui ir patikrinkite bilietų bei reisų informaciją. Persikėlimą įrašykite kartu su ėjimo iki išvykimo vietos laiku.
+## Atrinkite, ką veiksite ryte ir vakare
+Pradėkite nuo vienos pagrindinės veiklos per pusdienį. Tarp dviejų vietų palikite laiko pėsčiomis nueiti, pavalgyti ir rasti naują įėjimą. Ankstesnėse programose kartu vyko įvairūs renginiai, tad vienos veiklos pasirinkimas reiškia, kad kitą protingiau palikti kaip atsarginę. [2026 m. programa](https://klaipedossventes.lt/juros-sventes-2026-programa/) naudinga suprasti, kaip organizatoriai nurodo laikus ir vietas.
+
+Vakarui rinkitės veiklą, kurią pasieksite neskubėdami po vakarienės arba poilsio. Šeimai susitarkite, kur susitikti, jei minioje pasiskirstysite. Susitikimo vietą įrašykite į kalendorių kartu su laiku ir orientyru. Jei po renginio suplanuotas dar vienas sustojimas, įsitikinkite, kad jį galėsite lengvai praleisti, jei vakaro programa užtruks.
+## Naudokite atsarginį planą ir patikrinkite srautą
+Prie lauko veiklos pridėkite atsarginį sustojimą po stogu, kuris būtų įdomus ir be šventės programos. Prieš kelionę patikrinkite, ar pasirinkta vieta veiks tuo metu. Žvarbus vėjas ar lietus gali pakeisti žmonių judėjimą net tada, kai programa vyksta. Sprendimą, kurią vietą rinktis, lengviau priimti ryte, kai visa šeima mato tas pačias dvi galimybes.
+
+Vakarop pasižiūrėkite, kiek veiklų liko kitai dienai, ir išbraukite tas, kurioms nebeliko laiko. Jei norite suderinti išvykas su kitomis vasaros datomis, atverkite [Lietuvos renginių kalendorių](/renginiai/) ir pažymėkite tik tuos renginius, dėl kurių ketinate tartis su šeima. Kelionę lengviau keisti, kai planuojami susitikimai ir lankytinos vietos yra skirtingi įrašai.
+## Pajūris ir miesto centras viename kelionės plane
+Jei norite ir renginio mieste, ir pasivaikščiojimo pajūriu, skirkite jiems atskiras dienos dalis. Pasižymėkite, kuriuo miesto autobusu ar kitu būdu grįšite ir kokiu laiku norite vėl būti centre. Suplanuokite grįžimą prieš vakaro veiklą, jeigu iš pajūrio keliausite tuo pačiu metu kaip daug kitų žmonių. Vienas aiškus grįžimo laikas geriau padeda tvarkytis su pokyčiais nei keturi glaudžiai vienas po kito surašyti sustojimai.
+
+Eisenos dieną prieš vykdami patikrinkite, kuriai miesto daliai skirta pasirinkta veikla. 2026 m. programoje renginiai vyko skirtingose vietose, todėl patogiau atsirinkti kelias vietas viename rajone ir kitą pusdienį rezervuoti kitai miesto daliai. Jeigu planuojate vykti su vežimėliu, nešatės daiktus ar keliaujate su žmogumi, kuriam svarbus tolygus takas, peržiūrėkite perėjimus bei užvažiavimus iki savo sustojimo vietos.
+
+Peržiūrėkite planą nuo išvykimo iki pirmo renginio. Jei šis patikrinimas parodo, kad nakvynės vietą reikia pasiekti anksčiau, suplanuokite bagažo palikimą prieš pirmą veiklą arba patikrinkite įsiregistravimo laiką. Dar vieną pastabą skirkite bilietams: prie kiekvienos rezervuotos veiklos pridėkite jos rezervacijos patvirtinimą, kad nereikėtų jo ieškoti minioje.
+## Atnaujinkite planą paskelbus renginių programą
+Sukurkite vieną priminimą peržiūrėti programą ir antrą patikrinti kelionę likus kelioms dienoms. Prie priminimo pridėkite [Jūros šventės puslapį](/renginiai/juros-svente/) ir organizatorių nuorodą. Jei skelbime pasikeis viena renginio vieta, atnaujinkite jos adresą ir perskaičiuokite laiką iki kitos veiklos. Taip bendras savaitgalio planas veiks ir po nedidelio tvarkaraščio pakeitimo.
+
+@@ veliniu-lapkricio-kalendorius
+title: Visų Šventųjų diena ir Vėlinės Lietuvos lapkričio kalendoriuje
+category: Lietuvos kalendorius
+published: 2026-11-21
+description: Kuo skiriasi lapkričio 1-oji ir 2-oji, ką apie Vėlines pasakoja tradicijos ir kaip suplanuoti šeimos kelionę.
+source: https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr | Lietuvos Respublikos darbo kodekso 123 straipsnis
+source: https://vdi.lrv.lt/lt/naujienos/vdi-darbas-lapkricio-12-dienomis-turi-buti-apmokamas-bent-dvigubai-mrB/ | Valstybinė darbo inspekcija apie lapkričio 1 ir 2 dienas
+source: https://ekgt.lt/veiklos-sritys/gidai/ruduo/velines--ilges.html | Etninės kultūros globos tarybos gidas apie Vėlines ir Ilges
+source: https://vilnius.lt/naujienos/veliniu-laikotarpiu-prie-sostines-kapiniu-ivedami-eismo-ribojimai | Vilniaus savivaldybės 2026 m. eismo organizavimo pavyzdys
+source: /sventes/2027/lapkritis/ | Šventinės ir atmintinos 2027 m. lapkričio dienos
+related: sventines-ir-atmintinos-dienos, kaip-planuoti-ilgaji-savaitgali
+## Kuo skiriasi lapkričio 1-oji ir lapkričio 2-oji
+Lapkričio 1 d. minima [Visų Šventųjų diena](/sventes/visu-sventuju-diena/), o lapkričio 2 d. – [Mirusiųjų atminimo diena, arba Vėlinės](/sventes/velines/). Šeimos dažnai abi datas sieja su žvakių uždegimu, mirusių artimųjų prisiminimu ir kapų lankymu. Bažnytiniame kalendoriuje pirmoji data skirta visiems šventiesiems pagerbti, antroji – mirusiesiems atminti. Savo kalendoriuje galima palikti abiejų dienų pavadinimus ir atskirai įrašyti šeimos apsilankymo datą.
+
+Abi datos įtrauktos į [Darbo kodekso 123 straipsnyje nurodytą švenčių dienų sąrašą](https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/10c6bfd07bd511e6a0f68fd135e6f40c/asr). Asmens darbo grafikas priklauso ir nuo darbo laiko režimo. Jei su šeima tariamasi iš anksto, kiekvienas gali patikrinti savo pamainą ir parašyti, kurią dieną gali keliauti. Taip šventės pavadinimas, darbo grafikas ir susitarimas liks aiškiai atskirti.
+## Ką pasakoja lietuviški Vėlinių papročiai
+Vėlinių tradicijose svarbi šeimos atmintis. [Etninės kultūros globos tarybos rudens gide](https://ekgt.lt/veiklos-sritys/gidai/ruduo/velines--ilges.html) aptariamas Vėlinių ryšys su Ilgėmis ir senesniais mirusiųjų paminėjimo papročiais. Skirtingų vietovių pasakojimuose minimi įvairūs veiksmai, įskaitant ugnies deginimą ir mirusių giminaičių prisiminimą. Šiandien pažįstamą kapinių vaizdą dažnai kuria pavienės artimųjų uždegtos žvakės. Išsamesnėje [Tarybos papročių apžvalgoje](https://www.ekgt.lt/globali-lietuva-ir-tautine-tapatybe/kalendoriniai-paprociai/velines.html) nurodoma, kad Rytų Lietuvoje vartotas ir Dziedų vardas. Kai kuriuose senesniuose pasakojimuose minimas bendras kapinių laužas. Šie skirtumai svarbūs aiškinantis vienos vietovės ar savo šeimos papročius.
+
+Kai keliaujate su vaikais, gali padėti paprastas pasakojimas apie konkretų žmogų. Prieš išvykstant galima peržiūrėti vieną seną nuotrauką arba pasikalbėti apie šeimos gyvenamą vietą. Jei nežinote datos ar vardo rašybos, užrašykite klausimą ir vėliau palyginkite su šeimos dokumentais. Tokia užduotis ypač prasminga, kai lankomas kapas yra vietovėje, kurioje vaikai dar nėra buvę.
+## Atskirkite apsilankymą nuo kelionės
+Jei tą pačią dieną lankysite kelias kapines, pradėkite nuo jų eiliškumo. Prie kiekvienos vietos įrašykite įėjimą ar susitikimo tašką ir trumpą užrašą, kur patogu pasukti nuo pagrindinio tako. Tik tada suskaičiuokite kelionės, sustojimų ir ėjimo laiką. Žmonėms, kuriems sunkiau eiti, palikite laiko pailsėti ir iš anksto sutarkite, kur juos bus patogu pasitikti.
+
+Miesto pranešimai padeda pasirinkti kelionės būdą. [Vilniaus savivaldybės 2026 m. pranešime](https://vilnius.lt/naujienos/veliniu-laikotarpiu-prie-sostines-kapiniu-ivedami-eismo-ribojimai) nurodyti konkretaus sezono eismo pakeitimai prie kapinių. Tokį pranešimą galima naudoti kaip pavyzdį, kokios informacijos ieškoti artėjant kitoms Vėlinėms. Prieš išvyką tikrinkite tų metų ir tos savivaldybės informaciją. Jei važiuosite viešuoju transportu, peržiūrėkite ir grįžimo tvarkaraštį.
+## Savaitės dienos keičia išvykos planą
+[2027 m. lapkričio kalendoriuje](/2027/lapkritis/) lapkričio 1-oji yra pirmadienis, o 2-oji – antradienis. Prieš jas eina 2027 m. spalio 30 ir 31 d., šeštadienis ir sekmadienis. Įprastu darbo grafiku nuo pirmadienio iki penktadienio dirbantis žmogus gali turėti keturias dienas iš eilės. Tokiu atveju ilgesnės kelionės nebūtina sutalpinti į vieną lapkričio vakarą.
+
+Jei dalis šeimos gyvena kitame mieste, pasiūlykite du konkrečius dienos laikus ir patikrinkite, kuris patogiausias daugumai. Pridėkite kelionės datą, kuriai nereikia sutapti su kalendorine minėjimo diena. [2027 m. darbo dienų puslapis](/darbo-dienos/2027/) padeda pasižiūrėti, kaip šventės išsidėsčiusios tarp darbo dienų. Savo galutinį susitarimą tikrinkite pagal tikrą darbo ir transporto grafiką.
+## Kaip užrašyti šeimos susitarimą
+Į bendrą įrašą įtraukite sutartą dieną, susitikimo laiką ir vietą. Atskirame priminime išvakarėse pasižymėkite, ką pasiimti, kam paskambinti ir kokį maršrutą patikrinti. Adresą verta užrašyti tekstu kartu su nuoroda į žemėlapį. Net jei planas dalijamas telefonu, kai kuriems artimiesiems lengviau matyti pavadinimą ir gatvę vienoje eilutėje.
+
+Jei planas pasikeis dėl oro ar sveikatos, patikslinkite susitikimo laiką vienoje vietoje. Minėjimo datos mėnesio lape lieka tos pačios. Įrašą „aplankyti šeimos kapą“ galima perkelti į laiką, tinkantį keliautojams. Kalendorius suteikia progą susitarti, kada ir kaip prisiminsite artimuosius, ir padeda iš anksto pasidalyti kelionės rūpesčiais.
+## Pasirinkite patogų laiką pabūti ir prisiminti
+Planuojant vakarinį apsilankymą verta atskirai pasižiūrėti, kada temsta toje Lietuvos vietovėje. [Saulėtekio ir saulėlydžio kalendoriuje](/saule/) galite rinktis miestą ir datą. Jei su jumis išsiruošia mažesni vaikai ar žmogus, kuriam reikia geresnio matomumo, atvykite šviesiu paros metu. Sutartas laikas gali skirtis nuo laiko, kuriuo kapines paprastai lankydavote gyvendami arčiau.
+
+Jei šeima norėtų aplankyti kelias vietas, aptarkite, kur užtruksite ilgiau, o kur pakaktų trumpo sustojimo. Vienoje vietoje galite norėti pasidalinti istorija, kitoje – sutvarkyti artimojo kapą, o vakarui suplanuoti susitikimą namuose. Kalendoriuje šioms dalims skirkite atskirus įrašus. Taip vienos kelionės vėlavimas leis perkelti tik vėlesnį susitikimą ir aiškiai apie tai pranešti tiems, kurie į kapines nevažiuoja.
+
+Toli gyvenančiam artimajam galite pasiūlyti prisidėti prie prisiminimų kitą dieną ar trumpu pokalbiu telefonu. Kartu peržiūrėkite šeimos albumo puslapį arba paprašykite papasakoti, kaip Vėlinių išvykos atrodė anksčiau. Prie įrašo išsaugokite tik tai, kuo jis sutinka dalytis. Atskirai susižymėkite šeimos narių vardus ar vietoves, kurių rašybą norėsite patikrinti. Kitąmet bus aišku, nuo kokios istorijos tęsti pokalbį.
+## Ką išsaugoti iki kito lapkričio
+Po išvykos išsisaugokite informaciją, kurią bus sunku atkurti po metų: kapinių įėjimą, šeimos sutartą susitikimo tašką ir išgirstą artimojo prisiminimą. Eismo ribojimus ir laikinuosius maršrutus palikite tų metų užraše. Kitą lapkritį pakeiskite tik kelionės laiką bei aktualias nuorodas. Šeimos istorijos dalį galėsite pildyti metai iš metų.

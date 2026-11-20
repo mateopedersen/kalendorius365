@@ -1,0 +1,27 @@
+<section class="home-guides" aria-labelledby="home-guides-title">
+  <header class="home-guides__heading">
+    <h2 id="home-guides-title">Kalendoriaus ir planavimo gidai</h2>
+    <a class="home-guides__all" href="/blogas/">
+      Visi straipsniai {% include calendar-catalog-arrow.html %}
+    </a>
+  </header>
+  <div class="home-guides__grid">
+    {% for slug in site.data.home_guides %}
+      {% assign guide = site.data.blog | where: 'slug', slug | first %}
+      <article class="home-guide">
+        <a href="{{ guide.url }}" aria-labelledby="home-guide-{{ forloop.index }}">
+          <img class="home-guide__photo" src="{{ guide.photo.small }}" srcset="{{ guide.photo.srcset }}"
+            sizes="(max-width: 760px) calc(100vw - 24px), (max-width: 1500px) 32vw, 472px"
+            width="1200" height="630" alt="{{ guide.alt | escape }}" loading="lazy" decoding="async">
+          <div class="home-guide__body">
+            <p class="home-guide__meta"><span>{{ guide.category | escape }}</span><span>{{ guide.minutes }} min. skaitymo</span></p>
+            <h3 id="home-guide-{{ forloop.index }}">{{ guide.title | escape }}</h3>
+            <p class="home-guide__description">{{ guide.description | escape }}</p>
+            <span class="home-guide__action">Skaityti straipsnį {% include calendar-catalog-arrow.html %}</span>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+  <a class="home-guides__credits" href="/nuotrauku-licencijos/#blogo-nuotraukos">Nuotraukų autoriai ir licencijos</a>
+</section>

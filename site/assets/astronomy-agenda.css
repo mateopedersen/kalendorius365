@@ -1,38 +1,234 @@
-.astro-agenda{overflow:hidden;padding:clamp(1rem,3vw,2rem);border-color:#d4dfd9;background:radial-gradient(ellipse at 98% 0%,#e9e9f3 0,transparent 24rem),linear-gradient(145deg,#fff 40%,#f7faf8)}
-.astro-agenda-heading{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-bottom:1.15rem}
-.astro-agenda-heading>div:first-child{max-width:52rem}
-.astro-kicker{display:inline-flex;margin-bottom:.4rem;color:#536e60;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;font-weight:800}
-.astro-agenda-heading h2{margin-bottom:.55rem;font-size:clamp(1.35rem,2.7vw,1.9rem);letter-spacing:-.035em}
-.astro-agenda-heading p{margin:0;color:#586a60;line-height:1.6}
-.astro-moon-orbit{position:relative;flex:0 0 116px;width:116px;height:116px;border:1px solid #d9d9e5;border-radius:50%;background:radial-gradient(circle at 62% 36%,#f8f3df 0 16%,#d6d7e5 16.5% 35%,transparent 35.5%),radial-gradient(circle at 50% 50%,#e9ebf3,#f7f8fb 70%);box-shadow:inset 0 0 0 9px #ffffffa8,0 12px 28px #38435e12}
-.astro-moon-orbit:before,.astro-moon-orbit:after{position:absolute;content:"";border-radius:50%;background:#bbc4b8}
-.astro-moon-orbit:before{width:4px;height:4px;left:19px;top:31px;box-shadow:52px 66px 0 #a9b2c5,65px 19px 0 #c6bd9c}
-.astro-moon-orbit:after{inset:9px;border:1px solid #d9dce5;background:transparent}
-.astro-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;padding:1rem;border:1px solid #e0e7e2;border-radius:15px;background:#fff}
-.astro-agenda-count{margin:1.1rem 0 .5rem;color:#52675a;font-size:.88rem;font-weight:750}
-.astro-featured{margin-bottom:1rem}
-.astro-feature-label{margin:0 0 .45rem;color:#52675a;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;font-weight:800}
-.astro-featured-card{display:grid;grid-template-columns:100px minmax(0,1fr);gap:1rem;align-items:center;padding:1.1rem 1.25rem;border:1px solid #135b40;border-radius:17px;background:linear-gradient(120deg,#07563a,#12734e);color:#fff;box-shadow:0 12px 30px #08583d1c}
-.astro-date-tile{display:grid;align-content:center;justify-items:center;min-height:84px;padding:.6rem;border:1px solid #ffffff40;border-radius:14px;background:#ffffff12;text-align:center}
-.astro-date-number{font-size:2rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-.astro-date-month{text-transform:capitalize;font-size:.72rem;color:#d7e9de}
-.astro-event-copy{min-width:0}
-.astro-event-kind{display:inline-flex;margin-bottom:.35rem;padding:.2rem .5rem;border:1px solid #ffffff52;border-radius:99px;color:#e0f2e6;font-size:.66rem;font-weight:750}
-.astro-event-copy h3{margin:0 0 .3rem;font-size:1.15rem;color:inherit}
-.astro-event-local{display:block;color:#fff;font-size:.95rem;font-weight:750;text-transform:capitalize}
-.astro-event-utc{margin:.25rem 0 0;color:#d3e7da;font-size:.75rem}
-.astro-event-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin:0;padding:0;list-style:none}
-.astro-event-card{display:grid;grid-template-columns:70px minmax(0,1fr);gap:.75rem;align-items:center;min-width:0;padding:.75rem;border:1px solid #e0e7e2;border-radius:13px;background:#fff}
-.astro-event-card .astro-date-tile{min-height:65px;border-color:#dfe7e1;background:#f2f7f3;color:#17553a}
-.astro-event-card .astro-date-number{font-size:1.45rem}
-.astro-event-card .astro-date-month{color:#64746b;font-size:.62rem}
-.astro-event-card .astro-event-kind{margin:0 0 .15rem;padding:0;border:0;color:#51705e;text-transform:uppercase;letter-spacing:.04em;font-size:.59rem}
-.astro-event-card .astro-event-copy h3{font-size:.9rem;line-height:1.35;color:#20392c}
-.astro-event-card .astro-event-local{font-size:.76rem;color:#53665c}
-.astro-event-card .astro-event-utc{font-size:.66rem;color:#586b60}
-.astro-agenda-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin-top:1rem;padding-top:1rem;border-top:1px solid #dfe7e1}
-.astro-agenda-actions p{margin:0;color:#53675a;font-size:.82rem}
-.astro-agenda-actions button{min-height:46px}
-.astro-source-note{margin:1rem 0 0;padding-top:.8rem;border-top:1px dashed #d7e1da;color:#69786e;font-size:.77rem;line-height:1.6}
-@media(max-width:760px){.astro-event-list{grid-template-columns:1fr}.astro-agenda-heading{align-items:start}.astro-moon-orbit{flex-basis:78px;width:78px;height:78px}.astro-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.astro-agenda{padding:1rem}.astro-agenda-heading{display:block}.astro-moon-orbit{display:none}.astro-controls{grid-template-columns:1fr;gap:.65rem;padding:.8rem}.astro-featured-card{grid-template-columns:72px minmax(0,1fr);gap:.7rem;padding:.8rem}.astro-featured-card .astro-date-tile{min-height:72px}.astro-featured-card .astro-date-number{font-size:1.7rem}.astro-featured-card .astro-event-copy h3{font-size:1rem}.astro-featured-card .astro-event-local{font-size:.82rem}.astro-event-card{grid-template-columns:60px minmax(0,1fr);gap:.6rem;padding:.65rem}.astro-agenda-actions{align-items:stretch;flex-direction:column}.astro-agenda-actions button{width:100%}}
+.astro-page {
+  --astro-forest: #123c2e;
+  --astro-ink: #1d332a;
+  --astro-copy: #405a4b;
+  --astro-paper: #fefcf5;
+  --astro-edge: #dbdaca;
+  --astro-gold: var(--lt-flag-gold, #fdb913);
+  --astro-gold-ink: #5e400a;
+  --astro-gold-soft: #f8ebc6;
+  --astro-on-dark: var(--shell-on-dark, #fffaf0);
+  --astro-gold-on-dark: var(--shell-accent-on-dark, #ffdf92);
+  display: grid;
+  gap: clamp(18px, 2.7vw, 35px);
+  color: var(--astro-ink);
+}
+
+.astro-page :is(h2,h3,h4) { margin: 0; color: inherit; }
+.content-main .astro-page p { max-width: none; margin: 0; color: inherit; line-height: 1.6; }
+.astro-page :is(a,button,select,summary,[tabindex]):focus-visible {
+  outline: 2px solid var(--astro-forest); outline-offset: 3px;
+}
+.astro-page .astro-dark {
+  --heading-ink: var(--astro-on-dark);
+  color: var(--astro-on-dark);
+  background: radial-gradient(ellipse at 91% 21%, #2b5c46, transparent 58%),
+    linear-gradient(125deg, #102d27, #163f30);
+}
+.astro-page .astro-dark :is(a,button):focus-visible { outline-color: var(--astro-gold-on-dark); }
+
+.astro-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #345b46;
+  border-radius: clamp(16px, 2vw, 25px);
+  box-shadow: 0 8px 25px #133e2e19;
+}
+.astro-hero__copy { padding: clamp(24px, 5vw, 70px); padding-inline-end: 0; }
+.content-main .astro-hero h1 {
+  max-width: 14ch; margin: 9px 0 15px;
+  font-size: clamp(2.15rem, 4.7vw, 4.45rem); font-weight: 900; line-height: 1.02; letter-spacing: -.052em;
+  overflow-wrap: anywhere;
+}
+.astro-hero__copy > p:not(.astro-kicker) {
+  max-width: 55ch; color: #e9f3e8; font-size: clamp(1rem, 1.4vw, 1.14rem);
+}
+.astro-hero__image { display: block; width: 100%; height: auto; justify-self: center; }
+.astro-hero__actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+.content-main .astro-dark :is(.astro-kicker,.astro-feature-label,.astro-event-utc,.astro-event-kind) {
+  color: var(--astro-gold-on-dark);
+}
+.astro-kicker,.astro-feature-label {
+  font-size: .78rem; font-weight: 900; letter-spacing: .065em; text-transform: uppercase;
+}
+
+.astro-page .astro-action {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 9px 14px; border: 1px solid transparent; transition-property: border-color; border-radius: 9px;
+  font: 700 .92rem/1.25 var(--shell-font, inherit); text-align: center; text-decoration: none;
+}
+.astro-page .astro-action--gold { color: #3d2907; background: var(--astro-gold); border-color: var(--astro-gold); }
+.astro-page .astro-action--gold:hover { color: #3d2907; background: #ffd465; border-color: #ffd465; }
+.astro-page .astro-action--outline { color: var(--astro-on-dark); background: #ffffff10; border-color: #b9c7a5; }
+.astro-page .astro-action--outline:hover { color: var(--astro-on-dark); background: #ffffff23; }
+.astro-page .astro-action--green { color: #fff; background: #236045; border-color: #236045; }
+.astro-page .astro-action--green:hover { background: var(--astro-forest); border-color: var(--astro-forest); color: #fff; }
+.astro-page .astro-action--green:disabled { color: #405a4b; background: #edf1e6; border-color: #d5dfd1; opacity: 1; }
+
+.astro-section {
+  padding: clamp(16px, 3vw, 35px); scroll-margin-top: 18px;
+  border: 1px solid var(--astro-edge); border-radius: 19px; background: var(--astro-paper);
+}
+.astro-section__head { display: grid; gap: 8px; min-width: 0; margin: 0 0 17px; color: var(--astro-ink); }
+.astro-section__head h2,.astro-next h2 { font-size: clamp(1.4rem, 2.6vw, 2.15rem); line-height: 1.18; letter-spacing: -.03em; }
+.content-main .astro-section__head p { max-width: 71ch; color: var(--astro-copy); }
+
+.astro-workspace { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 14px; margin-bottom: 16px; }
+.astro-filters,.astro-featured {
+  min-width: 0; padding: clamp(14px, 2vw, 25px); border: 1px solid var(--astro-edge); border-radius: 14px;
+}
+.astro-filters { background: #f4f4e8; }
+.astro-controls { display: grid; grid-template-columns: minmax(72px,.6fr) minmax(0,1fr) minmax(0,1.48fr); gap: 9px; }
+.astro-controls label { display: grid; gap: 5px; min-width: 0; color: var(--astro-forest); font-size: .84rem; font-weight: 700; }
+.astro-controls select {
+  width: 100%; min-width: 0; min-height: 46px; margin: 0; padding: 7px;
+  border: 1px solid #a2b39e; border-radius: 8px; background: #fffefa; color: var(--astro-ink);
+  font: 700 .9rem/1.2 var(--shell-font, inherit);
+}
+.astro-controls select:hover { border-color: #52775e; }
+.astro-filters__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 3px 10px; min-height: 44px; padding-top: 5px; }
+.content-main .astro-agenda-count { color: var(--astro-forest); font-size: .88rem; font-weight: 700; }
+.astro-page .astro-text-button {
+  min-height: 44px; padding: 4px 0; border: 0; background: none;
+  color: #285e44; font-size: .86rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px;
+}
+.astro-page .astro-text-button:hover { color: var(--astro-forest); background: none; }
+.astro-download { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-top: 11px; border-top: 1px solid #d3ddcf; }
+.astro-download .icon { flex: none; width: 19px; height: 19px; }
+.content-main .astro-download p { flex: 1 1 11rem; color: var(--astro-copy); font-size: .81rem; line-height: 1.38; }
+
+.astro-featured { display: grid; align-content: center; justify-items: start; gap: 10px; border-color: #345b46; }
+.astro-feature-message { font-size: .94rem; }
+.astro-featured-card,.astro-event-card {
+  display: grid; grid-template-columns: 90px minmax(0, 1fr); align-items: start; gap: 13px; min-width: 0;
+}
+.astro-event-meta { display: grid; justify-items: center; gap: 5px; text-align: center; }
+.astro-event-art {
+  display: grid; width: 58px; height: 58px; place-items: center;
+  border: 1px solid #eadbb6; border-radius: 12px; background: #f8ebc6;
+}
+.astro-featured .astro-event-art { width: 73px; height: 73px; border-color: #dfbc78; background: #fff4d41c; }
+.astro-phase-icon { display: block; flex: none; width: 46px; height: 46px; }
+.astro-featured .astro-phase-icon { width: 61px; height: 61px; }
+.astro-event-kind { font-size: .67rem; font-weight: 800; color: var(--astro-gold-ink); }
+.astro-event-copy { display: grid; gap: 4px; min-width: 0; }
+.astro-event-copy :is(h3,h4) { font-size: 1.02rem; line-height: 1.23; }
+.astro-featured .astro-event-copy h3 { font-size: clamp(1.2rem,2.1vw,1.58rem); }
+.astro-event-local { font-size: .9rem; font-weight: 700; }
+.astro-event-utc { color: var(--astro-gold-ink); font-size: .83rem; font-variant-numeric: tabular-nums; }
+.content-main .astro-event-description { color: #ebf4e8; font-size: .85rem; }
+.astro-event-link,.astro-inline-link {
+  justify-self: start; color: #285d43; font-size: .87rem; font-weight: 700;
+  text-underline-offset: .19em; overflow-wrap: anywhere;
+}
+.astro-event-link { padding: 6px 0 2px; }
+.astro-inline-link { display: inline-flex; align-items: baseline; gap: 7px; margin-top: 9px; }
+.astro-page .astro-dark .astro-event-link { color: var(--astro-gold-on-dark); }
+.astro-page .astro-dark .astro-event-link:hover { color: var(--astro-on-dark); }
+
+.astro-event-list,.astro-month-events,.astro-phase-grid,.astro-legend { padding: 0; margin: 0; list-style: none; }
+.astro-event-list { display: grid; gap: 7px; }
+.astro-month-group > details { margin: 0; border: 1px solid var(--astro-edge); border-radius: 10px; background: #fffdf8; }
+.astro-month-group > details[open] { border-color: #d8c38b; }
+.astro-month-group summary {
+  display: flex; align-items: center; gap: 8px; min-height: 48px; margin: 0;
+  padding: 7px 12px; border-radius: 9px; cursor: pointer; list-style: none;
+}
+.astro-month-group summary::-webkit-details-marker { display: none; }
+.astro-month-group summary:hover,.astro-month-group details[open] summary { background: #f8edce; }
+.astro-month-group details[open] summary { border-end-start-radius: 0; border-end-end-radius: 0; }
+.astro-month-group summary::after {
+  content: ""; flex: none; width: 8px; height: 8px; margin: 0 4px 4px 8px;
+  border: solid var(--astro-forest); border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.astro-month-group details[open] summary::after { margin-block: 4px 0; transform: rotate(225deg); }
+.astro-month-name { margin-inline-end: auto; font-size: 1rem; font-weight: 800; color: var(--astro-forest); }
+.astro-month-count { color: var(--astro-gold-ink); font-size: .8rem; }
+.astro-month-events { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; padding: 9px; }
+.astro-event-card {
+  grid-template-columns: 72px minmax(0,1fr); padding: 11px;
+  border: 1px solid #e0dece; border-radius: 8px; background: #fffefa;
+}
+
+.astro-learn__grid,.astro-seasons__intro,.astro-next__grid {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 14px;
+}
+.astro-note {
+  display: grid; align-content: start; gap: 9px; height: 100%; padding: clamp(14px, 2vw, 25px);
+  border: 1px solid #d9e1d1; border-radius: 12px; background: #f2f5eb; color: var(--astro-copy);
+}
+.astro-note--time { border-color: #e6d4a2; background: #fbf4e1; }
+.astro-note h3,.astro-phase-grid h3 { font-size: 1.15rem; color: var(--astro-ink); }
+.astro-note .astro-inline-link { margin: 0; }
+.astro-note code { overflow-wrap: anywhere; }
+.astro-time-example { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin: 0; }
+.astro-time-example > div { padding: 7px 11px; border: 1px solid #e2d5af; border-radius: 8px; background: #fffcf2; }
+.astro-time-example dt { color: var(--astro-gold-ink); font-size: .8rem; font-weight: 700; }
+.astro-time-example dd { margin: 0; color: var(--astro-forest); font-size: 1.32rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.astro-phase-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.astro-phase-grid > li {
+  display: grid; align-content: start; gap: 7px; min-width: 0; padding: 13px 15px;
+  border: 1px solid #e3d8ba; border-radius: 11px; background: #fff9e8; color: var(--astro-copy);
+}
+.astro-phase-grid .astro-phase-icon { width: 60px; height: 60px; }
+.content-main .astro-caption { margin-top: 8px; color: var(--astro-copy); font-size: .85rem; }
+
+.astro-seasons__intro { grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); }
+.astro-horizon { min-width: 0; margin: 0; }
+.astro-horizon img { display: block; width: 100%; height: auto; border-radius: 13px; }
+.astro-horizon figcaption { display: grid; gap: 5px; margin-top: 8px; color: var(--astro-copy); font-size: .8rem; }
+.astro-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.astro-legend li { display: inline-flex; align-items: center; gap: 5px; }
+.astro-legend li span { width: 15px; border-top: 3px solid #a5731a; }
+.astro-legend li:nth-child(2) span { border-top: 2px dashed #477850; }
+.astro-legend li:nth-child(3) span { border-top: 2px dotted #9b5733; }
+.astro-page .astro-table-scroll { width: 100%; margin: 16px 0 0; border-color: var(--astro-edge); overflow-x: auto; border-radius: 9px; }
+.astro-page .astro-table { min-width: 665px; margin: 0; }
+.astro-table caption { padding: 9px 11px; color: var(--astro-forest); text-align: left; font-weight: 800; }
+.astro-page .astro-table thead th { background: #f8edce; color: var(--astro-ink); white-space: normal; }
+.astro-page .astro-table th[scope="row"] { color: var(--astro-forest); }
+
+.astro-next__grid { margin: 11px 0; align-items: stretch; }
+.astro-next__grid > a {
+  display: grid; grid-template-columns: 48px minmax(0,1fr) auto; align-items: center; gap: 9px;
+  padding: 12px; border: 1px solid #d7dece; border-radius: 12px; background: #f3f6eb;
+  color: var(--astro-forest); text-decoration: none;
+}
+.astro-next__grid > a:hover { color: var(--astro-forest); background: #f8ecd0; border-color: #d6bd86; }
+.astro-next__grid small { display: block; color: var(--astro-copy); font-size: .85rem; }
+.astro-next__arrow { font-size: 1.2rem; }
+.content-main .astro-sources { color: var(--astro-copy); font-size: .88rem; }
+
+@media (max-width: 960px) {
+  .astro-workspace { grid-template-columns: minmax(0,1fr); }
+  .astro-hero__copy { padding: 27px 0 27px 27px; }
+}
+@media (max-width: 740px) {
+  .astro-hero { grid-template-columns: minmax(0,1fr); }
+  .astro-hero__copy { padding: 24px 20px 0; }
+  .astro-hero__image { width: min(100%,370px); margin: -5px 0 3px; }
+  .astro-hero__actions { margin-top: 16px; }
+  .astro-section { border-radius: 14px; }
+  .astro-phase-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .astro-learn__grid,.astro-seasons__intro,.astro-next__grid,.astro-month-events { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 500px) {
+  .astro-controls { grid-template-columns: minmax(0,.75fr) minmax(0,1fr); }
+  .astro-controls label:last-child { grid-column: 1 / -1; }
+  .astro-featured-card { grid-template-columns: 61px minmax(0,1fr); gap: 9px; }
+  .astro-featured .astro-event-art { width: 56px; height: 56px; }
+  .astro-featured .astro-phase-icon { width: 47px; height: 47px; }
+  .astro-event-card { grid-template-columns: 59px minmax(0,1fr); gap: 9px; }
+  .astro-event-art { width: 52px; height: 52px; }
+  .astro-phase-grid > li { padding: 10px; }
+  .astro-next__grid > a { padding: 8px; }
+}
+@media print {
+  .astro-page .astro-dark { --heading-ink: #111; color: #111; background: #fff; }
+  .content-main .astro-page .astro-dark :is(p,time,.astro-event-kind,a) { color: #111; }
+  .astro-hero__image,.astro-hero__actions,.astro-filters { display: none; }
+  .astro-hero,.astro-workspace { display: block; }
+}
