@@ -1,5 +1,5 @@
 {
-  "pages": 1019,
+  "pages": 1031,
   "method": "Full-route CSS with runtime classes and print rules; no hidden content",
   "results": [
     {
@@ -3129,6 +3129,12 @@
       "stylesheet_requests_removed": 3
     },
     {
+      "path": "horoskopai/avinas/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
       "path": "horoskopai/avinas/index.html",
       "source_bytes": 282903,
       "route_bytes": 107262,
@@ -3322,6 +3328,12 @@
     },
     {
       "path": "horoskopai/dvyniai/2026-11-20/v-80e9991359e24136/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
+      "path": "horoskopai/dvyniai/2026-11-21/v-bc6a44b575f182ab/index.html",
       "source_bytes": 232749,
       "route_bytes": 76375,
       "stylesheet_requests_removed": 3
@@ -3537,6 +3549,12 @@
       "stylesheet_requests_removed": 3
     },
     {
+      "path": "horoskopai/jautis/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
       "path": "horoskopai/jautis/index.html",
       "source_bytes": 282903,
       "route_bytes": 107186,
@@ -3730,6 +3748,12 @@
     },
     {
       "path": "horoskopai/liutas/2026-11-20/v-80e9991359e24136/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
+      "path": "horoskopai/liutas/2026-11-21/v-bc6a44b575f182ab/index.html",
       "source_bytes": 232749,
       "route_bytes": 76375,
       "stylesheet_requests_removed": 3
@@ -3933,6 +3957,12 @@
       "stylesheet_requests_removed": 3
     },
     {
+      "path": "horoskopai/mergele/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
       "path": "horoskopai/mergele/index.html",
       "source_bytes": 282903,
       "route_bytes": 107186,
@@ -4126,6 +4156,12 @@
     },
     {
       "path": "horoskopai/oziaragis/2026-11-20/v-80e9991359e24136/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
+      "path": "horoskopai/oziaragis/2026-11-21/v-bc6a44b575f182ab/index.html",
       "source_bytes": 232749,
       "route_bytes": 76375,
       "stylesheet_requests_removed": 3
@@ -4329,6 +4365,12 @@
       "stylesheet_requests_removed": 3
     },
     {
+      "path": "horoskopai/saulys/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
       "path": "horoskopai/saulys/index.html",
       "source_bytes": 282903,
       "route_bytes": 107262,
@@ -4522,6 +4564,12 @@
     },
     {
       "path": "horoskopai/skorpionas/2026-11-20/v-80e9991359e24136/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
+      "path": "horoskopai/skorpionas/2026-11-21/v-bc6a44b575f182ab/index.html",
       "source_bytes": 232749,
       "route_bytes": 76375,
       "stylesheet_requests_removed": 3
@@ -4725,6 +4773,12 @@
       "stylesheet_requests_removed": 3
     },
     {
+      "path": "horoskopai/svarstykles/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
       "path": "horoskopai/svarstykles/index.html",
       "source_bytes": 282903,
       "route_bytes": 107261,
@@ -4918,6 +4972,12 @@
     },
     {
       "path": "horoskopai/vandenis/2026-11-20/v-80e9991359e24136/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
+      "path": "horoskopai/vandenis/2026-11-21/v-bc6a44b575f182ab/index.html",
       "source_bytes": 232749,
       "route_bytes": 76375,
       "stylesheet_requests_removed": 3
@@ -5121,6 +5181,12 @@
       "stylesheet_requests_removed": 3
     },
     {
+      "path": "horoskopai/vezys/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
       "path": "horoskopai/vezys/index.html",
       "source_bytes": 282903,
       "route_bytes": 107263,
@@ -5314,6 +5380,12 @@
     },
     {
       "path": "horoskopai/zuvys/2026-11-20/v-80e9991359e24136/index.html",
+      "source_bytes": 232749,
+      "route_bytes": 76375,
+      "stylesheet_requests_removed": 3
+    },
+    {
+      "path": "horoskopai/zuvys/2026-11-21/v-bc6a44b575f182ab/index.html",
       "source_bytes": 232749,
       "route_bytes": 76375,
       "stylesheet_requests_removed": 3
