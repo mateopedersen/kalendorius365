@@ -178,7 +178,11 @@ function setupDaylight() {
   const nextDay = $("#daylight-next-day");
   const copyLink = $("#daylight-copy-link");
   const dateFromUrl = new URLSearchParams(location.search).get("date");
-  if (dateFromUrl && /^\d{4}-\d\d-\d\d$/.test(dateFromUrl) && dateFromUrl >= input.min && dateFromUrl <= input.max) input.value = dateFromUrl;
+  if (dateFromUrl && /^\d{4}-\d\d-\d\d$/.test(dateFromUrl) && dateFromUrl >= input.min && dateFromUrl <= input.max) {
+    input.value = dateFromUrl;
+    if (!input.validity.valid) input.value = input.defaultValue;
+  }
+  let comparisonDate = input.value;
   let cities = [];
   let results = [];
   function updateDateStepButtons() {
@@ -216,7 +220,7 @@ function setupDaylight() {
   function renderYearCurve() {
     if (!cities.length || !yearChart) return;
     const city = cities.find((item) => item.id === focusCity.value) || cities[0];
-    const year = input.value.slice(0, 4);
+    const year = comparisonDate.slice(0, 4);
     const data = Array.from({ length: 12 }, (_, index) => {
       const date = year + "-" + String(index + 1).padStart(2, "0") + "-21";
       const result = solarFor(date, { lat: city.latitude, lon: city.longitude });
@@ -361,7 +365,9 @@ function setupDaylight() {
         renderYearCurve();
         return;
       }
-      results = chosen.map((city) => ({ city, result: solarFor(input.value, { lat: city.latitude, lon: city.longitude }) }));
+      if (!input.validity.valid) return;
+      comparisonDate = input.value;
+      results = chosen.map((city) => ({ city, result: solarFor(comparisonDate, { lat: city.latitude, lon: city.longitude }) }));
       const referenceCity = cities.find((city) => city.id === "vilnius") || cities[0];
       const referenceMinutes = solarFor(input.value, { lat: referenceCity.latitude, lon: referenceCity.longitude }).dayMinutes;
       rows.replaceChildren();
@@ -408,6 +414,7 @@ function setupDaylight() {
   nextDay.addEventListener("click", () => { if (input.value < input.max) { input.value = shiftIsoDate(input.value, 1); render(); } });
   input.addEventListener("input", updateDateStepButtons);
   copyLink.addEventListener("click", async () => {
+    if (!input.reportValidity()) return;
     const url = new URL(location.href);
     url.searchParams.set("date", input.value);
     try {
@@ -427,7 +434,8 @@ function setupDaylight() {
     render();
   });
   $$(".daylight-preset").forEach((button) => button.addEventListener("click", () => {
-    input.value = input.value.slice(0, 4) + "-" + button.dataset.monthDay;
+    const year = (input.validity.valid ? input.value : comparisonDate).slice(0, 4);
+    input.value = year + "-" + button.dataset.monthDay;
     render();
   }));
   csvButton.addEventListener("click", () => {
@@ -436,11 +444,11 @@ function setupDaylight() {
       ["Data", "Miestas", "Saulėtekis (Europe/Vilnius)", "Saulės vidurdienis", "Saulėlydis", "Dienos šviesa (min.)", "Skirtumas nuo Vilniaus (min.)"],
       ...results.map(({ city, result }) => {
         const reference = cities.find((item) => item.id === "vilnius") || cities[0];
-        const referenceMinutes = solarFor(input.value, { lat: reference.latitude, lon: reference.longitude }).dayMinutes;
-        return [input.value, city.name, clock(result.sunrise), clock(result.noon), clock(result.sunset), result.dayMinutes, result.dayMinutes - referenceMinutes];
+        const referenceMinutes = solarFor(comparisonDate, { lat: reference.latitude, lon: reference.longitude }).dayMinutes;
+        return [comparisonDate, city.name, clock(result.sunrise), clock(result.noon), clock(result.sunset), result.dayMinutes, result.dayMinutes - referenceMinutes];
       }),
     ].map((line) => line.map((value) => '"' + String(value).replace(/"/g, '""') + '"').join(";"));
-    downloadText("dienos-sviesa-" + input.value + ".csv", "\uFEFF" + lines.join("\r\n"), "text/csv;charset=utf-8");
+    downloadText("dienos-sviesa-" + comparisonDate + ".csv", "\uFEFF" + lines.join("\r\n"), "text/csv;charset=utf-8");
   });
   updateDateStepButtons();
   render();

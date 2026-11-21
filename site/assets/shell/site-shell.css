@@ -843,7 +843,7 @@ body.homepage-app .dashboard-main {
   .home-heading__hero { gap: 9px; padding: 12px; }
   .home-heading__copy { gap: 7px; }
   .home-heading__intro { font-size: .91rem; }
-  .home-heading__actions { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr) 44px; align-items: stretch; gap: 6px; }
+  .home-heading__actions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)) 44px; align-items: stretch; gap: 6px; }
   .home-heading__actions > .home-heading__button {
     justify-content: center; padding-inline: 5px; font-size: .83rem; text-align: center;
   }

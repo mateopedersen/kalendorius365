@@ -82,3 +82,27 @@ test('annual weekend budget waits for statutory data, retries failure and export
  const count=await page.locator('#weekend-recommendations article').count();const raw=await downloadText(page,()=>page.locator('#weekend-plan-export').click());const ics=raw.replace(/\r\n /g,'');expect((ics.match(/BEGIN:VEVENT/g)||[])).toHaveLength(count);const starts=[...ics.matchAll(/DTSTART;VALUE=DATE:(\d{8})/g)].map(m=>m[1]),ends=[...ics.matchAll(/DTEND;VALUE=DATE:(\d{8})/g)].map(m=>m[1]);expect(starts).toHaveLength(count);expect(ends).toHaveLength(count);
  for(let i=0;i<count;i++){expect(starts[i]<ends[i]).toBe(true);if(i)expect(starts[i]>=ends[i-1]).toBe(true);}expect(recoveredRequests).toBeGreaterThan(0);
 });
+
+test('daylight shortcuts align on phones and only export the compared date', async ({page}) => {
+ await page.setViewportSize({width:320,height:844});
+ await page.goto('/dienos-ilgumas/?date=2028-02-29');
+ await expect(page.locator('#daylight-rows tr')).toHaveCount(5);
+ for (const width of [320,390,430]) {
+  await page.setViewportSize({width,height:844});
+  const dimensions=await page.locator('.daylight-preset').evaluateAll(buttons=>buttons.map(button=>[button.offsetWidth,button.offsetHeight].join('x')));
+  expect(new Set(dimensions).size).toBe(1);
+  expect(await page.locator('#daylight-date').evaluate(input=>{
+   const field=input.getBoundingClientRect(), label=input.parentElement.getBoundingClientRect();
+   return field.left>=label.left-1 && field.right<=label.right+1;
+  })).toBe(true);
+ }
+ const date=page.locator('#daylight-date');
+ await date.fill('2029-06-21');
+ const csv=await downloadText(page,()=>page.locator('#daylight-export').click());
+ expect(csv).toContain('2028-02-29');
+ expect(csv).not.toContain('2029-06-21');
+ await date.fill('');
+ await page.locator('.daylight-preset[data-month-day="12-21"]').click();
+ await expect(date).toHaveValue('2028-12-21');
+ await expect(page).toHaveURL(/date=2028-12-21/);
+});

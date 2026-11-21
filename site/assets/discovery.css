@@ -89,10 +89,17 @@
 .commemoration-card[data-category="culture"] .commemoration-tag { background: #fff4df; color: #855617; }
 .commemoration-card[data-category="community"] .commemoration-tag { background: #f5eff9; color: #68477c; }
 
-.daylight-presets { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 1.1rem; }
-.daylight-presets button { min-height: 36px; padding: .45rem .7rem; font-size: .77rem; }
+.daylight-presets { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); grid-auto-rows: 1fr; gap: .5rem; margin: .7rem 0 .9rem; }
+.daylight-presets button {
+  display: grid; align-content: center; justify-items: center; gap: 3px;
+  min-width: 0; min-height: 49px; padding: .4rem .5rem;
+  font-size: .83rem; line-height: 1.25; text-align: center;
+  white-space: normal; overflow-wrap: break-word;
+}
+.daylight-presets button small { color: var(--muted); font-size: .74em; font-weight: 600; }
 .daylight-form { display: flex; align-items: end; gap: .8rem; }
-.daylight-form label { flex: 1; max-width: 360px; }
+.daylight-form label { flex: 1; min-width: 0; max-width: 360px; }
+.daylight-form input { min-inline-size: 0; max-inline-size: 100%; box-sizing: border-box; font-size: max(1rem,16px); }
 .daylight-form button { min-height: 46px; }
 .daylight-city-fieldset { margin: 1.1rem 0 0; padding: .8rem 0 0; border: 0; border-top: 1px solid #e9eeeb; }
 .daylight-city-fieldset legend { padding: 0 .4rem 0 0; color: #34455a; font-size: .83rem; font-weight: 800; }
@@ -198,8 +205,16 @@
   .discovery-actions button { width: 100%; }
   .commemoration-month .resource-grid { grid-template-columns: 1fr; }
   .commemoration-card { min-height: 0; }
-  .daylight-form { align-items: stretch; flex-direction: column; }
-  .daylight-form label { max-width: none; }
+  .daylight-presets { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+  .daylight-form { display: grid; grid-template-columns: minmax(0,1fr); gap: 7px; }
+  .daylight-form label { width: 100%; max-width: none; }
+  .daylight-date-actions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+  .daylight-date-actions button { min-width: 0; min-height: 44px; white-space: normal; overflow-wrap: break-word; }
+  .daylight-date-actions .text-button { grid-column: 1 / -1; }
+  .daylight-city-choices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+  .daylight-city-choices label { min-width: 0; min-height: 44px; }
+  .daylight-city-choices input { flex: none; }
+  .daylight-city-choices span { min-width: 0; overflow-wrap: break-word; }
   .daylight-form button { width: 100%; }
   .daylight-results .discovery-tool-heading { align-items: start; }
   .daylight-results .discovery-tool-heading > button { min-height: 35px; padding: .4rem; font-size: .74rem; }
