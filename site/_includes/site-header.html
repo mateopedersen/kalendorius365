@@ -40,7 +40,7 @@
     <header class="tools-dialog__head">
       <h2 id="tools-dialog-title">Ką norite suplanuoti?</h2>
       <button id="tools-close" type="button" aria-label="Užverti įrankių meniu"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg></button>
-      <label class="tools-dialog__search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span class="visually-hidden">Ieškoti įrankio</span><input id="tools-query" type="search" placeholder="Ieškoti kalendoriaus, atostogų ar skaičiuoklės…" autocomplete="off"></label>
+      <label class="tools-dialog__search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span class="visually-hidden">Ieškoti įrankio</span><input id="tools-query" type="search" placeholder="Ieškoti įrankių…" autocomplete="off"></label>
     </header>
     <div class="tools-dialog__body">
       <div class="tools-dialog__categories" role="group" aria-label="Įrankių temos">
@@ -54,7 +54,16 @@
           <h3 id="tools-{{ group.id }}">{{ group.title }}</h3>
           <div class="tools-dialog__grid">
             {% for item in group.tools %}
+            {% if item.year_links %}<div class="tools-dialog__year-card">{% endif %}
             <a href="{{ item.route }}" data-menu-tool data-keywords="{{ item.keywords | escape }}">{% include shell-art.html name=item.art size=46 lazy=true %}<span><strong>{{ item.title }}</strong><small>{{ item.description }}</small></span><svg viewBox="0 0 16 16" class="shell-chevron" aria-hidden="true"><path d="m6 4 4 4-4 4"/></svg></a>
+            {% if item.year_links %}
+              <nav class="tools-dialog__year-links" aria-label="{{ item.title }} pagal metus">
+                {% for year_link in item.year_links %}
+                <a href="{{ year_link[1] }}" aria-label="{{ item.title }} {{ year_link[0] }}"{% if page.url == year_link[1] %} aria-current="page"{% endif %}>{{ year_link[0] }}</a>
+                {% endfor %}
+              </nav>
+            </div>
+            {% endif %}
             {% endfor %}
           </div>
         </section>

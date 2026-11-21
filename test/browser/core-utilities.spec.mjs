@@ -406,17 +406,64 @@ test('the phone tool menu fits the visible screen before and during search', asy
 
   const search = menu.getByRole('searchbox', { name: 'Ieškoti įrankio' });
   await expect(search).toHaveCSS('font-size', '16px');
-  await search.fill('datos');
-  await page.evaluate(() => {
-    Object.defineProperty(visualViewport, 'height', { configurable: true, value: 425 });
+  await expect(search).toHaveCSS('border-top-width', '0px');
+  await expect(search).toHaveCSS('box-shadow', 'none');
+  const heading = menu.getByRole('heading', { name: 'Ką norite suplanuoti?' });
+  const searchFrame = menu.locator('.tools-dialog__search');
+  for (const width of [320, 390, 430]) {
+    await page.setViewportSize({ width, height: 844 });
+    await expect(menu).toHaveCSS('width', width + 'px');
+    const titleBox = await heading.boundingBox();
+    const closeBox = await close.boundingBox();
+    const searchBox = await searchFrame.boundingBox();
+    expect(closeBox.x - (titleBox.x + titleBox.width)).toBeGreaterThanOrEqual(10);
+    expect(searchBox.y - (closeBox.y + closeBox.height)).toBeGreaterThanOrEqual(10);
+  }
+  await search.fill('datos skaiciuokle');
+  const resizeVisibleScreen = height => page.evaluate(height => {
+    Object.defineProperty(visualViewport, 'height', { configurable: true, value: height });
     visualViewport.dispatchEvent(new Event('resize'));
-  });
+  }, height);
+  await resizeVisibleScreen(425);
   await expect(menu).toHaveCSS('height', '425px');
   await expect(close).toBeVisible();
   await expect(menu.getByRole('link', { name: /Datos skaičiuoklė/ }).first()).toBeVisible();
+  const years = menu.getByRole('navigation', { name: 'Nedarbo Dienos pagal metus' });
+  await expect(years).toBeHidden();
+  await search.fill('laisvos dienos 2029');
+  await expect(years).toBeVisible();
+  await expect(years.getByRole('link', { name: 'Nedarbo Dienos 2029' })).toHaveAttribute('href', '/nedarbo-dienos/2029/');
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.addStyleTag({ content: 'html { font-size: 200% !important; }' });
+  await resizeVisibleScreen(275);
+  await expect(menu.locator('.tools-dialog__categories')).toBeHidden();
+  const resultHeight = await menu.locator('.tools-dialog__results').evaluate(results => results.clientHeight);
+  expect(resultHeight).toBeGreaterThanOrEqual(70);
+  await years.getByRole('link', { name: 'Nedarbo Dienos 2029' }).scrollIntoViewIfNeeded();
+  await expect(years.getByRole('link', { name: 'Nedarbo Dienos 2029' })).toBeInViewport({ ratio: 1 });
   await close.click();
   await expect(menu).toBeHidden();
   await expect(opener).toBeFocused();
+});
+
+test('the shared work menu opens every days-off year directly from the compact year buttons', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 750 });
+  await page.goto('/nedarbo-dienos/2028/');
+  await page.locator('#tools-open').click();
+  await page.locator('[data-menu-group="work"]').click();
+  const years = page.locator('#tools-dialog').getByRole('navigation', { name: 'Nedarbo Dienos pagal metus' });
+  const yearLinks = years.getByRole('link');
+  await expect(yearLinks).toHaveCount(4);
+  await expect(yearLinks.nth(1)).toHaveAttribute('aria-current', 'page');
+  const boxes = await yearLinks.evaluateAll(links => links.map(link => {
+    const box = link.getBoundingClientRect();
+    return { width: box.width, height: box.height, top: box.top, right: box.right };
+  }));
+  expect(boxes.every(box => Math.abs(box.width - boxes[0].width) < 1 && box.height >= 44 &&
+    box.height === boxes[0].height && box.top === boxes[0].top && box.right < 320)).toBe(true);
+  await yearLinks.last().click();
+  await expect(page).toHaveURL(/\/nedarbo-dienos\/2030\/$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nedarbo Dienos 2030');
 });
 
 test('holiday and commemoration dates fit in complete mobile rows', async ({ page }) => {

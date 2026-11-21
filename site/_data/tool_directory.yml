@@ -77,6 +77,20 @@ categories:
     art: briefcase
     title: Darbas ir atostogos
     tools:
+      - route: /nedarbo-dienos/2027/
+        title: Nedarbo Dienos
+        description: Šventinės datos ir ilgieji savaitgaliai 2027–2030 metais.
+        example: Pasirinkite metus ir peržiūrėkite laisvas dienas kiekvieną mėnesį.
+        kind: Laisvų dienų kalendorius
+        outputs: [Ekrane]
+        keywords: laisvos dienos laisvadieniai šventinės nedarbo dienos 2027 2028 2029 2030
+        art: calendar
+        card_class: resource-card--workdays
+        year_links:
+          "2027": /nedarbo-dienos/2027/
+          "2028": /nedarbo-dienos/2028/
+          "2029": /nedarbo-dienos/2029/
+          "2030": /nedarbo-dienos/2030/
       - route: /atostogu-planavimas/
         title: Atostogų planuoklis
         description: Palyginkite ilgesnį poilsį, dienų santykį ir kelių laikotarpių planus.
