@@ -1,0 +1,68 @@
+{
+  "vilnius": {
+    "src": "/assets/visuals/weather-city-vilnius-day.webp",
+    "alt": "Vilniaus katedros varpinė po debesuotu dangumi",
+    "width": 1200,
+    "height": 675
+  },
+  "kaunas": {
+    "src": "/assets/visuals/weather-city-kaunas.webp",
+    "alt": "Kauno pilies bokštas ir raudonų plytų gynybinė siena",
+    "width": 960,
+    "height": 398
+  },
+  "klaipeda": {
+    "src": "/assets/visuals/weather-city-klaipeda.webp",
+    "alt": "Danės krantinė Klaipėdoje su pastatais ir prišvartuotais laivais",
+    "width": 960,
+    "height": 627
+  },
+  "siauliai": {
+    "src": "/assets/visuals/weather-city-siauliai.webp",
+    "alt": "Šiaulių centro pastatai ir gatvių sankryža iš aukštai",
+    "width": 960,
+    "height": 720
+  },
+  "panevezys": {
+    "src": "/assets/visuals/weather-city-panevezys.webp",
+    "alt": "Panevėžio Senvagė su fontanu ir medžiais pakrantėje",
+    "width": 960,
+    "height": 638
+  },
+  "alytus": {
+    "src": "/assets/visuals/weather-city-alytus.webp",
+    "alt": "Baltosios rožės tiltas virš Nemuno Alytuje",
+    "width": 960,
+    "height": 541
+  },
+  "taurage": {
+    "src": "/assets/visuals/weather-city-taurage.webp",
+    "alt": "Tauragės pilies bokštas ir įvažiavimo arka",
+    "width": 960,
+    "height": 720
+  },
+  "visaginas": {
+    "src": "/assets/visuals/weather-city-visaginas.webp",
+    "alt": "Visagino daugiabučiai ir gatvė tarp pušų",
+    "width": 960,
+    "height": 720
+  },
+  "marijampole": {
+    "src": "/assets/visuals/weather-city-marijampole.webp",
+    "alt": "Marijampolės gatvė prie baltos bažnyčios",
+    "width": 960,
+    "height": 720
+  },
+  "telsiai": {
+    "src": "/assets/visuals/weather-city-telsiai-centre.webp",
+    "alt": "Telšių centro gatvė su snieguotais šaligatviais",
+    "width": 1200,
+    "height": 675
+  },
+  "utena": {
+    "src": "/assets/visuals/weather-city-utena.webp",
+    "alt": "Utenos panorama iš aukštai su ežeru tarp miesto kvartalų",
+    "width": 960,
+    "height": 570
+  }
+}

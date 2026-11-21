@@ -193,7 +193,37 @@ def read_approved_legacy_transition(root,baseline):
         assert alias['before_sha256']==row['before']['sha256'] and alias['after_sha256']==row['after']['sha256']
     return transition
 
+def verify_2030_print():
+    manifest_path = ROOT/'data/lunar/print-2030.json'
+    document = json.loads(manifest_path.read_text())
+    proofs = ROOT/'site/downloads/lunar/2030/print-verification.json'
+    audit = json.loads(proofs.read_text())
+    assert audit['manifest_sha256'] == sha(manifest_path) and audit['daily_samples'] == 365
+    assert audit['principal_phases'] == 50 and document['events_sha256'] == sha(ROOT/'data/lunar/calendar.json')
+    pattern = {(month,design) for month in range(1,13) for design in ('night','editorial')} | {(None,'annual')}
+    assert len(document['assets']) == len(audit['results']) == len(pattern) == 25
+    assert {(a['month'],a['design']) for a in document['assets']} == pattern
+    proof_by_path = {row['pdf']:row for row in audit['results']}
+    daily_hash = sha(ROOT/'data/lunar/calendar-2030.json')
+    for asset in document['assets']:
+        row = proof_by_path[asset['pdf']]
+        assert asset['year'] == 2030 and asset['ephemeris_sha256'] == daily_hash
+        assert row['minimum_pdf_texture_ppi'] >= 600 and row['webp_ppi'] >= 600
+        for ext in ('pdf','webp'):
+            path = asset[ext].lstrip('/')
+            expected = asset[ext+'_sha256']
+            assert row[ext+'_sha256'] == sha(ROOT/'site'/path) == sha(ROOT/'public'/path) == expected
+        for preview in asset['previews']:
+            path = preview['url'].lstrip('/')
+            assert sha(ROOT/'site'/path) == sha(ROOT/'public'/path) == preview['sha256']
+    for path in ('print-verification.json','print-verification.csv'):
+        relative = Path('downloads/lunar/2030')/path
+        assert sha(ROOT/'site'/relative) == sha(ROOT/'public'/relative)
+    print('Lunar 2030: 25 print pairs and responsive previews match their validation evidence.')
+
+
 def main():
+    verify_2030_print()
     assets=json.loads((ROOT/'data/lunar/assets.json').read_text())['assets']
     assert len([a for a in assets if a['month'] is not None])==72
     annual=[a for a in assets if a['month'] is None];assert len(annual)==1 and annual[0]['year']==2027

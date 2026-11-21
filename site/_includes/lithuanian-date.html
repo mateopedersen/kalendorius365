@@ -2,7 +2,7 @@
 {% assign entry = entries | where: "slug", page.local_date_slug | first %}
 {% assign is_festival = false %}{% if page.local_date_type == 'festivals' %}{% assign is_festival = true %}{% endif %}
 {% assign occurrences = site.data.local_date_calendar[entry.slug] %}
-<article class="local-date-guide">
+<article class="local-date-guide{% unless is_festival %} commemoration-guide{% endunless %}">
   <header class="local-date-hero{% unless entry.image %} local-date-hero--text{% endunless %}">
     <div class="local-date-hero__copy">
       <a class="local-date-hero__back" href="{% if is_festival %}/renginiai/{% else %}/atmintinos-dienos/{% endif %}">{% if is_festival %}Renginiai Lietuvoje{% else %}Atmintinos dienos{% endif %}</a>
@@ -13,18 +13,34 @@
       </dl>
       <div class="local-date-hero__actions">
         {% if entry.start %}<a class="button primary" href="/?data={{ entry.start }}">Rodyti datą kalendoriuje</a>{% endif %}
-        <a class="button" href="{{ entry.sources[0].url }}" rel="noopener">{{ entry.sources[0].title }} <span aria-hidden="true">↗</span></a>
+        {% if is_festival %}<a class="button" href="{{ entry.sources[0].url }}" rel="noopener">{{ entry.sources[0].title }} <span aria-hidden="true">↗</span></a>{% endif %}
         {% include sharing.html %}
       </div>
     </div>
     {% if entry.image %}<figure{% if entry.image.contain %} class="local-date-photo--full"{% endif %}><img src="{{ entry.image.src }}"{% if entry.image.small %} srcset="{{ entry.image.small }} {{ entry.image.small_width }}w, {{ entry.image.src }} {{ entry.image.width }}w" sizes="(max-width: 720px) 94vw, 45vw"{% endif %} alt="{{ entry.image.alt | escape }}" width="{{ entry.image.width | default: 800 }}" height="{{ entry.image.height | default: 540 }}" decoding="async" fetchpriority="high"><figcaption><span>{{ entry.image.alt }}</span><a href="/nuotrauku-licencijos/#{{ entry.slug }}">{{ entry.image.credit }} <span aria-hidden="true">→</span></a></figcaption></figure>{% elsif is_festival %}<div class="local-date-hero__art" aria-hidden="true">{% assign event_art = entry.art | default: 'festival-stage' %}{% include shell-art.html name=event_art size=156 %}</div>{% endif %}
   </header>
+  {% capture calendar_widget %}
   {% assign organizer = entry.sources | first %}
   {% assign primary_year = 2027 %}
   {% include event-calendar-links.html occurrences=occurrences event_title=entry.title location=entry.location default_year=primary_year organizer=organizer.url %}
-  <div class="local-date-content">
-    <section class="panel"><h2>{% if is_festival %}Renginio istorija ir programa{% else %}Ką ši diena primena?{% endif %}</h2><p>{{ entry.context }}</p></section>
-    <section class="panel"><h2>{% if is_festival %}Prieš išvykstant{% else %}Kaip minima?{% endif %}</h2><p>{{ entry.visit }}</p>
+  {% endcapture %}
+  {% if is_festival %}{{ calendar_widget }}{% endif %}
+  {% unless is_festival %}{% include commemoration-navigation.html %}{% endunless %}
+  <div class="local-date-content{% unless is_festival %} commemoration-reading{% endunless %}">
+    <section class="panel"{% unless is_festival %} id="istorija"{% endunless %}>
+      <h2>{% if is_festival %}Renginio istorija ir programa{% else %}Ką ši diena primena?{% endif %}</h2>
+      <p>{{ entry.context | escape }}</p>
+      {% if entry.timeline %}
+      <ol class="commemoration-timeline">
+        {% for item in entry.timeline %}<li><time datetime="{{ item.date | escape }}">{{ item.label | escape }}</time><span>{{ item.note | escape }}</span></li>{% endfor %}
+      </ol>
+      {% endif %}
+      {% for paragraph in entry.history_notes %}<p>{{ paragraph | escape }}</p>{% endfor %}
+    </section>
+    <section class="panel"{% unless is_festival %} id="kur"{% endunless %}>
+      <h2>{% if is_festival %}Prieš išvykstant{% else %}Kaip minima Lietuvoje?{% endif %}</h2>
+      <p>{{ entry.visit | escape }}</p>
+      {% for paragraph in entry.remembrance_notes %}<p>{{ paragraph | escape }}</p>{% endfor %}
       {% if is_festival and entry.start %}
         {% assign festival_year = entry.start | slice: 0, 4 | plus: 0 %}
         {% if festival_year >= 2027 and festival_year <= 2030 %}
@@ -35,6 +51,7 @@
       {% endif %}
     </section>
   </div>
+  {% unless is_festival %}{{ calendar_widget }}{% endunless %}
   {% if entry.planning %}
   <section class="panel local-event-plan" aria-labelledby="local-event-plan-title">
     <h2 id="local-event-plan-title">{{ entry.planning.heading | escape }}</h2>
@@ -53,7 +70,7 @@
   </section>
   {% endif %}
   {% unless is_festival %}
-  <section class="panel local-date-years"><h2>Datos 2026–2030 m.</h2><ul>
+  <section class="panel local-date-years" id="datos"><h2>Datos 2026–2030 m.</h2><ul>
     {% for occurrence in occurrences %}
       <li><details><summary><time datetime="{{ occurrence.start }}">{{ occurrence.start | slice: 0,4 }} m. · {{ entry.date }}</time></summary>
         <a href="{{ occurrence.ics }}" download>Atsisiųsti įrašą (.ics)</a>
@@ -61,9 +78,9 @@
     {% endfor %}
   </ul><p>Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos.</p></section>
   {% endunless %}
-  <section class="panel local-date-related">
+  <section class="panel local-date-related"{% unless is_festival %} id="saltiniai"{% endunless %}>
     <h2>{% if is_festival %}Programa ir kiti renginiai{% else %}Šaltiniai ir susijusios datos{% endif %}</h2>
-    {% for source in entry.sources offset:1 %}<a href="{{ source.url }}" rel="noopener">{{ source.title }} <span aria-hidden="true">↗</span></a>{% endfor %}
+    {% for source in entry.sources %}{% if is_festival and forloop.first %}{% continue %}{% endif %}<a href="{{ source.url }}" rel="noopener">{{ source.title }} <span aria-hidden="true">↗</span></a>{% endfor %}
     {% if entry.related %}
       {% assign related = site.pages | where: 'url', entry.related | first %}
       {% assign related_title = related.breadcrumb_label | default: related.title %}

@@ -213,7 +213,15 @@ test("the solar tool renders all 103 city choices with ordered twilight and hori
   assert.equal(new Set(cities.map(city => city.registryId)).size, 103);
   assert.deepEqual(options.toSorted(), cities.map(city => city.id).toSorted());
 
-  for (const { id, latitude: lat, longitude: lon } of cities) {
+  for (const { id, locative, latitude: lat, longitude: lon } of cities) {
+    const cityPage = readFileSync(new URL(`../site/saule/${id}/index.html`, import.meta.url), "utf8");
+    assert(cityPage.includes(`<h1 id="sun-page-title">Saulėtekis ir saulėlydis ${locative}</h1>`), id);
+    assert(page.includes(`href="/saule/${id}/"`), id);
+    const dateMarkup = cityPage.match(/id="sun-answer-date" datetime="([^"]+)"/);
+    assert(dateMarkup, id);
+    const publishedTimes = solarFor(dateMarkup[1], { lat, lon });
+    assert(cityPage.includes(`id="sun-answer-rise" datetime="${new Date(publishedTimes.sunrise).toISOString()}"`), id);
+    assert(cityPage.includes(`id="sun-answer-set" datetime="${new Date(publishedTimes.sunset).toISOString()}"`), id);
     for (const date of ["2000-02-29", "2028-03-26", "2028-06-21", "2028-10-29", "2030-12-21", "2100-12-31"]) {
       const city = { lat, lon };
       const result = solarFor(date, city);

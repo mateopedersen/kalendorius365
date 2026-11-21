@@ -1,4 +1,4 @@
-<a class="civic-card" href="{{ include.item.route }}" data-civic-topic="{{ include.item.group | escape }}">
+<a class="civic-card" href="{{ include.item.route }}">
   {% include shell-art.html name=include.item.art size=68 lazy=true %}
   <div><h3>{{ include.item.label | escape }}</h3><p>{{ include.item.intro | escape }}</p></div>
 </a>

@@ -6,10 +6,15 @@ import {
   WEATHER_CITY_IDS,
 } from "../site/assets/data/weather-cities.js";
 import { WEATHER_CITY_BACKGROUNDS } from "../site/assets/data/weather-backgrounds.js";
+import { renderWeatherPage } from "../lib/weather-pages.mjs";
 
 const homepage = readFileSync(new URL("../site/_includes/planner-workspace.html", import.meta.url), "utf8");
 const sourcesPage = readFileSync(
   new URL("../site/oru-saltiniai/index.html", import.meta.url),
+  "utf8",
+);
+const providerSources = readFileSync(
+  new URL("../site/_includes/weather-data-sources.html", import.meta.url),
   "utf8",
 );
 
@@ -18,8 +23,26 @@ test("weather card stays concise and links to the complete source register", () 
   assert.match(homepage, /LHMT \/ Meteo LT/);
   assert.match(homepage, /href="\/oru-saltiniai\/"/);
   assert.doesNotMatch(homepage, /weather-credit|sky-caption|CC BY-SA 4\.0/);
-  assert.match(sourcesPage, /Duomenys naudojami pagal/);
+  assert.match(providerSources, /Duomenys naudojami pagal/);
   assert.match(sourcesPage, /Nuotraukos sumažintos ir apkirptos/);
+});
+
+test("weather location pages link to the provider and methodology register", () => {
+  const template = readFileSync(new URL("../site/orai/index.html", import.meta.url), "utf8");
+  for (const route of ["panevezys", "zalgirio-31593", "savivaldybes/kauno-m"]) {
+    const page = renderWeatherPage(template, route);
+    assert.match(page, /href="\/oru-saltiniai\/#duomenys">Duomenys ir licencijos/);
+    assert.doesNotMatch(page, /wx-rain-time|wx-readings-source|wx-climate-source|Duomenys ·|CC BY|thredds\.silam/);
+    assert.equal([...page.matchAll(/id="wx-visual-crossing-credit"/g)].length, 1);
+  }
+  for (const id of ["duomenys", "lhmt", "visual-crossing", "met-norway", "silam", "keliai", "vietoves"]) {
+    assert.ok(providerSources.includes(`id="${id}"`), id);
+  }
+  const licensePage = readFileSync(new URL("../site/nuotrauku-licencijos/index.html", import.meta.url), "utf8");
+  assert.match(sourcesPage, /include weather-data-sources\.html/);
+  assert.match(licensePage, /include weather-data-sources\.html/);
+  assert.match(sourcesPage, /id="metodika"/);
+  assert.match(sourcesPage, /visam vienos valandos intervalui/);
 });
 
 test("source register covers every selectable city and each photo license", () => {

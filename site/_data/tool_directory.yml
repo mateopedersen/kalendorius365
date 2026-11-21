@@ -165,6 +165,16 @@ categories:
     art: telescope
     title: Saulė, Mėnulis ir astronomija
     tools:
+      - route: /orai/
+        title: Orai ir kelių sąlygos
+        description: Lietuvos vietovių orai kas valandą, 15 dienų prognozė ir kelių dangos matavimai.
+        example: Pasirinkite Kauną ar mažesnę gyvenvietę ir patikrinkite kritulius prieš kelionę.
+        kind: Orų ir vietovių žinynas
+        outputs: [Ekrane]
+        keywords: orai oru prognoze weather kaunas vilnius vejo gusiai dregme keliai krituliai
+        icon: tool-sun
+        art: cloud
+        card_class: resource-card--sun
       - route: /saule/
         title: Saulėtekis ir saulėlydis
         description: Saulės padėtis, civilinė prieblanda ir dienos ilgumas penkiuose miestuose.

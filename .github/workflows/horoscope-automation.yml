@@ -20,10 +20,9 @@ on:
       - 'site/horoskopai/**'
       - 'docs/horoscopes/**'
   schedule:
-    # Start well before 06:20 in Lithuania; GitHub may delay or drop schedules.
-    # Retry every 30 minutes throughout the local day so a missed morning run can recover later.
-    # The publisher is date-idempotent, so only a missing/stale daily set writes.
-    - cron: '17,47 3-23 * * *'
+    # Start just after the Lithuanian date changes and keep checking throughout the day.
+    # Only a missing or stale daily set needs upstream data and a new build.
+    - cron: '17,47 * * * *'
       timezone: 'Europe/Vilnius'
   workflow_dispatch:
 
@@ -92,7 +91,7 @@ jobs:
       - name: Fetch 12 calculation-only records and prepare original Lithuanian content
         id: generate
         if: steps.target.outputs.needs_publish == 'true'
-        run: python3 scripts/horoscopes/publish.py
+        run: python3 scripts/horoscopes/publish.py --date "${{ steps.target.outputs.target_date }}"
       - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1
         if: steps.generate.outputs.changed == 'true'
         with:
@@ -142,8 +141,10 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Verify all 13 live Cloudflare Pages routes and their current indexable date
-        if: steps.generate.outputs.changed == 'true'
-        run: python3 scripts/horoscopes/verify_live.py --date "${{ steps.target.outputs.target_date }}" --max-wait-seconds 1200
+        if: steps.target.outputs.needs_publish == 'false' || steps.publish_commit.outputs.changed == 'true'
+        env:
+          HOROSCOPE_VERIFY_WAIT: ${{ steps.publish_commit.outputs.changed == 'true' && '1200' || '60' }}
+        run: python3 scripts/horoscopes/verify_live.py --date "${{ steps.target.outputs.target_date }}" --max-wait-seconds "$HOROSCOPE_VERIFY_WAIT"
       - name: Notify IndexNow after the daily Pages release is live
         if: steps.publish_commit.outputs.changed == 'true'
         continue-on-error: true

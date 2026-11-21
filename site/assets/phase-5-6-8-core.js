@@ -81,6 +81,39 @@ export function visibleLessons(lessons, { days = 5, view = "week", day = 0 } = {
     .sort((a, b) => a.day - b.day || a.number - b.number);
 }
 
+/** Fill blank periods in selected weekdays while preserving every existing lesson. */
+export function fillLessonTimes(lessons, { days, start, duration, breakMinutes, count }) {
+  if (!validClock(start) || !Number.isInteger(duration) || duration < 1 || duration > 180 ||
+      !Number.isInteger(breakMinutes) || breakMinutes < 0 || breakMinutes > 180 ||
+      !Number.isInteger(count) || count < 1 || count > 20 ||
+      !Array.isArray(days) || !days.length || days.some(day => !Number.isInteger(day) || day < 0 || day > 5)) {
+    throw Error("Patikrinkite pradžią, trukmę, pertrauką ir pamokų skaičių.");
+  }
+  const [hour, minute] = start.split(":").map(Number);
+  const startMinutes = hour * 60 + minute;
+  const lastEnd = startMinutes + (count - 1) * (duration + breakMinutes) + duration;
+  if (lastEnd >= 1440) throw Error("Paskutinė pamoka turi baigtis tą pačią dieną.");
+
+  const timeLabel = minutes => String(Math.floor(minutes / 60)).padStart(2, "0") + ":" + String(minutes % 60).padStart(2, "0");
+  const updated = [...lessons];
+  let changed = 0;
+  for (const day of new Set(days)) {
+    for (let index = 0; index < count; index++) {
+      const number = index + 1;
+      const position = updated.findIndex(lesson => lesson.day === day && lesson.number === number);
+      const existing = updated[position];
+      if (existing?.start || existing?.end) continue;
+      const begins = startMinutes + index * (duration + breakMinutes);
+      const times = { start: timeLabel(begins), end: timeLabel(begins + duration) };
+      if (existing) updated[position] = { ...existing, ...times };
+      else updated.push({ day, number, subject: "", room: "", teacher: "", ...times });
+      changed++;
+    }
+  }
+  if (updated.length > 120) throw Error("Tvarkaraštyje iš viso gali būti iki 120 pamokų.");
+  return { lessons: updated, changed };
+}
+
 /** Build a validated, DST-aware local shift cycle. holidayDates is a verified date list. */
 export function buildShiftPlan({ anchor, from, to, cycleText, definitions, foldPolicy = "ask", holidayDates = [], exceptions = [], zone = ZONE }) {
   dateParts(anchor); dateParts(from); dateParts(to);

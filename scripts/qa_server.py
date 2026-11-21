@@ -9,11 +9,18 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_FUNCTIONS = frozenset({'/api/location', '/api/weather', '/api/privacy-region'})
+SITE_FUNCTIONS = frozenset({'/api/location', '/api/weather', '/api/privacy-region', '/api/oru-prognoze', '/api/keliu-orai'})
 RUN_FUNCTION = """
-const [path, url] = process.argv.slice(1);
+import { readFileSync } from 'node:fs';
+const [path, url, directory] = process.argv.slice(1);
 const { onRequestGet } = await import('./functions' + path + '.js');
-const response = await onRequestGet({ request: new Request(url) });
+const response = await onRequestGet({
+    request: new Request(url),
+    env: { ASSETS: { fetch: () => new Response(readFileSync(directory + '/orai/index.html'), {
+        headers: { 'content-type': 'text/html; charset=UTF-8' },
+    }) }},
+    next: () => new Response(null, { status: 404 }),
+});
 process.stdout.write(JSON.stringify({
     status: response.status,
     headers: Object.fromEntries(response.headers),
@@ -25,8 +32,8 @@ process.stdout.write(JSON.stringify({
 class Handler(SimpleHTTPRequestHandler):
     protocol_version = 'HTTP/1.1'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=str(ROOT / 'public'), **kwargs)
+    def __init__(self, *args, directory=ROOT / 'public', **kwargs):
+        super().__init__(*args, directory=str(directory), **kwargs)
 
     def send_error(self, code, message=None, explain=None):
         # Pages serves the custom document for an unknown URL with HTTP 404.
@@ -57,19 +64,25 @@ class PreviewHandler(Handler):
 
     def serve_site_function(self):
         path = urlsplit(self.path).path
+        if path.startswith('/orai/') and path != '/orai/':
+            path = '/orai/[[route]]'
         if path not in SITE_FUNCTIONS:
-            return False
+            if path != '/orai/[[route]]':
+                return False
         try:
             result = run(
                 ['node', '--input-type=module', '-e', RUN_FUNCTION,
-                 path, f'http://localhost{self.path}'],
-                cwd=ROOT, capture_output=True, check=True, timeout=8,
+                 path, f'http://localhost{self.path}', self.directory],
+                cwd=ROOT, capture_output=True, check=True, timeout=20,
             )
             response = loads(result.stdout)
         except (OSError, SubprocessError, ValueError):
             self.send_error(503, 'Local site function unavailable')
             return True
 
+        if response['status'] == 404 and path == '/orai/[[route]]':
+            self.send_error(404)
+            return True
         content = response['body'].encode('utf-8')
         self.send_response(response['status'])
         for name, value in response['headers'].items():
@@ -92,6 +105,7 @@ if __name__ == '__main__':
     parser = ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8790)
     parser.add_argument('--site-functions', action='store_true', help='Run the site API locally, including live weather.')
+    parser.add_argument('--public-dir', type=Path, default=ROOT / 'public', help='Serve a separate generated site directory.')
     options = parser.parse_args()
     handler = PreviewHandler if options.site_functions else Handler
-    Server(('127.0.0.1', options.port), handler).serve_forever()
+    Server(('127.0.0.1', options.port), partial(handler, directory=options.public_dir)).serve_forever()

@@ -39,19 +39,23 @@
 #sun-error { padding: 13px 15px; border: 1px solid #bb7b72; border-radius: 10px; color: #76251f; background: #fff1e9; }
 .sun-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(8px, 1.3vw, 15px); }
 .sun-metric {
+  --metric-art-size: clamp(52px, 4.8vw, 62px);
   display: grid;
-  grid-template-columns: 46px minmax(0,1fr);
+  grid-template-columns: var(--metric-art-size) minmax(0,1fr);
   align-items: start;
+  align-content: start;
   gap: 10px;
   padding: clamp(12px, 1.8vw, 20px);
   border: 1px solid var(--solar-border);
   border-radius: 13px;
   background: linear-gradient(135deg, #f4f5ea, var(--solar-panel) 67%);
 }
-.sun-metric__icon { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid #cdd8c4; border-radius: 12px; color: var(--metric-icon,#196449); background: var(--metric-face,#e6efe7); }
-.sun-metric--rise { --metric-icon: #8e4b11; --metric-face: #fae9cd; }
-.sun-metric--noon { --metric-icon: #79520d; --metric-face: #f6ecc9; }
-.sun-metric--set { --metric-icon: #903725; --metric-face: #f7e5d9; }
+.sun-metric__icon {
+  display: block;
+  width: var(--metric-art-size);
+  height: var(--metric-art-size);
+  filter: drop-shadow(0 3px 3px #15362d20);
+}
 .sun-metric h2 { color: var(--solar-muted); font-size: .86rem; font-weight: 800; letter-spacing: 0; }
 .sun-metric strong { display: block; margin-block: 4px; font-size: clamp(1.23rem, 2.4vw, 1.85rem); font-variant-numeric: tabular-nums; line-height: 1.13; }
 .sun-metric p { color: #3b5349; font-size: .78rem; line-height: 1.38; }
@@ -135,16 +139,55 @@
 @media (max-width: 510px) {
   .sun-controls { grid-template-columns: repeat(2,minmax(0,1fr)); }
   #sun-today { grid-column: 1 / -1; justify-self: start; }
-  .sun-metric { grid-template-columns: minmax(0,1fr); gap: 6px; }
-  .sun-metric__icon { width: 36px; height: 36px; }
-  .sun-metric__icon svg { width: 26px; height: 26px; }
+  .sun-metrics { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+  .sun-metric { --metric-art-size: 40px; grid-template-columns: minmax(0,1fr); gap: 5px; padding: 8px; }
+  .sun-metric--length { grid-column: 1 / -1; grid-template-columns: var(--metric-art-size) minmax(0,1fr); gap: 9px; }
+  .sun-metric h2 { font-size: .78rem; overflow-wrap: anywhere; }
+  .sun-metric strong { font-size: 1.15rem; }
   .sun-moments { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .sun-moments button { font-size: .78rem; }
   .sun-stage__telemetry span { font-size: .71rem; }
   .sun-method__grid { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 380px) {
+  .sun-metric:not(.sun-metric--length) h2 { min-height: 2.4em; line-height: 1.2; }
 }
 @media print {
   .sun-atlas__hero,.sun-stage__telemetry { background: #fff; color: #111; }
   .sun-controls,#sun-trajectory,.sun-scrubber,.sun-atlas__art,.sun-atlas .resource-grid { display: none; }
   .sun-panel,.sun-metric { box-shadow: none; break-inside: avoid; }
 }
+
+.sun-answer {
+  display: grid;
+  gap: .45rem;
+  border-inline-start: 4px solid #b68424;
+  background: linear-gradient(115deg,#f8efd9,#fffcf3 75%);
+}
+.sun-answer__line { color: #163b2e; font-size: clamp(1rem,1.65vw,1.23rem); line-height: 1.55; }
+.sun-answer__line :is(#sun-answer-rise,#sun-answer-set) { font-weight: 800; font-variant-numeric: tabular-nums; }
+.sun-answer__note { color: var(--solar-muted); font-size: .88rem; }
+.sun-week .data-table { width: 100%; min-width: 0; margin: 0; table-layout: fixed; font-size: .9rem; }
+.sun-week caption { height: auto; margin: 0; text-align: start; padding: .45rem 0 .65rem; color: var(--solar-muted); }
+.sun-week :is(th,td) { padding: .53rem .42rem; white-space: normal; overflow-wrap: anywhere; }
+.sun-week thead th:first-child { width: 34%; }
+.sun-week tbody td { font-variant-numeric: tabular-nums; }
+.sun-week td time { white-space: nowrap; }
+.sun-week th time { white-space: normal; }
+.sun-week tbody tr:first-child { background: #edf4ec; }
+.sun-week tbody th { text-align: start; }
+.sun-cities__links { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,9.5rem),1fr)); gap: .5rem; margin-block: .65rem; }
+.sun-cities__links a, .sun-cities__all, .sun-cities__more > summary {
+  display: flex; align-items: center; min-height: 44px;
+  padding: .45rem .65rem; border: 1px solid var(--solar-border); border-radius: 8px;
+  background: #eff5ec; color: #184a35; font-weight: 700;
+}
+.sun-cities__links a:hover, .sun-cities__all:hover, .sun-cities__more > summary:hover { background: #daece0; color: #143b2a; }
+.sun-cities__all { width: fit-content; }
+.sun-cities__more > summary { display: list-item; padding-block: .65rem; cursor: pointer; }
+@media (max-width: 460px) {
+  .sun-controls :is(select,input) { font-size: max(1rem,16px); }
+  .sun-week .data-table { font-size: .8rem; }
+  .sun-week :is(th,td) { padding-inline: .26rem; }
+}
+@media print { .sun-cities { display: none; } }

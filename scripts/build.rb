@@ -17,7 +17,9 @@ require_relative '../lib/build_policy'
 require_relative '../lib/css_minifier'
 require_relative '../lib/static_asset_urls'
 require_relative '../lib/sitemap'
+require_relative '../lib/weather_sitemap'
 require_relative '../lib/advertising_routes'
+require_relative '../lib/print_preview_details'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
@@ -83,7 +85,8 @@ Dir.chdir(ROOT) do
    .transform_values do |assets|
      assets.sort_by { |asset| asset.fetch('design') }.map do |asset|
        asset.slice('design','name','paper','landscape','pdf','webp').merge(
-         'preview'=>asset.fetch('preview').sub('/assets/previews/','/assets/previews-small/'))
+         'preview'=>asset.fetch('preview').sub('/assets/previews/','/assets/previews-small/'),
+         'previewSrcset'=>PrintPreviewDetails.srcset(asset, include_thumbnail: true))
      end
    end
  File.write('public/assets/data/print-catalog.json', JSON.generate(print_catalog) + "\n")
@@ -149,6 +152,17 @@ Dir.chdir(ROOT) do
  sitemap=Kalendorius::Sitemap.write(
   public_dir:'public',page_paths:page_paths,release:release,manifest:manifest,months:Kalendorius::DATA['months']
  )
+ Kalendorius::WeatherSitemap.write(
+  public_dir:'public',registry_file:'site/assets/data/weather-places.json',release:release
+ )
+ if release
+  search_urls=JSON.parse(File.read('public/assets/data/search.json'))
+   .reject { |entry| entry['action'] }.map { |entry| "https://kalendorius365.lt#{entry.fetch('url')}" }
+  canonical_urls=sitemap.fetch(:canonical_urls)
+  missing=canonical_urls-search_urls
+  extra=search_urls-canonical_urls
+  abort "Search and sitemap differ. Missing from search: #{missing.join(', ')}. Missing from sitemap: #{extra.join(', ')}." if missing.any? || extra.any?
+ end
  redirects=manifest.flat_map do |asset|
   legacy=asset['legacyPaths']||{}
   legacy.map do |kind,source|
@@ -177,6 +191,7 @@ Dir.chdir(ROOT) do
  end
  File.write('public/_redirects',redirects.empty? ? '' : redirects.join("\n")+"\n")
  File.write('public/robots.txt',"User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: *\nAllow: /\nDisallow: /cdn-cgi/l/email-protection\nSitemap: https://kalendorius365.lt/sitemap.xml\n")
+ File.open('public/robots.txt','a') { |file| file.puts "Sitemap: https://kalendorius365.lt/#{Kalendorius::WeatherSitemap::FILE}" } if release
  headers="/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n"
  theme_script=File.read('site/_layouts/default.html')[/<script>(.*?)<\/script>/m,1]
  abort 'Inline theme initializer not found; update the CSP hash strategy' unless theme_script
@@ -198,7 +213,7 @@ Dir.chdir(ROOT) do
  end
  # Sitemap and robots metadata refresh within an hour; numbered files are
  # derived from the exact sitemap set written above.
- (sitemap[:files]+['robots.txt']).each do |path|
+ (sitemap[:files]+[Kalendorius::WeatherSitemap::FILE,'robots.txt']).each do |path|
   headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
  end
  headers+="/assets/releases/*\n  #{immutable}\n"
@@ -231,7 +246,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo-web.webp\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
  abort 'Cloudflare Pages header rule limit exceeded' if headers.lines.count { |line|line.start_with?('/') }>100
  File.write('public/_headers',headers)
- AdvertisingRoutes.generate(root: ROOT, output: File.join(ROOT,'public'), existing_routes: ['/api/*'])
+ AdvertisingRoutes.generate(root: ROOT, output: File.join(ROOT,'public'), existing_routes: ['/api/*','/orai/*'])
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release

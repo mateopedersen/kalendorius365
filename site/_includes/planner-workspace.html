@@ -71,6 +71,11 @@
   </nav>
 </section>
 <nav class="climate-links" aria-label="Saulė ir Mėnulis">
+  <a href="/orai/">
+    {% include shell-art.html name="cloud" size=26 %}
+    <span class="climate-link__label">Orai ir kelių sąlygos</span>
+    {% include calendar-catalog-arrow.html %}
+  </a>
   <a href="/saule/">
     {% include shell-art.html name="sunrise" size=26 %}
     <span class="climate-link__label">Saulėtekis ir saulėlydis</span>
@@ -83,7 +88,10 @@
   </a>
 </nav>
 </div>
-  <section class="panel filter-panel"><h2 class="dashboard-panel-heading">{% include shell-art.html name="stack" size=29 %}Kalendoriaus sluoksniai</h2><div id="layers" class="filter-list"></div></section>
+  <section class="panel filter-panel" id="kalendoriaus-sluoksniai" aria-labelledby="calendar-layers-heading">
+    <h2 class="dashboard-panel-heading" id="calendar-layers-heading">{% include planner-art.html name="layers" size=42 %}Kalendoriaus sluoksniai</h2>
+    <div id="layers" class="filter-list"></div>
+  </section>
     <nav class="dashboard-year-links" aria-label="Metų kalendoriai">
       {% for year in (2027..2030) %}
       {% assign art = year | prepend: 'year-' %}
@@ -97,7 +105,7 @@
 </aside>
 <section class="center-column" aria-label="Pagrindinis kalendorius">
 <div class="stats" id="stats"></div>
-<section class="panel calendar-panel" data-print-root="calendar">
+<section id="kalendorius" class="panel calendar-panel" data-print-root="calendar" tabindex="-1">
 <div class="calendar-toolbar">
   <div class="calendar-toolbar__heading">
     <h2 class="calendar-toolbar__title">Mano kalendorius</h2>
@@ -123,37 +131,63 @@
   </div>
 </div>
 <div class="calendar-options"><div class="segmented" role="group" aria-label="Kalendoriaus vaizdas"><button data-view="month" aria-pressed="true">Mėnuo</button><button data-view="week" aria-pressed="false">Savaitė</button><button data-view="day" aria-pressed="false">Diena</button><button data-view="agenda" aria-pressed="false">Darbotvarkė</button><button data-view="year" aria-pressed="false">Metai</button></div><label><span class="visually-hidden">Ieškoti datos arba įvykio</span><input id="search" type="search" placeholder="Data arba įvykis…" aria-label="Ieškoti datos arba įvykio"></label><label class="year-jump">Metai <input id="jump-year" type="number" min="1900" max="2100" value="2027" aria-label="Rodyti metus"></label></div>
-<div id="category-chips" class="category-chips" role="group" aria-label="Greitieji kalendoriaus filtrai"></div><div id="search-results" class="search-results" hidden></div><div id="calendar"></div><div class="calendar-legend"><span>● Šiandien</span><span>◆ Šventinė diena</span><span>ISO savaitės · Pradžia pirmadienį</span><span class="calendar-legend__actions"><a class="share-public-calendar" id="share-public-calendar" href="/menesiai/" hidden>Pasidalyti kalendoriumi</a><button type="button" data-print><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-print"></use></svg>Spausdinti</button></span></div></section>
-<div class="dashboard-extras">
-  <div class="dashboard-extras__stack">
+<details class="calendar-filters" open>
+  <summary>Įvykių filtrai</summary>
+  <div id="category-chips" class="category-chips" role="group" aria-label="Greitieji kalendoriaus filtrai"></div>
+</details>
+<div id="search-results" class="search-results" hidden></div><div id="calendar"></div><div class="calendar-legend"><span>● Šiandien</span><span class="calendar-legend__holiday">● Šventinė diena</span><span class="calendar-legend__commemoration">● Atmintina diena</span><span>ISO savaitės · Pradžia pirmadienį</span><span class="calendar-legend__date-help">Pasirinkite dieną, kad matytumėte jos įrašus.</span><span class="calendar-legend__actions"><a class="share-public-calendar" id="share-public-calendar" href="/menesiai/" hidden>Pasidalyti kalendoriumi</a><button type="button" data-print><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-print"></use></svg>Spausdinti</button></span></div></section>
+<div class="dashboard-extras" id="kalendoriaus-planai">
+  <div class="dashboard-extras__grid">
     <section class="panel upcoming-events-panel" aria-labelledby="upcoming-events-title">
-      <h2 class="dashboard-panel-heading" id="upcoming-events-title">{% include shell-art.html name="calendar" size=26 %}Artimiausi jūsų įvykiai</h2>
-      <div id="upcoming-events"></div>
+      <div class="upcoming-events__header">
+        <div class="upcoming-events__intro">
+          <h2 class="dashboard-panel-heading" id="upcoming-events-title">{% include shell-art.html name="calendar" size=26 %}Artimiausi jūsų įvykiai</h2>
+          <p id="upcoming-events-empty" class="upcoming-events-empty">Per artimiausias 90 dienų įvykių nėra.</p>
+        </div>
+        <button type="button" class="primary upcoming-events__add" data-add-event aria-label="Pridėti įvykį prie kalendoriaus">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#plus"></use></svg>
+          <span>Pridėti įvykį</span>
+        </button>
+      </div>
+      <div id="upcoming-events" hidden></div>
     </section>
     <section class="panel month-facts" aria-labelledby="month-facts-title">
       <h2 class="dashboard-panel-heading" id="month-facts-title">{% include shell-art.html name="celebrations" size=26 %}Šio mėnesio šventės</h2>
       <div id="month-holidays"></div>
       <dl id="today-facts" aria-label="Šiandienos duomenys"></dl>
-      <nav class="dashboard-quick-links" aria-label="Kalendoriai ir planavimo įrankiai">
-        <a href="/menesiai/">Mėnesių kolekcijos</a>
-        <a href="/kurti-kalendoriu/">Kurti kalendorių</a>
-        <a href="/datos-skaiciuokle/">Skaičiuoti dienas</a>
-        <a href="/metai/">Visų metų kalendoriai</a>
-        <a href="/seimos-kalendorius/">Šeimos savaitės planas</a>
-      </nav>
     </section>
-  </div>
-  <div class="dashboard-extras__stack">
-    <section class="panel mini-calendar" aria-labelledby="mini-title">
-      <div class="panel-title">
-        <h2 id="mini-title">Mėnesio apžvalga</h2>
-        <div class="toolbar-group">
-          <button type="button" id="mini-prev" aria-label="Ankstesnis mini kalendoriaus mėnuo"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-left"></use></svg></button>
-          <button type="button" id="mini-next" aria-label="Kitas mini kalendoriaus mėnuo"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#chevron-right"></use></svg></button>
-        </div>
+    <section class="panel home-week-plan" aria-labelledby="home-week-plan-title">
+      <header class="home-week-plan__header">
+        <h2 class="dashboard-panel-heading" id="home-week-plan-title">{% include shell-art.html name="briefcase" size=30 %}Savaitės darbo planas</h2>
+        <p class="home-week-plan__range" id="plan-week-range" aria-live="polite"></p>
+      </header>
+      <dl class="home-week-plan__totals">
+        <div><dt>Darbo dienos</dt><dd id="plan-week-days"></dd></div>
+        <div><dt>Darbo valandos</dt><dd id="plan-week-hours"></dd></div>
+      </dl>
+      <div class="home-week-plan__balance">
+        <div id="plan-week-balance" class="home-week-plan__bar" aria-hidden="true"></div>
+        <p id="plan-week-rest" class="home-week-plan__rest"></p>
       </div>
-      <div id="mini"></div>
+      <p class="home-week-plan__note">Pagal įprastą penkių darbo dienų savaitę.</p>
+      <div class="home-week-plan__links">
+        <a id="plan-next-workday" hidden>
+          <span>Kita darbo diena<time></time></span>
+          {% include calendar-catalog-arrow.html %}
+        </a>
+        <a id="plan-week-calculator" href="/datos-skaiciuokle/">
+          <span>Atverti savaitės skaičiavimą</span>
+          {% include calendar-catalog-arrow.html %}
+        </a>
+      </div>
     </section>
+    <nav class="dashboard-quick-links" aria-label="Kalendoriai ir planavimo įrankiai">
+      <a href="/menesiai/">{% include shell-art.html name="month" size=26 %}<span>Mėnesių kolekcijos</span></a>
+      <a href="/kurti-kalendoriu/">{% include shell-art.html name="create" size=26 %}<span>Kurti kalendorių</span></a>
+      <a href="/datos-skaiciuokle/">{% include shell-art.html name="calculator" size=26 %}<span>Skaičiuoti dienas</span></a>
+      <a href="/metai/">{% include shell-art.html name="calendar" size=26 %}<span>Visų metų kalendoriai</span></a>
+      <a href="/seimos-kalendorius/">{% include shell-art.html name="family" size=26 %}<span>Šeimos savaitės planas</span></a>
+    </nav>
   </div>
 </div>
 </section>
@@ -163,7 +197,36 @@
 <section class="panel notes-panel"><div class="panel-title"><h2>{% include shell-art.html name="note" size=30 %}Užrašai šiai dienai</h2><button id="save-note"><svg class="icon home-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#note-save"></use></svg><span>Išsaugoti</span></button></div><label for="daily-note" class="visually-hidden">Dienos užrašai</label><textarea id="daily-note" rows="4" maxlength="10000" placeholder="Kas šiandien svarbu?"></textarea><small id="note-status" data-state="local">Saugoma tik šioje naršyklėje.</small></section>
 <section class="panel tasks-panel"><h2>{% include shell-art.html name="tasks" size=30 %}Užduotys</h2><label class="task-filter-wrap"><span class="visually-hidden">Filtruoti užduotis</span><select id="task-filter" aria-label="Filtruoti užduotis"><option value="all">Visos šios dienos užduotys</option><option value="open">Neatliktos</option><option value="done">Atliktos</option></select><svg class="icon home-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#task-chevron"></use></svg></label><div id="tasks"></div><form id="task-form"><input id="task-title" aria-label="Nauja užduotis" placeholder="Nauja užduotis…" required maxlength="300"><button type="submit" aria-label="Pridėti užduotį"><svg class="icon home-icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#task-plus"></use></svg></button></form></section>
 </div></details>
-<section class="panel"><h2>{% include shell-art.html name="shield" size=28 %}Jūsų kalendorius</h2><p class="muted">Įrašai lieka šiame įrenginyje. Reguliariai atsisiųskite atsarginę kopiją.</p><div class="utility-actions"><button data-print class="utility-action utility-action--print"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-print"></use></svg>Spausdinti</button><button id="export-ics" class="utility-action utility-action--export"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-export"></use></svg>Eksportuoti ICS</button><button id="import-ics" class="utility-action utility-action--import"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-import"></use></svg>Importuoti ICS</button><button id="backup" class="utility-action utility-action--backup"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-backup"></use></svg>JSON kopija</button><button id="restore" class="utility-action utility-action--restore"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-restore"></use></svg>Atkurti kopiją</button><button id="share" class="utility-action utility-action--share"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-share"></use></svg>Bendrinti puslapį</button><button id="delete-personal-data" class="danger utility-action utility-action--delete"><svg class="icon home-icon utility-action__icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#action-delete"></use></svg>Ištrinti asmeninius įrašus</button></div><label class="check"><input type="checkbox" id="large-text">Didesnis tekstas</label><label class="check"><input type="checkbox" id="high-contrast">Didesnis kontrastas</label><p><a id="current-download" href="/menesiai/">Mėnesio PDF ir vaizdai →</a></p></section>
+<section class="panel calendar-utilities" id="jusu-kalendorius" aria-labelledby="calendar-utilities-heading">
+  <h2 class="dashboard-panel-heading" id="calendar-utilities-heading">{% include shell-art.html name="shield" size=40 %}Jūsų kalendorius</h2>
+  <p class="muted">Įrašai lieka šiame įrenginyje. Reguliariai atsisiųskite atsarginę kopiją.</p>
+  <div class="utility-actions">
+    <button type="button" data-print class="utility-action utility-action--print">
+      {% include planner-art.html name="print" %}<span>Spausdinti</span>
+    </button>
+    <button type="button" id="export-ics" class="utility-action utility-action--export">
+      {% include planner-art.html name="export" %}<span>Eksportuoti ICS</span>
+    </button>
+    <button type="button" id="import-ics" class="utility-action utility-action--import">
+      {% include planner-art.html name="import" %}<span>Importuoti ICS</span>
+    </button>
+    <button type="button" id="backup" class="utility-action utility-action--backup">
+      {% include planner-art.html name="backup" %}<span>JSON kopija</span>
+    </button>
+    <button type="button" id="restore" class="utility-action utility-action--restore">
+      {% include planner-art.html name="restore" %}<span>Atkurti kopiją</span>
+    </button>
+    <button type="button" id="share" class="utility-action utility-action--share">
+      {% include planner-art.html name="share" %}<span>Bendrinti puslapį</span>
+    </button>
+    <button type="button" id="delete-personal-data" class="danger utility-action utility-action--delete">
+      {% include planner-art.html name="delete" %}<span>Ištrinti asmeninius įrašus</span>
+    </button>
+  </div>
+  <label class="check"><input type="checkbox" id="large-text">Didesnis tekstas</label>
+  <label class="check"><input type="checkbox" id="high-contrast">Didesnis kontrastas</label>
+  <p><a id="current-download" href="/menesiai/">Mėnesio PDF ir vaizdai →</a></p>
+</section>
 </aside>
 </div>
 {% include event-editor.html %}

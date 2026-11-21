@@ -85,7 +85,12 @@ function prepare(index) {
     }
     return { item, fields, tokens, names };
   });
-  preparedIndex = { source: index, docs };
+  const solarCities = docs.flatMap(({ item }) => (item.solarCity || []).map(name => ({
+    phrase: normalizeSearchText(name), url: item.url,
+  }))).sort((a, b) => b.phrase.length - a.phrase.length);
+  const horoscopeSigns = new Map(docs.flatMap(({ item }) =>
+    (item.horoscopeSign || []).map(name => [normalizeSearchText(name), item.url])));
+  preparedIndex = { source: index, docs, solarCities, horoscopeSigns };
   return preparedIndex;
 }
 
@@ -188,10 +193,20 @@ function navigationalTarget(queryWords, year, lunarIntent, dateIntent) {
     const prefix = lunarIntent ? "/menulio-kalendorius" : holiday ? "/sventes" : "";
     return `${prefix}/${year}/${MONTH_PATHS[month]}/`;
   }
-  if (queryWords.some(word => ["sauletekis", "saulelydis", "sunrise", "sunset"].includes(word))) return "/saule/";
   if (queryWords.every(word => ["horoskopai", "horoskopas", "siandien", "dienos", "rytoj", "horoscope", "horoscopes"].includes(word))) return "/horoskopai/";
   if (queryWords.every(word => ["astrologija", "zodiakas", "zodiako", "zodiac", "zenklas", "zenklai"].includes(word))) return "/zodiakas/";
   return null;
+}
+
+function solarTarget(terms, query, cities) {
+  const moments = ["sauletekis", "saulelydis", "sunrise", "sunset"];
+  const solarIntent = terms.some(word => moments.includes(word) ||
+    (word.length >= 8 && moments.some(moment => editDistanceAtMostOne(word, moment))));
+  const sunTiming = terms.some(word => ["saule", "saules"].includes(word)) &&
+    terms.some(word => ["teka", "pateka", "leidziasi", "nusileidzia", "tekejimo", "leidosi", "laikai", "laikas"].includes(word));
+  if (!solarIntent && !sunTiming) return null;
+  const phrase = ` ${query} `;
+  return cities.find(city => phrase.includes(` ${city.phrase} `))?.url || "/saule/";
 }
 
 export function searchPages(index, query, { category = "all", limit = Infinity } = {}) {
@@ -211,13 +226,16 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
   const queryWords = rawWords.length > 1 ? rawWords.filter((word) => !STOP_WORDS.has(word)) : rawWords;
   if (!queryWords.length) return [];
 
-  const { docs } = prepare(index);
+  const { docs, solarCities, horoscopeSigns } = prepare(index);
   const year = queryWords.find((word) => /^20\d{2}$/.test(word));
   const calendarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("kalendorius") || ["calendar", "calendars", "kalendorius", "kalendoriai"].includes(word));
   const lunarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("moon"));
   const lunarOverviewIntent = lunarIntent && queryWords.every((word) =>
     word === year || synonymGroups.get(word)?.includes("moon") || synonymGroups.get(word)?.includes("kalendorius"));
-  const navigationTarget = navigationalTarget(queryWords, year, lunarIntent, dateIntent);
+  const dailyHoroscope = queryWords.some(word => ["horoskopas", "horoskopo", "horoskopai", "horoskopa"].includes(word));
+  const signTarget = dailyHoroscope && queryWords.map(word => horoscopeSigns.get(word)).find(Boolean);
+  const navigationTarget = signTarget || solarTarget(queryWords, normalizedQuery, solarCities) ||
+    navigationalTarget(queryWords, year, lunarIntent, dateIntent);
   const scored = [];
   // A word occurs in many pages and fields. Compare it once per query instead
   // of repeating the same fuzzy comparison throughout the whole index.
@@ -237,7 +255,7 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
       }
     }
     const coverage = matched.length / queryWords.length;
-    if (!matched.length || coverage < (queryWords.length > 2 ? 0.5 : 1 / queryWords.length)) continue;
+    if (doc.item.url !== signTarget && (!matched.length || coverage < (queryWords.length > 2 ? 0.5 : 1 / queryWords.length))) continue;
 
     const phraseWeights = [
       ["title", 28], ["keywords", 18], ["headings", 14], ["description", 9], ["content", 3], ["url", 8],

@@ -12,6 +12,7 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
+from http.client import HTTPException
 from typing import Any, Callable
 
 PROVIDER_URL = "https://api.astroway.info/v1/public/horoscope/daily"
@@ -51,10 +52,10 @@ class SourceResult:
 
 
 def validate_response(
-    payload: dict[str, Any], *, sign: str, requested_date: date,
+    payload: Any, *, sign: str, requested_date: date,
     headers: dict[str, str], http_status: int = 200, response_bytes: bytes = b"",
 ) -> SourceResult:
-    if http_status != 200 or payload.get("ok") is not True:
+    if http_status != 200 or not isinstance(payload, dict) or payload.get("ok") is not True:
         raise SourceError(f"{sign}: tiekėjas negrąžino sėkmingo atsakymo")
     data = payload.get("data")
     if not isinstance(data, dict) or not ALLOWED_DATA_FIELDS.issuperset(data):
@@ -146,7 +147,7 @@ def request_one(sign: str, target_date: date, *, opener: Callable = urllib.reque
             retry_after = max(1, min(retry_after, 90))
         retryable = exc.code == 429 or 500 <= exc.code <= 599
         raise SourceError(f"{sign}: AstroWay HTTP {exc.code}", retryable=retryable, retry_after=retry_after) from exc
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as exc:
+    except (urllib.error.URLError, HTTPException, TimeoutError, ValueError, OSError) as exc:
         raise SourceError(f"{sign}: nepavyko gauti patikrinamų API skaičiavimų ({type(exc).__name__})", retryable=True) from exc
 
 
@@ -155,7 +156,9 @@ def fetch_all(target_date: date, *, opener: Callable = urllib.request.urlopen,
     results: dict[str, SourceResult] = {}
     calls = 0
     failures: dict[str, str] = {}
-    for sign in ENGLISH_SIGNS:
+    for index, sign in enumerate(ENGLISH_SIGNS):
+        if index:
+            pause(1.15)
         for attempt in range(MAX_ATTEMPTS_PER_SIGN):
             calls += 1
             if calls > MAX_REQUESTS_PER_RUN:
@@ -167,12 +170,10 @@ def fetch_all(target_date: date, *, opener: Callable = urllib.request.urlopen,
             except SourceError as exc:
                 failures[sign] = str(exc)
                 if attempt + 1 == MAX_ATTEMPTS_PER_SIGN or not exc.retryable:
-                    continue
+                    break
                 # Retry only the affected sign and honor server-provided quota delays.
                 delay = exc.retry_after or (30 if "HTTP 429" in str(exc) else min(2 ** (attempt + 1), 8))
                 pause(delay)
-            if sign != ENGLISH_SIGNS[-1]:
-                pause(1.15)
     if failures or set(results) != set(ENGLISH_SIGNS):
         detail = "; ".join(f"{key}: {value}" for key, value in sorted(failures.items()))
         raise SourceError(f"Nepavyko patvirtinti visų 12 ženklų; nieko nepaskelbsime. {detail}")

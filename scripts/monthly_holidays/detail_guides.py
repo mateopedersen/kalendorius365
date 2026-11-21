@@ -100,27 +100,37 @@ def render_details(records, engines, links, fold_ics, ics_escape):
                   else 'Ši data nėra atskira šventinė nedarbo diena pagal Darbo kodeksą.')
         category = CATEGORIES[event['category']]
         year_panels, calendar_occurrences = year_window(dates, record, event, fold_ics, ics_escape)
-        html = f'''<article class="hg" data-holiday-research data-default-year="{first.year}">
+        commemorative = event['category'] == 'legally_commemorative'
+        reading_class = ' commemoration-reading' if commemorative else ''
+        history_id = ' id="istorija"' if commemorative else ''
+        history_heading = 'Ką ši diena primena?' if commemorative else 'Kilmė ir istorija'
+        observance_heading = 'Kaip minima Lietuvoje?' if commemorative else 'Kur ir kaip minima?'
+        navigation = '{% include commemoration-navigation.html %}' if commemorative else ''
+        reading = f'''<div class="hg-reading{reading_class}">
+  <section class="hg-text"{history_id}><h2>{history_heading}</h2><p>{escape(record['meaning'])}</p></section>
+  <section class="hg-text" id="kur"><h2>{observance_heading}</h2><p>{escape(record['visit'])}</p>{anchor(record['source'], record['source_label'], 'hg-btn hg-btn--outline')}</section>
+</div>'''
+        overview = f'{navigation}\n{reading}\n' if commemorative else ''
+        visit_link = '' if commemorative else anchor('#kur', 'Kur ir kaip minima', 'hg-btn hg-btn--outline')
+        html = f'''<article class="hg{' commemoration-guide' if commemorative else ''}" data-holiday-research data-default-year="{first.year}">
 <header class="hg-hero{' hg-hero--photo' if photo else ''}">
   <div class="hg-intro"><span class="hg-category">{category}</span>
     <h1>{escape(title)}</h1><p>{escape(record['summary'])}</p>
     <div class="hg-quick-date"><span>Kada minima?</span><strong data-hg-selected>{escape(date_text(first))}</strong></div>
-    <div class="hg-actions">{anchor('#datos', 'Visų metų datos', 'hg-btn')}{anchor('#kur', 'Kur ir kaip minima', 'hg-btn hg-btn--outline')}</div>
+    <p class="hg-date-rule">{escape(rule_text(event))}</p>
+    <div class="hg-actions">{anchor('#datos', 'Visų metų datos', 'hg-btn')}{visit_link}</div>
   </div>
   {image_markup(photo, slug)}
 </header>
-<section class="hg-schedule" id="datos" aria-labelledby="hg-date-title">
-  <div class="hg-schedule__head"><div><h2 id="hg-date-title">Datos {guide_years[0]}–{guide_years[-1]} metais</h2><p>{escape(rule_text(event))}</p></div>
+{overview}<section class="hg-schedule" id="datos" aria-labelledby="hg-date-title">
+  <div class="hg-schedule__head"><div><h2 id="hg-date-title">Datos {guide_years[0]}–{guide_years[-1]} metais</h2></div>
   <nav class="hg-years" aria-label="Pasirinkite metus">{year_navigation}</nav></div>
   {year_panels}
 </section>
 {{% include event-calendar-links.html occurrences=page.event_calendar_occurrences event_title=page.breadcrumb_label default_year=page.event_calendar_default_year %}}
-<div class="hg-reading">
-  <section class="hg-text"><h2>Kilmė ir istorija</h2><p>{escape(record['meaning'])}</p></section>
-  <section class="hg-text" id="kur"><h2>Kur ir kaip minima?</h2><p>{escape(record['visit'])}</p>{anchor(record['source'], record['source_label'], 'hg-btn hg-btn--outline')}</section>
-</div>
+{reading if not commemorative else ''}
 {shared_dates}
-<section class="hg-info" aria-label="Dienos statusas ir naudoti šaltiniai">
+<section class="hg-info"{' id="saltiniai"' if commemorative else ''} aria-label="Dienos statusas ir naudoti šaltiniai">
   <div><h2>Ar tai nedarbo diena?</h2><p>{status} Jei tą pačią dieną minimos kelios progos, skaičiuodami darbo laiką datą įtraukite vieną kartą. Darbo ir švenčių dienas palyginkite {anchor(f"/darbo-dienos/{first.year}/", f"{first.year} m. darbo dienų kalendoriuje")}.</p></div>
   <div><h2>Šaltiniai</h2><ul>{source_list}</ul></div>
 </section>

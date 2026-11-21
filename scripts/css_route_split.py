@@ -22,7 +22,7 @@ PAGE_SPECS = {
     "zodiac-guide": ROOT / "site/zodiakas/index.html",
 }
 PAGE_SCRIPTS = {
-    "homepage": ("common.js", "cookie-notice.js", "search-engine.js", "app.js"),
+    "homepage": ("common.js", "cookie-notice.js", "search-engine.js", "app.js", "weather.js", "shell/event-editor.js"),
     "horoscope-detail": ("common.js", "cookie-notice.js", "search-engine.js", "ascendant-calculator.js"),
     "horoscope-hub": ("common.js", "cookie-notice.js", "search-engine.js"),
     "zodiac-guide": ("common.js", "cookie-notice.js", "search-engine.js", "zodiac.js"),
@@ -44,13 +44,13 @@ class ClassCollector(html.parser.HTMLParser):
         self.classes: set[str] = set()
 
     def handle_starttag(self, _tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        raw_tag = self.get_starttag_text() or ""
-        if "{%" in raw_tag or "{{" in raw_tag:
+        # Liquid can sit directly after the tag name, for example <body{% if ... %}>.
+        if _tag.split("{", 1)[0] in {"body", "main"}:
             return
         for key, value in attrs:
             # Liquid branches in a shared template describe several routes at
             # once. Route classes are supplied through PAGE_SAFELISTS instead.
-            if key == "class" and _tag not in {"body", "main"} and value and "{%" not in value and "{{" not in value:
+            if key == "class" and value and "{%" not in value and "{{" not in value:
                 self.classes.update(value.split())
 
 
@@ -310,7 +310,9 @@ def main() -> None:
     # Follow literal Jekyll includes used by each page and the shared layout.
     # If a dynamic include is introduced later, conservatively include every
     # partial rather than pruning selectors that the runtime may need.
-    include_pattern = re.compile(r"{%[- ]+include\s+(['\"])([^'\"]+)\1")
+    include_pattern = re.compile(
+        r"""{%-?\s*include\s+(?:'([^']+)'|"([^"]+)"|([\w./-]+)(?=\s|%}))"""
+    )
 
     def include_paths(seeds: list[Path]) -> list[Path]:
         found: set[Path] = set()
@@ -322,9 +324,10 @@ def main() -> None:
                 continue
             found.add(path)
             source = path.read_text(encoding="utf-8")
-            if re.search(r"{%[- ]+include\s+{{", source):
+            if re.search(r"{%-?\s*include\s+\{\{", source):
                 dynamic = True
-            for _, name in include_pattern.findall(source):
+            for names in include_pattern.findall(source):
+                name = next(filter(None, names))
                 pending.append(ROOT / "site/_includes" / name)
         if dynamic:
             found.update((ROOT / "site/_includes").rglob("*.html"))

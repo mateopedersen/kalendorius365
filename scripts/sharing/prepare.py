@@ -10,6 +10,8 @@ MONTHS=['sausis','vasaris','kovas','balandis','geguze','birzelis','liepa','rugpj
 NAMES=['Sausis','Vasaris','Kovas','Balandis','Gegužė','Birželis','Liepa','Rugpjūtis','Rugsėjis','Spalis','Lapkritis','Gruodis']
 GEN=['sausio','vasario','kovo','balandžio','gegužės','birželio','liepos','rugpjūčio','rugsėjo','spalio','lapkričio','gruodžio']
 DEFAULT='/assets/visuals/kalendorius365-lietuviskas-kalendorius-1200x630.png'
+PREVIEW_DETAIL_INDEX = ROOT / 'data/print-preview-details.json'
+PREVIEW_DETAILS = json.loads(PREVIEW_DETAIL_INDEX.read_text(encoding='utf-8')) if PREVIEW_DETAIL_INDEX.is_file() else {}
 def dump(p,data):
  p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':'))+'\n')
 def digest(data):return hashlib.sha256(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
@@ -69,6 +71,11 @@ def action_icon(name):
 def design_landing(asset, title, excerpt, eyebrow, parent, parent_label):
  orientation='Gulsčias' if asset['landscape'] else 'Stačias'
  width,height=(680,481) if asset['landscape'] else (481,680)
+ details = PREVIEW_DETAILS.get(asset['stem'], {})
+ responsive = ''
+ if details.get('pdf_sha256') == asset['files']['pdf']['sha256']:
+  srcset = ', '.join(f"{variant['url']} {variant['width']}w" for variant in details['variants'])
+  responsive = f' srcset="{e(srcset)}" sizes="(max-width: 760px) calc(100vw - 64px), 650px"'
  return f"""<article class="share-landing archive-page">
  <header class="archive-hero">
   <p class="eyebrow">{e(eyebrow)}</p>
@@ -77,7 +84,7 @@ def design_landing(asset, title, excerpt, eyebrow, parent, parent_label):
  </header>
  <div class="share-design-layout">
   <figure class="share-design-sheet">
-   <img class="share-design-preview" src="{e(asset['preview'])}" width="{width}" height="{height}" alt="{e(asset.get('alt',title))}" decoding="async">
+   <img class="share-design-preview" src="{e(asset['preview'])}"{responsive} width="{width}" height="{height}" alt="{e(asset.get('alt',title))}" decoding="async">
   </figure>
   <section class="archive-panel share-design-actions" aria-labelledby="share-design-actions-title">
    <h2 id="share-design-actions-title">Atsisiųsti kalendorių</h2>
@@ -271,7 +278,7 @@ def prepare():
  for p in pages.values():
   if p['kind']=='calendar':keys[f'calendar-{p["year"]}-{p.get("month",0)}']=p
  for route,p in pages.items():
-  if p['kind']=='site':p.update(title='Kalendorius365',excerpt='Lietuviški kalendoriai, šventės, horoskopai ir kasdienio planavimo įrankiai.')
+  if p['kind']=='site':p.update(title='Kalendorius365',excerpt='Lietuvos kalendorius su šventėmis, vietovių orai ir 15 dienų prognozė, kelių sąlygos bei kasdienio planavimo įrankiai.')
   p['imageUrl']=ORIGIN+quote(p['imageUrl'][len(ORIGIN):],safe='/:?=&') if p['imageUrl'].startswith(ORIGIN) else p['imageUrl']
   p['intents']={'facebook':'https://www.facebook.com/sharer/sharer.php?'+urlencode({'u':p['shareUrl']}),'x':'https://x.com/intent/tweet?'+urlencode({'url':p['shareUrl'],'text':p['title']}),'mastodon':'https://share.joinmastodon.org/?'+urlencode({'text':p['title']+'\n'+p['shareUrl']})}
   keys.setdefault(p['contentId'],p)

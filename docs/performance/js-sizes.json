@@ -18,8 +18,8 @@
     },
     {
       "path": "/assets/app.js",
-      "source_bytes": 35602,
-      "generated_bytes": 22645
+      "source_bytes": 36737,
+      "generated_bytes": 23346
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -38,8 +38,8 @@
     },
     {
       "path": "/assets/astronomy-agenda.js",
-      "source_bytes": 9521,
-      "generated_bytes": 6503
+      "source_bytes": 9848,
+      "generated_bytes": 6707
     },
     {
       "path": "/assets/calendar-downloads.js",
@@ -203,8 +203,8 @@
     },
     {
       "path": "/assets/lunar/phase-picker.js",
-      "source_bytes": 3287,
-      "generated_bytes": 2247
+      "source_bytes": 3297,
+      "generated_bytes": 2234
     },
     {
       "path": "/assets/monthly-holidays.js",
@@ -223,23 +223,23 @@
     },
     {
       "path": "/assets/phase-5-6-8-core.js",
-      "source_bytes": 19708,
-      "generated_bytes": 11842
+      "source_bytes": 21570,
+      "generated_bytes": 12846
     },
     {
       "path": "/assets/phase-5-6-8.js",
-      "source_bytes": 66373,
-      "generated_bytes": 46892
+      "source_bytes": 72397,
+      "generated_bytes": 50484
     },
     {
       "path": "/assets/planner-studio-core.js",
-      "source_bytes": 8162,
-      "generated_bytes": 6047
+      "source_bytes": 8201,
+      "generated_bytes": 6074
     },
     {
       "path": "/assets/planner-studio.js",
-      "source_bytes": 29903,
-      "generated_bytes": 19127
+      "source_bytes": 33714,
+      "generated_bytes": 21457
     },
     {
       "path": "/assets/search-engine.js",
@@ -317,6 +317,11 @@
       "generated_bytes": 6229
     },
     {
+      "path": "/assets/shell/education-calendar.js",
+      "source_bytes": 6318,
+      "generated_bytes": 4503
+    },
+    {
       "path": "/assets/shell/event-editor.js",
       "source_bytes": 3836,
       "generated_bytes": 2515
@@ -340,6 +345,11 @@
       "path": "/assets/shell/home-upcoming.js",
       "source_bytes": 3614,
       "generated_bytes": 2225
+    },
+    {
+      "path": "/assets/shell/lesson-templates.js",
+      "source_bytes": 967,
+      "generated_bytes": 664
     },
     {
       "path": "/assets/shell/occasion-calendar.js",

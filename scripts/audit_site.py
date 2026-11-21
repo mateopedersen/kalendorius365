@@ -31,6 +31,20 @@ _traditions=json.loads((ROOT/'data/traditional-holiday-guides.json').read_text()
 _research_slugs.update(guide['slug'] for guide in _traditions['guides'])
 _seasons=json.loads((ROOT/'site/_data/season_photos.json').read_text())
 SEASON_MEDIA={'https://kalendorius365.lt'+item['page']: item for item in _seasons.values()}
+WEATHER_HUB_MEDIA={
+ 'src':'/assets/visuals/weather-1280.webp',
+ 'caption':'Vilniaus senamiesčio ir saulės apšviestų debesų iliustracija',
+ 'width':1280,'height':720
+}
+_weather=json.loads((ROOT/'site/assets/data/weather-places.json').read_text())
+WEATHER_ROUTES={'/orai/miestai/','/orai/savivaldybes/'} | {
+ f'/orai/{place[0]}/' for place in _weather['places']
+} | {
+ f'/orai/savivaldybes/{entry[0]}/' for entry in _weather['municipalities'].values()
+}
+
+def is_share_archive(route):
+ return bool(re.fullmatch(r'/dalintis/kalendorius/[a-z0-9-]+/|/horoskopai/istorija/|/horoskopai/[a-z]+/\d{4}-\d{2}-\d{2}/v-[a-f0-9]{16}/',route))
 
 
 def webp_dimensions(data):
@@ -97,10 +111,11 @@ for path in files:
  is_research_article=p.canonical.removeprefix('https://kalendorius365.lt/sventes/').strip('/') in _research_slugs
  assert p.properties['og:type']==['article' if media or is_blog_article or is_research_article or p.canonical in LOCAL_DETAILS else 'website'] and p.properties['og:locale']==['lt_LT'],path
  assert p.properties['og:url']==[p.canonical],(path,p.properties['og:url'],p.canonical)
- expected_dimensions=(media['width'],media['height']) if media else (1200,630)
- assert p.properties['og:image:type']==['image/webp' if media else 'image/jpeg' if season else 'image/png'],path
+ social_photo=WEATHER_HUB_MEDIA if p.canonical=='https://kalendorius365.lt/orai/' else media
+ expected_dimensions=(social_photo['width'],social_photo['height']) if social_photo else (1200,630)
+ assert p.properties['og:image:type']==['image/webp' if social_photo else 'image/jpeg' if season else 'image/png'],path
  assert (int(p.properties['og:image:width'][0]),int(p.properties['og:image:height'][0]))==expected_dimensions,path
- if media:assert p.properties['og:image']==['https://kalendorius365.lt'+media['src']] and p.properties['og:image:alt']==[media['caption']],path
+ if social_photo:assert p.properties['og:image']==['https://kalendorius365.lt'+social_photo['src']] and p.properties['og:image:alt']==[social_photo['caption']],path
  if season:assert p.properties['og:image']==['https://kalendorius365.lt'+season['social']] and p.properties['og:image:alt']==[season['alt']],path
  for key in ('twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'):
   assert len(p.named_meta.get(key,[]))==1 and p.named_meta[key][0],(path,key,p.named_meta.get(key))
@@ -115,7 +130,7 @@ for path in files:
  image_path=PUBLIC/unquote(image_url.path).lstrip('/')
  assert image_path.is_file(),(path,p.properties['og:image'][0])
  image_data=image_path.read_bytes()
- if media:assert webp_dimensions(image_data)==expected_dimensions,(path,image_path)
+ if social_photo:assert webp_dimensions(image_data)==expected_dimensions,(path,image_path)
  elif season:
   with Image.open(image_path) as image:
    assert image.format=='JPEG' and image.size==expected_dimensions,(path,image_path)
@@ -128,6 +143,9 @@ for path,p in pages.items():
  for url in p.links:
   parsed=urlsplit(url)
   if parsed.scheme or parsed.netloc or url.startswith('mailto:'):continue
+  if parsed.path in WEATHER_ROUTES:
+   links+=1
+   continue
   target=(PUBLIC/unquote(parsed.path).lstrip('/')) if parsed.path.startswith('/') else path.parent/unquote(parsed.path)
   if not parsed.path:target=path
   if target.is_dir():target=target/'index.html'
@@ -140,11 +158,12 @@ for path,p in pages.items():
    if unquote(parsed.fragment) not in svg_ids[target]:
     fail.append((str(path.relative_to(PUBLIC)),url+' (SVG symbol missing)'))
 assert not fail,json.dumps(fail[:30])
-public_pages={p.canonical:path for path,p in pages.items() if path.name!='404.html'}
+public_pages={p.canonical:path for path,p in pages.items()
+              if path.name!='404.html' and not is_share_archive(urlsplit(p.canonical).path)}
 route_pages={urlsplit(canonical).path:canonical for canonical in public_pages}
 graph={canonical:set() for canonical in public_pages}
-for path,p in pages.items():
- if path.name=='404.html':continue
+for p in pages.values():
+ if p.canonical not in graph:continue
  for href in p.anchor_links:
   target=urlsplit(urljoin(p.canonical,href))
   if target.scheme!='https' or target.netloc!='kalendorius365.lt':continue
@@ -159,7 +178,7 @@ while pending:
   if target not in reachable:reachable.add(target);pending.append(target)
 orphans=sorted(set(public_pages)-reachable)
 assert not orphans,'Public pages are unreachable through crawlable internal links: '+json.dumps([str(public_pages[u].relative_to(PUBLIC)) for u in orphans[:30]])
-print(f'PASS: {len(reachable)} public pages are reachable from the homepage through crawlable internal links; 0 orphans.')
+print(f'PASS: {len(reachable)} landing pages are reachable from the homepage through crawlable internal links; 0 orphans.')
 manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets']
 for unused in ('manifest.json','years.json','catalog.json','year-print-assets.json'):
  assert not (PUBLIC/'assets/data'/unused).exists(),f'Build-only or obsolete browser payload was published: {unused}'
@@ -263,7 +282,7 @@ print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical 
 if '--release' in __import__('sys').argv:
  for path,p in pages.items():
   relative='/'+str(path.relative_to(PUBLIC)).removesuffix('index.html')
-  share_archive=bool(re.fullmatch(r'/dalintis/kalendorius/[a-z0-9-]+/|/horoskopai/istorija/|/horoskopai/[a-z]+/\d{4}-\d{2}-\d{2}/v-[a-f0-9]{16}/',relative))
+  share_archive=is_share_archive(relative)
   assert p.meta.get('robots')==('noindex, follow' if path.name=='404.html' or share_archive else 'index, follow'),path
  headers=(PUBLIC/'_headers').read_text();assert 'X-Robots-Tag: noindex' not in headers
  ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
@@ -312,6 +331,12 @@ if '--release' in __import__('sys').argv:
  assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
  assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)
  assert 'Sitemap: https://kalendorius365.lt/sitemap.xml' in (PUBLIC/'robots.txt').read_text()
+ assert 'Sitemap: https://kalendorius365.lt/sitemap-orai.xml' in (PUBLIC/'robots.txt').read_text()
+ weather_sitemap=PUBLIC/'sitemap-orai.xml'
+ weather_locations=[element.text for element in ET.parse(weather_sitemap).findall('s:url/s:loc',ns)]
+ assert len(weather_locations)==len(WEATHER_ROUTES) and set(weather_locations)=={
+  'https://kalendorius365.lt'+route for route in WEATHER_ROUTES
+ }
  for path in sitemap_files:
   assert f'/{path.name}\n  Cache-Control: public, max-age=3600' in headers
  assert '/robots.txt\n  Cache-Control: public, max-age=3600' in headers

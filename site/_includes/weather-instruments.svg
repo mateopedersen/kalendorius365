@@ -1,0 +1,154 @@
+<svg class="wx-instrument-definitions" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="wx-inst-steel">
+      <stop stop-color="#43606d"/>
+      <stop offset=".27" stop-color="#dbe9ec"/>
+      <stop offset=".52" stop-color="#f6faf9"/>
+      <stop offset="1" stop-color="#67818d"/>
+    </linearGradient>
+    <radialGradient id="wx-inst-cup" cx=".3" cy=".24" r=".8">
+      <stop stop-color="#638491"/>
+      <stop offset=".48" stop-color="#284d61"/>
+      <stop offset="1" stop-color="#132e42"/>
+    </radialGradient>
+    <radialGradient id="wx-inst-brass" cx=".33" cy=".25" r=".76">
+      <stop stop-color="#fff1bb"/>
+      <stop offset=".51" stop-color="#d6aa5d"/>
+      <stop offset="1" stop-color="#79511e"/>
+    </radialGradient>
+    <radialGradient id="wx-inst-dial" cx=".38" cy=".28" r=".77">
+      <stop stop-color="#fffdf2"/>
+      <stop offset=".78" stop-color="#f4e0aa"/>
+      <stop offset="1" stop-color="#bc9351"/>
+    </radialGradient>
+    <radialGradient id="wx-inst-glass" cx=".35" cy=".42" r=".65">
+      <stop stop-color="#f1fdff"/>
+      <stop offset=".28" stop-color="#9fe2ef"/>
+      <stop offset=".72" stop-color="#3b9ab5"/>
+      <stop offset="1" stop-color="#185779"/>
+    </radialGradient>
+    <linearGradient id="wx-inst-cloud" x2=".23" y2="1">
+      <stop stop-color="#fff"/>
+      <stop offset=".5" stop-color="#e2eff2"/>
+      <stop offset="1" stop-color="#8daab9"/>
+    </linearGradient>
+    <linearGradient id="wx-inst-storm" x2=".24" y2="1">
+      <stop stop-color="#b6d0df"/>
+      <stop offset="1" stop-color="#385b74"/>
+    </linearGradient>
+    <linearGradient id="wx-inst-tube" x2="1" y2="0">
+      <stop stop-color="#aed0dd" stop-opacity=".62"/>
+      <stop offset=".32" stop-color="#fff" stop-opacity=".86"/>
+      <stop offset=".55" stop-color="#d3eef8" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#7daebd" stop-opacity=".57"/>
+    </linearGradient>
+    <radialGradient id="wx-inst-sun" cx=".42" cy=".35" r=".7">
+      <stop stop-color="#fff8c5"/>
+      <stop offset=".55" stop-color="#ffd779"/>
+      <stop offset="1" stop-color="#d9863a"/>
+    </radialGradient>
+    <linearGradient id="wx-inst-lake" x2=".15" y2="1">
+      <stop stop-color="#86c8cc"/>
+      <stop offset="1" stop-color="#3f7889"/>
+    </linearGradient>
+    <radialGradient id="wx-inst-shadow">
+      <stop stop-color="#18323e" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#18323e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <symbol id="wx-inst-wind" viewBox="0 0 148 108">
+    <ellipse cx="75" cy="100" rx="56" ry="7" fill="url(#wx-inst-shadow)"/>
+    <rect x="69" y="57" width="12" height="40" rx="3" fill="url(#wx-inst-steel)" stroke="#526f7c"/>
+    <path d="M43 94h62l5 5H37z" fill="url(#wx-inst-steel)" stroke="#62818c" stroke-linejoin="round"/>
+    <rect x="63" y="40" width="24" height="29" rx="6" fill="url(#wx-inst-steel)" stroke="#526f7c"/>
+    <ellipse cx="75" cy="41" rx="12" ry="4" fill="#d8ecee" stroke="#5c7683"/>
+    <path d="M75 40V26m0 4L42 38m33-8 35 10m-35-11 5-14" fill="none" stroke="#2b4d61" stroke-width="4.4" stroke-linecap="round"/>
+    <path d="M18 29c11-6 28-2 29 8-4 10-16 16-25 11-5-3-7-15-4-19Z" fill="url(#wx-inst-cup)" stroke="#243d4c"/>
+    <path d="M102 30c12-5 26-1 27 10-1 10-12 16-22 11-7-3-9-16-5-21Z" fill="url(#wx-inst-cup)" stroke="#243d4c"/>
+    <path d="M70 12c9-7 20-5 23 3 0 5-5 11-12 12-6 1-11-5-11-15Z" fill="url(#wx-inst-cup)" stroke="#243d4c"/>
+    <path d="M21 31c8-4 18-1 21 4m63-3c8-4 18 0 20 5m-53-24c4-3 11-5 16-2" fill="none" stroke="#b9cfd5" stroke-opacity=".68" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M68 52h14m-14 5h14" stroke="#a0b3ba" stroke-width="1.4" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="wx-inst-pressure" viewBox="0 0 148 108">
+    <ellipse cx="74" cy="100" rx="54" ry="6" fill="url(#wx-inst-shadow)"/>
+    <circle cx="75" cy="56" r="43" fill="#6e542f"/>
+    <circle cx="74" cy="53" r="43" fill="url(#wx-inst-brass)" stroke="#8c662c" stroke-width="1.2"/>
+    <circle cx="74" cy="53" r="36" fill="url(#wx-inst-dial)" stroke="#866333" stroke-width="1.6"/>
+    <circle cx="74" cy="53" r="29" fill="none" stroke="#61492d" stroke-width="2.2" stroke-dasharray="1.15 3.4"/>
+    <path d="M74 23v5m0 50v5M44 53h5m50 0h5M53 32l3 3m36 36 3 3m0-42-3 3M56 71l-3 3" fill="none" stroke="#503d26" stroke-width="1.55" stroke-linecap="round"/>
+    <path d="m61 63 31-25-15 19z" fill="#2c5155"/>
+    <circle cx="74" cy="53" r="3.6" fill="url(#wx-inst-brass)" stroke="#73552b"/>
+    <path d="M45 41c5-12 15-18 28-20m16 59c8-3 13-9 16-16" fill="none" stroke="#fff7d5" stroke-width="2.1" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="wx-inst-moisture" viewBox="0 0 148 108">
+    <ellipse cx="77" cy="97" rx="52" ry="7" fill="url(#wx-inst-shadow)"/>
+    <path d="M71 13c-7 15-13 21-23 32C38 56 33 65 33 75a35 23 0 0 0 70 0c0-10-6-19-16-31C79 35 75 24 71 13Z" fill="url(#wx-inst-glass)" stroke="#3686a2" stroke-width="1.5"/>
+    <path d="M56 53c-9 9-15 16-13 25m29 13c10 0 17-4 21-10" fill="none" stroke="#effdff" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M113 31c-4 10-13 16-13 25a12 12 0 0 0 24 0c0-7-7-17-11-25Z" fill="url(#wx-inst-glass)" stroke="#4284a0"/>
+    <path d="M39 26c-4 6-9 10-9 16a8 8 0 0 0 16 0c0-5-4-10-7-16Z" fill="url(#wx-inst-glass)" stroke="#5a9db4"/>
+    <path d="m108 51-2 5m-70-16-1 3" stroke="#e9fbfb" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="wx-inst-sky" viewBox="0 0 148 108">
+    <ellipse cx="75" cy="91" rx="59" ry="7" fill="url(#wx-inst-shadow)"/>
+    <circle cx="96" cy="38" r="22" fill="url(#wx-inst-sun)" stroke="#c88b3d" stroke-width="1.1"/>
+    <path d="M96 8v5m0 51v5M66 38h5m50 0h5M75 16l4 4m35 35 4 4m0-43-4 4" fill="none" stroke="#d6a64c" stroke-width="2" stroke-linecap="round"/>
+    <path d="M45 50c1-11 11-19 22-19 11 0 19 5 23 14 15 0 24 8 24 19 0 9-7 15-16 15H43c-12 0-17-7-17-14 0-8 7-14 19-15Z" fill="url(#wx-inst-storm)" stroke="#7293a2"/>
+    <path d="M31 59c3-12 13-21 26-21 12 0 21 8 24 17 16 0 28 7 28 17S100 88 86 88H31c-13 0-19-7-19-15 0-8 8-14 19-14Z" fill="url(#wx-inst-cloud)" stroke="#7598a9" stroke-width="1.35"/>
+    <path d="M35 57c5-10 13-14 22-14 8 0 15 3 21 10" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="wx-inst-rain" viewBox="0 0 148 108">
+    <ellipse cx="74" cy="99" rx="47" ry="7" fill="url(#wx-inst-shadow)"/>
+    <path d="M54 30h40v61c0 7-40 7-40 0Z" fill="url(#wx-inst-tube)" stroke="#5e93a6" stroke-width="1.5"/>
+    <path d="M56 63q18 5 36 0v27c0 5-36 6-36 0Z" fill="#60b7d3" stroke="#347eaa"/>
+    <ellipse cx="74" cy="63" rx="18" ry="4" fill="#b7eaf3" stroke="#5298b2"/>
+    <path d="M54 26h40l7-6H47z" fill="url(#wx-inst-steel)" stroke="#507d91"/>
+    <ellipse cx="74" cy="20" rx="27" ry="6" fill="#90b2c1" stroke="#507d91"/>
+    <ellipse cx="74" cy="19" rx="22" ry="3.5" fill="#d6ecf1"/>
+    <path d="M62 37v46m16-42h10m-6 8h6m-10 8h10m-6 8h6m-10 8h10m-6 8h6" fill="none" stroke="#315d78" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M31 21c-3 6-10 12-10 18a10 10 0 1 0 20 0c0-6-7-11-10-18Zm88 20c-3 7-10 12-10 18a10 10 0 1 0 20 0c0-6-7-12-10-18Z" fill="url(#wx-inst-glass)" stroke="#44859d"/>
+  </symbol>
+
+  <symbol id="wx-inst-daylight" viewBox="0 0 148 108">
+    <ellipse cx="74" cy="94" rx="64" ry="7" fill="url(#wx-inst-shadow)"/>
+    <path d="M19 64C28 9 119 9 130 64" fill="none" stroke="#b77946" stroke-width="1.5" stroke-dasharray="2.5 4" stroke-linecap="round"/>
+    <circle cx="76" cy="54" r="24" fill="url(#wx-inst-sun)" stroke="#ce8b3a"/>
+    <path d="M52 55c2-8 7-13 11-15m25 8 11 6" fill="none" stroke="#fff0ac" stroke-width="2.1" stroke-linecap="round"/>
+    <path d="m13 71 24-12 13 5 13-4 20 6 18-10 34 15v11H13Z" fill="#526f6d"/>
+    <path d="M13 75h122v9q0 9-9 9H22q-9 0-9-9Z" fill="url(#wx-inst-lake)" stroke="#578493"/>
+    <path d="M57 80h39m-33 5h24m-18 5h13" fill="none" stroke="#fff0ad" stroke-width="1.9" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="wx-inst-airquality" viewBox="0 0 148 108">
+    <ellipse cx="78" cy="100" rx="55" ry="7" fill="url(#wx-inst-shadow)"/>
+    <path d="M40 30 52 20h61l9 9v60l-10 10H49l-9-9Z" fill="#486977" stroke="#193f51"/>
+    <rect x="40" y="24" width="75" height="71" rx="13" fill="url(#wx-inst-steel)" stroke="#4b7180" stroke-width="1.5"/>
+    <rect x="48" y="33" width="58" height="35" rx="6" fill="#184553"/>
+    <path d="M57 52h6l5-8 7 13 6-7h9l5-5" fill="none" stroke="#8be5db" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56 77h24m-24 5h24m-24 5h24" stroke="#496f7c" stroke-linecap="round" stroke-width="2"/>
+    <circle cx="96" cy="81" r="4.5" fill="url(#wx-inst-glass)" stroke="#5c7f8b"/>
+    <path d="M19 41c-8 0-10 7-3 9h17M13 61c3-4 8-4 19-4M21 71l11-6" fill="none" stroke="#71a8b3" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M56 29h42m-43 9v24" fill="none" stroke="#dff6f4" stroke-opacity=".56" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="wx-inst-pollen" viewBox="0 0 148 108">
+    <ellipse cx="77" cy="99" rx="52" ry="6" fill="url(#wx-inst-shadow)"/>
+    <path d="M59 96c12-23 22-42 25-69m-18 55c-13-17-20-23-37-30m49 22c14-8 23-18 28-33" fill="none" stroke="#427c58" stroke-width="3" stroke-linecap="round"/>
+    <path d="M68 82c-20 3-31-2-39-20 17-3 32 8 39 20Zm9-9c8-18 25-22 37-21-5 17-18 24-37 21Z" fill="#74a77d" stroke="#3e7b58" stroke-width="1.15"/>
+    <path d="M40 70c8 3 17 8 25 10m23-10 16-12" fill="none" stroke="#bcd49b" stroke-width="1.4" stroke-linecap="round"/>
+    <g fill="url(#wx-inst-sun)" stroke="#9b682f" stroke-width=".95">
+      <ellipse cx="83" cy="25" rx="7" ry="19" transform="rotate(23 83 25)"/>
+      <ellipse cx="93" cy="40" rx="6" ry="14" transform="rotate(30 93 40)"/>
+      <ellipse cx="75" cy="39" rx="6" ry="12" transform="rotate(-15 75 39)"/>
+      <ellipse cx="105" cy="28" rx="4" ry="9" transform="rotate(28 105 28)"/>
+      <ellipse cx="34" cy="46" rx="5" ry="10" transform="rotate(-53 34 46)"/>
+    </g>
+    <path d="M86 11l-5 14m15 9-7 12m-15-13 2 12m-47-2 9 6" fill="none" stroke="#fff2b0" stroke-width="1.25" stroke-linecap="round"/>
+    <g fill="#d8a252" stroke="#a57131" stroke-width=".7">
+      <circle cx="57" cy="17" r="2.8"/><circle cx="46" cy="27" r="2.2"/><circle cx="118" cy="20" r="2.5"/><circle cx="126" cy="32" r="2"/>
+    </g>
+  </symbol>
+</svg>

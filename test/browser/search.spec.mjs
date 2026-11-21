@@ -19,6 +19,19 @@ for(const width of [320,360,375,390,414,768,1024,1280,1440,1920])test(`header se
  expect(dimensions.scroll).toBeLessThanOrEqual(dimensions.width+1);expect(errors).toEqual([]);
 });
 
+test('the mobile menu opens on the calendar homepage',async({page})=>{
+ await page.setViewportSize({width:320,height:780});
+ await page.goto('/');
+ await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');
+ const toggle=page.locator('#nav-toggle');
+ await toggle.click();
+ await expect(toggle).toHaveAttribute('aria-expanded','true');
+ await expect(page.locator('#primary-nav')).toBeVisible();
+ await page.keyboard.press('Escape');
+ await expect(toggle).toHaveAttribute('aria-expanded','false');
+ await expect(toggle).toBeFocused();
+});
+
 test('name-day search opens the native name with all genuine dates prefilled',async({page})=>{
  await page.goto('/paieska/');await openHeaderSearch(page);await page.locator('#site-search').fill('zivile');
  const first=page.locator('#site-search-results [role=option]').first();
@@ -31,7 +44,7 @@ test('name-day search opens the native name with all genuine dates prefilled',as
 });
 
 for(const[query,path]of[
- ['rugsėjis 2027','/2027/rugsejis/'],['saulėlydis Kaune','/saule/'],['astrologija','/zodiakas/'],
+ ['rugsėjis 2027','/2027/rugsejis/'],['saulėlydis Kaune','/saule/kaunas/'],['astrologija','/zodiakas/'],
  ['horoskopai šiandien','/horoskopai/'],['2028-02-29','/2028/vasaris/'],['Velykos 2027','/sventes/velykos/'],
 ])test(`full results preserve intent: ${query}`,async({page})=>{
  await page.goto(`/paieska/?q=${encodeURIComponent(query)}`);

@@ -80,6 +80,10 @@ class RouteCssSplitterTests(unittest.TestCase):
         self.assertNotIn(".horoscope-sign-hero", hub)
         self.assertIn(".zodiac-guide", guide)
         self.assertIn(".horoscope-teaser", homepage)
+        self.assertIn(".home-week-plan__totals", homepage)
+        self.assertIn(".dashboard-quick-links", homepage)
+        self.assertIn(".day-details__content", homepage)
+        self.assertIn(".task-filter-wrap", homepage)
 
 
 if __name__ == "__main__":

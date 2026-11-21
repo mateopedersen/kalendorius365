@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76">
+  <defs>
+    <clipPath id="frame"><rect x="2" y="2" width="72" height="70" rx="17"/></clipPath>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#282b54"/><stop offset=".53" stop-color="#98708d"/><stop offset=".81" stop-color="#e58e7c"/><stop offset="1" stop-color="#ffbd77"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop stop-color="#ffcf96" stop-opacity=".8"/><stop offset="1" stop-color="#ff9071" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disk" cx=".43" cy=".19" r=".91">
+      <stop stop-color="#fff0b1"/><stop offset=".47" stop-color="#ffb251"/><stop offset="1" stop-color="#f2704b"/>
+    </radialGradient>
+    <linearGradient id="water" x2="0" y2="1">
+      <stop stop-color="#94707d"/><stop offset="1" stop-color="#282b49"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="5" width="72" height="70" rx="17" fill="#2c293e"/>
+  <g clip-path="url(#frame)">
+    <path d="M2 2h72v56H2z" fill="url(#sky)"/>
+    <ellipse cx="44" cy="46" rx="33" ry="23" fill="url(#halo)"/>
+    <path d="M7 24q14-4 24-3m15 5q15-3 24-.5M8 30q8-1 17 0" fill="none" stroke="#efafa4" stroke-width="1.3" opacity=".68" stroke-linecap="round"/>
+    <circle cx="44" cy="47" r="14" fill="url(#disk)"/>
+    <path d="M0 46q10-2 17 0 13 5 24 4 19-4 35-3v29H0z" fill="url(#water)"/>
+    <path d="M0 49q10-7 20-4 9 2 17 5l-16 3-21 9Zm76-4q-12-4-22 0l-10 5q16 0 32 7Z" fill="#514158"/>
+    <path d="M35 52h19m-24 4 28-.5m-24 5h20m-25 5h22" fill="none" stroke="#ffae74" stroke-width="1.1" stroke-linecap="round" opacity=".82"/>
+    <path d="M0 59q11-2 25 .5l12 7-16 7H0Zm76-2q-10 2-19 7l-10 10h29z" fill="#282b46"/>
+    <path d="m2 60 5-12 4 9 3-5 4 9Zm62 4 4-12 3 6 3-9 4 14Z" fill="#252740"/>
+  </g>
+  <rect x="2.5" y="2.5" width="71" height="69" rx="16.5" fill="none" stroke="#eeb8b8" stroke-opacity=".49"/>
+</svg>

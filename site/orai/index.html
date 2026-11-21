@@ -1,0 +1,311 @@
+---
+title: "Orų prognozės Lietuvos miestams, miesteliams ir kaimams"
+description: "Lietuvos vietovių orai pagal valandas, temperatūra, krituliai ir vėjas. Prognozė iki 15 dienų, klimato orientyrai iki 90 dienų, oro kokybė ir žiedadulkės."
+og_image: /assets/visuals/weather-1280.webp
+og_image_type: image/webp
+og_image_width: 1280
+og_image_height: 720
+og_image_alt: "Vilniaus senamiesčio ir saulės apšviestų debesų iliustracija"
+weather_atlas: true
+hero_share: true
+---
+<!--wx-hub-->
+<div class="weather-atlas wx-hub" data-weather-hub>
+  <header class="wx-hub-hero">
+    <div class="wx-hub-hero__art" aria-hidden="true"></div>
+    <div class="wx-hub-hero__copy">
+      <h1>Orai Lietuvoje</h1>
+      <p>Pasirinkite vietovę ir peržiūrėkite valandinę temperatūrą, kritulius, oro drėgnį ir vėją. Rasite prognozę iki 15 dienų, klimato orientyrus iki 90 dienų, oro kokybės, žiedadulkių ir kelių stotelių duomenis.</p>
+      {% include weather-location-search.html %}
+      <nav class="wx-jump" aria-label="Naršyti orų žinyną">
+        <a class="wx-action" href="#miestai"><span class="wx-action__label">Miestai</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+        <a class="wx-action" href="#savivaldybes"><span class="wx-action__label">Savivaldybės</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+        <a class="wx-action" href="#mazesnes-vietoves"><span class="wx-action__label">Miesteliai ir kaimai</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="wx-section wx-city-section" id="miestai" aria-labelledby="wx-hub-cities">
+    <div class="wx-section__head"><h2 id="wx-hub-cities">Miestų orų prognozės</h2><a class="wx-action" href="/orai/miestai/"><span class="wx-action__label">Visi Lietuvos miestai</span><span class="wx-action__end">{% include weather-action-icon.html %}</span></a></div>
+    <nav class="wx-city-grid" aria-label="Populiarūs miestai">
+      {% assign cities = 'vilnius:Vilnius,kaunas:Kaunas,klaipeda:Klaipėda,siauliai:Šiauliai,panevezys:Panevėžys,alytus:Alytus,taurage:Tauragė,visaginas:Visaginas,marijampole:Marijampolė,telsiai:Telšiai' | split: ',' %}
+      {% for city in cities %}{% assign pair = city | split: ':' %}
+      {% assign city_slug = pair[0] %}{% assign photo = site.data.weather_city_images[city_slug] %}
+      <a class="wx-city-tile" href="/orai/{{ pair[0] }}/">
+        <img src="{{ photo.src }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async">
+        <span><span>{{ pair[1] }}</span><span class="wx-action__end">{% include weather-action-icon.html %}</span></span>
+      </a>
+      {% endfor %}
+    </nav>
+  </section>
+
+  <section class="wx-section wx-counties" id="savivaldybes" aria-labelledby="wx-hub-districts">
+    <div class="wx-section__head"><h2 id="wx-hub-districts" tabindex="-1">Orai pagal savivaldybę</h2><a class="wx-action" href="/orai/savivaldybes/"><span class="wx-action__label">Visos 60 savivaldybių</span><span class="wx-action__end">{% include weather-action-icon.html %}</span></a></div>
+    {% assign counties = 'vilniaus:Vilniaus:vilnius,kauno:Kauno:kaunas,klaipedos:Klaipėdos:klaipeda,siauliu:Šiaulių:siauliai,panevezio:Panevėžio:panevezys,alytaus:Alytaus:alytus,marijampoles:Marijampolės:marijampole,taurages:Tauragės:taurage,telsiu:Telšių:telsiai,utenos:Utenos:utena' | split: ',' %}
+    <div class="wx-county-picker">
+      <nav class="wx-county-options" aria-label="Lietuvos apskritys">
+        {% for county in counties %}{% assign item = county | split: ':' %}{% assign county_name = item[1] %}{% assign municipalities = site.data.weather_counties[county_name] %}{% assign photo_slug = item[2] %}{% assign photo = site.data.weather_city_images[photo_slug] %}
+        <a href="/orai/savivaldybes/#{{ item[0] }}" data-wx-county="wx-county-{{ item[0] }}"{% if forloop.first %} aria-current="true"{% endif %}>
+          <img src="{{ photo.src }}" alt="" aria-hidden="true" width="42" height="42" loading="lazy" decoding="async">
+          <span><strong>{{ item[1] }} apskritis</strong><small>{{ municipalities.size }} savivaldybės</small></span>
+          <span class="wx-action__end">{% include weather-action-icon.html %}</span>
+        </a>
+        {% endfor %}
+      </nav>
+      <div class="wx-county-results">
+        {% for county in counties %}{% assign item = county | split: ':' %}{% assign county_name = item[1] %}{% assign municipalities = site.data.weather_counties[county_name] %}{% assign photo_slug = item[2] %}{% assign photo = site.data.weather_city_images[photo_slug] %}
+        <section class="wx-county-panel" id="wx-county-{{ item[0] }}" aria-labelledby="wx-county-title-{{ item[0] }}"{% unless forloop.first %} hidden{% endunless %}>
+          <div class="wx-county-banner">
+            <img src="{{ photo.src }}" alt="{{ photo.alt | escape }}" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy" decoding="async">
+            <div><p>{{ municipalities.size }} savivaldybės</p><h3 id="wx-county-title-{{ item[0] }}" tabindex="-1">{{ item[1] }} apskritis</h3></div>
+          </div>
+          <ul class="wx-county-places">
+            {% for municipality in municipalities %}
+            <li><a href="/orai/savivaldybes/{{ municipality.slug }}/#vietoves">{{ municipality.name }} <span class="wx-action__end">{% include weather-action-icon.html %}</span></a></li>
+            {% endfor %}
+          </ul>
+          <a class="wx-action wx-county-change" href="#wx-hub-districts"><span class="wx-action__label">Keisti apskritį</span><span class="wx-action__end">{% include weather-action-icon.html key='up' %}</span></a>
+        </section>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="wx-settlement-search" id="mazesnes-vietoves" aria-labelledby="wx-hub-settlements">
+    <div class="wx-settlement-search__copy">
+      <h2 id="wx-hub-settlements">Miesteliai, kaimai ir viensėdžiai</h2>
+      <p>Jei pavadinimai sutampa, vietovę atpažinsite pagal savivaldybę.</p>
+      {% include weather-location-search.html id='wx-settlement' name='Miestelių ir kaimų paieška' label='Vietovės pavadinimas' placeholder='Pvz., Kernavė' %}
+      <nav class="wx-settlement-picks" aria-label="Vietovių orų prognozės">
+        <a href="/orai/kernaves-17745/">Kernavė</a>
+        <a href="/orai/zagare/">Žagarė</a>
+        <a href="/orai/zalgirio-31593/">Žalgirio k. <small>Biržų r.</small></a>
+      </nav>
+    </div>
+    <img class="wx-settlement-search__photo" src="/assets/visuals/weather-city-visaginas-lake.webp" alt="Visagino ežero paplūdimys su suoleliu pakrantėje" width="600" height="340" loading="lazy" decoding="async">
+  </section>
+
+  <section class="wx-section wx-outing" aria-labelledby="wx-hub-sources">
+    <h2 id="wx-hub-sources">Prieš išeinant ar išvykstant</h2>
+    <nav class="wx-outing-tiles" aria-label="Orų žemėlapiai ir įrankiai">
+      <a href="https://www.meteo.lt/dabar/radarai/"><img src="/assets/visuals/weather-skies/rain.webp" width="600" height="340" alt="" aria-hidden="true" loading="lazy" decoding="async"><span><strong>Kritulių radaras</strong><small>LHMT</small></span><span class="wx-action__end">{% include weather-action-icon.html key='external' %}</span></a>
+      <a href="https://www.meteo.lt/prognozes/pavojingi-reiskiniai/"><img src="/assets/visuals/weather-skies/overcast.webp" width="600" height="340" alt="" aria-hidden="true" loading="lazy" decoding="async"><span><strong>Orų perspėjimai</strong><small>LHMT</small></span><span class="wx-action__end">{% include weather-action-icon.html key='external' %}</span></a>
+      <a href="https://eismoinfo.lt/"><img src="/assets/visuals/weather-skies/road.webp" width="600" height="340" alt="" aria-hidden="true" loading="lazy" decoding="async"><span><strong>Kelių būklė</strong><small>„Via Lietuva“</small></span><span class="wx-action__end">{% include weather-action-icon.html key='external' %}</span></a>
+      <a href="/saule/"><img src="/assets/visuals/weather-city-visaginas-sunset.webp" width="600" height="340" alt="Saulėlydis virš Visagino ežero" loading="lazy" decoding="async"><span><strong>Saulėtekis ir saulėlydis</strong><small>Laikai pagal miestą</small></span><span class="wx-action__end">{% include weather-action-icon.html %}</span></a>
+    </nav>
+    <nav class="wx-outing-plans" aria-label="Prognozės kelionei planuoti">
+      <a href="/orai/miestai/">Pasirinkti kelionės miestą</a>
+      <a href="/renginiai/">Renginiai Lietuvoje</a>
+      <a href="/ilgieji-savaitgaliai/">Ilgųjų savaitgalių kalendorius</a>
+      <a href="/orai/kaunas/?dienos=15#oru-prognoze">15 dienų orai Kaune</a>
+      <a href="/orai/kaunas/?dienos=90#oru-prognoze">90 dienų klimato apžvalga Kaune</a>
+      <a href="https://airindex.eea.europa.eu/AQI/">Oro kokybės žemėlapis</a>
+      <a href="https://pasyfo.eu/ziedadulkiu-prognozes">Žiedadulkių žemėlapis</a>
+    </nav>
+  </section>
+  <p class="wx-credits"><a href="/oru-saltiniai/#duomenys">Duomenys ir licencijos</a></p>
+</div>
+<!--/wx-hub-->
+<template id="wx-place-template">
+<div class="weather-atlas" data-weather-place="vilnius">
+  <header class="wx-live" id="orai-siandien" data-sky="cloud">
+    <div class="wx-scene" aria-hidden="true">
+      <div class="wx-scene__sky"></div>
+      <div class="wx-scene__haze"></div>
+      <svg class="wx-scene__particle wx-scene__rain" viewBox="0 0 600 460" preserveAspectRatio="xMidYMid slice"><use href="/assets/visuals/weather-precipitation.svg#rain"></use></svg>
+      <svg class="wx-scene__particle wx-scene__snow" viewBox="0 0 600 460" preserveAspectRatio="xMidYMid slice"><use href="/assets/visuals/weather-precipitation.svg#snow"></use></svg>
+    </div>
+    <div class="wx-live__data">
+      <div class="wx-live__place">
+        <p class="wx-live__eyebrow">Orai šiandien</p>
+        <!--wx-place-title--><!--/wx-place-title-->
+      </div>
+      <div class="wx-live__temperature">
+        <p id="wx-live-reading" aria-live="polite">Įkeliami naujausi duomenys…</p>
+        <span id="wx-live-icon" hidden></span>
+      </div>
+      <div class="wx-live__summary">
+        <p id="wx-live-detail" hidden></p>
+        <p class="wx-timestamp" id="wx-timestamp" hidden></p>
+        <a class="wx-action wx-action--dark" id="wx-rain-shortcut" href="#krituliu-prognoze"><span class="wx-action__label">Kritulių prognozė</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+        <button type="button" data-wx-retry="forecast" class="wx-retry" hidden>Bandyti dar kartą</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="wx-section" id="oru-prognoze" aria-labelledby="wx-forecast-title">
+    <div class="wx-section__head">
+      <!--wx-forecast--><h2 id="wx-forecast-title" tabindex="-1">Orų prognozė</h2><!--/wx-forecast-->
+      {% include weather-radar-link.html %}
+    </div>
+    <div class="wx-periods" role="group" aria-label="Prognozės laikotarpis">
+      {% assign presets = '1,3,5,7,10,15,30,45,90' | split: ',' %}
+      {% for days in presets %}
+      <button type="button" data-days="{{ days }}" aria-pressed="{% if days == '5' %}true{% else %}false{% endif %}">{{ days }} d.</button>
+      {% endfor %}
+    </div>
+    <div class="wx-forecast-actions">
+      <a class="wx-action" href="#krituliu-prognoze"><span class="wx-action__label">Kada lis?</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      <a class="wx-action" href="#savaitgalio-orai"><span class="wx-action__label">Savaitgalio orai</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      <a class="wx-action" href="#wx-hours-title" id="wx-hourly-link" hidden><span class="wx-action__label">Valandiniai orai</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      <a class="wx-action" href="#oro-kokybe"><span class="wx-action__label">Oro kokybė ir žiedadulkės</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      <a class="wx-action" href="#wx-climate-title" id="wx-climate-link" hidden><span class="wx-action__label">Klimato apžvalga</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      <a class="wx-action" href="#wx-days" id="wx-days-link" hidden><span class="wx-action__label">Kasdienė prognozė</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+    </div>
+    <p class="wx-message" id="wx-forecast-status" role="status">Įkeliama prognozė…</p>
+    <div class="wx-forecast-days">
+      <h3 id="wx-days-title" hidden>Pirmųjų 15 dienų prognozė</h3>
+      <div id="wx-days" class="wx-days"></div>
+    </div>
+    <div class="wx-provider-credit" id="wx-provider-credit" hidden>
+      <a class="wx-provider-credit__logo" id="wx-visual-crossing-credit" href="https://www.visualcrossing.com/weather-api/" hidden>
+        <img src="/assets/visuals/visual-crossing-powered-by.png" alt="Orų duomenys iš „Visual Crossing Weather“" width="140" height="35" loading="lazy" decoding="async">
+      </a>
+      <a id="wx-forecast-source" hidden></a>
+      <a href="/oru-saltiniai/#duomenys">Duomenys ir licencijos</a>
+    </div>
+    <section class="wx-climate" aria-labelledby="wx-climate-title" hidden>
+      <h3 id="wx-climate-title">Klimato orientyrai nuo 16-os dienos</h3>
+      <p>Pasirinkite mėnesį ir peržiūrėkite temperatūros, drėgnio bei kritulių vidurkius pagal ankstesnių metų duomenis.</p>
+      <p id="wx-climate-status" class="wx-message" role="status"></p>
+      <button type="button" data-wx-retry="climate" class="wx-retry" hidden>Krauti dar kartą</button>
+      <div id="wx-climate-months" class="wx-climate__months" role="group" aria-label="Klimato apžvalgos mėnuo"></div>
+      <p id="wx-climate-range" class="wx-climate__range" aria-live="polite"></p>
+      <div id="wx-climate-days" class="wx-days wx-days--extended" role="region" aria-labelledby="wx-climate-range"></div>
+    </section>
+    <section class="wx-hourly" aria-labelledby="wx-hours-title" hidden>
+      <div class="wx-hourly__heading">
+        <h3 id="wx-hours-title">Valandinė prognozė</h3>
+        <label class="wx-hourly__date" for="wx-hour-day">Diena <select id="wx-hour-day"></select></label>
+      </div>
+      <div id="wx-hour-reading" class="wx-hourly__reading" aria-live="polite"></div>
+      <div class="wx-hour-track">
+        <button type="button" data-hour-scroll="-1" aria-label="Ankstesnės valandos">{% include weather-action-icon.html key='previous' %}</button>
+        <div class="wx-next__strip" id="wx-next-hours" role="group" aria-label="Pasirinkite valandą"></div>
+        <button type="button" data-hour-scroll="1" aria-label="Vėlesnės valandos">{% include weather-action-icon.html key='chevron' %}</button>
+      </div>
+      <details class="wx-forecast-disclosure">
+        <summary>Visi valandiniai rodikliai</summary>
+        <div id="wx-hours" class="wx-scroll" tabindex="0" role="region" aria-label="Valandinės prognozės lentelė"></div>
+      </details>
+    </section>
+    <details class="wx-forecast-disclosure" id="wx-chart-details" hidden>
+      <summary>Temperatūros grafikas</summary>
+      <div class="wx-temperature-chart" id="wx-chart" hidden></div>
+    </details>
+  </section>
+
+  <section class="wx-section wx-rain" id="krituliu-prognoze" aria-labelledby="wx-rain-title">
+    <div class="wx-section__head"><h2 id="wx-rain-title">Krituliai per 12 valandų</h2>{% include weather-radar-link.html %}</div>
+    <p id="wx-rain-summary" role="status">Įkeliama valandinė kritulių prognozė…</p>
+    <div id="wx-rain-bars" class="wx-rain-bars" role="group" aria-label="Krituliai kiekvieną valandą"></div>
+    <p id="wx-rain-detail" class="wx-rain-detail" aria-live="polite" hidden></p>
+    <p id="wx-rain-status" class="wx-message" role="status" hidden></p>
+  </section>
+
+  <section class="wx-section wx-weekend" id="savaitgalio-orai" aria-labelledby="wx-weekend-title">
+    <div class="wx-section__head">
+      <!--wx-weekend--><h2 id="wx-weekend-title">Savaitgalio orai</h2><!--/wx-weekend-->
+      <div class="wx-weekend__choices" role="group" aria-label="Pasirinkite savaitgalį">
+        <button type="button" data-weekend="0" aria-pressed="true">Artimiausias</button>
+        <button type="button" data-weekend="1" aria-pressed="false">Kitas</button>
+      </div>
+    </div>
+    <!--wx-weekend-intro--><p id="wx-weekend-summary" class="wx-weekend__summary" data-location="" aria-live="polite">Palyginkite šeštadienio ir sekmadienio orus prieš planuodami savaitgalį.</p><!--/wx-weekend-intro-->
+    <p id="wx-weekend-status" class="wx-message" role="status">Įkeliama savaitgalio prognozė…</p>
+    <div id="wx-weekend-days" class="wx-weekend__days"></div>
+  </section>
+
+  <section class="wx-section wx-readings" id="oru-rodikliai" aria-labelledby="wx-details-title">
+    <h2 id="wx-details-title">Orų rodikliai</h2>
+    <p id="wx-readings-status" class="wx-message" role="status">Įkeliami orų rodikliai…</p>
+    <div class="wx-metrics" id="wx-metrics"></div>
+    <noscript><p>Orų rodmenims ir paieškai reikalingas „JavaScript“. Vietovių nuorodos ir šaltiniai veikia ir be jo.</p></noscript>
+  </section>
+
+  <section class="wx-section wx-environment" id="oro-kokybe" aria-labelledby="wx-environment-title">
+    {% include weather-instruments.svg %}
+    <div class="wx-section__head">
+      <!--wx-environment--><h2 id="wx-environment-title">Oro kokybė ir žiedadulkės</h2><!--/wx-environment-->
+    </div>
+    <div class="wx-environment__grid">
+      <article class="wx-exposure" data-kind="air" aria-labelledby="wx-air-title">
+        <div class="wx-exposure__hero">
+          <div>
+            <h3 id="wx-air-title">Oro kokybė</h3>
+            <p id="wx-air-level" class="wx-exposure__level" role="status">Įkeliama…</p>
+            <time id="wx-air-time" hidden></time>
+          </div>
+          <svg viewBox="0 0 148 108" width="148" height="108" aria-hidden="true"><use href="#wx-inst-airquality"></use></svg>
+        </div>
+        <details hidden id="wx-air-details">
+          <summary>Teršalai ir artimiausios valandos</summary>
+          <dl id="wx-air-values" class="wx-exposure__values"></dl>
+          <div id="wx-air-outlook"></div>
+        </details>
+      </article>
+      <article class="wx-exposure" data-kind="pollen" aria-labelledby="wx-pollen-title">
+        <div class="wx-exposure__hero">
+          <div>
+            <h3 id="wx-pollen-title">Lauko žiedadulkės</h3>
+            <p id="wx-pollen-level" class="wx-exposure__level" role="status">Įkeliama…</p>
+            <time id="wx-pollen-time" hidden></time>
+          </div>
+          <svg viewBox="0 0 148 108" width="148" height="108" aria-hidden="true"><use href="#wx-inst-pollen"></use></svg>
+        </div>
+        <details hidden id="wx-pollen-details">
+          <summary>Augalai ir artimiausios valandos</summary>
+          <dl id="wx-pollen-values" class="wx-exposure__values"></dl>
+          <div id="wx-pollen-outlook"></div>
+        </details>
+      </article>
+    </div>
+    <p id="wx-environment-status" class="wx-message" role="status" hidden></p>
+  </section>
+
+  <section class="wx-section wx-roads" id="orai-keliuose" aria-labelledby="wx-roads-title">
+    <header class="wx-road-hero">
+      <div>
+        <p class="wx-road-hero__eyebrow">„Via Lietuva“ matavimai</p>
+        <!--wx-road--><h2 id="wx-roads-title">Orai keliuose</h2><!--/wx-road-->
+        <a class="wx-action wx-action--dark wx-road-map" href="https://eismoinfo.lt/"><span class="wx-action__label">Eismo ir kelių būklės žemėlapis</span><span class="wx-action__end">{% include weather-action-icon.html key='external' %}</span></a>
+      </div>
+    </header>
+    <div class="wx-roads__content">
+      <p class="wx-message" id="wx-road-status" role="status">Ieškoma artimiausių stotelių…</p>
+      <button type="button" data-wx-retry="roads" class="wx-retry" hidden>Tikrinti stoteles dar kartą</button>
+      <div id="wx-stations" class="wx-stations"></div>
+      <section class="wx-road-hours" aria-labelledby="wx-road-hours-title" hidden>
+        <h3 id="wx-road-hours-title">Artimiausių valandų orai kelionei</h3>
+        <p>Oro temperatūros, kritulių, vėjo ir matomumo prognozė vietovėje. Kelio dangos būklę rodo aukščiau pateikti matavimai.</p>
+        <div id="wx-road-hours" class="wx-scroll" tabindex="0" role="region" aria-label="Artimiausių valandų orai kelionei"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="wx-section wx-directory" id="vietoves" aria-labelledby="wx-directory-title">
+    <!--wx-directory-->
+    <div class="wx-section__head"><h2 id="wx-directory-title">Orai Lietuvos vietovėse</h2><a class="wx-action" href="/orai/savivaldybes/"><span class="wx-action__label">Visos 60 savivaldybių</span><span class="wx-action__end">{% include weather-action-icon.html %}</span></a></div>
+    <nav class="wx-place-links" aria-label="Populiarios vietovės">
+      <a href="/orai/vilnius/">Vilnius</a><a href="/orai/kaunas/">Kaunas</a><a href="/orai/klaipeda/">Klaipėda</a><a href="/orai/siauliai/">Šiauliai</a>
+      <a href="/orai/panevezys/">Panevėžys</a><a href="/orai/alytus/">Alytus</a><a href="/orai/taurage/">Tauragė</a><a href="/orai/visaginas/">Visaginas</a>
+      <a href="/orai/palanga/">Palanga</a><a href="/orai/savivaldybes/">Miesteliai, kaimai ir viensėdžiai</a>
+    </nav>
+    <!--/wx-directory-->
+    {% include weather-location-search.html %}
+  </section>
+
+  <section class="wx-section wx-method" id="oru-gidas" aria-labelledby="wx-method-title">
+    <header class="wx-guide-header">
+      <h2 id="wx-method-title">Kaip skaityti orų duomenis?</h2>
+      <!--wx-intro--><!--/wx-intro-->
+    </header>
+    <!--wx-guide--><!--/wx-guide-->
+    <section class="wx-local-references" aria-labelledby="wx-reference-title">
+      <h3 id="wx-reference-title">Orų žemėlapiai ir įrankiai</h3>
+      <!--wx-references--><!--/wx-references-->
+    </section>
+    <p class="wx-credits"><a href="/oru-saltiniai/#duomenys">Duomenys ir licencijos</a></p>
+  </section>
+</div>
+</template>

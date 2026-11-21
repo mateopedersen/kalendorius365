@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <defs>
+    <radialGradient id="shadow">
+      <stop stop-color="#182d36" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#182d36" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper" x2=".65" y2="1">
+      <stop stop-color="#fffef6"/><stop offset=".65" stop-color="#f2ead6"/><stop offset="1" stop-color="#c7c4b7"/>
+    </linearGradient>
+    <linearGradient id="gold" x1=".18" x2=".74" y2="1">
+      <stop stop-color="#fff2b5"/><stop offset=".48" stop-color="#ecb44d"/><stop offset="1" stop-color="#a85c21"/>
+    </linearGradient>
+    <linearGradient id="green" x1=".15" x2=".74" y2="1">
+      <stop stop-color="#70c2a2"/><stop offset=".46" stop-color="#268865"/><stop offset="1" stop-color="#0c4a3d"/>
+    </linearGradient>
+    <linearGradient id="blue" x1=".15" x2=".74" y2="1">
+      <stop stop-color="#a6daf2"/><stop offset=".47" stop-color="#5a99c5"/><stop offset="1" stop-color="#234d7c"/>
+    </linearGradient>
+    <linearGradient id="navy" x1=".15" x2=".74" y2="1">
+      <stop stop-color="#7393b5"/><stop offset=".48" stop-color="#344f76"/><stop offset="1" stop-color="#18263c"/>
+    </linearGradient>
+    <linearGradient id="red" x1=".15" x2=".74" y2="1">
+      <stop stop-color="#f99988"/><stop offset=".49" stop-color="#c64b55"/><stop offset="1" stop-color="#7f263c"/>
+    </linearGradient>
+    <linearGradient id="violet" x1=".15" x2=".74" y2="1">
+      <stop stop-color="#c6b5ea"/><stop offset=".48" stop-color="#8971bd"/><stop offset="1" stop-color="#4e386e"/>
+    </linearGradient>
+    <linearGradient id="leather" x1=".15" x2=".74" y2="1">
+      <stop stop-color="#e9aa68"/><stop offset=".5" stop-color="#aa6037"/><stop offset="1" stop-color="#683620"/>
+    </linearGradient>
+    <radialGradient id="skin" cx=".34" cy=".26" r=".8">
+      <stop stop-color="#ffe8c2"/><stop offset=".59" stop-color="#e7ae7b"/><stop offset="1" stop-color="#a46b53"/>
+    </radialGradient>
+    <radialGradient id="glaze" cx=".36" cy=".22" r=".86">
+      <stop stop-color="#fff7ed"/><stop offset=".58" stop-color="#f9b8bf"/><stop offset="1" stop-color="#cb657e"/>
+    </radialGradient>
+    <ellipse id="ground" cx="36" cy="64" rx="30" ry="5" fill="url(#shadow)"/>
+    <g id="calendar-file">
+      <path d="M12 8h32l10 10v36q0 4-4 4H12q-4 0-4-4V12q0-4 4-4Z" fill="#284b5b" transform="translate(2 3)"/>
+      <path d="M12 8h32l10 10v36q0 4-4 4H12q-4 0-4-4V12q0-4 4-4Z" fill="url(#paper)"/>
+      <path d="M12 8h32v10H8v-6q0-4 4-4Z" fill="url(#blue)"/>
+      <path d="M44 8v8q0 2 2 2h8Z" fill="#bbc6c9"/>
+      <path d="M17 24h24m-24 8h23m-23 8h15m-15 8h12" fill="none" stroke="#a7bac1" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="transfer-arrow">
+      <path d="M48 25 61 38q2 2 0 4-2 2-4 0l-6-6v19q0 3-3 3t-3-3V36l-6 6q-2 2-4 0-2-2 0-4Z" fill="#f9fff9" stroke="#263d4e" stroke-opacity=".25"/>
+      <path d="M48 27v7l8 6" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="1.3"/>
+    </g>
+
+    <symbol id="art-layers" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="m8 43 29-14 28 14v8L36 65 8 51Z" fill="#71372d"/>
+      <path d="m8 43 29-14 28 14-29 14Z" fill="url(#red)"/>
+      <path d="m8 32 29-14 28 14v8L36 54 8 40Z" fill="#925f2d"/>
+      <path d="m8 32 29-14 28 14-29 14Z" fill="url(#gold)"/>
+      <path d="m8 21 29-14 28 14v8L36 43 8 29Z" fill="#175a4c"/>
+      <path d="m8 21 29-14 28 14-29 14Z" fill="url(#green)"/>
+      <path d="m19 21 17-8 17 8m-27 4 16-8" fill="none" stroke="#e1f6df" stroke-opacity=".78" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="art-holidays" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M10 59c0-3 7-5 14-5s14 2 14 5v3c0 3-7 5-14 5s-14-2-14-5Z" fill="#765031"/>
+      <ellipse cx="24" cy="59" rx="14" ry="5" fill="url(#gold)"/>
+      <path d="M21 9h5v50q-3 2-5 0Z" fill="url(#gold)"/>
+      <circle cx="23.5" cy="9" r="4" fill="url(#gold)"/>
+      <path d="M26 12c15-7 24 10 39 2v11c-15 8-24-9-39-2Z" fill="url(#gold)"/>
+      <path d="M26 23c15-7 24 10 39 2v11c-15 8-24-9-39-2Z" fill="url(#green)"/>
+      <path d="M26 34c15-7 24 10 39 2v11c-15 8-24-9-39-2Z" fill="url(#red)"/>
+      <path d="M29 13c11-4 24 8 34 3" fill="none" stroke="#fff6ce" stroke-opacity=".74" stroke-width="1.4"/>
+      <path d="M27 13v32" stroke="#312a17" stroke-opacity=".25" stroke-width="2"/>
+    </symbol>
+
+    <symbol id="art-personal" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <g transform="rotate(-8 36 36)">
+        <rect x="12" y="17" width="51" height="44" rx="7" fill="#215448"/>
+        <rect x="9" y="14" width="51" height="44" rx="7" fill="url(#green)"/>
+        <rect x="14" y="22" width="41" height="30" rx="4" fill="url(#paper)"/>
+        <path d="M28 18v-7a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v7" fill="none" stroke="#aa8442" stroke-width="4"/>
+        <path d="M29 17v-6q0-3 3-3h5q3 0 3 3v6" fill="none" stroke="#ffdfa0" stroke-width="1.4"/>
+        <circle cx="26" cy="33" r="5" fill="url(#skin)"/>
+        <path d="M18 46v-2a8 7 0 0 1 16 0v2Z" fill="url(#green)"/>
+        <path d="M39 31h10m-10 6h8m-8 6h10" stroke="#809e92" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </symbol>
+
+    <symbol id="art-work" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M24 23v-6a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v6" fill="none" stroke="#613c2a" stroke-width="6"/>
+      <path d="M25 20v-3q0-3 3-3h14q3 0 3 3v3" fill="none" stroke="#c99161" stroke-width="1.5"/>
+      <path d="m53 21 9 3q4 1 4 6v24q0 5-6 7l-8 2Z" fill="#613927"/>
+      <rect x="7" y="20" width="52" height="41" rx="7" fill="url(#leather)"/>
+      <path d="M7 27q0-7 7-7h38q7 0 7 7v12q-26 12-52 0Z" fill="url(#leather)" stroke="#864a2e" stroke-width="1"/>
+      <path d="M14 23h38M10 45q23 9 46 0" stroke="#f4c389" stroke-opacity=".76" stroke-width="1.2" fill="none"/>
+      <rect x="28" y="36" width="11" height="12" rx="2.5" fill="url(#gold)" stroke="#77441f"/>
+      <path d="M31 40h5v4h-5Z" fill="#7e512c"/>
+    </symbol>
+
+    <symbol id="art-study" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M17 30h37v19q-19 14-37 0Z" fill="url(#navy)"/>
+      <path d="m4 27 32-14 32 14v3L36 44 4 30Z" fill="#1b2e46"/>
+      <path d="m4 27 32-14 32 14-32 14Z" fill="url(#navy)"/>
+      <path d="m6 27 30-13 28 12" stroke="#afcdef" stroke-opacity=".64" stroke-width="1.4" fill="none"/>
+      <path d="m36 27 21 8v12" fill="none" stroke="#c78b35" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="36" cy="27" r="2.6" fill="url(#gold)"/>
+      <path d="M55 45h4l3 13q-5 4-10 0Z" fill="url(#gold)"/>
+      <path d="m57 49-1 9" stroke="#fff2b0" stroke-width="1.4"/>
+    </symbol>
+
+    <symbol id="art-health" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M25 24v-6q0-4 4-4h14q4 0 4 4v6" fill="none" stroke="#903645" stroke-width="6"/>
+      <path d="M26 21v-3q0-3 3-3h14q3 0 3 3v3" fill="none" stroke="#ef9da0" stroke-width="1.6"/>
+      <path d="m54 21 8 4q4 2 4 7v20q0 6-6 8l-8 2Z" fill="#82273a"/>
+      <rect x="7" y="21" width="53" height="40" rx="8" fill="url(#red)"/>
+      <path d="M15 24h37q5 0 5 5" stroke="#ffd3c8" stroke-opacity=".72" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <circle cx="33" cy="41" r="14" fill="#ae414e" stroke="#f69e99"/>
+      <path d="M29 30h8v7h7v8h-7v7h-8v-7h-7v-8h7Z" fill="url(#paper)"/>
+    </symbol>
+
+    <symbol id="art-family" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M5 54c0-15 6-23 18-23s18 8 18 23q-18 10-36 0Z" fill="url(#green)"/>
+      <path d="M34 54c0-15 6-23 17-23s17 8 17 23q-17 10-34 0Z" fill="url(#violet)"/>
+      <ellipse cx="23" cy="25" rx="10" ry="12" fill="url(#skin)"/>
+      <path d="M13 25c-6-19 21-22 20-3-5-1-9-4-12-7-2 5-5 8-8 10Z" fill="#61463a"/>
+      <ellipse cx="51" cy="26" rx="10" ry="12" fill="url(#skin)"/>
+      <path d="M41 25c-4-17 20-18 20-3l-2 4-4-8q-4 7-14 7Z" fill="#834e35"/>
+      <path d="M20 60c0-10 5-15 16-15s16 5 16 15q-16 9-32 0Z" fill="url(#gold)"/>
+      <ellipse cx="36" cy="41" rx="9" ry="10" fill="url(#skin)"/>
+      <path d="M27 40c-4-14 19-13 18 0-4-1-7-3-10-6-2 3-4 5-8 6Z" fill="#6e4732"/>
+    </symbol>
+
+    <symbol id="art-birthday" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <ellipse cx="36" cy="60" rx="28" ry="7" fill="url(#blue)"/>
+      <ellipse cx="36" cy="58" rx="27" ry="6" fill="#cce5e7"/>
+      <path d="M13 38h46v16c0 11-46 11-46 0Z" fill="url(#leather)"/>
+      <path d="M13 48c10 7 36 7 46 0v5c-10 6-36 6-46 0Z" fill="#f0d4aa"/>
+      <path d="M13 37c0-12 46-12 46 0v6q-4 5-8 1t-8 1-8 1-8-1-6-2-8-2Z" fill="url(#glaze)"/>
+      <ellipse cx="36" cy="36" rx="23" ry="8" fill="url(#glaze)"/>
+      <path d="M23 36V22m13 13V16m13 20V23" stroke-width="4" stroke-linecap="round" stroke="#b75676"/>
+      <path d="M22 34V23m13 10V17m13 17V24" stroke-width="1.4" stroke-linecap="round" stroke="#ffe3e3"/>
+      <path d="M23 13c-6 7 4 9 2 3Zm13-8c-7 8 4 11 3 4Zm13 9c-6 7 4 9 2 3Z" fill="url(#gold)"/>
+    </symbol>
+
+    <symbol id="art-other" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="m53 23 13 8v22l-13 9Z" fill="#2c4964"/>
+      <path d="m7 31 11-13h35l13 13Z" fill="url(#blue)"/>
+      <rect x="7" y="31" width="48" height="31" rx="5" fill="url(#navy)"/>
+      <path d="M15 39h32v15H15Z" fill="#233a54"/>
+      <path d="M17 39h28v13H17Z" fill="url(#blue)"/>
+      <path d="M26 43h10v4H26Z" fill="url(#paper)"/>
+      <path d="m24 12 13 2-2 14H22Z" fill="url(#gold)"/>
+      <path d="M31 8h14v20H31Z" fill="url(#paper)"/>
+      <path d="M34 13h8m-8 4h8m-8 4h6" stroke="#758b99" stroke-width="1.3"/>
+    </symbol>
+
+    <symbol id="art-print" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M18 35V10q0-3 3-3h29q3 0 3 3v25Z" fill="url(#paper)" stroke="#b3b7ac"/>
+      <path d="M24 15h22m-22 6h19m-19 6h22" stroke="#a2ada7" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="m4 39 9-13h45l9 13-8 13H12Z" fill="url(#navy)"/>
+      <rect x="4" y="37" width="63" height="21" rx="5" fill="url(#blue)"/>
+      <rect x="12" y="43" width="33" height="9" rx="2" fill="#24374e"/>
+      <path d="M16 46h26l8 17H12Z" fill="url(#paper)" stroke="#b8b9af"/>
+      <path d="M19 52h20m-21 5h23" stroke="#a0aeb0" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="56" cy="45" r="2.5" fill="#bcf2b1"/><circle cx="62" cy="45" r="1.6" fill="#f8db89"/>
+    </symbol>
+
+    <symbol id="art-export" viewBox="0 0 72 72">
+      <use href="#ground"/><use href="#calendar-file"/>
+      <circle cx="48" cy="44" r="19" fill="#284d75"/>
+      <circle cx="48" cy="41.5" r="18.5" fill="url(#blue)" stroke="#406d90"/>
+      <path d="M35 33a15 15 0 0 1 18-5" stroke="#d5f5ff" stroke-opacity=".8" stroke-width="1.5" fill="none"/>
+      <use href="#transfer-arrow"/>
+    </symbol>
+
+    <symbol id="art-import" viewBox="0 0 72 72">
+      <use href="#ground"/><use href="#calendar-file"/>
+      <circle cx="48" cy="44" r="19" fill="#0f4e41"/>
+      <circle cx="48" cy="41.5" r="18.5" fill="url(#green)" stroke="#216f56"/>
+      <path d="M35 33a15 15 0 0 1 18-5" stroke="#d2f4d7" stroke-opacity=".8" stroke-width="1.5" fill="none"/>
+      <use href="#transfer-arrow" transform="rotate(180 48 41.5)"/>
+    </symbol>
+
+    <symbol id="art-backup" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M9 28h54v24c0 15-54 15-54 0Z" fill="url(#gold)" stroke="#95682f"/>
+      <path d="M9 40c0 12 54 12 54 0m-54 7c0 12 54 12 54 0" fill="none" stroke="#8d5a25" stroke-opacity=".76" stroke-width="1.6"/>
+      <ellipse cx="36" cy="28" rx="27" ry="9" fill="url(#gold)" stroke="#9e6e31"/>
+      <ellipse cx="36" cy="27" rx="23" ry="6" fill="none" stroke="#fff4bb" stroke-opacity=".74"/>
+      <path d="M13 23V10q0-3 3-3h28l10 10v13c-12 5-29 5-41 0Z" fill="url(#paper)" stroke="#b9b39f"/>
+      <path d="M44 7v10h10Z" fill="#b7c6c4"/>
+      <path d="M30 15h-2q-2 0-2 3v1q0 3-3 3 3 0 3 3v1q0 3 2 3h2m8-14h2q2 0 2 3v1q0 3 3 3-3 0-3 3v1q0 3-2 3h-2" stroke="#5a775f" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+    </symbol>
+
+    <symbol id="art-restore" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="m51 20 14 6v29l-14 7Z" fill="#4e396e"/>
+      <rect x="9" y="22" width="47" height="40" rx="5" fill="url(#violet)"/>
+      <path d="m7 19 13-8h35l11 8-11 10H7Z" fill="url(#violet)" stroke="#695292"/>
+      <path d="M7 19h49v12H7Z" fill="url(#violet)"/>
+      <path d="M9 21h43" stroke="#e5dcff" stroke-opacity=".72" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M44 45a10 10 0 1 1-5-8m-6 2 7-2-2-7" fill="none" stroke="#f8f3ff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="art-share" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="M20 36 52 15M20 36l32 20" fill="none" stroke="#4d566d" stroke-width="7" stroke-linecap="round"/>
+      <path d="M21 33 52 13M21 34l32 20" fill="none" stroke="#bcbcd0" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="16" cy="36" r="11" fill="url(#green)" stroke="#1a5a48"/>
+      <circle cx="54" cy="14" r="11" fill="url(#blue)" stroke="#386483"/>
+      <circle cx="54" cy="55" r="11" fill="url(#violet)" stroke="#604986"/>
+      <path d="M9 34q2-5 7-5m31-17q2-5 7-5m-7 46q2-5 7-5" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="art-delete" viewBox="0 0 72 72">
+      <use href="#ground"/>
+      <path d="m14 24 5 33c1 10 33 10 34 0l5-33Z" fill="url(#red)" stroke="#893749"/>
+      <path d="m25 33 2 23m8-23v24m10-24-2 23" fill="none" stroke="#8b3246" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="m23 33 2 23m8-23v24m10-24-2 23" fill="none" stroke="#ffb9af" stroke-opacity=".75" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M10 20h52v5c0 9-52 9-52 0Z" fill="#913949"/>
+      <ellipse cx="36" cy="20" rx="26" ry="7" fill="url(#red)" stroke="#b3535b"/>
+      <path d="M28 18v-6q0-3 3-3h10q3 0 3 3v6" fill="none" stroke="#953c49" stroke-width="5"/>
+      <path d="M29 17v-5q0-2 2-2h10q2 0 2 2v5" fill="none" stroke="#ffc2b3" stroke-width="1.6"/>
+    </symbol>
+  </defs>
+
+  <view id="layers" viewBox="0 0 72 72"/>
+  <use href="#art-layers" x="0" width="72" height="72"/>
+  <view id="holidays" viewBox="72 0 72 72"/>
+  <use href="#art-holidays" x="72" width="72" height="72"/>
+  <view id="personal" viewBox="144 0 72 72"/>
+  <use href="#art-personal" x="144" width="72" height="72"/>
+  <view id="work" viewBox="216 0 72 72"/>
+  <use href="#art-work" x="216" width="72" height="72"/>
+  <view id="study" viewBox="288 0 72 72"/>
+  <use href="#art-study" x="288" width="72" height="72"/>
+  <view id="health" viewBox="360 0 72 72"/>
+  <use href="#art-health" x="360" width="72" height="72"/>
+  <view id="family" viewBox="432 0 72 72"/>
+  <use href="#art-family" x="432" width="72" height="72"/>
+  <view id="birthday" viewBox="504 0 72 72"/>
+  <use href="#art-birthday" x="504" width="72" height="72"/>
+  <view id="other" viewBox="576 0 72 72"/>
+  <use href="#art-other" x="576" width="72" height="72"/>
+  <view id="print" viewBox="648 0 72 72"/>
+  <use href="#art-print" x="648" width="72" height="72"/>
+  <view id="export" viewBox="720 0 72 72"/>
+  <use href="#art-export" x="720" width="72" height="72"/>
+  <view id="import" viewBox="792 0 72 72"/>
+  <use href="#art-import" x="792" width="72" height="72"/>
+  <view id="backup" viewBox="864 0 72 72"/>
+  <use href="#art-backup" x="864" width="72" height="72"/>
+  <view id="restore" viewBox="936 0 72 72"/>
+  <use href="#art-restore" x="936" width="72" height="72"/>
+  <view id="share" viewBox="1008 0 72 72"/>
+  <use href="#art-share" x="1008" width="72" height="72"/>
+  <view id="delete" viewBox="1080 0 72 72"/>
+  <use href="#art-delete" x="1080" width="72" height="72"/>
+</svg>

@@ -19,7 +19,7 @@ ENGLISH_SIGNS = {
     "sagittarius": "saulys", "capricorn": "oziaragis", "aquarius": "vandenis", "pisces": "zuvys",
 }
 
-# Each solar-house reading is original Kalendorius365.lt copy. It is reflective,
+# Each house reading is original Kalendorius365.lt copy. It is reflective,
 # not a factual prediction or professional advice.
 SOLAR_HOUSES = {
     1: {
@@ -155,11 +155,32 @@ ASPECT_MESSAGES = {
     "opposition": "Astrologinėje simbolikoje opozicija primena dviem poreikiams skirti vietos; pusiausvyra prasideda nuo abiejų pusių išklausymo.",
 }
 
+ASPECT_ACTIONS = {
+    "conjunction": "Sujunk du susijusius darbus ir imkis jų paeiliui.",
+    "sextile": "Pasiteirauk, ar kas nors galėtų padėti atlikti vieną konkretų žingsnį.",
+    "square": "Jei planai kertasi, įvardyk, kuri užduotis turi tikrą terminą.",
+    "trine": "Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
+    "opposition": "Jei tenka derinti skirtingus poreikius, rask laiko abiem.",
+}
+
 # Genitive forms modify the noun “aspektas” in the generated sentence.
 PLANETS_LT = {
     "Sun": "Saulės", "Moon": "Mėnulio", "Mercury": "Merkurijaus", "Venus": "Veneros",
     "Mars": "Marso", "Jupiter": "Jupiterio", "Saturn": "Saturno", "Uranus": "Urano",
     "Neptune": "Neptūno", "Pluto": "Plutono",
+}
+
+PLANET_QUESTIONS = {
+    "Sun": "Kuriam darbui šiandien norėtum suteikti aiškią kryptį?",
+    "Moon": "Kada šiandien norisi daugiau ramybės?",
+    "Mercury": "Ką būtų naudinga pasakyti paprasčiau?",
+    "Venus": "Kada pastaruoju metu jauteisi išklausytas?",
+    "Mars": "Kur verta imtis iniciatyvos?",
+    "Jupiter": "Ką norėtum pažinti geriau?",
+    "Saturn": "Kuris susitarimas tebetinka tavo galimybėms?",
+    "Uranus": "Ką galėtum išbandyti kitu būdu?",
+    "Neptune": "Kurią savo prielaidą gali patikrinti?",
+    "Pluto": "Ką verta peržiūrėti prieš judant toliau?",
 }
 
 
@@ -168,12 +189,14 @@ def render_forecast(sign_key: str, solar_house: int, moon_house: int, aspect: di
         raise ValueError(f"Nežinomas zodiako ženklas: {sign_key}")
     if solar_house not in SOLAR_HOUSES or moon_house not in MOON_FOCI:
         raise ValueError("Saulės ir Mėnulio būstai turi būti nuo 1 iki 12")
-    sign_name, genitive = SIGN_NAMES[sign_key]
-    house = SOLAR_HOUSES[solar_house]
+    _, genitive = SIGN_NAMES[sign_key]
+    solar = SOLAR_HOUSES[solar_house]
+    lunar = SOLAR_HOUSES[moon_house]
     aspect_type = str(aspect.get("aspect", "")).strip().casefold()
     if aspect_type not in ASPECT_MESSAGES:
         raise ValueError("Neatpažintas pagrindinio aspekto tipas")
-    planet1 = PLANETS_LT.get(str(aspect.get("planet1", "")), "")
+    first_planet = str(aspect.get("planet1", ""))
+    planet1 = PLANETS_LT.get(first_planet, "")
     planet2 = PLANETS_LT.get(str(aspect.get("planet2", "")), "")
     if not planet1 or not planet2:
         raise ValueError("Neatpažintas planetos pavadinimas aspekto duomenyse")
@@ -182,16 +205,16 @@ def render_forecast(sign_key: str, solar_house: int, moon_house: int, aspect: di
         raise ValueError("Aspekto nuokrypis nepatenka į leistiną intervalą")
     orb_label = f"{orb:.1f}".replace(".", ",")
     body_context = f"{ASPECT_MESSAGES[aspect_type]} Šios dienos skaičiavimuose nurodytas {planet1} ir {planet2} aspektas; jo nuokrypis nuo tikslaus kampo – {orb_label}°."
-    overview = f"{house['overview']} Papildoma astrologinė Mėnulio tema – {MOON_FOCI[moon_house]}. {body_context}"
+    overview = f"{solar['overview']} Papildoma astrologinė Mėnulio tema – {MOON_FOCI[moon_house]}. {body_context}"
     return {
         "sign_key": sign_key,
-        "editorial_heading": house["heading"],
-        "lead": f"{genitive} dienos tema – {house['focus']}.",
+        "editorial_heading": lunar["heading"],
+        "lead": f"{genitive} dienos tema – {lunar['focus']}.",
         "overview": overview,
-        "relationships": house["relationships"],
-        "work": house["work"],
-        "reflection": house["reflection"],
-        "tip": house["tip"],
+        "relationships": lunar["relationships"],
+        "work": f"{solar['work']} {ASPECT_ACTIONS[aspect_type]}",
+        "reflection": f"{lunar['reflection']} {PLANET_QUESTIONS[first_planet]}",
+        "tip": lunar["tip"],
         "source_solar_house": str(solar_house),
         "source_moon_house": str(moon_house),
     }

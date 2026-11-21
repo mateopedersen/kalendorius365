@@ -325,6 +325,10 @@ test('planner summary panels use compact rows and keep calendar shortcuts and fi
  await expect(panel.locator('.upcoming-events-empty')).toBeVisible();
  await expect(page.locator('#today-facts dd')).toHaveText(['324', '10 d.', '41 d.']);
  await expect(page.locator('.dashboard-year-links a')).toHaveCount(4);
+ const weekPlan = page.locator('.home-week-plan');
+ await expect(page.locator('.dashboard-extras .mini-calendar')).toHaveCount(0);
+ await expect(weekPlan.locator('dd')).toHaveText(['5', '40 val.']);
+ await expect(weekPlan.locator('#plan-next-workday time')).toHaveAttribute('datetime', '2026-11-23');
 
  for (const width of [320, 850, 1286]) {
   await page.setViewportSize({ width, height: 920 });
@@ -334,23 +338,21 @@ test('planner summary panels use compact rows and keep calendar shortcuts and fi
   );
   expect(new Set(factPositions).size).toBe(1);
   await expect(page.locator('.home-upcoming__list li a')).toHaveCount(4);
-  if (width > 760) {
-   const alignment = await page.locator('#mini tbody td').evaluateAll((cells) => cells.map((cell) => {
-    const column = cell.getBoundingClientRect();
-    const button = cell.querySelector('button').getBoundingClientRect();
-    return Math.abs(column.left + column.width / 2 - button.left - button.width / 2);
-   }));
-   expect(alignment.every((difference) => difference <= 1)).toBe(true);
-  }
+  await expect(weekPlan).toBeVisible();
+  expect(await weekPlan.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
  }
  const holidays = page.getByRole('checkbox', { name: 'Lietuvos šventės' });
  await holidays.uncheck();
  await expect(page.locator('.filter-chip--holiday')).toHaveAttribute('aria-pressed', 'false');
  await holidays.check();
- await page.locator('#mini-next').click();
- await expect(page.locator('#mini-title')).toContainText('gruodis');
- await page.locator('#mini [data-date="2026-12-25"]').click();
+ await weekPlan.locator('#plan-next-workday').click();
+ await expect(page.locator('#selected-title')).toContainText('lapkričio 23');
+ await page.locator('#next').click();
+ await page.locator('#calendar [data-date="2026-12-25"]').click();
  await expect(page.locator('#selected-title')).toContainText('gruodžio 25');
+ await expect(weekPlan.locator('dd')).toHaveText(['3', '23 val.']);
+ await expect(weekPlan.locator('#plan-next-workday time')).toHaveAttribute('datetime', '2026-12-28');
+ await expect(weekPlan.locator('#plan-week-calculator')).toHaveAttribute('href', '/datos-skaiciuokle/?nuo=2026-12-21&iki=2026-12-27&imtinai=1');
  await page.locator('#add-event').click();
  const form = page.locator('#event-form');
  await form.locator('[name=title]').fill('Bandomasis įvykis');
@@ -370,6 +372,8 @@ test('personal calendar date search, invalid date feedback and category filters 
  await page.goto('/');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await page.locator('#search').fill('2028-02-30');await expect(page.locator('#search-results')).toContainText('Neteisinga data');
  await page.locator('#search').fill('2028-02-29');await page.locator('#search-results [data-date="2028-02-29"]').click();
  await expect(page.locator('#period-title')).toContainText('2028 m. vasaris');
+ const filters = page.locator('.calendar-filters');
+ if ((await filters.getAttribute('open')) === null) await filters.locator('summary').click();
  await page.locator('.filter-chip--holiday').click();await expect(page.locator('.filter-chip--holiday')).toHaveAttribute('aria-pressed','false');
  await page.locator('#category-chips').getByRole('button',{name:'Visi įvykiai',exact:true}).click();
  await expect(page.locator('.filter-chip--holiday')).toHaveAttribute('aria-pressed','true');

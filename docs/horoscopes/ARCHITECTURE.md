@@ -6,7 +6,7 @@
 - `scripts/horoscopes/publish.py` validates all twelve records and replaces the active JSON file atomically only after both content gates pass. It allows at most 24 requests per run: twelve normal requests plus one targeted retry for a failed sign, under the provider's documented 30 requests/hour/IP limit.
 - `lib/horoscopes_pages.rb` creates the existing thirteen stable URLs as static HTML. It uses the site's Lithuanian layout, Lato font and existing set of twelve distinct zodiac SVGs. The generated pages are self-canonical, indexable and included in the sitemap.
 - `K365_RELEASE=1 bundle exec ruby scripts/build.rb` runs the existing Jekyll release build and refreshes the tracked `public/` output. The automation commits only the horoscope content/pages and necessary generated files.
-- `.github/workflows/horoscope-automation.yml` runs daily at 06:20 and retries the same Vilnius date at 08:20. Concurrency prevents overlapping publications. The second run is an API-free verification when today's set is already current.
+- `.github/workflows/horoscope-automation.yml` starts the daily publication at 00:17 Vilnius time and checks it every 30 minutes. Concurrency prevents overlapping publications. When the complete set is committed, checks verify the live pages without calling AstroWay.
 - If publication fails, the previous set retains its real publication date. No older set is relabelled as today's content.
 
 ## Provenance shown to visitors

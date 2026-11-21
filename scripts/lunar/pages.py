@@ -1,7 +1,7 @@
 """Generate crawlable Lithuanian lunar pages from the checked ephemeris/manifest."""
 from __future__ import annotations
 import calendar,csv,html,json
-from datetime import datetime
+from datetime import date, datetime
 from hashlib import sha256
 from collections import defaultdict
 from cover_art import annual_cover, collection_cover, monthly_cover
@@ -12,8 +12,10 @@ D=load_data()
 D['records'].extend(json.loads((ROOT/'data/lunar/calendar-2030.json').read_text()))
 YEARS=tuple(sorted({int(row['date_local'][:4]) for row in D['records']}))
 A=json.loads((ROOT/'data/lunar/assets.json').read_text())['assets']
+A.extend(json.loads((ROOT/'data/lunar/print-2030.json').read_text())['assets'])
 E=html.escape
 DAY_IMAGES=sorted((ROOT/'site/assets/lunar/days').glob('*.webp'))
+PHASE_ICONS='/assets/visuals/astronomy/moon-phases-pia14011'
 def image_version(paths):
     return sha256(b''.join(path.name.encode()+b'\0'+path.read_bytes()+b'\0' for path in paths)).hexdigest()[:12]
 
@@ -49,8 +51,10 @@ def heading(title, description, artwork, navigation=''):
 </header>'''
 
 
-def methodology():
-    return '''<section class="lunar-method" aria-labelledby="lunar-method-title"><p class="lunar-eyebrow">Skaičiavimai ir šaltiniai</p><h2 id="lunar-method-title">Kaip apskaičiuojamos fazės ir Mėnulio vaizdas?</h2><div class="lunar-method-grid"><div><h3>Ką rodo dienos diskas?</h3><p>Spausdinamas ir kalendoriaus langelyje pateiktas Mėnulio vaizdas apskaičiuotas 12:00 Lietuvos laiku. Pagrindinės fazės momentas gali būti kitu paros laiku, todėl vidurdienio vaizdas ne visada tiksliai ją atitinka. Interaktyvus šiandienos vaizdas skaičiuojamas dabartiniam momentui.</p><p>Vizualizacijoje šiaurė yra viršuje: augančio Mėnulio apšviesta dešinė, dylančio – kairė. Vietinis disko posūkis, libracija ir reljefo metami šešėliai nemodeliuojami. Tamsiajai pusei suteiktas vos pastebimas meninis pašviesinimas. Tai iliustracija, o ne konkretaus stebėtojo teleskopinis vaizdas.</p></div><div><h3>Iš kur gaunami duomenys?</h3><p>Pagrindinių fazių momentai pateikti pagal <a href="https://aa.usno.navy.mil/data/MoonPhases" rel="noopener">JAV karinio jūrų laivyno observatorijos (USNO) lenteles</a>, minutės tikslumu. UTC konvertuojamas į Lietuvos laiką pagal Europe/Vilnius laiko juostą, įskaitant vasaros laiką.</p><p>Kiekvienos dienos Mėnulio padėtis apskaičiuojama <a href="https://github.com/cosinekitty/astronomy" rel="noopener">atvirojo kodo astronominių skaičiavimų biblioteka</a> ir nepriklausomai palyginta su JPL DE440s efemeride. Paviršiaus žemėlapis: <a href="https://svs.gsfc.nasa.gov/4720/" rel="noopener">NASA mokslinės vizualizacijos studija, Ernie Wright; LRO / LROC</a>. Apšvietimą ir maketus sukūrė Kalendorius365. NASA šios svetainės neremia.</p></div></div><p>Fazių lentelėse „priešpilnis“ ir „delčia“ žymi tikslias ketvirčių akimirkas. Dienos būsenų iliustracijos skirstomos į aštuonias 45° elongacijos sritis, todėl prie jų nurodomas atitinkamos fazės laikotarpis, o ne tikslus jos momentas. Tarpiniai vaizdai vadinami augančiu arba dylančiu pjautuvu ir išgaubtu Mėnuliu. Terminijos atrama – <a href="https://www.vle.lt/straipsnis/menulio-faze/" rel="noopener">Visuotinė lietuvių enciklopedija</a>. Kalendorius neteikia astrologinių, sveikatos ar žemdirbystės rekomendacijų.</p><p><a href="/downloads/lunar/asset-manifest.csv" download>Visų spaudinių failų sąrašas ir patikrų duomenys (CSV)</a></p></section>'''
+def methodology(year=None):
+    print_proof = '<p><a href="/downloads/lunar/2030/print-verification.csv" download>2030 m. spaudinių sąrašas ir patikrų duomenys (CSV)</a></p>' if year in (None, 2030) else ''
+    registry_title = '2027–2029 m. spaudinių sąrašas ir patikrų duomenys (CSV)' if print_proof else 'Visų spaudinių failų sąrašas ir patikrų duomenys (CSV)'
+    return '''<section class="lunar-method" aria-labelledby="lunar-method-title"><p class="lunar-eyebrow">Skaičiavimai ir šaltiniai</p><h2 id="lunar-method-title">Kaip apskaičiuojamos fazės ir Mėnulio vaizdas?</h2><div class="lunar-method-grid"><div><h3>Ką rodo dienos diskas?</h3><p>Spausdinamas ir kalendoriaus langelyje pateiktas Mėnulio vaizdas apskaičiuotas 12:00 Lietuvos laiku. Pagrindinės fazės momentas gali būti kitu paros laiku, todėl vidurdienio vaizdas ne visada tiksliai ją atitinka. Interaktyvus šiandienos vaizdas skaičiuojamas dabartiniam momentui.</p><p>Vizualizacijoje šiaurė yra viršuje: augančio Mėnulio apšviesta dešinė, dylančio – kairė. Vietinis disko posūkis, libracija ir reljefo metami šešėliai nemodeliuojami. Tamsiajai pusei suteiktas vos pastebimas meninis pašviesinimas. Tai iliustracija, o ne konkretaus stebėtojo teleskopinis vaizdas.</p></div><div><h3>Iš kur gaunami duomenys?</h3><p>Pagrindinių fazių momentai pateikti pagal <a href="https://aa.usno.navy.mil/data/MoonPhases" rel="noopener">JAV karinio jūrų laivyno observatorijos (USNO) lenteles</a>, minutės tikslumu. UTC konvertuojamas į Lietuvos laiką pagal Europe/Vilnius laiko juostą, įskaitant vasaros laiką.</p><p>Kiekvienos dienos Mėnulio padėtis apskaičiuojama <a href="https://github.com/cosinekitty/astronomy" rel="noopener">atvirojo kodo astronominių skaičiavimų biblioteka</a> ir nepriklausomai palyginta su JPL DE440s efemeride. Paviršiaus žemėlapis: <a href="https://svs.gsfc.nasa.gov/4720/" rel="noopener">NASA mokslinės vizualizacijos studija, Ernie Wright; LRO / LROC</a>. Fazių piktogramų fotografija: <a href="/nuotrauku-licencijos/#menulio-fotografija">NASA / GSFC / Arizona State University LROC mozaika</a>. Apšvietimą ir maketus sukūrė Kalendorius365. NASA šios svetainės neremia.</p></div></div><p>Fazių lentelėse „priešpilnis“ ir „delčia“ žymi tikslias ketvirčių akimirkas. Dienos būsenų iliustracijos skirstomos į aštuonias 45° elongacijos sritis, todėl prie jų nurodomas atitinkamos fazės laikotarpis, o ne tikslus jos momentas. Tarpiniai vaizdai vadinami augančiu arba dylančiu pjautuvu ir išgaubtu Mėnuliu. Terminijos atrama – <a href="https://www.vle.lt/straipsnis/menulio-faze/" rel="noopener">Visuotinė lietuvių enciklopedija</a>. Kalendorius neteikia astrologinių, sveikatos ar žemdirbystės rekomendacijų.</p><p><a href="/downloads/lunar/asset-manifest.csv" download>''' + registry_title + '''</a></p>''' + print_proof + '</section>'
 
 def related(year=None,month=None):
     links=[('/menulio-kalendorius/','Visas Mėnulio kalendorius'),('/menulio-fazes/','Mėnulio fazių paaiškinimas'),('/astronominis-kalendorius/','Astronominis kalendorius'),('/saule/','Saulėtekis ir saulėlydis')]
@@ -60,11 +64,27 @@ def related(year=None,month=None):
         links.insert(0, (f'/{period}/', label))
     return '<nav class="lunar-related" aria-label="Susiję kalendoriai">'+''.join(f'<a href="{u}">{t}<span aria-hidden="true">↗</span></a>' for u,t in links)+'</nav>'
 
+def phase_dates(events, phase, *, first_only=False):
+    matching = [e for e in events if e['phase'] == phase]
+    if first_only:
+        matching = matching[:1]
+    return ', '.join(
+        f"{GENITIVE[date.fromisoformat(e['local_date']).month - 1]} "
+        f"{int(e['local_date'][-2:])} d. {e['local_time']}"
+        for e in matching
+    ) or 'šį mėnesį nėra'
+
+
 def event_data(events):
     return '<script type="application/json" id="lunar-events">'+json.dumps(events,ensure_ascii=False).replace('<','\\u003c')+'</script>'
 
 def event_rows(events,export_attribute='data-event-ics'):
-    return ''.join(f'<li><span class="lunar-event-mark lunar-event-mark--{e["phase"]}" aria-hidden="true"></span><div><h3>{e["label_lt"]}</h3><time datetime="{e["utc"]}">{e["local_label_lt"]}</time></div><button type="button" class="lunar-icon-button" {export_attribute}="{e["utc"]}" aria-label="Atsisiųsti ICS: {E(e["label_lt"])} {e["local_date"]}"><span aria-hidden="true">＋</span></button></li>' for e in events)
+    return ''.join(
+        f'<li><img class="lunar-event-mark" src="{PHASE_ICONS}/{e["phase"]}.svg" width="44" height="44" alt="" aria-hidden="true" decoding="async">'
+        f'<div><h3>{e["label_lt"]}</h3><time datetime="{e["utc"]}">{e["local_label_lt"]}</time></div>'
+        f'<button type="button" class="lunar-icon-button" {export_attribute}="{e["utc"]}" aria-label="Atsisiųsti ICS: {E(e["label_lt"])} {e["local_date"]}"><span aria-hidden="true">＋</span></button></li>'
+        for e in events
+    )
 
 def event_table(events,title='Pagrindinės mėnesio fazės'):
     return f'<section class="lunar-panel lunar-events"><div class="lunar-section-heading"><div><p class="lunar-eyebrow">Tikslios akimirkos Lietuvos laiku</p><h2>{title}</h2></div><button class="lunar-button lunar-button--quiet" type="button" data-all-ics>Atsisiųsti fazes (ICS)</button></div><ul>{event_rows(events)}</ul></section>'
@@ -105,7 +125,7 @@ def live():
     return '''<section id="moon-tool" class="lunar-live lunar-panel" aria-labelledby="lunar-live-title"><div class="lunar-live-art"><canvas data-live-moon width="512" height="512" role="img" aria-label="Mėnulio paviršiaus iliustracija"></canvas><span class="lunar-orbit" aria-hidden="true"></span><p>Mėnulio paviršius</p></div><div class="lunar-live-copy"><p class="lunar-eyebrow">Mėnulis šią akimirką</p><h2 id="lunar-live-title">Kaip Mėnulis atrodo šiandien?</h2><p data-live-date>Interaktyviam vaizdui parodyti naršyklėje turi būti įjungti scenarijai.</p><div class="lunar-live-facts"><div><span>Fazė</span><strong data-live-phase>Skaičiuojama…</strong></div><div><span>Apšviesta disko dalis</span><strong data-live-light>–</strong></div><div><span>Laikas nuo jaunaties</span><strong data-live-age>–</strong></div></div><div class="lunar-countdowns"><article><span>Artimiausia jaunatis</span><strong data-next-new>Skaičiuojama…</strong><time data-next-new-date></time></article><article><span>Artimiausia pilnatis</span><strong data-next-full>Skaičiuojama…</strong><time data-next-full-date></time></article></div><p class="lunar-fine">Geometrinė vizualizacija, šiaurė viršuje. Vietinis pasvirimas ir libracija nemodeliuojami.</p></div></section>'''+ '<script type="application/json" id="lunar-official-events">'+json.dumps(D['events'],ensure_ascii=False).replace('<','\\u003c')+'</script>'
 
 def asset_card(a,annual=False,priority=False):
-    name='2027 metų Mėnulio plakatas' if annual else ('Naktinis dangus' if a['design']=='night' else 'Šviesus stebėjimų lapas')
+    name=f"{a['year']} metų Mėnulio plakatas" if annual else ('Naktinis dangus' if a['design']=='night' else 'Šviesus stebėjimų lapas')
     note='A3 · gulsčias · visos 365 dienos' if annual else ('A4 · stačias · sodrus tamsus fonas' if a['design']=='night' else 'A4 · gulsčias · mažiau rašalo')
     alt=f'{name}: '+('dvylikos mėnesių kasdieniai Mėnulio vaizdai ir dienų numeriai.' if annual else f"{a['year']} m. {GENITIVE[a['month']-1]} kasdienės Mėnulio fazės, datos ir lietuviški paaiškinimai.")
     variants=a.get('previews',[])
@@ -120,7 +140,7 @@ def month_cards(year):
         rows=[r for r in D['records'] if r['date_local'].startswith(f'{year}-{month:02}')]
         ev=[e for e in D['events'] if e['local_date'].startswith(f'{year}-{month:02}')]
         phase_images=''.join(f'<img src="{day_image_url(rows[i]["date_local"])}" alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async">' for i in (0,7,14,21))
-        format_label = 'Spausdinkite naršyklėje' if year == 2030 else '2 spausdinami maketai'
+        format_label = '2 spausdinami maketai'
         cards.append(f'<a class="lunar-month-card" href="/menulio-kalendorius/{year}/{SLUGS[month-1]}/"><div class="lunar-month-card__heading"><span>{month:02}</span><h3>{MONTHS[month-1]}</h3><span aria-hidden="true">↗</span></div><div class="lunar-month-card__phases">{phase_images}</div><p>Dienų: {len(rows)} · fazių momentų: {len(ev)}</p><span>{format_label}</span></a>')
     return '<div class="lunar-month-cards">'+''.join(cards)+'</div>'
 
@@ -153,7 +173,8 @@ def month_page(year,month,observations):
     print_note = ' ir du originalūs spausdinami maketai' if has_print_assets else ''
     print_root = '' if has_print_assets else ' data-print-root="calendar"'
     artwork=monthly_cover(year, month, MONTHS[month-1], rows)
-    hero=heading(title, f'Kasdienis Mėnulio vaizdas, tikslūs pagrindinių fazių momentai Lietuvos laiku{print_note}.', artwork, years(year, SLUGS[month-1]))
+    phases = f"Pilnatis – {phase_dates(events, 'full')}. Jaunatis – {phase_dates(events, 'new')}."
+    hero=heading(title, f'{phases} Laikai pateikti Lietuvos laiku. Žemiau – kasdienis Mėnulio vaizdas{print_note}.', artwork, years(year, SLUGS[month-1]))
     grid=f'<section class="lunar-month-section"{print_root}><div class="lunar-panel lunar-calendar-panel"><div class="lunar-section-heading"><h2>{MONTHS[month-1]} {year}</h2><span>Vaizdas 12:00</span></div>{table}<p class="lunar-fine">Pasirinkite dieną. Klaviatūra judėkite rodyklėmis. Auksinis taškas žymi pagrindinės fazės dieną.</p></div><aside class="lunar-panel lunar-selected" aria-labelledby="lunar-selected-title"><p class="lunar-eyebrow">Pasirinktos dienos vaizdas</p><h2 id="lunar-selected-title">{year} m. {GENITIVE[month-1]} 1 d.</h2><canvas data-selected-moon width="512" height="512" role="img" aria-label="Pasirinktos dienos Mėnulio vizualizacija"></canvas><div data-selected-details aria-live="polite"><strong>{rows[0]["phase_label_lt"]}</strong><p>Apšviesta {pct(rows[0]["illumination_fraction"])} % disko.</p></div><label>Kita šio mėnesio diena<input type="date" data-selected-date value="{year}-{month:02}-01" min="{year}-{month:02}-01" max="{rows[-1]["date_local"]}"></label><p class="lunar-fine">Lietuvos vietos laikas: 12:00. Tai geometrinė, šiaurę viršuje rodanti vizualizacija.</p></aside></section>'
     reading_guide = ''
     if year == 2030:
@@ -165,7 +186,7 @@ def month_page(year,month,observations):
     else:
         prints='<div class="lunar-section-heading"><button type="button" class="lunar-button" data-print>Spausdinti kalendorių</button></div>'
         description='Kasdieniai Mėnulio vaizdai, apšviestumas ir spausdinamas naršyklės kalendorius.'
-    page(f'menulio-kalendorius/{year}/{SLUGS[month-1]}',title,f'{year} m. {GENITIVE[month-1]} Mėnulio fazės ir jų laikas Lietuvoje. {description}',hero+grid+insight+monthly_observation(year,month,observations)+event_table(events)+prints+f'<nav class="lunar-adjacent" aria-label="Gretimi mėnesiai">{adjacent}</nav>'+methodology()+related(year,month)+event_data(events))
+    page(f'menulio-kalendorius/{year}/{SLUGS[month-1]}',title,f'{year} m. {GENITIVE[month-1]} Mėnulio fazės ir jų laikas Lietuvoje. {description}',hero+grid+insight+monthly_observation(year,month,observations)+event_table(events)+prints+f'<nav class="lunar-adjacent" aria-label="Gretimi mėnesiai">{adjacent}</nav>'+methodology(year)+related(year,month)+event_data(events))
 
 def phase_explanation():
     return '''<section class="lunar-panel lunar-phase-explainer" aria-labelledby="lunar-phase-cause"><h2 id="lunar-phase-cause">Kodėl keičiasi Mėnulio fazės?</h2><p>Saulė apšviečia maždaug pusę Mėnulio. Jam skriejant aplink Žemę, matome vis kitokią apšviestosios pusės dalį. Taip keičiasi regimasis Mėnulio vaizdas.</p><h3>Kodėl per priešpilnį matyti pusė disko?</h3><p>Per priešpilnį ir delčią matome apšviestą pusę regimojo Mėnulio disko. Pavadinimai „pirmasis ketvirtis“ ir „paskutinis ketvirtis“ nurodo vietą fazių cikle, o ne apšviesto disko plotą.</p><h3>Kuo fazė skiriasi nuo užtemimo?</h3><p>Įprastą fazių kaitą lemia Mėnulio padėtis Žemės ir Saulės atžvilgiu. Žemės šešėlis Mėnulį uždengia tik per Mėnulio užtemimą.</p><p class="lunar-fine">Paaiškinimų šaltiniai: <a href="https://www.vle.lt/straipsnis/menulio-faze/" rel="noopener">Visuotinė lietuvių enciklopedija: Mėnulio fazė</a> ir <a href="https://spaceplace.nasa.gov/moon-phases/en/" rel="noopener">NASA fazių paaiškinimas</a>.</p></section>'''
@@ -180,25 +201,28 @@ def main():
     months.extend((2030, month) for month in range(1, 13))
     for year, month in months:
         month_page(year, month, groups[(year, month)])
-    poster=next(a for a in A if a['month'] is None)
+    posters={a['year']: a for a in A if a['month'] is None}
     for year in YEARS:
         events=[e for e in D['events'] if e['local_date'].startswith(str(year))]
         days=366 if calendar.isleap(year) else 365
-        intro={2027:'Metai vienu žvilgsniu: 365 dienos, dvylika mėnesių ir atskiras visų metų plakatas.',2028:'Keliamųjų metų ritmas: vasario 29-oji įtraukta ir į dienų vaizdus, ir į abu spausdinamus maketus.',2030:'Peržiūrėkite kasdienius Mėnulio vaizdus ir pagrindinių fazių laikus. Mėnesio kalendorių galite spausdinti naršyklėje.',2029:'Nuo sausio iki gruodžio: 365 dienų Mėnulio šviesos kaita ir kiekvieno mėnesio fazių momentai.'}[year]
+        intro={2027:'Metai vienu žvilgsniu: 365 dienos, dvylika mėnesių ir atskiras visų metų plakatas.',2028:'Keliamųjų metų ritmas: vasario 29-oji įtraukta ir į dienų vaizdus, ir į abu spausdinamus maketus.',2030:'Kasdieniai Mėnulio vaizdai, pagrindinių fazių laikas ir spausdinami visų metų bei mėnesių maketai.',2029:'Nuo sausio iki gruodžio: 365 dienų Mėnulio šviesos kaita ir kiekvieno mėnesio fazių momentai.'}[year]
+        intro += f" Pirmoji metų pilnatis – {phase_dates(events, 'full', first_only=True)}, pirmoji jaunatis – {phase_dates(events, 'new', first_only=True)}. Laikai pateikti Lietuvos laiku."
         print_count=sum(asset['year']==year and asset['month'] is not None for asset in A)
         print_label='Spausdinami mėnesio maketai' if print_count else 'Spausdinami mėnesiai'
         year_rows=[row for row in D['records'] if row['date_local'].startswith(str(year))]
         body=heading(f'{year} metų Mėnulio kalendorius', intro, annual_cover(year, year_rows), years(year))+f'<div class="lunar-year-stats"><div><strong>{days}</strong><span>Kalendorinės dienos</span></div><div><strong>{sum(e["phase"]=="new" for e in events)}</strong><span>Jaunaties momentai</span></div><div><strong>{sum(e["phase"]=="full" for e in events)}</strong><span>Pilnaties momentai</span></div><div><strong>{print_count or 12}</strong><span>{print_label}</span></div></div>'
-        if year==2027:body+='<section class="lunar-annual"><p class="lunar-eyebrow">Visi mėnesiai viename lape</p><h2>2027 metų Mėnulio plakatas</h2>'+asset_card(poster,True,True)+'</section>'
-        body+=f'<section><div class="lunar-section-heading"><h2>Pasirinkite mėnesį</h2><a href="/menulio-kalendorius/">Visi metai ↗</a></div>{month_cards(year)}</section>'+annual_observation(year, [groups[(year, month)] for month in range(1, 13)])+event_table(events,'Visų metų pagrindinės fazės')+methodology()+related(year)+event_data(events)
-        format_note = '12 mėnesių ir 24 spausdinami maketai' if year != 2030 else '12 spausdinamų mėnesio kalendorių'
+        if year in posters:
+            body+=f'<section class="lunar-annual"><p class="lunar-eyebrow">Visi mėnesiai viename lape</p><h2>{year} metų Mėnulio plakatas</h2>'+asset_card(posters[year],True,True)+'</section>'
+        body+=f'<section><div class="lunar-section-heading"><h2>Pasirinkite mėnesį</h2><a href="/menulio-kalendorius/">Visi metai ↗</a></div>{month_cards(year)}</section>'+annual_observation(year, [groups[(year, month)] for month in range(1, 13)])+event_table(events,'Visų metų pagrindinės fazės')+methodology(year)+related(year)+event_data(events)
+        format_note = '24 mėnesio maketai ir metų plakatas' if year == 2030 else '12 mėnesių ir 24 spausdinami maketai'
         page(f'menulio-kalendorius/{year}',f'{year} metų Mėnulio kalendorius Lietuvoje',f'{year} metų Mėnulio kalendorius: visų {days} dienų fazės, jaunaties ir pilnaties momentai Lietuvos laiku, {format_note}.',body)
     cycle='<section class="lunar-cycle"><h2>Kaip skaityti Mėnulio kaitą?</h2><div>'+''.join(f'<article><canvas data-benchmark="{i*45}" width="160" height="160" role="img" aria-label="{s}"></canvas><h3>{s}</h3></article>' for i,s in enumerate(STAGES))+'</div><p>Pagrindinių fazių momentai pateikiami atskirai nuo kasdienių vaizdų. Dienos iliustracija rodo vidurdienio būseną, o ne visos paros nekintantį vaizdą.</p></section>'
-    body=heading('Mėnulio kalendorius', 'Kasdieniai Mėnulio fazių vaizdai, Lietuvos laiku pateikti momentai ir originalūs kalendoriai jūsų sienai.', collection_cover(D['records']), years())+live()+'<section class="lunar-annual"><p class="lunar-eyebrow">2027 metai viename lape</p><h2>2027 metų Mėnulio plakatas</h2>'+asset_card(poster,True)+'</section>'
+    body=heading('Mėnulio kalendorius', 'Kasdieniai Mėnulio fazių vaizdai, Lietuvos laiku pateikti momentai ir originalūs kalendoriai jūsų sienai.', collection_cover(D['records']), years())+live()+'<section class="lunar-annual"><p class="lunar-eyebrow">2027 metai viename lape</p><h2>2027 metų Mėnulio plakatas</h2>'+asset_card(posters[2027],True)+'</section>'
     for y in YEARS:body+=f'<section class="lunar-year-section"><div class="lunar-section-heading"><h2>{y} metų mėnesiai</h2><a href="/menulio-kalendorius/{y}/">Metų apžvalga ↗</a></div>{month_cards(y)}</section>'
+    body+='<section class="lunar-annual"><h2>2030 metų Mėnulio plakatas</h2>'+asset_card(posters[2030],True)+'</section>'
     observation_links=' · '.join(f'<a href="/menulio-kalendorius/{year}/#stebejimai">{year} m.</a>' for year in YEARS)
     observation_guide=f'<section class="lunar-insight"><h2>Nuo Mėnulio fazės iki stebėjimo vakaro</h2><p>Jaunaties data padeda suprasti fazių kaitą. Rinkdamiesi vakarą žvaigždėms pirmiausia pažiūrėkite, ar jums patogiu metu Saulė jau pakankamai žemai ir ar Mėnulis nenutvieks dangaus. Mėnesio lentelės palygina šias sąlygas Vilniuje ir Klaipėdoje 23 val. Lietuvos laiku. Greta nurodome datą augančio Mėnulio paviršiui stebėti, kai sąlygos atitinka pasirinktus kriterijus.</p><p>Metų palyginimai: {observation_links}</p></section>'
-    page('menulio-kalendorius','Mėnulio kalendorius 2027–2030','2027–2030 m. Mėnulio kalendorius su kasdieniais vaizdais ir tikslių fazių laikais. Raskite parengtus maketus arba spausdinkite mėnesį naršyklėje.',body+observation_guide+cycle+methodology()+related())
+    page('menulio-kalendorius','Mėnulio kalendorius 2027–2030','2027–2030 m. Mėnulio kalendorius su kasdieniais vaizdais ir tikslių fazių laikais. Atsisiųskite mėnesių maketus ir visų metų plakatus.',body+observation_guide+cycle+methodology()+related())
     page(
         'menulio-fazes','Mėnulio fazės 2027–2030 m. Lietuvoje',
         'Peržiūrėkite 2027–2030 m. jaunaties, priešpilnio, pilnaties ir delčios laikus Lietuvoje, atsisiųskite pasirinkto mėnesio ICS failą ir sužinokite šiandienos fazę.',

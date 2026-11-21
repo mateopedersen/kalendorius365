@@ -228,12 +228,14 @@
  .z-compare-card h3 { font-size:1.55rem; }
  .z-compare-card p:not(.z-eyebrow) { font-size:.9rem; }
  .z-related a { font-size:.87rem; }
- .horoscope-app .horoscope-sign-hero { display:flex; flex-wrap:wrap; align-items:center; gap:14px; padding:20px 16px; }
- .horoscope-app .horoscope-sign-hero__copy { flex:1 1 12em; min-width:0; }
- .horoscope-app .horoscope-sign-hero__art { width:84px; height:84px; }
- .horoscope-app .horoscope-sign-hero h1 { font-size:clamp(1.45rem,6.3vw,1.8rem); overflow-wrap:normal; }
+ .horoscope-app .horoscope-sign-hero {
+  display:grid; grid-template-columns:clamp(52px,15vw,76px) minmax(0,1fr);
+  align-items:start; min-height:0; gap:10px; padding:14px;
+ }
+ .horoscope-app .horoscope-sign-hero__art { width:100%; height:auto; aspect-ratio:1; }
+ .horoscope-app .horoscope-sign-hero h1 { font-size:clamp(1.33rem,5.6vw,1.8rem); overflow-wrap:anywhere; }
  .horoscope-app .horoscope-sign-hero__heading { font-size:.94rem; }
- .horoscope-app .horoscope-sign-hero__date { font-size:.83rem; }
+ .horoscope-app .horoscope-sign-hero__date { font-size:.79rem; }
  .horoscope-app .horoscope-reading { padding:20px; }
  .z-sign-profile { grid-template-columns:1fr; gap:20px; padding:22px 20px; }
  .z-sign-profile__art { grid-template-columns:104px auto; justify-content:start; align-items:center; gap:18px; }

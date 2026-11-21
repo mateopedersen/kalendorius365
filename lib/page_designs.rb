@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 # Page-specific composition follows the owner's ten desktop concepts. All figures,
 # links and print previews come from the verified engine and manifest.
+require_relative 'print_preview_details'
+
 module Pages
  alias_method :write_page, :page
  def download_href(asset,kind)
@@ -39,11 +41,24 @@ module Pages
   end
   %(<section class="panel annual-print-quality"><h2>Spaudos kokybė</h2><ul class="quality-list" role="list">#{features.map { |feature| "<li>#{esc(feature)}</li>" }.join}</ul></section>)
  end
+ def selected_calendar_image(asset)
+  landscape = asset.fetch('landscape')
+  width, height = landscape ? [680, 481] : [481, 680]
+  if asset.fetch('kind') == 'annual'
+   wide = '(max-width: 760px) min(538px, calc(100vw - 80px)), 538px'
+   tall = '(max-width: 760px) min(380px, calc(100vw - 80px)), 380px'
+  else
+   wide = '(max-width: 760px) min(580px, calc(100vw - 64px)), (min-width: 1700px) 722px, (max-width: 1400px) 524px, 622px'
+   tall = '(max-width: 760px) min(290px, calc(100vw - 64px)), (min-width: 1700px) 510px, (max-width: 1400px) 370px, 440px'
+  end
+  srcset = PrintPreviewDetails.srcset(asset)
+  responsive = srcset ? %( srcset="#{esc(srcset)}" sizes="#{landscape ? wide : tall}") : ''
+  alt = asset['alt'] || "#{asset.fetch('name')} – spausdinamo kalendoriaus peržiūra"
+  %(<img id="selected-preview" src="#{esc(asset.fetch('preview'))}"#{responsive} data-preview-sizes-wide="#{wide}" data-preview-sizes-tall="#{tall}" width="#{width}" height="#{height}" alt="#{esc(alt)}" decoding="async" fetchpriority="high">)
+ end
  def annual_preview(first)
   return '' unless first
-  alt=first['alt']||"#{first['name']} – tikro spausdinamo kalendoriaus peržiūra"
-  width,height=first['landscape'] ? [680,481] : [481,680]
-  %(<section class="panel annual-preview" id="perziura"><a id="preview-full" href="#{download_href(first,'webp')}" target="_blank" rel="noopener"><img id="selected-preview" src="#{first['preview']}" width="#{width}" height="#{height}" alt="#{esc(alt)}" fetchpriority="high"></a></section>)
+  %(<section class="panel annual-preview" id="perziura"><a id="preview-full" href="#{download_href(first,'webp')}" target="_blank" rel="noopener">#{selected_calendar_image(first)}</a></section>)
  end
  def metric_cards(values)
   '<div class="resource-stats">'+values.each_with_index.map { |(n,label),i|"<div>#{ui_icon(%w[calendar clock briefcase][i%3])}<strong>#{n}</strong><span>#{label}</span></div>" }.join+'</div>'

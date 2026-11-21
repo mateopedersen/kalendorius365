@@ -72,6 +72,8 @@
 .nd-hero > div:first-child { min-width: 0; }
 .nd-app .nd-hero .nd-eyebrow { margin-bottom: 6px; color: #f4d777; }
 .content-main .nd-app .nd-hero .nd-hero__lead { max-width: 64ch; color: #e2efe2; font-size: clamp(.96rem,1.55vw,1.09rem); }
+.content-main .nd-app .nd-hero .nd-hero__lead a { color: inherit; text-decoration: underline; text-underline-offset: .17em; }
+.content-main .nd-app .nd-hero .nd-hero__lead a:hover { text-decoration-thickness: .14em; }
 .nd-hero__links { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 14px; }
 .nd-hero__links .share-entry { margin: 0; }
 .content-main .nd-hero__links .share-entry summary {

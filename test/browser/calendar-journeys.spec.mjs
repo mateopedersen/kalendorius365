@@ -33,10 +33,15 @@ test('the annual template picker stays ready when calendar data is unavailable',
   await page.goto('/2029/');
   const picker = page.locator('#design-picker');
   await expect(picker).toHaveAttribute('aria-busy', 'false');
+  const preview = page.locator('#selected-preview');
+  const initialPreview = await preview.getAttribute('srcset');
+  expect(initialPreview).toMatch(/\/assets\/previews-detail\/2029-/);
   const download = page.locator('#selected-pdf');
   const initial = await download.getAttribute('href');
   await picker.selectOption({ index: 1 });
   await expect(download).not.toHaveAttribute('href', initial);
+  await expect(preview).not.toHaveAttribute('srcset', initialPreview);
+  await expect.poll(() => preview.evaluate(image => image.currentSrc)).toMatch(/\/assets\/previews-detail\/2029-/);
   const response = await page.request.get(await download.getAttribute('href'));
   expect(response.ok()).toBe(true);
   expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-');

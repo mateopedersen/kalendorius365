@@ -426,6 +426,66 @@
     "childLaw": [
       "Išmokų vaikams įstatymas: išmokų mokėjimo tvarka",
       "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.5981/asr"
+    ],
+    "sodraPension": [
+      "„Sodros“ prašymas skirti pensiją (GPN1)",
+      "https://gyventojai.sodra.lt/faces/pages/forms/pub/direct.jspx?code=GPN1"
+    ],
+    "sodraMother": [
+      "„Sodros“ motinystės išmokos prašymas (GPS2)",
+      "https://gyventojai.sodra.lt/sodra-login/pub/GPS2"
+    ],
+    "sodraFather": [
+      "„Sodros“ tėvystės išmokos prašymas (GPS3)",
+      "https://gyventojai.sodra.lt/sodra-login/pub/GPS3"
+    ],
+    "sodraJob": [
+      "„Sodros“ nedarbo išmokos prašymas (GPS18)",
+      "https://gyventojai.sodra.lt/sodra-login/pub/GPS18"
+    ],
+    "sodraSick": [
+      "„Sodros“ ligos ar slaugos išmokos prašymas (GPS1)",
+      "https://gyventojai.sodra.lt/sodra-login/pub/GPS1"
+    ],
+    "sodraDisability": [
+      "„Sodros“ negalios pensijos prašymas (GPN1)",
+      "https://gyventojai.sodra.lt/sodra-login/pub/GPN1"
+    ],
+    "sodraMaintenance": [
+      "„Sodros“ vaiko išlaikymo išmokos prašymas (GPS19)",
+      "https://gyventojai.sodra.lt/sodra-login/pub/GPS19"
+    ],
+    "uztRegister": [
+      "Užimtumo tarnybos savitarna",
+      "https://uzt.lt/app/auth/login"
+    ],
+    "uztHelp": [
+      "Užimtumo tarnyba: registracijos tvarka",
+      "https://uzt.lt/darbo-ieskantiems/registracija"
+    ],
+    "manoVmi": [
+      "„Mano VMI“ savitarna",
+      "https://www.vmi.lt/mvmi/"
+    ],
+    "vatFiling": [
+      "VMI: PVM deklaracijų teikimas",
+      "https://www.vmi.lt/evmi/pvm-deklaraciju-teikimas"
+    ],
+    "childGuide": [
+      "SADM: vaiko pinigų sąlygos ir prašymas",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/socialine-parama-kas-man-priklauso/auginu-vaika-naujas/ismokos/vaiko-pinigai/"
+    ],
+    "heatingGuide": [
+      "SADM: būsto šildymo kompensacijos sąlygos",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/kompensacija-uz-busto-sildyma/"
+    ],
+    "sodraEarly": [
+      "„Sodros“ prašymas skirti išankstinę senatvės pensiją (GPN2)",
+      "https://gyventojai.sodra.lt/faces/pages/forms/pub/direct.jspx?code=GPN2"
+    ],
+    "childcareSpis": [
+      "SADM: vaiko priežiūros išmoka neturint teisės į „Sodros“ išmoką",
+      "https://socmin.lrv.lt/lt/veiklos-sritys/socialine-parama-kas-man-priklauso/auginu-vaika-naujas/ismokos/ismoka-vaiko-prieziurai-nuo-2026-m-birzelio-1-d/"
     ]
   },
   "pages": {
@@ -486,7 +546,24 @@
         "pension",
         "tax"
       ],
-      "cta": "spis"
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Atverti savivaldybių išmokas SPIS",
+          "hint": "Prisijunkite ir pasirinkite norimą savivaldybės paslaugą."
+        },
+        {
+          "source": "sodra",
+          "label": "Tikrinti išmokas „Sodroje“",
+          "hint": "Prisijungę pasirinkite skiltį „Išmokos“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "support",
+          "label": "Skaityti apie socialinę paramą"
+        }
+      ]
     },
     "pension": {
       "route": "/pensijos/",
@@ -552,7 +629,28 @@
         "hub",
         "tax"
       ],
-      "cta": "sodra"
+      "actions": [
+        {
+          "source": "sodraPension",
+          "label": "Pildyti senatvės pensijos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPN1."
+        },
+        {
+          "source": "sodraEarly",
+          "label": "Pildyti išankstinės pensijos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPN2."
+        }
+      ],
+      "reading": [
+        {
+          "source": "retire",
+          "label": "Skaityti pensijos skyrimo sąlygas"
+        },
+        {
+          "source": "early",
+          "label": "Skaityti išankstinės pensijos sąlygas"
+        }
+      ]
     },
     "tax": {
       "route": "/mokesciu-skaiciuokle/",
@@ -591,8 +689,8 @@
           "VMI EDS vedlyje patikrinkite darbdavių pateiktas pajamas ir galimą metinę GPM nepriemoką arba permoką."
         ],
         [
-          "Sumokėkite pagal EDS duomenis",
-          "Mokėtiną sumą, įmokos kodą ir galutinį terminą nuskaitykite iš VMI. Patikrinkite, už kuriuos metus deklaruojate."
+          "Apmokėkite per „Mano VMI“",
+          "Prisijungę pasitikrinkite mokėtiną sumą ir mokėjimo terminą."
         ]
       ],
       "sections": [
@@ -618,7 +716,39 @@
         "hub",
         "job"
       ],
-      "cta": "eds"
+      "actions": [
+        {
+          "source": "eds",
+          "label": "Deklaruoti pajamas EDS",
+          "hint": "Prisijungę pasirinkite gyventojų pajamų deklaraciją GPM311."
+        },
+        {
+          "source": "manoVmi",
+          "label": "Sumokėti GPM per „Mano VMI“",
+          "hint": "Prisijungę patikrinkite VMI nurodytą mokėtiną sumą."
+        }
+      ],
+      "reading": [
+        {
+          "source": "declaration",
+          "label": "Skaityti VMI deklaravimo tvarką"
+        }
+      ],
+      "vatActions": [
+        {
+          "source": "vat",
+          "label": "Tikrinti oficialius PVM tarifus"
+        },
+        {
+          "source": "vatFiling",
+          "label": "Skaityti, kaip pateikti FR0600"
+        },
+        {
+          "source": "eds",
+          "label": "Pildyti PVM deklaraciją EDS",
+          "hint": "Prisijungę pasirinkite FR0600, jei teikiate PVM deklaraciją."
+        }
+      ]
     },
     "child": {
       "route": "/ismokos/vaiko-pinigai/",
@@ -641,7 +771,8 @@
         "family",
         "spis",
         "maintenance",
-        "childLaw"
+        "childLaw",
+        "childGuide"
       ],
       "steps": [
         [
@@ -676,7 +807,19 @@
         "childcare",
         "nanny"
       ],
-      "cta": "spis"
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti vaiko pinigų per SPIS",
+          "hint": "SPIS pasirinkite „Išmoka vaikui“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "childGuide",
+          "label": "Skaityti vaiko pinigų sąlygas"
+        }
+      ]
     },
     "birth": {
       "route": "/ismokos/vienkartine-ismoka-vaikui/",
@@ -731,7 +874,19 @@
         "childcare",
         "parents"
       ],
-      "cta": "spis"
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti vienkartinės išmokos per SPIS",
+          "hint": "SPIS pasirinkite „Vienkartinė išmoka vaikui“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "birth",
+          "label": "Skaityti vienkartinės išmokos sąlygas"
+        }
+      ]
     },
     "childcare": {
       "route": "/ismokos/vaiko-prieziuros-ismoka/",
@@ -756,7 +911,8 @@
         "family",
         "changes",
         "november",
-        "sodra"
+        "sodra",
+        "childcareSpis"
       ],
       "steps": [
         [
@@ -791,7 +947,28 @@
         "nanny",
         "child"
       ],
-      "cta": "sodra"
+      "actions": [
+        {
+          "source": "sodra",
+          "label": "Pildyti vaiko priežiūros išmokos prašymą",
+          "hint": "Prisijungę prie „Sodros“ pasirinkite GPS23."
+        },
+        {
+          "source": "spis",
+          "label": "Prašyti vaiko priežiūros išmokos per SPIS",
+          "hint": "Jei „Sodros“ išmoka nepriklauso, SPIS pasirinkite „Išmoka vaiko priežiūrai“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "childcare",
+          "label": "Skaityti vaiko priežiūros išmokos sąlygas"
+        },
+        {
+          "source": "childcareSpis",
+          "label": "Skaityti savivaldybės išmokos sąlygas"
+        }
+      ]
     },
     "parents": {
       "route": "/ismokos/motinystes-ir-tevystes-ismokos/",
@@ -850,7 +1027,28 @@
         "birth",
         "nanny"
       ],
-      "cta": "sodra"
+      "actions": [
+        {
+          "source": "sodraMother",
+          "label": "Pildyti motinystės išmokos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPS2."
+        },
+        {
+          "source": "sodraFather",
+          "label": "Pildyti tėvystės išmokos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPS3."
+        }
+      ],
+      "reading": [
+        {
+          "source": "mother",
+          "label": "Skaityti motinystės išmokos sąlygas"
+        },
+        {
+          "source": "father",
+          "label": "Skaityti tėvystės išmokos sąlygas"
+        }
+      ]
     },
     "nanny": {
       "route": "/ismokos/aukles-kompensacija/",
@@ -904,7 +1102,19 @@
         "child",
         "parents"
       ],
-      "cta": "spis"
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti auklės kompensacijos per SPIS",
+          "hint": "SPIS pasirinkite „Vaiko priežiūros kompensacinė išmoka“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "nanny",
+          "label": "Skaityti auklės kompensacijos sąlygas"
+        }
+      ]
     },
     "job": {
       "route": "/ismokos/nedarbo-ismoka/",
@@ -927,7 +1137,8 @@
         "job",
         "uzt",
         "november",
-        "sodra"
+        "sodra",
+        "uztHelp"
       ],
       "steps": [
         [
@@ -962,7 +1173,28 @@
         "tax",
         "sick"
       ],
-      "cta": "sodra"
+      "actions": [
+        {
+          "source": "uztRegister",
+          "label": "Registruotis Užimtumo tarnyboje",
+          "hint": "Užimtumo tarnybos savitarnoje patvirtinkite tapatybę."
+        },
+        {
+          "source": "sodraJob",
+          "label": "Pildyti nedarbo išmokos prašymą",
+          "hint": "Jei jau suteiktas bedarbio statusas, „Sodroje“ pateikite GPS18."
+        }
+      ],
+      "reading": [
+        {
+          "source": "job",
+          "label": "Skaityti nedarbo išmokos sąlygas"
+        },
+        {
+          "source": "uztHelp",
+          "label": "Skaityti registracijos tvarką"
+        }
+      ]
     },
     "sick": {
       "route": "/ismokos/ligos-ismoka/",
@@ -1020,7 +1252,23 @@
         "parents",
         "hub"
       ],
-      "cta": "sodra"
+      "actions": [
+        {
+          "source": "sodraSick",
+          "label": "Pildyti ligos ar slaugos išmokos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPS1."
+        }
+      ],
+      "reading": [
+        {
+          "source": "sick",
+          "label": "Skaityti ligos išmokos sąlygas"
+        },
+        {
+          "source": "care",
+          "label": "Skaityti slaugos išmokos sąlygas"
+        }
+      ]
     },
     "social": {
       "route": "/ismokos/socialine-pasalpa/",
@@ -1078,7 +1326,19 @@
         "job",
         "child"
       ],
-      "cta": "spis"
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti socialinės pašalpos per SPIS",
+          "hint": "SPIS pasirinkite „Socialinė pašalpa“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "supportRules",
+          "label": "Skaityti socialinės pašalpos sąlygas"
+        }
+      ]
     },
     "heating": {
       "route": "/ismokos/sildymo-kompensacija/",
@@ -1101,7 +1361,8 @@
         "support",
         "supportRules",
         "spisCalc",
-        "spis"
+        "spis",
+        "heatingGuide"
       ],
       "steps": [
         [
@@ -1136,29 +1397,89 @@
         "hub",
         "tax"
       ],
-      "cta": "spis"
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti šildymo kompensacijos per SPIS",
+          "hint": "Prisijungę rinkitės būsto šildymo ir vandens išlaidų kompensacijas."
+        }
+      ],
+      "reading": [
+        {
+          "source": "heatingGuide",
+          "label": "Skaityti kompensacijos sąlygas"
+        }
+      ]
     }
   },
   "otherHelp": [
-    [
-      "school",
-      "Parama mokiniams",
-      "Nemokami pietūs priešmokyklinukams, pirmokams ir antrokams skiriami nevertinant šeimos pajamų. Pagal pajamų sąlygą galima gauti 148 Eur mokinio reikmenims (2026 m.)."
-    ],
-    [
-      "disability",
-      "Negalios pensija",
-      "Netekus 45 % ar daugiau dalyvumo, socialinio draudimo negalios pensijai dar vertinamas pagal amžių reikalingas stažas. Dėl asmeninio įvertinimo kreipkitės į „Sodrą“."
-    ],
-    [
-      "maintenance",
-      "Negautas vaiko išlaikymas",
-      "Jei negaunate viso nustatyto vaiko išlaikymo, patikrinkite „Sodros“ sąlygas. Nuo 2026 m. liepos 1 d. taikoma iki 185 Eur mėnesio suma vienam vaikui."
-    ],
-    [
-      "death",
-      "Laidojimo pašalpa",
-      "2026 m. vienkartinė išmoka – 592 Eur. Pagal taikomas sąlygas į savivaldybę kreipiamasi per 12 mėnesių."
-    ]
+    {
+      "title": "Parama mokiniams",
+      "summary": "Nemokami pietūs priešmokyklinukams, pirmokams ir antrokams skiriami nevertinant šeimos pajamų. Pagal pajamų sąlygą galima gauti 148 Eur mokinio reikmenims (2026 m.).",
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti paramos mokiniui per SPIS",
+          "hint": "SPIS pasirinkite „Socialinė parama mokiniams“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "school",
+          "label": "Skaityti paramos mokiniams sąlygas"
+        }
+      ]
+    },
+    {
+      "title": "Negalios pensija",
+      "summary": "Netekus 45 % ar daugiau dalyvumo, socialinio draudimo negalios pensijai dar vertinamas pagal amžių reikalingas stažas. Dėl asmeninio įvertinimo kreipkitės į „Sodrą“.",
+      "actions": [
+        {
+          "source": "sodraDisability",
+          "label": "Pildyti negalios pensijos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPN1."
+        }
+      ],
+      "reading": [
+        {
+          "source": "disability",
+          "label": "Skaityti negalios pensijos sąlygas"
+        }
+      ]
+    },
+    {
+      "title": "Negautas vaiko išlaikymas",
+      "summary": "Jei negaunate viso nustatyto vaiko išlaikymo, patikrinkite „Sodros“ sąlygas. Nuo 2026 m. liepos 1 d. taikoma iki 185 Eur mėnesio suma vienam vaikui.",
+      "actions": [
+        {
+          "source": "sodraMaintenance",
+          "label": "Pildyti vaiko išlaikymo išmokos prašymą",
+          "hint": "Prisijunkite prie „Sodros“. Prašymo kodas GPS19."
+        }
+      ],
+      "reading": [
+        {
+          "source": "maintenance",
+          "label": "Skaityti vaiko išlaikymo išmokos sąlygas"
+        }
+      ]
+    },
+    {
+      "title": "Laidojimo pašalpa",
+      "summary": "2026 m. vienkartinė išmoka – 592 Eur. Pagal taikomas sąlygas į savivaldybę kreipiamasi per 12 mėnesių.",
+      "actions": [
+        {
+          "source": "spis",
+          "label": "Prašyti laidojimo pašalpos per SPIS",
+          "hint": "SPIS pasirinkite „Laidojimo pašalpa“."
+        }
+      ],
+      "reading": [
+        {
+          "source": "death",
+          "label": "Skaityti laidojimo pašalpos sąlygas"
+        }
+      ]
+    }
   ]
 }

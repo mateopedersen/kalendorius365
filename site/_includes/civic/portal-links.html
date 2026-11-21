@@ -1,0 +1,12 @@
+{% for portal_link in include.links %}
+  {% assign portal_source = civic.sources[portal_link.source] %}
+  <a class="civic-button civic-button--{{ include.theme }} civic-portal-link" href="{{ portal_source[1] | escape }}">
+    <span>
+      <span>{{ portal_link.label | escape }}</span>
+      {% if include.show_hints and portal_link.hint %}<small>{{ portal_link.hint | escape }}</small>{% endif %}
+    </span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M13 5h6v6m0-6-9 9m8-1v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>
+    </svg>
+  </a>
+{% endfor %}

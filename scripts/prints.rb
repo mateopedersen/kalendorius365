@@ -23,6 +23,7 @@ Dir.chdir(ROOT) do
  when 'verify'
   run!(python,'scripts/preflight.py')
   run!(python,'scripts/validate_assets.py')
+  run!(python,'scripts/responsive_previews.py','--check')
  else
   abort 'Usage: ruby scripts/prints.rb samples|accept-samples|all|verify'
  end

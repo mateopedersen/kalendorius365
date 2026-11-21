@@ -6,14 +6,31 @@
     <button type="button" aria-pressed="false" data-filter="Darbas ir sveikata">Darbas ir sveikata</button>
     <button type="button" aria-pressed="false" data-filter="Pajamos ir būstas">Pajamos ir būstas</button>
   </div>
-  <div class="civic-cards" data-benefit-cards>{% for key in civic.benefits %}{% assign item = civic.pages[key] %}{% include civic/card.html item=item %}{% endfor %}</div>
+  <div class="civic-cards" data-benefit-cards>
+    {% for key in civic.benefits %}
+      {% assign item = civic.pages[key] %}
+      <article class="civic-benefit-card" data-civic-topic="{{ item.group | escape }}">
+        {% include civic/card.html item=item %}
+        <div class="civic-actions civic-benefit-card__portals">
+          {% include civic/portal-links.html links=item.actions theme='plain' %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
   <p class="visually-hidden" data-filter-count role="status"></p>
 </section>
 <section class="civic-section" id="kita-parama" aria-labelledby="civic-other-title">
   <header class="civic-section__head"><h2 id="civic-other-title">Kitos paramos situacijos</h2></header>
   <div class="civic-other-help">
-    {% for item in civic.otherHelp %}{% assign source_key = item[0] %}{% assign source = civic.sources[source_key] %}
-    <div class="civic-panel"><h3>{{ item[1] | escape }}</h3><p>{{ item[2] | escape }}</p><a href="{{ source[1] }}">{{ source[0] | escape }}</a></div>
+    {% for item in civic.otherHelp %}
+    <article class="civic-panel">
+      <h3>{{ item.title | escape }}</h3>
+      <p>{{ item.summary | escape }}</p>
+      <div class="civic-actions civic-process__portals">
+        {% include civic/portal-links.html links=item.actions theme='green' show_hints=true %}
+        {% include civic/portal-links.html links=item.reading theme='plain' %}
+      </div>
+    </article>
     {% endfor %}
   </div>
 </section>

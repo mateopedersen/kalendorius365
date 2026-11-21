@@ -135,6 +135,16 @@ class ProviderValidationTests(unittest.TestCase):
         self.assertEqual(len(results), 12)
         self.assertEqual(len(calls), 12)
         self.assertEqual(set(calls), set(ENGLISH_SIGNS))
+        self.assertEqual(pauses, [1.15] * (len(ENGLISH_SIGNS) - 1))
+
+    def test_non_retryable_error_does_not_repeat_sign(self):
+        failure = SourceError("aries: AstroWay HTTP 400")
+        signs = list(ENGLISH_SIGNS)
+        results = [failure] + [source_result(sign, index) for index, sign in enumerate(signs[1:], 1)]
+        with patch("fetch_daily.request_one", side_effect=results) as request:
+            with self.assertRaisesRegex(SourceError, "AstroWay HTTP 400"):
+                fetch_all(DAY, pause=lambda _: None)
+        self.assertEqual([call.args[0] for call in request.call_args_list], signs)
 
     def test_429_retry_honors_retry_after_and_retries_only_affected_sign(self):
         calls = []
@@ -233,6 +243,16 @@ class EditorialAndPublishTests(unittest.TestCase):
     def test_all_twelve_are_required(self):
         with self.assertRaisesRegex(ValueError, "12 ženklų"):
             validate_batch(self.results[:-1], DAY)
+
+    def test_daily_reading_responds_to_moon_and_planet_aspect_changes(self):
+        aspect = {"aspect": "Sextile", "planet1": "Sun", "planet2": "Pluto", "orb": 0.3}
+        current = render_forecast("svarstykles", 2, 7, aspect, DAY)
+        changed_aspect = render_forecast("svarstykles", 2, 7, {**aspect, "aspect": "Trine", "planet1": "Uranus"}, DAY)
+        for field in ("overview", "work", "reflection"):
+            self.assertNotEqual(current[field], changed_aspect[field])
+        changed_moon = render_forecast("svarstykles", 2, 8, aspect, DAY)
+        for field in ("editorial_heading", "lead", "relationships", "tip"):
+            self.assertNotEqual(current[field], changed_moon[field])
 
     def test_lithuanian_planet_genitives_and_decimal_comma(self):
         pairs = [

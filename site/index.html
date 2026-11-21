@@ -1,29 +1,84 @@
 ---
-title: "Lietuvos kalendorius: šventės ir horoskopai"
-description: Lietuvos kalendorius su šventėmis, horoskopais, saulės laikais, Mėnulio fazėmis, atostogų planavimu ir spausdinamais 2027–2030 m. kalendoriais.
+title: "Lietuvos kalendorius, orai ir planavimo įrankiai"
+description: Lietuvos kalendorius su šventėmis ir spausdinamais šablonais. Patikrinkite šiandienos orus, 15 dienų prognozę, kelių sąlygas ir naudokite datų įrankius.
 app: true
 ---
 <header class="home-heading">
-  <div class="home-heading__copy">
-    <p class="home-heading__edition">Lietuva · 2027–2030</p>
-    <h1>Lietuvos kalendorius</h1>
-    <p class="home-heading__intro">Pasirinkite datą, peržiūrėkite šventes arba įrašykite savo planus.</p>
-  </div>
-  <div class="home-heading__actions">
-    <a class="home-create" href="/kurti-kalendoriu/">
-      {% include shell-art.html name="create" size=40 %}
-      <span><strong>Kurti savo kalendorių</strong><small>Nuotraukos ir svarbios datos.</small></span>
-      {% include calendar-catalog-arrow.html %}
-    </a>
-    <div class="home-heading__links">
-      <a href="/menesiai/">{% include shell-art.html name="pdf" size=26 %}<span>Kalendoriai spausdinimui</span></a>
-      {% include sharing.html %}
+  <div class="home-heading__hero">
+    <div class="home-heading__copy">
+      <p class="home-heading__edition">2027–2030 m. kalendoriai</p>
+      <h1>Lietuvos kalendorius <span>ir orai</span></h1>
+      <p class="home-heading__intro">Peržiūrėkite šventes, suskaičiuokite darbo dienas ir suplanuokite atostogas.</p>
+      <div class="home-heading__actions">
+        <a class="home-heading__button home-heading__button--primary" href="#kalendorius">
+          {% include shell-art.html name="calendar" size=24 %}
+          <span>Atverti kalendorių</span>
+          {% include calendar-catalog-arrow.html %}
+        </a>
+        <a class="home-heading__button" href="/kurti-kalendoriu/">
+          {% include shell-art.html name="create" size=24 %}
+          <span>Kurti kalendorių</span>
+        </a>
+        {% include sharing.html %}
+      </div>
     </div>
+    <a class="home-heading__weather" href="/orai/">
+      {% assign weather_photo = site.data.weather_city_images.klaipeda %}
+      <img class="home-heading__weather-photo" src="{{ weather_photo.src }}"
+        width="{{ weather_photo.width }}" height="{{ weather_photo.height }}" alt="{{ weather_photo.alt | escape }}" decoding="async" fetchpriority="low">
+      <div class="home-heading__weather-copy">
+        {% include shell-art.html name="cloud" size=42 %}
+        <span class="home-heading__weather-title">Orai visoje Lietuvoje</span>
+        <span class="home-heading__weather-detail">Valandinė ir 15 dienų prognozė, orai keliuose</span>
+      </div>
+      <span class="home-heading__weather-action">Rasti vietovę <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span></span>
+    </a>
+    <nav class="home-heading__shortcuts" aria-label="Kalendoriai ir datų skaičiavimas">
+      <a class="home-tool-card" href="/pdf-kalendoriai/">
+        {% include shell-art.html name="pdf" size=35 %}
+        <span><strong>PDF kalendoriai</strong><small>Metų ir mėnesių šablonai</small></span>
+        <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
+      </a>
+      <a class="home-tool-card" href="/datos-skaiciuokle/">
+        {% include shell-art.html name="calculator" size=35 %}
+        <span><strong>Datos skaičiuoklė</strong><small>Dienos tarp dviejų datų</small></span>
+        <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
+      </a>
+    </nav>
+  </div>
+  <div class="home-heading__utility">
+    <details class="home-tools">
+      <summary class="home-tool-card">
+        {% include shell-art.html name="tools" size=35 %}
+        <span><strong>Daugiau įrankių</strong><small>Darbui, mokslams, šeimai ir laisvalaikiui</small></span>
+        <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
+      </summary>
+      <div class="home-tools__content">
+        {% assign home_tool_catalogue = '' | split: ',' %}
+        {% for category in site.data.tool_directory.categories %}
+          {% assign home_tool_catalogue = home_tool_catalogue | concat: category.tools %}
+        {% endfor %}
+        {% assign home_tool_routes = '/darbo-dienos/2027/|/atostogu-planavimas/|/pamoku-tvarkarastis/|/seimos-kalendorius/|/saule/|/sejos-kalendorius/|/mokesciu-skaiciuokle/|/ismokos/' | split: '|' %}
+        <nav class="home-tools__grid" aria-label="Planavimo įrankiai">
+          {% for route in home_tool_routes %}
+            {% assign tool = home_tool_catalogue | where: 'route', route | first %}
+            <a class="home-tool-card" href="{{ tool.route }}">
+              {% include shell-art.html name=tool.art size=36 lazy=true %}
+              <span><strong>{{ tool.title | escape }}</strong><small>{% if route == '/saule/' %}Saulės laikai ir dienos ilgumas pasirinktame mieste.{% else %}{{ tool.description | escape }}{% endif %}</small></span>
+              <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
+            </a>
+          {% endfor %}
+        </nav>
+        <a class="home-heading__button home-heading__button--primary" href="/irankiai/">
+          Visi įrankiai {% include calendar-catalog-arrow.html %}
+        </a>
+      </div>
+    </details>
   </div>
 </header>
 {% include planner-reminders.html %}
-{% include home-upcoming.html %}
 {% include planner-workspace.html %}
+{% include home-upcoming.html %}
 {% include home-guides.html %}
 <section class="home-discovery" aria-labelledby="home-discovery-title">
   <header class="home-discovery__heading"><h2 id="home-discovery-title">Svarbios datos ir dienos ritmas</h2></header>

@@ -1,4 +1,5 @@
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -11,6 +12,46 @@ import search_health
 
 
 class SearchHealthTests(unittest.TestCase):
+    def test_sitemap_coverage_rejects_missing_unexpected_and_duplicate_urls(self):
+        report = {"errors": []}
+        search_health.check_sitemap_coverage(report, "main sitemap", {"/", "/new/"}, ["/", "/", "/old/"])
+        self.assertIn("1 missing, 1 unexpected, 1 duplicate", report["errors"][0]["message"])
+        self.assertIn("/new/", report["errors"][0]["message"])
+
+    def test_weather_sitemap_checks_the_registry_robots_and_canonical_samples(self):
+        base = "https://kalendorius365.lt"
+        main = [base + "/orai/", base + "/saule/kaunas/"]
+        weather = [base + path for path in (
+            "/orai/miestai/", "/orai/savivaldybes/", "/orai/savivaldybes/kauno-m/",
+            "/orai/kaunas/", "/orai/zalgirio-31593/",
+        )]
+        robots = f"Sitemap: {base}/sitemap-orai.xml\n"
+
+        def response(url):
+            return {
+                "status": 200, "final_url": url, "headers": {"Content-Type": "text/html"},
+                "body": f'<link rel="canonical" href="{url}">'.encode(),
+            }
+
+        with tempfile.TemporaryDirectory() as temporary:
+            registry = Path(temporary) / "places.json"
+            registry.write_text('{"municipalities":{"1":["kauno-m"]},"places":[["kaunas"],["zalgirio-31593"]]}')
+            with patch.object(search_health, "WEATHER_REGISTRY", registry), \
+                 patch.object(search_health, "fetch", side_effect=response), \
+                 patch.object(search_health, "collect_sitemap", return_value=weather) as collect:
+                report = {"checks": [], "errors": []}
+                search_health.audit_weather_sitemap(report, base, robots, main)
+                self.assertEqual(report["errors"], [])
+                self.assertEqual(report["weather_sitemap_page_count"], 5)
+                self.assertEqual(len(report["checks"]), 6)
+
+                collect.return_value = weather[:-1]
+                report = {"checks": [], "errors": []}
+                search_health.audit_weather_sitemap(report, base, "", main)
+                self.assertEqual([error["check"] for error in report["errors"]],
+                                 ["robots.txt", "weather sitemap", "sitemap coverage"])
+                self.assertIn("zalgirio-31593", report["errors"][1]["message"])
+
     def test_workflow_artifact_paths_use_runner_temp_expression(self):
         workflow = (ROOT / ".github/workflows/search-health.yml").read_text(encoding="utf-8")
         for scope in ("daily", "weekly"):

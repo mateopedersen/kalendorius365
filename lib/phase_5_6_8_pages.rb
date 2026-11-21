@@ -61,6 +61,11 @@ module Phase568Pages
 
   page('saule','Saulėtekis, saulėlydis ir Saulės kelias Lietuvoje',
     'Saulėtekio, saulėlydžio ir civilinės prieblandos laikai 103 Lietuvos miestuose. Interaktyvi Saulės kelio simuliacija ir dienos trukmės diagramos.',SunrisePage.body,'sun')
+  SunrisePage.cities.each do |city|
+    place = city.fetch('locative')
+    page("saule/#{city.fetch('id')}", "Saulėtekis ir saulėlydis #{place}",
+      "Kada šiandien teka ir leidžiasi Saulė #{place}? Saulėtekio, saulėlydžio ir civilinės prieblandos laikai, dienos trukmė ir artimiausių dienų lentelė.", SunrisePage.body(city), 'sun')
+  end
 
   moon=Pages.intro('Mėnulio fazės','Jaunaties, pirmojo ketvirčio, pilnaties ir paskutinio ketvirčio momentai paversti Lietuvos vietos laiku.')+<<~HTML
    <section class="panel"><h2>Tikslūs fazių momentai ir apytikslis apšviestumas</h2><p>Pagrindinė fazė yra visos Žemės mastu bendras momentas; ji nepriklauso nuo pasirinkto Lietuvos miesto. Laikai šaltinyje pateikti UTC minutės tikslumu ir konvertuojami į Europe/Vilnius vietos laiką, todėl fazės data Lietuvoje gali skirtis nuo UTC datos. Apšviesto Mėnulio dalis tarp pirminių fazių yra apytikslis geometrinis įvertis, o ne tiksli efemeridė.</p><p>Šiame puslapyje nėra astrologinių prognozių, sveikatos ar žemdirbystės teiginių. Mėnulio patekėjimo ir nusileidimo valandų nerodome, nes jų vietinė reikšmė turi būti skaičiuojama atskirai kiekvienam stebėtojui.</p></section>

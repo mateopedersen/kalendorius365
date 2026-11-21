@@ -22,6 +22,13 @@ if (printFinder) {
     find("name").textContent = choice.name;
     find("paper").textContent = `${choice.paper} · ${choice.landscape ? "Gulsčias" : "Stačias"}`;
     image.alt = name;
+    if (choice.previewSrcset) {
+      image.sizes = choice.landscape ? "298px" : "149px";
+      image.srcset = choice.previewSrcset;
+    } else {
+      image.removeAttribute("srcset");
+      image.removeAttribute("sizes");
+    }
     image.src = choice.preview;
     find("preview").href = choice.webp;
     find("pdf").href = choice.pdf;

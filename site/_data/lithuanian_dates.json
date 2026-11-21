@@ -529,11 +529,11 @@
       "sources": [
         {
           "title": "Lietuvos nacionalinis kultūros centras apie pasirengimą",
-          "url": "https://www.dainusvente.lnkc.lt/naujienos/kvieciame-i-2028-m-lietuvos-dainu-sventes-dainu-dienos-upes-giesme-repertuaro-pristatyma/"
+          "url": "https://www.lnkc.lt/naujienos/kvieciame-i-2028-m-lietuvos-dainu-sventes-dainu-dienos-upes-giesme-repertuaro-pristatyma/"
         },
         {
           "title": "LNKC apie 2028 m. Dainų dieną",
-          "url": "https://www.dainusvente9.lnkc.lt/naujienos/n2027-m-lietuvos-suaugusiuju-choru-konkurse-varzysis-rekordinis-dalyviu-skaicius/"
+          "url": "https://www.lnkc.lt/naujienos/n2027-m-lietuvos-suaugusiuju-choru-konkurse-varzysis-rekordinis-dalyviu-skaicius/"
         },
         {
           "title": "Lietuvos dainų švenčių istorija",
@@ -834,8 +834,8 @@
       "day": 23,
       "date": "Rugsėjo 23 d.",
       "summary": "Rugsėjo 23-iąją Lietuvoje pagerbiamos Holokausto aukos. Ši data žymi Vilniaus geto likvidavimą 1943 metais.",
-      "context": "Nacistinės okupacijos metais sunaikinta didžioji dalis Lietuvos žydų bendruomenės. Paneriuose prie Vilniaus vyko masinės žudynės. Memorialas yra viena svarbiausių vietų aukoms pagerbti ir istorijai pažinti.",
-      "visit": "Minėjimo laikus ir vietas skelbia Kultūros ministerija, muziejai ir savivaldybės. Norėdami aplankyti Panerius, pirmiausia patikrinkite memorialo lankymo informaciją ir susisiekimą.",
+      "context": "Rugsėjo 23-iąją Lietuvoje prisimenami per Holokaustą nužudyti žydai. Ši diena sieja 1943 m. Vilniaus geto likvidavimą su daugelio miestų ir miestelių žydų bendruomenių sunaikinimu per nacistinę okupaciją.",
+      "visit": "Panerių memoriale Vilniuje aukos pagerbiamos per viešus atminimo renginius. Pavyzdžiui, 2026 m. rugsėjo 23 d. Lietuvos žydų (litvakų) bendruomenė kvietė į minėjimą memoriale. Konkretaus metų renginio laiką ir susisiekimą tikrinkite muziejaus ar bendruomenės skelbimuose.",
       "image": {
         "src": "/assets/visuals/local-events/lietuvos-zydu-genocido-atminimo-diena.webp",
         "small": "/assets/visuals/local-events/lietuvos-zydu-genocido-atminimo-diena-640.webp",
@@ -852,17 +852,45 @@
       "related": "/atmintinos-dienos/",
       "sources": [
         {
-          "title": "Vilniaus Gaono žydų istorijos muziejus apie minėjimą",
-          "url": "https://www.jmuseum.lt/naujienos/paneriu-memoriale-pamineta-lietuvos-zydu-genocido-auku-atminimo-diena/"
+          "title": "Vilniaus Gaono žydų istorijos muziejus · Panerių istorija",
+          "url": "https://www.paneriumemorialas.jmuseum.lt/history/"
         },
         {
-          "title": "Atmintinų dienų įstatymas",
-          "url": "https://www.e-tar.lt/portal/lt/legalActEditions/TAR.D570962773F8"
+          "title": "Vilniaus Gaono žydų istorijos muziejus · Mašos Rolnikaitės šeimos istorija",
+          "url": "https://www.jmuseum.lt/rasytojos-masos-rolnikaites-seimos-istorija/"
         },
         {
-          "title": "Panerių memorialas",
-          "url": "https://www.jmuseum.lt/lt/paneriu-memorialas/"
+          "title": "Holokausto ekspozicija ir Ichoko Rudaševskio dienoraštis",
+          "url": "https://www.jmuseum.lt/ekspozicijos-holokausto-ekspozicija/"
+        },
+        {
+          "title": "Lietuvos žydų (litvakų) bendruomenė · 2026 m. minėjimo skelbimas",
+          "url": "https://www.lzb.lt/2026/09/16/lietuvos-zydu-genocido-dienos-minejimas-paneriuose-svarbi-informacija/"
+        },
+        {
+          "title": "Lietuvos Respublikos atmintinų dienų įstatymas ir galiojančios redakcijos",
+          "url": "https://e-seimas.lrs.lt/portal/legalActEditions/lt/TAD/TAIS.41597"
         }
+      ],
+      "timeline": [
+        {
+          "date": "1941-09-06",
+          "label": "1941 m. rugsėjo 6 d.",
+          "note": "Vilniaus žydai prievarta suvaromi į Senamiestyje įrengtus getus."
+        },
+        {
+          "date": "1943-09-23",
+          "label": "1943 m. rugsėjo 23 d.",
+          "note": "Pradedamas galutinis Vilniaus geto likvidavimas. Kaliniai išvežami į stovyklas arba nužudomi, dalis jų – Paneriuose."
+        }
+      ],
+      "history_notes": [
+        "Paneriuose masinės žudynės vyko nuo 1941 metų. Vilniaus geto likvidavimas buvo vienas iš ilgesnio persekiojimo etapų. Memorialo muziejus atskirai aprašo žudynių eigą, aukų grupes ir vietos istoriją.",
+        "Bendrą įvykių vaizdą papildo žmonių liudijimai. Vilniaus Gaono žydų istorijos muziejus pasakoja Mašos Rolnikaitės šeimos istoriją. Likviduojant getą Maša buvo atskirta nuo artimųjų ir išvežta į koncentracijos stovyklą Latvijoje. Muziejuje taip pat galima susipažinti su Ichoko Rudaševskio dienoraščio fragmentais."
+      ],
+      "remembrance_notes": [
+        "Istoriją pažinti galima ir kitu metų laiku. Panerių memorialas padeda suprasti pačią žudynių vietą, o Holokausto ekspozicija Vilniuje pristato žydų gyvenimą iki karo, persekiojimą ir asmeninius liudijimus. Apsilankymą planuokite pagal muziejaus skelbiamą tvarką.",
+        "Rugsėjo 23-ioji yra Lietuvos atmintina diena. Mokyklos ar šeimos pokalbiui galima pasirinkti vieną muziejaus dokumentuotą žmogaus istoriją ir aptarti ją kartu su įvykių chronologija."
       ]
     }
   ]

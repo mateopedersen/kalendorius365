@@ -31,7 +31,8 @@ function renderPhases(updateUrl) {
 
   rows.replaceChildren(...monthEvents.map(event => {
     const row = rowTemplate.cloneNode(true);
-    row.querySelector('.lunar-event-mark').className = `lunar-event-mark lunar-event-mark--${event.phase}`;
+    const icon = row.querySelector('.lunar-event-mark');
+    icon.src = new URL(`${event.phase}.svg`, icon.src).href;
     row.querySelector('h3').textContent = event.label_lt;
     const time = row.querySelector('time');
     time.dateTime = event.utc;

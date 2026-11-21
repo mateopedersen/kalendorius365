@@ -1,10 +1,24 @@
 ---
-title: "Nuotraukų licencijos ir autoriai"
-description: "Lietuvos renginių, švenčių ir kalendoriaus gidų nuotraukų autoriai, originalūs šaltiniai, licencijos ir atlikti pakeitimai."
+title: "Nuotraukos, licencijos ir duomenys"
+description: "Kalendorius365 nuotraukų autoriai, originalūs šaltiniai ir licencijos. Orų prognozių, oro kokybės, vietovių ir kelių būklės duomenų teikėjai."
 hero_share: true
 ---
-{% include tool-page-head.html icon="privacy" title="Nuotraukų licencijos" lead="Renginių, švenčių ir kalendoriaus gidų nuotraukų autoriai, šaltiniai ir naudojimo sąlygos." %}
-<p><a href="/oru-saltiniai/">Orų kortelėse naudojamų miestų nuotraukų licencijos</a></p>
+{% include tool-page-head.html icon="privacy" title="Nuotraukos, licencijos ir duomenys" lead="Nuotraukų autoriai ir naudojimo sąlygos, orų duomenų teikėjai ir jų licencijos." %}
+<div class="weather-sources">
+  <nav class="weather-sources__nav" aria-label="Nuotraukų ir duomenų skyriai">
+    <a href="#duomenys">Orų duomenys</a>
+    <a href="/oru-saltiniai/#metodika">Orų rodmenų metodika</a>
+    <a href="/oru-saltiniai/#miestu-nuotraukos">Miestų nuotraukos</a>
+    <a href="/oru-saltiniai/#vakaro-nuotraukos">Miestų vakaro vaizdai</a>
+    <a href="#photo-credits-title">Kitos svetainės nuotraukos</a>
+  </nav>
+  {% include weather-data-sources.html %}
+</div>
+<section id="menulio-fotografija" class="photo-credit-list" aria-labelledby="moon-photo-credit-title">
+  <h2 id="moon-photo-credit-title">Mėnulio fazių piktogramų fotografija</h2>
+  <p>Šaltinis ir autoriai <a href="https://science.nasa.gov/photojournal/nearside-spectacular/">NASA / GSFC / Arizona State University, LROC mozaika PIA14011</a>. Mėnulio diskas apkirptas, sumažintas, pašviesintas ir SVG formatu užtamsintas pagal fazę.</p>
+  <p>Naudojimas informaciniais tikslais pagal <a href="https://www.nasa.gov/nasa-brand-center/images-and-media/">NASA vaizdų naudojimo gaires</a>.</p>
+</section>
 <section class="photo-credit-list" aria-labelledby="photo-credits-title">
 <h2 id="photo-credits-title">Nuotraukos pagal puslapį</h2>
 {% for photo in site.data.photo_credits %}

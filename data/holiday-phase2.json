@@ -292,6 +292,36 @@
       "title": "1941 m. birželio 14–19 d. trėmimo atminimas",
       "url": "https://www.genocid.lt/centras/lt/3344/a/print_version/",
       "publisher": "Lietuvos gyventojų genocido ir rezistencijos tyrimo centras"
+    },
+    "first-deportation": {
+      "title": "Pirmojo masinio trėmimo istorija",
+      "url": "https://www.genocid.lt/centras/lt/4371/a",
+      "publisher": "Lietuvos gyventojų genocido ir rezistencijos tyrimo centras"
+    },
+    "remembrance-deportations": {
+      "title": "Gedulo ir vilties dienos minėjimų pavyzdžiai",
+      "url": "https://www.lrs.lt/pls/inter/w5_show?p_d=112017&p_k=1&p_r=7997",
+      "publisher": "Lietuvos Respublikos Seimas"
+    },
+    "baltic-way-archives": {
+      "title": "Baltijos kelio organizavimas, maršrutas ir archyvai",
+      "url": "https://www.lrs.lt/sip/portal.show?p_k=1&p_r=38090",
+      "publisher": "Lietuvos Respublikos Seimas"
+    },
+    "constitution-in-force": {
+      "title": "Konstitucijos įsigaliojimo tvarkos įstatymas",
+      "url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.1891",
+      "publisher": "Lietuvos Respublikos Seimas"
+    },
+    "army-formation": {
+      "title": "Valstybės atkūrimas ir tarpukario kariuomenė",
+      "url": "https://www.kariuomene.lt/kas-mes-esame/istorija/nepriklausomybes-kovos-ir-kariuomene/23524",
+      "publisher": "Lietuvos kariuomenė"
+    },
+    "army-day-program": {
+      "title": "Ankstesnio Kariuomenės dienos minėjimo programa",
+      "url": "https://www.kariuomene.lt/kas-mes-esame/naujienos/lietuvos-kariuomenes-dienos-proga-katedros-aiksteje-vyks-iskilminga-kariu-rikiuote/1452",
+      "publisher": "Lietuvos kariuomenė"
     }
   },
   "articles": [
@@ -498,12 +528,14 @@
       "category": "Atmintina diena · įstatymas",
       "summary": "Birželio 14-oji skirta sovietinių trėmimų aukoms prisiminti. Atmintina diena savaime nesuteikia nedarbo dienos.",
       "what": "Gedulo ir vilties diena primena 1941 m. birželio 14 d. pradėtus masinius Lietuvos gyventojų trėmimus.",
-      "history": "Šią dieną pagerbiamos sovietinių trėmimų aukos, prisimenamos tremtinių ir jų šeimų patirtys. Dokumentinės trėmimų nuotraukos ir vėlesnių atminimo renginių vaizdai skiriami pagal prie jų nurodytas datas.",
+      "history": "1941 m. birželio 14 d. sovietų valdžia pradėjo pirmąjį masinį Lietuvos gyventojų trėmimą. Tremti įvairių tautybių žmonės, tarp jų vaikai. Dalis vyrų buvo atskirti nuo šeimų ir išvežti į lagerius, o šeimų nariai įkurdinti atokiose Sovietų Sąjungos vietovėse. Minėjimas skirtas pagerbti nukentėjusiuosius ir prisiminti, kaip prievartinis išvežimas pakeitė jų gyvenimą.",
       "traditions": "",
-      "practical": "Renginių programą tikrinkite organizatorių svetainėse. Prisimindami aukas rinkitės santūrų bendravimą ir patikimus liudijimus.",
+      "practical": "Minėjimuose lankomi paminklai tremtiniams ir vietos, iš kurių žmonės buvo išvežti. Viena iš jų yra memorialas prie Naujosios Vilnios geležinkelio stoties. Seimo skelbtose programose taip pat buvo atminimo valandų, parodų ir gėlių padėjimo. Tikslias einamųjų metų vietas ir laiką skelbia savivaldybės bei organizatoriai.",
       "sources": [
         "law",
-        "deportation"
+        "deportation",
+        "first-deportation",
+        "remembrance-deportations"
       ],
       "related": [
         "freedom-defenders",
@@ -564,12 +596,13 @@
       "category": "Atmintina diena · įstatymas",
       "summary": "Rugpjūčio 23-ioji primena 1989 metų Baltijos kelią – taikią žmonių grandinę per Lietuvą, Latviją ir Estiją.",
       "what": "Lietuvos įstatyme Baltijos kelio diena minima kartu su Europos diena stalinizmo ir nacizmo aukoms atminti. Tai nėra šventinė nedarbo diena.",
-      "history": "1989 m. rugpjūčio 23 d. žmonių grandinė sujungė Vilnių, Rygą ir Taliną. UNESCO 2009 m. įrašė Baltijos kelio dokumentinį paveldą į Pasaulio atminties registrą.",
+      "history": "1989 m. rugpjūčio 23 d. Lietuvos, Latvijos ir Estijos laisvės judėjimai organizavo gyvąją grandinę nuo Vilniaus per Rygą iki Talino. Dalyviai minėjo Molotovo–Ribentropo pakto ir jo slaptųjų protokolų 50-metį bei išreiškė siekį atkurti Baltijos valstybių nepriklausomybę. Akcijos koordinavimą liudija išlikę maršrutų planai ir archyvinės nuotraukos. Baltijos kelio dokumentinis paveldas 2009 m. įrašytas į UNESCO Pasaulio atminties registrą.",
       "traditions": "",
-      "practical": "Peržiūrėkite originalias archyvų nuotraukas ir liudijimus. Istorinė 1989 metų akcija ir šiandien rengiami jos minėjimai turi atskiras datas bei programas.",
+      "practical": "Istorinį maršrutą galima pažinti iš Seimo archyvinių dokumentų. Lietuvoje grandinė ėjo iš Vilniaus Panevėžio kryptimi ir tęsėsi iki sienos su Latvija. Jei planuojate aplankyti minėjimą, tikrinkite konkrečios savivaldybės skelbiamą vietą bei laiką.",
       "sources": [
         "law",
-        "baltic"
+        "baltic",
+        "baltic-way-archives"
       ],
       "related": [
         "mar11",
@@ -659,12 +692,13 @@
       "category": "Atmintina diena · įstatymas",
       "summary": "Spalio 25-ąją minima 1992 metų referendumu priimta Lietuvos Respublikos Konstitucija.",
       "what": "Konstitucijos diena yra įstatyme nustatyta atmintina diena. Konstitucija apibrėžia valstybės santvarką, žmogaus teises ir valdžios institucijų veikimą.",
-      "history": "Lietuvos Respublikos piliečiai Konstituciją priėmė 1992 m. spalio 25 d. referendume. Priėmimo data nėra tas pats, kas vėlesnė įsigaliojimo data.",
+      "history": "1992 m. spalio 25 d. piliečiai referendume priėmė Lietuvos Respublikos Konstituciją. Tą pačią dieną vyko ir Seimo rinkimai. Konstitucijos įsigaliojimo tvarkos įstatyme nurodyta 1992 m. lapkričio 2 d. Įsigaliojimo ir priėmimo datos žymi du skirtingus žingsnius, o Konstitucijos diena minima referendumo dieną.",
       "traditions": "",
-      "practical": "Skaitykite oficialų Konstitucijos tekstą. Konstitucijos diena savaime nesuteikia papildomos nedarbo dienos.",
+      "practical": "Pradėti galima nuo oficialaus Konstitucijos teksto: perskaitykite pirmąjį skirsnį apie Lietuvos valstybę ir skirsnį apie žmogaus teises. Mokyklos ar bendruomenės renginiui tiks vieno straipsnio aptarimas ir klausimas, kaip jo nuostata taikoma kasdienybėje.",
       "sources": [
         "law",
-        "constitution"
+        "constitution",
+        "constitution-in-force"
       ],
       "related": [
         "mar11",
@@ -691,12 +725,14 @@
       "category": "Atmintina diena · įstatymas",
       "summary": "Lapkričio 23-ioji – Lietuvos kariuomenės diena, siejama su 1918 metų įsakymu Nr. 1 Apsaugos ministerijai.",
       "what": "Tai įstatyme nustatyta atmintina diena, skirta Lietuvos kariuomenei. Ji nėra DK 123 straipsnio šventinė nedarbo diena.",
-      "history": "1918 m. lapkričio 23 d. Augustinas Voldemaras pasirašė įsakymą Nr. 1 Apsaugos ministerijai. Krašto apsaugos ministerija šią datą nurodo kaip oficialią kariuomenės atkūrimo dieną.",
+      "history": "1918 m. lapkričio 23 d. Apsaugos ministerijos įsakymu Nr. 1 buvo įkurta Apsaugos taryba ir paskirti besikuriančios kariuomenės vadovai. Pirmąjį pulką imta formuoti Alytuje. Gruodžio pabaigoje Vyriausybė pakvietė savanorius stoti į kariuomenę, kuri dalyvavo Nepriklausomybės kovose. Lapkričio 23-ioji žymi institucinę kariuomenės kūrimo pradžią po valstybės atkūrimo.",
       "traditions": "",
-      "practical": "Parado vieta, dalyviai ir lankymo sąlygos kasmet gali keistis. Tikrinkite Krašto apsaugos ministerijos ir kariuomenės paskelbtą programą.",
+      "practical": "Viena iš minėjimo formų yra iškilminga karių rikiuotė. Ankstesnių metų programose taip pat būta eitynių ir pagerbimo ceremonijų. Ketinant dalyvauti verta patikrinti kariuomenės paskelbtą konkretaus miesto programą, nes vietos ir laikas keičiasi.",
       "sources": [
         "law",
-        "army"
+        "army",
+        "army-formation",
+        "army-day-program"
       ],
       "related": [
         "statehood",

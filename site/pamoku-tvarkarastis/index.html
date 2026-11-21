@@ -1,15 +1,192 @@
 ---
 title: "Pamokų tvarkaraštis ir namų darbų planuoklis"
-description: "Sukurkite savaitinį pamokų tvarkaraštį ir namų darbų sąrašą: keičiamos pamokų trukmės, 5 arba 6 dienos, vietinis saugojimas, JSON kopija ir spausdinimas."
+description: "Sukurkite 5 arba 6 dienų pamokų tvarkaraštį, suplanuokite namų darbus ir pasirinkite vieną iš keturių A4 šablonų. Peržiūrėkite, spausdinkite arba išsaugokite PDF."
 tool: true
 phase_module: "school"
 preserve_source: true
 ---
-<div class="page-heading"><div><h1>Pamokų tvarkaraštis ir namų darbų planuoklis</h1><p class="page-intro">Redaguojamas savaitės tvarkaraštis, užduotys ir atsiskaitymų datos. Jūsų informacija neiškeliauja iš naršyklės.</p></div><div class="toolbar-group"></div></div><section class="panel"><h2>Tvarkaraštis be privalomų asmens duomenų</h2><p>Pridėkite tiek pamokų, kiek reikia, pasirinkite 5 arba 6 savaitės dienas ir kiekvienai pamokai nustatykite atskirą laiką. Įrankis netaiko universalaus pamokos ilgio ir nenumano nepatvirtintų mokslo metų datų. Vardas, mokinio kodas, klasės ar mokyklos pavadinimas nereikalingi.</p><p>Tvarkaraštis, mokytojo trumpinys ir namų darbų tekstas saugomi tik šioje naršyklėje. Atsisiųskite JSON atsarginę kopiją, atsispausdinkite arba ištrinkite vietinius duomenis.</p></section>
-<form id="school-planner" class="panel phase-tool" novalidate><div class="form-row"><label>Rodomos savaitės dienos<select id="school-days"><option value="5">Pirmadienis–penktadienis</option><option value="6">Pirmadienis–šeštadienis</option></select></label><label>Tvarkaraščio pavadinimas (nebūtinas)<input id="school-title" maxlength="60"></label><label>Šablonas<select id="school-template"><option value="regular">Įprastas</option><option value="large">Didelis šriftas</option><option value="compact">Kompaktiškas</option><option value="mono">Nespalvotas</option></select></label></div><div class="form-row"><label>Rodyti<select id="school-view"><option value="week">Visą savaitę</option><option value="day">Vieną dieną</option></select></label><label>Pasirinkti dieną<select id="school-view-day"><option value="0">Pirmadienis</option><option value="1">Antradienis</option><option value="2">Trečiadienis</option><option value="3">Ketvirtadienis</option><option value="4">Penktadienis</option><option value="5">Šeštadienis</option></select></label><label>Pridėti pamoką dieną<select id="lesson-add-day"><option value="0">Pirmadienį</option><option value="1">Antradienį</option><option value="2">Trečiadienį</option><option value="3">Ketvirtadienį</option><option value="4">Penktadienį</option><option value="5">Šeštadienį</option></select></label></div><p id="school-view-status" class="source-note" aria-live="polite"></p><div class="form-actions"><button type="button" id="lesson-add">Pridėti pamoką</button><button type="button" id="school-duplicate-week">Kopijuoti pirmadienį į tuščias vietas</button><button type="button" id="school-clear-week">Išvalyti savaitę</button><button type="button" id="school-undo" disabled>Anuliuoti</button><button type="button" id="school-print">Spausdinti tvarkaraštį</button><button type="button" id="school-json-export">Atsisiųsti JSON kopiją</button><label class="button">Atkurti JSON kopiją<input id="school-json-import" type="file" accept="application/json,.json" hidden></label><button type="button" id="school-reset">Ištrinti šio įrenginio duomenis</button></div><p id="school-message" class="result" role="status" aria-live="polite"></p></form>
-<section class="panel"><h2 id="school-lessons-heading">Savaitės pamokos</h2><p id="school-conflicts" class="result" role="status" aria-live="polite" hidden></p><div class="table-scroll" tabindex="0" role="region" aria-label="Redaguojamas pamokų tvarkaraštis"><table class="data-table school-table"><thead><tr><th>Diena</th><th>Nr.</th><th>Pradžia</th><th>Pabaiga</th><th>Dalykas</th><th>Kabinetas</th><th>Mokytojo trumpinys</th><th></th></tr></thead><tbody id="school-lessons"></tbody></table></div></section>
-<section class="panel" id="homework-section"><h2>Namų darbai ir artėjantys atsiskaitymai</h2><form id="homework-form" class="form-row"><label>Dalykas<input id="homework-subject" maxlength="50" required></label><label>Užduotis<input id="homework-task" maxlength="180" required></label><label>Terminas<input id="homework-due" type="date" required></label><label>Prioritetas<select id="homework-priority"><option value="normal">Įprastas</option><option value="high">Svarbus</option></select></label><button type="submit">Pridėti užduotį</button></form><div class="form-row"><label>Filtruoti pagal būseną<select id="homework-filter"><option value="all">Visos užduotys</option><option value="upcoming">Būsimos</option><option value="overdue">Vėluojančios</option><option value="completed">Atliktos</option></select></label><label>Filtruoti pagal dalyką<select id="homework-subject-filter"><option value="">Visi dalykai</option></select></label></div><p id="homework-count" class="source-note" role="status" aria-live="polite"></p><ul id="homework-list" class="phase-list"></ul></section>
-<p class="source-note">Mokinio įrašai yra privatūs ir įrenginio vietinėje saugykloje. Svetainė jų nesiunčia į serverį. Išvalius naršyklės duomenis jie gali būti prarasti, todėl atsarginę JSON kopiją saugokite patys. ICS su realiomis pamokų datomis kuriamas tik turint tikslias mokslo metų ribas ir išimtis; šiame pasikartojančiame savaitės šablone datų neišgalvojame.</p>
+<div class="school-studio">
+  <header class="school-hero">
+    <div class="school-hero__copy">
+      <h1>Pamokų tvarkaraštis</h1>
+      <p>Sudėliokite savaitės pamokas, pasižymėkite namų darbus ir atsispausdinkite savo tvarkaraštį.</p>
+      <div class="school-hero__actions">
+        <a class="button school-hero__primary" href="#school-planner">Kurti tvarkaraštį <span aria-hidden="true">↓</span></a>
+        <a class="button school-hero__secondary" href="#school-templates">Rinktis šabloną <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="school-hero__visual" aria-hidden="true">
+      <div class="school-hero__paper">
+        <div class="school-hero__paper-top"><span></span><span></span></div>
+        <div class="school-hero__paper-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <img src="/assets/visuals/shell/school.svg" alt="" aria-hidden="true" width="96" height="96" decoding="async">
+    </div>
+  </header>
+  <noscript><p>Redaktoriui reikia „JavaScript“. Galite <a href="/pamoku-tvarkarascio-sablonai/">atsisiųsti tuščią pamokų tvarkaraštį</a> ir užpildyti jį ranka.</p></noscript>
+
+  <section class="school-library" id="school-templates" aria-labelledby="school-templates-heading" data-school-wait inert aria-busy="true">
+    <div class="school-section-heading">
+      <div><h2 id="school-templates-heading">Tvarkaraščio šablonai</h2><p>Pasirinkite, kaip atrodys jūsų spausdinamas savaitės lapas.</p></div>
+      <a href="/pamoku-tvarkarascio-sablonai/">Tušti PDF šablonai <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="school-template-grid" role="group" aria-label="Spausdinimo šablonai">
+      <button type="button" class="school-template-card" data-school-template="regular" aria-pressed="true">
+        <span class="school-mini-sheet" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="school-template-copy"><strong>Savaitės tinklelis</strong><small>Aiškios dienų skiltys</small></span>
+      </button>
+      <button type="button" class="school-template-card" data-school-template="large" aria-pressed="false">
+        <span class="school-mini-sheet" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="school-template-copy"><strong>Pamokos ir namų darbai</strong><small>Didesnis šriftas ir vieta užduotims</small></span>
+      </button>
+      <button type="button" class="school-template-card" data-school-template="compact" aria-pressed="false">
+        <span class="school-mini-sheet" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="school-template-copy"><strong>Kompaktiškas lapas</strong><small>Tankesnis ilgos savaitės maketas</small></span>
+      </button>
+      <button type="button" class="school-template-card" data-school-template="mono" aria-pressed="false">
+        <span class="school-mini-sheet" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="school-template-copy"><strong>Nespalvotas lapas</strong><small>Patogus juodai baltam spausdinimui</small></span>
+      </button>
+    </div>
+  </section>
+
+  <div class="school-workspace">
+    <div class="school-editor" data-school-wait inert aria-busy="true">
+      <form id="school-planner" class="school-controls" aria-labelledby="school-editor-heading" novalidate>
+        <div class="school-section-heading">
+          <div><h2 id="school-editor-heading">Savaitės redaktorius</h2><p>Pakeitimai saugomi šiame įrenginyje.</p></div>
+          <div class="school-editor-meta">
+            <span id="school-lesson-count" class="school-count">0 pamokų</span>
+            <a class="school-preview-jump" href="#school-print-preview">Peržiūra <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="school-fields school-fields--basic">
+          <label>Tvarkaraščio pavadinimas <input id="school-title" maxlength="60" placeholder="Mano pamokų tvarkaraštis"></label>
+          <label>Savaitės dienos
+            <select id="school-days"><option value="5">Pirmadienis–penktadienis</option><option value="6">Pirmadienis–šeštadienis</option></select>
+          </label>
+        </div>
+        <div class="school-day-tabs" role="group" aria-label="Greitai pasirinkti dieną" data-school-day-tabs>
+          <button type="button" data-school-day="week" aria-pressed="true">Visa savaitė</button>
+          <button type="button" data-school-day="0" aria-label="Pirmadienis" aria-pressed="false">Pr</button>
+          <button type="button" data-school-day="1" aria-label="Antradienis" aria-pressed="false">An</button>
+          <button type="button" data-school-day="2" aria-label="Trečiadienis" aria-pressed="false">Tr</button>
+          <button type="button" data-school-day="3" aria-label="Ketvirtadienis" aria-pressed="false">Kt</button>
+          <button type="button" data-school-day="4" aria-label="Penktadienis" aria-pressed="false">Pn</button>
+          <button type="button" data-school-day="5" aria-label="Šeštadienis" aria-pressed="false" hidden>Št</button>
+        </div>
+        <div class="school-add">
+          <label>Pridėti pamoką dieną
+            <select id="lesson-add-day"><option value="0">Pirmadienį</option><option value="1">Antradienį</option><option value="2">Trečiadienį</option><option value="3">Ketvirtadienį</option><option value="4">Penktadienį</option><option value="5">Šeštadienį</option></select>
+          </label>
+          <button type="button" class="primary" id="lesson-add"><span aria-hidden="true">＋</span> Pridėti pamoką</button>
+          <button type="button" class="school-slot-button" id="school-slots-open">Užpildyti pamokų laikus</button>
+        </div>
+        <p id="school-view-status" class="school-view-status" aria-live="polite"></p>
+        <p id="school-message" class="school-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="school-lesson-editor" aria-labelledby="school-lessons-heading">
+        <div class="school-section-heading"><h3 id="school-lessons-heading">Savaitės pamokos</h3></div>
+        <p id="school-conflicts" class="school-conflicts" role="status" aria-live="polite" hidden></p>
+        <div class="school-empty" id="school-lessons-empty">
+          <strong>Šiame rodinyje pamokų dar nėra.</strong>
+          <span>Pridėkite pamoką arba užpildykite kelis laikus iš karto.</span>
+        </div>
+        <div class="table-scroll school-table-region" tabindex="0" role="region" aria-label="Redaguojamas pamokų tvarkaraštis">
+          <table class="data-table school-table">
+            <thead><tr><th scope="col">Diena</th><th scope="col">Nr.</th><th scope="col">Pradžia</th><th scope="col">Pabaiga</th><th scope="col">Dalykas</th><th scope="col">Kabinetas</th><th scope="col">Mokytojo trumpinys</th><th scope="col"><span class="visually-hidden">Veiksmai</span></th></tr></thead>
+            <tbody id="school-lessons"></tbody>
+          </table>
+        </div>
+        <div class="school-edit-actions">
+          <button type="button" id="school-duplicate-week">Kopijuoti pirmadienį į tuščias vietas</button>
+          <button type="button" id="school-undo" disabled>Anuliuoti</button>
+          <button type="button" id="school-clear-week" class="school-quiet-danger">Išvalyti savaitę</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="school-preview" id="school-print-preview" aria-labelledby="school-preview-heading" data-school-wait inert aria-busy="true">
+      <div class="school-section-heading">
+        <div><h2 id="school-preview-heading">Spausdinimo peržiūra</h2><p>A4 · gulsčias formatas</p></div>
+      </div>
+      <div class="school-print-options">
+        <label>Šablonas
+          <select id="school-template"><option value="regular">Savaitės tinklelis</option><option value="large">Pamokos ir namų darbai</option><option value="compact">Kompaktiškas lapas</option><option value="mono">Nespalvotas lapas</option></select>
+        </label>
+        <label class="school-check"><input type="checkbox" id="school-sheet-homework"> Rodyti nebaigtus namų darbus</label>
+      </div>
+      <p class="school-sheet-scroll-hint">Norėdami pamatyti visas dienas, slinkite lapą į šoną.</p>
+      <div class="school-sheet-mat" tabindex="0" role="region" aria-label="Savaitės lapo peržiūra">
+        <div class="school-sheet" data-print-root="school" id="school-sheet" data-template="regular">
+          <div class="school-sheet__heading"><p>PAMOKŲ SAVAITĖ</p><h3 id="school-sheet-title">Mano pamokų tvarkaraštis</h3></div>
+          <table class="school-sheet__table" aria-label="Spausdinamas savaitės pamokų tvarkaraštis">
+            <thead id="school-sheet-days"><tr><th scope="col">Nr.</th><th scope="col">Pr</th><th scope="col">An</th><th scope="col">Tr</th><th scope="col">Kt</th><th scope="col">Pn</th></tr></thead>
+            <tbody id="school-sheet-rows">
+              {% for index in (1..6) %}<tr><th scope="row">{{ index }}</th><td></td><td></td><td></td><td></td><td></td></tr>{% endfor %}
+            </tbody>
+          </table>
+          <section class="school-sheet__homework" id="school-sheet-tasks" hidden>
+            <h4>Namų darbai</h4>
+            <ul id="school-sheet-task-list"></ul>
+          </section>
+        </div>
+      </div>
+      <button class="primary school-print-button" type="button" id="school-print">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg#print"></use></svg>
+        <span>Spausdinti arba išsaugoti PDF</span>
+      </button>
+    </section>
+  </div>
+
+  <section class="school-homework" id="homework-section" aria-labelledby="school-homework-heading" data-school-wait inert aria-busy="true">
+    <div class="school-section-heading">
+      <div><h2 id="school-homework-heading">Namų darbai ir atsiskaitymai</h2><p>Pridėkite užduotį, terminą ir prioritetą.</p></div>
+      <span class="school-count" id="school-open-task-count">0 nebaigtų užduočių</span>
+    </div>
+    <form id="homework-form" class="school-homework-form">
+      <label>Dalykas<input id="homework-subject" list="school-subjects" maxlength="50" required placeholder="Pvz., matematika"></label>
+      <datalist id="school-subjects"></datalist>
+      <label>Užduotis<input id="homework-task" maxlength="180" required placeholder="Ką reikia padaryti?"></label>
+      <label>Terminas<input id="homework-due" type="date" required></label>
+      <label>Prioritetas<select id="homework-priority"><option value="normal">Įprastas</option><option value="high">Svarbus</option></select></label>
+      <button class="primary" type="submit">Pridėti užduotį</button>
+    </form>
+    <div class="school-homework__filters">
+      <label>Būsena<select id="homework-filter"><option value="all">Visos užduotys</option><option value="upcoming">Būsimos</option><option value="overdue">Vėluojančios</option><option value="completed">Atliktos</option></select></label>
+      <label>Dalykas<select id="homework-subject-filter"><option value="">Visi dalykai</option></select></label>
+    </div>
+    <p id="homework-count" class="school-view-status" role="status" aria-live="polite"></p>
+    <ul id="homework-list" class="phase-list"></ul>
+  </section>
+
+  <section class="school-backup" aria-labelledby="school-backup-title" data-school-wait inert aria-busy="true">
+    <div><h2 id="school-backup-title">Atsarginė kopija</h2><p>Tvarkaraštis ir užduotys saugomi naršyklėje. Išsaugokite JSON kopiją, jei norite juos perkelti į kitą įrenginį.</p></div>
+    <div class="school-backup__actions">
+      <button type="button" id="school-json-export">Atsisiųsti JSON kopiją</button>
+      <label class="button school-file-action">Atkurti JSON kopiją<input id="school-json-import" type="file" accept="application/json,.json" aria-label="Atkurti JSON kopiją"></label>
+      <button type="button" id="school-reset" class="school-quiet-danger">Ištrinti šio įrenginio duomenis</button>
+    </div>
+  </section>
+
+  <dialog class="school-slot-dialog" id="school-slots-dialog" aria-labelledby="school-slots-title">
+    <form id="school-slots-form">
+      <h2 id="school-slots-title">Užpildyti pamokų laikus</h2>
+      <p>Laikai įrašomi tik į tuščias pamokų vietas. Esami įrašai išlieka.</p>
+      <div class="school-fields school-fields--slots">
+        <label>Pirmos pamokos pradžia<input id="school-slot-start" type="time" value="08:00" required></label>
+        <label>Pamokos trukmė (min.)<input id="school-slot-duration" type="number" min="1" max="180" value="45" required></label>
+        <label>Pertrauka (min.)<input id="school-slot-break" type="number" min="0" max="180" value="10" required></label>
+        <label>Pamokų skaičius<input id="school-slot-count" type="number" min="1" max="20" value="6" required></label>
+        <label>Taikyti<select id="school-slot-scope"><option value="day">Pasirinktai dienai</option><option value="week">Visai rodomai savaitei</option></select></label>
+      </div>
+      <p class="school-slot-error" id="school-slot-error" role="alert" hidden></p>
+      <div class="school-slot-actions"><button type="button" id="school-slots-close">Atšaukti</button><button type="submit" class="primary">Užpildyti laikus</button></div>
+    </form>
+  </dialog>
+</div>
+
 <h2>Mokyklos savaitės planavimas Lietuvoje</h2><p>Šis įrankis yra asmeninis tvarkaraščio ir užduočių planuoklis, o ne mokyklos administravimo ar valstybės sertifikuota sistema. Tvarkaraštyje galima turėti nevienodos trukmės pamokas ir skirtingas dienos pertraukas. <a href="https://e-tar.lt/portal/lt/legalAct/TAR.2581A7005CA7/DceqKtHoXM" rel="noopener">HN 21:2017 galiojanti redakcija</a> nustato ugdymo proceso higienos reikalavimus ir numato sąlygas, kurioms esant mokykla gali taikyti pakeitimus; asmeninis šablonas jų atitikties nepatvirtina. 2027–2028 mokslo metų atostogų datos čia nėra iš anksto įrašytos, kol jų nepatvirtina kompetentinga institucija.</p>
 <nav class="resource-grid" aria-label="Susiję puslapiai"><a class="resource-card resource-card--school-template" href="/pamoku-tvarkarascio-sablonai/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-school-template"></use></svg></span><h2>Pamokų tvarkaraščio šablonai</h2><small>Tušti spausdinami mokyklos planai.</small></a><a class="resource-card resource-card--school-break" href="/mokiniu-atostogos/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-school-break"></use></svg></span><h2>Mokinių atostogos</h2><small>Skelbiamos ir patikrintos 2026–2027 mokslo metų datos.</small></a><a class="resource-card resource-card--blank" href="/tuscias-kalendorius/"><span class="resource-card__icon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="/assets/visuals/home-icons.svg?v=icons-20261016a#tool-blank"></use></svg></span><h2>Tušti planuokliai</h2><small>Nedatuoti savaitės ir mėnesio lapai.</small></a></nav>
 

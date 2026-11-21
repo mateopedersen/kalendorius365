@@ -144,12 +144,14 @@ module NamedaysPages
   def month_page(month)
     m=MONTHS[month-1];previous=MONTHS[(month+10)%12];following=MONTHS[month%12]
     note=NOTES[month-1]
-    day_count=month_rows(month).length
+    days = month_rows(month)
+    day_count = days.length
+    first_names = esc(days.first.fetch('names').join(', '))
     heading=<<~HTML
       <header class="nd-hero nd-hero--month">
         <div class="nd-hero__copy">
           <h1>#{m[2]} vardadieniai</h1>
-          <p class="nd-hero__lead">#{note[1]}</p>
+          <p class="nd-hero__lead"><a href="#diena-01">#{m[2]} 1 d. vardadieniai</a> – #{first_names}. #{note[1]}</p>
           <div class="nd-hero__links">
             <a class="nd-button" href="#pasirinkta-data">#{icon('calendar')} Pasirinkti dieną</a>
             <a class="nd-button nd-button--light" href="#dienu-sarasas">Visos mėnesio dienos</a>

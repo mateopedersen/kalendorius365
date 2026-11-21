@@ -1,0 +1,10 @@
+{% if page.related_reading %}
+<section class="panel related-reading" aria-labelledby="related-reading-title">
+  <h2 id="related-reading-title">{{ page.related_reading.title | escape }}</h2>
+  <ul>
+    {% for item in page.related_reading.links %}
+    <li><a href="{{ item.href | escape }}"{% if item.marker == 'sun-weather' %} data-sun-weather-link="{{ page.sun_weather_aliases | jsonify | escape }}"{% endif %}>{{ item.label | escape }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

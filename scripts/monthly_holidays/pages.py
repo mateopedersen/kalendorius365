@@ -133,6 +133,11 @@ def render_year(year, engine, links, festivals):
         cats=[c for c in CATS if any(e['category']==c for e in events)]
         stat=len({e['date'] for e in events if e['statutory_nonworking']});comm=sum(e['category']=='legally_commemorative' for e in events)
         other=sum(e['category'] in ('traditional_cultural','international_observance') for e in events)
+        holidays = {event['date']: event['title'] for event in events if event['statutory_nonworking']}
+        month_answer = f'{year} m. {gen} mėnesį šventinių dienų pagal Darbo kodeksą nėra.'
+        if holidays:
+            dates_and_names = '. '.join(f'{readable(day)} – {name}' for day, name in holidays.items())
+            month_answer = f'{year} m. {gen} mėnesį šventinių dienų pagal Darbo kodeksą – {stat}. {dates_and_names}.'
         metrics=f'<dl class="mh-metrics"><div><dt>Šventinės dienos</dt><dd>{stat}<span>pagal DK 123 str.</span></dd></div><div><dt>Atmintinų dienų įrašai</dt><dd>{comm}<span>pagal įstatymą</span></dd></div><div><dt>Kitos patikrintos datos</dt><dd>{other}<span>tradicijos ir tarptautinės dienos</span></dd></div></dl>'
         filters='<div class="mh-filters" role="group" aria-label="Datos pagal kategoriją"><button type="button" data-category-filter="all" disabled aria-pressed="true">Visos datos</button>'+''.join(f'<button type="button" data-category-filter="{c}" disabled aria-pressed="false">{icon(CATS[c][2])}{CATS[c][0]}</button>' for c in cats)+'</div>'
         controls=f'<div class="mh-controls" data-enhance>{filters}<div class="mh-search-row"><label for="mh-search">Ieškoti šio mėnesio datų<input id="mh-search" disabled type="search" placeholder="Diena, pavadinimas ar tema…" autocomplete="off"></label><button type="button" data-reset disabled>{icon("reset")}Išvalyti filtrus</button></div><p class="mh-results" role="status" aria-live="polite" aria-atomic="true">Rodoma įrašų: {len(events)}.</p></div>'
@@ -175,7 +180,7 @@ def render_year(year, engine, links, festivals):
             print_note = 'Atitinkamo mėnesio kalendorių galite atsispausdinti iš naršyklės.'
         season_link = link(*SEASONAL_GUIDES[m]) if m in SEASONAL_GUIDES else ''
         html=f'''<article class="mh mh--{slug}" data-month-guide data-month="{m}" data-year="{year}">
-<header class="mh-hero"><div class="mh-hero__copy"><p class="eyebrow">{year} · {E(theme)}</p><h1>{E(title)}</h1><p class="mh-intro">{E(intro)}</p><div class="mh-hero-actions">{link(f'/{year}/{slug}/',icon('download')+'Spausdinamas mėnesio kalendorius','button')}{link('#mh-calendar','Rasti datą '+icon('arrow'),'mh-text-link')}</div>{year_nav(year, m)}</div><figure class="mh-art"><img src="{media['src']}" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" alt="{E(media['alt'])}"><figcaption>{E(media['title'])}. Originali stilizuota iliustracija.</figcaption></figure></header>
+<header class="mh-hero"><div class="mh-hero__copy"><p class="eyebrow">{year} · {E(theme)}</p><h1>{E(title)}</h1><p class="mh-intro">{E(intro)}</p><p class="mh-intro">{E(month_answer)}</p><div class="mh-hero-actions">{link(f'/{year}/{slug}/',icon('download')+'Spausdinamas mėnesio kalendorius','button')}{link('#mh-calendar','Rasti datą '+icon('arrow'),'mh-text-link')}</div>{year_nav(year, m)}</div><figure class="mh-art"><img src="{media['src']}" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" alt="{E(media['alt'])}"><figcaption>{E(media['title'])}. Originali stilizuota iliustracija.</figcaption></figure></header>
 {metrics}
 <section class="mh-workspace" aria-labelledby="mh-dates"><div class="mh-list-head"><p class="eyebrow">Pasirinkite dieną arba temą</p><h2 id="mh-dates">{name}: datos ir jų reikšmė</h2><p>Skaičius šalia datos rodo tai dienai skirtų įrašų skaičių. Pasirinkite datą ir skaitykite jos paaiškinimus.</p></div>
 {controls}

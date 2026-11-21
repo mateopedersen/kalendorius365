@@ -4,7 +4,7 @@ import { connectEventEditor } from "./shell/event-editor.js";
 import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
 import { exportICS, importICS } from "./ics.js";
-import { notice } from "./common.js?v=3b631dd";
+import { notice } from "./notice.js";
 import { enhanceWeatherCityPicker, loadWeather, renderWeather } from "./weather.js?v=city-auto-20261016";
 import { WEATHER_CITY_BY_ID, DEFAULT_WEATHER_CITY } from "./data/weather-cities.js";
 const $ = (s) => document.querySelector(s),
@@ -48,7 +48,6 @@ const [data, editorial] = await Promise.all([
 if (store.error) notice(store.error);
 let selected = cal.dateFromSearch(location.search) || cal.today(),
   display = selected,
-  mini = selected,
   view = "month",
   visible = store.data.preferences.visible || [
     true,
@@ -135,7 +134,6 @@ function selectDate(s, nextView = view) {
   cal.parse(s);
   selected = s;
   display = s;
-  mini = s;
   view = nextView;
   $("#day-details").open = true;
   render();
@@ -339,6 +337,30 @@ function syncFilters() {
   });
   render();
 }
+function renderWeekPlan() {
+  const start = cal.addDays(selected, -cal.weekday(selected)),
+    end = cal.addDays(start, 6),
+    work = cal.workStats(start, end, data),
+    next = cal.addWorkdays(selected, 1, data),
+    nextLink = $("#plan-next-workday"),
+    nextDate = nextLink.querySelector("time");
+  const range = $("#plan-week-range");
+  const rangeText = `${cal.formatDate(start, compactDate)}–${cal.formatDate(end, compactDate)} · ${cal.isoWeek(selected).week} ISO savaitė`;
+  if (range.textContent !== rangeText) range.textContent = rangeText;
+  $("#plan-week-days").textContent = work.days;
+  $("#plan-week-hours").textContent = `${work.hours} val.`;
+  $("#plan-week-balance").style.setProperty("--work-share", `${(100 * work.days) / 7}%`);
+  $("#plan-week-rest").textContent = cal.countNoun(work.weekends + work.publicDays,
+    "nedarbo diena", "nedarbo dienos", "nedarbo dienų");
+  nextLink.hidden = next > "2100-12-31";
+  nextLink.href = `/?data=${next}#calendar`;
+  nextLink.dataset.date = next;
+  nextDate.dateTime = next;
+  nextDate.textContent = cal.formatDate(next, { year: undefined, weekday: "long" });
+  const calculator = $("#plan-week-calculator");
+  calculator.hidden = start < "1900-01-01" || end > "2100-12-31";
+  calculator.href = `/datos-skaiciuokle/?nuo=${start}&iki=${end}&imtinai=1`;
+}
 function renderCalendar() {
   renderFilterChips();
   const y = +display.slice(0, 4),
@@ -376,8 +398,7 @@ function renderCalendar() {
   }
   for (const b of document.querySelectorAll("[data-view]"))
     b.setAttribute("aria-pressed", String(b.dataset.view === view));
-  $("#mini-title").textContent = cal.formatDate(mini, { day: undefined });
-  $("#mini").replaceChildren(monthTable(mini, true, todayDate));
+  renderWeekPlan();
   let last = `${y}-${String(m).padStart(2, "0")}-${cal.monthLength(y, m)}`,
     first = `${y}-${String(m).padStart(2, "0")}-01`;
   const remaining = cal.workStats(
@@ -428,6 +449,7 @@ function renderCalendar() {
   const list = el("ul");
   for (const h of monthH) {
     const li = el("li");
+    li.classList.toggle("month-facts__commemoration", h.classification === "commemoration");
     const date = el("time", cal.formatDate(h.date, compactDate));
     date.dateTime = h.date;
     const article = editorialForHoliday(h.id);
@@ -529,11 +551,10 @@ function renderDetails() {
         upcoming.push(row);
       }
   }
-  $("#upcoming-events").replaceChildren(
-    ...(upcoming.length
-      ? upcoming
-      : [el("p", "Per artimiausias 90 dienų įvykių nėra.", "upcoming-events-empty")]),
-  );
+  const upcomingList = $("#upcoming-events");
+  upcomingList.replaceChildren(...upcoming);
+  upcomingList.hidden = !upcoming.length;
+  $("#upcoming-events-empty").hidden = Boolean(upcoming.length);
 }
 function renderTasks() {
   const filter = $("#task-filter").value,
@@ -722,15 +743,11 @@ $("#next").onclick = () => navigate(1);
 $("#today").onclick = () => selectDate(cal.today());
 $("#day-prev").onclick = () => selectDate(cal.addDays(selected, -1));
 $("#day-next").onclick = () => selectDate(cal.addDays(selected, 1));
-$("#mini-prev").onclick = () => {
-  mini = cal.shiftMonth(mini, -1);
-  $("#mini-title").textContent = cal.formatDate(mini, { day: undefined });
-  $("#mini").replaceChildren(monthTable(mini, true));
-};
-$("#mini-next").onclick = () => {
-  mini = cal.shiftMonth(mini, 1);
-  $("#mini-title").textContent = cal.formatDate(mini, { day: undefined });
-  $("#mini").replaceChildren(monthTable(mini, true));
+$("#plan-next-workday").onclick = (event) => {
+  if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  const date = event.currentTarget.dataset.date;
+  if (selectDate(date)) $("#calendar").querySelector(`button[data-date="${date}"]`)?.focus();
 };
 for (const b of document.querySelectorAll("[data-view]"))
   b.onclick = () => {
@@ -769,6 +786,7 @@ $("#calendar").addEventListener("keydown", (e) => {
   $("#calendar").querySelector(`[data-date="${s}"]`)?.focus();
 });
 const layers = $("#layers");
+const layerArt = ["personal", "work", "study", "health", "family", "birthday", "other"];
 [
   { name: "Lietuvos šventės", index: -1 },
   ...data.categories.map((name, index) => ({ name, index })),
@@ -777,20 +795,12 @@ const layers = $("#layers");
     c = el("input");
   c.type = "checkbox";
   c.checked = index < 0 ? showHolidays : visible[index];
-  const glyph = homeIcon(
-    index < 0
-      ? "layer-holidays"
-      : [
-          "layer-personal",
-          "layer-work",
-          "layer-study",
-          "layer-health",
-          "layer-family",
-          "layer-birthday",
-          "layer-other",
-        ][index],
-    `home-icon layer-icon layer-icon-${index < 0 ? "holidays" : index}`,
-  );
+  const art = index < 0 ? "holidays" : layerArt[index];
+  const glyph = el("img", undefined, "layer-icon");
+  glyph.src = "/assets/visuals/planner-icons.svg#" + art;
+  glyph.alt = "";
+  glyph.width = glyph.height = 37;
+  glyph.decoding = "async";
   label.append(c, glyph, el("span", name, "layer-name"));
   c.onchange = () => {
     if (index < 0) {
@@ -1048,6 +1058,24 @@ render();
 composeHolidayFromLink();
 tick();
 const dashboard = $(".dashboard");
+const calendarFilters = $(".calendar-filters");
+const dayDetails = $("#day-details");
+const compactCalendar = matchMedia("(max-width: 760px)");
+
+function openLinkedDayDetails() {
+  const target = document.getElementById(location.hash.slice(1));
+  if (target && dayDetails.contains(target)) dayDetails.open = true;
+}
+
+function fitCalendarFilters() {
+  calendarFilters.open = !compactCalendar.matches;
+  dayDetails.open = !compactCalendar.matches || Boolean(cal.dateFromSearch(location.search));
+  openLinkedDayDetails();
+}
+
+fitCalendarFilters();
+compactCalendar.addEventListener("change", fitCalendarFilters);
+window.addEventListener("hashchange", openLinkedDayDetails);
 dashboard.removeAttribute("inert");
 dashboard.setAttribute("aria-busy", "false");
 $("#calendar-app-status").hidden = true;

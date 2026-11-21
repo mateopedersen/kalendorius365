@@ -28,7 +28,7 @@ MONTHS = (
     "sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio",
     "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio",
 )
-ENGINE_VERSION = "original-lithuanian-calculation-copy-v1.1"
+ENGINE_VERSION = "original-lithuanian-calculation-copy-v1.2"
 SOURCE_ID = "astroway-public-calculations-original-lithuanian"
 LICENSE_EVIDENCE_ID = "astroway-terms-2026-07-31-calculations-own-interpretation"
 
@@ -166,7 +166,7 @@ def needs_publication(day: date) -> bool:
         return True
     try:
         data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
-        if data.get("local_date") != day.isoformat() or data.get("content_status") != "published":
+        if not isinstance(data, dict) or data.get("local_date") != day.isoformat() or data.get("content_status") != "published":
             return True
         signs = json.loads(SIGNS_PATH.read_text(encoding="utf-8"))
         validate_release_data(data, signs, expected_current_date=day)
@@ -206,14 +206,15 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         results = fetch_all(day)
         validate_batch(results, day)
-        report = write_report(results, day)
         if args.report_only:
+            report = write_report(results, day)
             print(f"Patvirtinta 12/12 skaičiavimų; įrodymas: {report.relative_to(ROOT)}")
             return 0
         data = build_data(results, day)
         if args.check_only:
-            print(f"Pass 1: 12/12 skaičiavimų patvirtinti; pass 2: 12/12 originalių LT tekstų patvirtinti; failai nepakeisti. Įrodymas: {report.relative_to(ROOT)}")
+            print("Patvirtinta 12/12 skaičiavimų ir 12/12 originalių lietuviškų tekstų. Failai nepakeisti.")
             return 0
+        report = write_report(results, day)
         atomic_write(DATA_PATH, data)
         set_github_output("changed", "true")
         print(f"Atominiu būdu parengtas 12/12 ženklų rinkinys {day.isoformat()} dienai; tekstas: originalus LT; įrodymas: {report.relative_to(ROOT)}")

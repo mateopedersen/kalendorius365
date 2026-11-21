@@ -31,17 +31,19 @@ test('full search filters, shareable URL, back, pagination, clear and XSS text',
 
 test('header search recovers from a failed index request without a reload',async({page})=>{
  let requests=0;await page.route('**/data/search.json',route=>++requests===1?route.abort():route.continue());
- await page.goto('/2028/');await openHeaderSearch(page);await page.locator('#site-search').fill('saulėlydis Kaune');
+ await page.goto('/2028/');
+ await expect(page.locator('#site-search')).toHaveAttribute('role','combobox');
+ await openHeaderSearch(page);await page.locator('#site-search').fill('saulėlydis Kaune');
  await page.getByRole('button',{name:'Bandyti dar kartą',exact:true}).click();
- await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
+ await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/kaunas/');
  await expect(page.locator('#site-search-results')).toBeVisible();
  expect(requests).toBeGreaterThanOrEqual(2);
  const input=page.locator('#site-search');
  await input.focus();
- await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/');
+ await expect(page.locator('#site-search-results [role=option]').first()).toHaveAttribute('href','/saule/kaunas/');
  await page.keyboard.press('ArrowDown');
  await expect(input).toHaveAttribute('aria-activedescendant','site-search-option-0');
- await page.keyboard.press('Enter');await expect(page).toHaveURL(/\/saule\/$/);
+ await page.keyboard.press('Enter');await expect(page).toHaveURL(/\/saule\/kaunas\/$/);
 });
 
 test('calendar event create, edit, reload, export and delete preserve notes and tasks',async({page})=>{
@@ -83,6 +85,26 @@ test('calendar views and period navigation update actual state',async({page})=>{
  await page.locator('#today').click();
  await expect(page.locator('#period-title')).toHaveText('2026 m. lapkritis');
  await expect(month).toHaveValue('11');
+});
+
+test('sunrise week keeps dates and headings inside their table cells on narrow phones',async({page})=>{
+ await page.setViewportSize({width:320,height:780});
+ for(const route of ['/saule/','/saule/kaunas/']){
+  await page.goto(route,{waitUntil:'domcontentloaded'});
+  await expect(page.locator('#sun-week-rows tr')).toHaveCount(7);
+  const overflow=await page.locator('.sun-week').evaluate(async section=>{
+   await document.fonts.ready;
+   return [...section.querySelectorAll('th,td')].flatMap(cell=>{
+    const range=document.createRange();
+    range.selectNodeContents(cell);
+    const bounds=cell.getBoundingClientRect();
+    const lines=[...range.getClientRects()];
+    return lines.some(line=>line.left<bounds.left-1||line.right>bounds.right+1)?[cell.textContent.trim()]:[];
+   });
+  });
+  expect(overflow,route).toEqual([]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(320);
+ }
 });
 
 test('date calculator handles leap-day difference, inclusive endpoints and ISO week',async({page})=>{
@@ -324,6 +346,12 @@ test('ascendant computes valid input and rejects unknown cities',async({page})=>
 test('sun city/date and simulation moment update the displayed calculations',async({page})=>{
  await page.goto('/saule/');await page.locator('#sun-city').selectOption('kaunas');await page.locator('#sun-date').fill('2028-02-29');await page.locator('#sun-date').press('Tab');
  await expect(page.locator('#sun-summary')).toContainText('Kaunas');await expect(page.locator('#sun-rows tr')).toHaveCount(29);
+ await expect(page).toHaveURL(/\/saule\/kaunas\/\?data=2028-02-29$/);
+ await expect(page.locator('#sun-answer-city')).toHaveText('Kaune');
+ await expect(page.locator('#sun-answer-date')).toHaveAttribute('datetime','2028-02-29');
+ await expect(page.locator('#sun-answer-today')).toBeHidden();
+ await expect(page.locator('#sun-week-rows tr')).toHaveCount(7);
+ await expect(page.locator('#sun-answer-set')).toHaveText(await page.locator('#sunset-time').innerText());
  await page.locator('[data-sun-moment="sunset"]').click();
  // The visualization slider has 1000 steps across daylight; its rounded
  // simulation moment can differ from the exact event label by one minute.

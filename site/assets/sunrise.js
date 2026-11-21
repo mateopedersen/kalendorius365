@@ -1,24 +1,18 @@
 import { solarFor, solarPositionAt } from "./phase-5-6-8-core.js";
 import { buildSolarScene, svg } from "./shell/sunrise-scene.js";
-import { today, TZ } from "./calendar.js";
+import { today } from "./calendar.js";
+import { dateAfter, daylightLabel as minutesLabel, solarWeek, sunClock as clock } from "./sunrise-readings.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const DAY = 86400000;
 const pad = (value) => String(value).padStart(2, "0");
 const parts = (date) => ({ year: Number(date.slice(0, 4)), month: Number(date.slice(5, 7)), day: Number(date.slice(8, 10)) });
-const addDays = (date, amount) => {
-  const { year, month, day } = parts(date);
-  return new Date(Date.UTC(year, month - 1, day + amount)).toISOString().slice(0, 10);
-};
 const dayLabel = new Intl.DateTimeFormat("lt-LT", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" });
 const displayDate = (date) => dayLabel.format(new Date(`${date}T12:00:00Z`));
-const timeFormatter = new Intl.DateTimeFormat("lt-LT", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
-const clock = instant => timeFormatter.format(new Date(instant));
 const degrees = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 1 });
 const angleLabel = value => degrees.format(Math.abs(value) < .05 ? 0 : value) + "°";
 const directions = ["šiaurė", "šiaurės rytai", "rytai", "pietryčiai", "pietūs", "pietvakariai", "vakarai", "šiaurės vakarai"];
 const compass = value => directions[Math.round(value / 45) % 8];
-const minutesLabel = minutes => `${Math.floor(minutes / 60)} val. ${pad(minutes % 60)} min.`;
 const html = (tag, content, attrs = {}) => {
   const node = document.createElement(tag);
   if (content !== undefined) node.textContent = content;
@@ -42,16 +36,26 @@ function setupSun() {
   const root = $("#sun-tool");
   if (!root) return;
   const dateInput = $("#sun-date"), cityInput = $("#sun-city"), slider = $("#sun-scrubber");
+  const weatherLink = $("[data-sun-weather-link]");
+  const weatherSlugs = weatherLink ? JSON.parse(weatherLink.dataset.sunWeatherLink) : {};
   const play = $("#sun-play"), trajectory = $("#sun-trajectory"), host = $("#sun-scene");
   const errorBox = $("#sun-error"), eventButtons = [...root.querySelectorAll("[data-sun-moment]")];
   const display = {
     time: $("#sun-sim-time"), output: $("#sun-sim-output"), phase: $("#sun-sim-phase"),
     altitude: $("#sun-altitude"), azimuth: $("#sun-azimuth"), caption: $("#sun-scene-caption"),
   };
-  const query = new URLSearchParams(location.search);
-  if ([...cityInput.options].some(option => option.value === query.get("miestas"))) cityInput.value = query.get("miestas");
-  dateInput.value = query.get("data") || today();
-  if (!dateInput.value || !dateInput.validity.valid) dateInput.value = today();
+  const todayButton = $("#sun-today");
+  for (const control of [dateInput, cityInput, todayButton]) control.disabled = false;
+  const options = new Map([...cityInput.options].map(option => [option.value, option]));
+  const cityPath = () => location.pathname.match(/^\/saule\/([a-z]+)\/?$/)?.[1];
+  function readLocation() {
+    const query = new URLSearchParams(location.search);
+    const preferredCity = cityPath() || query.get("miestas");
+    cityInput.value = options.has(preferredCity) ? preferredCity : "vilnius";
+    dateInput.value = query.get("data") || today();
+    if (!dateInput.value || !dateInput.validity.valid) dateInput.value = today();
+  }
+  readLocation();
   let frame = null;
   let yearCache;
   let scene;
@@ -64,20 +68,31 @@ function setupSun() {
     play.querySelector("path").setAttribute("d", "M8 5.5v13l10-6.5z");
   }
 
-  function render(updateUrl = false) {
+  function render(change) {
     stopPlayback();
     try {
       const date = dateInput.value, { year, month } = parts(date);
       if (!dateInput.validity.valid || !date) throw Error("Pasirinkite galiojančią datą nuo 2000 iki 2100 metų.");
       const option = cityInput.selectedOptions[0];
-      const city = { id: option.value, name: option.textContent, lat: Number(option.dataset.lat), lon: Number(option.dataset.lon) };
+      const city = { id: option.value, name: option.textContent, lat: Number(option.dataset.lat), lon: Number(option.dataset.lon), place: option.dataset.locative };
+      if (weatherLink) {
+        weatherLink.href = `/orai/${weatherSlugs[city.id] || city.id}/`;
+        weatherLink.textContent = `Orai ${city.place}`;
+      }
       const times = solarFor(date, city);
       if (Object.keys(moments).some(key => !Number.isFinite(times[key]))) throw Error("Nurodytai vietai ir datai Saulės laikų apskaičiuoti nepavyko.");
-      const priorDelta = times.dayMinutes - solarFor(addDays(date, -1), city).dayMinutes;
-      const tomorrowDelta = solarFor(addDays(date, 1), city).dayMinutes - times.dayMinutes;
+      const priorDelta = times.dayMinutes - solarFor(dateAfter(date, -1), city).dayMinutes;
+      const tomorrowDelta = solarFor(dateAfter(date, 1), city).dayMinutes - times.dayMinutes;
       const todayChange = priorDelta === 0 ? "beveik nepasikeitė" : `${Math.abs(priorDelta)} min. ${priorDelta > 0 ? "ilgesnis" : "trumpesnis"}`;
       const tomorrowChange = tomorrowDelta === 0 ? "beveik nepasikeis" : `${Math.abs(tomorrowDelta)} min. ${tomorrowDelta > 0 ? "ilgės" : "trumpės"}`;
       $("#sun-day-change").textContent = `Palyginti su ankstesne diena, šviesus paros metas ${todayChange}; kitą dieną jis ${tomorrowChange}.`;
+      const citySpecific = change === "city" || Boolean(cityPath()) || city.id !== "vilnius";
+      const title = citySpecific ? `Saulėtekis ir saulėlydis ${city.place}` : "Saulėtekis ir saulėlydis";
+      $("#sun-page-title").textContent = title;
+      if (change === "city" || change === "history") {
+        document.title = `${citySpecific ? title : "Saulėtekis, saulėlydis ir Saulės kelias Lietuvoje"} | Kalendorius365`;
+      }
+      renderAnswer(city.place, solarWeek(date, city, times), date === today());
       $("#sun-summary").textContent = `${city.name}, ${displayDate(date)}. Saulėtekis ${clock(times.sunrise)}, saulėlydis ${clock(times.sunset)}. Dienos trukmė ${minutesLabel(times.dayMinutes)}.`;
       $("#sunrise-time").textContent = clock(times.sunrise);
       $("#sunset-time").textContent = clock(times.sunset);
@@ -183,11 +198,18 @@ function setupSun() {
       for (const control of [play, slider, trajectory, ...eventButtons]) control.disabled = false;
       errorBox.hidden = true;
 
-      if (updateUrl) {
+      if (change === "city" || change === "date") {
         const url = new URL(location.href);
-        url.searchParams.set("miestas", city.id);
-        url.searchParams.set("data", date);
-        history.replaceState(history.state, "", url);
+        if (change === "city" || cityPath()) {
+          url.pathname = `/saule/${city.id}/`;
+          url.searchParams.delete("miestas");
+        }
+        if (date === today()) url.searchParams.delete("data");
+        else url.searchParams.set("data", date);
+        if (url.href !== location.href) {
+          if (change === "city") history.pushState(history.state, "", url);
+          else history.replaceState(history.state, "", url);
+        }
       }
     } catch (error) {
       errorBox.textContent = error.message;
@@ -196,8 +218,13 @@ function setupSun() {
     }
   }
 
-  for (const field of [dateInput, cityInput]) field.addEventListener("change", () => render(true));
-  $("#sun-today").addEventListener("click", () => { dateInput.value = today(); render(true); });
+  dateInput.addEventListener("change", () => render("date"));
+  cityInput.addEventListener("change", () => render("city"));
+  todayButton.addEventListener("click", () => { dateInput.value = today(); render("date"); });
+  window.addEventListener("popstate", () => {
+    readLocation();
+    render("history");
+  });
   trajectory.addEventListener("click", () => {
     const visible = trajectory.getAttribute("aria-pressed") !== "true";
     trajectory.setAttribute("aria-pressed", String(visible));
@@ -205,6 +232,35 @@ function setupSun() {
   });
   document.addEventListener("visibilitychange", () => { if (document.hidden) stopPlayback(); });
   render();
+}
+
+function renderAnswer(place, rows, isToday) {
+  const first = rows[0];
+  $("#sun-answer-title").textContent = `Kada teka ir leidžiasi Saulė ${place}?`;
+  $("#sun-answer-city").textContent = place;
+  $("#sun-answer-today").hidden = !isToday;
+  $("#sun-answer-today-comma").hidden = !isToday;
+  for (const [id, label, datetime] of [
+    ["sun-answer-date", first.label, first.date],
+    ["sun-answer-rise", first.sunrise, first.sunriseAt],
+    ["sun-answer-set", first.sunset, first.sunsetAt],
+  ]) {
+    const time = $(`#${id}`);
+    time.textContent = label;
+    time.dateTime = datetime;
+  }
+  $("#sun-answer-daylight").textContent = first.daylight;
+  $("#sun-week-caption").textContent = `Saulės laikai ${place} · Lietuvos laiku`;
+  $("#sun-week-rows").replaceChildren(...rows.map(row => {
+    const tr = html("tr");
+    const date = html("th", undefined, { scope: "row" });
+    date.append(html("time", row.label, { datetime: row.date }));
+    const rise = html("td"), set = html("td");
+    rise.append(html("time", row.sunrise, { datetime: row.sunriseAt }));
+    set.append(html("time", row.sunset, { datetime: row.sunsetAt }));
+    tr.append(date, rise, set, html("td", row.daylight));
+    return tr;
+  }));
 }
 
 function drawMonthChart(date, city, entries) {

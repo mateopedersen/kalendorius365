@@ -1,34 +1,23 @@
-export function notice(message) {
-  const el = document.querySelector("#notice");
-  el.textContent = message;
-  el.hidden = false;
-  clearTimeout(el.timer);
-  el.timer = setTimeout(() => (el.hidden = true), 10000);
-}
-
 const horoscopeUpdates = document.querySelectorAll("time[data-horoscope-updated]");
 if (horoscopeUpdates.length) {
-    // This label needs two formatters, not the calendar calculation module.
-    const currentDay = new Intl.DateTimeFormat("en-CA", {
-      timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit",
-    });
-    const displayDate = new Intl.DateTimeFormat("lt-LT", {
-      timeZone: "UTC", year: "numeric", month: "long", day: "numeric",
-    });
-    const refreshUpdateLabels = () => {
-      const parts = Object.fromEntries(currentDay.formatToParts(new Date()).map(({type,value}) => [type,value]));
-      const currentDate = `${parts.year}-${parts.month}-${parts.day}`;
-      for (const label of horoscopeUpdates) {
-        label.textContent = label.dateTime === currentDate
-          ? "Šiandien atnaujinta"
-          : `Atnaujinta: ${displayDate.format(new Date(`${label.dateTime}T00:00:00Z`))}`;
-      }
-    };
-    refreshUpdateLabels();
-    setInterval(refreshUpdateLabels, 60_000);
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) refreshUpdateLabels();
-    });
+  const currentDay = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit",
+  });
+  const refreshEditionStatus = () => {
+    const parts = Object.fromEntries(currentDay.formatToParts(new Date()).map(({ type, value }) => [type, value]));
+    const currentDate = `${parts.year}-${parts.month}-${parts.day}`;
+    for (const edition of horoscopeUpdates) {
+      const label = edition.parentElement.querySelector("[data-horoscope-edition-status]");
+      if (!label) continue;
+      label.textContent = edition.dateTime === currentDate ? "Šiandienos leidimas" :
+        edition.dateTime < currentDate ? "Paskutinis paskelbtas leidimas" : "Leidimo data";
+    }
+  };
+  refreshEditionStatus();
+  setInterval(refreshEditionStatus, 60_000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) refreshEditionStatus();
+  });
 }
 
 // Fetch an internal page only after a clear navigation intent. This keeps

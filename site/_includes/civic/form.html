@@ -17,6 +17,13 @@
         <p class="civic-result__note" data-result-note></p>
       </div>
       {% if include.calc == 'pension' %}<button type="button" class="civic-button civic-button--plain" data-pension-download hidden>Atsisiųsti priminimą (ICS)</button>{% endif %}
+      <div class="civic-actions civic-result__portals">
+        {% if include.calc == 'vat' %}
+          {% include civic/portal-links.html links=guide.vatActions theme='plain' show_hints=true %}
+        {% else %}
+          {% include civic/portal-links.html links=guide.actions theme='plain' %}
+        {% endif %}
+      </div>
     </div>
   </div>
   <noscript><p>Skaičiuoklei reikia „JavaScript“. Formules ir oficialias nuorodas rasite žemiau.</p></noscript>

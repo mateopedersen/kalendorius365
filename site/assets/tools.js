@@ -1,6 +1,6 @@
 import * as cal from "./calendar.js";
 import { Store, download } from "./storage.js";
-import { notice } from "./common.js?v=3b631dd";
+import { notice } from "./notice.js";
 const $ = (s) => document.querySelector(s);
 const needsCalendar = $("#workday-check-form, #iso-date, #next-holiday, #calculator, #year-comparison-form, #generator");
 const data = needsCalendar ? await fetch("/assets/data/calendar.json").then((response) => response.json()) : null;
@@ -61,6 +61,16 @@ if ($("#design-picker") || $("#selected-preview")) {
     }
     const selectedPreview = $("#selected-preview");
     if (selectedPreview) {
+      const detailSrcset = thumbnail.dataset.detailSrcset;
+      if (detailSrcset) {
+        selectedPreview.sizes = landscape
+          ? selectedPreview.dataset.previewSizesWide
+          : selectedPreview.dataset.previewSizesTall;
+        selectedPreview.srcset = detailSrcset;
+      } else {
+        selectedPreview.removeAttribute("srcset");
+        selectedPreview.removeAttribute("sizes");
+      }
       selectedPreview.src = imageSrc;
       selectedPreview.alt = thumbnail.alt;
       selectedPreview.width = Number(selected?.width || thumbnail.getAttribute("width"));

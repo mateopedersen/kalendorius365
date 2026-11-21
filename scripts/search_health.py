@@ -14,6 +14,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
+from pathlib import Path
 
 DEFAULT_BASE = "https://kalendorius365.lt"
 USER_AGENT = "Kalendorius365SearchHealth/1.0 (+https://kalendorius365.lt/apie-mus/)"
@@ -21,6 +22,13 @@ SITEMAP_LIMIT = 50_000
 PAGE_LIMIT = 2 * 1024 * 1024
 LINK_LIMIT = 5_000
 MIN_REQUEST_INTERVAL = 0.25
+SITE_DATA = Path(__file__).resolve().parents[1] / "site/assets/data"
+WEATHER_REGISTRY = SITE_DATA / "weather-places.json"
+WEATHER_SITEMAP_PATH = "/sitemap-orai.xml"
+WEATHER_SAMPLE_PATHS = (
+    "/orai/", "/orai/miestai/", "/orai/savivaldybes/kauno-m/", "/orai/kaunas/",
+    "/orai/zalgirio-31593/", "/saule/kaunas/",
+)
 _last_request = 0.0
 
 
@@ -231,6 +239,49 @@ def check_robots(text, report, sitemap_url):
     if f"Sitemap: {sitemap_url}" not in text:
         add_error(report, "robots.txt", f"Missing sitemap declaration for {sitemap_url}")
 
+def check_sitemap_coverage(report, name, expected, urls):
+    listed = set(urls)
+    missing, extra = expected - listed, listed - expected
+    if missing or extra or len(urls) != len(listed):
+        add_error(report, name, (
+            f"{len(missing)} missing, {len(extra)} unexpected, {len(urls) - len(listed)} duplicate URLs. "
+            f"Missing examples: {sorted(missing)[:3]}. Unexpected examples: {sorted(extra)[:3]}."
+        ))
+    return listed
+
+
+def audit_weather_sitemap(report, base, robots_text, main_sitemap):
+    weather_url = base + WEATHER_SITEMAP_PATH
+    declarations = re.findall(r"^sitemap:\s*(\S+)\s*$", robots_text, re.IGNORECASE | re.MULTILINE)
+    if weather_url not in declarations:
+        add_error(report, "robots.txt", f"Missing sitemap declaration for {weather_url}")
+
+    weather = collect_sitemap(weather_url, report, base)
+    report["weather_sitemap_page_count"] = len(weather)
+    registry = json.loads(WEATHER_REGISTRY.read_text(encoding="utf-8"))
+    expected = {base + f"/orai/{place[0]}/" for place in registry["places"]}
+    expected.update(base + f"/orai/savivaldybes/{municipality[0]}/" for municipality in registry["municipalities"].values())
+    expected.update((base + "/orai/miestai/", base + "/orai/savivaldybes/"))
+    listed = check_sitemap_coverage(report, "weather sitemap", expected, weather)
+    main = set(main_sitemap)
+    if overlap := main & listed:
+        add_error(report, "weather sitemap", f"{len(overlap)} weather URLs also appear in the main sitemap")
+
+    for path in WEATHER_SAMPLE_PATHS:
+        url = base + path
+        sitemap = listed if url in expected else main
+        if url not in sitemap:
+            add_error(report, "sitemap coverage", f"Page absent from its sitemap: {url}")
+            continue
+        response = fetch(url)
+        response_check(report, f"weather sitemap sample {path}", response)
+        if response["status"] != 200:
+            continue
+        page = parse_page(response["body"])
+        robots = ",".join(page.robots + [response["headers"].get("X-Robots-Tag", "")])
+        if response["final_url"] != url or page.canonicals != [url] or "noindex" in robots.lower():
+            add_error(report, "weather sitemap sample", f"Page is redirected, noncanonical or noindex: {url}")
+
 
 def normalize_link(raw, page_url, base):
     absolute = urllib.parse.urljoin(page_url, raw.strip())
@@ -283,6 +334,11 @@ def run_audit(scope, base):
     report["sample_sitemap_urls"] = sitemap[:5]
     if not sitemap:
         add_error(report, "sitemap", "No page URLs discovered")
+    search_index = json.loads((SITE_DATA / "search.json").read_text(encoding="utf-8"))
+    expected_static = {base + entry["url"] for entry in search_index if not entry.get("action")}
+    check_sitemap_coverage(report, "main sitemap", expected_static, sitemap)
+
+    audit_weather_sitemap(report, base, robots_text, sitemap)
 
     llms_url = base + "/llms.txt"
     llms = fetch(llms_url, limit=256 * 1024)

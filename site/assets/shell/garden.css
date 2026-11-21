@@ -198,7 +198,7 @@
   overflow-wrap: anywhere;
 }
 .garden-plant img { display: block; width: 46px; height: 41px; object-fit: contain; border-radius: 5px; background: #fff; }
-.garden-plant__toggle::before { display: block; width: 1em; text-align: center; content: "+"; }
+.garden-plant__toggle::before { display: block; text-align: center; content: "+"; }
 .garden-plant[aria-expanded="true"] .garden-plant__toggle::before { content: "−"; }
 .garden-page .garden-plant:disabled { opacity: 1; }
 .garden-page .garden-add { min-width: 34px; min-height: 34px; padding: 3px 8px; font-size: 1.18rem; line-height: 1; }

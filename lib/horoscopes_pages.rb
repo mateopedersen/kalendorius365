@@ -124,15 +124,15 @@ module HoroscopesPages
                'og_image' => '/assets/visuals/zodiac/zodiakas-1200x630.png',
                'og_image_alt' => 'Dvylikos Zodiako ženklų ratas ir trys originalios ženklų iliustracijos.' }.merge(extra)
     frontmatter = values.map { |key, value| "#{key}: #{JSON.generate(value)}" }.join("\n")
-    File.write(target, "---\n#{frontmatter}\n---\n#{body}\n", mode: 'w', encoding: 'UTF-8')
+    File.write(target, "---\n#{frontmatter}\n---\n#{body.rstrip}\n", mode: 'w', encoding: 'UTF-8')
   end
 
   def mark(key, extra_class = '')
     ZodiacPages.mark(key).sub('class="zodiac-mark"', %(class="zodiac-mark #{escape(extra_class)}"))
   end
 
-  def update_status(daily, class_name)
-    %(<p class="#{escape(class_name)}"><time datetime="#{escape(daily['local_date'])}" data-horoscope-updated>Atnaujinta: #{escape(daily['display_date_lt'])}</time></p>)
+  def update_status(daily, class_name, date_label)
+    %(<p class="#{escape(class_name)} horoscope-edition"><span class="horoscope-edition__status" data-horoscope-edition-status>Leidimo data</span> <time datetime="#{escape(daily.fetch('local_date'))}" data-horoscope-updated>#{escape(date_label)}</time></p>)
   end
 
   def hub_icon(name, size = 20)
@@ -156,8 +156,8 @@ module HoroscopesPages
           <p class="horoscope-card__excerpt">#{escape(forecast['lead'])}</p>
         </div>
         <div class="horoscope-card__actions">
-          <a class="horoscope-card__link" href="/horoskopai/#{key}/" aria-label="Skaityti #{escape(sign['genitive'])} horoskopą">
-            <span>Skaityti</span>#{hub_icon('arrow')}
+          <a class="horoscope-card__link" href="/horoskopai/#{key}/" aria-label="Skaityti #{escape(sign['genitive'])} dienos horoskopą">
+            <span>Dienos horoskopas</span>#{hub_icon('arrow')}
           </a>
           <!-- horoscope-share-action -->
         </div>
@@ -184,14 +184,14 @@ module HoroscopesPages
     %(<article class="horoscope-detail" style="--sign-accent: #{escape(sign['theme'])}">
       <header class="horoscope-sign-hero">
         <div class="horoscope-sign-hero__art">#{ZodiacPages.art(ZodiacPages.catalog.find { |s| s['key'] == sign['key'] }, 'z-detail-art', true)}</div>
-        <div class="horoscope-sign-hero__copy"><p class="horoscope-kicker">Dienos horoskopas <span aria-hidden="true">·</span> Vakarų tropinis zodiakas</p><h1>#{escape(sign['genitive'])} dienos horoskopas</h1>#{update_status(daily, 'horoscope-sign-hero__date')}<p class="horoscope-sign-hero__heading">#{escape(forecast['editorial_heading'])}</p></div>
+        <div class="horoscope-sign-hero__copy"><p class="horoscope-kicker">Dienos horoskopas <span aria-hidden="true">·</span> Vakarų tropinis zodiakas</p><h1>#{escape(sign['genitive'])} dienos horoskopas</h1>#{update_status(daily, 'horoscope-sign-hero__date', date_label)}<p class="horoscope-sign-hero__heading">#{escape(forecast['editorial_heading'])}</p></div>
       </header>
       <div class="horoscope-body-grid">
-        <section class="horoscope-lead" aria-labelledby="horoscope-lead-title"><p class="horoscope-kicker">Dienos kryptis</p><h2 id="horoscope-lead-title">#{escape(forecast['lead'])}</h2></section>
+        <section class="horoscope-lead" aria-labelledby="horoscope-lead-title"><h2 id="horoscope-lead-title">Ką sako #{escape(sign['genitive'])} dienos horoskopas?</h2><p class="horoscope-lead__answer">#{escape(forecast['lead'])}</p></section>
         <section class="horoscope-reading horoscope-reading--overview" aria-labelledby="horoscope-overview-title"><h2 id="horoscope-overview-title">Bendra dienos nuotaika</h2><p>#{escape(forecast['overview'])}</p></section>
-        <section class="horoscope-reading horoscope-reading--relationship" aria-labelledby="horoscope-relationships-title"><span class="horoscope-reading__index" aria-hidden="true">01</span><h2 id="horoscope-relationships-title">Santykiai</h2><p>#{escape(forecast['relationships'])}</p></section>
-        <section class="horoscope-reading horoscope-reading--work" aria-labelledby="horoscope-work-title"><span class="horoscope-reading__index" aria-hidden="true">02</span><h2 id="horoscope-work-title">Veikla ir darbai</h2><p>#{escape(forecast['work'])}</p></section>
-        <section class="horoscope-reading horoscope-reading--reflection" aria-labelledby="horoscope-reflection-title"><span class="horoscope-reading__index" aria-hidden="true">03</span><h2 id="horoscope-reflection-title">Apmąstymui</h2><p>#{escape(forecast['reflection'])}</p></section>
+        <section class="horoscope-reading horoscope-reading--relationship" aria-labelledby="horoscope-relationships-title"><h2 id="horoscope-relationships-title">#{escape(sign['genitive'])} santykiai</h2><p>#{escape(forecast['relationships'])}</p></section>
+        <section class="horoscope-reading horoscope-reading--work" aria-labelledby="horoscope-work-title"><h2 id="horoscope-work-title">#{escape(sign['genitive'])} darbai ir veikla</h2><p>#{escape(forecast['work'])}</p></section>
+        <section class="horoscope-reading horoscope-reading--reflection" aria-labelledby="horoscope-reflection-title"><h2 id="horoscope-reflection-title">Apmąstymui</h2><p>#{escape(forecast['reflection'])}</p></section>
         <aside class="horoscope-tip" aria-label="Praktinis patarimas"><span class="horoscope-tip__label">Mažas dienos žingsnis</span><p>#{escape(forecast['tip'])}</p></aside>
       </div>
       #{ZodiacPages.evergreen_profile(sign['key'])}
@@ -221,7 +221,7 @@ module HoroscopesPages
       <div class="horoscope-hub">
         <header class="horoscope-hub-hero">
           <div class="horoscope-hub-hero__copy">
-            #{update_status(daily, 'horoscope-hub-hero__date')}
+            #{update_status(daily, 'horoscope-hub-hero__date', date_label)}
             <h1>Dienos horoskopai</h1>
             <p class="horoscope-hub-hero__intro">Pasirinkite savo Zodiako ženklą. Skaitykite dienos įžvalgas apie santykius, darbus ir kasdienius pasirinkimus.</p>
             <a class="horoscope-hub-hero__guide" href="/zodiakas/#mano-zenklas">Rasti savo Zodiako ženklą #{hub_icon('arrow')}</a>
@@ -229,7 +229,7 @@ module HoroscopesPages
           <div class="horoscope-hub-hero__art"><img src="/assets/visuals/horoscope-icons.svg" width="250" height="250" alt="" aria-hidden="true" decoding="async"></div>
         </header>
         <section class="horoscope-directory" aria-labelledby="horoscope-directory-title">
-          <div class="horoscope-section-heading"><h2 id="horoscope-directory-title">Pasirinkite Zodiako ženklą</h2></div>
+          <div class="horoscope-section-heading"><h2 id="horoscope-directory-title">Ką šio leidimo horoskopai sako kiekvienam ženklui?</h2></div>
           <div class="horoscope-card-grid">#{cards}</div>
         </section>
         <section class="horoscope-about" aria-labelledby="horoscope-about-title">
@@ -247,12 +247,12 @@ module HoroscopesPages
         </nav>
       </div>
     HTML
-    write_page('horoskopai', "Dienos horoskopai visiems 12 Zodiako ženklų", hub_description, hub)
+    write_page('horoskopai', "Dienos horoskopai visiems 12 Zodiako ženklų", hub_description, hub, 'content_date' => daily.fetch('local_date'))
 
     @signs.each do |sign|
       forecast = forecasts.fetch(sign.fetch('key'))
-      title = "#{sign.fetch('genitive')} dienos horoskopas šiandien"
-      description = "#{sign.fetch('genitive')} dienos horoskopas #{month_title} #{forecast.fetch('editorial_heading')}. Dienos įžvalgos ir ascendento skaičiuoklė."
+      title = "#{sign.fetch('genitive')} dienos horoskopas"
+      description = "#{sign.fetch('genitive')} dienos horoskopas. #{month_title} #{forecast.fetch('editorial_heading')}. Skaitykite apie santykius, darbus ir dienos temą."
       body = sign_body(sign, forecast, daily, date_label)
       write_page("horoskopai/#{sign.fetch('key')}", title, description, body, 'sign_key' => sign.fetch('key'), 'content_date' => daily.fetch('local_date'))
     end

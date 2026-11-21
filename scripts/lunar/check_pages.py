@@ -24,7 +24,11 @@ def main():
     for month, slug in enumerate(SLUGS, 1):
         route=f'/menulio-kalendorius/2030/{slug}/'
         routes.append(route)
-        requested[route]={'year':2030,'month_number':month}
+        requested[route]={'year':2030,'month_number':month,
+                          'dark_pdf':f'/downloads/lunar/2030/lunar-2030-{month:02}-night.pdf',
+                          'dark_webp':f'/downloads/lunar/2030/lunar-2030-{month:02}-night.webp',
+                          'light_pdf':f'/downloads/lunar/2030/lunar-2030-{month:02}-editorial.pdf',
+                          'light_webp':f'/downloads/lunar/2030/lunar-2030-{month:02}-editorial.webp'}
     data=json.loads((ROOT/'data/lunar/calendar.json').read_text())
     results=[]
     for route in routes:
@@ -42,6 +46,10 @@ def main():
             assert [a.get('data-slug') for t,a in elements if t=='option' and 'data-slug' in a]==SLUGS,route
         for t,a in elements:
             if t=='img':assert 'alt' in a,(route,a)
+        if route=='/menulio-kalendorius/2030/':
+            poster = '/downloads/lunar/2030/lunar-2030-year-overview'
+            assert {a['href'].split('?')[0] for t,a in elements if t=='a' and 'download' in a and a['href'].startswith(poster)} == {poster+'.pdf',poster+'.webp'}
+
         row=requested.get(route)
         days=0
         if row:
@@ -53,7 +61,7 @@ def main():
             expected_downloads={urlsplit(row[k]).path for k in ('dark_pdf','dark_webp','light_pdf','light_webp') if k in row}
             assert downloads==expected_downloads,route
             if year==2030:
-                assert any(t=='button' and 'data-print' in a for t,a in elements),route
+                assert sum(t=='button' and 'data-print-image' in a for t,a in elements)==2,route
                 assert all((ROOT/'public/assets/lunar/days'/f'{day}.webp').is_file() for day in dates),route
             events=[e for e in data['events'] if e['local_date'].startswith(f'{year}-{month:02}')]
             assert len(events)==sum('data-event-ics' in a for t,a in elements),route

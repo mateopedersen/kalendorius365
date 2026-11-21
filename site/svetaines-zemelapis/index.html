@@ -33,6 +33,27 @@ hero_share: true
     {% endfor %}
   </div>
 </section>
+<section class="panel" aria-labelledby="sitemap-sun-title">
+  <h2 id="sitemap-sun-title"><a href="/saule/">Saulėtekis ir saulėlydis</a></h2>
+  <ul class="sitemap-months">
+    <li><a href="/saule/vilnius/">Vilniuje</a></li>
+    <li><a href="/saule/kaunas/">Kaune</a></li>
+    <li><a href="/saule/klaipeda/">Klaipėdoje</a></li>
+    <li><a href="/saule/siauliai/">Šiauliuose</a></li>
+    <li><a href="/saule/panevezys/">Panevėžyje</a></li>
+    <li><a href="/saule/#saules-miestai">Visi Lietuvos miestai</a></li>
+  </ul>
+</section>
+<section class="panel" aria-labelledby="sitemap-weather-title">
+  <h2 id="sitemap-weather-title"><a href="/orai/">Orai ir kelių sąlygos</a></h2>
+  <ul class="sitemap-months">
+    <li><a href="/orai/vilnius/">Orai Vilniuje</a></li>
+    <li><a href="/orai/kaunas/">Orai Kaune</a></li>
+    <li><a href="/orai/miestai/">Visų Lietuvos miestų prognozės</a></li>
+    <li><a href="/orai/savivaldybes/">Vietovės pagal savivaldybę</a></li>
+    <li><a href="/oru-saltiniai/#duomenys">Orų duomenų šaltiniai ir licencijos</a></li>
+  </ul>
+</section>
 {% assign years = '2027,2028,2029,2030' | split: ',' %}
 {% for year in years %}
 <section class="panel"><h2><a href="/{{ year }}/">{{ year }} metų kalendorius</a></h2><ul class="sitemap-months">{% for month in site.data.calendar.months %}<li><a href="/{{ year }}/{{ month[0] }}/">{{ month[1] }}</a></li>{% endfor %}</ul></section>

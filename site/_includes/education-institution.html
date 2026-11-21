@@ -1,0 +1,51 @@
+{% assign entry = include.entry %}
+<article class="edu-institution" id="{{ entry.id }}" {% if entry.kind != 'school' %}data-edu-institution="{{ entry.short | escape }}" data-id="{{ entry.id }}" data-edu-name="{{ entry.name | escape }}"{% endif %}>
+  <div class="edu-institution-head">
+    <div class="edu-logo" aria-hidden="true">
+      {% if entry.logo %}
+      <img src="{{ entry.logo }}" alt="" aria-hidden="true" width="{{ entry.logo_width }}" height="{{ entry.logo_height }}" loading="lazy" decoding="async">
+      {% else %}
+      <span>{{ entry.short | escape }}</span>
+      {% endif %}
+    </div>
+    <div class="edu-institution-name">
+      <p class="edu-city">{% for city in entry.cities %}<span data-edu-city>{{ city | escape }}</span>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+      <h3>{{ entry.name | escape }}</h3>
+    </div>
+  </div>
+  {% unless entry.kind == 'school' %}
+  <div class="edu-card-scope">
+    <span class="edu-coverage" data-mode="{{ entry.mode }}">{% case entry.mode %}{% when 'cohort' %}Pagal studijų grupę{% when 'portal' %}Datos tikrinamos įstaigoje{% else %}Paskelbtas kalendorius{% endcase %}</span>
+    <p class="edu-scope">{{ entry.scope | escape }}</p>
+  </div>
+  {% endunless %}
+  {% if entry.events.size > 0 %}
+  <div class="edu-upcoming" data-edu-upcoming hidden>
+    <span class="edu-upcoming-label" data-edu-upcoming-label></span>
+    <strong data-edu-upcoming-title></strong>
+    <span data-edu-upcoming-range></span>
+  </div>
+  <details class="edu-dates" data-edu-dates>
+    <summary><span>Studijų datos <small data-edu-row-count>{{ entry.events.size }}</small></span><span class="edu-chevron" aria-hidden="true"></span></summary>
+    <ul>
+      {% for event in entry.events %}
+      <li data-edu-event data-kind="{{ event.kind }}" data-key="{{ entry.id }}-{{ forloop.index }}" data-start="{{ event.from_date }}" data-end="{{ event.to_date }}"{% if event.source %} data-source="{{ event.source | escape }}"{% endif %}>
+        <span class="edu-event-tag">{% case event.kind %}{% when "break" %}Atostogos{% when "exam" %}Egzaminai{% when "retake" %}Perlaikymai{% when "term" %}Semestras{% else %}Studijos{% endcase %}</span>
+        <span class="edu-event-body"><strong data-edu-title>{{ event.title | escape }}</strong><span class="edu-event-range"><time datetime="{{ event.from_date }}">{{ event.from_date }}</time>{% if event.from_date != event.to_date %} – <time datetime="{{ event.to_date }}">{{ event.to_date }}</time>{% endif %}</span></span>
+        <div class="edu-event-actions">
+          <button type="button" data-edu-add-event hidden aria-label="Pridėti į kalendorių: {{ event.title | escape }}">+ Į kalendorių</button>
+          {% if event.source %}<a href="{{ event.source | escape }}">Datos šaltinis <span aria-hidden="true">↗</span></a>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    <button type="button" class="edu-export" data-edu-download hidden>Atsisiųsti rodomas datas (.ics)</button>
+  </details>
+  {% endif %}
+  {% if entry.note %}<p class="edu-scope edu-note">{{ entry.note | escape }}</p>{% endif %}
+  <div class="edu-card-links">
+    <a data-edu-source class="edu-official-link" href="{{ entry.source | escape }}">{% if entry.kind == 'school' %}Mokyklos informacija{% elsif entry.mode == 'portal' %}Tikrinti įstaigos svetainėje{% else %}Oficialus kalendorius{% endif %}<span aria-hidden="true">↗</span></a>
+    {% if entry.further %}<a href="{{ entry.further.url | escape }}">{{ entry.further.label | escape }}<span aria-hidden="true">↗</span></a>{% endif %}
+    {% if entry.logo_credit %}<a class="edu-brand-link" href="{{ entry.logo_credit | escape }}" aria-label="{{ entry.name | escape }} logotipo šaltinis">Logotipas</a>{% endif %}
+  </div>
+</article>

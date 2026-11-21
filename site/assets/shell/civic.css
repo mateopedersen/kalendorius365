@@ -59,6 +59,7 @@
 }
 .civic-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
 .civic-hero .civic-actions { margin-top: clamp(16px, 2.3vw, 28px); }
+.civic-hero .civic-hero__secondary { margin-top: 9px; }
 .civic-page .civic-button {
   display: inline-flex;
   align-items: center;
@@ -82,6 +83,29 @@
 .civic-page .civic-button--green:hover { background: #004d35; color: #fff; }
 .civic-page .civic-button--plain { background: #fbfdf9; color: #164634; border-color: #a8c3b0; }
 .civic-page .civic-button--plain:hover { color: #10392b; background: #e7f1e7; }
+.civic-page .civic-portal-link {
+  min-width: 0;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: start;
+}
+.civic-portal-link > span { min-width: 0; overflow-wrap: anywhere; }
+.civic-portal-link small {
+  display: block;
+  margin-top: 3px;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.civic-portal-link svg { flex: none; }
+.civic-hero__portals { align-items: stretch; }
+.civic-hero__portals .civic-portal-link { flex: 1 1 235px; }
+.civic-process__portals { margin-top: 14px; }
+.civic-result__portals {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #c6d9c5;
+}
 .civic-page button:disabled { opacity: .55; cursor: default; }
 .civic-hero :is(a,button):focus-visible { outline-color: #ffdc84; }
 
@@ -147,9 +171,25 @@
 .civic-card:hover h3 { text-decoration: underline; text-underline-offset: .22em; }
 .civic-card p { margin-top: 5px; font-size: .97rem; }
 .civic-card .shell-art { width: 61px; height: 61px; align-self: start; }
+.civic-benefit-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #d3e0d4;
+  border-radius: 12px;
+  background: #fff;
+}
+.civic-benefit-card .civic-card {
+  flex: 1;
+  height: auto;
+  border: 0;
+  border-radius: 11px 11px 0 0;
+}
+.civic-benefit-card__portals { padding: 0 clamp(12px, 1.6vw, 20px) clamp(12px, 1.6vw, 20px); }
+.civic-benefit-card__portals .civic-portal-link { flex: 1 1 100%; }
 
 .civic-other-help { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
-.civic-other-help .civic-panel :is(p,a) { display: block; margin-top: 6px; }
+.civic-other-help .civic-panel > p { margin-top: 6px; }
 .civic-workspace { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.14fr); align-items: start; gap: 12px; }
 .civic-panel { min-width: 0; padding: clamp(13px, 2.1vw, 25px); border: 1px solid #d3e1d2; border-radius: 14px; background: #fff; }
 .civic-form fieldset { display: grid; min-inline-size: 0; margin: 0; padding: 0; border: 0; gap: 11px; }
@@ -228,6 +268,7 @@
   .civic-ticket dl { gap: 13px; }
   .civic-card .shell-art { width: 52px; height: 52px; }
   .civic-page .civic-card { grid-template-columns: 52px minmax(0,1fr); }
+  .civic-page :is(.civic-portal-link,.civic-hero__secondary .civic-button) { width: 100%; }
 }
 @media (max-width: 360px) {
   .civic-hero { padding-inline: 14px; }

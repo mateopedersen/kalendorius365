@@ -10,6 +10,22 @@ const benefits = [
   'ligos-ismoka', 'socialine-pasalpa', 'sildymo-kompensacija',
 ];
 const routes = [hub, retirement, taxes, ...benefits.map(slug => hub + slug + '/')];
+const spis = 'https://www.spis.lt/';
+const sodra = 'https://gyventojai.sodra.lt/';
+const directActions = {
+  [hub]: [spis, sodra],
+  [taxes]: ['https://deklaravimas.vmi.lt/', 'https://www.vmi.lt/mvmi/'],
+  [retirement]: ['GPN1', 'GPN2'].map(code => sodra + 'faces/pages/forms/pub/direct.jspx?code=' + code),
+  [hub + 'vaiko-pinigai/']: [spis],
+  [hub + 'vienkartine-ismoka-vaikui/']: [spis],
+  [hub + 'vaiko-prieziuros-ismoka/']: [sodra, spis],
+  [hub + 'motinystes-ir-tevystes-ismokos/']: ['GPS2', 'GPS3'].map(code => sodra + 'sodra-login/pub/' + code),
+  [hub + 'aukles-kompensacija/']: [spis],
+  [hub + 'nedarbo-ismoka/']: ['https://uzt.lt/app/auth/login', sodra + 'sodra-login/pub/GPS18'],
+  [hub + 'ligos-ismoka/']: [sodra + 'sodra-login/pub/GPS1'],
+  [hub + 'socialine-pasalpa/']: [spis],
+  [hub + 'sildymo-kompensacija/']: [spis],
+};
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('kalendorius365:analytics-consent:v1', JSON.stringify({
@@ -30,6 +46,9 @@ test('all Lithuanian benefits routes are responsive and in the sitemap and tools
     await expect(page.locator('.civic-ticket img')).toHaveJSProperty('complete', true);
     expect(await page.locator('.civic-ticket img').evaluate(image => image.naturalWidth)).toBeGreaterThan(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize().width + 1);
+    const heroLinks = page.locator('.civic-hero__portals a');
+    expect(await heroLinks.evaluateAll(links => links.map(link => link.href))).toEqual(directActions[route]);
+    for (const link of await heroLinks.all()) await expect(link).toBeVisible();
     const sourceLinks = await page.locator('#saltiniai a, #kita-parama a, #prasymas .civic-button').evaluateAll(links =>
       links.map(link => [link.getAttribute('href'), link.textContent.trim()]));
     expect(sourceLinks.length).toBeGreaterThan(1);
@@ -59,6 +78,8 @@ test('VMI monthly NPD, annual tiers, and extracting VAT change the calculated am
   await expect(pay.locator('[data-result-rows]')).toContainText(/30\s528,38/);
   await expect(pay.locator('[data-npd-choice]')).toBeHidden();
   const vat = page.locator('#pvm');
+  await expect(vat.getByRole('link', { name: 'Tikrinti oficialius PVM tarifus' })).toHaveAttribute('href', 'https://www.vmi.lt/evmi/pvm-tarifai');
+  await expect(vat.getByRole('link', { name: 'Skaityti, kaip pateikti FR0600' })).toHaveAttribute('href', 'https://www.vmi.lt/evmi/pvm-deklaraciju-teikimas');
   await vat.locator('[name="direction"]').selectOption('extract');
   await vat.locator('[name="amount"]').fill('121');
   await expect(vat.locator('[data-result-value]')).toContainText('21,00');
@@ -89,7 +110,8 @@ test('pension dates use the transition table and export a private reminder for a
 test('benefit filters, date boundaries and local reminders work', async ({ page }) => {
   await page.goto(hub);
   await page.getByRole('button', { name: 'Pajamos ir būstas', exact: true }).click();
-  await expect(page.locator('[data-benefit-cards] a:visible')).toHaveCount(2);
+  await expect(page.locator('[data-benefit-cards] .civic-card:visible')).toHaveCount(2);
+  await expect(page.locator('[data-benefit-cards] .civic-portal-link:visible')).toHaveCount(2);
   const form = page.locator('[data-civic-reminders]');
   await form.locator('[name="label"]').fill('Patikrinti mokėjimą');
   await form.locator('[name="date"]').fill('2027-01-11');

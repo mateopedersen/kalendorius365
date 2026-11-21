@@ -282,7 +282,6 @@
 .horoscope-reading--overview p { max-width: 96ch; }
 .horoscope-reading h2 { margin: 0 0 8px; color: var(--horoscope-ink); font-size: .98rem; letter-spacing: -.02em; }
 .horoscope-reading p { margin: 0; color: var(--horoscope-muted); font-size: .85rem; line-height: 1.68; }
-.horoscope-reading__index { position: absolute; top: 15px; right: 17px; color: color-mix(in srgb, var(--sign-accent) 45%, var(--horoscope-border)); font-size: .68rem; font-weight: 800; letter-spacing: .08em; }
 .horoscope-tip { display: grid; grid-template-columns: 145px minmax(0, 1fr); align-items: center; gap: 12px; grid-column: 1 / -1; padding: 15px 18px; border-radius: 14px; color: #fff; background: #075a43; }
 .horoscope-tip__label { color: #f4d78e; font-size: .7rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .horoscope-tip p { margin: 0; color: #fff; font-size: .85rem; font-weight: 650; line-height: 1.55; }
@@ -438,3 +437,15 @@
   .ascendant-form__field input,.ascendant-form__submit,.ascendant-form__submit span:last-child { transition: none; }
   .ascendant-form__submit:hover { transform: none; }
 }
+
+
+.horoscope-edition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .2rem .55rem;
+  font-variant-numeric: tabular-nums;
+}
+.horoscope-edition__status { font-weight: 750; }
+.horoscope-edition time { color: inherit; }
+.horoscope-lead__answer { max-width: 74ch; margin: .5rem 0 0; font-size: 1rem; line-height: 1.6; color: var(--horoscope-ink); }

@@ -1,4 +1,5 @@
 import { DAYS, dailySlotIndex, dailySlots, defaultStudioState, validateStudioState, weekDates } from "./planner-studio-core.js";
+import { today } from "./calendar.js";
 
 const THEMES = { forest: ["#08714c", "#e7f4ec"], blue: ["#28689a", "#eaf3fb"], amber: ["#9b6810", "#fbf2db"], mono: ["#353a37", "#f2f3f2"] };
 const $ = (root, selector) => root.querySelector(selector);
@@ -18,7 +19,7 @@ function setup(root) {
   const savedStatus = $(root, "[data-studio-save]");
   const key = "k365:planner-studio:" + kind + ":v1";
   const editingKey = key + ":editing";
-  const names = kind === "family" ? ["Aš", "Šeima", "Vaikai", "Bendra"] : [];
+  const names = [];
   let previousWeekStart = Number($(root, '[data-studio-field="weekStart"]')?.value || 1);
 
   function personPicker(selectedValue) {
@@ -87,7 +88,9 @@ function setup(root) {
     text.type = "text"; text.maxLength = 120; text.placeholder = "Ką norite nuveikti?"; text.dataset.taskText = ""; text.value = task.text || ""; textLabel.append(text);
     const remove = element("button", "Pašalinti", "planner-studio__remove");
     remove.type = "button"; remove.dataset.taskRemove = ""; remove.setAttribute("aria-label", "Pašalinti veiklą");
-    row.append(textLabel, remove);
+    if (kind === "family") row.prepend(textLabel);
+    else row.append(textLabel);
+    row.append(remove);
     row.addEventListener("input", update); row.addEventListener("change", update);
     remove.addEventListener("click", () => { row.remove(); update(); });
     itemList.append(row);
@@ -103,6 +106,7 @@ function setup(root) {
     names.forEach((name, index) => {
       const label = element("label", "Žmogus " + (index + 1)), input = element("input");
       input.type = "text"; input.maxLength = 30; input.value = name; input.dataset.personName = String(index);
+      input.placeholder = "Vardas";
       input.addEventListener("input", () => {
         names[index] = input.value.slice(0, 30);
         for (const picker of itemList.querySelectorAll("[data-task-person]")) {
@@ -211,6 +215,34 @@ function setup(root) {
     return td;
   }
 
+  function renderFamilyAgenda(state, dates) {
+    const target = $(root, "[data-family-agenda]");
+    target.replaceChildren();
+    if (state.tasks.length === 0) {
+      target.append(element("p", "Pridėkite veiklą, kad ji atsirastų dienų sąraše.", "family-agenda__empty"));
+    }
+    for (let day = 0; day < state.dayCount; day++) {
+      const tasks = state.tasks.filter((task) => task.day === day);
+      if (!tasks.length) continue;
+      tasks.sort((a, b) => (a.time || "24:00").localeCompare(b.time || "24:00"));
+      const section = element("section", undefined, "family-agenda__day");
+      section.append(element("h4", weekday(state.weekStart, day) + (dates[day] ? " · " + localDate(dates[day]) : "")));
+      const list = element("ul");
+      for (const task of tasks) {
+        const item = element("li");
+        if (task.time) item.append(element("time", task.time));
+        const details = element("div");
+        const participants = task.person === "shared" ? "Visa šeima" : [].concat(task.person)
+          .map((index) => state.people[index] || ("Žmogus " + (index + 1))).join(", ");
+        details.append(element("strong", task.text), element("span", participants));
+        item.append(details);
+        list.append(item);
+      }
+      section.append(list);
+      target.append(section);
+    }
+  }
+
   function render(state) {
     const colors = THEMES[state.theme] || THEMES.forest;
     const sheet = $(root, "[data-studio-sheet]");
@@ -227,11 +259,12 @@ function setup(root) {
     $(root, "[data-studio-dates]").textContent = range;
     const target = $(root, "[data-studio-preview]");
     target.replaceChildren();
-    if (state.layout === "priority") {
+    if (state.layout === "priority" || (kind === "family" && state.priorities.some(Boolean))) {
       const section = element("section", undefined, "planner-sheet__priorities");
-      section.append(element("h4", "Trys svarbiausi darbai"));
+      section.append(element("h4", kind === "family" ? "Savaitės prioritetai" : "Trys svarbiausi darbai"));
       const list = element("ol");
-      state.priorities.forEach((text) => { const item = element("li", text || ""); if (!text) item.classList.add("is-blank"); list.append(item); });
+      const priorities = kind === "family" ? state.priorities.filter(Boolean) : state.priorities;
+      priorities.forEach((text) => { const item = element("li", text || ""); if (!text) item.classList.add("is-blank"); list.append(item); });
       section.append(list); target.append(section);
     }
     if (kind === "daily") {
@@ -264,6 +297,8 @@ function setup(root) {
       target.append(schedule);
     } else if (kind === "family") {
       const dates = state.date ? weekDates(state.date, state.weekStart, state.dayCount) : [];
+      renderFamilyAgenda(state, dates);
+      $(root, "[data-family-paper]").style.setProperty("--family-paper-min", (106 + 83 * (state.peopleCount + 1)) + "px");
       const table = element("table", undefined, "planner-sheet__family");
       const head = element("thead"), headRow = element("tr");
       headRow.append(element("th", "Diena"));
@@ -273,11 +308,15 @@ function setup(root) {
         ...(state.layout === "people" ? [{ person: "shared", name: "Bendra" }] : []),
       ];
       columns.forEach(({ name }) => headRow.append(element("th", name)));
+      for (const heading of headRow.children) heading.scope = "col";
       head.append(headRow); table.append(head);
       const body = element("tbody");
       for (let day = 0; day < state.dayCount; day++) {
         const row = element("tr");
-        row.append(element("th", weekday(state.weekStart, day) + (dates[day] ? " · " + localDate(dates[day]) : "")));
+        const heading = element("th", weekday(state.weekStart, day));
+        heading.scope = "row";
+        if (dates[day]) heading.append(element("time", localDate(dates[day])));
+        row.append(heading);
         columns.forEach(({ person }) => {
           const tasks = state.tasks.filter((task) => task.day === day && (person === "shared" ? task.person === "shared" || Array.isArray(task.person) : !Array.isArray(task.person) && Number(task.person) === person));
           row.append(cell(tasks, (task) => (task.time ? task.time + " · " : "") + task.text + (Array.isArray(task.person) ? " · " + task.person.map((index) => names[index] || ("Žmogus " + (index + 1))).join(", ") : "")));
@@ -321,11 +360,11 @@ function setup(root) {
 
   let saveTimer;
   function update() {
+    clearTimeout(saveTimer);
     try {
       const state = collect();
       render(state);
       savedStatus.textContent = "Išsaugoma…";
-      clearTimeout(saveTimer);
       saveTimer = setTimeout(() => {
         try {
           localStorage.setItem(key, JSON.stringify(state));
@@ -352,20 +391,54 @@ function setup(root) {
   }
 
   function sample() {
+    if (kind === "family") {
+      const { title, tasks, notes, priorities } = readRaw();
+      if ((title || tasks.length || notes || priorities.some(Boolean))
+        && !window.confirm("Pakeisti dabartinį planą pavyzdžiu?")) return;
+    }
     const state = defaultStudioState(kind);
     state.date = "2027-01-04";
     state.title = kind === "daily" ? "Pirmadienio planas" : kind === "family" ? "Mūsų savaitė" : "Savaitė su aiškia kryptimi";
     state.priorities = ["Svarbiausias darbas", "Trumpas pasivaikščiojimas", "Pasiruošti rytojui"];
     state.notes = "Palikti laiko poilsiui ir netikėtumams.";
+    if (kind === "family") state.people = ["Ieva", "Mantas", "Ugnė", "Jonas"];
     state.tasks = kind === "daily"
       ? [{ time: "09:00", end: "10:00", text: "Savaitės planavimas" }, { time: "13:30", end: "14:00", text: "Pietūs ir pertrauka" }, { text: "Užrašyti kitos dienos mintis" }]
       : kind === "family"
-        ? [{ day: 0, person: 0, text: "Mokykla" }, { day: 1, person: 1, text: "Maisto pirkimas" }, { day: 4, person: "shared", text: "Bendra vakarienė" }]
+        ? [{ day: 0, time: "08:00", person: 2, text: "Mokykla" }, { day: 1, time: "17:30", person: [0, 1], text: "Maisto pirkimas" }, { day: 4, time: "18:00", person: "shared", text: "Bendra vakarienė" }]
         : [{ day: 0, time: "09:00", text: "Savaitės planavimas" }, { day: 2, time: "14:00", text: "Susitikimas" }, { day: 5, text: "Poilsis" }];
     applyState(state); update(); status.textContent = "Pavyzdys įkeltas. Pakeiskite jį savo planais.";
   }
 
   form.addEventListener("submit", (event) => event.preventDefault());
+  if (kind === "family") {
+    const date = $(root, '[data-studio-field="date"]');
+    const preview = $(root, "[data-family-view]");
+    const paper = $(root, "[data-family-paper]");
+    const viewButtons = Array.from(root.querySelectorAll("[data-family-view-button]"));
+    const resizeObserver = new ResizeObserver(() => {
+      const scrolls = paper.scrollWidth > paper.clientWidth + 1;
+      paper.toggleAttribute("data-overflow", scrolls);
+      paper.tabIndex = scrolls ? 0 : -1;
+    });
+    resizeObserver.observe(paper);
+    resizeObserver.observe($(root, "[data-studio-sheet]"));
+    const setView = (view) => {
+      preview.dataset.familyView = view;
+      for (const button of viewButtons) button.setAttribute("aria-pressed", String(button.dataset.familyViewButton === view));
+    };
+    setView(matchMedia("(max-width: 760px)").matches ? "agenda" : "sheet");
+    for (const button of viewButtons) button.addEventListener("click", () => setView(button.dataset.familyViewButton));
+    for (const button of root.querySelectorAll("[data-family-week-shift]")) {
+      button.addEventListener("click", () => {
+        const shift = Number(button.dataset.familyWeekShift);
+        const anchor = new Date((shift && date.value ? date.value : today()) + "T12:00:00Z");
+        anchor.setUTCDate(anchor.getUTCDate() + shift);
+        date.value = anchor.toISOString().slice(0, 10);
+        update();
+      });
+    }
+  }
   form.addEventListener("input", update);
   form.addEventListener("change", (event) => {
     if (kind === "family" && event.target.matches('[data-studio-field="peopleCount"]')) {
@@ -430,6 +503,7 @@ function setup(root) {
   });
   $(root, "[data-studio-clear]").addEventListener("click", () => {
     if (!window.confirm("Išvalyti šio planuoklio juodraštį šiame įrenginyje?")) return;
+    clearTimeout(saveTimer);
     applyState(defaultStudioState(kind));
     try { localStorage.removeItem(key); localStorage.removeItem(editingKey); savedStatus.textContent = "Juodraštis išvalytas"; status.textContent = "Juodraštis išvalytas."; }
     catch { status.textContent = "Juodraščio išvalyti nepavyko."; status.setAttribute("role", "alert"); }
@@ -458,6 +532,7 @@ function setup(root) {
         savedStatus.textContent = "Atkurtas juodraštis; patikrinkite pažymėtą lauką";
       } else {
         const state = validateStudioState(imported, kind);
+        clearTimeout(saveTimer);
         applyState(state); localStorage.setItem(key, JSON.stringify(state)); localStorage.removeItem(editingKey);
         savedStatus.textContent = "Juodraštis atkurtas"; status.textContent = "Juodraštis atkurtas ir išsaugotas šiame įrenginyje.";
       }

@@ -1,0 +1,1286 @@
+{
+  "reviewed": "2026-11-21",
+  "periods": [
+    {
+      "id": "ruduo",
+      "skin": "autumn",
+      "mark": "leaf",
+      "name": "Rudens atostogos",
+      "stage": "Visiems mokiniams",
+      "group": "all",
+      "from_date": "2026-11-02",
+      "to_date": "2026-11-08"
+    },
+    {
+      "id": "kaledos",
+      "skin": "christmas",
+      "mark": "spark",
+      "name": "Kalėdų atostogos",
+      "stage": "Visiems mokiniams",
+      "group": "all",
+      "from_date": "2026-12-21",
+      "to_date": "2027-01-03"
+    },
+    {
+      "id": "ziema",
+      "skin": "winter",
+      "mark": "snow",
+      "name": "Žiemos atostogos",
+      "stage": "Visiems mokiniams",
+      "group": "all",
+      "from_date": "2027-02-15",
+      "to_date": "2027-02-21"
+    },
+    {
+      "id": "velykos-pradinis",
+      "skin": "spring",
+      "mark": "flower",
+      "name": "Velykų atostogos",
+      "stage": "Pradinis ir pagrindinis ugdymas",
+      "group": "basic",
+      "from_date": "2027-03-22",
+      "to_date": "2027-03-29"
+    },
+    {
+      "id": "velykos-vidurinis",
+      "skin": "spring",
+      "mark": "flower",
+      "name": "Velykų atostogos",
+      "stage": "Vidurinis ugdymas",
+      "group": "upper",
+      "from_date": "2027-03-29",
+      "to_date": "2027-04-04"
+    }
+  ],
+  "cities": [
+    "Vilnius",
+    "Kaunas",
+    "Klaipėda",
+    "Šiauliai",
+    "Panevėžys",
+    "Marijampolė",
+    "Telšiai",
+    "Akademija (Kauno r.)"
+  ],
+  "sources": {
+    "school": "https://smsm.lrv.lt/lt/veiklos-sritys-1/smm-svietimas/20252026-m-m-ir-20262027-m-m-mokiniu-atostogos/",
+    "plans": "https://smsm.lrv.lt/lt/veiklos-sritys-1/smm-svietimas/svietimas-vidurinis-ugdymas/ugdymo-planai-2/",
+    "institutions": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+    "registry": "https://www.aikos.smm.lt/Registrai/Svietimo-ir-mokslo-institucijos/SitePages/Pagrindinis.aspx"
+  },
+  "institutions": [
+    {
+      "id": "vu",
+      "name": "Vilniaus universitetas",
+      "short": "VU",
+      "cities": [
+        "Vilnius",
+        "Kaunas",
+        "Šiauliai"
+      ],
+      "home": "https://www.vu.lt/",
+      "source": "https://www.vu.lt/akademinis-kalendorius",
+      "scope": "Bendrosios ir mainų studentų datos",
+      "mode": "cohort",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Studijų metų pradžia"
+        },
+        {
+          "kind": "term",
+          "from_date": "2026-09-02",
+          "to_date": "2026-12-23",
+          "title": "Rudens paskaitos (mainams)",
+          "source": "https://www.vu.lt/en/academic-calendar"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-24",
+          "to_date": "2027-01-01",
+          "title": "Kalėdų atostogos (mainams)",
+          "source": "https://www.vu.lt/en/academic-calendar"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-01-02",
+          "to_date": "2027-01-26",
+          "title": "Rudens egzaminai ir galutiniai atsiskaitymai (mainams)",
+          "source": "https://www.vu.lt/en/academic-calendar"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-01-27",
+          "to_date": "2027-02-03",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-04",
+          "to_date": "2027-05-31",
+          "title": "Pavasario paskaitos (mainams)",
+          "source": "https://www.vu.lt/en/academic-calendar"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-02-04",
+          "to_date": "2027-02-18",
+          "title": "Rudens egzaminų perlaikymai"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-04",
+          "to_date": "2027-06-30",
+          "title": "Bendrasis pavasario semestro studijų laikotarpis"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-30",
+          "to_date": "2027-04-04",
+          "title": "Velykų atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-06-01",
+          "to_date": "2027-06-30",
+          "title": "Pavasario egzaminai ir galutiniai atsiskaitymai (mainams)",
+          "source": "https://www.vu.lt/en/academic-calendar"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-01",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-09-02",
+          "to_date": "2027-09-15",
+          "title": "Pavasario egzaminų perlaikymai (mainams)",
+          "source": "https://www.vu.lt/en/academic-calendar"
+        }
+      ],
+      "logo_source": "https://vu.lt/uploads/Logo_vilniaus_universitetas_fed9d3164f.png",
+      "logo_credit": "https://www.vu.lt/stiliaus-knyga",
+      "note": "Paskaitų ir egzaminų intervalai, pažymėti „mainams“, paimti iš mainų studentų kalendoriaus. Asmeninių egzaminų laikus tikrinkite savo fakultete.",
+      "further": {
+        "label": "VU mainų studentų kalendorius",
+        "url": "https://www.vu.lt/en/academic-calendar"
+      },
+      "logo": "/assets/academic/logos/vu.webp",
+      "logo_sha256": "6f2a75c79178d42cf849eb2a348b99e19e9e4f4073a6c5d199ae17a5208d5ae3",
+      "logo_width": 430,
+      "logo_height": 201
+    },
+    {
+      "id": "ktu",
+      "name": "Kauno technologijos universitetas",
+      "short": "KTU",
+      "cities": [
+        "Kaunas",
+        "Panevėžys"
+      ],
+      "home": "https://ktu.edu/",
+      "source": "https://ktu.edu/studiju-kalendorius/",
+      "scope": "Bendrasis studijų kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Rudens semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-24",
+          "to_date": "2027-01-03",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-01-04",
+          "to_date": "2027-01-31",
+          "title": "Rudens egzaminų sesija"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-29",
+          "to_date": "2027-04-04",
+          "title": "Pavasario atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-06-01",
+          "to_date": "2027-06-30",
+          "title": "Pavasario egzaminų sesija"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-01",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://ktu.edu/wp-content/uploads/2016/03/KTU.svg",
+      "logo_credit": "https://ktu.edu/universitetas/atributika/",
+      "note": "Doktorantams ir kai kuriems baigiamųjų kursų studentams taikomos atskiros taisyklės. Per pavasario atostogas kai kurie studentai atlieka praktiką.",
+      "logo": "/assets/academic/logos/ktu.webp",
+      "logo_sha256": "dce119bf7f1b265e58eecf5711aa52e44b1d2796db4ae1ada99c25feecd3a5e1",
+      "logo_width": 387,
+      "logo_height": 210
+    },
+    {
+      "id": "vilnius-tech",
+      "name": "Vilniaus Gedimino technikos universitetas",
+      "short": "VILNIUS TECH",
+      "cities": [
+        "Vilnius",
+        "Klaipėda"
+      ],
+      "home": "https://vilniustech.lt/",
+      "source": "https://vilniustech.lt/studijos/studiju-kalendorius/",
+      "scope": "Nuolatinės I ir II pakopų bei vientisosios studijos",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Rudens semestro pradžia"
+        },
+        {
+          "kind": "study",
+          "from_date": "2026-12-14",
+          "to_date": "2026-12-20",
+          "title": "Neatliktų tarpinių atsiskaitymų savaitė"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-21",
+          "to_date": "2027-01-03",
+          "title": "Kalėdų atostogos"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-31",
+          "title": "Žiemos sesijos perlaikymai"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-07",
+          "title": "Žiemos egzaminų laikymas komisijoje"
+        },
+        {
+          "kind": "study",
+          "from_date": "2027-05-17",
+          "to_date": "2027-05-23",
+          "title": "Neatliktų tarpinių atsiskaitymų savaitė"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-21",
+          "to_date": "2027-06-27",
+          "title": "Pavasario sesijos perlaikymai, išskyrus IV kursą"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/VT_LogoRGB_BlueTransparent-e1611665118814.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Pagrindinės sesijos, praktikos ir baigiamieji darbai žymimi atskirose kursų eilutėse. Jūreivystės programos Klaipėdoje turi atskirus grafikus.",
+      "further": {
+        "label": "Atsisiųsti nuolatinių studijų grafiką (XLSX)",
+        "url": "https://vilniustech.lt/wp-content/uploads/2026/07/I-ir-II-vientisuju-nuolatiniu-studiju-kalendorinis-grafikas-2026-2027_20260714_10.8-671.xlsx"
+      },
+      "logo": "/assets/academic/logos/vilnius-tech.webp",
+      "logo_sha256": "b54b52f1665a06e571ffb6b94a495548a9b98ccabd5f6bfda38321b5c68d4f48",
+      "logo_width": 200,
+      "logo_height": 57
+    },
+    {
+      "id": "vdu",
+      "name": "Vytauto Didžiojo universitetas",
+      "short": "VDU",
+      "cities": [
+        "Kaunas",
+        "Akademija (Kauno r.)",
+        "Vilnius"
+      ],
+      "home": "https://www.vdu.lt/lt/",
+      "source": "https://www.vdu.lt/wp-content/uploads/2026/04/2026-2027-mokslo-metu-akademinis-kalendorius.pdf",
+      "scope": "Bendrasis akademinis kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "exam",
+          "from_date": "2026-11-30",
+          "to_date": "2026-12-23",
+          "title": "Rudens egzaminų sesija, išskyrus baigiamąjį kursą"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-24",
+          "to_date": "2027-01-03",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-04",
+          "to_date": "2027-01-06",
+          "title": "Rudens egzaminų perlaikymai, išskyrus baigiamąjį kursą"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-25",
+          "to_date": "2027-03-31",
+          "title": "Pavasario atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-24",
+          "to_date": "2027-06-11",
+          "title": "Pavasario egzaminai, išskyrus I pakopos baigiamąjį kursą"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-24",
+          "to_date": "2027-05-27",
+          "title": "I pakopos baigiamojo kurso egzaminai"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-14",
+          "to_date": "2027-06-16",
+          "title": "Pavasario egzaminų perlaikymai, išskyrus I pakopos baigiamąjį kursą"
+        }
+      ],
+      "logo_source": "https://www.vdu.lt/wp-content/uploads/2018/05/VDU_logo_horizontalus_t_pilkas_LT_RGB.png",
+      "logo_credit": "https://www.vdu.lt/lt/",
+      "note": "Muzikos akademijos specialybės egzaminams, kai kuriems baigiamiesiems kursams ir praktikoms taikomas kitas grafikas.",
+      "further": {
+        "label": "VDU paskaitų tvarkaraščiai",
+        "url": "https://www.vdu.lt/lt/studijos/tvarkarasciai/"
+      },
+      "logo": "/assets/academic/logos/vdu.webp",
+      "logo_sha256": "7f9da39eac08b2043931c3658638e0e0b0170956d2e874ee89d7be3650c7112c",
+      "logo_width": 430,
+      "logo_height": 163
+    },
+    {
+      "id": "lsmu",
+      "name": "Lietuvos sveikatos mokslų universitetas",
+      "short": "LSMU",
+      "cities": [
+        "Kaunas"
+      ],
+      "home": "https://lsmu.lt/",
+      "source": "https://lsmu.lt/studijos/akademine-informacija/",
+      "scope": "Bendrasis studijų kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-02",
+          "to_date": "2026-09-02",
+          "title": "Rudens užsiėmimų pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-21",
+          "to_date": "2027-01-03",
+          "title": "Žiemos atostogos lietuvių ir anglų kalbų grupėms"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-29",
+          "title": "Rudens akademinių skolų likvidavimas"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-28",
+          "to_date": "2027-04-04",
+          "title": "Pavasario atostogos lietuvių ir anglų kalbų grupėms"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-23",
+          "to_date": "2027-06-30",
+          "title": "Pavasario akademinių skolų likvidavimas"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-08-16",
+          "to_date": "2027-08-20",
+          "title": "Mokslo metų skolų likvidavimas"
+        }
+      ],
+      "logo_source": "https://lsmu.lt/wp-content/themes/lsmu/images/logo-lt.svg",
+      "logo_credit": "https://lsmu.lt/",
+      "note": "Programų ciklai ir egzaminai skelbiami LSMUSIS tvarkaraščių tinklelyje.",
+      "logo": "/assets/academic/logos/lsmu.webp",
+      "logo_sha256": "3eddb54d73cf7af57ee5673ca91af927fd37714429e14328680ee70369d24380",
+      "logo_width": 415,
+      "logo_height": 59
+    },
+    {
+      "id": "mru",
+      "name": "Mykolo Romerio universitetas",
+      "short": "MRU",
+      "cities": [
+        "Vilnius",
+        "Kaunas",
+        "Marijampolė"
+      ],
+      "home": "https://www.mruni.eu/",
+      "source": "https://www.mruni.eu/wp-content/uploads/2026/01/2026_2027-akademinis-kalendorius_BENDRAS.pdf",
+      "scope": "Bendrasis akademinis kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2027-01-31",
+          "title": "Rudens semestras"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-21",
+          "to_date": "2026-12-27",
+          "title": "Kalėdų atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2026-12-28",
+          "to_date": "2027-01-24",
+          "title": "Egzaminų ir perlaikymų laikotarpis"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-31",
+          "title": "Atostogų ir perlaikymų savaitė"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-06-30",
+          "title": "Pavasario semestras"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-24",
+          "to_date": "2027-06-20",
+          "title": "Egzaminų ir perlaikymų laikotarpis"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-21",
+          "to_date": "2027-06-30",
+          "title": "Pavasario perlaikymai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-01",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/MRU-1.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Atskiruose studijų grafikuose datos tikslinamos pagal padalinį, kursą ir studijų formą.",
+      "further": {
+        "label": "MRU padalinių ir programų grafikai",
+        "url": "https://www.mruni.eu/studiju-grafikai/"
+      },
+      "logo": "/assets/academic/logos/mru.webp",
+      "logo_sha256": "82434fae69194e4c9a8de194f7891401bdefbd2167f8f98f5de68bfec1b46b8d",
+      "logo_width": 110,
+      "logo_height": 78
+    },
+    {
+      "id": "ku",
+      "name": "Klaipėdos universitetas",
+      "short": "KU",
+      "cities": [
+        "Klaipėda"
+      ],
+      "home": "https://www.ku.lt/lt",
+      "source": "https://shmf.ku.lt/uploads/documents/files/Kalendorius%202026-2027.pdf",
+      "scope": "Rektoriaus patvirtintas kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-02",
+          "to_date": "2026-12-18",
+          "title": "Rudens paskaitos nuolatinėse studijose"
+        },
+        {
+          "kind": "study",
+          "from_date": "2026-11-03",
+          "to_date": "2026-11-06",
+          "title": "Savarankiško darbo savaitė"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2026-12-28",
+          "to_date": "2027-01-22",
+          "title": "Rudens sesija nuolatinėse studijose"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-29",
+          "title": "Rudens perlaikymai"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-05-21",
+          "title": "Pavasario paskaitos nuolatinėse studijose"
+        },
+        {
+          "kind": "study",
+          "from_date": "2027-03-30",
+          "to_date": "2027-04-02",
+          "title": "Savarankiško darbo savaitė"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-24",
+          "to_date": "2027-06-18",
+          "title": "Pavasario egzaminų sesija"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-21",
+          "to_date": "2027-06-25",
+          "title": "Pavasario perlaikymai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-01",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/ku_universiteto_pozityvas-01-2-e1612274780358.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Savarankiško darbo savaitės yra studijų laikotarpiai. Ištęstinės ir sesijinės studijos turi atskiras rudens datas.",
+      "logo": "/assets/academic/logos/ku.webp",
+      "logo_sha256": "e7961e94aa7f88f39097c2fe5dbde907d3b044b1d3892173f62ae7838d422066",
+      "logo_width": 120,
+      "logo_height": 28
+    },
+    {
+      "id": "lmta",
+      "name": "Lietuvos muzikos ir teatro akademija",
+      "short": "LMTA",
+      "cities": [
+        "Vilnius",
+        "Klaipėda"
+      ],
+      "home": "https://lmta.lt/",
+      "source": "https://lmta.lt/wp-content/uploads/2026/08/10_2026-2027_I_II_pakop_akadem_kalend.pdf",
+      "scope": "Bakalauro ir magistrantūros studijos",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Rudens semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-21",
+          "to_date": "2027-01-01",
+          "title": "Kalėdų ir Naujųjų metų atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-01-04",
+          "to_date": "2027-01-23",
+          "title": "Rudens semestro sesija"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-30",
+          "title": "Rudens akademinių skolų likvidavimas"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-26",
+          "to_date": "2027-03-31",
+          "title": "Velykų atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-24",
+          "to_date": "2027-06-12",
+          "title": "Pavasario semestro sesija"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-14",
+          "to_date": "2027-06-19",
+          "title": "Pavasario akademinių skolų likvidavimas"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-06-14",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2026/05/LT_bordo_apvalus-1-e1777977209801.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Kalėdų ir Velykų intervalais numatyta saviruoša. Akademinių skolų likvidavimas gali sutapti su vasaros atostogų pradžia.",
+      "further": {
+        "label": "LMTA fakultetų tvarkaraščiai",
+        "url": "https://lmta.lt/studentams/studijuoju/tvarkarasciai/"
+      },
+      "logo": "/assets/academic/logos/lmta.webp",
+      "logo_sha256": "af0b8e340624560d22dd9309f49a06d71a214e4deb3b6d6d71a9434a8738554b",
+      "logo_width": 118,
+      "logo_height": 118
+    },
+    {
+      "id": "vda",
+      "name": "Vilniaus dailės akademija",
+      "short": "VDA",
+      "cities": [
+        "Vilnius",
+        "Kaunas",
+        "Klaipėda",
+        "Telšiai"
+      ],
+      "home": "https://www.vda.lt/lt",
+      "source": "https://www.vda.lt/uploads/documents/files/Nutarimas%20Nr_%20S-2026-2-11%20de%CC%87l%20atnaujinto%202026%E2%80%932027%20m_%20m_%20studiju%CC%A8%20kalendoriaus%20tvirtinimo.pdf",
+      "scope": "Senato patvirtintas akademinių metų kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Rudens studijų pradžia"
+        },
+        {
+          "kind": "study",
+          "from_date": "2026-12-15",
+          "to_date": "2026-12-23",
+          "title": "Rudens peržiūrų laikotarpis"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-24",
+          "to_date": "2026-12-25",
+          "title": "Kalėdų atostogų dienos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2026-12-28",
+          "to_date": "2027-01-22",
+          "title": "Rudens egzaminų sesija"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-29",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario studijų pradžia"
+        },
+        {
+          "kind": "study",
+          "from_date": "2027-05-17",
+          "to_date": "2027-05-28",
+          "title": "Pavasario peržiūrų laikotarpis"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-31",
+          "to_date": "2027-06-25",
+          "title": "Pavasario egzaminų sesija"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-06-28",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2026/04/Ekrano-nuotrauka-2026-04-13-155023-e1776084508806.jpg",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Kalendoriuje pažymėtos studijų darbo dienos. Tikslias peržiūras, egzaminus ir galimas išimtis tikrinkite savo fakulteto ar programos grafike.",
+      "further": {
+        "label": "Visų VDA fakultetų tvarkaraščiai",
+        "url": "https://www.vda.lt/lt/schedule"
+      },
+      "logo": "/assets/academic/logos/vda.webp",
+      "logo_sha256": "76ba29f94d019ff157ea177919876f9ffb609a6bb1e0440acaa2b0c700f5b269",
+      "logo_width": 153,
+      "logo_height": 72
+    },
+    {
+      "id": "lsu",
+      "name": "Lietuvos sporto universitetas",
+      "short": "LSU",
+      "cities": [
+        "Kaunas"
+      ],
+      "home": "https://www.lsu.lt/",
+      "source": "https://www.lsu.lt/documents/studiju-kalendorius-ir-tvarkarastis/",
+      "scope": "Bendrasis studijų kalendorius",
+      "mode": "published",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Rudens semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-21",
+          "to_date": "2027-01-03",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-01-04",
+          "to_date": "2027-01-24",
+          "title": "Rudens galutiniai egzaminai"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-31",
+          "title": "Rudens egzaminų perlaikymai"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-29",
+          "to_date": "2027-04-04",
+          "title": "Pavasario atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-31",
+          "to_date": "2027-06-20",
+          "title": "Pavasario galutiniai egzaminai"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-21",
+          "to_date": "2027-06-30",
+          "title": "Pavasario egzaminų perlaikymai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-01",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2024/09/LSU_RGB_LT_H_Spalvotas.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Ištęstinių studijų ir praktikų grafikai pateikti atskiruose universiteto dokumentuose.",
+      "logo": "/assets/academic/logos/lsu.webp",
+      "logo_sha256": "9bbae207df8445582491f55b9fdde927ab745de0e53191964cac16de62f9d46c",
+      "logo_width": 430,
+      "logo_height": 57
+    },
+    {
+      "id": "lka",
+      "name": "Generolo Jono Žemaičio Lietuvos karo akademija",
+      "short": "LKA",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://www.lka.lt/",
+      "source": "https://lurk.lt/rektoriai/",
+      "scope": "Studijų datos pagal kariūnų grupę",
+      "mode": "portal",
+      "kind": "university",
+      "events": [],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/LKA-fin.jpg",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Viešo 2026–2027 m. egzaminų ir atostogų kalendoriaus nepavyko patvirtinti. Aktualų grafiką teikia akademija.",
+      "logo": "/assets/academic/logos/lka.webp",
+      "logo_sha256": "0f81e5fe3c92d02c6278d94c5d5abff4acb7dd9390d2d0d7f7a0f13b3622737d",
+      "logo_width": 70,
+      "logo_height": 80
+    },
+    {
+      "id": "ism",
+      "name": "ISM Vadybos ir ekonomikos universitetas",
+      "short": "ISM",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://www.ism.lt/",
+      "source": "https://international.ism.lt/wp-content/uploads/Undergraduate-Studies-Academic-Calendar-2026-2027.pdf",
+      "scope": "Bakalauro I–II kursai",
+      "mode": "cohort",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-09-01",
+          "to_date": "2026-09-01",
+          "title": "Rudens semestro pradžia"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2026-12-14",
+          "to_date": "2026-12-23",
+          "title": "Pirmoji rudens egzaminų dalis"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-24",
+          "to_date": "2027-01-01",
+          "title": "Kalėdų atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-01-04",
+          "to_date": "2027-01-08",
+          "title": "Antroji rudens egzaminų dalis"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-01-11",
+          "to_date": "2027-01-22",
+          "title": "Rudens perlaikymai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-01-25",
+          "to_date": "2027-01-29",
+          "title": "Tarpsemestrinės atostogos"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-05-17",
+          "to_date": "2027-06-04",
+          "title": "Pavasario egzaminai"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-06-07",
+          "to_date": "2027-06-18",
+          "title": "Pavasario perlaikymai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-06-21",
+          "to_date": "2027-08-31",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/ISM-logo-kvadratas_0.jpg",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Pavasarį III ir IV kursų datos skiriasi. Jos pateikiamos tame pačiame akademinio kalendoriaus dokumente.",
+      "logo": "/assets/academic/logos/ism.webp",
+      "logo_sha256": "1a5117ff92df872bd3eef21631650582cf52e0cf5d5777f3a2316edc46c3d9ea",
+      "logo_width": 80,
+      "logo_height": 80
+    },
+    {
+      "id": "lcc",
+      "name": "LCC tarptautinis universitetas",
+      "short": "LCC",
+      "cities": [
+        "Klaipėda"
+      ],
+      "home": "https://lcc.lt/lt/",
+      "source": "https://lcc.lt/study-abroad-lithuania/",
+      "scope": "„Study Abroad Lithuania“ pavasario grupė",
+      "mode": "cohort",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2027-01-11",
+          "to_date": "2027-01-11",
+          "title": "Pavasario paskaitų pradžia"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-04-26",
+          "to_date": "2027-04-30",
+          "title": "Pavasario galutiniai egzaminai"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/LCC.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Rodomos paskelbtos pavasario mainų programos datos. Studijų grafikas gali keistis iki paskaitų pradžios.",
+      "further": {
+        "label": "LCC paskaitų tvarkaraštis",
+        "url": "https://lcc.lt/academics/course-schedule"
+      },
+      "logo": "/assets/academic/logos/lcc.webp",
+      "logo_sha256": "d576d3918d7637a235b80926598835146ab7cd64bf4113c1b674b54a4847f944",
+      "logo_width": 82,
+      "logo_height": 80
+    },
+    {
+      "id": "ksu",
+      "name": "Kazimiero Simonavičiaus universitetas",
+      "short": "KSU",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://ksu.lt/",
+      "source": "https://ksu.lt/studento-gidas/",
+      "scope": "Studento gidas ir „My KSU“",
+      "mode": "portal",
+      "kind": "university",
+      "events": [],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2026/07/KSU_logo-2-e1784275674697.png",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Viešų tikslių 2026–2027 m. sesijų ir atostogų intervalų nepavyko patvirtinti.",
+      "further": {
+        "label": "„My KSU“ studentų informacija",
+        "url": "https://ksu.lt/en/my-ksu/"
+      },
+      "logo": "/assets/academic/logos/ksu.webp",
+      "logo_sha256": "746bea275bc2a2880622df608e3e59095a8fba7bfa0f9cb998c43fff0c5821e8",
+      "logo_width": 160,
+      "logo_height": 51
+    },
+    {
+      "id": "ehu",
+      "name": "Europos humanitarinis universitetas",
+      "short": "EHU",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://lt.ehuniversity.lt/",
+      "source": "https://en.ehuniversity.lt/academics/calendar/",
+      "scope": "Nuolatinės bakalauro studijos (kontaktinės)",
+      "mode": "cohort",
+      "kind": "university",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-10-01",
+          "to_date": "2026-10-01",
+          "title": "Rudens semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-24",
+          "to_date": "2027-01-07",
+          "title": "Kalėdų ir Naujųjų metų atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-02-01",
+          "to_date": "2027-02-18",
+          "title": "Žiemos egzaminai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-02-22",
+          "to_date": "2027-02-28",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-03-01",
+          "to_date": "2027-03-01",
+          "title": "Pavasario semestro pradžia"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-06-21",
+          "to_date": "2027-07-14",
+          "title": "Vasaros egzaminai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-15",
+          "to_date": "2027-09-30",
+          "title": "Vasaros atostogos"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-07-19",
+          "to_date": "2027-07-23",
+          "title": "Pavasario akademinių skolų likvidavimas"
+        }
+      ],
+      "logo_source": "https://lt.ehuniversity.lt/wp-content/uploads/2017/10/EHU-logo-2012-symbol.png",
+      "logo_credit": "https://lt.ehuniversity.lt/",
+      "note": "Sesijinių studijų, magistrantūros ir baigiamųjų kursų datos pateikiamos atskirose oficialaus kalendoriaus skiltyse.",
+      "logo": "/assets/academic/logos/ehu.webp",
+      "logo_sha256": "2f2f14898e543c63978823064354ff29ffa2de3ae498d24b63f18cc53da7480b",
+      "logo_width": 210,
+      "logo_height": 210
+    },
+    {
+      "id": "uwb",
+      "name": "Balstogės universiteto filialas Vilniuje",
+      "short": "UwB",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://wilno.uwb.edu.pl/",
+      "source": "https://wilno.uwb.edu.pl/student/rozklady-zajec-i-harmonogram-sesji-egzaminacyjnej",
+      "scope": "Vilniaus filialo studento gidas",
+      "mode": "published",
+      "kind": "branch",
+      "events": [
+        {
+          "kind": "term",
+          "from_date": "2026-10-01",
+          "to_date": "2026-10-01",
+          "title": "Žiemos semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2026-12-23",
+          "to_date": "2027-01-08",
+          "title": "Žiemos atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-02-05",
+          "to_date": "2027-02-18",
+          "title": "Žiemos egzaminų sesija"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-02-19",
+          "to_date": "2027-02-25",
+          "title": "Žiemos perlaikymai"
+        },
+        {
+          "kind": "term",
+          "from_date": "2027-02-26",
+          "to_date": "2027-02-26",
+          "title": "Vasaros semestro pradžia"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-03-25",
+          "to_date": "2027-03-30",
+          "title": "Pavasario atostogos"
+        },
+        {
+          "kind": "exam",
+          "from_date": "2027-06-22",
+          "to_date": "2027-07-05",
+          "title": "Vasaros egzaminų sesija"
+        },
+        {
+          "kind": "retake",
+          "from_date": "2027-07-06",
+          "to_date": "2027-07-12",
+          "title": "Vasaros perlaikymai"
+        },
+        {
+          "kind": "break",
+          "from_date": "2027-07-13",
+          "to_date": "2027-09-30",
+          "title": "Vasaros atostogos"
+        }
+      ],
+      "logo_source": "https://lamabpo.lt/wp-content/uploads/2023/04/balstoges-logo.jpg",
+      "logo_credit": "https://lamabpo.lt/pirmosios-pakopos-ir-vientisosios-studijos/universitetai/",
+      "note": "Filialas vadovaujasi Balstogės universiteto akademinių metų tvarka. Vasarą gali būti numatyta praktika.",
+      "further": {
+        "label": "Balstogės universiteto 2026–2027 m. kalendorius",
+        "url": "https://uwb.edu.pl/student/organizacja-roku-akademickiego-1584"
+      },
+      "logo": "/assets/academic/logos/uwb.webp",
+      "logo_sha256": "b232fded9d7e30e76aef76028e8cb0d0f9643941cc244017661171b719f15ea9",
+      "logo_width": 80,
+      "logo_height": 80
+    },
+    {
+      "id": "seminarija",
+      "name": "Vilniaus šv. Juozapo kunigų seminarija",
+      "short": "VŠJKS",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://www.seminarija.lt/",
+      "source": "https://www.seminarija.lt/index.php?id=19",
+      "scope": "Universitetinės religijos studijos",
+      "mode": "portal",
+      "kind": "seminary",
+      "events": [],
+      "note": "AIKOS registre skelbiama universitetinė Religijos mokslų programa. Viešo 2026–2027 m. datų kalendoriaus nepavyko patvirtinti.",
+      "further": {
+        "label": "Religijos mokslų programa AIKOS registre",
+        "url": "https://www.aikos.smm.lt/studijuoti/_layouts/15/Asw.Aikos.RegisterSearch/ObjectFormResult.aspx?f=MokGal&key=7175_2025"
+      }
+    },
+    {
+      "id": "vjg",
+      "name": "Vilniaus jėzuitų gimnazija",
+      "short": "VJG",
+      "cities": [
+        "Vilnius"
+      ],
+      "home": "https://www.vjg.lt/",
+      "source": "https://www.vjg.lt/ugdymas/up-kalendorius",
+      "scope": "Mokyklos informacija",
+      "mode": "published",
+      "kind": "school",
+      "events": [],
+      "logo_source": "https://www.vjg.lt/images/logos/vjg-logo-nnn.png",
+      "logo_credit": "https://www.vjg.lt/",
+      "logo": "/assets/academic/logos/vjg.webp",
+      "logo_sha256": "1e4fc031b6668d386a5776df1a4a5bbef5767e0f55cefcc8dc7135df0b649120",
+      "logo_width": 331,
+      "logo_height": 199
+    },
+    {
+      "id": "ktug",
+      "name": "KTU gimnazija",
+      "short": "KTU gimnazija",
+      "cities": [
+        "Kaunas"
+      ],
+      "home": "https://www.ktug.lt/",
+      "source": "https://www.ktug.lt/apie/ugdymo-procesas/",
+      "scope": "Mokyklos informacija",
+      "mode": "published",
+      "kind": "school",
+      "events": [],
+      "logo_source": "https://www.ktug.lt/wp-content/themes/ktugNext/img/logo/KTUG_logo.png",
+      "logo_credit": "https://www.ktug.lt/",
+      "logo": "/assets/academic/logos/ktug.webp",
+      "logo_sha256": "c34917c43b2562f777100fee4e025bdb6e36240b4f6fa7ab9fdf42e1403d98db",
+      "logo_width": 210,
+      "logo_height": 210
+    },
+    {
+      "id": "kvdg",
+      "name": "Klaipėdos Vytauto Didžiojo gimnazija",
+      "short": "KVDG",
+      "cities": [
+        "Klaipėda"
+      ],
+      "home": "https://kvdg.eu/",
+      "source": "https://kvdg.eu/ugdymo-veiklos-organizavimas/",
+      "scope": "Mokyklos informacija",
+      "mode": "published",
+      "kind": "school",
+      "events": [],
+      "logo_source": "https://kvdg.eu/wp-content/uploads/2023/12/cropped-foto-kvdugm-logo-e1702286266727-1-192x192.png",
+      "logo_credit": "https://kvdg.eu/",
+      "logo": "/assets/academic/logos/kvdg.webp",
+      "logo_sha256": "8fb3fd40b4d854d0d9d04933aa349c6377bf6e7584df4bbd02608382d0a985c9",
+      "logo_width": 192,
+      "logo_height": 192
+    },
+    {
+      "id": "didzdvaris",
+      "name": "Šiaulių Didždvario gimnazija",
+      "short": "Šiaulių Didždvario gimnazija",
+      "cities": [
+        "Šiauliai"
+      ],
+      "home": "https://www.didzdvaris.lt/",
+      "source": "https://www.didzdvaris.lt/veikla/formalus-ugdymas/",
+      "scope": "Mokyklos informacija",
+      "mode": "published",
+      "kind": "school",
+      "events": [],
+      "logo_source": "https://www.didzdvaris.lt/wp-content/uploads/2020/08/Logotipas-Didzdvario-gimnacija-2.png",
+      "logo_credit": "https://www.didzdvaris.lt/",
+      "logo": "/assets/academic/logos/didzdvaris.webp",
+      "logo_sha256": "0f30e214a9f010b85349c5f4e9cc52820d81a87d6b8f0429c26df4344aed50e0",
+      "logo_width": 323,
+      "logo_height": 96
+    },
+    {
+      "id": "balcikonis",
+      "name": "Panevėžio Juozo Balčikonio gimnazija",
+      "short": "Panevėžio Juozo Balčikonio gimnazija",
+      "cities": [
+        "Panevėžys"
+      ],
+      "home": "https://jbg.lt/lt",
+      "source": "https://jbg.lt/paslaugos/ugdymas/ugdymo-organizavimas",
+      "scope": "Mokyklos informacija",
+      "mode": "published",
+      "kind": "school",
+      "events": [],
+      "logo_source": "https://jbg.lt/app/default/assets/mokykla/logo.png",
+      "logo_credit": "https://jbg.lt/lt",
+      "logo": "/assets/academic/logos/balcikonis.webp",
+      "logo_sha256": "aaa3627d57ee9d5630779bdf5b0fd60b1f02da0f9d8d8df75bfe33ec6f21e9d0",
+      "logo_width": 156,
+      "logo_height": 210
+    }
+  ]
+}

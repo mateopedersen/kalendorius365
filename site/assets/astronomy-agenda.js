@@ -15,6 +15,7 @@ const message = $("#astro-agenda-message");
 const controls = [year, month, kind];
 const filterKeys = ["metai", "menuo", "rusis"];
 const eventArt = "/assets/visuals/astronomy/events.svg";
+const moonArt = "/assets/visuals/astronomy/moon-phases-pia14011";
 const svgNamespace = "http://www.w3.org/2000/svg";
 const months = new Map([...month.options].slice(1).map(option => [
   Number(option.value), { name: option.textContent, slug: option.dataset.slug },
@@ -49,14 +50,22 @@ function create(tag, text, className) {
   return node;
 }
 
-function icon(type) {
+function icon(event) {
+  if (event.kind === "moon") {
+    const photo = create("img", undefined, "astro-phase-icon");
+    photo.src = `${moonArt}/${event.phase}.svg`;
+    photo.alt = "";
+    photo.width = photo.height = 64;
+    photo.decoding = "async";
+    return photo;
+  }
   const svg = document.createElementNS(svgNamespace, "svg");
   svg.setAttribute("class", "astro-phase-icon");
   svg.setAttribute("viewBox", "0 0 64 64");
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
   const use = document.createElementNS(svgNamespace, "use");
-  use.setAttribute("href", `${eventArt}#${type}`);
+  use.setAttribute("href", `${eventArt}#${event.type}`);
   svg.append(use);
   return svg;
 }
@@ -68,7 +77,7 @@ function eventCard(event, featured = false) {
   const labels = months.get(event.month);
   const meta = create("div", undefined, "astro-event-meta");
   const art = create("div", undefined, "astro-event-art");
-  art.append(icon(type));
+  art.append(icon(event));
   meta.append(art, create("span", event.kind === "season" ? "Metų laikai" : "Mėnulio fazė", "astro-event-kind"));
   const heading = create(featured ? "h3" : "h4", event.title);
   const local = create("time", localDate.format(date), "astro-event-local");

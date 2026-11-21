@@ -1,7 +1,7 @@
 # Horoscope release runbook
 
 - Workflow: `.github/workflows/horoscope-automation.yml`.
-- Schedule: daily 06:20, recovery check 08:20 `Europe/Vilnius`.
+- Schedule: 00:17 and every 30 minutes afterward through 23:47 `Europe/Vilnius`.
 - It becomes automatic after merge to `main`; `workflow_dispatch` is an on-demand recovery path.
 - No paid LLM, API key, translation model or third-party horoscope prose is used.
 - Production verifier: `scripts/horoscopes/verify_live.py`; checks the current publication across thirteen routes.

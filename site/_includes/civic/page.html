@@ -1,15 +1,17 @@
 {% assign civic = site.data.civic %}
 {% assign guide = civic.pages[page.civic] %}
-{% assign action = civic.sources[guide.cta] %}
 <article class="civic-page civic-page--{{ page.civic }}" data-civic>
   <header class="civic-hero">
     <div class="civic-hero__copy">
       <p class="civic-kicker"><span aria-hidden="true"></span>{{ guide.group }}</p>
       <h1>{{ guide.title | escape }}</h1>
       <p class="civic-lead">{{ guide.intro | escape }}</p>
-      <div class="civic-actions">
-        {% if page.civic == 'hub' %}<a class="civic-button civic-button--gold" href="#pasirinkite">Rasti išmoką</a>{% else %}<a class="civic-button civic-button--gold" href="#skaiciuoti">Atverti skaičiuoklę</a>{% endif %}
-        <a class="civic-button civic-button--ghost" href="#saltiniai">Oficialūs šaltiniai</a>
+      <div class="civic-actions civic-hero__portals">
+        {% include civic/portal-links.html links=guide.actions theme='gold' show_hints=true %}
+      </div>
+      <div class="civic-actions civic-hero__secondary">
+        {% if page.civic == 'hub' %}<a class="civic-button civic-button--ghost" href="#pasirinkite">Rasti išmoką</a>{% else %}<a class="civic-button civic-button--ghost" href="#skaiciuoti">Atverti skaičiuoklę</a>{% endif %}
+        {% include civic/portal-links.html links=guide.reading theme='ghost' %}
       </div>
     </div>
     <div class="civic-ticket">
@@ -34,8 +36,12 @@
   {% endif %}
 
   <section class="civic-section" id="prasymas" aria-labelledby="civic-process">
-    <header class="civic-section__head"><h2 id="civic-process">{% if page.civic == 'tax' %}Kaip deklaruoti ir sumokėti?{% else %}Kaip kreiptis?{% endif %}</h2><a class="civic-button civic-button--green" href="{{ action[1] }}">{{ action[0] | escape }}</a></header>
+    <header class="civic-section__head"><h2 id="civic-process">{% if page.civic == 'tax' %}Kaip deklaruoti ir sumokėti?{% else %}Kaip kreiptis?{% endif %}</h2></header>
     <ol class="civic-steps">{% for step in guide.steps %}<li><h3>{{ step[0] | escape }}</h3><p>{{ step[1] | escape }}</p></li>{% endfor %}</ol>
+    <div class="civic-actions civic-process__portals">
+      {% include civic/portal-links.html links=guide.actions theme='green' %}
+      {% include civic/portal-links.html links=guide.reading theme='plain' %}
+    </div>
   </section>
 
   <section class="civic-section" id="klausimai" aria-labelledby="civic-faq">

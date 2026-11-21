@@ -1,0 +1,11 @@
+      {% assign search_id = include.id | default: 'wx-search' %}
+      <form class="wx-search" role="search" aria-label="{{ include.name | default: 'Vietovės paieška orų žinyne' }}">
+        <label for="{{ search_id }}-input">{{ include.label | default: 'Rasti vietovę' }}</label>
+        <div class="wx-search__control">
+          <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 5 5"></path></svg>
+          <input id="{{ search_id }}-input" type="search" placeholder="{{ include.placeholder | default: 'Kaunas, Žalgirio k.' }}" autocomplete="off" aria-controls="{{ search_id }}-results">
+          <button type="submit">Rasti</button>
+        </div>
+        <p id="{{ search_id }}-state" class="wx-search__state" role="status" hidden></p>
+        <ul id="{{ search_id }}-results" class="wx-search__results" hidden></ul>
+      </form>

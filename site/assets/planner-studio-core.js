@@ -58,7 +58,7 @@ export function defaultStudioState(kind) {
   return {
     schema: 1, kind, title: "", date: "", weekStart: 1, dayCount: kind === "daily" ? 1 : 7,
     start: "08:00", end: "20:00", endNextDay: false, step: 30, peopleCount: 4,
-    people: ["Aš", "Šeima", "Vaikai", "Bendra"], theme: "forest",
+    people: kind === "family" ? ["", "", "", ""] : ["Aš", "Šeima", "Vaikai", "Bendra"], theme: "forest",
     layout: kind === "family" ? "people" : "time",
     priorities: ["", "", ""], tasks: [], notes: "", lowInk: false, paper: "A4", orientation: kind === "daily" ? "portrait" : "landscape"
   };

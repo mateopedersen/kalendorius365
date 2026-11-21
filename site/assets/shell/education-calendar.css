@@ -1,0 +1,435 @@
+#education-calendar {
+  --edu-ink: #163a2e;
+  --edu-muted: #4b6157;
+  --edu-green: #075f43;
+  --edu-line: #dae4d8;
+  --edu-paper: #fffef8;
+  --edu-gold: #f8d674;
+  display: grid;
+  gap: clamp(1.35rem, 3vw, 2.7rem);
+  color: var(--edu-ink);
+  margin-bottom: 2.2rem;
+}
+
+#education-calendar :is(h1, h2, h3, p, figure, ul) { margin: 0; }
+#education-calendar :is(h2, h3) { color: var(--edu-ink); line-height: 1.18; }
+#education-calendar [hidden] { display: none !important; }
+#education-calendar :is(a, button, input, select, summary):focus-visible { outline: 2px solid #1b7c5e; outline-offset: 3px; }
+#education-calendar :is(section[id], details[id], article[id]) { scroll-margin-top: 1.4rem; }
+.edu-symbols { position: absolute; }
+
+.edu-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.17fr) minmax(0, 1fr);
+  min-height: 330px;
+  overflow: hidden;
+  border-radius: clamp(1rem, 2.4vw, 1.75rem);
+  background: #123e30;
+}
+.edu-hero-copy {
+  display: grid;
+  align-content: center;
+  gap: .95rem;
+  padding: clamp(1.4rem, 4.3vw, 4rem);
+  background: radial-gradient(ellipse at right bottom, #27604a, #12392e 69%);
+  color: #f1f7eb;
+}
+#education-calendar .edu-hero h1 {
+  color: #fffdf0;
+  letter-spacing: -.045em;
+  font-size: clamp(2rem, 4.1vw, 3.85rem);
+  line-height: 1.01;
+  text-wrap: balance;
+}
+.edu-hero-copy > p:not(.edu-kicker) { color: #e4efe5; max-width: 45ch; }
+.edu-kicker {
+  color: #356c54;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .085em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.edu-hero .edu-kicker { color: var(--edu-gold); }
+.edu-jumps { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .35rem; }
+#education-calendar .edu-jumps a {
+  display: inline-flex;
+  min-height: 43px;
+  align-items: center;
+  gap: .75rem;
+  padding: .55rem .8rem;
+  border: 1px solid #a8c5b4;
+  border-radius: .6rem;
+  background: #ffffff14;
+  color: #fffdf0;
+  font-weight: 750;
+  text-decoration: none;
+}
+#education-calendar .edu-jumps a:first-child { background: var(--edu-gold); color: #213624; border-color: var(--edu-gold); }
+#education-calendar .edu-jumps a:hover { background: #ffffff33; color: #fff; }
+#education-calendar .edu-jumps a:first-child:hover { background: #ffe4a0; color: #213624; }
+#education-calendar .edu-jumps a:focus-visible { outline-color: #ffe1a3; }
+.edu-hero-photo { min-width: 0; min-height: 240px; }
+.edu-hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 52% 55%; }
+
+.edu-section { display: grid; gap: 1rem; min-width: 0; }
+.edu-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: .75rem 1.4rem;
+}
+#education-calendar .edu-section-head h2, #education-calendar .edu-planners h2 {
+  font-size: clamp(1.55rem, 2.7vw, 2.45rem);
+  letter-spacing: -.035em;
+  margin-top: .18em;
+}
+#education-calendar .edu-section-head h2 + p, #education-calendar .edu-planners h2 + p { margin-top: .45rem; color: var(--edu-muted); }
+.edu-section-head > a, .edu-card-links a { font-size: .86rem; font-weight: 750; text-underline-offset: .16em; }
+.edu-section-head > a span, .edu-card-links a span { margin-inline-start: .25em; }
+
+.edu-school-tools, .edu-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: .7rem;
+}
+#education-calendar label { display: grid; gap: .32rem; color: var(--edu-ink); font-size: .83rem; font-weight: 750; }
+#education-calendar :is(input, select, button) { min-height: 42px; max-width: 100%; }
+#education-calendar :is(input, select) { padding: .49rem .65rem; border: 1px solid #bfcec0; border-radius: .58rem; background: #fff; color: var(--edu-ink); }
+#education-calendar select {
+  appearance: none;
+  padding-inline-end: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m5 8 5 5 5-5' stroke='%23235c45' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .63rem center;
+  background-size: 1rem;
+}
+#education-calendar button {
+  padding: .45rem .8rem;
+  border: 1px solid #bbcebf;
+  border-radius: .58rem;
+  background: #f8fbf6;
+  color: #15533d;
+  font-size: .82rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+#education-calendar button:hover { background: #e1efe2; border-color: #80a78e; }
+#education-calendar .edu-export { background: #e8f2e8; border-color: #b1d0bb; }
+.edu-breaks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  align-items: stretch;
+  gap: clamp(.65rem, 1.25vw, 1.05rem);
+}
+.edu-break {
+  --break-accent: #836425;
+  --break-background: #faf3dc;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .55rem;
+  min-height: 177px;
+  padding: .9rem;
+  border: 1px solid var(--edu-line);
+  border-top: 3px solid var(--break-accent);
+  border-radius: .85rem;
+  background: linear-gradient(160deg, var(--break-background), #fffdf7 76%);
+}
+.edu-break--christmas { --break-accent: #943a46; --break-background: #f8e6e7; }
+.edu-break--winter { --break-accent: #305d78; --break-background: #e3eff6; }
+.edu-break--spring { --break-accent: #376747; --break-background: #e8f1df; }
+.edu-break-mark { display: grid; place-items: center; color: var(--break-accent); }
+.edu-break-mark svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.edu-break h3 { font-size: 1.06rem; }
+.edu-date-range { display: flex; flex-wrap: wrap; align-items: center; gap: .18rem .35rem; font-size: .84rem; font-variant-numeric: tabular-nums; font-weight: 780; }
+.edu-date-range time { white-space: nowrap; }
+.edu-break-stage { color: var(--edu-muted); font-size: .81rem; }
+.edu-date-status { margin-top: auto; padding: .22rem .5rem; border-radius: .4rem; background: #e5f0e4; color: #185641; font-size: .73rem; font-weight: 750; }
+#education-calendar .edu-section-note { color: var(--edu-muted); font-size: .89rem; max-width: 91ch; }
+.edu-next-years { display: flex; flex-wrap: wrap; gap: .55rem; }
+.edu-next-years details { padding: .45rem .66rem; border: 1px solid var(--edu-line); border-radius: .55rem; background: #f9fbf6; }
+.edu-next-years summary { color: var(--edu-green); font-size: .82rem; font-weight: 720; cursor: pointer; }
+#education-calendar .edu-next-years details p { margin-top: .4rem; max-width: 42ch; color: var(--edu-muted); font-size: .83rem; }
+
+.edu-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  padding: .85rem;
+  border: 1px solid var(--edu-line);
+  border-radius: .85rem;
+  background: #e9f0e6;
+}
+.edu-filters :is(input, select) { width: 100%; }
+.edu-results { color: var(--edu-muted); font-size: .85rem; }
+.edu-university-grid {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+}
+.edu-university-grid:has(.edu-dates[open]) { align-items: start; }
+.edu-institution {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .72rem;
+  padding: .92rem;
+  border: 1px solid var(--edu-line);
+  border-radius: .88rem;
+  background: var(--edu-paper);
+}
+.edu-institution:target { border-color: #618d73; outline: 2px solid #bfd9bf; }
+.edu-institution-head {
+  display: grid;
+  grid-template-columns: minmax(68px, .38fr) minmax(0, 1fr);
+  gap: .7rem;
+  align-items: start;
+}
+.edu-logo {
+  min-height: 68px;
+  display: grid;
+  place-items: center;
+  padding: .53rem;
+  border: 1px solid #e7e9e0;
+  border-radius: .57rem;
+  background: #fff;
+}
+.edu-logo img { display: block; width: 100%; height: 53px; object-fit: contain; }
+.edu-logo span { color: var(--edu-muted); font-size: .72rem; font-weight: 770; }
+.edu-city { color: var(--edu-green); font-size: .71rem; font-weight: 740; line-height: 1.35; }
+#education-calendar .edu-institution-name h3 { font-size: 1.01rem; margin: .2rem 0; }
+.edu-scope { color: var(--edu-muted); font-size: .8rem; line-height: 1.45; }
+.edu-note { font-size: .77rem; }
+.edu-dates {
+  border: 1px solid #d8e4d7;
+  border-radius: .62rem;
+  overflow: hidden;
+  background: #f4f8ef;
+}
+.edu-dates summary { cursor: pointer; padding: .56rem .62rem; color: #174c3a; font-size: .82rem; font-weight: 760; }
+.edu-dates summary small { padding: .14rem .35rem; margin-inline-start: .18rem; background: #e1eddf; border-radius: .35rem; font-size: .72rem; }
+.edu-dates ul { list-style: none; padding: 0 .62rem; }
+.edu-dates li {
+  display: grid;
+  gap: .2rem;
+  padding: .5rem 0;
+  border-top: 1px solid #dbe5da;
+  line-height: 1.35;
+}
+.edu-event-body { display: grid; gap: .17rem; font-size: .83rem; }
+.edu-event-range { color: #475f53; font-size: .75rem; font-variant-numeric: tabular-nums; }
+.edu-event-tag { justify-self: start; padding: .12rem .34rem; border-radius: .24rem; color: #21513e; background: #deeee2; font-size: .66rem; font-weight: 770; }
+[data-kind="exam"] .edu-event-tag { color: #7c2d29; background: #f8e2db; }
+[data-kind="retake"] .edu-event-tag { color: #705819; background: #f5eccc; }
+[data-kind="term"] .edu-event-tag { color: #244f6a; background: #e2eef5; }
+.edu-dates > button { margin: .4rem .55rem .6rem; }
+.edu-card-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem .65rem; align-items: baseline; }
+.edu-card-links .edu-brand-link { margin-inline-start: auto; font-size: .71rem; color: #4e6858; }
+.edu-school-directory .edu-institution { min-height: 118px; }
+
+.edu-planners {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .78fr);
+  gap: .9rem;
+  padding: clamp(1rem, 2.5vw, 2.1rem);
+  border: 1px solid #d3e4d3;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #e2efe0, #fbf9ed);
+}
+.edu-planner-links { display: grid; align-content: start; gap: .42rem; }
+.edu-planner-links a { display: flex; justify-content: space-between; gap: .6rem; align-items: center; padding: .54rem .7rem; border: 1px solid #c5d7c7; background: #fffef8; color: var(--edu-green); border-radius: .57rem; font-size: .87rem; font-weight: 740; text-decoration: none; }
+.edu-planner-links a:hover { background: #ecf3e9; }
+
+.edu-print-choices { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .7rem; }
+.edu-print-item { display: grid; gap: .55rem; padding: .65rem; border: 1px solid #c6d8c8; border-radius: .6rem; background: #fffef9; }
+.edu-print-preview { display: block; }
+.edu-print-preview img { display: block; width: 100%; height: 112px; object-fit: contain; border-radius: .4rem; background: #edf1ec; }
+#education-calendar .edu-print-item h3 { font-size: .91rem; }
+.edu-sources { border-top: 1px solid var(--edu-line); padding-top: .8rem; color: var(--edu-muted); font-size: .79rem; }
+
+@media (max-width: 1050px) {
+  .edu-university-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .edu-hero { grid-template-columns: minmax(0, 1fr); }
+  .edu-hero-photo { min-height: 0; }
+  .edu-hero-photo img { aspect-ratio: 2.25; object-position: center; }
+  .edu-filters, .edu-planners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .edu-planners { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .edu-university-grid { grid-template-columns: minmax(0, 1fr); }
+  .edu-filters label:first-child { grid-column: 1 / -1; }
+  .edu-filters button { grid-column: 1 / -1; justify-self: start; }
+  .edu-school-tools label { width: 100%; }
+  .edu-print-choices { grid-template-columns: minmax(0,1fr); }
+}
+
+#education-calendar .edu-universities { scroll-margin-top: 5rem; }
+#education-calendar .edu-universities .edu-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, .5fr);
+  align-items: center;
+  padding: clamp(1.15rem, 3vw, 2rem);
+  border-radius: 1rem;
+  background: linear-gradient(120deg, #143e30, #235740);
+  color: #fff;
+}
+#education-calendar .edu-universities .edu-kicker { color: var(--edu-gold); }
+#education-calendar .edu-universities .edu-section-head h2 { color: #fff; }
+#education-calendar .edu-universities .edu-section-head h2 + p { max-width: 59ch; color: #ecf5e9; }
+.edu-directory-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .55rem;
+  margin: 0;
+}
+.edu-directory-summary > div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: .35rem;
+  justify-content: start;
+  padding: .78rem;
+  border: 1px solid #ffffff4a;
+  border-radius: .65rem;
+  background: #ffffff0c;
+}
+.edu-directory-summary dt { color: #ecf5e9; font-size: .82rem; line-height: 1.35; }
+.edu-directory-summary dd { margin: 0; color: var(--edu-gold); font-size: 1.65rem; font-weight: 800; line-height: 1; }
+#education-calendar .edu-university-filters {
+  grid-template-columns: minmax(0,1fr);
+  gap: .8rem;
+  padding: clamp(.8rem, 2vw, 1.1rem);
+  background: #f6f8ef;
+}
+.edu-filter-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0,1fr) auto;
+  align-items: end;
+  gap: .6rem;
+}
+.edu-filter-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .48rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.edu-filter-types legend { padding: 0 0 .42rem; color: var(--edu-ink); font-size: .83rem; font-weight: 750; }
+#education-calendar .edu-filter-types label {
+  position: relative;
+  display: block;
+}
+#education-calendar .edu-filter-types input {
+  position: absolute;
+  width: 1px;
+  min-height: 1px;
+  margin: 0;
+  padding: 0;
+  clip-path: inset(50%);
+}
+.edu-filter-types span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: .38rem .65rem;
+  background: #fff;
+  border: 1px solid #c7d9cb;
+  border-radius: .48rem;
+  color: #194e3a;
+  line-height: 1.25;
+  cursor: pointer;
+}
+.edu-filter-types label:hover span { background: #e8f1e6; }
+.edu-filter-types input:checked + span { background: #17543d; border-color: #17543d; color: #fff; }
+.edu-filter-types input:focus-visible + span { outline: 2px solid #6d5104; outline-offset: 2px; }
+.edu-universities .edu-institution {
+  overflow-wrap: anywhere;
+  padding: clamp(.85rem, 2vw, 1.2rem);
+  box-shadow: 0 6px 20px #2542320b;
+}
+.edu-universities .edu-institution-head {
+  align-items: center;
+  grid-template-columns: 77px minmax(0,1fr);
+}
+.edu-universities .edu-logo { height: 72px; }
+#education-calendar .edu-universities .edu-institution-name h3 { font-size: 1.12rem; margin: .25rem 0 0; }
+.edu-universities .edu-city { font-size: .76rem; }
+.edu-card-scope { display: grid; justify-items: start; gap: .35rem; }
+.edu-coverage {
+  padding: .24rem .42rem;
+  border-radius: .35rem;
+  color: #24543f;
+  background: #e4f0e5;
+  font-size: .71rem;
+  font-weight: 800;
+}
+.edu-coverage[data-mode="cohort"] { color: #694900; background: #f8eccd; }
+.edu-coverage[data-mode="portal"] { color: #3c594e; background: #eaf0e9; }
+.edu-upcoming {
+  display: grid;
+  gap: .22rem;
+  padding: .7rem;
+  border: 1px solid #dfd8b1;
+  border-inline-start: 3px solid #b98b29;
+  border-radius: .58rem;
+  background: #fbf6e3;
+  color: #2c3b28;
+  font-size: .84rem;
+  line-height: 1.35;
+}
+.edu-upcoming-label { color: #745619; font-size: .72rem; font-weight: 800; }
+.edu-universities .edu-dates summary {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: .45rem;
+  list-style: none;
+}
+.edu-universities .edu-dates summary::-webkit-details-marker { display: none; }
+.edu-universities .edu-dates summary:hover { background: #e8f2e8; }
+.edu-universities .edu-dates summary:focus-visible { outline-offset: -3px; }
+.edu-chevron {
+  width: .51rem;
+  height: .51rem;
+  margin: 0 .3rem .2rem;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.edu-dates[open] .edu-chevron { margin-bottom: -.25rem; transform: rotate(225deg); }
+.edu-universities .edu-dates ul { padding: 0 .7rem; }
+.edu-universities .edu-dates li { gap: .35rem; padding: .65rem 0; }
+.edu-universities .edu-event-body { font-size: .89rem; }
+.edu-universities .edu-event-range { font-size: .8rem; line-height: 1.4; }
+.edu-universities .edu-event-range time { white-space: normal; }
+.edu-event-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .65rem; }
+#education-calendar .edu-event-actions :is(a, button) { font-size: .76rem; }
+.edu-universities .edu-card-links { align-items: center; }
+#education-calendar .edu-universities .edu-official-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .48rem .7rem;
+  border-radius: .54rem;
+  color: #fff;
+  background: #176044;
+  text-decoration: none;
+}
+#education-calendar .edu-universities .edu-official-link:hover { background: #134633; }
+@media (max-width: 720px) {
+  #education-calendar .edu-universities .edu-section-head { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .edu-filter-fields { grid-template-columns: minmax(0,1fr); }
+  .edu-filter-fields button { width: 100%; }
+}
