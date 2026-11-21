@@ -1,4 +1,4 @@
-import { loadSearchIndex, searchPages } from "./search-engine.js";
+import { loadSearchCatalogue, searchCatalogue } from "./search-catalogue.js";
 
 const form = document.querySelector("#site-search-page-form");
 const input = document.querySelector("#site-search-page-query");
@@ -9,10 +9,11 @@ const status = document.querySelector("#site-search-page-status");
 const pagination = document.querySelector("#site-search-pagination");
 const clearButton = document.querySelector("#site-search-clear");
 const pageSize = 18;
-let index;
+let catalogue;
 let currentPage = 1;
 let pendingRender;
-let loadingPromise;
+let renderRequest = 0;
+let previousSearch;
 input.maxLength = 256;
 const retryButton = document.createElement("button");
 retryButton.type = "button";
@@ -28,6 +29,7 @@ const categoryLabels = {
   astronomy: "Astronomija",
   planning: "Planavimas ir darbo laikas",
   school: "Mokykla",
+  weather: "Orai",
   tools: "Įrankiai",
   privacy: "Svetainės informacija",
   home: "Pagrindinis puslapis",
@@ -60,9 +62,13 @@ function updateUrl(mode = "replace") {
     history[mode === "push" ? "pushState" : "replaceState"]({}, "", path);
 }
 
-function browsePages() {
-  return index.filter(item => category.value === "all" || item.category === category.value)
-    .sort((a, b) => a.title.localeCompare(b.title, "lt"));
+function currentResults(query) {
+  const selected = category.value;
+  if (previousSearch?.pages === catalogue.pages && previousSearch.weather === catalogue.weather
+    && previousSearch.query === query && previousSearch.selected === selected) return previousSearch.results;
+  const results = searchCatalogue(catalogue, query, { category: selected });
+  previousSearch = { ...catalogue, query, selected, results };
+  return results;
 }
 
 function renderPagination(totalPages) {
@@ -81,9 +87,9 @@ function renderPagination(totalPages) {
 }
 
 function render({ historyMode = "replace", focusResults = false, preserveUrl = false } = {}) {
-  if (!index) return;
+  if (!catalogue) return;
   const query = input.value.trim();
-  const allResults = query ? searchPages(index, query, { category: category.value }) : browsePages();
+  const allResults = currentResults(query);
   const totalPages = Math.max(1, Math.ceil(allResults.length / pageSize));
   currentPage = Math.max(1, Math.min(currentPage, totalPages));
   if (!preserveUrl) updateUrl(historyMode);
@@ -94,6 +100,8 @@ function render({ historyMode = "replace", focusResults = false, preserveUrl = f
   status.textContent = allResults.length
     ? `Rasta ${allResults.length} ${resultCountLabel(allResults.length)}. Rodoma ${start + 1}–${start + visible.length}.`
     : "Rezultatų nerasta. Pabandykite trumpesnį žodį, kitą rašybą arba pasirinkite kitą skiltį.";
+  if (catalogue.weatherUnavailable) status.append(" Vietovių paieška laikinai nepasiekiama.");
+  retryButton.hidden = !catalogue.weatherUnavailable;
   for (const item of visible) {
     const li = document.createElement("li"); li.className = "search-page-result";
     const link = document.createElement("a"); link.href = item.url;
@@ -108,31 +116,32 @@ function render({ historyMode = "replace", focusResults = false, preserveUrl = f
   if (focusResults) resultList.focus({ preventScroll: true });
 }
 
-async function ensureIndex() {
-  if (index) return true;
-  if (loadingPromise) return loadingPromise;
-  retryButton.hidden = true;
-  status.textContent = "Įkeliama paieškos rodyklė…";
-  resultList.setAttribute("aria-busy", "true");
-  loadingPromise = loadSearchIndex().then(data => {
-    index = data;
-    return true;
-  }).catch(() => {
+async function renderWhenReady(options = {}) {
+  const request = ++renderRequest;
+  const selected = category.value;
+  if (!catalogue || (selected === "weather" && !catalogue.weather)) {
+    retryButton.hidden = true;
+    status.textContent = "Įkeliama paieškos rodyklė…";
+    resultList.setAttribute("aria-busy", "true");
+  }
+  try {
+    const loaded = await loadSearchCatalogue(selected, input.value);
+    if (request !== renderRequest) return;
+    catalogue = loaded;
+    render(options);
+  } catch {
+    if (request !== renderRequest) return;
+    resultList.replaceChildren();
+    pagination.replaceChildren();
     status.textContent = "Paieškos rodyklės įkelti nepavyko. Bandykite dar kartą arba naudokitės svetainės meniu.";
     retryButton.hidden = false;
-    return false;
-  }).finally(() => {
-    loadingPromise = undefined;
-    resultList.setAttribute("aria-busy", "false");
-  });
-  return loadingPromise;
-}
-
-async function renderWhenReady(options = {}) {
-  if (await ensureIndex()) render(options);
+  } finally {
+    if (request === renderRequest) resultList.setAttribute("aria-busy", "false");
+  }
 }
 
 function scheduleRender() {
+  ++renderRequest;
   clearTimeout(pendingRender);
   currentPage = 1;
   pendingRender = setTimeout(() => renderWhenReady(), 100);

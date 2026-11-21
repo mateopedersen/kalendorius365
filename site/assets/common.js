@@ -205,7 +205,7 @@ if (siteSearch && siteSearchResults && headerSearch) {
 
   async function runSearch() {
     const request = ++searchRequest;
-    const query = siteSearch.value.trim().slice(0, 500);
+    const query = siteSearch.value.trim().slice(0, 256);
     siteSearchResults.replaceChildren();
     siteSearchStatus.textContent = "";
     activeSearchOption = -1;
@@ -224,11 +224,11 @@ if (siteSearch && siteSearchResults && headerSearch) {
     allSearchResults.textContent = "Visi rezultatai →";
     updateSearchGeometry();
     try {
-      searchEnginePromise ||= import("./search-engine.js");
-      const { loadSearchIndex, searchPages, normalizeSearchText } = await searchEnginePromise;
-      const index = await loadSearchIndex();
-      if (request !== searchRequest || normalizeSearchText(siteSearch.value.trim().slice(0, 500)) !== normalizeSearchText(query)) return;
-      const matches = searchPages(index, query);
+      searchEnginePromise ||= import("./search-catalogue.js");
+      const { loadSearchCatalogue, searchCatalogue } = await searchEnginePromise;
+      const catalogue = await loadSearchCatalogue("all", query);
+      if (request !== searchRequest || siteSearch.value.trim().slice(0, 256) !== query) return;
+      const matches = searchCatalogue(catalogue, query);
       const items = matches.slice(0, mobileSearch.matches ? 4 : 7);
       siteSearchResults.replaceChildren();
       for (const [index, item] of items.entries()) {
@@ -260,6 +260,13 @@ if (siteSearch && siteSearchResults && headerSearch) {
         message.className = "header-search-empty";
         message.textContent = "Rezultatų nėra. Bandykite kitą žodį arba datą.";
         siteSearchResults.prepend(message);
+      }
+      if (catalogue.weatherUnavailable) {
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.textContent = "Atnaujinti vietovių paiešką";
+        retry.addEventListener("click", () => runSearch());
+        siteSearchResults.append(retry);
       }
       updateSearchGeometry();
     } catch {

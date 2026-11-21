@@ -5878,7 +5878,6 @@ button.primary:hover, a.button.primary:hover, .success:hover{
 }
 .search-page__heading h1 {
   margin: 0 0 8px;
-  color: var(--shell-on-dark);
   font-size: clamp(1.7rem,4.2vw,3.25rem);
   line-height: 1.1;
   letter-spacing: -.035em;
@@ -5886,9 +5885,12 @@ button.primary:hover, a.button.primary:hover, .success:hover{
 .search-page__heading p {
   max-width: 68ch;
   margin: 0;
-  color: var(--shell-copy-on-dark);
+  color: var(--heading-copy);
 }
 .search-page__heading > .shell-art { width: clamp(64px,18vw,138px); height: auto; }
+@media print {
+  .search-page__heading { background: none; }
+}
 .search-page__hero {
   padding: clamp(12px,2.4vw,24px);
   border: 1px solid var(--border);

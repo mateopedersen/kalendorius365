@@ -667,10 +667,10 @@ require_relative '../lib/namedays_pages'
 NamedaysPages.run
 search_page=<<~HTML
  <section class="search-page" aria-labelledby="search-page-title">
-  <header class="search-page__heading">
+  <header class="search-page__heading dark-surface">
    <div>
-    <h1 id="search-page-title">Raskite reikalingą datą ar įrankį</h1>
-    <p>Ieškokite visuose Kalendorius365 puslapiuose: švenčių, 2027–2030 m. kalendorių, darbo ir mokinių atostogų, planuoklių, Saulės bei Mėnulio duomenų ir horoskopų.</p>
+    <h1 id="search-page-title" data-dark-accent>Raskite datą, vietovę ar įrankį</h1>
+    <p>Vienoje vietoje ieškokite Lietuvos vietovių orų, nedarbo dienų, kalendorių, horoskopų ir planavimo įrankių.</p>
    </div>
    {% include shell-art.html name="search-glass" size=136 %}
   </header>
@@ -683,6 +683,7 @@ search_page=<<~HTML
      <nav id="search-no-js-nav" aria-label="Svetainės skiltys"><ul>
       <li><a href="/2027/">2027 m. kalendorius</a> · <a href="/2028/">2028 m. kalendorius</a> · <a href="/2029/">2029 m. kalendorius</a> · <a href="/2030/">2030 m. kalendorius</a></li>
       <li><a href="/sventes/">Lietuvos šventės ir atmintinos dienos</a></li>
+      <li><a href="/nedarbo-dienos/2027/">Nedarbo Dienos 2027–2030</a> · <a href="/orai/">Lietuvos vietovių orai</a></li>
       <li><a href="/vardadieniai/">Vardadieniai pagal datą</a></li>
       <li><a href="/horoskopai/">Horoskopai</a> · <a href="/zodiakas/">Zodiako ženklai</a></li>
       <li><a href="/saule/">Saulėtekis ir saulėlydis</a> · <a href="/menulio-kalendorius/">Mėnulio kalendorius</a> · <a href="/metu-laikai/">Metų laikai</a></li>
@@ -693,14 +694,16 @@ search_page=<<~HTML
    <form id="site-search-page-form" class="search-page__form panel" role="search" action="/paieska/" method="get">
     <label for="site-search-page-query">Ko ieškote?</label>
     <div class="search-page__controls">
-     <input id="site-search-page-query" name="q" type="search" placeholder="Pvz., Velykos 2028, saulėlydis Kaune…" autocomplete="off">
-     <label class="search-page__category">Skiltis<select id="site-search-category" name="skiltis"><option value="all">Visa svetainė</option><option value="calendar">Kalendoriai</option><option value="holiday">Šventės</option><option value="planning">Planavimas ir darbo laikas</option><option value="school">Mokykla</option><option value="astronomy">Astronomija</option><option value="horoscope">Horoskopai</option><option value="tools">Įrankiai</option><option value="privacy">Svetainės informacija</option><option value="home">Pagrindinis puslapis</option></select></label>
+     <input id="site-search-page-query" name="q" type="search" placeholder="Pvz., orai Kaune, nedarbo dienos…" autocomplete="off">
+     <label class="search-page__category">Skiltis<select id="site-search-category" name="skiltis"><option value="all">Visa svetainė</option><option value="weather">Orai</option><option value="calendar">Kalendoriai</option><option value="holiday">Šventės</option><option value="planning">Planavimas ir darbo laikas</option><option value="school">Mokykla</option><option value="astronomy">Astronomija</option><option value="horoscope">Horoskopai</option><option value="tools">Įrankiai</option><option value="privacy">Svetainės informacija</option><option value="home">Pagrindinis puslapis</option></select></label>
      <button class="primary" type="submit">Ieškoti</button>
      <button id="site-search-clear" type="button">Išvalyti</button>
     </div>
    </form>
    <nav class="search-page__quick" aria-label="Populiarios paieškos temos">
     <span>Greita paieška:</span>
+    <button type="button" data-search-query="Nedarbo Dienos">Nedarbo Dienos</button>
+    <button type="button" data-search-query="Orai Vilniuje">Orai Vilniuje</button>
     <button type="button" data-search-query="Lietuvos šventės">Lietuvos šventės</button>
     <button type="button" data-search-query="2029 gegužė">2029 m. gegužė</button>
     <button type="button" data-search-query="atostogų planavimas">Atostogų planavimas</button>
@@ -717,7 +720,7 @@ search_page=<<~HTML
   <p class="search-page__tip">Paieška atpažįsta lietuviškas raides, dažnas žodžių galūnes ir panašiai parašytus žodžius. Asmeniniai kalendoriaus įrašai saugomi tik jūsų naršyklėje ir į bendrą paiešką neįtraukiami.</p>
  </section>
 HTML
-Pages.page('paieska','Paieška – visi kalendoriaus puslapiai','Ieškokite visoje „Kalendorius365“ svetainėje: kalendorių, Lietuvos švenčių, darbo ir mokinių atostogų, astronomijos, planuoklių bei įrankių.',search_page)
+Pages.page('paieska','Paieška – orai, kalendoriai ir nedarbo dienos','Raskite Lietuvos miestų, miestelių ir kaimų orus, 2027–2030 m. nedarbo dienas, kalendorius, horoskopus ir planavimo įrankius.',search_page)
 search_aliases={
  '/vardadieniai/'=>'vardadienis varduvės vardai vardas šiandien rytoj vardų kalendorius name day nameday isim günü',
  '/zodiakas/'=>'zodiako ženklas pagal gimimo dieną stichijos ženklų palyginimas burc hesapla zodiac sign finder aries taurus gemini cancer leo virgo libra scorpio sagittarius capricorn aquarius pisces',
@@ -762,6 +765,7 @@ search_category = lambda do |url|
  case url
  when '/' then 'home'
  when %r{\A/(?:20\d{2})(?:/|\z)} then 'calendar'
+ when %r{\A/orai/} then 'weather'
  when %r{\A/(?:sventes|nedarbo-dienos)/} then 'holiday'
  when %r{\A/(?:horoskopai|zodiakas)/} then 'horoscope'
  when %r{\A/(?:saule|menulio-fazes|menulio-kalendorius|astronominis-kalendorius|metu-laikai|pavasario-lygiadienis|vasaros-saulegriza|rudens-lygiadienis|ziemos-saulegriza)/} then 'astronomy'
@@ -853,7 +857,7 @@ File.write("#{Pages::ROOT}/site/assets/data/search.json",JSON.generate(search))
 # module is loading and when JavaScript is disabled. It links canonical URLs,
 # never query-string or tracking variants.
 catalogue=search.reject { |item|item['action'] || item['url']=='/paieska/' }.sort_by { |item|[item['category'],item['url']] }.group_by { |item|item['category'] }
-catalogue_labels={'calendar'=>'Kalendoriai','holiday'=>'Šventės','planning'=>'Planavimas ir darbo laikas','school'=>'Mokykla','astronomy'=>'Astronomija','horoscope'=>'Horoskopai','tools'=>'Įrankiai','privacy'=>'Svetainės informacija','home'=>'Pradžia'}
+catalogue_labels={'calendar'=>'Kalendoriai','holiday'=>'Šventės','planning'=>'Planavimas ir darbo laikas','school'=>'Mokykla','astronomy'=>'Astronomija','horoscope'=>'Horoskopai','weather'=>'Orai','tools'=>'Įrankiai','privacy'=>'Svetainės informacija','home'=>'Pradžia'}
 catalogue_html='<section class="panel search-catalogue" aria-labelledby="search-catalogue-title"><h2 id="search-catalogue-title">Puslapiai pagal skiltį</h2><p>Visą sąrašą galite naršyti ir be paieškos.</p>'+catalogue.map do |category,items|
  '<details><summary>'+Pages.esc(catalogue_labels.fetch(category,category))+'</summary><ul>'+items.map { |item|'<li><a href="'+Pages.esc(item['url'])+'">'+Pages.esc(item['title'])+'</a></li>' }.join+'</ul></details>'
 end.join+'</section>'

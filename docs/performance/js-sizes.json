@@ -103,8 +103,8 @@
     },
     {
       "path": "/assets/common.js",
-      "source_bytes": 16235,
-      "generated_bytes": 9515
+      "source_bytes": 16511,
+      "generated_bytes": 9682
     },
     {
       "path": "/assets/contact.js",
@@ -247,14 +247,19 @@
       "generated_bytes": 21457
     },
     {
+      "path": "/assets/search-catalogue.js",
+      "source_bytes": 2838,
+      "generated_bytes": 1743
+    },
+    {
       "path": "/assets/search-engine.js",
-      "source_bytes": 16456,
-      "generated_bytes": 9749
+      "source_bytes": 18357,
+      "generated_bytes": 10891
     },
     {
       "path": "/assets/search-page.js",
-      "source_bytes": 7452,
-      "generated_bytes": 4900
+      "source_bytes": 8011,
+      "generated_bytes": 5148
     },
     {
       "path": "/assets/seasons-core.js",
@@ -420,6 +425,11 @@
       "path": "/assets/tools.js",
       "source_bytes": 41687,
       "generated_bytes": 26755
+    },
+    {
+      "path": "/assets/weather-search.js",
+      "source_bytes": 10162,
+      "generated_bytes": 6748
     },
     {
       "path": "/assets/weather.js",

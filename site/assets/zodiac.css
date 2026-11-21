@@ -62,7 +62,8 @@
 .z-wheel__button[aria-pressed=true] { color:#253f45; border-color:#947238; background:#f3e8d0; box-shadow:0 3px 10px #62481718; }
 .z-wheel__button:hover { background:#e8efe8; }
 .z-wheel__button:disabled { cursor:default; opacity:1; }
-.z-wheel-help { max-width:440px; margin:12px auto 0!important; color:var(--shell-copy-on-dark); font-size:.81rem; text-align:center; line-height:1.5!important; }
+.zodiac-guide .z-wheel-help { color:var(--shell-accent-on-dark); }
+.z-wheel-help { max-width:440px; margin:12px auto 0!important; font-size:.81rem; text-align:center; line-height:1.5!important; }
 .z-wheel-detail { display:grid; grid-template-columns:1fr auto; align-items:center; column-gap:12px; row-gap:0; margin-top:26px; padding-top:19px; border-top:1px solid #8bab96; }
 .z-wheel-detail .z-eyebrow { grid-column:1/-1; font-size:.65rem; margin-bottom:4px!important; }
 .z-wheel-detail h2 { margin:0; font-size:1.55rem; }

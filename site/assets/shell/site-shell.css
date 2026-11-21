@@ -1572,6 +1572,7 @@ body.homepage-app .dashboard-main {
 .content-main .page-heading:not(.contact-hero) .page-intro a:hover { color: var(--heading-ink); }
 .tool-page-head .share-basic :is(a,label) { color: var(--heading-copy); }
 .tool-page-head .share-basic a:hover { color: var(--heading-accent); }
+.content-main :is(.local-date-guide .local-date-hero,.nd-hero) .share-basic :is(a,label) { color: var(--shell-accent-on-dark); }
 .content-main :is(.tool-page-head > .shell-art,.calendar-period-heading .calendar-period-art) {
   aspect-ratio: 1; padding: clamp(3px,.45vw,6px); border: 1px solid #fef8e594; border-radius: 13px;
   object-fit: contain; background: linear-gradient(135deg,#f7eed6,#e4eadc);

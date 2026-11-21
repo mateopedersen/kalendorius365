@@ -81,6 +81,7 @@
 .civic-page .civic-button--ghost:hover { color: #fff; background: #ffffff25; }
 .civic-page .civic-button--green { background: #006142; color: #fff; border-color: #005239; }
 .civic-page .civic-button--green:hover { background: #004d35; color: #fff; }
+.civic-page .civic-button--green small { color: var(--shell-accent-on-dark); }
 .civic-page .civic-button--plain { background: #fbfdf9; color: #164634; border-color: #a8c3b0; }
 .civic-page .civic-button--plain:hover { color: #10392b; background: #e7f1e7; }
 .civic-page .civic-portal-link {

@@ -32,6 +32,23 @@ test('the mobile menu opens on the calendar homepage',async({page})=>{
  await expect(toggle).toBeFocused();
 });
 
+test('global suggestions and full search find days off, weather and a specific village', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/paieska/?q=Nedarbo+Dienos");
+  await expect(page.locator("#search-page-title")).toHaveCSS("color", "rgb(255, 220, 137)");
+  const results = page.locator("#site-search-page-results a");
+  await expect(results).toHaveCount(4);
+  await expect(results.nth(3)).toHaveAttribute("href", "/nedarbo-dienos/2030/");
+  const header = await openHeaderSearch(page);
+  await header.fill("orai Klaipėdoje 7 dienų");
+  await expect(page.locator("#site-search-results [role=option]").first()).toHaveAttribute("href", "/orai/klaipeda/?dienos=7");
+  await header.press("Escape");
+  await page.locator("#site-search-page-query").fill("orai Dusmenėlių Trakų r.");
+  await page.locator("#site-search-category").selectOption("weather");
+  await expect(results.first()).toHaveAttribute("href", "/orai/dusmeneliu-13941/");
+  await expect(page.locator("#site-search-page-status")).toContainText("1 rezultatas");
+});
+
 test('name-day search opens the native name with all genuine dates prefilled',async({page})=>{
  await page.goto('/paieska/');await openHeaderSearch(page);await page.locator('#site-search').fill('zivile');
  const first=page.locator('#site-search-results [role=option]').first();

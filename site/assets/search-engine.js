@@ -209,6 +209,22 @@ function solarTarget(terms, query, cities) {
   return cities.find(city => phrase.includes(` ${city.phrase} `))?.url || "/saule/";
 }
 
+const dayForms = /^dien(?:a|os|u|oms|omis|ose)?$/;
+const daysOffNames = /^(?:nedarbo|laisv(?:a|os|u|oms|omis)|poilsio)$/;
+const daysOffSingleWord = /^laisvadien(?:is|iai|iu|iams|iais)?$/;
+const daysOffRoute = /^\/nedarbo-dienos\/(20\d{2})\/$/;
+
+function daysOffIntent(queryWords) {
+  return queryWords.some(word => daysOffSingleWord.test(word)) ||
+    (queryWords.some(word => dayForms.test(word)) && queryWords.some(word => daysOffNames.test(word)));
+}
+
+export function isDaysOffQuery(queryWords) {
+  return daysOffIntent(queryWords) && queryWords.every(word => /^20\d{2}$/.test(word) || STOP_WORDS.has(word)
+    || dayForms.test(word) || daysOffNames.test(word) || daysOffSingleWord.test(word)
+    || /^(?:metu|metais|kalendorius|lietuvoje|lietuvos|sventines|oficialios|valstybines)$/.test(word));
+}
+
 export function searchPages(index, query, { category = "all", limit = Infinity } = {}) {
   // Bound pasted or shared input before ranking so it cannot lock up a phone.
   const boundedQuery = String(query ?? "").normalize("NFC").slice(0, 256);
@@ -226,8 +242,22 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
   const queryWords = rawWords.length > 1 ? rawWords.filter((word) => !STOP_WORDS.has(word)) : rawWords;
   if (!queryWords.length) return [];
 
-  const { docs, solarCities, horoscopeSigns } = prepare(index);
   const year = queryWords.find((word) => /^20\d{2}$/.test(word));
+  const daysOff = daysOffIntent(queryWords);
+  if (isDaysOffQuery(queryWords) && (category === "all" || category === "holiday")) {
+    const exact = index.filter(item => daysOffRoute.test(item.url) && (!year || item.url === `/nedarbo-dienos/${year}/`))
+      .sort((a, b) => a.url.localeCompare(b.url)).map(item => ({
+        ...item, score: 300, matchedTerms: queryWords.length, totalTerms: queryWords.length,
+      }));
+    if (exact.length) {
+      if (queryWords.some(word => ["sventines", "oficialios", "valstybines"].includes(word))) {
+        const holidays = index.find(item => item.url === `/sventes/${year || "2027"}/`);
+        if (holidays) exact.push({ ...holidays, score: 200 });
+      }
+      return exact.slice(0, Number.isFinite(limit) ? Math.max(0, limit) : exact.length);
+    }
+  }
+  const { docs, solarCities, horoscopeSigns } = prepare(index);
   const calendarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("kalendorius") || ["calendar", "calendars", "kalendorius", "kalendoriai"].includes(word));
   const lunarIntent = queryWords.some((word) => synonymGroups.get(word)?.includes("moon"));
   const lunarOverviewIntent = lunarIntent && queryWords.every((word) =>
@@ -242,6 +272,11 @@ export function searchPages(index, query, { category = "all", limit = Infinity }
   const similarities = new Map();
   for (const doc of docs) {
     if (category !== "all" && doc.item.category !== category) continue;
+    const daysOffYear = daysOff && doc.item.url.match(daysOffRoute)?.[1];
+    if (daysOffYear && (!year || daysOffYear === year)) {
+      scored.push({ ...doc.item, score: 300 - (Number(daysOffYear) - 2027), matchedTerms: queryWords.length, totalTerms: queryWords.length });
+      continue;
+    }
     const matched = [];
     let score = 0;
     for (const queryWord of queryWords) {

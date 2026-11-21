@@ -112,10 +112,10 @@ export function headerHarness({mobile = true, serverRendered = false, loadIndex 
   const viewport = events({height: 844, offsetTop: 0});
   const window = events({innerHeight: 844, visualViewport: viewport, matchMedia: () => media});
   const matches = Array.from({length: 10}, (_, index) => ({url: `/page-${index}/`, title: `Page ${index}`, description: 'A description'}));
-  const engine = {loadSearchIndex: loadIndex, normalizeSearchText: text => text.toLowerCase(), searchPages: search || (() => matches)};
+  const engine = {loadSearchCatalogue: async () => ({ pages: await loadIndex() }), searchCatalogue: ({pages}, query) => search ? search(pages, query) : matches};
   const code = fs.readFileSync(new URL('../../site/assets/common.js', import.meta.url), 'utf8')
     .replace('export function notice', 'function notice')
-    .replace('import("./search-engine.js")', 'testLoadEngine()');
+    .replace('import("./search-catalogue.js")', 'testLoadEngine()');
   vm.runInNewContext(code, {
     document, window, location: {pathname: '/'}, localStorage: {getItem: () => null},
     clearTimeout: id => timers.delete(id), setTimeout: fn => { timers.set(++nextTimer,fn); return nextTimer; },
