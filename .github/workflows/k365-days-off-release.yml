@@ -57,5 +57,5 @@ jobs:
           git add --all
           git diff --cached --check -- . ':(exclude)public/**'
           git commit -m "Assemble verified days-off, horoscope and weather policy release"
-          git push origin HEAD:refs/heads/codex/days-off-weather-release-20261121-verified
+          git push origin HEAD:refs/heads/codex/days-off-weather-release-20261121-r2-verified
           git rev-parse HEAD >> "$GITHUB_STEP_SUMMARY"

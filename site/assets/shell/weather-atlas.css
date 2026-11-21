@@ -163,14 +163,14 @@
   font-size: .85rem;
   font-weight: 800;
 }
-.wx-live__temperature { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
-.weather-atlas .wx-live #wx-live-reading { margin: 0; color: #fffdf6; line-height: 1.1; }
+.wx-live__temperature { min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.weather-atlas .wx-live #wx-live-reading { min-width: 0; margin: 0; color: #fffdf6; line-height: 1.1; overflow-wrap: anywhere; }
 .weather-atlas .wx-live #wx-live-reading.wx-live__reading {
   font-size: clamp(44px,5.2vw,4.25rem); line-height: 1.04; letter-spacing: -.055em;
   font-weight: 850; font-variant-numeric: tabular-nums; text-shadow: 0 2px 14px #071722a6;
 }
-.weather-atlas .wx-live #wx-live-detail { margin: 0; font-weight: 750; font-size: max(.952rem,15px); line-height: 1.35; }
-.weather-atlas .wx-live #wx-timestamp { margin: 0; font-size: .81rem; line-height: 1.38; }
+.weather-atlas .wx-live #wx-live-detail { margin: 0; font-weight: 750; font-size: max(.952rem,15px); line-height: 1.35; overflow-wrap: anywhere; }
+.weather-atlas .wx-live #wx-timestamp { margin: 0; font-size: .81rem; line-height: 1.38; overflow-wrap: anywhere; }
 .wx-live .wx-retry { justify-self: start; }
 .wx-condition-icon { display: block; flex: none; width: 48px; height: 48px; overflow: visible; }
 #wx-live-icon { padding: 4px; border-radius: 13px; background: #fbfdf1e8; box-shadow: 0 3px 9px #092b4144; }
@@ -848,11 +848,23 @@
   .wx-live__temperature { gap: 7px; }
   .wx-live__summary { gap: 2px; }
 }
+@media (max-width: 560px) {
+  .wx-live__data {
+    grid-template-columns: minmax(0,1fr);
+    gap: 10px;
+    padding: clamp(12px,4vw,18px);
+  }
+  .wx-live__place { gap: 3px; }
+  .wx-live__temperature { gap: 9px; }
+  .weather-atlas .wx-live #wx-live-reading.wx-live__reading {
+    font-size: clamp(2.05rem,10vw,2.85rem);
+  }
+  .wx-live__temperature #wx-live-icon { padding: 3px; border-radius: 9px; }
+  .wx-live__temperature #wx-live-icon .wx-condition-icon { width: 34px; height: 34px; }
+  .wx-live__summary { gap: 5px; }
+  .weather-atlas .wx-live #wx-rain-shortcut { justify-self: stretch; }
+}
 @media (max-width: 440px) {
-  .wx-live__temperature { gap: 4px; }
-  .wx-live__data { column-gap: 8px; }
-  .wx-live__temperature #wx-live-icon { padding: 2px; border-radius: 7px; }
-  .wx-live__temperature #wx-live-icon .wx-condition-icon { width: 23px; height: 23px; }
   .wx-city-tile { min-height: 112px; padding: 8px; font-size: .95rem; }
   .wx-city-tile svg { width: 15px; height: 15px; }
   .wx-area-grid { grid-template-columns: repeat(auto-fit,minmax(min(100%,128px),1fr)); }
