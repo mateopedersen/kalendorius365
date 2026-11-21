@@ -430,6 +430,122 @@ body.homepage-app .site-header {
 .content-main :is(.panel,.year-month,.month-directory-card,.resource-card,.gallery-card) { border-color: var(--shell-border); border-radius: 16px; }
 .content-main :is(.page-heading,.document-hero) { border-radius: 17px; }
 .content-main :is(.data-table,.static-month) thead { background: var(--shell-soft); color: var(--shell-green-dark); }
+.content-main .calendar-records-note { max-width: 65ch; color: var(--shell-muted); }
+@media screen and (max-width: 640px) {
+  .content-main .table-scroll,.content-main .table-wrap,.content-main .leave-table-scroll {
+    min-width: 0;
+    max-width: 100%;
+    overscroll-behavior-inline: contain;
+  }
+  .content-main .table-scroll .data-table :is(th,td) {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .content-main .table-scroll:has(.policy-storage-table) {
+    margin: 10px 0 15px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .content-main .policy-storage-table { display: block; position: relative; width: 100%; max-width: 100%; min-width: 0; }
+  .policy-storage-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .policy-storage-table tbody { display: grid; gap: 7px; }
+  .policy-storage-table tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+    gap: 5px;
+    padding: 9px 10px;
+    border: 1px solid var(--shell-border);
+    border-radius: 9px;
+    background: #fff;
+  }
+  .content-main .policy-storage-table tbody :is(th,td) { min-width: 0; padding: 0; border: 0; text-align: start; }
+  .policy-storage-table tbody th { font-weight: 800; }
+  .policy-storage-table td::before {
+    display: block;
+    color: var(--shell-muted);
+    font-size: .78rem;
+    font-weight: 750;
+    content: attr(data-mobile-label);
+  }
+  .policy-storage-table :is(code,a) { overflow-wrap: anywhere; }
+  .content-main .calendar-records {
+    margin: 10px 0 18px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .content-main .calendar-records table {
+    position: relative;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .calendar-records thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .calendar-records tbody { display: grid; gap: 7px; }
+  .content-main .calendar-records tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) max-content;
+    gap: 4px 10px;
+    min-width: 0;
+    padding: 10px 11px;
+    background: #fff;
+    border: 1px solid var(--shell-border);
+    border-radius: 10px;
+  }
+  .content-main .calendar-records td { min-width: 0; padding: 0; border: 0; text-align: start; }
+  .calendar-record__date a { display: inline-block; }
+  .calendar-records .calendar-record__weekday {
+    justify-self: end;
+    color: var(--shell-muted);
+    white-space: nowrap;
+    font-size: .78rem;
+  }
+  .calendar-record__name,.calendar-record__status { grid-column: 1/-1; }
+  .calendar-records .calendar-record__name {
+    font-size: 1rem;
+    font-weight: 750;
+    line-height: 1.35;
+    overflow-wrap: break-word;
+  }
+  .calendar-records .calendar-record__name a { color: var(--shell-forest); }
+  .content-main .calendar-records .calendar-record__status {
+    justify-self: start;
+    max-width: 100%;
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: var(--shell-soft);
+    color: var(--shell-muted);
+    font-size: .73rem;
+  }
+  @container (max-width: 15em) {
+    .calendar-records .calendar-record__weekday { justify-self: start; }
+    .content-main .calendar-records tbody tr { grid-template-columns: minmax(0,1fr); }
+  }
+  .content-main .calendar-records { container-type: inline-size; }
+}
+@media screen and (max-width: 760px) {
+  .content-main :where(h1,h2,h3),.dashboard-main :where(h1,h2,h3) { overflow-wrap: break-word; }
+  .content-main :where(input:is([type="text"],[type="search"],[type="url"],[type="email"],[type="number"],[type="date"],[type="time"]),select,textarea) {
+    font-size: max(1rem,16px);
+  }
+}
 .content-main :is(.button.primary,button.primary) { background: var(--shell-green); border-color: var(--shell-green); color: white; }
 .content-main :is(.button.primary,button.primary):hover { background: var(--shell-forest); border-color: var(--shell-forest); color: white; }
 .content-main a:focus-visible,.dashboard-main a:focus-visible,.dashboard-main button:focus-visible { outline: 2px solid #4ea97d; outline-offset: 2px; }
@@ -2050,8 +2166,9 @@ body.homepage-app .dashboard-main {
     display: grid;
     grid-template-columns: minmax(65px,.53fr) minmax(0,1fr);
   }
-  .homepage-app .clock-photo__frame { min-height: 104px; aspect-ratio: auto; }
+  .homepage-app .climate-card .clock-photo__frame { grid-area: 1 / 1; min-height: 104px; aspect-ratio: auto; }
   .homepage-app .climate-card .clock-card {
+    grid-area: 1 / 2;
     grid-template-columns: minmax(0,1fr);
     grid-template-areas: "location" "time" "date";
     align-content: center;
@@ -2060,7 +2177,7 @@ body.homepage-app .dashboard-main {
   .homepage-app .clock-card #clock { grid-area: time; }
   .homepage-app .clock-card #clock-date { grid-area: date; max-width: none; }
   .homepage-app .climate-card .settings-small { margin: 0; border: 0; }
-  .homepage-app .climate-card .weather-panel { padding-top: 4px; }
+  .homepage-app .dashboard > .left-column .weather-panel { grid-area: auto; padding-top: 4px; }
   .homepage-app .climate-card #weather-temp { min-height: 104px; }
   .homepage-app .climate-card .weather-top { margin-bottom: 7px; }
   .homepage-app .climate-card .weather-readings { gap: 6px; }

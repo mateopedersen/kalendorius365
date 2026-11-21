@@ -129,24 +129,47 @@ module Pages
   end
   html+'</tbody></table>'
  end
+ def calendar_records_table(title, label, rows, annual_holiday_page)
+  headings = ['Data', 'Diena', title, 'Statusas'].map { |label| %(<th scope="col" role="columnheader">#{label}</th>) }.join
+  yearly = annual_holiday_page ? ' holiday-year-table' : ''
+  body = rows.map do |date, name, url, status|
+   name_markup = url ? %(<a href="#{esc(url)}">#{esc(name)}</a>) : esc(name)
+   %(<tr role="row">
+    <td class="calendar-record__date" role="cell"><a href="#{month_url(date.year,date.month)}"><time datetime="#{date.iso8601}">#{date.iso8601}</time></a></td>
+    <td class="calendar-record__weekday" role="cell">#{WEEKDAY_NAMES[date.cwday-1]}</td>
+    <td class="calendar-record__name" role="cell">#{name_markup}</td>
+    <td class="calendar-record__status" role="cell">#{esc(status)}</td>
+   </tr>)
+  end.join
+  %(<div class="table-scroll calendar-records#{yearly}"><table class="data-table" role="table" aria-label="#{label}"><thead role="rowgroup"><tr role="row">#{headings}</tr></thead><tbody role="rowgroup">#{body}</tbody></table></div>)
+ end
  def holiday_table(y,month=nil,annual_holiday_page=false)
-  hs=Kalendorius.holidays(y);hs=hs.select { |h|Date.iso8601(h['date']).month==month } if month
-  return '<p>Šį mėnesį įstatyme nustatytų šventinių dienų nėra.</p>' if hs.empty?
-  '<div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Šventė</th><th scope="col">Statusas</th></tr></thead><tbody>'+hs.map do |h|
-   d=Date.iso8601(h['date']);url=holiday_page_url(h['id']);name=esc(h['legalName']||h['name'])
+  holidays=Kalendorius.holidays(y)
+  holidays=holidays.select { |entry| Date.iso8601(entry['date']).month == month } if month
+  return '<p>Šį mėnesį įstatyme nustatytų šventinių dienų nėra.</p>' if holidays.empty?
+
+  rows = holidays.map do |holiday|
+   url=holiday_page_url(holiday['id'])
    url+="?metai=#{y}" if url && annual_holiday_page
-   "<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{h['date']}\">#{h['date']}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td>#{url ? "<a href=\"#{url}\">#{name}</a>" : name}</td><td>Šventinė diena · DK 123 str.</td></tr>"
-  end.join+'</tbody></table></div>'
+   [Date.iso8601(holiday['date']), holiday['legalName'] || holiday['name'], url, 'Šventinė diena · DK 123 str.']
+  end
+  calendar_records_table('Šventė', 'Šventinės dienos', rows, annual_holiday_page)
  end
  def commemoration_table(y,month=nil,annual_holiday_page=false)
-  records=COMMEMORATIVE_DATES;records=records.select { |a|a['month']==month } if month
+  records=COMMEMORATIVE_DATES
+  records=records.select { |entry| entry['month'] == month } if month
   return '' if records.empty?
-  '<h2>Atmintinos dienos</h2><div class="table-scroll'+(annual_holiday_page ? ' holiday-year-table' : '')+'"><table class="data-table"><thead><tr><th scope="col">Data</th><th scope="col">Diena</th><th scope="col">Atmintina diena</th><th scope="col">Teisinė reikšmė</th></tr></thead><tbody>'+records.map do |a|
-   d=Date.new(y,a['month'],a['day'],Date::GREGORIAN)
-   url="/sventes/#{a['slug']}/"
-   url+="?metai=#{y}" if annual_holiday_page && EDITORIAL.fetch('commemorations').include?(a)
-   "<tr><td><a href=\"#{month_url(y,d.month)}\"><time datetime=\"#{d.iso8601}\">#{d.iso8601}</time></a></td><td>#{WEEKDAY_NAMES[d.cwday-1]}</td><td><a href=\"#{url}\">#{esc(a['title'])}</a></td><td>Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos; data gali sutapti su DK 123 str. švente</td></tr>"
-  end.join+'</tbody></table></div>'
+
+  holidays=Kalendorius.holidays(y).map { |entry| entry.fetch('date') }
+  rows = records.sort_by { |entry| [entry['month'],entry['day'],entry['title']] }.map do |entry|
+   date=Date.new(y,entry['month'],entry['day'],Date::GREGORIAN)
+   url="/sventes/#{entry['slug']}/"
+   url+="?metai=#{y}" if annual_holiday_page && EDITORIAL.fetch('commemorations').include?(entry)
+   status=holidays.include?(date.iso8601) ? 'Sutampa su šventine diena' : 'Atmintina diena'
+   [date, entry['title'], url, status]
+  end
+  guidance='<h2>Atmintinos dienos</h2><p class="calendar-records-note">Atmintinos dienos statusas savaime nesuteikia nedarbo dienos. Kai data sutampa su Darbo kodekse nustatyta švente, tai pažymėta sąraše.</p>'
+  guidance + calendar_records_table('Atmintina diena', 'Atmintinos dienos', rows, annual_holiday_page)
  end
  def occurrence_dates(article,year)
   ids=Array(article['holiday_ids'])

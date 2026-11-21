@@ -418,3 +418,26 @@ test('the phone tool menu fits the visible screen before and during search', asy
   await expect(menu).toBeHidden();
   await expect(opener).toBeFocused();
 });
+
+test('holiday and commemoration dates fit in complete mobile rows', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto('/2030/');
+  const table = page.getByRole('table', { name: 'Atmintinos dienos' });
+  const first = table.locator('tbody tr').first();
+  await expect(first.getByRole('link', { name: 'Lietuvos vėliavos diena' })).toBeVisible();
+  await expect(first.locator('.calendar-record__weekday')).toHaveText('antradienis');
+  await expect(first.locator('.calendar-record__status')).toHaveText('Sutampa su šventine diena');
+  for (const width of [320, 390, 430]) {
+    await page.setViewportSize({ width, height: 844 });
+    const rowsFit = await table.evaluate(el => {
+      const bounds = el.getBoundingClientRect();
+      return [...el.querySelectorAll('tbody td')].every(td => {
+        const box = td.getBoundingClientRect();
+        return box.left >= bounds.left - 1 && box.right <= bounds.right + 1 && td.scrollWidth <= td.clientWidth + 1;
+      });
+    });
+    expect(rowsFit, 'Every cell can be read without horizontal scrolling').toBe(true);
+  }
+  await page.setViewportSize({ width: 1280, height: 844 });
+  await expect(table).toHaveCSS('display', 'table');
+});
