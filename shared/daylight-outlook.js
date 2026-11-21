@@ -4,7 +4,7 @@ const hour = 3600000;
 const localDate = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit" });
 const localClock = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Vilnius", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
 const displayDate = new Intl.DateTimeFormat("lt-LT", { timeZone: "Europe/Vilnius", month: "long", day: "numeric" });
-const amount = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 2 });
+const amount = new Intl.NumberFormat("lt-LT", { useGrouping: false, maximumFractionDigits: 2 });
 const solarTime = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Vilnius", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" });
 const solarClock = /^(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/;
 

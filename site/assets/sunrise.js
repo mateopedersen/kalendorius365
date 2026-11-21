@@ -9,7 +9,7 @@ const pad = (value) => String(value).padStart(2, "0");
 const parts = (date) => ({ year: Number(date.slice(0, 4)), month: Number(date.slice(5, 7)), day: Number(date.slice(8, 10)) });
 const dayLabel = new Intl.DateTimeFormat("lt-LT", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" });
 const displayDate = (date) => dayLabel.format(new Date(`${date}T12:00:00Z`));
-const degrees = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 1 });
+const degrees = new Intl.NumberFormat("lt-LT", { useGrouping: false, maximumFractionDigits: 1 });
 const angleLabel = value => degrees.format(Math.abs(value) < .05 ? 0 : value) + "°";
 const directions = ["šiaurė", "šiaurės rytai", "rytai", "pietryčiai", "pietūs", "pietvakariai", "vakarai", "šiaurės vakarai"];
 const compass = value => directions[Math.round(value / 45) % 8];

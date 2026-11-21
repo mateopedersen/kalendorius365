@@ -152,8 +152,8 @@ if ($("#work-schedule")) {
       totals[schedule] = { days: Number(row.children[1].textContent), hours: Number(row.children[5].textContent) };
       const card = comparison.querySelector(`[data-work-compare="${schedule}"]`);
       if (card) {
-        card.querySelector("[data-work-days]").textContent = totals[schedule].days.toLocaleString("lt-LT");
-        card.querySelector("[data-work-hours]").textContent = totals[schedule].hours.toLocaleString("lt-LT");
+        card.querySelector("[data-work-days]").textContent = String(totals[schedule].days);
+        card.querySelector("[data-work-hours]").textContent = String(totals[schedule].hours);
       }
     }
     const delta = comparison.querySelector("#workday-compare-delta");

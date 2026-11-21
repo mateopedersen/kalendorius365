@@ -128,8 +128,8 @@
     },
     {
       "path": "/assets/data/daylight-outlook.js",
-      "source_bytes": 4489,
-      "generated_bytes": 3187
+      "source_bytes": 4509,
+      "generated_bytes": 3202
     },
     {
       "path": "/assets/data/weather-backgrounds.js",
@@ -138,8 +138,8 @@
     },
     {
       "path": "/assets/data/weather-brief.js",
-      "source_bytes": 9211,
-      "generated_bytes": 6323
+      "source_bytes": 9231,
+      "generated_bytes": 6338
     },
     {
       "path": "/assets/data/weather-cities.js",
@@ -188,8 +188,8 @@
     },
     {
       "path": "/assets/leave-planner.js",
-      "source_bytes": 31970,
-      "generated_bytes": 20705
+      "source_bytes": 31990,
+      "generated_bytes": 20720
     },
     {
       "path": "/assets/lunar/astronomy-engine.js",
@@ -243,8 +243,8 @@
     },
     {
       "path": "/assets/phase-5-6-8.js",
-      "source_bytes": 72397,
-      "generated_bytes": 50484
+      "source_bytes": 72461,
+      "generated_bytes": 50529
     },
     {
       "path": "/assets/planner-studio-core.js",
@@ -328,8 +328,8 @@
     },
     {
       "path": "/assets/shell/civic.js",
-      "source_bytes": 19230,
-      "generated_bytes": 12878
+      "source_bytes": 19270,
+      "generated_bytes": 12908
     },
     {
       "path": "/assets/shell/date-guides.js",
@@ -398,13 +398,18 @@
     },
     {
       "path": "/assets/shell/weather-atlas.js",
-      "source_bytes": 52337,
-      "generated_bytes": 31823
+      "source_bytes": 52377,
+      "generated_bytes": 31853
     },
     {
       "path": "/assets/shopping/guide-d245d9bcf38b.js",
       "source_bytes": 2616,
       "generated_bytes": 2251
+    },
+    {
+      "path": "/assets/shopping/guide-ee9ad872239f.js",
+      "source_bytes": 2634,
+      "generated_bytes": 2266
     },
     {
       "path": "/assets/storage.js",
@@ -418,8 +423,8 @@
     },
     {
       "path": "/assets/sunrise.js",
-      "source_bytes": 20752,
-      "generated_bytes": 13458
+      "source_bytes": 20772,
+      "generated_bytes": 13473
     },
     {
       "path": "/assets/tool-directory-core.js",
@@ -433,8 +438,8 @@
     },
     {
       "path": "/assets/tools.js",
-      "source_bytes": 41687,
-      "generated_bytes": 26755
+      "source_bytes": 41655,
+      "generated_bytes": 26723
     },
     {
       "path": "/assets/weather-search.js",

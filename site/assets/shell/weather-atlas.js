@@ -38,7 +38,7 @@ function setup(root) {
   const slug = root.dataset.weatherPlace;
   const requestCache = new Map();
   const retryAfter = new Map();
-  const units = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 1 });
+  const units = new Intl.NumberFormat("lt-LT", { useGrouping: false, maximumFractionDigits: 1 });
   const dayText = new Intl.DateTimeFormat("lt-LT", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
   const weekday = new Intl.DateTimeFormat("lt-LT", { weekday: "long", timeZone: "UTC" });
   const weekendDateText = new Intl.DateTimeFormat("lt-LT", { month: "long", day: "numeric", timeZone: "UTC" });
@@ -921,7 +921,7 @@ function enableSearch(form) {
         return response.json();
       }).then(data => {
         const grouped = Map.groupBy(data.places, ([, name, district]) => district + ":" + name);
-        const coordinate = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 4 });
+        const coordinate = new Intl.NumberFormat("lt-LT", { useGrouping: false, maximumFractionDigits: 4 });
         return [
         ...Object.values(data.municipalities).map(([slug, name, county]) => ({
           slug: "savivaldybes/" + slug, name, district: county, keys: [fold(name)], rank: 1,

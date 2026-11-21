@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { briefContents, currentReading, dayBrief, rainBrief, readingLight, roadBrief, roadStationLabel } from "../shared/weather-brief.js";
+import { briefContents, currentReading, dayBrief, rainBrief, readingLight, roadBrief, roadStationLabel, weatherNumber } from "../shared/weather-brief.js";
 import { pageReadings } from "../lib/weather-page-readings.mjs";
 import { weatherPlaces } from "../lib/weather-places.mjs";
 
@@ -59,6 +59,11 @@ test("the nearest fresh station is preferred and expired or future measurements 
   assert.match(briefContents(fresh), /A &amp; B · 5 km/);
   assert.match(roadBrief({stations: [stations[0]]}, noon).timeLabel, /Ankstesnis/);
   assert.equal(roadBrief({stations: [station("Expired", 1, 6.01), stations[3]]}, noon), undefined);
+});
+
+test("weather values keep the Lithuanian decimal comma without digit grouping", () => {
+  assert.equal(weatherNumber(2000), "2000");
+  assert.equal(weatherNumber(12345.6), "12345,6");
 });
 
 test("verified Jakai branches show the junction, direction and station rather than a technical code", () => {

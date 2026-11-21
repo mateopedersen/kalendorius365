@@ -68,14 +68,14 @@ test('all Lithuanian benefits routes are responsive and in the sitemap and tools
 test('VMI monthly NPD, annual tiers, and extracting VAT change the calculated amounts', async ({ page }) => {
   await page.goto(taxes);
   const pay = page.locator('#skaiciuoti');
-  await expect(pay.locator('[data-result-value]')).toContainText(/1\s174,99/);
+  await expect(pay.locator('[data-result-value]')).toContainText('1174,99');
   await pay.locator('[name="npd"]').uncheck();
-  await expect(pay.locator('[data-result-value]')).toContainText(/1\s089,00/);
+  await expect(pay.locator('[data-result-value]')).toContainText('1089,00');
   await pay.locator('[name="pension"]').check();
-  await expect(pay.locator('[data-result-value]')).toContainText(/1\s035,00/);
+  await expect(pay.locator('[data-result-value]')).toContainText('1035,00');
   await pay.locator('[name="period"]').selectOption('year');
   await pay.locator('[name="gross"]').fill('138754');
-  await expect(pay.locator('[data-result-rows]')).toContainText(/30\s528,38/);
+  await expect(pay.locator('[data-result-rows]')).toContainText('30528,38');
   await expect(pay.locator('[data-npd-choice]')).toBeHidden();
   const vat = page.locator('#pvm');
   await expect(vat.getByRole('link', { name: 'Tikrinti oficialius PVM tarifus' })).toHaveAttribute('href', 'https://www.vmi.lt/evmi/pvm-tarifai');
@@ -133,7 +133,7 @@ test('benefit filters, date boundaries and local reminders work', async ({ page 
   await birth.fill('2026-05-31');
   await expect(page.locator('[data-result-value]')).toContainText('814,00');
   await birth.fill('2026-06-01');
-  await expect(page.locator('[data-result-value]')).toContainText(/1\s036,00/);
+  await expect(page.locator('[data-result-value]')).toContainText('1036,00');
 
   await page.goto(hub + 'sildymo-kompensacija/');
   await expect(page.locator('[data-result-value]')).toContainText('68,90');
@@ -158,7 +158,7 @@ test('child, care, illness and household estimates react to the supplied inputs'
 
   await page.goto(hub + 'vaiko-prieziuros-ismoka/');
   await page.locator('[name="income"]').fill('2000');
-  await expect(value).toContainText(/1\s560,00/);
+  await expect(value).toContainText('1560,00');
   await expect(page.locator('[data-result-rows]')).toContainText('900,00');
   await expect(page.locator('[data-result-rows]')).toContainText('600,00');
 

@@ -25,13 +25,15 @@ test('workday totals and year-specific examples are correct without JavaScript',
 });
 
 test('workday comparison initializes and stays consistent when the schedule changes',async({page})=>{
- await page.goto('/darbo-dienos/2028/',{waitUntil:'networkidle'});
- await expect(page.locator('#workday-check-form')).toHaveAttribute('aria-busy','false');
- await expect(page.locator('#workday-compare-delta')).toContainText('mažiau');
- await page.locator('#work-schedule').selectOption('6');
- await expect(page.locator('[data-work-table="6"]')).toBeVisible();
- await expect(page.locator('[data-work-compare="6"] [data-work-days]')).toHaveText('301');
- await expect(page.locator('[data-work-compare="6"] [data-work-hours]')).toHaveText(/1.?997/);
+ for(const [year,fiveDayHours,sixDayHours] of [[2027,'2009','2004'],[2028,'2002','1997']]){
+  await page.goto(`/darbo-dienos/${year}/`);
+  await expect(page.locator('#workday-check-form')).toHaveAttribute('aria-busy','false');
+  await expect(page.locator('#workday-compare-delta')).toContainText('mažiau');
+  await expect(page.locator('[data-work-compare="5"] [data-work-hours]')).toHaveText(fiveDayHours);
+  await page.locator('#work-schedule').selectOption('6');
+  await expect(page.locator('[data-work-table="6"]')).toBeVisible();
+  await expect(page.locator('[data-work-compare="6"] [data-work-hours]')).toHaveText(sixDayHours);
+ }
 });
 
 test('blog photographs have working responsive sources and visible provenance',async({page})=>{

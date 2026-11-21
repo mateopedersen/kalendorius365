@@ -1,8 +1,8 @@
 import { formatDate, parse, today } from '../calendar.js';
 import { exportICS } from '../ics.js';
 
-const euro = new Intl.NumberFormat('lt-LT', { style: 'currency', currency: 'EUR' });
-const number = new Intl.NumberFormat('lt-LT', { maximumFractionDigits: 2 });
+const euro = new Intl.NumberFormat('lt-LT', { useGrouping: false, style: 'currency', currency: 'EUR' });
+const number = new Intl.NumberFormat('lt-LT', { useGrouping: false, maximumFractionDigits: 2 });
 const STORE = 'kalendorius365:benefit-reminders:v1';
 const MAX_REMINDERS = 50;
 const cent = value => Math.round((value + Number.EPSILON * Math.max(1, Math.abs(value))) * 100) / 100;

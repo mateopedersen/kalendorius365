@@ -283,7 +283,7 @@ function formatPeriod(period) {
 }
 
 function ratioText(days, leaveDays) {
-  return leaveDays === 0 ? `${days} d. · nereikia atostogų dienų` : `${(days / leaveDays).toLocaleString("lt-LT", { maximumFractionDigits: 2 })} d. už 1 atostogų d.`;
+  return leaveDays === 0 ? `${days} d. · nereikia atostogų dienų` : `${(days / leaveDays).toLocaleString("lt-LT", { useGrouping: false, maximumFractionDigits: 2 })} d. už 1 atostogų d.`;
 }
 
 function countNoun(value, forms) {

@@ -364,7 +364,7 @@ categories:
       - route: /mokesciu-skaiciuokle/
         title: "Atlyginimo ir mokesčių skaičiuoklė"
         description: "Bruto, neto, GPM, NPD, VSD, PSD, darbo vietos kaina ir PVM."
-        example: "Apskaičiuokite neto atlyginimą nuo 1 800 Eur bruto."
+        example: "Apskaičiuokite neto atlyginimą nuo 1800 Eur bruto."
         kind: Skaičiuoklė ir gidas
         outputs: [Ekrane]
         keywords: mokestis mokesciai mokesciu skaiciuokle alga atlyginimas bruto neto gpm npd pvm sodra

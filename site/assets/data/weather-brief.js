@@ -3,7 +3,7 @@ const zone = "Europe/Vilnius";
 const date = new Intl.DateTimeFormat("en-CA", { timeZone: zone, year: "numeric", month: "2-digit", day: "2-digit" });
 const clock = new Intl.DateTimeFormat("lt-LT", { timeZone: zone, hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
 const offsetClock = new Intl.DateTimeFormat("lt-LT", { timeZone: zone, hour: "2-digit", minute: "2-digit", timeZoneName: "shortOffset" });
-const numbers = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 1 });
+const numbers = new Intl.NumberFormat("lt-LT", { useGrouping: false, maximumFractionDigits: 1 });
 export const formatWeatherTime = time => date.format(time) + " " + clock.format(time);
 export const weatherNumber = value => numbers.format(value);
 export const escapeWeatherText = text => String(text).replace(/[&<>"']/g, char => ({
