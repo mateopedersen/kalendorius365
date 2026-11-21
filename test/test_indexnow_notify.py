@@ -1,8 +1,10 @@
 """Production parity accepts delivery transforms and rejects editorial changes."""
 
+import json
 import unittest
 from http.client import RemoteDisconnected
-from unittest.mock import patch
+from subprocess import CalledProcessError
+from unittest.mock import call, patch
 
 from scripts import indexnow_notify
 
@@ -121,6 +123,118 @@ class IndexNowReleaseRetryTest(unittest.TestCase):
             self.assertEqual(indexnow_notify.wait_for_deployment(["first", "second"], "base", "head", 60), 2)
         self.assertEqual(visits.count("first"), 1)
         self.assertEqual(visits.count("second"), 2)
+
+
+class IndexNowWeatherTest(unittest.TestCase):
+    kaunas = indexnow_notify.WEATHER_PREFIX + "kaunas/"
+    village = indexnow_notify.WEATHER_PREFIX + "kernaves-17745/"
+    old_village = indexnow_notify.WEATHER_PREFIX + "retired-place/"
+    district = indexnow_notify.WEATHER_PREFIX + "savivaldybes/kauno-m/"
+
+    @staticmethod
+    def sitemap(*urls):
+        return ("<urlset>" + "".join(f"<url><loc>{url}</loc></url>" for url in urls) + "</urlset>").encode()
+
+    def test_first_weather_release_discovers_all_new_urls(self):
+        def read(revision, path):
+            self.assertEqual(path, indexnow_notify.WEATHER_SITEMAP)
+            if revision == "old":
+                raise CalledProcessError(128, "git show")
+            return self.sitemap(self.kaunas, self.village)
+        with patch.object(indexnow_notify, "git_bytes", side_effect=read):
+            changes = indexnow_notify.discover_weather_changes("old", "new")
+        self.assertEqual(changes, {self.kaunas: "added-or-updated", self.village: "added-or-updated"})
+
+    def test_weather_delta_notifies_added_removed_and_edited_places(self):
+        def read(revision, path):
+            slug = "retired-place" if revision == "old" else "kernaves-17745"
+            if path == indexnow_notify.WEATHER_SITEMAP:
+                return self.sitemap(self.kaunas, indexnow_notify.WEATHER_PREFIX + slug + "/", self.district)
+            return json.dumps({
+                "snapshot": revision,
+                "municipalities": {"1": ["kauno-m", "Kauno miesto", "Kauno", 54.9, 23.9]},
+                "places": [
+                    ["kaunas", "Kaunas", 1, 54.9, 23.8 if revision == "old" else 23.9, "Kaune", "kaunas", "Kauno", "2"],
+                    [slug, "Vietovė", 1, 54.6, 23.7, "", None, "", "2"],
+                ],
+                "wards": {"2": ["Centras"]},
+            }).encode()
+        with patch.object(indexnow_notify, "git_bytes", side_effect=read):
+            changes = indexnow_notify.discover_weather_changes("old", "new")
+        self.assertEqual(changes, {
+            self.kaunas: "added-or-updated", self.village: "added-or-updated",
+            self.old_village: "removed", self.district: "added-or-updated",
+        })
+
+    def test_registry_snapshot_timestamp_alone_does_not_notify(self):
+        def read(revision, path):
+            if path == indexnow_notify.WEATHER_SITEMAP:
+                return self.sitemap(self.kaunas)
+            return json.dumps({
+                "snapshot": revision,
+                "municipalities": {"1": ["kauno-m", "Kauno miesto", "Kauno", 54.9, 23.9]},
+                "wards": {},
+                "places": [["kaunas", "Kaunas", 1, 54.9, 23.9, "Kaune", "kaunas", "Kauno", None]],
+            }).encode()
+        with patch.object(indexnow_notify, "git_bytes", side_effect=read):
+            self.assertEqual(indexnow_notify.discover_weather_changes("old", "new"), {})
+
+    def test_weather_sitemap_excludes_other_sites_and_queries(self):
+        for url in ("https://example.com/orai/kaunas/", self.kaunas + "?dienos=15"):
+            with self.subTest(url=url), patch.object(indexnow_notify, "git_bytes", return_value=self.sitemap(url)):
+                with self.assertRaises(ValueError):
+                    indexnow_notify.weather_sitemap("head")
+
+    def test_production_requires_complete_live_url_set_and_matching_revision(self):
+        sitemap = indexnow_notify.BASE_URL + "/sitemap-orai.xml"
+        manifest = indexnow_notify.BASE_URL + "/assets/release-manifest.json"
+        expected = {self.kaunas, self.village}
+        with patch.object(indexnow_notify, "live_response", return_value=(200, sitemap, {}, self.sitemap(self.kaunas))):
+            self.assertFalse(indexnow_notify.deployed_weather_sitemap(expected, "release"))
+        for revision in ("old", "release"):
+            responses = [(200, sitemap, {}, self.sitemap(*expected)),
+                         (200, manifest, {}, json.dumps({"revision": revision}).encode())]
+            with patch.object(indexnow_notify, "live_response", side_effect=responses):
+                self.assertEqual(indexnow_notify.deployed_weather_sitemap(expected, "release"), revision == "release")
+
+    def test_production_requires_indexable_canonical_page_or_removed_status(self):
+        for status, headers, canonical, change, expected in [
+            (200, {}, self.kaunas, "added-or-updated", True),
+            (200, {"X-Robots-Tag": "noindex"}, self.kaunas, "added-or-updated", False),
+            (200, {}, self.village, "added-or-updated", False),
+            (200, {}, self.kaunas, "removed", False),
+            (404, {}, self.kaunas, "removed", True),
+        ]:
+            with self.subTest(status=status, headers=headers, change=change):
+                with patch.object(indexnow_notify, "live_response", return_value=(
+                    status, self.kaunas, headers, page("Orai", canonical=canonical)
+                )):
+                    self.assertEqual(indexnow_notify.deployed_weather_route(self.kaunas, change), expected)
+
+    def test_weather_probes_wait_for_live_sitemap(self):
+        changes = {self.kaunas: "added-or-updated", self.old_village: "removed"}
+        with (
+            patch.object(indexnow_notify, "git_changed_paths", return_value=[]),
+            patch.object(indexnow_notify, "weather_sitemap", return_value={self.kaunas}),
+            patch.object(indexnow_notify, "git_bytes", return_value=b'{"revision":"current"}'),
+            patch.object(indexnow_notify, "deployed_weather_sitemap", side_effect=[False, True]) as sitemap,
+            patch.object(indexnow_notify, "deployed_weather_route", return_value=True) as routes,
+            patch.object(indexnow_notify.time, "sleep"),
+        ):
+            self.assertEqual(indexnow_notify.wait_for_deployment(list(changes), "old", "new", 60, changes), 2)
+            self.assertEqual(sitemap.call_count, 2)
+            routes.assert_has_calls([call(self.kaunas, "added-or-updated"), call(self.old_village, "removed")], any_order=True)
+            self.assertEqual(routes.call_count, 2)
+
+    def test_batch_limit_and_partial_key_validation_status(self):
+        urls = [indexnow_notify.WEATHER_PREFIX + f"place-{i}/" for i in range(20_901)]
+        receipts = []
+        responses = [{"http_status": 200}, {"http_status": 200}, {"http_status": 202}]
+        with patch.object(indexnow_notify, "submit", side_effect=responses) as post:
+            status = indexnow_notify.submit_batches(urls, "public-key", receipts)
+        self.assertEqual(status, "received_key_validation_pending")
+        self.assertEqual([receipt["url_count"] for receipt in receipts], [10_000, 10_000, 901])
+        self.assertEqual([url for args in post.call_args_list for url in args.args[0]], urls)
 
 
 if __name__ == "__main__":

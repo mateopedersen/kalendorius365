@@ -16,7 +16,11 @@ The file site/3bf6b349467b58f37983a699ded53f17.txt is the public IndexNow owners
 
 The IndexNow workflow handles ordinary successful pushes to main. The existing daily horoscope publisher pushes with GITHUB_TOKEN, which does not start a second workflow; after its atomic Pages commit, the publisher workflow calls the same notifier directly.
 
-The notifier compares sitemap HTML using title, description, canonical, H1, visible main text and its public links/images. It ignores changes limited to content-addressed script/style URLs, includes only changed public PDF, WebP and ICS files in the download areas, and sends no private or query-string URLs. It verifies the key file and waits up to eight minutes for the changed public content to match the production deployment before submission. If deployment or IndexNow fails, the Actions run fails and sends no unverified batch. HTTP 200 means received; HTTP 202 means key validation is still pending. Neither means indexed.
+The notifier compares indexable HTML in the main sitemap using title, description, canonical, H1, visible main text and its public links/images. It ignores changes limited to content-addressed script/style URLs, includes only changed public PDF, WebP and ICS files in the download areas, and sends no private or query-string URLs.
+
+For the weather sitemap, the notifier detects added and retired URLs and changed location records. It waits for the live weather sitemap to match the committed URL set, checks the live release revision and probes the affected weather routes. Large releases use representative probes. The live forecast refreshes on its own cadence and does not trigger IndexNow submissions.
+
+The notifier verifies the key file and waits for the public deployment before sending batches of at most 10,000 URLs. A run reports the count and response for each batch. HTTP 200 means received. HTTP 202 means key validation is pending. A request to replay recent weather changes can set the workflow's `weather_only` input with the prior production commit as `base_sha`.
 
 Cloudflare Crawler Hints was inspected and is off. The repository uses one explicit publication notifier rather than also enabling a second IndexNow source.
 

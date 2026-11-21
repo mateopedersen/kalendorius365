@@ -6,6 +6,10 @@ on:
       base_sha:
         description: 'Previous production revision before the missed notification'
         required: true
+      weather_only:
+        description: 'Replay only dynamic weather URLs'
+        type: boolean
+        default: false
   push:
     branches:
       - main
@@ -33,13 +37,19 @@ jobs:
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: '3.12'
-      - name: Test exact page and protected-email parity
+      - name: Test static and weather submission parity
         run: python3 -m unittest test.test_indexnow_notify
       - name: Wait for the successful Cloudflare Pages release and notify changed URLs
         env:
           BASE_SHA: ${{ inputs.base_sha || github.event.before }}
           HEAD_SHA: ${{ github.sha }}
-        run: python3 scripts/indexnow_notify.py --base "$BASE_SHA" --head "$HEAD_SHA" --post --wait-seconds 3600
+          WEATHER_ONLY: ${{ inputs.weather_only || false }}
+        run: |
+          weather_arguments=()
+          if [[ "$WEATHER_ONLY" == "true" ]]; then
+            weather_arguments+=(--weather-only)
+          fi
+          python3 scripts/indexnow_notify.py --base "$BASE_SHA" --head "$HEAD_SHA" --post --wait-seconds 3600 "${weather_arguments[@]}"
       - name: Save the submission outcome in the run summary
         if: always()
         run: echo 'The IndexNow submission JSON is recorded in the preceding step. HTTP 200 means received; HTTP 202 means key validation is still pending.' >> "$GITHUB_STEP_SUMMARY"
