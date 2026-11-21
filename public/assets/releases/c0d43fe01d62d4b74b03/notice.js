@@ -1,0 +1,1 @@
+var o=Object.defineProperty;var n=(t,e)=>o(t,"name",{value:e,configurable:!0});function c(t){const e=document.querySelector("#notice");e.textContent=t,e.hidden=!1,clearTimeout(e.timer),e.timer=setTimeout(()=>e.hidden=!0,1e4)}n(c,"notice");export{c as notice};
