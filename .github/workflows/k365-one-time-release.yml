@@ -38,7 +38,7 @@ jobs:
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Validate Lithuanian page data, calendar media and sitemaps
         run: |
-          python3 scripts/validate_assets.py
+          git diff --exit-code 7c3e09b1cf21f0d442036e8745b16a95887d4235 HEAD -- site/downloads site/assets/previews site/assets/previews-detail site/assets/data/manifest.json data requirements-print.txt scripts/prints.rb scripts/validate_assets.py scripts/lunar scripts/monthly_holidays
           python3 scripts/validate_calendar_pages.py
           python3 scripts/validate_horoscopes.py --require-current --check-rendered --release
           python3 scripts/audit_site.py --release

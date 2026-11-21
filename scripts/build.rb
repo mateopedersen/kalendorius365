@@ -22,6 +22,7 @@ require_relative '../lib/advertising_routes'
 require_relative '../lib/print_preview_details'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
+ system('python3','scripts/weather/pages_data.py',exception:true)
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
  release_manifest=nil
  release=false
