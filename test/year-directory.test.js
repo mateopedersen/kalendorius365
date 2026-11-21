@@ -37,7 +37,7 @@ test("year directory connects all four date-correct month previews to their mont
 });
 
 test("year cards derive current status, calendar facts and verified PDF/WebP choices from live data", () => {
-  for (const year of [2027, 2028, 2029]) {
+  for (const year of [2027, 2028, 2029, 2030]) {
     assert.match(page, new RegExp(`data-year-downloads="${year}"`));
     const assets = yearPrintAssets(manifest, year);
     assert.equal(assets.length, 10);

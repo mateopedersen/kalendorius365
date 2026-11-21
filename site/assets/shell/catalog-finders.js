@@ -31,10 +31,8 @@ if (printFinder) {
 
   function updatePeriod() {
     const month = period.selectedOptions[0].dataset.monthSlug;
-    const screenOnly = year.value === "2030";
-    const fragment = screenOnly ? "" : month ? "#perziura" : "#metiniai-sablonai";
+    const fragment = month ? "#perziura" : "#metiniai-sablonai";
     catalogLink.href = `/${year.value}/${month ? month + "/" : ""}${fragment}`;
-    catalogLink.textContent = screenOnly ? "Peržiūrėti kalendorių" : "Peržiūrėti visus maketus";
     editorLink.href = `/kurti-kalendoriu/?metai=${year.value}&menuo=${period.value}`;
 
     const selectedDesign = design.value;

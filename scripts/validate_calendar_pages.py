@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Verify all rendered 2027–2029 calendar collection pages and legacy routes."""
+"""Verify all rendered 2027–2030 calendar collection pages and legacy routes."""
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 import json
 import xml.etree.ElementTree as ET
 
-from calendar_package import ROOT, TARGET_YEARS, validate_import_evidence
+from calendar_package import ROOT, validate_import_evidence
+
+PRINT_YEARS = range(2027, 2031)
 
 
 class Page(HTMLParser):
@@ -122,13 +124,13 @@ def check_page(route: str, assets: list[dict], expected_h1: str, print_asset: di
 
 manifest = json.loads((ROOT / "site/assets/data/manifest.json").read_text())
 package = validate_import_evidence(ROOT, manifest, check_files=True)
-assets = [asset for asset in manifest["assets"] if asset["year"] in TARGET_YEARS and asset["kind"] in {"monthly", "annual"}]
+assets = [asset for asset in manifest["assets"] if asset["year"] in PRINT_YEARS and asset["kind"] in {"monthly", "annual"}]
 alt_texts = [asset.get("alt", "").strip() for asset in assets]
-assert len(alt_texts) == 390 and len(set(alt_texts)) == 390, "all 390 calendar images need distinct Lithuanian alt text"
+assert len(alt_texts) == 520 and len(set(alt_texts)) == 520, "all calendar images need distinct Lithuanian alt text"
 assert all(70 <= len(alt) <= 160 and "kalendorius" in alt.lower() for alt in alt_texts), "calendar alt text must describe the product concisely"
 assert all(str(asset["year"]) in asset["alt"] for asset in assets), "calendar alt text must identify its year"
 months = json.loads((ROOT / "data/calendar.json").read_text())["months"]
-for year in TARGET_YEARS:
+for year in PRINT_YEARS:
     for month, values in enumerate(months, 1):
         route = f"/{year}/{values[0]}/"
         expected = [asset for asset in assets if asset["kind"] == "monthly" and asset["year"] == year and asset["month"] == month]
@@ -160,5 +162,6 @@ assert redirect_map == expected_redirects and len(redirect_map) == 1575
 
 tree = ET.parse(ROOT / "public/sitemap.xml")
 image_locations = [element.text for element in tree.iter() if element.tag.endswith("}loc") and element.text and "/downloads/" in element.text]
-assert len(image_locations) == 390
-print("PASS: all 36 monthly and 3 annual pages expose ten A3 designs, localized downloads, responsive alt-text previews, working filters, 1,560 calendar redirects, two about-page redirects, 13 reviewed GSC recoveries, and 390 sitemap images.")
+assert len(image_locations) == len(assets) == 520
+assert set(image_locations) == {"https://kalendorius365.lt" + asset["webp"] for asset in assets}
+print("PASS: all 48 monthly and 4 annual pages expose ten A3 designs, localized downloads, responsive alt-text previews, working filters, 1,560 calendar redirects, two about-page redirects, 13 reviewed GSC recoveries, and 520 sitemap images.")

@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'scripts'))
-from calendar_package import validate_import_evidence
+from calendar_package import validate_import_evidence, validate_template_extension
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 LEGEND_TRANSITION_VERSION='2026-10-17-annual-monochrome-legend-v2'
 LEGEND_TRANSITION_PATH='docs/language-audit/2026-10-17/annual-monochrome-legend-v2.json'
@@ -70,7 +70,8 @@ def approved_blank_replacements(root,baseline,transition,manifest):
     assert transition['after_generator']==manifest['generator'],'Blank print manifest generator differs from its reviewed transition'
     preserved={row['stem']:row for row in transition['preserved_nonblank_assets']}
     redesigned={row['stem']:row for row in transition['redesigned_blank_assets']}
-    assets={asset['stem']:asset for asset in manifest['assets']}
+    extension=validate_template_extension(root,manifest)
+    assets={asset['stem']:asset for asset in manifest['assets'] if asset['stem'] not in extension}
     assert len(preserved)==390 and set(preserved)=={stem for stem,asset in assets.items() if asset['kind']!='blank'}
     assert len(redesigned)==26 and set(redesigned)=={stem for stem,asset in assets.items() if asset['kind']=='blank'}
     replacements={}
@@ -217,6 +218,7 @@ def main():
         assert qb['pdf_sha256']==asset['pdf_sha256']
     baseline=json.loads((ROOT/'docs/lunar/qa/existing-downloads-before.json').read_text())
     manifest=json.loads((ROOT/'site/assets/data/manifest.json').read_text())
+    extension=validate_template_extension(ROOT,manifest,verify_files=('site','public'))
     retired_public_paths=set();package=None;transition=None
     if manifest.get('packageImport'):
         package=validate_import_evidence(ROOT,manifest,check_files=True)
@@ -244,6 +246,6 @@ def main():
     assert not (ROOT/'public/lunar-responsive-qa.html').exists(),'Local QA harness must not be published'
     assert not (ROOT/'public/lunar-qa-axe.js').exists(),'Local QA library must not be published'
     assert len([r for r in (ROOT/'public/_headers').read_text().splitlines() if r.startswith('/')])<=100
-    print(f'Lunar release gate: all 146 lunar downloads match both preflight passes; {unchanged} legacy downloads preserved; {reviewed} superseded download hashes match the pinned transition evidence.')
+    print(f'Lunar release gate: all 146 lunar downloads match both preflight passes; {unchanged} legacy downloads preserved; {reviewed} superseded download hashes match the pinned transition evidence; {len(extension)} new 2030 print sets match their published bytes.')
 
 if __name__=='__main__':main()

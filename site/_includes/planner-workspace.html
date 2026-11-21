@@ -89,7 +89,7 @@
       {% assign art = year | prepend: 'year-' %}
       <a href="/{{ year }}/">
         {% include shell-art.html name=art size=44 lazy=true %}
-        <span><strong>{{ year }} Metai</strong><small>{% if year == 2030 %}Kalendorius internete{% else %}PDF ir vaizdai{% endif %}</small></span>
+        <span><strong>{{ year }} Metai</strong><small>PDF ir vaizdai</small></span>
         {% include calendar-catalog-arrow.html %}
       </a>
       {% endfor %}

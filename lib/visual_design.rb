@@ -61,7 +61,7 @@ module Pages
    content=case label
    when 'Atsisiųsti PDF', 'Atsisiųsti vaizdą' then "<span>#{label}</span>"
    when 'Atidaryti PDF spausdinimui ↗'
-    '<span>Atidaryti PDF spausdinimui <svg class="download-action-external" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+    '<span>Atidaryti PDF <span class="download-action-tail">spausdinimui <svg class="download-action-external" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>'
    else label
    end
    html=html.gsub('>'+label+'</','>'+ui_icon(icon)+content+'</')

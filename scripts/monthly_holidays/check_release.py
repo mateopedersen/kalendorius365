@@ -8,7 +8,7 @@ import calendar,json,re,hashlib,copy,sys,math,xml.etree.ElementTree as ET
 from PIL import Image,ImageChops,ImageStat
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'scripts'))
-from calendar_package import validate_import_evidence
+from calendar_package import validate_import_evidence, validate_template_extension
 from monthly_holidays.holiday_catalog import EVENTS, REGISTRY, YEARS, calendar_years, events_in_year, guide_links, guides, path as month_path
 
 # This exception is deliberately tied to one reviewed editorial release.  It
@@ -78,7 +78,8 @@ def reviewed_blank_calendar_updates(root, baseline, manifest):
   raise ValueError('blank calendar transition does not match the renderer manifest')
  preserved={row['stem']:row for row in transition['preserved_nonblank_assets']}
  redesigned={row['stem']:row for row in transition['redesigned_blank_assets']}
- assets={asset['stem']:asset for asset in manifest['assets']}
+ extension=validate_template_extension(root,manifest)
+ assets={asset['stem']:asset for asset in manifest['assets'] if asset['stem'] not in extension}
  if len(preserved)!=390 or set(preserved)!={stem for stem,asset in assets.items() if asset['kind']!='blank'}:
   raise ValueError('selective redesign does not prove all 390 other print assets')
  if len(redesigned)!=26 or set(redesigned)!={stem for stem,asset in assets.items() if asset['kind']=='blank'}:

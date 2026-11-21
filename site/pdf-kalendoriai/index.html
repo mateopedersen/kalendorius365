@@ -4,7 +4,7 @@ description: "Lietuviškų PDF kalendorių katalogas: metų ir mėnesių maketai
 hero_share: true
 catalog_finder: true
 ---
-{% include tool-page-head.html icon="pdf" title="PDF kalendoriai spausdinti" lead="Atsisiųskite 2027–2029 m. PDF maketus arba susikurkite 2030 m. kalendorių spausdinti." %}
+{% include tool-page-head.html icon="pdf" title="PDF kalendoriai spausdinti" lead="Atsisiųskite 2027–2030 m. metinius ir mėnesinius PDF kalendorius spausdinti." %}
 
 <section class="calendar-catalog-section" aria-labelledby="pdf-years">
   <header class="calendar-catalog-section__heading">
@@ -19,15 +19,11 @@ catalog_finder: true
         {% include shell-art.html name=art size=100 %}
         <div>
           <h3>{{ year }} Metai</h3>
-          {% if year == 2030 %}
-          <p>12 mėnesių ir kalendoriaus kūrėjas</p>
-          {% else %}
           <p>12 mėnesių ir 10 metinių maketų</p>
-          {% endif %}
         </div>
       </header>
       <div class="calendar-year-card__actions">
-        <a class="button primary" href="/{{ year }}/{% if year < 2030 %}#metiniai-sablonai{% endif %}" aria-label="Atverti metų kalendorių ({{ year }})">
+        <a class="button primary" href="/{{ year }}/#metiniai-sablonai" aria-label="Atverti metų kalendorių ({{ year }})">
           Atverti metų kalendorių {% include calendar-catalog-arrow.html %}
         </a>
       </div>
@@ -82,4 +78,4 @@ catalog_finder: true
   </div>
 </section>
 
-<section class="panel content-guide"><h2>Spausdinimo dydis</h2><p>Prie kiekvieno failo nurodytas jo popieriaus formatas. Kad išlaikytumėte pasirinktą dydį, spausdintuvo lange pasirinkite faktinį mastelį ir tą patį popieriaus formatą. <a href="/2030/">2030 m. kalendorių</a> galite atverti ekrane ir susikurti atskirą spausdinamą variantą.</p></section>
+<section class="panel content-guide"><h2>Spausdinimo dydis</h2><p>Prie kiekvieno failo nurodytas jo popieriaus formatas. Kad išlaikytumėte pasirinktą dydį, spausdintuvo lange pasirinkite faktinį mastelį ir tą patį popieriaus formatą.</p></section>

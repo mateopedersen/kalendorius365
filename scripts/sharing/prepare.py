@@ -163,8 +163,11 @@ def prepare():
   # The original artwork remains the input; no visitor data is included.
   if img==DEFAULT or route.startswith('/blogas/'):og_card(p)
   pages[route]=p
- manifest=json.loads((SITE/'assets/data/manifest.json').read_text())['assets']
+ print_manifest=json.loads((SITE/'assets/data/manifest.json').read_text())
+ manifest=print_manifest['assets']
  years=json.loads((SITE/'assets/data/years.json').read_text())
+ if extension := print_manifest.get('templateExtension'):
+  years.append(json.loads((ROOT/extension).read_text())['calendar'])
  calendar={(y['year'],m['month']):m for y in years for m in y['months']}
  # The existing manifest and calendar model supply every year/month/design.
  for a in manifest:

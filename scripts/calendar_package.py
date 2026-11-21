@@ -137,3 +137,45 @@ def validate_import_evidence(root: Path = ROOT, manifest: dict | None = None,
         raise ValueError("new package paths overlap retired asset paths")
     return {"evidence": evidence, "retiredPaths": retired_paths, "newPaths": new_paths,
             "evidenceSha256": evidence_sha}
+
+
+TEMPLATE_EXTENSION_PATH = "docs/calendar-assets/2030-template-extension.json"
+TEMPLATE_EXTENSION_YEAR = 2030
+
+
+def validate_template_extension(root: Path, manifest: dict, *, verify_files=()) -> set[str]:
+    """Verify the 2030 additions independently of the frozen 2027–2029 package."""
+    all_assets = manifest["assets"]
+    new_assets = {asset["stem"]: asset for asset in all_assets if asset.get("year") == TEMPLATE_EXTENSION_YEAR}
+    if not new_assets and "templateExtension" not in manifest:
+        return set()
+    assert manifest.get("templateExtension") == TEMPLATE_EXTENSION_PATH
+    evidence_path = root / TEMPLATE_EXTENSION_PATH
+    assert sha256_file(evidence_path) == manifest.get("templateExtensionSha256")
+    evidence = json.loads(evidence_path.read_text())
+    assert evidence["year"] == evidence["calendar"]["year"] == TEMPLATE_EXTENSION_YEAR
+    proofs = {proof["stem"]: proof for proof in evidence["assets"]}
+    assert len(proofs) == len(evidence["assets"]) == len(new_assets) == 130
+    assert set(proofs) == set(new_assets)
+    assert {manifest_key(asset) for asset in new_assets.values()} == {
+        ("monthly" if month else "annual", TEMPLATE_EXTENSION_YEAR, month, f"{design:02}")
+        for month in range(13) for design in range(1, 11)
+    }
+    originals = {asset["stem"]: asset for asset in all_assets if asset.get("year") in TARGET_YEARS}
+    for stem, proof in proofs.items():
+        source = originals[proof["source"]]
+        target = new_assets[stem]
+        assert source["files"]["pdf"]["sha256"] == proof["source_pdf_sha256"], stem
+        assert target["files"] == proof["files"], stem
+        assert target["verification"]["status"] == "passed", stem
+        assert not target.get("legacyPaths"), stem
+        for property_name in ("kind", "month", "design", "landscape", "paper", "dimensions", "holidayInformation"):
+            assert source.get(property_name) == target.get(property_name), (stem, property_name)
+        for key in ("pdf", "webp", "preview", "smallPreview"):
+            expected_path = source[key].replace(str(source["year"]), str(TEMPLATE_EXTENSION_YEAR))
+            assert target[key] == expected_path and target[key] != source[key], (stem, key)
+            for base in verify_files:
+                path = root / base / expected_path.lstrip("/")
+                expected = target["files"][key]
+                assert path.stat().st_size == expected["bytes"] and sha256_file(path) == expected["sha256"], path
+    return set(new_assets)

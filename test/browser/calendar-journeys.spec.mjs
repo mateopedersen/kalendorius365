@@ -46,16 +46,16 @@ test('December opens January across 2029 and 2030, and the 2030 print controls s
   await page.goto('/2029/gruodis/');
   await page.locator('.month-heading').getByRole('link', { name: 'Kitas ›' }).click();
   await expect(page).toHaveURL(/\/2030\/sausis\/$/);
-  await expect(page.locator('.screen-month .calendar-plan-date').first()).toHaveAttribute('href', /\/mano-diena\/\?data=2030-01-/);
-  await page.getByRole('button', { name: 'Spausdinti mėnesį' }).click();
-  expect(await page.evaluate(() => window.printCalls)).toBe(1);
+  await expect(page.locator('.month-overview .calendar-plan-date').first()).toHaveAttribute('href', /\/mano-diena\/\?data=2030-01-/);
+  await expect(page.locator('#design-picker option')).toHaveCount(10);
+  await expect(page.locator('#selected-print')).toHaveAttribute('href', /\/downloads\/.*\/2030\/.*\.pdf/);
   await page.goto('/2030/');
   await page.getByRole('button', { name: 'Spausdinti metų apžvalgą' }).click();
   expect(await page.evaluate(() => window.printCalls)).toBe(1);
   await page.emulateMedia({ media: 'print' });
   await expect(page.locator('[data-print-root="annual"] .static-month')).toHaveCount(12);
   await expect(page.locator('[data-print-root="annual"]')).toBeVisible();
-  await expect(page.locator('.annual-templates--editor')).toBeHidden();
+  await expect(page.locator('#metiniai-sablonai')).toBeHidden();
 });
 
 test('the PDF catalogue aligns all year cards and links to each month with distinct year illustrations', async ({ page }) => {
@@ -68,7 +68,7 @@ test('the PDF catalogue aligns all year cards and links to each month with disti
     await expect(card.locator('nav a')).toHaveCount(12);
     const action = card.getByRole('link', { name: `Atverti metų kalendorių (${year})` });
     await expect(action).toHaveText('Atverti metų kalendorių');
-    await expect(action).toHaveAttribute('href', year === 2030 ? '/2030/' : `/${year}/#metiniai-sablonai`);
+    await expect(action).toHaveAttribute('href', `/${year}/#metiniai-sablonai`);
     expect(await card.locator('img').evaluate((image) => image.decode().then(() => image.naturalWidth))).toBeGreaterThan(0);
   }
   for (const width of [320, 780, 1286]) {
@@ -94,7 +94,7 @@ test('the PDF catalogue aligns all year cards and links to each month with disti
   await expect(page.locator('.calendar-period-art')).toHaveAttribute('src', /2028-vasaris\.svg/);
 });
 
-test('the PDF catalogue downloads the chosen monthly design and preselects the 2030 editor', async ({ page }) => {
+test('the PDF catalogue downloads the chosen monthly design and downloads the matching 2030 design', async ({ page }) => {
   await page.goto('/pdf-kalendoriai/');
   const picker = page.locator('[data-print-finder]');
   await expect(picker.locator('[data-print-design] option')).toHaveCount(10);
@@ -113,12 +113,14 @@ test('the PDF catalogue downloads the chosen monthly design and preselects the 2
   expect((await pdfResponse.body()).subarray(0, 5).toString()).toBe('%PDF-');
   expect((await imageResponse.body()).subarray(8, 12).toString()).toBe('WEBP');
   await picker.locator('[data-print-year]').selectOption('2030');
-  await expect(picker.locator('[data-print-result]')).toBeHidden();
-  await picker.locator('[data-print-editor]').click();
-  await expect(page).toHaveURL(/\/kurti-kalendoriu\/\?metai=2030&menuo=2$/);
-  await expect(page.locator('#calendar-editor')).toHaveAttribute('aria-busy', 'false');
-  await expect(page.locator('[data-path="period.year"]')).toHaveValue('2030');
-  await expect(page.locator('[data-path="period.month"]')).toHaveValue('2');
+  await expect(picker.locator('[data-print-result]')).toBeVisible();
+  await expect(picker.locator('[data-print-design]')).toHaveValue('02');
+  await expect(picker.locator('[data-print-collection]')).toHaveAttribute('href', '/2030/vasaris/#perziura');
+  const pdf2030 = await picker.locator('[data-print-pdf]').getAttribute('href');
+  expect(pdf2030).toMatch(/\/2030\//);
+  const response2030 = await page.request.get(pdf2030);
+  expect(response2030.ok()).toBe(true);
+  expect((await response2030.body()).subarray(0, 5).toString()).toBe('%PDF-');
 });
 
 test('the events catalogue filters accentless searches by city and announcement status', async ({ page }) => {

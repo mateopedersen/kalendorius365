@@ -9,12 +9,12 @@ test('year directory loads verified annual PDF and WebP choices from the immutab
   });
 
   await page.goto('/metai/');
-  await expect(page.locator('[data-year-downloads]')).toHaveCount(3);
+  await expect(page.locator('[data-year-downloads]')).toHaveCount(4);
   await expect.poll(() => dataResponses.length).toBe(1);
   expect(dataResponses[0].status()).toBe(200);
   expect(new URL(dataResponses[0].url()).pathname).toMatch(/^\/assets\/releases\/[a-f0-9]{20}\/data\/year-print-assets\.json$/);
 
-  for (const year of [2027, 2028, 2029]) {
+  for (const year of [2027, 2028, 2029, 2030]) {
     const host = page.locator(`[data-year-downloads="${year}"]`);
     await expect(host.locator('details summary')).toContainText('10');
     await host.locator('details summary').click();
@@ -55,7 +55,7 @@ test('annual previews keep their download panel in the same row until there is r
   }
 });
 
-test('2030 is reachable from the mobile year shortcuts and supports comparison and PDF creation', async ({ page }) => {
+test('2030 is reachable from the mobile year shortcuts and supports comparison and prepared PDF downloads', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 844 });
   await page.addInitScript(() => {
     localStorage.setItem('kalendorius365:privacy-notice:v1', 'dismissed');
@@ -77,7 +77,10 @@ test('2030 is reachable from the mobile year shortcuts and supports comparison a
   await page.locator('#year-compare-b').selectOption('2030');
   await expect(page.locator('#year-comparison-result').getByRole('heading', { name: /2030/ })).toBeVisible();
 
-  await card.getByRole('link', { name: 'Sukurti 2030 m. PDF' }).click();
-  await expect(page.locator('[data-path="period.year"]')).toHaveValue('2030');
-  await expect(page.locator('[data-path="period.mode"]')).toHaveValue('annual');
+  await card.locator('.year-print-details summary').click();
+  await expect(card.locator('.year-print-list li')).toHaveCount(10);
+  const pdf = await card.getByRole('link', { name: /2030 m. Šviesa.*atsisiųsti PDF/ }).getAttribute('href');
+  const response = await page.request.get(pdf);
+  expect(response.ok()).toBe(true);
+  expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-');
 });

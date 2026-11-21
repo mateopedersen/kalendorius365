@@ -72,8 +72,8 @@ test('generated release manifest matches every emitted immutable byte and stays 
  assert.ok(annual,'verified annual print choices are included in the immutable release');
  assert.equal(fs.existsSync(path.join(publicDir,'assets/data/year-print-assets.json')),false,'the generated annual data is not left at a mutable root URL');
  const choices=JSON.parse(fs.readFileSync(path.join(publicDir,annual.url),'utf8')).assets;
- assert.equal(choices.length,30);
- for(const year of [2027,2028,2029])assert.equal(choices.filter(item=>item.year===year&&item.kind==='annual'&&item.verification.status==='passed').length,10);
+ assert.equal(choices.length,40);
+ for(const year of [2027,2028,2029,2030])assert.equal(choices.filter(item=>item.year===year&&item.kind==='annual'&&item.verification.status==='passed').length,10);
  assert.equal(fs.existsSync(path.join(publicDir,'assets/data/manifest.json')),false,'the internal print manifest remains unpublished');
 });
 

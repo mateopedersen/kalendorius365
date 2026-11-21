@@ -8,8 +8,12 @@ from PIL import Image,ImageChops,ImageStat
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 ROOT=Path(__file__).resolve().parents[1]
-from calendar_package import validate_import_evidence
+from calendar_package import TEMPLATE_EXTENSION_PATH, validate_import_evidence, validate_template_extension
 YEAR_DATA=json.loads((ROOT/'site/assets/data/years.json').read_text())
+EXTENSION_PATH = ROOT/TEMPLATE_EXTENSION_PATH
+if EXTENSION_PATH.is_file():
+ YEAR_DATA.append(json.loads(EXTENSION_PATH.read_text())['calendar'])
+MONTH_NAMES = {month[1].casefold() for month in json.loads((ROOT/'data/calendar.json').read_text())['months']}
 for name in ['Regular','Bold']:pdfmetrics.registerFont(TTFont('Inter'+name,str(ROOT/f'site/assets/fonts/Inter-{name}.ttf')))
 for name in ['Regular','Bold','Black']:pdfmetrics.registerFont(TTFont('Lato'+name,str(ROOT/f'site/assets/fonts/Lato-{name}.ttf')))
 
@@ -25,12 +29,13 @@ def verify_manifest_provenance(manifest):
   preserved={a['stem']:a for a in transition['preserved_nonblank_assets']}
   redesigned={a['stem']:a for a in transition['redesigned_blank_assets']}
   assets={a['stem']:a for a in manifest['assets']}
-  assert len(preserved)==390 and set(preserved)=={stem for stem,a in assets.items() if a['kind']!='blank'}
+  assert len(preserved)==390 and set(preserved)=={stem for stem,a in assets.items() if a['kind']!='blank' and a['year'] in (2027,2028,2029)}
   assert len(redesigned)==26 and set(redesigned)=={stem for stem,a in assets.items() if a['kind']=='blank'}
   for stem,proof in preserved.items():assert proof['files']==assets[stem]['files']
   for stem,proof in redesigned.items():assert proof['after_files']==assets[stem]['files'] and assets[stem].get('generator')==manifest['generator']
  if manifest.get('packageImport'):
   validate_import_evidence(ROOT,manifest,check_files=False)
+  validate_template_extension(ROOT,manifest)
   return
  if not manifest.get('reviewedTransition'):return
  transition=json.loads((ROOT/manifest['reviewedTransition']).read_text())
@@ -176,8 +181,7 @@ def preflight(asset,base,sample=False):
    assert str(asset['year']) in normalized,asset['stem']+' annual year label missing'
    month_data=None;day_count=366 if calendar.isleap(asset['year']) else 365
    month_labels_checked=12;day_values=range(1,32)
-   month_names={item['monthLt'].casefold() for item in json.loads((ROOT/'site/assets/data/manifest.json').read_text())['assets'] if item['kind']=='monthly' and item['year']==asset['year']}
-   assert len(month_names)==12 and all(name in normalized for name in month_names),asset['stem']+' annual page is missing a month name'
+   assert len(MONTH_NAMES)==12 and all(name in normalized for name in MONTH_NAMES),asset['stem']+' annual page is missing a month name'
    if asset['year']==2028:assert '29' in re.findall(r'(?<!\d)0?29(?!\d)',normalized),'2028 leap day missing from annual PDF'
    if asset['holidayInformation']:
     year_data=next(item for item in YEAR_DATA if item['year']==asset['year'])

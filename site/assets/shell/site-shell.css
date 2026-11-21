@@ -1625,6 +1625,7 @@ body.homepage-app .dashboard-main {
 .annual-overview { margin: 20px 0 17px; }
 .annual-overview > header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 14px; margin: 0 0 13px; }
 .annual-overview > header h2 { margin: 0; }
+.print-layout .download-panel .download-actions { grid-column: 1 / -1; }
 .download-actions { display: grid; grid-auto-rows: 1fr; gap: 8px; margin-top: 10px; min-width: 0; }
 .content-main .download-panel .download-actions .button {
   display: grid; grid-template-columns: 24px minmax(0,1fr); align-items: center; gap: 10px;
@@ -1633,6 +1634,7 @@ body.homepage-app .dashboard-main {
 }
 .download-actions .button > span { justify-self: start; text-align: left; overflow-wrap: anywhere; }
 .download-actions .button .icon { width: 21px; height: 21px; margin: 0; justify-self: center; color: currentColor; }
+.download-action-tail { display: inline-flex; align-items: center; gap: .22em; white-space: nowrap; }
 .download-action-external { display: inline-block; width: .86em; height: .86em; vertical-align: -.06em; }
 .content-main .download-actions .button:hover { border-color: #8cbaa1; }
 .content-main .download-actions .button:not(.primary):hover { background: #e3f2e9; color: var(--shell-forest); }

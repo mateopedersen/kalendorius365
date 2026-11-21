@@ -61,10 +61,8 @@ Dir.chdir(ROOT) do
  # Publish only the verified annual choices needed by the year directory, then
  # let the release pipeline give this data the same immutable URL as its code.
  internal_manifest=JSON.parse(File.read('site/assets/data/manifest.json'))
- annual_assets=internal_manifest.fetch('assets').select do |asset|
-  asset['kind']=='annual' && [2027,2028,2029].include?(asset['year'])
- end
- [2027,2028,2029].each do |year|
+ annual_assets=internal_manifest.fetch('assets').select { |asset|asset['kind']=='annual' }
+ (2027..2030).each do |year|
   year_assets=annual_assets.select { |asset|asset['year']==year }
   abort "Expected 10 verified annual print designs for #{year}" unless year_assets.length==10 && year_assets.all? { |asset|asset.dig('verification','status')=='passed' }
  end

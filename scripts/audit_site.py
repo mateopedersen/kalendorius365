@@ -246,7 +246,7 @@ for path,page in pages.items():
 for original in release_manifest['assets']:
  if original.startswith('/assets/data/'):
   assert '/assets/data/*\n  Cache-Control: public, no-cache, max-age=0, must-revalidate' in headers,original
-for y in [2027,2028,2029]:
+for y in range(2027, 2031):
  for m in range(1,13):
   slug=json.loads((ROOT/'data/calendar.json').read_text())['months'][m-1][0];path=PUBLIC/str(y)/slug/'index.html';html=path.read_text();assert html.count('<article class="design-card')==10
   for e in manifest:
@@ -259,7 +259,7 @@ for asset in manifest:
  for kind in ('pdf','webp'):
   expected=f"{asset[kind]}?v={asset['files'][kind]['sha256'][:16]}"
   assert expected in all_local_links,('unversioned or missing print download link',asset['stem'],kind,expected)
-print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 360 monthly mappings.')
+print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 480 monthly mappings.')
 if '--release' in __import__('sys').argv:
  for path,p in pages.items():
   relative='/'+str(path.relative_to(PUBLIC)).removesuffix('index.html')
