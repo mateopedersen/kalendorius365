@@ -121,7 +121,11 @@ test('task editing, filtering, deletion and appearance preferences update persis
  await page.locator('#task-filter').selectOption('done');await expect(page.locator('[data-task-edit]')).toHaveCount(1);
  await page.locator('[data-task-delete]').click();await expect(page.locator('[data-task-toggle]')).toHaveCount(0);
  await page.locator('#large-text').check();await page.locator('#high-contrast').check();
- await page.locator('#share').click();expect(await page.evaluate(()=>window.__sharedURL)).toBe('https://kalendorius365.lt/');
+ await page.locator('.home-heading [data-share-open]').click();
+ const share = page.getByRole('dialog');
+ await share.getByRole('button',{name:'Kopijuoti nuorodą',exact:true}).click();
+ expect(await page.evaluate(()=>window.__sharedURL)).toBe('https://kalendorius365.lt/');
+ await share.getByRole('button',{name:'Uždaryti'}).click();
  await page.reload();await expect(page.locator('html')).toHaveClass(/large-text/);await expect(page.locator('html')).toHaveClass(/high-contrast/);
  await expect(page.locator('[data-task-toggle]')).toHaveCount(0);
 });

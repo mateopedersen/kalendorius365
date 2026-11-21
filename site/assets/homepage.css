@@ -393,11 +393,9 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   width: 44px;
   height: 44px;
 }
-.homepage-app .utility-actions .utility-action--print { --utility-color: #486c91; }
 .homepage-app .utility-actions .utility-action--export { --utility-color: #397fae; }
 .homepage-app .utility-actions .utility-action--backup { --utility-color: #af7726; }
 .homepage-app .utility-actions .utility-action--restore { --utility-color: #7456a9; }
-.homepage-app .utility-actions .utility-action--share { --utility-color: #75688f; }
 .homepage-app .utility-actions .utility-action--delete {
   grid-column: 1 / -1;
   border-color: color-mix(in srgb, #c64b55 39%, var(--shell-border));
@@ -951,25 +949,9 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 .homepage-app .filter-list input:not(:checked) ~ .layer-name { color: var(--shell-muted); }
 
 .homepage-app .dashboard .panel.upcoming-events-panel {
-  container: upcoming-events / inline-size;
   border-color: var(--shell-border); background: linear-gradient(110deg,#f0f6ef,#fdfcf7);
 }
-.upcoming-events__header {
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
-}
-.upcoming-events__intro { min-width: 0; }
 .upcoming-events-empty { margin: 3px 0 0; color: var(--shell-muted); font-size: .8rem; line-height: 1.35; }
-.homepage-app .upcoming-events__add {
-  display: inline-flex; align-items: center; justify-content: center; flex: none; gap: 6px;
-  min-width: 44px; min-height: 44px; margin: 0; padding: 6px 10px;
-  color: #fff; background: #185740; border: 1px solid #185740; border-radius: 9px; font-size: .82rem;
-  box-shadow: 0 2px #103d2d;
-}
-.homepage-app .upcoming-events__add:hover { color: #fff; background: #104833; }
-.upcoming-events__add .icon { width: 18px; height: 18px; flex: none; }
-@container upcoming-events (max-width: 310px) {
-  .upcoming-events__add > span { display: none; }
-}
 .homepage-app #upcoming-events:not([hidden]) {
   display: grid; grid-template-columns: repeat(auto-fill,minmax(min(100%,230px),1fr)); gap: 7px; margin-top: 9px;
 }
@@ -990,8 +972,10 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 .homepage-app .month-facts #month-holidays .month-facts__commemoration time {
   color: #624917; background: #f8efd7; border-color: #e9d9ad;
 }
-.homepage-app .month-facts #month-holidays :is(a,strong) {
-  color: var(--shell-forest); font-size: .87rem; font-weight: 700; text-decoration-thickness: 1px;
+.homepage-app .month-facts #month-holidays button {
+  min-height: 0; padding: 2px 0; border: 0; border-radius: 3px; background: none;
+  color: var(--shell-forest); font: inherit; font-size: .87rem; font-weight: 700;
+  text-align: start; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere;
 }
 .homepage-app .month-facts #month-holidays small { margin-top: 2px; }
 .homepage-app #today-facts {
@@ -1059,18 +1043,8 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   border-radius: 6px; background: #dcebe0; color: #245641;
 }
 
-.homepage-app .dashboard-year-links { display: grid; grid-template-columns: minmax(0,1fr); gap: 7px; }
-.homepage-app .dashboard-year-links a {
-  display: grid; grid-template-columns: 44px minmax(0,1fr) 16px; align-items: center;
-  min-width: 0; min-height: 62px; gap: 6px; padding: 6px;
-  border: 1px solid var(--shell-border); border-radius: 10px; background: var(--shell-soft);
-  color: var(--shell-forest); text-decoration: none;
-}
-.homepage-app .dashboard-year-links a:hover { color: var(--shell-forest); background: #dcebe0; border-color: #8fb29f; }
-.homepage-app .dashboard-year-links .shell-art { width: 44px; height: 44px; object-fit: contain; }
-.homepage-app .dashboard-year-links svg { width: 16px; height: 16px; }
-.homepage-app .dashboard-year-links strong { display: block; color: inherit; font-size: .92rem; line-height: 1.2; }
-.homepage-app .dashboard-year-links small { display: block; margin-top: 2px; color: var(--shell-muted); font-size: .74rem; line-height: 1.2; }
-@media (min-width: 431px) and (max-width: 970px) {
-  .homepage-app .dashboard-year-links { grid-template-columns: repeat(2,minmax(0,1fr)); }
+
+
+.homepage-app :is(#kalendoriaus-planai,#orai-siandien,#artimiausios-datos,#jusu-kalendorius) {
+  scroll-margin-block-start: 16px;
 }

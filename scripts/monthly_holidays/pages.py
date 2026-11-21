@@ -235,7 +235,16 @@ def render_home_upcoming(engines, links, festivals):
         }
 
     priority = {'holiday': 0, 'festival': 1, 'tradition': 2, 'commemoration': 3, 'observance': 4}
-    entries = sorted(rows.values(), key=lambda row: (row['date'], priority[row['kind']], row['title']))
+    entries = []
+    previous_holidays = {}
+    for row in sorted(rows.values(), key=lambda row: (row['date'], priority[row['kind']], row['title'])):
+        if row['kind'] == 'holiday':
+            previous = previous_holidays.get(row['href'])
+            if previous and date.fromisoformat(previous['end']) + timedelta(days=1) == date.fromisoformat(row['date']):
+                previous['end'] = row['end']
+                continue
+            previous_holidays[row['href']] = row
+        entries.append(row)
     # The browser needs only the current and following calendar years. Keep
     # the complete chronological inventory available to the server template.
     (ROOT / 'site/_data/home_upcoming.json').write_text(json.dumps(entries, ensure_ascii=False))

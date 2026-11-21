@@ -33,9 +33,9 @@ def prepare():
  home='''<h2>Kaip naudotis kalendoriumi?</h2>
 <p>Pasirinkite dieną mėnesio tinklelyje. Šalia kalendoriaus matysite tos dienos įvykius ir užrašus. Rinkitės savaitės vaizdą, jei lyginate kelių dienų planus, o darbotvarkę, jei norite įvykius skaityti iš eilės.</p>
 <h3>Šventės ir laisvadieniai</h3>
-<p><a href="/sventes/">Švenčių kalendoriuje</a> šventinės ir atmintinos dienos pažymėtos atskirai. Planuodami poilsį <a href="/atostogu-planavimas/">atostogų planuoklyje</a> pasirinkite savo darbo savaitę ir įrašykite, kiek atostogų dienų turite.</p>
+<p>Švenčių kalendoriuje šventinės ir atmintinos dienos pažymėtos atskirai. Planuodami poilsį atostogų planuoklyje pasirinkite savo darbo savaitę ir įrašykite, kiek atostogų dienų turite.</p>
 <h3>Spausdinimas ir atsarginė kopija</h3>
-<p>Spausdinti galite <a href="/menesiai/">vieno mėnesio</a> arba <a href="/metai/">visų metų kalendorių</a>. Pasirinkę patinkantį maketą atsisiųskite PDF. Savo įvykius į kitą kalendorių perkelsite naudodami ICS failą. Jei norite perkelti ir užrašus bei užduotis, išsaugokite JSON kopiją ir atkurkite ją kito įrenginio naršyklėje.</p>'''
+<p>Spausdinti galite vieno mėnesio arba visų metų kalendorių. Pasirinkę patinkantį maketą atsisiųskite PDF. Savo įvykius į kitą kalendorių perkelsite naudodami ICS failą. Jei norite perkelti ir užrašus bei užduotis, išsaugokite JSON kopiją ir atkurkite ją kito įrenginio naršyklėje.</p>'''
  append('',home);changed.append('/')
  (ROOT/'docs/adsense/enriched-routes.json').write_text(json.dumps(changed,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'enriched_routes':len(changed)}))
 if __name__=='__main__':prepare()

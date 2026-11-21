@@ -2,6 +2,31 @@
 title: "Lietuvos kalendorius, orai ir planavimo įrankiai"
 description: Lietuvos kalendorius su šventėmis ir spausdinamais šablonais. Patikrinkite šiandienos orus, 15 dienų prognozę, kelių sąlygas ir naudokite datų įrankius.
 app: true
+# Tools already linked directly from the homepage.
+homepage_tool_shortcuts:
+  - /metai/
+  - /sventes/
+  - /mokiniu-atostogos/
+  - /horoskopai/
+  - /mano-diena/
+  - /pdf-kalendoriai/
+  - /darbo-dienos/2027/
+  - /datos-skaiciuokle/
+  - /orai/
+  - /kurti-kalendoriu/
+  - /menesiai/
+  - /atostogu-planavimas/
+  - /saule/
+  - /menulio-kalendorius/
+  - /seimos-kalendorius/
+  - /pamoku-tvarkarastis/
+  - /pamainu-grafikas/
+  - /renginiai/
+  - /atmintinos-dienos/
+  - /menulio-fazes/
+  - /ilgieji-savaitgaliai/
+  - /astronominis-kalendorius/
+  - /zodiakas/
 ---
 <header class="home-heading">
   <div class="home-heading__hero">
@@ -33,47 +58,18 @@ app: true
       </div>
       <span class="home-heading__weather-action">Rasti vietovę <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span></span>
     </a>
-    <nav class="home-heading__shortcuts" aria-label="Kalendoriai ir datų skaičiavimas">
-      <a class="home-tool-card" href="/pdf-kalendoriai/">
-        {% include shell-art.html name="pdf" size=35 %}
-        <span><strong>PDF kalendoriai</strong><small>Metų ir mėnesių šablonai</small></span>
+    <nav class="home-heading__shortcuts" aria-label="Mėnesių kalendoriai ir atostogos">
+      <a class="home-tool-card" href="/menesiai/">
+        {% include shell-art.html name="month" size=35 %}
+        <span><strong>Mėnesių kolekcijos</strong><small>Pasirinkite metus ir mėnesį</small></span>
         <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
       </a>
-      <a class="home-tool-card" href="/datos-skaiciuokle/">
-        {% include shell-art.html name="calculator" size=35 %}
-        <span><strong>Datos skaičiuoklė</strong><small>Dienos tarp dviejų datų</small></span>
+      <a class="home-tool-card" href="/atostogu-planavimas/">
+        {% include shell-art.html name="vacation" size=35 %}
+        <span><strong>Atostogų planuoklis</strong><small>Geriausi laikotarpiai ilgesniam poilsiui</small></span>
         <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
       </a>
     </nav>
-  </div>
-  <div class="home-heading__utility">
-    <details class="home-tools">
-      <summary class="home-tool-card">
-        {% include shell-art.html name="tools" size=35 %}
-        <span><strong>Daugiau įrankių</strong><small>Darbui, mokslams, šeimai ir laisvalaikiui</small></span>
-        <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
-      </summary>
-      <div class="home-tools__content">
-        {% assign home_tool_catalogue = '' | split: ',' %}
-        {% for category in site.data.tool_directory.categories %}
-          {% assign home_tool_catalogue = home_tool_catalogue | concat: category.tools %}
-        {% endfor %}
-        {% assign home_tool_routes = '/darbo-dienos/2027/|/atostogu-planavimas/|/pamoku-tvarkarastis/|/seimos-kalendorius/|/saule/|/sejos-kalendorius/|/mokesciu-skaiciuokle/|/ismokos/' | split: '|' %}
-        <nav class="home-tools__grid" aria-label="Planavimo įrankiai">
-          {% for route in home_tool_routes %}
-            {% assign tool = home_tool_catalogue | where: 'route', route | first %}
-            <a class="home-tool-card" href="{{ tool.route }}">
-              {% include shell-art.html name=tool.art size=36 lazy=true %}
-              <span><strong>{{ tool.title | escape }}</strong><small>{% if route == '/saule/' %}Saulės laikai ir dienos ilgumas pasirinktame mieste.{% else %}{{ tool.description | escape }}{% endif %}</small></span>
-              <span class="home-heading__arrow">{% include calendar-catalog-arrow.html %}</span>
-            </a>
-          {% endfor %}
-        </nav>
-        <a class="home-heading__button home-heading__button--primary" href="/irankiai/">
-          Visi įrankiai {% include calendar-catalog-arrow.html %}
-        </a>
-      </div>
-    </details>
   </div>
 </header>
 {% include planner-reminders.html %}
@@ -106,8 +102,6 @@ app: true
   </nav>
   <nav class="home-discovery__more" aria-label="Daugiau planavimo įrankių">
     <a href="/savaites/2027/">Savaičių numeriai {% include calendar-catalog-arrow.html %}</a>
-    <a href="/mokiniu-atostogos/">Mokinių atostogos {% include calendar-catalog-arrow.html %}</a>
-    <a href="/atostogu-planavimas/">Atostogų planuoklis {% include calendar-catalog-arrow.html %}</a>
     <a href="/astronominis-kalendorius/">Astronominis kalendorius {% include calendar-catalog-arrow.html %}</a>
   </nav>
 </section>
@@ -121,17 +115,17 @@ app: true
     <p>Trumpa dienos įžvalga kiekvienam iš 12 zodiako ženklų.</p>
     <p class="horoscope-teaser__date"><span>Atnaujinta</span> <time datetime="{{ horoscope.local_date }}">{{ horoscope.display_date_lt }}</time></p>
   </div>
-  <a class="horoscope-teaser__link" href="/horoskopai/">Skaityti horoskopus {% include calendar-catalog-arrow.html %}</a>
+  <a class="horoscope-teaser__link" href="/zodiakas/">Zodiako ženklų gidas {% include calendar-catalog-arrow.html %}</a>
 </section>
 
 <section data-editorial-extension="20261103" class="panel content-guide"><h2>Kaip naudotis kalendoriumi?</h2>
 <p>Pasirinkite dieną mėnesio tinklelyje. Šalia kalendoriaus matysite tos dienos įvykius ir užrašus. Rinkitės savaitės vaizdą, jei lyginate kelių dienų planus, o darbotvarkę, jei norite įvykius skaityti iš eilės.</p>
 <h3>Šventės ir laisvadieniai</h3>
-<p><a href="/sventes/">Švenčių kalendoriuje</a> šventinės ir atmintinos dienos pažymėtos atskirai. Planuodami poilsį <a href="/atostogu-planavimas/">atostogų planuoklyje</a> pasirinkite savo darbo savaitę ir įrašykite, kiek atostogų dienų turite.</p>
+<p>Švenčių kalendoriuje šventinės ir atmintinos dienos pažymėtos atskirai. Planuodami poilsį atostogų planuoklyje pasirinkite savo darbo savaitę ir įrašykite, kiek atostogų dienų turite.</p>
 <h3>Spausdinimas ir atsarginė kopija</h3>
-<p>Spausdinti galite <a href="/menesiai/">vieno mėnesio</a> arba <a href="/metai/">visų metų kalendorių</a>. Pasirinkę patinkantį maketą atsisiųskite PDF. Savo įvykius į kitą kalendorių perkelsite naudodami ICS failą. Jei norite perkelti ir užrašus bei užduotis, išsaugokite JSON kopiją ir atkurkite ją kito įrenginio naršyklėje.</p></section>
+<p>Spausdinti galite vieno mėnesio arba visų metų kalendorių. Pasirinkę patinkantį maketą atsisiųskite PDF. Savo įvykius į kitą kalendorių perkelsite naudodami ICS failą. Jei norite perkelti ir užrašus bei užduotis, išsaugokite JSON kopiją ir atkurkite ją kito įrenginio naršyklėje.</p></section>
 
 <!-- K365_EDITORIAL_V2_START -->
 <section class="content-guide" data-editorial-review="20261103-v2"><h2>Kiek dienų turi vasaris?</h2>
-<p><a href="/2028/vasaris/">2028 m. vasario kalendoriuje</a> rasite ir vasario 29-ąją. Nuo tų metų vasario 28-osios iki kovo 1-osios praeina dvi dienos. Jei planuojate kelionę ir norite įskaityti išvykimo bei grįžimo dienas, <a href="/datos-skaiciuokle/">datų skaičiuoklėje</a> įtraukite abi datas. Gausite tris kalendorines dienas.</p></section>
+<p>2028 m. vasario kalendoriuje rasite ir vasario 29-ąją. Nuo tų metų vasario 28-osios iki kovo 1-osios praeina dvi dienos. Jei planuojate kelionę ir norite įskaityti išvykimo bei grįžimo dienas, datų skaičiuoklėje įtraukite abi datas. Gausite tris kalendorines dienas.</p></section>
 <!-- K365_EDITORIAL_V2_END -->

@@ -27,8 +27,8 @@ test('calendar ICS import opens the file chooser and malformed follow-up preserv
 test('print control invokes the browser print action and the main content renders in print media',async({page,context})=>{
  await context.addInitScript(()=>{localStorage.setItem('kalendorius365:privacy-notice:v1','dismissed');window.print=()=>{window.__qaPrintCalls=(window.__qaPrintCalls||0)+1;};});
  await page.goto('/?data=2028-02-29');await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy','false');await page.locator('.calendar-panel [data-print]').click();
- await page.locator('.right-column [data-print]').click();
- expect(await page.evaluate(()=>window.__qaPrintCalls)).toBe(2);
+ await expect(page.locator('.dashboard [data-print]')).toHaveCount(1);
+ expect(await page.evaluate(()=>window.__qaPrintCalls)).toBe(1);
  await page.emulateMedia({media:'print'});await expect(page.locator('#main')).toBeVisible();await expect(page.locator('#calendar')).toBeVisible();await expect(page.locator('#period-title')).toContainText('2028');
 });
 
@@ -203,7 +203,7 @@ test('the weather card separates readings and keeps the city control and arrows 
  await expect(link.locator('.climate-link__label')).toHaveCSS('text-decoration-line','underline');
 });
 
-test('upcoming dates use Vilnius today and stay above every calendar view', async ({ page, context }) => {
+test('upcoming dates use Vilnius today and stay below the calendar without overflow', async ({ page, context }) => {
  await context.addInitScript(() => localStorage.setItem('kalendorius365:privacy-notice:v1', 'dismissed'));
  await page.clock.setFixedTime(new Date('2026-11-20T17:00:00Z'));
  await page.goto('/?data=2027-08-18');
@@ -211,7 +211,7 @@ test('upcoming dates use Vilnius today and stay above every calendar view', asyn
 
  const upcoming = page.locator('#artimiausios-datos');
  const dates = upcoming.locator('li time');
- await expect(upcoming.getByRole('button', { name: 'Visos datos' })).toBeVisible();
+ await expect(upcoming.getByRole('button', { name: 'Visos kategorijos' })).toBeVisible();
  await expect(upcoming.locator('li strong')).toHaveText([
   'Pasaulinė vaiko teisių diena', 'Lietuvos kariuomenės diena', 'Kalėdos sostinėje', 'Advento pradžia',
  ]);
@@ -223,20 +223,23 @@ test('upcoming dates use Vilnius today and stay above every calendar view', asyn
    const region = section.getBoundingClientRect();
    const dashboard = document.querySelector('.dashboard').getBoundingClientRect();
    return {
-    above: region.bottom <= dashboard.top,
+    below: region.top >= dashboard.bottom,
     aligned: Math.abs(region.left - dashboard.left) <= 1 && Math.abs(region.width - dashboard.width) <= 1,
     fits: [...section.querySelectorAll('li a')].every(card => card.scrollWidth <= card.clientWidth + 1
       && card.getBoundingClientRect().height <= 100),
    };
   });
-  expect(layout, `layout at ${width}px`).toEqual({ above: true, aligned: true, fits: true });
+  expect(layout, `layout at ${width}px`).toEqual({ below: true, aligned: true, fits: true });
  }
 
  const official = upcoming.getByRole('button', { name: 'Šventinės dienos' });
  await official.click();
  await expect(official).toHaveAttribute('aria-pressed', 'true');
  await expect(dates.first()).toHaveAttribute('datetime', '2026-12-24');
- await expect(dates.last()).toHaveAttribute('datetime', '2027-01-01');
+ await expect(dates.nth(1)).toHaveAttribute('datetime', '2026-12-25');
+ await expect(dates.nth(1)).toContainText('25–26');
+ await expect(dates.nth(2)).toHaveAttribute('datetime', '2027-01-01');
+ await expect(dates.last()).toHaveAttribute('datetime', '2027-02-16');
  await upcoming.getByRole('button', { name: 'Tradicijos' }).click();
  await expect(upcoming.getByRole('link', { name: /Advento pradžia/ })).toHaveAttribute('href', '/sventes/adventas/?metai=2026');
  await upcoming.getByRole('button', { name: 'Renginiai' }).click();
@@ -332,7 +335,7 @@ test('planner summary panels use compact rows and keep calendar shortcuts and fi
  const panel = page.locator('.upcoming-events-panel');
  await expect(panel.locator('.upcoming-events-empty')).toBeVisible();
  await expect(page.locator('#today-facts dd')).toHaveText(['324', '10 d.', '41 d.']);
- await expect(page.locator('.dashboard-year-links a')).toHaveCount(4);
+ await expect(page.locator('.calendar-bar__years a')).toHaveCount(4);
  const weekPlan = page.locator('.home-week-plan');
  await expect(page.locator('.dashboard-extras .mini-calendar')).toHaveCount(0);
  await expect(weekPlan.locator('dd')).toHaveText(['5', '40 val.']);
@@ -356,7 +359,7 @@ test('planner summary panels use compact rows and keep calendar shortcuts and fi
  await weekPlan.locator('#plan-next-workday').click();
  await expect(page.locator('#selected-title')).toContainText('lapkričio 23');
  await page.locator('#next').click();
- await page.locator('#calendar [data-date="2026-12-25"]').click();
+ await page.locator('#month-holidays [data-date="2026-12-25"]').click();
  await expect(page.locator('#selected-title')).toContainText('gruodžio 25');
  await expect(weekPlan.locator('dd')).toHaveText(['3', '23 val.']);
  await expect(weekPlan.locator('#plan-next-workday time')).toHaveAttribute('datetime', '2026-12-28');
@@ -371,7 +374,7 @@ test('planner summary panels use compact rows and keep calendar shortcuts and fi
  await event.getByRole('button', { name: 'Redaguoti Bandomasis įvykis' }).click();
  await expect(form.locator('[name=title]')).toHaveValue('Bandomasis įvykis');
  await page.locator('#close-event').click();
- await page.locator('.dashboard-year-links a[href="/2030/"]').click();
+ await page.locator('.calendar-bar__years a[href="/2030/"]').click();
  await expect(page).toHaveURL(/\/2030\/$/);
 });
 
@@ -437,7 +440,7 @@ test('the phone tool menu fits the visible screen before and during search', asy
     expect(closeBox.x - (titleBox.x + titleBox.width)).toBeGreaterThanOrEqual(10);
     expect(searchBox.y - (closeBox.y + closeBox.height)).toBeGreaterThanOrEqual(10);
   }
-  await search.fill('datos skaiciuokle');
+  await search.fill('atgalinis skaiciavimas');
   const resizeVisibleScreen = height => page.evaluate(height => {
     Object.defineProperty(visualViewport, 'height', { configurable: true, value: height });
     visualViewport.dispatchEvent(new Event('resize'));
@@ -445,7 +448,7 @@ test('the phone tool menu fits the visible screen before and during search', asy
   await resizeVisibleScreen(425);
   await expect(menu).toHaveCSS('height', '425px');
   await expect(close).toBeVisible();
-  await expect(menu.getByRole('link', { name: /Datos skaičiuoklė/ }).first()).toBeVisible();
+  await expect(menu.getByRole('link', { name: /Atgalinis skaičiavimas/ }).first()).toBeVisible();
   const years = menu.getByRole('navigation', { name: 'Nedarbo Dienos pagal metus' });
   await expect(years).toBeHidden();
   await search.fill('laisvos dienos 2029');
@@ -505,4 +508,56 @@ test('holiday and commemoration dates fit in complete mobile rows', async ({ pag
   }
   await page.setViewportSize({ width: 1280, height: 844 });
   await expect(table).toHaveCSS('display', 'table');
+});
+
+test('homepage shortcuts have unique targets across the shell, tools menu and calendar views', async ({ page, context }) => {
+  await context.addInitScript(() => localStorage.setItem('kalendorius365:privacy-notice:v1', 'dismissed'));
+  await page.clock.setFixedTime(new Date('2026-11-21T18:00:00Z'));
+  await page.goto('/?data=2028-02-29');
+  await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy', 'false');
+  await expect(page.locator('#current-download')).toHaveAttribute('href', '/2028/vasaris/');
+  await expect(page.locator('#tools-open')).toHaveText('Daugiau įrankių');
+  await expect(page.locator('.home-heading__shortcuts a')).toHaveCount(2);
+  await expect(page.locator('.dashboard [data-add-event]')).toHaveCount(1);
+
+  const duplicateTargets = () => page.locator('a[href]').evaluateAll(links => {
+    const seen = new Set();
+    const repeats = new Set();
+    for (const link of links) {
+      const url = new URL(link.href);
+      if (url.origin !== location.origin && url.origin !== 'https://kalendorius365.lt') continue;
+      const path = url.pathname.replace(/(?:\/index\.html|\/+)$/, '') || '/';
+      const key = path + url.search + url.hash;
+      if (seen.has(key)) repeats.add(key);
+      seen.add(key);
+    }
+    return [...repeats];
+  });
+  expect(await duplicateTargets()).toEqual([]);
+
+  await page.locator('#tools-open').click();
+  const menu = page.locator('#tools-dialog');
+  await menu.locator('#tools-query').fill('laisvos dienos');
+  await expect(menu.locator('.tools-dialog__year-links a')).toHaveCount(4);
+  await expect(menu.locator('.tools-dialog__year-links a').first()).toBeVisible();
+  expect(await duplicateTargets()).toEqual([]);
+  await menu.locator('#tools-close').click();
+
+  await page.locator('#artimiausios-datos [data-upcoming-kind="holiday"]').click();
+  expect(await duplicateTargets()).toEqual([]);
+  for (const view of ['day', 'week', 'agenda', 'year']) {
+    const choice = page.locator(`[data-view="${view}"]`);
+    await choice.click();
+    expect(await duplicateTargets()).toEqual([]);
+  }
+
+  await page.setViewportSize({ width: 320, height: 780 });
+  const dock = page.locator('.mobile-dock');
+  await expect(dock).toBeVisible();
+  for (const destination of ['#kalendoriaus-planai', '#orai-siandien', '#artimiausios-datos', '#jusu-kalendorius']) {
+    const link = dock.locator(`a[href="${destination}"]`);
+    await link.click();
+    await expect(page).toHaveURL(new RegExp(destination + '$'));
+    await expect(page.locator(destination)).toBeInViewport();
+  }
 });

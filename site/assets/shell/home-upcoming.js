@@ -25,7 +25,18 @@ function card(entry, currentDate) {
   const time = element('time');
   time.dateTime = entry.date;
   const month = monthFormatter.formatToParts(parse(entry.date)).find(part => part.type === 'month').value;
-  time.append(element('b', String(Number(entry.date.slice(-2)))), element('span', month));
+  const fromDay = Number(entry.date.slice(-2));
+  if (entry.kind === 'holiday' && entry.date !== entry.end) {
+    time.dataset.dateRange = '';
+    if (entry.date.slice(0, 7) === entry.end.slice(0, 7)) {
+      time.append(element('b', `${fromDay}–${Number(entry.end.slice(-2))}`), element('span', month));
+    } else {
+      const shortDate = date => `${date.slice(-2)}.${date.slice(5, 7)}`;
+      time.append(element('b', shortDate(entry.date)), element('span', 'iki ' + shortDate(entry.end)));
+    }
+  } else {
+    time.append(element('b', String(fromDay)), element('span', month));
+  }
 
   const copy = element('span', '', 'home-upcoming__copy');
   const days = difference(currentDate, entry.date);
@@ -52,9 +63,13 @@ function enhance(root) {
   let entries = [];
 
   function render(currentDate) {
-    const matches = entries.filter(entry => entry.end >= currentDate &&
-      (selected === 'all' || selected === entry.kind)).slice(0, 4);
-    if (matches.length) list.replaceChildren(...matches.map(entry => card(entry, currentDate)));
+    const matches = new Map();
+    for (const entry of entries) {
+      if (entry.end < currentDate || (selected !== 'all' && entry.kind !== selected)) continue;
+      if (!matches.has(entry.href)) matches.set(entry.href, entry);
+      if (matches.size === 4) break;
+    }
+    if (matches.size) list.replaceChildren(...Array.from(matches.values(), entry => card(entry, currentDate)));
     else list.replaceChildren(element('li', 'Šiame kalendoriuje daugiau patvirtintų šio tipo datų nėra.', 'home-upcoming__empty'));
   }
 

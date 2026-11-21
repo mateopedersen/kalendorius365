@@ -45,17 +45,33 @@
     <div class="tools-dialog__body">
       <div class="tools-dialog__categories" role="group" aria-label="Įrankių temos">
         {% for group in site.data.tool_directory.categories %}
-        <button type="button" data-menu-group="{{ group.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{% include shell-art.html name=group.art size=26 lazy=true %}<span>{{ group.title }}</span><small>{{ group.tools.size }}</small></button>
+        {% assign group_tools = group.tools %}
+        {% if page.app %}
+          {% assign group_tools = '' | split: ',' %}
+          {% for item in group.tools %}{% unless page.homepage_tool_shortcuts contains item.route %}{% assign group_tools = group_tools | push: item %}{% endunless %}{% endfor %}
+        {% endif %}
+        {% if group_tools == empty %}{% continue %}{% endif %}
+        <button type="button" data-menu-group="{{ group.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{% include shell-art.html name=group.art size=26 lazy=true %}<span>{{ group.title }}</span><small>{{ group_tools.size }}</small></button>
         {% endfor %}
       </div>
       <div class="tools-dialog__results" id="tools-results">
         {% for group in site.data.tool_directory.categories %}
+        {% assign group_tools = group.tools %}
+        {% if page.app %}
+          {% assign group_tools = '' | split: ',' %}
+          {% for item in group.tools %}{% unless page.homepage_tool_shortcuts contains item.route %}{% assign group_tools = group_tools | push: item %}{% endunless %}{% endfor %}
+        {% endif %}
+        {% if group_tools == empty %}{% continue %}{% endif %}
         <section data-menu-section="{{ group.id }}" aria-labelledby="tools-{{ group.id }}"{% unless forloop.first %} hidden{% endunless %}>
           <h3 id="tools-{{ group.id }}">{{ group.title }}</h3>
           <div class="tools-dialog__grid">
-            {% for item in group.tools %}
+            {% for item in group_tools %}
             {% if item.year_links %}<div class="tools-dialog__year-card">{% endif %}
+            {% if page.app and item.year_links %}
+            <div data-menu-tool data-keywords="{{ item.keywords | escape }}">{% include shell-art.html name=item.art size=46 lazy=true %}<span><strong>{{ item.title }}</strong><small>{{ item.description }}</small></span></div>
+            {% else %}
             <a href="{{ item.route }}" data-menu-tool data-keywords="{{ item.keywords | escape }}">{% include shell-art.html name=item.art size=46 lazy=true %}<span><strong>{{ item.title }}</strong><small>{{ item.description }}</small></span><svg viewBox="0 0 16 16" class="shell-chevron" aria-hidden="true"><path d="m6 4 4 4-4 4"/></svg></a>
+            {% endif %}
             {% if item.year_links %}
               <nav class="tools-dialog__year-links" aria-label="{{ item.title }} pagal metus">
                 {% for year_link in item.year_links %}
@@ -71,6 +87,6 @@
         <p id="tools-empty" hidden>Pagal šią užklausą įrankių nerasta.</p>
       </div>
     </div>
-    <footer class="tools-dialog__foot"><span id="tools-status" role="status"></span><a href="/irankiai/">Visi įrankiai</a></footer>
+    <footer class="tools-dialog__foot"><span id="tools-status" role="status"></span>{% if page.app %}<a href="/svetaines-zemelapis/">Svetainės žemėlapis</a>{% else %}<a href="/irankiai/">Visi įrankiai</a>{% endif %}</footer>
   </div>
 </dialog>

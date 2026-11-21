@@ -66,10 +66,6 @@ const editorialArticles = [
     ...(editorial.articles || []),
     ...(editorial.commemorations || []),
   ],
-  editorialForHoliday = (id) =>
-    editorialArticles.find(
-      (article) => article.id === id || article.holiday_ids?.includes(id),
-    ),
   calendarEntries = cal.createCalendarEntries(data, editorial.commemorations || []),
   dayHolidays = (s) =>
     showHolidays
@@ -263,16 +259,10 @@ function listDates(start, count) {
     button.dataset.date = s;
     wrap.append(button);
     for (const h of dayHolidays(s)) {
-      const p = el(
-          "p",
-          undefined,
-          h.classification === "commemoration" ? "commemoration-label" : "danger",
-        ),
-        a = el("a", "◆ " + h.name),
-        article = editorialForHoliday(h.id);
-      a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
-      p.append(a);
-      wrap.append(p);
+      wrap.append(el(
+        "p", "◆ " + h.name,
+        h.classification === "commemoration" ? "commemoration-label" : "danger",
+      ));
     }
     const es = events(s);
     if (!es.length && count < 8)
@@ -376,8 +366,10 @@ function renderCalendar() {
   $("#jump-year").value = y;
   $("#month-jump-year").textContent = y;
   $("#jump-month").value = view === "month" ? m : "";
-  const publicShare=document.getElementById('share-public-calendar');
-  if(publicShare){publicShare.hidden=![2027,2028,2029,2030].includes(y);publicShare.dataset.shareKey=`calendar-${y}-${view==='year'?0:m}`;publicShare.href=view==='year'?`/${y}/`:`/${y}/${data.months[m-1][0]}/`;publicShare.textContent=view==='year'?'Pasidalyti metų kalendoriumi':'Pasidalyti mėnesio kalendoriumi';}
+  const publicShare = $("#share-public-calendar");
+  publicShare.hidden = ![2027, 2028, 2029, 2030].includes(y);
+  publicShare.dataset.shareKey = `calendar-${y}-${view === "year" ? 0 : m}`;
+  publicShare.textContent = view === "year" ? "Pasidalyti metų kalendoriumi" : "Pasidalyti mėnesio kalendoriumi";
   const host = $("#calendar");
   host.dataset.calendarView = view;
   host.replaceChildren();
@@ -452,9 +444,9 @@ function renderCalendar() {
     li.classList.toggle("month-facts__commemoration", h.classification === "commemoration");
     const date = el("time", cal.formatDate(h.date, compactDate));
     date.dateTime = h.date;
-    const article = editorialForHoliday(h.id);
-    const name = el(article ? "a" : "strong", h.name);
-    if (article) name.href = `/sventes/${article.slug}/`;
+    const name = el("button", h.name);
+    name.type = "button";
+    name.dataset.date = h.date;
     const copy = el("div");
     copy.append(
       name,
@@ -482,6 +474,7 @@ function renderCalendar() {
     return fact;
   }));
   const link = $("#current-download");
+  link.hidden = false;
   if ([2027, 2028, 2029].includes(y)) {
     link.href = `/${y}/${data.months[m - 1][0]}/`;
     link.textContent = "Šio mėnesio PDF ir vaizdai →";
@@ -509,16 +502,14 @@ function renderDetails() {
   $("#day-holidays").replaceChildren(
     ...dayHolidays(selected).map((h) => {
       const p = el("p", undefined, "source-note holiday-detail-link"),
-        a = el("a", "◆ " + h.name),
+        name = el("strong", "◆ " + h.name),
         status = el(
           "small",
           h.classification === "commemoration"
           ? "Atmintinos dienos statusas pats savaime nesuteikia nedarbo dienos"
             : "Šventinė diena; paprastai nedirbama",
-        ),
-        article = editorialForHoliday(h.id);
-      a.href = article ? `/sventes/${article.slug}/` : "/sventes/";
-      p.append(a, status);
+        );
+      p.append(name, status);
       return p;
     }),
   );
@@ -652,14 +643,14 @@ function composeHolidayFromLink() {
     allDay: true,
   });
 }
-for (const button of document.querySelectorAll("#add-event, [data-add-event]")) {
-  button.addEventListener("click", () => showEvent());
-}
+$("#add-event").addEventListener("click", () => showEvent());
 if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
   if (!b) return;
-  if (b.dataset.date) selectDate(b.dataset.date);
+  if (b.dataset.date && b.closest("#month-holidays")) {
+    if (selectDate(b.dataset.date)) $("#selected-title").focus();
+  } else if (b.dataset.date) selectDate(b.dataset.date);
   if (b.dataset.edit) showEvent(b.dataset.edit);
   if (
     b.dataset.taskDelete &&
@@ -994,16 +985,6 @@ $("#ics-file").onchange = async (e) => {
   }
   e.target.value = "";
 };
-$("#share").onclick = async () => {
-  try {
-    await navigator.clipboard.writeText("https://kalendorius365.lt/");
-    notice(
-      "Viešo kalendoriaus nuoroda nukopijuota. Asmeniniai įrašai neperduodami.",
-    );
-  } catch {
-    notice("Viešas adresas: https://kalendorius365.lt/");
-  }
-};
 const weatherCity = $("#weather-city");
 let cityRequest = 0;
 weatherCity.value = hasSavedCity ? savedCity : DEFAULT_WEATHER_CITY;
@@ -1013,6 +994,10 @@ function applyWeatherCity(city) {
     ? city
     : DEFAULT_WEATHER_CITY;
   weatherCity.value = window.k365WeatherCity;
+  const place = WEATHER_CITY_BY_ID.get(weatherCity.value);
+  const forecast = $("#home-city-forecast");
+  forecast.href = `/orai/${place.id}/`;
+  forecast.querySelector(".climate-link__label").textContent = `Orų prognozė · ${place.name}`;
   syncWeatherCityPicker?.();
   renderWeather(window.k365WeatherCity);
   tick();

@@ -18,8 +18,8 @@ const tools = [...read('site/_data/tool_directory.yml').matchAll(/^\s+- route: (
 const routesIn = html => [...html.matchAll(/<a href="([^"]+)"/g)].map(match => match[1]);
 const toolLinks = html => [...html.matchAll(/<a href="([^"]+)" data-menu-tool[^>]*>([\s\S]*?)<\/a>/g)];
 
-test('the two-level shared header and tool menu expose their full inventories', () => {
-  const html = read('public/index.html');
+test('the two-level shared header and tool menu expose their full inventories on inner pages', () => {
+  const html = read('public/irankiai/index.html');
   assert.deepEqual(routesIn(nav(html)), primary);
   const calendarBar = html.match(/<nav class="calendar-bar"[\s\S]*?<\/nav>/)?.[0];
   assert.deepEqual(routesIn(calendarBar), ['/2027/', '/2028/', '/2029/', '/2030/', '/pdf-kalendoriai/', '/darbo-dienos/2027/', '/datos-skaiciuokle/']);
@@ -33,6 +33,15 @@ test('the two-level shared header and tool menu expose their full inventories', 
     assert.ok(fs.existsSync(path.join(root, 'public', illustration[1])));
     assert.ok(fs.existsSync(path.join(root, 'public', route, 'index.html')));
   }
+});
+
+test('the homepage links to every tool once across shortcuts and the menu', () => {
+  const html = read('public/index.html');
+  const hrefs = [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(routesIn(nav(html)), primary);
+  for (const route of tools) assert.equal(hrefs.filter(href => href === route).length, 1, route);
+  const links = hrefs.map(href => new URL(href.replaceAll('&amp;', '&'), 'https://kalendorius365.lt/').href);
+  assert.equal(new Set(links).size, links.length);
 });
 
 test('calendar years, holiday details and horoscope details highlight their destinations', () => {
@@ -52,7 +61,7 @@ test('every generated public page inherits the shared navigation and tools dialo
     if (!file.endsWith('.html')) continue;
     const html = read(`public/${file}`);
     assert.deepEqual(routesIn(nav(html)), primary, file);
-    assert.deepEqual(toolLinks(html).map(link => link[1]), tools, file);
+    if (file !== 'index.html') assert.deepEqual(toolLinks(html).map(link => link[1]), tools, file);
     count++;
   }
   assert.ok(count >= 185);

@@ -121,7 +121,7 @@
 <body id="page-top"{% if page.seasons %} class="seasons-app"{% elsif page.workdays %} class="tool-workdays"{% elsif page.app %} class="homepage-app"{% elsif page.horoscope %} class="horoscope-app"{% elsif page.monthly_holidays %} class="monthly-holidays-app"{% elsif page.holiday_phase2 or page.holiday_phase2_hub %} class="holiday-details-app"{% endif %}>
 <a class="skip" href="#main">Pereiti prie turinio</a>
 {% include site-header.html %}
-<noscript><nav class="panel" aria-label="Paieška ir svetainės skiltys"><a href="/paieska/">Paieška</a> · <a href="/2027/">Kalendoriai</a> · <a href="/sventes/">Šventės</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/irankiai/">Įrankiai</a></nav></noscript>
+{% unless page.app %}<noscript><nav class="panel" aria-label="Paieška ir svetainės skiltys"><a href="/paieska/">Paieška</a> · <a href="/2027/">Kalendoriai</a> · <a href="/sventes/">Šventės</a> · <a href="/vardadieniai/">Vardadieniai</a> · <a href="/irankiai/">Įrankiai</a></nav></noscript>{% endunless %}
 {% assign main_parts = share_route | split: "/" %}{% assign main_family = main_parts[1] %}
 <main id="main" class="{% if page.app %}dashboard-main{% else %}content-main{% if main_family == '2027' or main_family == '2028' or main_family == '2029' or main_family == '2030' or main_family == 'menesiai' or main_family == 'metai' or main_family == 'pdf-kalendoriai' %} inner-calendar{% endif %}{% if page.tool_directory %} inner-directory{% endif %}{% endif %}">
 {% unless page.blog_slug or page.app or page.hero_share %}<div class="page-navigation">{% endunless %}
@@ -157,7 +157,16 @@
   </button>
  </div>
 </aside>
+{% if page.app %}
+<nav class="mobile-dock" aria-label="Greitosios nuorodos">
+  <a href="#kalendoriaus-planai">{% include shell-art.html name="calendar" size=28 %}<span>Mano planai</span></a>
+  <a href="#orai-siandien">{% include shell-art.html name="cloud" size=28 %}<span>Orai</span></a>
+  <a href="#artimiausios-datos">{% include shell-art.html name="celebrations" size=28 %}<span>Datos</span></a>
+  <a href="#jusu-kalendorius">{% include shell-art.html name="download" size=28 %}<span>Kopijos</span></a>
+</nav>
+{% else %}
 <nav class="mobile-dock" aria-label="Greitasis meniu"><a href="/">{% include shell-art.html name="calendar" size=28 %}<span>Kalendorius</span></a><a href="/menesiai/">{% include shell-art.html name="download" size=28 %}<span>Atsisiųsti</span></a><a href="/sventes/">{% include shell-art.html name="celebrations" size=28 %}<span>Šventės</span></a><a href="/irankiai/">{% include shell-art.html name="tools" size=28 %}<span>Įrankiai</span></a></nav>
+{% endif %}
 </div>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
 {{ initial_modules }}
