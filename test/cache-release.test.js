@@ -65,7 +65,9 @@ test('generated release manifest matches every emitted immutable byte and stays 
  assert.match(headers,/\/assets\/releases\/\*\n  Cache-Control: public, max-age=31536000, immutable/);
  assert.match(headers,/\/assets\/data\/\*\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
  assert.match(headers,/\/assets\/releases\/\*\n  Cache-Control: public, max-age=31536000, immutable/);
- assert.match(headers,/\/assets\/common\.js\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
+ for(const extension of ['js','css']){
+  assert.ok(headers.includes(`/assets/:filename.${extension}\n  Cache-Control: public, no-cache, max-age=0, must-revalidate\n`));
+ }
  assert.match(headers,/(?:^|\n)\/\n  Cache-Control: public, no-cache, max-age=0, must-revalidate/);
  assert.ok(manifest.retained_revisions.length<=3);
  const annual=manifest.assets['/assets/data/year-print-assets.json'];
