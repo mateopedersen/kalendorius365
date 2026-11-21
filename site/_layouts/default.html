@@ -139,21 +139,25 @@
 {% if page.related_reading %}{% include related-reading.html %}{% endif %}
 </main>
 {% include site-footer.html %}
-<nav class="mobile-dock" aria-label="Greitasis meniu"><a href="/">{% include shell-art.html name="calendar" size=28 %}<span>Kalendorius</span></a><a href="/menesiai/">{% include shell-art.html name="download" size=28 %}<span>Atsisiųsti</span></a><a href="/sventes/">{% include shell-art.html name="celebrations" size=28 %}<span>Šventės</span></a><a href="/irankiai/">{% include shell-art.html name="tools" size=28 %}<span>Įrankiai</span></a></nav>
+<div class="site-bottom-controls">
 <aside id="cookie-notice" class="cookie-notice" role="region" aria-labelledby="cookie-notice-title" aria-describedby="cookie-notice-copy" aria-live="polite" hidden>
+ <div class="cookie-notice__inner">
   <span class="cookie-notice__mark" aria-hidden="true">{% include shell-art.html name="cookie" size=38 %}</span>
   <div class="cookie-notice__copy">
     <h2 id="cookie-notice-title">Lankomumo statistika</h2>
     <p id="cookie-notice-copy">Pasirinkite, ar leisti „Google Analytics“ lankomumo statistiką. Kalendorius veikia abiem atvejais. <a href="/privatumas/#cookies">Privatumo politika</a></p>
   </div>
-  <button class="cookie-notice__close" type="button" data-privacy-close aria-label="Uždaryti nekeičiant pasirinkimo">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-  </button>
   <div class="cookie-notice__actions">
     <button id="cookie-notice-dismiss" type="button" data-analytics-choice="no">Be analitikos</button>
     <button type="button" data-analytics-choice="yes">Leisti analitiką</button>
   </div>
+  <button class="cookie-notice__close" type="button" data-privacy-close aria-label="Uždaryti nekeičiant pasirinkimo">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+ </div>
 </aside>
+<nav class="mobile-dock" aria-label="Greitasis meniu"><a href="/">{% include shell-art.html name="calendar" size=28 %}<span>Kalendorius</span></a><a href="/menesiai/">{% include shell-art.html name="download" size=28 %}<span>Atsisiųsti</span></a><a href="/sventes/">{% include shell-art.html name="celebrations" size=28 %}<span>Šventės</span></a><a href="/irankiai/">{% include shell-art.html name="tools" size=28 %}<span>Įrankiai</span></a></nav>
+</div>
 <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
 {{ initial_modules }}
 </body></html>

@@ -229,6 +229,9 @@ for path in list((PUBLIC/'assets').rglob('*.js'))+list((PUBLIC/'assets').rglob('
   elif editor_versioned:
    cache_path=f'/assets/{relative_asset.parts[0]}/*'
    cache_value='Cache-Control: public, max-age=31536000, immutable'
+  elif len(relative_asset.parts)==1:
+   cache_path=f'/assets/:filename{path.suffix}'
+   cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'
   else:
    cache_path=f'/{path.relative_to(PUBLIC)}'
    cache_value='Cache-Control: public, no-cache, max-age=0, must-revalidate'

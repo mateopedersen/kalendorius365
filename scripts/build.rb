@@ -217,9 +217,10 @@ Dir.chdir(ROOT) do
   headers+="/#{path}\n  Cache-Control: public, max-age=3600\n"
  end
  headers+="/assets/releases/*\n  #{immutable}\n"
- # Compatibility endpoints stay revalidatable because their URLs are stable.
- # Their content-addressed copies under /assets/releases remain immutable.
- files.select { |path|path.end_with?('.js','.css') && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/advertising/') && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-', 'public/assets/shell/') }.sort.each do |path|
+ # A Pages path placeholder stays within one segment, so these two rules
+ # cover root scripts and styles without matching the immutable release tree.
+ %w[js css].each { |extension| headers+="/assets/:filename.#{extension}\n  #{revalidate}\n" }
+ files.select { |path|path.end_with?('.js','.css') && !path.match?(%r{\Apublic/assets/[^/]+\.(?:js|css)\z}) && !path.include?('/assets/releases/') && !path.match?(%r{\Apublic/assets/lunar/[^/]+\.js\z}) && !path.start_with?('public/assets/advertising/') && !path.start_with?('public/assets/shopping/') && !path.start_with?('public/assets/sharing/') && !path.start_with?('public/assets/data/') && !path.start_with?('public/assets/calendar-editor/') && !path.start_with?('public/assets/calendar-editor-release-', 'public/assets/shell/') }.sort.each do |path|
   headers+="/#{path.delete_prefix('public/')}\n  #{revalidate}\n"
  end
  headers+="/assets/shell/*\n  #{revalidate}\n"
