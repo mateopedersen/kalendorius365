@@ -2,7 +2,7 @@
 export function createAnalytics({id,hosts,key},target=window){
   if(target.Calendar365Analytics?.id===id)return target.Calendar365Analytics;
   const duration=180*86400000,doc=target.document,listeners=new Set();
-  let record=null,loaded=false;
+  let record=null,loaded=false,expiryTimer;
   const now=()=>Date.now();
   function read(raw){try{const v=JSON.parse(raw);return v?.version===1&&typeof v.analytics==='boolean'&&Number.isFinite(v.expiresAt)&&v.expiresAt>now()&&v.expiresAt<=now()+duration?v:null;}catch{return null;}}
   try{record=read(target.localStorage.getItem(key));}catch{}
@@ -31,15 +31,31 @@ export function createAnalytics({id,hosts,key},target=window){
     const script=doc.createElement('script');script.async=true;script.src='https://www.googletagmanager.com/gtag/js?id='+id;doc.head.append(script);
   }
   function changed(){for(const fn of listeners)fn(record?{...record}:null);}
+  function checkExpiry(){
+    target.clearTimeout(expiryTimer);
+    if(!record)return;
+    const remaining=record.expiresAt-now();
+    if(remaining>0){
+      // Browser timers accept at most a signed 32-bit millisecond delay.
+      expiryTimer=target.setTimeout(checkExpiry,Math.min(remaining,2147483647));
+      return;
+    }
+    record=null;
+    apply();
+    forget();
+    changed();
+  }
   const api={id,choice:()=>record?{...record}:null,subscribe(fn){listeners.add(fn);return()=>listeners.delete(fn);},choose(analytics){
     record={version:1,analytics:analytics===true,expiresAt:now()+duration};
     try{target.localStorage.setItem(key,JSON.stringify(record));}catch{}
     if(!record.analytics){target['ga-disable-'+id]=true;forget();}
-    apply();changed();
+    checkExpiry();apply();changed();
   }};
   target.Calendar365Analytics=api;
-  target.addEventListener('storage',event=>{if(event.key!==key&&event.key!==null)return;record=read(event.newValue);if(!record?.analytics)forget();apply();changed();});
-  apply();return api;
+  target.addEventListener('storage',event=>{if(event.key!==key&&event.key!==null)return;record=read(event.newValue);if(!record?.analytics)forget();checkExpiry();apply();changed();});
+  target.addEventListener('pageshow',checkExpiry);
+  doc.addEventListener('visibilitychange',()=>{if(!doc.hidden)checkExpiry();});
+  checkExpiry();apply();return api;
 }
 
 if(typeof document!=='undefined'){

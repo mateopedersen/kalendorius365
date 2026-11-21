@@ -191,6 +191,7 @@
 .edu-logo {
   min-height: 68px;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   padding: .53rem;
   border: 1px solid #e7e9e0;

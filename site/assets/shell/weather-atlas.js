@@ -1,3 +1,6 @@
+import { solarFor } from "../phase-5-6-8-core.js";
+import { daylightMarkup, withLocalSun } from "../data/daylight-outlook.js";
+import { briefContents, condition, currentReading, dayAt, dayBrief, label, rainBrief, readingLight, readingSource, roadBrief } from "../data/weather-brief.js";
 let searchCatalogue;
 const atlas = document.querySelector(".weather-atlas[data-weather-place]");
 if (atlas) setup(atlas);
@@ -35,11 +38,9 @@ function setup(root) {
   const slug = root.dataset.weatherPlace;
   const requestCache = new Map();
   const retryAfter = new Map();
-  const lastClimate = new Map();
   const units = new Intl.NumberFormat("lt-LT", { maximumFractionDigits: 1 });
   const dayText = new Intl.DateTimeFormat("lt-LT", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
   const weekday = new Intl.DateTimeFormat("lt-LT", { weekday: "long", timeZone: "UTC" });
-  const climateMonth = new Intl.DateTimeFormat("lt-LT", { month: "long", year: "numeric", timeZone: "UTC" });
   const weekendDateText = new Intl.DateTimeFormat("lt-LT", { month: "long", day: "numeric", timeZone: "UTC" });
   const stampText = new Intl.DateTimeFormat("lt-LT", { dateStyle: "medium", timeStyle: "short", timeZone: "Europe/Vilnius" });
   const hourText = new Intl.DateTimeFormat("lt-LT", { timeZone: "Europe/Vilnius", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
@@ -47,28 +48,19 @@ function setup(root) {
     ["MET Norway", "/oru-saltiniai/#met-norway"],
     ["LHMT / Meteo LT", "/oru-saltiniai/#lhmt"],
   ]);
-  const categories = {
-    sun: "Giedra", moon: "Giedra", part: "Mažai debesuota", "part-night": "Mažai debesuota",
-    cloud: "Debesuota", rain: "Lietus", snow: "Sniegas", sleet: "Šlapdriba",
-    fog: "Rūkas", thunder: "Perkūnija", wind: "Vėjuota",
-  };
   const localDay = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Vilnius", year: "numeric", month: "2-digit", day: "2-digit",
   });
-  const periodButtons = [...root.querySelectorAll("[data-days]")];
-  const presets = periodButtons.map(button => Number(button.dataset.days));
-  const daysFrom = value => presets.find(days => String(days) === value);
+  const period = Number(root.querySelector(".wx-periods [aria-current=page]")?.dataset.days) || 5;
   const weekendButtons = [...root.querySelectorAll("[data-weekend]")];
   const weekendSummary = node("weekend-summary");
   const weekendIntro = weekendSummary?.textContent;
+  const initialWeekend = node("weekend-status").textContent;
+  const calculatedSun = node("calculated-sun");
   const periodShortcuts = root.querySelectorAll("[data-period-shortcut]");
-  let period = daysFrom(new URL(location.href).searchParams.get("dienos")) ?? 5;
   let forecast;
   let weekend = 0;
   let forecastUnavailable = false;
-  let climateGeneration = 0;
-  let hasClimateData = false;
-  let renderedForecast, renderedLimit, renderedDate, renderedLong, renderedUnavailable;
 
   const html = (tag, text, className) => {
     const result = document.createElement(tag);
@@ -80,22 +72,8 @@ function setup(root) {
   const measure = (value, unit = "") => Number.isFinite(value) ? units.format(value) + (unit ? " " + unit : "") : "–";
   const wind = value => Number.isFinite(value) ? measure(value / 3.6, "m/s") : "–";
   const formatDay = value => dayText.format(new Date(value + "T12:00:00Z"));
-  const condition = (icon = "") => {
-    if (icon.includes("thunder")) return "thunder";
-    if (icon.includes("sleet") || icon.includes("freezing") || (icon.includes("rain") && icon.includes("snow"))) return "sleet";
-    if (icon.includes("snow")) return "snow";
-    if (icon.includes("rain") || icon.includes("showers")) return "rain";
-    if (icon.includes("fog")) return "fog";
-    if (icon === "clear-night") return "moon";
-    if (icon === "clear-day") return "sun";
-    if (icon === "partly-cloudy-night") return "part-night";
-    if (icon.includes("partly")) return "part";
-    return icon === "wind" ? "wind" : "cloud";
-  };
-  const label = icon => icon ? categories[condition(icon)] : "Sąlygos nenurodytos";
-
   function weatherIcon(code) {
-    return weatherSymbol(condition(code), "wx-condition-icon");
+    return weatherSymbol("wx-sky-" + condition(code), "wx-condition-icon", "");
   }
 
   function weatherSymbol(id, className, source = "/assets/visuals/weather-atlas-icons.svg", viewBox = "0 0 64 64") {
@@ -200,54 +178,56 @@ function setup(root) {
       card.append(title, visual, reading);
       cards.push(card);
     }
+    if (!(daylight > 0) && calculatedSun?.dataset.date === currentDate()) cards.push(calculatedSun);
     node("metrics").replaceChildren(...cards);
     const status = node("readings-status");
     status.hidden = cards.length > 0;
     status.textContent = cards.length ? "" : "Šiuo metu orų rodiklių nėra.";
   }
 
-  function writeCurrent() {
-    const fullHours = forecast.days.flatMap(day => day.hours || []);
-    const now = Date.now();
-    const distance = hour => Math.abs(hour.datetimeEpoch * 1000 - now);
-    const closest = fullHours.reduce((best, hour) =>
-      distance(hour) <= 5400_000 && (!best || distance(hour) < distance(best)) ? hour : best, null);
-    const current = Number.isFinite(forecast.current?.temp) ? forecast.current : closest || {};
-    const today = forecast.days[0];
+  function writeCurrent(previous = false) {
+    const current = currentReading(forecast, Date.now()) || {};
+    const today = dayAt(forecast, Date.now()) || {};
     const currentTime = Number.isFinite(current.datetimeEpoch) ? new Date(current.datetimeEpoch * 1000) : null;
     const timestamp = currentTime && stampText.format(currentTime);
-    const timeLabel = current.source === "obs" ? "Rodmenys " : current.source === "comb" ? "Jungtiniai duomenys " : "Modelio laikas ";
-    node("live-reading").classList.add("wx-live__reading");
-    node("live-reading").textContent = measure(current.temp, "°C");
-    node("live-detail").textContent = [label(current.icon), Number.isFinite(current.feelslike) ? "Pojūtis " + measure(current.feelslike, "°C") : ""].filter(Boolean).join(" · ");
-    node("live-detail").hidden = false;
-    node("timestamp").textContent = timestamp ? timeLabel + timestamp : "";
-    node("timestamp").hidden = !timestamp;
-    const scene = root.querySelector(".wx-live");
-    scene.dataset.sky = condition(current.icon);
-    const readingHour = currentTime && hourText.format(currentTime);
-    const dawn = today.sunrise?.slice(0, 5);
-    const dusk = today.sunset?.slice(0, 5);
-    const night = current.icon?.endsWith("-night") ||
-      (readingHour && dawn && dusk && (readingHour < dawn || readingHour >= dusk));
-    scene.dataset.light = night ? "night" : "day";
-    node("live-icon").replaceChildren(...(current.icon ? [weatherIcon(current.icon)] : []));
-    node("live-icon").hidden = !current.icon;
+    const timeLabel = (previous ? "Ankstesni duomenys · " : "") + readingSource(current) + " ";
+    const initial = Number(node("live-reading").dataset.initial) > Date.now();
+    if (!initial) {
+      node("live-reading").classList.add("wx-live__reading");
+      node("live-reading").removeAttribute("data-initial");
+      node("live-reading").textContent = Number.isFinite(current.temp) ? measure(current.temp, "°C") : "Dabartinės temperatūros nėra";
+      node("live-detail").textContent = [label(current.icon), Number.isFinite(current.feelslike) ? "Pojūtis " + measure(current.feelslike, "°C") : ""].filter(Boolean).join(" · ");
+      node("live-detail").hidden = false;
+      node("timestamp").textContent = timestamp ? timeLabel + timestamp + " · " + forecast.source : "";
+      node("timestamp").hidden = !timestamp;
+      const scene = root.querySelector(".wx-live");
+      scene.dataset.sky = condition(current.icon);
+      scene.dataset.light = readingLight(current, forecast);
+      node("live-icon").replaceChildren(...(current.icon ? [weatherIcon(current.icon)] : []));
+      node("live-icon").hidden = !current.icon;
+    }
+    if (!hasPageDays()) node("brief-day").innerHTML = briefContents(dayBrief(forecast, Date.now()), "Temperatūra šiandien", previous);
     writeProviderCredit();
     writeMetrics(current, today);
+    if (rainData) updateDaylight();
+  }
+
+  function updateDaylight() {
+    const panel = node("daylight");
+    const point = {lat: Number(root.dataset.latitude), lon: Number(root.dataset.longitude)};
+    const solarDays = withLocalSun(forecast, point, solarFor);
+    const markup = daylightMarkup(solarDays, rainData);
+    if (markup || !(Number(panel.dataset.initial) > Date.now())) panel.innerHTML = markup;
   }
 
   function writeProviderCredit() {
     const source = forecast?.source;
-    const visual = source === "Visual Crossing Weather" || hasClimateData;
-    const sourceUrl = forecastSources.get(source);
-    const fallback = node("forecast-source");
-    node("provider-credit").hidden = !visual && !sourceUrl;
-    node("visual-crossing-credit").hidden = !visual;
-    fallback.hidden = !sourceUrl;
-    if (sourceUrl) {
-      fallback.href = sourceUrl;
-      fallback.textContent = source;
+    const link = node("forecast-source");
+    const url = forecastSources.get(source);
+    link.hidden = !url;
+    if (url) {
+      link.href = url;
+      link.textContent = "Valandiniai orai · " + source;
     }
   }
 
@@ -304,9 +284,9 @@ function setup(root) {
   }
 
   function openHourly(day) {
-    const minimumPeriod = 1 + (Date.parse(day.datetime) - Date.parse(localDay.format(new Date()))) / 86400_000;
-    if (minimumPeriod > period) choosePeriod(String(presets.find(days => days >= minimumPeriod)));
+
     const select = node("hour-day");
+    if (![...select.options].some(option => option.value === day.datetime)) return;
     select.value = day.datetime;
     select.onchange();
     select.scrollIntoView({ block: "center", behavior: "instant" });
@@ -315,46 +295,26 @@ function setup(root) {
 
   function dayPanel(day, heading, kind = "forecast") {
     const weekendDay = kind === "weekend";
-    const climate = kind === "climate";
     const card = html("article", undefined, weekendDay ? "wx-weekend__day" : "wx-day");
     const scene = html("div", undefined, "wx-card-sky");
-    scene.dataset.sky = climate ? "climate" : day.icon ? condition(day.icon) : "unknown";
+    scene.dataset.sky = day.icon ? condition(day.icon) : "unknown";
     const date = new Date(day.datetime + "T12:00:00Z");
     const when = html("time", weekendDateText.format(date));
     when.dateTime = day.datetime;
     const title = html("div", undefined, "wx-card-title");
     title.append(html("h3", heading), when);
     const conditionRow = html("div", undefined, "wx-card-condition");
-    if (climate) {
-      const illustration = html("img", undefined, "wx-climate-icon");
-      illustration.src = "/assets/visuals/shell/seasons.svg";
-      illustration.alt = "";
-      illustration.width = illustration.height = 29;
-      conditionRow.append(illustration);
-    } else if (day.icon) {
-      conditionRow.append(weatherIcon(day.icon));
-    }
-    conditionRow.append(html("span", climate ? "Istoriniai vidurkiai" : label(day.icon)));
+    if (day.icon) conditionRow.append(weatherIcon(day.icon));
+    conditionRow.append(html("span", label(day.icon)));
     scene.append(title, conditionRow);
     const content = html("div", undefined, "wx-card-body");
-    if (day.missing) {
-      card.classList.add("wx-day--missing");
-      content.append(html("p", day.pending ? "Įkeliama…" :
-        climate ? "Klimato duomenų nėra." : "Prognozės duomenų nėra.", "wx-message"));
-      card.append(scene, content);
-      return card;
-    }
     const temps = html("dl", undefined, "wx-card-temps");
     temps.append(metric("Aukščiausia", measure(day.tempmax, "°C")), metric("Žemiausia", measure(day.tempmin, "°C")));
     const hours = day.hours || [];
     const metrics = html("dl", undefined, "wx-card-metrics wx-weekend__metrics");
     metrics.append(metric("Krituliai", measure(day.precip, "mm")));
-    if (climate) {
-      metrics.append(metric("Drėgnis", measure(day.humidity, "%")));
-    } else {
-      const gust = day.windgust ?? Math.max(...hours.map(hour => hour.windgust).filter(Number.isFinite));
-      metrics.append(metric("Vėjo gūsiai", wind(gust)));
-    }
+    const gust = day.windgust ?? Math.max(...hours.map(hour => hour.windgust).filter(Number.isFinite));
+    metrics.append(metric("Vėjo gūsiai", wind(gust)));
     content.append(temps, metrics);
     if (hours.length) {
       const more = html("button", undefined, "wx-action wx-day__hours");
@@ -409,6 +369,14 @@ function setup(root) {
     for (const button of weekendButtons) {
       button.setAttribute("aria-pressed", String(Number(button.dataset.weekend) === weekend));
     }
+    const status = node("weekend-status");
+    if (!forecast && !weekend && status.dataset.initialDate === currentDate()) {
+      status.hidden = false;
+      status.textContent = initialWeekend;
+      weekendSummary.textContent = weekendIntro;
+      node("weekend-days").replaceChildren();
+      return;
+    }
     const first = (6 - localDate().getUTCDay()) + 7 * weekend;
     const dates = [first, first + 1].map(offset => localDate(offset).toISOString().slice(0, 10));
     const days = dates.map(date => forecast?.days.find(day => day.datetime === date));
@@ -417,6 +385,10 @@ function setup(root) {
       (days.some(Boolean) ? "Rodoma paskutinė gauta savaitgalio prognozė." : "Savaitgalio prognozė šiuo metu nepasiekiama.") :
       !forecast ? "Įkeliama savaitgalio prognozė…" :
       days.every(Boolean) ? "" : "Kai kurioms dienoms šaltinis dar nepateikia prognozės.";
+    if (days.some(Boolean)) {
+      const status = node("weekend-status");
+      status.textContent = [status.textContent, forecast?.source].filter(Boolean).join(" · ");
+    }
     node("weekend-status").hidden = !node("weekend-status").textContent;
     const cards = dates.map((date, index) => {
       const heading = index ? "Sekmadienis" : "Šeštadienis";
@@ -440,7 +412,12 @@ function setup(root) {
   }
 
   const forecastCards = node("days");
-  const climateCards = node("climate-days");
+  const hasPageDays = () => forecastCards.dataset.date === currentDate() && Number(forecastCards.dataset.count) > 0;
+  forecastCards.addEventListener("click", event => {
+    const button = event.target.closest("button[data-hour-date]");
+    const day = button && forecast?.days.find(d => d.datetime === button.dataset.hourDate && d.hours?.length);
+    if (day) openHourly(day);
+  });
 
   function showHours(container, rows, headers, road = false) {
     const table = html("table");
@@ -558,6 +535,9 @@ function setup(root) {
   }
   function renderRain() {
     if (!rainData) return;
+    updateDaylight();
+    const brief = rainBrief(rainData, Date.now());
+    node("brief-rain").innerHTML = briefContents(brief, "Krituliai per 12 val.", rainRefreshFailed);
     rainHour = Math.floor(Date.now() / hourMs) * hourMs;
     const slots = Array.from({ length: 12 }, (_, i) => {
       const time = rainHour + i * hourMs;
@@ -573,7 +553,7 @@ function setup(root) {
       return new Intl.DateTimeFormat("lt", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Vilnius", timeZoneName: "shortOffset" }).format(time);
     };
     const periodText = (start, end) => localClock(start) + "–" + localClock(end);
-    let headline = known.length ? "Prognozuojamas kritulių kiekis – 0 mm." : "Šiam laikotarpiui kritulių prognozė dar nepateikta.";
+    let headline = known.length === 12 ? "Prognozuojamas kritulių kiekis – 0 mm." : known.length ? "Žinomomis valandomis prognozuojama 0 mm. Likusių valandų duomenų nėra." : "Šiam laikotarpiui kritulių prognozė dar nepateikta.";
     let summary = "";
     let shortcut = known.length === 12 ? "12 val. prognozė · 0 mm" : "Kritulių prognozė";
     if (wet.length) {
@@ -649,7 +629,17 @@ function setup(root) {
     } catch {
       if (date !== currentDate()) return;
       rainRefreshFailed = true;
-      if (!rainData) node("rain-summary").textContent = "Valandiniai kritulių duomenys šiuo metu nepasiekiami. Kritulių judėjimą galite patikrinti radare.";
+      if (!rainData) {
+        const summary = node("rain-summary");
+        if (Number(summary.dataset.initial) > Date.now()) {
+          node("rain-status").textContent = "Nepavyko atnaujinti. Rodoma paskutinė gauta prognozė.";
+          node("rain-status").hidden = false;
+        } else {
+          summary.textContent = "Valandiniai kritulių duomenys šiuo metu nepasiekiami. Kritulių judėjimą galite patikrinti radare.";
+          node("brief-rain").innerHTML = briefContents(null, "Krituliai per 12 val.");
+          node("rain-status").hidden = true;
+        }
+      }
     }
     renderRain();
   }
@@ -657,54 +647,42 @@ function setup(root) {
   const environment = root.querySelector("#oro-kokybe");
   let environmentActive = false;
   let environmentData, environmentHour;
-  const exposureLabels = {
-    air: ["Gera", "Patenkinama", "Vidutinė", "Prasta", "Labai prasta", "Ypač prasta"],
-    pollen: [null, "Labai mažai", "Mažai", "Vidutiniškai", "Daug", "Labai daug"],
-  };
+  const airBands = ["Gera", "Patenkinama", "Vidutinė", "Prasta", "Labai prasta", "Ypač prasta"];
   const exposureFields = {
-    air: { pm25: "PM₂․₅", pm10: "PM₁₀", no2: "Azoto dioksidas (NO₂)", o3: "Ozonas (O₃)", so2: "Sieros dioksidas (SO₂)" },
-    pollen: { alder: "Alksnis", birch: "Beržas", hazel: "Lazdynas", grass: "Migliniai", mugwort: "Kietis", ragweed: "Ambrozija", olive: "Alyvmedis" },
+    air: { pm25: "Kietosios dalelės (KD₂,₅)", pm10: "Kietosios dalelės (KD₁₀)", no2: "Azoto dioksidas (NO₂)", o3: "Ozonas (O₃)", so2: "Sieros dioksidas (SO₂)" },
+    pollen: { alder: "Alksnis", birch: "Beržas", grass: "Migliniai", mugwort: "Kietis", ragweed: "Ambrozija", olive: "Alyvmedis" },
   };
 
   function renderEnvironment() {
     if (!environmentData) return;
     environmentHour = Math.floor(Date.now() / hourMs) * hourMs;
     for (const kind of ["air", "pollen"]) {
-      const rows = environmentData[kind];
-      const current = rows.findLast(row => row.time >= environmentHour - hourMs && row.time <= environmentHour);
+      const current = environmentData[kind].find(row => row.time === environmentHour);
       const lead = node(kind + "-level");
-      const band = exposureLabels[kind][current?.level];
-      lead.textContent = band || (current ? "Indeksui trūksta duomenų" : "Šiai valandai duomenų nėra");
+      const band = kind === "air" && Number.isInteger(current?.level) && airBands[current.level];
+      const entries = Object.entries(exposureFields[kind]);
+      const unit = kind === "air" ? "µg/m³" : "žiedad./m³";
+      const valueText = value => value > 0 && value < .1 ? "<0,1 " + unit : measure(value, unit);
+      const count = entries.filter(([key]) => Number.isFinite(current?.values?.[key])).length;
+      if (!count) lead.textContent = "Šiai valandai duomenų nėra";
+      else if (kind === "air") lead.textContent = band || "Vertinimui trūksta teršalų duomenų";
+      else if (count < entries.length) lead.textContent = "Augalų grupės · " + count + " iš " + entries.length;
+      else {
+        const peak = Math.max(...entries.map(([key]) => current.values[key]));
+        lead.textContent = peak < .1 ? "Visos grupės · " + valueText(peak) : "Didžiausia koncentracija · " + valueText(peak);
+      }
       lead.dataset.level = band ? current.level : "";
       const timestamp = node(kind + "-time");
-      timestamp.hidden = !current;
-      if (current) {
+      timestamp.hidden = !count;
+      if (count) {
         timestamp.dateTime = new Date(current.time).toISOString();
-        timestamp.textContent = "Modelio laikas " + stampText.format(current.time);
+        timestamp.textContent = "Prognozės valanda Lietuvoje · " + stampText.format(current.time);
       }
-      const unit = kind === "air" ? "µg/m³" : "žiedad./m³";
-      const values = Object.entries(exposureFields[kind]).flatMap(([key, label]) => {
-        const value = current?.values[key];
-        if (!Number.isFinite(value)) return [];
-        return [metric(label, value > 0 && value < .1 ? "<0,1 " + unit : measure(value, unit))];
-      });
-      node(kind + "-values").replaceChildren(...values);
-      const outlook = node(kind + "-outlook");
-      const future = rows.filter(row => row.time > environmentHour && row.time <= environmentHour + 12 * hourMs
-        && (row.time - environmentHour) % (3 * hourMs) === 0 && exposureLabels[kind][row.level]);
-      const list = html("ul", undefined, "wx-exposure__timeline");
-      for (const row of future) {
-        const item = html("li");
-        const time = html("time", hourText.format(row.time));
-        time.dateTime = new Date(row.time).toISOString();
-        time.setAttribute("aria-label", stampText.format(row.time));
-        const value = html("strong", exposureLabels[kind][row.level]);
-        value.dataset.level = row.level;
-        item.append(time, value);
-        list.append(item);
-      }
-      outlook.replaceChildren(...(future.length ? [html("p", "Artimiausios 12 valandų"), list] : []));
-      node(kind + "-details").hidden = !values.length && !future.length;
+      node(kind + "-values").replaceChildren(...(count ? entries.map(([key, label]) => {
+        const value = current.values[key];
+        return metric(label, Number.isFinite(value) ? valueText(value) : "Duomenų nėra");
+      }) : []));
+      node(kind + "-details").hidden = !count;
     }
   }
 
@@ -714,7 +692,9 @@ function setup(root) {
     try {
       const data = await request("oru-prognoze", "aplinka");
       if (date !== currentDate()) return;
-      if (!Array.isArray(data.air) || !Array.isArray(data.pollen)) throw new Error("Missing environmental forecast");
+      if (data.source !== "CAMS" || !Array.isArray(data.air) || !Array.isArray(data.pollen)) {
+        throw new Error("Missing CAMS forecast");
+      }
       environmentData = data;
       status.textContent = "";
     } catch {
@@ -722,8 +702,7 @@ function setup(root) {
       if (!environmentData) {
         for (const kind of ["air", "pollen"]) node(kind + "-level").textContent = "Duomenys nepasiekiami";
       }
-      status.textContent = environmentData ?
-        "Aplinkos prognozės atnaujinti nepavyko. Rodomi paskutiniai gauti duomenys." : "Aplinkos prognozės šiuo metu nepavyksta įkelti.";
+      status.textContent = "Nepavyko gauti naujausių CAMS duomenų.";
     }
     status.hidden = !status.textContent;
     renderEnvironment();
@@ -739,155 +718,40 @@ function setup(root) {
     observer.observe(environment);
   }
 
-  function setForecastPeriod(refreshClimate = true) {
-    for (const button of periodButtons) {
-      button.setAttribute("aria-pressed", String(Number(button.dataset.days) === period));
-    }
+  function setForecastPeriod() {
     for (const link of periodShortcuts) {
       if (Number(link.dataset.periodShortcut) === period) link.setAttribute("aria-current", "true");
       else link.removeAttribute("aria-current");
     }
-    const firstDay = localDay.format(new Date());
-    const forecastLimit = Math.min(15, period);
-    const dates = rangeDates(firstDay, 0, forecastLimit - 1);
-    const forecasts = new Map((forecast?.days || []).map(day => [day.datetime, day]));
-    const days = dates.map(date => forecasts.get(date)).filter(Boolean);
-    const long = period > 15;
-    node("days-title").hidden = !long;
-    forecastCards.classList.toggle("wx-days--extended", long);
-    if (long) {
-      forecastCards.setAttribute("role", "region");
-      forecastCards.setAttribute("aria-labelledby", "wx-days-title");
-    } else {
-      forecastCards.removeAttribute("role");
-      forecastCards.removeAttribute("aria-labelledby");
-    }
-    const status = node("forecast-status");
-    if (forecast) {
-      status.textContent = forecastUnavailable ? "Rodoma paskutinė gauta prognozė. Atnaujinti šiuo metu nepavyko." :
-        days.length < forecastLimit ? `Prognozė šiuo metu pateikta ${days.length} iš ${forecastLimit} dienų.` : "";
-    }
-    status.hidden = !status.textContent;
-    if (renderedForecast !== forecast || renderedLimit !== forecastLimit || renderedDate !== firstDay ||
-        renderedLong !== long || renderedUnavailable !== forecastUnavailable) {
-      drawChart(days);
-      showDays(long ? dates.map(date => forecasts.get(date) || {
-        datetime: date, missing: true, pending: !forecast && !forecastUnavailable,
-      }) : days, firstDay);
-      showHourly(days);
-      renderedForecast = forecast;
-      renderedLimit = forecastLimit;
-      renderedDate = firstDay;
-      renderedLong = long;
-      renderedUnavailable = forecastUnavailable;
-    }
-    node("hourly-link").hidden = !days.some(day => day.hours?.length);
-    const climateLink = node("climate-link");
-    climateLink.hidden = !long;
-    if (long) climateLink.querySelector(".wx-action__label").textContent = `16–${period} d. klimato orientyrai`;
-    node("days-link").hidden = !long;
-    if (refreshClimate) void loadClimate();
-  }
-
-  const climateWindows = [["16-30", 15], ["31-45", 15], ["46-90", 45]];
-  const climateSegments = () => climateWindows.filter(([segment]) => period >= parseInt(segment, 10));
-  const monthButtons = node("climate-months");
-  let selectedClimateMonth;
-
-  function drawClimate(today, segments, pending) {
-    const dates = rangeDates(today, 15, period - 1);
-    const available = new Map();
-    for (const [segment] of segments) {
-      const entry = lastClimate.get(segment);
-      if (entry?.today !== today) continue;
-      for (const day of entry.days) available.set(day.datetime, day);
-    }
-    const months = Map.groupBy(dates, date => date.slice(0, 7));
-    const keys = [...months.keys()];
-    const layout = keys.join(",");
-    if (monthButtons.dataset.months !== layout) {
-      monthButtons.dataset.months = layout;
-      monthButtons.replaceChildren(...keys.map(key => {
-        const title = climateMonth.format(new Date(key + "-01T12:00:00Z"));
-        const button = html("button", title);
-        button.type = "button";
-        button.dataset.month = key;
-        button.setAttribute("aria-controls", climateCards.id);
-        return button;
-      }));
-    }
-    const selectMonth = key => {
-      selectedClimateMonth = key;
-      for (const button of monthButtons.children)
-        button.setAttribute("aria-pressed", String(button.dataset.month === key));
-      const datesOfMonth = months.get(key);
-      const range = node("climate-range");
-      const datesText = weekendDateText.formatRange(new Date(datesOfMonth[0] + "T12:00:00Z"),
-        new Date(datesOfMonth.at(-1) + "T12:00:00Z"));
-      if (range.textContent !== datesText) range.textContent = datesText;
-      climateCards.replaceChildren(...datesOfMonth.map(date => {
-        const day = available.get(date);
-        const value = field => day.normal?.[field]?.[1] ?? day[field];
-        const readings = day ? { tempmin: value("tempmin"), tempmax: value("tempmax"), precip: value("precip"), humidity: value("humidity") } :
-          { missing: true, pending };
-        return dayPanel({ datetime: date, ...readings }, dayName(date), "climate");
-      }));
-    };
-    monthButtons.onclick = event => {
-      const button = event.target.closest("button[data-month]");
-      if (button && button.dataset.month !== selectedClimateMonth) selectMonth(button.dataset.month);
-    };
-    selectMonth(months.has(selectedClimateMonth) ? selectedClimateMonth : keys[0]);
-    const loaded = dates.filter(date => available.has(date)).length;
-    const incomplete = loaded < dates.length;
-    const status = node("climate-status");
-    status.textContent = pending && incomplete ? "Įkeliami klimato orientyrai…" :
-      incomplete ? `Pateikta duomenų apie ${loaded} iš ${dates.length} dienų. Trūkstamos datos pažymėtos.` : "";
-    status.hidden = !status.textContent;
-    hasClimateData = loaded > 0;
-    writeProviderCredit();
-    root.querySelector('[data-wx-retry="climate"]').hidden = pending || !incomplete;
-  }
-
-  async function loadClimate(force = false) {
-    const generation = ++climateGeneration;
-    node("climate-days").closest("section").hidden = period <= 15;
-    if (period <= 15) {
-      hasClimateData = false;
-      writeProviderCredit();
-      return;
-    }
     const today = currentDate();
-    node("climate-title").textContent = `Klimato orientyrai pagal dieną · 16–${period} d.`;
-    const segments = climateSegments();
-    const missing = (segment, count) => {
-      const entry = lastClimate.get(segment);
-      return entry?.today !== today || entry.days.length < count;
-    };
-    const refreshing = segments.filter(([segment, count]) => (force && missing(segment, count)) ||
-      refreshDue("oru-prognoze", segment) || requestCache.get(requestKey("oru-prognoze", segment))?.expires === Infinity);
-    let pending = refreshing.length;
-    drawClimate(today, segments, pending > 0);
-    await Promise.all(refreshing.map(async ([segment, count]) => {
-      try {
-        const data = await request("oru-prognoze", segment, force && missing(segment, count));
-        if (currentDate() === today) lastClimate.set(segment, { today, days: data.days });
-      } catch {
-        // Keep the last available values until the provider recovers.
-      } finally {
-        pending -= 1;
-        if (generation === climateGeneration && currentDate() === today) drawClimate(today, segments, pending > 0);
-      }
-    }));
+    const openDays = (forecast?.days || []).filter(day => day.datetime >= today);
+    const cap = Math.min(15, period);
+    const end = rangeDates(today, 0, cap - 1).at(-1);
+    const dates = openDays.filter(day => day.datetime <= end);
+    if (!hasPageDays() && forecast) {
+      showDays(dates, today);
+      const status = node("forecast-status");
+      status.textContent = dates.length < cap ? `Prognozė pateikta ${dates.length} iš ${cap} dienų.` : "";
+      status.hidden = !status.textContent;
+    }
+    for (const button of forecastCards.querySelectorAll("[data-hour-date]")) {
+      button.hidden = !openDays.some(day => day.datetime === button.dataset.hourDate && day.hours?.length);
+    }
+    drawChart(dates);
+    showHourly(openDays);
+    node("hourly-link").hidden = !openDays.some(day => day.hours?.length);
+    node("climate-link").hidden = period <= 15;
+    if (period > 15) node("climate-link").querySelector(".wx-action__label").textContent = `16–${period} d. klimato orientyrai`;
+    node("days-link").hidden = period <= 15;
   }
 
   async function loadForecast(background = false) {
     const date = currentDate();
     const retry = root.querySelector('[data-wx-retry="forecast"]');
     retry.hidden = true;
-    if (!forecast && !background) {
+    if (!forecast && !background && !node("live-reading").hasAttribute("data-initial")) {
       node("live-reading").textContent = "Įkeliami naujausi duomenys…";
-      node("forecast-status").textContent = "Įkeliama prognozė…";
+      if (!hasPageDays()) node("forecast-status").textContent = "Įkeliama prognozė…";
     }
     try {
       const data = await request("oru-prognoze");
@@ -896,21 +760,34 @@ function setup(root) {
       forecastUnavailable = false;
       writeCurrent();
       renderWeekend();
-      setForecastPeriod(false);
+      setForecastPeriod();
       showRoadHours();
     } catch {
       if (date !== currentDate()) return;
       forecastUnavailable = true;
       renderWeekend();
-      if (!forecast) node("live-reading").textContent = "Orų duomenys šiuo metu nepasiekiami.";
-      else {
+      const reading = node("live-reading");
+      if (forecast) {
+        writeCurrent(true);
+      } else if (!(Number(reading.dataset.initial) > Date.now())) {
+        reading.textContent = "Orų duomenys šiuo metu nepasiekiami.";
+        node("timestamp").hidden = true;
+        node("live-detail").hidden = true;
+        node("live-icon").hidden = true;
+      } else if (!node("timestamp").textContent.includes("Nepavyko atnaujinti")) {
         node("timestamp").hidden = false;
-        node("timestamp").textContent = "Nepavyko atnaujinti · paskutiniai gauti duomenys";
+        node("timestamp").textContent += " · Nepavyko atnaujinti";
       }
-      if (!forecast) node("readings-status").textContent = "Orų rodiklių šiuo metu nepavyksta įkelti.";
-      node("forecast-status").textContent = forecast ?
+      if (!forecast && !hasPageDays()) node("brief-day").innerHTML = briefContents(null, "Temperatūra šiandien");
+      if (!forecast) {
+        const dayStillCurrent = calculatedSun?.dataset.date === date;
+        if (calculatedSun) calculatedSun.hidden = !dayStillCurrent;
+        if (!(Number(reading.dataset.initial) > Date.now())) node("readings-status").textContent = dayStillCurrent ?
+          "Saulės laikas apskaičiuotas pagal vietovės koordinates." : "Orų rodiklių šiuo metu nepavyksta įkelti.";
+      }
+      if (!hasPageDays()) node("forecast-status").textContent = forecast ?
         "Rodoma paskutinė gauta prognozė. Atnaujinti šiuo metu nepavyko." : "Prognozės šiuo metu nepavyksta įkelti.";
-      setForecastPeriod(false);
+      setForecastPeriod();
       retry.hidden = false;
     }
   }
@@ -964,12 +841,13 @@ function setup(root) {
     return card;
   }
 
+  let lastStations;
   async function loadRoads(background = false) {
     const date = currentDate();
     const status = node("road-status");
     const retry = root.querySelector('[data-wx-retry="roads"]');
     const cards = node("stations");
-    if (!background && !cards.childElementCount) {
+    if (!background && !cards.childElementCount && !status.dataset.initial) {
       status.hidden = false;
       status.textContent = "Ieškoma artimiausių stotelių…";
     }
@@ -977,44 +855,34 @@ function setup(root) {
     try {
       const { stations, radiusKm } = await request("keliu-orai");
       if (date !== currentDate()) return;
+      lastStations = stations;
+      status.removeAttribute("data-initial");
+      node("brief-road").innerHTML = briefContents(roadBrief({ stations }, Date.now()), "Kelio stotelė");
       status.textContent = stations.length ? "" : `Per ${radiusKm} km nėra naujų stotelių matavimų.`;
       status.hidden = stations.length > 0;
       cards.replaceChildren(...stations.map(roadStationCard));
     } catch {
       if (date !== currentDate()) return;
       status.hidden = false;
-      status.textContent = cards.childElementCount ?
-        "Rodomi paskutiniai gauti stotelių duomenys. Atnaujinti šiuo metu nepavyko." :
-        "Stotelių duomenys šiuo metu nepasiekiami. Naujausią informaciją rasite oficialiame eismo žemėlapyje.";
+      if (lastStations) {
+        const now = Date.now();
+        const stations = lastStations.filter(s => now - s.measured * 1000 <= 21600000)
+          .map(s => ({ ...s, stale: now - s.measured * 1000 > 5400000 }));
+        cards.replaceChildren(...stations.map(roadStationCard));
+        node("brief-road").innerHTML = briefContents(roadBrief({ stations }, now), "Kelio stotelė", true);
+      }
+      if (Number(status.dataset.initial) > Date.now()) {
+        if (!status.textContent.includes("Nepavyko atnaujinti")) status.append(" · Nepavyko atnaujinti");
+      } else {
+        if (!cards.childElementCount) node("brief-road").innerHTML = briefContents(null, "Kelio stotelė");
+        status.textContent = cards.childElementCount ?
+          "Rodomi paskutiniai gauti stotelių duomenys. Atnaujinti šiuo metu nepavyko." :
+          "Stotelių duomenys šiuo metu nepasiekiami. Naujausią informaciją rasite oficialiame eismo žemėlapyje.";
+      }
       retry.hidden = false;
     }
   }
 
-  function choosePeriod(value, jump = false) {
-    const chosen = daysFrom(value);
-    if (!chosen) return;
-    period = chosen;
-    const url = new URL(location.href);
-    url.searchParams.set("dienos", period);
-    if (jump) url.hash = "oru-prognoze";
-    history.replaceState(history.state, "", url);
-    setForecastPeriod();
-    if (jump) {
-      root.querySelector("#oru-prognoze").scrollIntoView({ behavior: "instant" });
-      node("forecast-title").focus({ preventScroll: true });
-    }
-  }
-
-  for (const button of periodButtons) {
-    button.addEventListener("click", () => choosePeriod(button.dataset.days));
-  }
-  for (const link of periodShortcuts) {
-    link.addEventListener("click", event => {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      choosePeriod(link.dataset.periodShortcut, true);
-    });
-  }
   for (const button of weekendButtons) {
     button.addEventListener("click", () => {
       weekend = Number(button.dataset.weekend);
@@ -1023,7 +891,6 @@ function setup(root) {
   }
   root.querySelector('[data-wx-retry="forecast"]').addEventListener("click", () => { void loadForecast(); });
   root.querySelector('[data-wx-retry="roads"]').addEventListener("click", () => { void loadRoads(); });
-  root.querySelector('[data-wx-retry="climate"]').addEventListener("click", () => { void loadClimate(true); });
   enableSearch(root.querySelector(".wx-search"));
   setForecastPeriod();
   renderWeekend();
@@ -1038,7 +905,6 @@ function setup(root) {
     else if (environmentData && environmentHour !== Math.floor(Date.now() / hourMs) * hourMs) renderEnvironment();
     if (refreshDue("oru-prognoze")) void loadForecast(true);
     if (refreshDue("keliu-orai")) void loadRoads(true);
-    if (period > 15 && climateSegments().some(([segment]) => refreshDue("oru-prognoze", segment))) void loadClimate();
   }
   setInterval(refreshReadings, 30_000);
   document.addEventListener("visibilitychange", refreshReadings);

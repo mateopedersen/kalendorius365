@@ -35,9 +35,12 @@ test("weather location pages link to the provider and methodology register", () 
     assert.doesNotMatch(page, /wx-rain-time|wx-readings-source|wx-climate-source|Duomenys ·|CC BY|thredds\.silam/);
     assert.equal([...page.matchAll(/id="wx-visual-crossing-credit"/g)].length, 1);
   }
-  for (const id of ["duomenys", "lhmt", "visual-crossing", "met-norway", "silam", "keliai", "vietoves"]) {
+  for (const id of ["duomenys", "lhmt", "visual-crossing", "met-norway", "cams", "keliai", "vietoves"]) {
     assert.ok(providerSources.includes(`id="${id}"`), id);
   }
+  assert.match(providerSources, /doi.org\/10\.24381\/a4005cee/);
+  assert.match(template, /href="\/oru-saltiniai\/#cams"/);
+  assert.doesNotMatch(template, /Augalai ir artimiausios valandos/);
   const licensePage = readFileSync(new URL("../site/nuotrauku-licencijos/index.html", import.meta.url), "utf8");
   assert.match(sourcesPage, /include weather-data-sources\.html/);
   assert.match(licensePage, /include weather-data-sources\.html/);

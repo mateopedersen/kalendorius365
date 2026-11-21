@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { solarWeek } from "../site/assets/sunrise-readings.js";
 import { buildShiftCsv, buildShiftIcs, buildShiftPlan, lessonConflicts, lessonFieldError, lunarIllumination, solarFor, solarPositionAt, visibleLessons, zonedCandidates, resolveWall } from "../site/assets/phase-5-6-8-core.js";
 
 const day = { name: "Dieninė", start: "07:00", end: "19:00", break: 30, color: "#006a44" };
@@ -222,6 +223,12 @@ test("the solar tool renders all 103 city choices with ordered twilight and hori
     const publishedTimes = solarFor(dateMarkup[1], { lat, lon });
     assert(cityPage.includes(`id="sun-answer-rise" datetime="${new Date(publishedTimes.sunrise).toISOString()}"`), id);
     assert(cityPage.includes(`id="sun-answer-set" datetime="${new Date(publishedTimes.sunset).toISOString()}"`), id);
+    for (const [element, field] of [["dawn", "civilStart"], ["dusk", "civilEnd"]]) {
+      assert(cityPage.includes(`id="sun-answer-${element}" datetime="${new Date(publishedTimes[field]).toISOString()}"`), id);
+    }
+    const outlook = solarWeek(dateMarkup[1], { lat, lon });
+    assert(cityPage.includes(`id="sun-week-change">${outlook.comparison}</p>`), id);
+    assert(cityPage.includes('href="/saule/#sun-method-title"'), id);
     for (const date of ["2000-02-29", "2028-03-26", "2028-06-21", "2028-10-29", "2030-12-21", "2100-12-31"]) {
       const city = { lat, lon };
       const result = solarFor(date, city);
@@ -232,6 +239,21 @@ test("the solar tool renders all 103 city choices with ordered twilight and hori
       assert(Math.abs(positions[1].altitude + .833) < .001 && Math.abs(positions[3].altitude + .833) < .001, `${id} ${date}`);
     }
   }
+});
+
+test("weekly daylight compares the actual first and last dates, including shortened end-of-range weeks", () => {
+  const city = { lat: 54.68916, lon: 25.27980 };
+  for (const date of ["2028-03-23", "2028-06-19", "2028-10-26", "2100-12-29"]) {
+    const { rows, comparison } = solarWeek(date, city);
+    const last = rows.at(-1);
+    const delta = solarFor(last.date, city).dayMinutes - solarFor(date, city).dayMinutes;
+    assert.equal(rows.length, date === "2100-12-29" ? 3 : 7);
+    if (delta === 0) assert.match(comparison, /vienodai/);
+    else assert.ok(comparison.includes(`${Math.abs(delta)} min. ${delta > 0 ? "ilgesnis" : "trumpesnis"}`));
+  }
+  const end = solarWeek("2100-12-31", city);
+  assert.equal(end.rows.length, 1);
+  assert.equal(end.comparison, "");
 });
 
 test("lunar illumination approximation stays bounded and reaches phase extrema", () => {

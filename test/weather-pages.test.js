@@ -42,7 +42,8 @@ test("weather page copy, social metadata and breadcrumbs describe the same city 
   assert.equal(schema[1].itemListElement.at(-1).item, schema[0].url);
 });
 
-test("weather HTTP routes preserve the canonical URL, preview robots and temporary error status", async () => {
+test("weather HTTP routes preserve the canonical URL, preview robots and temporary error status", async t => {
+  t.mock.method(globalThis, "fetch", async () => new Response(null, {status: 503}));
   const context = (path, asset) => ({
     request: new Request(home + path),
     env: { ASSETS: { fetch: asset } },
@@ -133,15 +134,80 @@ test("city and village pages provide weekend, nearby and coordinate-specific lin
   assert.notEqual(mapLink(city), mapLink(village));
 });
 
-test("the local guide describes the available weather views and links to their sections", () => {
+test("local guides link to one methodology instead of repeating the same explanations", () => {
   for (const route of ["panevezys", "zalgirio-31593", "savivaldybes/kauno-m"]) {
     const page = renderWeatherPage(shell, route);
-    const guide = page.match(/<section class="wx-guide-details"[^>]*>([\s\S]*?)<\/section>/)?.[1] || "";
-    assert.match(guide, /1, 3, 5, 7, 10 arba 15 dienų/);
-    assert.match(guide, /30, 45 ir 90 dienų[\s\S]*Nuo 16-os dienos[\s\S]*istorinius/);
-    assert.match(guide, /drėgnį ir vėjo greitį/);
-    for (const id of ["oru-prognoze", "krituliu-prognoze", "oru-rodikliai", "oro-kokybe", "savaitgalio-orai", "orai-keliuose"]) {
-      assert.ok(guide.includes(`href="#${id}"`) && page.includes(`id="${id}"`), `${route}: ${id}`);
-    }
+    assert.match(page, /id="prognozes-ir-rodmenys"[^>]*><a href="\/oru-saltiniai\/#metodika"/);
+    assert.doesNotMatch(page, /Kaip planuoti iki 90 dienų į priekį/);
+    assert.ok(page.includes('href="#oro-kokybe"') && page.includes('id="oro-kokybe"'));
   }
+});
+
+test("initial HTML exposes dated local readings and usable daily values with JavaScript disabled", () => {
+  const now = Date.parse("2026-11-21T16:10:00Z");
+  const at = Math.floor(now / 3600000) * 3600000;
+  const readings = {
+    forecast: {previous: true, value: {
+      current: {temp: 3, feelslike: -1, icon: "cloudy", source: "obs", datetimeEpoch: at / 1000},
+      source: "Visual Crossing Weather", fetchedAt: new Date(now).toISOString(),
+      days: [{datetime: "2026-11-21", tempmin: 1, tempmax: 5, sunrise: "08:00", sunset: "16:00"}],
+    }},
+    rain: {previous: false, value: {updatedAt: new Date(at).toISOString(), slots: [{time: at, mm: 0.2, symbol: "snow"}]}},
+    road: {previous: false, value: {stations: [{name: "A & B", surface: "Šlapia", distance: 4.5, measured: at / 1000}]}},
+  };
+  const page = renderWeatherPage(shell, "kaunas", readings, now);
+  assert.match(page, /id="wx-live-reading"[^>]*data-initial="\d+"[^>]*>3 °C/);
+  assert.match(page, /Ankstesni duomenys · Rodmenys 2026-11-21 18:00/);
+  assert.match(page, /data-light="night"/);
+  assert.match(page, /<time datetime="2026-11-21">[^<]+<\/time>/);
+  assert.match(page, /<dt>Aukščiausia<\/dt><dd>5 °C<\/dd>/);
+  assert.match(page, /<dt>Žemiausia<\/dt><dd>1 °C<\/dd>/);
+  assert.match(page, /id="wx-rain-summary"[^>]*>Sniegas 18:00–19:00/);
+  assert.match(page, /id="wx-road-status"[^>]*>Šlapia · A &amp; B · 4,5 km nuo vietovės · Matuota 2026-11-21 18:00/);
+  assert.doesNotMatch(page, /Įkeliama valandinė kritulių prognozė|Ieškoma artimiausių stotelių/);
+});
+
+test("an all-provider outage still gives a dated astronomical result for the exact registered point", () => {
+  const now = Date.parse("2026-06-03T21:05:00Z");
+  const solar = page => page.match(/id="wx-calculated-sun"[\s\S]*?<\/article>/)?.[0];
+  const kaunas = renderWeatherPage(shell, "kaunas", {}, now);
+  const variants = ["vilnius", "savivaldybes/kauno-r", "zalgirio-31593"].map(route => renderWeatherPage(shell, route, {}, now));
+  for (const page of [kaunas, ...variants]) {
+    assert.doesNotMatch(page, /Įkeliama…|Įkeliama savaitgalio prognozė|Įkeliami orų rodikliai|Ieškoma artimiausių stotelių/);
+    assert.match(solar(page), /data-date="2026-06-04"/);
+    assert.match(solar(page), /Saulėtekis<\/dt><dd>\d{2}:\d{2}/);
+    assert.match(solar(page), /Saulėlydis<\/dt><dd>\d{2}:\d{2}/);
+    assert.match(page, /Dabartinės temperatūros nėra/);
+    assert.match(page, /https:\/\/airindex.eea.europa.eu\/AQI\//);
+    assert.match(page, /https:\/\/pasyfo.eu\/ziedadulkiu-prognozes/);
+  }
+  assert.notEqual(solar(kaunas), solar(variants[0]));
+  assert.notEqual(solar(variants[1]), solar(variants[2]));
+});
+
+test("forecast periods and month switches are navigable HTML, including the year boundary", () => {
+  const now = Date.parse("2026-11-21T10:00:00Z");
+  const dateAfter = n => new Date(now + n * 86400000).toISOString().slice(0, 10);
+  const rows = Array.from({length: 90}, (_, i) => ({
+    datetime: dateAfter(i), tempmin: 1, tempmax: 4, icon: "rain", precip: .2, windgust: 18,
+    normal: {tempmin: [-5, 2, 11], tempmax: [1, 7, 12]},
+  }));
+  const readings = {forecast: {value: {source: "Visual Crossing Weather", days: rows.slice(0,15)}},
+    climate: {value: {days: rows.slice(15)}}};
+  const long = renderWeatherPage(shell, "kaunas", readings, now, {period: 90, month: "2027-01"});
+  assert.match(long, /href="\?dienos=90#oru-prognoze" data-days="90" aria-current="page"/);
+  assert.match(long, /href="\?dienos=90&amp;menuo=2027-01#wx-climate-title" aria-current="page"/);
+  const climate = long.match(/class="wx-climate"[^>]*>[\s\S]*?<\/section>/)[0];
+  assert.equal([...climate.matchAll(/class="wx-day"/g)].length,31);
+  assert.match(climate, /datetime="2027-01-31"/);
+  assert.doesNotMatch(climate, /datetime="2026-12-|datetime="2027-02-/);
+  assert.match(climate, /<dt>Žemiausia<\/dt><dd>2 °C/);
+  assert.match(climate, /www.visualcrossing.com\/weather-api/);
+  const forecast = long.match(/id="wx-days"[^>]*>[\s\S]*?class="wx-provider-credit"/)[0];
+  assert.equal([...forecast.matchAll(/class="wx-day"/g)].length,15);
+  assert.match(forecast, /<dt>Vėjo gūsiai<\/dt><dd>5 m\/s/);
+  assert.doesNotMatch(long, /"tempmax"\s*:|\/api\/oru-prognoze\?/);
+  const short = renderWeatherPage(shell, "kaunas", readings, now, {period: 1});
+  assert.equal([...short.matchAll(/class="wx-day"/g)].length,1);
+  assert.doesNotMatch(short, /id="wx-climate-days"/);
 });

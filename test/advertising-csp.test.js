@@ -27,3 +27,31 @@ test('published HTML contains no Adsterra placement or configuration',()=>{
  assert(pages.length>100,'all public HTML is available');
  for(const file of pages)assert.doesNotMatch(fs.readFileSync(new URL(encodeURI(file),site),'utf8'),/data-advertising-slot|id="advertising-config"|data-sponsored-link|data-banner-choice|adsterra\.com|bauval\.org/i,file);
 });
+
+test('a reviewed path alone cannot grant ads to directories, forecasts or robots-excluded responses', async () => {
+  for (const path of ['/orai/vilnius/', '/paieska/', '/irankiai/', '/svetaines-zemelapis/', '/404.html']) {
+    assert.equal(advertisingCandidate(new Request('https://' + host + path), new Set([path]), hosts), false, path);
+  }
+  for (const directive of ['noindex, follow', 'none']) {
+    const response = new Response('<section data-advertising-mode="display-banner"></section>', {
+      headers: {'Content-Type': 'text/html', 'X-Robots-Tag': directive, 'Content-Security-Policy': original}
+    });
+    const result = await advertisingResponse({request: new Request('https://' + host + '/'), next: () => response}, paths, hosts);
+    assert.equal(result, response);
+  }
+});
+
+test('seller declaration, cookie disclosure and privacy section match the inactive advertising setup', () => {
+  const read = path => fs.readFileSync(new URL(path, import.meta.url), 'utf8');
+  const declaration = read('../site/ads.txt').trim();
+  assert.match(declaration, /^google\.com, pub-\d{16}, DIRECT, f08c47fec0942fa0$/);
+  const config = JSON.parse(read('../site/_data/advertising.json'));
+  assert.equal(config.enabled, false);
+  assert.deepEqual(config.reviewedPages, []);
+  const privacy = read('../site/_includes/privacy-policy-lt.html');
+  const target = config.privacy.split('#')[1];
+  assert.ok(privacy.includes('id="' + target + '"'));
+  assert.ok(read('../site/slapukai/index.html').includes('href="' + config.privacy + '"'));
+  assert.match(privacy, /Šiuo metu reklamos nerodome/);
+  assert.match(privacy, /https:\/\/myadcenter\.google\.com\//);
+});

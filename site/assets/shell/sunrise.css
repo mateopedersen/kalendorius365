@@ -167,6 +167,7 @@
 .sun-answer__line { color: #163b2e; font-size: clamp(1rem,1.65vw,1.23rem); line-height: 1.55; }
 .sun-answer__line :is(#sun-answer-rise,#sun-answer-set) { font-weight: 800; font-variant-numeric: tabular-nums; }
 .sun-answer__note { color: var(--solar-muted); font-size: .88rem; }
+.sun-tool [data-sun-interactive][hidden] { display: none; }
 .sun-week .data-table { width: 100%; min-width: 0; margin: 0; table-layout: fixed; font-size: .9rem; }
 .sun-week caption { height: auto; margin: 0; text-align: start; padding: .45rem 0 .65rem; color: var(--solar-muted); }
 .sun-week :is(th,td) { padding: .53rem .42rem; white-space: normal; overflow-wrap: anywhere; }

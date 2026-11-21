@@ -85,7 +85,7 @@ def prepare():
     <p class="eyebrow">{e(post["category"])}</p>
     <h1>{e(post["title"])}</h1>
     <p class="page-intro">{e(post["description"])}</p>
-    <p class="editorial-byline">Leidėjas <a href="/autoriai/julius-vainauskas/" rel="author">Julius Vainauskas</a> · <time datetime="{published}">{display_date}</time> · {minutes} min.</p>
+    <p class="editorial-byline">Leidėjas <a href="/autoriai/julius-vainauskas/">Julius Vainauskas</a> · <time datetime="{published}">{display_date}</time> · {minutes} min.</p>
   </div>
   {photograph}
 </header>'''

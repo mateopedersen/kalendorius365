@@ -70,7 +70,9 @@ home_editorial['commemorations'].concat(local_dates.fetch('commemorations').map 
 File.write("#{ROOT}/site/assets/data/home-holiday-data.json",JSON.generate(home_editorial))
 File.write("#{ROOT}/site/assets/data/years.json",JSON.generate([2027,2028,2029].map { |y| Kalendorius.year(y) }))
 FileUtils.mkdir_p("#{ROOT}/site/assets/data/astronomy")
-FileUtils.cp("#{ROOT}/shared/weather-cities.js", "#{ROOT}/site/assets/data/weather-cities.js")
+%w[weather-cities.js weather-brief.js daylight-outlook.js].each do |file|
+ FileUtils.cp("#{ROOT}/shared/#{file}", "#{ROOT}/site/assets/data/#{file}")
+end
 %w[moon-phases-utc.json seasons-utc.json cities.json].each do |name|
  FileUtils.cp("#{ROOT}/data/astronomy/#{name}","#{ROOT}/site/assets/data/astronomy/#{name}")
 end

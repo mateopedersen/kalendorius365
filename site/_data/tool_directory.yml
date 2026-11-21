@@ -191,7 +191,7 @@ categories:
         card_class: resource-card--sun
       - route: /saule/
         title: Saulėtekis ir saulėlydis
-        description: Saulės padėtis, civilinė prieblanda ir dienos ilgumas penkiuose miestuose.
+        description: Saulės padėtis, civilinė prieblanda ir dienos trukmė 103 Lietuvos miestuose.
         example: Palyginkite birželio dienos šviesą Vilniuje ir Klaipėdoje.
         kind: Miesto ir datos skaičiuoklis
         outputs: [Ekrane]
@@ -285,7 +285,7 @@ categories:
         card_class: resource-card--year
       - route: /menesiai/
         title: "Mėnesių kalendoriai"
-        description: "Pasirinkite 2027–2029 m. mėnesį ir paruoštą kalendoriaus dizainą."
+        description: "Pasirinkite 2027–2030 m. mėnesį ir paruoštą kalendoriaus dizainą."
         example: "Raskite spausdinamą rugpjūčio kalendorių."
         kind: Kalendoriaus įrankis
         outputs: [Ekrane]

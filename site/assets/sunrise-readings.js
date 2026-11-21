@@ -20,20 +20,33 @@ export function dateAfter(date, days) {
 export function solarWeek(date, city, first = solarFor(date, city)) {
   const lastDate = "2100-12-31";
   const rows = [];
+  let last = first;
   for (let offset = 0; offset < 7; offset++) {
     const day = dateAfter(date, offset);
     if (day > lastDate) break;
     const times = offset === 0 ? first : solarFor(day, city);
+    last = times;
     rows.push({
       date: day,
       label: sunDateLabel(day),
       sunrise: sunClock(times.sunrise),
       sunset: sunClock(times.sunset),
       noon: sunClock(times.noon),
+      civilStart: sunClock(times.civilStart),
+      civilEnd: sunClock(times.civilEnd),
+      civilStartAt: new Date(times.civilStart).toISOString(),
+      civilEndAt: new Date(times.civilEnd).toISOString(),
       sunriseAt: new Date(times.sunrise).toISOString(),
       sunsetAt: new Date(times.sunset).toISOString(),
       daylight: daylightLabel(times.dayMinutes),
     });
   }
-  return rows;
+  const difference = last.dayMinutes - first.dayMinutes;
+  let comparison = "";
+  if (rows.length > 1) {
+    comparison = difference === 0
+      ? "Pirmąją ir paskutinę lentelės dieną šviesus paros metas trunka vienodai, skaičiuojant minučių tikslumu."
+      : `Paskutinę lentelės dieną šviesus paros metas yra ${Math.abs(difference)} min. ${difference > 0 ? "ilgesnis" : "trumpesnis"} nei pirmąją.`;
+  }
+  return { rows, comparison };
 }

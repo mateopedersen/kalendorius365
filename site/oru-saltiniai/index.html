@@ -25,14 +25,20 @@ schema_type: WebPage
   <section id="metodika" class="panel weather-sources__data" aria-labelledby="weather-method-title">
     <h2 id="weather-method-title">Kaip skaityti rodmenis</h2>
     <dl class="weather-sources__method">
+      <dt>Vietos orų suvestinė</dt>
+      <dd>Temperatūra susieta su vietovės koordinatėmis. Savivaldybės puslapyje tai vienas atskaitos taškas. Prie temperatūros nurodoma, ar tai stebėjimo rodmuo, ar modelio valanda. Kai pateikta tik dalis paros, temperatūros ribos apima tas valandas.</dd>
       <dt>Laikas ir kritulių kiekis</dt>
-      <dd>Prognozės valandos rodomos Lietuvos laiku. 12 valandų kritulių juostoje kiekis milimetrais taikomas visam vienos valandos intervalui. Modelio atnaujinimo laikas žymi teikėjo skaičiavimo laidą. Nulis reiškia prognozuojamą nulį, o brūkšnys žymi trūkstamą reikšmę.</dd>
+      <dd>Prognozės valandos rodomos Lietuvos laiku. 12 valandų kritulių juostoje kiekis milimetrais taikomas visam vienos valandos intervalui. Modelio atnaujinimo laikas žymi teikėjo skaičiavimo laidą. Suvestinė rodo pirmą iš eilės einančių valandų su krituliais intervalą. Kiekis taikomas visam nurodytam intervalui. Nulis reiškia prognozuojamą nulį, o brūkšnys žymi trūkstamą reikšmę.</dd>
+      <dt>Dvi valandos lauke</dt>
+      <dd>Per artimiausias 36 valandas palyginame dviejų gretimų, dar neprasidėjusių valandų kritulių sumas. Abi valandos turi tilpti tarp vietovės saulėtekio ir saulėlydžio. Kai kelios sumos vienodos, rodome ankstyviausią tarpą. Jei trūksta bent vienos valandos duomenų, tą porą praleidžiame.</dd>
       <dt>Prognozės ir ilgesnio laikotarpio klimatas</dt>
       <dd>Artimiausioms dienoms rodome tiek prognozės dienų, kiek pateikia teikėjas. Pasirinkus 30, 45 ar 90 dienų laikotarpį, nuo 16-os dienos pateikiami ankstesnių metų temperatūros, kritulių ir drėgnio orientyrai. Jei kartu su klimato normų ribomis grąžinamas vidurkis, rodome teikėjo apskaičiuotą vidurkį.</dd>
       <dt>Oro kokybė ir žiedadulkės</dt>
-      <dd>Valandinės SILAM reikšmės susietos su maždaug 10 km modelio gardele. Oro kokybės indeksas rodomas, kai gautos visų penkių teršalų (KD₂,₅, KD₁₀, NO₂, O₃ ir SO₂) koncentracijos. Jį lemia prasčiausia iš penkių kategorijų. Žiedadulkių rodiklis apima lauko augalus.</dd>
+      <dd>CAMS Europos modelio gardelė yra 0,1° (apie 10 km). Laikas žymi valandą, kuriai apskaičiuota prognozė. Gretimos vietovės gali turėti tą pačią reikšmę. Oro kokybei įvertinti visų penkių teršalų valandines koncentracijas suapvaliname iki sveiko µg/m³ ir pagal Europos aplinkos agentūros skalę parenkame prasčiausią kategoriją. Jei bent vieno teršalo trūksta, pateikiame tik turimas koncentracijas.</dd>
+      <dt>Žiedadulkės pagal augalą</dt>
+      <dd>CAMS pateikia šešių augalų grupių eksperimentinę prognozę. Kiekviena reikšmė rodo tos grupės žiedadulkių skaičių kubiniame metre lauko oro. „&lt;0,1“ reiškia mažą teigiamą reikšmę, o „Duomenų nėra“ žymi trūkstamą reikšmę. Asmeninis jautrumas priklauso nuo konkretaus alergeno.</dd>
       <dt>Keliai, vietovės ir vaizdai</dt>
-      <dd>Kelio matavimai galioja stotelės vietoje. Atstumai iki stotelių ir gretimų vietovių skaičiuojami tiesia linija tarp atskaitos taškų. Orų puslapių dangaus ir kelio fonai yra iliustracijos. Miestų fotografijų autoriai ir licencijos nurodyti toliau.</dd>
+      <dd>Prognozės ir matavimai gali vėluoti arba keistis. Prieš kelionę pavojingomis sąlygomis patikrinkite <a href="https://www.meteo.lt/prognozes/pavojingi-reiskiniai/">oficialius LHMT perspėjimus</a>. Kelio matavimai galioja stotelės vietoje. Atstumai iki stotelių ir gretimų vietovių skaičiuojami tiesia linija tarp atskaitos taškų. Orų puslapių dangaus ir kelio fonai yra iliustracijos. Miestų fotografijų autoriai ir licencijos nurodyti toliau.</dd>
     </dl>
   </section>
 

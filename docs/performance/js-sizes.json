@@ -113,8 +113,8 @@
     },
     {
       "path": "/assets/cookie-notice.js",
-      "source_bytes": 4431,
-      "generated_bytes": 3431
+      "source_bytes": 5006,
+      "generated_bytes": 3699
     },
     {
       "path": "/assets/data/birth-cities.js",
@@ -127,9 +127,19 @@
       "generated_bytes": 1325
     },
     {
+      "path": "/assets/data/daylight-outlook.js",
+      "source_bytes": 4489,
+      "generated_bytes": 3187
+    },
+    {
       "path": "/assets/data/weather-backgrounds.js",
       "source_bytes": 5033,
       "generated_bytes": 4077
+    },
+    {
+      "path": "/assets/data/weather-brief.js",
+      "source_bytes": 7157,
+      "generated_bytes": 5126
     },
     {
       "path": "/assets/data/weather-cities.js",
@@ -388,8 +398,8 @@
     },
     {
       "path": "/assets/shell/weather-atlas.js",
-      "source_bytes": 58323,
-      "generated_bytes": 34394
+      "source_bytes": 52572,
+      "generated_bytes": 31962
     },
     {
       "path": "/assets/shopping/guide-d245d9bcf38b.js",
@@ -403,13 +413,13 @@
     },
     {
       "path": "/assets/sunrise-readings.js",
-      "source_bytes": 1493,
-      "generated_bytes": 1135
+      "source_bytes": 2175,
+      "generated_bytes": 1614
     },
     {
       "path": "/assets/sunrise.js",
-      "source_bytes": 20421,
-      "generated_bytes": 13206
+      "source_bytes": 20752,
+      "generated_bytes": 13458
     },
     {
       "path": "/assets/tool-directory-core.js",

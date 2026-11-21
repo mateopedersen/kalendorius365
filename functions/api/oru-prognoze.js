@@ -1,7 +1,7 @@
 import { weatherPlaces } from "../../lib/weather-places.mjs";
 import { getPrecipitationOutlook } from "../../lib/precipitation-outlook.mjs";
 import { getAirConditions } from "../../lib/air-conditions.mjs";
-import { climateWindows, getWeatherForecast, weatherDate } from "../../lib/weather-forecast.mjs";
+import { getOpenForecast, weatherDate } from "../../lib/weather-forecast.mjs";
 
 const inFlight = new Map();
 const outlooks = { krituliai: getPrecipitationOutlook, aplinka: getAirConditions };
@@ -10,13 +10,14 @@ export async function onRequestGet(context) {
   const url = new URL(context.request.url);
   const place = weatherPlaces.get(url.searchParams.get("vieta"));
   const segment = url.searchParams.get("dalis") || "forecast";
-  if (!place || !(segment === "forecast" || Object.hasOwn(outlooks, segment) || Object.hasOwn(climateWindows, segment)))
+  if (!place || !(segment === "forecast" || Object.hasOwn(outlooks, segment)))
     return Response.json({ error: "Vietovė arba laikotarpis nerastas." }, { status: 404 });
 
   const requestedAt = new Date();
   const cacheUrl = new URL("/api/oru-prognoze", url);
   cacheUrl.search = new URLSearchParams({
-    vieta: place.slug, dalis: segment, diena: weatherDate(requestedAt), taskas: `${place.latitude},${place.longitude}`,
+    rinkinys: segment === "aplinka" ? "cams-v1" : "atviri-v2", vieta: place.slug, dalis: segment,
+    diena: segment === "aplinka" ? requestedAt.toISOString().slice(0, 13) : weatherDate(requestedAt), taskas: `${place.latitude},${place.longitude}`,
   });
   const key = new Request(cacheUrl);
   const cache = globalThis.caches?.default;
@@ -25,7 +26,7 @@ export async function onRequestGet(context) {
   let job = inFlight.get(key.url);
   if (!job) {
     const upstream = Object.hasOwn(outlooks, segment) ?
-      outlooks[segment](place, requestedAt) : getWeatherForecast(place, segment, requestedAt);
+      outlooks[segment](place, requestedAt) : getOpenForecast(place, requestedAt);
     job = upstream.finally(() => inFlight.delete(key.url));
     inFlight.set(key.url, job);
   }

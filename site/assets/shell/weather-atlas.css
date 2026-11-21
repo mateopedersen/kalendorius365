@@ -173,7 +173,8 @@
 .weather-atlas .wx-live #wx-timestamp { margin: 0; font-size: .81rem; line-height: 1.38; overflow-wrap: anywhere; }
 .wx-live .wx-retry { justify-self: start; }
 .wx-condition-icon { display: block; flex: none; width: 48px; height: 48px; overflow: visible; }
-#wx-live-icon { padding: 4px; border-radius: 13px; background: #fbfdf1e8; box-shadow: 0 3px 9px #092b4144; }
+#wx-live-icon { display: inline-flex; align-items: center; filter: drop-shadow(0 2px 2px #092b4166); }
+#wx-live-icon[hidden] { display: none; }
 #wx-live-icon .wx-condition-icon { width: clamp(39px,5vw,60px); height: clamp(39px,5vw,60px); }
 .wx-scene,.wx-scene__sky,.wx-scene__haze,.wx-scene__particle { position: absolute; inset: 0; }
 .wx-scene { overflow: hidden; pointer-events: none; }
@@ -337,15 +338,16 @@
   display: flex; flex-wrap: wrap; gap: 4px;
   padding: 4px; border: 1px solid var(--wx-line); background: #edf4eb; border-radius: 11px;
 }
-.wx-periods button {
+.wx-periods a {
+  display: grid; place-items: center; text-align: center; text-decoration: none;
   flex: 1 0 44px; min-height: 42px; min-width: 0; padding: 3px; margin: 0; border: 1px solid transparent; border-radius: 7px;
   box-shadow: none; background: transparent; color: var(--wx-ink); font-size: .875rem; font-weight: 750; white-space: nowrap;
 }
-.wx-periods button:hover { background: #dceadf; }
-.wx-periods button[aria-pressed="true"] { background: #175641; color: #fff; }
-.wx-periods button:is([data-days="15"],[data-days="90"])[aria-pressed="false"] { background: #dcece2; color: #1b543e; }
-.wx-periods button[data-days="90"][aria-pressed="false"] { background: #faf0cc; color: #69480e; }
-.wx-periods button:is([data-days="15"],[data-days="90"])[aria-pressed="false"]:hover { filter: brightness(.94); }
+.wx-periods a:hover { background: #dceadf; }
+.wx-periods a[aria-current="page"] { background: #175641; color: #fff; }
+.wx-periods a:is([data-days="15"],[data-days="90"]):not([aria-current]) { background: #dcece2; color: #1b543e; }
+.wx-periods a[data-days="90"]:not([aria-current]) { background: #faf0cc; color: #69480e; }
+.wx-periods a:is([data-days="15"],[data-days="90"]):not([aria-current]):hover { filter: brightness(.94); }
 .wx-forecast-actions { display: flex; flex-wrap: wrap; gap: 7px; }
 .wx-forecast-actions:has(> :not([hidden])) { padding-bottom: 2px; }
 .wx-forecast-actions:not(:has(> :not([hidden]))) { display: none; }
@@ -375,13 +377,14 @@
 .wx-forecast-days { display: grid; gap: 8px; min-width: 0; }
 .wx-climate > p { font-size: .87rem; line-height: 1.45; color: var(--wx-muted); }
 .wx-climate__months { display: flex; flex-wrap: wrap; gap: 6px; }
-.weather-atlas .wx-climate__months button {
+.weather-atlas .wx-climate__months a {
+  display: inline-flex; align-items: center; text-decoration: none;
   min-width: 44px; min-height: 44px; padding: 5px 10px; border: 1px solid #bbd0c5;
   border-radius: 9px; background: #fffefa; box-shadow: 0 2px #c4d6cb; color: #194d3e;
   font-size: .86rem; font-weight: 750;
 }
-.weather-atlas .wx-climate__months button[aria-pressed="true"] { background: #175641; border-color: #175641; color: #fff; }
-.weather-atlas .wx-climate__months button:hover:not([aria-pressed="true"]) { background: #e5f1e8; }
+.weather-atlas .wx-climate__months a[aria-current="page"] { background: #175641; border-color: #175641; color: #fff; }
+.weather-atlas .wx-climate__months a:hover:not([aria-current]) { background: #e5f1e8; }
 .wx-climate .wx-climate__range { font-weight: 730; }
 .wx-climate > .wx-retry { justify-self: start; }
 .wx-roads { padding: 0; overflow: hidden; }
@@ -850,7 +853,7 @@
 }
 @media (max-width: 640px) {
   .wx-periods { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-rows: 1fr; }
-  .wx-periods button { min-width: 0; min-height: 44px; }
+  .wx-periods a { min-width: 0; min-height: 44px; }
 }
 @media (max-width: 560px) {
   .wx-live__data {
@@ -863,8 +866,7 @@
   .weather-atlas .wx-live #wx-live-reading.wx-live__reading {
     font-size: clamp(2.05rem,10vw,2.85rem);
   }
-  .wx-live__temperature #wx-live-icon { padding: 3px; border-radius: 9px; }
-  .wx-live__temperature #wx-live-icon .wx-condition-icon { width: 34px; height: 34px; }
+  .wx-live__temperature #wx-live-icon .wx-condition-icon { width: 38px; height: 38px; }
   .wx-live__summary { gap: 5px; }
   .weather-atlas .wx-live #wx-rain-shortcut { justify-self: stretch; }
 }
@@ -927,3 +929,59 @@
 .weather-atlas .wx-rain-detail { color: #215367; font-weight: 700; }
 @media(max-width: 930px) { .wx-rain-bars { grid-template-columns: repeat(6,minmax(0,1fr)); } }
 @media(max-width: 480px) { .wx-rain-bars { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+
+/* A first reading for the forecast point, followed by its model and station evidence. */
+.weather-atlas .wx-live .wx-place-context { color: #ffdf91; font-size: .82rem; line-height: 1.4; margin: 2px 0 0; }
+.wx-live .wx-place-context a { color: inherit; text-underline-offset: .18em; }
+.wx-brief {
+  position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 1px; border-top: 1px solid #69818c; background: #48606d;
+}
+.weather-atlas .wx-brief a {
+  display: grid; align-content: start; gap: 3px; min-width: 0; padding: 12px clamp(12px,2vw,22px);
+  background: #143342; color: #fbfcf7; text-decoration: none; overflow-wrap: break-word;
+}
+.weather-atlas .wx-brief a:hover,.weather-atlas .wx-brief a:focus-visible { background: #204553; }
+.wx-live .wx-timestamp a { color: inherit; text-decoration: underline; }
+.wx-brief a > span { font-size: .79rem; font-weight: 700; color: #ffdf91; }
+.wx-brief strong { line-height: 1.24; font-size: clamp(1.07rem,1.8vw,1.28rem); font-variant-numeric: tabular-nums; }
+.wx-brief a > small,.wx-brief time { color: #e2edf0; font-size: .78rem; line-height: 1.4; }
+.wx-brief time { color: #c6dbe1; }
+@media (max-width: 680px) {
+  .wx-brief { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .weather-atlas .wx-brief a { padding: 9px 12px; }
+  .weather-atlas .wx-brief #wx-brief-road { grid-column: 1/-1; grid-template-columns: auto minmax(0,1fr); gap: 2px 10px; align-items: baseline; }
+  #wx-brief-road strong { font-size: 1rem; }
+  #wx-brief-road :is(small,time) { grid-column: 1/-1; }
+}
+@media (scripting: none) {
+  .weather-atlas[data-weather-place] :is(.wx-forecast-actions,.wx-weekend__choices,.wx-road-hours,.wx-search,.wx-guide-forecast) { display: none; }
+}
+
+.wx-daylight:not(:has(.wx-daylight-copy)) { display: none; }
+.wx-daylight {
+  display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 14px 26px; align-items: center;
+  padding: 14px 16px; margin-top: 14px; border: 1px solid #d5ddc9; border-radius: 12px; background: #f6f8ef;
+}
+.wx-daylight-copy p,.wx-daylight-copy h3 { margin: 0 0 4px; }
+.wx-daylight-copy a { display: inline-block; padding-block: 5px; font-weight: 700; }
+.wx-daylight-copy p strong { font-size: 1.17rem; color: #194c3e; }
+.wx-daylight-track { font-size: .84rem; color: #3d5547; font-variant-numeric: tabular-nums; }
+.wx-daylight-track > span { font-weight: 700; }
+.wx-daylight-track svg { display: block; width: 100%; height: 33px; }
+.wx-daylight-track div { display: flex; justify-content: space-between; gap: 8px; }
+@media (max-width: 680px) { .wx-daylight { grid-template-columns: 1fr; gap: 6px; } }
+
+.wx-neighborhood { display: grid; grid-template-columns: minmax(150px, 215px) minmax(0, 1fr); gap: 10px 20px; align-items: center; }
+.wx-neighborhood figure { display: grid; justify-items: center; margin: 0; padding: 8px; background: #f3f7f1; border-radius: 14px; }
+.wx-neighborhood figure svg { display: block; width: 100%; height: auto; max-width: 180px; }
+.wx-neighborhood figcaption { display: grid; text-align: center; line-height: 1.35; }
+.wx-neighborhood figcaption small,.wx-neighborhood .wx-place-links small { color: #425b50; }
+.wx-neighborhood .wx-place-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.wx-neighborhood .wx-place-links small { margin: 0; white-space: normal; }
+.wx-neighborhood .wx-place-links a { min-width: 0; display: grid; align-content: center; gap: 2px; }
+@media (max-width: 640px) {
+  .wx-neighborhood { grid-template-columns: 1fr; }
+  .wx-neighborhood figure { grid-template-columns: minmax(96px,124px) minmax(0,1fr); align-items: center; justify-items: start; }
+  .wx-neighborhood figcaption { text-align: left; }
+}

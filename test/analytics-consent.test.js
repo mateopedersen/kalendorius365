@@ -5,11 +5,12 @@ const id='G-X6YPLKE9K9',key='test:analytics-choice',host='kalendorius365.lt';
 function browser({saved,hostname=host,pathname='/',blocked=false}={}){
   const data=new Map([['personal',JSON.stringify({note:'private calendar note'})]]),scripts=[],handlers={},cookies=new Map([['_ga','test'],['_ga_X6YPLKE9K9','test'],['essential','keep']]);
   if(saved)data.set(key,JSON.stringify(saved));
-  const document={title:'Public page',referrer:'https://example.com/page?email=PRIVATE#PRIVATE',querySelector:()=>({content:'Public page'}),head:{append:s=>scripts.push(s)},createElement:()=>({})};
+  const timers=new Map();let timerId=0;
+  const document={addEventListener:(name,fn)=>handlers[name]=fn,title:'Public page',referrer:'https://example.com/page?email=PRIVATE#PRIVATE',querySelector:()=>({content:'Public page'}),head:{append:s=>scripts.push(s)},createElement:()=>({})};
   Object.defineProperty(document,'cookie',{get:()=>[...cookies].map(([k,v])=>k+'='+v).join(';'),set:s=>{if(s.includes('Max-Age=0'))cookies.delete(s.split('=')[0]);}});
-  const target={document,location:{hostname,pathname,href:'https://'+hostname+pathname+'?q=PRIVATE#PRIVATE'},localStorage:{getItem:k=>data.get(k)||null,setItem(k,v){if(blocked)throw Error('blocked');data.set(k,v);}},addEventListener:(name,fn)=>handlers[name]=fn};
+  const target={document,setTimeout(fn,delay){timers.set(++timerId,{fn,delay});return timerId;},clearTimeout(id){timers.delete(id);},location:{hostname,pathname,href:'https://'+hostname+pathname+'?q=PRIVATE#PRIVATE'},localStorage:{getItem:k=>data.get(k)||null,setItem(k,v){if(blocked)throw Error('blocked');data.set(k,v);}},addEventListener:(name,fn)=>handlers[name]=fn};
   const api=createAnalytics({id,hosts:[host,'www.'+host],key},target);
-  return{api,target,scripts,data,cookies,commands:()=>Array.from(target.dataLayer||[],c=>Array.from(c)),storage(value){handlers.storage({key,newValue:value});}};
+  return{api,target,scripts,data,cookies,timers,handlers,commands:()=>Array.from(target.dataLayer||[],c=>Array.from(c)),storage(value){handlers.storage({key,newValue:value});}};
 }
 test('unapproved, invalid, expired, rejected, and preview visits never request Google',()=>{
   for(const saved of [undefined,{version:0,analytics:true,expiresAt:Date.now()+5000},{version:1,analytics:'true',expiresAt:Date.now()+5000},{version:1,analytics:true,expiresAt:Date.now()-1},{version:1,analytics:false,expiresAt:Date.now()+5000}])assert.equal(browser({saved}).scripts.length,0);
@@ -33,4 +34,33 @@ test('cross-tab changes apply without reloading unsaved work, and blocked storag
   const b=browser();let choices=[];b.api.subscribe(x=>choices.push(x));b.api.choose(true);b.storage(JSON.stringify({version:1,analytics:false,expiresAt:Date.now()+5000}));assert.equal(b.target['ga-disable-'+id],true);assert.equal(choices.at(-1).analytics,false);
   b.storage(null);assert.equal(b.api.choice(),null);assert.equal(b.scripts.length,1);
   const blocked=browser({blocked:true});blocked.api.choose(true);assert.equal(blocked.api.choice().analytics,true);assert.equal(blocked.data.has(key),false);assert.equal(blocked.scripts.length,1);
+});
+
+test('consent expires in open and restored tabs without disturbing personal entries', t=>{
+  let clock=1000000000;
+  t.mock.method(Date,'now',()=>clock);
+  const visit=browser();
+  const choices=[];
+  visit.api.subscribe(record=>choices.push(record));
+  visit.api.choose(true);
+  const deadline=visit.api.choice().expiresAt;
+  const firstTimer=[...visit.timers.values()][0];
+  assert.equal(firstTimer.delay,2147483647);
+  clock+=firstTimer.delay;
+  firstTimer.fn();
+  assert.equal(visit.api.choice().analytics,true);
+  clock=deadline;
+  visit.handlers.pageshow();
+  assert.equal(visit.timers.size,0);
+  assert.equal(visit.api.choice(),null);
+  assert.equal(choices.at(-1),null);
+  assert.equal(visit.target['ga-disable-'+id],true);
+  assert.deepEqual([...visit.cookies.keys()],['essential']);
+  assert(visit.data.has('personal'));
+
+  visit.api.choose(false);
+  clock=visit.api.choice().expiresAt;
+  [...visit.timers.values()][0].fn();
+  assert.equal(visit.api.choice(),null);
+  assert.equal(visit.scripts.length,1);
 });

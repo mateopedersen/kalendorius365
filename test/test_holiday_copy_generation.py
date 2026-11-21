@@ -16,6 +16,7 @@ def load(name, path):
     return module
 
 
+sys.path.insert(0, str(ROOT / 'scripts/holiday_phase2'))
 DETAIL = load('holiday_copy_detail', 'scripts/holiday_phase2/pages.py')
 sys.path.insert(0, str(ROOT / 'scripts/monthly_holidays'))
 MONTHLY = load('holiday_copy_monthly', 'scripts/monthly_holidays/pages.py')
@@ -54,10 +55,17 @@ class HolidayCopyGenerationTests(unittest.TestCase):
         try:
             with tempfile.TemporaryDirectory() as directory:
                 MONTHLY.ROOT = Path(directory)
-                for month in range(1, 13):
-                    events = [e for e in MONTHLY.DATA['events'] if e['date'].startswith(f'2027-{month:02d}')]
-                    MONTHLY.write_ics(month, events)
-                for path in Path(directory).rglob('*.ics'):
+                links = MONTHLY.guide_links(MONTHLY.guides())
+                engines = MONTHLY.calendar_years()
+                for year in MONTHLY.YEARS:
+                    events = list(MONTHLY.events_in_year(year, engines[year], links))
+                    for month in range(1, 13):
+                        selected = [e for e in events if e['date'].startswith(f'{year}-{month:02d}')]
+                        self.assertTrue(selected, (year, month))
+                        MONTHLY.write_ics(month, selected, year)
+                files = list(Path(directory).rglob('*.ics'))
+                self.assertEqual(len(files), 12 * len(MONTHLY.YEARS))
+                for path in files:
                     unfolded = re.sub(r'\r\n[ \t]', '', path.read_bytes().decode())
                     self.assertNotIn('str..', unfolded)
                     if 'Šventinė diena' in unfolded:

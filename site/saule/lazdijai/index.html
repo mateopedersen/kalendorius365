@@ -25,7 +25,7 @@ phase_module: "sun"
     <section class="sun-panel sun-answer" aria-labelledby="sun-answer-title">
   <h2 id="sun-answer-title">Kada teka ir leidžiasi Saulė Lazdijuose?</h2>
   <p class="sun-answer__line"><span id="sun-answer-today" hidden>Šiandien, </span><time id="sun-answer-date" datetime="2026-11-21">2026 m. lapkričio 21 d.</time><span id="sun-answer-today-comma" hidden>,</span> <span id="sun-answer-city">Lazdijuose</span> Saulė teka <time id="sun-answer-rise" datetime="2026-11-21T06:05:32.980Z">08:05</time> val., o leidžiasi <time id="sun-answer-set" datetime="2026-11-21T14:17:28.228Z">16:17</time> val.</p>
-  <p class="sun-answer__note">Dienos trukmė <strong id="sun-answer-daylight">8 val. 12 min.</strong> Laikas rodomas Lietuvos laiku.</p>
+  <p class="sun-answer__note">Dienos trukmė <strong id="sun-answer-daylight">8 val. 12 min.</strong> Civilinė aušra prasideda <time id="sun-answer-dawn" datetime="2026-11-21T05:24:34.686Z">07:24</time>, o vakaro prieblanda baigiasi <time id="sun-answer-dusk" datetime="2026-11-21T14:58:25.304Z">16:58</time> Lietuvos laiku.</p>
 </section>
 
     <section class="sun-metrics" aria-label="Dienos Saulės laikai">
@@ -52,6 +52,7 @@ phase_module: "sun"
     </section>
     <section class="sun-panel sun-week" aria-labelledby="sun-week-title">
   <h2 id="sun-week-title">Saulės laikų lentelė nuo pasirinktos datos</h2>
+  <p id="sun-week-change">Paskutinę lentelės dieną šviesus paros metas yra 17 min. trumpesnis nei pirmąją.</p>
   <table class="data-table">
     <caption id="sun-week-caption">Saulės laikai Lazdijuose · Lietuvos laiku</caption>
     <thead><tr><th scope="col">Data</th><th scope="col">Saulėtekis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos trukmė</th></tr></thead>
@@ -65,7 +66,7 @@ phase_module: "sun"
   </table>
 </section>
 
-    <section class="sun-stage sun-panel" aria-labelledby="sun-experience-title">
+    <section class="sun-stage sun-panel" data-sun-interactive hidden aria-labelledby="sun-experience-title">
       <header class="sun-stage__header">
         <div><h2 id="sun-experience-title">Saulės kelias danguje</h2><p id="sun-scene-caption">Pasirinktos vietos laikas ir apšvietimas.</p></div>
         <button id="sun-trajectory" type="button" aria-pressed="true"><span aria-hidden="true" class="sun-trajectory-line"></span> Saulės trajektorija</button>
@@ -90,7 +91,7 @@ phase_module: "sun"
         <p class="sun-stage__note">Horizontas scheminis, o Saulės diskas padidintas, kad būtų lengviau matyti. Tai apskaičiuotas vaizdas esant giedram dangui.</p>
       </div>
     </section>
-    <div class="sun-insights">
+    <div class="sun-insights" data-sun-interactive hidden>
       <section class="sun-panel sun-analysis" aria-labelledby="sun-month-title">
         <h2 id="sun-month-title">Dienos šviesa per mėnesį</h2>
         <p id="sun-chart-caption"></p>
@@ -120,16 +121,7 @@ phase_module: "sun"
         </details>
       </section>
     </div>
-    <section class="sun-panel sun-method" aria-labelledby="sun-method-title">
-      <h2 id="sun-method-title">Kaip skaičiuojami Saulės laikai?</h2>
-      <div class="sun-method__grid">
-        <article><h3>Saulės padėtis ir kryptis</h3><p>Aukštį ir azimutą skaičiuojame pasirinktu momentu pagal miesto koordinates. Azimutas matuojamas nuo geografinės šiaurės. Saulės vidurdienis yra laikas, kai Saulė aukščiausiai virš horizonto.</p></article>
-        <article><h3>Saulėtekis, saulėlydis ir prieblanda</h3><p>Saulė teka arba leidžiasi, kai jos viršutinis kraštas paliečia lygų horizontą. Skaičiuojant Saulės centro geometrinis aukštis tada yra apie −0,83°. Civilinės prieblandos riba yra −6°.</p></article>
-        <article><h3>Laikas vietoje</h3><p>Valandos rodomos Lietuvos laiku, įskaitant vasaros laiką. Kalvos, pastatai, stebėjimo aukštis ir atmosferos refrakcija gali pakeisti matomą saulėtekio ar saulėlydžio laiką.</p></article>
-        <article><h3>Miestų koordinatės</h3><p>Naudojami 103 miestų atskaitos taškai. Daugumai miestų naudojami apytiksliai ribų centrai iš VĮ Registrų centro Adresų registro rinkinio Nr. 1347 (CC BY 4.0). <a href="https://www.geoportal.lt/geoportal/atviri-duomenys">Lietuvos erdvinės informacijos portale</a> pateikiama prieiga prie registro erdvinių duomenų. Penkiems didiesiems miestams naudojamos <a href="https://www.geonames.org/export/">„GeoNames“ koordinatės (CC BY)</a>.</p></article>
-      </div>
-      <p class="sun-method__sources"><a href="https://aa.usno.navy.mil/faq/sun_approx">USNO Saulės koordinačių metodika</a> · <a href="https://aa.usno.navy.mil/faq/RST_defs">Horizontas ir prieblandos apibrėžimai</a></p>
-    </section>
+    <p class="sun-method__sources"><a href="/saule/#sun-method-title">Kaip miesto koordinatės ir horizontas lemia Saulės laikus?</a></p>
   </section>
   <nav id="saules-miestai" class="sun-panel sun-cities" aria-labelledby="sun-cities-title">
   <h2 id="sun-cities-title">Saulės laikai Lietuvos miestuose</h2>

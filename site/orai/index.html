@@ -107,6 +107,7 @@ hero_share: true
 </div>
 <!--/wx-hub-->
 <template id="wx-place-template">
+  {{ site.data.weather_icons }}
 <div class="weather-atlas" data-weather-place="vilnius">
   <header class="wx-live" id="orai-siandien" data-sky="cloud">
     <div class="wx-scene" aria-hidden="true">
@@ -119,6 +120,7 @@ hero_share: true
       <div class="wx-live__place">
         <p class="wx-live__eyebrow">Orai šiandien</p>
         <!--wx-place-title--><!--/wx-place-title-->
+        <!--wx-place-context--><!--/wx-place-context-->
       </div>
       <div class="wx-live__temperature">
         <p id="wx-live-reading" aria-live="polite">Įkeliami naujausi duomenys…</p>
@@ -127,9 +129,13 @@ hero_share: true
       <div class="wx-live__summary">
         <p id="wx-live-detail" hidden></p>
         <p class="wx-timestamp" id="wx-timestamp" hidden></p>
-        <a class="wx-action wx-action--dark" id="wx-rain-shortcut" href="#krituliu-prognoze"><span class="wx-action__label">Kritulių prognozė</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
         <button type="button" data-wx-retry="forecast" class="wx-retry" hidden>Bandyti dar kartą</button>
       </div>
+    </div>
+    <div class="wx-brief" aria-label="Vietos orų suvestinė">
+      <a href="#oru-prognoze" id="wx-brief-day"><!--wx-brief-day--><!--/wx-brief-day--></a>
+      <a href="#krituliu-prognoze" id="wx-brief-rain"><!--wx-brief-rain--><!--/wx-brief-rain--></a>
+      <a href="#orai-keliuose" id="wx-brief-road"><!--wx-brief-road--><!--/wx-brief-road--></a>
     </div>
   </header>
 
@@ -138,44 +144,33 @@ hero_share: true
       <!--wx-forecast--><h2 id="wx-forecast-title" tabindex="-1">Orų prognozė</h2><!--/wx-forecast-->
       {% include weather-radar-link.html %}
     </div>
-    <div class="wx-periods" role="group" aria-label="Prognozės laikotarpis">
-      {% assign presets = '1,3,5,7,10,15,30,45,90' | split: ',' %}
-      {% for days in presets %}
-      <button type="button" data-days="{{ days }}" aria-pressed="{% if days == '5' %}true{% else %}false{% endif %}">{{ days }} d.</button>
-      {% endfor %}
-    </div>
+    <noscript><p>Valandinėms lentelėms ir grafikams peržiūrėti įjunkite „JavaScript“.</p></noscript>
+    <nav class="wx-periods" aria-label="Prognozės laikotarpis"><!--wx-period-nav--><!--/wx-period-nav--></nav>
     <div class="wx-forecast-actions">
-      <a class="wx-action" href="#krituliu-prognoze"><span class="wx-action__label">Kada lis?</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+        <a class="wx-action" id="wx-rain-shortcut" href="#krituliu-prognoze"><span class="wx-action__label">Kritulių prognozė</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
       <a class="wx-action" href="#savaitgalio-orai"><span class="wx-action__label">Savaitgalio orai</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
       <a class="wx-action" href="#wx-hours-title" id="wx-hourly-link" hidden><span class="wx-action__label">Valandiniai orai</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
       <a class="wx-action" href="#oro-kokybe"><span class="wx-action__label">Oro kokybė ir žiedadulkės</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
-      <a class="wx-action" href="#wx-climate-title" id="wx-climate-link" hidden><span class="wx-action__label">Klimato apžvalga</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
+      <a class="wx-action" id="wx-climate-link" hidden><span class="wx-action__label">Klimato apžvalga</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
       <a class="wx-action" href="#wx-days" id="wx-days-link" hidden><span class="wx-action__label">Kasdienė prognozė</span><span class="wx-action__end">{% include weather-action-icon.html key='down' %}</span></a>
     </div>
     <p class="wx-message" id="wx-forecast-status" role="status">Įkeliama prognozė…</p>
     <div class="wx-forecast-days">
       <h3 id="wx-days-title" hidden>Pirmųjų 15 dienų prognozė</h3>
-      <div id="wx-days" class="wx-days"></div>
+      <div id="wx-days" class="wx-days"><!--wx-day-cards--><!--/wx-day-cards--></div>
     </div>
     <div class="wx-provider-credit" id="wx-provider-credit" hidden>
       <a class="wx-provider-credit__logo" id="wx-visual-crossing-credit" href="https://www.visualcrossing.com/weather-api/" hidden>
         <img src="/assets/visuals/visual-crossing-powered-by.png" alt="Orų duomenys iš „Visual Crossing Weather“" width="140" height="35" loading="lazy" decoding="async">
       </a>
-      <a id="wx-forecast-source" hidden></a>
+
       <a href="/oru-saltiniai/#duomenys">Duomenys ir licencijos</a>
     </div>
-    <section class="wx-climate" aria-labelledby="wx-climate-title" hidden>
-      <h3 id="wx-climate-title">Klimato orientyrai nuo 16-os dienos</h3>
-      <p>Pasirinkite mėnesį ir peržiūrėkite temperatūros, drėgnio bei kritulių vidurkius pagal ankstesnių metų duomenis.</p>
-      <p id="wx-climate-status" class="wx-message" role="status"></p>
-      <button type="button" data-wx-retry="climate" class="wx-retry" hidden>Krauti dar kartą</button>
-      <div id="wx-climate-months" class="wx-climate__months" role="group" aria-label="Klimato apžvalgos mėnuo"></div>
-      <p id="wx-climate-range" class="wx-climate__range" aria-live="polite"></p>
-      <div id="wx-climate-days" class="wx-days wx-days--extended" role="region" aria-labelledby="wx-climate-range"></div>
-    </section>
+    <!--wx-climate-view--><!--/wx-climate-view-->
     <section class="wx-hourly" aria-labelledby="wx-hours-title" hidden>
       <div class="wx-hourly__heading">
         <h3 id="wx-hours-title">Valandinė prognozė</h3>
+        <a id="wx-forecast-source" hidden></a>
         <label class="wx-hourly__date" for="wx-hour-day">Diena <select id="wx-hour-day"></select></label>
       </div>
       <div id="wx-hour-reading" class="wx-hourly__reading" aria-live="polite"></div>
@@ -200,6 +195,7 @@ hero_share: true
     <p id="wx-rain-summary" role="status">Įkeliama valandinė kritulių prognozė…</p>
     <div id="wx-rain-bars" class="wx-rain-bars" role="group" aria-label="Krituliai kiekvieną valandą"></div>
     <p id="wx-rain-detail" class="wx-rain-detail" aria-live="polite" hidden></p>
+    <div class="wx-daylight" id="wx-daylight"><!--wx-daylight--><!--/wx-daylight--></div>
     <p id="wx-rain-status" class="wx-message" role="status" hidden></p>
   </section>
 
@@ -220,7 +216,7 @@ hero_share: true
     <h2 id="wx-details-title">Orų rodikliai</h2>
     <p id="wx-readings-status" class="wx-message" role="status">Įkeliami orų rodikliai…</p>
     <div class="wx-metrics" id="wx-metrics"></div>
-    <noscript><p>Orų rodmenims ir paieškai reikalingas „JavaScript“. Vietovių nuorodos ir šaltiniai veikia ir be jo.</p></noscript>
+
   </section>
 
   <section class="wx-section wx-environment" id="oro-kokybe" aria-labelledby="wx-environment-title">
@@ -228,6 +224,7 @@ hero_share: true
     <div class="wx-section__head">
       <!--wx-environment--><h2 id="wx-environment-title">Oro kokybė ir žiedadulkės</h2><!--/wx-environment-->
     </div>
+    <p class="wx-section__intro"><a href="/oru-saltiniai/#cams">„Copernicus“ (CAMS)</a> valandinė prognozė maždaug 10 km gardelei. Kaimyninės vietovės gali patekti į tą pačią gardelę.</p>
     <div class="wx-environment__grid">
       <article class="wx-exposure" data-kind="air" aria-labelledby="wx-air-title">
         <div class="wx-exposure__hero">
@@ -238,10 +235,9 @@ hero_share: true
           </div>
           <svg viewBox="0 0 148 108" width="148" height="108" aria-hidden="true"><use href="#wx-inst-airquality"></use></svg>
         </div>
-        <details hidden id="wx-air-details">
-          <summary>Teršalai ir artimiausios valandos</summary>
+        <details open hidden id="wx-air-details">
+          <summary>Penkių teršalų koncentracijos</summary>
           <dl id="wx-air-values" class="wx-exposure__values"></dl>
-          <div id="wx-air-outlook"></div>
         </details>
       </article>
       <article class="wx-exposure" data-kind="pollen" aria-labelledby="wx-pollen-title">
@@ -253,10 +249,9 @@ hero_share: true
           </div>
           <svg viewBox="0 0 148 108" width="148" height="108" aria-hidden="true"><use href="#wx-inst-pollen"></use></svg>
         </div>
-        <details hidden id="wx-pollen-details">
-          <summary>Augalai ir artimiausios valandos</summary>
+        <details open hidden id="wx-pollen-details">
+          <summary>Žiedadulkių koncentracijos pagal augalus</summary>
           <dl id="wx-pollen-values" class="wx-exposure__values"></dl>
-          <div id="wx-pollen-outlook"></div>
         </details>
       </article>
     </div>
@@ -297,7 +292,7 @@ hero_share: true
 
   <section class="wx-section wx-method" id="oru-gidas" aria-labelledby="wx-method-title">
     <header class="wx-guide-header">
-      <h2 id="wx-method-title">Kaip skaityti orų duomenis?</h2>
+      <h2 id="wx-method-title">Vietovė ir kelionės planavimas</h2>
       <!--wx-intro--><!--/wx-intro-->
     </header>
     <!--wx-guide--><!--/wx-guide-->

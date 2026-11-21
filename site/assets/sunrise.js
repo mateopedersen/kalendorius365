@@ -196,6 +196,7 @@ function setupSun() {
       $("#sun-year-caption").textContent = `${city.name} · ${year} m. · dienos trukmės suvestinė`;
       $("#sun-year-rows").replaceChildren(...yearRows);
       for (const control of [play, slider, trajectory, ...eventButtons]) control.disabled = false;
+      for (const panel of root.querySelectorAll("[data-sun-interactive]")) panel.hidden = false;
       errorBox.hidden = true;
 
       if (change === "city" || change === "date") {
@@ -234,7 +235,7 @@ function setupSun() {
   render();
 }
 
-function renderAnswer(place, rows, isToday) {
+function renderAnswer(place, { rows, comparison }, isToday) {
   const first = rows[0];
   $("#sun-answer-title").textContent = `Kada teka ir leidžiasi Saulė ${place}?`;
   $("#sun-answer-city").textContent = place;
@@ -244,12 +245,16 @@ function renderAnswer(place, rows, isToday) {
     ["sun-answer-date", first.label, first.date],
     ["sun-answer-rise", first.sunrise, first.sunriseAt],
     ["sun-answer-set", first.sunset, first.sunsetAt],
+    ["sun-answer-dawn", first.civilStart, first.civilStartAt],
+    ["sun-answer-dusk", first.civilEnd, first.civilEndAt],
   ]) {
     const time = $(`#${id}`);
     time.textContent = label;
     time.dateTime = datetime;
   }
   $("#sun-answer-daylight").textContent = first.daylight;
+  $("#sun-week-change").textContent = comparison;
+  $("#sun-week-change").hidden = !comparison;
   $("#sun-week-caption").textContent = `Saulės laikai ${place} · Lietuvos laiku`;
   $("#sun-week-rows").replaceChildren(...rows.map(row => {
     const tr = html("tr");

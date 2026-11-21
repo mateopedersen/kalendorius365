@@ -59,16 +59,18 @@ module SunrisePage
     place = CGI.escapeHTML(city.fetch('locative'))
     rise = solar_time(row.fetch('sunrise'), row.fetch('sunriseAt'), id: 'sun-answer-rise')
     set = solar_time(row.fetch('sunset'), row.fetch('sunsetAt'), id: 'sun-answer-set')
+    dawn = solar_time(row.fetch('civilStart'), row.fetch('civilStartAt'), id: 'sun-answer-dawn')
+    dusk = solar_time(row.fetch('civilEnd'), row.fetch('civilEndAt'), id: 'sun-answer-dusk')
     <<~HTML
       <section class="sun-panel sun-answer" aria-labelledby="sun-answer-title">
         <h2 id="sun-answer-title">Kada teka ir leidžiasi Saulė #{place}?</h2>
         <p class="sun-answer__line"><span id="sun-answer-today" hidden>Šiandien, </span><time id="sun-answer-date" datetime="#{row.fetch('date')}">#{row.fetch('label')}</time><span id="sun-answer-today-comma" hidden>,</span> <span id="sun-answer-city">#{place}</span> Saulė teka #{rise} val., o leidžiasi #{set} val.</p>
-        <p class="sun-answer__note">Dienos trukmė <strong id="sun-answer-daylight">#{row.fetch('daylight')}</strong> Laikas rodomas Lietuvos laiku.</p>
+        <p class="sun-answer__note">Dienos trukmė <strong id="sun-answer-daylight">#{row.fetch('daylight')}</strong> Civilinė aušra prasideda #{dawn}, o vakaro prieblanda baigiasi #{dusk} Lietuvos laiku.</p>
       </section>
     HTML
   end
 
-  def outlook(city, rows)
+  def outlook(city, rows, comparison)
     place = CGI.escapeHTML(city.fetch('locative'))
     entries = rows.map do |row|
       date = solar_time(row.fetch('label'), row.fetch('date'))
@@ -79,6 +81,7 @@ module SunrisePage
     <<~HTML
       <section class="sun-panel sun-week" aria-labelledby="sun-week-title">
         <h2 id="sun-week-title">Saulės laikų lentelė nuo pasirinktos datos</h2>
+        <p id="sun-week-change"#{comparison.empty? ? ' hidden' : ''}>#{CGI.escapeHTML(comparison)}</p>
         <table class="data-table">
           <caption id="sun-week-caption">Saulės laikai #{place} · Lietuvos laiku</caption>
           <thead><tr><th scope="col">Data</th><th scope="col">Saulėtekis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos trukmė</th></tr></thead>
@@ -109,13 +112,32 @@ module SunrisePage
     HTML
   end
 
+  def method_section(place)
+    if place
+      return '<p class="sun-method__sources"><a href="/saule/#sun-method-title">Kaip miesto koordinatės ir horizontas lemia Saulės laikus?</a></p>'
+    end
+
+    <<~HTML
+      <section class="sun-panel sun-method" aria-labelledby="sun-method-title">
+        <h2 id="sun-method-title">Kaip skaičiuojami Saulės laikai?</h2>
+        <div class="sun-method__grid">
+          <article><h3>Saulės padėtis ir kryptis</h3><p>Aukštį ir azimutą skaičiuojame pasirinktu momentu pagal miesto koordinates. Azimutas matuojamas nuo geografinės šiaurės. Saulės vidurdienis yra laikas, kai Saulė aukščiausiai virš horizonto.</p></article>
+          <article><h3>Saulėtekis, saulėlydis ir prieblanda</h3><p>Saulė teka arba leidžiasi, kai jos viršutinis kraštas paliečia lygų horizontą. Skaičiuojant Saulės centro geometrinis aukštis tada yra apie −0,83°. Civilinės prieblandos riba yra −6°.</p></article>
+          <article><h3>Laikas vietoje</h3><p>Valandos rodomos Lietuvos laiku, įskaitant vasaros laiką. Kalvos, pastatai, stebėjimo aukštis ir atmosferos refrakcija gali pakeisti matomą saulėtekio ar saulėlydžio laiką.</p></article>
+          <article><h3>Miestų koordinatės</h3><p>Naudojami #{cities.size} miestų atskaitos taškai. Daugumai miestų naudojami apytiksliai ribų centrai iš VĮ Registrų centro Adresų registro rinkinio Nr. 1347 (CC BY 4.0). <a href="https://www.geoportal.lt/geoportal/atviri-duomenys">Lietuvos erdvinės informacijos portale</a> pateikiama prieiga prie registro erdvinių duomenų. Penkiems didiesiems miestams naudojamos <a href="https://www.geonames.org/export/">„GeoNames“ koordinatės (CC BY)</a>.</p></article>
+        </div>
+        <p class="sun-method__sources"><a href="https://aa.usno.navy.mil/faq/sun_approx">USNO Saulės koordinačių metodika</a> · <a href="https://aa.usno.navy.mil/faq/RST_defs">Horizontas ir prieblandos apibrėžimai</a></p>
+      </section>
+    HTML
+  end
+
   def body(place = nil)
     primary = PRIMARY_CITIES.map { |id| cities.find { |city| city['id'] == id } }
     other = cities.reject { |city| PRIMARY_CITIES.include?(city['id']) }
     city = place || primary.first
     selected_id = city.fetch('id')
     week = city_readings.fetch(selected_id)
-    day = week.first
+    day = week.fetch('rows').first
     title = 'Saulėtekis ir saulėlydis'
     title += " #{CGI.escapeHTML(city.fetch('locative'))}" if place
     buttons = MOMENTS.map do |key, label, id|
@@ -147,8 +169,8 @@ module SunrisePage
             #{metric('set', 'Saulėlydis', 'sunset-time', 'sunset-date', day.fetch('sunset'))}
             #{metric('length', 'Dienos trukmė', 'sun-day-length', 'sun-day-change', day.fetch('daylight'))}
           </section>
-          #{outlook(city, week)}
-          <section class="sun-stage sun-panel" aria-labelledby="sun-experience-title">
+          #{outlook(city, week.fetch('rows'), week.fetch('comparison'))}
+          <section class="sun-stage sun-panel" data-sun-interactive hidden aria-labelledby="sun-experience-title">
             <header class="sun-stage__header">
               <div><h2 id="sun-experience-title">Saulės kelias danguje</h2><p id="sun-scene-caption">Pasirinktos vietos laikas ir apšvietimas.</p></div>
               <button id="sun-trajectory" type="button" aria-pressed="true"><span aria-hidden="true" class="sun-trajectory-line"></span> Saulės trajektorija</button>
@@ -173,7 +195,7 @@ module SunrisePage
               <p class="sun-stage__note">Horizontas scheminis, o Saulės diskas padidintas, kad būtų lengviau matyti. Tai apskaičiuotas vaizdas esant giedram dangui.</p>
             </div>
           </section>
-          <div class="sun-insights">
+          <div class="sun-insights" data-sun-interactive hidden>
             <section class="sun-panel sun-analysis" aria-labelledby="sun-month-title">
               <h2 id="sun-month-title">Dienos šviesa per mėnesį</h2>
               <p id="sun-chart-caption"></p>
@@ -203,16 +225,7 @@ module SunrisePage
               </details>
             </section>
           </div>
-          <section class="sun-panel sun-method" aria-labelledby="sun-method-title">
-            <h2 id="sun-method-title">Kaip skaičiuojami Saulės laikai?</h2>
-            <div class="sun-method__grid">
-              <article><h3>Saulės padėtis ir kryptis</h3><p>Aukštį ir azimutą skaičiuojame pasirinktu momentu pagal miesto koordinates. Azimutas matuojamas nuo geografinės šiaurės. Saulės vidurdienis yra laikas, kai Saulė aukščiausiai virš horizonto.</p></article>
-              <article><h3>Saulėtekis, saulėlydis ir prieblanda</h3><p>Saulė teka arba leidžiasi, kai jos viršutinis kraštas paliečia lygų horizontą. Skaičiuojant Saulės centro geometrinis aukštis tada yra apie −0,83°. Civilinės prieblandos riba yra −6°.</p></article>
-              <article><h3>Laikas vietoje</h3><p>Valandos rodomos Lietuvos laiku, įskaitant vasaros laiką. Kalvos, pastatai, stebėjimo aukštis ir atmosferos refrakcija gali pakeisti matomą saulėtekio ar saulėlydžio laiką.</p></article>
-              <article><h3>Miestų koordinatės</h3><p>Naudojami 103 miestų atskaitos taškai. Daugumai miestų naudojami apytiksliai ribų centrai iš VĮ Registrų centro Adresų registro rinkinio Nr. 1347 (CC BY 4.0). <a href="https://www.geoportal.lt/geoportal/atviri-duomenys">Lietuvos erdvinės informacijos portale</a> pateikiama prieiga prie registro erdvinių duomenų. Penkiems didiesiems miestams naudojamos <a href="https://www.geonames.org/export/">„GeoNames“ koordinatės (CC BY)</a>.</p></article>
-            </div>
-            <p class="sun-method__sources"><a href="https://aa.usno.navy.mil/faq/sun_approx">USNO Saulės koordinačių metodika</a> · <a href="https://aa.usno.navy.mil/faq/RST_defs">Horizontas ir prieblandos apibrėžimai</a></p>
-          </section>
+          #{method_section(place)}
         </section>
         #{city_directory(primary, other, place.nil?)}
         #{Phase568Pages.links([['astronominis-kalendorius/','Astronominis kalendorius','Lygiadieniai, saulėgrįžos ir dangaus reiškiniai.'],['menulio-fazes/','Mėnulio fazės','Jaunaties, pilnaties ir ketvirčių laikai.'],['metu-laikai/','Metų laikai','Astronominės ir meteorologinės metų laikų ribos.']])}
