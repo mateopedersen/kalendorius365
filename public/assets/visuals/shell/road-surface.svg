@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="tarmac" x2="0" y2="1">
+      <stop stop-color="#7897a0"/>
+      <stop offset="1" stop-color="#1c3a46"/>
+    </linearGradient>
+  </defs>
+  <path d="M8 40 17 9h14l9 31z" fill="#14323f" transform="translate(0 2)"/>
+  <path d="M5 39 16 8h16l11 31a2 2 0 0 1-2 3H7a2 2 0 0 1-2-3Z" fill="url(#tarmac)" stroke="#254550" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M16 12 8 38m24-26 8 26" fill="none" stroke="#dbecef" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M24 12v3m0 5v5m0 6v7" fill="none" stroke="#ffdb72" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

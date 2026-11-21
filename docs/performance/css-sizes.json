@@ -2,28 +2,238 @@
   "method": "esbuild 0.28.2 CSS syntax minification; Chrome 100 / Safari 15.4 target; no selector renaming",
   "styles": [
     {
+      "path": "/assets/about-us.css",
+      "source_bytes": 20767,
+      "generated_bytes": 19778
+    },
+    {
+      "path": "/assets/advertising/advertising.css",
+      "source_bytes": 5936,
+      "generated_bytes": 5920
+    },
+    {
+      "path": "/assets/astronomy-agenda.css",
+      "source_bytes": 12663,
+      "generated_bytes": 12101
+    },
+    {
+      "path": "/assets/blog.css",
+      "source_bytes": 4950,
+      "generated_bytes": 4870
+    },
+    {
+      "path": "/assets/calendar-editor/editor.css",
+      "source_bytes": 10031,
+      "generated_bytes": 9915
+    },
+    {
+      "path": "/assets/contact.css",
+      "source_bytes": 8445,
+      "generated_bytes": 8054
+    },
+    {
       "path": "/assets/design-system.css",
-      "source_bytes": 198384,
-      "generated_bytes": 170067
+      "source_bytes": 178550,
+      "generated_bytes": 169678
     },
     {
-      "path": "/assets/site-shell.css",
-      "source_bytes": 138251,
-      "generated_bytes": 122789
+      "path": "/assets/discovery.css",
+      "source_bytes": 16120,
+      "generated_bytes": 15291
     },
     {
-      "path": "/assets/sunrise.css",
-      "source_bytes": 11716,
-      "generated_bytes": 10315
+      "path": "/assets/holiday-phase2.css",
+      "source_bytes": 12414,
+      "generated_bytes": 12255
     },
     {
-      "path": "/assets/weather-atlas.css",
-      "source_bytes": 54902,
+      "path": "/assets/homepage-bundle.css",
+      "source_bytes": 128600,
+      "generated_bytes": 120063
+    },
+    {
+      "path": "/assets/homepage.css",
+      "source_bytes": 55368,
+      "generated_bytes": 52352
+    },
+    {
+      "path": "/assets/horoscope-detail.css",
+      "source_bytes": 86722,
+      "generated_bytes": 80438
+    },
+    {
+      "path": "/assets/horoscope-hub.css",
+      "source_bytes": 73947,
+      "generated_bytes": 68060
+    },
+    {
+      "path": "/assets/horoscope.css",
+      "source_bytes": 25577,
+      "generated_bytes": 24479
+    },
+    {
+      "path": "/assets/lunar.css",
+      "source_bytes": 19581,
+      "generated_bytes": 19356
+    },
+    {
+      "path": "/assets/monthly-holidays.css",
+      "source_bytes": 27554,
+      "generated_bytes": 26746
+    },
+    {
+      "path": "/assets/namedays.css",
+      "source_bytes": 14531,
+      "generated_bytes": 13805
+    },
+    {
+      "path": "/assets/planner-studio.css",
+      "source_bytes": 12379,
+      "generated_bytes": 12383
+    },
+    {
+      "path": "/assets/print.css",
+      "source_bytes": 9708,
+      "generated_bytes": 8533
+    },
+    {
+      "path": "/assets/seasons.css",
+      "source_bytes": 14613,
+      "generated_bytes": 13862
+    },
+    {
+      "path": "/assets/sharing/base.css",
+      "source_bytes": 2913,
+      "generated_bytes": 2909
+    },
+    {
+      "path": "/assets/sharing/dialog.css",
+      "source_bytes": 11402,
+      "generated_bytes": 11463
+    },
+    {
+      "path": "/assets/shell/archive.css",
+      "source_bytes": 5771,
+      "generated_bytes": 5520
+    },
+    {
+      "path": "/assets/shell/civic.css",
+      "source_bytes": 12372,
+      "generated_bytes": 11799
+    },
+    {
+      "path": "/assets/shell/education-calendar.css",
+      "source_bytes": 15405,
+      "generated_bytes": 14717
+    },
+    {
+      "path": "/assets/shell/family-planner.css",
+      "source_bytes": 13056,
+      "generated_bytes": 12571
+    },
+    {
+      "path": "/assets/shell/garden.css",
+      "source_bytes": 15429,
+      "generated_bytes": 14745
+    },
+    {
+      "path": "/assets/shell/holiday-hub.css",
+      "source_bytes": 9498,
+      "generated_bytes": 9027
+    },
+    {
+      "path": "/assets/shell/holiday-research.css",
+      "source_bytes": 5706,
+      "generated_bytes": 5434
+    },
+    {
+      "path": "/assets/shell/lesson-templates.css",
+      "source_bytes": 6232,
+      "generated_bytes": 5951
+    },
+    {
+      "path": "/assets/shell/occasion-calendar.css",
+      "source_bytes": 4816,
+      "generated_bytes": 4628
+    },
+    {
+      "path": "/assets/shell/occasion-reading.css",
+      "source_bytes": 12710,
+      "generated_bytes": 12045
+    },
+    {
+      "path": "/assets/shell/personal-planner.css",
+      "source_bytes": 14322,
+      "generated_bytes": 13658
+    },
+    {
+      "path": "/assets/shell/school-planner.css",
+      "source_bytes": 18260,
+      "generated_bytes": 17403
+    },
+    {
+      "path": "/assets/shell/shopping-appearance.css",
+      "source_bytes": 1776,
+      "generated_bytes": 1722
+    },
+    {
+      "path": "/assets/shell/site-shell.css",
+      "source_bytes": 128597,
+      "generated_bytes": 122786
+    },
+    {
+      "path": "/assets/shell/sunrise.css",
+      "source_bytes": 10794,
+      "generated_bytes": 10313
+    },
+    {
+      "path": "/assets/shell/template-actions.css",
+      "source_bytes": 8512,
+      "generated_bytes": 8226
+    },
+    {
+      "path": "/assets/shell/weather-atlas.css",
+      "source_bytes": 50977,
       "generated_bytes": 48484
     },
     {
+      "path": "/assets/shell/weekend-guide.css",
+      "source_bytes": 9775,
+      "generated_bytes": 9279
+    },
+    {
+      "path": "/assets/shift-exceptions.css",
+      "source_bytes": 1920,
+      "generated_bytes": 1921
+    },
+    {
+      "path": "/assets/shopping/guides-0358acb123fc.css",
+      "source_bytes": 28931,
+      "generated_bytes": 28958
+    },
+    {
+      "path": "/assets/style.css",
+      "source_bytes": 44152,
+      "generated_bytes": 43646
+    },
+    {
+      "path": "/assets/workdays.css",
+      "source_bytes": 1617,
+      "generated_bytes": 1618
+    },
+    {
+      "path": "/assets/year-directory.css",
+      "source_bytes": 5690,
+      "generated_bytes": 5652
+    },
+    {
+      "path": "/assets/zodiac-guide.css",
+      "source_bytes": 79212,
+      "generated_bytes": 73395
+    },
+    {
       "path": "/assets/zodiac.css",
-      "source_bytes": 19867,
+      "source_bytes": 18407,
       "generated_bytes": 17884
     }
   ]

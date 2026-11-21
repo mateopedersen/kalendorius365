@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="solarCore" cx=".35" cy=".25" r=".78"><stop stop-color="#fff8c9"/><stop offset=".54" stop-color="#ffdb77"/><stop offset="1" stop-color="#e68b32"/></radialGradient>
+    <linearGradient id="cloudCore" x2=".22" y2="1"><stop stop-color="#fff"/><stop offset=".56" stop-color="#dde8eb"/><stop offset="1" stop-color="#96afbe"/></linearGradient>
+    <linearGradient id="darkCloud" x2=".22" y2="1"><stop stop-color="#dbe7eb"/><stop offset="1" stop-color="#526f88"/></linearGradient>
+    <linearGradient id="dropCore" x2=".25" y2="1"><stop stop-color="#74c1ee"/><stop offset="1" stop-color="#286291"/></linearGradient>
+    <radialGradient id="precipitationGlass" cx="37%" cy="52%" r="67%">
+      <stop stop-color="#e2f9ff"/>
+      <stop offset=".29" stop-color="#a0e2f5"/>
+      <stop offset=".65" stop-color="#54b2d4"/>
+      <stop offset="1" stop-color="#1f6c98"/>
+    </radialGradient>
+    <g id="solar">
+      <path d="M32 4v5m0 46v5M4 32h5m46 0h5M12 12l4 4m32 32 4 4m0-40-4 4M16 48l-4 4" stroke="#dd973d" stroke-width="2.7" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="17" fill="url(#solarCore)" stroke="#c97929" stroke-width="1.2"/>
+      <path d="M23.4 23.5a12 12 0 0 1 9-4" fill="none" stroke="#fff7cf" stroke-width="2.1" stroke-linecap="round"/>
+    </g>
+    <path id="cloudShape" d="M15 43c-6 0-10-4.3-10-9.5 0-5.4 4.2-9.5 9.8-10 1.9-7.4 8.5-12.7 16.3-12.7 7 0 12.7 4 15 10 7.3.4 12.8 4.9 12.8 11.1 0 6.2-4.6 11.1-11 11.1z"/>
+    <g id="lightCloud">
+      <use href="#cloudShape" fill="url(#cloudCore)" stroke="#7997a9" stroke-width="1.1"/>
+      <path d="M17 24c2.4-6.4 8-10.7 14-10.7 5.4 0 10 2.8 12.3 7.1" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+    </g>
+    <g id="rainCloud"><use href="#cloudShape" fill="url(#darkCloud)" stroke="#59718a" stroke-width="1.2"/></g>
+    <path id="rainDrop" d="M0 0c-2.7 4.9-4 6.4-4 8.7a4 4 0 0 0 8 0C4 6.4 2.7 4.9 0 0Z" fill="url(#dropCore)"/>
+    <g id="flake" stroke="#457aa0" stroke-width="1.9" stroke-linecap="round">
+      <path d="M0-5v10M-4.35-2.5l8.7 5m-8.7 0 8.7-5"/>
+    </g>
+    <g id="lunar">
+      <path d="M46 46A23 23 0 0 1 30 6a21 21 0 1 0 22 34a23 23 0 0 1-6 6Z" fill="#f3ddb1" stroke="#9c8061" stroke-width="1.2"/>
+      <path d="M48 10v10m-5-5h10M55 23v6m-3-3h6" stroke="#ad8652" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <symbol id="action-external" viewBox="0 0 24 24">
+    <path d="M10 5.5H6.5a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V14m-6-8.5h6v6m0-6-8 8" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="action-down" viewBox="0 0 24 24">
+    <path d="m6.5 9 5.5 5.5L17.5 9" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="action-chevron" viewBox="0 0 24 24">
+    <path d="m9.5 6.5 5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="action-next" viewBox="0 0 24 24"><use href="#action-chevron"/></symbol>
+  <symbol id="precipitation-drop" viewBox="0 0 64 64">
+    <path d="M32 4c-3 9-9 16-14 23-4 5-7 10-7 16a21 21 0 0 0 42 0c0-6-3-11-7-16C41 20 35 13 32 4Z" fill="url(#precipitationGlass)" stroke="#276f96" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M23 28c-4 5-6 9-6 14m17 15c5 0 10-3 13-7" fill="none" stroke="#e9faff" stroke-width="2.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="precipitation-flake" viewBox="0 0 64 64">
+    <path d="M32 7v50M10 20l44 24m0-24L10 44m15-32 7 7 7-7M25 52l7-7 7 7M17 16l3 9-10 2m44 10-10 2 3 9m0-32-3 9 10 2M10 37l10 2-3 9" fill="none" stroke="#356c91" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="sun" viewBox="0 0 64 64"><use href="#solar"/></symbol>
+  <symbol id="moon" viewBox="0 0 64 64"><use href="#lunar"/></symbol>
+  <symbol id="part-night" viewBox="0 0 64 64"><use href="#lunar" transform="translate(17 -2) scale(.79)"/><use href="#lightCloud" transform="translate(0 15) scale(.92)"/></symbol>
+  <symbol id="part" viewBox="0 0 64 64"><use href="#solar" transform="translate(19 -2) scale(.71)"/><use href="#lightCloud" transform="translate(0 15) scale(.92)"/></symbol>
+  <symbol id="cloud" viewBox="0 0 64 64"><use href="#lightCloud" transform="translate(0 5)"/></symbol>
+  <symbol id="rain" viewBox="0 0 64 64"><use href="#rainCloud" transform="translate(1 -1) scale(.96)"/><use href="#rainDrop" transform="translate(18 43)"/><use href="#rainDrop" transform="translate(32 46)"/><use href="#rainDrop" transform="translate(46 43)"/></symbol>
+  <symbol id="snow" viewBox="0 0 64 64"><use href="#lightCloud" transform="translate(1 -1) scale(.96)"/><use href="#flake" transform="translate(17 50)"/><use href="#flake" transform="translate(32 55)"/><use href="#flake" transform="translate(47 50)"/></symbol>
+  <symbol id="sleet" viewBox="0 0 64 64"><use href="#rainCloud" transform="translate(1 -1) scale(.96)"/><use href="#flake" transform="translate(16 50)"/><use href="#rainDrop" transform="translate(32 46)"/><use href="#flake" transform="translate(48 50)"/></symbol>
+  <symbol id="thunder" viewBox="0 0 64 64"><use href="#rainCloud" transform="translate(1 -1) scale(.96)"/><path d="m33 33-9 15h8l-4 13 14-18h-9l6-10z" fill="#ffca64" stroke="#b3762b"/><use href="#rainDrop" transform="translate(15 43) scale(.8)"/><use href="#rainDrop" transform="translate(49 43) scale(.8)"/></symbol>
+  <symbol id="fog" viewBox="0 0 64 64"><use href="#lightCloud" transform="translate(4 -4) scale(.86)"/><path d="M7 39h46M11 47h46M7 55h40" stroke="#7897a7" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="wind" viewBox="0 0 64 64"><path d="M7 21h33c11 0 9-13 2-13-4 0-6 2-7 5M5 33h46c11 0 10 13 2 13m-44-1h22c9 0 12 11 4 13" fill="none" stroke="#507c8e" stroke-width="4" stroke-linecap="round"/></symbol>
+</svg>

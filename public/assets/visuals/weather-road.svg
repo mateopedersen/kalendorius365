@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="sky" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#0f3142"/><stop offset="1" stop-color="#729c98"/></linearGradient>
+  <linearGradient id="asphalt" x1=".5" y1="0" x2=".5" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#495e68"/><stop offset=".48" stop-color="#263942"/><stop offset="1" stop-color="#14252e"/></linearGradient>
+  <linearGradient id="reflect" x2=".25" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#829b9c"/><stop offset="1" stop-color="#40545d" stop-opacity=".15"/></linearGradient>
+  <radialGradient id="lamp"><stop stop-color="#fff4c1"/><stop offset="1" stop-color="#e9b75d" stop-opacity="0"/></radialGradient>
+  <pattern id="grain" width="25" height="16" patternUnits="userSpaceOnUse"><circle cx="4" cy="7" r=".55" fill="#a7b6b7"/><circle cx="19" cy="4" r=".3" fill="#bbc6ca"/><circle cx="10" cy="14" r=".48" fill="#08606a"/></pattern>
+  <path id="pine" d="M0 0-9 20h5l-9 13h7l-10 13h13v7h6v-7h13L6 33h7L4 20h5z"/>
+ </defs>
+ <path fill="url(#sky)" d="M0 0h920v340H0z"/>
+ <path fill="#47656a" d="M0 210l55-23 79 5 118-30 168 24 175-23 145 18 180-31v190H0z"/>
+ <path fill="#26464a" d="M0 217l55-15 64 9 71-7 63 3 115-39 112 28 116-9 105-16 90 28 129-17v158H0z"/>
+ <g fill="#183b40">
+  <use href="#pine" transform="translate(535 167) scale(.58)"/><use href="#pine" transform="translate(552 158) scale(.8)"/><use href="#pine" transform="translate(570 173) scale(.4)"/>
+  <use href="#pine" transform="translate(739 122) scale(1.45)"/><use href="#pine" transform="translate(763 143) scale(1.08)"/><use href="#pine" transform="translate(792 120) scale(1.52)"/>
+  <use href="#pine" transform="translate(829 141) scale(1.5)"/><use href="#pine" transform="translate(867 116) scale(1.8)"/><use href="#pine" transform="translate(908 124) scale(1.85)"/>
+ </g>
+ <path fill="#65777a" d="M615 187h13l288 153H293z"/>
+ <path fill="url(#asphalt)" d="M618 188h7l269 152H316z"/>
+ <path fill="url(#grain)" opacity=".4" d="M618 188h7l269 152H316z"/>
+ <path fill="url(#reflect)" opacity=".56" d="M619 189l187 151H566l54-151z"/>
+ <path stroke="#c7d1ca" stroke-width="2" d="M618 189 325 340m302-151 255 151" opacity=".75"/>
+ <path fill="#d9c477" d="M621 202h1l.3 5h-2zm-.4 15h2l.7 9h-3.3zm-1 25h4l1.4 17h-6.5zm-2 42h8l3 34h-14z"/>
+ <path d="M651 214v-48q0-8-10-8h-4m-62 58v-45q0-5 7-5h4" fill="none" stroke="#344653" stroke-width="2.5"/>
+ <circle cx="638" cy="159" r="18" fill="url(#lamp)" opacity=".45"/><circle cx="585" cy="166" r="13" fill="url(#lamp)" opacity=".45"/>
+ <path fill="#f1df9f" d="M636 157h6v3h-6zM583 164h5v2h-5z"/>
+ <path d="M707 264l-43-14-6-12-15-6-10 8-20 8-9 16v14h102z" fill="#23333e" opacity=".25"/>
+ <path d="M638 235h14l9 9 5 2v7h-33v-6l2-2z" fill="#122432" stroke="#62808c" stroke-width="1.2"/>
+ <path fill="#66838c" d="M639 237h13l6 7h-23z"/><path fill="#fe9c77" d="M633 248h7v2h-7zm26 0h7v2h-7z"/>
+</svg>

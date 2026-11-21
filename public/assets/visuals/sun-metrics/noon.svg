@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76">
+  <defs>
+    <clipPath id="frame"><rect x="2" y="2" width="72" height="70" rx="17"/></clipPath>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#27658f"/><stop offset=".6" stop-color="#66b0cb"/><stop offset="1" stop-color="#d0e8dd"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop stop-color="#fff1a8" stop-opacity=".89"/><stop offset=".56" stop-color="#ffe190" stop-opacity=".34"/><stop offset="1" stop-color="#ffe190" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disk" cx=".35" cy=".27" r=".86">
+      <stop stop-color="#fffbd2"/><stop offset=".38" stop-color="#ffe998"/><stop offset=".78" stop-color="#f8c55c"/><stop offset="1" stop-color="#eea042"/>
+    </radialGradient>
+    <linearGradient id="cloud" x2="0" y2="1">
+      <stop stop-color="#ffffff"/><stop offset=".58" stop-color="#eaf5f5"/><stop offset="1" stop-color="#9bc3cf"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="5" width="72" height="70" rx="17" fill="#37677b"/>
+  <g clip-path="url(#frame)">
+    <path d="M2 2h72v72H2z" fill="url(#sky)"/>
+    <circle cx="39" cy="32" r="31" fill="url(#halo)"/>
+    <circle cx="39" cy="32" r="16.6" fill="url(#disk)" stroke="#fff0a7" stroke-width=".8"/>
+    <path d="M25 29a15 15 0 0 1 15-12" fill="none" stroke="#fffbe2" stroke-width="1.45" stroke-linecap="round" opacity=".78"/>
+    <path d="M4 55q13-3 20-1m22-7q14-3 25 0" fill="none" stroke="#c8e4e8" stroke-width="1.25" stroke-linecap="round"/>
+    <path d="M1 57q3-6 11-5 3-8 11-8 8 0 11 7 11-1 14 7 0 7-10 8H2Z" fill="#537b93" opacity=".24" transform="translate(0 1.8)"/>
+    <path d="M1 57q3-6 11-5 3-8 11-8 8 0 11 7 11-1 14 7 0 7-10 8H2Z" fill="url(#cloud)"/>
+    <path d="M45 61q3-4 8-4 2-6 8-6 5 0 7 4 6 0 9 4v8H50q-5 0-5-6Z" fill="url(#cloud)" opacity=".9"/>
+    <path d="M1 58q10-3 16 0 4-3 10-2 6 1 10 4" fill="none" stroke="#fff" stroke-width="1.15" opacity=".67"/>
+  </g>
+  <rect x="2.5" y="2.5" width="71" height="69" rx="16.5" fill="none" stroke="#dff2ff" stroke-opacity=".45"/>
+</svg>
