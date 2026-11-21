@@ -170,8 +170,9 @@ body.homepage-app .site-header {
   outline: none; box-shadow: none; background: transparent; color: var(--shell-ink); font: 400 max(1rem,16px)/1.4 var(--shell-font);
 }
 .tools-dialog__body { display: grid; grid-template-columns: 245px minmax(0,1fr); min-height: min(400px,42dvh); overflow: hidden; }
-.tools-dialog__categories { overflow: auto; display: grid; align-content: start; gap: 3px; padding: 13px; border-right: 1px solid var(--shell-border); background: #faf8f3; }
-.tools-dialog__categories button { display: grid; grid-template-columns: 29px 1fr auto; align-items: center; gap: 10px; width: 100%; min-height: 50px; padding: 6px 10px; color: var(--shell-ink); background: transparent; border: 1px solid transparent; border-radius: 8px; text-align: start; font: 700 .91rem/1.22 var(--shell-font); }
+.tools-dialog__categories { overflow: auto; display: grid; align-content: start; grid-auto-rows: max-content; gap: 3px; padding: 13px; border-right: 1px solid var(--shell-border); background: #faf8f3; }
+.tools-dialog__categories button { display: grid; grid-template-columns: 29px minmax(0,1fr) auto; align-items: center; gap: 10px; width: 100%; min-width: 0; height: auto; min-height: 50px; padding: 6px 10px; color: var(--shell-ink); background: transparent; border: 1px solid transparent; border-radius: 8px; text-align: start; font: 700 .91rem/1.22 var(--shell-font); }
+.tools-dialog__categories button > span { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 .tools-dialog__categories button:hover,
 .tools-dialog__categories button[aria-pressed="true"] { background: #fff; color: var(--shell-green-dark); border-color: #c0dbce; }
 .tools-dialog__categories small { color: var(--shell-muted); }
@@ -238,7 +239,6 @@ body.homepage-app .site-header {
     padding: 4px 5px;
     font-size: .81rem;
   }
-  .tools-dialog__categories button > span { min-width: 0; overflow-wrap: anywhere; }
   .tools-dialog__categories .shell-art { width: 20px; height: 20px; }
   .tools-dialog__results {
     padding: 12px max(12px,env(safe-area-inset-right)) 12px max(12px,env(safe-area-inset-left));

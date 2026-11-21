@@ -206,7 +206,7 @@ function setup(root) {
       node("live-icon").replaceChildren(...(current.icon ? [weatherIcon(current.icon)] : []));
       node("live-icon").hidden = !current.icon;
     }
-    if (!hasPageDays()) node("brief-day").innerHTML = briefContents(dayBrief(forecast, Date.now()), "Temperatūra šiandien", previous);
+    if (!hasPageDays()) node("brief-day").innerHTML = briefContents(dayBrief(forecast, Date.now()), "Šiandienos temperatūra", previous);
     writeProviderCredit();
     writeMetrics(current, today);
     if (rainData) updateDaylight();
@@ -778,7 +778,7 @@ function setup(root) {
         node("timestamp").hidden = false;
         node("timestamp").textContent += " · Nepavyko atnaujinti";
       }
-      if (!forecast && !hasPageDays()) node("brief-day").innerHTML = briefContents(null, "Temperatūra šiandien");
+      if (!forecast && !hasPageDays()) node("brief-day").innerHTML = briefContents(null, "Šiandienos temperatūra");
       if (!forecast) {
         const dayStillCurrent = calculatedSun?.dataset.date === date;
         if (calculatedSun) calculatedSun.hidden = !dayStillCurrent;

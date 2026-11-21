@@ -44,14 +44,14 @@ export function readingLight(current, forecast) {
 
 export function dayBrief(forecast, now) {
   const today = dayAt(forecast, now);
-  if (!Number.isFinite(today?.tempmin) || !Number.isFinite(today.tempmax)) return;
+  if (!Number.isFinite(today?.tempmin) || !Number.isFinite(today.tempmax) || today.tempmin > today.tempmax) return;
   const partial = forecast.source === "MET Norway" || forecast.source === "LHMT / Meteo LT";
   return {
-    title: partial ? "Temperatūra prognozės valandomis" : "Temperatūra šiandien",
-    value: weatherNumber(today.tempmin) + "…" + weatherNumber(today.tempmax) + " °C",
-    detail: partial ? "Pagal pateiktas šios dienos valandas" : "Žemiausia ir aukščiausia",
+    title: "Šiandienos temperatūra",
+    temperatures: [weatherNumber(today.tempmin) + " °C", weatherNumber(today.tempmax) + " °C"],
+    detail: partial ? "Pagal pateiktas šios dienos valandas" : "",
     time: Date.parse(forecast.updatedAt || forecast.fetchedAt),
-    timeLabel: forecast.updatedAt ? "Modelis" : "Gauta",
+    timeLabel: forecast.updatedAt ? "Modelis atnaujintas" : "Prognozė gauta",
   };
 }
 
@@ -102,7 +102,12 @@ export function briefContents(item, fallback, previous = false) {
   if (!item) return '<strong>' + esc(fallback) + '</strong><small>Duomenų šiuo metu nėra</small>';
   const stamp = Number.isFinite(item.time) ? '<time datetime="' + new Date(item.time).toISOString() + '">' +
     (previous ? "Ankstesni duomenys · " : "") + esc(item.timeLabel) + ' ' + esc(formatWeatherTime(item.time)) + '</time>' : previous ? '<small>Ankstesni duomenys</small>' : '';
-  return '<span>' + esc(item.title) + '</span><strong>' + esc(item.value) + '</strong><small>' + esc(item.detail) + '</small>' + stamp;
+  const values = item.temperatures ? `<span class="wx-brief-range">
+    <span><small>Žemiausia</small><strong>${esc(item.temperatures[0])}</strong></span>
+    <span><small>Aukščiausia</small><strong>${esc(item.temperatures[1])}</strong></span>
+  </span>` : '<strong>' + esc(item.value) + '</strong>';
+  return '<span>' + esc(item.title) + '</span>' + values +
+    (item.detail ? '<small>' + esc(item.detail) + '</small>' : '') + stamp;
 }
 
 const categories = {

@@ -388,6 +388,24 @@ test('personal calendar date search, invalid date feedback and category filters 
  await page.reload();await expect(page.locator('.filter-chip--holiday')).toHaveAttribute('aria-pressed','true');
 });
 
+test('tool menu categories grow for multi-line labels at larger text sizes', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 700 });
+  await page.goto('/');
+  await page.addStyleTag({ content: 'html { font-size: 20px !important; }' });
+  await page.locator('#tools-open').click();
+  const categories = page.locator('#tools-dialog [data-menu-group]');
+  await expect(categories.first()).toBeVisible();
+  const spillingLabels = await categories.evaluateAll(buttons => buttons.flatMap(button => {
+    const label = button.querySelector(':scope > span');
+    const range = document.createRange();
+    range.selectNodeContents(label);
+    const text = range.getBoundingClientRect();
+    const frame = button.getBoundingClientRect();
+    return text.top < frame.top - 1 || text.bottom > frame.bottom + 1 ? [label.textContent.trim()] : [];
+  }));
+  expect(spillingLabels).toEqual([]);
+});
+
 test('the phone tool menu fits the visible screen before and during search', async ({ page }) => {
   await page.setViewportSize({ width: 430, height: 844 });
   await page.goto('/');

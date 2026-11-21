@@ -23,7 +23,9 @@ test("local midnight selects today's forecast; observed readings cannot come fro
   const forecast = { current: {source: "obs", temp: 42, datetimeEpoch: now / 1000 + 2800}, days, source: "MET Norway" };
   assert.deepEqual(currentReading(forecast, now), slot);
   assert.equal(readingLight(slot, forecast), "night");
-  assert.equal(dayBrief(forecast, now).value, "5…13 °C");
+  assert.deepEqual(dayBrief(forecast, now).temperatures, ["5 °C", "13 °C"]);
+  assert.match(briefContents(dayBrief(forecast, now)), /Žemiausia<\/small><strong>5 °C/);
+  assert.match(briefContents(dayBrief(forecast, now)), /Aukščiausia<\/small><strong>13 °C/);
   assert.match(dayBrief(forecast, now).detail, /pateiktas/);
   assert.equal(dayBrief(forecast, now + 24 * hour), undefined);
   assert.equal(currentReading(forecast, now + 8 * hour), undefined);

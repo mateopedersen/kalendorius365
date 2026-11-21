@@ -16,6 +16,7 @@ schema_type: WebPage
     <a href="/orai/">Orai Lietuvoje</a>
     <a href="#duomenys">Duomenų teikėjai</a>
     <a href="#metodika">Rodmenų paaiškinimai</a>
+    <a href="#vietoves-aplinka">Vietovės aukštis ir meteorologijos stotys</a>
     <a href="#miestu-nuotraukos">Miestų nuotraukos</a>
     <a href="#vakaro-nuotraukos">Miestų vakaro vaizdai</a>
   </nav>
@@ -39,6 +40,20 @@ schema_type: WebPage
       <dd>CAMS pateikia šešių augalų grupių eksperimentinę prognozę. Kiekviena reikšmė rodo tos grupės žiedadulkių skaičių kubiniame metre lauko oro. „&lt;0,1“ reiškia mažą teigiamą reikšmę, o „Duomenų nėra“ žymi trūkstamą reikšmę. Asmeninis jautrumas priklauso nuo konkretaus alergeno.</dd>
       <dt>Keliai, vietovės ir vaizdai</dt>
       <dd>Prognozės ir matavimai gali vėluoti arba keistis. Prieš kelionę pavojingomis sąlygomis patikrinkite <a href="https://www.meteo.lt/prognozes/pavojingi-reiskiniai/">oficialius LHMT perspėjimus</a>. Kelio matavimai galioja stotelės vietoje. Atstumai iki stotelių ir gretimų vietovių skaičiuojami tiesia linija tarp atskaitos taškų. Orų puslapių dangaus ir kelio fonai yra iliustracijos. Miestų fotografijų autoriai ir licencijos nurodyti toliau.</dd>
+    </dl>
+  </section>
+
+  <section id="vietoves-aplinka" class="panel weather-sources__data" aria-labelledby="weather-local-source-title">
+    <h2 id="weather-local-source-title">Vietovės aukštis ir artimiausia meteorologijos stotis</h2>
+    <dl class="weather-sources__method">
+      <dt>Vietovės paviršiaus aukštis</dt>
+      <dd>Aukštis metrais virš jūros lygio nuskaitomas pagal Adresų registro atskaitos tašką iš maždaug 90 m raiškos skaitmeninio paviršiaus modelio. Modelis gali apimti pastatus ir medžius. Rodomas vieno taško aukštis, o ne visos gyvenvietės vidurkis.</dd>
+      <dt>Aukščiai apylinkėse</dt>
+      <dd>Iki 1 km spinduliu imame 49 mėginius kas 250 m. Rodome žemiausią ir aukščiausią iš jų. Aukščiai apvalinami iki metro. Tarp mėginių gali būti kitokių aukščių.</dd>
+      <dt>Copernicus duomenų šaltinis</dt>
+      <dd><a href="https://registry.opendata.aws/copernicus-dem/">Copernicus DEM GLO-90, 2021 m. leidimas</a> · <a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM">Licencija ir citavimas</a>. Produced using Copernicus WorldDEM-90 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.</dd>
+      <dt>LHMT meteorologijos stoties matavimai</dt>
+      <dd>Iš <a href="https://api.meteo.lt/">LHMT stočių katalogo</a> parenkame mažiausiu atstumu tiesia linija nutolusią stotį. Rodome paskutinį, iki trijų valandų senumo stebėjimą Lietuvos laiku. Kai kurių rodiklių stotis nematuoja. Stebėjimas galioja stoties taške, o gyvenvietės prognozė priklauso nuo modelio gardelės. Šaltinis – Lietuvos hidrometeorologijos tarnyba, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.</dd>
     </dl>
   </section>
 
