@@ -3,6 +3,9 @@ const opener = document.querySelector("#tools-open");
 const query = document.querySelector("#tools-query");
 
 if (dialog && opener && query && typeof dialog.showModal === "function") {
+  const closeButton = dialog.querySelector("#tools-close");
+  const viewport = window.visualViewport;
+  const fullScreenMenu = matchMedia("(max-width: 760px), (max-width: 950px) and (pointer: coarse)");
   const groups = [...dialog.querySelectorAll("[data-menu-group]")];
   const sections = [...dialog.querySelectorAll("[data-menu-section]")];
   const cards = [...dialog.querySelectorAll("[data-menu-tool]")];
@@ -35,14 +38,27 @@ if (dialog && opener && query && typeof dialog.showModal === "function") {
     results.scrollTop = 0;
   }
 
+  function fitToolsMenu() {
+    if (fullScreenMenu.matches && viewport?.scale === 1) {
+      dialog.style.setProperty("--tools-viewport-height", viewport.height + "px");
+      dialog.style.setProperty("--tools-viewport-top", Math.max(0, viewport.offsetTop) + "px");
+    } else {
+      dialog.style.removeProperty("--tools-viewport-height");
+      dialog.style.removeProperty("--tools-viewport-top");
+    }
+  }
+
   opener.addEventListener("click", (event) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || dialog.open) return;
     event.preventDefault();
     query.value = "";
     render();
     dialog.showModal();
+    fitToolsMenu();
+    viewport?.addEventListener("resize", fitToolsMenu);
+    viewport?.addEventListener("scroll", fitToolsMenu);
     opener.setAttribute("aria-expanded", "true");
-    query.focus();
+    (fullScreenMenu.matches ? closeButton : query).focus({ preventScroll: true });
   });
   for (const group of groups) {
     group.addEventListener("click", () => {
@@ -52,7 +68,7 @@ if (dialog && opener && query && typeof dialog.showModal === "function") {
     });
   }
   query.addEventListener("input", render);
-  dialog.querySelector("#tools-close").addEventListener("click", () => dialog.close());
+  closeButton.addEventListener("click", () => dialog.close());
   dialog.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
     event.preventDefault();
@@ -62,6 +78,10 @@ if (dialog && opener && query && typeof dialog.showModal === "function") {
     if (event.target === dialog) dialog.close();
   });
   dialog.addEventListener("close", () => {
+    viewport?.removeEventListener("resize", fitToolsMenu);
+    viewport?.removeEventListener("scroll", fitToolsMenu);
+    dialog.style.removeProperty("--tools-viewport-height");
+    dialog.style.removeProperty("--tools-viewport-top");
     opener.setAttribute("aria-expanded", "false");
     opener.focus({ preventScroll: true });
   });

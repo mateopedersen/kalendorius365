@@ -176,6 +176,68 @@ body.homepage-app .site-header {
 .tools-dialog__grid small { color: var(--shell-muted); margin-top: 4px; font-size: .83rem; }
 .tools-dialog__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 22px; color: var(--shell-muted); background: #fcfbf8; border-top: 1px solid var(--shell-border); font-size: .82rem; }
 .tools-dialog__foot a { color: var(--shell-forest); font-weight: 700; }
+@media (max-width: 760px), (max-width: 950px) and (pointer: coarse) {
+  html:has(.tools-dialog[open]) { overflow: hidden; }
+  .tools-dialog[open] {
+    position: fixed;
+    inset: var(--tools-viewport-top,0px) 0 auto;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: 100%;
+    height: var(--tools-viewport-height,100dvh);
+    max-height: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .tools-dialog__inner { height: 100%; }
+  .tools-dialog__head {
+    padding: max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 10px max(12px,env(safe-area-inset-left));
+  }
+  .tools-dialog__head h2 { margin-bottom: 11px; font-size: clamp(1.28rem,4.7vw,1.55rem); }
+  .tools-dialog__head > button {
+    top: max(5px,env(safe-area-inset-top));
+    right: max(12px,env(safe-area-inset-right));
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .tools-dialog__search input { font-size: max(1rem,16px); }
+  .tools-dialog__body { grid-template-columns: minmax(0,1fr); grid-template-rows: auto minmax(0,1fr); min-height: 0; }
+  .tools-dialog__categories {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 4px;
+    min-width: 0;
+    max-height: min(210px,calc(var(--tools-viewport-height,100dvh) * .28));
+    padding: 7px max(10px,env(safe-area-inset-right)) 7px max(10px,env(safe-area-inset-left));
+    border-right: 0;
+    border-bottom: 1px solid var(--shell-border);
+    overscroll-behavior: contain;
+  }
+  .tools-dialog__categories button {
+    grid-template-columns: 20px minmax(0,1fr) auto;
+    min-width: 0;
+    min-height: 44px;
+    gap: 4px;
+    padding: 4px 5px;
+    font-size: .81rem;
+  }
+  .tools-dialog__categories button > span { min-width: 0; overflow-wrap: anywhere; }
+  .tools-dialog__categories .shell-art { width: 20px; height: 20px; }
+  .tools-dialog__results {
+    padding: 12px max(12px,env(safe-area-inset-right)) 12px max(12px,env(safe-area-inset-left));
+    overscroll-behavior: contain;
+  }
+  .tools-dialog__grid { grid-template-columns: minmax(0,1fr); gap: 7px; }
+  .tools-dialog__grid a { grid-template-columns: 36px minmax(0,1fr) 14px; gap: 9px; min-height: 62px; padding: 8px 9px; }
+  .tools-dialog__grid .shell-art { width: 36px; height: 36px; }
+  .tools-dialog__foot {
+    flex-wrap: wrap;
+    padding-inline: max(12px,env(safe-area-inset-left)) max(12px,env(safe-area-inset-right));
+    padding-bottom: max(10px,env(safe-area-inset-bottom));
+  }
+}
 .site-footer,.homepage-app .site-footer {
   display: block; width: 100%; max-width: none; margin: 32px 0 0; padding: 23px 0 18px;
   color: #e4f2e9; background: #153e2d; border: 0; font: 400 15px/1.5 var(--shell-font);
@@ -296,16 +358,6 @@ body.homepage-app .site-header {
     content: ""; position: fixed; inset: 0; z-index: 40;
   }
   .search-active .site-header .header-search-toggle { position: relative; z-index: 41; }
-  .tools-dialog[open] { max-height: 88dvh; margin: auto; width: calc(100% - 18px); }
-  .tools-dialog__head { padding-inline: 14px; }
-  .tools-dialog__head > button { right: 14px; }
-  .tools-dialog__body { grid-template-columns: minmax(0,1fr); grid-template-rows: auto minmax(0,1fr); min-height: 300px; }
-  .tools-dialog__categories { display: flex; padding: 7px; border-right: 0; border-bottom: 1px solid var(--shell-border); }
-  .tools-dialog__categories button { display: flex; width: auto; flex: none; gap: 5px; min-height: 42px; }
-  .tools-dialog__categories .shell-art { width: 20px; height: 20px; }
-  .tools-dialog__results { padding: 13px; }
-  .tools-dialog__grid { grid-template-columns: minmax(0,1fr); }
-  .tools-dialog__grid a { min-height: 78px; }
   .site-footer .footer-navigation { grid-template-columns: repeat(auto-fit,minmax(min(100%,max(8rem,40%)),1fr)); }
   .site-footer .footer-signoff { grid-template-columns: minmax(0,1fr); grid-template-areas: "legal" "city" "top"; justify-items: center; text-align: center; }
   .site-footer .footer-signoff .site-copyright { text-align: center; }
@@ -671,7 +723,7 @@ body.homepage-app .dashboard-main {
   .home-heading__weather-detail { font-size: .81rem; }
   .home-heading__actions > .share-entry > summary { padding-inline: 8px; }
 }
-@media (max-width: 440px) {
+@media (max-width: 560px) {
   .home-heading__hero { gap: 9px; padding: 12px; }
   .home-heading__copy { gap: 7px; }
   .home-heading__intro { font-size: .91rem; }
@@ -1190,9 +1242,20 @@ body.homepage-app .dashboard-main {
     grid-template-columns: minmax(0,1fr) minmax(175px,215px);
     grid-template-areas: "calendar planner" "climate climate";
   }
-  .homepage-app .dashboard > .left-column .climate-card { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 8px 12px; }
-  .homepage-app .dashboard > .left-column .clock-photo { grid-row: span 2; }
-  .homepage-app .dashboard > .left-column .weather-panel { grid-column: 2; grid-row: span 3; padding-top: 0; }
+}
+@media (min-width: 561px) and (max-width: 970px) {
+  .homepage-app .dashboard > .left-column .climate-card {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "clock weather" "settings weather" "links weather";
+    align-items: start;
+    gap: 7px 12px;
+  }
+  .homepage-app .dashboard > .left-column .clock-photo { grid-area: clock; }
+  .homepage-app .dashboard > .left-column .settings-small { grid-area: settings; margin: 0; border: 0; }
+  .homepage-app .dashboard > .left-column .weather-panel { grid-area: weather; padding-top: 0; }
+  .homepage-app .dashboard > .left-column .climate-links { grid-area: links; margin: 0; }
 }
 @media (min-width: 761px) and (max-width: 970px) {
   .homepage-app .dashboard > .left-column {
@@ -1315,7 +1378,6 @@ body.homepage-app .dashboard-main {
 @media (max-width: 420px) {
   .site-header .brand-wordmark { font-size: 20px; }
   .site-header .masthead__inner { gap: 5px; }
-  .site-header .calendar-bar__more .shell-art,.site-header .calendar-bar__more .shell-chevron { display: none; }
   .inner-calendar .year-grid,.inner-directory .tool-directory-group .resource-grid { grid-template-columns: minmax(0,1fr); }
 }
 @media (max-width: 360px) {
@@ -1636,8 +1698,6 @@ body.homepage-app .dashboard-main {
 @media (max-width: 410px) {
   .content-main .policy-hero { grid-template-columns: minmax(0,1fr); }
   .policy-hero > img { grid-row: 1; width: 92px; justify-self: start; }
-  .homepage-app .dashboard > .left-column .climate-card { display: block; }
-  .homepage-app .dashboard > .left-column .weather-panel { padding-top: 8px; }
 }
 
 .site-header .masthead__inner #nav-toggle.icon-button { color: white; background: #ffffff14 !important; }
@@ -1955,8 +2015,8 @@ body.homepage-app .dashboard-main {
 .school-templates :is(.preview-link > picture,.preview-link img) { display: block; width: 100%; height: 100%; max-height: 100%; }
 .school-templates .preview-link img { object-fit: contain; }
 .content-main .school-templates .school-templates__grid .design-info p { display: block; color: var(--shell-muted); }
-@media (max-width: 480px) {
-  .site-header .calendar-bar__inner { grid-template-columns: minmax(0,1fr) minmax(0,auto); }
+@media (max-width: 560px) {
+  .site-header .calendar-bar__inner { grid-template-columns: minmax(0,1fr) minmax(91px,26%); }
   .site-header .calendar-bar__years {
     display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,2.65rem),1fr));
     min-width: 0; padding-right: 0; gap: 4px;
@@ -1966,7 +2026,58 @@ body.homepage-app .dashboard-main {
   .site-header .calendar-bar a { padding-inline: 5px; text-align: center; white-space: normal; }
   .site-header .calendar-bar__actions a span,.site-header .calendar-bar__more span { min-width: 0; overflow-wrap: normal; }
   .site-header .calendar-bar__actions a { font-size: .8rem; }
-  .site-header .calendar-bar a.calendar-bar__more { max-width: max(101px, 5rem); overflow-wrap: anywhere; }
+  .site-header .calendar-bar a.calendar-bar__more {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) 13px;
+    gap: 4px;
+    min-height: 44px;
+    padding-inline: 6px;
+    line-height: 1.18;
+    text-align: start;
+  }
+  .site-header .calendar-bar__more > .shell-art { display: none; }
+  .site-header .calendar-bar__more > .shell-chevron { width: 13px; height: 13px; margin: 0; }
+  .site-header .calendar-bar__more > span { overflow-wrap: anywhere; }
+
+  .homepage-app .dashboard > .left-column .climate-card {
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+    min-height: 0;
+    gap: 9px;
+    padding: 10px;
+  }
+  .homepage-app .climate-card .clock-photo {
+    display: grid;
+    grid-template-columns: minmax(65px,.53fr) minmax(0,1fr);
+  }
+  .homepage-app .clock-photo__frame { min-height: 104px; aspect-ratio: auto; }
+  .homepage-app .climate-card .clock-card {
+    grid-template-columns: minmax(0,1fr);
+    grid-template-areas: "location" "time" "date";
+    align-content: center;
+  }
+  .homepage-app .clock-card .clock-card__top { grid-area: location; }
+  .homepage-app .clock-card #clock { grid-area: time; }
+  .homepage-app .clock-card #clock-date { grid-area: date; max-width: none; }
+  .homepage-app .climate-card .settings-small { margin: 0; border: 0; }
+  .homepage-app .climate-card .weather-panel { padding-top: 4px; }
+  .homepage-app .climate-card #weather-temp { min-height: 104px; }
+  .homepage-app .climate-card .weather-top { margin-bottom: 7px; }
+  .homepage-app .climate-card .weather-readings { gap: 6px; }
+  .homepage-app .climate-card .weather-attribution { margin-top: 6px; }
+  .homepage-app .climate-links {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-auto-rows: auto;
+    margin: 0;
+  }
+  .homepage-app .climate-links > a { grid-template-columns: 22px minmax(0,1fr); }
+  .homepage-app .climate-links > a:first-child { grid-column: 1 / -1; }
+  .homepage-app .climate-links > a > :is(.climate-link__arrow,.calendar-catalog-arrow) { display: none; }
+
+  .homepage-app .dashboard-year-links { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+  .homepage-app .dashboard-year-links > a { grid-template-columns: 32px minmax(0,1fr); gap: 5px; padding-inline: 5px; }
+  .homepage-app .dashboard-year-links > a > .shell-art { width: 32px; height: 32px; }
+  .homepage-app .dashboard-year-links > a > .calendar-catalog-arrow { display: none; }
 }
 
 .event-calendar-links { display: flex; flex-wrap: wrap; gap: 7px; min-width: 0; }

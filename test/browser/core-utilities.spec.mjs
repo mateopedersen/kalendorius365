@@ -147,7 +147,7 @@ test('the weather card separates readings and keeps the city control and arrows 
  await expect(panel.locator('.weather-measures dd')).toHaveText(['4 m/s','90 %']);
  await expect(panel.locator('.weather-forecast__range dt')).toHaveText(['Žemiausia','Aukščiausia']);
  await expect(panel.locator('.weather-forecast__range dd')).toHaveText(['−4 °C','0 °C']);
- for(const width of [320,971,1100,1286]){
+ for(const width of [320,390,430,560,760,971,1100,1286]){
   await page.setViewportSize({width,height:900});
   const bounds=await panel.evaluate(el=>{
    const row=el.querySelector('.weather-top').getBoundingClientRect();
@@ -168,6 +168,13 @@ test('the weather card separates readings and keeps the city control and arrows 
    const clockBox=clock.getBoundingClientRect();
    const rootSize=parseFloat(getComputedStyle(document.documentElement).fontSize);
    const stacked=el.getBoundingClientRect().width<=11*rootSize;
+   const compact=matchMedia('(max-width:560px)').matches;
+   const photoAligned=compact
+    ? Math.abs(picture.right-clockBox.left)<=1 && Math.abs(picture.top-clockBox.top)<=1
+    : Math.abs(picture.bottom-clockBox.top)<=1;
+   const navAligned=compact
+    ? links[0].bottom<=links[1].top && Math.abs(links[1].top-links[2].top)<=1 && Math.abs(links[1].width-links[2].width)<=1
+    : links.every(link=>Math.abs(link.height-links[0].height)<=1 && Math.abs(link.width-links[0].width)<=1);
    return {
     left:Math.abs(picker.left-row.left),
     right:Math.abs(picker.right-row.right),
@@ -176,16 +183,17 @@ test('the weather card separates readings and keeps the city control and arrows 
     readingColumns:measurements.every((cell,index)=>Math.abs(cell.left-forecast[index].left)<=1),
     sourceAlignment:Math.abs(sources[0].height-sources[1].height)<=1
      && (stacked ? sources[0].bottom<=sources[1].top : Math.abs(sources[0].top-sources[1].top)<=1),
-    linkAlignment:links.every(link=>link.height>=44
-     && Math.abs(link.height-links[0].height)<=1 && Math.abs(link.width-links[0].width)<=1),
+    linkAlignment:navAligned && links.every(link=>link.height>=44),
+    clockSettings:card.querySelector('.settings-small').getBoundingClientRect().top>=clockBox.bottom,
+    singleColumn:!compact || Math.abs(el.getBoundingClientRect().width-card.querySelector('.clock-photo').getBoundingClientRect().width)<=1,
     photoFits:getComputedStyle(photo).objectFit==='cover'
      &&Math.abs(photoBox.width-picture.width)<=1&&Math.abs(photoBox.height-picture.height)<=1
-     &&Math.abs(picture.bottom-clockBox.top)<=1
+     &&photoAligned
      &&[clock,...clock.querySelectorAll('#clock,#clock-date,.clock-location')].every(node=>node.scrollWidth<=node.clientWidth+1),
    };
   });
   expect(bounds,`weather layout at ${width}px`).toEqual({
-   left:0,right:0,aligned:true,overflow:false,readingColumns:true,sourceAlignment:true,linkAlignment:true,photoFits:true,
+   left:0,right:0,aligned:true,overflow:false,readingColumns:true,sourceAlignment:true,linkAlignment:true,clockSettings:true,singleColumn:true,photoFits:true,
   });
  }
  const link=page.getByRole('link',{name:'Saulėtekis ir saulėlydis',exact:true});
@@ -378,4 +386,35 @@ test('personal calendar date search, invalid date feedback and category filters 
  await page.locator('#category-chips').getByRole('button',{name:'Visi įvykiai',exact:true}).click();
  await expect(page.locator('.filter-chip--holiday')).toHaveAttribute('aria-pressed','true');
  await page.reload();await expect(page.locator('.filter-chip--holiday')).toHaveAttribute('aria-pressed','true');
+});
+
+test('the phone tool menu fits the visible screen before and during search', async ({ page }) => {
+  await page.setViewportSize({ width: 430, height: 844 });
+  await page.goto('/');
+  const opener = page.locator('#tools-open');
+  const label = await opener.locator('span').boundingBox();
+  const arrow = await opener.locator('.shell-chevron').boundingBox();
+  expect(label.x + label.width).toBeLessThan(arrow.x);
+  await opener.click();
+  const menu = page.locator('#tools-dialog');
+  const close = menu.getByRole('button', { name: 'Užverti įrankių meniu' });
+  await expect(close).toBeFocused();
+  await expect(menu).toHaveCSS('width', '430px');
+  await expect(menu).toHaveCSS('height', '844px');
+  expect(await menu.evaluate(el => el.scrollWidth)).toBe(430);
+  expect(await menu.locator('.tools-dialog__categories').evaluate(el => el.scrollWidth - el.clientWidth)).toBe(0);
+
+  const search = menu.getByRole('searchbox', { name: 'Ieškoti įrankio' });
+  await expect(search).toHaveCSS('font-size', '16px');
+  await search.fill('datos');
+  await page.evaluate(() => {
+    Object.defineProperty(visualViewport, 'height', { configurable: true, value: 425 });
+    visualViewport.dispatchEvent(new Event('resize'));
+  });
+  await expect(menu).toHaveCSS('height', '425px');
+  await expect(close).toBeVisible();
+  await expect(menu.getByRole('link', { name: /Datos skaičiuoklė/ }).first()).toBeVisible();
+  await close.click();
+  await expect(menu).toBeHidden();
+  await expect(opener).toBeFocused();
 });
