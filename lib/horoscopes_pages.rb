@@ -184,7 +184,7 @@ module HoroscopesPages
     %(<article class="horoscope-detail" style="--sign-accent: #{escape(sign['theme'])}">
       <header class="horoscope-sign-hero">
         <div class="horoscope-sign-hero__art">#{ZodiacPages.art(ZodiacPages.catalog.find { |s| s['key'] == sign['key'] }, 'z-detail-art', true)}</div>
-        <div class="horoscope-sign-hero__copy"><p class="horoscope-kicker">Dienos horoskopas <span aria-hidden="true">·</span> Vakarų tropinis zodiakas</p><h1>#{escape(sign['genitive'])} dienos horoskopas</h1>#{update_status(daily, 'horoscope-sign-hero__date', date_label)}<p class="horoscope-sign-hero__heading">#{escape(forecast['editorial_heading'])}</p></div>
+        <div class="horoscope-sign-hero__copy"><p class="horoscope-kicker">Dienos horoskopas <span aria-hidden="true">·</span> Vakarų tropinis zodiakas</p><h1>#{escape(sign['genitive'])} horoskopas šiandien</h1>#{update_status(daily, 'horoscope-sign-hero__date', date_label)}<p class="horoscope-sign-hero__heading">#{escape(forecast['editorial_heading'])}</p></div>
       </header>
       <div class="horoscope-body-grid">
         <section class="horoscope-lead" aria-labelledby="horoscope-lead-title"><h2 id="horoscope-lead-title">Ką sako #{escape(sign['genitive'])} dienos horoskopas?</h2><p class="horoscope-lead__answer">#{escape(forecast['lead'])}</p></section>
@@ -215,15 +215,15 @@ module HoroscopesPages
     date = Date.iso8601(daily.fetch('local_date'))
     date_label = local_date_label(daily.fetch('local_date'))
     month_title = "#{date.year} m. #{MONTHS[date.month - 1]} #{date.day} d."
-    hub_description = "Dienos horoskopai #{month_title} visiems 12 Zodiako ženklų. Santykių ir darbų temos, klausimai apmąstymui bei nuorodos į ascendento skaičiuoklę."
+    hub_description = "Horoskopas šiandien (#{month_title}) kiekvienam iš 12 Zodiako ženklų. Dienos temos apie santykius, darbus ir kasdienius pasirinkimus."
     cards = @signs.map { |sign| forecast_card(sign, forecasts.fetch(sign.fetch('key'))) }.join
     hub = <<~HTML
       <div class="horoscope-hub">
         <header class="horoscope-hub-hero">
           <div class="horoscope-hub-hero__copy">
             #{update_status(daily, 'horoscope-hub-hero__date', date_label)}
-            <h1>Dienos horoskopai</h1>
-            <p class="horoscope-hub-hero__intro">Pasirinkite savo Zodiako ženklą. Skaitykite dienos įžvalgas apie santykius, darbus ir kasdienius pasirinkimus.</p>
+            <h1>Horoskopai šiandien</h1>
+            <p class="horoscope-hub-hero__intro">Ką sako jūsų horoskopas šiandien? Pasirinkite Zodiako ženklą ir skaitykite dienos įžvalgas apie santykius, darbus ir kasdienius pasirinkimus.</p>
             <a class="horoscope-hub-hero__guide" href="/zodiakas/#mano-zenklas">Rasti savo Zodiako ženklą #{hub_icon('arrow')}</a>
           </div>
           <div class="horoscope-hub-hero__art"><img src="/assets/visuals/horoscope-icons.svg" width="250" height="250" alt="" aria-hidden="true" decoding="async"></div>
@@ -247,12 +247,12 @@ module HoroscopesPages
         </nav>
       </div>
     HTML
-    write_page('horoskopai', "Dienos horoskopai visiems 12 Zodiako ženklų", hub_description, hub, 'content_date' => daily.fetch('local_date'))
+    write_page('horoskopai', "Horoskopas šiandien visiems 12 Zodiako ženklų", hub_description, hub, 'content_date' => daily.fetch('local_date'))
 
     @signs.each do |sign|
       forecast = forecasts.fetch(sign.fetch('key'))
-      title = "#{sign.fetch('genitive')} dienos horoskopas"
-      description = "#{sign.fetch('genitive')} dienos horoskopas. #{month_title} #{forecast.fetch('editorial_heading')}. Skaitykite apie santykius, darbus ir dienos temą."
+      title = "#{sign.fetch('genitive')} horoskopas šiandien"
+      description = "#{title} (#{month_title}). #{forecast.fetch('editorial_heading')}. Skaitykite dienos įžvalgas apie santykius ir darbus."
       body = sign_body(sign, forecast, daily, date_label)
       write_page("horoskopai/#{sign.fetch('key')}", title, description, body, 'sign_key' => sign.fetch('key'), 'content_date' => daily.fetch('local_date'))
     end

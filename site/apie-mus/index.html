@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Apie Kalendorius365 – kalendoriai, horoskopai ir įrankiai"
-description: "Atraskite Kalendorius365: lietuviškus kalendorius, 12 Zodiako ženklų horoskopus, spausdinamus šablonus ir planavimo bei astronomijos įrankius."
+title: "Apie Lietuvos kalendorių, orus ir įrankius"
+description: "Kalendorius365 vienoje vietoje pateikia Lietuvos kalendorius, orų prognozes miestams ir kaimams, dienos horoskopus bei planavimo įrankius."
 schema_type: AboutPage
 about_us: true
 og_image: "/assets/visuals/zodiac/zodiakas-1200x630.png"
@@ -12,13 +12,13 @@ og_image_alt: "Kalendorius365 Zodiako ženklų ratas ir originalios ženklų ili
     <div class="about-hero__copy">
       <p class="about-eyebrow"><span class="about-eyebrow__star" aria-hidden="true">✦</span> Kalendorius365 · viena vieta kasdieniams planams</p>
       <h1 id="about-title">Apie Kalendorius365</h1>
-      <p class="about-hero__lead">Kalendoriai, horoskopai ir įrankiai – šalia to, kas jums svarbu.</p>
-      <p class="about-hero__text">Matykite Lietuvos šventes, vardadienius ir metų ritmą vienoje vietoje. Rinkitės spausdinamą kalendorių, pasidomėkite Zodiako ženklais ar pasinaudokite įrankiu kitam savo planui.</p>
+      <p class="about-hero__lead">Lietuvos kalendoriai, orai ir įrankiai kasdieniams planams.</p>
+      <p class="about-hero__text">Sužinokite švenčių datas ir orus pasirinktoje Lietuvos vietovėje. Atsisiųskite spausdinamą kalendorių, paskaitykite dienos horoskopą ar apskaičiuokite darbo ir poilsio dienas.</p>
       <div class="about-hero__actions">
         <a class="about-button about-button--light" href="/menesiai/">Rinktis kalendorių <span aria-hidden="true">↗</span></a>
         <a class="about-button about-button--quiet" href="#about-discover">Atrasti svetainę <span aria-hidden="true">↓</span></a>
       </div>
-      <p class="about-hero__caption"><span aria-hidden="true">●</span> Aiškūs kalendoriai · kasdieniai įrankiai · originalios Zodiako iliustracijos</p>
+      <p class="about-hero__caption"><span aria-hidden="true">●</span> Kalendoriai · Lietuvos orai · planavimo įrankiai</p>
     </div>
     <div class="about-hero__visual" aria-label="Kalendoriaus ir Zodiako ženklų vaizdai">
       <div class="about-hero__glow" aria-hidden="true"></div>
@@ -41,6 +41,11 @@ og_image_alt: "Kalendorius365 Zodiako ženklų ratas ir originalios ženklų ili
       <span><strong>Kalendoriai</strong><small>Mėnesiui, metams ir kasdieniams planams</small></span>
       <span class="about-highlight__arrow" aria-hidden="true">↗</span>
     </a>
+    <a class="about-highlight" href="/orai/">
+      {% include shell-art.html name="sun" size=46 %}
+      <span><strong>Orai Lietuvoje</strong><small>Prognozės miestams, miesteliams ir kaimams</small></span>
+      <span class="about-highlight__arrow" aria-hidden="true">↗</span>
+    </a>
     <a class="about-highlight" href="/horoskopai/">
       {% include shell-art.html name="moon" size=46 %}
       <span><strong>Horoskopai</strong><small>Dienos tekstai visiems 12 Zodiako ženklų</small></span>
@@ -51,6 +56,21 @@ og_image_alt: "Kalendorius365 Zodiako ženklų ratas ir originalios ženklų ili
       <span><strong>Įrankiai</strong><small>Datos, astronomija, darbas ir poilsis</small></span>
       <span class="about-highlight__arrow" aria-hidden="true">↗</span>
     </a>
+  </section>
+
+  <section class="about-weather panel" aria-labelledby="about-weather-title">
+    <div class="about-section-heading about-section-heading--row">
+      <div>
+        <h2 id="about-weather-title">Orų prognozės Lietuvos vietovėms</h2>
+        <p>Pasirinkite miestą, miestelį ar kaimą ir peržiūrėkite valandinę prognozę, kritulius, drėgnį, vėjo gūsius ir savaitgalio orus. Kai gaunami duomenys, rodome oro kokybę, lauko žiedadulkes ir artimų kelių stotelių matavimus. Ilgesnėse 30, 45 ir 90 dienų apžvalgose nuo 16-os dienos pateikiami istoriniai klimato orientyrai.</p>
+      </div>
+      <a class="about-text-link" href="/orai/">Rasti vietovę <span aria-hidden="true">↗</span></a>
+    </div>
+    <nav class="about-calendar-shortcuts" aria-label="Orų puslapiai">
+      <a href="/orai/miestai/">Visi miestai <span aria-hidden="true">↗</span></a>
+      <a href="/orai/savivaldybes/">Vietovės pagal savivaldybę <span aria-hidden="true">↗</span></a>
+      <a href="/oru-saltiniai/#metodika">Duomenys ir metodika <span aria-hidden="true">↗</span></a>
+    </nav>
   </section>
 
   <section class="about-zodiac" aria-labelledby="about-zodiac-title">
@@ -91,8 +111,8 @@ og_image_alt: "Kalendorius365 Zodiako ženklų ratas ir originalios ženklų ili
           <img src="/assets/previews/2028-metų-kalendorius-su-lietuvos-šventėmis.webp" width="680" height="481" alt="2028 metų kalendoriaus maketas su Lietuvos švenčių dienomis." loading="lazy" decoding="async">
           <span class="about-image-label">Metų ir mėnesio vaizdai</span>
         </a>
-        <div class="about-calendar-card__body"><p class="about-card-kicker">Matykite visumą</p><h3>Mėnesių ir metų kalendoriai</h3><p>Rinkitės 2027–2029 m. kalendorius, peržiūrėkite Lietuvos šventes ir pasirinkite patogų išdėstymą.</p><a class="about-text-link" href="/menesiai/">Peržiūrėti kalendorius <span aria-hidden="true">↗</span></a>
-          <nav class="about-year-links" aria-label="Kalendoriai pagal metus"><a href="/2027/">2027</a><a href="/2028/">2028</a><a href="/2029/">2029</a></nav>
+        <div class="about-calendar-card__body"><p class="about-card-kicker">Matykite visumą</p><h3>Mėnesių ir metų kalendoriai</h3><p>Rinkitės 2027–2030 m. kalendorius, peržiūrėkite Lietuvos šventes ir pasirinkite patogų išdėstymą.</p><a class="about-text-link" href="/menesiai/">Peržiūrėti kalendorius <span aria-hidden="true">↗</span></a>
+          <nav class="about-year-links" aria-label="Kalendoriai pagal metus"><a href="/2027/">2027</a><a href="/2028/">2028</a><a href="/2029/">2029</a><a href="/2030/">2030</a></nav>
         </div>
       </article>
       <article class="about-calendar-card about-calendar-card--print">

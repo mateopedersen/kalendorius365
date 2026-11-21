@@ -26,7 +26,8 @@ test("the about-us canonical page preserves the old source, privacy and editoria
 test("the about page presents the full product range and all illustrated zodiac links", () => {
   const page = read("../site/apie-mus/index.html");
   for (const required of [
-    "kalendoriai, horoskopai ir įrankiai", "about-zodiac-title", "about-calendars-title",
+    "about-weather-title", "/orai/", "/oru-saltiniai/#metodika",
+    "about-zodiac-title", "about-calendars-title",
     "about-tools-title", "/tuscias-kalendorius/", "/kurti-kalendoriu/", "/pamoku-tvarkarastis/",
     "/pamainu-grafikas/", "/datos-skaiciuokle/", "/ilgieji-savaitgaliai/"
   ]) assert.ok(page.includes(required), `missing featured product: ${required}`);

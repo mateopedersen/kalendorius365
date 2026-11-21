@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 require_relative '../lib/calendar'
 require_relative '../lib/month_calendar_art'
+require_relative 'days_off_pages'
 require 'fileutils'
 require 'cgi'
 require 'rexml/document'
 module Pages
  extend self
+ include DaysOffPages
  ROOT=File.expand_path('..',__dir__)
  DATA=Kalendorius::DATA
  HOLIDAY_YEARS=JSON.parse(File.read("#{ROOT}/data/holiday-years.json")).freeze
@@ -87,6 +89,7 @@ module Pages
   metadata['planner']=true if planner
   metadata['workdays']=true if path.match?(%r{\Adarbo-dienos/(?:202[789]|2030)\z})
   metadata['phase_module']=phase_module if phase_module
+  metadata['days_off']=true if path.start_with?('nedarbo-dienos/')
   metadata['holiday_editorial']=true if path=='sventes' || path.start_with?('sventes/')
   File.write(target,"---\n#{metadata.map { |k,v| "#{k}: #{v.to_json}" }.join("\n")}\n---\n#{html}")
  end
@@ -334,7 +337,7 @@ module Pages
  def run
   generate_months
   HOLIDAY_YEARS.each { |year|generate_year(year) }
-  HOLIDAY_YEARS.each { |y|generate_holidays(y);generate_work(y);generate_weeks(y) }
+  HOLIDAY_YEARS.each { |y|generate_holidays(y);generate_work(y);generate_weeks(y);generate_days_off(y) }
   generate_holiday_articles
   links=[['2027/','2027 metų kalendorius','Visi mėnesiai, šventės ir metiniai failai.'],['2028/','2028 metų kalendorius','Keliamieji metai ir 29 dienų vasaris.'],['2029/','2029 metų kalendorius','Įprastiniai metai: 365 dienos ir 10 metinių kalendoriaus maketų.']]
   cards=->(arr){'<div class="resource-grid">'+arr.map { |url,name,desc|resource_card(url,name,desc) }.join+'</div>'}
@@ -358,7 +361,7 @@ module Pages
   generate_tools
   generate_phase4
   privacy_policy=File.read("#{ROOT}/site/_includes/privacy-policy-lt.html")
-  page('privatumas','Privatumo politika ir duomenų saugojimas','Sužinokite, kokius duomenis Kalendorius365 tvarko, kas saugoma tik jūsų naršyklėje, kaip veikia orų užklausa, Cloudflare saugumas ir jūsų teisės.',privacy_policy)
+  page('privatumas','Privatumo politika ir duomenų saugojimas','Kaip Kalendorius365 parenka miestą, tvarko orų užklausas, saugo naršyklės nuostatas ir naudoja lankomumo analitiką. Sužinokite apie savo teises.',privacy_policy)
   File.write("#{ROOT}/site/404.html", "---\nlayout: default\ntitle: Puslapis nerastas\ndescription: Ieškomo puslapio nėra. Raskite Kalendorius365 metų ir mėnesių kalendorius.\n---\n{% include 404-lt.html %}\n")
  end
  def generate_months
@@ -503,7 +506,7 @@ module Pages
   HTML
   overview=calendar_year_overview(y,months)
   overview+=screen_year_planning(y) if y==2030
-  dates=%(<h2>Lietuvos šventinės dienos</h2>#{holiday_table(y)}#{commemoration_table(y)}#{source}#{year_context(y)}<nav class="guide-actions" aria-label="#{y} m. datos"><a href="/darbo-dienos/#{y}/">Darbo dienos ir valandos</a><a href="/sventes/">Lietuvos šventės</a></nav>)
+  dates=%(<h2>Lietuvos šventinės dienos</h2>#{holiday_table(y)}#{commemoration_table(y)}#{source}#{year_context(y)}<nav class="guide-actions" aria-label="#{y} m. datos"><a href="/darbo-dienos/#{y}/">Darbo dienos ir valandos</a><a href="/nedarbo-dienos/#{y}/">Nedarbo dienos #{y} m.</a><a href="/sventes/">Lietuvos šventės</a></nav>)
   html=%(<div class="year-workspace annual-workspace">#{calendar_sidebar(y)}<div>#{heading}#{featured}#{overview}#{dates}</div></div>)
   page(y.to_s,"#{y} metų kalendorius – atsisiųsti ir spausdinti","#{y} metų kalendorius su visais 12 mėnesių, Lietuvos šventėmis ir ISO savaitėmis. Mėnesių kolekcijos ir metiniai A3 PDF bei vaizdo failai.",html,true)
  end
@@ -516,6 +519,7 @@ module Pages
   html+=%(<p id="next-holiday" class="source-note" data-holiday-year="#{y}" hidden></p>)+holiday_table(y,nil,true)+commemoration_table(y,nil,true)+source
   html+=%(<p class="source-note">2030 m. datos apskaičiuotos pagal paskelbtą švenčių tvarką. Iki 2030 m. ji gali pasikeisti.</p>) if y==2030
   html+=%(<p>Darbo ir poilsio laiką palyginkite <a href="/darbo-dienos/#{y}/">#{y} m. darbo dienų lentelėje</a>, o mėnesių tinklelius rasite <a href="/#{y}/">#{y} metų kalendoriuje</a>.</p>)
+  html+=%(<p><a href="/nedarbo-dienos/#{y}/">Laisvos dienos #{y} m. ir ilgieji savaitgaliai</a></p>)
   html+='<p><a href="/sventes/">Visų švenčių ir atmintinų dienų paaiškinimai</a></p>'
   html+="<h2>Šventės spausdinamame kalendoriuje</h2><p>Metiniame lape šventinės dienos išskirtos raudonai, o pilnas jų sąrašas pateiktas aukščiau.</p><a class=\"button\" href=\"#{download_href(annual,'pdf')}\" download>Metų PDF su šventėmis</a> <a class=\"button\" href=\"#{download_href(annual,'webp')}\" download>Metų kalendoriaus vaizdas</a>" if annual
   page("sventes/#{y}","#{y} metų šventinės dienos Lietuvoje","Lietuvos šventinės dienos #{y} metais: tikslios datos, savaitės dienos, Velykos, Motinos ir Tėvo diena bei oficialūs teisės šaltiniai.",html,true)
@@ -720,6 +724,7 @@ search_aliases={
  '/menulio-fazes/'=>'jaunatis pilnatis mėnulio kalendorius ketvirčiai moon phases lunar',
  '/irankiai/'=>'skaičiuoklės planuokliai tvarkaraščiai šablonai įrankiai calculator planner tools',
  '/tuscias-kalendorius/'=>'atsisiųsti spausdinti pdf webp kalendoriaus šablonas download print',
+ '/nedarbo-dienos/'=>'laisvos dienos nedarbo dienos poilsio dienos ilgieji savaitgaliai šventinės dienos',
  '/darbo-dienos/'=>'darbo valandos darbo dienos sutrumpinta darbo diena workdays working hours',
  '/mokiniu-atostogos/'=>'mokyklos atostogų datos žiemos pavasario vasaros rudens school holidays',
  '/privatumas/'=>'duomenų saugojimas slapukai naršyklė vietiniai įrašai privacy data'
@@ -734,7 +739,7 @@ search_category = lambda do |url|
  case url
  when '/' then 'home'
  when %r{\A/(?:20\d{2})(?:/|\z)} then 'calendar'
- when %r{\A/sventes/} then 'holiday'
+ when %r{\A/(?:sventes|nedarbo-dienos)/} then 'holiday'
  when %r{\A/(?:horoskopai|zodiakas)/} then 'horoscope'
  when %r{\A/(?:saule|menulio-fazes|menulio-kalendorius|astronominis-kalendorius|metu-laikai|pavasario-lygiadienis|vasaros-saulegriza|rudens-lygiadienis|ziemos-saulegriza)/} then 'astronomy'
  when %r{\A/(?:mokiniu-atostogos|pamoku-tvarkarastis|pamoku-tvarkarascio-sablonai)/} then 'school'

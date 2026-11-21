@@ -39,6 +39,7 @@
 {% if page.family_planner %}<link rel="stylesheet" href="/assets/shell/family-planner.css?v={{ site.css_version }}">{% endif %}
 {% if page.year_directory %}<link rel="stylesheet" href="/assets/year-directory.css?v={{ site.css_version }}">{% endif %}
 {% if page.astronomy_agenda %}<link rel="stylesheet" href="/assets/astronomy-agenda.css?v={{ site.css_version }}">{% endif %}
+{% if page.days_off %}<link rel="stylesheet" href="/assets/days-off.css?v={{ site.css_version }}">{% endif %}
 {% if page.url contains '/darbo-dienos/' %}<link rel="stylesheet" href="/assets/workdays.css?v={{ site.css_version }}">{% endif %}
 {% if page.phase_module == "sun" %}<link rel="stylesheet" href="/assets/shell/sunrise.css?v={{ site.css_version }}">{% endif %}
 {% if page.phase_module == "shift" %}<link rel="stylesheet" href="/assets/shift-exceptions.css?v={{ site.css_version }}">{% endif %}
@@ -145,7 +146,7 @@
   <span class="cookie-notice__mark" aria-hidden="true">{% include shell-art.html name="cookie" size=38 %}</span>
   <div class="cookie-notice__copy">
     <h2 id="cookie-notice-title">Lankomumo statistika</h2>
-    <p id="cookie-notice-copy">Pasirinkite, ar leisti „Google Analytics“ lankomumo statistiką. Kalendorius veikia abiem atvejais. <a href="/privatumas/#cookies">Privatumo politika</a></p>
+    <p id="cookie-notice-copy">Pasirinkite, ar leisti „Google Analytics“ lankomumo statistiką. Kalendorius ir orų prognozės veikia abiem atvejais. <a href="/privatumas/#cookies">Privatumo politika</a></p>
   </div>
   <div class="cookie-notice__actions">
     <button id="cookie-notice-dismiss" type="button" data-analytics-choice="no">Be analitikos</button>

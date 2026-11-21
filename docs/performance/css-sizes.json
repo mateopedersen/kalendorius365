@@ -3,8 +3,8 @@
   "styles": [
     {
       "path": "/assets/about-us.css",
-      "source_bytes": 20767,
-      "generated_bytes": 19778
+      "source_bytes": 21027,
+      "generated_bytes": 20029
     },
     {
       "path": "/assets/advertising/advertising.css",
@@ -30,6 +30,11 @@
       "path": "/assets/contact.css",
       "source_bytes": 8445,
       "generated_bytes": 8054
+    },
+    {
+      "path": "/assets/days-off.css",
+      "source_bytes": 9915,
+      "generated_bytes": 9428
     },
     {
       "path": "/assets/design-system.css",

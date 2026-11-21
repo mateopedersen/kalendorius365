@@ -118,15 +118,7 @@ Bendroje erdvėje laikykite tik planavimui reikalingą informaciją. Medicinini�
 
 Kalendorius365 asmeninis planas saugomas vienoje naršyklėje ir savaime nesidalija su kitu telefonu. Jei reikia bendros versijos, aiškiai nuspręskite, kas prižiūri pagrindinę kopiją. <a href="/blogas/seimos-kalendorius-namuose/">Šeimos planavimo gide</a> pateikiame pavyzdžius, kaip išlaikyti aiškumą neperkraunant lapo kasdienėmis smulkmenomis.
 @@ oru-saltiniai
-## Ką reiškia stebėjimas ir prognozė?
-Stebėjimo duomenys aprašo tai, ką matavo meteorologijos stotis, o prognozė pateikia numatomą orų eigą pasirinktai vietovei. Tai nėra viena ir ta pati informacija. Skirtingiems miestams svetainė gali turėti skirtingą prieinamą duomenų rinkinį, todėl skaitydami orų bloką atkreipkite dėmesį į pateiktą šaltinį ir laiką, o ne vien didžiausią temperatūros skaičių.
+## Duomenų atnaujinimas ir vietovės pasirinkimas
+Orų rodmenis atnaujiname, kai gauname naujus teikėjų duomenis. Vieši atsakymai trumpam laikomi talpykloje. Lygindami rodmenis atkreipkite dėmesį į vietovę, stoties matavimo arba prognozės laiką ir duomenų rūšį.
 
-Orų užklausą svetainės funkcija siunčia į LHMT Meteo LT paslaugą naudodama palaikomo miesto kodą. Lankytojo GPS, asmeniniai kalendoriaus įrašai ar naršyklės užrašai šiai užklausai nesiunčiami. Pradinis miestas gali būti parinktas pagal apytikrius Cloudflare vietos metaduomenis; tokia vieta gali klysti, ypač naudojant VPN ar mobilų ryšį. Miestą visada galite pasirinkti rankiniu būdu.
-
-Duomenų atsakymai laikinai saugomi serverio talpykloje, todėl tai nėra kiekvieną sekundę atnaujinamas tiesioginis matavimo prietaiso ekranas. Jei atnaujinimas nepavyksta, išgalvoti skaičiai nerodomi. Svarbiai kelionei ar nuo oro priklausančiam sprendimui patikrinkite ir patį oficialų šaltinį. Bendras miesto prognozės simbolis negali tiksliai nusakyti kiekvieno kiemo, maršruto ar konkrečios valandos vietinių sąlygų.
-
-Miestų nuotraukos yra vietos iliustracijos, o ne gyvos kameros vaizdas. Saulėta fotografija šalia lietaus prognozės nėra meteorologinių duomenų prieštaravimas. Fotografijos autorystė ir licencija pateikiamos šiame puslapyje atskirai nuo orų šaltinio. Naudodami nuotrauką kitur patikrinkite jos konkrečias licencijos bei autoriaus nurodymo sąlygas; vien vaizdo matomumas svetainėje nereiškia neribotos teisės jį perpublikuoti.
-
-Privatumo politikoje papildomai aprašoma, kokie įprasti tinklo metaduomenys reikalingi puslapiui pateikti ir kaip veikia automatinis numatytojo miesto pasirinkimas. Asmeniniai planai lieka jūsų įrenginyje. Jei pranešate apie klaidingai parodytą miestą, pakanka nurodyti viešą miesto pavadinimą ir matomą rezultatą. Tikslaus namų adreso, GPS koordinačių ar kalendoriaus atsarginės kopijos siųsti nereikia.
-
-Jei pastebite neatitikimą, palyginkite duomenų laiką ir pasirinktą miestą. Prognozės atnaujinimas ir stoties matavimo laikas gali būti skirtingi. Pranešime nurodykite, kokį miestą matėte ir kuri reikšmė atrodė neteisinga. Tai leidžia tikrinti konkretų viešą atsakymą neieškant lankytojo buvimo vietos ar kitos asmeninės informacijos, kurios šiai problemai išspręsti nereikia.
+<a href="/privatumas/#weather-data">Privatumo politikoje</a> paaiškinta, kaip parenkamas pradinis miestas ir kokie viešos vietovės duomenys naudojami užklausoms. Apie netikslumą galite <a href="/kontaktai/">pranešti</a> nurodydami viešą puslapį, rodmenį ir jo laiką.

@@ -1,5 +1,5 @@
 {
-  "pages": 1515,
+  "pages": 1519,
   "method": "Full-route CSS with runtime classes and print rules; no hidden content",
   "results": [
     {
@@ -322,8 +322,8 @@
     },
     {
       "path": "apie-mus/index.html",
-      "source_bytes": 367028,
-      "route_bytes": 136997,
+      "source_bytes": 367279,
+      "route_bytes": 137252,
       "stylesheet_requests_removed": 6
     },
     {
@@ -6777,6 +6777,30 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "nedarbo-dienos/2027/index.html",
+      "source_bytes": 356678,
+      "route_bytes": 125762,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "nedarbo-dienos/2028/index.html",
+      "source_bytes": 356678,
+      "route_bytes": 125762,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "nedarbo-dienos/2029/index.html",
+      "source_bytes": 356678,
+      "route_bytes": 125762,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "nedarbo-dienos/2030/index.html",
+      "source_bytes": 356678,
+      "route_bytes": 125762,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "nuotrauku-licencijos/index.html",
       "source_bytes": 347249,
       "route_bytes": 119043,
@@ -7631,7 +7655,7 @@
     {
       "path": "slapukai/index.html",
       "source_bytes": 347249,
-      "route_bytes": 119826,
+      "route_bytes": 119901,
       "stylesheet_requests_removed": 5
     },
     {
