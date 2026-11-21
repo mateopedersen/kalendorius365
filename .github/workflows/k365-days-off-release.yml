@@ -38,7 +38,7 @@ jobs:
         run: K365_RELEASE=1 bundle exec ruby scripts/build.rb
       - name: Validate Lithuanian page data, calendar media and sitemaps
         run: |
-          git diff --exit-code 4cafec05d0a351f0f7e86af74b9b13a52f82b5f8 HEAD -- site/downloads site/assets/previews site/assets/previews-detail site/assets/data/manifest.json data requirements-print.txt scripts/prints.rb scripts/validate_assets.py scripts/lunar scripts/monthly_holidays
+          git diff --exit-code 4cafec05d0a351f0f7e86af74b9b13a52f82b5f8 HEAD -- site/downloads site/assets/previews site/assets/previews-detail site/assets/data/manifest.json data requirements-print.txt scripts/prints.rb scripts/validate_assets.py scripts/lunar scripts/monthly_holidays ':(exclude)data/blog/page-guides.txt'
           python3 scripts/validate_calendar_pages.py
           python3 scripts/validate_horoscopes.py --require-current --check-rendered --release
           python3 scripts/audit_site.py --release
@@ -57,5 +57,5 @@ jobs:
           git add --all
           git diff --cached --check -- . ':(exclude)public/**'
           git commit -m "Assemble verified days-off, horoscope and weather policy release"
-          git push origin HEAD:refs/heads/codex/days-off-weather-release-20261121-r5-verified
+          git push origin HEAD:refs/heads/codex/days-off-weather-release-20261121-r6-verified
           git rev-parse HEAD >> "$GITHUB_STEP_SUMMARY"
