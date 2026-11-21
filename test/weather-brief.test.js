@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { briefContents, currentReading, dayBrief, rainBrief, readingLight, roadBrief } from "../shared/weather-brief.js";
+import { briefContents, currentReading, dayBrief, rainBrief, readingLight, roadBrief, roadStationLabel } from "../shared/weather-brief.js";
 import { pageReadings } from "../lib/weather-page-readings.mjs";
 import { weatherPlaces } from "../lib/weather-places.mjs";
 
@@ -59,6 +59,26 @@ test("the nearest fresh station is preferred and expired or future measurements 
   assert.match(briefContents(fresh), /A &amp; B · 5 km/);
   assert.match(roadBrief({stations: [stations[0]]}, noon).timeLabel, /Ankstesnis/);
   assert.equal(roadBrief({stations: [station("Expired", 1, 6.01), stations[3]]}, noon), undefined);
+});
+
+test("verified Jakai branches show the junction, direction and station rather than a technical code", () => {
+  const ramp = { name: "Jakai į Vilnių2 0001090007 0,04", road: "0001090007", kilometer: 0.04,
+    section: "A01_304.760_07 (Jakų sankr.)", distance: 3.4, measured: noon / 1000 };
+  assert.deepEqual(roadStationLabel(ramp), {
+    name: "Jakų žiedinė sankryža · Vilniaus kryptis", connection: "A1 jungtis", point: "2-oji stotelė", kilometer: null,
+  });
+  assert.equal(roadBrief({ stations: [ramp] }, noon).detail,
+    "Jakų žiedinė sankryža · Vilniaus kryptis · A1 jungtis · 2-oji stotelė · 3,4 km nuo vietovės");
+  const klaipeda = {name: "Jakai į Klaipėdą 1", road: "0001090002", section: "A01_304.760_02 (Jakų sankr.)"};
+  assert.deepEqual(roadStationLabel(klaipeda), {
+    name: "Jakų žiedinė sankryža · Klaipėdos kryptis", connection: "A1 jungtis", point: "1-oji stotelė", kilometer: null,
+  });
+  const unidentified = roadStationLabel({ ...ramp, section: "Kita sankryža" });
+  assert.equal(unidentified.route, "");
+  assert.equal(unidentified.name, "Jakai į Vilnių 2");
+  assert.deepEqual(roadStationLabel({ name: "Klaipėda A1 303,6", road: "A1", kilometer: 303.6 }),
+    { name: "Klaipėda", route: "A1", officialName: "Klaipėda A1 303,6", kilometer: 303.6 });
+  assert.equal(roadStationLabel({ name: "Stotelė", road: "1234" }).route, "1234");
 });
 
 test("a stalled snapshot cache cannot block the HTML response past its reading budget", async () => {

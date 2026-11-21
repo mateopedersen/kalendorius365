@@ -1,6 +1,6 @@
 import { solarFor } from "../phase-5-6-8-core.js";
 import { daylightMarkup, withLocalSun } from "../data/daylight-outlook.js";
-import { briefContents, condition, currentReading, dayAt, dayBrief, label, rainBrief, readingLight, readingSource, roadBrief } from "../data/weather-brief.js";
+import { briefContents, condition, currentReading, dayAt, dayBrief, label, rainBrief, readingLight, readingSource, roadBrief, roadStationLabel } from "../data/weather-brief.js";
 let searchCatalogue;
 const atlas = document.querySelector(".weather-atlas[data-weather-place]");
 if (atlas) setup(atlas);
@@ -794,17 +794,13 @@ function setup(root) {
 
   function roadStationCard(station) {
     const card = html("article", undefined, "wx-station");
-    const road = String(station.road ?? "").trim();
-    const officialName = String(station.name).trim();
-    const suffix = officialName.match(/^(.+?)\s+(\S+)\s+(\d+(?:[.,]\d+)?)(?:\s+km\.?)?$/iu);
-    const samePosition = suffix && suffix[2] === road && Number.isFinite(station.kilometer) &&
-      units.format(Number(suffix[3].replace(",", "."))) === units.format(station.kilometer);
+    const { name: stationName, route, officialName, kilometer, connection, point } = roadStationLabel(station);
     const heading = html("header", undefined, "wx-station__heading");
-    if (road) heading.append(html("span", road, "wx-station__route"));
+    if (route) heading.append(html("span", route, "wx-station__route"));
     const place = html("div", undefined, "wx-station__place");
-    const name = html("h3", samePosition ? suffix[1] : officialName);
-    if (samePosition) name.title = officialName;
-    const position = [Number.isFinite(station.kilometer) ? units.format(station.kilometer) + "\u00a0km" : "",
+    const name = html("h3", stationName);
+    if (officialName && stationName !== officialName) name.title = officialName;
+    const position = [connection, point, route && Number.isFinite(kilometer) ? units.format(kilometer) + "\u00a0km" : "",
       Number.isFinite(station.distance) ? "už\u00a0" + units.format(station.distance) + "\u00a0km" : ""].filter(Boolean);
     place.append(name);
     if (position.length) place.append(html("p", position.join(" · "), "wx-station__meta"));

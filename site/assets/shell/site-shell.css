@@ -906,6 +906,7 @@ body.homepage-app .dashboard-main {
 
 .homepage-app .dashboard .calendar-panel { padding: 0 17px 14px; overflow: hidden; container: home-calendar / inline-size; }
 .homepage-app .calendar-toolbar {
+  --calendar-control-height: 48px;
   display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 12px; min-height: 86px;
   margin: 0 -17px 15px; padding: 14px 17px; background: var(--shell-heading-backdrop);
   border: 0; color: #fff;
@@ -919,20 +920,20 @@ body.homepage-app .dashboard-main {
   .homepage-app .calendar-toolbar[data-period-view="month"] #period-title { display: none; }
 }
 .calendar-toolbar__actions { min-width: 0; }
-.calendar-toolbar__quick { display: flex; align-items: center; gap: 7px; }
+.calendar-toolbar__quick { display: flex; align-items: stretch; gap: 7px; }
 .homepage-app .calendar-toolbar__quick button {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  margin: 0; padding: 0 12px; min-height: 48px; color: #fff; border: 1px solid #8fb4a0;
+  margin: 0; padding: 0 12px; min-height: var(--calendar-control-height); color: #fff; border: 1px solid #8fb4a0;
   border-radius: 11px; background: #ffffff0b; font: 700 .87rem/1.15 var(--shell-font); white-space: nowrap; box-shadow: none;
 }
 .homepage-app .calendar-toolbar__quick button:hover { background: #ffffff25; }
 .homepage-app .calendar-toolbar__quick #today {
-  min-height: 48px; padding: 0 12px; color: #382600; background: var(--lt-flag-gold); border-color: var(--lt-flag-gold);
+  color: #382600; background: var(--lt-flag-gold); border-color: var(--lt-flag-gold);
 }
 .homepage-app .calendar-toolbar__quick #today:hover { background: #ffd15c; border-color: #ffd15c; }
 .homepage-app .calendar-toolbar .calendar-nav {
   display: grid; grid-template-columns: 40px minmax(0,1fr) 40px; align-items: stretch;
-  min-height: 48px; padding: 0; margin: 0; gap: 0;
+  min-height: var(--calendar-control-height); padding: 0; margin: 0; gap: 0;
   color: var(--shell-forest); background: #fbf5e7; border: 1px solid #ecd7a4; border-radius: 12px;
   box-shadow: 0 2px 7px #0f2d2533;
 }
@@ -945,7 +946,7 @@ body.homepage-app .dashboard-main {
   position: relative; display: grid; min-width: 122px; border-inline: 1px solid #e7dcc2; background: #fffdf6;
 }
 .homepage-app .calendar-toolbar .month-jump select {
-  appearance: none; width: 100%; min-height: 46px; margin: 0; padding: 16px 30px 0 12px;
+  appearance: none; width: 100%; min-height: calc(var(--calendar-control-height) - 2px); margin: 0; padding: 16px 30px 0 12px;
   color: var(--shell-forest); background: #fffdf6; border: 0; border-radius: 0;
   font: 700 .95rem/1.2 var(--shell-font); cursor: pointer;
 }
@@ -1298,8 +1299,6 @@ body.homepage-app .dashboard-main {
 .homepage-app .right-column .detail-head .toolbar-group { margin-left: auto; gap: 2px; }
 .homepage-app .right-column .detail-head button { min-height: 29px; min-width: 26px; width: 26px; }
 .homepage-app .right-column #day-agenda { min-height: 0; }
-.homepage-app .right-column #add-event { margin: 8px 0 0; color: var(--shell-green-dark); background: var(--shell-soft); border: 1px solid var(--shell-border); box-shadow: none; }
-.homepage-app .right-column #add-event:hover { color: var(--shell-forest); background: #dff5ea; }
 .homepage-app .right-column .notes-panel textarea { background: #fcfbf7; border: 1px solid var(--shell-border); }
 .homepage-app .home-guides { margin: 24px 0 0; }
 .home-guides__heading {

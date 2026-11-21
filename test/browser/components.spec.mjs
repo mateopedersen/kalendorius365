@@ -87,6 +87,28 @@ test('calendar views and period navigation update actual state',async({page})=>{
  await expect(month).toHaveValue('11');
 });
 
+test('homepage calendar controls share a height and line up on desktop and mobile', async ({page}) => {
+ await page.goto('/');
+ await expect(page.locator('.dashboard')).toHaveAttribute('aria-busy', 'false');
+ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
+  await page.setViewportSize({width,height:850});
+  const layout = await page.locator('.calendar-toolbar').evaluate(toolbar => {
+   const [today, add, navigation] = [...toolbar.querySelectorAll('#today, #add-event, .calendar-nav')]
+    .map(element => element.getBoundingClientRect());
+   const frame = toolbar.getBoundingClientRect();
+   return {
+    sameHeight: Math.abs(today.height - add.height) < 1 && Math.abs(today.height - navigation.height) < 1,
+    buttonsAligned: Math.abs(today.top - add.top) < 1 && add.left >= today.right,
+    navigationAligned: Math.abs(today.top - navigation.top) < 1 || navigation.top >= today.bottom,
+    contained: [today,add,navigation].every(control => control.left >= frame.left && control.right <= frame.right),
+   };
+  });
+  expect(layout, `toolbar layout at ${width}px`).toEqual({
+   sameHeight:true, buttonsAligned:true, navigationAligned:true, contained:true,
+  });
+ }
+});
+
 test('sunrise week keeps dates and headings inside their table cells on narrow phones',async({page})=>{
  await page.setViewportSize({width:320,height:780});
  for(const route of ['/saule/','/saule/kaunas/']){

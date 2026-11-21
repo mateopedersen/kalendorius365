@@ -1082,10 +1082,6 @@ main.dashboard-main{
 .detail-panel > small{
   font-size: 0.67rem;
 }
-#add-event{
-  min-height: 42px;
-  margin: 0 0 13px;
-}
 .empty-state{
   color: var(--muted);
   font-size: 0.82rem;

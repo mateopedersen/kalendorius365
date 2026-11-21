@@ -84,13 +84,50 @@ export function rainBrief(outlook, now) {
     detail: duration + (end === slots.length ? " · iki prognozės lango pabaigos" : "") + (known.length < 12 ? " · daliniai duomenys" : ""), time, timeLabel: "Modelis" };
 }
 
+// The provider identifies the two branches by section as well as code. Via Lietuva's
+// 2023-640291 procurement identifies Jakų žiedinė sankryža at A1 km 304.76.
+const jakaiBranches = new Map([
+  ["0001090007", { section: "A01_304.760_07 (Jakų sankr.)", direction: "Vilniaus kryptis" }],
+  ["0001090002", { section: "A01_304.760_02 (Jakų sankr.)", direction: "Klaipėdos kryptis" }],
+]);
+
+export function roadStationLabel(station) {
+  const code = String(station.road ?? "").trim();
+  const technical = /^\d{5,}$/u.test(code);
+  const officialName = String(station.name).trim();
+  const suffix = officialName.match(/^(.+?)\s+(\S+)\s+(\d+(?:[.,]\d+)?)(?:\s+km\.?)?$/iu);
+  const samePosition = Number.isFinite(station.kilometer) && suffix &&
+    weatherNumber(Number(suffix[3].replace(",", "."))) === weatherNumber(station.kilometer);
+  const shortened = suffix && suffix[2] === code && (technical || samePosition) ? suffix[1] : officialName;
+  const branch = jakaiBranches.get(code);
+  if (branch && branch.section === String(station.section ?? "").trim()) {
+    const ordinal = shortened.match(/[\p{L}\s]([12])$/u)?.[1];
+    return {
+      name: `Jakų žiedinė sankryža · ${branch.direction}`,
+      connection: "A1 jungtis",
+      point: ordinal ? `${ordinal}-oji stotelė` : "",
+      kilometer: null,
+    };
+  }
+  const name = technical ? shortened.replace(/(\p{L})(\d+)$/u, "$1 $2") : shortened;
+  return {
+    name, route: technical ? "" : code,
+    officialName: technical ? undefined : officialName,
+    kilometer: technical ? null : station.kilometer,
+  };
+}
+
 export function roadBrief(roads, now) {
   const valid = roads?.stations?.filter(s => Number.isFinite(s.distance) && Number.isFinite(s.measured) && s.name
     && s.measured * 1000 <= now + 300000 && s.measured * 1000 >= now - 6 * hour) || [];
   const fresh = valid.filter(s => now - s.measured * 1000 <= 1.5 * hour);
   const [station] = (fresh.length ? fresh : valid).sort((a, b) => a.distance - b.distance);
   if (!station) return;
-  const details = [station.name, weatherNumber(station.distance) + " km nuo vietovės"];
+  const { name, officialName, connection, point } = roadStationLabel(station);
+  const details = [officialName || name];
+  if (connection) details.push(connection);
+  if (point) details.push(point);
+  details.push(weatherNumber(station.distance) + " km nuo vietovės");
   if (Number.isFinite(station.surfaceTemp)) details.push("dangos t. " + weatherNumber(station.surfaceTemp) + " °C");
   return { title: "Kelio stotelė", value: station.surface || "Danga nenurodyta",
     detail: details.join(" · "), time: station.measured * 1000,
