@@ -65,7 +65,7 @@ jobs:
           path: public-build.patch
           retention-days: 1
       - name: Verify committed public files match the release build
-        run: git diff --exit-code HEAD -- public
+        run: git diff --quiet HEAD -- public
       - name: Check CSS minifier whitespace safety
         run: ruby test/css_minifier_test.rb
       - name: Verify route-specific CSS pruning and page bundles
