@@ -7,6 +7,7 @@ ENV['RUBYOPT'] = [ENV['RUBYOPT'], '-EUTF-8:UTF-8'].compact.reject(&:empty?).join
 require 'fileutils'
 require 'json'
 require 'digest'
+require 'date'
 require 'base64'
 require 'tempfile'
 require 'tmpdir'
@@ -22,6 +23,10 @@ require_relative '../lib/advertising_routes'
 require_relative '../lib/print_preview_details'
 ROOT=File.expand_path('..',__dir__)
 Dir.chdir(ROOT) do
+ # Rebuilding the same release on a later day must render the same dates.
+ # The daily publisher advances this date after the edition passes validation.
+ publication=JSON.parse(File.read('site/_data/horoscope_current.json'))
+ ENV['K365_BUILD_DATE']=Date.iso8601(publication.fetch('local_date')).iso8601
  system('python3','scripts/weather/pages_data.py',exception:true)
  previous_revisions=AssetRelease.previous_revisions(File.join(ROOT,'public'))
  release_manifest=nil
@@ -137,6 +142,13 @@ Dir.chdir(ROOT) do
  abort 'Cloudflare Free file limit exceeded' if files.length>20_000
  abort 'Cloudflare static asset size limit exceeded' if files.any? { |p|File.size(p)>25*1024*1024 }
  page_paths=files.select { |path|path.end_with?('/index.html') }
+ # Liquid's indented control tags leave space-only lines in newly rendered
+ # snapshots. Normalize those lines so the daily staged-diff check accepts
+ # the pages without changing the archived text or its version identity.
+ page_paths.grep(%r{\Apublic/horoskopai/[^/]+/\d{4}-\d{2}-\d{2}/v-[0-9a-f]{16}/index\.html\z}).each do |path|
+  html=File.read(path)
+  File.write(path,html) if html.gsub!(/^[ \t]+$/, '')
+ end
  urls=page_paths.map { |path|'https://kalendorius365.lt/'+path.delete_prefix('public/').delete_suffix('index.html') }
  # Preview remains noindex until the release gate has passed. Sitemap is intentionally empty.
  if release
