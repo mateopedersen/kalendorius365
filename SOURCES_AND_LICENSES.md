@@ -131,3 +131,7 @@ visitor is using the site. The displayed author, source page, license and
 adaptation notice accompany each photo. ShareAlike images retain their
 original license terms; no additional restrictions are imposed on those
 image files.
+
+## Weather sharing maps
+
+The Lithuanian country outline in `data/lithuania-social-map.json` is the Lithuania feature from [Natural Earth 1:50m Admin 0 Countries v5.1.2](https://github.com/nvkelso/natural-earth-vector/blob/v5.1.2/geojson/ne_50m_admin_0_countries.geojson), rounded to five decimal places. Natural Earth makes the outlines available in the [public domain](https://www.naturalearthdata.com/about/terms-of-use/). Pins use the existing official locality registry. City covers use crops of the credited local photographs listed in the [weather image and data credits](https://kalendorius365.lt/oru-saltiniai/#oru-vaizdai).

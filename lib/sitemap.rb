@@ -26,6 +26,10 @@ module Kalendorius
 
       images_by_page = Hash.new { |hash, key| hash[key] = [] }
       if release
+        weather_hub = File.read(File.join(public_dir, 'orai/index.html'), encoding: 'UTF-8')
+        cover = weather_hub[%r{<meta property="og:image" content="(https://kalendorius365\.lt/assets/sharing/og/[a-f0-9]+\.(?:png|jpg))"}, 1]
+        abort 'Weather hub share cover is missing' unless cover && File.file?(File.join(public_dir, URI.parse(cover).path))
+        images_by_page[BASE_URL+'/orai/'] << cover
         photo_index=File.expand_path('../data/weather-photo-index.json',__dir__)
         if File.file?(photo_index)
           JSON.parse(File.read(photo_index)).each do |photo|

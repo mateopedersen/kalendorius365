@@ -45,6 +45,7 @@ Dir.chdir(ROOT) do
  release=Kalendorius::BuildPolicy.release?(ENV)
  system(RbConfig.ruby,'scripts/prepare.rb',exception:true)
  system('node','scripts/city_photo_index.mjs',exception:true)
+ system('python3','scripts/weather/social_art.py',exception:true)
  system('python3','scripts/blog/photos.py',exception:true)
  system('python3','scripts/blog/prepare_examples.py',exception:true)
  system('python3','scripts/blog/prepare.py',exception:true)
@@ -248,7 +249,7 @@ Dir.chdir(ROOT) do
  headers+="/assets/lunar/days/*\n  #{immutable}\n/assets/lunar/albedo-web.png\n  #{immutable}\n/assets/lunar/albedo-web.webp\n  #{immutable}\n/assets/lunar/albedo.png\n  #{immutable}\n/assets/lunar/menulio-kalendorius-1200x630.png\n  #{immutable}\n"
  abort 'Cloudflare Pages header rule limit exceeded' if headers.lines.count { |line|line.start_with?('/') }>100
  File.write('public/_headers',headers)
- AdvertisingRoutes.generate(root: ROOT, output: File.join(ROOT,'public'), existing_routes: ['/api/*','/orai/*'])
+ AdvertisingRoutes.generate(root: ROOT, output: File.join(ROOT,'public'), existing_routes: ['/api/*','/orai/*','/oru-vaizdai/v1/*'])
  system('python3','scripts/lunar/check_release.py',exception:true) if release
  system('python3','scripts/lunar/check_pages.py',exception:true) if release
  system('python3','scripts/monthly_holidays/check_release.py',exception:true) if release

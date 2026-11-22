@@ -7,8 +7,6 @@ import json
 import xml.etree.ElementTree as ET
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1];PUBLIC=ROOT/'public'
-# Detail guides use verified, uncropped photographic Open Graph images.
-# Every other page retains the existing 1200x630 PNG contract.
 _detail=json.loads((ROOT/'data/holiday-phase2.json').read_text())
 _old=json.loads((ROOT/'data/holiday-editorial.json').read_text())
 DETAIL_MEDIA={'https://kalendorius365.lt/sventes/'+a['slug']+'/':_detail['media'][a['id']] for a in _old['articles']+_old['commemorations']+_detail['articles']}
@@ -29,13 +27,6 @@ if _research_path.exists():
 _research_slugs={line.split('\t')[1] for line in (ROOT/'data/holiday-guide-research.tsv').read_text().splitlines()}
 _traditions=json.loads((ROOT/'data/traditional-holiday-guides.json').read_text())
 _research_slugs.update(guide['slug'] for guide in _traditions['guides'])
-_seasons=json.loads((ROOT/'site/_data/season_photos.json').read_text())
-SEASON_MEDIA={'https://kalendorius365.lt'+item['page']: item for item in _seasons.values()}
-WEATHER_HUB_MEDIA={
- 'src':'/assets/visuals/weather-1280.webp',
- 'caption':'Vilniaus senamiesčio ir saulės apšviestų debesų iliustracija',
- 'width':1280,'height':720
-}
 _weather=json.loads((ROOT/'site/assets/data/weather-places.json').read_text())
 WEATHER_ROUTES={'/orai/miestai/','/orai/savivaldybes/'} | {
  f'/orai/{place[0]}/' for place in _weather['places']
@@ -46,16 +37,6 @@ WEATHER_ROUTES={'/orai/miestai/','/orai/savivaldybes/'} | {
 def is_share_archive(route):
  return bool(re.fullmatch(r'/dalintis/kalendorius/[a-z0-9-]+/|/horoskopai/istorija/|/horoskopai/[a-z]+/\d{4}-\d{2}-\d{2}/v-[a-f0-9]{16}/',route))
 
-
-def webp_dimensions(data):
- assert data[:4]==b'RIFF' and data[8:12]==b'WEBP'
- chunk=data[12:16]
- if chunk==b'VP8X':return (1+int.from_bytes(data[24:27],'little'),1+int.from_bytes(data[27:30],'little'))
- if chunk==b'VP8 ':
-  assert data[23:26]==b'\x9d\x01\x2a'
-  return tuple(n&0x3fff for n in struct.unpack('<HH',data[26:30]))
- assert chunk==b'VP8L' and data[20]==0x2f
- bits=int.from_bytes(data[21:25],'little');return (1+(bits&0x3fff),1+((bits>>14)&0x3fff))
 
 class Page(HTMLParser):
  def __init__(self):super().__init__();self.links=[];self.anchor_links=[];self.h1=0;self.meta={};self.named_meta={};self.properties={};self.canonical=None;self.title='';self.in_head=False;self.in_title=False;self.ids=set();self.jsonld=[];self.inscript=False
@@ -106,17 +87,13 @@ for path in files:
  for key in ('og:type','og:locale','og:site_name','og:title','og:description','og:url','og:image','og:image:type','og:image:width','og:image:height','og:image:alt'):
   assert len(p.properties.get(key,[]))==1 and p.properties[key][0],(path,key,p.properties.get(key))
  media=DETAIL_MEDIA.get(p.canonical)
- season=SEASON_MEDIA.get(p.canonical)
  is_blog_article=bool(re.fullmatch(r'https://kalendorius365\.lt/blogas/[^/]+/',p.canonical))
  is_research_article=p.canonical.removeprefix('https://kalendorius365.lt/sventes/').strip('/') in _research_slugs
  assert p.properties['og:type']==['article' if media or is_blog_article or is_research_article or p.canonical in LOCAL_DETAILS else 'website'] and p.properties['og:locale']==['lt_LT'],path
  assert p.properties['og:url']==[p.canonical],(path,p.properties['og:url'],p.canonical)
- social_photo=WEATHER_HUB_MEDIA if p.canonical=='https://kalendorius365.lt/orai/' else media
- expected_dimensions=(social_photo['width'],social_photo['height']) if social_photo else (1200,630)
- assert p.properties['og:image:type']==['image/webp' if social_photo else 'image/jpeg' if season else 'image/png'],path
- assert (int(p.properties['og:image:width'][0]),int(p.properties['og:image:height'][0]))==expected_dimensions,path
- if social_photo:assert p.properties['og:image']==['https://kalendorius365.lt'+social_photo['src']] and p.properties['og:image:alt']==[social_photo['caption']],path
- if season:assert p.properties['og:image']==['https://kalendorius365.lt'+season['social']] and p.properties['og:image:alt']==[season['alt']],path
+ expected_type='image/jpeg' if p.properties['og:image'][0].endswith('.jpg') else 'image/png'
+ assert p.properties['og:image:type']==[expected_type],path
+ assert (int(p.properties['og:image:width'][0]),int(p.properties['og:image:height'][0]))==(1200,630),path
  for key in ('twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'):
   assert len(p.named_meta.get(key,[]))==1 and p.named_meta[key][0],(path,key,p.named_meta.get(key))
  assert p.title.endswith(' | Kalendorius365') and p.title.count('|') == 1, (path, p.title)
@@ -130,10 +107,9 @@ for path in files:
  image_path=PUBLIC/unquote(image_url.path).lstrip('/')
  assert image_path.is_file(),(path,p.properties['og:image'][0])
  image_data=image_path.read_bytes()
- if social_photo:assert webp_dimensions(image_data)==expected_dimensions,(path,image_path)
- elif season:
+ if expected_type=='image/jpeg':
   with Image.open(image_path) as image:
-   assert image.format=='JPEG' and image.size==expected_dimensions,(path,image_path)
+   assert image.format=='JPEG' and image.size==(1200,630),(path,image_path)
  else:assert image_data[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',image_data[16:24])==(1200,630),(path,image_path)
  assert image_path.stat().st_size<=300_000,(path,image_path,image_path.stat().st_size)
  assert p.meta.get('twitter:title')==p.properties['og:title'][0] and p.meta.get('twitter:description')==p.properties['og:description'][0],path
@@ -281,7 +257,7 @@ for asset in manifest:
  for kind in ('pdf','webp'):
   expected=f"{asset[kind]}?v={asset['files'][kind]['sha256'][:16]}"
   assert expected in all_local_links,('unversioned or missing print download link',asset['stem'],kind,expected)
-print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, 1200x630 default PNG and exact original-ratio detail WebP, JSON-LD and 480 monthly mappings.')
+print(f'PASS: {len(files)} HTML files (including 404), {len(files)-1} canonical landing pages; {links} local targets; 0 broken links; unique metadata, one H1, language, canonical, image attributes, Open Graph/Twitter image metadata, route-specific 1200x630 PNG/JPEG, JSON-LD and 480 monthly mappings.')
 if '--release' in __import__('sys').argv:
  for path,p in pages.items():
   relative='/'+str(path.relative_to(PUBLIC)).removesuffix('index.html')
@@ -325,12 +301,15 @@ if '--release' in __import__('sys').argv:
     image_urls.append(image.text)
  canonical={p.canonical for path,p in pages.items() if path.name!='404.html' and p.meta.get('robots')=='index, follow'}
  assert len(sitemap)==len(set(sitemap)) and set(sitemap)==canonical and len(sitemap)==len(canonical)
+ covers={p.properties['og:image'][0] for p in pages.values() if p.canonical in canonical}
+ assert len(covers)==len(canonical), 'Indexable static pages must have distinct social images'
  expected_images={f"https://kalendorius365.lt{asset['webp']}" for asset in manifest if asset['kind'] in ('monthly','annual')}
  city_photos=json.loads((ROOT/'data/weather-photo-index.json').read_text())
  expected_images.update(f"https://kalendorius365.lt{photo['image']}" for photo in city_photos)
  research=json.loads(_research_path.read_text()) if _research_path.exists() else {}
  expected_images.update(f"https://kalendorius365.lt{photo['src']}" for photo in research.values())
  expected_images.update(blog_images.values())
+ expected_images.add(pages[PUBLIC/'orai/index.html'].properties['og:image'][0])
  assert len(image_urls)==len(set(image_urls)) and set(image_urls)==expected_images
  assert {PUBLIC/'sitemap.xml',*PUBLIC.glob('sitemap-[0-9]*.xml')}==set(sitemap_files)
  assert 'Sitemap: https://kalendorius365.lt/sitemap.xml' in (PUBLIC/'robots.txt').read_text()

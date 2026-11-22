@@ -103,6 +103,13 @@ hero_share: true
       <a href="https://pasyfo.eu/ziedadulkiu-prognozes">Žiedadulkių žemėlapis</a>
     </nav>
   </section>
+{% assign atlas_share = site.data.sharing.pages['/orai/'] %}
+{% if atlas_share.imageUrl %}
+  <figure class="wx-local-image">
+    <img src="{{ atlas_share.imageUrl | remove_first: site.url }}" width="1200" height="630" alt="{{ atlas_share.imageAlt | escape }}" loading="lazy" decoding="async">
+    <figcaption><a href="/oru-saltiniai/#oru-vaizdai">Orų vaizdai, duomenys ir licencijos</a></figcaption>
+  </figure>
+{% endif %}
   <p class="wx-credits"><a href="/oru-saltiniai/#duomenys">Duomenys ir licencijos</a></p>
 </div>
 <!--/wx-hub-->
@@ -297,6 +304,7 @@ hero_share: true
       <!--wx-intro--><!--/wx-intro-->
     </header>
     <!--wx-guide--><!--/wx-guide-->
+    <!--wx-location-image--><!--/wx-location-image-->
     <section class="wx-local-references" aria-labelledby="wx-reference-title">
       <h3 id="wx-reference-title">Orų žemėlapiai ir įrankiai</h3>
       <!--wx-references--><!--/wx-references-->

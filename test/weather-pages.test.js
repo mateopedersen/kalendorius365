@@ -32,13 +32,15 @@ test("weather page copy, social metadata and breadcrumbs describe the same city 
   assert.match(result, /href="https:\/\/kalendorius365\.lt\/orai\/kaunas\/"\s*>/);
   assert.match(result, /\?dienos=15#oru-prognoze/);
   assert.match(result, /name="robots" content="noindex, follow"/);
-  assert.match(result, /og:image" content="https:\/\/kalendorius365\.lt\/assets\/visuals\/weather-city-kaunas\.webp"/);
-  assert.match(result, /twitter:image:alt" content="Kauno pilies bokštas/);
+  assert.match(result, /og:image" content="https:\/\/kalendorius365\.lt\/assets\/visuals\/weather-share\/kaunas-v1\.jpg"/);
+  assert.match(result, /twitter:image:alt" content="Orai Kaune\. Kauno pilies bokštas/);
+  assert.match(result, /<figure class="wx-local-image"><img src="\/assets\/visuals\/weather-city-kaunas\.webp"/);
   assert.equal([...result.matchAll(/<h1\b/g)].length, 1);
   const schema = [...result.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .map(match => JSON.parse(match[1]));
   assert.equal(schema[0].url, home + "kaunas/");
   assert.equal(schema[0].about.name, "Kaunas");
+  assert.equal(schema[0].primaryImageOfPage.contentUrl, "https://kalendorius365.lt/assets/visuals/weather-city-kaunas.webp");
   assert.equal(schema[1].itemListElement.at(-1).item, schema[0].url);
 });
 

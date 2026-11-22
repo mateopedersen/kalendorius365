@@ -2,8 +2,8 @@
 No user input, browser storage or private calendar files are read by this build.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
-import json, re, hashlib, html, subprocess
+from PIL import Image, ImageDraw, ImageFont, ImageOps
+import io, json, re, hashlib, html, subprocess
 from urllib.parse import quote, urlencode
 ROOT=Path(__file__).resolve().parents[2]; SITE=ROOT/'site'; ASSETS=SITE/'assets/sharing'; ORIGIN='https://kalendorius365.lt'
 MONTHS=['sausis','vasaris','kovas','balandis','geguze','birzelis','liepa','rugpjutis','rugsejis','spalis','lapkritis','gruodis']
@@ -12,6 +12,7 @@ GEN=['sausio','vasario','kovo','balandžio','gegužės','birželio','liepos','ru
 DEFAULT='/assets/visuals/kalendorius365-lietuviskas-kalendorius-1200x630.png'
 PREVIEW_DETAIL_INDEX = ROOT / 'data/print-preview-details.json'
 PREVIEW_DETAILS = json.loads(PREVIEW_DETAIL_INDEX.read_text(encoding='utf-8')) if PREVIEW_DETAIL_INDEX.is_file() else {}
+SIGN_SLUGS = {sign['key'] for sign in json.loads((SITE/'_data/horoscope_signs.json').read_text())}
 def dump(p,data):
  p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':'))+'\n')
 def digest(data):return hashlib.sha256(json.dumps(data,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
@@ -40,10 +41,75 @@ def wrap(draw,text,f,maxwidth,maxlines):
   lines[-1]=last.rstrip()+'…'
  return lines
 
-def og_card(p):
- identity={k:p.get(k) for k in ['kind','contentId','title','excerpt','contentDate','contentVersion','templateId','artwork']};identity['renderer']='share-og-v1';identity['locale']='lt-LT';identity['format']='1200x630'
+ART_BY_SECTION = {
+ 'apie-mus':'brand','autoriai':'journal','atgalinis-skaiciavimas':'hourglass','atmintinos-dienos':'commemorative-candle',
+ 'atostogu-planavimas':'vacation','darbo-dienos':'work-log','darbo-grafiko-sablonai':'shift-templates','datos-skaiciuokle':'date-range',
+ 'dienos-ilgumas':'sunrise','dienos-planuoklis':'day-planner','duk':'note','horoskopai':'daily-horoscope','irankiai':'tools',
+ 'ismokos':'civic-support','keliamieji-metai':'leap-day','kontaktai':'contact','kurti-kalendoriu':'create','mano-diena':'personal',
+ 'menesiai':'month','metai':'year-overview','metu-diena':'day-counter','metu-laikai':'seasons','mokesciu-skaiciuokle':'civic-tax',
+ 'mokiniu-atostogos':'school-break','nedarbo-dienos':'long-weekend','nuotrauku-licencijos':'location','oru-saltiniai':'cloud',
+ 'paieska':'search-glass','pamainu-grafikas':'shift','pamoku-tvarkarascio-sablonai':'lesson-templates','pamoku-tvarkarastis':'school',
+ 'pdf-kalendoriai':'pdf','pensijos':'civic-pension','privatumas':'privacy','redakcine-politika':'journal','renginiai':'festival-stage',
+ 'saule':'sunrise','savaites':'week','savaitiniai-planuokliai':'weekly-planner','seimos-kalendorius':'family','sejos-kalendorius':'garden-seedlings',
+ 'slapukai':'cookie','sventes':'lithuanian-holidays','svetaines-zemelapis':'search-glass','tuscias-kalendorius':'blank-planners',
+ 'vardadieniai':'names','zodiakas':'zodiac-dial',
+}
+
+def render_page_card(p, source, out):
+ im=Image.new('RGB',(1200,630),'#103a31')
+ d=ImageDraw.Draw(im)
+ for x in range(1200):
+  d.line((x,0,x,630),fill=(16+x//180,58+x//115,49+x//78))
+ d.rounded_rectangle((695,28,1173,602),radius=30,fill='#d7ebe2')
+ if source.is_file():
+  with Image.open(source) as asset:
+   if p['artwork'].startswith(('/assets/visuals/shell/','/assets/previews')):
+    art=asset.convert('RGBA');art.thumbnail((410,455),Image.Resampling.LANCZOS)
+   else:
+    focus=(1.0,0.5) if p['artwork'].startswith('/assets/lunar/') else (0.5,0.5)
+    art=ImageOps.fit(asset.convert('RGBA'),(478,574),Image.Resampling.LANCZOS,centering=focus)
+    mask=Image.new('L',art.size);ImageDraw.Draw(mask).rounded_rectangle((0,0,477,573),radius=30,fill=255)
+    art.putalpha(mask)
+   im.paste(art,(695+(478-art.width)//2,28+(574-art.height)//2),art)
+ d=ImageDraw.Draw(im)
+ if p['artwork'].startswith('/assets/lunar/'):
+  d.text((723,565),'Mėnulio paviršius · NASA / LRO',fill='#daeee5',font=font(18))
+ d.rectangle((61,64,124,67),fill='#eccb77')
+ d.text((62,88),'KALENDORIUS365',fill='#f8df98',font=font(21,True))
+ y=161
+ for line in wrap(d,p['title'],font(47,True),574,3):
+  d.text((59,y),line,font=font(47,True),fill='#fcfcf7');y+=56
+ y+=20
+ for line in wrap(d,p['excerpt'],font(27),557,4):
+  d.text((62,y),line,font=font(27),fill='#daeee5');y+=35
+ d.line((62,542,635,542),fill='#6e9587',width=1)
+ d.text((62,565),'kalendorius365.lt',font=font(20,True),fill='#f8df98')
+ if out.suffix=='.jpg':
+  im.save(out,quality=88,optimize=True)
+ else:
+  buffer=io.BytesIO()
+  im.save(buffer,format='PNG',optimize=True)
+  if buffer.tell()>250_000:
+   im.quantize(colors=256).save(out,optimize=True)
+  else:
+   out.write_bytes(buffer.getvalue())
+
+def og_card(p, refreshed=False):
+ identity={k:p.get(k) for k in ['kind','contentId','title','excerpt','contentDate','contentVersion','templateId','artwork']};identity['renderer']='share-og-v2' if refreshed else 'share-og-v1';identity['locale']='lt-LT';identity['format']='1200x630'
+ if refreshed and p['artwork'].startswith('/assets/lunar/'):identity['crop']='moon-disc-right'
  source=SITE/p['artwork'].lstrip('/');identity['art_sha256']=hashlib.sha256(source.read_bytes()).hexdigest() if source.is_file() else None
- token=digest(identity)[:24];out=ASSETS/'og'/f'{token}.png'
+ photographic = refreshed and source.is_file() and source.suffix!='.svg' and not p['artwork'].startswith('/assets/previews')
+ extension = 'jpg' if photographic else 'png'
+ token=digest(identity)[:24];out=ASSETS/'og'/f'{token}.{extension}'
+ if source.suffix == '.svg':
+  raster=ASSETS/'artwork'/f"social-{identity['art_sha256'][:16]}.png"
+  if not raster.is_file():
+   raster.parent.mkdir(parents=True,exist_ok=True)
+   subprocess.run(['node',str(ROOT/'scripts/sharing/rasterize.mjs'),str(source),str(raster)],check=True)
+  source=raster
+ if not out.exists() and refreshed:
+  out.parent.mkdir(parents=True,exist_ok=True)
+  render_page_card(p,source,out)
  if not out.exists():
   out.parent.mkdir(parents=True,exist_ok=True);im=Image.new('RGB',(1200,630),'#f3f7f5');d=ImageDraw.Draw(im)
   d.rounded_rectangle((28,28,1172,602),radius=34,fill='white');d.rectangle((28,175,36,455),fill='#006a44')
@@ -166,9 +232,13 @@ def prepare():
   ident='site' if route=='/' else 'page-'+hashlib.sha256(route.encode()).hexdigest()[:16]
   p=record('site' if route=='/' else 'page',ident,route,title,desc)
   img=metadata(path,'og_image',DEFAULT);p['imageUrl']=ORIGIN+img if img.startswith('/') else img;p['artwork']=img if img.startswith('/') else DEFAULT;p['imageAlt']=metadata(path,'og_image_alt',title)
-  # Generic-image and blog routes receive their own title/excerpt cards.
-  # The original artwork remains the input; no visitor data is included.
-  if img==DEFAULT or route.startswith('/blogas/'):og_card(p)
+  section=route.split('/')[1]
+  if (img==DEFAULT or section=='apie-mus') and section in ART_BY_SECTION:
+   p['artwork']=f"/assets/visuals/shell/{ART_BY_SECTION[section]}.svg"
+  if not re.fullmatch(r'/20(?:27|28|29|30)/(?:[a-z]+/)?',route) and not (section=='horoskopai' and route.strip('/').split('/')[-1] in SIGN_SLUGS):
+   og_card(p,refreshed=True)
+   if p['artwork']==img and p['imageAlt']!=title:
+    p['imageAlt']=f"{title} · {p['imageAlt']}"
   pages[route]=p
  print_manifest=json.loads((SITE/'assets/data/manifest.json').read_text())
  manifest=print_manifest['assets']
@@ -196,7 +266,7 @@ def prepare():
   if a['design']=='01' and parent in pages:
    base=pages[parent];base.update(kind='calendar',year=y,artwork=a['preview'])
    if m:base.update(month=m,calendar=calendar[(y,m)])
-   og_card(base)
+   og_card(base,refreshed=True)
  # Screen-only calendar pages already have public cards. Give them the same
  # stable calendar keys without inventing downloadable designs or files.
  print_years={asset['year'] for asset in manifest if asset['kind']=='annual'}
@@ -207,7 +277,7 @@ def prepare():
    item=pages[route]
    item.update(kind='calendar', year=year)
    if month:item['month']=month
-   og_card(item)
+   og_card(item,refreshed=True)
  current=json.loads((SITE/'_data/horoscope_current.json').read_text());signs={s['key']:s for s in json.loads((SITE/'_data/horoscope_signs.json').read_text())}
  date=current['local_date'];version=current['content_checksum'][:16]
  history=ROOT/'data/horoscope-snapshots';history.mkdir(parents=True,exist_ok=True);saved=history/date/(version+'.json')

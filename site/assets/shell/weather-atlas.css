@@ -12,6 +12,24 @@
 .weather-atlas :where(h1,h2,h3,h4,p,dl) { margin: 0; }
 .weather-atlas :is(.wx-live,.wx-road-hero,.wx-card-sky) :is(p,time,.wx-card-condition) { color: var(--wx-gold); }
 .weather-atlas [hidden] { display: none; }
+.wx-local-image {
+  width: min(100%, 680px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--wx-line);
+  border-radius: 14px;
+  background: var(--wx-surface);
+}
+.wx-local-image img { display: block; width: 100%; height: auto; }
+.wx-local-image figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 10px 14px;
+  color: var(--wx-muted);
+  font-size: .875rem;
+}
 .weather-atlas :is(a,button,input,select):focus-visible { outline: 3px solid #298768; outline-offset: 3px; }
 .weather-atlas :is(section[id],header[id],#wx-climate-title,#wx-hours-title,#wx-days,#wx-search-input,#wx-hub-districts) { scroll-margin-top: 90px; }
 .wx-hero {
