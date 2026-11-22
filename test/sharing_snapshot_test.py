@@ -26,6 +26,7 @@ class SharingSnapshotTest(unittest.TestCase):
             (site / 'assets/visuals').mkdir(parents=True)
             (site / 'assets/fonts').symlink_to(SOURCE / 'site/assets/fonts', target_is_directory=True)
             (site / 'assets/visuals/zodiac').symlink_to(SOURCE / 'site/assets/visuals/zodiac', target_is_directory=True)
+            (site / 'assets/visuals/shell').symlink_to(SOURCE / 'site/assets/visuals/shell', target_is_directory=True)
             (root / 'scripts').symlink_to(SOURCE / 'scripts', target_is_directory=True)
             (site / 'assets/data/manifest.json').write_text('{"assets":[]}')
             (site / 'assets/data/years.json').write_text('[]')

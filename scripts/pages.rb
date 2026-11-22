@@ -177,7 +177,11 @@ module Pages
   ids.filter_map { |id|h=Kalendorius.holidays(year).find { |item|item['id']==id };Date.iso8601(h['date']) if h }
  end
  def next_occurrence(article)
-  previous=ENV['TZ'];ENV['TZ']='Europe/Vilnius';today=Date.today;ENV['TZ']=previous
+  if ENV['K365_BUILD_DATE']
+   today=Date.iso8601(ENV.fetch('K365_BUILD_DATE'))
+  else
+   previous=ENV['TZ'];ENV['TZ']='Europe/Vilnius';today=Date.today;ENV['TZ']=previous
+  end
   (today.year..today.year+10).flat_map { |y|occurrence_dates(article,y) }.sort.find { |d|d>=today }
  end
  def generate_holiday_articles
