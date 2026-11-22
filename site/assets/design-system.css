@@ -119,6 +119,12 @@ a{
 a:hover{
   color: var(--green-dark);
 }
+a > .link-arrow{
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: .06em;
+}
 .icon{
   width: 20px;
   height: 20px;

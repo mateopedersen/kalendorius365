@@ -102,7 +102,7 @@
       {% if include.kind == "family" %}</div></details>{% endif %}
       <div class="planner-studio__actions">
         <button type="button" class="primary" data-studio-print>Spausdinti / išsaugoti PDF</button>
-        {% if include.kind == "family" %}<a class="family-preview-shortcut" href="#seimos-perziura">Peržiūrėti planą ↓</a>{% endif %}
+        {% if include.kind == "family" %}<a class="family-preview-shortcut" href="#seimos-perziura">Peržiūrėti planą <span aria-hidden="true">↓</span></a>{% endif %}
         <button type="button" data-studio-sample>Užpildyti pavyzdį</button>
         {% if include.kind == "family" %}</div><details class="family-planner-options"><summary>Juodraščio kopija ir išvalymas</summary><div class="family-options-body planner-studio__actions">{% endif %}
         <button type="button" data-studio-clear>Išvalyti</button>
