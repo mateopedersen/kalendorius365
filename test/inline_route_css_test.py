@@ -4,6 +4,7 @@ import hashlib
 import re
 import tempfile
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 from unittest.mock import patch
 
@@ -12,22 +13,58 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import inline_route_css as inliner
 
 
+class InlineScripts(HTMLParser):
+    def __init__(self, html):
+        super().__init__(convert_charrefs=False)
+        self.sources = []
+        self.source = None
+        self.template_depth = 0
+        self.feed(html)
+        self.close()
+
+    def handle_starttag(self, tag, attributes):
+        if tag == 'template':
+            self.template_depth += 1
+        if tag != 'script' or self.template_depth:
+            return
+        attrs = dict(attributes)
+        kind = (attrs.get('type') or '').strip().lower()
+        if 'src' not in attrs and kind in {
+            '', 'module', 'text/javascript', 'application/javascript',
+            'text/ecmascript', 'application/ecmascript',
+        }:
+            self.source = []
+
+    def handle_data(self, data):
+        if self.source is not None:
+            self.source.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'template' and self.template_depth:
+            self.template_depth -= 1
+        if tag == 'script' and self.source is not None:
+            self.sources.append(''.join(self.source))
+            self.source = None
+
+
 class InlineRouteCssTests(unittest.TestCase):
     def test_every_generated_inline_bootstrap_has_an_exact_csp_hash(self):
         headers = (ROOT / 'public/_headers').read_text()
         pages = list((ROOT / 'public').rglob('*.html'))
         self.assertGreaterEqual(len(pages), 190)
         for page in pages:
-            scripts = []
-            for attributes, source in re.findall(r'<script\b([^>]*)>(.*?)</script>', page.read_text(), re.S | re.I):
-                script_type = re.search(r'''\btype\s*=\s*["']([^"']+)''', attributes, re.I)
-                data_block = script_type and script_type.group(1).lower() not in {'module', 'text/javascript', 'application/javascript', 'text/ecmascript', 'application/ecmascript'}
-                if re.search(r'\bsrc\s*=', attributes, re.I) or data_block:
-                    continue
-                scripts.append(source)
+            scripts = InlineScripts(page.read_text()).sources
+            for source in scripts:
                 digest = base64.b64encode(hashlib.sha256(source.encode()).digest()).decode()
                 self.assertIn("'sha256-" + digest + "'", headers, str(page))
             self.assertEqual(len(scripts), 2, str(page))
+
+    def test_script_parser_keeps_exact_source_and_ignores_inert_markup(self):
+        document = ('<!-- <script>comment</script> -->'
+                    '<template><script>template</script></template>'
+                    '<script type=application/json>{"label":"calendar"}</script>'
+                    '<script data-note="1 > 0">console.log("calendar &amp; date")</script >')
+        self.assertEqual(InlineScripts(document).sources, ['console.log("calendar &amp; date")'])
 
     def test_initial_modules_are_preloaded_and_evaluate_after_the_dom_exists(self):
         head_modules = {'catalog-finders.js', 'date-guides.js'}
