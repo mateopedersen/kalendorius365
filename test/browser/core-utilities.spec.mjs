@@ -266,16 +266,18 @@ test('home guide cards have aligned links, responsive photographs and correspond
  await expect(cards).toHaveCount(3);
  await region.scrollIntoViewIfNeeded();
 
- const articles = await cards.locator('a').evaluateAll(async (links) => Promise.all(links.map(async (link) => {
+ await expect.poll(() => cards.locator('img').evaluateAll(
+  photos => photos.filter(photo => photo.complete && photo.naturalWidth > 0).length,
+ )).toBe(3);
+ const articles = await cards.locator('a').evaluateAll((links) => links.map((link) => {
   const photo = link.querySelector('img');
-  await photo.decode();
   return {
    url: link.getAttribute('href'),
    hasPhoto: photo.naturalWidth > 0 && !!photo.alt,
    hasVariants: photo.getAttribute('srcset').split(',').length === 3,
    action: link.querySelector('.home-guide__action').getBoundingClientRect().bottom,
   };
- })));
+ }));
  expect(new Set(articles.map(({ url }) => url)).size).toBe(3);
  expect(articles.every(({ hasPhoto, hasVariants, action }) => hasPhoto && hasVariants && Math.abs(action - articles[0].action) <= 1)).toBe(true);
  for (const { url } of articles) {
