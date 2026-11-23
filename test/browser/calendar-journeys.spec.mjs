@@ -209,7 +209,9 @@ test('month guides link to the matching year and month without JavaScript', asyn
       await expect(page.getByRole('link', { name: 'kovo vardadieniai' })).toHaveAttribute('href', '/vardadieniai/kovas/');
       await page.getByRole('link', { name: 'kovo Mėnulio kalendorius' }).click();
       await expect(page).toHaveURL(new URL(lunar, baseURL).href);
-      await page.locator('.lunar-related').getByRole('link', { name: 'Kovo kalendorius su Lietuvos šventėmis' }).click();
+      const returnToMonth = page.locator('.lunar-related').getByRole('link', { name: 'Kovo kalendorius su Lietuvos šventėmis' });
+      await expect(returnToMonth).toHaveAttribute('href', month);
+      await returnToMonth.press('Enter');
       await expect(page).toHaveURL(new URL(month, baseURL).href);
       await page.getByRole('link', { name: 'kovo švenčių ir minėjimų gide' }).click();
       await expect(page).toHaveURL(new URL(holidays, baseURL).href);

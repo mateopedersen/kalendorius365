@@ -266,16 +266,18 @@ test('home guide cards have aligned links, responsive photographs and correspond
  await expect(cards).toHaveCount(3);
  await region.scrollIntoViewIfNeeded();
 
- const articles = await cards.locator('a').evaluateAll(async (links) => Promise.all(links.map(async (link) => {
+ await expect.poll(() => cards.locator('img').evaluateAll(
+  photos => photos.filter(photo => photo.complete && photo.naturalWidth > 0).length,
+ )).toBe(3);
+ const articles = await cards.locator('a').evaluateAll((links) => links.map((link) => {
   const photo = link.querySelector('img');
-  await photo.decode();
   return {
    url: link.getAttribute('href'),
    hasPhoto: photo.naturalWidth > 0 && !!photo.alt,
    hasVariants: photo.getAttribute('srcset').split(',').length === 3,
    action: link.querySelector('.home-guide__action').getBoundingClientRect().bottom,
   };
- })));
+ }));
  expect(new Set(articles.map(({ url }) => url)).size).toBe(3);
  expect(articles.every(({ hasPhoto, hasVariants, action }) => hasPhoto && hasVariants && Math.abs(action - articles[0].action) <= 1)).toBe(true);
  for (const { url } of articles) {
@@ -295,7 +297,7 @@ test('home guide cards have aligned links, responsive photographs and correspond
  }
 });
 
-test('homepage recommendations align their cards and keep the daily horoscope accessible', async ({ page, context }) => {
+test('homepage recommendations align their cards and keep the zodiac guide accessible', async ({ page, context }) => {
  await context.addInitScript(() => localStorage.setItem('kalendorius365:privacy-notice:v1', 'dismissed'));
  await page.goto('/');
  const discovery = page.getByRole('region', { name: 'Svarbios datos ir dienos ritmas' });
@@ -303,9 +305,11 @@ test('homepage recommendations align their cards and keep the daily horoscope ac
  const mainLinks = discovery.locator('.home-discovery__grid a');
  const quickLinks = discovery.locator('.home-discovery__more a');
  await expect(mainLinks).toHaveCount(4);
- await expect(quickLinks).toHaveCount(4);
+ await expect(quickLinks).toHaveCount(2);
+ await expect(quickLinks.nth(0)).toHaveAttribute('href', '/savaites/2027/');
+ await expect(quickLinks.nth(1)).toHaveAttribute('href', '/astronominis-kalendorius/');
  await expect(horoscope.locator('time')).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/);
- const horoscopeLink = horoscope.getByRole('link', { name: 'Skaityti horoskopus' });
+ const horoscopeLink = horoscope.getByRole('link', { name: 'Zodiako ženklų gidas' });
 
  for (const [width, columns] of [[320, 1], [390, 1], [760, 2], [950, 2], [1286, 4]]) {
   await page.setViewportSize({ width, height: 960 });
@@ -323,7 +327,7 @@ test('homepage recommendations align their cards and keep the daily horoscope ac
  await horoscopeLink.focus();
  await expect(horoscopeLink).toHaveCSS('outline-style', 'solid');
  await horoscopeLink.click();
- await expect(page).toHaveURL(/\/horoskopai\/$/);
+ await expect(page).toHaveURL(/\/zodiakas\/$/);
  await expect(page.locator('h1')).toBeVisible();
 });
 

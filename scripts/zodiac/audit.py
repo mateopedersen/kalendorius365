@@ -47,7 +47,9 @@ def audit():
  assert all('https://kalendorius365.lt'+r in sitemap for r in routes)
  for file in (ROOT/'site/assets/visuals/zodiac').glob('*.svg'):
   data=file.read_text();tree=ET.fromstring(data)
-  assert not re.search(r'<(?:script|foreignObject|image)\b|https?://(?!www.w3.org)',data),file
+  assert not re.search(r'<(?:script|foreignObject|image)\b',data),file
+  external_urls=re.findall(r'https?://[^\s"\'<>)]*',data)
+  assert all(url=='http://www.w3.org/2000/svg' for url in external_urls),file
   assert tree.find('{http://www.w3.org/2000/svg}title')is not None
   ids=[el.get('id')for el in tree.iter()if el.get('id')];assert len(ids)==len(set(ids)),file
   assert all(ref in ids for ref in re.findall(r'url\(#([^)]*)\)',data)),file
