@@ -1,7 +1,7 @@
 ---
-title: "Lietuvos sėjos, sodinimo ir derliaus kalendorius"
-description: "Lietuvos daržo ir sodo kalendorius. Raskite daržovių, braškių, šilauogių ir obelų sėjos, sodinimo bei derliaus laiką. Susikurkite savo planą ir atsisiųskite ICS."
-breadcrumb_label: "Sėjos kalendorius"
+title: "Sodininko kalendorius sėjai, sodinimui ir derliui planuoti"
+description: "Sužinokite, kada Lietuvoje sėti daržoves, sodinti daigus ir skinti derlių. Raskite sodo ir daržo darbus pagal mėnesį, sudarykite savo planą ir atsisiųskite ICS."
+breadcrumb_label: "Sodininko kalendorius"
 garden_calendar: true
 preserve_source: true
 og_image: /assets/visuals/garden/darzas-1200x630.png
@@ -17,8 +17,8 @@ og_image_height: 630
   <header class="garden-hero">
     <div class="garden-hero__copy">
       <p class="garden-kicker"><span class="garden-flag" aria-hidden="true"></span> Daržas ir sodas Lietuvoje</p>
-      <h1>Sėjos kalendorius <span>Nuo sėklos iki derliaus</span></h1>
-      <p>Sužinokite, kada sėti daržoves, sodinti daigus ir skinti vaisius bei uogas. Palyginkite laikotarpius ir susidarykite savo daržo planą.</p>
+      <h1>Sodininko kalendorius</h1>
+      <p>Kada sėti pomidorus daigams, sodinti agurkus lauke ar skinti obuolius? Pasirinkite mėnesį, palyginkite darbus lysvėje ir šiltnamyje, o savo datas išsaugokite daržo plane.</p>
       <div class="garden-actions"><a class="garden-button" href="#sejos-apzvalga">Peržiūrėti kalendorių <span aria-hidden="true">↓</span></a><a class="garden-button garden-button--outline" href="#mano-darzas">Sudaryti savo planą</a></div>
       <dl class="garden-facts"><div><dt>Augalai</dt><dd>{{ garden.plants.size }}</dd></div><div><dt>Sezono apžvalga</dt><dd>12 <small>mėnesių</small></dd></div><div><dt>Savo planas</dt><dd>PDF <small>ir ICS</small></dd></div></dl>
     </div>
@@ -28,7 +28,7 @@ og_image_height: 630
     </figure>
   </header>
 
-  <nav class="garden-jump" aria-label="Sėjos kalendoriaus turinys">
+  <nav class="garden-jump" aria-label="Sodininko kalendoriaus turinys">
     <a href="#sejos-apzvalga">Sezono apžvalga <span aria-hidden="true">↓</span></a>
     <a href="#mano-darzas">Mano daržas <span aria-hidden="true">↓</span></a>
     <a href="#kaip-planuoti">Kaip planuoti <span aria-hidden="true">↓</span></a>
@@ -37,10 +37,10 @@ og_image_height: 630
 
   <section class="garden-section" id="sejos-apzvalga" aria-labelledby="garden-overview-title">
     <div class="garden-section__head">
-      <div><p class="garden-kicker">Sezonas vienoje lentelėje</p><h2 id="garden-overview-title">Ką ir kada auginti?</h2><p>Pasirinkite mėnesį ar darbą. Atverkite augalo eilutę, kad pamatytumėte tikslesnį laikotarpį ir nuotrauką.</p></div>
+      <div><h2 id="garden-overview-title">Sėja, sodinimas ir derlius pagal mėnesį</h2><p>Filtruokite pagal augalą, mėnesį, darbą arba auginimo būdą. Paspaudę augalo pavadinimą rasite išsamesnius laikotarpius bei šaltinius. Ženklu „+“ pasirinktą augalą įtrauksite į savo planą.</p></div>
       <a href="#sejos-saltiniai">Auginimo duomenų šaltiniai <span aria-hidden="true">↗</span></a>
     </div>
-    <fieldset class="garden-filters" aria-label="Sėjos kalendoriaus filtrai" data-garden-enable disabled>
+    <fieldset class="garden-filters" aria-label="Sodininko kalendoriaus filtrai" data-garden-enable disabled>
       <label for="garden-search">Augalas<input id="garden-search" type="search" placeholder="Pvz., morkos arba braškės" autocomplete="off" data-garden-search></label>
       <label for="garden-month">Mėnuo<select id="garden-month" data-garden-month><option value="">Visi mėnesiai</option>{% for month in months %}<option value="{{ forloop.index }}">{{ month[1] }}</option>{% endfor %}</select></label>
       <label for="garden-stage">Darbas<select id="garden-stage" data-garden-stage><option value="">Visi darbai</option>{% for stage in garden.stages %}<option value="{{ stage[0] }}">{{ stage[1].name }}</option>{% endfor %}</select></label>
@@ -96,6 +96,18 @@ og_image_height: 630
     </details>
   </section>
 
+  <section class="garden-section" aria-labelledby="garden-season-title">
+    <div class="garden-section__head">
+      <div><h2 id="garden-season-title">Sodo ir daržo darbai per metus</h2><p>Lentelėje raskite savo augalą ir patikrinkite, kuri darbų seka tinka jo veislei bei auginimo vietai.</p></div>
+    </div>
+    <ul class="garden-season-grid">
+      <li><h3>Žiema · Lysvių planas</h3><p>Pažymėkite, kur pernai augo daržovės, ir nuspręskite, kur jas perkelsite. Peržiūrėkite turimas sėklas, ant pakelių nurodytą vegetacijos trukmę ir pasižymėkite, kam reikės vietos daigams.</p></li>
+      <li><h3>Pavasaris · Sėja ir daigai</h3><p>Kovą galima ruošti pomidorų daigus ir sėti ridikėlius nešildomame šiltnamyje. Morkas sėkite tiesiai į lysvę, kai dirva pradžiūvusi ir ją galima purenti. Šilumamėgius daigus į lauką perkelkite praėjus šalnų pavojui.</p></li>
+      <li><h3>Vasara · Derlius ir antra sėja</h3><p>Daržo plane atskirai žymėkite pirmo skynimo datą ir derliaus pabaigą. Jeigu rugpjūtį atsilaisvina lysvė, ją galite skirti špinatams rudens derliui. Atsižvelkite į veislės vegetacijos trukmę ir artėjančius vėsius orus.</p></li>
+      <li><h3>Ruduo · Skynimas ir sodinimas</h3><p>Obuolius skinkite pasiekus jų veislei būdingą brandą. Laikymui atrinkite sveikus, nepažeistus vaisius. Žieminių česnakų sodinimą suplanuokite taip, kad skiltelės iki įšalo spėtų įsišaknyti.</p></li>
+    </ul>
+  </section>
+
   <section class="garden-prep" aria-labelledby="garden-prep-title">
     <div><h2 id="garden-prep-title">Prieš pirmąją sėją</h2><p>Sėklų daigumą, daigų vystymąsi ir derliaus laiką lemia jūsų pasirinkta veislė ir sklypo sąlygos.</p>
       <dl><div><dt>Veislė</dt><dd>Patikrinkite kultūros vegetacijos trukmę ir sėjos gylį ant pakelio.</dd></div><div><dt>Daigai</dt><dd>Paruoškite švarius indus ir vietą, kurioje pakanka šviesos.</dd></div><div><dt>Dirva ir orai</dt><dd>Prieš sėją ar sodinimą patikrinkite dirvos būklę ir vietinę šalnų prognozę.</dd></div></dl>
@@ -144,13 +156,18 @@ og_image_height: 630
   </section>
 
   <section class="garden-method" id="kaip-planuoti" aria-labelledby="garden-method-title">
-    <div><p class="garden-kicker">Planavimas pagal sąlygas</p><h2 id="garden-method-title">Pasirinkite savo sklypui tinkamą datą</h2><p>Mėnuo lentelėje yra orientyras. Net tame pačiame rajone dirva įšyla nevienodai, o naktį žemumose šalna gali būti stipresnė. Šiltnamyje atskirai įvertinkite nakties temperatūrą.</p><a href="/menulio-kalendorius/">Astronominis Mėnulio kalendorius <span aria-hidden="true">→</span></a></div>
-    <ol><li><h3>Pasirinkite augalą ir auginimo būdą</h3><p>Daigams skirta sėja gali prasidėti gerokai anksčiau už sėją tiesiai į lysvę.</p></li><li><h3>Patikrinkite orus ir dirvą</h3><p>Sėjos gylį, temperatūrą ir augimo trukmę pasitikrinkite ant konkrečios veislės pakelio.</p></li><li><h3>Užrašykite faktinę datą</h3><p>Veislę, lysvę ir atlikto darbo datą pasižymėkite <a href="#mano-darzas">savo daržo plane</a>. Jei sėją derinate su kitais susitarimais, įtraukite ją į <a href="/mano-diena/">dienos planą</a>. Vėliau galėsite palyginti, kada augalai sudygo ir kada nuėmėte derlių.</p></li></ol>
+    <div><h2 id="garden-method-title">Kaip pasirinkti datą savo sklypui?</h2><p>Lentelėje nurodyti orientaciniai Lietuvos laikotarpiai. Dirva greičiau įšyla saulėtoje, nuo vėjo apsaugotoje vietoje, o žemumoje gali pašalti net tada, kai gretimame sklype šalnos nėra. Prieš persodindami peržiūrėkite <a href="/orai/">vietos orų prognozę</a> ir <a href="{{ garden.sources.frost.url }}">LHMT informaciją apie šalnas</a>.</p></div>
+    <ol>
+      <li><h3>Atskirkite sėją nuo persodinimo</h3><p>Jei pomidorus auginsite iš daigų, sėją ir perkėlimą į lysvę planuokite kaip du atskirus darbus. Numatomą sodinimo dieną atidėkite, jeigu prognozuojama šalna.</p></li>
+      <li><h3>Patikrinkite veislę ir dirvą</h3><p>Ant sėklų pakelio raskite sėjos gylį ir vegetacijos trukmę. Nešildomame šiltnamyje pamatuokite nakties temperatūrą prie daigų ir patikrinkite, ar dirva jau įšilusi.</p></li>
+      <li><h3>Pažymėkite, ką atlikote</h3><p><a href="#mano-darzas">Daržo plane</a> užrašykite datą, veislę ir lysvę. Pavyzdžiui, atskirais įrašais pasižymėkite ridikėlių sėją šiltnamyje ir pirmą rovimą. Kitą pavasarį turėsite savo sklypo orientyrą.</p></li>
+    </ol>
   </section>
 
   <section class="garden-section garden-sources" id="sejos-saltiniai" aria-labelledby="garden-sources-title">
     <h2 id="garden-sources-title">Šaltiniai ir dažniausi klausimai</h2>
     <div class="garden-faq">
+      <details><summary>Kuo skiriasi sodininko ir sėjos kalendorius?</summary><p>Sėjos kalendorius padeda pasirinkti laiką sėkloms sėti. Sodininko kalendoriuje taip pat rasite, kada perkelti daigus, sodinti sodinukus ir nuimti daržovių, uogų ar vaisių derlių.</p></details>
       <details><summary>Kodėl nenurodoma viena tiksli sėjos diena?</summary><p>Net tos pačios veislės augimo tempas priklauso nuo dirvos temperatūros, drėgmės ir vietos. Lentelė padeda suplanuoti laikotarpį, o savo darbo datą pasirinkite pagal realias sąlygas.</p></details>
       <details><summary>Ar pasirinkus vietovę pasikeičia lentelės mėnesiai?</summary><p>Vietovės pasirinkimas rodo jai aktualų patarimą apie šalnas. Lentelėje lieka bendri Lietuvos laikotarpiai, o įrašytos plano datos išlieka jūsų pasirinktos.</p></details>
       <details><summary>Ar tai Mėnulio sėjos kalendorius?</summary><p>Šis kalendorius skirtas sėjai, sodinimui ir derliui planuoti pagal augalų vegetaciją bei Lietuvos sąlygas. Mėnulio fazes galite peržiūrėti atskirame <a href="/menulio-kalendorius/">Mėnulio kalendoriuje</a>.</p></details>

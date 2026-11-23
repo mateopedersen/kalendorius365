@@ -12,17 +12,21 @@ test.beforeEach(async ({ context }) => {
 
 test('the Lithuanian garden is discoverable and filters the photos and periods', async ({ page }) => {
   await page.goto('/irankiai/');
-  const tool = page.locator('#tool-directory').getByRole('link', { name: /Sėjos kalendorius/ }).first();
+  const tool = page.locator('#tool-directory').getByRole('link', { name: /Sodininko kalendorius/ }).first();
   await expect(tool).toHaveAttribute('href', '/sejos-kalendorius/');
   await page.locator('#tools-open').click();
   const menu = page.locator('#tools-dialog');
   await menu.locator('#tools-query').fill('sejos');
-  await menu.getByRole('link', { name: /Sėjos kalendorius/ }).click();
+  await expect(menu.getByRole('link', { name: /Sodininko kalendorius/ })).toBeVisible();
+  await menu.locator('#tools-query').fill('sodininko kalendorius');
+  await menu.getByRole('link', { name: /Sodininko kalendorius/ }).click();
   await expect(page).toHaveURL(/\/sejos-kalendorius\/$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Sodininko kalendorius', exact: true })).toBeVisible();
+  await expect(page).toHaveTitle(/^Sodininko kalendorius sėjai, sodinimui ir derliui planuoti/);
   const garden = page.locator('[data-garden]');
   await expect(garden).toHaveAttribute('data-ready', 'true');
   await expect(garden.locator('[data-garden-row]:visible')).toHaveCount(21);
-  const filters = garden.getByRole('group', { name: 'Sėjos kalendoriaus filtrai' });
+  const filters = garden.getByRole('group', { name: 'Sodininko kalendoriaus filtrai' });
   await filters.getByRole('searchbox').fill('obuolys');
   await expect(garden.locator('[data-garden-row="obelys"]')).toBeVisible();
   await expect(garden.locator('[data-garden-row]:visible')).toHaveCount(1);

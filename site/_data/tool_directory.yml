@@ -476,12 +476,12 @@ categories:
         art: personal
         card_class: resource-card--year
       - route: /sejos-kalendorius/
-        title: Sėjos kalendorius
-        description: Lietuvos daržovių ir vaisių sėjos, sodinimo ir derliaus laikotarpiai bei asmeninis daržo planas.
+        title: Sodininko kalendorius
+        description: Sėjos, daigų sodinimo ir derliaus laikotarpiai Lietuvoje bei jūsų daržo darbų planas.
         example: Pasirinkite balandį ir pažiūrėkite, ką galima sėti lauke.
         kind: Interaktyvus daržo planuoklis
         outputs: [ICS, JSON, spausdinti]
-        keywords: seja sejos darzas sodas sodinimas darzoves vaisiai uogos derlius siltnamis braskes bulves
+        keywords: sodininkas sodininko sėjos kalendorius seja sejos darzas sodas sodinimas darzoves vaisiai uogos derlius siltnamis braskes bulves
         icon: tool-year
         art: garden-seedlings
         card_class: resource-card--year
