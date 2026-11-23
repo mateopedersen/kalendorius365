@@ -274,6 +274,7 @@
 @media (max-width: 360px) {
   .civic-hero { padding-inline: 14px; }
   .civic-ticket { padding-inline: 12px; }
+  .civic-form legend { inline-size: 100%; min-inline-size: 0; overflow-wrap: anywhere; }
   .civic-result__details > div { grid-template-columns: minmax(0,1fr); gap: 1px; }
   .civic-result__details dd { text-align: start; max-width: none; }
 }

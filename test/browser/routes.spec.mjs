@@ -19,10 +19,13 @@ for (const route of routes) test(`canonical route, runtime, responsive header: $
    await page.keyboard.press('Escape');await expect(page.locator('#nav-toggle')).toHaveAttribute('aria-expanded','false');
  }
  if(info.project.use.isMobile){
+   await page.evaluate(() => document.fonts.ready.then(() => undefined));
    for(const width of [320,390,430]){
      await page.setViewportSize({width,height:844});
-     const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
-     expect(layout.scroll,`${route} at ${width}px: ${JSON.stringify(layout)}`).toBeLessThanOrEqual(layout.viewport+1);
+     await expect.poll(
+       () => page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
+       {message: `${route} at ${width}px must fit without horizontal scrolling`},
+     ).toBeLessThanOrEqual(1);
    }
  }else{
    const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
