@@ -106,6 +106,62 @@ function setNoteStatus(text, state) {
   status.textContent = text;
   status.dataset.state = state;
 }
+function paintDayNote(node, text) {
+  node.textContent = text;
+  node.hidden = !text.trim();
+}
+function refreshDayNote(date, text) {
+  for (const node of $("#calendar").querySelectorAll('[data-day-note="' + date + '"]'))
+    paintDayNote(node, text);
+}
+function buildDayNote(date) {
+  const note = el("span", undefined, "calendar-day-note");
+  note.dataset.dayNote = date;
+  paintDayNote(note, (noteDirty && date === noteDate ? $("#daily-note").value : store.data.notes[date]) || "");
+  return note;
+}
+function noteButton(date) {
+  const button = el("button", "+", "calendar-note-add");
+  button.type = "button";
+  button.dataset.noteEdit = date;
+  button.setAttribute("aria-label", "Užrašas · " + cal.formatDate(date));
+  return button;
+}
+const noteDialog = $("#calendar-note-dialog");
+const noteDialogText = $("#calendar-note-text");
+let dialogNoteDate;
+function openDayNote(date) {
+  dialogNoteDate = date;
+  noteDialog.returnValue = "";
+  $("#calendar-note-date").textContent = cal.formatDate(date);
+  noteDialogText.value = noteDirty && date === noteDate ? $("#daily-note").value : store.data.notes[date] || "";
+  const options = $("#calendar-note-events");
+  options.replaceChildren();
+  const titles = new Set([...dayHolidays(date).map(item => item.name), ...events(date).map(item => item.title)]);
+  for (const title of titles) {
+    const button = el("button", title);
+    button.type = "button";
+    button.onclick = () => {
+      if (!noteDialogText.value.split("\n").includes(title))
+        noteDialogText.value = [noteDialogText.value.trim(), title].filter(Boolean).join("\n").slice(0,10000);
+      noteDialogText.focus();
+    };
+    options.append(button);
+  }
+  $("#calendar-note-choices").hidden = !titles.size;
+  noteDialog.showModal();
+}
+noteDialog.addEventListener("close", () => {
+  if (noteDialog.returnValue !== "save" || !dialogNoteDate) return;
+  const value = noteDialogText.value;
+  if (dialogNoteDate === noteDate) {
+    $("#daily-note").value = value;
+    saveNote();
+  } else if (transact(data => {
+    if (value.trim()) data.notes[dialogNoteDate] = value;
+    else delete data.notes[dialogNoteDate];
+  })) refreshDayNote(dialogNoteDate, value);
+});
 function saveNote(silent = false) {
   const text = $("#daily-note").value;
   if (text === (store.data.notes[noteDate] || "")) {
@@ -121,6 +177,7 @@ function saveNote(silent = false) {
   )
     return false;
   noteDirty = false;
+  refreshDayNote(noteDate, text);
   setNoteStatus("Išsaugota šioje naršyklėje", "saved");
   if (!silent) notice("Užrašas išsaugotas.");
   return true;
@@ -214,7 +271,10 @@ function monthTable(date, isMini = false, todayDate = cal.today()) {
           );
         if (items.length > 2) b.append(el("small", "+" + (items.length - 2)));
       }
+      const inMonth = s.slice(0, 7) === date.slice(0, 7);
+      if (inMonth) b.append(buildDayNote(s));
       td.append(b);
+      if (!isMini && inMonth) td.append(noteButton(s));
     }
   }
   return table;
@@ -257,7 +317,7 @@ function listDates(start, count) {
         "date-link",
       );
     button.dataset.date = s;
-    wrap.append(button);
+    wrap.append(button, noteButton(s), buildDayNote(s));
     for (const h of dayHolidays(s)) {
       wrap.append(el(
         "p", "◆ " + h.name,
@@ -648,6 +708,7 @@ if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
   if (!b) return;
+  if (b.dataset.noteEdit) { openDayNote(b.dataset.noteEdit); return; }
   if (b.dataset.date && b.closest("#month-holidays")) {
     if (selectDate(b.dataset.date)) $("#selected-title").focus();
   } else if (b.dataset.date) selectDate(b.dataset.date);
@@ -710,6 +771,7 @@ $("#task-cancel").onclick = () => $("#task-dialog").close();
 $("#save-note").onclick = () => saveNote();
 $("#daily-note").oninput = () => {
   noteDirty = true;
+  refreshDayNote(noteDate, $("#daily-note").value);
   setNoteStatus("Neišsaugoti pakeitimai", "dirty");
 };
 window.addEventListener("beforeunload", () => saveNote(true));

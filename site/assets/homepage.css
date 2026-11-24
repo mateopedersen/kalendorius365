@@ -22,6 +22,53 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 }
 
 
+.homepage-app .calendar-note-dialog {
+  width: min(calc(100% - 2rem), 29rem);
+  max-height: calc(100% - 2rem);
+  box-sizing: border-box;
+  padding: 1.2rem;
+}
+.calendar-note-dialog form { display: grid; gap: .7rem; }
+.calendar-note-dialog :is(h2,p) { margin: 0; }
+.calendar-note-dialog textarea { width: 100%; box-sizing: border-box; resize: vertical; }
+#calendar-note-events { display: flex; flex-wrap: wrap; gap: .4rem; }
+.homepage-app .month-table td:has(.calendar-note-add) { position: relative; }
+.homepage-app button.calendar-note-add {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 1px solid #81a693;
+  border-radius: .35rem;
+  background: #fff;
+  color: #075235;
+  line-height: 1;
+}
+.month-table .calendar-note-add { position: absolute; top: .25rem; right: .25rem; }
+.homepage-app button.calendar-note-add:hover,
+.homepage-app button.calendar-note-add:focus-visible { color: #fff; background: #075235; }
+.homepage-app .calendar-day-note {
+  display: block;
+  padding: .12rem .2rem;
+  border-inline-start: 2px solid #438768;
+  color: #075235;
+  font-size: .72rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.homepage-app .calendar-day-note[hidden] { display: none; }
+.homepage-app .year-app-grid .calendar-day-note { display: none; }
+@media (max-width: 650px) {
+  .homepage-app .month-table .calendar-note-add { top: auto; bottom: .15rem; right: .15rem; width: 20px; min-height: 20px; }
+  .homepage-app .month-table td:has(.calendar-note-add) .day-cell { padding-bottom: 1.4rem; }
+}
+@media print {
+  #main .calendar-panel .calendar-day-note { color: #111; font-size: 7pt; line-height: 1.2; }
+  #main .year-app-grid .calendar-day-note:not([hidden]) { display: block; }
+  #main .calendar-legend__date-help { display: none; }
+}
+
 /* Refined homepage detail panels: category filters, holidays, notes and tasks. */
 .homepage-app .panel-heading-icon{
   width: 30px;

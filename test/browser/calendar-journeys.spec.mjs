@@ -9,6 +9,27 @@ test.beforeEach(async ({ context }) => {
   });
 });
 
+test('homepage date notes persist and print with the calendar only', async ({ page }) => {
+  await page.goto('/?data=2028-02-16');
+  await page.locator('[data-note-edit="2028-02-17"]').click();
+  await page.locator('#calendar-note-text').fill('Susitikimas dešimtą');
+  await page.locator('#calendar-note-dialog button[value=save]').click();
+  const notes = page.locator('#calendar [data-day-note]');
+  await expect(notes.and(page.locator('[data-day-note="2028-02-17"]'))).toHaveText('Susitikimas dešimtą');
+  await page.locator('#daily-note').fill('Patikrintas dienos planas');
+  const todayNote = notes.and(page.locator('[data-day-note="2028-02-16"]'));
+  await expect(todayNote).toHaveText('Patikrintas dienos planas');
+  await page.locator('#save-note').click();
+  await page.reload();
+  await expect(todayNote).toHaveText('Patikrintas dienos planas');
+  await page.locator('#kalendorius [data-print]').click();
+  expect(await page.evaluate(() => window.printCalls)).toBe(1);
+  await page.emulateMedia({ media: 'print' });
+  await expect(todayNote).toBeVisible();
+  await expect(page.locator('.home-heading')).toBeHidden();
+  await expect(page.locator('#daily-note')).toBeHidden();
+});
+
 test('a yearly date opens its day plan and keeps a saved note on reload', async ({ page }) => {
   await page.goto('/2029/');
   await page.getByRole('link', { name: 'Peržiūrėti metų datas' }).click();
