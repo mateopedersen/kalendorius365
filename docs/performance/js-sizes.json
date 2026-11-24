@@ -18,8 +18,8 @@
     },
     {
       "path": "/assets/app.js",
-      "source_bytes": 36907,
-      "generated_bytes": 23564
+      "source_bytes": 40423,
+      "generated_bytes": 25676
     },
     {
       "path": "/assets/ascendant-calculator.js",
@@ -95,6 +95,11 @@
       "path": "/assets/calendar-editor/vendor/jspdf-4.2.1.umd.min.js",
       "source_bytes": 420165,
       "generated_bytes": 420165
+    },
+    {
+      "path": "/assets/calendar-note-tools.js",
+      "source_bytes": 10021,
+      "generated_bytes": 6635
     },
     {
       "path": "/assets/calendar.js",

@@ -1,5 +1,5 @@
 {
-  "pages": 1519,
+  "pages": 1543,
   "method": "Full-route CSS with runtime classes and print rules; no hidden content",
   "results": [
     {
@@ -4041,6 +4041,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/avinas/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/avinas/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/avinas/index.html",
       "source_bytes": 398272,
       "route_bytes": 153848,
@@ -4240,6 +4252,18 @@
     },
     {
       "path": "horoskopai/dvyniai/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/dvyniai/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/dvyniai/2026-11-24/v-b9ff9547d237203e/index.html",
       "source_bytes": 361398,
       "route_bytes": 127904,
       "stylesheet_requests_removed": 6
@@ -4461,6 +4485,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/jautis/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/jautis/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/jautis/index.html",
       "source_bytes": 398272,
       "route_bytes": 153772,
@@ -4660,6 +4696,18 @@
     },
     {
       "path": "horoskopai/liutas/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/liutas/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/liutas/2026-11-24/v-b9ff9547d237203e/index.html",
       "source_bytes": 361398,
       "route_bytes": 127904,
       "stylesheet_requests_removed": 6
@@ -4869,6 +4917,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/mergele/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/mergele/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/mergele/index.html",
       "source_bytes": 398272,
       "route_bytes": 153772,
@@ -5068,6 +5128,18 @@
     },
     {
       "path": "horoskopai/oziaragis/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/oziaragis/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/oziaragis/2026-11-24/v-b9ff9547d237203e/index.html",
       "source_bytes": 361398,
       "route_bytes": 127904,
       "stylesheet_requests_removed": 6
@@ -5277,6 +5349,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/saulys/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/saulys/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/saulys/index.html",
       "source_bytes": 398272,
       "route_bytes": 153848,
@@ -5476,6 +5560,18 @@
     },
     {
       "path": "horoskopai/skorpionas/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/skorpionas/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/skorpionas/2026-11-24/v-b9ff9547d237203e/index.html",
       "source_bytes": 361398,
       "route_bytes": 127904,
       "stylesheet_requests_removed": 6
@@ -5685,6 +5781,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/svarstykles/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/svarstykles/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/svarstykles/index.html",
       "source_bytes": 398272,
       "route_bytes": 153847,
@@ -5884,6 +5992,18 @@
     },
     {
       "path": "horoskopai/vandenis/2026-11-21/v-bc6a44b575f182ab/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/vandenis/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/vandenis/2026-11-24/v-b9ff9547d237203e/index.html",
       "source_bytes": 361398,
       "route_bytes": 127904,
       "stylesheet_requests_removed": 6
@@ -6093,6 +6213,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/vezys/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/vezys/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/vezys/index.html",
       "source_bytes": 398272,
       "route_bytes": 153849,
@@ -6297,6 +6429,18 @@
       "stylesheet_requests_removed": 6
     },
     {
+      "path": "horoskopai/zuvys/2026-11-23/v-a7f302f64dfe2cb6/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
+      "path": "horoskopai/zuvys/2026-11-24/v-b9ff9547d237203e/index.html",
+      "source_bytes": 361398,
+      "route_bytes": 127904,
+      "stylesheet_requests_removed": 6
+    },
+    {
       "path": "horoskopai/zuvys/index.html",
       "source_bytes": 398272,
       "route_bytes": 153849,
@@ -6310,8 +6454,8 @@
     },
     {
       "path": "index.html",
-      "source_bytes": 406643,
-      "route_bytes": 243042,
+      "source_bytes": 416463,
+      "route_bytes": 252947,
       "stylesheet_requests_removed": 4
     },
     {
@@ -6322,62 +6466,62 @@
     },
     {
       "path": "ismokos/aukles-kompensacija/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 133795,
+      "source_bytes": 367827,
+      "route_bytes": 133873,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/ligos-ismoka/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/motinystes-ir-tevystes-ismokos/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/nedarbo-ismoka/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/sildymo-kompensacija/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/socialine-pasalpa/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/vaiko-pinigai/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/vaiko-prieziuros-ismoka/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
       "path": "ismokos/vienkartine-ismoka-vaikui/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 132939,
+      "source_bytes": 367827,
+      "route_bytes": 133017,
       "stylesheet_requests_removed": 6
     },
     {
@@ -6766,8 +6910,8 @@
     },
     {
       "path": "mokesciu-skaiciuokle/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 133545,
+      "source_bytes": 367827,
+      "route_bytes": 133623,
       "stylesheet_requests_removed": 6
     },
     {
@@ -6856,8 +7000,8 @@
     },
     {
       "path": "pensijos/index.html",
-      "source_bytes": 367750,
-      "route_bytes": 133874,
+      "source_bytes": 367827,
+      "route_bytes": 133952,
       "stylesheet_requests_removed": 6
     },
     {
@@ -7648,8 +7792,8 @@
     },
     {
       "path": "sejos-kalendorius/index.html",
-      "source_bytes": 370623,
-      "route_bytes": 138350,
+      "source_bytes": 370759,
+      "route_bytes": 138487,
       "stylesheet_requests_removed": 6
     },
     {
