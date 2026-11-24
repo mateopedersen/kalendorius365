@@ -1,4 +1,5 @@
 import { connectPlannerReminders } from "./shell/planner-reminders.js";
+import "./calendar-note-tools.js";
 import { icon } from "./icons.js";
 import { connectEventEditor } from "./shell/event-editor.js";
 import * as cal from "./calendar.js";
@@ -109,6 +110,7 @@ function setNoteStatus(text, state) {
 function paintDayNote(node, text) {
   node.textContent = text;
   node.hidden = !text.trim();
+  noteTools.apply(node, noteTools.read(node.dataset.dayNote));
 }
 function refreshDayNote(date, text) {
   for (const node of $("#calendar").querySelectorAll('[data-day-note="' + date + '"]'))
@@ -120,21 +122,23 @@ function buildDayNote(date) {
   paintDayNote(note, (noteDirty && date === noteDate ? $("#daily-note").value : store.data.notes[date]) || "");
   return note;
 }
-function noteButton(date) {
-  const button = el("button", "+", "calendar-note-add");
-  button.type = "button";
+const noteTools = globalThis.CalendarDateNoteTools;
+function setNoteTrigger(button, date) {
   button.dataset.noteEdit = date;
-  button.setAttribute("aria-label", "Užrašas · " + cal.formatDate(date));
-  return button;
+  button.setAttribute("aria-haspopup", "dialog");
 }
 const noteDialog = $("#calendar-note-dialog");
 const noteDialogText = $("#calendar-note-text");
-let dialogNoteDate;
+let dialogNoteDate, dialogNoteFormat;
 function openDayNote(date) {
   dialogNoteDate = date;
   noteDialog.returnValue = "";
   $("#calendar-note-date").textContent = cal.formatDate(date);
   noteDialogText.value = noteDirty && date === noteDate ? $("#daily-note").value : store.data.notes[date] || "";
+  dialogNoteFormat = noteTools.toolbar(noteDialogText, date, {
+    tools: "Užrašo formatavimas", font: "Šriftas", fonts: ["Įprastas", "Serifinis", "Vienodo pločio"],
+    bold: "Paryškinti", underline: "Pabraukti", important: "Svarbu", emoji: "Jaustukai",
+  });
   const options = $("#calendar-note-events");
   options.replaceChildren();
   const titles = new Set([...dayHolidays(date).map(item => item.name), ...events(date).map(item => item.title)]);
@@ -152,15 +156,24 @@ function openDayNote(date) {
   noteDialog.showModal();
 }
 noteDialog.addEventListener("close", () => {
-  if (noteDialog.returnValue !== "save" || !dialogNoteDate) return;
+  if (!dialogNoteDate) return;
+  const action = noteDialog.returnValue;
+  if (action === "day") {
+    if (selectDate(dialogNoteDate)) $("#selected-title").focus();
+    return;
+  }
+  if (!["save", "print"].includes(action)) return;
   const value = noteDialogText.value;
   if (dialogNoteDate === noteDate) {
     $("#daily-note").value = value;
-    saveNote();
+    if (!saveNote()) return;
   } else if (transact(data => {
     if (value.trim()) data.notes[dialogNoteDate] = value;
     else delete data.notes[dialogNoteDate];
-  })) refreshDayNote(dialogNoteDate, value);
+  }) === false) return;
+  noteTools.save(dialogNoteDate, value, dialogNoteFormat);
+  refreshDayNote(dialogNoteDate, value);
+  if (action === "print") requestAnimationFrame(() => window.print());
 });
 function saveNote(silent = false) {
   const text = $("#daily-note").value;
@@ -177,6 +190,7 @@ function saveNote(silent = false) {
   )
     return false;
   noteDirty = false;
+  noteTools.save(noteDate, text);
   refreshDayNote(noteDate, text);
   setNoteStatus("Išsaugota šioje naršyklėje", "saved");
   if (!silent) notice("Užrašas išsaugotas.");
@@ -272,9 +286,12 @@ function monthTable(date, isMini = false, todayDate = cal.today()) {
         if (items.length > 2) b.append(el("small", "+" + (items.length - 2)));
       }
       const inMonth = s.slice(0, 7) === date.slice(0, 7);
-      if (inMonth) b.append(buildDayNote(s));
+      if (inMonth) {
+        td.dataset.noteDay = s;
+        setNoteTrigger(b, s);
+        b.append(buildDayNote(s));
+      }
       td.append(b);
-      if (!isMini && inMonth) td.append(noteButton(s));
     }
   }
   return table;
@@ -317,17 +334,21 @@ function listDates(start, count) {
         "date-link",
       );
     button.dataset.date = s;
-    wrap.append(button, noteButton(s), buildDayNote(s));
+    setNoteTrigger(button, s);
+    const section = el("section", undefined, "calendar-note-day");
+    section.dataset.noteDay = s;
+    section.append(button, buildDayNote(s));
     for (const h of dayHolidays(s)) {
-      wrap.append(el(
+      section.append(el(
         "p", "◆ " + h.name,
         h.classification === "commemoration" ? "commemoration-label" : "danger",
       ));
     }
     const es = events(s);
     if (!es.length && count < 8)
-      wrap.append(el("p", "Įvykių nėra.", "empty-state"));
-    for (const e of es) wrap.append(item(e, s));
+      section.append(el("p", "Įvykių nėra.", "empty-state"));
+    for (const e of es) section.append(item(e, s));
+    wrap.append(section);
   }
   return wrap;
 }
@@ -707,8 +728,15 @@ $("#add-event").addEventListener("click", () => showEvent());
 if (location.hash === "#add-event") requestAnimationFrame(() => showEvent());
 document.addEventListener("click", (event) => {
   const b = event.target.closest("button");
+  const noteDay = event.target.closest("[data-note-day]");
+  if (noteDay && (b?.dataset.noteEdit || !event.target.closest("a,button,input,textarea,select"))) {
+    if (!window.getSelection()?.toString()) {
+      noteDay.querySelector("[data-note-edit]")?.focus({preventScroll:true});
+      openDayNote(noteDay.dataset.noteDay);
+    }
+    return;
+  }
   if (!b) return;
-  if (b.dataset.noteEdit) { openDayNote(b.dataset.noteEdit); return; }
   if (b.dataset.date && b.closest("#month-holidays")) {
     if (selectDate(b.dataset.date)) $("#selected-title").focus();
   } else if (b.dataset.date) selectDate(b.dataset.date);

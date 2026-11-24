@@ -11,8 +11,13 @@ test.beforeEach(async ({ context }) => {
 
 test('homepage date notes persist and print with the calendar only', async ({ page }) => {
   await page.goto('/?data=2028-02-16');
-  await page.locator('[data-note-edit="2028-02-17"]').click();
+  await expect(page.locator('.calendar-note-add')).toHaveCount(0);
+  await page.locator('[data-note-day="2028-02-17"]').click();
   await page.locator('#calendar-note-text').fill('Susitikimas dešimtą');
+  await page.locator('.calendar-note-tools select').selectOption('serif');
+  await page.locator('[data-note-tool="bold"]').click();
+  await page.locator('[data-note-tool="underline"]').click();
+  await page.locator('[data-note-tool="important"]').click();
   await page.locator('#calendar-note-dialog button[value=save]').click();
   const notes = page.locator('#calendar [data-day-note]');
   await expect(notes.and(page.locator('[data-day-note="2028-02-17"]'))).toHaveText('Susitikimas dešimtą');
@@ -22,10 +27,15 @@ test('homepage date notes persist and print with the calendar only', async ({ pa
   await page.locator('#save-note').click();
   await page.reload();
   await expect(todayNote).toHaveText('Patikrintas dienos planas');
+  const formatted = notes.and(page.locator('[data-day-note="2028-02-17"]'));
+  await expect(formatted).toHaveAttribute('data-note-font', 'serif');
+  await expect(formatted).toHaveAttribute('data-note-important', '');
   await page.locator('#kalendorius [data-print]').click();
   expect(await page.evaluate(() => window.printCalls)).toBe(1);
   await page.emulateMedia({ media: 'print' });
   await expect(todayNote).toBeVisible();
+  await expect(formatted).toHaveCSS('font-weight', '700');
+  await expect(formatted).toHaveCSS('text-decoration-line', 'underline');
   await expect(page.locator('.home-heading')).toBeHidden();
   await expect(page.locator('#daily-note')).toBeHidden();
 });

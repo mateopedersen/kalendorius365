@@ -32,22 +32,11 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 .calendar-note-dialog :is(h2,p) { margin: 0; }
 .calendar-note-dialog textarea { width: 100%; box-sizing: border-box; resize: vertical; }
 #calendar-note-events { display: flex; flex-wrap: wrap; gap: .4rem; }
-.homepage-app .month-table td:has(.calendar-note-add) { position: relative; }
-.homepage-app button.calendar-note-add {
-  display: inline-grid;
-  place-items: center;
-  width: 24px;
-  min-height: 24px;
-  padding: 0;
-  border: 1px solid #81a693;
-  border-radius: .35rem;
-  background: #fff;
-  color: #075235;
-  line-height: 1;
+.homepage-app [data-note-day] { cursor: pointer; }
+.homepage-app .calendar-note-day { display: grid; gap: .4rem; }
+@media (hover: hover) {
+  .homepage-app [data-note-day]:hover { outline: 1px solid #81a693; outline-offset: -1px; }
 }
-.month-table .calendar-note-add { position: absolute; top: .25rem; right: .25rem; }
-.homepage-app button.calendar-note-add:hover,
-.homepage-app button.calendar-note-add:focus-visible { color: #fff; background: #075235; }
 .homepage-app .calendar-day-note {
   display: block;
   padding: .12rem .2rem;
@@ -59,14 +48,49 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 }
 .homepage-app .calendar-day-note[hidden] { display: none; }
 .homepage-app .year-app-grid .calendar-day-note { display: none; }
-@media (max-width: 650px) {
-  .homepage-app .month-table .calendar-note-add { top: auto; bottom: .15rem; right: .15rem; width: 20px; min-height: 20px; }
-  .homepage-app .month-table td:has(.calendar-note-add) .day-cell { padding-bottom: 1.4rem; }
-}
 @media print {
   #main .calendar-panel .calendar-day-note { color: #111; font-size: 7pt; line-height: 1.2; }
   #main .year-app-grid .calendar-day-note:not([hidden]) { display: block; }
   #main .calendar-legend__date-help { display: none; }
+}
+
+.calendar-note-tools {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-block: .2rem;
+}
+.calendar-note-tools label { display: grid; gap: .2rem; font-size: .85rem; }
+.calendar-note-tools :is(button,select,summary) {
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: .35rem .6rem;
+  border: 1px solid #a4afb0;
+  border-radius: .45rem;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+.calendar-note-tools :is(button,summary) { cursor: pointer; }
+.calendar-note-tools button[aria-pressed="true"] {
+  background: #e4ebec;
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.calendar-note-tools summary { align-content: center; }
+.calendar-note-tools details[open] { flex-basis: 100%; }
+.calendar-note-emojis { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .35rem; }
+.calendar-note-emojis button { min-width: 40px; padding-inline: .35rem; }
+:is(.calendar-day-note, textarea)[data-note-font="serif"] { font-family: Georgia, serif; }
+:is(.calendar-day-note, textarea)[data-note-font="mono"] { font-family: ui-monospace, monospace; }
+:is(.calendar-day-note, textarea)[data-note-bold] { font-weight: 700; }
+:is(.calendar-day-note, textarea)[data-note-underline] { text-decoration: underline; }
+.calendar-day-note[data-note-important] { border-inline-start-color: #a65416; }
+.calendar-day-note[data-note-important]::before { content: "★ "; color: #a65416; }
+@media (max-width: 650px) {
+  .calendar-note-tools :is(button,select,summary) { min-height: 44px; }
+  .calendar-note-emojis button { min-width: 44px; }
 }
 
 /* Refined homepage detail panels: category filters, holidays, notes and tasks. */
