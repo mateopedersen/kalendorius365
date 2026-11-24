@@ -109,7 +109,7 @@ function setNoteStatus(text, state) {
 }
 function paintDayNote(node, text) {
   node.textContent = text;
-  node.hidden = !text.trim();
+  node.hidden = !noteTools.hasContent(node.dataset.dayNote, text);
   noteTools.apply(node, noteTools.read(node.dataset.dayNote));
 }
 function refreshDayNote(date, text) {
@@ -135,10 +135,7 @@ function openDayNote(date) {
   noteDialog.returnValue = "";
   $("#calendar-note-date").textContent = cal.formatDate(date);
   noteDialogText.value = noteDirty && date === noteDate ? $("#daily-note").value : store.data.notes[date] || "";
-  dialogNoteFormat = noteTools.toolbar(noteDialogText, date, {
-    tools: "Užrašo formatavimas", font: "Šriftas", fonts: ["Įprastas", "Serifinis", "Vienodo pločio"],
-    bold: "Paryškinti", underline: "Pabraukti", important: "Svarbu", emoji: "Jaustukai",
-  });
+  dialogNoteFormat = noteTools.toolbar(noteDialogText, date);
   const options = $("#calendar-note-events");
   options.replaceChildren();
   const titles = new Set([...dayHolidays(date).map(item => item.name), ...events(date).map(item => item.title)]);

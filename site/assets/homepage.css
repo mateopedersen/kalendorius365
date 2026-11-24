@@ -22,16 +22,7 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 }
 
 
-.homepage-app .calendar-note-dialog {
-  width: min(calc(100% - 2rem), 29rem);
-  max-height: calc(100% - 2rem);
-  box-sizing: border-box;
-  padding: 1.2rem;
-}
-.calendar-note-dialog form { display: grid; gap: .7rem; }
-.calendar-note-dialog :is(h2,p) { margin: 0; }
-.calendar-note-dialog textarea { width: 100%; box-sizing: border-box; resize: vertical; }
-#calendar-note-events { display: flex; flex-wrap: wrap; gap: .4rem; }
+.calendar-note-dialog { --note-accent: #096041; --note-soft: #f1f8f4; --note-line: #c9ded1; }
 .homepage-app [data-note-day] { cursor: pointer; }
 .homepage-app .calendar-note-day { display: grid; gap: .4rem; }
 @media (hover: hover) {
@@ -48,50 +39,277 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 }
 .homepage-app .calendar-day-note[hidden] { display: none; }
 .homepage-app .year-app-grid .calendar-day-note { display: none; }
+@media screen {
+  .homepage-app .year-app-grid .calendar-day-note[data-note-marker]:not([data-note-marker="none"]):not([hidden]) {
+    display: block; margin: 0; padding: 0; border: 0; font-size: 0; line-height: 1;
+  }
+  .homepage-app .year-app-grid .calendar-day-note[data-note-marker]::before { font-size: .68rem; }
+}
 @media print {
   #main .calendar-panel .calendar-day-note { color: #111; font-size: 7pt; line-height: 1.2; }
   #main .year-app-grid .calendar-day-note:not([hidden]) { display: block; }
   #main .calendar-legend__date-help { display: none; }
 }
 
-.calendar-note-tools {
-  display: flex;
-  align-items: end;
-  flex-wrap: wrap;
-  gap: .4rem;
-  margin-block: .2rem;
-}
-.calendar-note-tools label { display: grid; gap: .2rem; font-size: .85rem; }
-.calendar-note-tools :is(button,select,summary) {
+
+.calendar-note-dialog {
   box-sizing: border-box;
-  min-height: 40px;
-  padding: .35rem .6rem;
-  border: 1px solid #a4afb0;
-  border-radius: .45rem;
+  width: min(35rem, calc(100% - 1.5rem));
+  max-height: calc(100dvh - 1.5rem);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--note-line);
+  border-radius: 1rem;
   background: #fff;
-  color: inherit;
-  font: inherit;
+  color: #1c2830;
+  overflow: auto;
 }
-.calendar-note-tools :is(button,summary) { cursor: pointer; }
-.calendar-note-tools button[aria-pressed="true"] {
-  background: #e4ebec;
-  border-color: currentColor;
-  box-shadow: inset 0 0 0 1px currentColor;
+.calendar-note-dialog::backdrop { background: #12223283; }
+.calendar-note-form { display: grid; gap: .9rem; }
+.calendar-note-form h2, .calendar-note-meta p, .calendar-note-events p { margin: 0; }
+.calendar-note-form h2 {
+  color: #1c2830;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 730;
+  letter-spacing: -.025em;
+  line-height: 1.15;
 }
-.calendar-note-tools summary { align-content: center; }
-.calendar-note-tools details[open] { flex-basis: 100%; }
-.calendar-note-emojis { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .35rem; }
-.calendar-note-emojis button { min-width: 40px; padding-inline: .35rem; }
-:is(.calendar-day-note, textarea)[data-note-font="serif"] { font-family: Georgia, serif; }
-:is(.calendar-day-note, textarea)[data-note-font="mono"] { font-family: ui-monospace, monospace; }
-:is(.calendar-day-note, textarea)[data-note-bold] { font-weight: 700; }
-:is(.calendar-day-note, textarea)[data-note-underline] { text-decoration: underline; }
-.calendar-day-note[data-note-important] { border-inline-start-color: #a65416; }
-.calendar-day-note[data-note-important]::before { content: "★ "; color: #a65416; }
-@media (max-width: 650px) {
-  .calendar-note-tools :is(button,select,summary) { min-height: 44px; }
-  .calendar-note-emojis button { min-width: 44px; }
+.calendar-note-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .18rem .75rem;
+  min-width: 0;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid var(--note-line);
 }
+.calendar-note-form .calendar-note-meta p { color: #526169; font-size: .875rem; line-height: 1.45; }
+.calendar-note-form .calendar-note-day-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  width: auto;
+  min-height: 28px;
+  margin: 0;
+  padding: .08rem 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  color: var(--note-accent);
+  font-size: .82rem;
+  font-weight: 650;
+  text-align: left;
+}
+.calendar-note-day-link::after { content: " →"; }
+.calendar-note-form .calendar-note-day-link:hover { text-decoration: underline; text-underline-offset: .18em; }
+.calendar-note-field { display: grid; gap: .4rem; min-width: 0; }
+.calendar-note-form .calendar-note-field > label { font-size: .88rem; font-weight: 650; color: #25343e; }
+.calendar-note-form #calendar-note-text {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 7rem;
+  padding: .7rem .8rem;
+  border: 1px solid var(--note-line);
+  border-radius: .62rem;
+  background: #fff;
+  color: #182733;
+  font-size: 1rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+.calendar-note-form #calendar-note-text:focus-visible {
+  outline: 2px solid var(--note-accent);
+  outline-offset: 1px;
+}
+.calendar-note-tools {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .28rem;
+  min-width: 0;
+  margin: 0;
+  padding: .33rem;
+  border: 1px solid var(--note-line);
+  border-radius: .65rem;
+  background: var(--note-soft);
+}
+.calendar-note-form .calendar-note-tools :is(button,select,summary) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .34rem;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 36px;
+  min-height: 36px;
+  margin: 0;
+  padding: .36rem .5rem;
+  border: 1px solid transparent;
+  border-radius: .42rem;
+  background: transparent;
+  box-shadow: none;
+  color: #263540;
+  font-size: .82rem;
+  font-weight: 630;
+  line-height: 1.2;
+}
+.calendar-note-form .calendar-note-tools :is(button,summary):hover,
+.calendar-note-form .calendar-note-tools :is(button,summary):focus-visible {
+  border-color: var(--note-line);
+  background: #fff;
+  color: var(--note-accent);
+}
+.calendar-note-form .calendar-note-tools [aria-pressed="true"],
+.calendar-note-form .calendar-note-tools summary[data-active="true"] {
+  border-color: var(--note-line);
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--note-accent);
+  color: var(--note-accent);
+}
+.calendar-note-form .calendar-note-font {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .12rem;
+  flex: 1 1 8.1rem;
+  min-width: 0;
+  padding-inline-start: .45rem;
+  border: 1px solid var(--note-line);
+  border-radius: .44rem;
+  background: #fff;
+}
+.calendar-note-form .calendar-note-font::after {
+  position: absolute;
+  inset-inline-end: .65rem;
+  width: .36rem;
+  height: .36rem;
+  border-right: 1.5px solid var(--note-accent);
+  border-bottom: 1.5px solid var(--note-accent);
+  transform: translateY(-.15rem) rotate(45deg);
+  pointer-events: none;
+  content: "";
+}
+.calendar-note-form .calendar-note-tools .calendar-note-font select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding-inline: .2rem 1.35rem;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  text-overflow: ellipsis;
+}
+.calendar-note-glyph { font: 700 1rem/1 system-ui, sans-serif; }
+[data-note-tool="italic"] .calendar-note-glyph { font-style: italic; }
+[data-note-tool="underline"] .calendar-note-glyph { text-decoration: underline; }
+.calendar-note-menu { position: static; margin: 0; padding: 0; }
+.calendar-note-menu summary { cursor: pointer; list-style: none; }
+.calendar-note-menu summary::-webkit-details-marker { display: none; }
+.calendar-note-popover {
+  position: absolute;
+  z-index: 4;
+  inset: calc(100% + .25rem) 0 auto;
+  display: grid;
+  gap: .45rem;
+  max-height: 15rem;
+  overflow: auto;
+  padding: .6rem;
+  border: 1px solid var(--note-line);
+  border-radius: .65rem;
+  background: #fff;
+  box-shadow: 0 10px 24px #172b3926;
+}
+.calendar-note-categories, .calendar-note-emojis { display: flex; flex-wrap: wrap; gap: .22rem; }
+.calendar-note-form .calendar-note-categories button { min-height: 30px; }
+.calendar-note-form .calendar-note-emojis button { font-size: 1.22rem; }
+.calendar-note-marks { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .24rem; }
+.calendar-note-form .calendar-note-marks button { justify-content: flex-start; min-width: 0; text-align: left; }
+.calendar-note-events[hidden] { display: none; }
+.calendar-note-events > div { display: flex; flex-wrap: wrap; gap: .32rem; margin-top: .35rem; }
+.calendar-note-form .calendar-note-events p { color: #526169; font-size: .82rem; }
+.calendar-note-form .calendar-note-events button {
+  min-height: 32px;
+  padding: .28rem .52rem;
+  border: 1px solid var(--note-line);
+  border-radius: .4rem;
+  background: var(--note-soft);
+  color: var(--note-accent);
+  font-size: .82rem;
+  line-height: 1.25;
+}
+.calendar-note-form .calendar-note-events button:hover { background: #fff; }
+.calendar-note-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .42rem; }
+.calendar-note-form .calendar-note-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 41px;
+  width: auto;
+  margin: 0;
+  padding: .45rem .72rem;
+  border: 1px solid var(--note-line);
+  border-radius: .48rem;
+  background: #fff;
+  box-shadow: none;
+  color: #283741;
+  font-size: .84rem;
+  font-weight: 670;
+  line-height: 1.25;
+}
+.calendar-note-form .calendar-note-actions button :is(svg,img,[aria-hidden="true"]) { display: none; }
+.calendar-note-form .calendar-note-actions button:hover { border-color: var(--note-accent); background: var(--note-soft); }
+.calendar-note-form .calendar-note-actions button[value="save"] {
+  border-color: var(--note-accent);
+  background: var(--note-accent);
+  color: #fff;
+}
+.calendar-note-form .calendar-note-actions button[value="save"]:hover { filter: brightness(.87); }
+.calendar-note-form :is(button,summary,select,a):focus-visible {
+  outline: 2px solid var(--note-accent);
+  outline-offset: 2px;
+}
+:is(.calendar-day-note, #calendar-note-text)[data-note-font="serif"] { font-family: Georgia, serif; }
+:is(.calendar-day-note, #calendar-note-text)[data-note-font="mono"] { font-family: ui-monospace, monospace; }
+:is(.calendar-day-note, #calendar-note-text)[data-note-font="rounded"] { font-family: ui-rounded, "Trebuchet MS", sans-serif; }
+:is(.calendar-day-note, #calendar-note-text)[data-note-font="script"] { font-family: "Segoe Print", "Chalkboard SE", cursive; }
+:is(.calendar-day-note, #calendar-note-text)[data-note-bold] { font-weight: 700; }
+:is(.calendar-day-note, #calendar-note-text)[data-note-italic] { font-style: italic; }
+:is(.calendar-day-note, #calendar-note-text)[data-note-underline] { text-decoration: underline; }
+.calendar-day-note[data-note-marker]:not([data-note-marker="none"]) { border-inline-start-color: var(--note-mark-color); }
+.calendar-day-note[data-note-marker]::before { content: var(--note-mark, none); color: var(--note-mark-color, currentColor); font-weight: 700; }
+.calendar-day-note[data-note-marker="important"] { --note-mark: "★ "; --note-mark-color: #894a10; }
+.calendar-day-note[data-note-marker="deadline"] { --note-mark: "⚑ "; --note-mark-color: #9a2444; }
+.calendar-day-note[data-note-marker="reminder"] { --note-mark: "◷ "; --note-mark-color: #255c8f; }
+.calendar-day-note[data-note-marker="event"] { --note-mark: "◆ "; --note-mark-color: #5a3a9c; }
+.calendar-day-note[data-note-marker="completed"] { --note-mark: "✓ "; --note-mark-color: #167250; }
+.calendar-day-note[data-note-marker="birthday"] { --note-mark: "🎂 "; --note-mark-color: #894a10; }
+.calendar-day-note[data-note-marker="travel"] { --note-mark: "✈ "; --note-mark-color: #255c8f; }
+.calendar-day-note[data-note-marker="health"] { --note-mark: "✚ "; --note-mark-color: #167250; }
+@media (max-width: 640px) {
+  .calendar-note-form .calendar-note-tools :is(button,summary), .calendar-note-form .calendar-note-actions button { min-height: 44px; }
+  .calendar-note-form .calendar-note-tools > :is(button,details) summary,
+  .calendar-note-form .calendar-note-tools > button { min-width: 39px; }
+  .calendar-note-form .calendar-note-tools .calendar-note-font select { min-height: 42px; font-size: .78rem; }
+  .calendar-note-menu-name { display: none; }
+  .calendar-note-form .calendar-note-categories button { min-height: 37px; }
+}
+@media (max-width: 390px) {
+  .calendar-note-form { gap: .72rem; }
+  .calendar-note-form .calendar-note-tools { gap: .14rem; }
+  .calendar-note-actions { justify-content: stretch; }
+  .calendar-note-form .calendar-note-actions button { flex: 1 1 auto; }
+}
+@media (max-width: 640px) {
+  .calendar-note-form .calendar-note-tools { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .calendar-note-form .calendar-note-font { grid-column: 1 / -1; }
+  .calendar-note-form .calendar-note-tools > button,
+  .calendar-note-form .calendar-note-tools > details > summary { width: 100%; }
+}
+
 
 /* Refined homepage detail panels: category filters, holidays, notes and tasks. */
 .homepage-app .panel-heading-icon{

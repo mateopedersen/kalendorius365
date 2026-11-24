@@ -17,7 +17,8 @@ test('homepage date notes persist and print with the calendar only', async ({ pa
   await page.locator('.calendar-note-tools select').selectOption('serif');
   await page.locator('[data-note-tool="bold"]').click();
   await page.locator('[data-note-tool="underline"]').click();
-  await page.locator('[data-note-tool="important"]').click();
+  await page.locator('[data-note-menu="marker"] summary').click();
+  await page.locator('[data-note-mark="important"]').click();
   await page.locator('#calendar-note-dialog button[value=save]').click();
   const notes = page.locator('#calendar [data-day-note]');
   await expect(notes.and(page.locator('[data-day-note="2028-02-17"]'))).toHaveText('Susitikimas dešimtą');

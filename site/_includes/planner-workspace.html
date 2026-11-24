@@ -205,14 +205,15 @@
 </div>
 {% include event-editor.html %}
 <dialog id="calendar-note-dialog" class="calendar-note-dialog" aria-labelledby="calendar-note-title">
-  <form method="dialog">
+  <form class="calendar-note-form" method="dialog">
     <h2 id="calendar-note-title">Dienos užrašas</h2>
-    <p id="calendar-note-date"></p>
-    <label for="calendar-note-text">Užrašas</label>
-    <textarea id="calendar-note-text" rows="4" maxlength="10000" autofocus></textarea>
-    <div id="calendar-note-choices" hidden><p>Įtraukti įvykį iš kalendoriaus</p><div id="calendar-note-events"></div></div>
-    <button type="submit" value="day">Atverti dienos planą</button>
-    <div class="form-actions"><button type="submit" value="cancel">Atšaukti</button><button type="submit" value="print">Išsaugoti ir spausdinti</button><button type="submit" class="primary" value="save">Įrašyti į kalendorių</button></div>
+    <div class="calendar-note-meta"><p id="calendar-note-date"></p><button class="calendar-note-day-link" type="submit" value="day">Atverti dienos planą</button></div>
+    <div class="calendar-note-field">
+      <label for="calendar-note-text">Užrašas</label>
+      <textarea id="calendar-note-text" rows="4" maxlength="10000" placeholder="Ką norite pasižymėti?" autofocus></textarea>
+    </div>
+    <div class="calendar-note-events" id="calendar-note-choices" hidden><p>Įtraukti įvykį iš kalendoriaus</p><div id="calendar-note-events"></div></div>
+    <div class="calendar-note-actions"><button type="submit" value="cancel">Atšaukti</button><button type="submit" value="print">Išsaugoti ir spausdinti</button><button type="submit" value="save">Išsaugoti užrašą</button></div>
   </form>
 </dialog>
 <dialog id="task-dialog" aria-labelledby="task-dialog-title"><form id="task-edit-form"><h2 id="task-dialog-title">Redaguoti užduotį</h2><input type="hidden" name="id"><label>Užduotis<input name="title" required maxlength="300"></label><div class="form-actions"><button type="button" id="task-cancel">Atšaukti</button><button class="primary" type="submit">Išsaugoti</button></div></form></dialog>
