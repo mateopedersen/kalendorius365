@@ -1,5 +1,5 @@
-{% assign vilnius_date = site.time | date: '%Y-%m-%d' %}
-{% assign upcoming = site.data.home_upcoming | where_exp: 'entry', 'entry.end >= vilnius_date' | uniq: 'href' %}
+{%- assign vilnius_date = site.time | date: '%Y-%m-%d' %}
+{%- assign upcoming = site.data.home_upcoming | where_exp: 'entry', 'entry.end >= vilnius_date' | uniq: 'href' %}
 <section class="home-upcoming" id="artimiausios-datos" aria-labelledby="home-upcoming-title" data-feeds="{{ site.data.home_upcoming_feeds | jsonify | escape }}">
   <header class="home-upcoming__heading">
     <h2 id="home-upcoming-title">{% include shell-art.html name="celebrations" size=34 %} Artimiausios šventės ir renginiai</h2>
@@ -13,30 +13,30 @@
     <button type="button" aria-pressed="false" data-upcoming-kind="festival">Renginiai</button>
   </div>
   <ul class="home-upcoming__list" aria-live="polite" aria-atomic="true">
-    {% for entry in upcoming limit: 4 %}
-      {% assign day = entry.date | slice: 8,2 %}
-      {% assign month_index = entry.date | slice: 5,2 | minus: 1 %}
+    {%- for entry in upcoming limit: 4 %}
+      {%- assign day = entry.date | slice: 8,2 %}
+      {%- assign month_index = entry.date | slice: 5,2 | minus: 1 %}
       <li data-kind="{{ entry.kind }}">
         <a href="{{ entry.href }}">
           <time datetime="{{ entry.date }}"{% if entry.kind == 'holiday' and entry.end != entry.date %} data-date-range{% endif %}>
-            {% if entry.kind == 'holiday' and entry.end != entry.date %}
-              {% assign end_month = entry.end | slice: 5,2 | minus: 1 %}
-              {% assign last_day = entry.end | slice: 8,2 | plus: 0 %}
-              {% if end_month == month_index %}
+            {%- if entry.kind == 'holiday' and entry.end != entry.date %}
+              {%- assign end_month = entry.end | slice: 5,2 | minus: 1 %}
+              {%- assign last_day = entry.end | slice: 8,2 | plus: 0 %}
+              {%- if end_month == month_index %}
                 <b>{{ day | plus: 0 }}–{{ last_day }}</b><span>{{ site.data.calendar.months[month_index][2] }}</span>
-              {% else %}
+              {%- else %}
                 <b>{{ day }}.{{ entry.date | slice: 5,2 }}</b><span>iki {{ entry.end | slice: 8,2 }}.{{ entry.end | slice: 5,2 }}</span>
-              {% endif %}
-            {% else %}
+              {%- endif %}
+            {%- else %}
               <b>{{ day | plus: 0 }}</b><span>{{ site.data.calendar.months[month_index][2] }}</span>
-            {% endif %}
+            {%- endif %}
           </time>
           <span class="home-upcoming__copy"><strong>{{ entry.title | escape }}</strong><small>{% if entry.place %}{{ entry.place | escape }}{% else %}{% case entry.kind %}{% when 'holiday' %}Šventinė diena{% when 'commemoration' %}Atmintina diena{% when 'tradition' %}Tradicija{% else %}Tarptautinė diena{% endcase %}{% endif %}</small></span>
           {% include calendar-catalog-arrow.html %}
         </a>
       </li>
-    {% else %}
+    {%- else %}
       <li><p>Šiuo metu daugiau patvirtintų datų nėra.</p></li>
-    {% endfor %}
+    {%- endfor %}
   </ul>
 </section>
