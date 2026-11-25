@@ -9,6 +9,30 @@ test.beforeEach(async ({ context }) => {
   });
 });
 
+test('the note menu stays above the editor and its font glyph fits on one line', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 560 });
+  await page.goto('/?data=2028-02-16');
+  await page.locator('[data-note-day="2028-02-17"]').click();
+  const glyph = page.locator('.calendar-note-font .calendar-note-glyph');
+  const emoji = page.locator('[data-note-menu="emoji"]');
+  const field = page.locator('#calendar-note-text');
+  await emoji.locator('summary').click();
+
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 560 });
+    const lines = await glyph.evaluate(element => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return range.getClientRects().length;
+    });
+    const [menu, editor] = await Promise.all([
+      emoji.locator('.calendar-note-popover').boundingBox(), field.boundingBox(),
+    ]);
+    expect(lines).toBe(1);
+    expect(menu.y + menu.height).toBeLessThanOrEqual(editor.y);
+  }
+});
+
 test('homepage date notes persist and print with the calendar only', async ({ page }) => {
   await page.goto('/?data=2028-02-16');
   await expect(page.locator('.calendar-note-add')).toHaveCount(0);

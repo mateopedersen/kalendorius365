@@ -76,15 +76,16 @@
 .commemoration-month { margin: 1.6rem 0 2.1rem; }
 .commemoration-month > h2 { display: flex; align-items: center; gap: .65rem; padding-bottom: .7rem; border-bottom: 1px solid #dfe8e3; font-size: 1.15rem; }
 .commemoration-month > h2 span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: #edf7f1; color: #087653; font-size: .7rem; font-weight: 900; }
-.commemoration-card { position: relative; display: flex; flex-direction: column; min-height: 245px; border-top: 3px solid #277b59; transition: transform .16s ease, box-shadow .16s ease; }
+.commemoration-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr auto; min-height: 245px; border-top: 3px solid #277b59; transition: transform .16s ease, box-shadow .16s ease; }
+.commemoration-card > :not(.commemoration-favorite) { grid-column: 1 / -1; }
 .commemoration-card[data-category="culture"] { border-top-color: #c88939; }
 .commemoration-card[data-category="community"] { border-top-color: #9b6ab1; }
 .commemoration-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px #172c3c10; }
-.commemoration-card .muted { margin: 0 0 .45rem; font-size: .75rem; font-weight: 700; }
+.commemoration-card > .muted { grid-column: 1; grid-row: 1; align-self: center; margin: 0 .65rem .45rem 0; padding: 0; font-size: .75rem; font-weight: 700; }
 .commemoration-card h3 { margin: .1rem 0 .55rem; font-size: 1.03rem; line-height: 1.35; }
 .commemoration-card h3 a { color: var(--ink); text-decoration: none; }
 .commemoration-card h3 a:hover { color: var(--green); text-decoration: underline; }
-.commemoration-card > p:not(.muted) { flex: 1; margin: 0 0 .9rem; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+.commemoration-card > p:not(.muted) { margin: 0 0 .9rem; color: var(--muted); font-size: .88rem; line-height: 1.55; }
 .commemoration-tag { width: max-content; padding: .24rem .55rem; border-radius: 99px; background: #edf7f1; color: #246346; font-size: .68rem; font-weight: 800; }
 .commemoration-card[data-category="culture"] .commemoration-tag { background: #fff4df; color: #855617; }
 .commemoration-card[data-category="community"] .commemoration-tag { background: #f5eff9; color: #68477c; }
@@ -148,8 +149,7 @@
 .discovery-actions-buttons { align-items: center; }
 .favorite-filter { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .6rem; color: #435365; font-size: .8rem; font-weight: 700; cursor: pointer; }
 .favorite-filter input { accent-color: var(--green); }
-.commemoration-card .muted { padding-right: 2.2rem; }
-.commemoration-favorite { position: absolute; top: .8rem; right: .8rem; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid #e5e9e6; border-radius: 50%; background: #fff; color: #b18035; font-size: 1.25rem; line-height: 1; box-shadow: 0 2px 7px #17372a0a; }
+.commemoration-favorite { position: static; grid-column: 2; grid-row: 1; align-self: start; display: grid; place-items: center; width: 44px; height: 44px; min-height: 44px; margin: 0 0 .45rem; padding: 0; border: 1px solid #e5e9e6; border-radius: 50%; background: #fff; color: #b18035; font-size: 1.25rem; line-height: 1; box-shadow: 0 2px 7px #17372a0a; }
 .commemoration-favorite[aria-pressed="true"] { border-color: #efd7a2; background: #fff8e8; color: #a16d19; }
 .commemoration-favorite:hover { transform: scale(1.06); }
 .daylight-date-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin-top: .75rem; }

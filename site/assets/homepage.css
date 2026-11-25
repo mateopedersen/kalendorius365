@@ -123,9 +123,8 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   outline-offset: 1px;
 }
 .calendar-note-tools {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(5, auto);
   align-items: center;
   gap: .28rem;
   min-width: 0;
@@ -193,7 +192,8 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
 }
 .calendar-note-form .calendar-note-tools .calendar-note-font select {
   display: block;
-  width: 100%;
+  flex: 1;
+  width: auto;
   min-width: 0;
   min-height: 34px;
   padding-inline: .2rem 1.35rem;
@@ -203,24 +203,34 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   text-overflow: ellipsis;
 }
 .calendar-note-glyph { font: 700 1rem/1 system-ui, sans-serif; }
+.calendar-note-font > .calendar-note-glyph { flex: none; white-space: nowrap; }
 [data-note-tool="italic"] .calendar-note-glyph { font-style: italic; }
 [data-note-tool="underline"] .calendar-note-glyph { text-decoration: underline; }
-.calendar-note-menu { position: static; margin: 0; padding: 0; }
+.calendar-note-menu { margin: 0; padding: 0; }
+.calendar-note-tools > .calendar-note-menu[open] { grid-column: 1 / -1; }
 .calendar-note-menu summary { cursor: pointer; list-style: none; }
 .calendar-note-menu summary::-webkit-details-marker { display: none; }
 .calendar-note-popover {
-  position: absolute;
-  z-index: 4;
-  inset: calc(100% + .25rem) 0 auto;
+  position: static;
   display: grid;
   gap: .45rem;
   max-height: 15rem;
   overflow: auto;
+  margin-top: .35rem;
   padding: .6rem;
   border: 1px solid var(--note-line);
   border-radius: .65rem;
   background: #fff;
-  box-shadow: 0 10px 24px #172b3926;
+}
+/* Keep each toggle in the toolbar and give its choices a full row. */
+@supports selector(details::details-content) {
+  .calendar-note-tools > .calendar-note-menu,
+  .calendar-note-tools > .calendar-note-menu::details-content { display: contents; }
+  .calendar-note-tools > .calendar-note-menu > summary { grid-row: 1; }
+  .calendar-note-tools > [data-note-menu="emoji"] > summary { grid-column: 5; }
+  .calendar-note-tools > [data-note-menu="marker"] > summary { grid-column: 6; }
+  .calendar-note-tools .calendar-note-popover { grid-column: 1 / -1; grid-row: 2; }
+  .calendar-note-tools .calendar-note-menu:not([open]) > .calendar-note-popover { display: none; }
 }
 .calendar-note-categories, .calendar-note-emojis { display: flex; flex-wrap: wrap; gap: .22rem; }
 .calendar-note-form .calendar-note-categories button { min-height: 30px; }
@@ -304,10 +314,17 @@ body.homepage-app #primary-nav > a[aria-current="page"] > .icon{
   .calendar-note-form .calendar-note-actions button { flex: 1 1 auto; }
 }
 @media (max-width: 640px) {
-  .calendar-note-form .calendar-note-tools { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .calendar-note-form .calendar-note-tools { grid-template-columns: repeat(5,minmax(0,1fr)); }
   .calendar-note-form .calendar-note-font { grid-column: 1 / -1; }
   .calendar-note-form .calendar-note-tools > button,
   .calendar-note-form .calendar-note-tools > details > summary { width: 100%; }
+
+  @supports selector(details::details-content) {
+    .calendar-note-tools > .calendar-note-menu > summary { grid-row: 2; }
+    .calendar-note-tools > [data-note-menu="emoji"] > summary { grid-column: 4; }
+    .calendar-note-tools > [data-note-menu="marker"] > summary { grid-column: 5; }
+    .calendar-note-tools .calendar-note-popover { grid-row: 3; }
+  }
 }
 
 
