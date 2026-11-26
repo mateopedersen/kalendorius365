@@ -22,7 +22,10 @@ test('retired dataset links recover narrowly and historical months retain their 
   assert.equal(recovered.length, 11);
   for (const rule of recovered) assert.match(rule, /^\/assets\/releases\/[0-9a-f]{20}\/data\/namedays\/cc-by-sa-4\.0\.json \/assets\/data\/namedays\/cc-by-sa-4\.0\.json 301$/);
   assert.equal(new Set(redirects.map(rule => rule.split(' ')[0])).size, redirects.length);
-  for (const [month, date] of [['spalis','2026-10-01'], ['lapkritis','2026-11-01']]) {
+  const {months} = JSON.parse(read('data/calendar.json'));
+  assert.equal(redirects.filter(rule => rule.startsWith('/2026/')).length, 12);
+  for (const [index, [month]] of months.entries()) {
+    const date = `2026-${String(index + 1).padStart(2, '0')}-01`;
     assert.ok(redirects.includes(`/2026/${month}/ /?data=${date} 301`));
     assert.equal(dateFromSearch(`?data=${date}`), date);
   }
