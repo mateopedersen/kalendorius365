@@ -196,8 +196,10 @@ Dir.chdir(ROOT) do
  end
  # Historical month links open that exact month in the existing calendar;
  # they must not silently change to a different year's printable gallery.
- redirects << '/2026/spalis/ /?data=2026-10-01 301'
- redirects << '/2026/lapkritis/ /?data=2026-11-01 301'
+ Kalendorius::DATA.fetch('months').each_with_index do |(slug, *), index|
+  date = Date.new(2026, index + 1, 1).iso8601
+  redirects << "/2026/#{slug}/ /?data=#{date} 301"
+ end
  abort 'Cloudflare Pages static redirect limit exceeded' if redirects.length>2000
  abort 'Duplicate legacy calendar redirect source' unless redirects.map { |line|line.split.first }.uniq.length==redirects.length
  if release && JSON.parse(File.read('site/assets/data/manifest.json')).key?('packageImport')
