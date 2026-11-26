@@ -12,6 +12,11 @@ CATEGORIES = {
     'traditional_cultural': 'Tradicija',
     'international_observance': 'Tarptautinė diena',
 }
+# Verified against the original file's author field. Some other guide credits
+# identify an archive or an uploader, so a credit alone does not prove authorship.
+REVIEWED_CREATORS = {
+    'https://commons.wikimedia.org/wiki/File:Ula_river.jpg': {'@type': 'Person', 'name': 'Wojsyl'},
+}
 
 
 def escape(text):
@@ -154,6 +159,9 @@ def render_details(records, engines, links, fold_ics, ics_escape):
                 'copyrightNotice': f"{photo['license']} · {photo['author']}",
                 'acquireLicensePage': photo['commons_url'], 'isBasedOn': photo['commons_url'],
             }
+            creator = REVIEWED_CREATORS.get(photo['commons_url'])
+            if creator:
+                schema['image']['creator'] = creator
             data.update(og_image=photo['src'], og_image_type='image/webp', og_image_width=photo['width'],
                         og_image_height=photo['height'], og_image_alt=photo['caption'])
             credits.append(dict(photo, id=slug, page=route(slug), credit=f"{photo['author']} · {photo['license']}",
