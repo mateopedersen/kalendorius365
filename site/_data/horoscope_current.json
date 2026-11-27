@@ -1,11 +1,11 @@
 {
-  "local_date": "2026-11-26",
-  "display_date_lt": "2026 m. lapkričio 26 d.",
-  "generated_at_utc": "2026-11-26T02:52:34Z",
-  "fetched_at_utc": "2026-11-26T02:52:34Z",
-  "prepared_at_vilnius": "2026-11-26T04:52:34+02:00",
-  "prepared_at_display_lt": "2026 m. lapkričio 26 d., 04:52 Lietuvos laiku",
-  "source_publication_date": "2026-11-26",
+  "local_date": "2026-11-27",
+  "display_date_lt": "2026 m. lapkričio 27 d.",
+  "generated_at_utc": "2026-11-27T04:15:50Z",
+  "fetched_at_utc": "2026-11-27T04:15:50Z",
+  "prepared_at_vilnius": "2026-11-27T06:15:50+02:00",
+  "prepared_at_display_lt": "2026 m. lapkričio 27 d., 06:15 Lietuvos laiku",
+  "source_publication_date": "2026-11-27",
   "source_timezone": "Europe/Vilnius",
   "source_provider_id": "astroway-public-calculations-original-lithuanian",
   "source_url": "https://api.astroway.info/v1/public/horoscope/daily",
@@ -27,12 +27,12 @@
   "original_text_or_licensed_translation": "original-lithuanian-copy-from-calculation-data",
   "editorial_review_status": "automated-rule-based-two-pass-review; native-human-proofread-not-performed",
   "content_status": "published",
-  "content_checksum": "14530155936367b233a6281c9dc0a91ef515e10f4c9e48268e40f25cc5a7a244",
+  "content_checksum": "0ac5d10e68f45a5cd50e9b73f11bdad8eccb3f8d3dd95025c22ed69d5dbc94ab",
   "source_provenance": [
     {
       "sign_key": "avinas",
       "source_sign": "aries",
-      "response_sha256": "5960469796ad3636ae572fdc78ec49d71342e85d59e5217e39b6d22847ee3b4e",
+      "response_sha256": "e462469dd3e789a2dc527ac4199a3842983fd892638fa89c9c2120d2cd110432",
       "solar_house": 9,
       "lunar_house": 4,
       "dominant_aspect_type": "Trine"
@@ -40,7 +40,7 @@
     {
       "sign_key": "jautis",
       "source_sign": "taurus",
-      "response_sha256": "bf507af3f23926ab4ff9e8190dc3b72babde3b71c907028770fc9ca8b82f85ce",
+      "response_sha256": "0adbf41f56b4f52826356349cfc57eb337110c30ec6b9768cf12f4e8178b821f",
       "solar_house": 8,
       "lunar_house": 3,
       "dominant_aspect_type": "Trine"
@@ -48,7 +48,7 @@
     {
       "sign_key": "dvyniai",
       "source_sign": "gemini",
-      "response_sha256": "8940013c425da71173320acb873400423dfee22ebc98f4e03e91716cf9c8320d",
+      "response_sha256": "985c662bea245cd8fc95788488232ca8fa7ecdfddff51f7a71d9b12d7eebb5dc",
       "solar_house": 7,
       "lunar_house": 2,
       "dominant_aspect_type": "Trine"
@@ -56,7 +56,7 @@
     {
       "sign_key": "vezys",
       "source_sign": "cancer",
-      "response_sha256": "a948e143b71f36fd2c2f3cd28c9abd93b098819473d5708f0260d4e0ba25450c",
+      "response_sha256": "d3f61f223e5736fa389abb4d6fe1566c835a3ed99f70f4912b984762afa751aa",
       "solar_house": 6,
       "lunar_house": 1,
       "dominant_aspect_type": "Trine"
@@ -64,7 +64,7 @@
     {
       "sign_key": "liutas",
       "source_sign": "leo",
-      "response_sha256": "ef757900a577af2f69f2f7a234c56069ae53dbf4aefa4c9453b6a68a890f6143",
+      "response_sha256": "95acb96cb87e90ceba3e46ac80b33286572830133deb895ec92fa87ecf17e1d8",
       "solar_house": 5,
       "lunar_house": 12,
       "dominant_aspect_type": "Trine"
@@ -72,7 +72,7 @@
     {
       "sign_key": "mergele",
       "source_sign": "virgo",
-      "response_sha256": "724cfd8560b4d57797dfdb807cfefc15c5acf53bd2d246b0a76ca64381fc51fb",
+      "response_sha256": "807706a438586968dbcc55992500f528e912363e0ac8a82863b043455b461d1c",
       "solar_house": 4,
       "lunar_house": 11,
       "dominant_aspect_type": "Trine"
@@ -80,7 +80,7 @@
     {
       "sign_key": "svarstykles",
       "source_sign": "libra",
-      "response_sha256": "92aca57f58fd565f0731595d3e21400243d30ad91acb1af4fb17090698e365eb",
+      "response_sha256": "ab7ebb8d82774f8fb9d2e604b8578d30a3d5bbc00eb84da43365a9f49e6cce04",
       "solar_house": 3,
       "lunar_house": 10,
       "dominant_aspect_type": "Trine"
@@ -88,7 +88,7 @@
     {
       "sign_key": "skorpionas",
       "source_sign": "scorpio",
-      "response_sha256": "68a4b513a69f3ec176607307caf950c5a1206353c1ea71e0951d645ffe1efcaf",
+      "response_sha256": "924593f9a02df9ddd6dd1bd9fbda9fabcf7990a1a9a915f76e2ee29db350d62f",
       "solar_house": 2,
       "lunar_house": 9,
       "dominant_aspect_type": "Trine"
@@ -96,7 +96,7 @@
     {
       "sign_key": "saulys",
       "source_sign": "sagittarius",
-      "response_sha256": "7adef6eef0e541b3f01dd0cded3ea071b5137b3e8e219be56a63ba42e84bb747",
+      "response_sha256": "1ab671606be65e05cfb17d8376e0ce92384bbb2b9867587e5a1cbf9c86a77475",
       "solar_house": 1,
       "lunar_house": 8,
       "dominant_aspect_type": "Trine"
@@ -104,7 +104,7 @@
     {
       "sign_key": "oziaragis",
       "source_sign": "capricorn",
-      "response_sha256": "16fbc6f427fb9879d60bc7060c8797704400362ad36ff6fe2819602ba83ed6ed",
+      "response_sha256": "77afb5699cd541a2e436baa48549806740774de3b48309bff00affe6c8ae67c3",
       "solar_house": 12,
       "lunar_house": 7,
       "dominant_aspect_type": "Trine"
@@ -112,7 +112,7 @@
     {
       "sign_key": "vandenis",
       "source_sign": "aquarius",
-      "response_sha256": "5f5de9488ca003c9a01b896e49572a4c85359f93f9dbfbf7c14d1f0c256b7be9",
+      "response_sha256": "616b209c638aad467825e11a4654ea8fb5ad156e8eea7d53162214193a1e26bc",
       "solar_house": 11,
       "lunar_house": 6,
       "dominant_aspect_type": "Trine"
@@ -120,7 +120,7 @@
     {
       "sign_key": "zuvys",
       "source_sign": "pisces",
-      "response_sha256": "8766cc43884346a2492d34cce06f81e40dc6e9fd2cf220348597f13895debf03",
+      "response_sha256": "1606705ebdae3d83e72a74405b44774e3a0727990a09529e413364c21dc80865",
       "solar_house": 10,
       "lunar_house": 5,
       "dominant_aspect_type": "Trine"
@@ -147,7 +147,7 @@
     "deterministic_gate": "passed",
     "independent_content_gate": "passed",
     "native_human_proofread": false,
-    "content_hash": "14530155936367b233a6281c9dc0a91ef515e10f4c9e48268e40f25cc5a7a244",
+    "content_hash": "0ac5d10e68f45a5cd50e9b73f11bdad8eccb3f8d3dd95025c22ed69d5dbc94ab",
     "qa_passes": [
       "12/12 source sign/date/calculation/attribution validation",
       "12/12 Lithuanian length/structure/safety/distinctness validation"
@@ -158,7 +158,7 @@
       "sign_key": "avinas",
       "editorial_heading": "Pasirūpink vieta, kurioje gali ramiai pabūti",
       "lead": "Avino dienos tema – namų aplinka, artumas ir vidinė atrama.",
-      "overview": "Šiandienos tema – mokymasis ir naujos idėjos. Pasirink klausimą, į kurį norėtum atsakyti, ir paieškok patikimos informacijos. Palygink bent du paaiškinimus, jei jie vienas kitam prieštarauja. Gali pakeisti nuomonę, kai sužinai daugiau; nebūtina iš karto turėti galutinį atsakymą. Papildoma astrologinė Mėnulio tema – namai, artumas ir ramus laikas sau. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – mokymasis ir naujos idėjos. Pasirink klausimą, į kurį norėtum atsakyti, ir paieškok patikimos informacijos. Palygink bent du paaiškinimus, jei jie vienas kitam prieštarauja. Gali pakeisti nuomonę, kai sužinai daugiau; nebūtina iš karto turėti galutinį atsakymą. Papildoma astrologinė Mėnulio tema – namai, artumas ir ramus laikas sau. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Pasidomėk, kokios pagalbos reikia artimam žmogui, ir pasakyk, ką iš tikrųjų gali padaryti. Jei pačiam reikia pabūti vienam, paaiškink tai ramiai. Kitam nereikės spėlioti tavo nuotaikos, o tau bus lengviau išvengti neišsakytų lūkesčių.",
       "work": "Mokymuisi ar projektui pasirink vieną temą, kuri dabar būtų praktiškai naudinga. Užsibrėžk nedidelį tikslą: perskaityti, palyginti ar išbandyti vieną dalyką. Įsitikink, kad informacijos šaltinis patikimas, prieš paversdamas jos teiginius savo sprendimų pagrindu. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokia maža rutina tau suteikia pastovumo, o kokia tapo papildoma našta? Galima išlaikyti tai, kas ramina, ir pakeisti vieną įprotį, kuris nebeatitinka dabartinių poreikių. Ką galėtum išbandyti kitu būdu?",
@@ -170,7 +170,7 @@
       "sign_key": "jautis",
       "editorial_heading": "Užduok vieną aiškų klausimą",
       "lead": "Jaučio dienos tema – pokalbiai, informacija ir artima aplinka.",
-      "overview": "Šiandienos tema – pasitikėjimas ir bendri įsipareigojimai. Jei susitarimas neaiškus, pasitikslink, kas už ką atsako. Atskirti faktus nuo nuogąstavimų padės konkretūs klausimai. Neskubėk atskleisti asmeninių dalykų vien todėl, kad jautiesi spaudžiamas kalbėti; gali pats pasirinkti pokalbio laiką. Papildoma astrologinė Mėnulio tema – pokalbis ir informacijos tikrinimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – pasitikėjimas ir bendri įsipareigojimai. Jei susitarimas neaiškus, pasitikslink, kas už ką atsako. Atskirti faktus nuo nuogąstavimų padės konkretūs klausimai. Neskubėk atskleisti asmeninių dalykų vien todėl, kad jautiesi spaudžiamas kalbėti; gali pats pasirinkti pokalbio laiką. Papildoma astrologinė Mėnulio tema – pokalbis ir informacijos tikrinimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Artimam žmogui skirk dėmesį ne vien atsakydamas, bet ir pasitikrindamas, ar teisingai jį supratai. Jei pokalbis jautrus, rinkis aiškius, paprastus žodžius. Vienas konkretus klausimas dažnai atveria daugiau nei ilgas spėjimų sąrašas.",
       "work": "Bendrame projekte peržiūrėk, kas už ką atsako, kokia informacija prieinama ir kada reikia atnaujinti susitarimą. Jei kyla neaiškumas, užrašyk jį ir kreipkis į tinkamą atsakingą žmogų. Nedaryk išvadų apie kitų ketinimus be patikrinamų faktų. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Ką nori pasakyti kitam žmogui? Prieš siųsdamas žinutę perskaityk ją dar kartą. Ar joje aišku, ko klausi arba prašai? Pašalink sakinius, kurie kartoja tą pačią mintį ar nukreipia dėmesį nuo esmės. Ką galėtum išbandyti kitu būdu?",
@@ -182,7 +182,7 @@
       "sign_key": "dvyniai",
       "editorial_heading": "Prieš įsipareigodamas įvertink savo laiką",
       "lead": "Dvynių dienos tema – vertybės, laikas ir turimi ištekliai.",
-      "overview": "Šiandienos tema – bendradarbiavimas. Prieš priimdami bendrą sprendimą išsiaiškinkite, kas kiekvienam svarbiausia. Nesutik vien tam, kad greičiau baigtųsi pokalbis. Geriau paprašyti laiko pagalvoti ir vėliau aiškiai pasakyti, ką gali pasiūlyti. Susitarimas turi būti suprantamas abiem pusėms. Papildoma astrologinė Mėnulio tema – pastovūs įpročiai ir saikingi įsipareigojimai. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – bendradarbiavimas. Prieš priimdami bendrą sprendimą išsiaiškinkite, kas kiekvienam svarbiausia. Nesutik vien tam, kad greičiau baigtųsi pokalbis. Geriau paprašyti laiko pagalvoti ir vėliau aiškiai pasakyti, ką gali pasiūlyti. Susitarimas turi būti suprantamas abiem pusėms. Papildoma astrologinė Mėnulio tema – pastovūs įpročiai ir saikingi įsipareigojimai. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Santykiuose patikimumą dažnai parodo maži, įvykdomi susitarimai. Jei kažko negali pažadėti, pasakyk tai laiku ir pasiūlyk realią alternatyvą. Toks atvirumas sumažina spėliojimą ir leidžia abiem pusėms aiškiau suprasti, kokios pagalbos galima tikėtis.",
       "work": "Bendrame darbe įvardykite atsakomybę, terminą ir tai, kokio rezultato tikitės vieni iš kitų. Pasitikrink, ar visi supranta susitarimą vienodai. Toks aiškumas padeda išvengti situacijos, kai žmonės sąžiningai stengiasi, bet siekia skirtingų tikslų. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kuris įprotis padeda laikytis dienotvarkės, o kuris tik atima laiko? Nereikia iš karto visko keisti. Išsirink vieną pasikartojantį darbą ir pagalvok, ar jį galėtum atlikti paprasčiau. Ką galėtum išbandyti kitu būdu?",
@@ -194,7 +194,7 @@
       "sign_key": "vezys",
       "editorial_heading": "Pradėk nuo vieno savo pasirinkimo",
       "lead": "Vėžio dienos tema – asmeninė kryptis ir saviraiška.",
-      "overview": "Šiandienos tema – kasdieniai darbai ir įpročiai. Išsirink svarbiausias užduotis ir nuspręsk, kada darbą baigsi. Palik laiko pietums, pertraukai ir nenumatytiems reikalams. Planas turėtų padėti orientuotis dienoje, o ne tapti dar vienu darbu, kurį nuolat reikia taisyti. Papildoma astrologinė Mėnulio tema – naujas sumanymas ir asmeninis pasirinkimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – kasdieniai darbai ir įpročiai. Išsirink svarbiausias užduotis ir nuspręsk, kada darbą baigsi. Palik laiko pietums, pertraukai ir nenumatytiems reikalams. Planas turėtų padėti orientuotis dienoje, o ne tapti dar vienu darbu, kurį nuolat reikia taisyti. Papildoma astrologinė Mėnulio tema – naujas sumanymas ir asmeninis pasirinkimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Pasakyk, ko tau reikia, ir išklausyk atsakymą. Jei nuomonės skiriasi, pasiaiškinkite, kas kiekvienam svarbu. Pokalbis bus naudingesnis, jei mėginsite suprasti vienas kitą, užuot ieškoję, kuris teisus. Galite nesutikti ir vis tiek kalbėtis pagarbiai.",
       "work": "Panašias užduotis atlik paeiliui: pavyzdžiui, vienu metu atsakyk į laiškus, kitu – tvarkyk dokumentus. Prieš pradėdamas nuspręsk, kokio rezultato reikia. Baigęs darbą pažymėk jį atliktu, kad nereikėtų vėl prie jo grįžti vien iš įpročio. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Paklausk savęs, kuris sprendimas iš tiesų tavo, o kurį priimi vien dėl kitų lūkesčių. Simbolinė astrologija nepateikia garantijų; ši tema gali būti tik patogus atspirties taškas ramesniam apsisprendimui. Ką galėtum išbandyti kitu būdu?",
@@ -206,7 +206,7 @@
       "sign_key": "liutas",
       "editorial_heading": "Padaryk pauzę ir susidėliok mintis",
       "lead": "Liūto dienos tema – poilsis, užbaigimas ir ramesnis apmąstymas.",
-      "overview": "Šiandienos tema – kūryba ir mėgstama veikla. Išbandyk idėją, kuri tau įdomi, net jei dar nežinai, ką su ja darysi toliau. Tai gali būti piešinys, tekstas ar naujas įprasto darbo būdas. Ne kiekvienas bandymas turi virsti dideliu projektu. Papildoma astrologinė Mėnulio tema – poilsis ir nebaigtų reikalų peržiūra. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – kūryba ir mėgstama veikla. Išbandyk idėją, kuri tau įdomi, net jei dar nežinai, ką su ja darysi toliau. Tai gali būti piešinys, tekstas ar naujas įprasto darbo būdas. Ne kiekvienas bandymas turi virsti dideliu projektu. Papildoma astrologinė Mėnulio tema – poilsis ir nebaigtų reikalų peržiūra. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Jei negali iš karto atsakyti į svarbų klausimą, pasakyk, kad nori pagalvoti, ir pasiūlyk, kada pratęsite pokalbį. Aiškus paaiškinimas padės kitam žmogui suprasti tavo tylą. Nereikia skubėti pažadėti to, dėl ko dar nesi apsisprendęs.",
       "work": "Darbo užduotyje pabandyk vieną naują būdą pateikti idėją, išdėstyti informaciją ar pradėti projektą. Laikyk eksperimentą nedidelį: aiškiai nuspręsk, ką tikrinsi, ir kada įvertinsi rezultatą. Taip kūryba papildo atsakomybę, o ne ją pakeičia. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokį rūpestį bandai išspręsti vien galvodamas, nors jam reikėtų informacijos ar pokalbio? Atskirti šiuos atvejus gali būti pirmas žingsnis į paprastesnį planą. Ką galėtum išbandyti kitu būdu?",
@@ -218,7 +218,7 @@
       "sign_key": "mergele",
       "editorial_heading": "Pasiūlyk vieną bendrą veiklą",
       "lead": "Mergelės dienos tema – draugystė, bendruomenė ir ateities planai.",
-      "overview": "Šiandienos tema – namai ir įprasta dienotvarkė. Pagalvok, kas tavo aplinkoje padeda pailsėti, o kas nuolat erzina ar blaško. Nebūtina sutvarkyti visų namų. Pakanka vieno aiškaus darbo: atlaisvinti stalą, sutvarkyti dokumentus ar susitarti dėl ramaus laiko sau. Papildoma astrologinė Mėnulio tema – bendras sumanymas ir galimybė prisidėti. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – namai ir įprasta dienotvarkė. Pagalvok, kas tavo aplinkoje padeda pailsėti, o kas nuolat erzina ar blaško. Nebūtina sutvarkyti visų namų. Pakanka vieno aiškaus darbo: atlaisvinti stalą, sutvarkyti dokumentus ar susitarti dėl ramaus laiko sau. Papildoma astrologinė Mėnulio tema – bendras sumanymas ir galimybė prisidėti. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Parašyk draugui, su kuriuo seniai norėjai pasikalbėti. Gali tiesiog paklausti, kaip jam sekasi, ir skirti laiko atsakymui. Būdamas grupėje pakviesk pasisakyti ir tuos, kurie paprastai klausosi, tačiau nespausk jų kalbėti, jei jie to nenori.",
       "work": "Praktiniuose reikaluose pradėk nuo aplinkos, kuri trukdo susikaupti: sutvarkyk vieną paviršių, dokumentą ar atidėtą smulkmeną. Aiški darbo vieta nėra tikslas savaime; ji turi padėti atlikti tai, kas svarbu, ir neužimti visos dienos. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokioje bendruomenėje nori dalyvauti ne vien kaip stebėtojas? Pagalvok, koks indėlis tau būtų prasmingas ir realus, net jei jis nedidelis. Ką galėtum išbandyti kitu būdu?",
@@ -230,7 +230,7 @@
       "sign_key": "svarstykles",
       "editorial_heading": "Didelį tikslą suskaidyk į aiškius darbus",
       "lead": "Svarstyklių dienos tema – atsakomybė, ilgalaikiai tikslai ir matomas darbas.",
-      "overview": "Šiandienos tema – bendravimas ir informacijos tikrinimas. Prieš atsakydamas į žinutę atskirk tai, ką žinai, nuo to, ką tik numanai. Jei ko nors nesupratai, paprašyk patikslinti. Trumpas pokalbis gali būti naudingesnis už ilgą susirašinėjimą, kuriame kiekvienas kalba apie skirtingus dalykus. Papildoma astrologinė Mėnulio tema – artimiausias didesnio plano darbas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – bendravimas ir informacijos tikrinimas. Prieš atsakydamas į žinutę atskirk tai, ką žinai, nuo to, ką tik numanai. Jei ko nors nesupratai, paprašyk patikslinti. Trumpas pokalbis gali būti naudingesnis už ilgą susirašinėjimą, kuriame kiekvienas kalba apie skirtingus dalykus. Papildoma astrologinė Mėnulio tema – artimiausias didesnio plano darbas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Jei tavo įsipareigojimai veikia ir kitus, iš anksto pasakyk apie laiką, kurio tau reikia, ir ką jie gali planuoti. Patikimumą kuria ne vien sėkmė, bet ir laiku pateikta aiški informacija. Prašymas pasidalyti atsakomybe nėra silpnumas.",
       "work": "Darbe ar moksluose suskaidyk didesnę užduotį į kelis aiškius veiksmus. Užrašyk, kokios informacijos dar trūksta ir kas gali ją patvirtinti. Taip pokalbiai virsta naudingu darbu, o skirtingos užduotys mažiau konkuruoja dėl tavo dėmesio. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokį tikslą sieki dėl savęs, o kokį vien tam, kad jis atrodytų įspūdingai? Atsakymas gali padėti pasirinkti tvaresnį tempą ir aiškesnį kriterijų. Ką galėtum išbandyti kitu būdu?",
@@ -242,7 +242,7 @@
       "sign_key": "skorpionas",
       "editorial_heading": "Prieš darydamas išvadą patikrink šaltinį",
       "lead": "Skorpiono dienos tema – mokymasis, idėjos ir platesnis požiūris.",
-      "overview": "Šiandien verta peržiūrėti, kam skiri laiką ir pastangas. Prieš sutikdamas padėti ar imtis dar vieno darbo, pasižiūrėk į savo dienotvarkę. Ar joje telpa ir poilsis? Ši tema nesusijusi su finansine prognoze: ji siūlo atidžiau rinktis kasdienius įsipareigojimus. Papildoma astrologinė Mėnulio tema – mokymasis ir patikimų šaltinių paieška. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandien verta peržiūrėti, kam skiri laiką ir pastangas. Prieš sutikdamas padėti ar imtis dar vieno darbo, pasižiūrėk į savo dienotvarkę. Ar joje telpa ir poilsis? Ši tema nesusijusi su finansine prognoze: ji siūlo atidžiau rinktis kasdienius įsipareigojimus. Papildoma astrologinė Mėnulio tema – mokymasis ir patikimų šaltinių paieška. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Pokalbyje paklausk, kokia patirtis padėjo kitam žmogui susidaryti nuomonę. Tada paaiškink, kaip tą patį klausimą matai pats. Skirtingi požiūriai neturi virsti ginču dėl to, kuris iš jūsų protingesnis ar geriau išmano temą.",
       "work": "Prieš imdamasis naujo darbo, įvertink, kiek jis pareikalaus laiko ir kokį jau pradėtą dalyką gali tekti atidėti. Susirašyk būtiniausias priemones ar informaciją, kurios trūksta. Tvarka čia skirta padėti rinktis, o ne sukurti dar vieną ilgą kontrolinį sąrašą. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokią nuomonę laikai savaime suprantama, nors seniai jos netikrinai? Atvirumas naujam įrodymui stiprina, o ne silpnina gebėjimą spręsti. Ką galėtum išbandyti kitu būdu?",
@@ -254,7 +254,7 @@
       "sign_key": "saulys",
       "editorial_heading": "Aiškiai aptark bendrą atsakomybę",
       "lead": "Šaulio dienos tema – pasitikėjimas, bendri įsipareigojimai ir pokyčiai.",
-      "overview": "Šiandienos tema – savarankiškas pasirinkimas. Pagalvok, kurio darbo nori imtis pats, o kurį pradedi vien todėl, kad taip tikisi kiti. Nebūtina visko atlikti vienam. Aiškiai pasakyk, ko sieki ir kokios pagalbos tau reikia, kad galėtum pradėti. Papildoma astrologinė Mėnulio tema – pasitikėjimas ir atsakomybės pasidalijimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – savarankiškas pasirinkimas. Pagalvok, kurio darbo nori imtis pats, o kurį pradedi vien todėl, kad taip tikisi kiti. Nebūtina visko atlikti vienam. Aiškiai pasakyk, ko sieki ir kokios pagalbos tau reikia, kad galėtum pradėti. Papildoma astrologinė Mėnulio tema – pasitikėjimas ir atsakomybės pasidalijimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Jei su artimu žmogumi dalijatės atsakomybe ar jautria tema, iš anksto susitarkite, ką galima aptarti ir kokios ribos svarbios abiem. Nespėliok apie nutylėjimų priežastis. Tiesus klausimas, užduotas be kaltinimo, leidžia pokalbiui tapti saugesniam.",
       "work": "Pasirink vieną darbą, kurį gali pradėti savo iniciatyva. Nuspręsk, kokio rezultato šiandien pakaks, ir pradėk nuo nedidelės užduoties. Prieš imdamasis naujų reikalų pasitikrink, ar užbaigei tai, ką jau buvai suplanavęs. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokį pokytį gali pradėti nepažeisdamas savo galimybių ir kitų žmonių ribų? Kartais geriausia pradžia yra ne drąsus šuolis, o aiškiai įvardytas klausimas. Ką galėtum išbandyti kitu būdu?",
@@ -266,7 +266,7 @@
       "sign_key": "oziaragis",
       "editorial_heading": "Prieš susitardamas išklausyk kitą",
       "lead": "Ožiaragio dienos tema – partnerystė, susitarimai ir abipusės ribos.",
-      "overview": "Šiandienos tema – poilsis ir nebaigti reikalai. Pasirink vieną smulkmeną, kurią gali užbaigti, o tada skirk laiko pertraukai. Jei koks nors klausimas vis grįžta į mintis, užrašyk, kokios informacijos tau trūksta. Ne kiekvieną rūpestį galima išspręsti ilgiau apie jį galvojant. Papildoma astrologinė Mėnulio tema – abipusis susitarimas ir pagarba kito pasirinkimui. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – poilsis ir nebaigti reikalai. Pasirink vieną smulkmeną, kurią gali užbaigti, o tada skirk laiko pertraukai. Jei koks nors klausimas vis grįžta į mintis, užrašyk, kokios informacijos tau trūksta. Ne kiekvieną rūpestį galima išspręsti ilgiau apie jį galvojant. Papildoma astrologinė Mėnulio tema – abipusis susitarimas ir pagarba kito pasirinkimui. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Prieš atsakydamas savais žodžiais apibendrink, ką išgirdai. Paklausk, ar teisingai supratai. Išklausyti nereiškia su viskuo sutikti: gali ramiai pasakyti savo nuomonę ir ribas. Jei tema jautri, susitarkite, kada prie jos grįšite.",
       "work": "Užbaik vieną atidėtą smulkmeną, kuri nuolat blaško dėmesį, ir iš anksto nustatyk, kada darbą baigsi. Jei užduotis neaiški, užrašyk konkretų klausimą kitam darbo laikui. Taip poilsio tarpas netaps bandymu viską išspręsti vien mintyse. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kurioje situacijoje ieškai vien pritarimo, o kur reikia tikro pokalbio? Atskirti šiuos dalykus gali padėti pasirinkti tinkamą klausimą ir tinkamą laiką. Ką galėtum išbandyti kitu būdu?",
@@ -278,7 +278,7 @@
       "sign_key": "vandenis",
       "editorial_heading": "Dienotvarkėje palik laiko pertraukoms",
       "lead": "Vandenio dienos tema – dienos tvarka, įpročiai ir užduočių ritmas.",
-      "overview": "Šiandienos tema – draugai ir bendri sumanymai. Išsirink vieną idėją, kurią norėtum aptarti su kitais. Paklausk, kas iš tiesų norėtų prisidėti ir kiek laiko galėtų tam skirti. Pradėti bus paprasčiau, jei susitarsite dėl nedidelio darbo, o ne iš karto suplanuosite visą projektą. Papildoma astrologinė Mėnulio tema – kasdienės užduotys ir jų užbaigimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – draugai ir bendri sumanymai. Išsirink vieną idėją, kurią norėtum aptarti su kitais. Paklausk, kas iš tiesų norėtų prisidėti ir kiek laiko galėtų tam skirti. Pradėti bus paprasčiau, jei susitarsite dėl nedidelio darbo, o ne iš karto suplanuosite visą projektą. Papildoma astrologinė Mėnulio tema – kasdienės užduotys ir jų užbaigimas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Bendruose reikaluose aiškiai pasidalykite kasdienėmis pareigomis. Jei susitarimas nebeveikia, aptarkite, kuri jo dalis per sunki ar neaiški, užuot tyliai prisiėmę dar daugiau. Konkretus prašymas kitam žmogui suteikia daugiau galimybių padėti.",
       "work": "Komandos veikloje aiškiai apibrėžkite bendrą rezultatą ir dalykus, kuriuos kiekvienas gali nuspręsti savarankiškai. Jei planas platus, pradėkite nuo mažo bandymo. Taip patikrinsite, ar idėja naudinga, ir nesukursite perteklinių įsipareigojimų. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kuri darbo dalis iš tiesų svarbi, o kuri kartojasi vien iš inercijos? Galbūt verta pakeisti seką, paprašyti patikslinimo ar atsisakyti vieno perteklinio žingsnio. Ką galėtum išbandyti kitu būdu?",
@@ -290,7 +290,7 @@
       "sign_key": "zuvys",
       "editorial_heading": "Išbandyk idėją nesiekdamas tobulo rezultato",
       "lead": "Žuvų dienos tema – kūryba, džiaugsmas ir laisva iniciatyva.",
-      "overview": "Šiandienos tema – atsakomybė ir ilgesnio laikotarpio planai. Išsirink vieną tikslą ir pasižymėk, ką dėl jo gali padaryti artimiausiu metu. Nuspręsk, kaip suprasi, kad šį etapą baigei. Jei reikia kitų žmonių pagalbos, kreipkis į juos prieš prisiimdamas naują terminą. Papildoma astrologinė Mėnulio tema – mėgstama veikla ir kūrybinis bandymas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,2°.",
+      "overview": "Šiandienos tema – atsakomybė ir ilgesnio laikotarpio planai. Išsirink vieną tikslą ir pasižymėk, ką dėl jo gali padaryti artimiausiu metu. Nuspręsk, kaip suprasi, kad šį etapą baigei. Jei reikia kitų žmonių pagalbos, kreipkis į juos prieš prisiimdamas naują terminą. Papildoma astrologinė Mėnulio tema – mėgstama veikla ir kūrybinis bandymas. Astrologinėje simbolikoje trigonas nusako lengviau derančias temas; jų naudą vis tiek lemia konkretūs, apgalvoti veiksmai. Šios dienos skaičiavimuose nurodytas Urano ir Plutono aspektas; jo nuokrypis nuo tikslaus kampo – 0,1°.",
       "relationships": "Pasiūlyk artimam žmogui veiklą, kuri patiktų jums abiem, ir paklausk, ką jis norėtų nuveikti. Nebūtina visko suplanuoti iš anksto. Bendrai praleistas laikas bus malonesnis, jei abu galėsite laisvai pasakyti, kas jums tinka, o kas ne.",
       "work": "Atskirk užduotis, kurios padeda pasiekti rezultatą, nuo tų, kurios tik užima laiką. Vieną darbo etapą aprašyk taip, kad galėtum aiškiai patikrinti, ar jis baigtas. Jei trūksta informacijos, pasitikslink ją prieš pažadėdamas konkrečią užbaigimo datą. Išnaudok sklandžiai einantį darbą vienam etapui užbaigti.",
       "reflection": "Kokią veiklą rinktumeisi, jei šiandien nereikėtų jos rodyti ar vertinti? Atsakymas gali priminti, kas tave domina dėl pačios patirties, o ne dėl aplodismentų. Ką galėtum išbandyti kitu būdu?",
