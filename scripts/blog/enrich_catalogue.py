@@ -6,6 +6,7 @@ import hashlib
 import html
 import json
 import re
+import subprocess
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -45,7 +46,10 @@ def attach(route, body):
 
 def prepare():
     additions = {}
-    years = load('site/assets/data/years.json')
+    print_years = load('data/holiday-years.json')
+    years = json.loads(subprocess.check_output(
+        ['ruby', '-rjson', '-r./lib/calendar', '-e', 'puts JSON.generate(ARGV.map { |year| Kalendorius.year(Integer(year)) })',
+         *map(str, print_years)], cwd=ROOT, text=True))
     moon = load('data/lunar/calendar.json')
     moon['records'].extend(load('data/lunar/calendar-2030.json'))
     manifest = load('site/assets/data/manifest.json')['assets']
