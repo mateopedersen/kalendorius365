@@ -97,6 +97,25 @@ module SunrisePage
     end.join("\n")
   end
 
+  def seasonal_comparison(city, readings)
+    location = CGI.escapeHTML(city.fetch('locative'))
+    rows = readings.fetch('seasons').map do |day|
+      %(<tr><th scope="row"><time datetime="#{day.fetch('day')}">#{day.fetch('label')}</time></th><td>#{day.fetch('rise')}</td><td>#{day.fetch('set')}</td><td>#{day.fetch('duration')}</td></tr>)
+    end.join
+    <<~HTML
+      <section class="sun-panel sun-week" id="sezonu-palyginimas" aria-labelledby="sun-seasonal-title">
+        <h2 id="sun-seasonal-title">Kiek skiriasi vasaros ir žiemos dienos #{location}?</h2>
+        <p>Birželio 21 d. diena #{location} trunka <strong>#{readings.fetch('seasonalDifference')} ilgiau</strong> nei gruodžio 21 d. Palyginkite ne tik vakaro saulėlydį, bet ir rytą: dalis šio skirtumo atsiranda dėl ankstesnio saulėtekio.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Sezoninis Saulės laikų palyginimas">
+          <table class="data-table"><caption>Abiejų datų laikai Lietuvos laiku</caption>
+            <thead><tr><th scope="col">Data</th><th scope="col">Saulėtekis</th><th scope="col">Saulėlydis</th><th scope="col">Dienos trukmė</th></tr></thead><tbody>#{rows}</tbody>
+          </table>
+        </div>
+        <p>Laikai apskaičiuoti miesto atskaitos taškui ir lygiam horizontui. Rytiniam pasivaikščiojimui ar vakaro fotografijai pasirinkite tikrą išvykos datą viršuje ir patikrinkite debesuotumą <a href="/orai/miestai/">miesto orų prognozėje</a>. <a href="/dienos-ilgumas/">Palyginkite dienos trukmę kituose Lietuvos miestuose</a>.</p>
+      </section>
+    HTML
+  end
+
   def city_directory(primary, other, hub)
     other_links = if hub
       %(<details class="sun-cities__more"><summary>Visi #{cities.size} Lietuvos miestai</summary><div class="sun-cities__links">#{city_links(other)}</div></details>)
@@ -169,7 +188,7 @@ module SunrisePage
             #{metric('set', 'Saulėlydis', 'sunset-time', 'sunset-date', day.fetch('sunset'))}
             #{metric('length', 'Dienos trukmė', 'sun-day-length', 'sun-day-change', day.fetch('daylight'))}
           </section>
-          #{outlook(city, week.fetch('rows'), week.fetch('comparison'))}
+          #{outlook(city, week.fetch('rows'), week.fetch('comparison'))}#{seasonal_comparison(city, week) if place}
           <section class="sun-stage sun-panel" data-sun-interactive hidden aria-labelledby="sun-experience-title">
             <header class="sun-stage__header">
               <div><h2 id="sun-experience-title">Saulės kelias danguje</h2><p id="sun-scene-caption">Pasirinktos vietos laikas ir apšvietimas.</p></div>

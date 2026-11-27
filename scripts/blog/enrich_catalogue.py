@@ -6,6 +6,7 @@ import hashlib
 import html
 import json
 import re
+import subprocess
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -14,6 +15,20 @@ SITE = ROOT / 'site'
 MONTHS = ['sausis','vasaris','kovas','balandis','geguze','birzelis','liepa','rugpjutis','rugsejis','spalis','lapkritis','gruodis']
 GEN = ['sausio','vasario','kovo','balandžio','gegužės','birželio','liepos','rugpjūčio','rugsėjo','spalio','lapkričio','gruodžio']
 DAYS = ['pirmadienis','antradienis','trečiadienis','ketvirtadienis','penktadienis','šeštadienis','sekmadienis']
+PRINT_PLANS = (
+    (8, 'metų pradžios susitikimą', 'pirmo darbų aptarimo datą ir atskirą priminimą pasiruošti'),
+    (16, 'Vasario 16-osios savaitę', 'valstybės šventę viena spalva, o savo susitikimus kita'),
+    (11, 'Kovo 11-osios savaitę', 'minėjimo pradžią ir laiką, kada turite išvykti iš namų'),
+    (20, 'pavasario darbus sode', 'planuojamą sėjos laiką ir faktiškai tinkamų orų datą'),
+    (15, 'gegužės šeimos išvyką', 'susitikimo vietą, išvykimo ir grįžimo laiką'),
+    (24, 'Joninių savaitę', 'šventinę datą atskirai nuo renginio išvakarėse'),
+    (6, 'Liepos 6-osios savaitę', 'Tautiškos giesmės renginį ir šeimos kelionės etapus'),
+    (15, 'Žolinės savaitę', 'šventę, kelionę ir registraciją kaip tris atskirus įrašus'),
+    (1, 'mokslo metų pradžią', 'mokyklos paskelbtą susitikimą, pamokas ir būrelius'),
+    (25, 'rudens laiko pokyčius', 'vietos valandą prie susitikimų kitose laiko juostose'),
+    (2, 'Vėlinių savaitę', 'planuojamą išvyką į kapines ir papildomą kelionės laiką'),
+    (24, 'Kalėdų savaitę', 'Kūčias ir abi Kalėdų dienas, o šalia atskirai svečių atvykimą'),
+)
 BEGIN = '<!-- K365_EDITORIAL_V2_START -->'
 END = '<!-- K365_EDITORIAL_V2_END -->'
 def e(text):return html.escape(str(text), quote=True)
@@ -31,8 +46,14 @@ def attach(route, body):
 
 def prepare():
     additions = {}
-    years = load('site/assets/data/years.json')
+    print_years = load('data/holiday-years.json')
+    years = json.loads(subprocess.check_output(
+        ['ruby', '-rjson', '-r./lib/calendar', '-e', 'puts JSON.generate(ARGV.map { |year| Kalendorius.year(Integer(year)) })',
+         *map(str, print_years)], cwd=ROOT, text=True))
     moon = load('data/lunar/calendar.json')
+    moon['records'].extend(load('data/lunar/calendar-2030.json'))
+    manifest = load('site/assets/data/manifest.json')['assets']
+    designs_with_notes = {(a['year'], a['month']):a for a in manifest if a['kind']=='monthly' and a['design']=='08'}
     def add(route, body):additions[route] = additions.get(route,'') + body
     for year in years:
         y = year['year']
@@ -54,6 +75,12 @@ def prepare():
             body+=table(f'{GEN[m-1].capitalize()} mėnesio palyginimas: kiti metai turi kitas savaitės dienas',['Metai','Kalendorinės dienos','Mėnesio pradžia','Darbo dienos (5 d.)','Valandos (standartinis modelis)'],compare)
             body+=p(f'Pasirinktam {y} m. mėnesiui darbo valandų įvertis yra <strong>{work["hours"]}</strong>. Jis remiasi svetainės penkių dienų savaitės modeliu ir prieššventinės dienos trumpinimu. '+('Šį mėnesį modelyje trumpinamos datos: '+', '.join(work['shortened'])+'.' if work['shortened'] else 'Šį mėnesį modelyje nėra trumpinamų darbo datų.')+' Tai nėra individualaus darbuotojo darbo užmokesčio ar visų jo sutarties sąlygų skaičiavimas.')
             body+=p('Metų palyginimas naudingas ir spausdinant: nekeiskite vien seno lapo antraštės. Turi sutapti visi dienų stulpeliai, papildoma keliamųjų metų data ir kilnojamos šventės. Prie pasirinkto dizaino atverkite tikrą PDF, patikrinkite laikotarpį ir tik tuomet spausdinkite. Dydžio bei paraščių bandymą rasite '+link('/blogas/kaip-spausdinti-kalendoriu/','spausdinimo gide')+'.')
+            example_day, purpose, reminder = PRINT_PLANS[m-1]
+            example_date = dt.date(y,m,example_day)
+            sample = designs_with_notes[(y,m)]
+            body+=f'<h3>Spausdinamas lapas šio mėnesio užrašams</h3>'
+            body+=p(f'Planuojate {purpose}? Atsiverskite {y} m. {GEN[m-1]} {example_day} d. langelį. Tai {DAYS[example_date.weekday()]}. Greta pažymėkite {reminder}. Jei du įrašai turi tą pačią datą, atskirkite gatvės adresą arba pradžios valandą. Tuščios šablono vietos skirtos jūsų įrašams.')
+            body+=p(f'Dizainą „{e(sample["name"])}“ galima atsisiųsti kaip {link(sample["pdf"],"spausdinamą PDF")} arba kaip {link(sample["webp"],"atsisiunčiamą paveikslėlį")}. Vientisam popieriniam lapui rinkitės PDF, o vaizdą naudokite, kai kalendorių įdedate į dokumentą. Prieš pasižymėdami nedarbo datą patikrinkite {link(f"/sventes/{y}/{MONTHS[m-1]}/", "šio mėnesio šventinių ir atmintinų dienų gidą")}.')
             add(route,body)
         quarter=[]
         for q in range(4):
@@ -62,10 +89,13 @@ def prepare():
         body=f'<h2>{y} metų planas ketvirčiais</h2>'+p('Metų maketas padeda pasirinkti ilgesnį laikotarpį. Ketvirčių suvestinė leidžia palyginti kalendorinę trukmę ir standartinio darbo modelio dienas, nes vienodi trys mėnesiai neturi vienodo dienų skaičiaus. Prieš paskirdami didelį darbą ketvirčiui įvertinkite atostogas, savo užimtumą bei sutartus terminus.')
         body+=table(f'{y} metų ketvirčiai',['Laikotarpis','Kalendorinės dienos','Darbo dienos (5 d.)','Valandos'],quarter)
         body+=p(f'{y} metų kalendoriuje yra {sum(m["length"]for m in year["months"])} kalendorinės dienos. Skaičiai pateikti pagal tuos pačius duomenis kaip mėnesių ir darbo dienų puslapiuose. Ketvirčio valandos nėra vien dienų daugyba iš aštuonių: modelis įvertina prieššventinių dienų trumpinimą. Jeigu sudarote individualų grafiką, rinkitės '+link('/pamainu-grafikas/','pamainų planuoklį')+' ir patvirtintas savo darbo sąlygas.')
+        top = max(enumerate(quarter,1), key=lambda value:value[1][2])
+        start_month = (top[0]-1)*3
+        body+=p(f'{top[0]} ketvirtyje yra daugiausia standartinio grafiko darbo dienų ({top[1][2]}). Ilgesniam projektui pradėti atverkite {link(f"/{y}/{MONTHS[start_month]}/", f"{GEN[start_month]} kalendorių su PDF ir vaizdo failais")} ir perkelkite pirmą tarpinį terminą iš metų lapo į to mėnesio dienos langelį. Kitoms datoms palikite laiko patikrinti darbo grafiką ir pasirinktą spausdinimo mastelį.')
         add(f'/{y}/',body)
         add(f'/darbo-dienos/{y}/',body+p(f'Šventes, dėl kurių keičiasi darbo dienų skaičius, rasite '+link(f'/sventes/{y}/',f'{y} m. šventinių dienų sąraše')+'. Savaitei priskirtą numerį patikrinkite '+link(f'/savaites/{y}/',f'{y} m. ISO savaičių lentelėje')+'.'))
     # Lunar examples use exactly the same validated dataset as the rendered calendar.
-    for y in (2027,2028,2029):
+    for y in (2027,2028,2029,2030):
         events=[v for v in moon['events'] if v['local_date'].startswith(str(y))]
         for m in range(1,13):
             prefix=f'{y}-{m:02d}';ev=[v for v in events if v['local_date'].startswith(prefix)]
@@ -95,16 +125,6 @@ def prepare():
     for year in years:
         y=year['year'];hs=year['holidays'];weekday=[h for h in hs if dt.date.fromisoformat(h['date']).weekday()<5]
         add(f'/sventes/{y}/',f'<h2>{y} metų datų statuso patikrinimas</h2>'+p(f'Šiame sąraše yra <strong>{len(hs)} atskiros šventinės datos</strong>, iš jų {len(weekday)} tenka pirmadieniui–penktadieniui. Tai nėra automatiškai suteikiamų papildomų atostogų skaičius: kai kurios šventės sutampa su savaitgaliu, o jūsų darbo režimas gali skirtis nuo penkių dienų savaitės.')+table('Pirmos ir paskutinės metų šventinės datos',['Riba','Data','Savaitės diena','Pavadinimas'],[(label,h['date'],DAYS[dt.date.fromisoformat(h['date']).weekday()],h['name'])for label,h in [('Pirma',hs[0]),('Paskutinė',hs[-1])]])+p('Planuodami atskirkite tris įrašus: pačią šventinę datą, patvirtintą renginį su valanda ir savo darbo grafiko išimtį. Vien pirmas įrašas kitų dviejų nepatvirtina. Kultūrinės ar profesinės progos, kurios nėra šiame šventinių dienų rinkinyje, savaime nesuteikia nedarbo dienos. '+link('/blogas/sventines-ir-atmintinos-dienos/','Gide apie datų statusą')+' pateikiamas Vasario 16-osios ir Sausio 13-osios palyginimas.'))
-    monthly=load('data/monthly-holidays-2027.json')['events']
-    for m in range(1,13):
-        events=[v for v in monthly if v['date'].startswith(f'2027-{m:02d}')]
-        dates={v['date']for v in events};nonworking=[v for v in events if v['statutory_nonworking']]
-        selected=events[0]
-        body=f'<h2>{GEN[m-1].capitalize()} sąrašo naudojimo pavyzdys</h2>'
-        body+=p(f'Šio mėnesio sąraše <strong>progų įrašų – {len(events)}, skirtingų datų – {len(dates)}</strong>. Viena diena gali turėti kelis pavadinimus, todėl progų skaičius nėra mėnesio trukmė. Pagal šaltinio klasifikaciją šventinių datų įrašų šiame mėnesyje yra {len(nonworking)}. Atmintinos ir atrinktos neoficialios progos rodomos atskirai nuo jų.')
-        body+=p(f'Pirmas chronologinis šio sąrašo įrašas: <strong>{e(selected["title"])} – {selected["date"]}, {e(selected["weekday_lt"])}</strong>. Prieš darydami išvadą apie laisvą dieną perskaitykite būtent jo statusą. Vardas ar graži iliustracija to statuso nepakeičia. Jeigu toje pačioje datoje matote du minėjimus, asmeniniame darbo dienų skaičiavime pačią datą įtraukite tik vieną kartą.')
-        body+=p('Į susitikimo planą įrašykite tikrą organizatoriaus paskelbtą pradžią. Ši mėnesio apžvalga padeda atrasti progą ir jos šaltinį, tačiau pati neskelbia visų šalies renginių programos. Mokyklos, muziejaus ar savivaldybės veiklos laikas gali nesutapti su kalendorinės dienos riba. Savo mėnesio užimtumui pasirinkite '+link(f'/2027/{MONTHS[m-1]}/',f'2027 m. {GEN[m-1]} kalendorių')+'.')
-        add(f'/sventes/2027/{MONTHS[m-1]}/',body)
     for y in (2027,2028,2029,2030):
         dates=[dt.date(y,1,1),dt.date(y,12,31)]
         add(f'/savaites/{y}/',f'<h2>{y} metų ribinių datų patikra</h2>'+table('Kalendorinių ir ISO savaitės metų skirtumas',['Kalendorinė data','Savaitės diena','ISO savaitės metai','ISO savaitė'],[(d.isoformat(),DAYS[d.weekday()],d.isocalendar().year,d.isocalendar().week)for d in dates])+p('Perduodami ataskaitą nurodykite ir savaitės metus, jei naudojate ISO numerį. Vien pirmadienio nustatymas pirmuoju stulpeliu dar nepasako, kaip programa apibrėžia pirmą metų savaitę. Jei kitas įrankis rodo kitą numerį, palyginkite būtent metų ribos datą ir jo nustatymus. '+link('/blogas/iso-savaiciu-numeriai/','Išsamus 2027 metų sausio pavyzdys')+' paaiškina, kodėl kalendorinė sausio pirmoji gali priklausyti ankstesnių metų savaitei.'))
@@ -116,7 +136,7 @@ def prepare():
     archived=[r for route,r in sharing.items() if '/v-' in route and r['kind']=='horoscope']
     saved_dates=sorted({r['contentDate']for r in archived})
     add('/horoskopai/istorija/','<h2>Šio archyvo aprėptis</h2>'+p(f'Šiame leidime išsaugotų ženklo publikacijų – {len(archived)}, skirtingų turinio datų – {len(saved_dates)}. Pirma išsaugota data yra {saved_dates[0]}, paskutinė – {saved_dates[-1]}. Tai tik faktiškai paskelbtų kopijų sąrašas, o ne teiginys, kad turime visų ankstesnių metų horoskopus.')+p('Tas pats ženklas čia kartojasi skirtingomis datomis, o viena data gali turėti atskiras turinio versijas. Nuorodoje nurodytas identifikatorius padeda jas atskirti. Praeities kopija neperrašoma kaip naujos dienos prognozė. Aktualų dvylikos ženklų rinkinį atverkite '+link('/horoskopai/','dienos horoskopų puslapyje')+'.'))
-    assets={a['stem']:a for a in load('site/assets/data/manifest.json')['assets']}
+    assets={a['stem']:a for a in manifest}
     for route,record in sharing.items():
         if route.startswith('/dalintis/kalendorius/'):
             asset=assets[record['templateId']];dimensions=asset.get('dimensions',{})

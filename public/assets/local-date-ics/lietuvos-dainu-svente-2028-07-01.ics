@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kalendorius365//LT//LT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lt-lietuvos-dainu-svente-2028-07-01@kalendorius365.lt
+DTSTAMP:20261120T120000Z
+DTSTART;VALUE=DATE:20280701
+DTEND;VALUE=DATE:20280710
+SUMMARY:Lietuvos dainų šventė
+DESCRIPTION:Lietuvos nacionalinis kultūros centras 2028 m. Lietuvos dainų
+  šventę numato liepos 1–9 d. Paskelbta koncepcija „Mūsų gyvasties 
+ paslaptis“.
+URL:https://kalendorius365.lt/renginiai/lietuvos-dainu-svente/
+TRANSP:TRANSPARENT
+LOCATION:Renginių vietos tikslinamos programoje
+END:VEVENT
+END:VCALENDAR

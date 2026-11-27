@@ -92,8 +92,11 @@ def check_page(route: str, assets: list[dict], expected_h1: str, print_asset: di
     assert len(page.options) == 10, (route, "design selector options", len(page.options))
     if route.strip("/").isdigit():
         assert page.print_roots.count("annual") == 1, (route, "annual overview print root", page.print_roots)
+        assert any("ketvirtyje yra daugiausia" in part for part in page.text), (route, "missing annual planning example")
     else:
         assert page.print_sizes == [("landscape" if print_asset["landscape"] else "portrait", "A3")], (route, "A3 browser print size", page.print_sizes)
+        assert "Spausdinamas lapas šio mėnesio užrašams" in page.text, (route, "missing monthly print example")
+        assert "atsisiunčiamą paveikslėlį" in page.text, (route, "missing image download from the example")
     by_stem = {asset["stem"]: asset for asset in assets}
     assert {card["attrs"].get("id", "").removeprefix("dizainas-") for card in page.cards} == set(by_stem)
     assert {option["value"] for option in page.options} == set(by_stem)

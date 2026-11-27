@@ -23,6 +23,20 @@ const source = readFileSync(new URL("../site/orai/index.html", import.meta.url),
 const shell = metadata + '<main><nav class="breadcrumbs"></nav>' + source + "</main>";
 const description = html => html.match(/<meta name="description" content="([^"]+)"/)[1];
 
+test("climate normals keep station attribution, local month and distinct temperature and rain units", () => {
+  const now = Date.parse("2027-01-31T22:30:00Z");
+  const location = renderWeatherPage(shell, "klaipeda", {}, now);
+  const panel = location.match(/id="klimato-normos"[\s\S]*?<\/section>/)[0];
+  assert.match(panel, /Klaipėdos AMS/);
+  assert.match(panel, /Vasaris · vidutinė temperatūra<\/dt><dd>−0,9 °C/);
+  assert.match(panel, /Vasaris · krituliai per mėnesį<\/dt><dd>45 mm/);
+  assert.match(panel, /<tr class="wx-climate-normals__selected"><th scope="row">Vasaris<\/th>/);
+  assert.match(panel, /<th scope="row">Metai<\/th><td>8,2<\/td><td>761<\/td>/);
+  assert.match(panel, /meteo\.lt\/klimatas\/lietuvos-klimatas\/klimato-duomenys/);
+  const future = renderWeatherPage(shell, "klaipeda", {}, now, {period: 90, month: "2027-03"});
+  assert.match(future, /Kovas · krituliai per mėnesį<\/dt><dd>40 mm/);
+});
+
 test("weather page copy, social metadata and breadcrumbs describe the same city route", () => {
   const result = renderWeatherPage(shell, "kaunas");
   assert.match(result, /<h1 id="wx-place-title">Orai Kaune<\/h1>/);

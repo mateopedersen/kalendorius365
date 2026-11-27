@@ -103,6 +103,21 @@ def write_ics(m,events,year):
     for e in events:
         d=date.fromisoformat(e['date']);lines+=['BEGIN:VEVENT',f'UID:{year}-{e["id"]}@kalendorius365.lt','DTSTAMP:20261017T100000Z','DTSTART;VALUE=DATE:'+d.strftime('%Y%m%d'),'DTEND;VALUE=DATE:'+(d+timedelta(days=1)).strftime('%Y%m%d'),'SUMMARY:'+ics_escape(e['title']),'DESCRIPTION:'+ics_escape(CATS[e['category']][1].rstrip('.')+'. '+e['summary']),'URL:https://kalendorius365.lt'+url(m, year)+'#ivykis-'+e['id'],'TRANSP:TRANSPARENT','END:VEVENT']
     lines.append('END:VCALENDAR');p=ROOT/f'site/assets/holiday-guides-ics/{year}-{MONTHS[m-1][0]}.ics';p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(('\r\n'.join(fold_ics(s) for s in lines)+'\r\n').encode())
+
+def month_example(year, month, day_groups, statutory):
+    selected_date = max(day_groups, key=lambda day: len(day_groups[day]))
+    selected = day_groups[selected_date]
+    weekday_statutory = [day for day in statutory if date.fromisoformat(day).weekday() < 5]
+    links = ' · '.join(link('#ivykis-' + e['id'], E(e['title'])) for e in selected)
+    availability = (f'Šventinių datų šiame mėnesyje yra {len(statutory)}. Iš jų {len(weekday_statutory)} patenka į darbo savaitę nuo pirmadienio iki penktadienio.'
+                    if statutory else 'Šį mėnesį Darbo kodekso šventinių dienų nėra, tačiau gide yra atmintinų ar kitų minėtinų datų.')
+    prompt = ('Kiekviena proga turi savo paaiškinimą, nors mėnesio tinklelyje jos telpa į vieną langelį.'
+              if len(selected) > 1 else 'Atverkite dienos paaiškinimą ir pažiūrėkite, kuriai kategorijai ji priskirta.')
+    return f'''<section class="mh-faq" id="menesio-pavyzdys"><h2>Kaip skaityti {year} m. {MONTHS[month-1][2]} datas</h2>
+<p>{availability} Planuodami darbo grafiką palyginkite su {link(f'/darbo-dienos/{year}/', f'{year} m. darbo dienų lentele')}.</p>
+<p>{E(readable(selected_date).capitalize())} yra {WD[date.fromisoformat(selected_date).weekday()]}. Šios dienos įrašų skaičius gide yra {len(selected)}. {prompt}</p>
+<p>{links}</p></section>'''
+
 def render_year(year, engine, links, festivals):
     entries = sorted(events_in_year(year, engine, links), key=lambda e: (e['date'], not e['statutory_nonworking'], e['id']))
     for m, (theme, intro, spots, q, a) in enumerate(MONTH_NOTES, 1):
@@ -179,6 +194,7 @@ def render_year(year, engine, links, festivals):
             print_label = 'Atverti spausdinamą mėnesio kalendorių'
             print_note = 'Atitinkamo mėnesio kalendorių galite atsispausdinti iš naršyklės.'
         season_link = link(*SEASONAL_GUIDES[m]) if m in SEASONAL_GUIDES else ''
+        example = month_example(year, m, by, holidays)
         html=f'''<article class="mh mh--{slug}" data-month-guide data-month="{m}" data-year="{year}">
 <header class="mh-hero"><div class="mh-hero__copy"><p class="eyebrow">{year} · {E(theme)}</p><h1>{E(title)}</h1><p class="mh-intro">{E(intro)}</p><p class="mh-intro">{E(month_answer)}</p><div class="mh-hero-actions">{link(f'/{year}/{slug}/',icon('download')+'Spausdinamas mėnesio kalendorius','button')}{link('#mh-calendar','Rasti datą '+icon('arrow'),'mh-text-link')}</div>{year_nav(year, m)}</div><figure class="mh-art"><img src="{media['src']}" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" alt="{E(media['alt'])}"><figcaption>{E(media['title'])}. Originali stilizuota iliustracija.</figcaption></figure></header>
 {metrics}
@@ -188,6 +204,7 @@ def render_year(year, engine, links, festivals):
 <div class="mh-events-list" role="region" aria-label="Patikrintos mėnesio datos">{groups}<p class="mh-empty" hidden>Datų pagal pasirinktus filtrus nerasta. Pakeiskite paiešką arba išvalykite filtrus.</p></div></section>
 <section class="mh-focus" aria-labelledby="mh-focus-title"><div class="mh-section-head"><div><p class="eyebrow">Mėnesio akcentai</p><h2 id="mh-focus-title">Svarbiausios {gen} datos</h2></div></div><div class="mh-focus-grid">{focus}</div></section>
 {festival_section}{informal}\n<section class="mh-planning"><div><p class="eyebrow">Iš kalendoriaus – į jūsų planus</p><h2>Atsisiųskite arba atsispausdinkite</h2><p>{print_note} Sveikinimų datas rasite {link(f'/vardadieniai/{slug}/', f'{gen} vardadienių sąraše')}.</p></div><div class="mh-actions">{link(print_path,icon('download')+print_label,'button primary')}{link(f'/assets/holiday-guides-ics/{year}-{slug}.ics',icon('calendar')+'Viso mėnesio datos · ICS','button')}<button type="button" data-print>{icon('print')}Spausdinti šį gidą</button></div></section>
+{example}
 <section class="mh-faq" aria-labelledby="mh-question-title"><h2 id="mh-question-title">Dažnas klausimas</h2><details><summary>{E(q)}</summary><p>{E(a)}</p></details></section>
 <section class="mh-sources" aria-labelledby="mh-sources-title"><h2 id="mh-sources-title">Šaltiniai ir metodika</h2><p>Duomenys patikrinti <time datetime="2026-11-20">2026 m. lapkričio 20 d.</time> Remtasi paskelbta Darbo kodekso redakcija, numatyta nuo 2027-01-01, ir Atmintinų dienų įstatymo redakcija nuo 2027-01-01. Vėliau priimti pakeitimai gali turėti įtakos.</p><details><summary>Kaip atrinktos ir patikrintos datos?</summary><p>Pateikiami šiame gide naudojamos redakcijos atmintinų dienų įstatymo įrašai, DK 123 str. šventinės dienos ir atrinktos šaltiniais pagrįstos tradicijos bei tarptautinės dienos. Keli minėjimai viename įstatymo punkte išlaikomi kartu. Kilnojamosios datos apskaičiuotos {year} metams; Velykoms taikomas vakarietiškasis Grigaliaus kalendorius. Renginių programos neprilyginamos kalendorinėms datoms. Tekstas parengtas ir peržiūrėtas pasitelkiant dirbtinį intelektą. Nepriklausoma gimtakalbio redaktoriaus ar teisininko peržiūra neatlikta.</p><p>Pastebėjote netikslumą? {link('/privatumas/#controller','Susisiekimo duomenys ir pastabų pateikimas')}.</p></details><ul>{sources}</ul></section>
 {month_selector(year, m)}<nav class="mh-related" aria-label="Susiję kalendoriai">{link('/sventes/','Visos Lietuvos šventės')}{link('/renginiai/','Renginių ir festivalių kalendorius')}{link(f'/sventes/{year}/',f'{year} m. šventinės dienos')}{link(f'/{year}/',f'{year} m. spausdinami kalendoriai')}{season_link}</nav>

@@ -24,6 +24,8 @@
   margin-block: var(--od-gap);
 }
 #main .hg-reading { margin: 0; }
+#main .hg-reading-note { margin-block: var(--od-gap); }
+#main .hg-reading-note > p { max-inline-size: 74ch; }
 #main .local-date-content { align-items: stretch; }
 #main :is(.local-date-content > .panel, .local-event-plan, .local-date-years, .local-date-guide > .local-date-related, .hd-meaning, .hd-plan, .hd-faqs, .hd-sources, .hd-related, .hg-text, .hg-info, .mh-faq, .mh-sources, .sg-editorial > section) {
   min-width: 0;

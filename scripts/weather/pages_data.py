@@ -6,6 +6,8 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCES = {
     "registry": "site/assets/data/weather-places.json",
     "cityImages": "site/_data/weather_city_images.json",
+    "climateNormals": "data/weather-climate-normals.json",
+    "hydroStations": "data/weather-hydro-stations.json",
 }
 
 

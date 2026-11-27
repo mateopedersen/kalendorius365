@@ -7404,7 +7404,7 @@
     {
       "path": ".github/workflows/site-release-qa.yml",
       "reason": "Reviewed cache release publishes the complete generated asset graph atomically and runs permanent regression gates",
-      "sha256": "2ec455fc6f8af080afdc9d9ba2f236c19d16f518bfbdedac0ea3854f6cbb1dab"
+      "sha256": "f7aaaacec1426fbbb2ae04deccdfaaa30e9beb38c24f5e12829267033abfac57"
     }
   ],
   "changed_baseline_assets": [],
@@ -7415,7 +7415,7 @@
     }
   },
   "failures": [],
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-27",
   "limits": [
     "No independent native-human language or legal certification is claimed.",
     "Browser interaction, rendered geometry, contrast and live HTTP are a separate gate."

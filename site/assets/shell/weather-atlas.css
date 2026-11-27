@@ -1030,6 +1030,29 @@
 .wx-local-profile__readings dt { font-size: .78rem; color: #3b5961; line-height: 1.35; }
 .wx-local-profile__readings dd { color: #163f47; font-weight: 750; font-variant-numeric: tabular-nums; }
 .wx-local-profile__source { justify-self: start; font-size: .84rem; font-weight: 650; padding-block: 6px; }
+.wx-climate-normals__summary {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin-block: 12px;
+}
+.wx-climate-normals__summary > div {
+  min-width: 0; padding: 12px; border: 1px solid #c5dad0; border-radius: 10px; background: #f3f8f2;
+}
+.wx-climate-normals__summary dt { color: #415b54; font-size: .85rem; }
+.wx-climate-normals__summary dd {
+  margin: 3px 0 0; color: #154d3e; font-size: 1.2rem; font-weight: 750; font-variant-numeric: tabular-nums;
+}
+.wx-climate-normals__table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.wx-climate-normals__table caption { padding-block: 8px; text-align: start; }
+.wx-climate-normals__table :is(th,td) { padding: 7px 6px; border-bottom: 1px solid #dce8e2; }
+.wx-climate-normals__table :is(th,td):first-child { text-align: start; }
+.wx-climate-normals__table :is(th,td):not(:first-child) { text-align: end; font-variant-numeric: tabular-nums; }
+.wx-climate-normals__selected { background: #eef6ef; }
+.wx-outdoor-reference__table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: clamp(.77rem, 2.7vw, .95rem); }
+.wx-outdoor-reference__table caption { padding-block: 8px; text-align: start; font-weight: 650; }
+.wx-outdoor-reference__table :is(th, td) { padding: 8px 4px; border-bottom: 1px solid #dce8e2; text-align: start; overflow-wrap: normal; }
+.wx-outdoor-reference__table thead { background: #f0f6ed; }
+.wx-outdoor-reference__table td { font-variant-numeric: tabular-nums; }
+.wx-outdoor-reference__water { padding: 14px; border-radius: 12px; border: 1px solid #c8dce0; background: #edf6f7; }
+.wx-outdoor-reference__water a { display: inline-block; margin-inline-end: 10px; padding-block: 6px; }
 @media (max-width: 680px) {
   .wx-local-profile__grid { grid-template-columns: 1fr; gap: 8px; }
 }

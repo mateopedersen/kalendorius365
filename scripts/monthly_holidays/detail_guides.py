@@ -1,6 +1,7 @@
 """Render recurring days as canonical, source-linked guides reusable in every year."""
 from datetime import timedelta
 from html import escape as esc
+import csv
 import hashlib
 import json
 
@@ -17,6 +18,10 @@ CATEGORIES = {
 REVIEWED_CREATORS = {
     'https://commons.wikimedia.org/wiki/File:Ula_river.jpg': {'@type': 'Person', 'name': 'Wojsyl'},
 }
+VISIT_LINKS = {
+    'prokuraturos-diena': ('Kovo 11-ąja', '/sventes/kovo-11-oji/'),
+    'tarptautine-valstybes-tarnautoju-diena': ('Jonines', '/sventes/jonines/'),
+}
 
 
 def escape(text):
@@ -29,6 +34,23 @@ def route(slug):
 
 def anchor(href, label, css=''):
     return f'<a class="{css}" href="{escape(href)}">{escape(label)}</a>'
+
+
+def reading_notes(records):
+    with (ROOT / 'data/holiday-guide-notes.tsv').open() as file:
+        rows = list(csv.reader(file, delimiter='\t'))
+    expected = {record['slug'] for record in records if not record['event'].startswith('folk-')}
+    if len(rows) != len(expected) or {row[0] for row in rows} != expected:
+        raise ValueError('Each researched holiday needs one individual reading note')
+    notes = {}
+    for slug, title, paragraph, href, label in rows:
+        if not title or not paragraph or (href == '-') != (label == '-'):
+            raise ValueError(f'Incomplete reading note: {slug}')
+        if href != '-' and (not href.startswith('/') or href.startswith('//')):
+            raise ValueError(f'Expected a local related page: {slug}')
+        related = f'<p>{anchor(href, label)}</p>' if href != '-' else ''
+        notes[slug] = f'<section class="hg-text hg-reading-note" data-reading-note="{slug}"><h2>{escape(title)}</h2><p>{escape(paragraph)}</p>{related}</section>'
+    return notes
 
 
 def year_window(dates, record, event, fold_ics, ics_escape):
@@ -71,6 +93,7 @@ def image_markup(photo, slug):
 
 
 def render_details(records, engines, links, fold_ics, ics_escape):
+    notes = reading_notes(records)
     photo_path = ROOT / 'data/holiday-guide-photos.json'
     photos = json.loads(photo_path.read_text())
     if photos.keys() != {record['slug'] for record in records if not record['event'].startswith('folk-')}:
@@ -111,10 +134,14 @@ def render_details(records, engines, links, fold_ics, ics_escape):
         history_heading = 'Ką ši diena primena?' if commemorative else 'Kilmė ir istorija'
         observance_heading = 'Kaip minima Lietuvoje?' if commemorative else 'Kur ir kaip minima?'
         navigation = '{% include commemoration-navigation.html %}' if commemorative else ''
+        visit = escape(record['visit'])
+        if slug in VISIT_LINKS:
+            label, href = VISIT_LINKS[slug]
+            visit = visit.replace(escape(label), anchor(href, label), 1)
         reading = f'''<div class="hg-reading{reading_class}">
   <section class="hg-text"{history_id}><h2>{history_heading}</h2><p>{escape(record['meaning'])}</p></section>
-  <section class="hg-text" id="kur"><h2>{observance_heading}</h2><p>{escape(record['visit'])}</p>{anchor(record['source'], record['source_label'], 'hg-btn hg-btn--outline')}</section>
-</div>'''
+  <section class="hg-text" id="kur"><h2>{observance_heading}</h2><p>{visit}</p>{anchor(record['source'], record['source_label'], 'hg-btn hg-btn--outline')}</section>
+</div>{notes.get(slug, '')}'''
         overview = f'{navigation}\n{reading}\n' if commemorative else ''
         visit_link = '' if commemorative else anchor('#kur', 'Kur ir kaip minima', 'hg-btn hg-btn--outline')
         html = f'''<article class="hg{' commemoration-guide' if commemorative else ''}" data-holiday-research data-default-year="{first.year}">
