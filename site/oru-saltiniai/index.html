@@ -17,6 +17,8 @@ schema_type: WebPage
     <a href="#duomenys">Duomenų teikėjai</a>
     <a href="#metodika">Rodmenų paaiškinimai</a>
     <a href="#vietoves-aplinka">Vietovės aukštis ir meteorologijos stotys</a>
+    <a href="#stociu-klimato-normos">Stočių klimato normos</a>
+    <a href="#vietoves-sviesa-ir-vanduo">Vietovės šviesa ir vanduo</a>
     <a href="#miestu-nuotraukos">Miestų nuotraukos</a>
     <a href="#vakaro-nuotraukos">Miestų vakaro vaizdai</a>
   </nav>
@@ -61,6 +63,18 @@ schema_type: WebPage
       <dt>LHMT meteorologijos stoties matavimai</dt>
       <dd>Iš <a href="https://api.meteo.lt/">LHMT stočių katalogo</a> parenkame mažiausiu atstumu tiesia linija nutolusią stotį. Rodome paskutinį, iki trijų valandų senumo stebėjimą Lietuvos laiku. Kai kurių rodiklių stotis nematuoja. Stebėjimas galioja stoties taške, o gyvenvietės prognozė priklauso nuo modelio gardelės. Šaltinis – Lietuvos hidrometeorologijos tarnyba, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.</dd>
     </dl>
+  </section>
+
+  <section id="vietoves-sviesa-ir-vanduo" class="panel weather-sources__data">
+    <h2>Dienos šviesos skaičiavimas ir vandens stotys</h2>
+    <p>Saulėtekio ir saulėlydžio laikus apskaičiuojame vietovės prognozės koordinatėms. Rodome keturias konkrečias kalendorines datas Lietuvos laiku, taigi žiemos ir vasaros valandos atsižvelgia į skirtingą laiko poslinkį. Saulėtekis skaičiuojamas atviram horizontui, kai geometrinis Saulės centras yra maždaug 0,83° žemiau horizonto. Debesys, medžiai, pastatai ir reljefas keičia matomumą. <a href="https://aa.usno.navy.mil/faq/RST_defs">JAV karinio jūrų laivyno observatorijos apibrėžimas</a>.</p>
+    <p>Artimiausią vandens matavimo stotį parenkame pagal <a href="https://api.meteo.lt/v1/hydro-stations">LHMT stočių koordinates</a>. Nuorodą į stotį rodome, kai ji yra ne toliau kaip apie 20 km tiesia linija nuo prognozės taško. Artimiausia stotis gali priklausyti kitam vandens telkiniui nei tas, prie kurio vykstate. Atvertame <a href="https://www.meteo.lt/dabar/vandens-telkiniai/">LHMT vandens duomenų puslapyje</a> rinkitės konkretų telkinį ir patikrinkite matavimo laiką.</p>
+  </section>
+  <section id="stociu-klimato-normos" class="panel weather-sources__data">
+    <h2>Ką parodo 1991–2020 m. stočių klimato normos?</h2>
+    <p>Iš 18 stočių, kurių mėnesio temperatūros ir kritulių normas skelbia LHMT, parenkame artimiausią pagal atstumą tiesia linija. Šio skyriaus stotis gali skirtis nuo tos, kurios naujausi matavimai rodomi viršuje. Savivaldybės puslapyje atstumą skaičiuojame nuo jos prognozės atskaitos taško.</p>
+    <p>Temperatūra yra ilgalaikė mėnesio vidutinė oro temperatūra. Krituliai rodo vidutinį viso mėnesio kiekį milimetrais. Metinę reikšmę imame tiesiai iš LHMT lentelės, todėl ji gali skirtis nuo suapvalintų mėnesių sumos. Ilgalaikiai skaičiai padeda palyginti sezonus. Kelionei konkrečią dieną naudokite tos vietovės prognozę.</p>
+    <p><a href="https://www.meteo.lt/klimatas/lietuvos-klimatas/klimato-duomenys/">LHMT pirminės duomenų lentelės</a> · <a href="https://www.meteo.lt/klimatas/lietuvos-klimatas/skn/">LHMT standartinės klimato normos aprašymas</a></p>
   </section>
 
   <section id="miestu-nuotraukos" class="weather-sources__photos" aria-labelledby="weather-sources-photos-title">

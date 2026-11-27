@@ -228,6 +228,14 @@ test("the solar tool renders all 103 city choices with ordered twilight and hori
     }
     const outlook = solarWeek(dateMarkup[1], { lat, lon });
     assert(cityPage.includes(`id="sun-week-change">${outlook.comparison}</p>`), id);
+    const seasonal = cityPage.match(/id="sezonu-palyginimas"[\s\S]*?<\/section>/)?.[0];
+    assert(seasonal, id);
+    const year = dateMarkup[1].slice(0, 4);
+    for (const day of [year + "-06-21", year + "-12-21"]) {
+      const { daylight, sunrise, sunset } = solarWeek(day, { lat, lon }).rows[0];
+      assert(seasonal.includes(`datetime="${day}"`), id);
+      assert(seasonal.includes(`<td>${sunrise}</td><td>${sunset}</td><td>${daylight}</td>`), id);
+    }
     assert(cityPage.includes('href="/saule/#sun-method-title"'), id);
     for (const date of ["2000-02-29", "2028-03-26", "2028-06-21", "2028-10-29", "2030-12-21", "2100-12-31"]) {
       const city = { lat, lon };

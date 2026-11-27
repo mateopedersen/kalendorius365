@@ -478,3 +478,28 @@
 @@ pensijos
 <h2>Kaip panaudoti pensijos datos įvertį?</h2>
 <p>Kai žinote numatomą pensijos datą, <a href="/datos-skaiciuokle/">datų skaičiuoklėje</a> apskaičiuokite, kiek laiko iki jos liko. Faktinį draudimo stažą ir sąlygas tikrinkite pagal šiame gide nurodytus „Sodros“ duomenis.</p>
+
+@@ atgalinis-skaiciavimas
+<h2>Skaičiuokite iki renginio pradžios valandos</h2>
+<p>Jei 2027 m. gruodžio 24 d. susitikimas prasidės 17.00 val., pirmiausia pasirinkite Kūčias, tada pakeiskite laiką į 17.00. Iki datos pradžios ir iki susitikimo skaičiuoklė rodys skirtingą likusį laiką. Šalia datos palikite aiškų pavadinimą, kad atsivertę nuorodą matytumėte, kurio susitikimo laiką tikrinate.</p>
+<p>Kai norite sužinoti, kiek datų yra tarp atostogų pradžios ir pabaigos, naudokite <a href="/datos-skaiciuokle/">datų skaičiuoklę</a>. Joje galite patikrinti, kaip rezultatą keičia pradinės arba galutinės datos įtraukimas. Šventės dieną patikrinkite <a href="/sventes/kucios/">Kūčių gide</a>.</p>
+
+@@ mano-diena
+<h2>Vienos savaitės planas praktikoje</h2>
+<p>Kelionei antradienio devintą valandą pridėkite įvykį ir pasižymėkite, kurią valandą turite išvykti. Dokumentų patikrinimą užrašykite kaip atskirą užduotį pirmadieniui. Užrašuose palikite tai, ką reikia turėti po ranka, pavyzdžiui, susitikimo vietą. Savaitės rodinyje bus aišku, kuris veiksmas turi konkretų laiką ir ką galima atlikti iš anksto.</p>
+<p>Jei naujame įrenginyje norite tęsti darbą su įvykiais, užduotimis ir užrašais, pirmiausia išsaugokite JSON kopiją. Vieno susitikimo perdavimui patogiau rinktis kalendoriaus įrašą. <a href="/blogas/ics-importas-ir-laiko-juostos/">ICS gide</a> paaiškinta, kaip tikrinti importuotą datą ir laiką.</p>
+
+@@ metu-diena
+<h2>Vasario pabaigos pavyzdys</h2>
+<p>2028 m. vasario 29 d. yra 60-oji metų diena, o kovo 1 d. yra 61-oji. 2027 m. kovo 1 d. yra 60-oji, nes tais metais po vasario 28 d. iš karto prasideda kovas. Jei suvestinėje naudojate vien dienos numerį, greta išsaugokite metus ir visą datą. Kitaip žmogus, skaitantis suvestinę po metų, tuo pačiu numeriu gali pažymėti kitą datą.</p>
+<p>Palyginkite <a href="/2027/vasaris/">2027 m. vasarį</a> ir <a href="/2028/vasaris/">2028 m. vasarį</a>. Jei jūsų ataskaitoje naudojamos savaitės, atskirai patikrinkite <a href="/savaites/">ISO savaitės numerį</a>.</p>
+
+@@ keliamieji-metai
+<h2>Ką vasario 29-oji pakeičia kalendoriuje</h2>
+<p>2028 m. vasario 29 d. yra antradienis. Šalia pirmadienio vasario 28 d. reikia atskiro langelio, po kurio eina trečiadienis kovo 1 d. Ruošdami 2028 m. vasario planą nepervadinkite ankstesnių metų atsisiųsto failo. Net jei vizualinis stilius tinka, reikia naujo tinklelio su 29 dienomis ir teisingomis savaitės dienomis.</p>
+<p>Atverkite <a href="/2028/vasaris/">keliamųjų metų vasario maketus</a> ir patikrinkite datų seką. Perkeldami kasmet pasikartojantį vasario 29 d. įrašą patikrinkite kalendoriaus programos taisykles. Skirtingos programos gali kitaip rodyti tą įrašą metais be vasario 29-osios.</p>
+
+@@ duk
+<h2>Kaip pasirinkti failo formatą</h2>
+<p>PDF tinka spausdinti pasirinktą maketą. WebP rinkitės, kai reikia įdėti kalendorių kaip vaizdą į dokumentą. ICS perduoda įvykius su datomis kitai kalendoriaus programai. JSON kopija skirta tęsti darbą su svetainėje išsaugotais duomenimis kitoje naršyklėje. Jei pirmą kartą perkeliate daug datų, išbandykite vieną įrašą ir patikrinkite, kaip gavėjo programoje atrodo jo data ir laikas.</p>
+<p>Kurį failą atsisiųsti, galite išbandyti <a href="/2027/vasaris/">vasario kalendorių kolekcijoje</a>. Atostogų ar kitų svarbių įrašų perkėlimo pavyzdį rasite <a href="/mano-diena/">asmeninės savaitės planuose</a>.</p>

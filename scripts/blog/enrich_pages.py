@@ -18,24 +18,21 @@ def prepare():
   route,rest=b.split('\n',1);heading,text=rest.strip().removeprefix('## ').split('\n',1)
   body='<h2>'+heading+'</h2>'+''.join('<p>'+p+'</p>'for p in text.strip().split('\n\n'))
   append(route.strip(),body);changed.append(route.strip())
- for y in (2027,2028,2029):
-  first=datetime.date.fromisocalendar(y,1,1);lastn=datetime.date(y,12,28).isocalendar().week;last=datetime.date.fromisocalendar(y,lastn,7);jan=datetime.date(y,1,1).isocalendar()
-  body=f'''<h2>Kaip skaityti {y} metų savaičių lentelę?</h2>
-<p>Šioje lentelėje pateiktos {y} metų ISO savaitės. Savaitė prasideda pirmadienį ir baigiasi sekmadienį. Pirmoji savaitė yra ta, kurioje yra pirmasis metų ketvirtadienis, arba, lygiaverčiai, sausio ketvirtoji. Todėl savaitės metai ne visada sutampa su konkrečios dienos kalendoriniais metais. Šį skirtumą svarbu suprasti metų sandūroje, kai šalia sausio dienos matote dar praėjusių metų savaitės numerį arba gruodžio pabaigos data jau priskiriama kitų metų pirmajai savaitei.</p>
-<p>{y} savaitės metai turi {lastn} savaites. Pirmos savaitės pirmadienis yra {first.isoformat()}, o paskutinės savaitės sekmadienis – {last.isoformat()}. Kalendorinė sausio pirmoji šiuo atveju priklauso {jan.year} savaitės metų {jan.week} savaitei. Šios ribos apskaičiuotos pagal ISO savaitės taisyklę. Jos neperrašomos vien tam, kad visi laikotarpiai tilptų tarp sausio pirmosios ir gruodžio paskutinės dienos: visa septynių dienų savaitė turi išlaikyti bendrą numerį ir savo savaitės metus.</p>
-<h3>Ataskaitai pridėkite ir konkrečias datas</h3>
-<p>Jei planą perduodate kitam žmogui, užrašykite ne tik savaitės numerį, bet ir pirmadienio bei sekmadienio intervalą. Pavyzdžiui, pirmoji čia rodoma savaitė tęsiasi nuo {first.isoformat()} iki {(first+datetime.timedelta(days=6)).isoformat()}. Toks užrašas suprantamas ir gavėjui, kurio programa numerių nerodo arba taiko kitą pirmos savaitės sistemą. Jei užduotis turi tikslų pateikimo terminą, palikite ir atskirą galutinę datą, nes bendras savaitės intervalas pats nepasako, kurią dieną darbas turi būti užbaigtas.</p>
-<p>ISO savaitės numeris nėra darbo dienų skaičius. Savaitėje visada septynios dienos, tačiau jūsų darbo grafikas, šventės ir asmeninis užimtumas gali skirtis. Darbo laikui naudokite jam skirtą metų skaičiuoklę su aiškiomis prielaidomis. Pamainų ciklas gali tęstis per savaitgalį, todėl vien penkių pirmų lentelės datų nepakanka kiekvieno darbuotojo grafikui nustatyti. Savaitės lentelė padeda sutarti laikotarpį, o individualios darbo sąlygos tikrinamos atskirai pagal realų patvirtintą planą ir taikomą darbo režimą.</p>
-<h3>Kaip patikrinti kitos programos rezultatą?</h3>
-<p>Palyginimui pasirinkite sausio pirmąją arba gruodžio paskutinę dieną. Metų viduryje skirtingos numeravimo sistemos gali atrodyti panašiai, todėl ribinis pavyzdys aiškiau parodo jų taisykles. Patikrinkite ne vien savaitės pradžios dieną, bet ir tai, kaip nustatoma pati pirma metų savaitė. Pirmadienis pirmame stulpelyje savaime dar nepatvirtina ISO numeracijos. Jei skaičiai nesutampa, pirmiausia išsiaiškinkite abiejų įrankių nustatymus, o ne rankomis pernumeruokite visą jau parengtą mėnesio arba metų planą.</p>
-<p>Išsamesnį metų sandūros pavyzdį pateikiame <a href="/blogas/iso-savaiciu-numeriai/">gide apie ISO savaites</a>. Spausdindami lentelę peržiūrėkite pradžios ir pabaigos stulpelius: jie turi likti aiškiai susieti su tuo pačiu numeriu. Prie išsaugoto lapo nurodykite metus, kad vėliau jo nesupainiotumėte su kito laikotarpio kopija. Taip savaitės numeriai išlieka patogiu bendro planavimo orientyru, o ne papildomu neaiškių datų šaltiniu jūsų susitarimuose.</p>'''
+ for y in range(2027, 2031):
+  first=datetime.date.fromisocalendar(y,1,1)
+  lastn=datetime.date(y,12,28).isocalendar().week
+  last=datetime.date.fromisocalendar(y,lastn,7)
+  jan=datetime.date(y,1,1).isocalendar()
+  dec=datetime.date(y,12,31).isocalendar()
+  body=f'''<h2>{y} metų savaitės per abi metų sandūras</h2>
+<p>Pagal ISO {y} metai turi {lastn} savaites. Pirmos savaitės pirmadienis yra <time datetime="{first}">{first}</time>, paskutinės savaitės sekmadienis yra <time datetime="{last}">{last}</time>. Savaitė prasideda pirmadienį, o pirmoji ISO metų savaitė apima sausio 4-ąją.</p>
+<ul><li><strong>{y} m. sausio 1 d.</strong> priklauso {jan.year} m. {jan.week} savaitei.</li><li><strong>{y} m. gruodžio 31 d.</strong> priklauso {dec.year} m. {dec.week} savaitei.</li></ul>
+<p>Norėdami patikrinti, kaip savaitės numeruojamos kitoje programoje, palyginkite šias dvi datas. Jei užduotis turi konkretų terminą, prie savaitės numerio įrašykite galutinę datą. Darbo laikui naudokite <a href="/darbo-dienos/{y}/">{y} m. darbo dienų kalendorių</a>. Daugiau pavyzdžių rasite <a href="/blogas/iso-savaiciu-numeriai/">gide apie ISO savaites</a>.</p>'''
   append(f'savaites/{y}',body);changed.append(f'savaites/{y}')
- home='''<h2>Kaip naudotis kalendoriumi?</h2>
-<p>Pasirinkite dieną mėnesio tinklelyje. Šalia kalendoriaus matysite tos dienos įvykius ir užrašus. Rinkitės savaitės vaizdą, jei lyginate kelių dienų planus, o darbotvarkę, jei norite įvykius skaityti iš eilės.</p>
-<h3>Šventės ir laisvadieniai</h3>
-<p>Švenčių kalendoriuje šventinės ir atmintinos dienos pažymėtos atskirai. Planuodami poilsį atostogų planuoklyje pasirinkite savo darbo savaitę ir įrašykite, kiek atostogų dienų turite.</p>
-<h3>Spausdinimas ir atsarginė kopija</h3>
-<p>Spausdinti galite vieno mėnesio arba visų metų kalendorių. Pasirinkę patinkantį maketą atsisiųskite PDF. Savo įvykius į kitą kalendorių perkelsite naudodami ICS failą. Jei norite perkelti ir užrašus bei užduotis, išsaugokite JSON kopiją ir atkurkite ją kito įrenginio naršyklėje.</p>'''
+ home='''<h2>Kaip suplanuoti keturias laisvas dienas per Vasario 16-ąją?</h2>
+<p><a href="/sventes/vasario-16-oji/">2027 m. Vasario 16-oji</a> yra antradienis. Jei dirbate pirmadieniais–penktadieniais ir galite pasiimti atostogų vasario 15 d., kartu su savaitgaliu susidaro keturios laisvos dienos nuo vasario 13 iki 16 d. Jei dirbate pamainomis, pirmiausia tikrinkite savo darbo grafiką.</p>
+<p><a href="/2027/vasaris/">Vasario kalendoriuje</a> pasižymėkite datas arba atsisiųskite PDF, jei planu norite dalytis ant popieriaus. Rinkdamiesi miestą palyginkite <a href="/orai/miestai/">jo orų prognozę</a> vienodoms atvykimo ir grįžimo valandoms. Mėnesio klimato normos padeda rinktis sezoną, o kelionei artėjant labiau praverčia konkrečios dienos prognozė.</p>
+<p>Savo įvykius į kitą kalendorių perkelkite naudodami ICS failą. Jei norite atkurti ir užrašus bei užduotis, atsisiųskite JSON atsarginę kopiją iš skilties „Jūsų kalendorius“.</p>'''
  append('',home);changed.append('/')
  (ROOT/'docs/adsense/enriched-routes.json').write_text(json.dumps(changed,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'enriched_routes':len(changed)}))
 if __name__=='__main__':prepare()
