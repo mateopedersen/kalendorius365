@@ -38,9 +38,12 @@ if (printFinder) {
 
   function updatePeriod() {
     const month = period.selectedOptions[0].dataset.monthSlug;
-    const fragment = month ? "#perziura" : "#metiniai-sablonai";
-    catalogLink.href = `/${year.value}/${month ? month + "/" : ""}${fragment}`;
-    editorLink.href = `/kurti-kalendoriu/?metai=${year.value}&menuo=${period.value}`;
+    const calendarYear = year.value;
+    const validYear = /^[0-9]{4}$/.test(calendarYear);
+    const validMonth = /^[a-z]+$/.test(month ?? "");
+    catalogLink.href = validYear ? `/${calendarYear}/${validMonth ? `${month}/#perziura` : "#metiniai-sablonai"}` : "/menesiai/";
+    const params = new URLSearchParams({metai: calendarYear, menuo: period.value});
+    editorLink.href = `/kurti-kalendoriu/?${params}`;
 
     const selectedDesign = design.value;
     choices = catalog?.[`${year.value}/${period.value}`] ?? [];

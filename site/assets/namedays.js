@@ -47,9 +47,19 @@ async function init(){
   }
   function source(container,record){
     container.replaceChildren();
-    const a=node('a',`„${record.source_title}“ · redakcija ${record.source_revision_id}`);a.href=record.source_revision;
-    const h=node('a','straipsnio keitimų istorija');h.href=record.source_history;
-    container.append(a,document.createTextNode(' · '),h);
+    const sourceLink=(label,value)=>{
+      let url;
+      try{url=new URL(value);}catch{return document.createTextNode(label);}
+      if(url.origin!=='https://lt.wikipedia.org' || url.pathname!=='/w/index.php') return document.createTextNode(label);
+      const link=node('a',label);
+      link.href=url.href;
+      return link;
+    };
+    container.append(
+      sourceLink(`„${record.source_title}“ · redakcija ${record.source_revision_id}`,record.source_revision),
+      document.createTextNode(' · '),
+      sourceLink('straipsnio keitimų istorija',record.source_history),
+    );
   }
   function selectDate(date,name=''){
     const r=records.get(date.slice(5));

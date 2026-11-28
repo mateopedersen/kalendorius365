@@ -76,7 +76,8 @@ function setupSun() {
       const option = cityInput.selectedOptions[0];
       const city = { id: option.value, name: option.textContent, lat: Number(option.dataset.lat), lon: Number(option.dataset.lon), place: option.dataset.locative };
       if (weatherLink) {
-        weatherLink.href = `/orai/${weatherSlugs[city.id] || city.id}/`;
+        const slug = weatherSlugs[city.id] || city.id;
+        weatherLink.href = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? `/orai/${slug}/` : '/orai/';
         weatherLink.textContent = `Orai ${city.place}`;
       }
       const times = solarFor(date, city);

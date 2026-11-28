@@ -183,7 +183,14 @@ function renderEvents() {
 async function renderPhotos() {
   let list = q("#ce-photo-list");
   if (!list) return;
-  list.innerHTML = state.photos.map((p2, i) => `<button data-select-photo="${p2.id}" aria-pressed="${p2.id === selectedPhoto}">${i + 1}. ${e(p2.name)} · ${p2.width} × ${p2.height}</button>`).join("");
+  list.replaceChildren(...state.photos.map((photo, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.selectPhoto = photo.id;
+    button.setAttribute("aria-pressed", String(photo.id === selectedPhoto));
+    button.textContent = `${index + 1}. ${photo.name} · ${photo.width} × ${photo.height}`;
+    return button;
+  }));
   let p = state.photos.find((p2) => p2.id === selectedPhoto) || state.photos[0];
   if (!p) {
     q("#ce-photo-settings").innerHTML = LT.p_class_muted_ikelkite_pirma_nuotrauka_metu_rinkiniui_galite_ikelti_12;
