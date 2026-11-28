@@ -1,0 +1,53 @@
+{
+  "reviewed_baseline_commit": "4447cec15da6984237476ed34963331721724264",
+  "alerts": [
+    {
+      "alert": 23,
+      "rule": "js/xss-through-dom",
+      "path": "site/assets/calendar-editor/editor.js",
+      "line": 172,
+      "decision": "fixed",
+      "review": "Encode editor range values, photo identifiers/dimensions, event dates/colors, theme colors and SVG attributes at the output boundary. Existing model validation remains in place. Verified hostile SVG attribute strings stay inert and normal import/export tests pass."
+    },
+    {
+      "alert": 22,
+      "rule": "js/xss-through-dom",
+      "path": "site/assets/calendar-editor/editor.js",
+      "line": 168,
+      "decision": "fixed",
+      "review": "Encode editor range values, photo identifiers/dimensions, event dates/colors, theme colors and SVG attributes at the output boundary. Existing model validation remains in place. Verified hostile SVG attribute strings stay inert and normal import/export tests pass."
+    },
+    {
+      "alert": 11,
+      "rule": "js/xss-through-dom",
+      "path": "site/assets/calendar-editor/editor.js",
+      "line": 212,
+      "decision": "fixed",
+      "review": "Encode editor range values, photo identifiers/dimensions, event dates/colors, theme colors and SVG attributes at the output boundary. Existing model validation remains in place. Verified hostile SVG attribute strings stay inert and normal import/export tests pass."
+    },
+    {
+      "alert": 10,
+      "rule": "js/xss-through-dom",
+      "path": "site/assets/calendar-editor/editor.js",
+      "line": 194,
+      "decision": "fixed",
+      "review": "Encode editor range values, photo identifiers/dimensions, event dates/colors, theme colors and SVG attributes at the output boundary. Existing model validation remains in place. Verified hostile SVG attribute strings stay inert and normal import/export tests pass."
+    },
+    {
+      "alert": 9,
+      "rule": "js/xss-through-dom",
+      "path": "site/assets/calendar-editor/editor.js",
+      "line": 186,
+      "decision": "fixed",
+      "review": "Encode editor range values, photo identifiers/dimensions, event dates/colors, theme colors and SVG attributes at the output boundary. Existing model validation remains in place. Verified hostile SVG attribute strings stay inert and normal import/export tests pass."
+    },
+    {
+      "alert": 6,
+      "rule": "js/xss-through-dom",
+      "path": "site/assets/calendar-editor/editor.js",
+      "line": 128,
+      "decision": "fixed",
+      "review": "Encode editor range values, photo identifiers/dimensions, event dates/colors, theme colors and SVG attributes at the output boundary. Existing model validation remains in place. Verified hostile SVG attribute strings stay inert and normal import/export tests pass."
+    }
+  ]
+}

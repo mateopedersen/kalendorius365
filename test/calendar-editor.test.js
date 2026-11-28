@@ -77,3 +77,18 @@ test('compact date editing preserves legacy projects and keeps all overflow entr
   s.layout.eventPlacement = 'invalid';
   assert.throws(() => validate(s));
 });
+
+test('SVG attribute values stay inert when a scene contains untrusted strings', () => {
+  const attack = '\"><image href="x" onerror="globalThis.injected=true"/><text data-x="';
+  const page = {
+    w: 600, h: 800, label: 'Test', font: attack, cells: [],
+    items: [
+      {type:'text',x:10,y:20,size:12,font:attack,color:attack,value:attack},
+      {type:'rect',x:10,y:20,w:100,h:30,fill:attack,stroke:attack,line:1},
+    ],
+  };
+  const result = svg(page);
+  assert.ok(!result.includes('<image'));
+  assert.ok(!result.includes('font-family="' + attack));
+  assert.ok(result.includes('&lt;image'));
+});
