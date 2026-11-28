@@ -113,8 +113,9 @@ test('sunrise week keeps dates and headings inside their table cells on narrow p
  await page.setViewportSize({width:320,height:780});
  for(const route of ['/saule/','/saule/kaunas/']){
   await page.goto(route,{waitUntil:'domcontentloaded'});
-  await expect(page.locator('#sun-week-rows tr')).toHaveCount(7);
-  const overflow=await page.locator('.sun-week').evaluate(async section=>{
+  const week=page.locator('section[aria-labelledby="sun-week-title"]');
+  await expect(week.locator('tbody tr')).toHaveCount(7);
+  const overflow=await week.evaluate(async section=>{
    await document.fonts.ready;
    return [...section.querySelectorAll('th,td')].flatMap(cell=>{
     const range=document.createRange();
