@@ -1,1 +1,1 @@
-import{mountDisplayBanner as t}from"/assets/releases/d3247aeff7ea3c55bb05/advertising/display-runtime.js";const e=document.getElementById("advertising-config");let n;try{n=JSON.parse(e?.textContent||"null")}catch{}n&&t(n);
+import{mountDisplayBanner as t}from"/assets/releases/8e832a9b4d62424d07f6/advertising/display-runtime.js";const e=document.getElementById("advertising-config");let n;try{n=JSON.parse(e?.textContent||"null")}catch{}n&&t(n);

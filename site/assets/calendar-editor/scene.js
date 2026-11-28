@@ -358,22 +358,22 @@ function scenes(state, data, editorial) {
 }
 function svg(p, photoURLs = {}, fontCSS = "", { interactive = false } = {}) {
   const items = p.items.map(i => {
-    if (i.type === "rect") return `<rect x="${i.x}" y="${i.y}" width="${i.w}" height="${i.h}" fill="${i.fill || "none"}" stroke="${i.stroke || "none"}" stroke-width="${i.line}"/>`;
-    if (i.type === "circle") return `<circle cx="${i.x}" cy="${i.y}" r="${i.r}" fill="${i.color}"/>`;
-    if (i.type === "line") return `<path d="M${i.x} ${i.y}L${i.x2} ${i.y2}" fill="none" stroke="${i.color}" stroke-width="${i.width}"/>`;
+    if (i.type === "rect") return `<rect x="${escape(i.x)}" y="${escape(i.y)}" width="${escape(i.w)}" height="${escape(i.h)}" fill="${escape(i.fill || "none")}" stroke="${escape(i.stroke || "none")}" stroke-width="${escape(i.line)}"/>`;
+    if (i.type === "circle") return `<circle cx="${escape(i.x)}" cy="${escape(i.y)}" r="${escape(i.r)}" fill="${escape(i.color)}"/>`;
+    if (i.type === "line") return `<path d="M${escape(i.x)} ${escape(i.y)}L${escape(i.x2)} ${escape(i.y2)}" fill="none" stroke="${escape(i.color)}" stroke-width="${escape(i.width)}"/>`;
     if (i.type === "photo") {
       const url = photoURLs[i.photo.id + ":" + i.w + ":" + i.h];
-      return url ? `<image x="${i.x}" y="${i.y}" width="${i.w}" height="${i.h}" opacity="${i.background ? .18 : 1}" href="${escape(url)}"/>` : "";
+      return url ? `<image x="${escape(i.x)}" y="${escape(i.y)}" width="${escape(i.w)}" height="${escape(i.h)}" opacity="${i.background ? .18 : 1}" href="${escape(url)}"/>` : "";
     }
     const font = i.font || p.font;
     const anchor = i.align === "center" ? "middle" : i.align === "right" ? "end" : "start";
-    return `<text x="${i.x}" y="${i.y}" font-size="${i.size}" font-family="${font}" font-weight="${i.bold ? 700 : 400}" fill="${i.color}" text-anchor="${anchor}">${escape(i.value)}</text>`;
+    return `<text x="${escape(i.x)}" y="${escape(i.y)}" font-size="${escape(i.size)}" font-family="${escape(font)}" font-weight="${i.bold ? 700 : 400}" fill="${escape(i.color)}" text-anchor="${anchor}">${escape(i.value)}</text>`;
   }).join("");
   const targets = interactive ? p.cells.map(({ date, x, y, w, h, count }) => {
-    const label = count ? `${date}. ${LT.calendar_record_count} ${count}. ${LT.calendar_open_day}` : `${date}. ${LT.calendar_open_day}`;
-    return `<rect data-editor-date="${date}" x="${x}" y="${y}" width="${w}" height="${h}" fill="transparent" tabindex="0" role="button" aria-label="${escape(label)}"/>`;
+    const label = count ? `${escape(date)}. ${LT.calendar_record_count} ${count}. ${LT.calendar_open_day}` : `${escape(date)}. ${LT.calendar_open_day}`;
+    return `<rect data-editor-date="${escape(date)}" x="${escape(x)}" y="${escape(y)}" width="${escape(w)}" height="${escape(h)}" fill="transparent" tabindex="0" role="button" aria-label="${escape(label)}"/>`;
   }).join("") : "";
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${p.w}" height="${p.h}" viewBox="0 0 ${p.w} ${p.h}" role="group" aria-label="${escape(p.label)}"><style>${fontCSS}text{white-space:pre}</style>${items}${targets}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${escape(p.w)}" height="${escape(p.h)}" viewBox="0 0 ${escape(p.w)} ${escape(p.h)}" role="group" aria-label="${escape(p.label)}"><style>${fontCSS}text{white-space:pre}</style>${items}${targets}</svg>`;
 }
 export {
   MM,
