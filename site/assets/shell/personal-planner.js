@@ -228,7 +228,8 @@ function connectPlanner(root) {
     agenda.replaceChildren(...entries);
     const year = Number(selected.slice(0, 4));
     const slug = data.months[Number(selected.slice(5, 7)) - 1][0];
-    $("#current-download").href = year >= 2027 && year <= 2030 ? "/" + year + "/" + slug + "/" : "/menesiai/";
+    const inCatalogue = year >= 2027 && year <= 2030 && /^[a-z]+$/.test(slug);
+    $("#current-download").href = inCatalogue ? `/${year}/${encodeURIComponent(slug)}/` : "/menesiai/";
   }
 
   function resetTask() {
