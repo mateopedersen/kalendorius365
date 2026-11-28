@@ -463,7 +463,7 @@ test('contact Google form prefill, source link and email copy work without sendi
  expect(source.searchParams.get('entry.122884581')).toBe('Techninė problema');expect(source.searchParams.get('entry.1784264088')).toBe('https://kalendorius365.lt/2028/');
  await expect(page.locator('[data-contact-source-link]')).toHaveAttribute('href','https://kalendorius365.lt/2028/');
  const topic=new URL(await page.locator('[data-topic="namedays"]').getAttribute('href'));expect(topic.searchParams.get('entry.122884581')).toBe('Vardadieniai ir šventės');
- for(const link of await page.locator('[data-open-contact-form]').all())await expect(link).toHaveAttribute('href',/docs.google.com\/forms\//);
+ for(const link of await page.locator('[data-open-contact-form]').all())await expect(link).toHaveAttribute('href',/docs\.google\.com\/forms\//);
  await launch.click();await expect(frame).toBeHidden();await expect(launch).toHaveAttribute('aria-expanded','false');
  await launch.click();await expect(frame).toBeVisible();await expect(frame).toHaveAttribute('src',source.href);
  await page.locator('[data-copy-email]').click();await expect(page.locator('[data-copy-status]')).toHaveText('El. pašto adresas nukopijuotas.');

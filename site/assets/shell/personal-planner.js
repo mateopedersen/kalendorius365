@@ -212,7 +212,7 @@ function connectPlanner(root) {
       const row = element("li", undefined, "personal-agenda__holiday");
       const link = element("a", holiday.name);
       const slug = commemorationSlugs.get(holiday.id);
-      link.href = slug ? "/sventes/" + slug + "/" : "/sventes/";
+      link.href = slug && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? `/sventes/${slug}/` : "/sventes/";
       row.append(icon("holiday-flag"), link, element("small", holiday.classification === "statutory" ? "Šventinė diena" : "Atmintina diena"));
       return row;
     });
@@ -228,7 +228,8 @@ function connectPlanner(root) {
     agenda.replaceChildren(...entries);
     const year = Number(selected.slice(0, 4));
     const slug = data.months[Number(selected.slice(5, 7)) - 1][0];
-    $("#current-download").href = year >= 2027 && year <= 2030 ? "/" + year + "/" + slug + "/" : "/menesiai/";
+    const inCatalogue = year >= 2027 && year <= 2030 && /^[a-z]+$/.test(slug);
+    $("#current-download").href = inCatalogue ? `/${year}/${encodeURIComponent(slug)}/` : "/menesiai/";
   }
 
   function resetTask() {
@@ -294,7 +295,14 @@ function connectPlanner(root) {
     }));
     const admission = selectedAdmission();
     $("[data-personal-admissions-info]").textContent = admission.info;
-    $("[data-personal-admissions-link]").href = admission.url;
+    const admissionLink = $("[data-personal-admissions-link]");
+    let admissionUrl;
+    try { admissionUrl = new URL(admission.url); } catch { /* The source link stays disabled. */ }
+    if (admissionUrl?.origin === 'https://lamabpo.lt' || admissionUrl?.origin === 'https://www.mokausi.lt') {
+      admissionLink.href = admissionUrl.href;
+    } else {
+      admissionLink.removeAttribute('href');
+    }
     const payment = selectedPayment();
     const paymentDate = $("[data-personal-payment-date]");
     paymentDate.replaceChildren(time(payment.date));

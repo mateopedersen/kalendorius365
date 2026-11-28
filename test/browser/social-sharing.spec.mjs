@@ -7,14 +7,14 @@ async function dismissConsent(page){
 async function openCurrent(page){await page.locator('.share-entry>summary').click();await expect(page.getByRole('dialog')).toBeVisible();await expect(page.locator('link[rel="stylesheet"][href$="/sharing/dialog.css"]')).toHaveCount(1);}
 
 test('mobile share sheet keeps personal calendar entries local and offers real link sharing',async({page},testInfo)=>{
- test.setTimeout(90000);const secret='K365-PRIVATE-LOCAL-NOTE-6F9D';const sent=[];
- await page.addInitScript(({secret})=>localStorage.setItem('kalendorius365:v1',JSON.stringify({schema:1,events:[],tasks:[],notes:{'2026-10-20':secret},preferences:{}})),{secret});
- page.on('request',r=>{if((r.url()+' '+(r.postData()||'')).includes(secret))sent.push(r.url());});
+ test.setTimeout(90000);const noteFixture='K365-SYNTHETIC-LOCAL-NOTE-6F9D';const sent=[];
+ await page.addInitScript(({noteFixture})=>localStorage.setItem('kalendorius365:v1',JSON.stringify({schema:1,events:[],tasks:[],notes:{'2026-10-20':noteFixture},preferences:{}})),{noteFixture});
+ page.on('request',r=>{if((r.url()+' '+(r.postData()||'')).includes(noteFixture))sent.push(r.url());});
  await page.setViewportSize({width:390,height:844});await page.goto('/');await dismissConsent(page);await openCurrent(page);
  const dialog=page.getByRole('dialog');await expect(dialog.getByRole('heading',{name:'Pasidalyti',exact:true})).toBeVisible();
  await expect(dialog.locator('.share-link-card')).toContainText('Kalendorius365');
- await expect(dialog.locator('.share-link-card')).not.toContainText(secret);
- await expect(dialog.locator('textarea').first()).not.toHaveValue(new RegExp(secret));
+ await expect(dialog.locator('.share-link-card')).not.toContainText(noteFixture);
+ await expect(dialog.locator('textarea').first()).not.toHaveValue(new RegExp(noteFixture));
  await expect(dialog.getByRole('button',{name:'Kopijuoti nuorodą',exact:true})).toContainText('Kopijuoti nuorodą');
  await expect(dialog.locator('.share-platforms [data-share-platform=x]')).toHaveAttribute('href',/x\.com\/intent\/tweet/);
  await expect(dialog.locator('.share-platforms [data-share-platform=facebook]')).toHaveAttribute('href',/facebook\.com\/sharer/);
@@ -28,7 +28,7 @@ test('mobile share sheet keeps personal calendar entries local and offers real l
  await expect(dialog.locator('.share-status')).toContainText('1080 × 1920');
  expect(await dialog.locator('.share-render-preview').evaluate(i=>[i.naturalWidth,i.naturalHeight])).toEqual([1080,1920]);
  await dialog.getByRole('button',{name:'Uždaryti'}).click();
- expect(await page.evaluate(()=>localStorage.getItem('kalendorius365:v1'))).toContain(secret);expect(sent).toEqual([]);
+ expect(await page.evaluate(()=>localStorage.getItem('kalendorius365:v1'))).toContain(noteFixture);expect(sent).toEqual([]);
  for(const width of [320,360,390]){
   await page.setViewportSize({width,height:844});await page.locator('.share-entry>summary').scrollIntoViewIfNeeded();await openCurrent(page);
   const metrics=await page.evaluate(()=>({viewport:innerWidth,document:document.documentElement.scrollWidth,dialog:document.querySelector('dialog').scrollWidth,client:document.querySelector('dialog').clientWidth}));

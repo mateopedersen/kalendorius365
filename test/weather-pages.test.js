@@ -218,7 +218,7 @@ test("forecast periods and month switches are navigable HTML, including the year
   assert.match(climate, /datetime="2027-01-31"/);
   assert.doesNotMatch(climate, /datetime="2026-12-|datetime="2027-02-/);
   assert.match(climate, /<dt>Žemiausia<\/dt><dd>2 °C/);
-  assert.match(climate, /www.visualcrossing.com\/weather-api/);
+  assert.match(climate, /www\.visualcrossing\.com\/weather-api/);
   const forecast = long.match(/id="wx-days"[^>]*>[\s\S]*?class="wx-provider-credit"/)[0];
   assert.equal([...forecast.matchAll(/class="wx-day"/g)].length,15);
   assert.match(forecast, /<dt>Vėjo gūsiai<\/dt><dd>5 m\/s/);

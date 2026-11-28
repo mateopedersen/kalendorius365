@@ -16,7 +16,7 @@ test('all 48 seasonal illustrations contain the actual Monday-first calendar for
    assert.equal(x,52+col*20,`${year}/${slug}/${day} weekday`);
    assert.equal(y,140+Math.floor((offset+day-1)/7)*12,`${year}/${slug}/${day} row`);
   }
-  assert.doesNotMatch(svg,/<script|<foreignObject|https?:\/\/(?!www.w3.org\/2000\/svg)/);
+  assert.doesNotMatch(svg,/<script|<foreignObject|https?:\/\/(?!www\.w3\.org\/2000\/svg)/);
   if(year===2027)themes.add(svg.match(/<desc[^>]*>(.*?)\./)[1]);
  }
  assert.equal(themes.size,12,'a separate seasonal concept for every month');

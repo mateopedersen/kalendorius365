@@ -21,7 +21,7 @@ test('existing and new planner links receive complete compact title and category
 });
 test('31 manifest guides have unique routes and verified original media records',()=>{
  assert.equal(all.length,31);assert.equal(new Set(all.map(a=>a.slug)).size,31);
- for(const a of all){const m=registry.media[a.id];assert.ok(m,a.id);assert.match(m.commons_url,/commons.wikimedia.org\/wiki\/File:/);assert.ok(m.license_url);assert.ok(m.author);assert.ok(m.caption);assert.ok(m.commons_revision);assert.ok(a.sources.every(s=>registry.sources[s]),a.id);}
+ for(const a of all){const m=registry.media[a.id];assert.ok(m,a.id);assert.match(m.commons_url,/commons\.wikimedia\.org\/wiki\/File:/);assert.ok(m.license_url);assert.ok(m.author);assert.ok(m.caption);assert.ok(m.commons_revision);assert.ok(a.sources.every(s=>registry.sources[s]),a.id);}
 });
 test('deep-link year selection validates input and gives valid hash priority',()=>{
  const location=(search='',hash='')=>({search,hash});
